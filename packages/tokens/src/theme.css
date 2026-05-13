@@ -1,0 +1,18 @@
+/**
+ * @trinity/tokens — 应用入口（仅依赖本包，不含整站 reset / 顶栏等大套样式）。
+ * 含与设计色板一致的 CSS 变量；仅 Vite 应用、或已与 monorepo 同仓部署的静态站请用本入口。
+ * 需要 `.btn` / `.or-app-filter-*` 等 @trinity/ui 对齐类名时，可再引入 `packages/ui/styles/ui-base.css`（链到 `ui-kit.css`）；或引入 `assets/trinity-base.css`（其内会 @import 本包 `core.css` 与 `ui-kit.css`）。
+ */
+@import "./core.css";
+
+html,
+body {
+  font-family: var(--font);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}

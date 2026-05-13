@@ -1,0 +1,171 @@
+/**
+ * 全局 CSS 自定义属性（:root + 深浅色 / system）。
+ * `assets/trinity-base.css` 与 `@trinity/ui/styles/ui-base.css` 的宿主链均会经各自入口引用本文件；改色值以设计色板为准，改此处后在全站生效。
+ */
+:root {
+  --bg: #ffffff;
+  --surface: #f9fafb;
+  --surface-2: #f3f4f6;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --text: #1a1a1a;
+  --muted: #4b5563;
+  --muted-2: #9ca3af;
+  --blue: #2563eb;
+  --blue-soft: #eff6ff;
+  --blue-ring: #bfdbfe;
+  --purple: #7c3aed;
+  --grad: linear-gradient(135deg, #2563eb 0%, #4f46e5 48%, #7c3aed 100%);
+  --grad-hover: linear-gradient(135deg, #1d4ed8 0%, #4338ca 48%, #6d28d9 100%);
+  --pill-text: #1d4ed8;
+  /* 语义与品牌锁色（业务内请用 var，避免与色板漂移） */
+  --success: #059669;
+  --success-soft: #ecfdf5;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --danger-ink: #b91c1c;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --warning-ring: #fcd34d;
+  --warning-ink: #b45309;
+  --orange: #f97316;
+  --orange-deep: #ea580c;
+  --green-bright: #10b981;
+  --green-deep: #059669;
+  --success-bright: #22c55e;
+  --purple-soft: #f5f3ff;
+  --violet-200: #ddd6fe;
+  --rose-600: #e11d48;
+  --success-strong: #15803d;
+  --viz-mint: #4ade80;
+  --viz-yellow: #facc15;
+  --viz-coral: #f87171;
+  --viz-violet-400: #a855f7;
+  --viz-fuchsia-500: #d946ef;
+  --oauth-google: #4285f4;
+  --oauth-google-hover: #1a73e8;
+  --brand-chatgpt: #10a37f;
+  --indigo-500: #4f46e5;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --pink-400: #f472b6;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --danger-dark: #991b1b;
+  --oauth-google-red: #ea4335;
+  --oauth-google-yellow: #fbbc05;
+  --oauth-google-green: #34a853;
+  --on-primary: #ffffff;
+  --danger-border: #fecaca;
+  --danger-hot: #ef4444;
+  --indigo-400: #6366f1;
+  --purple-deep: #6d28d9;
+  --purple-800: #5b21b6;
+  --success-800: #047857;
+  --sky-600: #0284c7;
+  --violet-100: #ede9fe;
+  --violet-300: #c4b5fd;
+  /*
+   * 浅色「整卡合成底」通用公式（对话场景卡为其一用例；换主色时把下方 RGB 换成新主色即可，不必另起一个实色 hex）：
+   * ① linear-gradient(约 165deg, rgba(主色RGB, α0) 0%, rgba(中性浅面, 0.88–0.95) 约 38%–42%, var(--bg) 100%)
+   *    α0 建议 0.06–0.12；多卡并列可从高到低递减。中性浅面贴近 --surface，或略染主色色相的淡面（如偏蓝的 #eff6ff 系）。
+   *    末停必须 var(--bg)，与页面底融合。
+   * ② 卡片边框：rgba(主色RGB, β)，β 约 0.10–0.14，通常略大于 α0，保证边缘可读。
+   * ③ 顶条高光与整块底分开写（场景卡 ::before 用 var(--grad)）；换品牌主色时同步调整 --grad 或模块内条带。
+   */
+  /* 以下为 --blue (37, 99, 235) 按上式落地的四条变体，见 design-tokens「对话场景卡合成底」 */
+  --orc-scene-card-bg-1: linear-gradient(165deg, rgba(37, 99, 235, 0.11) 0%, rgba(249, 250, 251, 0.92) 38%, var(--bg) 100%);
+  --orc-scene-card-bg-2: linear-gradient(165deg, rgba(37, 99, 235, 0.09) 0%, rgba(249, 250, 251, 0.92) 38%, var(--bg) 100%);
+  --orc-scene-card-bg-3: linear-gradient(165deg, rgba(37, 99, 235, 0.07) 0%, rgba(239, 246, 255, 0.88) 42%, var(--bg) 100%);
+  --orc-scene-card-bg-4: linear-gradient(165deg, rgba(37, 99, 235, 0.06) 0%, rgba(249, 250, 251, 0.95) 40%, var(--bg) 100%);
+  --orc-scene-card-border-1: rgba(37, 99, 235, 0.14);
+  --orc-scene-card-border-2: rgba(37, 99, 235, 0.12);
+  --orc-scene-card-border-3: rgba(37, 99, 235, 0.11);
+  --orc-scene-card-border-4: rgba(37, 99, 235, 0.1);
+  /* 对话「添加模型」弹层（.orc-picker-modal-root 内 .or-modal-backdrop）与控制台密钥编辑等共用遮罩与弹层卡片阴影 */
+  --orc-modal-overlay-bg: rgba(15, 23, 42, 0.35);
+  --orc-modal-overlay-blur: 3px;
+  --orc-modal-card-radius: 14px;
+  --orc-modal-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --radius: 8px;
+  --radius-lg: 12px;
+  /* 工具条药丸、分段 chip、主按钮等同高，便于与筛选行对齐 */
+  --ctrl-h: 36px;
+  --nav-h: 60px;
+  /* 全宽：不限制主栏宽度；顶栏/底栏及内页正文左右 50px（与文档一致） */
+  --max-wide: none;
+  --max: none;
+  --layout-edge: 50px;
+  --page-gutter: var(--layout-edge);
+  --font: "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  /* 登录弹窗玻璃卡片（与首页 #idx-login-modal-root 共用） */
+  --or-modal-glass-bg: rgba(255, 255, 255, 0.52);
+  --or-modal-glass-border: rgba(255, 255, 255, 0.45);
+  --or-modal-glass-shadow: 0 24px 60px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+/* Dark + system (prefers-color-scheme) */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --surface: #171717;
+  --surface-2: #262626;
+  --border: #2e2e2e;
+  --border-strong: #404040;
+  --text: #fafafa;
+  --muted: #a3a3a3;
+  --muted-2: #737373;
+  --blue-soft: rgba(37, 99, 235, 0.15);
+  --blue-ring: rgba(59, 130, 246, 0.35);
+  --pill-text: #93c5fd;
+  --or-modal-glass-bg: rgba(28, 28, 30, 0.72);
+  --or-modal-glass-border: rgba(255, 255, 255, 0.1);
+  --or-modal-glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .or-modal-card.or-auth-modal {
+  --or-auth-card-bg: #171717;
+  --or-auth-card-border: var(--border);
+  --or-auth-card-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] header.or-inject {
+  background: rgba(10, 10, 10, 0.92);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] {
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --surface: #171717;
+    --surface-2: #262626;
+    --border: #2e2e2e;
+    --border-strong: #404040;
+    --text: #fafafa;
+    --muted: #a3a3a3;
+    --muted-2: #737373;
+    --blue-soft: rgba(37, 99, 235, 0.15);
+    --blue-ring: rgba(59, 130, 246, 0.35);
+    --pill-text: #93c5fd;
+    --or-modal-glass-bg: rgba(28, 28, 30, 0.72);
+    --or-modal-glass-border: rgba(255, 255, 255, 0.1);
+    --or-modal-glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  html[data-theme="system"] .or-modal-card.or-auth-modal {
+    --or-auth-card-bg: #171717;
+    --or-auth-card-border: var(--border);
+    --or-auth-card-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  html[data-theme="system"] header.or-inject {
+    background: rgba(10, 10, 10, 0.92);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme="system"] {
+    color-scheme: light;
+  }
+}

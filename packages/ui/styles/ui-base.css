@@ -1,0 +1,8 @@
+/*
+ * @trinity/ui 全局样式入口（本文件不包含 tokens，避免相对路径依赖 monorepo 目录）。
+ *
+ * 单独使用本包时，在应用入口用包名先引入变量，再引入本文件，例如：
+ *   import "@trinity/tokens/core.css";
+ *   import "@trinity/ui/styles/ui-base.css";
+ */
+@import "./ui-kit.css";

@@ -1,0 +1,369 @@
+    <style>
+      .ds-main {
+        flex: 1;
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1rem var(--page-gutter) 2rem;
+        box-sizing: border-box;
+      }
+
+      .ds-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .ds-hero h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .ds-hero a {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--blue);
+      }
+
+      .ds-hero a:hover {
+        color: var(--purple);
+      }
+
+      .ds-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      @media (max-width: 860px) {
+        .ds-compare {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ds-board {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .ds-board-cap {
+        margin: 0 0 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      .ds-board-canvas {
+        flex: 1;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        padding: 1rem;
+        min-height: 9rem;
+      }
+
+      .ds-board-canvas--app {
+        background: var(--surface);
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+      }
+
+      /* 应用画板：三种筛选形式并列说明（仅规范页；原型生成时可指定「形式1/2/3」） */
+      .ds-app-filter-form {
+        margin-bottom: 1rem;
+      }
+
+      .ds-app-filter-form:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .ds-app-filter-form-title {
+        margin: 0 0 0.45rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--muted);
+        letter-spacing: -0.01em;
+      }
+
+      .ds-app-filter-form-note {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .ds-app-filter-foot {
+        margin: 0.65rem 0 0;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--muted-2);
+      }
+
+      .ds-board-note {
+        margin: 0.65rem 0 0;
+        font-size: 0.6875rem;
+        color: var(--muted-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      .or-keys-editor-modal-card > header {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      /* 规范页 · 筛选下拉（按模型 / 更多）：圆角统一 calc(var(--radius) - 2px)，与全局 token 一致 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-more-panel,
+      .ds-board-canvas--app #ds-app-filter-more-panel.or-app-filter-more-panel {
+        border-radius: calc(var(--radius) - 2px);
+      }
+
+      /* 规范页 ·「按模型」下拉面：无外框线 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-more-panel {
+        border: none;
+        padding: 0.35rem;
+        gap: 0.2rem;
+      }
+
+      /* 无面板描边时外圈三角略淡，避免 rim 过重 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+        background: rgba(15, 23, 42, 0.08);
+      }
+
+      html[data-theme="dark"] .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html[data-theme="system"] .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item {
+        border-radius: calc(var(--radius) - 2px);
+        border-color: transparent !important;
+      }
+
+      /* 规范页 ·「按模型」下拉选中：浅底弱化 + 仍用品牌蓝字（勿用 --text，会盖住全局 is-checked 的蓝字） */
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked {
+        background: var(--blue-soft);
+        border-color: transparent !important;
+        color: var(--blue);
+        font-weight: 600;
+        box-shadow: none;
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+        background: var(--blue-soft);
+        border-color: transparent !important;
+        color: var(--blue);
+        filter: brightness(0.98);
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked .or-app-filter-dd-mark {
+        color: var(--blue);
+      }
+
+      /* 规范页 ·「更多」下拉面内行：与上同一圆角 */
+      .ds-board-canvas--app #ds-app-filter-more-panel .or-app-filter-menu-item {
+        border-radius: calc(var(--radius) - 2px);
+      }
+
+      .ds-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.65rem 1rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+      }
+
+      .ds-nav a {
+        color: var(--blue);
+      }
+
+      .ds-nav a:hover {
+        color: var(--purple);
+      }
+
+      .ds-spec-block {
+        margin-top: 2rem;
+      }
+
+      .ds-spec-block h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+
+      .ds-one {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .ds-atom-prose {
+        margin: 0;
+        font-size: 0.8125rem;
+        line-height: 1.65;
+        color: var(--muted);
+        text-align: start;
+      }
+
+      .ds-atom-prose + .ds-atom-prose {
+        margin-top: 0.65rem;
+      }
+
+      .ds-btn-block {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ds-btn-block:last-child {
+        border-bottom: none;
+      }
+
+      .ds-btn-block .ds-btn-row {
+        border-bottom: none;
+      }
+
+      .ds-btn-block .ds-atom-prose {
+        margin: 0 0.85rem 0.85rem;
+        padding-top: 0.15rem;
+      }
+
+      .ds-btn-mat {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .ds-btn-row {
+        display: grid;
+        grid-template-columns: minmax(0, 10.5rem) 1fr;
+        gap: 0.65rem 1rem;
+        align-items: center;
+        padding: 0.65rem 0.85rem;
+      }
+
+      @media (max-width: 640px) {
+        .ds-btn-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ds-btn-type {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .ds-btn-meta {
+        margin: 0.2rem 0 0;
+        font-size: 0.6875rem;
+        line-height: 1.4;
+        color: var(--muted-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        word-break: break-word;
+      }
+
+      .ds-btn-states {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem 0.85rem;
+        align-items: flex-end;
+      }
+
+      .ds-btn-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        min-width: 4.5rem;
+      }
+
+      .ds-btn-state > span {
+        font-size: 0.625rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      /* 规范页内仅用于四态示意，与 trinity-base 悬停色一致 */
+      .ds-btn-row .btn.ds-spec--muted-hover {
+        background: var(--surface);
+        border-color: var(--border-strong);
+        color: var(--text);
+      }
+
+      .ds-btn-row .btn.btn-gradient.ds-spec--grad-hover {
+        background: var(--grad-hover);
+        color: #fff !important;
+      }
+
+      .ds-btn-row .or-btn-outline.ds-spec--outline-hover {
+        background: var(--surface);
+        border-color: var(--muted-2);
+      }
+
+      .ds-btn-row .or-icon-btn.ds-spec--icon-hover {
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .ds-btn-row .or-app-filter-more.ds-spec--filter-more-hover {
+        filter: brightness(1.05);
+        box-shadow:
+          0 4px 14px -2px rgba(79, 70, 229, 0.4),
+          0 1px 2px rgba(15, 23, 42, 0.08);
+      }
+
+      .ds-board-canvas--modal {
+        position: relative;
+        min-height: 380px;
+        padding: 0;
+        border-radius: var(--radius);
+        overflow: visible;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+      }
+
+      .ds-modal-scene-backdrop {
+        position: absolute;
+        inset: 0;
+        background: var(--orc-modal-overlay-bg);
+        backdrop-filter: blur(var(--orc-modal-overlay-blur));
+        -webkit-backdrop-filter: blur(var(--orc-modal-overlay-blur));
+      }
+
+      .ds-modal-scene-card-wrap {
+        position: relative;
+        z-index: 1;
+        min-height: 380px;
+        display: grid;
+        place-items: center;
+        padding: 1.35rem 1.1rem;
+        pointer-events: none;
+      }
+
+      .ds-modal-scene-card-wrap .or-modal-card {
+        pointer-events: auto;
+        max-width: min(22rem, 100%);
+      }
+    </style>

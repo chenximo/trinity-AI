@@ -1,0 +1,83 @@
+/* 设计枢纽壳层：与 tokens / trinity-base 变量一致，不引入 slate 等页外色 */
+.design-hub-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.design-hub-topnav {
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding: 0.65rem var(--page-gutter, 1rem);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.design-hub-topnav h1 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.design-hub-topnav p {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.design-hub-topnav-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1rem;
+}
+
+.design-hub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* 开发枢纽：多入口并列时略收紧行宽，避免与主题条抢行 */
+.design-hub-nav--wrap {
+  max-width: min(100%, 52rem);
+  justify-content: flex-end;
+}
+
+.design-hub-nav a {
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius, 8px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.design-hub-nav a:hover {
+  color: var(--text);
+  background: var(--surface-2, rgba(15, 23, 42, 0.04));
+}
+
+.design-hub-nav a.router-link-active,
+.design-hub-nav a.is-active {
+  border-color: rgba(37, 99, 235, 0.35);
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.design-hub-main {
+  flex: 1;
+  min-width: 0;
+}

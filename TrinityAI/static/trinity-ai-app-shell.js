@@ -129,14 +129,6 @@
       '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
       '<path d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z" fill="currentColor"/>' +
       "</svg></span>Trinity AI</a>" +
-      '<span class="or-header-ref-cluster">' +
-      '<a href="' +
-      H("design-tokens.html") +
-      '" class="or-header-ref-link" title="设计色板，参考页面，不参与产品开发" aria-label="设计色板，参考页面，不参与产品开发">色板<span class="or-header-ref-note">参考</span></a>' +
-      '<a href="' +
-      H("design-spec.html") +
-      '" class="or-header-ref-link" title="设计规范，参考页面，不参与产品开发" aria-label="设计规范，参考页面，不参与产品开发">规范<span class="or-header-ref-note">参考</span></a>' +
-      "</span>" +
       "</div>" +
       '<div class="header-end">' +
       '<nav class="primary or-ornav" aria-label="主导航">' +
@@ -237,12 +229,6 @@
       '"' +
       navClass(p, "docs") +
       ">文档</a>" +
-      '<a href="' +
-      H("design-tokens.html") +
-      '" class="or-drawer-ref-link" aria-label="设计色板，参考页面，不参与开发">设计色板（参考，不参与开发）</a>' +
-      '<a href="' +
-      H("design-spec.html") +
-      '" class="or-drawer-ref-link" aria-label="设计规范，参考页面，不参与开发">设计规范（参考，不参与开发）</a>' +
       '<button type="button" class="or-drawer-signin" id="or-drawer-signin">登录</button>' +
       "</div>"
     );

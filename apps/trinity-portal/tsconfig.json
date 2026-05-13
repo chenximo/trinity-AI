@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src/**/*.ts", "src/**/*.vue", "vite.config.ts", "uno.config.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@trinity-design/*": ["../trinity-design/src/*"],
+      "@trinity-ai/*": ["../trinity-ai/src/*"],
+      "@app-ai-cloud/*": ["../ai-cloud/src/*"],
+      "@trinity-geo/*": ["../trinity-geo/src/*"],
+      "@trinity-ai-admin/*": ["../trinity-ai-admin/src/*"]
+    }
+  }
+}

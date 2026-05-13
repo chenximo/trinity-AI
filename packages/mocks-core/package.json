@@ -1,0 +1,11 @@
+{
+  "name": "@trinity/mocks-core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional shared mock types / fixtures for apps only.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": ["src"]
+}

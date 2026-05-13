@@ -1,0 +1,20 @@
+{
+  "name": "trinity-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @trinity/app-portal",
+    "dev:trinity-ai": "npm run dev -w @trinity/app-trinity-ai",
+    "dev:ai-cloud": "npm run dev -w @trinity/app-ai-cloud",
+    "dev:trinity-geo": "npm run dev -w @trinity/app-trinity-geo",
+    "dev:trinity-ai-admin": "npm run dev -w @trinity/app-trinity-ai-admin",
+    "dev:trinity-design": "npm run dev -w @trinity/app-trinity-design",
+    "dev:ui-standalone-demo": "npm run dev -w @trinity/app-ui-standalone-demo",
+    "build:apps": "npm run build -w @trinity/app-portal && npm run build -w @trinity/app-trinity-ai && npm run build -w @trinity/app-ai-cloud && npm run build -w @trinity/app-trinity-geo && npm run build -w @trinity/app-trinity-ai-admin && npm run build -w @trinity/app-trinity-design",
+    "build:all": "npm run build:apps"
+  }
+}

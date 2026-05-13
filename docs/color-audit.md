@@ -111,9 +111,7 @@
 | `TrinityCloud/home.html` | 1882 | `#78716c` | `#78716c` | **待核对**：色板 :root 未收录且未在 base 中出现 |
 | `TrinityCloud/home.html` | 1883 | `#fff7ed` | `#fff7ed` | **待核对**：色板 :root 未收录且未在 base 中出现 |
 | `TrinityCloud/home.html` | 1883 | `#fb923c` | `#fb923c` | **待核对**：色板 :root 未收录且未在 base 中出现 |
-| `TrinityAI/design-tokens.html` | 484 | `#2563eb` | `#2563eb` | 已在 trinity-base.css 出现（套件登记色） |
-| `TrinityAI/design-tokens.html` | 484 | `#7c3aed` | `#7c3aed` | 已在 trinity-base.css 出现（套件登记色） |
-| `TrinityAI/design-tokens.html` | 550 | `#2563eb` | `#2563eb` | 已在 trinity-base.css 出现（套件登记色） |
+| `apps/trinity-design/src/assets/design-tokens-main-inner.html` | （行号随模板变化） | `#2563eb` / `#7c3aed` 等 | 同左 | 已在 trinity-base.css 出现（套件登记色）；原审计针对已移除的静态 `design-tokens.html` |
 | `TrinityAI_Admin/admin.css` | 4 | `#ffffff` | `#ffffff` | 已在 trinity-base.css 出现（套件登记色） |
 | `TrinityAI_Admin/admin.css` | 5 | `#e5e7eb` | `#e5e7eb` | 已在 trinity-base.css 出现（套件登记色） |
 | `TrinityAI_Admin/admin.css` | 8 | `#9ca3af` | `#9ca3af` | 已在 trinity-base.css 出现（套件登记色） |
@@ -308,7 +306,7 @@
 ## 说明
 
 - 本表**不**解析 `rgba()` / `hsl()` / `var(--x)`；仅针对十六进制字面量。
-- `design-tokens.html` 中出现的 hex 多为文档说明字符串，可与产品代码区分阅读。
+- **`apps/trinity-design`** 色板画板中出现的 hex 多为文档说明字符串，可与产品代码区分阅读。
 - 若某色为刻意设计（如图表、OAuth 品牌），请在设计文档中登记后把 hex 写入 `trinity-base.css` 任意注释或变量，再重跑脚本以纳入允许集。
 
 ---

@@ -1,0 +1,12 @@
+{
+  "name": "@trinity/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens: CSS variables in core.css (single source). theme.css adds minimal html/body for apps that do not load trinity-base.css.",
+  "exports": {
+    "./core.css": "./src/core.css",
+    "./theme.css": "./src/theme.css"
+  },
+  "files": ["src"]
+}

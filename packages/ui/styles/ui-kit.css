@@ -1,0 +1,1051 @@
+/* @trinity/ui — 全局类名样式（由 assets/trinity-base.css 迁入）。
+ * 使用前先引入 tokens，例如：import "@trinity/tokens/core.css";
+ * 本文件不 @import tokens。 */
+
+.or-select {
+  padding: 0.4rem 0.55rem;
+  font-size: 0.8125rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* —— 应用侧筛选（图2：OpenRouter 活动/日志工具条 — 白底药丸、右侧 chevron、渐变「更多」、芯片式分段） —— */
+.or-app-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+select.or-select--app,
+button.or-select--app {
+  appearance: none;
+  -webkit-appearance: none;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 2.35rem 0 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem center;
+  background-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  line-height: 1.25;
+  margin: 0;
+  text-align: left;
+}
+
+button.or-select--app {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+}
+
+button.or-select--app.or-app-filter-dd-trigger {
+  gap: 0.35rem;
+  padding-right: 0.65rem;
+  background-image: none;
+}
+
+button.or-select--app.or-app-filter-dd-trigger .or-app-filter-dd-chevron {
+  flex-shrink: 0;
+  color: var(--muted-2);
+  transition: transform 0.15s ease;
+}
+
+.or-app-filter-dd-wrap button.or-select--app[aria-expanded="true"] .or-app-filter-dd-chevron {
+  transform: rotate(180deg);
+}
+
+/* 形式2 药丸：列表展开时与 select.or-select--app:focus 一致（仅内描边 + 3px 外环；展开时 :hover 不改变描边，见下节 button:hover） */
+.or-app-filter-dd-wrap button.or-app-filter-dd-trigger[aria-expanded="true"],
+.or-app-filter-dd-wrap button.or-app-filter-dd-trigger[aria-expanded="true"]:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+select.or-select--app:hover,
+button.or-select--app:hover {
+  border-color: var(--border-strong);
+  background-color: var(--surface);
+}
+
+select.or-select--app:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+button.or-select--app:focus {
+  outline: none;
+}
+
+button.or-select--app:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+html[data-theme="dark"] select.or-select--app,
+html[data-theme="dark"] button.or-select--app {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] select.or-select--app,
+  html[data-theme="system"] button.or-select--app {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  }
+}
+
+html[data-theme="dark"] button.or-select--app.or-app-filter-dd-trigger,
+html[data-theme="system"] button.or-select--app.or-app-filter-dd-trigger {
+  background-image: none;
+}
+
+.or-app-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  line-height: 1.25;
+}
+
+.or-app-filter-pill:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+a.or-app-filter-pill {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.or-app-filter-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.95rem;
+  margin: 0;
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff !important;
+  cursor: pointer;
+  background: var(--grad);
+  box-shadow:
+    0 2px 10px -2px rgba(79, 70, 229, 0.35),
+    0 1px 2px rgba(15, 23, 42, 0.06);
+  transition:
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.or-app-filter-more:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    0 4px 14px -2px rgba(79, 70, 229, 0.4),
+    0 1px 2px rgba(15, 23, 42, 0.08);
+}
+
+.or-app-filter-more:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px var(--blue-ring),
+    0 2px 10px -2px rgba(79, 70, 229, 0.35);
+}
+
+.or-app-filter-more .or-app-filter-more-chevron {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+/* 控制台「更多」下拉面：每行 icon + 标题；当前/主推项整行 var(--grad) 白字 */
+.or-app-filter-more-panel[hidden] {
+  display: none !important;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.or-app-filter-more-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 13.5rem;
+  max-width: min(20rem, 100%);
+  padding: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  /* 负 spread 收住模糊，避免顶边小三角上方出现一圈向上溢出的「阴影条」 */
+  box-shadow: 0 6px 18px -8px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="dark"] .or-app-filter-more-panel {
+  box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.42);
+}
+
+/* 与触发器下边沿对齐的浮层：顶边向上小三角（--or-pop-beak-x 为尖角距面板左侧）
+ * 用 clip-path 画三角，避免 border 叠两层时的杂边/黑缝（高分屏、无面板边框时尤其明显） */
+.or-app-filter-more-panel.or-app-filter-pop-beak {
+  --or-pop-beak-x: 2.5rem;
+}
+
+.or-app-filter-more-panel.or-app-filter-pop-beak::before,
+.or-app-filter-more-panel.or-app-filter-pop-beak::after {
+  content: "";
+  position: absolute;
+  left: var(--or-pop-beak-x);
+  transform: translateX(-50%) translateZ(0);
+  border: none;
+  width: 14px;
+  height: 7px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.or-app-filter-more-panel.or-app-filter-pop-beak::before {
+  top: -7px;
+  background: var(--border);
+  z-index: 1;
+}
+
+.or-app-filter-more-panel.or-app-filter-pop-beak::after {
+  top: -6px;
+  width: 12px;
+  height: 6px;
+  background: var(--surface);
+  z-index: 2;
+}
+
+button.or-app-filter-dd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.or-app-filter-dd-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 与 chat 侧栏 .orc-model-row-mark 一致：当前项右侧 ✓，与文案垂直居中对齐 */
+.or-app-filter-dd-mark {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  min-height: 1em;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.or-app-filter-dd-mark:empty {
+  visibility: hidden;
+}
+
+button.or-app-filter-dd-item:hover:not(:disabled):not(.is-checked) {
+  background: var(--surface-2);
+}
+
+button.or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+  background: rgba(239, 246, 255, 0.98);
+  border-color: rgba(37, 99, 235, 0.32);
+}
+
+button.or-app-filter-dd-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-ring);
+}
+
+button.or-app-filter-dd-item:disabled {
+  color: var(--muted-2);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* 与 chat .orc-model-row.is-active 一致：浅蓝底 + 蓝边 + 蓝字 */
+button.or-app-filter-dd-item.is-checked {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--blue);
+  font-weight: 600;
+}
+
+html[data-theme="dark"] button.or-app-filter-dd-item.is-checked {
+  background: rgba(37, 99, 235, 0.16);
+  border-color: rgba(96, 165, 250, 0.38);
+  color: var(--blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] button.or-app-filter-dd-item.is-checked {
+    background: rgba(37, 99, 235, 0.16);
+    border-color: rgba(96, 165, 250, 0.38);
+    color: var(--blue);
+  }
+}
+
+/* 形式2 · listbox / 同款 menu 面板：与 design-spec 「按模型」画板一致（无外框线、紧凑内边距；选中行浅底无描边，避免「分段线」） */
+.or-app-filter-more-panel[role="listbox"],
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel {
+  border: none;
+  padding: 0.35rem;
+  gap: 0.2rem;
+}
+
+.or-app-filter-more-panel[role="listbox"].or-app-filter-pop-beak::before,
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel.or-app-filter-pop-beak::before {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="dark"] .or-app-filter-more-panel[role="listbox"].or-app-filter-pop-beak::before,
+html[data-theme="dark"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel.or-app-filter-pop-beak::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] .or-app-filter-more-panel[role="listbox"].or-app-filter-pop-beak::before,
+  html[data-theme="system"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel.or-app-filter-pop-beak::before {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item,
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item {
+  border-radius: calc(var(--radius) - 2px);
+  border-color: transparent;
+}
+
+.or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked,
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked {
+  background: var(--blue-soft);
+  border-color: transparent;
+  color: var(--blue);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked:hover:not(:disabled),
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+  background: var(--blue-soft);
+  border-color: transparent;
+  color: var(--blue);
+  filter: brightness(0.98);
+}
+
+.or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked .or-app-filter-dd-mark,
+.or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked .or-app-filter-dd-mark {
+  color: var(--blue);
+}
+
+html[data-theme="dark"] .or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked,
+html[data-theme="dark"] .or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked:hover:not(:disabled),
+html[data-theme="dark"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked,
+html[data-theme="dark"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+  background: rgba(37, 99, 235, 0.16);
+  border-color: transparent;
+  color: var(--blue);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] .or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked,
+  html[data-theme="system"] .or-app-filter-more-panel[role="listbox"] button.or-app-filter-dd-item.is-checked:hover:not(:disabled),
+  html[data-theme="system"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked,
+  html[data-theme="system"] .or-app-filter-more-panel[role="menu"].or-form2-menu-panel button.or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+    background: rgba(37, 99, 235, 0.16);
+    border-color: transparent;
+    color: var(--blue);
+    box-shadow: none;
+  }
+}
+
+/* 形式2 款 menu 行：左侧 icon + 文案（无 ✓ 列时占位 span 仍占宽） */
+.or-form2-menu-panel .or-app-filter-dd-label.or-form2-menu-item-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.or-form2-menu-panel .or-app-filter-dd-label.or-form2-menu-item-label > span:last-child {
+  min-width: 0;
+}
+
+button.or-app-filter-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.65rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+button.or-app-filter-menu-item:hover:not(:disabled):not(.is-active) {
+  background: var(--surface-2);
+}
+
+button.or-app-filter-menu-item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-ring);
+}
+
+button.or-app-filter-menu-item.is-active {
+  background: var(--grad);
+  color: #fff !important;
+  box-shadow: 0 2px 10px -2px rgba(79, 70, 229, 0.35);
+}
+
+button.or-app-filter-menu-item.is-active .or-app-filter-menu-ic,
+button.or-app-filter-menu-item.is-active .or-app-filter-menu-ic svg {
+  color: #fff;
+  opacity: 0.95;
+}
+
+.or-app-filter-menu-ic {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  color: var(--muted-2);
+}
+
+button.or-app-filter-menu-item:not(.is-active) .or-app-filter-menu-ic svg {
+  stroke: currentColor;
+}
+
+button.or-app-filter-menu-item:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.or-app-filter-more-wrap {
+  position: relative;
+  display: inline-flex;
+  align-self: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.or-app-filter-dd-wrap {
+  position: relative;
+  display: inline-flex;
+  align-self: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.or-app-filter-more-wrap .or-app-filter-more-panel,
+.or-app-filter-dd-wrap .or-app-filter-more-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: auto;
+  z-index: 50;
+}
+
+/* 工具栏最右侧药丸：面板右对齐，避免 list/menu 向右溢出视口 */
+.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel {
+  left: auto;
+  right: 0;
+  max-width: min(20rem, calc(100vw - 1.25rem));
+}
+
+.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::before,
+.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::after {
+  left: calc(100% - var(--or-pop-beak-r, 1.5rem));
+  right: auto;
+  transform: translateX(-50%) translateZ(0);
+}
+
+.or-app-filter-more-wrap .or-app-filter-more[aria-expanded="true"] .or-app-filter-more-chevron {
+  transform: rotate(180deg);
+}
+
+.or-app-filter-more-wrap .or-app-filter-more-chevron {
+  transition: transform 0.15s ease;
+}
+
+.or-app-filter-row .or-keys-search--toolbar {
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.or-app-filter-row .or-keys-search--toolbar .or-keys-search-input {
+  border-radius: 999px;
+}
+
+.or-app-filter-row .or-keys-search--toolbar .or-input.or-keys-search-input {
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.5rem 0 2rem;
+  line-height: 1.25;
+}
+
+.or-keys-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.or-keys-seg-btn {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.or-keys-seg-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.or-keys-seg-btn.is-active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14) 0%, rgba(99, 102, 241, 0.12) 100%);
+  color: var(--blue);
+  border-color: rgba(37, 99, 235, 0.35);
+  font-weight: 600;
+}
+
+.or-keys-seg-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--blue-ring);
+  position: relative;
+  z-index: 1;
+}
+
+.or-input {
+  box-sizing: border-box;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.8125rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 0;
+}
+
+.or-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+/* 左图标搜索框：不要实线聚焦描边，仅保留外环（覆盖上一则 .or-input:focus） */
+.or-input.or-keys-search-input:focus,
+.or-input.or-keys-search-input:focus-visible {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 2px var(--blue-ring);
+}
+.or-keys-expiry-lbl {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.or-keys-search {
+  position: relative;
+  flex: 0 1 auto;
+  width: 100%;
+  max-width: min(100%, 17.5rem);
+  display: block;
+}
+
+.or-keys-search-icon {
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.or-keys-search-input {
+  width: 100%;
+  padding: 0.3rem 0.5rem 0.3rem 2rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-md, 8px);
+}
+
+/*
+ * 药丸搜索（全圆角 stadium）：与 TrinityAI/app/chat/index.html 中
+ * `.orc-side-model-search` / `.orc-picker-search` / `.orc-sidebar-search` + `or-input or-keys-search-input` 同源。
+ * @trinity/ui SearchForm2Grow 根为 `.or-keys-search.t-ui-search--grow`，与下列共用。
+ * 形式1（SearchForm1Fixed）为圆角矩形，见下节 `.or-keys-search.t-ui-search--fixed`。
+ * 勿对容器设 overflow:hidden，否则会裁掉 :focus 外环。
+ */
+.orc-side-model-search,
+.orc-picker-search,
+.orc-sidebar-search,
+.or-keys-search.t-ui-search--grow {
+  position: relative;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.orc-side-model-search svg,
+.orc-picker-search svg,
+.orc-sidebar-search svg {
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orc-side-model-search input.or-input.or-keys-search-input,
+.orc-picker-search input.or-input.or-keys-search-input,
+.orc-sidebar-search input.or-input.or-keys-search-input,
+.or-keys-search.t-ui-search--grow .or-input.or-keys-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.65rem 0 2rem;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* 形式1（@trinity/ui SearchForm1Fixed）：圆角矩形 + 灰边，与历史 or-keys-search / or-input 一致，非 stadium */
+.or-keys-search.t-ui-search--fixed {
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.or-keys-search.t-ui-search--fixed .or-input.or-keys-search-input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.55rem 0 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.or-keys-editor-modal-card {
+  width: 100%;
+  max-width: min(32rem, calc(100vw - 2rem));
+  max-height: min(90vh, 720px);
+  overflow: visible;
+  text-align: left;
+  color: var(--text);
+}
+
+.or-keys-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.or-keys-editor-span {
+  grid-column: 1 / -1;
+}
+
+.or-keys-editor-banner {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+  background: var(--blue-soft);
+  border-radius: var(--radius);
+}
+
+.or-keys-editor-banner strong {
+  color: var(--text);
+}
+
+.or-keys-editor-field-lbl {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+}
+
+.or-keys-editor-readonly-desc {
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.or-keys-editor-key-mask {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 0.8125rem;
+}
+
+.or-keys-editor-readonly-input {
+  color: var(--muted);
+  background: var(--surface-2);
+  cursor: default;
+}
+
+.or-keys-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* 编辑密钥表单内：形式2 药丸与原生 input 同宽 */
+.or-keys-editor-modal-card .form-group .or-app-filter-dd-wrap {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  align-self: stretch;
+}
+
+.or-keys-editor-modal-card .form-group .or-app-filter-dd-wrap button.or-app-filter-dd-trigger {
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+}
+.or-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.or-modal-root[hidden] {
+  display: none !important;
+}
+
+/* 与对话「添加模型」弹层遮罩（.orc-picker-modal-root 内 .or-modal-backdrop）同源（--orc-modal-overlay-*） */
+.or-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--orc-modal-overlay-bg);
+  backdrop-filter: blur(var(--orc-modal-overlay-blur));
+  -webkit-backdrop-filter: blur(var(--orc-modal-overlay-blur));
+}
+
+.or-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: none;
+  z-index: 1;
+}
+
+/* 基类无底色；与 .or-modal-card 同用时的实心弹层（须在 .or-modal-card 之后） */
+.or-modal-card.or-keys-editor-modal-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--orc-modal-card-radius);
+  box-shadow: var(--orc-modal-card-shadow);
+}
+
+/* 控制台 · 角色编辑弹窗：加宽主区（与密钥弹层共用 token，第三修饰类拉高 max-width） */
+.or-modal-card.or-keys-editor-modal-card.or-preset-editor-modal-card {
+  width: min(1200px, calc(100vw - 2rem));
+  max-width: min(1200px, calc(100vw - 2rem));
+  max-height: min(80vh, 720px);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 弹窗内语义化 <header> 不复用站点顶栏的 sticky / 雾面 / 底边线，避免与下方 .or-modal-head 分割线叠成双轨（对齐 design-spec 画板） */
+.or-modal-card.or-keys-editor-modal-card > header {
+  position: relative;
+  top: auto;
+  z-index: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.or-modal-card.or-keys-editor-modal-card > header .or-modal-head {
+  flex-shrink: 0;
+  padding: 0.85rem 1.25rem 0.65rem;
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.or-modal-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+
+.or-modal-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* 弹窗头部：同一行「标题 + 右上角关闭」（关闭不占绝对位，避免与长标题重叠） */
+.or-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin: 0 0 0.75rem;
+}
+
+.or-modal-head .or-modal-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.or-modal-head .or-modal-close {
+  position: static;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.or-modal-title {
+  margin: 0 2.25rem 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+/* —— SelectListForm1ModelRow（orc-model-row）：从 chat-openrouter.css 迁入的设计示样子集 —— */
+.orc-model-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-sizing: border-box;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.orc-model-row-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.orc-model-row.is-active {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--blue);
+}
+
+.orc-model-row-fav {
+  flex-shrink: 0;
+  margin-left: 0.15rem;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--muted-2);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+}
+
+.orc-model-row-fav:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.orc-model-row-mark {
+  flex-shrink: 0;
+  margin-left: 0.15rem;
+  min-width: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.orc-model-row-mark:empty {
+  visibility: hidden;
+}
+
+/* 设计画板 / 独立 demo：无 .orc-picker-list 包裹时的对比行状态（与 picker 内同源） */
+.orc-model-row.orc-model-row--compare:not(.is-active):not(.is-selected):hover:not(.is-in-collection) {
+  background: var(--bg);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.orc-model-row.orc-model-row--compare.is-selected .orc-model-row-fav,
+.orc-model-row.orc-model-row--compare.is-active .orc-model-row-fav {
+  color: var(--muted-2);
+}
+
+.orc-model-row.orc-model-row--compare.is-selected .orc-model-row-mark,
+.orc-model-row.orc-model-row--compare.is-active .orc-model-row-mark {
+  color: var(--blue);
+}
+
+.orc-model-row.orc-model-row--compare.is-active,
+.orc-model-row.orc-model-row--compare.is-selected {
+  background: rgba(239, 246, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  color: var(--blue);
+}
+
+.orc-model-row.orc-model-row--compare.is-active:hover,
+.orc-model-row.orc-model-row--compare.is-selected:hover {
+  background: rgba(239, 246, 255, 0.98);
+  border-color: rgba(37, 99, 235, 0.32);
+}
+
+.orc-model-row.orc-model-row--compare.is-in-collection:not(.is-active) {
+  background: var(--bg);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  color: var(--text);
+}
+
+.orc-model-row.orc-model-row--compare.is-preview:not(.is-selected):not(.is-active) {
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.22);
+}
