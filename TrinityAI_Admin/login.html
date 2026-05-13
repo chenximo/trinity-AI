@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trinity 运营后台 登录 — 静态原型。" />
+    <title>登录 | Trinity 运营后台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/trinity-base.css" />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body class="adm-login">
+    <div class="adm-login-card">
+      <h1>Trinity 运营后台</h1>
+      <p class="adm-login-sub">运营后台 · 静态（不校验密码）</p>
+      <div class="adm-login-field">
+        <label for="adm-user">账号</label>
+        <input id="adm-user" type="text" name="username" autocomplete="username" placeholder="请输入管理员邮箱" />
+      </div>
+      <div class="adm-login-field">
+        <label for="adm-pass">密码</label>
+        <input id="adm-pass" type="password" name="password" autocomplete="current-password" placeholder="••••••••" />
+      </div>
+      <a href="index.html" class="adm-login-submit">登录并进入工作台</a>
+      <p class="adm-login-foot">需要返回门户？<a href="../TrinityCloud/index.html">Trinity 云首页</a></p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trinity AI 对话：选模型、多会话与快捷示例。"
+    />
+    <title>对话 | Trinity AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../assets/trinity-base.css" />
+    <link rel="stylesheet" href="chat-openrouter.css" />
+    <script>
+      try {
+        var _t = localStorage.getItem("trinity_or_theme");
+        if (_t === "light" || _t === "dark") document.documentElement.setAttribute("data-theme", _t);
+        else document.documentElement.setAttribute("data-theme", "system");
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="or-site" data-or-page="chat">
+    <svg xmlns="http://www.w3.org/2000/svg" class="orc-help-tip-sprite" data-orc-prototype-annotation aria-hidden="true" focusable="false">
+      <symbol id="orc-sym-help-tip" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </symbol>
+    </svg>
+    <a class="skip" href="#main">跳转至正文</a>
+    <header class="or-inject" data-or-page="chat"></header>
+
+    <main class="mvp-main orc-chat-root" id="main" role="main">
+      <div class="orc-sidebar-backdrop" id="orc-sidebar-backdrop" aria-hidden="true"></div>
+      <div class="orc-shell orc-app" id="orc-app">
+        <aside class="orc-icon-rail" aria-label="快捷入口">
+          <button type="button" class="orc-rail-btn" id="orc-rail-new" title="新建对话" aria-label="新建对话">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+          <button type="button" class="orc-rail-btn orc-rail-btn--active" title="对话" aria-label="对话" aria-current="page">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="orc-rail-btn orc-rail-btn--expand-side"
+            id="orc-btn-side-expand"
+            title="展开模型与会话侧栏"
+            aria-label="展开模型与会话侧栏"
+            aria-controls="orc-sidebar-inner"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <path d="M12 7v5l4 2" />
+            </svg>
+          </button>
+          <span class="orc-rail-spacer" aria-hidden="true"></span>
+          <button type="button" class="orc-rail-btn" title="图像" aria-label="图像">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+          </button>
+          <button type="button" class="orc-rail-btn" title="视频" aria-label="视频">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="5" width="14" height="14" rx="2" />
+              <path d="M16 10l6-3v10l-6-3v-4z" />
+            </svg>
+          </button>
+          <button type="button" class="orc-rail-btn" title="语音输入" aria-label="语音输入">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v1a7 7 0 0 1-14 0v-1" />
+              <path d="M12 19v4M9 23h6" />
+            </svg>
+          </button>
+          <button type="button" class="orc-rail-btn" title="探索发现" aria-label="探索发现">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
+            </svg>
+          </button>
+          <span class="orc-rail-spacer orc-rail-spacer--bottom" aria-hidden="true"></span>
+          <button type="button" class="orc-rail-btn orc-rail-btn--avatar" title="账户" aria-label="账户">
+            <span aria-hidden="true">L</span>
+          </button>
+        </aside>
+
+        <aside class="orc-sidebar" aria-label="模型与会话">
+          <div class="orc-sidebar-inner" id="orc-sidebar-inner">
+            <div class="orc-model-head">
+              <div class="orc-side-tabs" role="tablist" aria-label="侧栏">
+                <button type="button" class="orc-side-tab is-active" role="tab" id="orc-tab-models" aria-selected="true" aria-controls="orc-panel-models">
+                  模型
+                </button>
+                <button type="button" class="orc-side-tab" role="tab" id="orc-tab-rooms" aria-selected="false" aria-controls="orc-panel-rooms">
+                  会话历史
+                </button>
+              </div>
+              <button type="button" class="orc-model-collapse" id="orc-btn-side-collapse" aria-expanded="true" aria-controls="orc-sidebar-inner" title="收起侧栏">«</button>
+            </div>
+            <div class="orc-side-panels">
+              <div id="orc-panel-models" class="orc-side-panel" role="tabpanel" aria-labelledby="orc-tab-models">
+                <div class="orc-side-panel-scroll">
+                  <div class="orc-side-model-toolbar" id="orc-side-model-toolbar">
+                    <div class="orc-side-model-toolbar-row">
+                      <div class="orc-side-model-search">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <circle cx="11" cy="11" r="7" />
+                          <path d="M21 21l-4.35-4.35" />
+                        </svg>
+                        <label class="visually-hidden" for="orc-side-model-search">搜索模型</label>
+                        <input id="orc-side-model-search" type="search" placeholder="搜索模型" autocomplete="off" />
+                      </div>
+                      <button
+                        type="button"
+                        class="orc-filter-chip is-purple"
+                        id="orc-btn-model-compare"
+                        title="打开模型列表与多选（与消息内 Compare to 相同弹层）"
+                        aria-label="模型对比"
+                      >
+                        模型对比
+                      </button>
+                    </div>
+                    <div class="orc-side-model-filters orc-side-model-filters--na" aria-disabled="true">
+                      <span class="orc-side-model-filters-na-text">输入、输出、免费筛选暂不支持</span>
+                    </div>
+                  </div>
+                  <div id="orc-model-collection-block" class="orc-model-collection-block" hidden>
+                    <div class="orc-model-collection-toolbar">
+                      <h4 class="orc-model-collection-line">
+                        <span class="orc-model-collection-kicker">模型集合</span>
+                        <span class="orc-model-collection-sep" aria-hidden="true">·</span>
+                        <span id="orc-model-collection-title">综合旗舰</span>
+                      </h4>
+                      <div class="orc-model-collection-toolbar-actions">
+                        <button type="button" class="orc-model-collection-link" id="orc-model-collection-add" aria-label="打开添加模型">+ 添加</button>
+                        <button type="button" class="orc-model-collection-link" id="orc-model-collection-all">全部模型</button>
+                        <button type="button" class="orc-model-collection-barclose" id="orc-model-collection-dismiss" aria-label="关闭集合并显示全部模型">×</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="orc-model-list" id="orc-model-list" role="listbox" aria-label="添加模型"></div>
+                </div>
+              </div>
+              <div id="orc-panel-rooms" class="orc-side-panel" role="tabpanel" aria-labelledby="orc-tab-rooms" hidden>
+                <div class="orc-sidebar-search">
+                  <label class="visually-hidden" for="orc-room-search">搜索会话</label>
+                  <input id="orc-room-search" type="search" placeholder="搜索会话…" autocomplete="off" />
+                </div>
+                <div class="orc-rooms-wrap">
+                  <div class="orc-rooms">
+                    <div class="orc-room-group">
+                      <h3>今天</h3>
+                      <div class="orc-room-card-wrap">
+                        <button type="button" class="orc-room-card" aria-label="我想问下西安天气，1 轮对话，12:28">
+                          <span class="orc-room-card-icon" aria-hidden="true">
+                            <svg class="orc-room-card-icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="9" cy="10" r="1" fill="currentColor" />
+                              <circle cx="12" cy="10" r="1" fill="currentColor" />
+                              <circle cx="15" cy="10" r="1" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <span class="orc-room-card-body">
+                            <span class="orc-room-card-title">我想问下西安天气</span>
+                            <span class="orc-room-card-meta">
+                              <span class="orc-room-card-turns">1轮</span>
+                              <span class="orc-room-card-time">12:28</span>
+                            </span>
+                          </span>
+                        </button>
+                        <button type="button" class="orc-room-more" aria-label="会话操作" aria-haspopup="menu" aria-expanded="false" title="更多">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="5" r="1.75" />
+                            <circle cx="12" cy="12" r="1.75" />
+                            <circle cx="12" cy="19" r="1.75" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="orc-room-card-wrap">
+                        <button type="button" class="orc-room-card" aria-label="临时会话：对比两个模型的回答，5 轮对话，14:06">
+                          <span class="orc-room-card-icon" aria-hidden="true">
+                            <svg class="orc-room-card-icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="9" cy="10" r="1" fill="currentColor" />
+                              <circle cx="12" cy="10" r="1" fill="currentColor" />
+                              <circle cx="15" cy="10" r="1" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <span class="orc-room-card-body">
+                            <span class="orc-room-card-title">临时会话：对比两个模型的回答</span>
+                            <span class="orc-room-card-meta">
+                              <span class="orc-room-card-turns">5轮</span>
+                              <span class="orc-room-card-time">14:06</span>
+                            </span>
+                          </span>
+                        </button>
+                        <button type="button" class="orc-room-more" aria-label="会话操作" aria-haspopup="menu" aria-expanded="false" title="更多">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="5" r="1.75" />
+                            <circle cx="12" cy="12" r="1.75" />
+                            <circle cx="12" cy="19" r="1.75" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="orc-room-group">
+                      <h3>昨天</h3>
+                      <div class="orc-room-card-wrap">
+                        <button type="button" class="orc-room-card" aria-label="想洗车但不知道开过去还是走过去，2 轮对话，昨天 21:40">
+                          <span class="orc-room-card-icon" aria-hidden="true">
+                            <svg class="orc-room-card-icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="9" cy="10" r="1" fill="currentColor" />
+                              <circle cx="12" cy="10" r="1" fill="currentColor" />
+                              <circle cx="15" cy="10" r="1" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <span class="orc-room-card-body">
+                            <span class="orc-room-card-title">想洗车但不知道开过去还是走过去</span>
+                            <span class="orc-room-card-meta">
+                              <span class="orc-room-card-turns">2轮</span>
+                              <span class="orc-room-card-time">昨天 21:40</span>
+                            </span>
+                          </span>
+                        </button>
+                        <button type="button" class="orc-room-more" aria-label="会话操作" aria-haspopup="menu" aria-expanded="false" title="更多">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="5" r="1.75" />
+                            <circle cx="12" cy="12" r="1.75" />
+                            <circle cx="12" cy="19" r="1.75" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="orc-room-group">
+                      <h3>近 30 天</h3>
+                      <div class="orc-room-card-wrap">
+                        <button type="button" class="orc-room-card" aria-label="诗谜草稿，8 轮对话，5 月 6 日">
+                          <span class="orc-room-card-icon" aria-hidden="true">
+                            <svg class="orc-room-card-icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="9" cy="10" r="1" fill="currentColor" />
+                              <circle cx="12" cy="10" r="1" fill="currentColor" />
+                              <circle cx="15" cy="10" r="1" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <span class="orc-room-card-body">
+                            <span class="orc-room-card-title">诗谜草稿</span>
+                            <span class="orc-room-card-meta">
+                              <span class="orc-room-card-turns">8轮</span>
+                              <span class="orc-room-card-time">5月6日</span>
+                            </span>
+                          </span>
+                        </button>
+                        <button type="button" class="orc-room-more" aria-label="会话操作" aria-haspopup="menu" aria-expanded="false" title="更多">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="5" r="1.75" />
+                            <circle cx="12" cy="12" r="1.75" />
+                            <circle cx="12" cy="19" r="1.75" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div class="orc-room-card-wrap">
+                        <button type="button" class="orc-room-card" aria-label="API 迁移备忘，3 轮对话，4 月 18 日">
+                          <span class="orc-room-card-icon" aria-hidden="true">
+                            <svg class="orc-room-card-icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="9" cy="10" r="1" fill="currentColor" />
+                              <circle cx="12" cy="10" r="1" fill="currentColor" />
+                              <circle cx="15" cy="10" r="1" fill="currentColor" />
+                            </svg>
+                          </span>
+                          <span class="orc-room-card-body">
+                            <span class="orc-room-card-title">API 迁移备忘</span>
+                            <span class="orc-room-card-meta">
+                              <span class="orc-room-card-turns">3轮</span>
+                              <span class="orc-room-card-time">4月18日</span>
+                            </span>
+                          </span>
+                        </button>
+                        <button type="button" class="orc-room-more" aria-label="会话操作" aria-haspopup="menu" aria-expanded="false" title="更多">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <circle cx="12" cy="5" r="1.75" />
+                            <circle cx="12" cy="12" r="1.75" />
+                            <circle cx="12" cy="19" r="1.75" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="orc-room-menu" class="orc-room-menu" role="menu" hidden tabindex="-1">
+                    <button type="button" role="menuitem" class="orc-room-menu-item" data-orc-room-action="pin">
+                      <span class="orc-room-menu-ic" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+                        </svg>
+                      </span>
+                      <span class="orc-room-menu-pin-label">置顶</span>
+                    </button>
+                    <button type="button" role="menuitem" class="orc-room-menu-item" data-orc-room-action="rename">
+                      <span class="orc-room-menu-ic" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+                        </svg>
+                      </span>
+                      <span>重命名</span>
+                    </button>
+                    <button type="button" role="menuitem" class="orc-room-menu-item" data-orc-room-action="duplicate">
+                      <span class="orc-room-menu-ic" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="8" y="8" width="12" height="12" rx="2" />
+                          <path d="M4 16V6a2 2 0 012-2h10" />
+                        </svg>
+                      </span>
+                      <span>复制会话</span>
+                    </button>
+                    <button type="button" role="menuitem" class="orc-room-menu-item orc-room-menu-item--danger" data-orc-room-action="delete">
+                      <span class="orc-room-menu-ic" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14zM10 11v6M14 11v6" />
+                        </svg>
+                      </span>
+                      <span>删除</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="orc-main">
+          <div class="orc-main-top">
+            <button type="button" class="orc-icon-btn orc-mobile-only" id="orc-btn-drawer-2" aria-label="打开侧栏" style="display: none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div class="orc-main-top-cluster">
+              <div class="orc-preset-top" role="group" aria-label="角色管理">
+                <div class="orc-preset-top-head">
+                  <span class="orc-preset-top-label">角色管理</span>
+                  <button
+                    type="button"
+                    class="orc-help-tip-btn orc-help-tip-btn--inline"
+                    data-orc-prototype-annotation
+                    data-orc-help-tpl="orc-help-tpl-preset"
+                    data-orc-help-title="角色管理"
+                    aria-label="角色管理说明"
+                    aria-expanded="false"
+                    aria-controls="orc-help-tip-popover"
+                    title="说明"
+                  >
+                    <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+                  </button>
+                </div>
+                <div class="orc-preset-chips">
+                  <div class="orc-preset-chip-wrap">
+                    <div class="orc-preset-chip-inner">
+                      <button
+                        type="button"
+                        class="orc-preset-chip"
+                        data-orc-preset="preset_default_zh"
+                        data-orc-preset-name="技术写作"
+                      >
+                        技术写作<span class="orc-preset-chip-origin orc-preset-chip-origin--self">·自建</span>
+                      </button>
+                      <button type="button" class="orc-preset-chip-remove" aria-label="删除此角色" title="删除">×</button>
+                    </div>
+                  </div>
+                  <div class="orc-preset-chip-wrap">
+                    <div class="orc-preset-chip-inner">
+                      <button
+                        type="button"
+                        class="orc-preset-chip"
+                        data-orc-preset="preset_code_review"
+                        data-orc-preset-name="代码审查"
+                      >
+                        代码审查<span class="orc-preset-chip-origin orc-preset-chip-origin--self">·自建</span>
+                      </button>
+                      <button type="button" class="orc-preset-chip-remove" aria-label="删除此角色" title="删除">×</button>
+                    </div>
+                  </div>
+                  <div class="orc-preset-chip-wrap">
+                    <div class="orc-preset-chip-inner">
+                      <button
+                        type="button"
+                        class="orc-preset-chip"
+                        data-orc-preset="preset_cs_short"
+                        data-orc-preset-name="客服简短"
+                      >
+                        客服简短<span class="orc-preset-chip-origin orc-preset-chip-origin--official">·官方</span>
+                      </button>
+                      <button type="button" class="orc-preset-chip-remove" aria-label="删除此角色" title="删除">×</button>
+                    </div>
+                  </div>
+                  <details class="orc-preset-more-dd" id="orc-preset-more-dd">
+                    <summary class="orc-preset-more-summary">更多</summary>
+                    <div class="orc-preset-more-panel">
+                      <a href="../../account/console.html#preset" class="orc-preset-more-item" id="orc-preset-goto-role-mgmt">
+                        <span class="orc-preset-more-item-ico" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                          </svg>
+                        </span>
+                        <span class="orc-preset-more-item-label">自定义角色</span>
+                      </a>
+                      <button
+                        type="button"
+                        class="orc-preset-more-item"
+                        id="orc-preset-open-settings"
+                        disabled
+                        aria-disabled="true"
+                        title="暂不支持"
+                      >
+                        <span class="orc-preset-more-item-ico" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" />
+                          </svg>
+                        </span>
+                        <span class="orc-preset-more-item-label">打开模型设置（暂不支持）</span>
+                      </button>
+                      <button type="button" class="orc-preset-more-item" id="orc-preset-add-role">
+                        <span class="orc-preset-more-item-ico" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="19" x2="19" y1="8" y2="14" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </span>
+                        <span class="orc-preset-more-item-label">添加角色</span>
+                      </button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="orc-scroll">
+            <div class="orc-thread" id="orc-thread" hidden>
+              <div class="orc-thread-inner">
+                <div class="orc-msg-user-wrap">
+                  <div class="orc-msg-user-column">
+                    <div class="orc-msg-user" id="orc-msg-user-bubble"></div>
+                    <div class="orc-msg-user-toolbar" role="toolbar" aria-label="你的消息操作">
+                      <button type="button" class="orc-msg-user-act" id="orc-user-btn-regen" title="重新生成" aria-label="重新生成">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+                          <path d="M21 3v5h-5" />
+                          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+                          <path d="M3 21v-5h5" />
+                        </svg>
+                      </button>
+                      <button type="button" class="orc-msg-user-act" id="orc-user-btn-copy" title="复制全文" aria-label="复制">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                      </button>
+                      <button type="button" class="orc-msg-user-act" id="orc-user-btn-dislike" title="不喜欢" aria-label="不喜欢">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M17 14V9a3 3 0 0 0-3-3H9.7c-.8 0-1.5.5-1.8 1.2l-2.4 5.4A2 2 0 0 0 7 16h6" />
+                          <path d="M7 16v5a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-1" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <article class="orc-msg-assistant" id="orc-msg-assistant" hidden aria-label="助手回复">
+                  <div class="orc-msg-assistant-inner">
+                    <div class="orc-msg-assistant-head">
+                      <span class="orc-msg-assist-avatar" aria-hidden="true">✦</span>
+                      <span class="orc-msg-assist-brand">Trinity AI</span>
+                      <button
+                        type="button"
+                        class="orc-help-tip-btn orc-help-tip-btn--inline orc-help-tip-btn--assist"
+                        data-orc-prototype-annotation
+                        data-orc-help-tpl="orc-help-tpl-assistant"
+                        data-orc-help-title="助手消息"
+                        aria-label="助手消息说明"
+                        aria-expanded="false"
+                        aria-controls="orc-help-tip-popover"
+                        title="说明"
+                      >
+                        <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+                      </button>
+                    </div>
+                    <div class="orc-msg-assistant-body" id="orc-msg-assistant-body">
+                      以下为演示占位：真实接入后此处为模型流式输出。
+                    </div>
+                    <div class="orc-msg-assist-toolbar" aria-label="消息操作">
+                      <button type="button" class="orc-msg-assist-icon" disabled title="不可用">↻</button>
+                      <button type="button" class="orc-msg-assist-icon" disabled title="不可用">⎘</button>
+                      <button type="button" class="orc-msg-assist-icon" disabled title="不可用">✎</button>
+                    </div>
+                    <div class="orc-msg-assist-footer">
+                      <span class="orc-msg-model-pill" id="orc-assist-model-pill">当前 · Recraft V3</span>
+                      <div class="orc-compare-to-wrap">
+                        <button
+                          type="button"
+                          class="orc-compare-to-trigger"
+                          id="orc-compare-to-trigger"
+                          aria-expanded="false"
+                          aria-haspopup="dialog"
+                          aria-controls="orc-picker-overlay"
+                          title="添加参与对比的模型（与侧栏「模型对比」相同弹层）"
+                        >
+                          <span class="orc-compare-to-label">Compare to</span>
+                          <span class="orc-compare-to-icons" id="orc-compare-to-icons" aria-hidden="true"></span>
+                          <svg class="orc-compare-to-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <section class="orc-compare-section" aria-labelledby="orc-compare-title">
+                  <div class="orc-compare-head">
+                    <div class="orc-compare-head-row">
+                      <h2 class="orc-compare-title" id="orc-compare-title">多模型对比</h2>
+                      <button
+                        type="button"
+                        class="orc-help-tip-btn orc-help-tip-btn--inline"
+                        data-orc-prototype-annotation
+                        data-orc-help-tpl="orc-help-tpl-compare"
+                        data-orc-help-title="多模型对比布局"
+                        aria-label="多模型对比说明"
+                        aria-expanded="false"
+                        aria-controls="orc-help-tip-popover"
+                        title="说明"
+                      >
+                        <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+                      </button>
+                    </div>
+                    <p id="orc-compare-sub" class="orc-compare-sub">
+                      失败合并为左栏紧凑列表；成功回答占右栏主区域并可纵向滚动。多成功模型时右栏内可横向滑动。
+                    </p>
+                  </div>
+                  <div class="orc-compare-scroll">
+                    <div class="orc-compare-split">
+                      <aside class="orc-compare-fails" aria-label="未成功响应的模型">
+                        <div class="orc-compare-fails-head">
+                          <span class="orc-compare-fails-title">未响应</span>
+                          <span class="orc-compare-fails-count">4</span>
+                        </div>
+                        <ul class="orc-compare-fails-list">
+                          <li>
+                            <span class="orc-compare-fails-model">豆包 Seed 2.0 Pro</span>
+                            <span class="orc-compare-fails-reason">余额不足</span>
+                          </li>
+                          <li>
+                            <span class="orc-compare-fails-model">GPT-5.4</span>
+                            <span class="orc-compare-fails-reason">创建消息记录失败</span>
+                          </li>
+                          <li>
+                            <span class="orc-compare-fails-model">Gemini 3.1 Pro</span>
+                            <span class="orc-compare-fails-reason">余额不足</span>
+                          </li>
+                          <li>
+                            <span class="orc-compare-fails-model">Gemini 3 Pro</span>
+                            <span class="orc-compare-fails-reason">创建消息记录失败</span>
+                          </li>
+                        </ul>
+                      </aside>
+                      <div class="orc-compare-ok-strip" role="list">
+                        <article class="orc-mcol orc-mcol--ok" role="listitem">
+                          <header class="orc-mcol-head orc-mcol-head--ok">
+                            <div class="orc-mcol-head-top">
+                              <span class="orc-mcol-logo orc-mcol-logo--ok" aria-hidden="true">千</span>
+                              <span class="orc-mcol-name">千问 3.5 Plus</span>
+                              <span class="orc-mcol-badge orc-mcol-badge--ok">优质</span>
+                            </div>
+                            <span class="orc-mcol-meta">1.2M tokens · 耗时 0.34s</span>
+                          </header>
+                          <div class="orc-mcol-body orc-mcol-body--scroll">
+                            <p><strong>1. 核心结论</strong>：以下为占位文案，未接实时天气接口。出行前请查阅官方预报。</p>
+                            <p><strong>2. 建议渠道</strong></p>
+                            <ul class="orc-mcol-ul">
+                              <li>中国天气网 / 彩云天气等 App</li>
+                              <li>机场与铁路公告（大风、雨雪）</li>
+                            </ul>
+                            <p><strong>3. 西安季节特点（示意）</strong></p>
+                            <ul class="orc-mcol-ul">
+                              <li>春季：气温回升快，偶有沙尘，备口罩与薄外套。</li>
+                              <li>夏季：闷热多雨，雷雨突发，带伞与透气衣物。</li>
+                              <li>秋季：短暂舒适，昼夜温差加大。</li>
+                              <li>冬季：干冷，注意保湿与保暖层叠。</li>
+                            </ul>
+                            <p><strong>4. 穿衣</strong>：采用洋葱式穿法，便于随室内外温差增减。</p>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="orc-summary-panel" id="orc-summary-panel" aria-labelledby="orc-summary-title">
+                  <div class="orc-summary-toolbar">
+                    <div class="orc-summary-title-wrap">
+                      <h2 class="orc-summary-title" id="orc-summary-title">
+                        <span class="orc-summary-spark" aria-hidden="true">✦</span>
+                        综合总结（暂不支持）
+                      </h2>
+                      <button
+                        type="button"
+                        class="orc-help-tip-btn orc-help-tip-btn--inline"
+                        data-orc-prototype-annotation
+                        data-orc-help-tpl="orc-help-tpl-summary"
+                        data-orc-help-title="综合总结（暂不支持）"
+                        aria-label="综合总结（暂不支持）说明"
+                        aria-expanded="false"
+                        aria-controls="orc-help-tip-popover"
+                        title="说明"
+                      >
+                        <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+                      </button>
+                    </div>
+                    <button type="button" class="orc-summary-collapse" id="orc-summary-collapse" aria-expanded="true" aria-controls="orc-summary-content">
+                      收起
+                    </button>
+                  </div>
+                  <div class="orc-summary-content" id="orc-summary-content">
+                    <div class="orc-summary-block">
+                      <h3 class="orc-summary-h3">任务一：评分</h3>
+                      <div class="orc-summary-table-wrap">
+                        <table class="orc-summary-table">
+                          <thead>
+                            <tr>
+                              <th>模型</th>
+                              <th>评分</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>千问 3.5 Plus</td>
+                              <td><strong>42</strong> 分</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <h4 class="orc-summary-h4">未能响应的模型</h4>
+                      <ul class="orc-summary-fail">
+                        <li><strong>豆包 Seed 2.0 Pro</strong> — 余额不足</li>
+                        <li><strong>GPT-5.4</strong> — 创建消息记录失败</li>
+                        <li><strong>Gemini 3.1 Pro</strong> — 余额不足</li>
+                        <li><strong>Gemini 3 Pro</strong> — 创建消息记录失败</li>
+                      </ul>
+                    </div>
+                    <div class="orc-summary-block">
+                      <h3 class="orc-summary-h3">任务二：最终答案</h3>
+                      <p class="orc-summary-p">
+                        综合各模型可用输出：请以权威气象服务为准。西安春秋短、冬夏长；夏季注意雷雨与防暑，冬季干冷需保湿保暖。出行采用洋葱式穿衣，关注交通与景区公告。
+                      </p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="orc-empty" id="orc-empty">
+              <button
+                type="button"
+                class="orc-help-tip-btn orc-help-tip-btn--float"
+                data-orc-prototype-annotation
+                data-orc-help-tpl="orc-help-tpl-empty"
+                data-orc-help-title="空状态"
+                aria-label="空状态说明"
+                aria-expanded="false"
+                aria-controls="orc-help-tip-popover"
+                title="说明"
+              >
+                <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+              </button>
+              <div class="orc-cards-grid">
+                <div class="orc-cat-card" tabindex="0" role="button" data-orc-collection="flagship" aria-label="综合旗舰：在侧栏加载模型集合">
+                  <h4>综合旗舰</h4>
+                  <p class="orc-cat-desc">能力强、覆盖面广，适合日常问答与大多数通用场景。</p>
+                  <div class="orc-cat-icons" aria-hidden="true">
+                    <span class="orc-mini-logo">O</span><span class="orc-mini-logo">A</span><span class="orc-mini-logo">G</span><span class="orc-mini-logo">M</span>
+                  </div>
+                </div>
+                <div class="orc-cat-card" tabindex="0" role="button" data-orc-collection="creative" aria-label="人设与创意：在侧栏加载模型集合">
+                  <h4>人设与创意</h4>
+                  <p class="orc-cat-desc">适合给助手设定身份、接剧情、写故事或口语化长文；以前说的「角色扮演」多指这种对话方式。</p>
+                  <div class="orc-cat-icons" aria-hidden="true">
+                    <span class="orc-mini-logo">A</span><span class="orc-mini-logo">M</span><span class="orc-mini-logo">R</span>
+                  </div>
+                </div>
+                <div class="orc-cat-card" tabindex="0" role="button" data-orc-collection="code" aria-label="编程与代码：在侧栏加载模型集合">
+                  <h4>编程与代码</h4>
+                  <p class="orc-cat-desc">写代码、改 Bug、读报错与技术说明时优先选用。</p>
+                  <div class="orc-cat-icons" aria-hidden="true">
+                    <span class="orc-mini-logo">O</span><span class="orc-mini-logo">DS</span><span class="orc-mini-logo">A</span>
+                  </div>
+                </div>
+                <div class="orc-cat-card" tabindex="0" role="button" data-orc-collection="reasoning" aria-label="复杂推理：在侧栏加载模型集合">
+                  <h4>复杂推理</h4>
+                  <p class="orc-cat-desc">数学、逻辑链、多步推导等需要「慢慢想」的任务。</p>
+                  <div class="orc-cat-icons" aria-hidden="true">
+                    <span class="orc-mini-logo">O</span><span class="orc-mini-logo">G</span><span class="orc-mini-logo">x</span>
+                  </div>
+                </div>
+              </div>
+              <div class="orc-chips" role="list">
+                <button type="button" class="orc-chip" data-prompt="洗车测试：应该走过去还是开车去？">
+                  洗车测试：应该走过去还是开车去？
+                </button>
+                <button type="button" class="orc-chip" data-prompt="9.9 和 9.11 哪个更大？">9.9 和 9.11 哪个更大？</button>
+                <button type="button" class="orc-chip" data-prompt="草莓测试：strawberry 里有几个字母 r？">
+                  草莓测试：strawberry 里有几个 r…
+                </button>
+                <button type="button" class="orc-chip" data-prompt="诗谜：写一首 12 行诗">诗谜：写一首 12 行诗</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="orc-composer-wrap">
+            <div class="orc-composer">
+              <label class="visually-hidden" for="orc-msg" id="orc-msg-access-label"
+                >对话输入；空时约两行高，有内容时最高约五行；Enter 发送，Shift+Enter 换行</label>
+              <textarea
+                id="orc-msg"
+                rows="1"
+                autocomplete="off"
+                aria-labelledby="orc-msg-access-label"
+                placeholder="输入消息，Enter 发送（Shift+Enter 换行）"
+              ></textarea>
+              <div class="orc-composer-bar">
+                <div class="orc-bar-left">
+                  <button type="button" class="orc-bar-btn" aria-label="附件">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"
+                      />
+                    </svg>
+                  </button>
+                  <div class="orc-memory-wrap">
+                    <button
+                      type="button"
+                      class="orc-bar-btn orc-bar-btn--memory"
+                      id="orc-btn-memory"
+                      aria-haspopup="dialog"
+                      aria-expanded="false"
+                      aria-controls="orc-memory-popover"
+                      title="对话记忆：每次请求附带多少条近期消息"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                      </svg>
+                      <span class="orc-badge" id="orc-memory-badge" aria-hidden="true">8</span>
+                    </button>
+                    <div
+                      id="orc-memory-popover"
+                      class="orc-memory-popover"
+                      hidden
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="orc-memory-title"
+                    >
+                      <div class="orc-memory-popover-head">
+                        <span id="orc-memory-title" class="orc-memory-title">对话记忆</span>
+                        <span class="orc-memory-val-pill" id="orc-memory-pop-val">8</span>
+                      </div>
+                      <label class="visually-hidden" for="orc-memory-range">每次请求附带消息条数</label>
+                      <input id="orc-memory-range" class="orc-memory-range" type="range" min="1" max="64" value="8" />
+                      <p class="orc-memory-hint">
+                        每次请求将附带本对话中最近 <strong id="orc-memory-hint-n">8</strong> 条消息（与常见 Chat memory 一致；未接 API）。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="orc-net-tools-wrap">
+                    <button
+                      type="button"
+                      class="orc-bar-btn orc-bar-btn--net-tools"
+                      id="orc-btn-net-tools"
+                      aria-haspopup="dialog"
+                      aria-expanded="false"
+                      aria-controls="orc-net-tools-popover"
+                      aria-label="联网与工具（演示）"
+                      title="联网与工具（演示）"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                      <span class="orc-badge" id="orc-net-tools-badge" aria-hidden="true">1</span>
+                    </button>
+                    <div
+                      id="orc-net-tools-popover"
+                      class="orc-net-tools-popover"
+                      hidden
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="orc-net-tools-title"
+                    >
+                      <div class="orc-net-tools-head">
+                        <span id="orc-net-tools-title" class="orc-net-tools-head-label">SERVER TOOLS</span>
+                        <a href="#" class="orc-net-tools-head-link" id="orc-net-tools-doc" aria-label="外部文档" title="占位">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="orc-net-tools-list" role="list">
+                        <div class="orc-net-row" role="listitem">
+                          <span class="orc-net-row-ico" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <circle cx="12" cy="12" r="10" />
+                              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                          </span>
+                          <div class="orc-net-row-body">
+                            <strong class="orc-net-row-title">联网搜索</strong>
+                            <span class="orc-net-row-desc">从互联网检索最新信息</span>
+                            <span class="orc-net-row-meta">自动 · 中</span>
+                          </div>
+                          <label class="orc-net-switch">
+                            <input type="checkbox" id="orc-net-toggle-search" class="orc-net-switch-input" />
+                            <span class="orc-net-switch-track" aria-hidden="true"><span class="orc-net-switch-knob"></span></span>
+                          </label>
+                          <span class="orc-net-chevron" aria-hidden="true">›</span>
+                        </div>
+                        <div class="orc-net-row" role="listitem">
+                          <span class="orc-net-row-ico" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+                            </svg>
+                          </span>
+                          <div class="orc-net-row-body">
+                            <strong class="orc-net-row-title">网页抓取</strong>
+                            <span class="orc-net-row-desc">根据 URL 拉取正文内容</span>
+                            <span class="orc-net-row-meta">自动</span>
+                          </div>
+                          <label class="orc-net-switch">
+                            <input type="checkbox" id="orc-net-toggle-fetch" class="orc-net-switch-input" />
+                            <span class="orc-net-switch-track" aria-hidden="true"><span class="orc-net-switch-knob"></span></span>
+                          </label>
+                          <span class="orc-net-chevron" aria-hidden="true">›</span>
+                        </div>
+                        <div class="orc-net-row" role="listitem">
+                          <span class="orc-net-row-ico" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <rect x="3" y="3" width="18" height="18" rx="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <path d="M21 15l-5-5L5 21" />
+                            </svg>
+                          </span>
+                          <div class="orc-net-row-body">
+                            <strong class="orc-net-row-title">文生图</strong>
+                            <span class="orc-net-row-desc">根据文字描述生成图片</span>
+                            <span class="orc-net-row-meta">自动</span>
+                          </div>
+                          <label class="orc-net-switch">
+                            <input type="checkbox" id="orc-net-toggle-image" class="orc-net-switch-input" />
+                            <span class="orc-net-switch-track" aria-hidden="true"><span class="orc-net-switch-knob"></span></span>
+                          </label>
+                          <span class="orc-net-chevron" aria-hidden="true">›</span>
+                        </div>
+                        <div class="orc-net-row orc-net-row--last" role="listitem">
+                          <span class="orc-net-row-ico" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <circle cx="12" cy="12" r="10" />
+                              <path d="M12 6v6l4 2" />
+                            </svg>
+                          </span>
+                          <div class="orc-net-row-body">
+                            <strong class="orc-net-row-title">日期时间</strong>
+                            <span class="orc-net-row-desc">向模型提供当前日期与时间</span>
+                            <span class="orc-net-row-meta">自动</span>
+                          </div>
+                          <label class="orc-net-switch">
+                            <input type="checkbox" id="orc-net-toggle-time" class="orc-net-switch-input" checked />
+                            <span class="orc-net-switch-track" aria-hidden="true"><span class="orc-net-switch-knob"></span></span>
+                          </label>
+                          <span class="orc-net-chevron" aria-hidden="true">›</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="orc-bar-right">
+                  <button type="button" class="orc-bar-btn" aria-label="语音输入">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3zM19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8" />
+                    </svg>
+                  </button>
+                  <button type="button" class="orc-send" id="orc-btn-send" aria-label="发送">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="orc-help-tip-btn orc-help-tip-btn--dock"
+              id="orc-composer-help-btn"
+              data-orc-prototype-annotation
+              data-orc-help-tpl="orc-help-tpl-composer"
+              data-orc-help-title="底栏说明"
+              aria-label="底栏说明"
+              aria-expanded="false"
+              aria-controls="orc-help-tip-popover"
+              title="说明"
+            >
+              <svg width="16" height="16" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="orc-side-model-tip" class="orc-side-model-tip" hidden role="tooltip"></div>
+
+    <!-- 全页共用：说明气泡（由各区块 .orc-help-tip-btn + template 注入内容） -->
+    <div
+      id="orc-help-tip-popover"
+      class="orc-help-tip-popover"
+      data-orc-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="orc-help-tip-title"
+    >
+      <p class="orc-help-tip-title" id="orc-help-tip-title"></p>
+      <div class="orc-help-tip-body" id="orc-help-tip-body"></div>
+    </div>
+
+    <template id="orc-help-tpl-composer" data-orc-prototype-annotation>
+      <p>
+        <strong>输入框</strong>：空内容时约<strong>两行</strong>高，随文字增高，最高约<strong>五行</strong>（超出在框内纵向滚动）；高度由 <code>syncOrcComposerTextareaHeight</code> 与 CSS 上下限共同约束。<strong>Enter</strong> 发送、<strong>Shift+Enter</strong> 换行。读屏用隐藏 <code>label</code>（<code>#orc-msg-access-label</code>）与占位符；主界面<strong>不</strong>在输入区上方叠常驻灰字说明条。
+      </p>
+      <p>
+        <strong>版式</strong>：输入区与下方图标行之间<strong>无横向分隔线</strong>；图标行背景与输入区同色（不另铺灰底块），整体仍包在圆角外框内。
+      </p>
+      <p>
+        <strong>回形针</strong>为附件占位；<strong>气泡 + 数字</strong>为对话记忆（滑块弹层）；<strong>地球 + 角标</strong>打开「SERVER TOOLS」式服务工具列表（演示）；<strong>模型对比</strong>在侧栏模型列表搜索旁，与弹层内「进入多模型对比…」等用于集合与多选；亦可从首页场景卡进入多模型对比。
+      </p>
+      <p>
+        发送后助手消息下 <strong>Compare to</strong> 打开与侧栏<strong>模型对比</strong>相同的弹窗，多选后点<strong>完成</strong>写入侧栏「消息内对比」。
+      </p>
+      <p><strong>蓝钮发送</strong>后展示对比与<strong>综合总结（暂不支持）</strong>：下方区块为静态示意演示数据，正式版聚合与裁判逻辑未接。<strong>角色管理</strong>在上方顶栏；右下角 <strong>ⓘ</strong> 即本说明（<code>data-orc-prototype-annotation</code>，可随剥离脚本移除）。</p>
+    </template>
+    <template id="orc-help-tpl-preset" data-orc-prototype-annotation>
+      <p>
+        顶栏为<strong>交互样板</strong>：可点的<strong>角色芯片</strong>、<strong>「更多」</strong>下拉（每项 <strong>图标 + 标题</strong>，悬停/焦点高亮见 <code>原型设计统一.skill.md</code>），以及模型设置里的<strong>「角色管理」</strong>下拉框，在原型里为<strong>同一套可选角色</strong>（改一处应同步另一处）。
+      </p>
+      <p>
+        <strong>「更多」</strong>：<strong>自定义角色</strong>跳转控制台 <code>account/console.html#preset</code>；<strong>打开模型设置（暂不支持）</strong>为禁用占位；<strong>添加角色</strong>打开弹窗（列表预选当前角色，点<strong>完成</strong>应用；<strong>取消</strong>、遮罩、Esc 不应用）；说明条内<strong>创建角色</strong>链至 <code>?create=1#preset</code> 并自动展开控制台「新建角色」表单。
+      </p>
+    </template>
+    <template id="orc-help-tpl-assistant" data-orc-prototype-annotation>
+      <p>正文为<strong>占位</strong>，非真实流式输出（演示）；下方工具按钮为静态禁用。</p>
+      <p><strong>Compare to</strong> 打开与侧栏<strong>模型对比</strong>相同的弹窗；<strong>完成</strong> 后写入侧栏「消息内对比」集合。</p>
+    </template>
+    <template id="orc-help-tpl-compare" data-orc-prototype-annotation>
+      <p>失败模型合并为<strong>左栏</strong>紧凑列表；成功回答占<strong>右栏</strong>主区域并可纵向滚动。多成功模型时右栏内可横向滑动。</p>
+    </template>
+    <template id="orc-help-tpl-summary" data-orc-prototype-annotation>
+      <p><strong>综合总结</strong>当前为<strong>暂不支持</strong>：评分表、失败模型列表与综合段落均为<strong>静态示意</strong>演示占位，未接真实聚合与裁判逻辑。</p>
+    </template>
+    <template id="orc-help-tpl-empty" data-orc-prototype-annotation>
+      <p>场景卡与首页能力入口一致：在侧栏加载<strong>模型集合</strong>，可在集合内多选参与发送后的对比布局；<strong>快捷提示词</strong>填入输入框。</p>
+    </template>
+    <template id="orc-help-tpl-picker" data-orc-prototype-annotation>
+      <p>与侧栏共用<strong>搜索与筛选</strong>；默认不列出 <code>available: false</code> 的模型；<strong>免费</strong>为紫色强调筛选。</p>
+      <p>仅<strong>取消 / 完成</strong>关闭弹层；<strong>完成</strong>应用多选（多模型时进入侧栏对比集合）。</p>
+    </template>
+    <template id="orc-help-tpl-settings" data-orc-prototype-annotation>
+      <p>本弹窗为<strong>静态演示</strong>：系统提示词、采样与引擎等未接 API。</p>
+      <p>「默认 / 自定义」与 OpenRouter 风格占位文案；展开<strong>采样参数</strong>内为 Temperature、top_p 与惩罚项示意。</p>
+      <p><strong>角色管理</strong>下拉与顶栏角色芯片为<strong>同一套选项</strong>(前端同步；正式版以接口为准）。</p>
+    </template>
+
+    <!-- Model picker：结构对齐设计规范（根层 + 遮罩 + 卡片：头 / 说明 / 中 / 底） -->
+    <div class="or-modal-root orc-picker-modal-root" id="orc-picker-overlay" hidden aria-hidden="true" role="presentation">
+      <div class="or-modal-backdrop" id="orc-picker-backdrop" tabindex="-1" aria-hidden="true"></div>
+      <div class="orc-picker" role="dialog" aria-modal="true" aria-labelledby="orc-picker-title">
+        <header class="orc-picker-header">
+          <div class="or-modal-head orc-picker-modal-head">
+            <div class="orc-picker-head-main">
+              <h2 id="orc-picker-title" class="or-modal-title">添加模型（可多选）</h2>
+              <button
+                type="button"
+                class="orc-help-tip-btn orc-help-tip-btn--inline"
+                data-orc-prototype-annotation
+                data-orc-help-tpl="orc-help-tpl-picker"
+                data-orc-help-title="添加模型"
+                aria-label="添加模型说明"
+                aria-expanded="false"
+                aria-controls="orc-help-tip-popover"
+                title="说明"
+              >
+                <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+              </button>
+              <button type="button" class="orc-picker-compare-link" id="orc-picker-compare-start">
+                进入多模型对比…
+              </button>
+            </div>
+            <button type="button" class="or-modal-close" id="orc-picker-dismiss" aria-label="关闭">&times;</button>
+          </div>
+        </header>
+        <p class="or-keys-editor-banner orc-picker-banner" role="status">
+          使用搜索与筛选选择模型；多选后点<strong>完成</strong>应用至侧栏。<strong>取消</strong>或右上角关闭不应用当前勾选。
+        </p>
+        <div class="orc-picker-body">
+          <div class="orc-picker-left">
+            <div class="orc-picker-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <label class="visually-hidden" for="orc-picker-search">搜索模型</label>
+              <input id="orc-picker-search" type="search" placeholder="搜索模型" autocomplete="off" />
+            </div>
+            <div class="orc-picker-filters orc-picker-filters--na" aria-disabled="true">
+              <span class="orc-picker-filters-na-text">输入、输出、免费筛选暂不支持</span>
+            </div>
+            <div
+              class="orc-model-list orc-picker-list"
+              id="orc-picker-list"
+              role="group"
+              aria-label="添加模型（可多选）"
+            ></div>
+          </div>
+          <div class="orc-picker-right">
+            <div class="orc-picker-detail-wrap">
+              <div class="orc-picker-right-head">
+                <div class="orc-picker-title">
+                  <span id="orc-detail-logo" class="orc-pv orc-pv--recraft orc-detail-pv" aria-hidden="true"></span>
+                  <strong id="orc-detail-title">Recraft V3</strong>
+                </div>
+                <button type="button" class="orc-icon-btn" id="orc-btn-settings" aria-label="模型设置" title="设置">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" />
+                  </svg>
+                </button>
+              </div>
+              <p class="orc-picker-desc" id="orc-detail-desc"></p>
+              <div class="orc-stat-row"><span>周 Token</span><span id="orc-st-weekly">51K</span></div>
+              <div class="orc-stat-row"><span>上下文</span><span id="orc-st-ctx">65,536</span></div>
+              <div class="orc-stat-row"><span>输入</span><span id="orc-st-in">$0 / M tokens</span></div>
+              <div class="orc-stat-row"><span>输出</span><span id="orc-st-out">$0 / M tokens</span></div>
+              <div class="orc-stat-row">
+                <span>可用性</span>
+                <span aria-hidden="true">
+                  <svg width="36" height="14" viewBox="0 0 36 14" fill="none">
+                    <rect x="0" y="8" width="4" height="6" rx="1" fill="var(--blue)" />
+                    <rect x="8" y="4" width="4" height="10" rx="1" fill="var(--blue)" />
+                    <rect x="16" y="6" width="4" height="8" rx="1" fill="var(--blue)" />
+                    <rect x="24" y="2" width="4" height="12" rx="1" fill="var(--blue)" />
+                    <rect x="32" y="7" width="4" height="7" rx="1" fill="var(--blue-ring)" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="orc-picker-footer or-keys-editor-actions">
+          <button type="button" class="or-btn-outline" id="orc-picker-cancel" aria-label="取消">取消</button>
+          <button type="button" class="btn btn-gradient" id="orc-picker-done" aria-label="完成">完成</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- 添加角色（与顶栏芯片同源 mock）；or-modal-root + 遮罩 + 卡片：头 / 说明条 / 体 / 底 -->
+    <div
+      class="or-modal-root orc-role-picker-modal-root"
+      id="orc-role-picker-overlay"
+      hidden
+      aria-hidden="true"
+      role="presentation"
+    >
+      <div class="or-modal-backdrop" id="orc-role-picker-backdrop" tabindex="-1" aria-hidden="true"></div>
+      <div
+        class="or-modal-card or-keys-editor-modal-card orc-role-picker-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="orc-role-picker-title"
+        aria-describedby="orc-role-picker-sub"
+      >
+        <header class="orc-role-picker-header">
+          <div class="or-modal-head orc-role-picker-modal-head">
+            <div class="orc-role-picker-head-brand">
+              <span class="orc-role-picker-head-ico" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                </svg>
+              </span>
+              <h2 class="or-modal-title" id="orc-role-picker-title">添加角色</h2>
+            </div>
+            <button type="button" class="or-modal-close" id="orc-role-picker-close" aria-label="关闭">&times;</button>
+          </div>
+        </header>
+        <p class="or-keys-editor-banner orc-role-picker-banner" id="orc-role-picker-sub">
+          从已有角色中选择；与顶栏「角色管理」芯片为同一套数据。或前往控制台
+          <a href="../../account/console.html?create=1#preset" class="orc-role-picker-create-inline">
+            <svg class="orc-role-picker-create-inline-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            创建角色
+          </a>
+          点<strong>完成</strong>应用所选角色；<strong>取消</strong>、右上角关闭或按 Esc 不应用。
+        </p>
+        <div class="orc-role-picker-body">
+          <div class="orc-role-picker-scroll">
+            <div class="orc-role-picker-section">
+              <div class="orc-role-picker-section-head">
+                <span class="orc-role-picker-section-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </span>
+                <div>
+                  <strong class="orc-role-picker-section-title">已有角色</strong>
+                  <span class="orc-role-picker-section-hint">选择一个角色，对话将使用该角色的系统提示与默认偏好。</span>
+                </div>
+              </div>
+              <div id="orc-role-picker-list" class="orc-role-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <footer class="orc-role-picker-footer or-keys-editor-actions">
+          <button type="button" class="or-btn-outline" id="orc-role-picker-cancel" aria-label="取消">取消</button>
+          <button type="button" class="btn btn-gradient" id="orc-role-picker-done" aria-label="完成">完成</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Settings modal -->
+    <div class="orc-settings" id="orc-settings-overlay" hidden>
+      <div class="orc-settings-card" role="dialog" aria-modal="true" aria-labelledby="orc-settings-h">
+        <button type="button" class="orc-settings-close" id="orc-settings-close" aria-label="关闭">×</button>
+        <button
+          type="button"
+          class="orc-help-tip-btn orc-help-tip-btn--settings"
+          data-orc-prototype-annotation
+          data-orc-help-tpl="orc-help-tpl-settings"
+          data-orc-help-title="模型设置"
+          aria-label="模型设置说明"
+          aria-expanded="false"
+          aria-controls="orc-help-tip-popover"
+          title="说明"
+        >
+          <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+        </button>
+        <h2 class="visually-hidden" id="orc-settings-h">模型设置</h2>
+        <div class="orc-field">
+          <div class="orc-name-row">
+            <span aria-hidden="true" style="color: var(--muted)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
+              </svg>
+            </span>
+            <input type="text" value="个人" aria-label="名称" />
+            <button type="button" class="orc-toggle is-on" id="orc-name-toggle" aria-label="开关"></button>
+          </div>
+        </div>
+        <div class="orc-field">
+          <label for="orc-settings-model">模型</label>
+          <select id="orc-settings-model"></select>
+        </div>
+        <div class="orc-field">
+          <label for="orc-settings-preset">角色管理</label>
+          <select id="orc-settings-preset">
+            <option value="">选择角色…</option>
+            <option value="preset_default_zh" selected>preset_default_zh · 中文技术写作</option>
+            <option value="preset_code_review">preset_code_review · 代码审查</option>
+            <option value="preset_cs_short">preset_cs_short · 客服简短</option>
+          </select>
+        </div>
+        <div class="orc-field">
+          <div class="orc-row-2">
+            <div>
+              <label for="orc-settings-provider">提供商</label>
+              <select id="orc-settings-provider">
+                <option>自动</option>
+              </select>
+            </div>
+            <div>
+              <label for="orc-settings-sort">排序</label>
+              <select id="orc-settings-sort">
+                <option>—</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="orc-field">
+          <span class="orc-label" style="display: flex; align-items: center; gap: 0.35rem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
+              <path d="M13 2v7h7" />
+            </svg>
+            文件解析引擎
+          </span>
+          <select id="orc-settings-engine">
+            <option value="">选择引擎</option>
+          </select>
+        </div>
+        <div class="orc-field">
+          <div class="orc-sys-tabs" role="tablist">
+            <button type="button" class="orc-sys-tab is-active" role="tab">默认</button>
+            <button type="button" class="orc-sys-tab" role="tab">自定义</button>
+          </div>
+          <textarea readonly>
+你是 Recraft V4 Pro，来自 recraft 的大语言模型。今天是 2026 年 5 月 8 日，星期五。格式规则：</textarea>
+          <div class="orc-token-hint">约 173 tokens</div>
+        </div>
+        <div>
+          <button type="button" class="orc-expand" id="orc-expand-sampling">
+            采样参数
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+          <div class="orc-expand-body" id="orc-expand-sampling-body" hidden>
+            <p class="orc-expand-body-p" data-orc-prototype-annotation>采样参数为占位；完整说明请点弹窗右上角 <strong>ⓘ</strong>。</p>
+          </div>
+        </div>
+        <div class="orc-settings-footer">
+          <button type="button" class="orc-btn-foot">应用到全部</button>
+          <button type="button" class="orc-btn-foot">重置</button>
+          <button type="button" class="orc-btn-foot orc-btn-danger">移除</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media (max-width: 899px) {
+        .orc-mobile-only {
+          display: grid !important;
+        }
+      }
+    </style>
+    <script src="../../static/trinity-ai-app-shell.js"></script>
+    <script src="../../static/ui-lang-toggle.js"></script>
+    <script src="chat-openrouter.js"></script>
+    <script>
+      (function () {
+        var a = document.getElementById("orc-app");
+        var b2 = document.getElementById("orc-btn-drawer-2");
+        function sync() {
+          if (!b2) return;
+          b2.style.display = window.matchMedia("(max-width: 899px)").matches ? "grid" : "none";
+        }
+        sync;
+        window.addEventListener("resize", sync);
+        if (b2 && a) {
+          b2.addEventListener("click", function () {
+            a.classList.toggle("orc-mobile-drawer-open");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

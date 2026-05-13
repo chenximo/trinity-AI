@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trinity AI API 文档。" />
+    <title>文档 | Trinity AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/trinity-base.css" />
+    <script>
+      try {
+        var _t = localStorage.getItem("trinity_or_theme");
+        if (_t === "light" || _t === "dark") document.documentElement.setAttribute("data-theme", _t);
+        else document.documentElement.setAttribute("data-theme", "system");
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="or-site" data-or-page="docs">
+    <a class="skip" href="#main">跳转至正文</a>
+    <header class="or-inject" data-or-page="docs"></header>
+
+    <main class="mvp-main" id="main">
+      <div class="mvp-eyebrow">
+        <span class="mvp-eyebrow-dot" aria-hidden="true"></span>
+        模块 5 · 文档中心 MVP
+      </div>
+      <h1 class="mvp-title">API 文档</h1>
+      <p class="mvp-lead">OpenAI 兼容 <code>/v1/chat/completions</code>、SSE、错误码与示例；与 SDK 零改造迁移对齐。</p>
+
+      <div class="docs-layout">
+        <nav class="docs-nav" aria-label="文档目录">
+          <a href="#quickstart">快速开始</a>
+          <a href="#chat">对话补全</a>
+          <a href="#sse">流式 SSE</a>
+          <a href="#errors">错误码</a>
+          <a href="models.html">模型列表 →</a>
+        </nav>
+        <div class="docs-content panel" id="main-content">
+          <h2 id="quickstart">快速开始</h2>
+          <p>将 <code>base_url</code> 指向 Trinity 网关地址，使用原有 OpenAI 官方 SDK，仅替换 API Key。</p>
+          <pre>export OPENAI_API_KEY="sk-trinity-..."
+export OPENAI_BASE_URL="https://api.trinity.example/v1"</pre>
+
+          <h2 id="chat">对话补全</h2>
+          <p>请求体与 OpenAI 一致；<code>model</code> 须为 <code>provider/model</code> 格式，例如 <code>openai/gpt-4o</code>。</p>
+          <pre>POST /v1/chat/completions
+Content-Type: application/json
+
+{ "model": "openai/gpt-4o", "messages": [{ "role": "user", "content": "hi" }] }</pre>
+
+          <h2 id="sse">流式 SSE</h2>
+          <p>设置 <code>"stream": true</code>；MVP 须保证首包延迟与 chunk 格式与 OpenAI 对齐，便于现有前端无感切换。</p>
+
+          <h2 id="errors">错误码</h2>
+          <p>上游 429 / 5xx 应透传，便于客户端重试；网关自身错误使用统一错误体（产品补充）。</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="page-foot">
+      <a href="../index.html" class="text-link">← 返回首页</a>
+      ·
+      <a href="chat/index.html" class="text-link">对话试玩</a>
+      ·
+      <span>© 2026 Trinity AI</span>
+    </footer>
+    <script src="../static/trinity-ai-app-shell.js"></script>
+    <script src="../static/ui-lang-toggle.js"></script>
+  </body>
+</html>

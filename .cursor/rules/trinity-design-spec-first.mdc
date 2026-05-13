@@ -1,0 +1,31 @@
+---
+description: Trinity 新页面与 UI 须对齐色板、design-spec 与 trinity-base；规范迭代优先
+alwaysApply: true
+---
+
+# Trinity：设计规范与实现约定
+
+## 单一事实来源（生成页面与改 UI 时必查）
+
+- **色板与 token**：`TrinityAI/design-tokens.html`；语义色与变量以 **`assets/trinity-base.css`** 的 `:root` / `html[data-theme="dark"]` / `html[data-theme="system"]` 为准。
+- **控件形态与类名**：`TrinityAI/design-spec.html`（形式 1 / 2 / 3、按钮、筛选等）。
+- **版式与产品约定**：`docs/Trinity原型版式与视觉规范.md`（按需）。
+- **清单与细节**：`.cursor/skills/trinity-design-tokens/SKILL.md`（Agent Skill，含控制台页头、形式 2 DOM 等）。
+
+## 实现规则（后续生成或修改页面时遵守）
+
+1. **样式引用**：Trinity AI / 门户类静态页应链接 **`assets/trinity-base.css`**（路径按文件深度写相对路径）；与全局 token 叠加的模块 CSS 须保持语义一致（选中描边 `var(--blue-ring)`、主色 `var(--blue)`、渐变 `var(--grad)` 等，见 skill 简表）。
+2. **禁止魔法色**：业务样式优先 **`var(--*)`**；新增语义色先在 `trinity-base.css` 定义变量再在页面使用。
+3. **筛选 / 应用侧下拉（形式 2）**：与规范图 2 一致时使用 **`or-app-filter-dd-wrap`**、`**button.or-select.or-select--app.or-app-filter-dd-trigger**`、**`div.or-app-filter-more-panel[role="listbox"]`**、**`button.or-app-filter-dd-item`**（选中 `is-checked` + ✓）；页面需已引入 **`assets/adm-form2-dd.js`**。勿用原生 `<select>` 冒充形式 2。
+4. **主按钮**：与规范一致时使用 **`.btn.btn-gradient`**（或规范中已冻结的等价类名）。
+5. **页面内弹窗**：根层 **`or-modal-root`** + **`or-modal-backdrop`** + 卡片；头部用 **`header.or-modal-head`** 包一行 **`<h2 class="or-modal-title">` + `button.or-modal-close`（右上角 ×）**；底栏 **`or-keys-editor-actions`** 内主/次按钮**仅文字**，**不加图标**。
+6. **新页面结构**：顶栏/侧栏等与产品一致时，沿用现有 HTML 数据属性与注入脚本约定（如 `data-or-page`、`trinity-ai-app-shell.js`），避免另起一套无文档的类名体系。
+
+## 规范迭代 vs 业务页（与 skill「规范先行」一致）
+
+- **迭代可复用原子时**：优先在 **`design-spec.html` / `design-tokens.html`** 上定形态，并在 **`trinity-base.css`** 增加或调整**可复用**类；避免在业务页复制粘贴大段仅一处使用的样式。
+- **业务页**：当用户**明确要求**「对齐规范」「同步到某页」或实现具体功能时，允许并应以 **design-spec + trinity-base** 为准改业务 HTML/CSS；未要求时，不要为了「顺手对齐」做大范围无关重构。
+
+## 用户一句话触发（可选）
+
+用户在任务中说 **「按 Trinity 设计规范 / 色板 / design-spec」** 或 **「遵循 trinity-design-tokens」** 时，须再对照上述路径核对一遍后再交稿。

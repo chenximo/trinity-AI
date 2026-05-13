@@ -1,0 +1,3896 @@
+/* OpenRouter /chat replica — global tokens from trinity-base.css :root + OR-specific layout */
+
+/* 对话页：视口固定，不滚整页；仅中间 .orc-scroll 聊天区滚动 */
+html:has(main.orc-chat-root),
+body:has(main.orc-chat-root) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body:has(main.orc-chat-root) {
+  height: 100dvh;
+  max-height: 100dvh;
+}
+
+main.orc-chat-root.mvp-main {
+  max-width: none;
+  width: 100%;
+  /* 与全局顶栏（Trinity / 首页·模型…）下边沿留出空隙 */
+  margin: 0.65rem 0 0;
+  padding: 0 var(--page-gutter, 50px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+main.orc-chat-root.mvp-main > .orc-app {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.orc-shell {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  gap: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+@media (min-width: 900px) {
+  .orc-shell {
+    display: grid;
+    grid-template-columns: 52px minmax(220px, 272px) minmax(0, 1fr);
+  }
+
+  .orc-shell.orc-side-collapsed {
+    grid-template-columns: 52px 0 minmax(0, 1fr);
+  }
+
+  .orc-shell.orc-side-collapsed .orc-sidebar {
+    min-width: 0;
+    max-width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* —— 左侧图标栏（参考产品窄轨） —— */
+.orc-icon-rail {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  width: 52px;
+  flex-shrink: 0;
+  padding: 0.45rem 0 0.65rem;
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+}
+
+@media (min-width: 900px) {
+  .orc-icon-rail {
+    display: flex;
+  }
+}
+
+.orc-rail-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.orc-rail-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-rail-btn--active {
+  background: var(--text);
+  color: var(--on-primary);
+}
+
+.orc-rail-btn--active:hover {
+  background: var(--muted);
+  color: var(--on-primary);
+}
+
+.orc-rail-spacer {
+  flex: 1;
+  min-height: 0.35rem;
+}
+
+.orc-rail-spacer--bottom {
+  flex: 0;
+  min-height: 0.25rem;
+}
+
+.orc-rail-btn--avatar {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.orc-rail-btn--avatar:hover {
+  background: var(--blue-ring);
+  color: var(--blue);
+}
+
+/* 侧栏收起后：原「展开」在侧栏内且 pointer-events:none，此处在窄轨上提供可点的展开 */
+#orc-btn-side-expand {
+  display: none !important;
+}
+
+@media (min-width: 900px) {
+  .orc-shell.orc-side-collapsed #orc-btn-side-expand {
+    display: grid !important;
+  }
+}
+
+/* —— 模型 + 会话 侧栏 —— */
+.orc-sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 100%;
+  min-width: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.orc-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.orc-model-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  min-height: calc(36px + 1rem + 1px);
+  padding: 0.45rem 0.55rem 0.45rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.orc-side-tabs {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  background: var(--surface-2);
+  border-radius: 9px;
+}
+
+.orc-side-tab {
+  flex: 1;
+  min-width: 0;
+  padding: 0.38rem 0.35rem;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.orc-side-tab:hover {
+  color: var(--text);
+}
+
+.orc-side-tab.is-active {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.orc-side-tab:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 1px;
+}
+
+.orc-model-collapse {
+  padding: 0.25rem 0.45rem;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.orc-model-collapse:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-side-panels {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.orc-side-panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.orc-side-panel[hidden] {
+  display: none !important;
+}
+
+/* 模型：整块（提示 + 列表）一起纵向滚动 */
+.orc-side-panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* 侧栏模型：搜索 + 筛选（与弹层共用逻辑） */
+.orc-side-model-toolbar {
+  flex-shrink: 0;
+  margin: 0.5rem 0.65rem 0.35rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.orc-side-model-toolbar--collection .orc-side-model-filters {
+  display: none;
+}
+
+/* 侧栏模型：搜索行 +「模型对比」 */
+.orc-side-model-toolbar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.5rem 0.35rem;
+}
+
+.orc-side-model-toolbar-row .orc-side-model-search {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+}
+
+.orc-side-model-toolbar-row .orc-filter-chip.is-purple {
+  flex-shrink: 0;
+}
+
+.orc-side-model-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.5rem;
+  border-bottom: none;
+}
+
+.orc-side-model-search svg {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  pointer-events: none;
+}
+
+.orc-side-model-search input {
+  width: 100%;
+  padding: 0.38rem 0.45rem 0.38rem 1.85rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-family: inherit;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.orc-side-model-search input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px var(--blue),
+    0 0 0 2px var(--blue-ring);
+}
+
+.orc-side-model-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+  padding: 0.4rem 0.45rem;
+  align-items: center;
+}
+
+.orc-side-model-filters.orc-side-model-filters--na {
+  justify-content: center;
+  flex-wrap: nowrap;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+.orc-side-model-filters-na-text,
+.orc-picker-filters-na-text {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted-2);
+  letter-spacing: 0.02em;
+  text-align: center;
+  width: 100%;
+}
+
+.orc-filter-reset {
+  color: var(--muted-2);
+}
+
+.orc-filter-reset:hover {
+  color: var(--text);
+}
+
+.orc-filter-reset--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.85rem;
+  padding: 0.3rem 0.4rem;
+}
+
+.orc-filter-reset--icon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.orc-side-model-group {
+  margin-bottom: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+}
+
+.orc-side-model-group--collection {
+  margin-bottom: 0;
+}
+
+.orc-side-model-group-title {
+  margin: 0.35rem 0.5rem 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--muted-2);
+}
+
+.orc-side-model-empty {
+  margin: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.orc-model-list {
+  padding: 0.15rem 0.5rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.orc-model-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-sizing: border-box;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.orc-model-list:not(.orc-picker-list) .orc-model-row:not(.is-active):hover {
+  background: var(--bg);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.orc-model-row-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.orc-model-row.is-active {
+  background: rgba(239, 246, 255, 0.95);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--blue);
+}
+
+.orc-model-list .orc-model-row.is-active:hover {
+  background: rgba(239, 246, 255, 0.98);
+  border-color: rgba(37, 99, 235, 0.32);
+}
+
+.orc-model-row-fav {
+  flex-shrink: 0;
+  margin-left: 0.15rem;
+  padding: 0.1rem 0.2rem;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--muted-2);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+}
+
+.orc-model-row-fav:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.orc-model-row-mark {
+  flex-shrink: 0;
+  margin-left: 0.15rem;
+  min-width: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.orc-model-row-mark:empty {
+  visibility: hidden;
+}
+
+/* 模型集合对比行：与常规模型行同一套卡片样式；已选入对比用右侧 ✓（与 orc-model-row-mark 一致），无左侧色条 */
+
+/* 模型集合顶栏：标题字阶与分组「收藏 / 置顶」一致，边距与列表内 h4 对齐 */
+.orc-model-collection-block {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.orc-model-collection-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  min-height: 0;
+}
+
+.orc-model-collection-line {
+  margin: 0.35rem 0.5rem 0.2rem;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  color: var(--muted-2);
+}
+
+.orc-model-collection-kicker {
+  font-weight: 700;
+  color: inherit;
+  margin-right: 0.12rem;
+}
+
+.orc-model-collection-sep {
+  color: inherit;
+  margin: 0 0.1rem;
+  font-weight: 700;
+}
+
+#orc-model-collection-title {
+  font-weight: 700;
+  color: inherit;
+}
+
+.orc-model-collection-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  flex-shrink: 0;
+}
+
+.orc-model-collection-link {
+  padding: 0.22rem 0.38rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.orc-model-collection-link:hover {
+  background: var(--surface-2);
+  color: var(--blue);
+}
+
+.orc-model-collection-barclose {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.orc-model-collection-barclose:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* 厂商小圆标（侧栏列表） */
+.orc-pv {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 800;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.orc-pv--letter {
+  background: linear-gradient(145deg, var(--bg), var(--surface));
+  color: var(--muted);
+}
+
+/* 厂商小圆标：按品牌区分（与侧栏 / 选择器 / 详情头一致） */
+.orc-pv--google {
+  border: none;
+  background: conic-gradient(from 40deg, var(--oauth-google) 0deg 90deg, var(--oauth-google-red) 90deg 180deg, var(--oauth-google-yellow) 180deg 270deg, var(--oauth-google-green) 270deg 360deg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.orc-pv--google::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--bg);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+.orc-pv--openai {
+  border: none;
+  background: var(--brand-chatgpt);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.orc-pv--openai::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.orc-pv--anthropic {
+  border: none;
+  background: linear-gradient(145deg, var(--border-strong), var(--warning-ink));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.orc-pv--anthropic::after {
+  content: "A";
+  font-size: 0.48rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--text);
+}
+
+.orc-pv--xai {
+  border: 1px solid var(--text);
+  background: var(--bg);
+}
+
+.orc-pv--xai::after {
+  content: "×";
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-top: -1px;
+}
+
+.orc-pv--recraft {
+  border: none;
+  background: linear-gradient(135deg, var(--violet-400), var(--indigo-400));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.orc-pv--recraft::after {
+  content: "R";
+  font-size: 0.48rem;
+  font-weight: 900;
+  color: var(--on-primary);
+}
+
+/* 弹层列表与详情头：略大于侧栏 18px 圆标 */
+.orc-picker-list .orc-model-row .orc-pv {
+  width: 24px;
+  height: 24px;
+  font-size: 0.55rem;
+}
+
+.orc-detail-pv {
+  width: 28px;
+  height: 28px;
+  font-size: 0.58rem;
+}
+
+/* 会话历史：搜索固定，列表区域单独滚动 */
+#orc-panel-rooms .orc-sidebar-search {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.orc-rooms-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  background: var(--surface-2);
+}
+
+.orc-rooms-wrap .orc-rooms {
+  flex: none;
+  overflow: visible;
+  min-height: 0;
+}
+
+.orc-chat-root {
+  position: relative;
+}
+
+.orc-sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .orc-sidebar {
+    position: fixed;
+    inset: var(--nav-h, 60px) auto 0 0;
+    width: min(280px, 88vw);
+    z-index: 90;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .orc-app.orc-mobile-drawer-open .orc-sidebar {
+    transform: translateX(0);
+  }
+
+  .orc-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: var(--nav-h, 60px) 0 0 0;
+    background: rgba(15, 23, 42, 0.35);
+    z-index: 85;
+  }
+
+  .orc-app.orc-mobile-drawer-open .orc-sidebar-backdrop {
+    display: block;
+  }
+}
+
+.orc-main-top {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  /* 与 36px 控件、上下各 0.5rem、底边 1px 对齐，保证左右顶栏总高度一致 */
+  min-height: calc(36px + 1rem + 1px);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.orc-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.orc-icon-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-btn-new {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 36px;
+  padding: 0 0.65rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.orc-btn-new:hover {
+  background: var(--surface);
+}
+
+.orc-sidebar-search {
+  padding: 0.5rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.orc-sidebar-search input {
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  background: var(--bg);
+}
+
+.orc-rooms {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.35rem 0.5rem 0.85rem;
+  min-height: 0;
+}
+
+.orc-room-group {
+  margin-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.orc-room-group:first-child {
+  margin-top: 0;
+}
+
+.orc-room-group h3 {
+  margin: 0 0 0.12rem 0.12rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--muted-2);
+}
+
+/* 会话历史：卡片外壳 + 主区 + ⋮ 操作 */
+.orc-room-card-wrap {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  border: 1px solid rgba(15, 23, 42, 0.055);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: 0 1px 1px rgba(15, 23, 42, 0.03), 0 1px 6px rgba(15, 23, 42, 0.025);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.orc-room-card-wrap:hover {
+  border-color: rgba(15, 23, 42, 0.085);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.045), 0 6px 16px rgba(15, 23, 42, 0.04);
+}
+
+.orc-room-card-wrap.is-pinned {
+  border-color: rgba(212, 160, 23, 0.42);
+  box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.1), 0 1px 6px rgba(15, 23, 42, 0.04);
+}
+
+.orc-room-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+  padding: 0.55rem 0.45rem 0.58rem 0.62rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+.orc-room-card:active {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+.orc-room-card:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 1px;
+}
+
+.orc-room-more {
+  flex-shrink: 0;
+  width: 32px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-left: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 0 11px 11px 0;
+  background: transparent;
+  color: var(--muted-2);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+
+.orc-room-more:hover {
+  background: rgba(248, 250, 252, 0.95);
+  color: var(--muted);
+}
+
+.orc-room-more:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: -2px;
+}
+
+.orc-room-more[aria-expanded="true"] {
+  background: rgba(239, 246, 255, 0.9);
+  color: var(--blue);
+}
+
+.orc-room-card-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(100, 116, 139, 0.08);
+  color: var(--muted);
+}
+
+.orc-room-card-icon-svg {
+  display: block;
+  opacity: 0.92;
+}
+
+.orc-room-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  padding-top: 0.06rem;
+}
+
+.orc-room-card-title {
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.orc-room-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.32rem 0.45rem;
+  font-size: 0.6875rem;
+  line-height: 1.25;
+}
+
+.orc-room-card-turns {
+  font-weight: 600;
+  color: var(--pill-text);
+  letter-spacing: 0.02em;
+}
+
+.orc-room-card-time {
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .orc-room-card-wrap:hover .orc-room-card-icon {
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--blue);
+  }
+}
+
+/* 会话浮动菜单（置顶 / 重命名 / 复制 / 删除） */
+.orc-room-menu {
+  position: fixed;
+  z-index: 250;
+  min-width: 168px;
+  padding: 0.35rem 0;
+  margin: 0;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 10px;
+  background: var(--bg);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.12), 0 1px 4px rgba(15, 23, 42, 0.06);
+  -webkit-font-smoothing: antialiased;
+}
+
+.orc-room-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.45rem 0.75rem 0.45rem 0.65rem;
+  border: none;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.orc-room-menu-item:hover {
+  background: var(--surface);
+}
+
+.orc-room-menu-item:focus-visible {
+  outline: none;
+  background: var(--border);
+}
+
+.orc-room-menu-ic {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+}
+
+.orc-room-menu-item--danger,
+.orc-room-menu-item--danger .orc-room-menu-ic {
+  color: var(--danger);
+}
+
+.orc-room-menu-item--danger:hover {
+  background: var(--danger-soft);
+}
+
+/* —— Main column —— */
+.orc-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.orc-main-top {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.orc-main-top-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.orc-preset-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.orc-preset-top-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  flex-shrink: 0;
+}
+
+.orc-preset-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.orc-preset-chip-wrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.orc-preset-chip-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.orc-preset-chip-remove {
+  position: absolute;
+  top: -0.28rem;
+  right: -0.28rem;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted-2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.orc-preset-chip-remove:hover {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+  color: var(--danger-ink);
+}
+
+.orc-preset-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.02em;
+  height: 30px;
+  padding: 0 0.5rem 0 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.orc-preset-chip:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-preset-chip.is-active {
+  border-color: var(--blue-ring);
+  background: var(--blue-soft);
+  color: var(--text);
+}
+
+.orc-preset-chip-origin {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.06em;
+  padding: 0.1em 0.32em 0.11em;
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  border-radius: 999px;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.orc-preset-chip-origin--self {
+  color: var(--purple-deep);
+  font-weight: 600;
+  background: var(--purple-soft);
+  border: 1px solid rgba(124, 58, 237, 0.26);
+}
+
+.orc-preset-chip:hover .orc-preset-chip-origin--self {
+  color: var(--purple);
+  background: var(--violet-100);
+  border-color: rgba(124, 58, 237, 0.34);
+}
+
+.orc-preset-chip.is-active .orc-preset-chip-origin--self {
+  color: var(--purple-deep);
+  background: rgba(124, 58, 237, 0.14);
+  border-color: var(--violet-300);
+}
+
+.orc-preset-chip-origin--official {
+  color: var(--pill-text);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.28);
+}
+
+.orc-preset-chip:hover .orc-preset-chip-origin--official {
+  color: var(--blue);
+  background: rgba(37, 99, 235, 0.14);
+  border-color: rgba(37, 99, 235, 0.34);
+}
+
+.orc-preset-chip.is-active .orc-preset-chip-origin--official {
+  color: var(--blue);
+  background: rgba(37, 99, 235, 0.16);
+  border-color: var(--blue-ring);
+}
+
+html[data-theme="dark"] .orc-preset-chip-origin--self {
+  color: var(--violet-300);
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+html[data-theme="dark"] .orc-preset-chip:hover .orc-preset-chip-origin--self,
+html[data-theme="dark"] .orc-preset-chip.is-active .orc-preset-chip-origin--self {
+  color: var(--violet-200);
+  background: rgba(124, 58, 237, 0.28);
+  border-color: var(--violet-400);
+}
+
+html[data-theme="dark"] .orc-preset-chip-origin--official {
+  color: var(--pill-text);
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+html[data-theme="dark"] .orc-preset-chip.is-active .orc-preset-chip-origin--official,
+html[data-theme="dark"] .orc-preset-chip:hover .orc-preset-chip-origin--official {
+  color: var(--blue-ring);
+  border-color: var(--blue-ring);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] .orc-preset-chip-origin--self {
+    color: var(--violet-300);
+    background: rgba(124, 58, 237, 0.2);
+    border-color: rgba(167, 139, 250, 0.35);
+  }
+
+  html[data-theme="system"] .orc-preset-chip:hover .orc-preset-chip-origin--self,
+  html[data-theme="system"] .orc-preset-chip.is-active .orc-preset-chip-origin--self {
+    color: var(--violet-200);
+    background: rgba(124, 58, 237, 0.28);
+    border-color: var(--violet-400);
+  }
+
+  html[data-theme="system"] .orc-preset-chip-origin--official {
+    color: var(--pill-text);
+    background: rgba(37, 99, 235, 0.22);
+    border-color: rgba(96, 165, 250, 0.35);
+  }
+
+  html[data-theme="system"] .orc-preset-chip.is-active .orc-preset-chip-origin--official,
+  html[data-theme="system"] .orc-preset-chip:hover .orc-preset-chip-origin--official {
+    color: var(--blue-ring);
+    border-color: var(--blue-ring);
+  }
+}
+
+/* 顶栏角色芯片：悬停简介气泡（由 chat-openrouter.js 插入 #orc-preset-intro-tip） */
+.orc-preset-intro-bubble {
+  position: fixed;
+  z-index: 10060;
+  box-sizing: border-box;
+  max-width: min(20rem, calc(100vw - 20px));
+  padding: 0.45rem 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 11px;
+  box-shadow: 0 12px 40px -10px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(15, 23, 42, 0.04);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.orc-preset-intro-bubble.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html[data-theme="dark"] .orc-preset-intro-bubble {
+  color: var(--muted);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] .orc-preset-intro-bubble {
+    color: var(--muted);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+}
+
+.orc-preset-more-dd {
+  position: relative;
+}
+
+.orc-preset-more-summary {
+  list-style: none;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.55rem;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.orc-preset-more-summary::-webkit-details-marker {
+  display: none;
+}
+
+.orc-preset-more-summary::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.35rem;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.65;
+}
+
+.orc-preset-more-dd[open] .orc-preset-more-summary {
+  border-style: solid;
+  border-color: transparent;
+  color: var(--on-primary);
+  background: var(--grad);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.35);
+}
+
+.orc-preset-more-dd[open] .orc-preset-more-summary:hover {
+  background: var(--grad-hover);
+}
+
+.orc-preset-more-panel {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 13.5rem;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+.orc-preset-more-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.55rem;
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  background: transparent;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 1.3;
+}
+
+.orc-preset-more-item-ico {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: grid;
+  place-items: center;
+  color: var(--muted-2);
+}
+
+.orc-preset-more-item-ico svg {
+  display: block;
+}
+
+.orc-preset-more-item-label {
+  flex: 1;
+  min-width: 0;
+}
+
+a.orc-preset-more-item {
+  text-decoration: none;
+}
+
+.orc-preset-more-item:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--grad);
+  color: var(--on-primary);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
+}
+
+.orc-preset-more-item:hover:not(:disabled):not([aria-disabled="true"]) .orc-preset-more-item-ico {
+  color: var(--on-primary);
+}
+
+.orc-preset-more-item:focus {
+  outline: none;
+}
+
+.orc-preset-more-item:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 2px;
+  background: var(--grad);
+  color: var(--on-primary);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.35);
+}
+
+.orc-preset-more-item:focus-visible .orc-preset-more-item-ico {
+  color: var(--on-primary);
+}
+
+.orc-preset-more-item:disabled,
+.orc-preset-more-item[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: var(--muted);
+}
+
+.orc-preset-more-item:disabled .orc-preset-more-item-ico,
+.orc-preset-more-item[aria-disabled="true"] .orc-preset-more-item-ico {
+  color: var(--muted-2);
+}
+
+.orc-preset-more-item:disabled:hover,
+.orc-preset-more-item[aria-disabled="true"]:hover {
+  background: transparent;
+}
+
+.orc-preset-more-item:disabled:hover .orc-preset-more-item-ico,
+.orc-preset-more-item[aria-disabled="true"]:hover .orc-preset-more-item-ico {
+  color: var(--muted-2);
+}
+
+/* —— 添加角色弹窗：or-modal-root + 遮罩 + or-modal-card（与设计规范 / 添加模型同源） —— */
+.orc-role-picker-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 455;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.orc-role-picker-modal-root[hidden] {
+  display: none !important;
+}
+
+.orc-role-picker-card.or-modal-card.or-keys-editor-modal-card {
+  display: flex;
+  flex-direction: column;
+  width: min(440px, calc(100vw - 2rem));
+  max-width: min(440px, calc(100vw - 2rem));
+  max-height: min(86vh, 640px);
+  padding: 0;
+  overflow: hidden;
+}
+
+.orc-role-picker-header {
+  flex-shrink: 0;
+  padding: 0.65rem 1rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.orc-role-picker-modal-head.or-modal-head {
+  margin: 0;
+  align-items: center;
+}
+
+.orc-role-picker-head-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.orc-role-picker-head-ico {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.orc-role-picker-banner.or-keys-editor-banner {
+  margin: 0.5rem 1rem 0.35rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+.orc-role-picker-footer.or-keys-editor-actions {
+  margin-top: 0;
+  padding: 0.65rem 1rem 1rem;
+  flex-shrink: 0;
+}
+
+.orc-role-picker-create-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.15rem;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--blue);
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 0.1rem 0.2rem;
+}
+
+.orc-role-picker-create-inline:hover {
+  color: var(--purple);
+  background: var(--blue-soft);
+  text-decoration: none;
+}
+
+.orc-role-picker-create-inline:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 2px;
+}
+
+.orc-role-picker-create-inline-ico {
+  flex-shrink: 0;
+  display: block;
+}
+
+.orc-role-picker-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.orc-role-picker-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.75rem 1rem 1.15rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.orc-role-picker-section {
+  background: var(--surface-2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 0.75rem 0.65rem 0.65rem;
+}
+
+.orc-role-picker-section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.15rem 0.35rem 0.65rem;
+}
+
+.orc-role-picker-section-ico {
+  flex-shrink: 0;
+  color: var(--blue);
+  margin-top: 0.1rem;
+}
+
+.orc-role-picker-section-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.orc-role-picker-section-hint {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.orc-role-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: min(42vh, 320px);
+  overflow-y: auto;
+  padding: 0.15rem;
+}
+
+.orc-role-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.orc-role-card:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.orc-role-card.is-selected {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+}
+
+.orc-role-card-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-soft);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.orc-role-card-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.orc-role-card-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.orc-role-card-desc {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.orc-role-card-tag {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 0.12rem 0.45rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.orc-role-card-tag--self {
+  color: var(--purple-deep);
+  background: var(--purple-soft);
+}
+
+.orc-role-card-tag--official {
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+html[data-theme="dark"] .orc-role-card-tag--self {
+  color: var(--violet-300);
+  background: rgba(124, 58, 237, 0.22);
+}
+
+html[data-theme="dark"] .orc-role-card-tag--official {
+  color: #93c5fd;
+  background: rgba(37, 99, 235, 0.22);
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="system"] .orc-role-card-tag--self {
+    color: var(--violet-300);
+    background: rgba(124, 58, 237, 0.22);
+  }
+
+  html[data-theme="system"] .orc-role-card-tag--official {
+    color: #93c5fd;
+    background: rgba(37, 99, 235, 0.22);
+  }
+}
+
+@media (max-width: 899px) {
+  .orc-main-top {
+    padding-left: 0.35rem;
+  }
+}
+
+.orc-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+.orc-empty {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2rem;
+  gap: 1.5rem;
+  /* 与 index 同源蓝紫，极淡氛围光 */
+  background: radial-gradient(ellipse 85% 55% at 50% 0%, rgba(37, 99, 235, 0.06), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 80% 60%, rgba(124, 58, 237, 0.045), transparent 50%);
+}
+
+/* [hidden] 须压过上面的 display:flex，否则发送后卡片区仍占位显示 */
+.orc-empty[hidden] {
+  display: none !important;
+}
+
+.orc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 720px;
+}
+
+@media (max-width: 640px) {
+  .orc-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+.orc-cat-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1rem 3rem;
+  background: var(--surface);
+  box-shadow: 0 2px 14px rgba(37, 99, 235, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.orc-cat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 3px;
+  border-radius: 0 0 6px 6px;
+  background: var(--grad);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.orc-cards-grid .orc-cat-card:nth-child(1) {
+  background: var(--orc-scene-card-bg-1);
+  border-color: var(--orc-scene-card-border-1);
+}
+
+.orc-cards-grid .orc-cat-card:nth-child(2) {
+  background: var(--orc-scene-card-bg-2);
+  border-color: var(--orc-scene-card-border-2);
+}
+
+.orc-cards-grid .orc-cat-card:nth-child(3) {
+  background: var(--orc-scene-card-bg-3);
+  border-color: var(--orc-scene-card-border-3);
+}
+
+.orc-cards-grid .orc-cat-card:nth-child(4) {
+  background: var(--orc-scene-card-bg-4);
+  border-color: var(--orc-scene-card-border-4);
+}
+
+.orc-cat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.orc-cat-card:hover::before {
+  opacity: 0.85;
+}
+
+.orc-cat-card:active {
+  transform: translateY(-1px) scale(0.985);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1), 0 1px 4px rgba(15, 23, 42, 0.05);
+  transition-duration: 0.08s;
+}
+
+.orc-cat-card:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orc-cat-card,
+  .orc-cat-card:hover,
+  .orc-cat-card:active,
+  .orc-chip,
+  .orc-chip:hover,
+  .orc-chip:active {
+    transition: none;
+  }
+
+  .orc-cat-card:hover,
+  .orc-cat-card:active,
+  .orc-chip:hover,
+  .orc-chip:active {
+    transform: none;
+  }
+
+  .orc-cat-card:hover .orc-mini-logo {
+    transform: none;
+  }
+}
+
+.orc-cat-card h4 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.orc-cat-desc {
+  margin: 0.4rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 92%;
+}
+
+.orc-cat-icons {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.65rem;
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 70%;
+}
+
+.orc-mini-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  display: grid;
+  place-items: center;
+  font-size: 0.55rem;
+  font-weight: 800;
+  background: linear-gradient(145deg, var(--bg), var(--blue-soft));
+  color: var(--muted);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.orc-cat-card:hover .orc-mini-logo {
+  transform: translateY(-1px);
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.12);
+}
+
+.orc-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  width: 100%;
+  max-width: 720px;
+  padding-bottom: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.orc-chips::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.orc-chip {
+  flex: 0 0 auto;
+  max-width: 220px;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), var(--surface));
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+/* 仅在「真实可悬停」设备上强化 hover，避免触屏点按后整条像被选中的粘滞态 */
+@media (hover: hover) and (pointer: fine) {
+  .orc-chip:hover {
+    border-color: rgba(37, 99, 235, 0.25);
+    color: var(--text);
+    background: linear-gradient(180deg, var(--bg), var(--blue-soft));
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.orc-chip:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.07s;
+}
+
+.orc-chip:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 2px;
+}
+
+/* —— 发送后：多模型对比 + 综合总结 —— */
+.orc-thread {
+  width: 100%;
+  padding: 0.75rem 0 1.25rem;
+}
+
+.orc-thread[hidden] {
+  display: none !important;
+}
+
+.orc-thread-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.orc-msg-user-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.orc-msg-user-column {
+  max-width: min(92%, 34rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.orc-msg-user {
+  max-width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 14px 14px 4px 14px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.08));
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.orc-msg-user-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.05rem;
+  padding-right: 0.15rem;
+}
+
+.orc-msg-user-act {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--pill-text);
+  cursor: pointer;
+}
+
+.orc-msg-user-act:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--blue);
+}
+
+.orc-msg-user-act:active {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+.orc-msg-user-act svg {
+  flex-shrink: 0;
+}
+
+/* 助手消息底部：Compare to 多选（参考稿，) */
+.orc-msg-assistant {
+  max-width: min(92%, 36rem);
+  align-self: flex-start;
+}
+
+.orc-msg-assistant-inner {
+  padding: 0.5rem 0 0.15rem;
+}
+
+.orc-msg-assistant-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.orc-msg-assist-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: var(--on-primary);
+}
+
+.orc-msg-assist-brand {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.orc-msg-assistant-body {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text);
+  padding: 0.15rem 0 0.4rem;
+}
+
+.orc-msg-assist-toolbar {
+  display: flex;
+  gap: 0.15rem;
+  margin-bottom: 0.45rem;
+}
+
+.orc-msg-assist-icon {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+.orc-msg-assist-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+}
+
+.orc-msg-model-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.orc-compare-to-wrap {
+  position: relative;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.orc-compare-to-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 38px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+}
+
+.orc-compare-to-trigger:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.orc-compare-to-trigger[aria-expanded="true"] {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12);
+}
+
+.orc-compare-to-label {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.orc-compare-to-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.orc-compare-to-icon-slot {
+  display: inline-flex;
+  transform: scale(0.88);
+  transform-origin: center center;
+}
+
+.orc-compare-to-icon-slot .orc-pv {
+  width: 17px;
+  height: 17px;
+  font-size: 0.48rem;
+}
+
+.orc-compare-to-chevron {
+  flex-shrink: 0;
+  color: var(--muted-2);
+}
+
+.orc-compare-to-trigger[aria-expanded="true"] .orc-compare-to-chevron {
+  transform: rotate(180deg);
+}
+
+.orc-compare-to-popover {
+  position: fixed;
+  z-index: 420;
+  max-height: min(420px, 70vh);
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0 0.55rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.16);
+}
+
+.orc-compare-to-popover[hidden] {
+  display: none !important;
+}
+
+.orc-compare-to-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 0.35rem;
+}
+
+.orc-compare-to-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0.1rem 0;
+  padding: 0.45rem 0.55rem;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.orc-compare-to-row:hover {
+  background: var(--surface-2);
+}
+
+.orc-compare-to-row.is-on {
+  background: rgba(239, 246, 255, 0.95);
+}
+
+.orc-compare-to-row-main {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.orc-compare-to-row-main .orc-pv {
+  width: 22px;
+  height: 22px;
+  font-size: 0.52rem;
+}
+
+.orc-compare-to-row-name {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orc-compare-to-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid var(--border-strong);
+  box-sizing: border-box;
+}
+
+.orc-compare-to-row.is-on .orc-compare-to-mark {
+  border-color: var(--blue);
+  background: var(--blue);
+  box-shadow: inset 0 0 0 2px var(--bg);
+}
+
+.orc-compare-to-confirm {
+  margin: 0.5rem 0.55rem 0;
+  padding: 0.55rem 0.75rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--on-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.orc-compare-to-confirm:hover {
+  filter: brightness(1.08);
+}
+
+.orc-compare-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.orc-compare-head {
+  padding: 0 0.15rem;
+}
+
+.orc-compare-title {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.orc-compare-scroll {
+  overflow-x: visible;
+  overflow-y: visible;
+  padding-bottom: 0.15rem;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.orc-compare-split {
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.orc-compare-fails {
+  border-radius: 12px;
+  border: 1px solid rgba(248, 113, 113, 0.22);
+  background: linear-gradient(180deg, rgba(254, 242, 242, 0.75), var(--bg) 52%);
+  padding: 0.5rem 0.55rem 0.6rem;
+  max-height: min(320px, 55vh);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.orc-compare-fails-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px dashed rgba(248, 113, 113, 0.35);
+}
+
+.orc-compare-fails-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--danger-ink);
+}
+
+.orc-compare-fails-count {
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(254, 202, 202, 0.85);
+  color: var(--danger-dark);
+}
+
+.orc-compare-fails-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.orc-compare-fails-list li {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.1rem;
+  padding: 0.42rem 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.orc-compare-fails-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.orc-compare-fails-model {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.orc-compare-fails-reason {
+  font-size: 0.65rem;
+  color: var(--danger-ink);
+  line-height: 1.35;
+}
+
+.orc-compare-ok-strip {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  overflow-x: auto;
+  min-width: 0;
+  padding-bottom: 0.15rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.orc-compare-ok-strip::-webkit-scrollbar {
+  display: none;
+  height: 0;
+}
+
+.orc-mcol {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+}
+
+.orc-compare-ok-strip .orc-mcol--ok {
+  flex: 1 1 auto;
+  min-width: min(100%, 280px);
+  width: 100%;
+  max-width: none;
+  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.08);
+}
+
+.orc-mcol-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(249, 250, 251, 0.9);
+}
+
+.orc-mcol-head--ok {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.orc-mcol-head-top {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.orc-mcol-head-top .orc-mcol-name {
+  flex: 1 1 auto;
+}
+
+.orc-mcol-logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: var(--surface-2);
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.orc-mcol-logo--ok {
+  background: linear-gradient(135deg, var(--blue-soft), var(--bg));
+  color: var(--blue);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.orc-mcol-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.orc-mcol-meta {
+  font-size: 0.65rem;
+  color: var(--muted-2);
+}
+
+.orc-mcol-badge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.orc-mcol-badge--ok {
+  background: var(--blue-soft);
+  color: var(--pill-text);
+}
+
+.orc-mcol-body {
+  flex: 1 1 auto;
+  padding: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.orc-mcol-body--scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  color: var(--text);
+  scrollbar-width: thin;
+}
+
+.orc-mcol-ul {
+  margin: 0.35rem 0 0.5rem;
+  padding-left: 1.1rem;
+}
+
+.orc-summary-panel {
+  border-radius: 14px;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  background: linear-gradient(180deg, rgba(239, 246, 255, 0.65), var(--bg) 28%);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.06);
+  overflow: hidden;
+}
+
+.orc-summary-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.orc-summary-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.orc-summary-spark {
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.orc-summary-collapse {
+  flex-shrink: 0;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.orc-summary-collapse:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue-ring);
+}
+
+.orc-summary-content {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.orc-summary-content[hidden] {
+  display: none !important;
+}
+
+.orc-summary-block + .orc-summary-block {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.orc-summary-h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.orc-summary-h4 {
+  margin: 0.65rem 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.orc-summary-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.orc-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.orc-summary-table th,
+.orc-summary-table td {
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.orc-summary-table th {
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.orc-summary-fail {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.orc-summary-p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .orc-compare-split {
+    grid-template-columns: 1fr;
+  }
+
+  .orc-compare-fails {
+    max-height: none;
+  }
+
+  .orc-mcol-body--scroll {
+    max-height: 240px;
+  }
+}
+
+/* —— Composer —— */
+.orc-composer-wrap {
+  position: relative;
+  flex-shrink: 0;
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.orc-composer {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.orc-composer textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc((0.9375rem * 1.5) * 2 + 0.85rem + 0.85rem);
+  max-height: calc((0.9375rem * 1.5) * 5 + 0.85rem + 0.85rem);
+  padding: 0.85rem 1rem;
+  border: none;
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  line-height: 1.5;
+  background: transparent;
+  color: var(--text);
+}
+
+.orc-composer textarea:focus {
+  outline: none;
+}
+
+.orc-composer textarea::placeholder {
+  color: var(--muted-2);
+}
+
+.orc-composer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  background: transparent;
+}
+
+/* SVG <symbol> 供 <use href> 引用，不占版面 */
+.orc-help-tip-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 全页统一：ⓘ 说明气泡（不占主排版，fixed 浮层） */
+.orc-help-tip-btn {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted-2);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  flex-shrink: 0;
+}
+
+.orc-help-tip-btn:hover {
+  color: var(--blue);
+  border-color: rgba(37, 99, 235, 0.28);
+  background: var(--blue-soft);
+}
+
+.orc-help-tip-btn--inline {
+  width: 24px;
+  height: 24px;
+}
+
+.orc-help-tip-btn--assist {
+  margin-left: auto;
+}
+
+.orc-help-tip-btn--dock {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.65rem;
+  z-index: 6;
+  width: 28px;
+  height: 28px;
+}
+
+.orc-help-tip-btn--float {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+}
+
+.orc-help-tip-btn--settings {
+  position: absolute;
+  top: 0.55rem;
+  right: 2.65rem;
+  z-index: 5;
+  width: 28px;
+  height: 28px;
+}
+
+.orc-help-tip-popover {
+  position: fixed;
+  z-index: 430;
+  width: min(360px, calc(100vw - 16px));
+  max-height: min(52vh, 280px);
+  overflow: auto;
+  padding: 0.65rem 0.75rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.16);
+  -webkit-overflow-scrolling: touch;
+}
+
+.orc-help-tip-popover[hidden] {
+  display: none !important;
+}
+
+.orc-help-tip-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.orc-help-tip-body {
+  font-size: 0.6875rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
+.orc-help-tip-body p {
+  margin: 0 0 0.45rem;
+}
+
+.orc-help-tip-body p:last-child {
+  margin-bottom: 0;
+}
+
+.orc-help-tip-body strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.orc-help-tip-body code {
+  font-size: 0.65rem;
+  padding: 0.05rem 0.25rem;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.orc-preset-top-head {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.orc-compare-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.orc-compare-head-row .orc-compare-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.orc-compare-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted-2);
+}
+
+.orc-summary-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.orc-summary-title-wrap .orc-summary-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.orc-expand-body-p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted-2);
+}
+
+.orc-bar-left,
+.orc-bar-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  row-gap: 0.35rem;
+}
+
+.orc-memory-wrap {
+  position: relative;
+}
+
+.orc-memory-popover {
+  position: fixed;
+  z-index: 500;
+  width: min(280px, 86vw);
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 10px 36px rgba(15, 23, 42, 0.14);
+}
+
+.orc-memory-popover[hidden] {
+  display: none !important;
+}
+
+.orc-net-tools-wrap {
+  position: relative;
+}
+
+.orc-net-tools-popover {
+  position: fixed;
+  z-index: 500;
+  width: min(320px, 92vw);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 10px 36px rgba(15, 23, 42, 0.14);
+  overflow: hidden;
+}
+
+.orc-net-tools-popover[hidden] {
+  display: none !important;
+}
+
+.orc-net-tools-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem 0.55rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.orc-net-tools-head-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.orc-net-tools-head-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 6px;
+  color: var(--muted-2);
+  line-height: 0;
+}
+
+.orc-net-tools-head-link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.orc-net-tools-list {
+  padding: 0.15rem 0 0.25rem;
+}
+
+.orc-net-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto 0.75rem;
+  align-items: center;
+  gap: 0.4rem 0.2rem;
+  padding: 0.55rem 0.65rem 0.55rem 0.55rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.orc-net-row--last {
+  border-bottom: none;
+}
+
+.orc-net-row-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.orc-net-row-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.orc-net-row-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.orc-net-row-desc {
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.orc-net-row-meta {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.orc-net-switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.orc-net-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.orc-net-switch-track {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--border);
+  transition: background 0.15s ease, border-color 0.15s ease;
+  position: relative;
+}
+
+.orc-net-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  transition: transform 0.15s ease;
+}
+
+.orc-net-switch-input:checked + .orc-net-switch-track {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.orc-net-switch-input:checked + .orc-net-switch-track .orc-net-switch-knob {
+  transform: translateX(16px);
+}
+
+.orc-net-switch-input:focus-visible + .orc-net-switch-track {
+  box-shadow: 0 0 0 2px var(--blue-ring);
+}
+
+.orc-net-chevron {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted-2);
+  text-align: center;
+  line-height: 1;
+}
+
+.orc-memory-popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.orc-memory-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.orc-memory-val-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.orc-memory-range {
+  display: block;
+  width: 100%;
+  margin: 0.25rem 0 0.65rem;
+  accent-color: var(--blue);
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.25rem;
+}
+
+.orc-memory-range:focus {
+  outline: none;
+}
+
+.orc-memory-range:focus-visible {
+  box-shadow: 0 0 0 2px var(--blue-ring);
+  border-radius: 999px;
+}
+
+.orc-memory-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.orc-memory-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: none;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: none;
+}
+
+.orc-memory-range::-moz-range-track {
+  height: 4px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.orc-memory-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: none;
+}
+
+.orc-memory-hint {
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.orc-memory-hint strong {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.orc-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 36px;
+  padding: 0 0.45rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.orc-bar-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-bar-btn--memory[aria-expanded="true"],
+.orc-bar-btn--net-tools[aria-expanded="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+  outline: 1px solid var(--border);
+}
+
+.orc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 0.3rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-send {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--grad);
+  color: var(--on-primary);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.35);
+}
+
+.orc-send:hover {
+  background: var(--grad-hover);
+}
+
+/* 侧栏模型悬停详情（与弹层右侧信息一致） */
+.orc-side-model-tip {
+  position: fixed;
+  z-index: 380;
+  width: min(280px, calc(100vw - 16px));
+  max-height: min(420px, 70vh);
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.2);
+  pointer-events: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.orc-side-model-tip[hidden] {
+  display: none !important;
+}
+
+.orc-side-tip-head {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.45rem;
+}
+
+.orc-side-tip-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.orc-side-tip-desc {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 0.72rem;
+}
+
+.orc-side-tip-dl {
+  margin: 0;
+}
+
+.orc-side-tip-dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.32rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+}
+
+.orc-side-tip-dl dt {
+  color: var(--muted-2);
+  font-weight: 500;
+  margin: 0;
+}
+
+.orc-side-tip-dl dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  max-width: 58%;
+}
+
+.orc-side-model-tip .orc-pv {
+  width: 28px !important;
+  height: 28px !important;
+  flex-shrink: 0;
+}
+
+/* —— Model picker：or-modal-root + 遮罩 + 卡片（与设计规范弹窗同源 token） —— */
+.orc-picker-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.orc-picker-modal-root[hidden] {
+  display: none !important;
+}
+
+.orc-picker {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 96vw);
+  height: min(560px, 85vh);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  background: var(--bg);
+  border-radius: var(--orc-modal-card-radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--orc-modal-card-shadow);
+  overflow: hidden;
+}
+
+.orc-picker-header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.65rem 1rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* 标题 + 说明/对比链 + 关闭同一行；垂直居中对齐（避免全局 or-modal-head 的 flex-start 顶贴） */
+.orc-picker-modal-head.or-modal-head {
+  margin: 0;
+  align-items: center;
+}
+
+.orc-picker-head-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.orc-picker-modal-head .or-modal-title {
+  flex: 0 1 auto;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.orc-picker-banner {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0.5rem 1rem 0.35rem;
+}
+
+.orc-picker-body {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.orc-picker-footer.or-keys-editor-actions {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  margin-top: 0;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.orc-picker-footer .btn.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orc-picker-compare-link {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blue);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.orc-picker-compare-link:hover {
+  color: var(--pill-text);
+}
+
+@media (max-width: 720px) {
+  .orc-picker {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    height: min(92vh, 820px);
+  }
+
+  .orc-picker-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(200px, 1fr) minmax(200px, 1fr);
+  }
+
+  .orc-picker-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 45vh;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .orc-picker-right {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+.orc-picker-left {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+  grid-column: 1;
+  grid-row: 1;
+  background: var(--surface-2);
+}
+
+.orc-picker-search {
+  position: relative;
+  padding: 0.65rem 0.75rem;
+  border-bottom: none;
+  flex-shrink: 0;
+}
+
+.orc-picker-search svg {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  pointer-events: none;
+}
+
+.orc-picker-search input {
+  width: 100%;
+  padding: 0.5rem 0.65rem 0.5rem 2.25rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.orc-picker-search input:focus {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px var(--blue),
+    0 0 0 2px var(--blue-ring);
+}
+
+.orc-picker-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: none;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.orc-picker-filters.orc-picker-filters--na {
+  justify-content: center;
+  flex-wrap: nowrap;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+.orc-filter-chip {
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--surface-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.orc-filter-chip:hover {
+  background: var(--surface);
+}
+
+.orc-filter-chip.is-purple {
+  background: var(--grad);
+  border: none;
+  color: var(--on-primary);
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.25);
+}
+
+.orc-filter-chip.is-purple:hover {
+  background: var(--grad-hover);
+  color: var(--on-primary);
+}
+
+.orc-filter-chip.is-purple.is-active {
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 1px 2px rgba(37, 99, 235, 0.35),
+    0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+.orc-filter-chip.is-active:not(.is-purple) {
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--blue);
+  color: var(--text);
+}
+
+.orc-picker-list {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* 添加模型弹窗 · 模型列表：与搜索/筛选左右 0.75rem 对齐；标题下留白大于行距；行与行 0.3rem */
+.orc-model-list.orc-picker-list {
+  gap: 0.55rem;
+  padding: 0.35rem 0.75rem 0.85rem;
+}
+
+.orc-picker-list .orc-side-model-group--collection {
+  gap: 0;
+}
+
+.orc-picker-list .orc-side-model-group--collection > .orc-side-model-group-title {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted-2);
+  line-height: 1.35;
+}
+
+.orc-picker-list .orc-side-model-group--collection:first-child > .orc-side-model-group-title {
+  padding-top: 0.08rem;
+}
+
+.orc-picker-list .orc-side-model-group--collection > .orc-model-row + .orc-model-row {
+  margin-top: 0.3rem;
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare {
+  padding: 0.5rem 0.55rem;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-selected .orc-model-row-fav,
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-active .orc-model-row-fav {
+  color: var(--muted-2);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-selected .orc-model-row-mark,
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-active .orc-model-row-mark {
+  color: var(--blue);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare:not(.is-active):not(.is-selected):hover:not(.is-in-collection) {
+  background: var(--bg);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-active,
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-selected {
+  background: rgba(239, 246, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  color: var(--blue);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-active:hover,
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-selected:hover {
+  background: rgba(239, 246, 255, 0.98);
+  border-color: rgba(37, 99, 235, 0.32);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-in-collection:not(.is-active) {
+  background: var(--bg);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  color: var(--text);
+}
+
+.orc-picker-list .orc-model-row.orc-model-row--compare.is-preview:not(.is-selected):not(.is-active) {
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.22);
+}
+
+/* Picker right */
+.orc-picker-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.orc-picker-detail-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.orc-picker-right-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.orc-picker-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.orc-picker-title strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.orc-picker-desc {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.orc-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.orc-stat-row span:first-child {
+  color: var(--muted-2);
+  font-weight: 500;
+}
+
+.orc-stat-row span:last-child {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* —— Settings modal —— */
+.orc-settings {
+  position: fixed;
+  inset: 0;
+  z-index: 450;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.38);
+  backdrop-filter: blur(4px);
+}
+
+.orc-settings[hidden] {
+  display: none !important;
+}
+
+.orc-settings-card {
+  width: min(480px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  padding: 1.1rem 1.15rem 1rem;
+  position: relative;
+}
+
+.orc-settings-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+
+.orc-settings-close:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.orc-field {
+  margin-bottom: 0.85rem;
+}
+
+.orc-field label,
+.orc-field .orc-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.orc-field input[type="text"],
+.orc-field select,
+.orc-field textarea {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.orc-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.orc-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.orc-name-row input {
+  flex: 1;
+}
+
+.orc-toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.orc-toggle.is-on {
+  background: var(--blue);
+}
+
+.orc-toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease;
+}
+
+.orc-toggle.is-on::after {
+  transform: translateX(20px);
+}
+
+.orc-row-2 {
+  display: grid;
+  grid-template-columns: 1fr minmax(100px, 120px);
+  gap: 0.5rem;
+}
+
+.orc-sys-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.orc-sys-tab {
+  flex: 1;
+  padding: 0.4rem;
+  border: none;
+  background: var(--surface);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.orc-sys-tab.is-active {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.orc-token-hint {
+  text-align: right;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+  margin-top: 0.25rem;
+}
+
+.orc-expand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.55rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  background: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.orc-expand svg {
+  transition: transform 0.15s ease;
+}
+
+.orc-expand.is-open svg {
+  transform: rotate(90deg);
+}
+
+.orc-expand-body {
+  padding: 0 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.orc-expand-body[hidden] {
+  display: none !important;
+}
+
+.orc-settings-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.orc-btn-foot {
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.orc-btn-foot:hover {
+  background: var(--surface-2);
+}
+
+.orc-btn-danger {
+  background: var(--danger-hot);
+  border-color: var(--danger);
+  color: var(--on-primary);
+}
+
+.orc-btn-danger:hover {
+  filter: brightness(1.05);
+}

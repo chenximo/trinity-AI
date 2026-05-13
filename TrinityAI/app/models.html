@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trinity AI 模型目录 — 按提供商、上下文与模态筛选，统一路由与计价。"
+    />
+    <title>模型目录 | Trinity AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/trinity-base.css" />
+    <style>
+      /* 色板见 ../../assets/trinity-base.css；此处仅模型页布局变量 */
+      :root {
+        --sidebar-w: 280px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font);
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .text-link {
+        color: var(--blue);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .text-link:hover {
+        color: var(--purple);
+      }
+
+      .skip {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        padding: 0.5rem 1rem;
+        background: var(--text);
+        color: var(--on-primary);
+        z-index: 9999;
+      }
+
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+      }
+
+      /* —— 与首页一致的顶栏（外观以 ../assets/trinity-base.css 为准） —— */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: saturate(180%) blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-row {
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        max-width: var(--max-wide);
+        width: 100%;
+        margin: 0;
+        padding: 0 var(--page-gutter);
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        flex-shrink: 0;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: var(--blue);
+        color: var(--on-primary);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        box-shadow: 0 1px 2px rgba(37, 99, 235, 0.35);
+      }
+
+      .brand-mark svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .header-end {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .sign-in {
+        display: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted);
+        padding: 0.35rem 0.5rem;
+      }
+
+      .sign-in:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        height: 40px;
+        padding: 0 1.1rem;
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--muted);
+      }
+
+      .btn:hover {
+        background: var(--surface);
+        border-color: var(--border-strong);
+        color: var(--text);
+      }
+
+      .btn-gradient {
+        background: var(--grad);
+        color: var(--on-primary) !important;
+        border: none;
+        box-shadow: 0 1px 2px rgba(37, 99, 235, 0.25);
+      }
+
+      .btn-gradient:hover {
+        background: var(--grad-hover);
+        filter: brightness(1.02);
+        color: var(--on-primary) !important;
+      }
+
+      .menu-toggle {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text);
+      }
+
+      .menu-toggle:hover {
+        background: var(--surface);
+      }
+
+      @media (min-width: 900px) {
+        .sign-in {
+          display: inline-flex;
+        }
+
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      .mobile-drawer {
+        display: none;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+        padding: 0.5rem var(--page-gutter) 1rem;
+      }
+
+      .mobile-drawer.open {
+        display: block;
+      }
+
+      @media (min-width: 900px) {
+        .mobile-drawer {
+          display: none !important;
+        }
+      }
+
+      /* —— 模型页布局（参考截图信息架构） —— */
+      .models-shell {
+        display: flex;
+        gap: 1.25rem;
+        max-width: var(--max-wide);
+        width: 100%;
+        margin: 0;
+        padding: 1.25rem var(--page-gutter) 3rem;
+        align-items: flex-start;
+      }
+
+      @media (max-width: 899px) {
+        .models-shell {
+          flex-direction: column;
+        }
+
+        .catalog {
+          width: 100%;
+        }
+      }
+
+      .filters-backdrop {
+        display: none;
+        position: fixed;
+        inset: var(--nav-h) 0 0 0;
+        background: rgba(15, 23, 42, 0.35);
+        z-index: 80;
+      }
+
+      body.filters-open .filters-backdrop {
+        display: block;
+      }
+
+      @media (max-width: 899px) {
+        body.filters-open {
+          overflow: hidden;
+        }
+      }
+
+      .sidebar {
+        width: var(--sidebar-w);
+        flex-shrink: 0;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1rem 1rem 1.15rem;
+        position: sticky;
+        top: calc(var(--nav-h) + 1rem);
+        max-height: calc(100vh - var(--nav-h) - 2rem);
+        overflow-y: auto;
+      }
+
+      @media (max-width: 899px) {
+        .sidebar {
+          position: fixed;
+          top: var(--nav-h);
+          left: 0;
+          bottom: 0;
+          z-index: 90;
+          max-height: none;
+          border-radius: 0;
+          width: min(var(--sidebar-w), 92vw);
+          transform: translateX(-100%);
+          transition: transform 0.2s ease;
+          box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+        }
+
+        body.filters-open .sidebar {
+          transform: translateX(0);
+        }
+      }
+
+      .side-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.85rem;
+      }
+
+      .side-head h2 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .link-reset {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.2rem 0;
+        font-family: inherit;
+      }
+
+      .link-reset:hover {
+        text-decoration: underline;
+        color: var(--blue);
+      }
+
+      .link-reset:focus-visible {
+        outline: 2px solid var(--blue-ring);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      .side-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        margin: 0.75rem 0 0.45rem;
+      }
+
+      .side-label:first-of-type {
+        margin-top: 0;
+      }
+
+      .input-side {
+        width: 100%;
+        padding: 0.5rem 0.65rem;
+        font-size: 0.8125rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        outline: none;
+        font-family: inherit;
+      }
+
+      .input-side:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px var(--blue-ring);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+
+      .pill {
+        padding: 0.28rem 0.55rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .pill:hover {
+        border-color: var(--blue-ring);
+        color: var(--text);
+        background: var(--blue-soft);
+      }
+
+      .pill.is-active {
+        background: var(--blue-soft);
+        border-color: var(--blue-ring);
+        color: var(--pill-text);
+        font-weight: 600;
+      }
+
+      .ctx-slider-wrap {
+        margin-top: 0.35rem;
+      }
+
+      .ctx-marks {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.65rem;
+        color: var(--muted-2);
+        margin-top: 0.25rem;
+      }
+
+      /* 自定义滑块：无轨道描边，与首页灰阶协调 */
+      input[type="range"].ctx-range {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 1.25rem;
+        margin: 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+
+      input[type="range"].ctx-range:focus {
+        outline: none;
+      }
+
+      input[type="range"].ctx-range:focus-visible {
+        outline: 2px solid var(--blue-ring);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      input[type="range"].ctx-range::-webkit-slider-runnable-track {
+        height: 5px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        border: none;
+        box-shadow: none;
+      }
+
+      input[type="range"].ctx-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        margin-top: -5px;
+        border-radius: 50%;
+        background: var(--blue);
+        border: none;
+        box-shadow: 0 1px 2px rgba(37, 99, 235, 0.35);
+        cursor: pointer;
+      }
+
+      input[type="range"].ctx-range::-moz-range-track {
+        height: 5px;
+        border-radius: 999px;
+        background: var(--surface-2);
+        border: none;
+        box-shadow: none;
+      }
+
+      input[type="range"].ctx-range::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border: none;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 1px 2px rgba(37, 99, 235, 0.35);
+        cursor: pointer;
+      }
+
+      input[type="range"].ctx-range::-moz-focus-outer {
+        border: 0;
+      }
+
+      .cap-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .cap-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8125rem;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font-family: inherit;
+        text-align: left;
+      }
+
+      .cap-btn:hover {
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .cap-btn.is-active {
+        background: var(--blue-soft);
+        color: var(--pill-text);
+        border-color: var(--blue-ring);
+        font-weight: 600;
+      }
+
+      .cap-btn .n {
+        font-size: 0.75rem;
+        color: var(--muted-2);
+        font-weight: 600;
+      }
+
+      .cap-btn.is-active .n {
+        color: var(--pill-text);
+      }
+
+      /* 侧栏：参考 OpenRouter 的补充筛选项（折叠，低对比） */
+      .filter-details {
+        border-top: 1px solid var(--border);
+        margin-top: 0.65rem;
+        padding-top: 0.5rem;
+      }
+
+      .filter-details summary {
+        list-style: none;
+        cursor: pointer;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        user-select: none;
+      }
+
+      .filter-details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .filter-details summary::after {
+        content: "";
+        width: 0.3rem;
+        height: 0.3rem;
+        border-right: 1.5px solid var(--muted-2);
+        border-bottom: 1.5px solid var(--muted-2);
+        transform: rotate(45deg);
+        opacity: 0.8;
+      }
+
+      .filter-details[open] summary::after {
+        transform: rotate(-135deg);
+      }
+
+      .filter-checks {
+        margin-top: 0.55rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .filter-checks label {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      /* 自定义复选框：主题蓝 + 细线对勾（原生控件无法调勾线粗细） */
+      .filter-checks input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+        border-radius: 4px;
+        border: 1px solid var(--border-strong);
+        background-color: var(--bg);
+        background-image: none;
+        cursor: pointer;
+        vertical-align: middle;
+        transition: border-color 0.12s ease, background-color 0.12s ease;
+      }
+
+      .filter-checks input[type="checkbox"]:hover {
+        border-color: var(--muted-2);
+        background-color: var(--surface);
+      }
+
+      .filter-checks input[type="checkbox"]:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--blue-ring);
+      }
+
+      .filter-checks input[type="checkbox"]:checked {
+        background-color: var(--blue);
+        border-color: var(--blue);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2.5%205.2%20L4.4%207.1%20L7.9%202.9' stroke='%23ffffff' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-size: 0.52rem 0.52rem;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .filter-checks input[type="checkbox"]:checked:hover {
+        background-color: var(--pill-text);
+        border-color: var(--pill-text);
+      }
+
+      .btn-filter-mobile {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-bottom: 0.75rem;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg);
+        color: var(--muted);
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .btn-filter-mobile:hover {
+        border-color: var(--blue-ring);
+        background: var(--blue-soft);
+        color: var(--pill-text);
+      }
+
+      @media (min-width: 900px) {
+        .btn-filter-mobile {
+          display: none;
+        }
+      }
+
+      .catalog {
+        flex: 1;
+        min-width: 0;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.15rem 1.25rem 1.5rem;
+      }
+
+      .catalog-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.35rem 0.85rem 0.35rem 0.65rem;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        border: 1px solid var(--blue-ring);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--pill-text);
+        margin-bottom: 0.85rem;
+      }
+
+      .catalog-eyebrow-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--blue);
+        flex-shrink: 0;
+      }
+
+      .catalog-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        align-items: center;
+        margin-bottom: 0.85rem;
+      }
+
+      .search-main-wrap {
+        flex: 1;
+        min-width: 200px;
+        position: relative;
+      }
+
+      .search-main-wrap svg {
+        position: absolute;
+        left: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        color: var(--muted-2);
+        pointer-events: none;
+      }
+
+      .search-main-wrap:focus-within svg {
+        color: var(--blue);
+      }
+
+      .search-main {
+        width: 100%;
+        padding: 0.65rem 1rem 0.65rem 2.65rem;
+        font-size: 0.9375rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--bg);
+        outline: none;
+        font-family: inherit;
+      }
+
+      .search-main:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px var(--blue-ring);
+      }
+
+      .sort-select {
+        padding: 0.55rem 2rem 0.55rem 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg);
+        cursor: pointer;
+        font-family: inherit;
+        color: var(--text);
+        appearance: none;
+        outline: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.55rem center;
+      }
+
+      .sort-select:hover {
+        border-color: var(--blue-ring);
+      }
+
+      .sort-select:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px var(--blue-ring);
+      }
+
+      .catalog-sub {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: space-between;
+        margin-bottom: 0.85rem;
+      }
+
+      .quick-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+
+      .quick-pill {
+        padding: 0.3rem 0.65rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--muted);
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .quick-pill:hover {
+        border-color: var(--blue-ring);
+        background: var(--blue-soft);
+        color: var(--text);
+      }
+
+      .quick-pill.is-active {
+        background: var(--blue-soft);
+        border-color: var(--blue-ring);
+        color: var(--pill-text);
+        font-weight: 600;
+      }
+
+      .view-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .count-models {
+        font-size: 0.8125rem;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      /* 模型列表：无卡片，仅以分隔线与 OpenRouter 式信息结构 */
+      .model-list {
+        border-top: 1px solid var(--border);
+        margin-top: 0.35rem;
+      }
+
+      .m-card {
+        margin: 0;
+        padding: 1.15rem 0 1.2rem;
+        border: none;
+        border-bottom: 1px solid var(--border);
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        display: block;
+        transition: border-color 0.12s ease;
+      }
+
+      .m-card:hover {
+        border-bottom-color: var(--blue-ring);
+        box-shadow: none;
+      }
+
+      .m-card:last-child {
+        border-bottom: none;
+      }
+
+      .m-card.hidden {
+        display: none;
+      }
+
+      .m-name {
+        margin: 0 0 0.35rem;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .m-path {
+        font-size: 0.8125rem;
+        font-family: ui-monospace, monospace;
+        color: var(--muted-2);
+        margin: 0 0 0.65rem;
+        line-height: 1.4;
+      }
+
+      .m-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0 0 0.55rem;
+      }
+
+      .m-tags span {
+        font-size: 0.6875rem;
+        padding: 0.12rem 0.45rem;
+        border-radius: 999px;
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .m-tags span:hover {
+        border-color: var(--blue-ring);
+        color: var(--pill-text);
+      }
+
+      .m-desc {
+        margin: 0 0 0.75rem;
+        font-size: 0.9375rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .m-meta {
+        font-size: 0.8125rem;
+        color: var(--muted-2);
+        line-height: 1.55;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.25rem 0.35rem;
+      }
+
+      .m-meta-a {
+        color: var(--blue);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .m-meta-a:hover {
+        color: var(--purple);
+      }
+
+      .m-meta-dot {
+        color: var(--border-strong);
+        user-select: none;
+      }
+
+      .m-meta time {
+        color: inherit;
+        font: inherit;
+      }
+
+      .m-trend {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted-2);
+      }
+
+      .m-trend.is-up {
+        color: var(--pill-text);
+      }
+
+      .m-trend.is-down {
+        color: var(--purple);
+      }
+
+      .m-trend.is-flat {
+        font-weight: 500;
+      }
+
+      .page-foot {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.75rem;
+        color: var(--muted-2);
+        border-top: 1px solid var(--border);
+        background: var(--bg);
+      }
+    </style>
+    <script>
+      try {
+        var _t = localStorage.getItem("trinity_or_theme");
+        if (_t === "light" || _t === "dark") document.documentElement.setAttribute("data-theme", _t);
+        else document.documentElement.setAttribute("data-theme", "system");
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="or-site">
+    <a class="skip" href="#main">跳转至正文</a>
+    <header class="or-inject" data-or-page="models"></header>
+
+    <div class="filters-backdrop" id="filters-backdrop" aria-hidden="true"></div>
+
+    <div class="models-shell" id="main">
+      <button type="button" class="btn-filter-mobile" id="btn-open-filters">筛选</button>
+
+      <aside class="sidebar" id="sidebar" aria-label="筛选条件">
+        <div class="side-head">
+          <h2>筛选</h2>
+          <button type="button" class="link-reset" id="btn-reset">重置</button>
+        </div>
+        <div class="side-label">筛选搜索</div>
+        <input type="search" class="input-side" id="side-search" placeholder="提供商、模型名…" autocomplete="off" />
+
+        <div class="side-label">提供商</div>
+        <div class="pill-row" id="provider-pills">
+          <button type="button" class="pill is-active" data-provider="all">全部</button>
+          <button type="button" class="pill" data-provider="openai">OpenAI</button>
+          <button type="button" class="pill" data-provider="anthropic">Anthropic</button>
+          <button type="button" class="pill" data-provider="google">Google</button>
+          <button type="button" class="pill" data-provider="deepseek">DeepSeek</button>
+          <button type="button" class="pill" data-provider="meta">Meta</button>
+          <button type="button" class="pill" data-provider="xai">xAI</button>
+          <button type="button" class="pill" data-provider="mistral">Mistral</button>
+          <button type="button" class="pill" data-provider="cohere">Cohere</button>
+          <button type="button" class="pill" data-provider="stability">Stability</button>
+          <button type="button" class="pill" data-provider="elevenlabs">ElevenLabs</button>
+        </div>
+
+        <div class="side-label">上下文</div>
+        <div class="ctx-slider-wrap">
+          <input type="range" class="ctx-range" id="ctx-range" min="0" max="4" value="0" aria-valuetext="全部" />
+          <div class="ctx-marks">
+            <span>全部</span><span>4K</span><span>64K</span><span>256K</span><span>1M</span>
+          </div>
+        </div>
+
+        <div class="side-label">模态</div>
+        <div class="cap-list" id="cap-list">
+          <button type="button" class="cap-btn is-active" data-cap="all"><span>全部</span><span class="n">12</span></button>
+          <button type="button" class="cap-btn" data-cap="文本"><span>文本</span><span class="n">8</span></button>
+          <button type="button" class="cap-btn" data-cap="图像"><span>图像</span><span class="n">4</span></button>
+          <button type="button" class="cap-btn" data-cap="向量"><span>向量</span><span class="n">1</span></button>
+          <button type="button" class="cap-btn" data-cap="音频"><span>音频</span><span class="n">2</span></button>
+          <button type="button" class="cap-btn" data-cap="视频"><span>视频</span><span class="n">1</span></button>
+          <button type="button" class="cap-btn" data-cap="重排"><span>重排</span><span class="n">1</span></button>
+          <button type="button" class="cap-btn" data-cap="语音"><span>语音</span><span class="n">1</span></button>
+        </div>
+
+        <details class="filter-details" open>
+          <summary>输入模态</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> 文本</label>
+            <label><input type="checkbox" checked /> 图像</label>
+            <label><input type="checkbox" checked /> 音频</label>
+            <label><input type="checkbox" checked /> 视频 / 向量</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>提示计价</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> 免费额度</label>
+            <label><input type="checkbox" checked /> &lt; $1 / M</label>
+            <label><input type="checkbox" checked /> $1 – $10 / M</label>
+            <label><input type="checkbox" checked /> &gt; $10 / M</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>系列 / 家族</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> GPT</label>
+            <label><input type="checkbox" checked /> Claude</label>
+            <label><input type="checkbox" checked /> Gemini</label>
+            <label><input type="checkbox" checked /> Llama</label>
+            <label><input type="checkbox" checked /> Mistral / 其他</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>能力标签</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> 工具调用</label>
+            <label><input type="checkbox" checked /> 视觉</label>
+            <label><input type="checkbox" checked /> JSON 模式</label>
+            <label><input type="checkbox" checked /> 推理链</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>支持参数</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> tools</label>
+            <label><input type="checkbox" checked /> temperature</label>
+            <label><input type="checkbox" checked /> top_p</label>
+            <label><input type="checkbox" checked /> max_tokens</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>数据与路由</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" /> 零数据留存（ZDR）</label>
+            <label><input type="checkbox" /> 区域内路由</label>
+            <label><input type="checkbox" /> 可蒸馏</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>推理后端</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> 直连厂商</label>
+            <label><input type="checkbox" checked /> Azure</label>
+            <label><input type="checkbox" checked /> AWS Bedrock</label>
+            <label><input type="checkbox" checked /> GCP</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>作者 / 组织</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" checked /> openai</label>
+            <label><input type="checkbox" checked /> anthropic</label>
+            <label><input type="checkbox" checked /> google</label>
+            <label><input type="checkbox" checked /> meta</label>
+            <label><input type="checkbox" checked /> 其他</label>
+          </div>
+        </details>
+        <details class="filter-details">
+          <summary>其他</summary>
+          <div class="filter-checks">
+            <label><input type="checkbox" /> 显示已下线模型</label>
+            <label><input type="checkbox" checked /> 隐藏预览版</label>
+          </div>
+        </details>
+      </aside>
+
+      <section class="catalog" aria-label="模型列表">
+        <div class="catalog-eyebrow">
+          <span class="catalog-eyebrow-dot" aria-hidden="true"></span>
+          模型目录 · 示例数据
+        </div>
+        <div class="catalog-top">
+          <div class="search-main-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input type="search" class="search-main" id="main-search" placeholder="筛选模型…" autocomplete="off" aria-label="筛选模型" />
+          </div>
+          <select class="sort-select" id="sort-select" aria-label="排序">
+            <option value="name">名称</option>
+            <option value="newest" selected>最新</option>
+            <option value="ctx">上下文从大到小</option>
+            <option value="price-asc">输入价格从低到高</option>
+          </select>
+        </div>
+
+        <div class="catalog-sub">
+          <div class="quick-pills" id="quick-pills">
+            <button type="button" class="quick-pill is-active" data-cap="all">全部</button>
+            <button type="button" class="quick-pill" data-cap="文本">文本 8</button>
+            <button type="button" class="quick-pill" data-cap="图像">图像 4</button>
+            <button type="button" class="quick-pill" data-cap="向量">向量 1</button>
+            <button type="button" class="quick-pill" data-cap="音频">音频 2</button>
+            <button type="button" class="quick-pill" data-cap="视频">视频 1</button>
+            <button type="button" class="quick-pill" data-cap="重排">重排 1</button>
+            <button type="button" class="quick-pill" data-cap="语音">语音 1</button>
+          </div>
+          <div class="view-row">
+            <span class="count-models" id="model-count">共 12 个模型</span>
+          </div>
+        </div>
+
+        <div class="model-list" id="grid">
+              <article
+                class="m-card"
+                data-model-id="1"
+                data-provider="openai"
+                data-ctx="256"
+                data-cats="文本,图像"
+                data-name="openai gpt-5.4 gpt-5.4 openai: gpt-5.4"
+                data-sort="1"
+                data-date="2026-05-07"
+                data-price-in="2.5"
+              >
+                <h3 class="m-name">OpenAI: GPT-5.4</h3>
+                <div class="m-path">openai/gpt-5.4</div>
+                <div class="m-tags"><span>文本</span><span>图像</span></div>
+                <p class="m-desc">通用对话与工具调用均衡，吞吐高，适合产品与研发日常接入。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">openai</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-05-07">2026-05-07</time><span class="m-meta-dot" aria-hidden="true">·</span><span>256K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2.5/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$10/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-up">+8.6%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="2"
+                data-provider="anthropic"
+                data-ctx="200"
+                data-cats="文本"
+                data-name="anthropic claude opus anthropic: claude opus 4.7"
+                data-sort="2"
+                data-date="2026-04-28"
+                data-price-in="15"
+              >
+                <h3 class="m-name">Anthropic: Claude Opus 4.7</h3>
+                <div class="m-path">anthropic/claude-opus-4.7</div>
+                <div class="m-tags"><span>文本</span></div>
+                <p class="m-desc">长上下文推理与代码能力强，适合复杂分析与安全敏感场景。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">anthropic</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-28">2026-04-28</time><span class="m-meta-dot" aria-hidden="true">·</span><span>200K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$15/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$75/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="3"
+                data-provider="google"
+                data-ctx="1024"
+                data-cats="文本,图像"
+                data-name="google gemini google: gemini 3.1 pro preview"
+                data-sort="3"
+                data-date="2026-04-27"
+                data-price-in="2"
+              >
+                <h3 class="m-name">Google: Gemini 3.1 Pro Preview</h3>
+                <div class="m-path">google/gemini-3.1-pro-preview</div>
+                <div class="m-tags"><span>文本</span><span>图像</span></div>
+                <p class="m-desc">多模态与超长上下文预览版，适合研究、文档与媒体流水线。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">google</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-27">2026-04-27</time><span class="m-meta-dot" aria-hidden="true">·</span><span>1M 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$12/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-up">+3.1%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="4"
+                data-provider="deepseek"
+                data-ctx="64"
+                data-cats="文本"
+                data-name="deepseek r1 deepseek: deepseek r1"
+                data-sort="4"
+                data-date="2026-04-20"
+                data-price-in="0.55"
+              >
+                <h3 class="m-name">DeepSeek: DeepSeek R1</h3>
+                <div class="m-path">deepseek/deepseek-r1</div>
+                <div class="m-tags"><span>文本</span></div>
+                <p class="m-desc">推理链与数学表现突出，性价比高，适合离线批处理与评测。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">deepseek</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-20">2026-04-20</time><span class="m-meta-dot" aria-hidden="true">·</span><span>64K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$0.55/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2.19/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-up">+12.4%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="5"
+                data-provider="meta"
+                data-ctx="128"
+                data-cats="文本,图像"
+                data-name="meta llama maverick meta: llama 4 maverick"
+                data-sort="5"
+                data-date="2026-04-18"
+                data-price-in="0.18"
+              >
+                <h3 class="m-name">Meta: Llama 4 Maverick</h3>
+                <div class="m-path">meta/llama-4-maverick</div>
+                <div class="m-tags"><span>文本</span><span>图像</span></div>
+                <p class="m-desc">开放权重路线上的多模态旗舰，适合私有化与二次微调。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">meta</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-18">2026-04-18</time><span class="m-meta-dot" aria-hidden="true">·</span><span>128K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$0.18/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$0.59/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="6"
+                data-provider="xai"
+                data-ctx="128"
+                data-cats="文本,图像"
+                data-name="xai grok x-ai grok 2"
+                data-sort="6"
+                data-date="2026-04-15"
+                data-price-in="2"
+              >
+                <h3 class="m-name">xAI: Grok 2</h3>
+                <div class="m-path">x-ai/grok-2</div>
+                <div class="m-tags"><span>文本</span><span>图像</span></div>
+                <p class="m-desc">实时信息倾向与对话风格鲜明，适合营销与探索式任务。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">x-ai</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-15">2026-04-15</time><span class="m-meta-dot" aria-hidden="true">·</span><span>128K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$10/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-down">−2.0%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="7"
+                data-provider="mistral"
+                data-ctx="128"
+                data-cats="文本"
+                data-name="mistral large mistral: mistral large"
+                data-sort="7"
+                data-date="2026-04-12"
+                data-price-in="2"
+              >
+                <h3 class="m-name">Mistral: Mistral Large</h3>
+                <div class="m-path">mistral/mistral-large-latest</div>
+                <div class="m-tags"><span>文本</span></div>
+                <p class="m-desc">欧洲时区友好，工具调用与多语言均衡，适合合规混合云。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">mistral</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-12">2026-04-12</time><span class="m-meta-dot" aria-hidden="true">·</span><span>128K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$6/M 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-up">+1.2%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="8"
+                data-provider="cohere"
+                data-ctx="4"
+                data-cats="重排,文本"
+                data-name="cohere rerank cohere: rerank 3.5"
+                data-sort="8"
+                data-date="2026-04-10"
+                data-price-in="2"
+              >
+                <h3 class="m-name">Cohere: Rerank 3.5</h3>
+                <div class="m-path">cohere/rerank-v3.5</div>
+                <div class="m-tags"><span>重排</span><span>文本</span></div>
+                <p class="m-desc">检索与 RAG 重排专用，延迟低，可与任意生成模型组合。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">cohere</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-10">2026-04-10</time><span class="m-meta-dot" aria-hidden="true">·</span><span>4K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$2/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>— 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="9"
+                data-provider="openai"
+                data-ctx="8"
+                data-cats="向量"
+                data-name="openai embedding openai: embedding 3 large"
+                data-sort="9"
+                data-date="2026-04-08"
+                data-price-in="0.13"
+              >
+                <h3 class="m-name">OpenAI: Embedding 3 Large</h3>
+                <div class="m-path">openai/text-embedding-3-large</div>
+                <div class="m-tags"><span>向量</span></div>
+                <p class="m-desc">高维向量检索与聚类，适合知识库与语义搜索底座。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">openai</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-08">2026-04-08</time><span class="m-meta-dot" aria-hidden="true">·</span><span>8K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>$0.13/M 输入</span><span class="m-meta-dot" aria-hidden="true">·</span><span>— 输出</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-up">+0.4%</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="10"
+                data-provider="elevenlabs"
+                data-ctx="0"
+                data-cats="语音,音频"
+                data-name="elevenlabs tts elevenlabs: eleven multilingual v2"
+                data-sort="10"
+                data-date="2026-04-05"
+                data-price-in="999"
+              >
+                <h3 class="m-name">ElevenLabs: Eleven Multilingual v2</h3>
+                <div class="m-path">elevenlabs/eleven-multilingual-v2</div>
+                <div class="m-tags"><span>语音</span><span>音频</span></div>
+                <p class="m-desc">多语种语音合成，自然度高，适合客服与内容播报。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">elevenlabs</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-05">2026-04-05</time><span class="m-meta-dot" aria-hidden="true">·</span><span>— 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>按字符</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="11"
+                data-provider="stability"
+                data-ctx="0"
+                data-cats="图像"
+                data-name="stability sd stability: sdxl 1.0"
+                data-sort="11"
+                data-date="2026-04-03"
+                data-price-in="999"
+              >
+                <h3 class="m-name">Stability: SDXL 1.0</h3>
+                <div class="m-path">stability/stable-diffusion-xl</div>
+                <div class="m-tags"><span>图像</span></div>
+                <p class="m-desc">图像生成与编辑工作流，适合营销物料与概念稿快速迭代。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">stability</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-03">2026-04-03</time><span class="m-meta-dot" aria-hidden="true">·</span><span>— 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>按张</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+
+              <article
+                class="m-card"
+                data-model-id="12"
+                data-provider="google"
+                data-ctx="32"
+                data-cats="视频,文本"
+                data-name="google veo google: veo preview"
+                data-sort="12"
+                data-date="2026-04-01"
+                data-price-in="999"
+              >
+                <h3 class="m-name">Google: Veo Preview</h3>
+                <div class="m-path">google/veo-preview</div>
+                <div class="m-tags"><span>视频</span><span>文本</span></div>
+                <p class="m-desc">短视频生成预览，适合脚本到分镜的创意验证。</p>
+                <div class="m-meta">
+                  <span>由 <a href="#" class="m-meta-a">google</a></span><span class="m-meta-dot" aria-hidden="true">·</span><time datetime="2026-04-01">2026-04-01</time><span class="m-meta-dot" aria-hidden="true">·</span><span>32K 上下文</span><span class="m-meta-dot" aria-hidden="true">·</span><span>按秒</span><span class="m-meta-dot" aria-hidden="true">·</span><span class="m-trend is-flat">—</span>
+                </div>
+              </article>
+        </div>
+      </section>
+    </div>
+
+    <footer class="page-foot">
+      <a href="../index.html" class="text-link">← 返回首页</a>
+      ·
+      <span>© 2026 Trinity AI</span>
+    </footer>
+
+    <script src="../static/trinity-ai-app-shell.js"></script>
+    <script src="../static/ui-lang-toggle.js"></script>
+    <script>
+      (function () {
+        var grid = document.getElementById("grid");
+        var cards = function () {
+          return grid ? Array.prototype.slice.call(grid.querySelectorAll(".m-card")) : [];
+        };
+        var sideSearch = document.getElementById("side-search");
+        var mainSearch = document.getElementById("main-search");
+        var ctxRange = document.getElementById("ctx-range");
+        var modelCountEl = document.getElementById("model-count");
+        var activeProvider = "all";
+        var activeCap = "all";
+
+        var ctxSteps = [0, 4, 64, 256, 1024];
+
+        function setFiltersOpen(open) {
+          document.body.classList.toggle("filters-open", open);
+        }
+        document.getElementById("btn-open-filters") &&
+          document.getElementById("btn-open-filters").addEventListener("click", function () {
+            setFiltersOpen(true);
+          });
+        document.getElementById("filters-backdrop") &&
+          document.getElementById("filters-backdrop").addEventListener("click", function () {
+            setFiltersOpen(false);
+          });
+
+        function syncCapUi(cap) {
+          activeCap = cap;
+          document.querySelectorAll("#cap-list .cap-btn").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-cap") === cap);
+          });
+          document.querySelectorAll("#quick-pills .quick-pill").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-cap") === cap);
+          });
+        }
+
+        function syncProviderUi(p) {
+          activeProvider = p;
+          document.querySelectorAll("#provider-pills .pill").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-provider") === p);
+          });
+        }
+
+        function cardCtxNum(el) {
+          var v = parseInt(el.getAttribute("data-ctx"), 10);
+          return isNaN(v) ? 0 : v;
+        }
+
+        function priceInNum(el) {
+          var v = parseFloat((el && el.getAttribute("data-price-in")) || "");
+          if (isNaN(v) || v >= 500) return Infinity;
+          return v;
+        }
+
+        function rowMatches(row, q, minCtx) {
+          var prov = row.getAttribute("data-provider");
+          var cats = (row.getAttribute("data-cats") || "").split(",");
+          var okProv = activeProvider === "all" || prov === activeProvider;
+          var okCap = activeCap === "all" || cats.indexOf(activeCap) !== -1;
+          var okCtx = minCtx === 0 || cardCtxNum(row) >= minCtx;
+          var hay = (row.getAttribute("data-name") || "") + " " + row.textContent;
+          var okQ = !q || hay.toLowerCase().indexOf(q) !== -1;
+          return okProv && okCap && okCtx && okQ;
+        }
+
+        function applyFilters() {
+          var q1 = (sideSearch && sideSearch.value) || "";
+          var q2 = (mainSearch && mainSearch.value) || "";
+          var q = (q1 + " " + q2).trim().toLowerCase();
+          var minCtx = ctxSteps[parseInt(ctxRange && ctxRange.value ? ctxRange.value : "0", 10) || 0];
+          var visible = 0;
+          cards.forEach(function (card) {
+            var show = rowMatches(card, q, minCtx);
+            card.classList.toggle("hidden", !show);
+            if (show) visible++;
+          });
+          if (modelCountEl) modelCountEl.textContent = "共 " + visible + " 个模型";
+        }
+
+        document.querySelectorAll("#provider-pills .pill").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            syncProviderUi(btn.getAttribute("data-provider") || "all");
+            applyFilters;
+          });
+        });
+
+        document.querySelectorAll("#cap-list .cap-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            syncCapUi(btn.getAttribute("data-cap") || "all");
+            applyFilters;
+          });
+        });
+
+        document.querySelectorAll("#quick-pills .quick-pill").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            syncCapUi(btn.getAttribute("data-cap") || "all");
+            applyFilters;
+          });
+        });
+
+        if (sideSearch) sideSearch.addEventListener("input", applyFilters);
+        if (mainSearch) mainSearch.addEventListener("input", applyFilters);
+        if (ctxRange) {
+          ctxRange.addEventListener("input", applyFilters);
+        }
+
+        document.getElementById("btn-reset") &&
+          document.getElementById("btn-reset").addEventListener("click", function () {
+            if (sideSearch) sideSearch.value = "";
+            if (mainSearch) mainSearch.value = "";
+            if (ctxRange) ctxRange.value = "0";
+            syncProviderUi("all");
+            syncCapUi("all");
+            applyFilters;
+          });
+
+        var sortSelect = document.getElementById("sort-select");
+        if (sortSelect && grid) {
+          sortSelect.addEventListener("change", function () {
+            var items = cards;
+            var mode = sortSelect.value;
+            items.sort(function (a, b) {
+              var na = (a.getAttribute("data-name") || "").localeCompare(b.getAttribute("data-name") || "");
+              if (mode === "name") return na;
+              if (mode === "newest") {
+                var da = a.getAttribute("data-date") || "";
+                var db = b.getAttribute("data-date") || "";
+                if (da && db) return db.localeCompare(da);
+                return parseInt(b.getAttribute("data-sort"), 10) - parseInt(a.getAttribute("data-sort"), 10);
+              }
+              if (mode === "ctx") return cardCtxNum(b) - cardCtxNum(a);
+              if (mode === "price-asc") return priceInNum(a) - priceInNum(b);
+              return 0;
+            });
+            items.forEach(function (el) {
+              grid.appendChild(el);
+            });
+          });
+        }
+
+        applyFilters;
+      });
+    </script>
+  </body>
+</html>

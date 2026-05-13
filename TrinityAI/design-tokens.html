@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trinity 套件设计 token 与色板：摘自全局样式，供评审与实现对齐。版式与筛选双轨约定见并列的设计规范页。" />
+    <title>设计色板 · Trinity AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/trinity-base.css" />
+    <style>
+      .dt-main {
+        flex: 1;
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1.25rem var(--page-gutter) 2.5rem;
+        box-sizing: border-box;
+      }
+
+      .dt-hero {
+        margin-bottom: 1.75rem;
+      }
+
+      .dt-hero h1 {
+        margin: 0 0 0.35rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .dt-hero p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+
+      .dt-theme-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .dt-theme-bar span {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        margin-right: 0.25rem;
+      }
+
+      .dt-theme-btn {
+        padding: 0.35rem 0.65rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        font: inherit;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .dt-theme-btn:hover {
+        border-color: var(--border-strong);
+        color: var(--text);
+      }
+
+      .dt-theme-btn.is-active {
+        border-color: rgba(37, 99, 235, 0.45);
+        color: var(--blue);
+        background: var(--blue-soft);
+      }
+
+      .dt-section {
+        margin-bottom: 2rem;
+      }
+
+      .dt-section h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dt-section-desc {
+        margin: 0 0 0.85rem;
+        font-size: 0.8125rem;
+        color: var(--muted-2);
+        line-height: 1.5;
+      }
+
+      .dt-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .dt-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dt-swatch {
+        height: 4.25rem;
+        flex-shrink: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dt-swatch--grad {
+        background: var(--grad);
+      }
+
+      .dt-swatch--grad-hover {
+        background: var(--grad-hover);
+      }
+
+      .dt-card-body {
+        padding: 0.55rem 0.65rem 0.65rem;
+      }
+
+      .dt-var {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--blue);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        word-break: break-all;
+      }
+
+      .dt-hex {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.6875rem;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        line-height: 1.4;
+      }
+
+      .dt-atom-desc {
+        margin: 0.35rem 0 0;
+        font-size: 0.6875rem;
+        line-height: 1.45;
+        color: var(--muted-2);
+      }
+
+      .dt-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.65rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        margin-bottom: 0.5rem;
+      }
+
+      .dt-row code {
+        min-width: 10rem;
+        font-size: 0.75rem;
+        color: var(--blue);
+      }
+
+      .dt-row-val {
+        font-size: 0.8125rem;
+        color: var(--text);
+        word-break: break-all;
+      }
+
+      .dt-type-sample {
+        font-size: 1.125rem;
+        font-weight: 600;
+        font-family: var(--font);
+        color: var(--text);
+      }
+
+      .dt-type-meta {
+        margin-top: 0.35rem;
+        font-size: 0.75rem;
+        color: var(--muted-2);
+      }
+
+      .dt-grad-syntax {
+        margin-top: 0.85rem;
+        padding: 0.65rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface-2);
+      }
+
+      .dt-grad-syntax p {
+        margin: 0 0 0.5rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .dt-grad-syntax pre {
+        margin: 0;
+        font-size: 0.6875rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: var(--text);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      .dt-scene-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 0.75rem;
+        max-width: 520px;
+      }
+
+      .dt-scene-card .dt-swatch {
+        position: relative;
+      }
+
+      .dt-scene-card .dt-swatch::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0.75rem;
+        right: 0.75rem;
+        height: 3px;
+        border-radius: 0 0 6px 6px;
+        background: var(--grad);
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      .dt-scene-rules {
+        margin: 0 0 0.85rem;
+        padding-left: 1.25rem;
+        font-size: 0.8125rem;
+        color: var(--muted-2);
+        line-height: 1.6;
+      }
+
+      .dt-scene-rules li {
+        margin-bottom: 0.45rem;
+      }
+
+      .dt-scene-rules li:last-child {
+        margin-bottom: 0;
+      }
+
+      .dt-scene-rules code {
+        font-size: 0.75rem;
+      }
+
+      .dt-subsection-title {
+        margin: 1.35rem 0 0.4rem;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .dt-subsection-desc {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--muted-2);
+        line-height: 1.5;
+      }
+
+      /* 与 app/chat/chat-openrouter.css .orc-send 一致，仅用于本页样例（不引入对话样式表） */
+      .dt-sample-orc-send {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: var(--grad);
+        color: var(--on-primary);
+        cursor: default;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 1px 4px rgba(37, 99, 235, 0.35);
+        flex-shrink: 0;
+      }
+
+      .dt-sample-orc-send:hover {
+        background: var(--grad-hover);
+      }
+
+      .dt-sample-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .dt-sample-stack a.btn {
+        text-decoration: none;
+      }
+
+      .dt-sample-block {
+        padding: 0.85rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+      }
+
+      .dt-sample-label {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .dt-sample-caption {
+        margin: 0.4rem 0 0;
+        font-size: 0.6875rem;
+        color: var(--muted-2);
+        line-height: 1.45;
+      }
+
+      .dt-sample-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dt-composer-mock {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.5rem;
+        padding: 0.65rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--bg);
+        max-width: 420px;
+      }
+
+      .dt-composer-mock-input {
+        flex: 1;
+        min-width: 0;
+        min-height: 2.65rem;
+        padding: 0.5rem 0.65rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--muted-2);
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .dt-token-use-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+      }
+
+      .dt-token-use-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        padding: 0.75rem 0.85rem;
+      }
+
+      .dt-token-use-name {
+        margin: 0 0 0.45rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .dt-token-use-sample {
+        margin: 0 0 0.5rem;
+        min-height: 2.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dt-token-use-ref {
+        margin: 0;
+        font-size: 0.6875rem;
+        color: var(--muted-2);
+        line-height: 1.45;
+      }
+
+      .dt-token-use-ref code {
+        font-size: 0.65rem;
+        word-break: break-all;
+      }
+
+      /* 等价于各页 .text-link:hover { color: var(--purple) }，静态展示悬停色 */
+      .dt-token-use-purple {
+        color: var(--purple) !important;
+      }
+
+      /* 对齐 index.html a.acard:focus-visible 的 outline 色（--blue） */
+      .dt-token-use-acard {
+        display: inline-block;
+        padding: 0.45rem 0.65rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .dt-token-use-acard--ring {
+        outline: 2px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      /* 对齐 models.html .cap-btn.is-active 字色与字重（侧栏「文本」选中行） */
+      .dt-token-use-cap-active {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 220px;
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8125rem;
+        border: 1px solid var(--blue-ring);
+        border-radius: var(--radius);
+        background: var(--blue-soft);
+        color: var(--pill-text);
+        font-weight: 600;
+        font-family: inherit;
+        cursor: default;
+      }
+
+      .dt-token-use-cap-active .n {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--pill-text);
+      }
+
+      .dt-token-use-brand-mini .brand-mark {
+        width: 28px;
+        height: 28px;
+      }
+
+      .dt-token-use-brand-mini .brand-mark svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .dt-pill-token-legend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.65rem;
+        margin-top: 0.15rem;
+        padding-top: 0.5rem;
+        border-top: 1px dashed var(--border);
+        width: 100%;
+      }
+
+      .dt-pill-token-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.65rem;
+        color: var(--muted-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      .dt-pill-token-sq {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        flex-shrink: 0;
+        border: 1px solid rgba(15, 23, 42, 0.12);
+      }
+
+      /* 交互与焦点：常显 ring，对齐 nav.primary a:focus-visible */
+      .dt-inter-primary-focus-demo {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.45rem 0.75rem;
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        border: 1px solid transparent;
+        outline: 2px solid var(--blue-ring);
+        outline-offset: 2px;
+      }
+
+      /* 与 .form-group input:focus 一致，常显便于对照 token */
+      .dt-inter-input-ring-static {
+        border-color: var(--blue) !important;
+        box-shadow: 0 0 0 3px var(--blue-ring) !important;
+      }
+    </style>
+  </head>
+  <body class="or-site" data-or-page="home">
+    <a class="skip" href="#dt-main">跳转至色板</a>
+    <header class="or-inject" data-or-page="home"></header>
+
+    <main class="dt-main" id="dt-main">
+      <div class="dt-hero">
+        <h1>设计色板</h1>
+        <p>摘自 <code>assets/trinity-base.css</code> 的全局 token，换主题可读计算值；筛选版式见 <a href="design-spec.html">设计规范</a>。</p>
+        <div class="dt-theme-bar" role="group" aria-label="预览主题">
+          <span>主题预览</span>
+          <button type="button" class="dt-theme-btn" data-dt-theme="light">浅色</button>
+          <button type="button" class="dt-theme-btn" data-dt-theme="dark">深色</button>
+          <button type="button" class="dt-theme-btn is-active" data-dt-theme="system">跟随系统</button>
+        </div>
+      </div>
+
+      <section class="dt-section" aria-labelledby="dt-cat-brand">
+        <h2 id="dt-cat-brand">品牌与主色</h2>
+        <p class="dt-section-desc">主色、链接紫、药丸字色与 135° 产品渐变（<code>--grad</code> / <code>--grad-hover</code>）。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--blue)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--blue</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">主色、链接与控件描边。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--purple)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--purple</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">链接悬停字色。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--pill-text)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--pill-text</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">选中与眉条字色。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-gradient>
+            <div class="dt-swatch dt-swatch--grad"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--grad</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">主按钮与发送主渐变。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-gradient>
+            <div class="dt-swatch dt-swatch--grad-hover"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--grad-hover</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">主按钮悬停加深渐变。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-token-usage">核心 token 用法与产品样例</h3>
+        <p class="dt-subsection-desc">每个 token 下为一句真实用法说明。</p>
+        <div class="dt-token-use-grid">
+          <div class="dt-token-use-card">
+            <p class="dt-token-use-name"><code>--blue</code></p>
+            <div class="dt-token-use-sample dt-token-use-brand-mini">
+              <span class="brand-mark" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <a href="#" class="text-link" onclick="return false">.text-link</a>
+            </div>
+            <p class="dt-token-use-ref">主品牌、链接、描边与滑块 thumb。</p>
+            <div class="dt-pill-token-legend" style="border-top: none; padding-top: 0.35rem; margin-top: 0.15rem">
+              <a href="#" class="dt-token-use-acard dt-token-use-acard--ring" onclick="return false">能力卡 · 焦点环示意</a>
+            </div>
+          </div>
+          <div class="dt-token-use-card">
+            <p class="dt-token-use-name"><code>--purple</code></p>
+            <div class="dt-token-use-sample">
+              <a href="#" class="text-link dt-token-use-purple" onclick="return false">.text-link 悬停色</a>
+            </div>
+            <p class="dt-token-use-ref">链接与元数据链接悬停字色。</p>
+          </div>
+          <div class="dt-token-use-card" id="dt-pill-text-usage">
+            <p class="dt-token-use-name"><code>--pill-text</code></p>
+            <div class="dt-token-use-sample" style="flex-direction: column; align-items: flex-start; gap: 0.5rem">
+              <div class="mvp-eyebrow" style="margin-bottom: 0">
+                <span class="mvp-eyebrow-dot" aria-hidden="true"></span>首页眉条 .mvp-eyebrow
+              </div>
+              <div class="dt-token-use-cap-active" role="presentation">
+                <span>模型侧栏选中</span><span class="n">8</span>
+              </div>
+              <div class="dt-pill-token-legend" aria-label="该组件外观由三个 token 组成">
+                <span class="dt-pill-token-chip"
+                  ><span class="dt-pill-token-sq" style="background: var(--pill-text)"></span>字色 <code>--pill-text</code></span
+                >
+                <span class="dt-pill-token-chip"
+                  ><span class="dt-pill-token-sq" style="background: var(--blue-soft)"></span>背景 <code>--blue-soft</code></span
+                >
+                <span class="dt-pill-token-chip"
+                  ><span class="dt-pill-token-sq" style="background: var(--blue-ring)"></span>边框 <code>--blue-ring</code></span
+                >
+              </div>
+            </div>
+            <p class="dt-token-use-ref">选中与眉条字色，与 <code>--blue-soft</code> 底、<code>--blue-ring</code> 边成套。</p>
+          </div>
+        </div>
+
+        <div class="dt-grad-syntax" id="dt-grad-syntax" aria-label="渐变变量在 CSS 中的原文"></div>
+
+        <h3 class="dt-subsection-title" id="dt-cat-samples">组件样例</h3>
+        <p class="dt-subsection-desc">主按钮与对话发送钮同款渐变（本页发送钮为本地示意类）。</p>
+
+        <div class="dt-sample-stack">
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">对话页发送钮（<code>.orc-send</code>，同款 token）</p>
+            <div class="dt-composer-mock" aria-label="作曲器条示意">
+              <div class="dt-composer-mock-input">输入消息，Enter 发送…</div>
+              <button type="button" class="dt-sample-orc-send" title="样例，不可点" aria-label="发送（样例）">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
+              </button>
+            </div>
+            <p class="dt-sample-caption">对话页 <code>.orc-send</code> 的色与尺寸在此用示意类复刻。</p>
+          </div>
+
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">主操作按钮（<code>.btn.btn-gradient</code>）</p>
+            <div class="dt-sample-row">
+              <button type="button" class="btn btn-gradient">发送</button>
+              <button type="button" class="btn btn-gradient">保存</button>
+              <button type="button" class="btn btn-gradient">创建密钥</button>
+              <a href="#" class="btn btn-gradient" onclick="return false">立即接入 →</a>
+            </div>
+            <p class="dt-sample-caption">全站主 CTA 使用 <code>.btn.btn-gradient</code>。</p>
+          </div>
+
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">顶栏登录胶囊（<code>button.or-login-pill.btn-gradient</code>）</p>
+            <div class="dt-sample-row">
+              <button type="button" class="btn btn-gradient or-login-pill">登录</button>
+            </div>
+            <p class="dt-sample-caption">顶栏未登录态与壳层注入一致。</p>
+          </div>
+
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">次级线框按钮（<code>.btn</code>，与渐变主钮对比）</p>
+            <div class="dt-sample-row">
+              <button type="button" class="btn">取消</button>
+              <button type="button" class="btn">了解更多</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-surface">
+        <h2 id="dt-cat-surface">背景与表面</h2>
+        <p class="dt-section-desc">页面底、卡片与次级区块层级。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--bg)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--bg</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">页面底色。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--surface)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--surface</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">卡片默认表面。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--surface-2)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--surface-2</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">次级浅台与说明底。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-scene-cards">
+        <h2 id="dt-cat-scene-cards">对话场景卡合成底</h2>
+        <p class="dt-section-desc">对话空状态分类卡整底，由主色透明叠到 <code>--bg</code>，顶条仍用 <code>--grad</code>。</p>
+        <h3 class="dt-subsection-title" id="dt-scene-compose-rules" style="margin-top: 0.35rem">合成规则</h3>
+        <ol class="dt-scene-rules">
+          <li>整底用约 165° 三停线性渐变，起点主色 rgba α 约 0.06–0.12，中段浅灰，末停 <code>var(--bg)</code>。</li>
+          <li>末停必须写 <code>--bg</code> 与页面底色收口。</li>
+          <li>卡边用主色 rgba 描边，β 约 0.10–0.14。</li>
+          <li>顶条高光单独用 <code>--grad</code>，不与整底揉成一条 linear-gradient。</li>
+          <li>换主色只改公式 RGB（与 <code>--grad</code> 色相一致最稳）。</li>
+        </ol>
+        <div class="dt-scene-grid">
+          <article class="dt-card dt-scene-card" data-dt-color>
+            <div
+              class="dt-swatch"
+              style="background: var(--orc-scene-card-bg-1); border-bottom: 1px solid var(--orc-scene-card-border-1)"
+            ></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--orc-scene-card-bg-1</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">场景卡合成底（最强）。</p>
+            </div>
+          </article>
+          <article class="dt-card dt-scene-card" data-dt-color>
+            <div
+              class="dt-swatch"
+              style="background: var(--orc-scene-card-bg-2); border-bottom: 1px solid var(--orc-scene-card-border-2)"
+            ></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--orc-scene-card-bg-2</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">场景卡合成底 2。</p>
+            </div>
+          </article>
+          <article class="dt-card dt-scene-card" data-dt-color>
+            <div
+              class="dt-swatch"
+              style="background: var(--orc-scene-card-bg-3); border-bottom: 1px solid var(--orc-scene-card-border-3)"
+            ></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--orc-scene-card-bg-3</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">场景卡合成底 3。</p>
+            </div>
+          </article>
+          <article class="dt-card dt-scene-card" data-dt-color>
+            <div
+              class="dt-swatch"
+              style="background: var(--orc-scene-card-bg-4); border-bottom: 1px solid var(--orc-scene-card-border-4)"
+            ></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--orc-scene-card-bg-4</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">场景卡合成底（最弱）。</p>
+            </div>
+          </article>
+        </div>
+        <div class="dt-grad-syntax" id="dt-orc-scene-syntax" style="margin-top: 0.85rem"></div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-text">
+        <h2 id="dt-cat-text">文字色阶</h2>
+        <p class="dt-section-desc">正文、次要说明与占位。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--text)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--text</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">正文主字色。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--muted)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--muted</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">次要说明字色。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--muted-2)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--muted-2</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">更弱辅助字色。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-border">
+        <h2 id="dt-cat-border">描边</h2>
+        <p class="dt-section-desc">分割线、卡片与输入框边框。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--border)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--border</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">默认分割线框线。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--border-strong)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--border-strong</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">悬停或略强调描边。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-interaction">
+        <h2 id="dt-cat-interaction">交互与焦点</h2>
+        <p class="dt-section-desc">浅悬停底与焦点环，并与选中态 <code>--pill-text</code> 成套。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--blue-soft)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--blue-soft</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">悬停与选中浅底。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--blue-ring)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--blue-ring</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">焦点与浅描边环。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-inter-samples" style="margin-top: 1rem">样例</h3>
+        <p class="dt-subsection-desc" style="margin-top: 0.35rem">类名来自 <code>trinity-base.css</code>，可悬停查看 token。</p>
+        <div class="dt-sample-stack">
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">子导航 · 悬停与当前（<code>.subnav a</code> / <code>.subnav a.is-active</code>）</p>
+            <nav class="subnav" aria-label="交互 token 示意">
+              <a href="#" onclick="return false">用量</a>
+              <a href="#" class="is-active" onclick="return false">概览</a>
+              <a href="#" onclick="return false">密钥</a>
+            </nav>
+            <p class="dt-sample-caption">悬停软底 + ring 边，当前项加 <code>--pill-text</code>。</p>
+          </div>
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">顶栏主导航 · 键盘焦点（<code>nav.primary a:focus-visible</code>）</p>
+            <div class="dt-sample-row">
+              <a href="#" class="dt-inter-primary-focus-demo" onclick="return false">常显焦点环示意</a>
+            </div>
+            <p class="dt-sample-caption">键盘焦点环为 <code>--blue-ring</code>，此处常显便于对色。</p>
+          </div>
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">表单聚焦（<code>.form-group input:focus</code>）</p>
+            <div class="form-group">
+              <label for="dt-inter-input-live">可聚焦输入框</label>
+              <input id="dt-inter-input-live" type="text" placeholder="点此查看蓝边 + 外扩 ring" autocomplete="off" />
+            </div>
+            <div class="form-group" style="margin-top: 0.65rem">
+              <label for="dt-inter-input-static">示意（常显 ring）</label>
+              <input
+                id="dt-inter-input-static"
+                type="text"
+                readonly
+                value="demo@example.com"
+                class="dt-inter-input-ring-static"
+                tabindex="-1"
+                aria-label="仅展示聚焦态描边与阴影"
+              />
+            </div>
+            <p class="dt-sample-caption">聚焦为蓝边加 <code>--blue-ring</code> 外扩阴影。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-console-pagehead">
+        <h2 id="dt-console-pagehead">控制台 · 页头与筛选</h2>
+        <p class="dt-section-desc">列表页标题与工具同行、筛选与密钥同源，其余见 <a href="design-spec.html">设计规范</a>。</p>
+        <div class="dt-sample-stack">
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">页头行（示意，类名与用量页一致）</p>
+            <div
+              class="dt-console-pagehead-demo"
+              style="padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--bg)"
+            >
+              <header class="or-log-pagehead" style="margin-bottom: 0">
+                <div class="or-log-title-row" style="margin-bottom: 0.35rem">
+                  <h1 class="or-page-title or-log-page-title">用量</h1>
+                  <div class="or-log-toolbar-end">
+                    <button type="button" class="or-icon-btn" title="刷新" aria-label="刷新">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                        <path d="M21 21v-5h-5" />
+                      </svg>
+                    </button>
+                    <button type="button" class="or-icon-btn" aria-label="更多">⋮</button>
+                  </div>
+                </div>
+                <p class="or-lead or-log-lead">副标题单独一行，不与工具抢行。</p>
+              </header>
+            </div>
+            <p class="dt-sample-caption">表上说明条用 <code>.or-keys-toolbar</code>，勿把筛选塞进表头行。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-glass">
+        <h2 id="dt-cat-glass">弹层与玻璃态</h2>
+        <p class="dt-section-desc">登录等模态壳层背景、边与阴影变量。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background: var(--or-modal-glass-bg)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--or-modal-glass-bg</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">弹层磨砂背景。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--or-modal-glass-border)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--or-modal-glass-border</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">弹层玻璃边。</p>
+            </div>
+          </article>
+        </div>
+        <div class="dt-row" style="margin-top: 0.75rem">
+          <code>--or-modal-glass-shadow</code>
+          <span class="dt-row-val" id="dt-glass-shadow"></span>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-auth">
+        <h2 id="dt-cat-auth">注册 / 认证（局部 token）</h2>
+        <p class="dt-section-desc">仅注册面板子树继承的强调色与悬停色。</p>
+        <div class="or-auth-panel--signup" style="padding: 0.75rem; border: 1px dashed var(--border); border-radius: var(--radius-lg)">
+          <div class="dt-grid">
+            <article class="dt-card" data-dt-color>
+              <div class="dt-swatch" style="background-color: var(--or-signup-accent)"></div>
+              <div class="dt-card-body">
+                <span class="dt-var">--or-signup-accent</span><span class="dt-hex"></span>
+                <p class="dt-atom-desc">注册面板主强调色。</p>
+              </div>
+            </article>
+            <article class="dt-card" data-dt-color>
+              <div class="dt-swatch" style="background-color: var(--or-signup-accent-hover)"></div>
+              <div class="dt-card-body">
+                <span class="dt-var">--or-signup-accent-hover</span><span class="dt-hex"></span>
+                <p class="dt-atom-desc">注册强调悬停色。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-layout">
+        <h2 id="dt-cat-layout">尺寸与圆角（非色值）</h2>
+        <p class="dt-section-desc">版心与圆角等尺寸 token，与原型文档 §1.4 一致。</p>
+        <div class="dt-row"><code>--radius</code><span class="dt-row-val" data-dt-dimension="--radius"></span></div>
+        <div class="dt-row"><code>--radius-lg</code><span class="dt-row-val" data-dt-dimension="--radius-lg"></span></div>
+        <div class="dt-row"><code>--nav-h</code><span class="dt-row-val" data-dt-dimension="--nav-h"></span></div>
+        <div class="dt-row"><code>--layout-edge</code><span class="dt-row-val" data-dt-dimension="--layout-edge"></span></div>
+        <div class="dt-row"><code>--page-gutter</code><span class="dt-row-val" data-dt-dimension="--page-gutter"></span></div>
+        <div class="dt-row"><code>--max-wide</code><span class="dt-row-val" data-dt-dimension="--max-wide"></span></div>
+      </section>
+
+      <section class="dt-section" aria-labelledby="dt-cat-type">
+        <h2 id="dt-cat-type">字体栈</h2>
+        <p class="dt-section-desc">Inter + Noto Sans SC 全站字体栈。</p>
+        <div class="dt-row" style="flex-direction: column; align-items: flex-start">
+          <code>--font</code>
+          <div class="dt-type-sample">The quick brown 敏捷的棕狐 123456</div>
+          <div class="dt-type-meta" id="dt-font-stack"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var STORAGE_THEME = "trinity_or_theme";
+
+        function rgbToHex(rgb) {
+          if (!rgb || rgb === "transparent") return "—";
+          var m = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+          if (!m) return rgb;
+          var r = (+m[1]).toString(16);
+          var g = (+m[2]).toString(16);
+          var b = (+m[3]).toString(16);
+          return (
+            "#" +
+            (r.length === 1 ? "0" + r : r) +
+            (g.length === 1 ? "0" + g : g) +
+            (b.length === 1 ? "0" + b : b)
+          ).toUpperCase();
+        }
+
+        function readCssVar(name) {
+          return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+        }
+
+        function fillGradients() {
+          document.querySelectorAll("[data-dt-gradient] .dt-hex").forEach(function (el) {
+            var card = el.closest("[data-dt-gradient]");
+            var sw = card && card.querySelector(".dt-swatch");
+            var name = card && card.querySelector(".dt-var");
+            var v = name ? name.textContent.trim() : "";
+            var img = sw ? getComputedStyle(sw).backgroundImage : "none";
+            el.textContent =
+              img && img !== "none"
+                ? img.length > 96
+                  ? img.slice(0, 96) + "…"
+                  : img
+                : "—（未解析到 background-image）";
+          });
+        }
+
+        function fillGradSyntax() {
+          var box = document.getElementById("dt-grad-syntax");
+          if (!box) return;
+          while (box.firstChild) {
+            box.removeChild(box.firstChild);
+          }
+          var p = document.createElement("p");
+          p.textContent = "以下为 :root 中渐变变量原文，便于复制。";
+          var pre = document.createElement("pre");
+          pre.textContent =
+            "--grad: " +
+            (readCssVar("--grad") || "（空）") +
+            "\n--grad-hover: " +
+            (readCssVar("--grad-hover") || "（空）");
+          box.appendChild(p);
+          box.appendChild(pre);
+        }
+
+        function fillOrcSceneSyntax() {
+          var box = document.getElementById("dt-orc-scene-syntax");
+          if (!box) return;
+          while (box.firstChild) {
+            box.removeChild(box.firstChild);
+          }
+          var p = document.createElement("p");
+          p.textContent = "以下为场景卡四条底与边的变量原文，便于复制。";
+          var pre = document.createElement("pre");
+          pre.textContent =
+            "--orc-scene-card-bg-1: " +
+            (readCssVar("--orc-scene-card-bg-1") || "（空）") +
+            "\n--orc-scene-card-bg-2: " +
+            (readCssVar("--orc-scene-card-bg-2") || "（空）") +
+            "\n--orc-scene-card-bg-3: " +
+            (readCssVar("--orc-scene-card-bg-3") || "（空）") +
+            "\n--orc-scene-card-bg-4: " +
+            (readCssVar("--orc-scene-card-bg-4") || "（空）") +
+            "\n--orc-scene-card-border-1: " +
+            (readCssVar("--orc-scene-card-border-1") || "（空）") +
+            "\n--orc-scene-card-border-2: " +
+            (readCssVar("--orc-scene-card-border-2") || "（空）") +
+            "\n--orc-scene-card-border-3: " +
+            (readCssVar("--orc-scene-card-border-3") || "（空）") +
+            "\n--orc-scene-card-border-4: " +
+            (readCssVar("--orc-scene-card-border-4") || "（空）");
+          box.appendChild(p);
+          box.appendChild(pre);
+        }
+
+        function fillColors() {
+          document.querySelectorAll("[data-dt-color]").forEach(function (card) {
+            var sw = card.querySelector(".dt-swatch");
+            var hexEl = card.querySelector(".dt-hex");
+            if (!sw || !hexEl) return;
+            var cs = getComputedStyle(sw);
+            var bg = cs.backgroundColor;
+            var img = cs.backgroundImage;
+            if (img && img !== "none") {
+              hexEl.textContent = img.length > 80 ? img.slice(0, 80) + "…" : img;
+              return;
+            }
+            hexEl.textContent = rgbToHex(bg) + " · " + bg;
+          });
+        }
+
+        function fillDimensions() {
+          document.querySelectorAll("[data-dt-dimension]").forEach(function (el) {
+            var n = el.getAttribute("data-dt-dimension");
+            if (!n) return;
+            el.textContent = readCssVar(n) || "（空）";
+          });
+        }
+
+        function fillGlassShadow() {
+          var g = document.getElementById("dt-glass-shadow");
+          if (g) g.textContent = readCssVar("--or-modal-glass-shadow") || "—";
+        }
+
+        function fillFont() {
+          var f = document.getElementById("dt-font-stack");
+          if (f) f.textContent = "computed: " + readCssVar("--font");
+        }
+
+        function refreshAll() {
+          fillColors;
+          fillGradients;
+          fillGradSyntax;
+          fillOrcSceneSyntax;
+          fillDimensions;
+          fillGlassShadow;
+          fillFont;
+        }
+
+        function syncThemeButtons() {
+          var cur = "system";
+          try {
+            cur = localStorage.getItem(STORAGE_THEME) || "system";
+          } catch (e) {}
+          if (cur !== "light" && cur !== "dark" && cur !== "system") cur = "system";
+          document.querySelectorAll(".dt-theme-btn").forEach(function (b) {
+            b.classList.toggle("is-active", b.getAttribute("data-dt-theme") === cur);
+          });
+        }
+
+        function applyThemePreview(which) {
+          try {
+            localStorage.setItem(STORAGE_THEME, which);
+          } catch (e) {}
+          document.documentElement.setAttribute("data-theme", which);
+          syncThemeButtons;
+          refreshAll;
+        }
+
+        document.querySelectorAll(".dt-theme-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var w = btn.getAttribute("data-dt-theme");
+            if (w) applyThemePreview(w);
+          });
+        });
+
+        window.addEventListener("storage", function (e) {
+          if (e.key === STORAGE_THEME) syncThemeButtons;
+        });
+
+        try {
+          var t = localStorage.getItem(STORAGE_THEME);
+          if (t === "light" || t === "dark" || t === "system") {
+            document.documentElement.setAttribute("data-theme", t);
+          }
+        } catch (e2) {}
+
+        syncThemeButtons;
+        refreshAll;
+        window.addEventListener("resize", refreshAll);
+      });
+    </script>
+    <script src="static/trinity-ai-app-shell.js"></script>
+    <script src="static/ui-lang-toggle.js"></script>
+  </body>
+</html>

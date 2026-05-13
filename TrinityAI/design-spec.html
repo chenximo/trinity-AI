@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trinity 设计规范：应用筛选形式、页面内弹窗、侧栏多选模型列表与行项（形式1）、字号行高与按钮原子。" />
+    <title>设计规范 · Trinity AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/trinity-base.css" />
+    <link rel="stylesheet" href="../TrinityAI_Admin/admin.css" />
+    <link rel="stylesheet" href="app/chat/chat-openrouter.css" />
+    <script>
+      try {
+        var _t = localStorage.getItem("trinity_or_theme");
+        if (_t === "light" || _t === "dark") document.documentElement.setAttribute("data-theme", _t);
+        else document.documentElement.setAttribute("data-theme", "system");
+      } catch (e) {}
+    </script>
+    <style>
+      .ds-main {
+        flex: 1;
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1rem var(--page-gutter) 2rem;
+        box-sizing: border-box;
+      }
+
+      .ds-hero {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .ds-hero h1 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+
+      .ds-hero a {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--blue);
+      }
+
+      .ds-hero a:hover {
+        color: var(--purple);
+      }
+
+      .ds-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      @media (max-width: 860px) {
+        .ds-compare {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ds-board {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+
+      .ds-board-cap {
+        margin: 0 0 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      .ds-board-canvas {
+        flex: 1;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        padding: 1rem;
+        min-height: 9rem;
+      }
+
+      .ds-board-canvas--app {
+        background: var(--surface);
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+      }
+
+      /* 应用画板：三种筛选形式并列说明（仅规范页；原型生成时可指定「形式1/2/3」） */
+      .ds-app-filter-form {
+        margin-bottom: 1rem;
+      }
+
+      .ds-app-filter-form:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .ds-app-filter-form-title {
+        margin: 0 0 0.45rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--muted);
+        letter-spacing: -0.01em;
+      }
+
+      .ds-app-filter-form-note {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .ds-app-filter-foot {
+        margin: 0.65rem 0 0;
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--muted-2);
+      }
+
+      .ds-board-note {
+        margin: 0.65rem 0 0;
+        font-size: 0.6875rem;
+        color: var(--muted-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      .or-keys-editor-modal-card > header {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      /* 规范页 · 筛选下拉（按模型 / 更多）：圆角统一 calc(var(--radius) - 2px)，与全局 token 一致 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-more-panel,
+      .ds-board-canvas--app #ds-app-filter-more-panel.or-app-filter-more-panel {
+        border-radius: calc(var(--radius) - 2px);
+      }
+
+      /* 规范页 ·「按模型」下拉面：无外框线 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-more-panel {
+        border: none;
+        padding: 0.35rem;
+        gap: 0.2rem;
+      }
+
+      /* 无面板描边时外圈三角略淡，避免 rim 过重 */
+      .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+        background: rgba(15, 23, 42, 0.08);
+      }
+
+      html[data-theme="dark"] .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html[data-theme="system"] .ds-board-canvas--app #ds-app-model-dd-panel.or-app-filter-pop-beak::before {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item {
+        border-radius: calc(var(--radius) - 2px);
+        border-color: transparent !important;
+      }
+
+      /* 规范页 ·「按模型」下拉选中：浅底弱化 + 仍用品牌蓝字（勿用 --text，会盖住全局 is-checked 的蓝字） */
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked {
+        background: var(--blue-soft);
+        border-color: transparent !important;
+        color: var(--blue);
+        font-weight: 600;
+        box-shadow: none;
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked:hover:not(:disabled) {
+        background: var(--blue-soft);
+        border-color: transparent !important;
+        color: var(--blue);
+        filter: brightness(0.98);
+      }
+
+      .ds-board-canvas--app #ds-app-model-dd-panel .or-app-filter-dd-item.is-checked .or-app-filter-dd-mark {
+        color: var(--blue);
+      }
+
+      /* 规范页 ·「更多」下拉面内行：与上同一圆角 */
+      .ds-board-canvas--app #ds-app-filter-more-panel .or-app-filter-menu-item {
+        border-radius: calc(var(--radius) - 2px);
+      }
+
+      .ds-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.65rem 1rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+      }
+
+      .ds-nav a {
+        color: var(--blue);
+      }
+
+      .ds-nav a:hover {
+        color: var(--purple);
+      }
+
+      .ds-spec-block {
+        margin-top: 2rem;
+      }
+
+      .ds-spec-block h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+
+      .ds-one {
+        margin: 0 0 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .ds-atom-prose {
+        margin: 0;
+        font-size: 0.8125rem;
+        line-height: 1.65;
+        color: var(--muted);
+        text-align: start;
+      }
+
+      .ds-atom-prose + .ds-atom-prose {
+        margin-top: 0.65rem;
+      }
+
+      .ds-btn-block {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .ds-btn-block:last-child {
+        border-bottom: none;
+      }
+
+      .ds-btn-block .ds-btn-row {
+        border-bottom: none;
+      }
+
+      .ds-btn-block .ds-atom-prose {
+        margin: 0 0.85rem 0.85rem;
+        padding-top: 0.15rem;
+      }
+
+      .ds-btn-mat {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .ds-btn-row {
+        display: grid;
+        grid-template-columns: minmax(0, 10.5rem) 1fr;
+        gap: 0.65rem 1rem;
+        align-items: center;
+        padding: 0.65rem 0.85rem;
+      }
+
+      @media (max-width: 640px) {
+        .ds-btn-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ds-btn-type {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .ds-btn-meta {
+        margin: 0.2rem 0 0;
+        font-size: 0.6875rem;
+        line-height: 1.4;
+        color: var(--muted-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        word-break: break-word;
+      }
+
+      .ds-btn-states {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem 0.85rem;
+        align-items: flex-end;
+      }
+
+      .ds-btn-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        min-width: 4.5rem;
+      }
+
+      .ds-btn-state > span {
+        font-size: 0.625rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+
+      /* 规范页内仅用于四态示意，与 trinity-base 悬停色一致 */
+      .ds-btn-row .btn.ds-spec--muted-hover {
+        background: var(--surface);
+        border-color: var(--border-strong);
+        color: var(--text);
+      }
+
+      .ds-btn-row .btn.btn-gradient.ds-spec--grad-hover {
+        background: var(--grad-hover);
+        color: #fff !important;
+      }
+
+      .ds-btn-row .or-btn-outline.ds-spec--outline-hover {
+        background: var(--surface);
+        border-color: var(--muted-2);
+      }
+
+      .ds-btn-row .or-icon-btn.ds-spec--icon-hover {
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .ds-btn-row .or-app-filter-more.ds-spec--filter-more-hover {
+        filter: brightness(1.05);
+        box-shadow:
+          0 4px 14px -2px rgba(79, 70, 229, 0.4),
+          0 1px 2px rgba(15, 23, 42, 0.08);
+      }
+
+      .ds-board-canvas--modal {
+        position: relative;
+        min-height: 380px;
+        padding: 0;
+        border-radius: var(--radius);
+        overflow: visible;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+      }
+
+      .ds-modal-scene-backdrop {
+        position: absolute;
+        inset: 0;
+        background: var(--orc-modal-overlay-bg);
+        backdrop-filter: blur(var(--orc-modal-overlay-blur));
+        -webkit-backdrop-filter: blur(var(--orc-modal-overlay-blur));
+      }
+
+      .ds-modal-scene-card-wrap {
+        position: relative;
+        z-index: 1;
+        min-height: 380px;
+        display: grid;
+        place-items: center;
+        padding: 1.35rem 1.1rem;
+        pointer-events: none;
+      }
+
+      .ds-modal-scene-card-wrap .or-modal-card {
+        pointer-events: auto;
+        max-width: min(22rem, 100%);
+      }
+    </style>
+  </head>
+  <body class="or-site" data-or-page="home">
+    <a class="skip" href="#ds-main">跳转至画板</a>
+    <header class="or-inject" data-or-page="home"></header>
+
+    <main class="ds-main" id="ds-main">
+      <header class="ds-hero">
+        <h1>设计规范</h1>
+        <nav class="ds-nav" aria-label="规范章节">
+          <a href="#ds-filters">筛选</a>
+          <a href="#ds-modal">弹窗</a>
+          <a href="#ds-select-list">多选列表</a>
+          <a href="#ds-buttons">按钮</a>
+          <a href="design-tokens.html">色板 →</a>
+        </nav>
+      </header>
+
+      <p class="ds-atom-prose" style="max-width: 44rem; margin: 0 0 1.25rem">
+        本页按<strong>原子</strong>列出控件与类名，文字只写要点；细色值与主题见 <a href="design-tokens.html">设计色板</a>。
+      </p>
+
+      <section class="ds-spec-block" id="ds-filters" aria-labelledby="ds-filters-title">
+        <h2 id="ds-filters-title">筛选 · 应用侧</h2>
+        <p class="ds-atom-prose" style="margin-bottom: 0.65rem">
+          三种形式用于在<strong>产品内统一</strong>视觉与控件尺寸，避免各页各写一套。约定「<strong>形式1</strong> / <strong>形式2</strong> / <strong>形式3</strong>」即可：<strong>形式1</strong> 渐变「更多」+ icon 菜单；<strong>形式2</strong> 分组药丸 + 列表 + 右侧 ✓；<strong>形式3</strong> 文案标签 + 芯片分段。色与圆角见 <a href="design-tokens.html">设计色板</a>。<strong>PC 与移动端</strong>须同一套比例下<strong>自适应</strong>（优先用 <code>rem</code> 随根字号，窄屏再辅以断点微调字号/内边距/触控面积），脚注为<strong>桌面基线</strong>的字号与行高。
+        </p>
+        <p class="ds-atom-prose" style="margin: -0.2rem 0 0.6rem; font-size: 0.8125rem; color: var(--muted); line-height: 1.45">
+          <strong>备注</strong>：<strong>后台管理</strong>筛选、<strong>删选</strong>用<strong>形式2</strong>（标签 + 分组下拉；灰阶样式在控制台实现，字号行高与本节形式2 对齐即可）。
+        </p>
+        <p class="ds-one">主题随顶栏切换。</p>
+        <figure class="ds-board">
+          <div class="ds-board-canvas ds-board-canvas--app" style="overflow: visible">
+            <div class="ds-app-filter-form">
+              <p class="ds-app-filter-form-title">形式1 · 更多 — 渐变主操作 + 下拉菜单（icon + 标题）</p>
+              <div class="or-app-filter-row" style="overflow: visible">
+                <div class="or-app-filter-more-wrap" id="ds-app-filter-more-wrap">
+                  <button
+                    type="button"
+                    class="or-app-filter-more"
+                    id="ds-app-filter-more-btn"
+                    aria-expanded="false"
+                    aria-haspopup="menu"
+                    aria-controls="ds-app-filter-more-panel"
+                  >
+                    更多
+                    <svg class="or-app-filter-more-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                  <div
+                    class="or-app-filter-more-panel or-app-filter-pop-beak"
+                    id="ds-app-filter-more-panel"
+                    role="menu"
+                    hidden
+                    aria-label="更多选项"
+                    style="--or-pop-beak-x: 2.6rem"
+                  >
+                    <button type="button" class="or-app-filter-menu-item is-active" role="menuitem" tabindex="-1">
+                      <span class="or-app-filter-menu-ic">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <path d="M15 3h6v6" />
+                          <path d="M10 14 21 3" />
+                        </svg>
+                      </span>
+                      <span>自定义角色</span>
+                    </button>
+                    <button type="button" class="or-app-filter-menu-item" disabled role="menuitem" tabindex="-1">
+                      <span class="or-app-filter-menu-ic">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                          <circle cx="12" cy="12" r="3" />
+                          <circle cx="12" cy="12" r="8" stroke-dasharray="1.5 3" />
+                        </svg>
+                      </span>
+                      <span>打开模型设置（暂不支持）</span>
+                    </button>
+                    <button type="button" class="or-app-filter-menu-item" role="menuitem" tabindex="-1">
+                      <span class="or-app-filter-menu-ic">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                          <circle cx="9" cy="7" r="4" />
+                          <path d="M19 8v6M22 11h-6" />
+                        </svg>
+                      </span>
+                      <span>添加角色</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ds-app-filter-form">
+              <p class="ds-app-filter-form-title">形式2 · 分组 — 药丸触发 + 列表选项 + 右侧 ✓</p>
+              <p class="ds-app-filter-form-note">
+                药丸在<strong>键盘 <code>:focus-visible</code></strong> 与<strong>列表展开（<code>aria-expanded="true"</code>）</strong>时均为<strong>品牌色内描边 + 3px 外环</strong>（<code>border-color: var(--blue)</code>、<code>box-shadow: 0 0 0 3px var(--blue-ring)</code>），与 <code>select.or-select--app:focus</code> 一致；展开时悬停不改变该描边（见 <code>trinity-base.css</code>）。
+              </p>
+              <div class="or-app-filter-row" style="overflow: visible">
+                <div class="or-app-filter-dd-wrap" id="ds-app-model-dd-wrap">
+                  <button
+                    type="button"
+                    class="or-select or-select--app or-app-filter-dd-trigger"
+                    id="ds-app-model-dd-btn"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-controls="ds-app-model-dd-panel"
+                  >
+                    <span id="ds-app-model-dd-label">按模型</span>
+                    <svg class="or-app-filter-dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                  <div
+                    class="or-app-filter-more-panel or-app-filter-pop-beak"
+                    id="ds-app-model-dd-panel"
+                    role="listbox"
+                    hidden
+                    aria-label="分组"
+                    style="--or-pop-beak-x: 2.75rem"
+                  >
+                    <button type="button" class="or-app-filter-dd-item is-checked" role="option" data-ds-model-opt="按模型" tabindex="-1">
+                      <span class="or-app-filter-dd-label">按模型</span>
+                      <span class="or-app-filter-dd-mark" aria-hidden="true">✓</span>
+                    </button>
+                    <button type="button" class="or-app-filter-dd-item" role="option" data-ds-model-opt="按提供商" tabindex="-1">
+                      <span class="or-app-filter-dd-label">按提供商</span>
+                      <span class="or-app-filter-dd-mark" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ds-app-filter-form">
+              <p class="ds-app-filter-form-title">形式3 · 分段 — 前置标签 + 芯片按钮组</p>
+              <div class="or-app-filter-row" style="align-items: center">
+                <span class="or-keys-expiry-lbl" id="ds-app-expiry-lbl">到期</span>
+                <div class="or-keys-seg" role="group" aria-labelledby="ds-app-expiry-lbl">
+                  <button type="button" class="or-keys-seg-btn is-active" tabindex="-1">全部</button>
+                  <button type="button" class="or-keys-seg-btn" tabindex="-1">过期</button>
+                  <button type="button" class="or-keys-seg-btn" tabindex="-1">不过期</button>
+                </div>
+              </div>
+            </div>
+            <p class="ds-app-filter-foot">
+              <strong>桌面基线</strong> — 形式1、2 药丸触发器：13px（0.8125rem）、行高 1.25。形式1 菜单与形式2 列表：14px（0.875rem）、行高继承。形式3「到期」与芯片：13px（0.8125rem）、行高继承。<strong>移动端</strong>在保持三档比例一致前提下随视口微调（仍用 rem / 断点），与 PC 同一套形式对齐。
+            </p>
+          </div>
+        </figure>
+      </section>
+
+      <section class="ds-spec-block" id="ds-modal" aria-labelledby="ds-modal-title">
+        <h2 id="ds-modal-title">弹窗 · 页面内对话层</h2>
+        <p class="ds-atom-prose" style="margin-bottom: 0.5rem; max-width: 44rem">
+          遮罩与卡片与对话「添加模型」同源（<code>--orc-modal-overlay-*</code>、<code>--orc-modal-card-*</code>）。卡片内从<strong>上到下</strong>依次为：
+        </p>
+        <ol class="ds-atom-prose" style="margin: 0 0 0.75rem; padding-left: 1.25rem; max-width: 44rem; line-height: 1.55">
+          <li style="margin-bottom: 0.4rem">
+            <strong>头部</strong>（顶栏）：推荐 <code>header</code> 内 <code>div.or-modal-head</code>：<strong>左侧</strong>为标题区（<code>h2.or-modal-title</code>；说明按钮、文字链如需与标题<strong>同一行</strong>，用 flex 容器包裹，见对话「添加模型」<code>orc-picker-modal-head</code> + <code>orc-picker-head-main</code>）；<strong>右侧</strong>为 <code>button.or-modal-close</code>（「×」仅作字形，须配 <code>aria-label="关闭"</code>）。
+          </li>
+          <li style="margin-bottom: 0.4rem">
+            <strong>中间</strong>：可选说明条（如 <code>p.or-keys-editor-banner</code>）+ 主内容（表单、列表等）。
+          </li>
+          <li>
+            <strong>底部</strong>（操作栏）：<strong>右下角</strong>对齐；次要 <code>or-btn-outline</code>、主路径 <code>btn btn-gradient</code>。<strong>底部主/次按钮仅文字</strong>，<strong>不加图标</strong>（不与工具条带图标的「完成」混用）。
+          </li>
+        </ol>
+        <figure class="ds-board">
+          <div class="ds-board-canvas ds-board-canvas--modal">
+            <div class="ds-modal-scene-backdrop" aria-hidden="true"></div>
+            <div class="ds-modal-scene-card-wrap">
+              <div
+                class="or-modal-card or-keys-editor-modal-card"
+                role="region"
+                aria-labelledby="ds-spec-modal-title"
+              >
+                <header>
+                  <div class="or-modal-head">
+                    <h2 id="ds-spec-modal-title" class="or-modal-title">示例弹窗</h2>
+                    <button type="button" class="or-modal-close" aria-label="关闭（示意）">&times;</button>
+                  </div>
+                </header>
+                <p class="or-keys-editor-banner" role="status">
+                  可选说明条：与控制台「编辑密钥」同款的浅底提示，用于进入表单前的只读说明。
+                </p>
+                <div class="or-keys-editor-grid">
+                  <div class="form-group">
+                    <label for="ds-spec-modal-name">名称</label>
+                    <input id="ds-spec-modal-name" type="text" value="演示项" readonly tabindex="0" />
+                  </div>
+                  <div class="form-group">
+                    <label for="ds-spec-modal-dd-btn">类型</label>
+                    <div class="or-app-filter-dd-wrap" id="ds-spec-modal-dd-wrap">
+                      <button
+                        type="button"
+                        class="or-select or-select--app or-app-filter-dd-trigger"
+                        id="ds-spec-modal-dd-btn"
+                        aria-expanded="false"
+                        aria-haspopup="listbox"
+                        aria-controls="ds-spec-modal-dd-panel"
+                      >
+                        <span id="ds-spec-modal-dd-label">选项一</span>
+                        <svg class="or-app-filter-dd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                          <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </button>
+                      <div
+                        class="or-app-filter-more-panel or-app-filter-pop-beak"
+                        id="ds-spec-modal-dd-panel"
+                        role="listbox"
+                        hidden
+                        aria-label="类型"
+                        style="--or-pop-beak-x: 1.35rem"
+                      >
+                        <button type="button" class="or-app-filter-dd-item is-checked" role="option" data-ds-spec-modal-opt="选项一" tabindex="-1">
+                          <span class="or-app-filter-dd-label">选项一</span>
+                          <span class="or-app-filter-dd-mark" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="or-app-filter-dd-item" role="option" data-ds-spec-modal-opt="选项二" tabindex="-1">
+                          <span class="or-app-filter-dd-label">选项二</span>
+                          <span class="or-app-filter-dd-mark" aria-hidden="true"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="or-keys-editor-actions">
+                  <button type="button" class="or-btn-outline">取消</button>
+                  <button type="button" class="btn btn-gradient">保存</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <p class="ds-board-note" style="margin-top: 0.65rem">
+          画板内为静态示意；业务页使用 <code>or-modal-root</code> 全屏层、<code>body.or-modal-open</code> 等与产品一致。表单项内下拉与筛选<strong>形式 2</strong>相同（药丸 + listbox + ✓）。弹窗底栏按钮<strong>不加 SVG / 图标</strong>。
+        </p>
+      </section>
+
+      <section class="ds-spec-block" id="ds-select-list" aria-labelledby="ds-select-list-title">
+        <h2 id="ds-select-list-title">多选列表 · 形式1（模型行）</h2>
+        <p class="ds-atom-prose" style="margin-bottom: 0.5rem; max-width: 44rem">
+          多选列表用于在<strong>同一纵向列表</strong>中勾选或取消多项；本节只冻结<strong>列表容器</strong>与<strong>行（item）</strong>的结构与样式，作为<strong>通用原子</strong>，不绑定任一具体业务页或组件实现。
+        </p>
+        <ol class="ds-atom-prose" style="margin: 0 0 0.75rem; padding-left: 1.25rem; max-width: 44rem; line-height: 1.55">
+          <li style="margin-bottom: 0.4rem">
+            <strong>列表容器</strong>：<code>div.orc-model-list</code>；内边距 <code>0.15rem 0.5rem 0.65rem</code>；纵向 <code>flex</code>，分组块之间 <code>gap: 0.2rem</code>。每组为 <code>div.orc-side-model-group</code>（纵向 <code>flex</code>、<code>gap: 0.3rem</code>，含分组标题与多行）。多选行外包 <code>orc-side-model-group--collection</code> 时语义与间距约定相同。列表容器 <code>role="group"</code>，<code>aria-label</code> 须概括用途（如「可多选」）。
+          </li>
+          <li style="margin-bottom: 0.4rem">
+            <strong>行卡片（item）</strong>：<code>button.orc-model-row.orc-model-row--compare</code>，全宽、左对齐、圆角 <code>var(--radius)</code>、默认边框 <code>1px solid rgba(15, 23, 42, 0.06)</code>、背景 <code>var(--bg)</code>、内边距约 <code>0.5rem 0.55rem</code>、字号 <code>0.8125rem</code>、字重 500。从左到右：<code>span.orc-pv</code>（圆标约 18px，可加 <code>orc-pv--google</code> 等品牌修饰类）→ <code>span.orc-model-row-name</code>（<code>flex: 1</code>，过长省略）→ <code>span.orc-model-row-fav</code>（收藏，☆ / ★）→ 已选时 <code>span.orc-model-row-mark</code> 显示「✓」（品牌色）。
+          </li>
+          <li style="margin-bottom: 0.4rem">
+            <strong>选中与高亮</strong>：已选：<code>class="is-selected"</code>、<code>aria-pressed="true"</code>，并渲染 <code>orc-model-row-mark</code> 为「✓」。若业务需要「当前主项」与多选并存，可加 <code>is-active</code>（浅蓝底 + 蓝边框 + 主文案 <code>var(--blue)</code>，与 ✓ 可同时出现）。未选行悬停略加深边框。
+          </li>
+          <li>
+            <strong>实现注意</strong>：收藏星 <code>orc-model-row-fav</code> 点击需阻止冒泡，避免触发行主点击（切换多选）。
+          </li>
+        </ol>
+        <figure class="ds-board">
+          <p class="ds-board-cap">画板 · 多选列表与行项（静态）</p>
+          <div class="ds-board-canvas ds-board-canvas--app" style="max-width: 20rem">
+            <div class="orc-model-list" role="group" aria-label="画板示意：可多选">
+              <div class="orc-side-model-group orc-side-model-group--collection" role="presentation">
+                <button
+                  type="button"
+                  class="orc-model-row orc-model-row--compare is-selected is-active"
+                  aria-pressed="true"
+                  tabindex="-1"
+                >
+                  <span class="orc-pv orc-pv--google" aria-hidden="true"></span>
+                  <span class="orc-model-row-name">Gemini 3.1 Flash Lite</span>
+                  <span class="orc-model-row-fav" aria-hidden="true">★</span>
+                  <span class="orc-model-row-mark" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="orc-model-row orc-model-row--compare is-selected" aria-pressed="true" tabindex="-1">
+                  <span class="orc-pv orc-pv--openai" aria-hidden="true"></span>
+                  <span class="orc-model-row-name">GPT-5.4</span>
+                  <span class="orc-model-row-fav" aria-hidden="true">☆</span>
+                  <span class="orc-model-row-mark" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="orc-model-row orc-model-row--compare" aria-pressed="false" tabindex="-1">
+                  <span class="orc-pv orc-pv--anthropic" aria-hidden="true"></span>
+                  <span class="orc-model-row-name">Claude 4 Sonnet</span>
+                  <span class="orc-model-row-fav" aria-hidden="true">☆</span>
+                  <span class="orc-model-row-mark" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <p class="ds-board-note" style="margin-top: 0.65rem">
+          画板为静态示意；本节不含集合顶栏等周边模块。业务实现可自行选用或扩展类名，以本节结构与可访问性约定为准。
+        </p>
+      </section>
+
+      <section class="ds-spec-block" id="ds-buttons" aria-labelledby="ds-buttons-title">
+        <h2 id="ds-buttons-title">按钮原子</h2>
+        <p class="ds-atom-prose" style="margin-bottom: 0.65rem">
+          <strong>主渐变</strong>表示高成本/主路径，<strong>线框</strong>表示可反悔或次要操作，<strong>文字链</strong>表示跳转学习；色跟 <code>--grad</code> 与全局 ring。下表为仓库类名。
+        </p>
+        <p class="ds-one">悬停列为本页示意类。</p>
+
+        <div class="ds-btn-mat">
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">主要 · 渐变</p>
+              <p class="ds-btn-meta">.btn.btn-gradient · 高 36px（<code>--ctrl-h</code>）· 例：<code>or-keys-btn-create</code>、<code>or-credits-btn-recharge</code></p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="btn btn-gradient">主要</button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="btn btn-gradient ds-spec--grad-hover" tabindex="-1">主要</button>
+                <span>悬停</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="btn btn-gradient" disabled>主要</button>
+                <span>禁用</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              全局<strong>主 CTA</strong>，用 <code>--grad</code> / <code>--grad-hover</code> 固定品牌。禁用用透明度，提示接入方应解释不可用原因。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">主要 · 顶栏胶囊</p>
+              <p class="ds-btn-meta">.btn.btn-gradient.or-login-pill · 高 36px（<code>--ctrl-h</code>）· 圆角 9999px</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="btn btn-gradient or-login-pill">登录</button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="btn btn-gradient or-login-pill ds-spec--grad-hover" tabindex="-1">登录</button>
+                <span>悬停</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              顶栏登录用<strong>满药丸</strong>与内容区 8px 主按钮区分层级。高度与筛选药丸同为 <code>--ctrl-h</code>（36px），触控区一致。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">次要 · 线框</p>
+              <p class="ds-btn-meta">.btn（无 gradient）· 高 36px（<code>--ctrl-h</code>）· 灰字描边</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="btn">次要</button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="btn ds-spec--muted-hover" tabindex="-1">次要</button>
+                <span>悬停</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="btn" disabled>次要</button>
+                <span>禁用</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              灰字线框<strong>退后半步</strong>，与主渐变并排时一眼分得清主次。适合取消或次要提交。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">控制台线框</p>
+              <p class="ds-btn-meta">.or-btn-outline · 用量/活动日期等</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="or-btn-outline">线框</button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="or-btn-outline ds-spec--outline-hover" tabindex="-1">线框</button>
+                <span>悬停</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="or-btn-outline" disabled>线框</button>
+                <span>禁用</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              控制台里的<strong>日期、次要操作</strong>，比纯文字略实体，但不抢主 CTA。字重略低，和创建密钥等主按钮拉开。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">危险线框</p>
+              <p class="ds-btn-meta">.or-btn-outline.is-danger</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="or-btn-outline is-danger">删除</button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="or-btn-outline is-danger" style="background: #fef2f2; border-color: #f87171" tabindex="-1">删除</button>
+                <span>悬停</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              删改等<strong>不可逆</strong>动作用红字线框提示风险，不用默认实心红块。仍应配合二次确认。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">图标格</p>
+              <p class="ds-btn-meta">.or-icon-btn · 32×32</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="or-icon-btn" aria-label="设置">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                </button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="or-icon-btn ds-spec--icon-hover" tabindex="-1" aria-label="设置">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                </button>
+                <span>悬停</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              <strong>32px</strong> 工具格：刷新、设置等，默认透明减噪。不适合当唯一主路径。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">OAuth 行</p>
+              <p class="ds-btn-meta">.or-oauth-btn · 高 44px · 登录弹窗</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state" style="flex: 1; min-width: 8rem; max-width: 14rem">
+                <button type="button" class="or-oauth-btn" style="width: 100%">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#94a3b8" /></svg>
+                  OAuth
+                </button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state" style="flex: 1; min-width: 8rem; max-width: 14rem">
+                <button type="button" class="or-oauth-btn ds-spec--oauth-hover" style="width: 100%" tabindex="-1">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#94a3b8" /></svg>
+                  OAuth
+                </button>
+                <span>悬停</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              <strong>44px</strong> 给第三方图标与点击把握；并排 OAuth 等分宽度。中性底，品牌色交给各商图标。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">抽屉整宽</p>
+              <p class="ds-btn-meta">.or-drawer-signin · 移动菜单</p>
+            </div>
+            <div class="ds-btn-states" style="flex: 1; max-width: 20rem">
+              <div class="ds-btn-state" style="width: 100%">
+                <button type="button" class="or-drawer-signin" style="width: 100%">登录</button>
+                <span>默认</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              窄屏抽屉里的<strong>整宽登录</strong>，线框表示「进门」，不与内容区「创建资源」混淆。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">文字链接</p>
+              <p class="ds-btn-meta">a.text-link · 无框</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state" style="align-items: flex-start; min-width: auto">
+                <a href="#" class="text-link" onclick="return false">查看详情</a>
+                <span>默认</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              正文里<strong>弱跳转</strong>，不占按钮体积。要强引导请改成线框或主渐变按钮。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">后台 · 线框主色</p>
+              <p class="ds-btn-meta">a.adm-btn-logout / button.adm-btn-logout · admin.css</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <a href="#" class="adm-btn-logout" onclick="return false">退出登录</a>
+                <span>默认</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              后台<strong>身份类</strong>操作：蓝描边白底，与侧栏工作蓝同一系。类名单独 <code>adm-*</code>，避免和门户混写。
+            </p>
+          </div>
+
+          <div class="ds-btn-block">
+          <div class="ds-btn-row">
+            <div>
+              <p class="ds-btn-type">筛选条 · 渐变主操作</p>
+              <p class="ds-btn-meta">.or-app-filter-more · 筛选形式1</p>
+            </div>
+            <div class="ds-btn-states">
+              <div class="ds-btn-state">
+                <button type="button" class="or-app-filter-more">
+                  更多
+                  <svg class="or-app-filter-more-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <span>默认</span>
+              </div>
+              <div class="ds-btn-state">
+                <button type="button" class="or-app-filter-more ds-spec--filter-more-hover" tabindex="-1">
+                  更多
+                  <svg class="or-app-filter-more-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <span>悬停</span>
+              </div>
+            </div>
+          </div>
+            <p class="ds-atom-prose">
+              对应筛选节<strong>形式1</strong>：行内低频主操作 + 渐变，与形式2/3 的灰白控件拉开层次。
+            </p>
+          </div>
+        </div>
+        <p class="ds-board-note" style="margin-top: 0.75rem">按压态与产品内 :active 一致；未单独做列以免与悬停混淆。</p>
+      </section>
+    </main>
+
+    <script src="static/trinity-ai-app-shell.js"></script>
+    <script src="static/ui-lang-toggle.js"></script>
+    <script>
+      (function () {
+        var anchors = [
+          {
+            wrap: document.getElementById("ds-app-filter-more-wrap"),
+            btn: document.getElementById("ds-app-filter-more-btn"),
+            panel: document.getElementById("ds-app-filter-more-panel"),
+            itemSelector: "button.or-app-filter-menu-item",
+            onPick: null,
+          },
+          {
+            wrap: document.getElementById("ds-app-model-dd-wrap"),
+            btn: document.getElementById("ds-app-model-dd-btn"),
+            panel: document.getElementById("ds-app-model-dd-panel"),
+            itemSelector: "button.or-app-filter-dd-item",
+            onPick: function (item) {
+              var label = document.getElementById("ds-app-model-dd-label");
+              var rowLabel = item.querySelector(".or-app-filter-dd-label");
+              var v = item.getAttribute("data-ds-model-opt") || (rowLabel ? rowLabel.textContent.trim() : "");
+              if (label) label.textContent = v;
+              var panel = document.getElementById("ds-app-model-dd-panel");
+              if (panel) {
+                panel.querySelectorAll(".or-app-filter-dd-item").forEach(function (b) {
+                  var on = b === item;
+                  b.classList.toggle("is-checked", on);
+                  var mk = b.querySelector(".or-app-filter-dd-mark");
+                  if (mk) mk.textContent = on ? "✓" : "";
+                });
+              }
+            },
+          },
+          {
+            wrap: document.getElementById("ds-spec-modal-dd-wrap"),
+            btn: document.getElementById("ds-spec-modal-dd-btn"),
+            panel: document.getElementById("ds-spec-modal-dd-panel"),
+            itemSelector: "button.or-app-filter-dd-item",
+            onPick: function (item) {
+              var label = document.getElementById("ds-spec-modal-dd-label");
+              var rowLabel = item.querySelector(".or-app-filter-dd-label");
+              var v = item.getAttribute("data-ds-spec-modal-opt") || (rowLabel ? rowLabel.textContent.trim() : "");
+              if (label) label.textContent = v;
+              var panel = document.getElementById("ds-spec-modal-dd-panel");
+              if (panel) {
+                panel.querySelectorAll(".or-app-filter-dd-item").forEach(function (b) {
+                  var on = b === item;
+                  b.classList.toggle("is-checked", on);
+                  var mk = b.querySelector(".or-app-filter-dd-mark");
+                  if (mk) mk.textContent = on ? "✓" : "";
+                });
+              }
+            },
+          },
+        ].filter(function (a) {
+          return a.wrap && a.btn && a.panel;
+        });
+
+        function closeAll() {
+          anchors.forEach(function (a) {
+            a.panel.hidden = true;
+            a.btn.setAttribute("aria-expanded", "false");
+          });
+        }
+
+        anchors.forEach(function (a) {
+          a.btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var wasOpen = !a.panel.hidden;
+            closeAll();
+            if (!wasOpen) {
+              a.panel.hidden = false;
+              a.btn.setAttribute("aria-expanded", "true");
+            }
+          });
+
+          a.panel.addEventListener("click", function (e) {
+            var item = e.target.closest(a.itemSelector);
+            if (!item || item.disabled) return;
+            if (a.onPick) a.onPick(item);
+            closeAll();
+          });
+        });
+
+        document.addEventListener("click", function (e) {
+          if (anchors.some(function (a) { return a.wrap.contains(e.target); })) return;
+          closeAll();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeAll();
+        });
+      })();
+    </script>
+  </body>
+</html>

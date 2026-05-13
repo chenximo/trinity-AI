@@ -1,0 +1,608 @@
+/* Trinity 运营后台 — 静态原型（无后端） */
+:root {
+  --adm-bg: #f4f6f9;
+  --adm-surface: #ffffff;
+  --adm-border: #e5e7eb;
+  --adm-text: #111827;
+  --adm-muted: #6b7280;
+  --adm-muted-2: #9ca3af;
+  --adm-blue: #2563eb;
+  --adm-blue-soft: #eff6ff;
+  --adm-blue-ring: #bfdbfe;
+  --adm-radius: 10px;
+  --adm-radius-lg: 14px;
+  --adm-side-w: 248px;
+  /* 与门户 trinity-base --ctrl-h 一致（筛选药丸、分段、主按钮同高） */
+  --ctrl-h: 36px;
+  --adm-font: "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --adm-glass-bg: rgba(255, 255, 255, 0.72);
+  --adm-glass-border: rgba(255, 255, 255, 0.55);
+  --adm-glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 8px 32px rgba(15, 23, 42, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.adm-app {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--adm-font);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--adm-text);
+  background: var(--adm-bg);
+  display: flex;
+  flex-direction: row;
+  -webkit-font-smoothing: antialiased;
+  /* 复用 trinity-base 形式2（or-app-filter-*）时，将门户语义色映射为后台 adm-* */
+  --text: var(--adm-text);
+  --muted: var(--adm-muted);
+  --muted-2: var(--adm-muted-2);
+  --border: var(--adm-border);
+  --border-strong: #d1d5db;
+  --bg: var(--adm-surface);
+  --surface: #ffffff;
+  --surface-2: #f9fafb;
+  --blue: var(--adm-blue);
+  --blue-soft: var(--adm-blue-soft);
+  --blue-ring: var(--adm-blue-ring);
+  --radius-md: 8px;
+}
+
+/* trinity-base 全局 header 为门户 sticky 顶栏；后台页头用自建 adm-pagehead，需复位 */
+body.adm-app header.adm-pagehead {
+  position: static;
+  z-index: auto;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  flex-shrink: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  color: var(--adm-text);
+}
+
+.adm-side {
+  width: var(--adm-side-w);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 0.75rem 1rem;
+  background: var(--adm-glass-bg);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-right: 1px solid var(--adm-border);
+  box-shadow: var(--adm-glass-shadow);
+}
+
+.adm-brand {
+  padding: 0 0.65rem 1rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-brand-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--adm-blue);
+}
+
+.adm-brand-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--adm-muted-2);
+  letter-spacing: 0.02em;
+}
+
+.adm-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+
+.adm-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--adm-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--adm-muted);
+}
+
+.adm-nav a:hover {
+  background: rgba(37, 99, 235, 0.06);
+  color: var(--adm-text);
+}
+
+.adm-nav a.is-active {
+  background: var(--adm-blue-soft);
+  color: var(--adm-blue);
+  font-weight: 600;
+}
+
+.adm-nav svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.adm-nav a.is-active svg {
+  opacity: 1;
+}
+
+.adm-side-foot {
+  padding-top: 0.75rem;
+  margin-top: auto;
+  border-top: 1px solid var(--adm-border);
+}
+
+a.adm-btn-logout,
+button.adm-btn-logout {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--adm-blue);
+  border-radius: var(--adm-radius);
+  background: var(--adm-surface);
+  color: var(--adm-blue);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+a.adm-btn-logout:hover,
+button.adm-btn-logout:hover {
+  background: var(--adm-blue-soft);
+}
+
+.adm-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.adm-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1.75rem 2.5rem;
+}
+
+.adm-env {
+  margin: 0 0 1rem;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--adm-muted);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px dashed var(--adm-border);
+  border-radius: 8px;
+}
+
+.adm-page-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.adm-pagehead--keys .adm-pagehead-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.adm-pagehead--keys .adm-pagehead-row .adm-page-title {
+  margin-bottom: 0;
+}
+
+.adm-keys-expiry-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* 筛选工具行：与应用侧 or-app-filter-row 同源布局，配色仅用 adm-*（无渐变） */
+.adm-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.adm-filter-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--adm-muted);
+}
+
+.adm-filter-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.adm-filter-inline .adm-filter-label {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* 后台下拉：与应用图2 select 同源（药丸 + 右侧 chevron），颜色简化为灰阶 + 单色焦点 */
+select.adm-select {
+  appearance: none;
+  -webkit-appearance: none;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 2.35rem 0 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--adm-text);
+  background-color: var(--adm-surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem center;
+  background-size: 14px;
+  border: 1px solid var(--adm-border);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  line-height: 1.25;
+}
+
+select.adm-select:hover {
+  border-color: #d1d5db;
+  background-color: #fafafa;
+}
+
+select.adm-select:focus {
+  outline: none;
+  border-color: var(--adm-blue);
+  box-shadow: 0 0 0 3px var(--adm-blue-ring);
+}
+
+/* 分段：独立药丸芯片（与应用 or-keys-seg 同源），无连体条、无渐变 */
+.adm-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.adm-seg-btn {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ctrl-h);
+  min-height: var(--ctrl-h);
+  padding: 0 0.8rem;
+  border: 1px solid var(--adm-border);
+  border-radius: 999px;
+  background: var(--adm-surface);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--adm-muted);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.adm-seg-btn:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+  color: var(--adm-text);
+}
+
+.adm-seg-btn.is-active {
+  background: var(--adm-blue-soft);
+  color: var(--adm-blue);
+  border-color: rgba(37, 99, 235, 0.32);
+  font-weight: 600;
+}
+
+.adm-seg-btn:focus-visible {
+  outline: 2px solid var(--adm-blue-ring);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.adm-lead {
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--adm-muted);
+  max-width: 42rem;
+}
+
+.adm-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .adm-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  body.adm-app {
+    flex-direction: column;
+  }
+
+  .adm-side {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.75rem;
+  }
+
+  .adm-brand {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .adm-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0.5rem 0 0;
+  }
+
+  .adm-nav a {
+    flex: 1 1 auto;
+    min-width: 44%;
+    justify-content: center;
+  }
+
+  .adm-side-foot {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .adm-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.adm-stat-card {
+  padding: 1.15rem 1.2rem;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-lg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.adm-stat-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--adm-muted);
+}
+
+.adm-stat-val {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.adm-stat-meta {
+  font-size: 0.75rem;
+  color: var(--adm-muted-2);
+}
+
+.adm-panel {
+  padding: 1.25rem 1.35rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-lg);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.adm-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.adm-panel p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--adm-muted);
+}
+
+.adm-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+}
+
+table.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.adm-table th,
+.adm-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.adm-table th {
+  font-weight: 600;
+  color: var(--adm-muted);
+  background: #f9fafb;
+}
+
+.adm-table tr:last-child td {
+  border-bottom: none;
+}
+
+.adm-badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.adm-badge.ok {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.adm-badge.warn {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.adm-badge.muted {
+  background: #f3f4f6;
+  color: var(--adm-muted);
+}
+
+/* 登录页（无侧栏） */
+body.adm-login {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  font-family: var(--adm-font);
+  font-size: 15px;
+  color: var(--adm-text);
+  background: var(--adm-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.adm-login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem 2rem 1.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius-lg);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.adm-login-card h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--adm-blue);
+  text-align: center;
+}
+
+.adm-login-card .adm-login-sub {
+  margin: 0 0 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--adm-muted);
+  text-align: center;
+}
+
+.adm-login-field {
+  margin-bottom: 1rem;
+}
+
+.adm-login-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--adm-muted);
+}
+
+.adm-login-field input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.adm-login-field input:focus {
+  outline: none;
+  border-color: var(--adm-blue);
+  box-shadow: 0 0 0 3px var(--adm-blue-ring);
+}
+
+a.adm-login-submit {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--adm-radius);
+  background: var(--adm-blue);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+a.adm-login-submit:hover {
+  background: #1d4ed8;
+}
+
+.adm-login-foot {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--adm-muted-2);
+  text-align: center;
+}
+
+.adm-login-foot a {
+  color: var(--adm-blue);
+  font-weight: 600;
+}
