@@ -1,5 +1,5 @@
-<!-- trinity-design: v-html 片段（非整页 HTML；真源为 DesignTokens.vue） -->
-    <main class="dt-main" id="dt-main">
+<!-- trinity-design: v-html 片段（非整页 HTML；真源为 DesignTokens.vue；根为 div 以便 DesignTokens.vue 外包布局） -->
+    <div class="dt-main dt-main-inner" id="dt-main">
       <div class="dt-hero">
         <h1>设计色板</h1>
         <p>Token 真源为 <code>packages/tokens/src/core.css</code>（应用多经 <code>assets/trinity-base.css</code> 或 <code>@trinity/tokens/core.css</code> 引入）；筛选等 UI 类名见 <code>packages/ui/styles/ui-kit.css</code>。换主题可读计算值；版式见 <a href="design-spec.html">设计规范</a>。</p>
@@ -448,3 +448,4 @@
           <div class="dt-type-meta" id="dt-font-stack"></div>
         </div>
       </section>
+    </div>

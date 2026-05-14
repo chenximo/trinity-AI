@@ -70,7 +70,7 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 | `/models` | `views/models/ModelsPage.vue` | 模型页占位（与静态主导航顺序一致：首页 → 模型 → 对话 → 文档） |
 | `/chat` | `views/chat/ChatPage.vue` | 对话占位 |
 | `/docs` | `DocsPage.vue` | 文档占位 |
-| `/account/console` | `AccountConsolePage.vue` | 控制台占位 |
+| `/account/console` | `views/account/ConsolePage.vue` | 控制台占位（域级五件套见 `views/account/README.md`） |
 | `/dev/ui-kit` | `UiKitPlayground.vue` | `@trinity/ui` 烟测（形式 3 使用 `segments` prop） |
 
 **实现要点**

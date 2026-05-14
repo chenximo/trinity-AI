@@ -1,4 +1,4 @@
-/* 设计枢纽壳层：与 tokens / trinity-base 变量一致，不引入 slate 等页外色 */
+/* 设计 / 开发枢纽壳层：与 tokens / trinity-base 变量一致 */
 .design-hub-shell {
   min-height: 100vh;
   display: flex;
@@ -7,52 +7,181 @@
   color: var(--text);
 }
 
-.design-hub-topnav {
-  position: relative;
-  z-index: 100;
-  flex-shrink: 0;
+/* 导航为悬浮按钮 + 卡片，主列全幅顶到视口（不占顶栏槽位） */
+.design-hub-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
-  padding: 0.65rem var(--page-gutter, 1rem);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  flex-direction: column;
+  padding-top: 0;
 }
 
-.design-hub-topnav h1 {
+/* —— 悬浮枢纽：遮罩 + 固定栈（脱离文档流） —— */
+.design-hub-fab-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  background: rgb(15 23 42 / 0.18);
+  backdrop-filter: blur(2px);
+}
+
+.design-hub-fab-stack {
+  position: fixed;
+  top: calc(0.55rem + env(safe-area-inset-top, 0px));
+  right: max(0.55rem, env(safe-area-inset-right, 0px));
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+  width: min(20rem, calc(100vw - 1.1rem));
+  pointer-events: none;
+}
+
+.design-hub-fab-stack > * {
+  pointer-events: auto;
+}
+
+.design-hub-fab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
   margin: 0;
-  font-size: 0.9375rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 10px);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.05);
+  font: inherit;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
 }
 
-.design-hub-topnav p {
-  margin: 0.15rem 0 0;
+.design-hub-fab-btn:hover {
+  border-color: var(--border-strong, #cbd5e1);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.07), 0 8px 20px rgb(0 0 0 / 0.06);
+}
+
+.design-hub-fab-btn:focus-visible {
+  outline: 2px solid var(--blue, #2563eb);
+  outline-offset: 2px;
+}
+
+.design-hub-fab-btn-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.design-hub-fab-btn-chevron {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+
+.design-hub-fab-btn-chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.design-hub-fab-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 12px);
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.06),
+    0 12px 40px rgb(0 0 0 / 0.12);
+  padding: 0.85rem 0.9rem 0.95rem;
+  max-height: min(70vh, 32rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.design-hub-fab-card-lead {
+  margin: 0 0 0.65rem;
   font-size: 0.75rem;
+  line-height: 1.45;
   color: var(--muted);
 }
 
-.design-hub-topnav-actions {
+.design-hub-fab-card-lead code {
+  font-size: 0.6875rem;
+}
+
+.design-hub-fab-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.design-hub-fab-nav--dense {
+  gap: 0.15rem;
+}
+
+.design-hub-fab-card-foot {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+/* 卡片内主题条（不依赖色板页嵌套选择器） */
+.design-hub-fab-card .dt-theme-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
-  gap: 0.75rem 1rem;
+  gap: 0.45rem;
+  margin: 0;
 }
 
+.design-hub-fab-card .dt-theme-bar span {
+  width: 100%;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 0.1rem;
+}
+
+.design-hub-fab-card .dt-theme-btn {
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius, 8px);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.design-hub-fab-card .dt-theme-btn:hover {
+  border-color: var(--border-strong, #cbd5e1);
+  color: var(--text);
+}
+
+.design-hub-fab-card .dt-theme-btn.is-active {
+  border-color: rgba(37, 99, 235, 0.45);
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+/* 通用枢纽链接（卡片内纵向排列） */
 .design-hub-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-}
-
-/* 开发枢纽：多入口并列时略收紧行宽，避免与主题条抢行 */
-.design-hub-nav--wrap {
-  max-width: min(100%, 52rem);
-  justify-content: flex-end;
 }
 
 .design-hub-nav a {
@@ -65,19 +194,29 @@
   border: 1px solid transparent;
 }
 
-.design-hub-nav a:hover {
+.design-hub-fab-nav .design-hub-nav-link {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius, 8px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.design-hub-nav a:hover,
+.design-hub-fab-nav .design-hub-nav-link:hover {
   color: var(--text);
   background: var(--surface-2, rgba(15, 23, 42, 0.04));
 }
 
 .design-hub-nav a.router-link-active,
-.design-hub-nav a.is-active {
+.design-hub-nav a.is-active,
+.design-hub-fab-nav .design-hub-nav-link.is-active {
   border-color: rgba(37, 99, 235, 0.35);
   color: var(--blue);
   background: var(--blue-soft);
-}
-
-.design-hub-main {
-  flex: 1;
-  min-width: 0;
 }

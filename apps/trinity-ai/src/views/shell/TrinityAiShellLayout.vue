@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { computed, KeepAlive, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { RouterLink, RouterView, useRoute, useRouter } from "vue-router";
 import { SHELL_PRIMARY_NAV, TRINITY_OR_REMEMBER_KEY } from "./mock";
 import {
@@ -9,6 +9,7 @@ import {
   useTrinityOrUiLang,
 } from "./shellInteractions";
 import "./shell.css";
+import { ACCOUNT_CONSOLE_HASH } from "../account/mock";
 
 const suiteHomeHref =
   (import.meta.env.VITE_TRINITY_SUITE_HOME as string | undefined) ?? "../TrinityCloud/home.html";
@@ -259,7 +260,7 @@ function onSignOut(e: Event) {
 function onPrefsGear(e: Event) {
   e.preventDefault();
   closeUserMenu();
-  void router.push({ name: "tai-account-console", hash: "#preset" });
+  void router.push({ name: "tai-account-console", hash: ACCOUNT_CONSOLE_HASH.PRESET });
 }
 
 let detachTrinityOr: (() => void) | undefined;
@@ -420,7 +421,7 @@ onUnmounted(() => {
                 <RouterLink
                   class="or-menu-item"
                   role="menuitem"
-                  :to="{ name: 'tai-account-console', hash: '#keys' }"
+                  :to="{ name: 'tai-account-console', hash: ACCOUNT_CONSOLE_HASH.KEYS }"
                   @click="closeUserMenu"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -431,7 +432,7 @@ onUnmounted(() => {
                 <RouterLink
                   class="or-menu-item"
                   role="menuitem"
-                  :to="{ name: 'tai-account-console', hash: '#preset' }"
+                  :to="{ name: 'tai-account-console', hash: ACCOUNT_CONSOLE_HASH.PRESET }"
                   @click="closeUserMenu"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -444,7 +445,7 @@ onUnmounted(() => {
                 <RouterLink
                   class="or-menu-item"
                   role="menuitem"
-                  :to="{ name: 'tai-account-console', hash: '#credits' }"
+                  :to="{ name: 'tai-account-console', hash: ACCOUNT_CONSOLE_HASH.CREDITS }"
                   @click="closeUserMenu"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -456,7 +457,7 @@ onUnmounted(() => {
                 <RouterLink
                   class="or-menu-item"
                   role="menuitem"
-                  :to="{ name: 'tai-account-console', hash: '#activity' }"
+                  :to="{ name: 'tai-account-console', hash: ACCOUNT_CONSOLE_HASH.ACTIVITY }"
                   @click="closeUserMenu"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -467,7 +468,7 @@ onUnmounted(() => {
                 <RouterLink
                   class="or-menu-item"
                   role="menuitem"
-                  :to="{ name: 'tai-account-console', hash: '#logs' }"
+                  :to="{ name: 'tai-account-console', hash: ACCOUNT_CONSOLE_HASH.LOGS }"
                   @click="closeUserMenu"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
@@ -575,7 +576,11 @@ onUnmounted(() => {
     </header>
 
     <main id="main" class="w-full min-h-0 flex-auto" role="main">
-      <RouterView :key="String(route.name ?? '')" />
+      <RouterView v-slot="{ Component }">
+        <KeepAlive :include="['TaiAccountConsolePage']">
+          <component :is="Component" :key="String(route.name ?? '')" />
+        </KeepAlive>
+      </RouterView>
     </main>
 
 <div id="or-auth-modal-root" class="or-modal-root" :hidden="!visible">

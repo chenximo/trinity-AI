@@ -9,14 +9,14 @@
 
       /* html/body：由全局 trinity-base 与壳布局提供，避免在 portal 嵌套时重复定义 */
 
-      main#main {
+      main#main:has(.marketing-root) {
         box-sizing: border-box;
         padding-inline: 15%;
       }
 
       /* 首页正文已由 main 15% 留白，内层不再叠加 50px gutter（见 docs/Trinity原型版式与视觉规范.md） */
-      main#main .wrap,
-      main#main .wrap-wide {
+      main#main:has(.marketing-root) .wrap,
+      main#main:has(.marketing-root) .wrap-wide {
         padding-inline: 0;
       }
 
@@ -322,8 +322,8 @@
       }
 
       /* 背景左右通栏：突破 main 的 15% 内边距，再用同色 padding 与正文对齐 */
-      main#main .section-band,
-      main#main .agents-band {
+      main#main:has(.marketing-root) .section-band,
+      main#main:has(.marketing-root) .agents-band {
         box-sizing: border-box;
         width: 100vw;
         margin-left: calc(50% - 50vw);

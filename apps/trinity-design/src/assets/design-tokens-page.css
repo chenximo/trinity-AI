@@ -1,11 +1,103 @@
-    <style>
-      .dt-main {
+.dt-main {
         flex: 1;
         width: 100%;
         max-width: 960px;
         margin: 0 auto;
         padding: 1.25rem var(--page-gutter) 2.5rem;
         box-sizing: border-box;
+      }
+
+      /* 色板页：左栏（--surface + --border）+ 主列（--bg） */
+      .dt-page {
+        display: flex;
+        align-items: stretch;
+        flex: 1;
+        min-height: 0;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .dt-sidebar {
+        flex: 0 0 220px;
+        max-width: 260px;
+        padding: 0;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        box-sizing: border-box;
+      }
+
+      .dt-sidebar-title {
+        margin: 0;
+        padding: 0.5rem var(--page-gutter) 0.45rem;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dt-sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        padding: 0.2rem 0 1rem;
+      }
+
+      .dt-sidebar-link {
+        display: block;
+        padding: 0.5rem var(--page-gutter);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .dt-sidebar-link:hover {
+        color: var(--text);
+        background: var(--surface-2);
+      }
+
+      .dt-content {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--bg);
+      }
+
+      @media (max-width: 799px) {
+        .dt-page {
+          flex-direction: column;
+        }
+
+        .dt-sidebar {
+          flex: none;
+          width: 100%;
+          max-width: none;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .dt-sidebar-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0;
+          padding: 0.15rem 0 0.5rem;
+        }
+
+        .dt-sidebar-link {
+          flex: 1 1 auto;
+          min-width: 0;
+          border-bottom: none;
+          border-right: 1px solid var(--border);
+          padding: 0.4rem 0.65rem;
+          font-size: 0.75rem;
+        }
+
+        .dt-sidebar-link:last-child {
+          border-right: none;
+        }
       }
 
       .dt-hero {
@@ -493,4 +585,3 @@
         border-color: var(--blue) !important;
         box-shadow: 0 0 0 3px var(--blue-ring) !important;
       }
-    </style>

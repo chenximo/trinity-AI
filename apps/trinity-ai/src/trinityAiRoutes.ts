@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
+import { ACCOUNT_CONSOLE_HASH } from "./views/account/mock";
 import HomePage from "./views/home/HomePage.vue";
 
 /**
@@ -34,9 +35,29 @@ export function getTrinityAiChildRoutes(): RouteRecordRaw[] {
       meta: { title: "文档", orPage: "docs" },
     },
     {
+      path: "account/keys",
+      redirect: { name: "tai-account-console", hash: "#keys" },
+      meta: { title: "API 密钥", orPage: "console" },
+    },
+    {
+      path: "account/billing",
+      redirect: { name: "tai-account-console", hash: ACCOUNT_CONSOLE_HASH.CREDITS },
+      meta: { title: "额度", orPage: "console" },
+    },
+    {
+      path: "account/login",
+      redirect: { name: "tai-home", hash: "#login" },
+      meta: { title: "登录", orPage: "home" },
+    },
+    {
+      path: "account/register",
+      redirect: { name: "tai-home", hash: "#register" },
+      meta: { title: "注册", orPage: "home" },
+    },
+    {
       path: "account/console",
       name: "tai-account-console",
-      component: () => import("./views/AccountConsolePage.vue"),
+      component: () => import("./views/account/ConsolePage.vue"),
       meta: { title: "控制台", orPage: "console" },
     },
     {

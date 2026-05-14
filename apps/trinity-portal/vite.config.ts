@@ -8,9 +8,11 @@ const appSrc = (dir: string) => fileURLToPath(new URL(`../${dir}/src`, import.me
 const watchPoll = process.env.VITE_WATCH_POLL === "1";
 
 export default defineConfig({
-  plugins: [vue(), UnoCSS()],
+  plugins: [UnoCSS(), vue()],
   server: {
     port: 5173,
+    /** 占用时直接失败，避免静默换端口后仍刷 5173 却连到别的/旧的进程（「刷新无效」常见原因） */
+    strictPort: true,
     headers: { "Cache-Control": "no-store" },
     fs: { allow: [repoRoot] },
     watch: {
@@ -18,6 +20,11 @@ export default defineConfig({
       ignored: ["**/node_modules/**", "**/dist/**"],
       ...(watchPoll ? { usePolling: true, interval: 300 } : {}),
     },
+  },
+  preview: {
+    port: 5173,
+    strictPort: true,
+    headers: { "Cache-Control": "no-store" },
   },
   resolve: {
     alias: {

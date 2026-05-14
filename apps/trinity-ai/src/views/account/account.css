@@ -1,0 +1,160 @@
+/*
+ * Account 控制台：OpenRouter 式「顶栏(壳) + 左栏 + 主列」
+ * — 无侧栏卡片描边、无页脚；主列内留白由 .or-main 承担。
+ */
+
+/* 抵消首页残留；壳内 #main 收成纵向 flex，占满顶栏下剩余高度 */
+main#main:has(.account-console-root) {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 与 Chat 类似：控制台根铺满 #main；整页底 `--bg`，与侧栏 `--surface` 成对（见 `packages/tokens/src/core.css`） */
+.account-console-root.mvp-main {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.account-console-root *,
+.account-console-root *::before,
+.account-console-root *::after {
+  box-sizing: border-box;
+}
+
+.account-console-root .or-shell {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  gap: 0;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .account-console-root .or-shell {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  /* 与主列同高拉伸：左栏 `--surface` 纵向贯通（不再 shrink 成「仅包导航」高度） */
+  .account-console-root .or-side {
+    flex: 0 0 220px;
+    align-self: stretch;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* 左栏：设计 token 底 `--surface`，与主列 `--bg` 区分；桌面 `border-right` 见上一段 media（勿写 `border: none` 以免盖掉分割线） */
+.account-console-root .or-side {
+  border-radius: 0;
+  background: var(--surface);
+  padding: 0.35rem 0 1rem;
+}
+
+.account-console-root .or-side-heading {
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+}
+
+.account-console-root .or-side a {
+  border-left: none;
+  border-radius: var(--radius, 8px);
+}
+
+.account-console-root .or-side a:hover {
+  background: var(--surface-2, rgba(15, 23, 42, 0.06));
+  color: var(--text);
+}
+
+.account-console-root .or-side a.is-active {
+  border-left-color: transparent;
+  background: var(--surface-2, rgba(15, 23, 42, 0.08));
+  font-weight: 600;
+}
+
+/* 主列：页面基底 `--bg`，与侧栏 `--surface` 对照 `packages/tokens/src/core.css` */
+.account-console-root .or-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 0.75rem 1.25rem 2rem 1.75rem;
+  background: var(--bg);
+}
+
+/* 窄屏：侧栏横条 + 底部分隔 */
+@media (max-width: 899px) {
+  .account-console-root .or-side {
+    border: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.25rem;
+  }
+
+  .account-console-root .or-main {
+    padding: 0.75rem var(--page-gutter, 16px) 1.5rem;
+  }
+}
+
+/* 静态页若仍带 page-foot，在壳内隐藏（防再生成漏删） */
+.account-console-root .page-foot {
+  display: none !important;
+}
+
+.account-proto-card {
+  max-width: 42rem;
+  margin: 0 auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border, #e2e8f0);
+  background: var(--surface, #fff);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.account-proto-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text, #0f172a);
+}
+
+.account-proto-lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted, #475569);
+}
+
+.account-proto-lead code {
+  font-size: 0.75rem;
+}
+
+.account-proto-foot {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted, #475569);
+}
+
+.account-proto-link {
+  color: var(--blue, #2563eb);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.account-proto-link:hover {
+  color: var(--purple, #7c3aed);
+}

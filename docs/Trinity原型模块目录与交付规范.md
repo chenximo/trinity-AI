@@ -174,6 +174,7 @@ src/views/home/            # 营销首页「五件套」
 | **路由真源** | 在 **`README.md` 最前** 用表格列出：`path`、`name`（如 `tai-*`）、**对应 `*.vue` 文件名**、静态真源 `TrinityAI/account/*.html`（若有）。避免「同目录多个路由入口却不知改哪个文件」——这与 §9「多平级主 Vue 且无说明」反例的界限在于 **README 是否显式列路由表**。 |
 | **整页仍不拆子组件** | 每个路由仍对应 **一枚路由级 `*Page.vue`**，整页模板 + 注释分区；**不在** `views/account/components/` 再堆原型子 `.vue`（与 §1、§9 一致）。 |
 | **样式** | **一份域级** `account.css`（或 `account.page.css`）被各页 `import`；若某屏样式极大再拆 `billing.css` 等，须在 README 写明依赖关系。**不用** `*.module.css` 承载须稳定的 `or-*` / `orc-*` 类名（与 Chat / 模型一致）。 |
+| **布局与视觉（按需）** | 若产品要求 **顶栏 + 侧栏 + 主列**、去线框/去页脚等，须在 **`README.md` 专节**写清 DOM 分工与与全站 `main#main` 的例外；实现真源放在域级 CSS。当前控制台示例：`apps/trinity-ai/src/views/account/README.md` **§4**。 |
 | **mock** | **能共享则一个** `mock.ts`（或 `accountMock.ts`）；各页数据完全无关时可拆 `billingMock.ts` 等，但 README 要列「哪页 import 哪个 mock」。**mock 不写 DOM**（§4）。 |
 | **交互** | **能共享则一个** `accountInteractions.ts`（壳内 tab、hash 同步等）；仅单页用到的可写在对应 `*Page.vue` 内，复杂再抽到页旁 `billingInteractions.ts`，README 一句话指过去。 |
 | **二次开发** | 仍遵守 **§6.1**：在总 README 的「二次开发补充」表中写清**哪条路由 / 哪个文件**。 |
@@ -224,4 +225,4 @@ src/views/home/            # 营销首页「五件套」
 
 ---
 
-*文档版本：v1.9（§7.1 子域多页精简五件套；§6.1 二次开发；原型真源策略见 `Trinity原型形态对比与AI友好交付.md` §0）；以团队评审结论为准。*
+*文档版本：v1.10（§7.1 增补「布局与视觉」README 专节约定；§6.1 二次开发；原型真源策略见 `Trinity原型形态对比与AI友好交付.md` §0）；以团队评审结论为准。*

@@ -5,6 +5,7 @@
 
 import type { Router } from "vue-router";
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ACCOUNT_CONSOLE_HASH } from "../account/mock";
 import { paintMockPickerList, paintMockRolePickerList } from "./mock";
 
 const PRESET = "__TAI_CONSOLE_PRESET__";
@@ -13,7 +14,10 @@ const CREATE_PRESET = "__TAI_CONSOLE_CREATE_PRESET__";
 /** 将静态 HTML 占位 href 换成当前 history base 下的路由地址 */
 export function patchTaiChatAnchors(root: ParentNode, router: Router) {
   root.querySelectorAll<HTMLAnchorElement>(`a[href="${PRESET}"]`).forEach((a) => {
-    a.setAttribute("href", router.resolve({ name: "tai-account-console", hash: "#preset" }).href);
+    a.setAttribute(
+      "href",
+      router.resolve({ name: "tai-account-console", hash: ACCOUNT_CONSOLE_HASH.PRESET }).href
+    );
   });
   root.querySelectorAll<HTMLAnchorElement>(`a[href="${CREATE_PRESET}"]`).forEach((a) => {
     a.setAttribute(
@@ -21,7 +25,7 @@ export function patchTaiChatAnchors(root: ParentNode, router: Router) {
       router.resolve({
         name: "tai-account-console",
         query: { create: "1" },
-        hash: "#preset",
+        hash: ACCOUNT_CONSOLE_HASH.PRESET,
       }).href
     );
   });
