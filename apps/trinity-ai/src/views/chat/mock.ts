@@ -1,9 +1,11 @@
 /**
- * Chat 页 · 纯原型演示用假数据（摆布局、走交互示意）。
+ * Chat 模块 · 纯原型演示用假数据（摆布局、走交互示意）。
+ * 路径：`src/views/chat/mock.ts`（见同目录 `README.md`）。
  *
  * - 不当作正式接口契约、不做字段完备校验；接 API 后应整段替换，勿在此叠业务逻辑。
  * - 改下面数组/对象即可调文案与条数；收藏仍写 localStorage 仅为对齐旧静态演示键名。
  */
+
 
 /** 与旧 `chat-openrouter.js` 一致，仅演示用 */
 export const ORC_FAV_MODEL_STORAGE_KEY = "trinity_orc_fav_models";
@@ -113,6 +115,14 @@ export const MOCK_ORC_MODELS = [
     supportsOutput: true,
   },
 ];
+
+/** 空态场景卡 → 侧栏展示的模型子集（对齐旧 `chat-openrouter.js`） */
+export const MOCK_MODEL_COLLECTIONS: Record<string, { title: string; ids: readonly string[] }> = {
+  flagship: { title: "综合旗舰", ids: ["g31", "gpt", "cob", "r4p"] },
+  creative: { title: "人设与创意", ids: ["cob", "g31", "r3"] },
+  code: { title: "编程与代码", ids: ["gpt", "g31", "cob"] },
+  reasoning: { title: "复杂推理", ids: ["gpt", "g31", "r4p"] },
+};
 
 /** 侧栏「会话历史」分组；仅展示用 */
 export const MOCK_CHAT_SESSION_GROUPS = [

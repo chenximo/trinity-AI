@@ -23,12 +23,12 @@
 在 `src/views/` 下为每个模块建**同名文件夹**，与路由、产品语言对齐。
 
 ```text
-src/views/chat/
-├── ChatPage.vue           # 入口：单文件 template = 全页结构（不拆子组件，见 §1）
-├── chat.module.css        # 本模块样式（布局补丁、scoped 难以覆盖的例外；可选）
-├── chatInteractions.ts    # 原型交互：事件、DOM、路由、storage（可选，复杂模块）
-├── mock.ts                # 假数据与小型纯函数（可选；接 API 后整段替换）
-└── README.md              # 模块说明：交付给开发与自用的入口（建议必有）
+src/views/chat/            # Chat 已收敛为「五件套」示例（仅下列五个文件）
+├── ChatPage.vue           # 路由入口 + 整页模板
+├── chat.css
+├── chatInteractions.ts    # 交互与壳层 composable（含原 patch / help / shell）
+├── mock.ts                # 数据与 paintMock*（无内嵌整页 HTML）
+└── README.md
 ```
 
 **命名约定**
@@ -36,7 +36,7 @@ src/views/chat/
 | 类型 | 建议 | 说明 |
 |------|------|------|
 | 入口 Vue | `XxxPage.vue` 或与路由一致的 `XxxView.vue` | 与 `trinityAiRoutes` 中 `component` 名称一致为佳。 |
-| 样式 | `chat.module.css` 或 `chat.page.css` | 避免与全局 `chat-openrouter.css` 等重名；模块内用前缀或文件名区分。 |
+| 样式 | `chat.css` 或 `chat.page.css` | Chat 须用**非** `*.module.css` 的全局表，否则 Vite 会把 `orc-*` 等类名哈希化导致布局失效；避免与全局 `chat-openrouter.css` 等重名。 |
 | 交互 | `chatInteractions.ts`、`useChatPrototype.ts` | 使用 **TypeScript**（`.ts`），不在规范中写「.js」以免与仓库不一致。 |
 | Mock | `mock.ts` | 仅数据与纯函数；文件名保持简短。 |
 | 说明 | `README.md` | 同目录优先，便于在 IDE 与 Git 中一眼看到。 |
@@ -73,7 +73,7 @@ src/views/chat/
 | **模板分区** | 在入口 `.vue` 的 `<template>` 内用 `<!-- 侧栏 -->`、`<!-- 主列 -->` 等注释标界，便于评审与合并冲突处理。 |
 | **逻辑外置** | 列表过滤、弹层开关状态机等放入 `*Interactions.ts` 或 composable，入口只保留绑定与调用。 |
 | **样式外置** | 大块样式进 `*.module.css`；与设计 spec 对齐的变量仍优先用全局 token。 |
-| **历史过渡** | 若仓库中仍存在 `src/chat/*.vue` 等与「单入口」不一致的旧结构，在模块 `README.md` 写明**过渡路径**与计划收敛方式，避免与本文「不拆子组件」长期并存且无文档。 |
+| **历史过渡** | 若尚未收敛为「单 `ChatPage.vue` 大模板」，在模块 `README.md` 写明当前有哪些辅助 `.vue` / `raw` 及计划收敛方式。 |
 
 ---
 
@@ -84,7 +84,7 @@ src/views/chat/
 1. **一句话**：本页原型演示什么、与正式版的差距。  
 2. **路由**：路径、`trinityAiRoutes`（或等价）中的名称、懒加载与否。  
 3. **入口文件**：主 Vue 文件名。  
-4. **依赖样式**：全局 CSS 路径（如 `src/styles/chat-openrouter.css`）、本模块 CSS 负责范围。  
+4. **依赖样式**：全局或模块内 CSS 路径（如 `src/views/chat/chat-openrouter.css`）、本模块 `*.module.css` 负责范围。  
 5. **数据与交互**：`mock.ts` / `*Interactions.ts` 是否存在、各自职责。  
 6. **结构约定**：写明「单入口、不拆子组件」；若存在过渡期的其它路径组件，列出与计划。  
 7. **接 API / 正式开发时要动哪些文件**：按文件列清单。  
@@ -127,10 +127,7 @@ src/views/chat/
 
 ## 10. 与当前 `trinity-ai` 实现的关系（说明性）
 
-当前对话模块仍存在 **`src/chat/*.vue` 多文件、`raw/*.html` 注入** 等与本文「单入口、不拆子组件」不一致的历史形态；**精神上一致**的是「入口 `ChatPage.vue` + mock / 交互分离」。后续若重构，建议：
-
-- 收敛为 **`src/views/chat/ChatPage.vue` 单文件模板**（或保留注入但逻辑仍集中由入口编排），并落到五件套目录；  
-- 在 `views/chat/README.md` 写明过渡：raw 路径、全局 CSS、临时子组件路径，直至删除。
+当前对话模块已全部收拢至 **`apps/trinity-ai/src/views/chat/`**（入口、子块 `.vue`、`raw/`、`mock.ts`、`chatInteractions.ts`、composables 等）；与规范「单入口大模板」的差距仅为**多 `.vue` 同目录**及 **HTML 注入**，详见该目录 `README.md` §6。
 
 ---
 
@@ -143,4 +140,4 @@ src/views/chat/
 
 ---
 
-*文档版本：v1.1（明确不拆子组件）；与对话原型实现无强制同步要求，以团队评审结论为准。*
+*文档版本：v1.3（Chat 已收拢至 `views/chat/`，无独立 `src/chat`）；以团队评审结论为准。*

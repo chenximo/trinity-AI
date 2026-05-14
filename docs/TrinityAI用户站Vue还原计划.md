@@ -68,7 +68,7 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 |------|------|------|
 | `/` | `MarketingHome.vue` | 营销首页占位 |
 | `/models` | `ModelsPage.vue` | 模型页占位（与静态主导航顺序一致：首页 → 模型 → 对话 → 文档） |
-| `/chat` | `ChatPage.vue` | 对话占位 |
+| `/chat` | `views/chat/ChatPage.vue` | 对话占位 |
 | `/docs` | `DocsPage.vue` | 文档占位 |
 | `/account/console` | `AccountConsolePage.vue` | 控制台占位 |
 | `/dev/ui-kit` | `UiKitPlayground.vue` | `@trinity/ui` 烟测（形式 3 使用 `segments` prop） |
@@ -96,7 +96,7 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 
 ### 阶段 B — 营销首页 — **已完成**
 
-- **`TrinityAI/index.html`** 中 `<main>` 正文与页脚迁入 **`apps/trinity-ai/src/views/MarketingHome.vue`**；样式自原页 `<style>` 抽出为 **`apps/trinity-ai/src/styles/marketing-home.css`**（已去掉与全局重复的 `html`/`body` 块）。  
+- **`TrinityAI/index.html`** 中 `<main>` 正文与页脚迁入 **`apps/trinity-ai/src/views/MarketingHome.vue`**；样式自原页 `<style>` 抽出为 **`apps/trinity-ai/src/views/marketing-home.css`**（已去掉与全局重复的 `html`/`body` 块）。  
 - 站内链接改为 **`RouterLink`**（`tai-account-console` / `tai-docs` / `tai-models` 等）；页内锚点（`#capabilities`、`#apps` 等）仍为 `<a href="#">`。  
 - **首屏 CTA**：`@trinity/ui` 的 **`TButton`**（`gradient` / `outline`）+ `useRouter` 跳转控制台与文档；步骤区 OAuth 示意按钮调用 **`window.TrinityOR.openSignIn`** 打开壳上登录弹层。  
 - 静态正文再生成：根目录 `TrinityAI/index.html` 变更后执行 **`npm run gen:marketing -w @trinity/app-trinity-ai`** 重新生成 `MarketingHome.vue`（脚本会保留上述 TButton / OAuth 替换逻辑）。  

@@ -1,3 +1,7 @@
+/**
+ * Chat 模块唯一样式表（五件套）：chat-openrouter + chat-vue-shell 合并。
+ * 使用 `chat.css`（非 `*.module.css`）以便 Vite 按全局样式处理，与模板中的 `orc-*` 类名一致。
+ */
 /* OpenRouter /chat replica — global tokens from trinity-base.css :root + OR-specific layout */
 
 /* 对话页：视口固定，不滚整页；仅中间 .orc-scroll 聊天区滚动 */
@@ -1953,7 +1957,7 @@ html[data-theme="dark"] .orc-role-card-tag--official {
   outline-offset: 2px;
 }
 
-/* —— 发送后：多模型对比 + 综合总结 —— */
+/* —— 发送后：多模型对比 —— */
 .orc-thread {
   width: 100%;
   padding: 0.75rem 0 1.25rem;
@@ -2522,125 +2526,6 @@ html[data-theme="dark"] .orc-role-card-tag--official {
   padding-left: 1.1rem;
 }
 
-.orc-summary-panel {
-  border-radius: 14px;
-  border: 1px solid rgba(37, 99, 235, 0.15);
-  background: linear-gradient(180deg, rgba(239, 246, 255, 0.65), var(--bg) 28%);
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.06);
-  overflow: hidden;
-}
-
-.orc-summary-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.65rem 0.85rem;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.75);
-}
-
-.orc-summary-title {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.orc-summary-spark {
-  color: var(--blue);
-  font-size: 1rem;
-}
-
-.orc-summary-collapse {
-  flex-shrink: 0;
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-family: inherit;
-  color: var(--blue);
-  cursor: pointer;
-}
-
-.orc-summary-collapse:hover {
-  background: var(--blue-soft);
-  border-color: var(--blue-ring);
-}
-
-.orc-summary-content {
-  padding: 0.85rem 1rem 1rem;
-}
-
-.orc-summary-content[hidden] {
-  display: none !important;
-}
-
-.orc-summary-block + .orc-summary-block {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--border);
-}
-
-.orc-summary-h3 {
-  margin: 0 0 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.orc-summary-h4 {
-  margin: 0.65rem 0 0.35rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.orc-summary-table-wrap {
-  overflow-x: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
-
-.orc-summary-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.75rem;
-}
-
-.orc-summary-table th,
-.orc-summary-table td {
-  padding: 0.45rem 0.65rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-
-.orc-summary-table th {
-  background: var(--surface-2);
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.orc-summary-fail {
-  margin: 0;
-  padding-left: 1.1rem;
-  font-size: 0.75rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-.orc-summary-p {
-  margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.55;
-  color: var(--text);
-}
-
 @media (max-width: 720px) {
   .orc-compare-split {
     grid-template-columns: 1fr;
@@ -2849,19 +2734,6 @@ html[data-theme="dark"] .orc-role-card-tag--official {
   margin: 0.2rem 0 0;
   font-size: 0.75rem;
   color: var(--muted-2);
-}
-
-.orc-summary-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  min-width: 0;
-  flex: 1;
-}
-
-.orc-summary-title-wrap .orc-summary-title {
-  flex: 1;
-  min-width: 0;
 }
 
 .orc-expand-body-p {
@@ -3894,3 +3766,66 @@ html[data-theme="dark"] .orc-role-card-tag--official {
 .orc-btn-danger:hover {
   filter: brightness(1.05);
 }
+
+
+/* Vue 壳内对话根：静态页为 <main class="mvp-main orc-chat-root">，此处为 #main 下的 .chat-page-root */
+
+html:has(#main .chat-page-root.orc-chat-root),
+body:has(#main .chat-page-root.orc-chat-root) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body:has(#main .chat-page-root.orc-chat-root) {
+  height: 100dvh;
+  max-height: 100dvh;
+}
+
+#main .chat-page-root.mvp-main.orc-chat-root {
+  max-width: none;
+  width: 100%;
+  margin: 0.65rem 0 0;
+  padding: 0 var(--page-gutter, 50px);
+  display: flex;
+  flex-direction: column;
+  /* 占满壳里 #main 的剩余高度（依赖下方 main:has 为 flex 容器） */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#main .chat-page-root.mvp-main.orc-chat-root > .orc-app {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+/*
+ * 主列 HTML 由 innerHTML 注入在此容器内；若保留普通 div，会成为 .orc-shell 的第三列 grid 子项，
+ * 而 .orc-main 退居下一层，原 CSS 中「主列占满第三轨」的 flex 链会断，底栏 input 会错位。
+ * display:contents 让 .orc-main 直接参与 .orc-shell 的 grid（与静态页结构一致）。
+ */
+.chat-inlined-main-composer {
+  display: contents;
+}
+
+/*
+ * 与模型页一致：抵消壳上 main 的宽边距。
+ * 壳里 #main 默认是 block，子级 .chat-page-root 的 flex:1 不生效 → 对话区高度塌成内容高；
+ * 在对话路由下把 #main 收成纵向 flex，才能把 .orc-app / .orc-scroll 的高度链撑满视口。
+ */
+main#main:has(.chat-page-root) {
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 899px) {
+  .orc-mobile-only {
+    display: grid !important;
+  }
+}
+

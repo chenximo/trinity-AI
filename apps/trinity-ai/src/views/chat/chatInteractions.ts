@@ -1,8 +1,196 @@
 /**
- * 为对话页内嵌 HTML 补齐原型级点击/键盘行为（对齐旧 `chat-openrouter.js` 子集）。
- * 仅演示：不接 API；与 `mock.ts` 一样，正式开发时整段替换或删除。
+ * Chat 模块 · 原型级点击与键盘行为（对齐旧 `chat-openrouter.js` 子集）。
+ * 路径：`src/views/chat/chatInteractions.ts`（见 `README.md`）。仅演示，正式开发可替换或删除。
  */
+
+import type { Router } from "vue-router";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { paintMockPickerList, paintMockRolePickerList } from "./mock";
+
+const PRESET = "__TAI_CONSOLE_PRESET__";
+const CREATE_PRESET = "__TAI_CONSOLE_CREATE_PRESET__";
+
+/** 将静态 HTML 占位 href 换成当前 history base 下的路由地址 */
+export function patchTaiChatAnchors(root: ParentNode, router: Router) {
+  root.querySelectorAll<HTMLAnchorElement>(`a[href="${PRESET}"]`).forEach((a) => {
+    a.setAttribute("href", router.resolve({ name: "tai-account-console", hash: "#preset" }).href);
+  });
+  root.querySelectorAll<HTMLAnchorElement>(`a[href="${CREATE_PRESET}"]`).forEach((a) => {
+    a.setAttribute(
+      "href",
+      router.resolve({
+        name: "tai-account-console",
+        query: { create: "1" },
+        hash: "#preset",
+      }).href
+    );
+  });
+}
+
+
+/** 与静态 `chat-openrouter.js` 中说明气泡行为对齐的轻量版（无 legacy 脚本时使用） */
+export function bindOrcHelpTipsLite(): () => void {
+  let orcHelpTipAnchor: HTMLElement | null = null;
+
+  function $(sel: string) {
+    return document.querySelector(sel) as HTMLElement | null;
+  }
+
+  function closeOrcHelpTip() {
+    const pop = $("#orc-help-tip-popover");
+    if (pop) pop.hidden = true;
+    document.querySelectorAll(".orc-help-tip-btn[aria-expanded='true']").forEach((b) => {
+      b.setAttribute("aria-expanded", "false");
+    });
+    orcHelpTipAnchor = null;
+  }
+
+  function positionOrcHelpTip() {
+    const btn = orcHelpTipAnchor;
+    const pop = $("#orc-help-tip-popover");
+    if (!btn || !pop || pop.hidden) return;
+    const r = btn.getBoundingClientRect();
+    const w = Math.min(360, window.innerWidth - 16);
+    pop.style.width = `${w}px`;
+    const ph = pop.offsetHeight || 160;
+    const spaceBelow = window.innerHeight - r.bottom - 12;
+    const placeBelow = spaceBelow >= ph + 8 || spaceBelow >= r.top - 12;
+    let top = placeBelow ? r.bottom + 8 : r.top - ph - 8;
+    if (top < 8) top = 8;
+    if (top + ph > window.innerHeight - 8) top = Math.max(8, window.innerHeight - ph - 8);
+    const left = Math.min(Math.max(8, r.right - w), window.innerWidth - w - 8);
+    pop.style.left = `${left}px`;
+    pop.style.top = `${top}px`;
+  }
+
+  function openOrcHelpTip(btn: HTMLElement) {
+    const tplId = btn.getAttribute("data-orc-help-tpl");
+    const tpl = tplId ? document.getElementById(tplId) : null;
+    const pop = $("#orc-help-tip-popover");
+    const titleEl = $("#orc-help-tip-title");
+    const bodyEl = $("#orc-help-tip-body");
+    if (!tpl || !pop || !titleEl || !bodyEl || !(tpl instanceof HTMLTemplateElement)) return;
+    closeOrcHelpTip();
+    const title = btn.getAttribute("data-orc-help-title") || "说明";
+    titleEl.textContent = title;
+    bodyEl.innerHTML = "";
+    bodyEl.appendChild(tpl.content.cloneNode(true));
+    orcHelpTipAnchor = btn;
+    pop.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    window.requestAnimationFrame(() => {
+      positionOrcHelpTip();
+      window.requestAnimationFrame(positionOrcHelpTip);
+    });
+  }
+
+  function onDocClick(e: MouseEvent) {
+    const btn = (e.target as HTMLElement | null)?.closest?.(".orc-help-tip-btn[data-orc-help-tpl]");
+    if (!btn || !(btn instanceof HTMLElement)) return;
+    e.stopPropagation();
+    const pop = $("#orc-help-tip-popover");
+    if (!pop) return;
+    if (!pop.hidden && orcHelpTipAnchor === btn) {
+      closeOrcHelpTip();
+      return;
+    }
+    openOrcHelpTip(btn);
+  }
+
+  function onResize() {
+    const pop = $("#orc-help-tip-popover");
+    if (pop && !pop.hidden) positionOrcHelpTip();
+  }
+
+  function onMouseDown(e: MouseEvent) {
+    const pop = $("#orc-help-tip-popover");
+    if (!pop || pop.hidden) return;
+    const t = e.target as Node;
+    if (pop.contains(t) || (t as HTMLElement).closest?.(".orc-help-tip-btn")) return;
+    closeOrcHelpTip();
+  }
+
+  function onKeydown(e: KeyboardEvent) {
+    if (e.key === "Escape") closeOrcHelpTip();
+  }
+
+  document.addEventListener("click", onDocClick);
+  window.addEventListener("resize", onResize, { passive: true });
+  document.addEventListener("mousedown", onMouseDown);
+  document.addEventListener("keydown", onKeydown);
+
+  return () => {
+    document.removeEventListener("click", onDocClick);
+    window.removeEventListener("resize", onResize);
+    document.removeEventListener("mousedown", onMouseDown);
+    document.removeEventListener("keydown", onKeydown);
+    closeOrcHelpTip();
+  };
+}
+
+
+export type ChatSideTab = "models" | "rooms";
+
+export function useChatShellLayout() {
+  const sideTab = ref<ChatSideTab>("models");
+  const sideCollapsed = ref(false);
+  const mobileDrawerOpen = ref(false);
+  const narrow = ref(false);
+
+  const mq = window.matchMedia("(max-width: 899px)");
+
+  function readNarrow() {
+    try {
+      narrow.value = mq.matches;
+    } catch {
+      narrow.value = false;
+    }
+  }
+
+  function onMq() {
+    readNarrow();
+    if (!narrow.value) mobileDrawerOpen.value = false;
+  }
+
+  onMounted(() => {
+    readNarrow();
+    mq.addEventListener("change", onMq);
+  });
+
+  onUnmounted(() => {
+    mq.removeEventListener("change", onMq);
+  });
+
+  const drawer2Visible = computed(() => narrow.value);
+
+  function closeMobileDrawer() {
+    mobileDrawerOpen.value = false;
+  }
+
+  function openMobileDrawer() {
+    mobileDrawerOpen.value = true;
+  }
+
+  function toggleSideCollapsed() {
+    sideCollapsed.value = !sideCollapsed.value;
+  }
+
+  function expandSideFromRail() {
+    sideCollapsed.value = false;
+  }
+
+  return {
+    sideTab,
+    sideCollapsed,
+    mobileDrawerOpen,
+    drawer2Visible,
+    closeMobileDrawer,
+    openMobileDrawer,
+    toggleSideCollapsed,
+    expandSideFromRail,
+  };
+}
+
 
 export type OrcPrototypeBinderOptions = {
   getSelectedModelId: () => string;
@@ -467,18 +655,6 @@ export function bindOrcPrototypeChatInteractions(
       root.querySelectorAll(".orc-sys-tab").forEach((tab) => {
         tab.classList.toggle("is-active", tab === sysTab);
       });
-      return;
-    }
-
-    if (t.id === "orc-summary-collapse" || t.closest("#orc-summary-collapse")) {
-      e.preventDefault();
-      const colBtn = $("#orc-summary-collapse");
-      const content = $("#orc-summary-content");
-      if (!colBtn || !content) return;
-      content.hidden = !content.hidden;
-      const open = !content.hidden;
-      colBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      colBtn.textContent = open ? "收起" : "展开";
       return;
     }
 

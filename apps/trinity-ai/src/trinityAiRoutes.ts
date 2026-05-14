@@ -24,7 +24,7 @@ export function getTrinityAiChildRoutes(): RouteRecordRaw[] {
     {
       path: "chat",
       name: "tai-chat",
-      component: () => import("./views/ChatPage.vue"),
+      component: () => import("./views/chat/ChatPage.vue"),
       meta: { title: "对话", orPage: "chat" },
     },
     {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, useRouter } from "vue-router";
 import { TButton } from "@trinity/ui";
-import "../styles/marketing-home.css";
+import "./marketing-home.css";
 
 const router = useRouter();
 

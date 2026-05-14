@@ -10,7 +10,7 @@
 
 | 项 | 说明 |
 |----|------|
-| **目标** | 在 `apps/trinity-ai` 的 **`/chat`**（`ChatPage.vue` 及子组件）中复现静态原型的 **布局、分区、可运行占位交互**，与壳 `TrinityAiShellLayout`、`meta.orPage: "chat"` 一致；`apps/trinity-portal` 下 `/trinity-ai/chat` 共用同一路由表。 |
+| **目标** | 在 `apps/trinity-ai` 的 **`/chat`**（`src/views/chat/` 内 `ChatPage.vue`、同目录子块与 `raw`）中复现静态原型的 **布局、分区、可运行占位交互**，与壳 `TrinityAiShellLayout`、`meta.orPage: "chat"` 一致；`apps/trinity-portal` 下 `/trinity-ai/chat` 共用同一路由表。 |
 | **本期不做** | 真实 OpenRouter/后端 API、流式输出、计费等；助手文案与对比区可保持 **占位 + 静态示意**，与 `原型说明` §1.2「静态优先」一致。 |
 | **约束** | 与全站相同：`apps/trinity-ai` → `@trinity/ui` → `packages/tokens`；形式化控件走 **设计规范组件**，见总纲 §3 映射表。 |
 
@@ -22,7 +22,7 @@
 |------|------|-------------|
 | `index.html` | 区域 DOM、模板片段、`data-orc-prototype-annotation` | 拆为 Vue 模板 + 少量 `v-html` 仅在有安全边界时；优先结构化组件。 |
 | `chat-openrouter.js` | 全局 IIFE、DOM 查询、`MODELS` / `MODEL_COLLECTIONS`、事件绑定 | 拆为 **composables**（状态 + 纯函数）+ **视图内事件**；禁止在新代码中保留巨型单文件 IIFE。 |
-| `chat-openrouter.css` | `orc-*` 大量布局与皮肤 | 先 **整页引入** 到 `apps/trinity-ai/src/styles/chat-openrouter.css`（或等价路径）保证像素级回归，再按区块 **下沉为 scoped/模块** 与 Token 对齐（与 models 页「先迁后收敛」策略一致）。 |
+| `chat-openrouter.css` | `orc-*` 大量布局与皮肤 | 先 **整页引入** 到 `apps/trinity-ai/src/views/chat/chat-openrouter.css`（经 `chat.css` 聚合）保证像素级回归，再按区块 **下沉为 scoped/模块** 与 Token 对齐（与 models 页「先迁后收敛」策略一致）。 |
 
 脚本内已暴露的能力块（grep 函数名即可对照）：收藏与筛选、侧栏 Tab、模型集合/对比、`picker` 弹层、`Compare to`、预设芯片与角色选择器、会话显隐、侧栏列表渲染与 hover tooltip、Composer 与帮助气泡绑定等——迁移时按 **功能域** 拆文件，避免按行号硬搬。
 
@@ -32,18 +32,18 @@
 
 ### C0 — 路由与壳对齐（极薄）
 
-- [ ] `ChatPage.vue` 去掉占位卡片：根容器类名与静态 `body`/主容器对齐（如 `orc-*` 根类），保证 `data-or-page` 已由壳设置 **`chat`**。  
+- [ ] `views/chat/ChatPage.vue` 去掉占位卡片：根容器类名与静态 `body`/主容器对齐（如 `orc-*` 根类），保证 `data-or-page` 已由壳设置 **`chat`**。  
 - [ ] 确认 `main#main` 与营销页 `padding` 冲突：必要时为 chat 根加与 `models-page` 类似的 **`main#main:has(.chat-root)`** 重置（类名待定，与实现一致即可）。
 
 ### C1 — 样式与 HTML 骨架迁入
 
-- [ ] 从 `index.html` 抽出 **无顶栏重复** 的主体结构迁入 `ChatPage.vue`（顶栏已由壳承担）。  
+- [ ] 从 `index.html` 抽出 **无顶栏重复** 的主体结构迁入 `views/chat/ChatPage.vue`（顶栏已由壳承担）。  
 - [ ] 引入 `chat-openrouter.css`（及依赖的 `trinity-base` 已由入口引入则不再重复）。  
 - [ ] 构建通过：`npm run build -w @trinity/app-trinity-ai`。
 
 ### C2 — 侧栏 · 模型列表
 
-- [ ] `MODELS` 数据迁入 `src/data/` 或 `src/chat/` 下 TypeScript 模块 + 类型。  
+- [ ] `MODELS` 数据迁入 `src/data/` 或 `src/views/chat/` 下 TypeScript 模块 + 类型。  
 - [ ] 搜索框：`SearchForm1Fixed` / `SearchForm2Grow`（与侧栏视觉一致者，对照 design-spec `#ds-search`）。  
 - [ ] 筛选芯片：`FilterForm3LabeledSegmented` 或形式 2，与原型 `syncFilterChipsFromState` 行为对齐。  
 - [ ] 模型行：列表容器 `orc-model-list` + `SelectListForm1ModelRow`（与设计 spec 一致）；收藏星、`is-active`、对比 ✓ 状态用 Vue 状态驱动。  
@@ -79,7 +79,7 @@
 ### C8 — 持久化与后续 API
 
 - [ ] `localStorage`：`trinity_orc_fav_models` 等与静态键一致；封装小 composable（键名常量一处维护）。  
-- [ ] 预留 **HTTP/流式** 接口层（`src/chat/api.ts` 或 `services/`），页面仅依赖接口类型，不接真实密钥。
+- [ ] 预留 **HTTP/流式** 接口层（`src/views/chat/api.ts` 或 `services/`），页面仅依赖接口类型，不接真实密钥。
 
 ---
 
@@ -87,7 +87,7 @@
 
 ```
 views/
-  ChatPage.vue              # 组装 + 布局根
+  views/chat/ChatPage.vue    # 组装 + 布局根（路由入口）
 chat/                       # 可选：与路由解耦
   components/               # OrcSidebarModels.vue, OrcComposer.vue, …
   composables/              # useOrcModelPicker.ts, useOrcCompare.ts, …

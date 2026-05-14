@@ -12,7 +12,7 @@ import {
   priceInSortKey,
   PROVIDER_PILLS,
 } from "../data/modelsCatalog";
-import "../styles/models-page.css";
+import "./models-page.css";
 
 type SortMode = "name" | "newest" | "ctx" | "price-asc";
 type ProviderId = (typeof PROVIDER_PILLS)[number]["id"];
