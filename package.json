@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "dev": "npm run dev -w @trinity/app-portal",
+    "dev:poll": "VITE_WATCH_POLL=1 npm run dev -w @trinity/app-portal",
     "dev:trinity-ai": "npm run dev -w @trinity/app-trinity-ai",
+    "dev:trinity-ai:poll": "VITE_WATCH_POLL=1 npm run dev -w @trinity/app-trinity-ai",
     "dev:ai-cloud": "npm run dev -w @trinity/app-ai-cloud",
     "dev:trinity-geo": "npm run dev -w @trinity/app-trinity-geo",
     "dev:trinity-ai-admin": "npm run dev -w @trinity/app-trinity-ai-admin",

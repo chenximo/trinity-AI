@@ -11,7 +11,9 @@ import {
 
 <template>
   <div class="max-w-lg rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-    <p class="mb-3 text-sm text-slate-600">Monorepo 骨架页；后续按 <code class="text-xs">docs/Trinity域模块说明-写作模板.md</code> 扩路由与 Mock。</p>
+    <p class="mb-3 text-sm text-slate-600">
+      <code class="text-xs">@trinity/ui</code> 烟测；不承诺路由长期稳定。还原业务页时请用计划文档中的映射表。
+    </p>
 
     <p class="mb-2 text-xs font-semibold text-slate-500">按钮</p>
     <div class="mt-1 flex flex-wrap items-center gap-3">
@@ -38,12 +40,15 @@ import {
         <FilterForm2PillListboxTrigger>按模型</FilterForm2PillListboxTrigger>
       </div>
       <div>
-        <span class="mb-1 block text-xs text-slate-500">形式3</span>
-        <FilterForm3LabeledSegmented label="到期">
-          <button type="button" class="or-keys-seg-btn is-active" tabindex="-1">全部</button>
-          <button type="button" class="or-keys-seg-btn" tabindex="-1">过期</button>
-          <button type="button" class="or-keys-seg-btn" tabindex="-1">不过期</button>
-        </FilterForm3LabeledSegmented>
+        <span class="mb-1 block text-xs text-slate-500">形式3（segments）</span>
+        <FilterForm3LabeledSegmented
+          label="到期"
+          :segments="[
+            { label: '全部', active: true },
+            { label: '过期' },
+            { label: '不过期' },
+          ]"
+        />
       </div>
     </div>
 

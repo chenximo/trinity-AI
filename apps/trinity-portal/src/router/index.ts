@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { getTrinityAiChildRoutes } from "@trinity-ai/trinityAiRoutes";
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +18,8 @@ export default createRouter({
     {
       path: "/trinity-ai",
       name: "trinity-ai",
-      component: () => import("@trinity-ai/views/Home.vue"),
+      component: () => import("@trinity-ai/layouts/TrinityAiShellLayout.vue"),
+      children: getTrinityAiChildRoutes(),
     },
     {
       path: "/ai-cloud",

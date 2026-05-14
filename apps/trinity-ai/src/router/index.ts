@@ -1,7 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import TrinityAiShellLayout from "../layouts/TrinityAiShellLayout.vue";
+import { getTrinityAiChildRoutes } from "../trinityAiRoutes";
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [{ path: "/", name: "home", component: Home }],
+  routes: [
+    {
+      path: "/",
+      component: TrinityAiShellLayout,
+      children: getTrinityAiChildRoutes(),
+    },
+  ],
 });

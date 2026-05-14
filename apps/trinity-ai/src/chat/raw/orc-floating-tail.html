@@ -1,0 +1,315 @@
+    <div id="orc-side-model-tip" class="orc-side-model-tip" hidden role="tooltip"></div>
+
+    <!-- 全页共用：说明气泡（由各区块 .orc-help-tip-btn + template 注入内容） -->
+    <div
+      id="orc-help-tip-popover"
+      class="orc-help-tip-popover"
+      data-orc-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="orc-help-tip-title"
+    >
+      <p class="orc-help-tip-title" id="orc-help-tip-title"></p>
+      <div class="orc-help-tip-body" id="orc-help-tip-body"></div>
+    </div>
+
+    <template id="orc-help-tpl-composer" data-orc-prototype-annotation>
+      <p>
+        <strong>输入框</strong>：空内容时约<strong>两行</strong>高，随文字增高，最高约<strong>五行</strong>（超出在框内纵向滚动）；高度由 <code>syncOrcComposerTextareaHeight</code> 与 CSS 上下限共同约束。<strong>Enter</strong> 发送、<strong>Shift+Enter</strong> 换行。读屏用隐藏 <code>label</code>（<code>#orc-msg-access-label</code>）与占位符；主界面<strong>不</strong>在输入区上方叠常驻灰字说明条。
+      </p>
+      <p>
+        <strong>版式</strong>：输入区与下方图标行之间<strong>无横向分隔线</strong>；图标行背景与输入区同色（不另铺灰底块），整体仍包在圆角外框内。
+      </p>
+      <p>
+        <strong>回形针</strong>为附件占位；<strong>气泡 + 数字</strong>为对话记忆（滑块弹层）；<strong>地球 + 角标</strong>打开「SERVER TOOLS」式服务工具列表（演示）；<strong>模型对比</strong>在侧栏模型列表搜索旁，与弹层内「进入多模型对比…」等用于集合与多选；亦可从首页场景卡进入多模型对比。
+      </p>
+      <p>
+        发送后助手消息下 <strong>Compare to</strong> 打开与侧栏<strong>模型对比</strong>相同的弹窗，多选后点<strong>完成</strong>写入侧栏「消息内对比」。
+      </p>
+      <p><strong>蓝钮发送</strong>后展示对比与<strong>综合总结（暂不支持）</strong>：下方区块为静态示意演示数据，正式版聚合与裁判逻辑未接。<strong>角色管理</strong>在上方顶栏；右下角 <strong>ⓘ</strong> 即本说明（<code>data-orc-prototype-annotation</code>，可随剥离脚本移除）。</p>
+    </template>
+    <template id="orc-help-tpl-preset" data-orc-prototype-annotation>
+      <p>
+        顶栏为<strong>交互样板</strong>：可点的<strong>角色芯片</strong>、<strong>「更多」</strong>下拉（每项 <strong>图标 + 标题</strong>，悬停/焦点高亮见 <code>原型设计统一.skill.md</code>），以及模型设置里的<strong>「角色管理」</strong>下拉框，在原型里为<strong>同一套可选角色</strong>（改一处应同步另一处）。
+      </p>
+      <p>
+        <strong>「更多」</strong>：<strong>自定义角色</strong>跳转控制台 <code>account/console.html#preset</code>；<strong>打开模型设置（暂不支持）</strong>为禁用占位；<strong>添加角色</strong>打开弹窗（列表预选当前角色，点<strong>完成</strong>应用；<strong>取消</strong>、遮罩、Esc 不应用）；说明条内<strong>创建角色</strong>链至 <code>?create=1#preset</code> 并自动展开控制台「新建角色」表单。
+      </p>
+    </template>
+    <template id="orc-help-tpl-assistant" data-orc-prototype-annotation>
+      <p>正文为<strong>占位</strong>，非真实流式输出（演示）；下方工具按钮为静态禁用。</p>
+      <p><strong>Compare to</strong> 打开与侧栏<strong>模型对比</strong>相同的弹窗；<strong>完成</strong> 后写入侧栏「消息内对比」集合。</p>
+    </template>
+    <template id="orc-help-tpl-compare" data-orc-prototype-annotation>
+      <p>失败模型合并为<strong>左栏</strong>紧凑列表；成功回答占<strong>右栏</strong>主区域并可纵向滚动。多成功模型时右栏内可横向滑动。</p>
+    </template>
+    <template id="orc-help-tpl-summary" data-orc-prototype-annotation>
+      <p><strong>综合总结</strong>当前为<strong>暂不支持</strong>：评分表、失败模型列表与综合段落均为<strong>静态示意</strong>演示占位，未接真实聚合与裁判逻辑。</p>
+    </template>
+    <template id="orc-help-tpl-empty" data-orc-prototype-annotation>
+      <p>场景卡与首页能力入口一致：在侧栏加载<strong>模型集合</strong>，可在集合内多选参与发送后的对比布局；<strong>快捷提示词</strong>填入输入框。</p>
+    </template>
+    <template id="orc-help-tpl-picker" data-orc-prototype-annotation>
+      <p>与侧栏共用<strong>搜索与筛选</strong>；默认不列出 <code>available: false</code> 的模型；<strong>免费</strong>为紫色强调筛选。</p>
+      <p>仅<strong>取消 / 完成</strong>关闭弹层；<strong>完成</strong>应用多选（多模型时进入侧栏对比集合）。</p>
+    </template>
+    <template id="orc-help-tpl-settings" data-orc-prototype-annotation>
+      <p>本弹窗为<strong>静态演示</strong>：系统提示词、采样与引擎等未接 API。</p>
+      <p>「默认 / 自定义」与 OpenRouter 风格占位文案；展开<strong>采样参数</strong>内为 Temperature、top_p 与惩罚项示意。</p>
+      <p><strong>角色管理</strong>下拉与顶栏角色芯片为<strong>同一套选项</strong>(前端同步；正式版以接口为准）。</p>
+    </template>
+
+    <!-- Model picker：结构对齐设计规范（根层 + 遮罩 + 卡片：头 / 说明 / 中 / 底） -->
+    <div class="or-modal-root orc-picker-modal-root" id="orc-picker-overlay" hidden aria-hidden="true" role="presentation">
+      <div class="or-modal-backdrop" id="orc-picker-backdrop" tabindex="-1" aria-hidden="true"></div>
+      <div class="orc-picker" role="dialog" aria-modal="true" aria-labelledby="orc-picker-title">
+        <header class="orc-picker-header">
+          <div class="or-modal-head orc-picker-modal-head">
+            <div class="orc-picker-head-main">
+              <h2 id="orc-picker-title" class="or-modal-title">添加模型（可多选）</h2>
+              <button
+                type="button"
+                class="orc-help-tip-btn orc-help-tip-btn--inline"
+                data-orc-prototype-annotation
+                data-orc-help-tpl="orc-help-tpl-picker"
+                data-orc-help-title="添加模型"
+                aria-label="添加模型说明"
+                aria-expanded="false"
+                aria-controls="orc-help-tip-popover"
+                title="说明"
+              >
+                <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+              </button>
+              <button type="button" class="orc-picker-compare-link" id="orc-picker-compare-start">
+                进入多模型对比…
+              </button>
+            </div>
+            <button type="button" class="or-modal-close" id="orc-picker-dismiss" aria-label="关闭">&times;</button>
+          </div>
+        </header>
+        <p class="or-keys-editor-banner orc-picker-banner" role="status">
+          使用搜索与筛选选择模型；多选后点<strong>完成</strong>应用至侧栏。<strong>取消</strong>或右上角关闭不应用当前勾选。
+        </p>
+        <div class="orc-picker-body">
+          <div class="orc-picker-left">
+            <div class="orc-picker-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <label class="visually-hidden" for="orc-picker-search">搜索模型</label>
+              <input id="orc-picker-search" type="search" placeholder="搜索模型" autocomplete="off" />
+            </div>
+            <div class="orc-picker-filters orc-picker-filters--na" aria-disabled="true">
+              <span class="orc-picker-filters-na-text">输入、输出、免费筛选暂不支持</span>
+            </div>
+            <div
+              class="orc-model-list orc-picker-list"
+              id="orc-picker-list"
+              role="group"
+              aria-label="添加模型（可多选）"
+            ></div>
+          </div>
+          <div class="orc-picker-right">
+            <div class="orc-picker-detail-wrap">
+              <div class="orc-picker-right-head">
+                <div class="orc-picker-title">
+                  <span id="orc-detail-logo" class="orc-pv orc-pv--recraft orc-detail-pv" aria-hidden="true"></span>
+                  <strong id="orc-detail-title">Recraft V3</strong>
+                </div>
+                <button type="button" class="orc-icon-btn" id="orc-btn-settings" aria-label="模型设置" title="设置">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" />
+                  </svg>
+                </button>
+              </div>
+              <p class="orc-picker-desc" id="orc-detail-desc"></p>
+              <div class="orc-stat-row"><span>周 Token</span><span id="orc-st-weekly">51K</span></div>
+              <div class="orc-stat-row"><span>上下文</span><span id="orc-st-ctx">65,536</span></div>
+              <div class="orc-stat-row"><span>输入</span><span id="orc-st-in">$0 / M tokens</span></div>
+              <div class="orc-stat-row"><span>输出</span><span id="orc-st-out">$0 / M tokens</span></div>
+              <div class="orc-stat-row">
+                <span>可用性</span>
+                <span aria-hidden="true">
+                  <svg width="36" height="14" viewBox="0 0 36 14" fill="none">
+                    <rect x="0" y="8" width="4" height="6" rx="1" fill="var(--blue)" />
+                    <rect x="8" y="4" width="4" height="10" rx="1" fill="var(--blue)" />
+                    <rect x="16" y="6" width="4" height="8" rx="1" fill="var(--blue)" />
+                    <rect x="24" y="2" width="4" height="12" rx="1" fill="var(--blue)" />
+                    <rect x="32" y="7" width="4" height="7" rx="1" fill="var(--blue-ring)" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="orc-picker-footer or-keys-editor-actions">
+          <button type="button" class="or-btn-outline" id="orc-picker-cancel" aria-label="取消">取消</button>
+          <button type="button" class="btn btn-gradient" id="orc-picker-done" aria-label="完成">完成</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- 添加角色（与顶栏芯片同源 mock）；or-modal-root + 遮罩 + 卡片：头 / 说明条 / 体 / 底 -->
+    <div
+      class="or-modal-root orc-role-picker-modal-root"
+      id="orc-role-picker-overlay"
+      hidden
+      aria-hidden="true"
+      role="presentation"
+    >
+      <div class="or-modal-backdrop" id="orc-role-picker-backdrop" tabindex="-1" aria-hidden="true"></div>
+      <div
+        class="or-modal-card or-keys-editor-modal-card orc-role-picker-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="orc-role-picker-title"
+        aria-describedby="orc-role-picker-sub"
+      >
+        <header class="orc-role-picker-header">
+          <div class="or-modal-head orc-role-picker-modal-head">
+            <div class="orc-role-picker-head-brand">
+              <span class="orc-role-picker-head-ico" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                </svg>
+              </span>
+              <h2 class="or-modal-title" id="orc-role-picker-title">添加角色</h2>
+            </div>
+            <button type="button" class="or-modal-close" id="orc-role-picker-close" aria-label="关闭">&times;</button>
+          </div>
+        </header>
+        <p class="or-keys-editor-banner orc-role-picker-banner" id="orc-role-picker-sub">
+          从已有角色中选择；与顶栏「角色管理」芯片为同一套数据。或前往控制台
+          <a href="__TAI_CONSOLE_CREATE_PRESET__" class="orc-role-picker-create-inline">
+            <svg class="orc-role-picker-create-inline-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            创建角色
+          </a>
+          点<strong>完成</strong>应用所选角色；<strong>取消</strong>、右上角关闭或按 Esc 不应用。
+        </p>
+        <div class="orc-role-picker-body">
+          <div class="orc-role-picker-scroll">
+            <div class="orc-role-picker-section">
+              <div class="orc-role-picker-section-head">
+                <span class="orc-role-picker-section-ico" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </span>
+                <div>
+                  <strong class="orc-role-picker-section-title">已有角色</strong>
+                  <span class="orc-role-picker-section-hint">选择一个角色，对话将使用该角色的系统提示与默认偏好。</span>
+                </div>
+              </div>
+              <div id="orc-role-picker-list" class="orc-role-picker-list"></div>
+            </div>
+          </div>
+        </div>
+        <footer class="orc-role-picker-footer or-keys-editor-actions">
+          <button type="button" class="or-btn-outline" id="orc-role-picker-cancel" aria-label="取消">取消</button>
+          <button type="button" class="btn btn-gradient" id="orc-role-picker-done" aria-label="完成">完成</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Settings modal -->
+    <div class="orc-settings" id="orc-settings-overlay" hidden>
+      <div class="orc-settings-card" role="dialog" aria-modal="true" aria-labelledby="orc-settings-h">
+        <button type="button" class="orc-settings-close" id="orc-settings-close" aria-label="关闭">×</button>
+        <button
+          type="button"
+          class="orc-help-tip-btn orc-help-tip-btn--settings"
+          data-orc-prototype-annotation
+          data-orc-help-tpl="orc-help-tpl-settings"
+          data-orc-help-title="模型设置"
+          aria-label="模型设置说明"
+          aria-expanded="false"
+          aria-controls="orc-help-tip-popover"
+          title="说明"
+        >
+          <svg width="14" height="14" aria-hidden="true"><use href="#orc-sym-help-tip" /></svg>
+        </button>
+        <h2 class="visually-hidden" id="orc-settings-h">模型设置</h2>
+        <div class="orc-field">
+          <div class="orc-name-row">
+            <span aria-hidden="true" style="color: var(--muted)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
+              </svg>
+            </span>
+            <input type="text" value="个人" aria-label="名称" />
+            <button type="button" class="orc-toggle is-on" id="orc-name-toggle" aria-label="开关"></button>
+          </div>
+        </div>
+        <div class="orc-field">
+          <label for="orc-settings-model">模型</label>
+          <select id="orc-settings-model"></select>
+        </div>
+        <div class="orc-field">
+          <label for="orc-settings-preset">角色管理</label>
+          <select id="orc-settings-preset">
+            <option value="">选择角色…</option>
+            <option value="preset_default_zh" selected>preset_default_zh · 中文技术写作</option>
+            <option value="preset_code_review">preset_code_review · 代码审查</option>
+            <option value="preset_cs_short">preset_cs_short · 客服简短</option>
+          </select>
+        </div>
+        <div class="orc-field">
+          <div class="orc-row-2">
+            <div>
+              <label for="orc-settings-provider">提供商</label>
+              <select id="orc-settings-provider">
+                <option>自动</option>
+              </select>
+            </div>
+            <div>
+              <label for="orc-settings-sort">排序</label>
+              <select id="orc-settings-sort">
+                <option>—</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="orc-field">
+          <span class="orc-label" style="display: flex; align-items: center; gap: 0.35rem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
+              <path d="M13 2v7h7" />
+            </svg>
+            文件解析引擎
+          </span>
+          <select id="orc-settings-engine">
+            <option value="">选择引擎</option>
+          </select>
+        </div>
+        <div class="orc-field">
+          <div class="orc-sys-tabs" role="tablist">
+            <button type="button" class="orc-sys-tab is-active" role="tab">默认</button>
+            <button type="button" class="orc-sys-tab" role="tab">自定义</button>
+          </div>
+          <textarea readonly>
+你是 Recraft V4 Pro，来自 recraft 的大语言模型。今天是 2026 年 5 月 8 日，星期五。格式规则：</textarea>
+          <div class="orc-token-hint">约 173 tokens</div>
+        </div>
+        <div>
+          <button type="button" class="orc-expand" id="orc-expand-sampling">
+            采样参数
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+          <div class="orc-expand-body" id="orc-expand-sampling-body" hidden>
+            <p class="orc-expand-body-p" data-orc-prototype-annotation>采样参数为占位；完整说明请点弹窗右上角 <strong>ⓘ</strong>。</p>
+          </div>
+        </div>
+        <div class="orc-settings-footer">
+          <button type="button" class="orc-btn-foot">应用到全部</button>
+          <button type="button" class="orc-btn-foot">重置</button>
+          <button type="button" class="orc-btn-foot orc-btn-danger">移除</button>
+        </div>
+      </div>
+    </div>

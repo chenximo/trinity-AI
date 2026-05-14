@@ -1,0 +1,60 @@
+/* Vue 壳内对话根：静态页为 <main class="mvp-main orc-chat-root">，此处为 #main 下的 .chat-page-root */
+
+html:has(#main .chat-page-root.orc-chat-root),
+body:has(#main .chat-page-root.orc-chat-root) {
+  height: 100%;
+  overflow: hidden;
+}
+
+body:has(#main .chat-page-root.orc-chat-root) {
+  height: 100dvh;
+  max-height: 100dvh;
+}
+
+#main .chat-page-root.mvp-main.orc-chat-root {
+  max-width: none;
+  width: 100%;
+  margin: 0.65rem 0 0;
+  padding: 0 var(--page-gutter, 50px);
+  display: flex;
+  flex-direction: column;
+  /* 占满壳里 #main 的剩余高度（依赖下方 main:has 为 flex 容器） */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#main .chat-page-root.mvp-main.orc-chat-root > .orc-app {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+/*
+ * 主列 HTML 由 innerHTML 注入在此容器内；若保留普通 div，会成为 .orc-shell 的第三列 grid 子项，
+ * 而 .orc-main 退居下一层，原 CSS 中「主列占满第三轨」的 flex 链会断，底栏 input 会错位。
+ * display:contents 让 .orc-main 直接参与 .orc-shell 的 grid（与静态页结构一致）。
+ */
+.chat-inlined-main-composer {
+  display: contents;
+}
+
+/*
+ * 与模型页一致：抵消壳上 main 的宽边距。
+ * 壳里 #main 默认是 block，子级 .chat-page-root 的 flex:1 不生效 → 对话区高度塌成内容高；
+ * 在对话路由下把 #main 收成纵向 flex，才能把 .orc-app / .orc-scroll 的高度链撑满视口。
+ */
+main#main:has(.chat-page-root) {
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 899px) {
+  .orc-mobile-only {
+    display: grid !important;
+  }
+}

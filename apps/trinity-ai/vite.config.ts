@@ -4,10 +4,29 @@ import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 
 const repoRoot = fileURLToPath(new URL("../..", import.meta.url));
+const watchPoll = process.env.VITE_WATCH_POLL === "1";
 
 export default defineConfig({
   plugins: [vue(), UnoCSS()],
-  server: { port: 5201 },
+  server: {
+    port: 5201,
+    /** 占用时直接失败，避免静默换端口导致 HMR 连错 */
+    strictPort: true,
+    /** 开发态禁用缓存，避免「刷新了还是旧页面」 */
+    headers: { "Cache-Control": "no-store" },
+    /** 允许读 monorepo 根（@repo、workspace 包），并参与监听 */
+    fs: { allow: [repoRoot] },
+    /**
+     * 监听通过 symlink 指回 monorepo 的包（如 @trinity/ui）。
+     * 项目在 iCloud/网络盘时 chokidar 常丢事件：可 `VITE_WATCH_POLL=1 npm run dev -w @trinity/app-trinity-ai` 开轮询。
+     */
+    watch: {
+      followSymlinks: true,
+      ignored: ["**/node_modules/**", "**/dist/**"],
+      ...(watchPoll ? { usePolling: true, interval: 300 } : {}),
+    },
+  },
+  preview: { port: 5201, strictPort: true },
   resolve: {
     alias: { "@repo": repoRoot },
   },

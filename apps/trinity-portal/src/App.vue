@@ -15,9 +15,16 @@ type HubPath =
   | "/trinity-geo"
   | "/trinity-ai-admin";
 
+function isAtHubRoot(to: HubPath) {
+  if (to === "/trinity-ai") {
+    return route.path === "/trinity-ai" || route.path === "/trinity-ai/";
+  }
+  return route.path === to;
+}
+
 function hubNav(to: HubPath, e: MouseEvent) {
   e.preventDefault();
-  if (route.path === to) {
+  if (isAtHubRoot(to)) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
@@ -25,6 +32,7 @@ function hubNav(to: HubPath, e: MouseEvent) {
 }
 
 function hubNavActive(to: HubPath) {
+  if (to === "/trinity-ai") return route.path.startsWith("/trinity-ai");
   return route.path === to;
 }
 </script>

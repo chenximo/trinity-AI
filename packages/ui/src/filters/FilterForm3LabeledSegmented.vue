@@ -14,6 +14,8 @@ const props = withDefaults(
 
 const autoId = useId();
 const effectiveLabelId = computed(() => props.labelId ?? autoId);
+
+defineEmits<{ segmentClick: [index: number] }>();
 </script>
 
 <template>
@@ -27,8 +29,9 @@ const effectiveLabelId = computed(() => props.labelId ?? autoId);
           type="button"
           class="or-keys-seg-btn"
           :class="{ 'is-active': s.active }"
-          tabindex="-1"
+          tabindex="0"
           :disabled="s.disabled"
+          @click="$emit('segmentClick', i)"
         >
           {{ s.label }}
         </button>

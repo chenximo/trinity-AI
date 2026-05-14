@@ -4,4 +4,8 @@ import router from "./router";
 import "@repo/assets/trinity-base.css";
 import "virtual:uno.css";
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+app.use(router);
+void router.isReady().then(() => {
+  app.mount("#app");
+});
