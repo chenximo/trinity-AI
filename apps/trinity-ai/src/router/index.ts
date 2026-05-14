@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import TrinityAiShellLayout from "../layouts/TrinityAiShellLayout.vue";
+import TrinityAiShellLayout from "../views/shell/TrinityAiShellLayout.vue";
 import { getTrinityAiChildRoutes } from "../trinityAiRoutes";
 
 export default createRouter({

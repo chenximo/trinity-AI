@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
-import MarketingHome from "./views/MarketingHome.vue";
+import HomePage from "./views/home/HomePage.vue";
 
 /**
  * 子路由表：供独立 `apps/trinity-ai` 与 `apps/trinity-portal` 下 `/trinity-ai` 嵌套复用。
@@ -12,13 +12,13 @@ export function getTrinityAiChildRoutes(): RouteRecordRaw[] {
       path: "",
       name: "tai-home",
       /** 同步引入，避免首屏 `<RouterView />` 在懒加载 chunk 返回前为空 */
-      component: MarketingHome,
+      component: HomePage,
       meta: { title: "首页", orPage: "home" },
     },
     {
       path: "models",
       name: "tai-models",
-      component: () => import("./views/ModelsPage.vue"),
+      component: () => import("./views/models/ModelsPage.vue"),
       meta: { title: "模型", orPage: "models" },
     },
     {

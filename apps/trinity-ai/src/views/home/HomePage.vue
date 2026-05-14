@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, useRouter } from "vue-router";
+import { RouterLink } from "vue-router";
 import { TButton } from "@trinity/ui";
-import "./marketing-home.css";
+import { HOME_HERO_PROVIDERS } from "./mock";
+import { useHomeNavigation } from "./homeInteractions";
+import "./home.css";
 
-const router = useRouter();
-
-function goConsole() {
-  void router.push({ name: "tai-account-console" });
-}
-
-function goDocs() {
-  void router.push({ name: "tai-docs" });
-}
-
-function openDemoAuth() {
-  window.TrinityOR?.openSignIn?.("signin");
-}
+const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
 </script>
 
 <template>
@@ -59,23 +49,12 @@ function openDemoAuth() {
           </span>
         </div>
         <div class="providers" id="providers" aria-label="部分接入供应商">
-          <span class="provider-pill">Anthropic</span>
-          <span class="provider-pill">OpenAI</span>
-          <span class="provider-pill">Microsoft</span>
-          <span class="provider-pill">NVIDIA</span>
-          <span class="provider-pill">Meta</span>
-          <span class="provider-pill">Google</span>
-          <span class="provider-pill">Amazon</span>
-          <span class="provider-pill">DeepSeek</span>
-          <span class="provider-pill">Qwen</span>
-          <span class="provider-pill">Moonshot</span>
-          <span class="provider-pill">MiniMax</span>
-          <span class="provider-pill">Mistral</span>
-          <span class="provider-pill">Cohere</span>
-          <span class="provider-pill">xAI</span>
-          <span class="provider-pill">Hugging Face</span>
-          <span class="provider-pill">Together</span>
-          <span class="provider-pill muted">更多厂商持续接入</span>
+          <span
+            v-for="p in HOME_HERO_PROVIDERS"
+            :key="p.label"
+            class="provider-pill"
+            :class="{ muted: p.muted }"
+          >{{ p.label }}</span>
         </div>
       </section>
 

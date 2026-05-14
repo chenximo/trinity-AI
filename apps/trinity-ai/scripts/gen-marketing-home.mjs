@@ -1,7 +1,7 @@
 import fs from "node:fs";
 
 const indexPath = new URL("../../../TrinityAI/index.html", import.meta.url);
-const outPath = new URL("../src/views/MarketingHome.vue", import.meta.url);
+const outPath = new URL("../src/views/home/HomePage.vue", import.meta.url);
 
 const lines = fs.readFileSync(indexPath, "utf8").split("\n");
 const mainInner = lines.slice(1077, 1584).join("\n");
@@ -75,6 +75,19 @@ body = body.replace(
               <button type="button" class="oauth-btn" title="Web3 钱包" @click="openDemoAuth">◇</button>`
 );
 
+body = body.replace(
+  /<div class="providers" id="providers"[^>]*>[\s\S]*?<\/div>\s*\n\s*<\/section>/,
+  `<div class="providers" id="providers" aria-label="部分接入供应商">
+          <span
+            v-for="p in HOME_HERO_PROVIDERS"
+            :key="p.label"
+            class="provider-pill"
+            :class="{ muted: p.muted }"
+          >{{ p.label }}</span>
+        </div>
+      </section>`
+);
+
 if (/href="app\//.test(body) || /href="account\//.test(body)) {
   console.error("Unresolved static href remains");
   const m = body.match(/href="(app|account)\/[^"]+"/);
@@ -82,23 +95,13 @@ if (/href="app\//.test(body) || /href="account\//.test(body)) {
 }
 
 const vue = `<script setup lang="ts">
-import { RouterLink, useRouter } from "vue-router";
+import { RouterLink } from "vue-router";
 import { TButton } from "@trinity/ui";
-import "./marketing-home.css";
+import { HOME_HERO_PROVIDERS } from "./mock";
+import { useHomeNavigation } from "./homeInteractions";
+import "./home.css";
 
-const router = useRouter();
-
-function goConsole() {
-  void router.push({ name: "tai-account-console" });
-}
-
-function goDocs() {
-  void router.push({ name: "tai-docs" });
-}
-
-function openDemoAuth() {
-  window.TrinityOR?.openSignIn?.("signin");
-}
+const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
 </script>
 
 <template>

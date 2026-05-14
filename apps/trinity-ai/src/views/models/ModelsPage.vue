@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SearchForm1Fixed } from "@trinity/ui";
-import { computed, onUnmounted, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
 import {
   CATALOG_MODELS,
@@ -11,8 +11,9 @@ import {
   MODALITY_ORDER,
   priceInSortKey,
   PROVIDER_PILLS,
-} from "../data/modelsCatalog";
-import "./models-page.css";
+} from "./mock";
+import { useModelsFiltersBodyClass } from "./modelsInteractions";
+import "./models.css";
 
 type SortMode = "name" | "newest" | "ctx" | "price-asc";
 type ProviderId = (typeof PROVIDER_PILLS)[number]["id"];
@@ -26,6 +27,8 @@ const SORT_OPTIONS: { id: SortMode; label: string }[] = [
 ];
 
 const filtersOpen = ref(false);
+useModelsFiltersBodyClass(filtersOpen);
+
 const sideSearch = ref("");
 const mainSearch = ref("");
 const activeProvider = ref<ProviderId>("all");
@@ -36,18 +39,6 @@ const sortMode = ref<SortMode>("newest");
 function setFiltersOpen(open: boolean) {
   filtersOpen.value = open;
 }
-
-watch(
-  filtersOpen,
-  (open) => {
-    document.body.classList.toggle("tai-models-filters-open", open);
-  },
-  { immediate: true }
-);
-
-onUnmounted(() => {
-  document.body.classList.remove("tai-models-filters-open");
-});
 
 const ctxAriaText = computed(() => CTX_MARK_LABELS[Number(ctxIdx.value)] ?? "全部");
 

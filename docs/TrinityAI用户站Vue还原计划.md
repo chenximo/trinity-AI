@@ -66,8 +66,8 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 
 | 路由 | 组件 | 说明 |
 |------|------|------|
-| `/` | `MarketingHome.vue` | 营销首页占位 |
-| `/models` | `ModelsPage.vue` | 模型页占位（与静态主导航顺序一致：首页 → 模型 → 对话 → 文档） |
+| `/` | `views/home/HomePage.vue` | 营销首页占位 |
+| `/models` | `views/models/ModelsPage.vue` | 模型页占位（与静态主导航顺序一致：首页 → 模型 → 对话 → 文档） |
 | `/chat` | `views/chat/ChatPage.vue` | 对话占位 |
 | `/docs` | `DocsPage.vue` | 文档占位 |
 | `/account/console` | `AccountConsolePage.vue` | 控制台占位 |
@@ -76,18 +76,15 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 **实现要点**
 
 - 子路由表集中在 `apps/trinity-ai/src/trinityAiRoutes.ts`，路由 `name` 统一 `tai-*` 前缀；`meta.orPage` 与静态壳 `data-or-page` 对齐。  
-- 壳布局为 `apps/trinity-ai/src/layouts/TrinityAiShellLayout.vue`（见阶段 A）；独立应用 `router/index.ts` 以该壳为父级、`path: "/"` 挂载子表。  
+- 壳布局为 `apps/trinity-ai/src/views/shell/TrinityAiShellLayout.vue`（五件套目录，见阶段 A）；独立应用 `router/index.ts` 以该壳为父级、`path: "/"` 挂载子表。  
 - `apps/trinity-portal` 在 **`/trinity-ai`** 下嵌套同一壳与子表，便于 `:5173` 单端口预览；枢纽顶栏对 Trinity AI 使用 **`path.startsWith('/trinity-ai')`** 高亮。  
 - 占位页内链使用 **`RouterLink` + `name: 'tai-*'`**，避免在 portal 嵌套路径下误用绝对 `href`。外链示意仍可用 `TextLink`。
 
 ### 阶段 A — 应用壳（替代 `trinity-ai-app-shell.js`）— **已完成**
 
 - **`TrinityAiShellLayout.vue`**：沿用 `assets/trinity-base.css` 中 `header.or-inject`、`.header-row`、主导航、`.or-header-actions`、移动抽屉、品牌链套件等类名与 DOM 结构；`data-or-page` 取自 `route.meta.orPage`。  
-- **Composables**（localStorage 键与静态脚本一致）：  
-  - `useTrinityOrTheme.ts` — `trinity_or_theme`，`document.documentElement[data-theme]`。  
-  - `useTrinityOrUiLang.ts` — `trinity_ui_lang`，`html[lang]`，顶栏 `.or-lang-btn` 切换。  
-  - `useTrinityOrSession.ts` — `trinity_or_session` 演示登录态。  
-- **`TrinityAiAuthModal.vue`**：登录/注册弹层（OAuth 演示、表单校验、密码强度、记住我 `trinity_or_remember`）；`#login` / `#register` 与 `?signin=1` / `?register=1` 与壳行为对齐；`Escape` / 遮罩关闭；`@signed-in` 由壳写入会话。  
+- **壳层交互与 composable**（localStorage 键与静态脚本一致）：`views/shell/shellInteractions.ts` — `useTrinityOrSession` / `useTrinityOrTheme` / `useTrinityOrUiLang`、`mountTrinityOrWindowApi`（`window.TrinityOR`）；存储键名见同目录 `mock.ts`。  
+- **登录/注册弹层**：已并入 `views/shell/TrinityAiShellLayout.vue`（OAuth 演示、表单校验、密码强度、记住我 `trinity_or_remember`）；`#login` / `#register` 与 `?signin=1` / `?register=1` 与壳行为对齐；`Escape` / 遮罩关闭；提交后由壳写入会话。  
 - **`window.TrinityOR`**：`openSignIn`、`signOut`、`isSignedIn`，便于与旧脚本或外链调试对齐。  
 - **套件首页**：默认 `../TrinityCloud/home.html`，可通过环境变量 **`VITE_TRINITY_SUITE_HOME`** 覆盖。  
 - **控制台入口**：主导航仅四链（与静态一致）；控制台与 UI 烟测放在抽屉次要链；账户菜单内为 `RouterLink` + hash 锚点。  
@@ -96,10 +93,10 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 
 ### 阶段 B — 营销首页 — **已完成**
 
-- **`TrinityAI/index.html`** 中 `<main>` 正文与页脚迁入 **`apps/trinity-ai/src/views/MarketingHome.vue`**；样式自原页 `<style>` 抽出为 **`apps/trinity-ai/src/views/marketing-home.css`**（已去掉与全局重复的 `html`/`body` 块）。  
+- **`TrinityAI/index.html`** 中 `<main>` 正文与页脚迁入 **`apps/trinity-ai/src/views/home/HomePage.vue`**（五件套目录）；样式为 **`apps/trinity-ai/src/views/home/home.css`**（已去掉与全局重复的 `html`/`body` 块）。  
 - 站内链接改为 **`RouterLink`**（`tai-account-console` / `tai-docs` / `tai-models` 等）；页内锚点（`#capabilities`、`#apps` 等）仍为 `<a href="#">`。  
 - **首屏 CTA**：`@trinity/ui` 的 **`TButton`**（`gradient` / `outline`）+ `useRouter` 跳转控制台与文档；步骤区 OAuth 示意按钮调用 **`window.TrinityOR.openSignIn`** 打开壳上登录弹层。  
-- 静态正文再生成：根目录 `TrinityAI/index.html` 变更后执行 **`npm run gen:marketing -w @trinity/app-trinity-ai`** 重新生成 `MarketingHome.vue`（脚本会保留上述 TButton / OAuth 替换逻辑）。  
+- 静态正文再生成：根目录 `TrinityAI/index.html` 变更后执行 **`npm run gen:marketing -w @trinity/app-trinity-ai`** 重新生成 `views/home/HomePage.vue`（脚本会保留 TButton、RouterLink、`HOME_HERO_PROVIDERS` 与 `useHomeNavigation` 约定）。  
 - **`apps/trinity-ai/index.html`**：与静态站对齐的 **description**、**title** 与 **Google Fonts**（Inter / Noto Sans SC）。
 
 ### 阶段 C — 对话页

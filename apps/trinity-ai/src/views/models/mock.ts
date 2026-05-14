@@ -1,4 +1,4 @@
-/** 模型目录示例数据（与 `TrinityAI/app/models.html` 对齐，供筛选 / 排序演示） */
+/** 模型目录示例数据（与 `TrinityAI/app/models.html` 对齐，供筛选 / 排序演示；本模块 mock 真源） */
 
 export type ModelProvider =
   | "openai"

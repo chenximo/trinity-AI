@@ -33,7 +33,7 @@
 ### C0 — 路由与壳对齐（极薄）
 
 - [ ] `views/chat/ChatPage.vue` 去掉占位卡片：根容器类名与静态 `body`/主容器对齐（如 `orc-*` 根类），保证 `data-or-page` 已由壳设置 **`chat`**。  
-- [ ] 确认 `main#main` 与营销页 `padding` 冲突：必要时为 chat 根加与 `models-page` 类似的 **`main#main:has(.chat-root)`** 重置（类名待定，与实现一致即可）。
+- [ ] 确认 `main#main` 与营销页 `padding` 冲突：必要时为 chat 根加与模型页类似的 **`main#main:has(.chat-root)`** 重置（类名待定，与实现一致即可；模型侧见 `views/models/models.css` 中 `:has(.models-root)`）。
 
 ### C1 — 样式与 HTML 骨架迁入
 

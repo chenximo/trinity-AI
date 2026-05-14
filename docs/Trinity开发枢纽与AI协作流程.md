@@ -1,7 +1,7 @@
 # Trinity：开发枢纽与 AI 协作流程
 
 > **文档类型**：日常操作与设计站落地流程（偏「怎么做」）。  
-> **受众**：维护本仓库的工程师与 **Cursor 等 AI 助手**；执行改动前请先读本页与 `docs/Trinity前端Vue与Monorepo工程方案.md`、`docs/Trinity设计规范与设计色板Vue迁移计划.md`。  
+> **受众**：维护本仓库的工程师与 **Cursor 等 AI 助手**；执行改动前请先读本页与 `docs/Trinity前端Vue与Monorepo工程方案.md`、`docs/Trinity设计规范与设计色板Vue迁移计划.md`、**`docs/Trinity原型形态对比与AI友好交付.md`**（原型三代形态与交付补充）。  
 > **事实说明**：设计枢纽与门户的骨架、路由聚合、Vue 化规范页等 **主要由 AI 在对话中完成**；本文件把已稳定下来的约定写死，减少下一轮对话的上下文丢失。
 
 ---
@@ -103,6 +103,7 @@
 
 ## 6. 给 AI 的提示词习惯（可选但有效）
 
+- 改 **`apps/trinity-ai`** 下某模块的**迭代补充**时：先读该模块 **`views/<模块>/README.md`**，按 **`docs/Trinity原型模块目录与交付规范.md` §6.1** 核对「二次开发补充」表格与 mock / 交互边界，再改 `*.vue` / `mock.ts` / `*Interactions.ts`。  
 - 改设计页时明确：**「路径：`apps/trinity-design/…`；路由：`/design-tokens`、`/design-spec`」**。  
 - 改门户聚合时明确：**「只改 `apps/trinity-portal` 路由与 `App.vue` 导航；子页仍 living 在各自 app」**。  
 - 要求 AI **改完后在仓库根执行** `npm run build -w @trinity/app-portal` 与（若动到设计站）`npm run build -w @trinity/app-trinity-design`。
@@ -121,7 +122,7 @@
 | 规范画板下拉 | `apps/trinity-design/src/composables/useDesignSpecDropdowns.ts` |
 | 根脚本 | 仓库根 `package.json`（`dev`、`dev:*`、`build:apps`） |
 | apps 一览 | `apps/README.md` |
-| Monorepo 总方案 | `docs/Trinity前端Vue与Monorepo工程方案.md` |
+| Vue 原型五件套与二次开发流程 | `docs/Trinity原型模块目录与交付规范.md`（**§6.1**）、`docs/Trinity原型形态对比与AI友好交付.md` |
 | Vue 设计枢纽与迁移计划 | `docs/Trinity设计规范与设计色板Vue迁移计划.md` |
 
 ---
@@ -130,5 +131,6 @@
 
 | 日期 | 说明 |
 |------|------|
+| 2026-05-14 | §6：增补 **trinity-ai 迭代/二次开发** 提示——先读模块 README 与交付规范 **§6.1**；§7 索引增加五件套与二次开发文档链。 |
 | 2026-05-11 | 增补 **§4.1.5**：新增 `@trinity/ui` 组件流程（规范页先 → 包内实现 → `/design-spec` 验收）；§5 指向该流程。 |
 | 2026-05-13 | 初稿：单端口门户、设计站 Vue 化要点、方案 A CSS 落点、委托点击与顶栏导航、AI 协作清单与索引。 |

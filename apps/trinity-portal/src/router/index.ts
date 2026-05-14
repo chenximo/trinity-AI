@@ -18,7 +18,7 @@ export default createRouter({
     {
       path: "/trinity-ai",
       name: "trinity-ai",
-      component: () => import("@trinity-ai/layouts/TrinityAiShellLayout.vue"),
+      component: () => import("@trinity-ai/views/shell/TrinityAiShellLayout.vue"),
       children: getTrinityAiChildRoutes(),
     },
     {

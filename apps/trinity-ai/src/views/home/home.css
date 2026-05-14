@@ -1,4 +1,5 @@
-      /* 色值与语义变量以 assets/trinity-base.css :root 为准；此处仅写首页布局与组件局部样式 */
+/* 营销首页（views/home/home.css）：自 TrinityAI/index.html 迁入；与 trinity-base 变量对齐。
+ * 色值与语义变量以 assets/trinity-base.css :root 为准；此处仅写首页布局与组件局部样式 */
 
       *,
       *::before,
