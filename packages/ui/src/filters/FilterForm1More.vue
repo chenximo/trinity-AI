@@ -31,6 +31,7 @@ const props = withDefaults(
     panelId?: string;
     menuAriaLabel?: string;
     beakX?: string;
+    panelAlign?: "start" | "end";
   }>(),
   {
     expanded: false,
@@ -39,7 +40,14 @@ const props = withDefaults(
     btnId: undefined,
     menuAriaLabel: "更多选项",
     beakX: "2.6rem",
+    panelAlign: "end",
   }
+);
+
+const wrapClass = computed(() =>
+  props.panelAlign === "end"
+    ? "or-app-filter-more-wrap or-app-filter-more-wrap--panel-end"
+    : "or-app-filter-more-wrap"
 );
 
 const isMenuMode = computed(() => props.items !== undefined);
@@ -50,7 +58,7 @@ const triggerControls = computed(() =>
 </script>
 
 <template>
-  <div v-if="isMenuMode" :id="wrapId" class="or-app-filter-more-wrap">
+  <div v-if="isMenuMode" :id="wrapId" :class="wrapClass">
     <button
       :id="btnId"
       type="button"

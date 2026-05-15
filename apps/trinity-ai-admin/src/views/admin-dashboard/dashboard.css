@@ -1,0 +1,321 @@
+/* 工作台 · 仪表盘布局（指标卡 + 待办 + 图表 + 快捷入口），色板用 var(--*) */
+
+.admin-dashboard__panel {
+  padding: 0.65rem 0.125rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.admin-dashboard__panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.admin-dashboard__panel-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-dashboard__panel-title--sm {
+  font-size: 0.8125rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-dashboard__panel-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--on-primary, #fff);
+  background: var(--blue);
+}
+
+/* —— KPI 卡片（图标 + 主副文案） —— */
+.admin-dashboard__kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 0.65rem;
+}
+
+.admin-dashboard__kpi {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-height: 5.25rem;
+  padding: 0.75rem 0.8rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--admin-bg, var(--surface));
+  box-shadow: none;
+}
+
+.admin-dashboard__kpi-ico {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.admin-dashboard__kpi[data-icon="shield"] .admin-dashboard__kpi-ico {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.admin-dashboard__kpi[data-icon="users"] .admin-dashboard__kpi-ico {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.admin-dashboard__kpi[data-icon="wallet"] .admin-dashboard__kpi-ico {
+  background: var(--purple-soft, rgba(124, 58, 237, 0.1));
+  color: var(--purple, #7c3aed);
+}
+
+.admin-dashboard__kpi-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.admin-dashboard__kpi-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-dashboard__kpi-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.admin-dashboard__kpi-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.admin-dashboard__kpi-sublabel {
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+  line-height: 1.35;
+}
+
+.admin-dashboard__kpi-delta {
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.admin-dashboard__kpi.is-warn .admin-dashboard__kpi-value {
+  color: var(--warning-ink);
+}
+
+.admin-dashboard__kpi.is-bad .admin-dashboard__kpi-value {
+  color: var(--danger-ink);
+}
+
+/* —— 待办表 —— */
+.admin-dashboard__table-wrap {
+  overflow: auto;
+  margin: 0 -0.125rem;
+  border-radius: 0.35rem;
+}
+
+.admin-dashboard__table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.admin-dashboard__table th,
+.admin-dashboard__table td {
+  padding: 0.55rem 0.5rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+
+.admin-dashboard__table th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface-2, rgba(15, 23, 42, 0.04));
+}
+
+.admin-dashboard__table tbody tr:hover td {
+  background: var(--blue-soft);
+}
+
+.admin-dashboard__th-time {
+  width: 6.5rem;
+  text-align: right;
+}
+
+.admin-dashboard__th-action {
+  width: 6rem;
+  text-align: center;
+}
+
+.admin-dashboard__todo-kind {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.admin-dashboard__todo-kind.is-user {
+  background: var(--blue-soft);
+  color: var(--pill-text, var(--blue));
+}
+
+.admin-dashboard__todo-kind.is-contract {
+  background: var(--purple-soft, rgba(124, 58, 237, 0.12));
+  color: var(--purple, #7c3aed);
+}
+
+.admin-dashboard__todo-kind.is-supplier {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.admin-dashboard__todo-kind.is-billing {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.admin-dashboard__todo-kind.is-access {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.admin-dashboard__todo-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.admin-dashboard__todo-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-dashboard__todo-urgent {
+  display: inline-block;
+  padding: 0.08rem 0.35rem;
+  border-radius: 0.2rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--danger-ink);
+  background: var(--danger-soft);
+  border: none;
+}
+
+.admin-dashboard__todo-code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  color: var(--text);
+}
+
+.admin-dashboard__todo-meta {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.admin-dashboard__todo-time {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.admin-dashboard__todo-action {
+  text-align: center;
+}
+
+.admin-dashboard__todo-btn {
+  min-height: 2rem;
+  padding: 0 0.65rem;
+  font-size: 0.75rem;
+}
+
+/* —— 快捷入口 —— */
+.admin-dashboard__shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.5rem;
+}
+
+.admin-dashboard__shortcut {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--admin-bg, var(--surface));
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s;
+}
+
+.admin-dashboard__shortcut:hover {
+  border: none;
+  box-shadow: none;
+  background: var(--surface-2, rgba(15, 23, 42, 0.05));
+}
+
+.admin-dashboard__shortcut-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.admin-dashboard__shortcut-summary {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.admin-dashboard__shortcut-go {
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.admin-dashboard__foot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0;
+}
+
+.admin-dashboard__foot-actions a {
+  text-decoration: none;
+}

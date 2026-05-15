@@ -1,0 +1,239 @@
+/**
+ * 各业务模块页面共用面板/表格/徽章（类名 *-page__* 与 keys/access 等对齐）。
+ */
+
+/* —— 子区块页眉：左标题 + 旁注 + 右工具（对齐控制台页头信息密度，类名与 design-tokens 页头同源前缀 admin-section-*） —— */
+.admin-shell__main .admin-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-shell__main .admin-section-head__start {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+  min-width: 0;
+  flex: 1 1 12rem;
+}
+
+.admin-shell__main .admin-section-title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.admin-shell__main .admin-section-title {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.admin-shell__main .admin-section-desc {
+  margin: 0;
+  flex: 1 1 14rem;
+  min-width: min(100%, 10rem);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.admin-shell__main .admin-section-desc strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.admin-shell__main .admin-section-desc a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.admin-shell__main .admin-section-desc a:hover {
+  color: var(--pill-text);
+}
+
+.admin-shell__main .admin-section-desc code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.6875rem;
+}
+
+.admin-shell__main .admin-section-head__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.admin-shell__main .admin-section-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.admin-shell__main .admin-section-tools .or-app-filter-dd-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* 与壳层「文档不滚动、侧栏独立滚动」配合：业务页占满主区，主面板/表格区内滚动 */
+.admin-shell__main > [class$="-page"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.admin-shell__main > .admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.admin-shell__main > .admin-stub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.admin-shell__main > [class$="-page"] > [class$="-page__panel"] {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+[class$="-page__table-wrap"] {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+[class$="-page__cap"] {
+  color: var(--text);
+}
+
+[class$="-page__hint"],
+[class$="-page__sub"] {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+[class$="-page__hint"] {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+}
+
+[class$="-page__callout"] {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--warning-soft);
+  border: none;
+  border-radius: var(--radius);
+}
+
+/* 面板：扁平化（与主区同底，无边框；仅靠内边距与区块间距分区） */
+.admin-shell__main [class$="-page__panel"] {
+  margin-top: 0;
+  padding: 0.5rem 0.125rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.admin-shell__main [class$="-page__table"] th,
+.admin-shell__main [class$="-page__table"] td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-shell__main [class$="-page__table"] th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.admin-shell__main [class$="-page__table"] tr.is-selected td {
+  background: var(--blue-soft);
+}
+
+[class$="-page__muted"] {
+  color: var(--muted);
+}
+
+[class$="-page__badge--ok"] {
+  background: var(--admin-success-soft, var(--success-soft));
+  color: var(--admin-success-ink, var(--success-800));
+}
+
+[class$="-page__badge--warn"] {
+  background: var(--admin-warning-soft, var(--warning-soft));
+  color: var(--admin-warning, var(--warning-ink));
+}
+
+[class$="-page__badge--danger"] {
+  background: var(--admin-danger-soft, var(--danger-soft));
+  color: var(--admin-danger-ink, var(--danger-ink));
+}
+
+[class$="-page__badge--muted"] {
+  background: var(--surface-2);
+  color: var(--admin-muted, var(--muted));
+}
+
+[class$="-int__textlink"] {
+  color: var(--blue);
+}
+
+[class$="-int__textlink"]:hover {
+  color: var(--pill-text);
+}
+
+[class$="-int__textlink--danger"] {
+  color: var(--danger-ink);
+}
+
+[class$="-int__textlink--danger"]:hover {
+  color: var(--danger-dark);
+}
+
+[class$="-page__btn-danger"] {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: var(--on-primary);
+}
+
+[class$="-page__btn-danger"]:hover:not(:disabled) {
+  background: var(--danger-ink);
+  border-color: var(--danger-ink);
+}
+
+[class$="-page__btn-danger"]:focus-visible {
+  outline: 2px solid var(--danger-border);
+  outline-offset: 2px;
+}

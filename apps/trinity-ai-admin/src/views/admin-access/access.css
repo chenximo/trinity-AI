@@ -1,0 +1,336 @@
+.acc-page__cap {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.acc-toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  overflow: visible;
+}
+
+.acc-toolbar-row__start {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.acc-toolbar-row__end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.acc-page__table-wrap {
+  overflow: auto;
+}
+
+.acc-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.acc-page__table th,
+.acc-page__table td {
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.acc-page__table th {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  font-size: 0.6875rem;
+}
+
+.acc-page__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+
+.acc-page__badge {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.acc-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.acc-page__badge--muted {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.acc-page__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.acc-page__dt {
+  color: var(--muted);
+  margin: 0;
+}
+
+.acc-page__dd {
+  margin: 0;
+  color: var(--text);
+}
+
+.acc-page__callout {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--blue-soft);
+  border: 1px solid var(--blue-ring);
+  border-radius: 0.375rem;
+}
+
+.acc-page__callout--roles-help {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.55;
+}
+
+.acc-page__roles-help-note {
+  margin-left: 0.35rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.acc-int__textlink--scope-doc {
+  display: inline-block;
+  margin-top: 0.35rem;
+}
+
+.acc-page__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.acc-int__textlink {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0.75rem;
+  color: var(--blue);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.acc-int__textlink:hover {
+  color: var(--pill-text);
+}
+
+.acc-int__textlink + .acc-int__textlink {
+  margin-left: 0.5rem;
+}
+
+.acc-int__textlink--danger {
+  color: var(--danger-ink);
+  margin-left: 0.5rem;
+}
+
+.acc-int__textlink--danger:hover {
+  color: var(--danger-dark);
+}
+
+.acc-int-modal-host.or-modal-root {
+  z-index: 600;
+}
+
+.acc-int-modal-host .or-modal-card.or-keys-editor-modal-card {
+  width: min(720px, calc(100vw - 2rem));
+  max-width: min(720px, calc(100vw - 2rem));
+  max-height: min(85vh, 760px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.acc-scope-doc-host .or-modal-card.or-keys-editor-modal-card {
+  width: min(920px, calc(100vw - 2rem));
+  max-width: min(920px, calc(100vw - 2rem));
+  max-height: min(88vh, 820px);
+}
+
+.acc-scope-doc {
+  padding: 0 0.125rem 0.5rem;
+}
+
+.acc-int-modal-host .t-modal-panel-body {
+  overflow: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.acc-int-modal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.acc-int-modal-grid .form-group {
+  margin: 0;
+}
+
+.acc-int-modal-grid .form-group label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted, var(--muted));
+  margin-bottom: 0.35rem;
+}
+
+.acc-int-modal-grid .form-group textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 7.5rem;
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border, var(--border));
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  font-family: inherit;
+  background: var(--bg, var(--bg));
+  color: var(--text, var(--text));
+  resize: vertical;
+}
+
+.acc-int-modal-grid .form-group textarea:focus,
+.acc-int-modal-grid .form-group textarea:focus-visible {
+  outline: none;
+  border: 1px solid var(--blue, var(--blue));
+  box-shadow: 0 0 0 3px var(--blue-ring, rgba(64, 158, 255, 0.25));
+}
+
+.acc-page__th-perm {
+  min-width: 12rem;
+}
+
+.acc-page__perm-cell {
+  max-width: 26rem;
+  vertical-align: top;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.acc-page__perm-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.acc-page__perm-list li {
+  margin: 0.12rem 0;
+}
+
+.acc-int-modal-err {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--danger-ink);
+}
+
+.acc-page__subcap {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.acc-page__subcap:first-of-type {
+  margin-top: 0.35rem;
+}
+
+.acc-page__scope-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.acc-page__scope-card {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--surface);
+}
+
+.acc-page__scope-h {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.acc-page__scope-intro {
+  margin: 0 0 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.acc-page__scope-ul {
+  margin: 0 0 0.5rem;
+  padding-left: 1.15rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.acc-page__scope-ul li {
+  margin: 0.2rem 0;
+}
+
+.acc-page__scope-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.acc-page__scope-k {
+  display: inline-block;
+  min-width: 4.5rem;
+  margin-right: 0.35rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.acc-page__scope-para {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.acc-page__dl--scope-ext {
+  margin-top: 0.25rem;
+}
+
+body.or-modal-open {
+  overflow: hidden;
+}

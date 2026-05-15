@@ -1,0 +1,237 @@
+.ops-page__secondary-cap {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ops-page__grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ops-page__stat {
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.375rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.ops-page__stat-label {
+  font-size: 0.6875rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.ops-page__stat-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ops-page__stat-meta {
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+}
+
+.ops-page__spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 4.5rem;
+  margin-top: 0.75rem;
+}
+
+.ops-page__spark-bar {
+  flex: 1;
+  min-width: 0.5rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+  background: linear-gradient(180deg, var(--blue-ring) 0%, var(--blue) 100%);
+  opacity: 0.85;
+}
+
+.ops-page__h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ops-page__h3--tight {
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+}
+
+/* 趋势折线 + 错误码饼图（由工作台迁入） */
+.ops-page__charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.ops-page__chart-block {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ops-page__line-svg {
+  width: 100%;
+  height: auto;
+  max-height: 6.5rem;
+}
+
+.ops-page__chart-foot {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.ops-page__pie-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.ops-page__pie {
+  width: 7.5rem;
+  height: 7.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.ops-page__pie-legend {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-width: 10rem;
+}
+
+.ops-page__pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.ops-page__pie-legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.ops-page__pie-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ops-page__pie-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.ops-page__pie-pct {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ops-page__table-wrap {
+  overflow: auto;
+}
+
+.ops-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.ops-page__table th,
+.ops-page__table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.5rem;
+  text-align: left;
+}
+
+.ops-page__table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.ops-page__badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.ops-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.ops-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.ops-page__two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 52rem) {
+  .ops-page__two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ops-page__switch-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ops-page__switch {
+  width: 2.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--border-strong);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ops-page__switch.is-on {
+  background: var(--blue);
+}
+
+.ops-page__switch::after {
+  content: "";
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: var(--bg);
+  transition: transform 0.15s;
+}
+
+.ops-page__switch.is-on::after {
+  transform: translateX(1rem);
+}

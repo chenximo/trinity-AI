@@ -39,6 +39,15 @@
   pointer-events: none;
 }
 
+/*
+ * 运营后台顶栏右侧为个人中心：枢纽按钮改到右下角，避免挡住头像/下拉菜单。
+ * （独立 :5204 无枢纽按钮，仅门户 /trinity-ai-admin 生效。）
+ */
+.design-hub-shell:has(.admin-shell) .design-hub-fab-stack {
+  top: auto;
+  bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+}
+
 .design-hub-fab-stack > * {
   pointer-events: auto;
 }

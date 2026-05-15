@@ -1,0 +1,69 @@
+/**
+ * 运营后台 · 操作按钮（与 @trinity/ui TButton + 表格文字链 + 弹窗危险钮对齐）。
+ * 色板页通过 design-tokens-page.css 的 .dt-admin-* 镜像展示；业务页用组件 class，勿混用 dt-*。
+ */
+
+/* 与 TButton variant="outline"（默认） */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: var(--ctrl-h, 36px);
+  min-height: var(--ctrl-h, 36px);
+  padding: 0 1.1rem;
+  border-radius: var(--radius, 8px);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.admin-btn:hover:not(:disabled) {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.admin-btn:focus-visible {
+  outline: 2px solid var(--blue-ring);
+  outline-offset: 2px;
+}
+
+.admin-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* 与 TButton variant="gradient" */
+.admin-btn--gradient {
+  background: var(--grad);
+  color: var(--on-primary, #fff);
+  border: none;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.25);
+}
+
+.admin-btn--gradient:hover:not(:disabled) {
+  background: var(--grad-hover);
+  color: var(--on-primary, #fff);
+}
+
+/* 弹窗内危险确认（如冻结/吊销）；见 admin-page.css *-page__btn-danger */
+.admin-btn--danger {
+  border-color: var(--admin-danger, var(--danger));
+  background: var(--admin-danger, var(--danger));
+  color: var(--on-primary, #fff);
+}
+
+.admin-btn--danger:hover:not(:disabled) {
+  background: var(--admin-danger-ink, var(--danger-ink));
+  border-color: var(--admin-danger-ink, var(--danger-ink));
+}
+
+.admin-btn--danger:focus-visible {
+  outline: 2px solid var(--danger-border);
+  outline-offset: 2px;
+}

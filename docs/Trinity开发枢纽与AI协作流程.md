@@ -8,7 +8,7 @@
 
 ## 1. 为什么要有「开发枢纽」`apps/trinity-portal`
 
-- **单进程预览**：根目录执行一次 `npm run dev`，在 **http://localhost:5173** 用路由切换 **设计色板 / 设计规范 / 各产品骨架页**，不必为每个 app 各开一个终端与端口。  
+- **单进程预览**：根目录执行一次 `npm run dev`，在 **http://localhost:5173** 用路由切换 **设计色板 / 设计规范 / 各产品骨架页（含运营后台 `/trinity-ai-admin`）**，不必为每个 app 各开一个终端与端口。  
 - **与各 app 独立 dev 并存**：需要单独调试某一 app 的 Vite 行为时，仍用根 `package.json` 里的 **`npm run dev:trinity-design`**（5210）、**`dev:trinity-ai`**（5201）等脚本。  
 - **生产构建不变**：各 `apps/*` 仍是 **独立可构建、可部署** 的产物；门户主要用于 **本地/评审联调**，根 `build:apps` 中会包含 `@trinity/app-portal` 的 build，便于 CI 验证聚合入口无报错。
 
@@ -21,7 +21,8 @@
 | **推荐日常**：单端口看全站骨架 + 设计页 | 仓库根：`npm run dev` | `http://localhost:5173`（`@trinity/app-portal`） |
 | 仅设计枢纽（与门户内路由路径一致） | `npm run dev:trinity-design` | `http://localhost:5210` |
 | 仅 Trinity AI 骨架 | `npm run dev:trinity-ai` | `http://localhost:5201` |
-| 仅 AI Cloud / GEO / Admin | `npm run dev:ai-cloud` 等 | 见根 `package.json` 与 `apps/README.md` |
+| 仅 **Trinity AI 运营后台原型** | `npm run dev:trinity-ai-admin` | `http://localhost:5204` |
+| 仅 AI Cloud / GEO | `npm run dev:ai-cloud`、`npm run dev:trinity-geo` 等 | 见根 `package.json` 与 `apps/README.md` |
 
 **安装依赖**：在仓库根执行 `npm install`（npm workspaces 一次装全 workspace 包）。
 
@@ -44,6 +45,29 @@
 3. 在 `apps/trinity-portal/src/router/index.ts` 增加 `path` 与 `component: () => import('…')`。  
 4. 在 `apps/trinity-portal/src/App.vue` 顶栏增加对应 `<a href="…" @click="hubNav(…)">`。  
 5. 根目录执行 `npm run build -w @trinity/app-portal` 验证。
+
+### 3.1 `trinity-ai-admin`（运营后台原型 · 与门户嵌套）
+
+- **独立运行**：根目录 **`npm run dev:trinity-ai-admin`** → **`http://localhost:5204`**（包 **`@trinity/app-trinity-ai-admin`**）。路由表见 **`apps/trinity-ai-admin/src/views/admin-shell/README.md`**。  
+- **门户内路径**：**`/trinity-ai-admin`**，与 **`Trinity AI`** 的 **`/trinity-ai`** 同理——父级挂 **`AdminShellLayout.vue`**，子路由由 **`apps/trinity-ai-admin/src/trinityAdminRoutes.ts`** 中 **`getTrinityAdminChildRoutes()`** 提供，供 **`apps/trinity-ai-admin/src/router/index.ts`** 与 **`apps/trinity-portal/src/router/index.ts`** 两处复用（避免与 `Home.vue` 等已删入口漂移）。  
+- **已实现子页（原型）**：**`/dashboard` 工作台**、**`/ops` 监控与运维**（`admin-ops/`）、**`/billing` 用量与计费**（`admin-billing/`）；其余 path 仍为 **`AdminStubPage.vue`**，见 **`admin-shell/README.md`** 路由表。  
+- **扩展 admin 子路由（AI 操作清单）**  
+  1. 改 **`ADMIN_NAV_TREE`**（`apps/trinity-ai-admin/src/views/admin-shell/adminNavTree.ts`）、**`moduleSecondaryPages.ts`** 与 **`getTrinityAdminChildRoutes()`**（`trinityAdminRoutes.ts`）。  
+  2. 同步更新 **`apps/trinity-ai-admin/src/views/admin-shell/README.md`** 路由表。  
+  3. 根目录执行 **`npm run build -w @trinity/app-trinity-ai-admin`** 与 **`npm run build -w @trinity/app-portal`**。
+
+**门户下子路径与 `name`（前缀 `tai-admin-`）**
+
+| 门户内 path（示例） | `name`（示例） | 说明 |
+|-------------|--------|------|
+| `/trinity-ai-admin/dashboard` | `tai-admin-dashboard` | 工作台 |
+| `/trinity-ai-admin/ops` | `tai-admin-ops` | 重定向到默认子页 `…/ops/live` |
+| `/trinity-ai-admin/ops/live` | `tai-admin-ops-live` | 监控与运维子页（**P1** `OpsPage.vue`） |
+| `/trinity-ai-admin/billing/usage` | `tai-admin-billing-usage` | 用量与计费子页（**P2** `BillingPage.vue`） |
+| `/trinity-ai-admin/suppliers/list` | `tai-admin-suppliers-list` | 供应商子页（占位） |
+| … | … | 其余子路由见 `adminNavTree.ts` / `trinityAdminRoutes.ts` |
+
+产品全景一页读见 **`docs/AI-API聚合平台-产品全景与介绍.md`**；运营后台 IA 与批次见 **`docs/AI-API聚合平台-运营后台-原型交付计划.md`**。
 
 ---
 
@@ -116,6 +140,7 @@
 |------|------|
 | 新增 `@trinity/ui` 组件流程（规范 → 包 → 可点可看） | `docs/Trinity开发枢纽与AI协作流程.md` **§4.1.5** |
 | 门户入口与路由 | `apps/trinity-portal/src/main.ts`、`router/index.ts`、`App.vue` |
+| 运营后台子路由真源（门户 `/trinity-ai-admin` 与独立 app 共用） | `apps/trinity-ai-admin/src/trinityAdminRoutes.ts`、`views/admin-shell/README.md` |
 | 门户构建配置 | `apps/trinity-portal/vite.config.ts`、`package.json` |
 | 设计站路由与页面 | `apps/trinity-design/src/router/index.ts`、`views/DesignTokens.vue`、`views/DesignSpec.vue` |
 | 设计顶栏与主题 | `apps/trinity-design/src/design-hub.css`、`composables/useTrinityDesignTheme.ts`、`lib/trinityDesignTheme.ts` |
@@ -131,6 +156,8 @@
 
 | 日期 | 说明 |
 |------|------|
+| 2026-05-11 | §3.1：补充 **已实现子页**（dashboard / ops / billing）；门户子路由表 **ops、billing** 从「占位」改为实页说明。 |
+| 2026-05-11 | §2：增加 **`dev:trinity-ai-admin`**（:5204）；新增 **§3.1**（`trinity-ai-admin` 门户嵌套、`getTrinityAdminChildRoutes`、子路由表）；§7 索引增加 `trinityAdminRoutes`；门户 **`App.vue`** 对 `/trinity-ai-admin` 使用 **`startsWith`** 高亮。 |
 | 2026-05-14 | §6：增补 **trinity-ai 迭代/二次开发** 提示——先读模块 README 与交付规范 **§6.1**；§7 索引增加五件套与二次开发文档链。 |
 | 2026-05-11 | 增补 **§4.1.5**：新增 `@trinity/ui` 组件流程（规范页先 → 包内实现 → `/design-spec` 验收）；§5 指向该流程。 |
 | 2026-05-13 | 初稿：单端口门户、设计站 Vue 化要点、方案 A CSS 落点、委托点击与顶栏导航、AI 协作清单与索引。 |

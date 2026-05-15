@@ -1,7 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import AdminLoginPage from "../views/admin-login/AdminLoginPage.vue";
+import AdminShellLayout from "../views/admin-shell/AdminShellLayout.vue";
+import { adminShellAuthGuard } from "../views/admin-shell/shellInteractions";
+import { getTrinityAdminChildRoutes } from "../trinityAdminRoutes";
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [{ path: "/", name: "home", component: Home }],
+  routes: [
+    {
+      path: "/login",
+      name: "tai-admin-login",
+      component: AdminLoginPage,
+      meta: { title: "登录", public: true },
+    },
+    {
+      path: "/",
+      component: AdminShellLayout,
+      beforeEnter: adminShellAuthGuard,
+      redirect: { name: "tai-admin-dashboard" },
+      children: getTrinityAdminChildRoutes(),
+    },
+  ],
 });

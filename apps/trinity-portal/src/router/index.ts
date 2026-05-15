@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { getTrinityAiChildRoutes } from "@trinity-ai/trinityAiRoutes";
+import { getTrinityAdminChildRoutes } from "@trinity-ai-admin/trinityAdminRoutes";
+import { adminShellAuthGuard } from "@trinity-ai-admin/views/admin-shell/shellInteractions";
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,9 +34,18 @@ export default createRouter({
       component: () => import("@trinity-geo/views/Home.vue"),
     },
     {
+      path: "/trinity-ai-admin/login",
+      name: "tai-admin-login",
+      component: () => import("@trinity-ai-admin/views/admin-login/AdminLoginPage.vue"),
+      meta: { title: "登录", public: true },
+    },
+    {
       path: "/trinity-ai-admin",
       name: "trinity-ai-admin",
-      component: () => import("@trinity-ai-admin/views/Home.vue"),
+      component: () => import("@trinity-ai-admin/views/admin-shell/AdminShellLayout.vue"),
+      beforeEnter: adminShellAuthGuard,
+      redirect: { name: "tai-admin-dashboard" },
+      children: getTrinityAdminChildRoutes(),
     },
   ],
 });

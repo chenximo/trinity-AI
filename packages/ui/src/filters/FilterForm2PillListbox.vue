@@ -30,6 +30,8 @@ const props = withDefaults(
     panelId?: string;
     listboxAriaLabel?: string;
     beakX?: string;
+    /** 下拉面板水平对齐：`end` 与触发器/卡片右缘齐平，避免向右溢出视口 */
+    panelAlign?: "start" | "end";
   }>(),
   {
     managedPanel: false,
@@ -39,6 +41,7 @@ const props = withDefaults(
     labelSpanId: undefined,
     beakX: "2.75rem",
     listboxAriaLabel: undefined,
+    panelAlign: "end",
   }
 );
 
@@ -47,6 +50,17 @@ const open = defineModel<boolean>("open", { default: false });
 const emit = defineEmits<{ select: [index: number] }>();
 
 const isListMode = computed(() => props.items !== undefined);
+
+const wrapClass = computed(() =>
+  props.panelAlign === "end" ? "or-app-filter-dd-wrap or-app-filter-dd-wrap--panel-end" : "or-app-filter-dd-wrap"
+);
+
+/** `panelAlign=end` 时尖角走右侧变量，避免 `--or-pop-beak-x` 把面板仍按左侧定位 */
+const panelStyle = computed(() =>
+  props.panelAlign === "end"
+    ? ({ "--or-pop-beak-r": "1.35rem" } as Record<string, string>)
+    : ({ "--or-pop-beak-x": props.beakX } as Record<string, string>)
+);
 
 const triggerControls = computed(() =>
   isListMode.value ? props.panelId : props.controls
@@ -81,7 +95,7 @@ function onItemClick(e: MouseEvent, i: number) {
 </script>
 
 <template>
-  <div v-if="isListMode" :id="wrapId" class="or-app-filter-dd-wrap">
+  <div v-if="isListMode" :id="wrapId" :class="wrapClass">
     <button
       :id="btnId"
       type="button"
@@ -111,7 +125,7 @@ function onItemClick(e: MouseEvent, i: number) {
       role="listbox"
       :hidden="panelHidden"
       :aria-label="listboxAriaLabel ?? '列表'"
-      :style="{ '--or-pop-beak-x': beakX }"
+      :style="panelStyle"
     >
       <button
         v-for="(row, i) in items"
@@ -154,3 +168,18 @@ function onItemClick(e: MouseEvent, i: number) {
     </svg>
   </button>
 </template>
+
+<style scoped>
+/* 与 ui-kit 双写：保证形式2 下拉右缘与药丸右缘齐平（避免全局 CSS 顺序或未热更新时失效） */
+.or-app-filter-dd-wrap--panel-end :deep(.or-app-filter-more-panel) {
+  left: auto;
+  right: 0;
+}
+
+.or-app-filter-dd-wrap--panel-end :deep(.or-app-filter-more-panel.or-app-filter-pop-beak::before),
+.or-app-filter-dd-wrap--panel-end :deep(.or-app-filter-more-panel.or-app-filter-pop-beak::after) {
+  left: calc(100% - var(--or-pop-beak-r, 1.35rem));
+  right: auto;
+  transform: translateX(-50%) translateZ(0);
+}
+</style>

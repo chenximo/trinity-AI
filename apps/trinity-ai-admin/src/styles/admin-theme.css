@@ -1,0 +1,87 @@
+/**
+ * 运营后台专用语义色（作用域 `.admin-shell`）。
+ * 真源本文件；由 AdminShellLayout 与 `main.ts` 引入；布局见 `admin-shell.css`。
+ *
+ * ## 色板一览（2026-05）
+ *
+ * ### 侧栏专有 hex（仅后台壳层，未写入 packages/tokens/core.css）
+ * | 变量 | 色值 | 用途 |
+ * |------|------|------|
+ * | `--admin-sidebar-bg` | `#304156` | 侧栏底 |
+ * | `--admin-sidebar-bg-hover` / `--admin-sidebar-hover` | `#263445` | 悬停行 |
+ * | `--admin-sidebar-logo-bg` | `#304156` | Logo 区底 |
+ * | `--admin-sidebar-border` | `rgba(255,255,255,0.08)` | 侧栏右分割 |
+ * | `--admin-sidebar-text` | `rgba(255,255,255,0.78)` | 一级菜单字 |
+ * | `--admin-sidebar-text-dim` | `rgba(255,255,255,0.52)` | 二级菜单字 |
+ * | `--admin-sidebar-sublink-active` | `rgba(37,99,235,0.28)` | 子菜单选中底 |
+ *
+ * ### 映射全局 token（与门户 / 静态 adm-* 一致）
+ * | 变量 | 映射 |
+ * |------|------|
+ * | `--admin-primary` | `--blue` `#2563eb` |
+ * | `--admin-primary-soft` | `--blue-soft` |
+ * | `--admin-primary-ring` | `--blue-ring` |
+ * | `--admin-primary-text` | `--pill-text` |
+ * | `--admin-sidebar-active-bg` | `--blue`（选中行底，替代若依 `#409EFF`） |
+ * | `--admin-sidebar-active-text` | `--on-primary` |
+ * | `--admin-bg` | `--surface` |
+ * | `--admin-surface` | `--bg` |
+ * | `--admin-border` | `--border` |
+ * | `--admin-success*` / `--admin-warning*` / `--admin-danger*` | 同名语义 token |
+ * | `--admin-accent-purple*` | `--purple` / `--purple-soft` |
+ */
+.admin-shell {
+  --admin-sidebar-w: 13.5rem;
+  --admin-sidebar-w-collapsed: 3.375rem;
+  --admin-header-h: 3.125rem;
+
+  /* 布局层级 */
+  --admin-bg: var(--surface, #f9fafb);
+  --admin-surface: var(--bg, #ffffff);
+  --admin-border: var(--border, #e5e7eb);
+  --admin-border-strong: var(--border-strong, #d1d5db);
+
+  /* 字色 */
+  --admin-text: var(--text, #1a1a1a);
+  --admin-muted: var(--muted, #4b5563);
+  --admin-muted-2: var(--muted-2, #9ca3af);
+
+  /* 品牌主色 */
+  --admin-primary: var(--blue, #2563eb);
+  --admin-primary-soft: var(--blue-soft, #eff6ff);
+  --admin-primary-ring: var(--blue-ring, #bfdbfe);
+  --admin-primary-text: var(--pill-text, #1d4ed8);
+
+  /* 侧栏（深色 · 初版运营后台；选中高亮用语板 --blue，不用 #409EFF） */
+  --admin-sidebar-bg: #304156;
+  --admin-sidebar-bg-hover: #263445;
+  --admin-sidebar-border: rgba(255, 255, 255, 0.08);
+  --admin-sidebar-logo-bg: #304156;
+  --admin-sidebar-text: rgba(255, 255, 255, 0.78);
+  --admin-sidebar-text-dim: rgba(255, 255, 255, 0.52);
+  --admin-sidebar-hover: rgba(255, 255, 255, 0.12);
+  --admin-sidebar-hover-strong: rgba(255, 255, 255, 0.18);
+  --admin-sidebar-active-bg: var(--blue, #2563eb);
+  --admin-sidebar-active-text: var(--on-primary, #ffffff);
+  --admin-sidebar-active-accent: rgba(255, 255, 255, 0.95);
+  --admin-sidebar-sublink-active: rgba(37, 99, 235, 0.28);
+
+  /* 业务语义（面板徽章、提示条等可复用） */
+  --admin-success: var(--success, #059669);
+  --admin-success-soft: var(--success-soft, #ecfdf5);
+  --admin-success-ink: var(--success-800, #047857);
+  --admin-warning: var(--warning-ink, #b45309);
+  --admin-warning-soft: var(--warning-soft, #fef3c7);
+  --admin-warning-ring: var(--warning-ring, #fcd34d);
+  --admin-danger: var(--danger, #dc2626);
+  --admin-danger-soft: var(--danger-soft, #fef2f2);
+  --admin-danger-ink: var(--danger-ink, #b91c1c);
+  --admin-accent-purple: var(--purple, #7c3aed);
+  --admin-accent-purple-soft: var(--purple-soft, #f5f3ff);
+
+  --admin-radius: var(--radius-lg, 12px);
+  --admin-radius-sm: var(--radius, 8px);
+  --admin-shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --admin-shadow-header: 0 1px 4px rgba(15, 23, 42, 0.06);
+  --admin-shadow-sidebar: 2px 0 8px rgba(15, 23, 42, 0.12);
+}

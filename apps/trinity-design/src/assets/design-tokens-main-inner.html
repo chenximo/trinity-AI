@@ -428,6 +428,101 @@
         </div>
       </section>
 
+      <section class="dt-section" aria-labelledby="dt-cat-admin">
+        <h2 id="dt-cat-admin">运营后台 · admin-shell 专用色</h2>
+        <p class="dt-section-desc">
+          作用域 <code>.admin-shell</code>（<code>apps/trinity-ai-admin</code>）。真源
+          <code>apps/trinity-ai-admin/src/styles/admin-theme.css</code>。门户
+          <code>/trinity-ai-admin</code> 与独立 <code>:5204</code> 共用。
+        </p>
+
+        <h3 class="dt-subsection-title">侧栏专有（未进全局 :root）</h3>
+        <p class="dt-subsection-desc">初版深色侧栏布局色；选中高亮仍用全局 <code>--blue</code>，不用若依 <code>#409EFF</code>。</p>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: #304156"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--admin-sidebar-bg</span><span class="dt-hex">#304156</span>
+              <p class="dt-atom-desc">侧栏与 Logo 区底。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: rgba(255, 255, 255, 0.12)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--admin-sidebar-hover</span><span class="dt-hex">rgba(255,255,255,0.12)</span>
+              <p class="dt-atom-desc">未选中菜单悬停。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: #2563eb"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--admin-sidebar-active-bg</span><span class="dt-hex">→ --blue</span>
+              <p class="dt-atom-desc">选中项（与工作台一致）。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-cat-admin-buttons">操作 · 按钮与文字链</h3>
+        <p class="dt-subsection-desc">
+          组件 <code>TButton</code>（<code>variant="outline" | "gradient"</code>）+ 表格内
+          <code>*-int__textlink</code> + 弹窗危险 <code>*-page__btn-danger</code>。样式真源
+          <code>packages/ui/src/buttons/TButton.vue</code>、<code>admin-buttons.css</code>、<code>admin-page.css</code>。
+        </p>
+        <div class="dt-admin-actions">
+          <div class="dt-admin-actions__row">
+            <p class="dt-admin-actions__label">工具栏 / 列表</p>
+            <button type="button" class="dt-admin-btn dt-admin-btn--gradient">新建 / 保存（主）</button>
+            <button type="button" class="dt-admin-btn">导出 CSV（次）</button>
+            <button type="button" class="dt-admin-btn" disabled>禁用</button>
+          </div>
+          <div class="dt-admin-actions__row">
+            <p class="dt-admin-actions__label">表格行内（文字链）</p>
+            <button type="button" class="dt-admin-textlink">查看详情</button>
+            <button type="button" class="dt-admin-textlink">冻结</button>
+            <button type="button" class="dt-admin-textlink dt-admin-textlink--danger">吊销</button>
+          </div>
+          <div class="dt-admin-actions__row">
+            <p class="dt-admin-actions__label">弹窗底栏（右对齐 · 无图标）</p>
+            <div class="dt-admin-modal-actions" style="width: 100%; margin-top: 0; border: none; padding-top: 0">
+              <button type="button" class="dt-admin-btn">取消</button>
+              <button type="button" class="dt-admin-btn dt-admin-btn--danger">确认吊销</button>
+              <button type="button" class="dt-admin-btn dt-admin-btn--gradient">确认保存</button>
+            </div>
+          </div>
+        </div>
+        <div class="dt-grid" style="margin-top: 0.75rem">
+          <article class="dt-card" data-dt-gradient>
+            <div class="dt-swatch dt-swatch--grad"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--grad / --grad-hover</span>
+              <p class="dt-atom-desc">TButton 主按钮渐变。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: #dc2626"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--admin-danger</span><span class="dt-hex">→ --danger</span>
+              <p class="dt-atom-desc">危险确认钮。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: #2563eb"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--blue / --pill-text</span>
+              <p class="dt-atom-desc">文字链默认 / 悬停。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title">映射全局 token（后台语义别名）</h3>
+        <div class="dt-row"><code>--admin-primary</code><span class="dt-row-val">→ <code>--blue</code></span></div>
+        <div class="dt-row"><code>--admin-sidebar-active-bg</code><span class="dt-row-val">→ <code>--blue</code>（选中一级）</span></div>
+        <div class="dt-row"><code>--admin-bg</code><span class="dt-row-val">→ <code>--surface</code>（主区灰底）</span></div>
+        <div class="dt-row"><code>--admin-surface</code><span class="dt-row-val">→ <code>--bg</code>（顶栏 / 卡片白底）</span></div>
+        <div class="dt-row"><code>--admin-success*</code> <code>--admin-warning*</code> <code>--admin-danger*</code><span class="dt-row-val">→ 同名语义 token（徽章、Mock 标）</span></div>
+        <div class="dt-row"><code>--admin-accent-purple*</code><span class="dt-row-val">→ <code>--purple</code> / <code>--purple-soft</code></span></div>
+      </section>
+
       <section class="dt-section" aria-labelledby="dt-cat-layout">
         <h2 id="dt-cat-layout">尺寸与圆角（非色值）</h2>
         <p class="dt-section-desc">版心与圆角等尺寸 token，与原型文档 §1.4 一致。</p>

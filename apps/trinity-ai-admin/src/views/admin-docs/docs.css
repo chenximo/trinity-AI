@@ -1,0 +1,412 @@
+/**
+ * 文档中心 · 与 `admin-keys/keys.css` 同源布局与 token（`var(--*)`，对齐 design-spec / design-tokens）。
+ */
+
+.doc-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.doc-page__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+}
+
+.doc-page__cap {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.doc-toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  overflow: visible;
+}
+
+.doc-toolbar-row__start {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.doc-toolbar-row__end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.doc-toolbar-row__end .or-app-filter-dd-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.doc-page__table-wrap {
+  overflow: auto;
+}
+
+.doc-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.doc-page__table th,
+.doc-page__table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc-page__table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.doc-page__hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.doc-page__ops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.doc-page__badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.doc-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.doc-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.doc-page__badge--danger {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+.doc-page__badge--muted {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.doc-int__textlink {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--blue);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.doc-int__textlink:hover {
+  color: var(--pill-text);
+}
+
+.doc-int__textlink--danger {
+  color: var(--danger-ink);
+}
+
+.doc-int__textlink--danger:hover {
+  color: var(--danger-dark);
+}
+
+.doc-int-modal-host .or-modal-card.or-keys-editor-modal-card {
+  max-width: 26rem;
+}
+
+.doc-int-modal-host .or-keys-editor-modal-card .doc-form-stack .or-app-filter-dd-wrap {
+  width: 100%;
+  min-width: 0;
+}
+
+.doc-int-modal-host .or-keys-editor-modal-card .doc-form-stack .or-app-filter-dd-wrap button.or-app-filter-dd-trigger {
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+}
+
+.doc-page__editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 13rem;
+  gap: 1rem;
+  align-items: start;
+}
+
+.doc-page__editor-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.doc-page__md-preview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.doc-page__preview-pane {
+  min-width: 0;
+}
+
+.doc-page__preview-pane__title {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.doc-page__preview {
+  box-sizing: border-box;
+  min-height: 14rem;
+  max-height: min(70vh, 32rem);
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+.doc-page__preview:focus-visible {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.doc-page__preview :first-child {
+  margin-top: 0;
+}
+
+.doc-page__preview :last-child {
+  margin-bottom: 0;
+}
+
+.doc-page__preview h1,
+.doc-page__preview h2,
+.doc-page__preview h3,
+.doc-page__preview h4 {
+  margin: 0.85em 0 0.4em;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.doc-page__preview h1 {
+  font-size: 1.125rem;
+}
+
+.doc-page__preview h2 {
+  font-size: 1rem;
+}
+
+.doc-page__preview h3 {
+  font-size: 0.9375rem;
+}
+
+.doc-page__preview h4 {
+  font-size: 0.875rem;
+}
+
+.doc-page__preview p {
+  margin: 0.5em 0;
+}
+
+.doc-page__preview a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.doc-page__preview a:hover {
+  color: var(--pill-text);
+}
+
+.doc-page__preview ul,
+.doc-page__preview ol {
+  margin: 0.5em 0;
+  padding-left: 1.35rem;
+}
+
+.doc-page__preview li {
+  margin: 0.2em 0;
+}
+
+.doc-page__preview code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.doc-page__preview pre {
+  margin: 0.65em 0;
+  padding: 0.65rem 0.75rem;
+  overflow: auto;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.doc-page__preview pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.doc-page__preview blockquote {
+  margin: 0.65em 0;
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+
+.doc-page__preview hr {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.doc-page__preview table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  margin: 0.65em 0;
+}
+
+.doc-page__preview th,
+.doc-page__preview td {
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.45rem;
+  text-align: left;
+}
+
+.doc-page__preview th {
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (max-width: 52rem) {
+  .doc-page__md-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-page__editor-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 多行正文：与 `TextField1Labeled` / `ui-kit` 的 `.or-input` 聚焦环一致 */
+.doc-page__md-wrap {
+  width: 100%;
+}
+
+.doc-page__md-wrap > label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.doc-page__md-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 14rem;
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.doc-page__md-input:focus,
+.doc-page__md-input:focus-visible {
+  outline: none;
+  border: 1px solid var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.doc-page__version-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface);
+}
+
+.doc-page__version-item {
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-page__version-item:last-child {
+  border-bottom: none;
+}
+
+.doc-page__version-meta {
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.doc-page__version-note {
+  font-size: 0.6875rem;
+  color: var(--text);
+}
+
+.doc-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.doc-form-error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--danger);
+}

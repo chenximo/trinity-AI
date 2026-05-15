@@ -22,6 +22,9 @@ function isAtHubRoot(to: HubPath) {
   if (to === "/trinity-ai") {
     return route.path === "/trinity-ai" || route.path === "/trinity-ai/";
   }
+  if (to === "/trinity-ai-admin") {
+    return route.path === "/trinity-ai-admin" || route.path === "/trinity-ai-admin/";
+  }
   return route.path === to;
 }
 
@@ -36,6 +39,7 @@ function hubNav(to: HubPath, e: MouseEvent) {
 
 function hubNavActive(to: HubPath) {
   if (to === "/trinity-ai") return route.path.startsWith("/trinity-ai");
+  if (to === "/trinity-ai-admin") return route.path.startsWith("/trinity-ai-admin");
   return route.path === to;
 }
 

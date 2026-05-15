@@ -39,7 +39,13 @@ function position() {
   let top = placeBelow ? r.bottom + 8 : r.top - ph - 8;
   if (top < 8) top = 8;
   if (top + ph > window.innerHeight - 8) top = Math.max(8, window.innerHeight - ph - 8);
-  const left = Math.min(Math.max(8, r.right - w), window.innerWidth - w - 8);
+  const gap = 8;
+  /** 优先贴在触发器右侧；右侧放不下则翻到左侧（仍尽量不盖住按钮） */
+  let left = r.right + gap;
+  if (left + w > window.innerWidth - gap) {
+    left = r.left - w - gap;
+  }
+  left = Math.max(gap, Math.min(left, window.innerWidth - w - gap));
   pop.style.left = `${left}px`;
   pop.style.top = `${top}px`;
 }

@@ -498,6 +498,8 @@ button.or-app-filter-menu-item:disabled {
   display: inline-flex;
   align-self: center;
   flex-shrink: 0;
+  width: fit-content;
+  max-width: 100%;
   vertical-align: middle;
 }
 
@@ -510,18 +512,26 @@ button.or-app-filter-menu-item:disabled {
   z-index: 50;
 }
 
-/* 工具栏最右侧药丸：面板右对齐，避免 list/menu 向右溢出视口 */
-.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel {
+/* 工具栏最右侧 / 弹窗表单全宽药丸：面板右对齐，与触发器或卡片内容右缘齐平 */
+.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel,
+.or-app-filter-more-wrap--panel-end .or-app-filter-more-panel {
   left: auto;
   right: 0;
   max-width: min(20rem, calc(100vw - 1.25rem));
 }
 
 .or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::before,
-.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::after {
+.or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::after,
+.or-app-filter-more-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::before,
+.or-app-filter-more-wrap--panel-end .or-app-filter-more-panel.or-app-filter-pop-beak::after {
   left: calc(100% - var(--or-pop-beak-r, 1.5rem));
   right: auto;
   transform: translateX(-50%) translateZ(0);
+}
+
+/* 弹窗编辑卡：形式2 全宽触发器下，面板不超出卡片右内边距 */
+.or-keys-editor-modal-card .form-group .or-app-filter-dd-wrap--panel-end .or-app-filter-more-panel {
+  max-width: 100%;
 }
 
 .or-app-filter-more-wrap .or-app-filter-more[aria-expanded="true"] .or-app-filter-more-chevron {
@@ -801,6 +811,12 @@ button.or-app-filter-menu-item:disabled {
   margin-top: 1.1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
+}
+
+/* 与 ModalPanel 正文区同宽右缘（1.25rem），避免底栏按钮相对卡片内容外溢 */
+.or-modal-card.or-keys-editor-modal-card > .or-keys-editor-actions {
+  margin-top: 0;
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 /* 编辑密钥表单内：形式2 药丸与原生 input 同宽 */

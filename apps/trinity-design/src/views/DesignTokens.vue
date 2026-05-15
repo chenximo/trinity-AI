@@ -25,6 +25,7 @@ const toc = [
   { id: "dt-console-pagehead", label: "控制台 · 页头" },
   { id: "dt-cat-glass", label: "弹层与玻璃态" },
   { id: "dt-cat-auth", label: "注册 / 认证" },
+  { id: "dt-cat-admin", label: "运营后台" },
   { id: "dt-cat-layout", label: "尺寸与圆角" },
   { id: "dt-cat-type", label: "字体栈" },
 ] as const;

@@ -1,0 +1,143 @@
+.cus-page__cap {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text, var(--text));
+}
+
+.cus-page__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  align-items: flex-end;
+}
+
+.cus-page__toolbar-grow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex: 1;
+  min-width: 0;
+}
+
+.cus-page__table-wrap {
+  overflow: auto;
+}
+
+.cus-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.cus-page__table th,
+.cus-page__table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cus-page__table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.cus-page__hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.cus-page__hint a {
+  color: var(--blue, var(--blue));
+  text-decoration: none;
+}
+
+.cus-page__hint a:hover {
+  text-decoration: underline;
+}
+
+.cus-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.cus-page__link-btn {
+  font-size: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--blue, var(--blue));
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cus-page__link-btn:hover {
+  text-decoration: underline;
+}
+
+.cus-page__badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.cus-page__badge--ok {
+  color: var(--success-strong);
+  background: var(--success-soft);
+}
+
+.cus-page__badge--trial {
+  color: var(--warning-ink);
+  background: var(--warning-soft);
+}
+
+.cus-page__badge--off {
+  color: var(--muted);
+  background: var(--surface-2);
+}
+
+.cus-page__badge--warn {
+  color: var(--orange-deep);
+  background: var(--warning-soft);
+}
+
+.cus-page__badge--pending {
+  color: var(--pill-text);
+  background: var(--blue-soft);
+}
+
+.cus-page__badge--done {
+  color: var(--success-strong);
+  background: var(--success-soft);
+}
+
+.cus-page__badge--reject {
+  color: var(--danger-dark);
+  background: var(--danger-soft);
+}
+
+.cus-page__subhead {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cus-page__form-error {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--danger);
+}
+
+.cus-page__modal-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
