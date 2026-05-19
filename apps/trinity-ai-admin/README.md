@@ -27,6 +27,7 @@
 |------|------|
 | 列表、分页、表单、日期、树、消息 | **`el-*`** |
 | 表格 | **`el-table`** + `class="admin-ep-table-wrap"`（无 `border`/`stripe`；表头灰底见 **`admin-ruoyi.css`**） |
+| 列表列宽 | **`src/utils/adminTableColumns.ts`** 档位 + 每表仅一列 `min-width`（主列）；见下文「列表表格」 |
 | 区块容器 | **`el-card`** `shadow="never"` + `admin-ep-card` |
 | 弹窗 | **`AdminDialog`**（`src/components/AdminDialog.vue`）→ `el-dialog` |
 | 工具栏搜索 | **`AdminSearchInput`** → `el-input` + 搜索图标 |
@@ -35,6 +36,21 @@
 | 主题色 | **`src/styles/admin-element-plus.css`** + **`admin-ruoyi.css`**（`.admin-shell` 内 CSS 变量桥接） |
 
 入口：`src/main.ts` 全量注册 Element Plus + 中文 locale。门户 `/trinity-ai-admin` 与独立 `:5204` 一致。
+
+### 若依式列表（检索 + 表格 + 分页）
+
+**规范真源**（新页 / 改列表必读）：[`doc/运营后台-若依式列表规范.md`](doc/运营后台-若依式列表规范.md)  
+**参考实现**：`src/views/admin-keys/KeysPage.vue`（平台密钥 / 用户密钥 / 审计三表）
+
+摘要：
+
+| 项 | 要求 |
+|----|------|
+| 页眉 | `AdminSectionHead` **`toolbar-only`** + `AdminListQuery`（勿在卡片内重复大标题） |
+| 表格 | `el-table` + `admin-ep-table-wrap`，无 `border`/`stripe` |
+| 数据列 | 仅 `min-width` + `ADMIN_TABLE_COL.*`，**不写** `width` / `align` |
+| 操作列 | `ADMIN_TABLE_COL_OPS.*` + `fixed="right"` + `div.admin-ep-row-actions` + `link` 按钮与图标 |
+| 列宽档位 | `src/utils/adminTableColumns.ts`；表头单元格 padding 见 `admin-ruoyi.css` |
 
 ## 色彩（admin-shell 专用）
 
@@ -60,6 +76,7 @@ npm run dev
 
 - **P0**：壳层 + 工作台（`admin-shell`、`admin-dashboard`）。  
 - **P1**：实时大盘（`admin-ops/`，`OpsPage.vue` · 单入口）。  
+- **P1b**：风控（`admin-risk/`，`RiskPage.vue` · 规则 + 动作日志）。  
 - **P2**：用量与计费（`admin-billing/`，五 Tab + 表格 mock）。  
 - **P3**：供应商（`admin-suppliers/`，五子路由共 **`SuppliersPage.vue`**：列表 / 档案 / 对接 / 拨测 / 密钥策略 mock）。  
 - **P4**：模型管理（`admin-models/`，四子路由共 **`ModelsPage.vue`**：列表 CRUD + 操作列上架/下架 + 主数据 / 线路 / 刊例 mock）。  

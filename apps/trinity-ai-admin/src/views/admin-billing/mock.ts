@@ -1,9 +1,18 @@
 /** 用量与计费 · 假数据（对齐详细设计 §4.3） */
 
-export type BillingTabId = "usage" | "quota" | "sku" | "invoice" | "adjust";
+export type BillingTabId =
+  | "usage"
+  | "debit-ledger"
+  | "credit-ledger"
+  | "quota"
+  | "sku"
+  | "invoice"
+  | "adjust";
 
 export const BILLING_TABS: { id: BillingTabId; label: string }[] = [
   { id: "usage", label: "用量明细" },
+  { id: "debit-ledger", label: "扣费流水" },
+  { id: "credit-ledger", label: "入账流水" },
   { id: "quota", label: "配额监控" },
   { id: "sku", label: "套餐 SKU" },
   { id: "invoice", label: "账单" },
@@ -13,27 +22,78 @@ export const BILLING_TABS: { id: BillingTabId; label: string }[] = [
 export const BILLING_USAGE_ROWS = [
   {
     time: "2026-05-18 14:28:01",
+    requestId: "req-8f2a1c",
     org: "Acme",
+    workspace: "ws-prod",
+    apiKey: "sk_live_Ab…",
     model: "gpt-4o-mini",
     line: "腾讯",
+    status: "200",
+    latencyMs: 842,
     tokens: "12.4k / 3.1k",
     amt: "¥42.10",
   },
   {
     time: "2026-05-17 14:27:55",
+    requestId: "req-7e91bd",
     org: "Beta Lab",
+    workspace: "ws-beta",
+    apiKey: "sk_test_Xy…",
     model: "claude-3-5",
     line: "直连",
+    status: "200",
+    latencyMs: 1204,
     tokens: "8.2k / 2.0k",
     amt: "¥118.00",
   },
   {
     time: "2026-05-10 14:27:40",
+    requestId: "req-3c44aa",
     org: "Acme",
+    workspace: "ws-prod",
+    apiKey: "sk_live_Ab…",
     model: "text-embedding-3",
     line: "火山",
+    status: "429",
+    latencyMs: 120,
     tokens: "0 / 64k",
     amt: "¥1.20",
+  },
+];
+
+export const BILLING_DEBIT_ROWS = [
+  {
+    at: "2026-05-18 14:28:02",
+    requestId: "req-8f2a1c",
+    workspace: "ws-prod",
+    user: "zhangsan",
+    amount: "-¥42.10",
+    billingLine: "BL-202605-8821",
+  },
+  {
+    at: "2026-05-17 14:27:56",
+    requestId: "req-7e91bd",
+    workspace: "ws-beta",
+    user: "lisi",
+    amount: "-¥118.00",
+    billingLine: "BL-202605-7710",
+  },
+];
+
+export const BILLING_CREDIT_ROWS = [
+  {
+    at: "2026-05-16 10:00:00",
+    workspace: "ws-prod",
+    source: "Stripe",
+    amount: "+¥10,000",
+    orderId: "po_stripe_9921",
+  },
+  {
+    at: "2026-05-12 15:30:00",
+    workspace: "ws-beta",
+    source: "手工充值",
+    amount: "+¥2,000",
+    orderId: "po_manual_4412",
   },
 ];
 

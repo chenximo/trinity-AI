@@ -71,7 +71,9 @@ const exportPg = useAdminTablePagination(filteredExportRows);
             search-placeholder="报表名称、周期、负责人…"
             search-aria-label="检索预置报表"
           >
-            <el-button type="primary" plain>新建报表（示意）</el-button>
+            <template #actions>
+              <el-button type="primary" plain>新建报表（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -122,7 +124,9 @@ const exportPg = useAdminTablePagination(filteredExportRows);
             @reset="resetExportQuery"
           >
             <AdminDateRangePicker v-model="exportDateRange" aria-label="导出任务创建时间范围" />
-            <el-button type="primary" plain>新建导出（示意）</el-button>
+            <template #actions>
+              <el-button type="primary" plain>新建导出（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>

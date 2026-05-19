@@ -12,6 +12,7 @@ import CustomersPage from "./views/admin-customers/CustomersPage.vue";
 import SystemPage from "./views/admin-system/SystemPage.vue";
 import DocsPage from "./views/admin-docs/DocsPage.vue";
 import ReportsPage from "./views/admin-reports/ReportsPage.vue";
+import RiskPage from "./views/admin-risk/RiskPage.vue";
 import { ADMIN_ALL_MODULE_BASES } from "./views/admin-shell/adminNavTree";
 import { OPS_TABS } from "./views/admin-ops/mock";
 import { BILLING_TABS } from "./views/admin-billing/mock";
@@ -74,10 +75,10 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
     redirect: { name: "tai-admin-billing-usage" },
   });
 
-  /** 原「数据范围」子页已并入「角色」说明弹窗；旧链接兼容 */
+  /** 旧书签：数据范围独立子页 */
   routes.push({
     path: "access/scope",
-    redirect: { name: "tai-admin-access-roles" },
+    redirect: { name: "tai-admin-access-data-scope" },
   });
   /** 「登录安全」子页已移除；旧链接兼容 */
   routes.push({
@@ -85,11 +86,17 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
     redirect: { name: "tai-admin-access-roles" },
   });
 
-  /** API 密钥：旧子 path 兼容 → API 列表 */
-  routes.push({ path: "keys/search", redirect: { name: "tai-admin-keys-list" } });
-  routes.push({ path: "keys/detail", redirect: { name: "tai-admin-keys-list" } });
-  routes.push({ path: "keys/freeze", redirect: { name: "tai-admin-keys-list" } });
-  routes.push({ path: "keys/risk", redirect: { name: "tai-admin-keys-list" } });
+  /** API 密钥：旧子 path 兼容 → 平台密钥 */
+  /** 旧路由名 / 书签：API 列表 → 平台密钥 */
+  routes.push({
+    path: "keys/list",
+    name: "tai-admin-keys-list",
+    redirect: { name: "tai-admin-keys-platform-keys" },
+  });
+  routes.push({ path: "keys/search", redirect: { name: "tai-admin-keys-platform-keys" } });
+  routes.push({ path: "keys/detail", redirect: { name: "tai-admin-keys-platform-keys" } });
+  routes.push({ path: "keys/freeze", redirect: { name: "tai-admin-keys-platform-keys" } });
+  routes.push({ path: "keys/risk", redirect: { name: "tai-admin-risk-rules" } });
 
   /** 旧书签：错误二级 id */
   routes.push({ path: "reports/undefined", redirect: { name: "tai-admin-reports-preset" } });
@@ -116,7 +123,9 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
                       ? DocsPage
                       : mod.pathBase === "reports"
                         ? ReportsPage
-                        : AdminStubPage;
+                        : mod.pathBase === "risk"
+                          ? RiskPage
+                          : AdminStubPage;
     for (const sec of secondaries) {
       routes.push({
         path: `${mod.pathBase}/${sec.id}`,

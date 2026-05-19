@@ -71,12 +71,6 @@
   background: var(--blue-soft);
 }
 
-.key-page__hint {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
 .key-page__detail-panel {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -89,6 +83,22 @@
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   margin: 0.5rem 0 0;
   font-size: 0.8125rem;
+}
+
+.key-page__detail-span {
+  grid-column: 1 / -1;
+}
+
+.key-page__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.key-page__hint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.6875rem;
 }
 
 .key-page__ops {
@@ -199,5 +209,31 @@
 .key-page__btn-danger:focus-visible {
   outline: 2px solid var(--danger-border);
   outline-offset: 2px;
+}
+
+.key-page__muted {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.key-page__form-err {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--danger-ink);
+}
+
+.key-page__secret-pre {
+  margin: 0.5rem 0 0;
+  padding: 0.65rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 

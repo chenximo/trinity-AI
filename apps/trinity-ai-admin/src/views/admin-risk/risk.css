@@ -1,0 +1,77 @@
+.risk-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.risk-page__panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.risk-page__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+}
+
+.risk-page__badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.risk-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.risk-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.risk-page__badge--danger {
+  background: var(--danger-soft, rgba(220, 38, 38, 0.1));
+  color: var(--danger-ink);
+}
+
+.risk-page__badge--muted {
+  background: var(--admin-bg, var(--surface));
+  color: var(--muted);
+  border: 1px solid var(--el-border-color-lighter, var(--border));
+}
+
+.risk-page__hint {
+  flex-shrink: 0;
+  margin: 0.5rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--el-border-color-lighter, var(--border));
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+  line-height: 1.45;
+}
+
+.risk-page__hint code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.625rem;
+}
+
+.risk-page__warn {
+  margin: 0.35rem 0 0;
+  color: var(--warning-ink);
+  font-size: 0.8125rem;
+}
+
+.risk-page__num {
+  width: 100%;
+}
+
+.risk-page__num :deep(.el-input__wrapper) {
+  width: 100%;
+}

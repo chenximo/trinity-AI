@@ -22,6 +22,7 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
     { id: "list", title: "模型列表", summary: "平台模型 ID、状态、线路数摘要；批量与检索入口。" },
     { id: "master", title: "主数据", summary: "展示名、能力标签、文档锚点；**API₁ 原生商**主数据可挂此页。" },
     { id: "lines", title: "供应线路", summary: "**API₁/API₂**、Profile、Mapper、成本与区域；线路优先级与探测。" },
+    { id: "bindings", title: "路由绑定", summary: "模型路由与平台密钥绑定、优先级与启停（对齐后端 §4.2.4）。" },
     { id: "pricing", title: "刊例与成本（可选）", summary: "刊例价、内部成本；与用量试算联动。" },
   ],
   // v1 不做「API 与路由策略」（§4.6 / P5）；与 `adminNavTree.ts` 中 routing 模块同步恢复。
@@ -40,8 +41,13 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
     { id: "credit", title: "授信", summary: "信用额度、大额授信审批流。" },
   ],
   "tai-admin-keys": [
-    { id: "list", title: "API 列表", summary: "检索、脱敏列表、行内详情与冻结/吊销；默认入口。" },
-    { id: "audit", title: "审计轨迹", summary: "密钥操作留痕导出。" },
+    { id: "platform-keys", title: "平台密钥", summary: "上游平台 API Key；掩码展示、gate 明文、绑定路由数。" },
+    { id: "user-keys", title: "用户密钥", summary: "运营视角用户 API Key；限额、窗口、撤销（对齐 §4.3.3）。" },
+    { id: "audit", title: "审计轨迹", summary: "后台谁对哪把 Key 做了什么（如冻结及原因）；非调用次数日志。" },
+  ],
+  "tai-admin-risk": [
+    { id: "rules", title: "风控规则", summary: "IP 限流/拉黑策略：窗口、双阈值、TTL、启停（观测见「实时大盘」）。" },
+    { id: "action-logs", title: "风控动作日志", summary: "已执行的限流/拉黑记录；按 IP、动作、时间检索。" },
   ],
   "tai-admin-docs": [
     { id: "list", title: "文档列表", summary: "类型、状态、负责人；筛选与批量操作。" },
@@ -63,12 +69,14 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
     { id: "kyc", title: "实名 / 企业认证", summary: "材料上传与人工审核流。" },
   ],
   "tai-admin-access": [
-    { id: "admins", title: "管理员", summary: "员工账号、启用/禁用、MFA（可选）。" },
-    { id: "roles", title: "角色", summary: "预置与自定义角色、权限包。" },
-    { id: "menus", title: "菜单（路由）", summary: "与侧栏、子路由一致；本期仅菜单粒度授权，页内按钮级二期。" },
+    { id: "admins", title: "管理员", summary: "员工账号、启用/禁用、重置密码、最近登录。" },
+    { id: "roles", title: "角色", summary: "预置与自定义角色、权限点矩阵、只读模板套用。" },
+    { id: "menus", title: "菜单（路由）", summary: "与侧栏、子路由一致；与权限点联动预览。" },
+    { id: "data-scope", title: "数据范围", summary: "workspace/模块/敏感字段查询范围（§4.5.4）。" },
   ],
   "tai-admin-system": [
-    { id: "audit-log", title: "操作审计", summary: "配置类操作检索与保留周期。" },
+    { id: "audit-log", title: "操作审计", summary: "配置类操作检索；改前/改后 diff 与导出。" },
+    { id: "security-events", title: "安全事件", summary: "登录失败、越权、credential gate 失败等。" },
     { id: "sensitive", title: "敏感操作审批", summary: "删客户、批量导出等二次验证/双人复核。" },
     { id: "export-approval", title: "数据导出审批", summary: "与大客户数据包导出衔接。" },
     { id: "flags", title: "特性开关", summary: "功能灰度、维护模式总开关。" },

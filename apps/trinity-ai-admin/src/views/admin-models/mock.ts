@@ -1,8 +1,42 @@
 /** 模型管理域 · 假数据（对齐详细设计 §4.5 / §4.5.1） */
 
-export type ModelPanelId = "list" | "master" | "lines" | "pricing";
+export type ModelPanelId = "list" | "master" | "lines" | "bindings" | "pricing";
 
-export const MODEL_PANEL_ORDER: ModelPanelId[] = ["list", "master", "lines", "pricing"];
+export const MODEL_PANEL_ORDER: ModelPanelId[] = ["list", "master", "lines", "bindings", "pricing"];
+
+export type RouteBindingRow = {
+  id: string;
+  modelId: string;
+  modelName: string;
+  routeName: string;
+  platformKeyLabel: string;
+  priority: number;
+  enabled: boolean;
+  updatedAt: string;
+};
+
+export const MODEL_BINDING_ROWS: RouteBindingRow[] = [
+  {
+    id: "bind-1",
+    modelId: "lm-gpt-4o-mini",
+    modelName: "GPT-4o mini（平台）",
+    routeName: "cn-tencent-a",
+    platformKeyLabel: "腾讯生产 Key",
+    priority: 1,
+    enabled: true,
+    updatedAt: "2026-05-11 10:05",
+  },
+  {
+    id: "bind-2",
+    modelId: "lm-gpt-4o-mini",
+    modelName: "GPT-4o mini（平台）",
+    routeName: "cn-volc-b",
+    platformKeyLabel: "火山备路 Key",
+    priority: 2,
+    enabled: true,
+    updatedAt: "2026-05-11 09:50",
+  },
+];
 
 export type ModelListRow = {
   id: string;

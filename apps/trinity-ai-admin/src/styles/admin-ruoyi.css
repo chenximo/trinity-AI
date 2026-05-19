@@ -95,10 +95,16 @@
   background: transparent !important;
 }
 
+/* 列表单元格：统一水平/垂直内边距（避免 Element Plus 默认 padding 不一导致列距忽大忽小） */
 .admin-shell .admin-ep-table-wrap .el-table .cell {
   line-height: 1.45;
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  word-break: break-word;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table__header th.el-table__cell .cell,
+.admin-shell .admin-ep-table-wrap .el-table__body td.el-table__cell .cell {
+  box-sizing: border-box;
 }
 
 /* 表头排序：若依式灰色箭头 */

@@ -486,18 +486,20 @@ const probePg = useAdminTablePagination(filteredProbeRows);
                   <el-option label="仅异常/降级" value="warn" />
                 </el-select>
               </template>
-            <input
-              ref="supplierImportInputRef"
-              type="file"
-              class="sup-visually-hidden"
-              accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
-              tabindex="-1"
-              aria-hidden="true"
-              @change="onSupplierImportFileChange"
-            />
-            <el-button type="primary" @click="onAddSupplierClick">新增供应商</el-button>
-            <el-button @click="triggerSupplierImport">导入</el-button>
-            <el-button @click="onExportSuppliersClick">导出</el-button>
+              <template #actions>
+                <input
+                  ref="supplierImportInputRef"
+                  type="file"
+                  class="sup-visually-hidden"
+                  accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  @change="onSupplierImportFileChange"
+                />
+                <el-button type="primary" @click="onAddSupplierClick">新增供应商</el-button>
+                <el-button @click="triggerSupplierImport">导入</el-button>
+                <el-button @click="onExportSuppliersClick">导出</el-button>
+              </template>
             </AdminListQuery>
           </template>
         </AdminSectionHead>
@@ -608,10 +610,12 @@ const probePg = useAdminTablePagination(filteredProbeRows);
                   <el-option label="含 embedding" value="emb" />
                 </el-select>
               </template>
-            <el-button type="primary" @click="openAddIntegration">新增对接配置</el-button>
-            <el-button @click="router.push({ name: 'tai-admin-suppliers-probe' })">跳转拨测子页</el-button>
-            <el-button @click="router.push({ name: 'tai-admin-ops-live' })">监控 · 供应商健康</el-button>
-            <el-button type="button">探测连通性（示意）</el-button>
+              <template #actions>
+                <el-button type="primary" @click="openAddIntegration">新增对接配置</el-button>
+                <el-button @click="router.push({ name: 'tai-admin-suppliers-probe' })">跳转拨测子页</el-button>
+                <el-button @click="router.push({ name: 'tai-admin-ops-live' })">监控 · 供应商健康</el-button>
+                <el-button type="button">探测连通性（示意）</el-button>
+              </template>
             </AdminListQuery>
           </template>
         </AdminSectionHead>
@@ -717,8 +721,10 @@ const probePg = useAdminTablePagination(filteredProbeRows);
                   <el-option label="失败" value="失败" />
                 </el-select>
               </template>
-              <el-button type="primary">立即执行拨测（示意）</el-button>
-              <el-button>调度策略</el-button>
+              <template #actions>
+                <el-button type="primary">立即执行拨测（示意）</el-button>
+                <el-button>调度策略</el-button>
+              </template>
             </AdminListQuery>
           </template>
         </AdminSectionHead>

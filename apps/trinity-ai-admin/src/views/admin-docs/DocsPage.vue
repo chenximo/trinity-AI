@@ -374,7 +374,9 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
                 <el-option v-for="(v, i) in STATUS_FILTER_VALUES" :key="i" :label="STATUS_FILTER_LABELS[i] ?? ''" :value="v" />
               </el-select>
             </template>
-            <el-button type="primary" @click="openNewModal">新建文档</el-button>
+            <template #actions>
+              <el-button type="primary" @click="openNewModal">新建文档</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -601,7 +603,9 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
             search-placeholder="文档、范围、客户说明…"
             search-aria-label="检索可见范围"
           >
-            <el-button type="primary" @click="openVisModal">新增规则</el-button>
+            <template #actions>
+              <el-button type="primary" @click="openVisModal">新增规则</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>

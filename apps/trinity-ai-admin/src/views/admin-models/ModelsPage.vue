@@ -11,6 +11,7 @@ import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import { filterByQuery } from "../../utils/adminListFilter";
 import "./models.css";
 import {
+  MODEL_BINDING_ROWS,
   MODEL_LIST_ROWS,
   MODEL_MASTER_SAMPLE,
   MODEL_PANEL_ORDER,
@@ -39,6 +40,14 @@ const listFilter = ref("");
 const modelShelfFilter = ref<"all" | "on" | "off" | "gray">("all");
 const lineSearchQ = ref("");
 const pricingSearchQ = ref("");
+const bindingSearchQ = ref("");
+
+const filteredBindings = computed(() =>
+  filterByQuery(MODEL_BINDING_ROWS, bindingSearchQ.value, (r) =>
+    [r.modelName, r.routeName, r.platformKeyLabel].join(" "),
+  ),
+);
+const bindingsPg = useAdminTablePagination(filteredBindings);
 const modelImportInputRef = ref<HTMLInputElement | null>(null);
 
 const modelListRows = ref<ModelListRow[]>([]);
@@ -349,18 +358,20 @@ const pricingPg = useAdminTablePagination(filteredPricingRows);
                   <el-option label="灰度" value="gray" />
                 </el-select>
               </template>
-            <input
-              ref="modelImportInputRef"
-              type="file"
-              class="mdl-visually-hidden"
-              accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
-              tabindex="-1"
-              aria-hidden="true"
-              @change="onModelImportFileChange"
-            />
-            <el-button type="primary" @click="onAddModelClick">新增模型</el-button>
-            <el-button @click="triggerModelImport">导入</el-button>
-            <el-button @click="onExportModelsClick">导出</el-button>
+              <template #actions>
+                <input
+                  ref="modelImportInputRef"
+                  type="file"
+                  class="mdl-visually-hidden"
+                  accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  @change="onModelImportFileChange"
+                />
+                <el-button type="primary" @click="onAddModelClick">新增模型</el-button>
+                <el-button @click="triggerModelImport">导入</el-button>
+                <el-button @click="onExportModelsClick">导出</el-button>
+              </template>
             </AdminListQuery>
           </template>
         </AdminSectionHead>
@@ -472,8 +483,10 @@ const pricingPg = useAdminTablePagination(filteredPricingRows);
               search-placeholder="通道、供应商、区域…"
               search-aria-label="检索供应线路"
             >
-              <el-button>线路探测（示意）</el-button>
-              <el-button type="primary">调整优先级（示意）</el-button>
+              <template #actions>
+                <el-button>线路探测（示意）</el-button>
+                <el-button type="primary">调整优先级（示意）</el-button>
+              </template>
             </AdminListQuery>
           </template>
         </AdminSectionHead>
@@ -503,6 +516,43 @@ const pricingPg = useAdminTablePagination(filteredPricingRows);
           v-model:current-page="supplyLinesPg.currentPage"
           v-model:page-size="supplyLinesPg.pageSize"
           :total="supplyLinesPg.total"
+        />
+      </el-card>
+    </section>
+
+    <section v-show="panel === 'bindings'" class="mdl-page__panel" aria-label="路由绑定">
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="路由绑定">
+          <template #annot>
+            <AdminInternalTip heading="路由绑定 · 原型" explain="模型路由与平台密钥绑定（§4.2.4）">
+              <p>绑定/解绑、优先级与启停；变更前后摘要在工程期展示。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="bindingSearchQ"
+              :input-id="`${idPrefix}-mdl-bind-q`"
+              search-placeholder="模型、路由、密钥…"
+              search-aria-label="检索路由绑定"
+            />
+          </template>
+        </AdminSectionHead>
+        <el-table :data="bindingsPg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column prop="modelName" label="模型" min-width="140" sortable />
+          <el-table-column prop="routeName" label="路由" min-width="120" sortable />
+          <el-table-column prop="platformKeyLabel" label="平台密钥" min-width="120" sortable />
+          <el-table-column prop="priority" label="优先级" width="80" sortable />
+          <el-table-column label="启停" width="72">
+            <template #default="scope">
+              <template v-if="scope?.row">{{ scope.row.enabled ? "启用" : "停用" }}</template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="updatedAt" label="更新" min-width="130" sortable />
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="bindingsPg.currentPage"
+          v-model:page-size="bindingsPg.pageSize"
+          :total="bindingsPg.total"
         />
       </el-card>
     </section>

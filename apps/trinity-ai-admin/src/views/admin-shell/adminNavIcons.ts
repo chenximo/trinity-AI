@@ -99,6 +99,16 @@ const ICONS: Record<NavIconKey, Component> = {
   quota: PieChart,
   sku: Goods,
   adjust: Edit,
+  risk: Warning,
+  rules: Setting,
+  "action-logs": Notebook,
+  "platform-keys": Key,
+  "user-keys": User,
+  bindings: Connection,
+  "data-scope": Grid,
+  "security-events": Warning,
+  "debit-ledger": Wallet,
+  "credit-ledger": Coin,
 };
 
 /** 一级模块 pathBase → 图标 */
@@ -113,6 +123,7 @@ export const MODULE_ICON_BY_PATH: Record<string, NavIconKey> = {
   access: "access",
   system: "system",
   billing: "billing",
+  risk: "risk",
 };
 
 /** 二级子页 id → 图标（各模块共用 id 如 list / audit） */

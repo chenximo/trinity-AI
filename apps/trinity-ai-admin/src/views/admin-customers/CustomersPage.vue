@@ -303,7 +303,9 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
                 <el-option label="停用" value="停用" />
               </el-select>
             </template>
-            <el-button type="primary" @click="openTenantAdd">新建租户</el-button>
+            <template #actions>
+              <el-button type="primary" @click="openTenantAdd">新建租户</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -359,7 +361,9 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
             search-placeholder="项目、租户、标签…"
             search-aria-label="检索组织项目"
           >
-            <el-button>新建项目（示意）</el-button>
+            <template #actions>
+              <el-button>新建项目（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -381,7 +385,7 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
         v-model:page-size="orgPg.pageSize"
         :total="orgPg.total"
       />
-      <p class="cus-page__hint">密钥归属与 <RouterLink :to="{ name: 'tai-admin-keys-list' }">API 列表</RouterLink> 字段对齐（工程期）。</p>
+      <p class="cus-page__hint">密钥归属与 <RouterLink :to="{ name: 'tai-admin-keys-platform-keys' }">平台密钥</RouterLink> 字段对齐（工程期）。</p>
     </el-card>
 
     <el-card v-show="panel === 'contract'" shadow="never" class="admin-ep-card cus-page__panel" aria-label="合同">
@@ -404,7 +408,9 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
                 <el-option v-for="s in contractStatusOptions" :key="s" :label="s" :value="s" />
               </el-select>
             </template>
-            <el-button type="primary">新建合同（示意）</el-button>
+            <template #actions>
+              <el-button type="primary">新建合同（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -460,7 +466,9 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
             search-placeholder="抬头、客户、税号…"
             search-aria-label="检索开票抬头"
           >
-            <el-button>新建申请（示意）</el-button>
+            <template #actions>
+              <el-button>新建申请（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -549,7 +557,9 @@ const creditPg = useAdminTablePagination(filteredCreditRows);
                 <el-option label="已通过" value="已通过" />
               </el-select>
             </template>
-            <el-button type="primary">大额授信申请（示意）</el-button>
+            <template #actions>
+              <el-button type="primary">大额授信申请（示意）</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>

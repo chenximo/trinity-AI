@@ -33,9 +33,25 @@
 
 ## 2.1 列表与工具栏 UI 约定（`@trinity/ui` · Excel）
 
-本节为 **运营后台** 内 **「供应商」**（§4.4）、**「模型管理」**（§4.5）及同类 **主数据 / 配置列表** 的 **统一原型与工程约定**；与 **`apps/trinity-design`** 中 **`/design-spec`**（`#ds-search`、`#ds-filters`）对齐，业务控件从 **`@trinity/ui`** 引入。
+本节为 **运营后台** 内 **「供应商」**（§4.4）、**「模型管理」**（§4.5）及同类 **主数据 / 配置列表** 的 **统一原型与工程约定**。
 
-### 2.1.1 工具栏布局（一行 · 左右分区）
+### 2.1.0 Element Plus 列表（若依式 · 优先）
+
+**`apps/trinity-ai-admin`** 内凡 **检索 + `el-table` + 分页** 的页面（API 密钥、计费、风控、用户、权限、系统等），以 **[`apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md`](../apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md)** 为 **唯一真源**；参考实现 **`admin-keys/KeysPage.vue`**。
+
+| 要点 | 约定 |
+|------|------|
+| 工具栏 | `AdminSectionHead` **`toolbar-only`** + `AdminListQuery` |
+| 表格 | `admin-ep-table-wrap`；数据列仅 `min-width`；**不写** `align` |
+| 操作列 | `ADMIN_TABLE_COL_OPS` + `admin-ep-row-actions` + `link` 按钮与图标 |
+
+供应商 / 模型等若仍使用 **`@trinity/ui`** 药丸筛选（§2.1.2），列表 **表格与操作列** 仍须满足上表；新页默认 **Element Plus 全套**（`el-select` 筛选），与密钥页一致。
+
+### 2.1.1 工具栏布局（一行 · 左右分区 · `@trinity/ui` 画板对齐）
+
+> 适用于仍走 **SearchForm1Fixed + FilterForm2** 的模块；**Element Plus 列表页见 §2.1.0**。
+
+与 **`apps/trinity-design`** 中 **`/design-spec`**（`#ds-search`、`#ds-filters`）对齐，业务控件从 **`@trinity/ui`** 引入。
 
 | 区域 | 内容 | 组件与说明 |
 |------|------|------------|
@@ -151,5 +167,6 @@
 | 2026-05-11 | **进度**：**P4** `admin-models/`（`ModelsPage.vue`：列表 + 主数据 / 线路 / 刊例；无独立「上下架/灰度」「双通道契约」子页）；`trinityAdminRoutes` 将 `models` 指向实页。 |
 | 2026-05-11 | **约定**：新增 **§2.1** — 列表工具栏（左 `TSearchForm1Fixed` 固定宽、右筛选 + 新增 + 导入 + 导出 Excel 齐平）、全后台筛选统一 **`FilterForm2PillListbox`**；**§4.4 / §4.5** 相关列表要求 **增删改查 + 导入 + 导出（Excel）**。 |
 | 2026-05-11 | **进度**：**P3** `admin-suppliers/`（`SuppliersPage.vue` + mock：列表筛选持久化、档案 dl、对接 API₂ 文案、拨测表、密钥轮换说明）；`suppliers/*` 路由组件由 `AdminStubPage` 切换为 `SuppliersPage`。 |
+| 2026-05-19 | **进度**：**P1** `admin-ops/` 实时大盘单页定稿（值班路径版式：KPI→趋势/错误→模型占比→可折叠五图→Top→供应商；mock + UI 齐全）。模块说明 [`admin-ops/README.md`](../apps/trinity-ai-admin/src/views/admin-ops/README.md)。 |
 | 2026-05-11 | **进度**：**P1** `admin-ops/`（Tab + 表 + QPS 示意柱）、**P2** `admin-billing/`（Tab + 用量/配额/SKU/账单/调账表）已落地；`trinityAdminRoutes.ts` 对 `ops` / `billing` 指向实页；`admin-shell/README` 路由表已更新。 |
 | 2026-05-11 | 首版：从评审用「仅原型、非工程」交付表落盘；工程落点默认 `trinity-ai-admin`。 |

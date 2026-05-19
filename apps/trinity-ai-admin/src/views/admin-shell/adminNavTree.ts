@@ -38,13 +38,21 @@ export type AdminModuleBase = {
   planBatch: string;
 };
 
-/** §4.8 · 侧栏紧挨「工作台」之下 */
+/** §4.8 · 侧栏在「实时大盘」之后 */
 export const ADMIN_KEYS_MODULE: AdminModuleBase = {
   pathBase: "keys",
   parentRouteName: "tai-admin-keys",
   label: "API 密钥",
   designRef: "§4.8",
   planBatch: "P7",
+};
+
+export const ADMIN_RISK_MODULE: AdminModuleBase = {
+  pathBase: "risk",
+  parentRouteName: "tai-admin-risk",
+  label: "风控",
+  designRef: "§4.4",
+  planBatch: "P1b",
 };
 
 export const ADMIN_STUB_MODULE_BASES: AdminModuleBase[] = [
@@ -60,8 +68,12 @@ export const ADMIN_STUB_MODULE_BASES: AdminModuleBase[] = [
   { pathBase: "system", parentRouteName: "tai-admin-system", label: "系统与合规", designRef: "§4.13", planBatch: "P10" },
 ];
 
-/** 路由注册用：含 API 密钥与占位模块全集 */
-export const ADMIN_ALL_MODULE_BASES: AdminModuleBase[] = [ADMIN_KEYS_MODULE, ...ADMIN_STUB_MODULE_BASES];
+/** 路由注册用：含 API 密钥、风控与占位模块全集 */
+export const ADMIN_ALL_MODULE_BASES: AdminModuleBase[] = [
+  ADMIN_KEYS_MODULE,
+  ADMIN_RISK_MODULE,
+  ...ADMIN_STUB_MODULE_BASES,
+];
 
 function stubChildren(mod: AdminModuleBase): NavLeaf[] {
   const rows = getValidSecondaryPages(mod.parentRouteName);
@@ -107,16 +119,17 @@ export const ADMIN_NAV_TREE: NavEntry[] = [
     designRef: "§4.1",
     planBatch: "P0",
   },
-  moduleToSubmenu(ADMIN_KEYS_MODULE),
   {
     kind: "single",
     path: "ops/live",
     routeName: "tai-admin-ops-live",
     label: "实时大盘",
     iconKey: "monitor",
-    designRef: "§4.2",
+    designRef: "§4.4.1",
     planBatch: "P1",
   },
+  moduleToSubmenu(ADMIN_KEYS_MODULE),
+  moduleToSubmenu(ADMIN_RISK_MODULE),
   {
     kind: "submenu",
     id: "nav-billing",

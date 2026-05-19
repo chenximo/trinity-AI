@@ -3,6 +3,7 @@ const KEYS_SEARCH_Q = "trinity-ai-admin:platform-keys-search-q";
 const KEYS_FILTER_ORG = "trinity-ai-admin:platform-keys-filter-org";
 const KEYS_SELECTED_ID = "trinity-ai-admin:platform-keys-selected-id";
 const KEYS_AUDIT = "trinity-ai-admin:platform-keys-audit-rows";
+const USER_KEYS_ROWS = "trinity-ai-admin:user-keys-rows";
 
 export function readKeysRowsJson(): string | null {
   if (typeof localStorage === "undefined") return null;
@@ -92,6 +93,24 @@ export function writeKeyAuditJson(json: string): void {
   if (typeof localStorage === "undefined") return;
   try {
     localStorage.setItem(KEYS_AUDIT, json);
+  } catch {
+    /* ignore */
+  }
+}
+
+export function readUserKeysJson(): string | null {
+  if (typeof localStorage === "undefined") return null;
+  try {
+    return localStorage.getItem(USER_KEYS_ROWS);
+  } catch {
+    return null;
+  }
+}
+
+export function writeUserKeysJson(json: string): void {
+  if (typeof localStorage === "undefined") return;
+  try {
+    localStorage.setItem(USER_KEYS_ROWS, json);
   } catch {
     /* ignore */
   }

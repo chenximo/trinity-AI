@@ -15,6 +15,68 @@ export type DashboardKpi = {
   icon: DashboardKpiIcon;
 };
 
+export const DASHBOARD_MONITOR_KPIS: DashboardKpi[] = [
+  {
+    id: "sse",
+    label: "当前 SSE",
+    value: "1,284",
+    sublabel: "实时连接数",
+    delta: "近 5m 峰值 1,420",
+    tone: "ok",
+    icon: "activity",
+  },
+  {
+    id: "token5m",
+    label: "近 5m Token",
+    value: "2.1M",
+    sublabel: "入+出合计",
+    delta: "环比 +8%",
+    tone: "ok",
+    icon: "activity",
+  },
+  {
+    id: "spend5m",
+    label: "近 5m Spend",
+    value: "$842",
+    sublabel: "USD 试算",
+    delta: "较昨日 +3%",
+    tone: "ok",
+    icon: "wallet",
+  },
+  {
+    id: "active",
+    label: "活跃用户",
+    value: "386",
+    sublabel: "近 15m 有调用",
+    delta: "峰值 412",
+    tone: "ok",
+    icon: "users",
+  },
+  {
+    id: "success",
+    label: "成功率",
+    value: "99.58%",
+    sublabel: "网关 2xx 占比",
+    delta: "429 0.32% · 5xx 0.10%",
+    tone: "ok",
+    icon: "shield",
+  },
+];
+
+export const DASHBOARD_ANOMALY_HINTS = [
+  { id: "a1", label: "近 30m 风控命中", value: "18 次", tone: "warn" as const },
+  { id: "a2", label: "网关 429 占比", value: "0.32%", tone: "warn" as const },
+  { id: "a3", label: "上游 5xx 占比", value: "0.10%", tone: "ok" as const },
+];
+
+export const DASHBOARD_QUICK_LINKS: DashboardWidget[] = [
+  { id: "q1", title: "模型管理", summary: "上下架与线路", routeName: "tai-admin-models-list" },
+  { id: "q2", title: "平台密钥", summary: "上游 Key 与绑定", routeName: "tai-admin-keys-platform-keys" },
+  { id: "q3", title: "用量明细", summary: "usage_event 查询", routeName: "tai-admin-billing-usage" },
+  { id: "q4", title: "风控规则", summary: "全局限流/拉黑", routeName: "tai-admin-risk-rules" },
+  { id: "q5", title: "操作审计", summary: "改前/改后追溯", routeName: "tai-admin-system-audit-log" },
+];
+
 export const DASHBOARD_KPIS: DashboardKpi[] = [
   {
     id: "calls",

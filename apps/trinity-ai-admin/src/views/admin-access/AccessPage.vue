@@ -9,6 +9,11 @@ import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import AdminTablePagination from "../../components/AdminTablePagination.vue";
 import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import { filterByQuery } from "../../utils/adminListFilter";
+import {
+  ADMIN_PERMISSION_CATALOG,
+  permissionKeysToLines,
+  READONLY_ROLE_TEMPLATES,
+} from "../../utils/adminPermissions";
 import "./access.css";
 import { flattenNavLeaves, type NavLeaf } from "../admin-shell/adminNavTree";
 import {
@@ -69,6 +74,12 @@ const draftRoleId = ref("");
 const draftRoleName = ref("");
 const draftRoleDesc = ref("");
 const draftRolePermissions = ref("");
+const draftRolePermKeys = ref<string[]>([]);
+const selectedRoleTemplate = ref("");
+const resetPwdOpen = ref(false);
+const resetPwdTarget = ref<PlatformAdminRow | null>(null);
+const draftNewPassword = ref("");
+const resetPwdError = ref("");
 
 const infoModalOpen = ref(false);
 const infoModalTitle = ref("提示");
@@ -390,13 +401,45 @@ function closeInfoModal(): void {
   infoModalMessage.value = "";
 }
 
+function applyRoleTemplate(tplId: string): void {
+  const tpl = READONLY_ROLE_TEMPLATES.find((t) => t.id === tplId);
+  if (!tpl) return;
+  draftRoleName.value = tpl.name;
+  draftRoleDesc.value = tpl.description;
+  draftRolePermKeys.value = [...tpl.permissionKeys];
+  draftRolePermissions.value = [
+    `菜单：${permissionKeysToLines(tpl.permissionKeys).join("、")}`,
+    "数据范围：按模板只读（见「数据范围」子页）",
+  ].join("\n");
+}
+
+function onResetPasswordClick(row: PlatformAdminRow): void {
+  resetPwdTarget.value = row;
+  draftNewPassword.value = "";
+  resetPwdError.value = "";
+  resetPwdOpen.value = true;
+}
+
+function confirmResetPassword(): void {
+  if (draftNewPassword.value.trim().length < 8) {
+    resetPwdError.value = "初始密码至少 8 位（原型校验）";
+    return;
+  }
+  infoModalTitle.value = "已重置密码";
+  infoModalMessage.value = `已为「${resetPwdTarget.value?.displayName}」生成新密码（原型不落库）；正式环境立即失效旧 JWT。`;
+  infoModalOpen.value = true;
+  resetPwdOpen.value = false;
+}
+
 function onAddRoleClick(): void {
   roleModalMode.value = "add";
   roleEditingId.value = null;
   roleFormError.value = "";
+  selectedRoleTemplate.value = "";
   draftRoleId.value = "";
   draftRoleName.value = "";
   draftRoleDesc.value = "";
+  draftRolePermKeys.value = [];
   draftRolePermissions.value = "菜单：\n数据范围：";
   roleModalOpen.value = true;
 }
@@ -446,7 +489,14 @@ function saveRoleModal(): void {
       roleFormError.value = "角色 ID 已存在。";
       return;
     }
-    roleRows.value.push({ id, name, description, updatedAt: now, permissionLines });
+    roleRows.value.push({
+      id,
+      name,
+      description,
+      updatedAt: now,
+      permissionLines,
+      permissionKeys: [...draftRolePermKeys.value],
+    });
   } else if (roleEditingId.value) {
     const idx = roleRows.value.findIndex((x) => x.id === roleEditingId.value);
     if (idx < 0) {
@@ -455,7 +505,14 @@ function saveRoleModal(): void {
     }
     const prev = roleRows.value[idx];
     if (!prev) return;
-    roleRows.value[idx] = { ...prev, name, description, updatedAt: now, permissionLines };
+    roleRows.value[idx] = {
+      ...prev,
+      name,
+      description,
+      updatedAt: now,
+      permissionLines,
+      permissionKeys: [...draftRolePermKeys.value],
+    };
   }
   persistRoles();
   closeRoleModal();
@@ -538,7 +595,9 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
                 <el-option label="禁用" value="禁用" />
               </el-select>
             </template>
-            <el-button type="primary" @click="onAddAdminClick">新增管理员</el-button>
+            <template #actions>
+              <el-button type="primary" @click="onAddAdminClick">新增管理员</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -575,14 +634,20 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
             </template>
             </template>
         </el-table-column>
+        <el-table-column prop="lastLoginAt" label="最近登录" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">{{ scope.row.lastLoginAt || "—" }}</template>
+          </template>
+        </el-table-column>
         <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="160" fixed="right">
+        <el-table-column label="操作" width="220" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
               <el-button link type="primary" @click="toggleAdminStatus(scope.row)">
                 {{ scope.row.status === "启用" ? "禁用" : "启用" }}
               </el-button>
+              <el-button link type="primary" @click="onResetPasswordClick(scope.row)">重置密码</el-button>
               <el-button link type="primary" @click="onEditAdminClick(scope.row)">
                 <el-icon><Edit /></el-icon>
                 编辑
@@ -623,7 +688,9 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
             search-placeholder="角色名、ID、说明、权限…"
             search-aria-label="搜索角色"
           >
-            <el-button type="primary" @click="onAddRoleClick">新增角色</el-button>
+            <template #actions>
+              <el-button type="primary" @click="onAddRoleClick">新增角色</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -684,6 +751,22 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
         :total="rolesPg.total"
       />
       <p class="acc-page__hint">有绑定管理员时不可删角色；<strong>删除</strong>经弹窗二次确认。数据范围释义见上方「查看详情」。</p>
+    </el-card>
+
+    <el-card v-show="panel === 'data-scope'" shadow="never" class="admin-ep-card acc-page__panel" aria-label="数据范围">
+      <AdminSectionHead title="数据范围">
+        <template #desc>workspace / 模块 / 敏感字段查询范围（§4.5.4）</template>
+      </AdminSectionHead>
+      <div class="acc-scope-doc">
+        <div class="acc-page__scope-stack">
+          <article v-for="b in DATA_SCOPE_BLOCKS" :key="b.key" class="acc-page__scope-card">
+            <h4 class="acc-page__scope-h">{{ b.title }}</h4>
+            <p class="acc-page__scope-intro">{{ b.intro }}</p>
+          </article>
+        </div>
+        <p class="acc-page__scope-para">{{ DATA_SCOPE_COMBINE_RULE }}</p>
+        <p class="acc-page__scope-para">{{ DATA_SCOPE_ROLE_BINDING_NOTE }}</p>
+      </div>
     </el-card>
 
     <!-- 菜单（路由） -->
@@ -776,12 +859,39 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
         <el-form-item label="说明">
           <el-input :id="`${idPrefix}-acc-role-dc`" v-model="draftRoleDesc" placeholder="职责与数据范围摘要" />
         </el-form-item>
+        <el-form-item label="套用只读模板">
+          <el-select
+            v-model="selectedRoleTemplate"
+            clearable
+            placeholder="选择模板"
+            @change="(v: string) => v && applyRoleTemplate(v)"
+          >
+            <el-option
+              v-for="t in READONLY_ROLE_TEMPLATES"
+              :key="t.id"
+              :label="t.name"
+              :value="t.id"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="权限点（§6）">
+          <el-checkbox-group v-model="draftRolePermKeys">
+            <el-checkbox
+              v-for="p in ADMIN_PERMISSION_CATALOG"
+              :key="p.key"
+              :label="p.key"
+              style="display: block; margin: 0.15rem 0"
+            >
+              {{ p.label }} <span class="acc-page__muted">({{ p.group }})</span>
+            </el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
         <el-form-item label="权限要点（每行一条，建议：菜单 / 数据范围）">
           <el-input
             :id="`${idPrefix}-acc-role-perm`"
             v-model="draftRolePermissions"
             type="textarea"
-            :rows="6"
+            :rows="4"
             placeholder="第一行写菜单范围，第二行写数据范围；不含页内按钮"
           />
         </el-form-item>
@@ -809,6 +919,16 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
       <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
       <template #footer>
         <el-button type="primary" @click="closeInfoModal">知道了</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog v-model="resetPwdOpen" title="重置密码" width="400px">
+      <p>为「{{ resetPwdTarget?.displayName }}」设置新初始密码（§4.5.1）。</p>
+      <el-input v-model="draftNewPassword" type="password" show-password placeholder="至少 8 位" />
+      <p v-if="resetPwdError" class="acc-int-modal-err">{{ resetPwdError }}</p>
+      <template #footer>
+        <el-button @click="resetPwdOpen = false">取消</el-button>
+        <el-button type="primary" @click="confirmResetPassword">确认重置</el-button>
       </template>
     </AdminDialog>
 

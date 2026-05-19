@@ -32,29 +32,60 @@ function onReset(): void {
 
 <template>
   <div class="admin-list-query" role="search">
-    <AdminSearchInput
-      v-model="searchQ"
-      :input-id="inputId"
-      :placeholder="searchPlaceholder"
-      :width="searchWidth"
-      :aria-label="searchAriaLabel"
-    />
-    <slot name="filters" />
-    <slot />
-    <el-button v-if="showReset" @click="onReset">
-      <el-icon class="el-icon--left"><Refresh /></el-icon>
-      重置
-    </el-button>
+    <div class="admin-list-query__main">
+      <AdminSearchInput
+        v-model="searchQ"
+        :input-id="inputId"
+        :placeholder="searchPlaceholder"
+        :width="searchWidth"
+        :aria-label="searchAriaLabel"
+      />
+      <slot name="filters" />
+      <!-- 筛选类控件：日期范围等，靠左与检索/下拉同一组 -->
+      <slot />
+      <el-button v-if="showReset" @click="onReset">
+        <el-icon class="el-icon--left"><Refresh /></el-icon>
+        重置
+      </el-button>
+    </div>
+    <div v-if="$slots.actions" class="admin-list-query__actions">
+      <slot name="actions" />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .admin-list-query {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.admin-list-query__main {
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 0.5rem;
   min-width: 0;
   flex: 1 1 auto;
+}
+
+.admin-list-query__actions {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.admin-list-query__actions > .el-button,
+.admin-list-query__actions > .el-button + .el-button {
+  margin-left: 0;
 }
 </style>

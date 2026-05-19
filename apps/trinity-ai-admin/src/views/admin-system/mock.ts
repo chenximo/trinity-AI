@@ -2,6 +2,7 @@
 
 export const SYSTEM_PANEL_ORDER = [
   "audit-log",
+  "security-events",
   "sensitive",
   "export-approval",
   "flags",
@@ -19,6 +20,19 @@ export type AuditLogRow = {
   action: string;
   target: string;
   result: "成功" | "失败";
+  ip: string;
+  beforeJson?: string;
+  afterJson?: string;
+  changedFields?: string;
+};
+
+export type SecurityEventRow = {
+  id: string;
+  at: string;
+  eventType: string;
+  severity: "低" | "中" | "高";
+  subject: string;
+  detail: string;
   ip: string;
 };
 
@@ -78,6 +92,9 @@ export const DEFAULT_AUDIT_LOG_ROWS: AuditLogRow[] = [
     target: "model/gpt-4o/line-cn-1",
     result: "成功",
     ip: "10.2.8.14",
+    beforeJson: '{\n  "priority": 2,\n  "enabled": true\n}',
+    afterJson: '{\n  "priority": 1,\n  "enabled": true\n}',
+    changedFields: "priority",
   },
   {
     id: "aud-002",
@@ -285,6 +302,36 @@ export const DEFAULT_GLOBAL_PARAMS: GlobalParamRow[] = [
     category: "运营",
     updatedAt: "2026-05-14 16:40",
     updatedBy: "wang.wu",
+  },
+];
+
+export const DEFAULT_SECURITY_EVENTS: SecurityEventRow[] = [
+  {
+    id: "se-001",
+    at: "2026-05-18 08:12:00",
+    eventType: "login_failed",
+    severity: "中",
+    subject: "wang.wu",
+    detail: "连续 5 次密码错误",
+    ip: "203.0.113.9",
+  },
+  {
+    id: "se-002",
+    at: "2026-05-17 22:40:00",
+    eventType: "credential_gate_failed",
+    severity: "高",
+    subject: "li.si",
+    detail: "平台密钥明文 gate 验证失败",
+    ip: "10.2.8.22",
+  },
+  {
+    id: "se-003",
+    at: "2026-05-17 14:05:00",
+    eventType: "forbidden",
+    severity: "中",
+    subject: "guest",
+    detail: "越权访问 /v1/admin/models",
+    ip: "198.51.100.3",
   },
 ];
 

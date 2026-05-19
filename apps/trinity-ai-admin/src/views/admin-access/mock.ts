@@ -1,10 +1,6 @@
 /** 平台权限（§4.12）子路由 id，须与 `moduleSecondaryPages` 中 `tai-admin-access` 一致 */
 
-export const ACCESS_PANEL_ORDER = [
-  "admins",
-  "roles",
-  "menus",
-] as const;
+export const ACCESS_PANEL_ORDER = ["admins", "roles", "menus", "data-scope"] as const;
 
 export type AccessPanelId = (typeof ACCESS_PANEL_ORDER)[number];
 
@@ -15,6 +11,7 @@ export type PlatformAdminRow = {
   roleIds: string[];
   status: "启用" | "禁用";
   updatedAt: string;
+  lastLoginAt?: string;
 };
 
 export type PlatformRoleRow = {
@@ -24,6 +21,8 @@ export type PlatformRoleRow = {
   updatedAt: string;
   /** 菜单（路由）+ 数据范围要点；管理员列表按绑定角色聚合去重；页内按钮级二期不设 */
   permissionLines?: string[];
+  /** 权限点 key 列表（对齐 §6） */
+  permissionKeys?: string[];
 };
 
 export const DEFAULT_PLATFORM_ROLES: PlatformRoleRow[] = [
@@ -103,6 +102,7 @@ export const DEFAULT_PLATFORM_ADMINS: PlatformAdminRow[] = [
     roleIds: ["role-platform-admin"],
     status: "启用",
     updatedAt: "2026-05-10 10:12",
+    lastLoginAt: "2026-05-18 09:12",
   },
   {
     id: "adm-002",
@@ -111,6 +111,7 @@ export const DEFAULT_PLATFORM_ADMINS: PlatformAdminRow[] = [
     roleIds: ["role-ops"],
     status: "启用",
     updatedAt: "2026-05-09 16:40",
+    lastLoginAt: "2026-05-17 18:40",
   },
   {
     id: "adm-003",

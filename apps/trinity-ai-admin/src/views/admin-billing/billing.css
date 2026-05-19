@@ -1,42 +1,43 @@
-.bill-page__secondary-cap {
-  margin: 0 0 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.bill-page__toolbar {
+.bill-page {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  align-items: center;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
 }
 
-.bill-page__table-wrap {
-  overflow: auto;
+.bill-page__panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.bill-page__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.75rem;
+.bill-page__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
 }
 
-.bill-page__table th,
-.bill-page__table td {
-  border-bottom: 1px solid var(--border);
-  padding: 0.5rem 0.5rem;
-  text-align: left;
-}
-
-.bill-page__table th {
-  color: var(--muted);
+.bill-page__badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
-.bill-page__hint {
-  margin: 0.75rem 0 0;
-  font-size: 0.75rem;
+.bill-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.bill-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.bill-page__badge--muted {
+  background: var(--admin-bg, var(--surface));
   color: var(--muted);
+  border: 1px solid var(--el-border-color-lighter, var(--border));
 }

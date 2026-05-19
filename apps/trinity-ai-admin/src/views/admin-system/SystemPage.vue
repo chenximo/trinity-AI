@@ -2,8 +2,10 @@
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
 import { Edit, Setting } from "@element-plus/icons-vue";
+import AdminAuditDiffPanel from "../../components/AdminAuditDiffPanel.vue";
 import AdminDateRangePicker from "../../components/AdminDateRangePicker.vue";
 import AdminDialog from "../../components/AdminDialog.vue";
+import AdminExportCsvButton from "../../components/AdminExportCsvButton.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
@@ -15,12 +17,14 @@ import "./system.css";
 import {
   AUDIT_RETENTION_NOTE,
   DEFAULT_AUDIT_LOG_ROWS,
+  DEFAULT_SECURITY_EVENTS,
   DEFAULT_EXPORT_APPROVALS,
   DEFAULT_FEATURE_FLAGS,
   DEFAULT_GLOBAL_PARAMS,
   DEFAULT_SENSITIVE_RULES,
   SYSTEM_PANEL_ORDER,
   type AuditLogRow,
+  type SecurityEventRow,
   type ExportApprovalRow,
   type FeatureFlagRow,
   type GlobalParamRow,
@@ -64,6 +68,10 @@ const flagEnvFilter = ref("");
 const globalSearchQ = ref("");
 const globalCategoryFilter = ref("");
 const auditRows = ref<AuditLogRow[]>([]);
+const securityRows = ref<SecurityEventRow[]>(JSON.parse(JSON.stringify(DEFAULT_SECURITY_EVENTS)));
+const securitySearchQ = ref("");
+const auditDiffOpen = ref(false);
+const auditDiffRow = ref<AuditLogRow | null>(null);
 const sensitiveRows = ref<SensitiveRuleRow[]>([]);
 const exportRows = ref<ExportApprovalRow[]>([]);
 const flagRows = ref<FeatureFlagRow[]>([]);
@@ -314,7 +322,19 @@ function yesNo(v: boolean): string {
 
 watch(auditFilter, (v) => writeAuditFilter(v));
 
+const filteredSecurity = computed(() =>
+  filterByQuery(securityRows.value, securitySearchQ.value, (r) =>
+    [r.eventType, r.subject, r.detail, r.ip, r.severity].join(" "),
+  ),
+);
+
+function openAuditDiff(row: AuditLogRow): void {
+  auditDiffRow.value = row;
+  auditDiffOpen.value = true;
+}
+
 const auditPg = useAdminTablePagination(filteredAudit);
+const securityPg = useAdminTablePagination(filteredSecurity);
 const sensitivePg = useAdminTablePagination(filteredSensitive);
 const exportPg = useAdminTablePagination(filteredExport);
 const flagsPg = useAdminTablePagination(filteredFlags);
@@ -353,9 +373,9 @@ onMounted(() => loadAll());
               </el-select>
             </template>
             <AdminDateRangePicker v-model="auditDateRange" aria-label="操作审计时间范围" />
-            <el-button type="primary" plain @click="showInfo('导出审计包', '原型示意：正式环境需审批与双人复核后生成加密包。')">
-              导出审计包（示意）
-            </el-button>
+            <template #actions>
+              <AdminExportCsvButton label="导出审计包" hint="正式环境需审批与双人复核后生成加密包（原型占位）。" />
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -405,6 +425,13 @@ onMounted(() => loadAll());
             </template>
             </template>
         </el-table-column>
+        <el-table-column label="Diff" width="72" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+              <el-button link type="primary" @click="openAuditDiff(scope.row)">查看</el-button>
+            </template>
+          </template>
+        </el-table-column>
       </el-table>
       <AdminTablePagination
         v-model:current-page="auditPg.currentPage"
@@ -412,6 +439,32 @@ onMounted(() => loadAll());
         :total="auditPg.total"
       />
       <p v-if="filteredAudit.length === 0" class="sys-page__hint">无匹配记录。</p>
+    </el-card>
+
+    <el-card v-show="panel === 'security-events'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="安全事件">
+      <AdminSectionHead toolbar-only title="安全事件">
+        <template #tools>
+          <AdminListQuery
+            v-model:search="securitySearchQ"
+            :input-id="`${idPrefix}-sec-q`"
+            search-placeholder="类型、主体、详情…"
+            search-aria-label="检索安全事件"
+          />
+        </template>
+      </AdminSectionHead>
+      <el-table :data="securityPg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column prop="at" label="时间" min-width="140" sortable />
+        <el-table-column prop="eventType" label="类型" width="140" sortable />
+        <el-table-column prop="severity" label="级别" width="72" sortable />
+        <el-table-column prop="subject" label="主体" min-width="96" sortable />
+        <el-table-column prop="detail" label="详情" min-width="160" sortable />
+        <el-table-column prop="ip" label="IP" width="112" sortable />
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="securityPg.currentPage"
+        v-model:page-size="securityPg.pageSize"
+        :total="securityPg.total"
+      />
     </el-card>
 
     <el-card v-show="panel === 'sensitive'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="敏感操作审批">
@@ -781,6 +834,18 @@ onMounted(() => loadAll());
       <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
       <template #footer>
         <el-button type="primary" @click="closeInfoModal">知道了</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog v-model="auditDiffOpen" title="变更详情" width="720px">
+      <AdminAuditDiffPanel
+        v-if="auditDiffRow"
+        :before-json="auditDiffRow.beforeJson"
+        :after-json="auditDiffRow.afterJson"
+        :changed-fields="auditDiffRow.changedFields"
+      />
+      <template #footer>
+        <el-button type="primary" @click="auditDiffOpen = false">关闭</el-button>
       </template>
     </AdminDialog>
   </div>

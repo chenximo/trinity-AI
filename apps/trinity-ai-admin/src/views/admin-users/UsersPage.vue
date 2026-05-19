@@ -787,7 +787,9 @@ const kycPg = useAdminTablePagination(filteredKyc);
                 <el-option label="已冻结" value="已冻结" />
               </el-select>
             </template>
-            <el-button type="primary" @click="onAddUserClick">新增用户</el-button>
+            <template #actions>
+              <el-button type="primary" @click="onAddUserClick">新增用户</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -919,7 +921,9 @@ const kycPg = useAdminTablePagination(filteredKyc);
                 <el-option label="未启用" value="no" />
               </el-select>
             </template>
-            <el-button type="primary" @click="onAddWlClick">新增规则</el-button>
+            <template #actions>
+              <el-button type="primary" @click="onAddWlClick">新增规则</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
@@ -987,7 +991,9 @@ const kycPg = useAdminTablePagination(filteredKyc);
                 <el-option label="用户ID" value="用户ID" />
               </el-select>
             </template>
-            <el-button type="primary" @click="onAddBlClick">新增条目</el-button>
+            <template #actions>
+              <el-button type="primary" @click="onAddBlClick">新增条目</el-button>
+            </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
