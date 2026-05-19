@@ -3,16 +3,10 @@ import { computed, useId } from "vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import "./ops.css";
-import {
-  OPS_CALL_TREND_7D,
-  OPS_ERROR_DIST_24H,
-  OPS_SERIES_POINTS,
-  OPS_SUMMARY,
-} from "./mock";
-
-const sparkMax = Math.max(...OPS_SERIES_POINTS.map((p) => p.qps), 1);
+import { OPS_CALL_TREND_7D, OPS_ERROR_DIST_24H, OPS_SUMMARY } from "./mock";
 
 const lineGradId = `ops-ln-${useId().replace(/:/g, "")}`;
+const lineFillId = `ops-ln-fill-${useId().replace(/:/g, "")}`;
 
 const trendSvgPoints = computed(() => {
   const pts = OPS_CALL_TREND_7D.points;
@@ -35,6 +29,15 @@ const trendSvgPoints = computed(() => {
     .join(" ");
 });
 
+const trendFillPoints = computed(() => {
+  const line = trendSvgPoints.value;
+  if (!line) return "";
+  const first = line.split(" ")[0] ?? "8,78";
+  const last = line.split(" ").at(-1) ?? "272,78";
+  const [lx] = last.split(",");
+  return `${first} ${line} ${lx},78 8,78`;
+});
+
 const pieConic = computed(() => {
   let acc = 0;
   const parts = OPS_ERROR_DIST_24H.segments.map((s) => {
@@ -45,77 +48,109 @@ const pieConic = computed(() => {
   return `conic-gradient(${parts.join(", ")})`;
 });
 
-function sparkHeight(qps: number): string {
-  const h = Math.round((qps / sparkMax) * 100);
-  return `${Math.max(8, h)}%`;
-}
+const errRateTone = computed(() => {
+  const n = Number.parseFloat(OPS_SUMMARY.errRate);
+  if (Number.isNaN(n)) return "";
+  if (n >= 1) return "is-bad";
+  if (n >= 0.5) return "is-warn";
+  return "";
+});
 </script>
 
 <template>
   <div class="ops-page">
-    <!-- 实时大盘 -->
-    <section class="ops-page__panel" aria-label="实时大盘">
-      <AdminSectionHead title="实时大盘">
+    <el-card shadow="never" class="admin-ep-card ops-page__panel" aria-label="实时大盘">
+      <AdminSectionHead toolbar-only title="运行态势">
         <template #annot>
           <AdminInternalTip heading="实时大盘 · 原型" explain="运营大盘对内说明（原型）">
             <p>
-              指标与柱状为占位；<strong>调用量趋势（7 日）</strong>与<strong>近 24h 错误码分布</strong>为静态画板，工程期接时序库与日志分析。
+              指标与图表为占位 mock；工程期接时序库、日志分析与可配置时间窗。面包屑「实时大盘」对应当前模块入口。
             </p>
           </AdminInternalTip>
         </template>
-        <template #desc>SLA 与止损视角的运行态可视化（<strong>§4.2</strong>，mock）。</template>
-      </AdminSectionHead>
-      <div class="ops-page__grid2">
-        <div class="ops-page__stat">
-          <div class="ops-page__stat-label">QPS（{{ OPS_SUMMARY.windowLabel }}）</div>
-          <div class="ops-page__stat-value">{{ OPS_SUMMARY.qps }}</div>
-          <div class="ops-page__stat-meta">更新 {{ OPS_SUMMARY.updatedAt }}</div>
-        </div>
-        <div class="ops-page__stat">
-          <div class="ops-page__stat-label">错误率</div>
-          <div class="ops-page__stat-value">{{ OPS_SUMMARY.errRate }}</div>
-          <div class="ops-page__stat-meta">全平台聚合</div>
-        </div>
-        <div class="ops-page__stat">
-          <div class="ops-page__stat-label">P99 延迟</div>
-          <div class="ops-page__stat-value">{{ OPS_SUMMARY.p99 }}</div>
-          <div class="ops-page__stat-meta">网关出口测得</div>
-        </div>
-      </div>
-      <h3 class="ops-page__h3">QPS 示意（非真实图表）</h3>
-      <div class="ops-page__spark" role="img" aria-label="QPS 柱状示意">
-        <div
-          v-for="(p, i) in OPS_SERIES_POINTS"
-          :key="i"
-          class="ops-page__spark-bar"
-          :style="{ height: sparkHeight(p.qps) }"
-          :title="`${p.t} ${p.qps}`"
-        />
+</AdminSectionHead>
+
+      <div class="ops-page__kpis" aria-label="核心指标">
+        <article class="ops-page__kpi">
+          <div class="ops-page__kpi-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="ops-page__kpi-svg">
+              <path
+                d="M4 14.5 8 10l3 3 5-6 4 5"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="ops-page__kpi-body">
+            <div class="ops-page__kpi-label">QPS（{{ OPS_SUMMARY.windowLabel }}）</div>
+            <p class="ops-page__kpi-value">{{ OPS_SUMMARY.qps }}</p>
+            <p class="ops-page__kpi-meta">更新 {{ OPS_SUMMARY.updatedAt }}</p>
+          </div>
+        </article>
+        <article class="ops-page__kpi" :class="errRateTone">
+          <div class="ops-page__kpi-ico ops-page__kpi-ico--shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="ops-page__kpi-svg">
+              <path
+                d="M12 3 5 6v5c0 4 3.2 7.4 7 8 3.8-.6 7-4 7-8V6l-7-3Z"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div class="ops-page__kpi-body">
+            <div class="ops-page__kpi-label">错误率</div>
+            <p class="ops-page__kpi-value">{{ OPS_SUMMARY.errRate }}</p>
+            <p class="ops-page__kpi-meta">全平台聚合</p>
+          </div>
+        </article>
+        <article class="ops-page__kpi">
+          <div class="ops-page__kpi-ico ops-page__kpi-ico--clock" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" class="ops-page__kpi-svg">
+              <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.75" />
+              <path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="ops-page__kpi-body">
+            <div class="ops-page__kpi-label">P99 延迟</div>
+            <p class="ops-page__kpi-value">{{ OPS_SUMMARY.p99 }}</p>
+            <p class="ops-page__kpi-meta">网关出口测得</p>
+          </div>
+        </article>
       </div>
 
-      <div class="ops-page__charts" aria-label="趋势与错误分布">
-        <div class="ops-page__chart-block">
-          <h3 class="ops-page__h3 ops-page__h3--tight">{{ OPS_CALL_TREND_7D.title }}</h3>
-          <svg class="ops-page__line-svg" viewBox="0 0 280 88" role="img" aria-label="调用量折线图示意">
-            <defs>
-              <linearGradient :id="lineGradId" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="var(--blue)" stop-opacity="0.35" />
-                <stop offset="100%" stop-color="var(--blue)" />
-              </linearGradient>
-            </defs>
-            <polyline
-              fill="none"
-              :stroke="`url(#${lineGradId})`"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              :points="trendSvgPoints"
-            />
-          </svg>
-          <p class="ops-page__chart-foot">数据为 mock，工程期接时序库与可配置时间窗。</p>
-        </div>
-        <div class="ops-page__chart-block">
-          <h3 class="ops-page__h3 ops-page__h3--tight">{{ OPS_ERROR_DIST_24H.title }}</h3>
+      <div class="ops-page__viz-grid" aria-label="趋势与错误分布">
+        <article class="ops-page__viz-card">
+          <h3 class="ops-page__viz-title">{{ OPS_CALL_TREND_7D.title }}</h3>
+          <div class="ops-page__viz-canvas">
+            <svg class="ops-page__line-svg" viewBox="0 0 280 88" role="img" aria-label="调用量折线图示意">
+              <defs>
+                <linearGradient :id="lineGradId" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="var(--blue)" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="var(--blue)" />
+                </linearGradient>
+                <linearGradient :id="lineFillId" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--blue)" stop-opacity="0.18" />
+                  <stop offset="100%" stop-color="var(--blue)" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <polygon v-if="trendFillPoints" :points="trendFillPoints" :fill="`url(#${lineFillId})`" />
+              <polyline
+                fill="none"
+                :stroke="`url(#${lineGradId})`"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                :points="trendSvgPoints"
+              />
+            </svg>
+          </div>
+          <p class="ops-page__viz-foot">相对指数示意 · 工程期接时序库与可配置时间窗</p>
+        </article>
+        <article class="ops-page__viz-card">
+          <h3 class="ops-page__viz-title">{{ OPS_ERROR_DIST_24H.title }}</h3>
           <div class="ops-page__pie-row">
             <div class="ops-page__pie" :style="{ background: pieConic }" role="img" aria-label="错误码分布饼图示意" />
             <ul class="ops-page__pie-legend">
@@ -126,8 +161,8 @@ function sparkHeight(qps: number): string {
               </li>
             </ul>
           </div>
-        </div>
+        </article>
       </div>
-    </section>
+    </el-card>
   </div>
 </template>

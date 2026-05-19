@@ -6,19 +6,19 @@
 .admin-shell__main .admin-section-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.4rem 0.65rem;
+  gap: 0.5rem 0.75rem;
   margin-bottom: 0.5rem;
 }
 
 .admin-shell__main .admin-section-head__start {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.6rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
   min-width: 0;
-  flex: 1 1 12rem;
+  flex: 1 1 auto;
 }
 
 .admin-shell__main .admin-section-title-row {
@@ -40,12 +40,119 @@
 
 .admin-shell__main .admin-section-desc {
   margin: 0;
-  flex: 1 1 14rem;
-  min-width: min(100%, 10rem);
+  flex: none;
+  max-width: 42rem;
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.45;
   color: var(--muted);
+}
+
+/* 卡片内：若依式查询栏（不重复面包屑标题；说明收进 ? 气泡） */
+.admin-shell__main .admin-section-head--toolbar {
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--admin-border, var(--border));
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-section-head__end {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-section-tools {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-section-head__tip {
+  flex-shrink: 0;
+  margin-left: 0.35rem;
+}
+
+/* 查询栏：Element Plus 控件同一行、同一高度（若依） */
+.admin-shell__main .admin-section-head--toolbar .admin-list-query {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-search,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-filter-select,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-date-range,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query > .el-select,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query > .el-button {
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-input__wrapper,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-select__wrapper,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-date-editor.el-input__wrapper {
+  height: var(--el-component-size);
+  min-height: var(--el-component-size);
+  box-sizing: border-box;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-date-editor.el-input__wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-range-input {
+  font-size: var(--el-font-size-base);
+  line-height: calc(var(--el-component-size) - 2px);
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-list-query .el-range-separator {
+  font-size: var(--el-font-size-base);
+  line-height: var(--el-component-size);
+  padding: 0 0.2rem;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-ep-date-range {
+  flex: 0 0 auto;
+  width: 13.5rem !important;
+  max-width: min(13.5rem, 38vw);
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-ep-date-range.el-date-editor {
+  --el-date-editor-width: 13.5rem;
+}
+
+/* 查询栏：搜索框宽度 */
+.admin-shell__main .admin-section-head--toolbar .admin-ep-search {
+  flex: 0 1 16rem;
+  width: 16rem !important;
+  max-width: min(16rem, 42vw);
+  min-width: 9rem;
+}
+
+.admin-shell__main .admin-section-head--toolbar .admin-section-tools > .el-button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* 工作台待办等同工具条内的查询行 */
+.admin-shell__main .admin-dashboard__panel-head .admin-list-query {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-shell__main .admin-dashboard__panel-head .admin-list-query .el-input__wrapper,
+.admin-shell__main .admin-dashboard__panel-head .admin-list-query .el-select__wrapper,
+.admin-shell__main .admin-dashboard__panel-head .admin-list-query .el-date-editor.el-input__wrapper {
+  height: var(--el-component-size);
+  min-height: var(--el-component-size);
 }
 
 .admin-shell__main .admin-section-desc strong {
@@ -236,4 +343,20 @@
 [class$="-page__btn-danger"]:focus-visible {
   outline: 2px solid var(--danger-border);
   outline-offset: 2px;
+}
+
+/* 列表底部分页（若依：右对齐、与表格间距） */
+.admin-shell__main .admin-table-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0.65rem 0 0.1rem;
+  margin-top: 0.35rem;
+}
+
+.admin-shell__main .admin-ep-card .admin-table-pagination .el-pagination {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 0.35rem;
 }

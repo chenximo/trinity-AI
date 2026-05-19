@@ -5,6 +5,7 @@ import "../../styles/admin-theme.css";
 import "./admin-shell.css";
 import "../../styles/admin-page.css";
 import "../../styles/admin-buttons.css";
+import AdminNavIcon from "./AdminNavIcon.vue";
 import { ADMIN_NAV_TREE, type NavSubmenu } from "./adminNavTree";
 import {
   adminUserInitials,
@@ -137,16 +138,7 @@ onUnmounted(() => {
             :title="`${entry.label} (${entry.designRef})`"
             class="admin-shell__nav-link"
           >
-            <span class="admin-shell__nav-ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </span>
+            <AdminNavIcon :icon-key="entry.iconKey" />
             <span class="admin-shell__nav-label">{{ collapsed ? entry.label.slice(0, 2) : entry.label }}</span>
           </RouterLink>
 
@@ -154,20 +146,12 @@ onUnmounted(() => {
           <div v-else class="admin-shell__nav-group">
             <template v-if="collapsed">
               <RouterLink
+                v-if="entry.children[0]?.routeName"
                 class="admin-shell__nav-link"
                 :to="{ name: entry.children[0].routeName }"
                 :title="`${entry.label}（${entry.children.length} 个子页，展开侧栏查看）`"
               >
-                <span class="admin-shell__nav-ico" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M4 6h16M4 12h10M4 18h14"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </span>
+                <AdminNavIcon :icon-key="entry.iconKey" />
                 <span class="admin-shell__nav-label">{{ entry.label.slice(0, 2) }}</span>
               </RouterLink>
             </template>
@@ -181,16 +165,7 @@ onUnmounted(() => {
                 :aria-expanded="isSubmenuExpanded(entry)"
                 @click="toggleSubmenu(entry)"
               >
-                <span class="admin-shell__nav-ico" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M4 6h16M4 12h10M4 18h14"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </span>
+                <AdminNavIcon :icon-key="entry.iconKey" />
                 <span class="admin-shell__nav-group-title">{{ entry.label }}</span>
                 <svg
                   class="admin-shell__nav-chevron"
@@ -206,11 +181,13 @@ onUnmounted(() => {
                 <RouterLink
                   v-for="c in entry.children"
                   :key="c.routeName"
+                  v-show="c.routeName"
                   :to="{ name: c.routeName }"
                   :title="`${c.label} (${c.designRef})`"
                   class="admin-shell__nav-sublink"
                 >
-                  {{ c.label }}
+                  <AdminNavIcon :icon-key="c.iconKey" variant="sub" />
+                  <span class="admin-shell__nav-sublabel">{{ c.label }}</span>
                 </RouterLink>
               </div>
             </template>

@@ -66,6 +66,12 @@
   --admin-sidebar-active-accent: rgba(255, 255, 255, 0.95);
   --admin-sidebar-sublink-active: rgba(37, 99, 235, 0.28);
 
+  /* 列表表格（Element Plus el-table · 若依式） */
+  --admin-table-header-bg: #f5f7fa;
+  --admin-table-header-text: #606266;
+  --admin-table-row-border: #ebeef5;
+  --admin-table-row-hover: #f5f7fa;
+
   /* 业务语义（面板徽章、提示条等可复用） */
   --admin-success: var(--success, #059669);
   --admin-success-soft: var(--success-soft, #ecfdf5);

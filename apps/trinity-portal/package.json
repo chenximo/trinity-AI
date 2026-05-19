@@ -8,6 +8,7 @@
     "preview": "vite preview --port 5173"
   },
   "dependencies": {
+    "@trinity/element-plus": "*",
     "@trinity/tokens": "*",
     "@trinity/ui": "*",
     "vue": "^3.5.13",

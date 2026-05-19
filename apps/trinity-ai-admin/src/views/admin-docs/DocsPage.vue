@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, useId, watch, watchEffect } from "vue";
+import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { ModalPanel, TButton, TSearchForm1Fixed, TTextField1Labeled, FilterForm2PillListbox } from "@trinity/ui";
-import type { FilterForm2ListboxItem } from "@trinity/ui";
+import AdminDialog from "../../components/AdminDialog.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
+import { filterByQuery } from "../../utils/adminListFilter";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import "./docs.css";
 import {
   DEFAULT_DOC_ROWS,
@@ -29,7 +32,6 @@ import {
   readDocsSearchQ,
   readDocsVersionsJson,
   readDocsVisibilityJson,
-  setDocsModalBodyLock,
   writeDocsFilterStatus,
   writeDocsFilterType,
   writeDocsPublishJson,
@@ -63,15 +65,12 @@ const STATUS_FILTER_LABELS = ["全部状态", "草稿", "评审中", "已发布"
 const NEW_DOC_TYPES: DocRow["type"][] = ["用户指南", "供应商 API", "公告", "内部 Runbook"];
 const VIS_SCOPES: VisibilityRuleRow["scope"][] = ["公开", "登录可见", "指定客户"];
 
-const typeFilterOpen = ref(false);
-const statusFilterOpen = ref(false);
-const newTypeOpen = ref(false);
-const visDocOpen = ref(false);
-const visScopeOpen = ref(false);
-
 const searchQ = ref("");
 const filterType = ref("");
 const filterStatus = ref("");
+const publishSearchQ = ref("");
+const publishStatusFilter = ref("");
+const visSearchQ = ref("");
 
 const editorBody = ref("");
 
@@ -143,76 +142,35 @@ const versionsForSelected = computed(() =>
 const editorPreviewHtml = computed(() => renderDocMarkdown(editorBody.value));
 
 const filteredDocs = computed(() => {
-  const q = searchQ.value.trim().toLowerCase();
-  const t = filterType.value;
-  const s = filterStatus.value;
-  return docRows.value.filter((r) => {
-    if (t && r.type !== t) return false;
-    if (s && r.status !== s) return false;
-    if (!q) return true;
-    const blob = [r.title, r.slug, r.owner, r.type, r.status, r.version].join(" ").toLowerCase();
-    return blob.includes(q);
-  });
+  let rows = docRows.value;
+  if (filterType.value) rows = rows.filter((r) => r.type === filterType.value);
+  if (filterStatus.value) rows = rows.filter((r) => r.status === filterStatus.value);
+  return filterByQuery(rows, searchQ.value, (r) =>
+    [r.title, r.slug, r.owner, r.type, r.status, r.version].join(" "),
+  );
 });
 
-const typeFilterItems = computed<FilterForm2ListboxItem[]>(() =>
-  TYPE_FILTER_VALUES.map((v, i) => ({
-    label: TYPE_FILTER_LABELS[i] ?? "",
-    checked: filterType.value === v,
-  })),
-);
-
-const statusFilterItems = computed<FilterForm2ListboxItem[]>(() =>
-  STATUS_FILTER_VALUES.map((v, i) => ({
-    label: STATUS_FILTER_LABELS[i] ?? "",
-    checked: filterStatus.value === v,
-  })),
-);
-
-const typePillLabel = computed(() => (filterType.value ? filterType.value : "文档类型"));
-
-const statusPillLabel = computed(() => (filterStatus.value ? filterStatus.value : "发布状态"));
-
-const newDocTypeItems = computed<FilterForm2ListboxItem[]>(() =>
-  NEW_DOC_TYPES.map((t) => ({ label: t, checked: draftNewType.value === t })),
-);
-
-const visDocFilterItems = computed<FilterForm2ListboxItem[]>(() =>
-  docRows.value.map((r) => ({ label: r.title, checked: r.id === draftVisDocId.value })),
-);
-
-const visScopeItems = computed<FilterForm2ListboxItem[]>(() =>
-  VIS_SCOPES.map((s) => ({ label: s, checked: s === draftVisScope.value })),
-);
-
-const visDocPillLabel = computed(() => {
-  const d = docRows.value.find((x) => x.id === draftVisDocId.value);
-  return d?.title ?? "选择文档";
+const filteredPublishRows = computed(() => {
+  let rows = publishRows.value;
+  if (publishStatusFilter.value) rows = rows.filter((r) => r.status === publishStatusFilter.value);
+  return filterByQuery(rows, publishSearchQ.value, (r) =>
+    [r.id, r.docTitle, r.targetVersion, r.requestedBy, r.requestedAt, r.status, r.scheduledAt].join(" "),
+  );
 });
 
-const visScopePillLabel = computed(() => draftVisScope.value);
+const filteredVisibilityRows = computed(() =>
+  filterByQuery(visibilityRows.value, visSearchQ.value, (r) =>
+    [r.docTitle, r.scope, r.customerHint, r.updatedAt].join(" "),
+  ),
+);
 
-function onTypeFilterSelect(i: number): void {
-  filterType.value = TYPE_FILTER_VALUES[i] ?? "";
+function resetDocsQuery(): void {
+  filterType.value = "";
+  filterStatus.value = "";
 }
 
-function onStatusFilterSelect(i: number): void {
-  filterStatus.value = STATUS_FILTER_VALUES[i] ?? "";
-}
-
-function onNewDocTypeSelect(i: number): void {
-  const t = NEW_DOC_TYPES[i];
-  if (t) draftNewType.value = t;
-}
-
-function onVisDocSelect(i: number): void {
-  const r = docRows.value[i];
-  if (r) draftVisDocId.value = r.id;
-}
-
-function onVisScopeSelect(i: number): void {
-  const s = VIS_SCOPES[i];
-  if (s) draftVisScope.value = s;
+function resetPublishQuery(): void {
+  publishStatusFilter.value = "";
 }
 
 function syncEditorBody(): void {
@@ -252,13 +210,11 @@ function openNewModal(): void {
   draftNewTitle.value = "";
   draftNewSlug.value = "";
   draftNewType.value = "用户指南";
-  newTypeOpen.value = false;
   newModalOpen.value = true;
 }
 
 function closeNewModal(): void {
   newModalOpen.value = false;
-  newTypeOpen.value = false;
 }
 
 function saveNewDoc(): void {
@@ -350,15 +306,11 @@ function openVisModal(): void {
   draftVisDocId.value = docRows.value[0]?.id ?? "";
   draftVisScope.value = "公开";
   draftVisHint.value = "";
-  visDocOpen.value = false;
-  visScopeOpen.value = false;
   visModalOpen.value = true;
 }
 
 function closeVisModal(): void {
   visModalOpen.value = false;
-  visDocOpen.value = false;
-  visScopeOpen.value = false;
 }
 
 function saveVisRule(): void {
@@ -390,132 +342,118 @@ function saveVisRule(): void {
   showInfo("已添加", "可见范围规则已写入列表（mock）。");
 }
 
-watchEffect(() => {
-  const o = newModalOpen.value || infoOpen.value || visModalOpen.value;
-  setDocsModalBodyLock(o);
-});
-
 onMounted(() => loadAll());
+
+const docsPg = useAdminTablePagination(filteredDocs);
+const publishPg = useAdminTablePagination(filteredPublishRows);
+const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
 </script>
 
 <template>
   <div class="doc-page">
-    <!-- 文档列表 -->
-    <section v-show="panel === 'list'" class="doc-page__panel" aria-label="文档列表">
-      <AdminSectionHead title="文档列表">
+    <el-card v-show="panel === 'list'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="文档列表">
+      <AdminSectionHead toolbar-only title="文档列表">
         <template #annot>
           <AdminInternalTip heading="文档列表 · 原型" explain="文档列表对内说明（原型）">
             <p>元数据与筛选写 <code>localStorage</code> 示意；与静态站点发布流水线对齐在工程期。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>对外文档元数据与筛选（<strong>§4.9</strong>，mock，<code class="doc-page__mono">localStorage</code>）。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="searchQ"
+          <template #tools>
+          <AdminListQuery
+            v-model:search="searchQ"
             :input-id="`${idPrefix}-doc-search`"
-            placeholder="标题、slug、负责人、类型…"
-            width="18rem"
-            aria-label="检索文档"
-          />
-          <FilterForm2PillListbox
-            v-model:open="typeFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-doc-type-wrap`"
-            :btn-id="`${idPrefix}-doc-type-btn`"
-            :panel-id="`${idPrefix}-doc-type-panel`"
-            :label-span-id="`${idPrefix}-doc-type-lbl`"
-            listbox-aria-label="按文档类型筛选"
-            panel-align="end"
-            :items="typeFilterItems"
-            @select="onTypeFilterSelect"
+            search-placeholder="标题、slug、负责人、类型…"
+            search-aria-label="检索文档"
+            @reset="resetDocsQuery"
           >
-            {{ typePillLabel }}
-          </FilterForm2PillListbox>
-          <FilterForm2PillListbox
-            v-model:open="statusFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-doc-status-wrap`"
-            :btn-id="`${idPrefix}-doc-status-btn`"
-            :panel-id="`${idPrefix}-doc-status-panel`"
-            :label-span-id="`${idPrefix}-doc-status-lbl`"
-            listbox-aria-label="按发布状态筛选"
-            panel-align="end"
-            :items="statusFilterItems"
-            @select="onStatusFilterSelect"
-          >
-            {{ statusPillLabel }}
-          </FilterForm2PillListbox>
-          <TButton variant="gradient" type="button" @click="openNewModal">新建文档</TButton>
+            <template #filters>
+              <el-select v-model="filterType" clearable placeholder="文档类型" style="width: 9rem">
+                <el-option v-for="(v, i) in TYPE_FILTER_VALUES" :key="i" :label="TYPE_FILTER_LABELS[i] ?? ''" :value="v" />
+              </el-select>
+              <el-select v-model="filterStatus" clearable placeholder="发布状态" style="width: 9rem">
+                <el-option v-for="(v, i) in STATUS_FILTER_VALUES" :key="i" :label="STATUS_FILTER_LABELS[i] ?? ''" :value="v" />
+              </el-select>
+            </template>
+            <el-button type="primary" @click="openNewModal">新建文档</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="doc-page__table-wrap">
-        <table class="doc-page__table">
-          <thead>
-            <tr>
-              <th>标题</th>
-              <th>Slug</th>
-              <th>类型</th>
-              <th>状态</th>
-              <th>版本</th>
-              <th>负责人</th>
-              <th>更新于</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredDocs" :key="r.id">
-              <td>{{ r.title }}</td>
-              <td class="doc-page__mono">{{ r.slug }}</td>
-              <td>{{ r.type }}</td>
-              <td><span :class="statusBadgeClass(r.status)">{{ r.status }}</span></td>
-              <td class="doc-page__mono">{{ r.version }}</td>
-              <td class="doc-page__mono">{{ r.owner }}</td>
-              <td class="doc-page__mono">{{ r.updatedAt }}</td>
-              <td>
-                <div class="doc-page__ops">
-                  <button type="button" class="doc-int__textlink" @click="goEditor(r.id)">编辑</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="docsPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="title" label="标题" min-width="112" sortable/>
+        <el-table-column prop="slug" label="Slug" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.slug }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="type" label="类型" width="112" sortable/>
+        <el-table-column label="状态" width="88">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span :class="statusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="version" label="版本" width="80" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.version }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="owner" label="负责人" width="96" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.owner }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="操作" width="80" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions doc-page__ops">
+              <el-button link type="primary" @click="goEditor(scope.row.id)">编辑</el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="docsPg.currentPage"
+        v-model:page-size="docsPg.pageSize"
+        :total="docsPg.total"
+      />
       <p v-if="filteredDocs.length === 0" class="doc-page__hint">无匹配文档。</p>
-    </section>
+    </el-card>
 
-    <!-- 编辑与版本 -->
-    <section v-show="panel === 'editor'" class="doc-page__panel" aria-label="编辑与版本">
+    <el-card v-show="panel === 'editor'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="编辑与版本">
       <template v-if="!selectedDoc">
-        <AdminSectionHead title="编辑与版本">
+        <AdminSectionHead toolbar-only title="编辑与版本">
           <template #annot>
             <AdminInternalTip heading="编辑与版本 · 未选中文档" explain="文档编辑入口对内说明（原型）">
               <p>未选中时仅提示入口；对内标注不替代列表中的用户引导。</p>
             </AdminInternalTip>
           </template>
-          <template #desc>
-            请从
-            <RouterLink class="doc-int__textlink" :to="{ name: 'tai-admin-docs-list' }">文档列表</RouterLink>
-            点「编辑」，或在 URL 加 <code class="doc-page__mono">?id=doc-xxx</code>。
-          </template>
-        </AdminSectionHead>
+</AdminSectionHead>
       </template>
       <template v-else>
-        <AdminSectionHead title="编辑与版本">
+        <AdminSectionHead toolbar-only title="编辑与版本">
           <template #annot>
             <AdminInternalTip heading="编辑与版本 · Markdown" explain="文档编辑器对内说明（原型）">
               <p>预览由 <code>marked</code> + 净化渲染；版本树为 mock。长说明勿塞进顶栏 <code>head-note</code>，用本 ⓘ（<code>#ds-internal-tip</code>）。</p>
             </AdminInternalTip>
           </template>
-          <template #desc>
-            <strong>{{ selectedDoc.title }}</strong>
-            <span class="doc-page__mono"> · {{ selectedDoc.slug }}</span>
-            — Markdown 与预览（mock）。
-          </template>
           <template #tools>
-            <TButton variant="gradient" type="button" @click="saveDraft">保存草稿</TButton>
-            <TButton variant="outline" type="button" @click="router.push({ name: 'tai-admin-docs-publish' })">
-              去发布队列
-            </TButton>
+            <el-button type="primary" @click="saveDraft">保存草稿</el-button>
+            <el-button @click="router.push({ name: 'tai-admin-docs-publish' })">去发布队列</el-button>
           </template>
         </AdminSectionHead>
         <div class="doc-page__editor-layout">
@@ -559,222 +497,182 @@ onMounted(() => loadAll());
           </div>
         </div>
       </template>
-    </section>
+    </el-card>
 
-    <!-- 发布与回滚 -->
-    <section v-show="panel === 'publish'" class="doc-page__panel" aria-label="发布与回滚">
-      <AdminSectionHead title="发布与回滚">
+    <el-card v-show="panel === 'publish'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="发布与回滚">
+      <AdminSectionHead toolbar-only title="发布与回滚">
         <template #annot>
           <AdminInternalTip heading="发布与回滚 · 原型" explain="文档发布对内说明（原型）">
             <p>审批单与回滚为状态机示意；静态刷新与 CDN 失效策略见详设 §4.9。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>发布审批、排期与一键回滚（mock）；静态站点刷新说明略。</template>
+        <template #tools>
+          <AdminListQuery
+            v-model:search="publishSearchQ"
+            :input-id="`${idPrefix}-doc-pub-q`"
+            search-placeholder="单号、文档、申请人…"
+            search-aria-label="检索发布单"
+            @reset="resetPublishQuery"
+          >
+            <template #filters>
+              <el-select v-model="publishStatusFilter" clearable placeholder="状态" style="width: 9rem">
+                <el-option label="待发布审批" value="待发布审批" />
+                <el-option label="已上线" value="已上线" />
+                <el-option label="已回滚" value="已回滚" />
+              </el-select>
+            </template>
+          </AdminListQuery>
+        </template>
       </AdminSectionHead>
-      <div class="doc-page__table-wrap">
-        <table class="doc-page__table">
-          <thead>
-            <tr>
-              <th>单号</th>
-              <th>文档</th>
-              <th>目标版本</th>
-              <th>申请人</th>
-              <th>申请时间</th>
-              <th>状态</th>
-              <th>上线/排期</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="j in publishRows" :key="j.id">
-              <td class="doc-page__mono">{{ j.id }}</td>
-              <td>{{ j.docTitle }}</td>
-              <td class="doc-page__mono">{{ j.targetVersion }}</td>
-              <td class="doc-page__mono">{{ j.requestedBy }}</td>
-              <td class="doc-page__mono">{{ j.requestedAt }}</td>
-              <td><span :class="publishStatusClass(j.status)">{{ j.status }}</span></td>
-              <td class="doc-page__mono">{{ j.scheduledAt }}</td>
-              <td>
-                <div class="doc-page__ops">
-                  <button
-                    v-if="j.status === '待发布审批'"
-                    type="button"
-                    class="doc-int__textlink"
-                    @click="approvePublish(j)"
-                  >
-                    批准上线
-                  </button>
-                  <button
-                    v-if="j.status === '已上线'"
-                    type="button"
-                    class="doc-int__textlink doc-int__textlink--danger"
-                    @click="rollbackPublish(j)"
-                  >
-                    标记回滚
-                  </button>
-                  <span v-if="j.status !== '待发布审批' && j.status !== '已上线'" class="doc-page__muted">—</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="publishPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="id" label="单号" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="docTitle" label="文档" min-width="96" sortable/>
+        <el-table-column prop="targetVersion" label="目标版本" width="96" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.targetVersion }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="requestedBy" label="申请人" width="96" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.requestedBy }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="requestedAt" label="申请时间" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.requestedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="状态" width="96">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span :class="publishStatusClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="scheduledAt" label="上线/排期" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.scheduledAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="操作" width="112" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions doc-page__ops">
+              <el-button v-if="scope.row.status === '待发布审批'" link type="primary" @click="approvePublish(scope.row)">批准上线</el-button>
+              <el-button v-if="scope.row.status === '已上线'" link type="danger" @click="rollbackPublish(scope.row)">标记回滚</el-button>
+              <span v-if="scope.row.status !== '待发布审批' && scope.row.status !== '已上线'" class="doc-page__muted">—</span>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="publishPg.currentPage"
+        v-model:page-size="publishPg.pageSize"
+        :total="publishPg.total"
+      />
+    </el-card>
 
-    <!-- 可见范围 -->
-    <section v-show="panel === 'visibility'" class="doc-page__panel" aria-label="可见范围">
-      <AdminSectionHead title="可见范围">
+    <el-card v-show="panel === 'visibility'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="可见范围">
+      <AdminSectionHead toolbar-only title="可见范围">
         <template #annot>
           <AdminInternalTip heading="可见范围 · 原型" explain="文档可见范围对内说明（原型）">
             <p>公开/登录/指定客户组为配置占位；应对接客户组织 ID 与鉴权中间件。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>按文档配置公开范围与客户说明（mock）。</template>
-        <template #tools>
-          <TButton variant="gradient" type="button" @click="openVisModal">新增规则</TButton>
+          <template #tools>
+          <AdminListQuery
+            v-model:search="visSearchQ"
+            :input-id="`${idPrefix}-doc-vis-q`"
+            search-placeholder="文档、范围、客户说明…"
+            search-aria-label="检索可见范围"
+          >
+            <el-button type="primary" @click="openVisModal">新增规则</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="doc-page__table-wrap">
-        <table class="doc-page__table">
-          <thead>
-            <tr>
-              <th>文档</th>
-              <th>范围</th>
-              <th>客户 / 组织说明</th>
-              <th>更新于</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="v in visibilityRows" :key="v.id">
-              <td>{{ v.docTitle }}</td>
-              <td>{{ v.scope }}</td>
-              <td>{{ v.customerHint }}</td>
-              <td class="doc-page__mono">{{ v.updatedAt }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="visibilityPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="docTitle" label="文档" min-width="112" sortable/>
+        <el-table-column prop="scope" label="范围" width="96" sortable/>
+        <el-table-column prop="customerHint" label="客户 / 组织说明" min-width="128" sortable/>
+        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="visibilityPg.currentPage"
+        v-model:page-size="visibilityPg.pageSize"
+        :total="visibilityPg.total"
+      />
+    </el-card>
 
-    <Teleport to="body">
-      <div
-        v-show="newModalOpen"
-        class="or-modal-root doc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!newModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeNewModal" />
-        <ModalPanel title="新建文档" :title-id="`${idPrefix}-new-title`" close-label="关闭" @close="closeNewModal">
-          <div class="doc-form-stack">
-            <TTextField1Labeled :input-id="`${idPrefix}-nt`" v-model="draftNewTitle" label="标题" placeholder="文档标题" />
-            <TTextField1Labeled
-              :input-id="`${idPrefix}-ns`"
-              v-model="draftNewSlug"
-              label="Slug / 路径"
-              placeholder="如 docs/my-page 或 /docs/my-page"
-            />
-            <div>
-              <p class="doc-page__cap" style="margin: 0 0 0.35rem">类型</p>
-              <FilterForm2PillListbox
-                v-model:open="newTypeOpen"
-                managed-panel
-                :wrap-id="`${idPrefix}-doc-newtype-wrap`"
-                :btn-id="`${idPrefix}-doc-newtype-btn`"
-                :panel-id="`${idPrefix}-doc-newtype-panel`"
-                :label-span-id="`${idPrefix}-doc-newtype-lbl`"
-                listbox-aria-label="选择文档类型"
-                panel-align="start"
-                :items="newDocTypeItems"
-                @select="onNewDocTypeSelect"
-              >
-                {{ draftNewType }}
-              </FilterForm2PillListbox>
-            </div>
-            <p v-if="newFormError" class="doc-form-error">{{ newFormError }}</p>
-          </div>
-          <template #actions>
-            <TButton type="button" @click="closeNewModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveNewDoc">创建</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="newModalOpen" title="新建文档">
+      <el-form label-position="top" class="admin-ep-form doc-form-stack">
+        <el-form-item label="标题">
+          <el-input :id="`${idPrefix}-nt`" v-model="draftNewTitle" placeholder="文档标题" />
+        </el-form-item>
+        <el-form-item label="Slug / 路径">
+          <el-input :id="`${idPrefix}-ns`" v-model="draftNewSlug" placeholder="如 docs/my-page 或 /docs/my-page" />
+        </el-form-item>
+        <el-form-item label="类型">
+          <el-select v-model="draftNewType" style="width: 100%">
+            <el-option v-for="t in NEW_DOC_TYPES" :key="t" :label="t" :value="t" />
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <p v-if="newFormError" class="doc-form-error">{{ newFormError }}</p>
+      <template #footer>
+        <el-button @click="closeNewModal">取消</el-button>
+        <el-button type="primary" @click="saveNewDoc">创建</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="visModalOpen"
-        class="or-modal-root doc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!visModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeVisModal" />
-        <ModalPanel title="新增可见范围" :title-id="`${idPrefix}-vis-title`" close-label="关闭" @close="closeVisModal">
-          <div class="doc-form-stack">
-            <div>
-              <p class="doc-page__cap" style="margin: 0 0 0.35rem">文档</p>
-              <FilterForm2PillListbox
-                v-model:open="visDocOpen"
-                managed-panel
-                :wrap-id="`${idPrefix}-doc-visdoc-wrap`"
-                :btn-id="`${idPrefix}-doc-visdoc-btn`"
-                :panel-id="`${idPrefix}-doc-visdoc-panel`"
-                :label-span-id="`${idPrefix}-doc-visdoc-lbl`"
-                listbox-aria-label="选择文档"
-                panel-align="start"
-                :items="visDocFilterItems"
-                @select="onVisDocSelect"
-              >
-                {{ visDocPillLabel }}
-              </FilterForm2PillListbox>
-            </div>
-            <div>
-              <p class="doc-page__cap" style="margin: 0 0 0.35rem">范围</p>
-              <FilterForm2PillListbox
-                v-model:open="visScopeOpen"
-                managed-panel
-                :wrap-id="`${idPrefix}-doc-vscope-wrap`"
-                :btn-id="`${idPrefix}-doc-vscope-btn`"
-                :panel-id="`${idPrefix}-doc-vscope-panel`"
-                :label-span-id="`${idPrefix}-doc-vscope-lbl`"
-                listbox-aria-label="选择可见范围"
-                panel-align="start"
-                :items="visScopeItems"
-                @select="onVisScopeSelect"
-              >
-                {{ visScopePillLabel }}
-              </FilterForm2PillListbox>
-            </div>
-            <TTextField1Labeled
-              :input-id="`${idPrefix}-vh`"
-              v-model="draftVisHint"
-              label="客户 / 组织说明"
-              placeholder="指定客户时填写 org id 或说明"
-            />
-            <p v-if="visFormError" class="doc-form-error">{{ visFormError }}</p>
-          </div>
-          <template #actions>
-            <TButton type="button" @click="closeVisModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveVisRule">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="visModalOpen" title="新增可见范围">
+      <el-form label-position="top" class="admin-ep-form doc-form-stack">
+        <el-form-item label="文档">
+          <el-select v-model="draftVisDocId" filterable style="width: 100%">
+            <el-option v-for="d in docRows" :key="d.id" :label="d.title" :value="d.id" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="范围">
+          <el-select v-model="draftVisScope" style="width: 100%">
+            <el-option v-for="s in VIS_SCOPES" :key="s" :label="s" :value="s" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="客户 / 组织说明">
+          <el-input :id="`${idPrefix}-vh`" v-model="draftVisHint" placeholder="指定客户时填写 org id 或说明" />
+        </el-form-item>
+      </el-form>
+      <p v-if="visFormError" class="doc-form-error">{{ visFormError }}</p>
+      <template #footer>
+        <el-button @click="closeVisModal">取消</el-button>
+        <el-button type="primary" @click="saveVisRule">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="infoOpen"
-        class="or-modal-root doc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!infoOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeInfo" />
-        <ModalPanel :title="infoTitle" :title-id="`${idPrefix}-info`" close-label="关闭" @close="closeInfo">
-          <p class="or-keys-editor-banner" role="status">{{ infoMsg }}</p>
-          <template #actions>
-            <TButton variant="gradient" type="button" @click="closeInfo">知道了</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="infoOpen" :title="infoTitle">
+      <p class="or-keys-editor-banner" role="status">{{ infoMsg }}</p>
+      <template #footer>
+        <el-button type="primary" @click="closeInfo">知道了</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

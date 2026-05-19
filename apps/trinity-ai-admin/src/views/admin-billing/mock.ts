@@ -11,9 +11,30 @@ export const BILLING_TABS: { id: BillingTabId; label: string }[] = [
 ];
 
 export const BILLING_USAGE_ROWS = [
-  { time: "14:28:01", org: "Acme", model: "gpt-4o-mini", line: "腾讯", tokens: "12.4k / 3.1k", amt: "¥42.10" },
-  { time: "14:27:55", org: "Beta Lab", model: "claude-3-5", line: "直连", tokens: "8.2k / 2.0k", amt: "¥118.00" },
-  { time: "14:27:40", org: "Acme", model: "text-embedding-3", line: "火山", tokens: "0 / 64k", amt: "¥1.20" },
+  {
+    time: "2026-05-18 14:28:01",
+    org: "Acme",
+    model: "gpt-4o-mini",
+    line: "腾讯",
+    tokens: "12.4k / 3.1k",
+    amt: "¥42.10",
+  },
+  {
+    time: "2026-05-17 14:27:55",
+    org: "Beta Lab",
+    model: "claude-3-5",
+    line: "直连",
+    tokens: "8.2k / 2.0k",
+    amt: "¥118.00",
+  },
+  {
+    time: "2026-05-10 14:27:40",
+    org: "Acme",
+    model: "text-embedding-3",
+    line: "火山",
+    tokens: "0 / 64k",
+    amt: "¥1.20",
+  },
 ];
 
 export const BILLING_QUOTA_ROWS = [

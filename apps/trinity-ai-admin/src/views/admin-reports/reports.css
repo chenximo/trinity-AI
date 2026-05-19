@@ -1,0 +1,16 @@
+.rpt-page__panel {
+  min-height: 0;
+}
+
+.rpt-page__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.rpt-page__placeholder {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+}

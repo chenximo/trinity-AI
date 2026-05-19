@@ -19,6 +19,23 @@
 
 工程规范：**`docs/Trinity原型模块目录与交付规范.md`**
 
+## UI 组件库（若依 / Element Plus · 统一）
+
+运营后台 **统一 [Element Plus](https://element-plus.org/)**（`element-plus` + `@element-plus/icons-vue`），**不**再使用 `@trinity/ui`。用户站 / 设计站仍走自研组件 + design-spec。
+
+| 场景 | 用法 |
+|------|------|
+| 列表、分页、表单、日期、树、消息 | **`el-*`** |
+| 表格 | **`el-table`** + `class="admin-ep-table-wrap"`（无 `border`/`stripe`；表头灰底见 **`admin-ruoyi.css`**） |
+| 区块容器 | **`el-card`** `shadow="never"` + `admin-ep-card` |
+| 弹窗 | **`AdminDialog`**（`src/components/AdminDialog.vue`）→ `el-dialog` |
+| 工具栏搜索 | **`AdminSearchInput`** → `el-input` + 搜索图标 |
+| 对内说明 ⓘ | **`AdminInternalTip`** → `el-popover` |
+| 表格行内操作 | **`el-button` `link`** + `@element-plus/icons-vue`（预览/编辑/删除等） |
+| 主题色 | **`src/styles/admin-element-plus.css`** + **`admin-ruoyi.css`**（`.admin-shell` 内 CSS 变量桥接） |
+
+入口：`src/main.ts` 全量注册 Element Plus + 中文 locale。门户 `/trinity-ai-admin` 与独立 `:5204` 一致。
+
 ## 色彩（admin-shell 专用）
 
 真源 **`src/styles/admin-theme.css`**（作用域 `.admin-shell`）。设计色板页 **「运营后台」** 一节有可视化对照。

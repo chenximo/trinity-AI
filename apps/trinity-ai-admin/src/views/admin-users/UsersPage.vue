@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, useId, watch, watchEffect } from "vue";
+import { computed, onMounted, onUnmounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import { ModalPanel, TButton, TSearchForm1Fixed, TTextField1Labeled } from "@trinity/ui";
+import { CircleClose, Delete, Edit, Select } from "@element-plus/icons-vue";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { filterByQuery } from "../../utils/adminListFilter";
 import "./users.css";
 import {
   USER_PANEL_ORDER,
@@ -28,7 +33,6 @@ import {
   writeBlacklistJson,
   readKycJson,
   writeKycJson,
-  setUsersModalBodyLock,
 } from "./usersInteractions";
 
 const route = useRoute();
@@ -41,6 +45,14 @@ const panel = computed<UserPanelId>(() => {
 });
 
 const userListFilter = ref("");
+const userStatusFilter = ref("");
+const auditQueueSearchQ = ref("");
+const wlSearchQ = ref("");
+const wlEnabledFilter = ref("");
+const blSearchQ = ref("");
+const blTypeFilter = ref("");
+const kycSearchQ = ref("");
+const kycStatusFilter = ref("");
 const userRows = ref<TerminalUserRow[]>([]);
 const whitelistRows = ref<WhitelistRuleRow[]>([]);
 const blacklistRows = ref<BlacklistEntryRow[]>([]);
@@ -230,20 +242,57 @@ function persistKyc(): void {
 }
 
 const filteredUsers = computed(() => {
-  const q = userListFilter.value.trim().toLowerCase();
   let rows = userRows.value;
-  if (!q) return rows;
-  return rows.filter(
-    (r) =>
-      r.email.toLowerCase().includes(q) ||
-      r.displayName.toLowerCase().includes(q) ||
-      r.orgName.toLowerCase().includes(q) ||
-      r.id.toLowerCase().includes(q) ||
-      (r.phone && r.phone.toLowerCase().includes(q))
+  if (userStatusFilter.value) rows = rows.filter((r) => r.status === userStatusFilter.value);
+  return filterByQuery(rows, userListFilter.value, (r) =>
+    [r.id, r.email, r.displayName, r.orgName, r.phone ?? ""].join(" "),
   );
 });
 
 const pendingUsers = computed(() => userRows.value.filter((u) => u.status === "待审核"));
+
+const filteredPendingUsers = computed(() =>
+  filterByQuery(pendingUsers.value, auditQueueSearchQ.value, (r) =>
+    [r.email, r.displayName, r.orgName, r.id, r.registeredAt].join(" "),
+  ),
+);
+
+const filteredWhitelist = computed(() => {
+  let rows = whitelistRows.value;
+  if (wlEnabledFilter.value === "yes") rows = rows.filter((r) => r.enabled);
+  if (wlEnabledFilter.value === "no") rows = rows.filter((r) => !r.enabled);
+  return filterByQuery(rows, wlSearchQ.value, (r) => [r.pattern, r.patternType, r.note, r.updatedAt].join(" "));
+});
+
+const filteredBlacklist = computed(() => {
+  let rows = blacklistRows.value;
+  if (blTypeFilter.value) rows = rows.filter((r) => r.targetType === blTypeFilter.value);
+  return filterByQuery(rows, blSearchQ.value, (r) => [r.target, r.targetType, r.reason, r.updatedAt].join(" "));
+});
+
+const filteredKyc = computed(() => {
+  let rows = kycRows.value;
+  if (kycStatusFilter.value) rows = rows.filter((r) => r.status === kycStatusFilter.value);
+  return filterByQuery(rows, kycSearchQ.value, (r) =>
+    [r.id, r.userId, r.kind, r.status, r.remark, r.submittedAt].join(" "),
+  );
+});
+
+function resetUserListQuery(): void {
+  userStatusFilter.value = "";
+}
+
+function resetWlQuery(): void {
+  wlEnabledFilter.value = "";
+}
+
+function resetBlQuery(): void {
+  blTypeFilter.value = "";
+}
+
+function resetKycQuery(): void {
+  kycStatusFilter.value = "";
+}
 
 function userStatusBadgeClass(s: TerminalUserRow["status"]): string {
   if (s === "正常") return "usr-page__badge usr-page__badge--ok";
@@ -694,460 +743,493 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", onDocKeydown);
-  setUsersModalBodyLock(false);
 });
 
 watch(userListFilter, (v) => {
   writeUsersListFilter(v);
 });
 
-watchEffect(() => {
-  setUsersModalBodyLock(
-    userModalOpen.value ||
-      wlModalOpen.value ||
-      blModalOpen.value ||
-      usrDangerOpen.value ||
-      auditModalOpen.value ||
-      kycAuditModalOpen.value
-  );
-});
+const usersPg = useAdminTablePagination(filteredUsers);
+const pendingPg = useAdminTablePagination(filteredPendingUsers);
+const whitelistPg = useAdminTablePagination(filteredWhitelist);
+const blacklistPg = useAdminTablePagination(filteredBlacklist);
+const kycPg = useAdminTablePagination(filteredKyc);
 </script>
 
 <template>
   <div class="usr-page">
-    <!-- 用户列表 -->
-    <section v-show="panel === 'list'" class="usr-page__panel" aria-label="用户列表">
-      <AdminSectionHead title="用户列表">
+    <el-card v-show="panel === 'list'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="用户列表">
+      <AdminSectionHead toolbar-only title="用户列表">
         <template #annot>
           <AdminInternalTip heading="用户列表 · 原型" explain="用户列表对内说明（原型）">
             <p>检索与状态为 mock；与组织归属、KYC 状态在工程期对齐账号中心。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>
-          终端用户检索与账号操作（<strong>§4.11</strong>，mock，<code class="usr-page__mono">localStorage</code>）；与员工 RBAC（§4.12）<strong>分权</strong>。
-        </template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="userListFilter"
+          <template #tools>
+          <AdminListQuery
+            v-model:search="userListFilter"
             :input-id="`${idPrefix}-usr-search`"
-            placeholder="邮箱、姓名、组织、用户 ID…"
-            width="17.5rem"
-            aria-label="搜索用户"
-          />
-          <TButton variant="gradient" type="button" @click="onAddUserClick">新增用户</TButton>
+            search-placeholder="邮箱、姓名、组织、用户 ID…"
+            search-aria-label="搜索用户"
+            @reset="resetUserListQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="userStatusFilter"
+                clearable
+                placeholder="状态"
+                aria-label="按状态筛选"
+                style="width: 7rem"
+              >
+                <el-option label="正常" value="正常" />
+                <el-option label="待审核" value="待审核" />
+                <el-option label="已拒绝" value="已拒绝" />
+                <el-option label="已冻结" value="已冻结" />
+              </el-select>
+            </template>
+            <el-button type="primary" @click="onAddUserClick">新增用户</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="usr-page__table-wrap">
-        <table class="usr-page__table">
-          <thead>
-            <tr>
-              <th>用户 ID</th>
-              <th>邮箱</th>
-              <th>展示名</th>
-              <th>所属组织</th>
-              <th>状态</th>
-              <th>注册</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredUsers" :key="r.id">
-              <td class="usr-page__mono">{{ r.id }}</td>
-              <td class="usr-page__mono">{{ r.email }}</td>
-              <td>{{ r.displayName }}</td>
-              <td>{{ r.orgName }}</td>
-              <td><span :class="userStatusBadgeClass(r.status)">{{ r.status }}</span></td>
-              <td>{{ r.registeredAt }}</td>
-              <td>
-                <button type="button" class="usr-int__textlink" @click="onEditUserClick(r)">编辑</button>
-                <button
-                  v-if="r.status === '正常'"
-                  type="button"
-                  class="usr-int__textlink"
-                  @click="requestFreezeUser(r)"
-                >
-                  冻结
-                </button>
-                <button
-                  v-if="r.status === '已冻结'"
-                  type="button"
-                  class="usr-int__textlink"
-                  @click="requestUnfreezeUser(r)"
-                >
-                  解冻
-                </button>
-                <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="requestDeleteUser(r)">
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="usersPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="id" label="用户 ID" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="email" label="邮箱" min-width="144" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.email }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="displayName" label="展示名" min-width="96" sortable/>
+        <el-table-column prop="orgName" label="所属组织" min-width="96" sortable/>
+        <el-table-column label="状态" width="88">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span :class="userStatusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
+        <el-table-column label="操作" width="176" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="onEditUserClick(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+              <el-button v-if="scope.row.status === '正常'" link type="primary" @click="requestFreezeUser(scope.row)">冻结</el-button>
+              <el-button v-if="scope.row.status === '已冻结'" link type="primary" @click="requestUnfreezeUser(scope.row)">解冻</el-button>
+              <el-button link type="danger" @click="requestDeleteUser(scope.row)">
+                <el-icon><Delete /></el-icon>
+                删除
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="usersPg.currentPage"
+        v-model:page-size="usersPg.pageSize"
+        :total="usersPg.total"
+      />
       <p class="usr-page__hint">
         键 <code class="usr-page__mono">trinity-ai-admin:terminal-users-rows</code>；搜索键
-        <code class="usr-page__mono">trinity-ai-admin:terminal-users-filter</code>；删除 / 冻结 / 解冻经
-        <strong>ModalPanel</strong> 二次确认。
+        <code class="usr-page__mono">trinity-ai-admin:terminal-users-filter</code>；删除 / 冻结 / 解冻经弹窗二次确认。
       </p>
-    </section>
+    </el-card>
 
-    <!-- 审核队列 -->
-    <section v-show="panel === 'audit-queue'" class="usr-page__panel" aria-label="审核队列">
-      <AdminSectionHead title="审核队列">
+    <el-card v-show="panel === 'audit-queue'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="审核队列">
+      <AdminSectionHead toolbar-only title="审核队列">
         <template #annot>
           <AdminInternalTip heading="审核队列 · 原型" explain="审核队列对内说明（原型）">
             <p>待审列表为占位；批量通过/拒绝应接工单与通知（详设 §4.11）。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>
-          待审核用户与列表同源；通过/拒绝写回用户表；批量与原因模板为二期（mock）。
+        <template #tools>
+          <AdminListQuery
+            v-model:search="auditQueueSearchQ"
+            :input-id="`${idPrefix}-usr-audit-q`"
+            search-placeholder="邮箱、姓名、组织…"
+            search-aria-label="检索待审用户"
+          />
         </template>
       </AdminSectionHead>
       <div v-if="!pendingUsers.length" class="usr-page__hint">当前无待审核用户。</div>
-      <div v-else class="usr-page__table-wrap">
-        <table class="usr-page__table">
-          <thead>
-            <tr>
-              <th>邮箱</th>
-              <th>展示名</th>
-              <th>组织</th>
-              <th>注册</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in pendingUsers" :key="r.id">
-              <td class="usr-page__mono">{{ r.email }}</td>
-              <td>{{ r.displayName }}</td>
-              <td>{{ r.orgName }}</td>
-              <td>{{ r.registeredAt }}</td>
-              <td>
-                <button type="button" class="usr-int__textlink" @click="openAuditModal('approve', r.id)">通过</button>
-                <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="openAuditModal('reject', r.id)">
-                  拒绝
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table v-else :data="pendingPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="email" label="邮箱" min-width="144" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.email }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="displayName" label="展示名" sortable/>
+        <el-table-column prop="orgName" label="组织" sortable/>
+        <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
+        <el-table-column label="操作" width="128" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="openAuditModal('approve', scope.row.id)">
+                <el-icon><Select /></el-icon>
+                通过
+              </el-button>
+              <el-button link type="danger" @click="openAuditModal('reject', scope.row.id)">
+                <el-icon><CircleClose /></el-icon>
+                拒绝
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="pendingPg.currentPage"
+        v-model:page-size="pendingPg.pageSize"
+        :total="pendingPg.total"
+      />
+    </el-card>
 
-    <!-- 白名单 -->
-    <section v-show="panel === 'whitelist'" class="usr-page__panel" aria-label="白名单">
-      <AdminSectionHead title="白名单">
+    <el-card v-show="panel === 'whitelist'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="白名单">
+      <AdminSectionHead toolbar-only title="白名单">
         <template #annot>
           <AdminInternalTip heading="白名单 · 原型" explain="白名单对内说明（原型）">
             <p>域名/号段规则为示意；与风控策略冲突时的优先级需产品定义。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>域名/邮箱模式放行规则（mock）。</template>
-        <template #tools>
-          <TButton variant="gradient" type="button" @click="onAddWlClick">新增规则</TButton>
+          <template #tools>
+          <AdminListQuery
+            v-model:search="wlSearchQ"
+            :input-id="`${idPrefix}-usr-wl-q`"
+            search-placeholder="规则、类型、说明…"
+            search-aria-label="检索白名单"
+            @reset="resetWlQuery"
+          >
+            <template #filters>
+              <el-select v-model="wlEnabledFilter" clearable placeholder="启用" style="width: 7rem">
+                <el-option label="已启用" value="yes" />
+                <el-option label="未启用" value="no" />
+              </el-select>
+            </template>
+            <el-button type="primary" @click="onAddWlClick">新增规则</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="usr-page__table-wrap">
-        <table class="usr-page__table">
-          <thead>
-            <tr>
-              <th>规则</th>
-              <th>类型</th>
-              <th>启用</th>
-              <th>说明</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in whitelistRows" :key="r.id">
-              <td class="usr-page__mono">{{ r.pattern }}</td>
-              <td>{{ r.patternType }}</td>
-              <td>{{ r.enabled ? "是" : "否" }}</td>
-              <td>{{ r.note }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="usr-int__textlink" @click="onEditWlClick(r)">编辑</button>
-                <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="requestDeleteWl(r)">删除</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="whitelistPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="pattern" label="规则" min-width="128" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.pattern }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="patternType" label="类型" width="96" sortable/>
+        <el-table-column label="启用" width="64">
+          <template #default="scope">
+              <template v-if="scope?.row">{{ scope.row.enabled ? "是" : "否" }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="note" label="说明" min-width="96" sortable/>
+        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
+        <el-table-column label="操作" width="112" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="onEditWlClick(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+              <el-button link type="danger" @click="requestDeleteWl(scope.row)">
+                <el-icon><Delete /></el-icon>
+                删除
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="whitelistPg.currentPage"
+        v-model:page-size="whitelistPg.pageSize"
+        :total="whitelistPg.total"
+      />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-whitelist-rows</code>。</p>
-    </section>
+    </el-card>
 
-    <!-- 黑名单 -->
-    <section v-show="panel === 'blacklist'" class="usr-page__panel" aria-label="黑名单">
-      <AdminSectionHead title="黑名单">
+    <el-card v-show="panel === 'blacklist'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="黑名单">
+      <AdminSectionHead toolbar-only title="黑名单">
         <template #annot>
           <AdminInternalTip heading="黑名单 · 原型" explain="黑名单对内说明（原型）">
             <p>封禁策略为 mock；真实环境需审计、申诉与合规留存。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>拒绝登录/调用的拦截条目（mock）。</template>
-        <template #tools>
-          <TButton variant="gradient" type="button" @click="onAddBlClick">新增条目</TButton>
+          <template #tools>
+          <AdminListQuery
+            v-model:search="blSearchQ"
+            :input-id="`${idPrefix}-usr-bl-q`"
+            search-placeholder="目标、原因…"
+            search-aria-label="检索黑名单"
+            @reset="resetBlQuery"
+          >
+            <template #filters>
+              <el-select v-model="blTypeFilter" clearable placeholder="类型" style="width: 7rem">
+                <el-option label="邮箱" value="邮箱" />
+                <el-option label="手机" value="手机" />
+                <el-option label="用户ID" value="用户ID" />
+              </el-select>
+            </template>
+            <el-button type="primary" @click="onAddBlClick">新增条目</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="usr-page__table-wrap">
-        <table class="usr-page__table">
-          <thead>
-            <tr>
-              <th>目标</th>
-              <th>类型</th>
-              <th>拒绝登录</th>
-              <th>拒绝调用</th>
-              <th>原因</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in blacklistRows" :key="r.id">
-              <td class="usr-page__mono">{{ r.target }}</td>
-              <td>{{ r.targetType }}</td>
-              <td>{{ r.blockLogin ? "是" : "否" }}</td>
-              <td>{{ r.blockApi ? "是" : "否" }}</td>
-              <td>{{ r.reason }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="usr-int__textlink" @click="onEditBlClick(r)">编辑</button>
-                <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="requestDeleteBl(r)">删除</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="blacklistPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="target" label="目标" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.target }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="targetType" label="类型" width="88" sortable/>
+        <el-table-column label="拒绝登录" width="80">
+          <template #default="scope">
+              <template v-if="scope?.row">{{ scope.row.blockLogin ? "是" : "否" }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="拒绝调用" width="80">
+          <template #default="scope">
+              <template v-if="scope?.row">{{ scope.row.blockApi ? "是" : "否" }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="reason" label="原因" min-width="80" sortable/>
+        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
+        <el-table-column label="操作" width="112" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="onEditBlClick(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+              <el-button link type="danger" @click="requestDeleteBl(scope.row)">
+                <el-icon><Delete /></el-icon>
+                删除
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="blacklistPg.currentPage"
+        v-model:page-size="blacklistPg.pageSize"
+        :total="blacklistPg.total"
+      />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-blacklist-rows</code>；审计必填为二期。</p>
-    </section>
+    </el-card>
 
-    <!-- 实名 / 企业认证 -->
-    <section v-show="panel === 'kyc'" class="usr-page__panel" aria-label="实名与企业认证">
-      <AdminSectionHead title="实名 / 企业认证">
+    <el-card v-show="panel === 'kyc'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="实名与企业认证">
+      <AdminSectionHead toolbar-only title="实名 / 企业认证">
         <template #annot>
           <AdminInternalTip heading="实名 / 企业认证 · 原型" explain="KYC 对内说明（原型）">
             <p>材料与审核状态为占位；对接三方实名与人工审核流在工程期接入。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>申请记录与人工通过/拒绝示意；材料上传权限为二期（mock）。</template>
+        <template #tools>
+          <AdminListQuery
+            v-model:search="kycSearchQ"
+            :input-id="`${idPrefix}-usr-kyc-q`"
+            search-placeholder="记录 ID、用户、备注…"
+            search-aria-label="检索认证记录"
+            @reset="resetKycQuery"
+          >
+            <template #filters>
+              <el-select v-model="kycStatusFilter" clearable placeholder="状态" style="width: 7rem">
+                <el-option label="待审" value="待审" />
+                <el-option label="通过" value="通过" />
+                <el-option label="拒绝" value="拒绝" />
+              </el-select>
+            </template>
+          </AdminListQuery>
+        </template>
       </AdminSectionHead>
-      <div class="usr-page__table-wrap">
-        <table class="usr-page__table">
-          <thead>
-            <tr>
-              <th>记录 ID</th>
-              <th>用户 ID</th>
-              <th>类型</th>
-              <th>状态</th>
-              <th>提交</th>
-              <th>备注</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in kycRows" :key="r.id">
-              <td class="usr-page__mono">{{ r.id }}</td>
-              <td class="usr-page__mono">{{ r.userId }}</td>
-              <td>{{ r.kind }}</td>
-              <td><span :class="kycStatusClass(r.status)">{{ r.status }}</span></td>
-              <td>{{ r.submittedAt }}</td>
-              <td>{{ r.remark }}</td>
-              <td>
-                <template v-if="r.status === '待审'">
-                  <button type="button" class="usr-int__textlink" @click="openKycAudit('approve', r.id)">通过</button>
-                  <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="openKycAudit('reject', r.id)">
-                    拒绝
-                  </button>
+      <el-table :data="kycPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="id" label="记录 ID" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="userId" label="用户 ID" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.userId }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="kind" label="类型" width="96" sortable/>
+        <el-table-column label="状态" width="80">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span :class="kycStatusClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="submittedAt" label="提交" width="136" sortable/>
+        <el-table-column prop="remark" label="备注" min-width="80" sortable/>
+        <el-table-column label="操作" width="160" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <template v-if="scope.row.status === '待审'">
+                <el-button link type="primary" @click="openKycAudit('approve', scope.row.id)">通过</el-button>
+                <el-button link type="danger" @click="openKycAudit('reject', scope.row.id)">拒绝</el-button>
                 </template>
-                <button type="button" class="usr-int__textlink usr-int__textlink--danger" @click="requestDeleteKyc(r)">删除</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                <el-button link type="danger" @click="requestDeleteKyc(scope.row)">
+                  <el-icon><Delete /></el-icon>
+                  删除
+                </el-button>
+              </div>
+            </template>
+          </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="kycPg.currentPage"
+        v-model:page-size="kycPg.pageSize"
+        :total="kycPg.total"
+      />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-kyc-rows</code>。</p>
-    </section>
+    </el-card>
 
-    <Teleport to="body">
-      <div
-        v-show="userModalOpen"
-        class="or-modal-root usr-int-modal-host"
-        role="presentation"
-        :aria-hidden="!userModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeUserModal" />
-        <ModalPanel
-          :title="userModalMode === 'edit' ? '编辑用户' : '新增用户'"
-          :title-id="`${idPrefix}-usr-form-title`"
-          head-note="状态机：注册 → 验证 → 待审核 → 通过/拒绝（示意）。"
-          close-label="关闭"
-          @close="closeUserModal"
-        >
-          <div class="usr-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftUserEmail"
-              label="邮箱"
-              :input-id="`${idPrefix}-usr-em`"
-              :disabled="userModalMode === 'edit'"
-              placeholder="login@example.com"
-            />
-            <TTextField1Labeled v-model="draftUserName" label="展示名" :input-id="`${idPrefix}-usr-nm`" />
-            <TTextField1Labeled v-model="draftUserOrg" label="所属组织" :input-id="`${idPrefix}-usr-org`" placeholder="空则存为 —" />
-            <TTextField1Labeled v-model="draftUserPhone" label="手机（可选）" :input-id="`${idPrefix}-usr-ph`" />
-            <TTextField1Labeled
-              v-model="draftUserStatus"
-              label="状态"
-              :input-id="`${idPrefix}-usr-st`"
-              placeholder="正常 / 待审核 / 已拒绝 / 已冻结"
-            />
-          </div>
-          <p v-if="userFormError" class="usr-int-modal-err">{{ userFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeUserModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveUserModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="userModalOpen"
+      :title="userModalMode === 'edit' ? '编辑用户' : '新增用户'"
+      head-note="状态机：注册 → 验证 → 待审核 → 通过/拒绝（示意）。"
+    >
+      <el-form label-position="top" class="admin-ep-form usr-int-modal-grid">
+        <el-form-item label="邮箱">
+          <el-input
+            :id="`${idPrefix}-usr-em`"
+            v-model="draftUserEmail"
+            placeholder="login@example.com"
+            :disabled="userModalMode === 'edit'"
+          />
+        </el-form-item>
+        <el-form-item label="展示名">
+          <el-input :id="`${idPrefix}-usr-nm`" v-model="draftUserName" />
+        </el-form-item>
+        <el-form-item label="所属组织">
+          <el-input :id="`${idPrefix}-usr-org`" v-model="draftUserOrg" placeholder="空则存为 —" />
+        </el-form-item>
+        <el-form-item label="手机（可选）">
+          <el-input :id="`${idPrefix}-usr-ph`" v-model="draftUserPhone" />
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-input
+            :id="`${idPrefix}-usr-st`"
+            v-model="draftUserStatus"
+            placeholder="正常 / 待审核 / 已拒绝 / 已冻结"
+          />
+        </el-form-item>
+      </el-form>
+      <p v-if="userFormError" class="usr-int-modal-err">{{ userFormError }}</p>
+      <template #footer>
+        <el-button @click="closeUserModal">取消</el-button>
+        <el-button type="primary" @click="saveUserModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div v-show="wlModalOpen" class="or-modal-root usr-int-modal-host" role="presentation" :aria-hidden="!wlModalOpen">
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeWlModal" />
-        <ModalPanel
-          :title="wlEditingId ? '编辑白名单' : '新增白名单'"
-          :title-id="`${idPrefix}-usr-wl-title`"
-          close-label="关闭"
-          @close="closeWlModal"
-        >
-          <div class="usr-int-modal-grid">
-            <TTextField1Labeled v-model="draftWlPattern" label="规则" :input-id="`${idPrefix}-usr-wl-p`" placeholder="@corp.com 或 86139" />
-            <TTextField1Labeled
-              v-model="draftWlType"
-              label="类型"
-              :input-id="`${idPrefix}-usr-wl-t`"
-              placeholder="邮箱域名 或 手机号段"
-            />
-            <TTextField1Labeled v-model="draftWlNote" label="说明" :input-id="`${idPrefix}-usr-wl-n`" />
-            <div class="form-group form-group--row">
-              <input :id="`${idPrefix}-usr-wl-en`" v-model="draftWlEnabled" type="checkbox" />
-              <label :for="`${idPrefix}-usr-wl-en`">启用</label>
-            </div>
-          </div>
-          <p v-if="wlFormError" class="usr-int-modal-err">{{ wlFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeWlModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveWlModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="wlModalOpen" :title="wlEditingId ? '编辑白名单' : '新增白名单'">
+      <el-form label-position="top" class="admin-ep-form usr-int-modal-grid">
+        <el-form-item label="规则">
+          <el-input :id="`${idPrefix}-usr-wl-p`" v-model="draftWlPattern" placeholder="@corp.com 或 86139" />
+        </el-form-item>
+        <el-form-item label="类型">
+          <el-input :id="`${idPrefix}-usr-wl-t`" v-model="draftWlType" placeholder="邮箱域名 或 手机号段" />
+        </el-form-item>
+        <el-form-item label="说明">
+          <el-input :id="`${idPrefix}-usr-wl-n`" v-model="draftWlNote" />
+        </el-form-item>
+        <el-form-item>
+          <el-checkbox :id="`${idPrefix}-usr-wl-en`" v-model="draftWlEnabled">启用</el-checkbox>
+        </el-form-item>
+      </el-form>
+      <p v-if="wlFormError" class="usr-int-modal-err">{{ wlFormError }}</p>
+      <template #footer>
+        <el-button @click="closeWlModal">取消</el-button>
+        <el-button type="primary" @click="saveWlModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div v-show="blModalOpen" class="or-modal-root usr-int-modal-host" role="presentation" :aria-hidden="!blModalOpen">
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeBlModal" />
-        <ModalPanel
-          :title="blEditingId ? '编辑黑名单' : '新增黑名单'"
-          :title-id="`${idPrefix}-usr-bl-title`"
-          close-label="关闭"
-          @close="closeBlModal"
-        >
-          <div class="usr-int-modal-grid">
-            <TTextField1Labeled v-model="draftBlTarget" label="目标" :input-id="`${idPrefix}-usr-bl-tg`" />
-            <TTextField1Labeled
-              v-model="draftBlType"
-              label="类型"
-              :input-id="`${idPrefix}-usr-bl-ty`"
-              placeholder="邮箱 / 手机 / 用户ID"
-            />
-            <TTextField1Labeled v-model="draftBlReason" label="原因" :input-id="`${idPrefix}-usr-bl-rs`" />
-            <div class="form-group form-group--row">
-              <input :id="`${idPrefix}-usr-bl-lg`" v-model="draftBlLogin" type="checkbox" />
-              <label :for="`${idPrefix}-usr-bl-lg`">拒绝登录</label>
-            </div>
-            <div class="form-group form-group--row">
-              <input :id="`${idPrefix}-usr-bl-api`" v-model="draftBlApi" type="checkbox" />
-              <label :for="`${idPrefix}-usr-bl-api`">拒绝调用</label>
-            </div>
-          </div>
-          <p v-if="blFormError" class="usr-int-modal-err">{{ blFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeBlModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveBlModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="blModalOpen" :title="blEditingId ? '编辑黑名单' : '新增黑名单'">
+      <el-form label-position="top" class="admin-ep-form usr-int-modal-grid">
+        <el-form-item label="目标">
+          <el-input :id="`${idPrefix}-usr-bl-tg`" v-model="draftBlTarget" />
+        </el-form-item>
+        <el-form-item label="类型">
+          <el-input :id="`${idPrefix}-usr-bl-ty`" v-model="draftBlType" placeholder="邮箱 / 手机 / 用户ID" />
+        </el-form-item>
+        <el-form-item label="原因">
+          <el-input :id="`${idPrefix}-usr-bl-rs`" v-model="draftBlReason" />
+        </el-form-item>
+        <el-form-item>
+          <el-checkbox :id="`${idPrefix}-usr-bl-lg`" v-model="draftBlLogin">拒绝登录</el-checkbox>
+        </el-form-item>
+        <el-form-item>
+          <el-checkbox :id="`${idPrefix}-usr-bl-api`" v-model="draftBlApi">拒绝调用</el-checkbox>
+        </el-form-item>
+      </el-form>
+      <p v-if="blFormError" class="usr-int-modal-err">{{ blFormError }}</p>
+      <template #footer>
+        <el-button @click="closeBlModal">取消</el-button>
+        <el-button type="primary" @click="saveBlModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="auditModalOpen"
-        class="or-modal-root usr-int-modal-host"
-        role="presentation"
-        :aria-hidden="!auditModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeAuditModal" />
-        <ModalPanel
-          :title="auditModalTitle"
-          :title-id="`${idPrefix}-usr-audit-title`"
-          close-label="关闭"
-          @close="closeAuditModal"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ auditModalMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeAuditModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeAuditModal">{{ auditKind === "approve" ? "确认通过" : "确认拒绝" }}</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="auditModalOpen" :title="auditModalTitle">
+      <p class="or-keys-editor-banner" role="status">{{ auditModalMessage }}</p>
+      <template #footer>
+        <el-button @click="closeAuditModal">取消</el-button>
+        <el-button :type="auditKind === 'approve' ? 'primary' : 'danger'" @click="executeAuditModal">
+          {{ auditKind === "approve" ? "确认通过" : "确认拒绝" }}
+        </el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="kycAuditModalOpen"
-        class="or-modal-root usr-int-modal-host"
-        role="presentation"
-        :aria-hidden="!kycAuditModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeKycAuditModal" />
-        <ModalPanel
-          :title="kycAuditTitle"
-          :title-id="`${idPrefix}-usr-kyc-audit-title`"
-          close-label="关闭"
-          @close="closeKycAuditModal"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ kycAuditMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeKycAuditModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeKycAuditModal">
-              {{ kycAuditKind === "approve" ? "确认通过" : "确认拒绝" }}
-            </TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog v-model="kycAuditModalOpen" :title="kycAuditTitle">
+      <p class="or-keys-editor-banner" role="status">{{ kycAuditMessage }}</p>
+      <template #footer>
+        <el-button @click="closeKycAuditModal">取消</el-button>
+        <el-button :type="kycAuditKind === 'approve' ? 'primary' : 'danger'" @click="executeKycAuditModal">
+          {{ kycAuditKind === "approve" ? "确认通过" : "确认拒绝" }}
+        </el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="usrDangerOpen"
-        class="or-modal-root usr-int-modal-host"
-        role="presentation"
-        :aria-hidden="!usrDangerOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeUsrDanger" />
-        <ModalPanel
-          :title="usrDangerTitle"
-          :title-id="`${idPrefix}-usr-dg-title`"
-          head-note="原型将直接更新 localStorage。"
-          close-label="关闭"
-          @close="closeUsrDanger"
+    <AdminDialog v-model="usrDangerOpen" :title="usrDangerTitle" head-note="原型将直接更新 localStorage。">
+      <p class="or-keys-editor-banner" role="status">{{ usrDangerMessage }}</p>
+      <template #footer>
+        <el-button @click="closeUsrDanger">取消</el-button>
+        <el-button
+          :type="usrDangerKind === 'unfreeze-user' ? 'primary' : 'danger'"
+          @click="executeUsrDanger"
         >
-          <p class="or-keys-editor-banner" role="status">{{ usrDangerMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeUsrDanger">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeUsrDanger">{{ usrDangerPrimaryLabel }}</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+          {{ usrDangerPrimaryLabel }}
+        </el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

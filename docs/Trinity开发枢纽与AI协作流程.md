@@ -51,6 +51,7 @@
 - **独立运行**：根目录 **`npm run dev:trinity-ai-admin`** → **`http://localhost:5204`**（包 **`@trinity/app-trinity-ai-admin`**）。路由表见 **`apps/trinity-ai-admin/src/views/admin-shell/README.md`**。  
 - **门户内路径**：**`/trinity-ai-admin`**，与 **`Trinity AI`** 的 **`/trinity-ai`** 同理——父级挂 **`AdminShellLayout.vue`**，子路由由 **`apps/trinity-ai-admin/src/trinityAdminRoutes.ts`** 中 **`getTrinityAdminChildRoutes()`** 提供，供 **`apps/trinity-ai-admin/src/router/index.ts`** 与 **`apps/trinity-portal/src/router/index.ts`** 两处复用（避免与 `Home.vue` 等已删入口漂移）。  
 - **已实现子页（原型）**：**`/dashboard` 工作台**、**`/ops` 监控与运维**（`admin-ops/`）、**`/billing` 用量与计费**（`admin-billing/`）；其余 path 仍为 **`AdminStubPage.vue`**，见 **`admin-shell/README.md`** 路由表。  
+- **UI 组件库**：运营后台 **统一 Element Plus**（仅 `trinity-ai-admin`）；见 **`apps/trinity-ai-admin/README.md`** · UI 组件库。  
 - **扩展 admin 子路由（AI 操作清单）**  
   1. 改 **`ADMIN_NAV_TREE`**（`apps/trinity-ai-admin/src/views/admin-shell/adminNavTree.ts`）、**`moduleSecondaryPages.ts`** 与 **`getTrinityAdminChildRoutes()`**（`trinityAdminRoutes.ts`）。  
   2. 同步更新 **`apps/trinity-ai-admin/src/views/admin-shell/README.md`** 路由表。  
@@ -132,6 +133,13 @@
 - 改门户聚合时明确：**「只改 `apps/trinity-portal` 路由与 `App.vue` 导航；子页仍 living 在各自 app」**。  
 - 要求 AI **改完后在仓库根执行** `npm run build -w @trinity/app-portal` 与（若动到设计站）`npm run build -w @trinity/app-trinity-design`。
 
+### 6.1 每周一 · 周记（上交格式）
+
+- **目录与约定**：[`docs/周记/README.md`](./周记/README.md)（每周**一个文件** **`YYYY-Www.md`**，ISO 周；周一写**上一周**）。  
+- **新建**：复制 [`docs/周记/_template.md`](./周记/_template.md) → `docs/周记/YYYY-Www.md`。  
+- **同一文件两段**：**`## 简版（上交）`**（仅业务表述，复制整节提交）→ **`## 详细版`**（存档，勿上交；不写「维护周记」类协作话）。  
+- **滚动清单**：[`docs/设计待办.md`](./设计待办.md)、[`docs/产品管理随手记.md`](./产品管理随手记.md) 仍在原文件维护；周记可不写或一句带过。
+
 ---
 
 ## 7. 相关文件索引
@@ -149,6 +157,7 @@
 | apps 一览 | `apps/README.md` |
 | Vue 原型五件套与二次开发流程 | `docs/Trinity原型模块目录与交付规范.md`（**§6.1**）、`docs/Trinity原型形态对比与AI友好交付.md` |
 | Vue 设计枢纽与迁移计划 | `docs/Trinity设计规范与设计色板Vue迁移计划.md` |
+| **每周一周记**（`YYYY-Www.md` · 简版 + 详细版） | `docs/周记/README.md`、`docs/周记/_template.md` |
 
 ---
 
@@ -156,6 +165,7 @@
 
 | 日期 | 说明 |
 |------|------|
+| 2026-05-18 | **§6.1** 周记：单文件 **`YYYY-Www.md`** 含 **简版（上交）+ 详细版**；`docs/周记/README.md`、`_template.md`、首篇 `2026-W20.md`。 |
 | 2026-05-11 | §3.1：补充 **已实现子页**（dashboard / ops / billing）；门户子路由表 **ops、billing** 从「占位」改为实页说明。 |
 | 2026-05-11 | §2：增加 **`dev:trinity-ai-admin`**（:5204）；新增 **§3.1**（`trinity-ai-admin` 门户嵌套、`getTrinityAdminChildRoutes`、子路由表）；§7 索引增加 `trinityAdminRoutes`；门户 **`App.vue`** 对 `/trinity-ai-admin` 使用 **`startsWith`** 高亮。 |
 | 2026-05-14 | §6：增补 **trinity-ai 迭代/二次开发** 提示——先读模块 README 与交付规范 **§6.1**；§7 索引增加五件套与二次开发文档链。 |

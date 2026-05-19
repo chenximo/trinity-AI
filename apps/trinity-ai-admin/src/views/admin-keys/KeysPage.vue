@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, useId, watch, watchEffect } from "vue";
+import { Delete, Lock, Unlock, View } from "@element-plus/icons-vue";
+import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import {
-  FilterForm2PillListbox,
-  type FilterForm2ListboxItem,
-  ModalPanel,
-  TButton,
-  TSearchForm1Fixed,
-  TTextField1Labeled,
-} from "@trinity/ui";
+import AdminDateRangePicker from "../../components/AdminDateRangePicker.vue";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { type AdminDateRange, isWithinAdminDateRange } from "../../utils/adminDateRange";
+import { filterByQuery, uniqueFieldValues } from "../../utils/adminListFilter";
 import "./keys.css";
 import {
   DEFAULT_KEY_AUDIT_ROWS,
@@ -25,7 +25,6 @@ import {
   readKeysFilterOrg,
   readKeysRowsJson,
   readKeysSearchQ,
-  setKeysModalBodyLock,
   writeKeyAuditJson,
   writeKeysFilterOrg,
   writeKeysRowsJson,
@@ -45,7 +44,9 @@ const keyRows = ref<PlatformKeyRow[]>([]);
 const auditRows = ref<KeyAuditRow[]>([]);
 const searchQ = ref("");
 const filterOrg = ref("");
-const orgFilterOpen = ref(false);
+const auditSearchQ = ref("");
+const auditActionFilter = ref("");
+const auditDateRange = ref<AdminDateRange | null>(null);
 const detailCardOpen = ref(false);
 const detailCardKeyId = ref("");
 
@@ -84,54 +85,42 @@ const uniqueOrgs = computed(() => {
   return [...m.entries()].map(([id, name]) => ({ id, name }));
 });
 
-const orgListboxItems = computed<FilterForm2ListboxItem[]>(() => {
-  const v = filterOrg.value;
-  return [
-    { label: "全部组织", checked: v === "" },
-    ...uniqueOrgs.value.map((o) => ({
-      label: o.name,
-      checked: v === o.id,
-    })),
-  ];
-});
-
-const orgPillLabel = computed(() => {
-  if (!filterOrg.value) return "客户组织";
-  return uniqueOrgs.value.find((o) => o.id === filterOrg.value)?.name ?? "客户组织";
-});
-
-function onOrgListboxSelect(i: number): void {
-  if (i === 0) {
-    filterOrg.value = "";
-    return;
-  }
-  const org = uniqueOrgs.value[i - 1];
-  filterOrg.value = org?.id ?? "";
-}
-
 const detailRow = computed(
   () => keyRows.value.find((r) => r.id === detailCardKeyId.value) ?? null
 );
 
 const filteredKeys = computed(() => {
-  const q = searchQ.value.trim().toLowerCase();
-  const org = filterOrg.value.trim();
   let rows = keyRows.value;
-  if (org) rows = rows.filter((r) => r.orgId === org);
-  if (!q) return rows;
-  return rows.filter((r) => {
-    const tagStr = r.tags.join(" ").toLowerCase();
-    return (
-      r.id.toLowerCase().includes(q) ||
-      r.displayName.toLowerCase().includes(q) ||
-      r.fingerprintPrefix.toLowerCase().includes(q) ||
-      r.orgName.toLowerCase().includes(q) ||
-      r.projectName.toLowerCase().includes(q) ||
-      r.creatorLogin.toLowerCase().includes(q) ||
-      tagStr.includes(q)
-    );
-  });
+  if (filterOrg.value) rows = rows.filter((r) => r.orgId === filterOrg.value);
+  return filterByQuery(rows, searchQ.value, (r) =>
+    [r.id, r.displayName, r.fingerprintPrefix, r.orgName, r.projectName, r.creatorLogin, r.tags.join(" ")].join(" "),
+  );
 });
+
+const auditActionOptions = computed(() => uniqueFieldValues(auditRows.value, (r) => r.action));
+
+const filteredAuditRows = computed(() => {
+  let rows = auditRows.value;
+  if (auditActionFilter.value) rows = rows.filter((r) => r.action === auditActionFilter.value);
+  if (auditDateRange.value) {
+    rows = rows.filter((r) => isWithinAdminDateRange(r.at, auditDateRange.value));
+  }
+  return filterByQuery(rows, auditSearchQ.value, (r) =>
+    [r.at, r.actor, r.action, r.keyLabel, r.keyId, r.detail].join(" "),
+  );
+});
+
+function resetKeysQuery(): void {
+  filterOrg.value = "";
+}
+
+function resetAuditKeyQuery(): void {
+  auditActionFilter.value = "";
+  auditDateRange.value = null;
+}
+
+const keysPg = useAdminTablePagination(filteredKeys);
+const auditPg = useAdminTablePagination(filteredAuditRows);
 
 function statusBadgeClass(s: PlatformKeyRow["status"]): string {
   if (s === "正常") return "key-page__badge key-page__badge--ok";
@@ -285,6 +274,8 @@ function onExportAuditClick(): void {
   });
 }
 
+const detailDialogTitle = computed(() => detailRow.value?.displayName ?? "密钥详情");
+
 function onViewDetailAudit(): void {
   const row = detailRow.value;
   if (!row) return;
@@ -298,279 +289,289 @@ function onViewDetailAudit(): void {
   });
 }
 
-watchEffect(() => {
-  setKeysModalBodyLock(dangerOpen.value || detailCardOpen.value);
-});
 </script>
 
 <template>
   <div class="key-page">
     <!-- API 列表 -->
     <section v-show="panel === 'list'" class="key-page__panel" aria-label="API 列表">
-      <AdminSectionHead title="API 列表">
-        <template #annot>
-          <AdminInternalTip heading="API 列表 · 原型" explain="API 列表页对内说明（原型）">
-            <p>
-              列表为<strong>平台运营视角</strong>：指纹、最近调用等为脱敏/mock；行内冻结/吊销会写入本地 mock 与「审计轨迹」。与门户侧用户自助密钥形态可能不一致。
-            </p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>集中检索、按组织筛选；详情/冻结/吊销（<strong>§4.8</strong>，mock）。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="searchQ"
-            :input-id="`${idPrefix}-key-search`"
-            placeholder="指纹前缀、名称、客户、项目、创建人、标签…"
-            width="18rem"
-            aria-label="检索 API 密钥"
-          />
-          <FilterForm2PillListbox
-            v-model:open="orgFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-key-org-wrap`"
-            :btn-id="`${idPrefix}-key-org-btn`"
-            :panel-id="`${idPrefix}-key-org-panel`"
-            :label-span-id="`${idPrefix}-key-org-lbl`"
-            listbox-aria-label="按客户组织筛选"
-            panel-align="end"
-            :items="orgListboxItems"
-            @select="onOrgListboxSelect"
-          >
-            {{ orgPillLabel }}
-          </FilterForm2PillListbox>
-        </template>
-      </AdminSectionHead>
-      <div class="key-page__table-wrap">
-        <table class="key-page__table">
-          <thead>
-            <tr>
-              <th>密钥名</th>
-              <th>指纹（脱敏）</th>
-              <th>客户 / 项目</th>
-              <th>创建人</th>
-              <th>状态</th>
-              <th>最近调用</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredKeys" :key="r.id">
-              <td>{{ r.displayName }}</td>
-              <td class="key-page__mono">{{ r.fingerprintPrefix }}</td>
-              <td>
-                {{ r.orgName }}
-                <br />
-                <span class="key-page__mono key-page__muted">{{ r.projectName }}</span>
-              </td>
-              <td class="key-page__mono">{{ r.creatorLogin }}</td>
-              <td><span :class="statusBadgeClass(r.status)">{{ r.status }}</span></td>
-              <td>
-                {{ r.lastCallAt }}
-                <br />
-                <span class="key-page__muted" style="font-size: 0.6875rem">{{ r.lastCallModel }} · {{ r.lastRegion }}</span>
-              </td>
-              <td>
-                <div class="key-page__ops" @click.stop>
-                  <button type="button" class="key-int__textlink" @click="openDetailCard(r)">查看详情</button>
-                  <button
-                    v-if="r.status === '正常'"
-                    type="button"
-                    class="key-int__textlink"
-                    @click="openDanger('freeze', r)"
-                  >
-                    冻结
-                  </button>
-                  <button
-                    v-if="r.status === '已冻结'"
-                    type="button"
-                    class="key-int__textlink"
-                    @click="openDanger('unfreeze', r)"
-                  >
-                    解冻
-                  </button>
-                  <button
-                    v-if="r.status !== '已吊销'"
-                    type="button"
-                    class="key-int__textlink key-int__textlink--danger"
-                    @click="openDanger('revoke', r)"
-                  >
-                    吊销
-                  </button>
-                  <span v-if="r.status === '已吊销'" class="key-page__muted" style="font-size: 0.6875rem; color: var(--muted-2)">已终态</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="key-page__hint">
-        操作列「查看详情」以卡片弹层展示（脱敏）。状态：<strong>正常</strong> ⇄ <strong>已冻结</strong>；<strong>吊销</strong>为终态。
-      </p>
+      <el-card shadow="never" class="admin-ep-card key-page__panel">
+        <AdminSectionHead toolbar-only title="API 列表">
+          <template #annot>
+            <AdminInternalTip heading="API 列表 · 原型" explain="API 列表页对内说明（原型）">
+              <p>
+                列表为<strong>平台运营视角</strong>：指纹、最近调用等为脱敏/mock；行内冻结/吊销会写入本地 mock 与「审计轨迹」。与门户侧用户自助密钥形态可能不一致。
+              </p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="searchQ"
+              :input-id="`${idPrefix}-key-search`"
+              search-placeholder="指纹前缀、名称、客户、项目、创建人、标签…"
+              search-aria-label="检索 API 密钥"
+              @reset="resetKeysQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="filterOrg"
+                  filterable
+                  clearable
+                  placeholder="客户组织"
+                  aria-label="按客户组织筛选"
+                  style="width: 10rem"
+                >
+                  <el-option v-for="o in uniqueOrgs" :key="o.id" :label="o.name" :value="o.id" />
+                </el-select>
+              </template>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table
+          :data="keysPg.paginatedRows"
+          row-key="id"
+          class="admin-ep-table-wrap"
+          style="width: 100%"
+          :default-sort="{ prop: 'lastCallAt', order: 'descending' }"
+        >
+          <el-table-column prop="displayName" label="密钥名" min-width="120" sortable/>
+          <el-table-column prop="fingerprintPrefix" label="指纹（脱敏）" min-width="120" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="key-page__mono">{{ scope.row.fingerprintPrefix }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="orgName" label="客户 / 项目" min-width="140" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              {{ scope.row.orgName }}
+              <br />
+              <span class="key-page__mono key-page__muted">{{ scope.row.projectName }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="creatorLogin" label="创建人" min-width="100" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="key-page__mono">{{ scope.row.creatorLogin }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="status" label="状态" width="100" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span :class="statusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="lastCallAt" label="最近调用" min-width="140" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              {{ scope.row.lastCallAt }}
+              <br />
+              <span class="key-page__muted" style="font-size: 0.6875rem">{{ scope.row.lastCallModel }} · {{ scope.row.lastRegion }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column label="操作" width="300" fixed="right">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <div class="admin-ep-row-actions" @click.stop>
+                <el-button link type="primary" :icon="View" @click="openDetailCard(scope.row)">查看详情</el-button>
+                <el-button v-if="scope.row.status === '正常'" link type="primary" :icon="Lock" @click="openDanger('freeze', scope.row)">
+                  冻结
+                </el-button>
+                <el-button v-if="scope.row.status === '已冻结'" link type="primary" :icon="Unlock" @click="openDanger('unfreeze', scope.row)">
+                  解冻
+                </el-button>
+                <el-button v-if="scope.row.status !== '已吊销'" link type="danger" :icon="Delete" @click="openDanger('revoke', scope.row)">
+                  吊销
+                </el-button>
+                <span v-if="scope.row.status === '已吊销'" class="key-page__muted" style="font-size: 0.6875rem; color: var(--muted-2)">已终态</span>
+              </div>
+              </template>
+            </template>
+          </el-table-column>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="keysPg.currentPage"
+          v-model:page-size="keysPg.pageSize"
+          :total="keysPg.total"
+        />
+      </el-card>
     </section>
 
     <!-- 审计轨迹 -->
     <section v-show="panel === 'audit'" class="key-page__panel" aria-label="审计轨迹">
-      <AdminSectionHead title="审计轨迹">
-        <template #annot>
-          <AdminInternalTip heading="审计轨迹 · 原型" explain="密钥审计页对内说明（原型）">
-            <p>
-              导出为示意 CSV；保留周期与合规要求见 <strong>§4.13</strong>。本表由前端追加行，非真实审计仓。
-            </p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>密钥相关操作留痕与导出（mock）。</template>
-        <template #tools>
-          <TButton variant="outline" type="button" @click="onExportAuditClick">导出审计 CSV（示意）</TButton>
-        </template>
-      </AdminSectionHead>
-      <div class="key-page__table-wrap">
-        <table class="key-page__table">
-          <thead>
-            <tr>
-              <th>时间</th>
-              <th>操作人</th>
-              <th>动作</th>
-              <th>密钥</th>
-              <th>说明</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="a in auditRows" :key="a.id">
-              <td class="key-page__mono">{{ a.at }}</td>
-              <td class="key-page__mono">{{ a.actor }}</td>
-              <td>{{ a.action }}</td>
-              <td>{{ a.keyLabel }}<br /><span class="key-page__mono key-page__muted">{{ a.keyId }}</span></td>
-              <td>{{ a.detail }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="key-page__hint">合规导出与保留周期见 <strong>§4.13</strong>；本表为前端追加示意。</p>
+      <el-card shadow="never" class="admin-ep-card key-page__panel">
+        <AdminSectionHead toolbar-only title="审计轨迹">
+          <template #annot>
+            <AdminInternalTip heading="审计轨迹 · 原型" explain="密钥审计页对内说明（原型）">
+              <p>
+                导出为示意 CSV；保留周期与合规要求见 <strong>§4.13</strong>。本表由前端追加行，非真实审计仓。
+              </p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="auditSearchQ"
+              :input-id="`${idPrefix}-key-audit-q`"
+              search-placeholder="操作人、动作、密钥、说明…"
+              search-aria-label="检索密钥审计"
+              @reset="resetAuditKeyQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="auditActionFilter"
+                  clearable
+                  placeholder="动作"
+                  aria-label="按动作筛选"
+                  style="width: 7rem"
+                >
+                  <el-option v-for="a in auditActionOptions" :key="a" :label="a" :value="a" />
+                </el-select>
+              </template>
+              <AdminDateRangePicker v-model="auditDateRange" aria-label="密钥审计时间范围" />
+              <el-button @click="onExportAuditClick">导出 CSV（示意）</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table
+          :data="auditPg.paginatedRows"
+          row-key="id"
+          class="admin-ep-table-wrap"
+          style="width: 100%"
+          :default-sort="{ prop: 'at', order: 'descending' }"
+        >
+          <el-table-column prop="at" label="时间" min-width="130" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="key-page__mono">{{ scope.row.at }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="actor" label="操作人" min-width="100" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="key-page__mono">{{ scope.row.actor }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="action" label="动作" min-width="90" sortable/>
+          <el-table-column prop="keyLabel" label="密钥" min-width="140" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+              {{ scope.row.keyLabel }}
+              <br />
+              <span class="key-page__mono key-page__muted">{{ scope.row.keyId }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="detail" label="说明" min-width="200" show-overflow-tooltip sortable/>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="auditPg.currentPage"
+          v-model:page-size="auditPg.pageSize"
+          :total="auditPg.total"
+        />
+      </el-card>
     </section>
 
-    <Teleport to="body">
-      <div
-        v-show="detailCardOpen"
-        class="or-modal-root key-int-modal-host"
-        role="presentation"
-        :aria-hidden="!detailCardOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeDetailCard" />
-        <ModalPanel
-          v-if="detailRow"
-          :title="detailRow.displayName"
-          :title-id="`${idPrefix}-key-detail-title`"
-          head-note="完整密钥串不可常驻展示；明文仅在强审批下短时开放（若政策允许）。"
-          close-label="关闭"
-          @close="closeDetailCard"
-        >
-          <template #headTrail>
-            <AdminInternalTip heading="详情弹层 · 对内" explain="密钥详情 Modal 顶栏对内说明（原型）">
-              <p>
-                顶栏<strong>下</strong>灰字为对用户可见提示；本 ⓘ 为<strong>对内标注</strong>（对齐 <code>#ds-internal-tip</code>）。字段为原型占位，工程期与网关/计费对账。
-              </p>
-            </AdminInternalTip>
-          </template>
-          <div class="key-page__detail-grid">
-            <div>
-              <div class="key-page__detail-k">密钥 ID</div>
-              <p class="key-page__detail-v key-page__mono">{{ detailRow.id }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">显示名</div>
-              <p class="key-page__detail-v">{{ detailRow.displayName }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">指纹（脱敏）</div>
-              <p class="key-page__detail-v key-page__mono">{{ detailRow.fingerprintPrefix }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">状态</div>
-              <p class="key-page__detail-v">
-                <span :class="statusBadgeClass(detailRow.status)">{{ detailRow.status }}</span>
-              </p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">客户组织</div>
-              <p class="key-page__detail-v">{{ detailRow.orgName }}（{{ detailRow.orgId }}）</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">项目</div>
-              <p class="key-page__detail-v">{{ detailRow.projectName }}（{{ detailRow.projectId }}）</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">创建人</div>
-              <p class="key-page__detail-v key-page__mono">{{ detailRow.creatorLogin }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">创建时间</div>
-              <p class="key-page__detail-v">{{ detailRow.createdAt }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">最近调用</div>
-              <p class="key-page__detail-v">{{ detailRow.lastCallAt }} · {{ detailRow.lastCallModel }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">最近地域</div>
-              <p class="key-page__detail-v">{{ detailRow.lastRegion }}</p>
-            </div>
-            <div>
-              <div class="key-page__detail-k">标签</div>
-              <p class="key-page__detail-v">{{ detailRow.tags.join("、") || "—" }}</p>
-            </div>
-          </div>
-          <template #actions>
-            <TButton type="button" @click="closeDetailCard">关闭</TButton>
-            <TButton variant="outline" type="button" @click="onViewDetailAudit">记录查看审计（示意）</TButton>
-            <TButton variant="gradient" type="button" disabled>申请明文查看（占位）</TButton>
-          </template>
-        </ModalPanel>
+    <AdminDialog
+      v-model="detailCardOpen"
+      :title="detailDialogTitle"
+      width="640px"
+      head-note="完整密钥串不可常驻展示；明文仅在强审批下短时开放（若政策允许）。"
+    >
+      <AdminInternalTip heading="详情弹层 · 对内" explain="密钥详情 Modal 顶栏对内说明（原型）">
+        <p>
+          顶栏<strong>下</strong>灰字为对用户可见提示；本 ⓘ 为<strong>对内标注</strong>（对齐 <code>#ds-internal-tip</code>）。字段为原型占位，工程期与网关/计费对账。
+        </p>
+      </AdminInternalTip>
+      <div v-if="detailRow" class="key-page__detail-grid">
+        <div>
+          <div class="key-page__detail-k">密钥 ID</div>
+          <p class="key-page__detail-v key-page__mono">{{ detailRow.id }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">显示名</div>
+          <p class="key-page__detail-v">{{ detailRow.displayName }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">指纹（脱敏）</div>
+          <p class="key-page__detail-v key-page__mono">{{ detailRow.fingerprintPrefix }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">状态</div>
+          <p class="key-page__detail-v">
+            <span :class="statusBadgeClass(detailRow.status)">{{ detailRow.status }}</span>
+          </p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">客户组织</div>
+          <p class="key-page__detail-v">{{ detailRow.orgName }}（{{ detailRow.orgId }}）</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">项目</div>
+          <p class="key-page__detail-v">{{ detailRow.projectName }}（{{ detailRow.projectId }}）</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">创建人</div>
+          <p class="key-page__detail-v key-page__mono">{{ detailRow.creatorLogin }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">创建时间</div>
+          <p class="key-page__detail-v">{{ detailRow.createdAt }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">最近调用</div>
+          <p class="key-page__detail-v">{{ detailRow.lastCallAt }} · {{ detailRow.lastCallModel }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">最近地域</div>
+          <p class="key-page__detail-v">{{ detailRow.lastRegion }}</p>
+        </div>
+        <div>
+          <div class="key-page__detail-k">标签</div>
+          <p class="key-page__detail-v">{{ detailRow.tags.join("、") || "—" }}</p>
+        </div>
       </div>
-    </Teleport>
+      <template #footer>
+        <el-button @click="closeDetailCard">关闭</el-button>
+        <el-button @click="onViewDetailAudit">记录查看审计（示意）</el-button>
+        <el-button type="primary" disabled>申请明文查看（占位）</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="dangerOpen"
-        class="or-modal-root key-int-modal-host"
-        role="presentation"
-        :aria-hidden="!dangerOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeDanger" />
-        <ModalPanel
-          :title="dangerTitle"
-          :title-id="`${idPrefix}-key-danger-title`"
-          head-note="危险操作二次确认；原型直接写 localStorage 并追加审计。"
-          close-label="关闭"
-          @close="closeDanger"
-        >
-          <template #headTrail>
-            <AdminInternalTip heading="危险操作 · 对内" explain="冻结吊销确认 Modal 对内说明（原型）">
-              <p>
-                与 <code>head-note</code> 分工：<strong>head-note</strong> 给用户短提示；本 ⓘ 说明原型写库与审计追加逻辑，上线前可随 <code>data-trinity-internal-annotation</code> 剥离。
-              </p>
-            </AdminInternalTip>
-          </template>
-          <p class="or-keys-editor-banner" role="status">{{ dangerMessage }}</p>
-          <TTextField1Labeled
+    <AdminDialog
+      v-model="dangerOpen"
+      :title="dangerTitle"
+      width="560px"
+      head-note="危险操作二次确认；原型直接写 localStorage 并追加审计。"
+    >
+      <AdminInternalTip heading="危险操作 · 对内" explain="冻结吊销确认 Modal 对内说明（原型）">
+        <p>
+          与 <code>head-note</code> 分工：<strong>head-note</strong> 给用户短提示；本 ⓘ 说明原型写库与审计追加逻辑，上线前可随 <code>data-trinity-internal-annotation</code> 剥离。
+        </p>
+      </AdminInternalTip>
+      <p class="or-keys-editor-banner" role="status">{{ dangerMessage }}</p>
+      <el-form label-position="top" class="admin-ep-form">
+        <el-form-item label="原因 / 备注（可选）">
+          <el-input
+            :id="`${idPrefix}-key-danger-note`"
             v-model="draftDangerNote"
-            label="原因 / 备注（可选）"
-            :input-id="`${idPrefix}-key-danger-note`"
             placeholder="如：客户工单号、风控单号"
           />
-          <template #actions>
-            <TButton type="button" @click="closeDanger">取消</TButton>
-            <button
-              v-if="dangerKind === 'revoke' || dangerKind === 'freeze'"
-              type="button"
-              class="key-page__btn-danger"
-              @click="executeDanger"
-            >
-              {{ dangerKind === "revoke" ? "确认吊销" : "确认冻结" }}
-            </button>
-            <TButton v-else variant="gradient" type="button" @click="executeDanger">确认解冻</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="closeDanger">取消</el-button>
+        <el-button v-if="dangerKind === 'revoke' || dangerKind === 'freeze'" type="danger" @click="executeDanger">
+          {{ dangerKind === "revoke" ? "确认吊销" : "确认冻结" }}
+        </el-button>
+        <el-button v-else type="primary" @click="executeDanger">确认解冻</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

@@ -11,10 +11,11 @@ import KeysPage from "./views/admin-keys/KeysPage.vue";
 import CustomersPage from "./views/admin-customers/CustomersPage.vue";
 import SystemPage from "./views/admin-system/SystemPage.vue";
 import DocsPage from "./views/admin-docs/DocsPage.vue";
+import ReportsPage from "./views/admin-reports/ReportsPage.vue";
 import { ADMIN_ALL_MODULE_BASES } from "./views/admin-shell/adminNavTree";
 import { OPS_TABS } from "./views/admin-ops/mock";
 import { BILLING_TABS } from "./views/admin-billing/mock";
-import { SECONDARY_PAGES_BY_ROUTE_NAME } from "./views/admin-shell/moduleSecondaryPages";
+import { defaultSecondaryRouteName, getValidSecondaryPages } from "./views/admin-shell/moduleSecondaryPages";
 
 /**
  * 运营后台子路由表：供独立 `apps/trinity-ai-admin` 与 `apps/trinity-portal` 下 **`/trinity-ai-admin`** 嵌套复用。
@@ -90,9 +91,12 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
   routes.push({ path: "keys/freeze", redirect: { name: "tai-admin-keys-list" } });
   routes.push({ path: "keys/risk", redirect: { name: "tai-admin-keys-list" } });
 
+  /** 旧书签：错误二级 id */
+  routes.push({ path: "reports/undefined", redirect: { name: "tai-admin-reports-preset" } });
+
   for (const mod of ADMIN_ALL_MODULE_BASES) {
-    const secondaries = SECONDARY_PAGES_BY_ROUTE_NAME[mod.parentRouteName];
-    if (!secondaries?.length) continue;
+    const secondaries = getValidSecondaryPages(mod.parentRouteName);
+    if (!secondaries.length) continue;
     const PageComponent =
       mod.pathBase === "suppliers"
         ? SuppliersPage
@@ -110,7 +114,9 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
                     ? SystemPage
                     : mod.pathBase === "docs"
                       ? DocsPage
-                      : AdminStubPage;
+                      : mod.pathBase === "reports"
+                        ? ReportsPage
+                        : AdminStubPage;
     for (const sec of secondaries) {
       routes.push({
         path: `${mod.pathBase}/${sec.id}`,
@@ -126,11 +132,14 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
         },
       });
     }
-    routes.push({
-      path: mod.pathBase,
-      name: mod.parentRouteName,
-      redirect: { name: `${mod.parentRouteName}-${secondaries[0].id}` },
-    });
+    const defaultChild = defaultSecondaryRouteName(mod.parentRouteName);
+    if (defaultChild) {
+      routes.push({
+        path: mod.pathBase,
+        name: mod.parentRouteName,
+        redirect: { name: defaultChild },
+      });
+    }
   }
 
   return routes;

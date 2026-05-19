@@ -1,0 +1,163 @@
+/**
+ * 若依/RuoYi 类后台布局（Element Plus）。
+ * 作用域：`.admin-shell` 内业务页。
+ */
+
+.admin-shell .admin-ep-card {
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-shell .admin-ep-card .el-card__body {
+  padding: 0.75rem 0.85rem 0.85rem;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-shell .admin-ep-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.admin-shell .admin-ep-toolbar .admin-ep-search {
+  margin-right: auto;
+}
+
+.admin-shell .admin-ep-table-wrap {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 10rem;
+  overflow: auto;
+}
+
+.admin-shell .admin-ep-table-wrap.el-table,
+.admin-shell .admin-ep-table-wrap .el-table {
+  width: 100%;
+  --el-table-border-color: var(--admin-table-row-border);
+  --el-table-header-bg-color: var(--admin-table-header-bg);
+  --el-table-header-text-color: var(--admin-table-header-text);
+  --el-table-row-hover-bg-color: var(--admin-table-row-hover);
+  background: var(--admin-surface, #fff);
+}
+
+/* 若依式：仅横线分隔，无竖线/外框网格 */
+.admin-shell .admin-ep-table-wrap.el-table::before,
+.admin-shell .admin-ep-table-wrap .el-table::before,
+.admin-shell .admin-ep-table-wrap .el-table__inner-wrapper::before {
+  display: none;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table__header-wrapper {
+  background-color: var(--admin-table-header-bg);
+}
+
+.admin-shell .admin-ep-table-wrap .el-table__header th.el-table__cell {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--admin-table-header-text, #606266);
+  background-color: var(--admin-table-header-bg, #f5f7fa) !important;
+  border-bottom: 1px solid var(--admin-table-row-border, #ebeef5);
+  border-right: none !important;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table__header th.el-table__cell .cell {
+  color: var(--admin-table-header-text, #606266) !important;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table td.el-table__cell {
+  border-right: none !important;
+  border-bottom: 1px solid var(--admin-table-row-border, #ebeef5);
+}
+
+.admin-shell .admin-ep-table-wrap .el-table tr:last-child td.el-table__cell {
+  border-bottom: none;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table .el-table__body tr:hover > td.el-table__cell {
+  background: var(--admin-table-row-hover, #f5f7fa) !important;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table .el-table__body tr.el-table__row--striped > td.el-table__cell {
+  background: transparent !important;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table .cell {
+  line-height: 1.45;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+/* 表头排序：若依式灰色箭头 */
+.admin-shell .admin-ep-table-wrap .el-table th.el-table__cell.is-sortable .cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table .caret-wrapper {
+  height: 0.875rem;
+}
+
+/* 旧版大段 callout 不再占主区（说明收进 ⓘ 气泡） */
+.admin-shell .admin-ep-card .sys-page__callout {
+  display: none;
+}
+
+/* 卡片底说明：弱化，避免与工具栏抢视线 */
+.admin-shell .admin-ep-card [class$="-page__hint"] {
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--el-border-color-lighter);
+  font-size: 0.6875rem;
+  color: var(--admin-muted-2, var(--muted-2));
+}
+
+.admin-shell .admin-ep-form .el-form-item {
+  margin-bottom: 0.85rem;
+}
+
+.admin-shell .admin-ep-form .el-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.admin-shell .admin-ep-dialog .el-dialog__header {
+  margin-right: 0;
+  padding-bottom: 0.35rem;
+}
+
+.admin-shell .admin-ep-tip-popper {
+  max-width: min(20rem, calc(100vw - 2rem));
+}
+
+/* 行内操作列：图标 + 文字（若依默认密度） */
+.admin-shell .admin-ep-row-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+}
+
+.admin-shell .admin-ep-row-actions .el-button.is-link {
+  padding: 0 0.25rem;
+  height: auto;
+  font-size: 0.75rem;
+}
+
+.admin-shell .admin-ep-row-actions .el-button.is-link + .el-button.is-link {
+  margin-left: 0;
+}

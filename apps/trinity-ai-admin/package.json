@@ -8,12 +8,18 @@
     "preview": "vite preview --port 5204"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@trinity/element-plus": "*",
     "@trinity/tokens": "*",
-    "@trinity/ui": "*",
     "dompurify": "^3.4.3",
     "marked": "^18.0.3",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
+  },
+  "exports": {
+    "./installAdminStyles": "./src/installAdminStyles.ts",
+    "./installAdminUi": "./src/installAdminUi.ts",
+    "./trinityAdminRoutes": "./src/trinityAdminRoutes.ts"
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.5",

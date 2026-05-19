@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, useId, watch, watchEffect } from "vue";
+import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import { ModalPanel, TButton, TSearchForm1Fixed, TTextField1Labeled } from "@trinity/ui";
+import { Edit, Setting } from "@element-plus/icons-vue";
+import AdminDateRangePicker from "../../components/AdminDateRangePicker.vue";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { type AdminDateRange, isWithinAdminDateRange } from "../../utils/adminDateRange";
+import { filterByQuery, uniqueFieldValues } from "../../utils/adminListFilter";
 import "./system.css";
 import {
   AUDIT_RETENTION_NOTE,
@@ -27,7 +34,6 @@ import {
   readFeatureFlagsJson,
   readGlobalParamsJson,
   readSensitiveRulesJson,
-  setSystemModalBodyLock,
   writeAuditFilter,
   writeAuditRowsJson,
   writeExportApprovalsJson,
@@ -46,6 +52,17 @@ const panel = computed<SystemPanelId>(() => {
 });
 
 const auditFilter = ref("");
+const auditModuleFilter = ref("");
+const auditDateRange = ref<AdminDateRange | null>(null);
+const sensitiveSearchQ = ref("");
+const sensitiveEnabledFilter = ref("");
+const exportSearchQ = ref("");
+const exportStatusFilter = ref("");
+const exportDateRange = ref<AdminDateRange | null>(null);
+const flagSearchQ = ref("");
+const flagEnvFilter = ref("");
+const globalSearchQ = ref("");
+const globalCategoryFilter = ref("");
 const auditRows = ref<AuditLogRow[]>([]);
 const sensitiveRows = ref<SensitiveRuleRow[]>([]);
 const exportRows = ref<ExportApprovalRow[]>([]);
@@ -109,14 +126,76 @@ function persistGlobal(): void {
   writeGlobalParamsJson(JSON.stringify(globalRows.value));
 }
 
+const auditModuleOptions = computed(() => uniqueFieldValues(auditRows.value, (r) => r.module));
+
 const filteredAudit = computed(() => {
-  const q = auditFilter.value.trim().toLowerCase();
-  if (!q) return auditRows.value;
-  return auditRows.value.filter((r) => {
-    const blob = [r.actorLogin, r.actorName, r.module, r.action, r.target, r.ip, r.result].join(" ").toLowerCase();
-    return blob.includes(q);
-  });
+  let rows = auditRows.value;
+  if (auditModuleFilter.value) rows = rows.filter((r) => r.module === auditModuleFilter.value);
+  if (auditDateRange.value) {
+    rows = rows.filter((r) => isWithinAdminDateRange(r.at, auditDateRange.value));
+  }
+  return filterByQuery(rows, auditFilter.value, (r) =>
+    [r.actorLogin, r.actorName, r.module, r.action, r.target, r.ip, r.result, r.at].join(" "),
+  );
 });
+
+const filteredSensitive = computed(() => {
+  let rows = sensitiveRows.value;
+  if (sensitiveEnabledFilter.value === "yes") rows = rows.filter((r) => r.enabled);
+  if (sensitiveEnabledFilter.value === "no") rows = rows.filter((r) => !r.enabled);
+  return filterByQuery(rows, sensitiveSearchQ.value, (r) => [r.operation, r.description].join(" "));
+});
+
+const filteredExport = computed(() => {
+  let rows = exportRows.value;
+  if (exportStatusFilter.value) rows = rows.filter((r) => r.status === exportStatusFilter.value);
+  if (exportDateRange.value) {
+    rows = rows.filter((r) => isWithinAdminDateRange(r.requestedAt, exportDateRange.value));
+  }
+  return filterByQuery(rows, exportSearchQ.value, (r) =>
+    [r.id, r.applicant, r.scope, r.rowEstimate, r.status, r.requestedAt].join(" "),
+  );
+});
+
+const filteredFlags = computed(() => {
+  let rows = flagRows.value;
+  if (flagEnvFilter.value) rows = rows.filter((r) => r.env === flagEnvFilter.value);
+  return filterByQuery(rows, flagSearchQ.value, (r) => [r.key, r.name, r.env, r.note].join(" "));
+});
+
+const flagEnvOptions = computed(() => uniqueFieldValues(flagRows.value, (r) => r.env));
+
+const filteredGlobal = computed(() => {
+  let rows = globalRows.value;
+  if (globalCategoryFilter.value) rows = rows.filter((r) => r.category === globalCategoryFilter.value);
+  return filterByQuery(rows, globalSearchQ.value, (r) =>
+    [r.key, r.label, r.category, r.value, r.updatedBy].join(" "),
+  );
+});
+
+const globalCategoryOptions = computed(() => uniqueFieldValues(globalRows.value, (r) => r.category));
+
+function resetAuditQuery(): void {
+  auditModuleFilter.value = "";
+  auditDateRange.value = null;
+}
+
+function resetSensitiveQuery(): void {
+  sensitiveEnabledFilter.value = "";
+}
+
+function resetExportQuery(): void {
+  exportStatusFilter.value = "";
+  exportDateRange.value = null;
+}
+
+function resetFlagQuery(): void {
+  flagEnvFilter.value = "";
+}
+
+function resetGlobalQuery(): void {
+  globalCategoryFilter.value = "";
+}
 
 const editingSensitive = computed(() =>
   sensitiveEditingId.value ? sensitiveRows.value.find((r) => r.id === sensitiveEditingId.value) : undefined,
@@ -235,353 +314,474 @@ function yesNo(v: boolean): string {
 
 watch(auditFilter, (v) => writeAuditFilter(v));
 
-watchEffect(() => {
-  const open = sensitiveModalOpen.value || globalModalOpen.value || infoModalOpen.value;
-  setSystemModalBodyLock(open);
-});
+const auditPg = useAdminTablePagination(filteredAudit);
+const sensitivePg = useAdminTablePagination(filteredSensitive);
+const exportPg = useAdminTablePagination(filteredExport);
+const flagsPg = useAdminTablePagination(filteredFlags);
+const globalPg = useAdminTablePagination(filteredGlobal);
 
 onMounted(() => loadAll());
 </script>
 
 <template>
   <div class="sys-page">
-    <!-- 操作审计 -->
-    <section v-show="panel === 'audit-log'" class="sys-page__panel" aria-label="操作审计">
-      <AdminSectionHead title="操作审计">
+    <el-card v-show="panel === 'audit-log'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="操作审计">
+      <AdminSectionHead toolbar-only title="操作审计">
         <template #annot>
           <AdminInternalTip heading="操作审计 · 原型" explain="操作审计对内说明（原型）">
             <p>检索与导出为示意；保留周期与不可抵赖存证见 <strong>§4.13</strong>。</p>
+            <p>{{ AUDIT_RETENTION_NOTE }}</p>
           </AdminInternalTip>
         </template>
-        <template #desc>全平台操作留痕检索与导出（<strong>§4.13</strong>，mock）。</template>
         <template #tools>
-          <TSearchForm1Fixed
-            v-model="auditFilter"
+          <AdminListQuery
+            v-model:search="auditFilter"
             :input-id="`${idPrefix}-audit-search`"
-            placeholder="操作人、模块、动作、目标…"
-            width="18rem"
-            aria-label="检索审计日志"
-          />
-          <TButton variant="outline">导出审计包（示意）</TButton>
+            search-placeholder="操作人、模块、动作、目标…"
+            search-aria-label="检索审计日志"
+            @reset="resetAuditQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="auditModuleFilter"
+                clearable
+                placeholder="模块"
+                aria-label="按模块筛选"
+                style="width: 7rem"
+              >
+                <el-option v-for="m in auditModuleOptions" :key="m" :label="m" :value="m" />
+              </el-select>
+            </template>
+            <AdminDateRangePicker v-model="auditDateRange" aria-label="操作审计时间范围" />
+            <el-button type="primary" plain @click="showInfo('导出审计包', '原型示意：正式环境需审批与双人复核后生成加密包。')">
+              导出审计包（示意）
+            </el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <p class="sys-page__callout sys-page__callout--info">{{ AUDIT_RETENTION_NOTE }}</p>
-      <div class="sys-page__table-wrap">
-        <table class="sys-page__table">
-          <thead>
-            <tr>
-              <th>时间</th>
-              <th>操作人</th>
-              <th>模块</th>
-              <th>动作</th>
-              <th>目标</th>
-              <th>结果</th>
-              <th>来源 IP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredAudit" :key="r.id">
-              <td class="sys-page__mono">{{ r.at }}</td>
-              <td>
-                {{ r.actorName }}
-                <br />
-                <span class="sys-page__mono sys-page__muted">{{ r.actorLogin }}</span>
-              </td>
-              <td>{{ r.module }}</td>
-              <td>{{ r.action }}</td>
-              <td class="sys-page__mono">{{ r.target }}</td>
-              <td><span :class="auditResultClass(r.result)">{{ r.result }}</span></td>
-              <td class="sys-page__mono">{{ r.ip }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table
+        :data="auditPg.paginatedRows"
+        row-key="id"
+        class="admin-ep-table-wrap"
+        style="width: 100%"
+        :default-sort="{ prop: 'at', order: 'descending' }"
+      >
+        <el-table-column prop="at" label="时间" min-width="160" show-overflow-tooltip sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.at }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="actorName" label="操作人" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            {{ scope.row.actorName }}
+            <br />
+            <span class="sys-page__mono sys-page__muted">{{ scope.row.actorLogin }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="module" label="模块" width="96" sortable/>
+        <el-table-column prop="action" label="动作" width="96" sortable/>
+        <el-table-column prop="target" label="目标" min-width="112" show-overflow-tooltip sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+              <span class="sys-page__mono">{{ scope.row.target }}</span>
+            </template>
+          </template>
+        </el-table-column>
+        <el-table-column prop="result" label="结果" width="80" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+            <span :class="auditResultClass(scope.row.result)">{{ scope.row.result }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="ip" label="来源 IP" width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.ip }}</span>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="auditPg.currentPage"
+        v-model:page-size="auditPg.pageSize"
+        :total="auditPg.total"
+      />
       <p v-if="filteredAudit.length === 0" class="sys-page__hint">无匹配记录。</p>
-    </section>
+    </el-card>
 
-    <!-- 敏感操作审批 -->
-    <section v-show="panel === 'sensitive'" class="sys-page__panel" aria-label="敏感操作审批">
-      <AdminSectionHead title="敏感操作审批">
+    <el-card v-show="panel === 'sensitive'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="敏感操作审批">
+      <AdminSectionHead toolbar-only title="敏感操作审批">
         <template #annot>
           <AdminInternalTip heading="敏感操作审批 · 原型" explain="敏感操作对内说明（原型）">
             <p>MFA/双人复核为产品规则占位；正式环境对接审批流引擎。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>
-          删除客户、批量导出、密钥明文查看等须 <strong>MFA</strong> 或 <strong>双人复核</strong>（mock）；正式环境对接审批流。
+        <template #tools>
+          <AdminListQuery
+            v-model:search="sensitiveSearchQ"
+            :input-id="`${idPrefix}-sen-q`"
+            search-placeholder="操作类型、说明…"
+            search-aria-label="检索敏感规则"
+            @reset="resetSensitiveQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="sensitiveEnabledFilter"
+                clearable
+                placeholder="启用"
+                aria-label="按启用筛选"
+                style="width: 7rem"
+              >
+                <el-option label="已启用" value="yes" />
+                <el-option label="未启用" value="no" />
+              </el-select>
+            </template>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="sys-page__table-wrap">
-        <table class="sys-page__table">
-          <thead>
-            <tr>
-              <th>操作类型</th>
-              <th>说明</th>
-              <th>需 MFA</th>
-              <th>双人复核</th>
-              <th>启用</th>
-              <th>更新于</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in sensitiveRows" :key="r.id">
-              <td>{{ r.operation }}</td>
-              <td>{{ r.description }}</td>
-              <td>{{ yesNo(r.requireMfa) }}</td>
-              <td>{{ yesNo(r.requireDualApproval) }}</td>
-              <td>{{ yesNo(r.enabled) }}</td>
-              <td class="sys-page__mono">{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="sys-int__textlink" @click="openSensitiveModal(r)">配置</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="sensitivePg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column prop="operation" label="操作类型" min-width="128" sortable/>
+        <el-table-column prop="description" label="说明" min-width="128" sortable/>
+        <el-table-column prop="requireMfa" label="需 MFA" width="80" sortable>
+          <template #default="scope">
+              <template v-if="scope?.row">{{ yesNo(scope.row.requireMfa) }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="requireDualApproval" label="双人复核" width="88" sortable>
+          <template #default="scope">
+              <template v-if="scope?.row">{{ yesNo(scope.row.requireDualApproval) }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="enabled" label="启用" width="64" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">{{ yesNo(scope.row.enabled) }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="操作" width="80" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="openSensitiveModal(scope.row)">
+                <el-icon><Setting /></el-icon>
+                配置
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="sensitivePg.currentPage"
+        v-model:page-size="sensitivePg.pageSize"
+        :total="sensitivePg.total"
+      />
+    </el-card>
 
-    <!-- 数据导出审批 -->
-    <section v-show="panel === 'export-approval'" class="sys-page__panel" aria-label="数据导出审批">
-      <AdminSectionHead title="数据导出审批">
+    <el-card v-show="panel === 'export-approval'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="数据导出审批">
+      <AdminSectionHead toolbar-only title="数据导出审批">
         <template #annot>
           <AdminInternalTip heading="数据导出审批 · 原型" explain="导出审批对内说明（原型）">
             <p>与报表导出、大客户数据包衔接为示意；超阈值队列 mock。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>
-          与报表导出、大客户数据包衔接；超行数阈值触发队列（mock）。
+        <template #tools>
+          <AdminListQuery
+            v-model:search="exportSearchQ"
+            :input-id="`${idPrefix}-exp-q`"
+            search-placeholder="申请 ID、申请人、范围…"
+            search-aria-label="检索导出申请"
+            @reset="resetExportQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="exportStatusFilter"
+                clearable
+                placeholder="状态"
+                aria-label="按状态筛选"
+                style="width: 7rem"
+              >
+                <el-option label="待审批" value="待审批" />
+                <el-option label="已通过" value="已通过" />
+                <el-option label="已拒绝" value="已拒绝" />
+              </el-select>
+            </template>
+            <AdminDateRangePicker v-model="exportDateRange" aria-label="导出申请时间范围" />
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="sys-page__table-wrap">
-        <table class="sys-page__table">
-          <thead>
-            <tr>
-              <th>申请 ID</th>
-              <th>申请人</th>
-              <th>范围</th>
-              <th>预估行数</th>
-              <th>申请时间</th>
-              <th>状态</th>
-              <th>审批人</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in exportRows" :key="r.id">
-              <td class="sys-page__mono">{{ r.id }}</td>
-              <td class="sys-page__mono">{{ r.applicant }}</td>
-              <td>{{ r.scope }}</td>
-              <td>{{ r.rowEstimate }}</td>
-              <td class="sys-page__mono">{{ r.requestedAt }}</td>
-              <td><span :class="exportStatusClass(r.status)">{{ r.status }}</span></td>
-              <td>
-                <template v-if="r.reviewer">
-                  {{ r.reviewer }}
-                  <br />
-                  <span class="sys-page__mono sys-page__muted">{{ r.reviewedAt }}</span>
-                </template>
-                <span v-else class="sys-page__muted">—</span>
-              </td>
-              <td>
-                <div v-if="r.status === '待审批'" class="sys-page__ops">
-                  <button type="button" class="sys-int__textlink" @click="reviewExport(r, true)">通过</button>
-                  <button type="button" class="sys-int__textlink sys-int__textlink--danger" @click="reviewExport(r, false)">
-                    拒绝
-                  </button>
-                </div>
-                <span v-else class="sys-page__muted">—</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="exportPg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column prop="id" label="申请 ID" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="applicant" label="申请人" min-width="96" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.applicant }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="scope" label="范围" min-width="96" sortable/>
+        <el-table-column prop="rowEstimate" label="预估行数" width="88" sortable/>
+        <el-table-column prop="requestedAt" label="申请时间" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.requestedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" width="88" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+            <span :class="exportStatusClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="审批人" min-width="112">
+          <template #default="scope">
+            <template v-if="scope?.row">
+              <template v-if="scope.row.reviewer">
+                {{ scope.row.reviewer }}
+                <br />
+                <span class="sys-page__mono sys-page__muted">{{ scope.row.reviewedAt }}</span>
+              </template>
+              <span v-else class="sys-page__muted">—</span>
+            </template>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="112" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+              <div v-if="scope.row.status === '待审批'" class="admin-ep-row-actions sys-page__ops">
+              <el-button link type="primary" @click="reviewExport(scope.row, true)">通过</el-button>
+              <el-button link type="danger" @click="reviewExport(scope.row, false)">拒绝</el-button>
+            </div>
+              <span v-else class="sys-page__muted">—</span>
+            </template>
+          </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="exportPg.currentPage"
+        v-model:page-size="exportPg.pageSize"
+        :total="exportPg.total"
+      />
+    </el-card>
 
-    <!-- 特性开关 -->
-    <section v-show="panel === 'flags'" class="sys-page__panel" aria-label="特性开关">
-      <AdminSectionHead title="特性开关">
+    <el-card v-show="panel === 'flags'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="特性开关">
+      <AdminSectionHead toolbar-only title="特性开关">
         <template #annot>
           <AdminInternalTip heading="特性开关 · 原型" explain="特性开关对内说明（原型）">
             <p>灰度百分比为占位；变更应写入审计并与发布系统联动。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>按环境 / 百分比灰度；与全局参数、维护模式联动（mock）。</template>
+        <template #tools>
+          <AdminListQuery
+            v-model:search="flagSearchQ"
+            :input-id="`${idPrefix}-flag-q`"
+            search-placeholder="开关键、名称…"
+            search-aria-label="检索特性开关"
+            @reset="resetFlagQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="flagEnvFilter"
+                clearable
+                placeholder="环境"
+                aria-label="按环境筛选"
+                style="width: 7rem"
+              >
+                <el-option v-for="e in flagEnvOptions" :key="e" :label="e" :value="e" />
+              </el-select>
+            </template>
+          </AdminListQuery>
+        </template>
       </AdminSectionHead>
-      <div class="sys-page__table-wrap">
-        <table class="sys-page__table">
-          <thead>
-            <tr>
-              <th>开关键</th>
-              <th>名称</th>
-              <th>环境</th>
-              <th>灰度 %</th>
-              <th>启用</th>
-              <th>备注</th>
-              <th>更新于</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in flagRows" :key="r.id">
-              <td class="sys-page__mono">{{ r.key }}</td>
-              <td>{{ r.name }}</td>
-              <td>{{ r.env }}</td>
-              <td>{{ r.rolloutPct }}%</td>
-              <td>
-                <button
-                  type="button"
-                  class="sys-page__toggle"
-                  :class="{ 'is-on': r.enabled }"
-                  :aria-pressed="r.enabled ? 'true' : 'false'"
-                  :aria-label="`${r.name} ${r.enabled ? '已启用' : '已关闭'}`"
-                  @click="toggleFlag(r)"
-                />
-              </td>
-              <td>{{ r.note }}</td>
-              <td class="sys-page__mono">{{ r.updatedAt }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="flagsPg.paginatedRows" row-key="key" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column prop="key" label="开关键" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.key }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="name" label="名称" min-width="96" sortable/>
+        <el-table-column prop="env" label="环境" width="80" sortable/>
+        <el-table-column prop="rolloutPct" label="灰度 %" width="80" sortable>
+          <template #default="scope">
+              <template v-if="scope?.row">{{ scope.row.rolloutPct }}%
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="启用" width="80">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <button
+              type="button"
+              class="sys-page__toggle"
+              :class="{ 'is-on': scope.row.enabled }"
+              :aria-pressed="scope.row.enabled ? 'true' : 'false'"
+              :aria-label="`${scope.row.name} ${scope.row.enabled ? '已启用' : '已关闭'}`"
+              @click="toggleFlag(scope.row)"
+            />
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="note" label="备注" min-width="96" sortable/>
+        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="flagsPg.currentPage"
+        v-model:page-size="flagsPg.pageSize"
+        :total="flagsPg.total"
+      />
+    </el-card>
 
-    <!-- 全局参数 -->
-    <section v-show="panel === 'global'" class="sys-page__panel" aria-label="全局参数">
-      <AdminSectionHead title="全局参数">
+    <el-card v-show="panel === 'global'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="全局参数">
+      <AdminSectionHead toolbar-only title="全局参数">
         <template #annot>
           <AdminInternalTip heading="全局参数 · 原型" explain="全局参数对内说明（原型）">
             <p>计费时区、限流等变更属高风险配置；工程期加变更单与回滚。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>计费时区、限流、API 版本策略等；变更写入审计（mock）。</template>
+        <template #tools>
+          <AdminListQuery
+            v-model:search="globalSearchQ"
+            :input-id="`${idPrefix}-global-q`"
+            search-placeholder="参数键、名称、值…"
+            search-aria-label="检索全局参数"
+            @reset="resetGlobalQuery"
+          >
+            <template #filters>
+              <el-select
+                v-model="globalCategoryFilter"
+                clearable
+                placeholder="分类"
+                aria-label="按分类筛选"
+                style="width: 7rem"
+              >
+                <el-option v-for="c in globalCategoryOptions" :key="c" :label="c" :value="c" />
+              </el-select>
+            </template>
+          </AdminListQuery>
+        </template>
       </AdminSectionHead>
-      <div class="sys-page__table-wrap">
-        <table class="sys-page__table">
-          <thead>
-            <tr>
-              <th>参数键</th>
-              <th>名称</th>
-              <th>分类</th>
-              <th>当前值</th>
-              <th>更新人</th>
-              <th>更新于</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in globalRows" :key="r.id">
-              <td class="sys-page__mono">{{ r.key }}</td>
-              <td>{{ r.label }}</td>
-              <td>{{ r.category }}</td>
-              <td>{{ r.value }}</td>
-              <td class="sys-page__mono">{{ r.updatedBy }}</td>
-              <td class="sys-page__mono">{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="sys-int__textlink" @click="openGlobalModal(r)">编辑</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <el-table :data="globalPg.paginatedRows" row-key="key" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column prop="key" label="参数键" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.key }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="label" label="名称" min-width="96" sortable/>
+        <el-table-column prop="category" label="分类" width="96" sortable/>
+        <el-table-column prop="value" label="当前值" min-width="96" sortable/>
+        <el-table-column prop="updatedBy" label="更新人" width="96" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.updatedBy }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="操作" width="80" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="openGlobalModal(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="globalPg.currentPage"
+        v-model:page-size="globalPg.pageSize"
+        :total="globalPg.total"
+      />
+    </el-card>
 
-    <Teleport to="body">
-      <div
-        v-show="sensitiveModalOpen"
-        class="or-modal-root sys-int-modal-host"
-        role="presentation"
-        :aria-hidden="!sensitiveModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeSensitiveModal" />
-        <ModalPanel
-          v-if="editingSensitive"
-          :title="sensitiveModalTitle"
-          :title-id="`${idPrefix}-sys-sen-title`"
-          head-note="敏感操作规则（mock）；保存写入 localStorage。"
-          close-label="关闭"
-          @close="closeSensitiveModal"
-        >
-          <p class="sys-page__hint" style="margin-top: 0">{{ editingSensitive.description }}</p>
-          <div class="sys-form-stack">
-            <label class="sys-page__check">
-              <input v-model="draftSenMfa" type="checkbox" />
-              需要 MFA（二次验证）
-            </label>
-            <label class="sys-page__check">
-              <input v-model="draftSenDual" type="checkbox" />
-              需要双人复核
-            </label>
-            <label class="sys-page__check">
-              <input v-model="draftSenEnabled" type="checkbox" />
-              启用此规则
-            </label>
-            <p v-if="sensitiveFormError" class="sys-form-error">{{ sensitiveFormError }}</p>
-          </div>
-          <template #actions>
-            <TButton type="button" @click="closeSensitiveModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveSensitiveModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="sensitiveModalOpen"
+      :title="sensitiveModalTitle"
+      head-note="敏感操作规则（mock）；保存写入 localStorage。"
+    >
+      <template v-if="editingSensitive">
+        <p class="sys-page__hint" style="margin-top: 0">{{ editingSensitive.description }}</p>
+        <div class="sys-form-stack">
+          <el-checkbox v-model="draftSenMfa">需要 MFA（二次验证）</el-checkbox>
+          <el-checkbox v-model="draftSenDual">需要双人复核</el-checkbox>
+          <el-checkbox v-model="draftSenEnabled">启用此规则</el-checkbox>
+          <p v-if="sensitiveFormError" class="sys-form-error">{{ sensitiveFormError }}</p>
+        </div>
+      </template>
+      <template #footer>
+        <el-button @click="closeSensitiveModal">取消</el-button>
+        <el-button type="primary" @click="saveSensitiveModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="globalModalOpen"
-        class="or-modal-root sys-int-modal-host"
-        role="presentation"
-        :aria-hidden="!globalModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeGlobalModal" />
-        <ModalPanel
-          v-if="editingGlobal"
-          :title="globalModalTitle"
-          :title-id="`${idPrefix}-sys-gp-title`"
-          head-note="变更将记入操作审计（mock）。"
-          close-label="关闭"
-          @close="closeGlobalModal"
-        >
-          <p class="sys-page__hint" style="margin-top: 0">
-            键 <code class="sys-page__mono">{{ editingGlobal.key }}</code> · {{ editingGlobal.category }}
-          </p>
-          <div class="sys-form-stack">
-            <TTextField1Labeled
-              :input-id="`${idPrefix}-gp-val`"
-              v-model="draftGlobalValue"
-              label="参数值"
-              placeholder="输入新值"
-            />
-            <p v-if="globalFormError" class="sys-form-error">{{ globalFormError }}</p>
-          </div>
-          <template #actions>
-            <TButton type="button" @click="closeGlobalModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveGlobalModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="globalModalOpen"
+      :title="globalModalTitle"
+      head-note="变更将记入操作审计（mock）。"
+    >
+      <template v-if="editingGlobal">
+        <p class="sys-page__hint" style="margin-top: 0">
+          键 <code class="sys-page__mono">{{ editingGlobal.key }}</code> · {{ editingGlobal.category }}
+        </p>
+        <el-form label-position="top" class="admin-ep-form sys-form-stack">
+          <el-form-item label="参数值">
+            <el-input :id="`${idPrefix}-gp-val`" v-model="draftGlobalValue" placeholder="输入新值" />
+          </el-form-item>
+          <p v-if="globalFormError" class="sys-form-error">{{ globalFormError }}</p>
+        </el-form>
+      </template>
+      <template #footer>
+        <el-button @click="closeGlobalModal">取消</el-button>
+        <el-button type="primary" @click="saveGlobalModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="infoModalOpen"
-        class="or-modal-root sys-int-modal-host"
-        role="presentation"
-        :aria-hidden="!infoModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeInfoModal" />
-        <ModalPanel
-          :title="infoModalTitle"
-          :title-id="`${idPrefix}-sys-info-title`"
-          close-label="关闭"
-          @close="closeInfoModal"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
-          <template #actions>
-            <TButton variant="gradient" type="button" @click="closeInfoModal">知道了</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
-
+    <AdminDialog v-model="infoModalOpen" :title="infoModalTitle">
+      <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
+      <template #footer>
+        <el-button type="primary" @click="closeInfoModal">知道了</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

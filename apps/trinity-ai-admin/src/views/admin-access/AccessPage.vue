@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, useId, watch, watchEffect } from "vue";
+import { computed, onMounted, onUnmounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import { ModalPanel, TButton, TSearchForm1Fixed, TTextField1Labeled } from "@trinity/ui";
+import { Delete, Edit } from "@element-plus/icons-vue";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { filterByQuery } from "../../utils/adminListFilter";
 import "./access.css";
 import { flattenNavLeaves, type NavLeaf } from "../admin-shell/adminNavTree";
 import {
@@ -25,7 +30,6 @@ import {
   readPlatformAdminsJson,
   readPlatformRolesJson,
   readRoleListFilter,
-  setAccessModalBodyLock,
   writeAdminListFilter,
   writePlatformAdminsJson,
   writePlatformRolesJson,
@@ -42,7 +46,9 @@ const panel = computed<AccessPanelId>(() => {
 });
 
 const adminListFilter = ref("");
+const adminStatusFilter = ref("");
 const roleListFilter = ref("");
+const menuSearchQ = ref("");
 const adminRows = ref<PlatformAdminRow[]>([]);
 const roleRows = ref<PlatformRoleRow[]>([]);
 
@@ -174,35 +180,22 @@ const adminModalTitle = computed(() =>
 const roleModalTitle = computed(() => (roleModalMode.value === "edit" ? "编辑角色" : "新增角色"));
 
 const filteredAdmins = computed(() => {
-  const q = adminListFilter.value.trim().toLowerCase();
   let rows = adminRows.value;
-  if (!q) return rows;
-  return rows.filter((r) => {
-    const permQ = adminPermissionsFor(r).join(" ").toLowerCase();
-    return (
-      r.displayName.toLowerCase().includes(q) ||
-      r.loginId.toLowerCase().includes(q) ||
-      r.id.toLowerCase().includes(q) ||
-      roleNamesForAdmin(r).toLowerCase().includes(q) ||
-      permQ.includes(q)
-    );
-  });
+  if (adminStatusFilter.value) rows = rows.filter((r) => r.status === adminStatusFilter.value);
+  return filterByQuery(rows, adminListFilter.value, (r) =>
+    [r.displayName, r.loginId, r.id, roleNamesForAdmin(r), adminPermissionsFor(r).join(" ")].join(" "),
+  );
 });
 
-const filteredRoles = computed(() => {
-  const q = roleListFilter.value.trim().toLowerCase();
-  let rows = roleRows.value;
-  if (!q) return rows;
-  return rows.filter((r) => {
-    const permBlob = rolePermissionLines(r).join(" ").toLowerCase();
-    return (
-      r.name.toLowerCase().includes(q) ||
-      r.id.toLowerCase().includes(q) ||
-      r.description.toLowerCase().includes(q) ||
-      permBlob.includes(q)
-    );
-  });
-});
+const filteredRoles = computed(() =>
+  filterByQuery(roleRows.value, roleListFilter.value, (r) =>
+    [r.name, r.id, r.description, rolePermissionLines(r).join(" ")].join(" "),
+  ),
+);
+
+function resetAdminQuery(): void {
+  adminStatusFilter.value = "";
+}
 
 function roleMemberCount(roleId: string): number {
   return adminRows.value.filter((a) => a.roleIds.includes(roleId)).length;
@@ -231,7 +224,13 @@ const menuPreviewRows = computed(() =>
     ops: menuMatrixCellOps(l),
     fin: menuMatrixCellFin(l),
     ro: menuMatrixCellRo(),
-  }))
+  })),
+);
+
+const filteredMenuPreview = computed(() =>
+  filterByQuery(menuPreviewRows.value, menuSearchQ.value, (r) =>
+    [r.label, r.routeName, r.ops, r.fin, r.ro].join(" "),
+  ),
 );
 
 function adminStatusClass(s: string): string {
@@ -500,7 +499,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", onDocKeydown);
-  setAccessModalBodyLock(false);
 });
 
 watch(adminListFilter, (v) => {
@@ -511,390 +509,353 @@ watch(roleListFilter, (v) => {
   writeRoleListFilter(v);
 });
 
-watchEffect(() => {
-  setAccessModalBodyLock(
-    adminModalOpen.value ||
-      roleModalOpen.value ||
-      accessDangerOpen.value ||
-      infoModalOpen.value ||
-      scopeDocModalOpen.value
-  );
-});
+const adminsPg = useAdminTablePagination(filteredAdmins);
+const rolesPg = useAdminTablePagination(filteredRoles);
+const menuPg = useAdminTablePagination(filteredMenuPreview);
 </script>
 
 <template>
   <div class="acc-page">
     <!-- 管理员 -->
-    <section v-show="panel === 'admins'" class="acc-page__panel" aria-label="管理员">
-      <AdminSectionHead title="管理员">
+    <el-card v-show="panel === 'admins'" shadow="never" class="admin-ep-card acc-page__panel" aria-label="管理员">
+      <AdminSectionHead toolbar-only title="管理员">
         <template #annot>
           <AdminInternalTip heading="管理员 · 原型" explain="管理员账号对内说明（原型）">
             <p>启用/MFA 为占位；与员工主数据、SSO 对齐在工程期接入。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>平台员工账号、绑定角色与权限聚合（<strong>§4.12</strong>，mock）。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="adminListFilter"
+          <template #tools>
+          <AdminListQuery
+            v-model:search="adminListFilter"
             :input-id="`${idPrefix}-acc-adm-search`"
-            placeholder="按姓名、登录名、角色、权限要点…"
-            width="17.5rem"
-            aria-label="搜索管理员"
-          />
-          <TButton variant="gradient" type="button" @click="onAddAdminClick">新增管理员</TButton>
+            search-placeholder="姓名、登录名、角色、权限…"
+            search-aria-label="搜索管理员"
+            @reset="resetAdminQuery"
+          >
+            <template #filters>
+              <el-select v-model="adminStatusFilter" clearable placeholder="状态" style="width: 7rem">
+                <el-option label="启用" value="启用" />
+                <el-option label="禁用" value="禁用" />
+              </el-select>
+            </template>
+            <el-button type="primary" @click="onAddAdminClick">新增管理员</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <div class="acc-page__table-wrap">
-        <table class="acc-page__table">
-          <thead>
-            <tr>
-              <th>登录名</th>
-              <th>姓名</th>
-              <th>角色</th>
-              <th class="acc-page__th-perm">权限（菜单+数据范围·聚合）</th>
-              <th>状态</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredAdmins" :key="r.id">
-              <td class="acc-page__mono">{{ r.loginId }}</td>
-              <td>{{ r.displayName }}</td>
-              <td>{{ roleNamesForAdmin(r) }}</td>
-              <td class="acc-page__perm-cell">
-                <ul class="acc-page__perm-list">
-                  <li v-for="(line, i) in adminPermissionsFor(r)" :key="i">{{ line }}</li>
-                </ul>
-              </td>
-              <td><span :class="adminStatusClass(r.status)">{{ r.status }}</span></td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="acc-int__textlink" @click="toggleAdminStatus(r)">
-                  {{ r.status === "启用" ? "禁用" : "启用" }}
-                </button>
-                <button type="button" class="acc-int__textlink" @click="onEditAdminClick(r)">编辑</button>
-                <button type="button" class="acc-int__textlink acc-int__textlink--danger" @click="requestDeleteAdmin(r)">
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="adminsPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="loginId" label="登录名" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="acc-page__mono">{{ scope.row.loginId }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="displayName" label="姓名" min-width="96" sortable/>
+        <el-table-column label="角色" min-width="128">
+          <template #default="scope">
+              <template v-if="scope?.row">{{ roleNamesForAdmin(scope.row) }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="权限（菜单+数据范围·聚合）" min-width="192" class-name="acc-page__th-perm">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="acc-page__perm-cell">
+              <ul class="acc-page__perm-list">
+                <li v-for="(line, i) in adminPermissionsFor(scope.row)" :key="i">{{ line }}</li>
+              </ul>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column label="状态" width="80">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span :class="adminStatusClass(scope.row.status)">{{ scope.row.status }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
+        <el-table-column label="操作" width="160" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="toggleAdminStatus(scope.row)">
+                {{ scope.row.status === "启用" ? "禁用" : "启用" }}
+              </el-button>
+              <el-button link type="primary" @click="onEditAdminClick(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+              <el-button link type="danger" @click="requestDeleteAdmin(scope.row)">
+                <el-icon><Delete /></el-icon>
+                删除
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="adminsPg.currentPage"
+        v-model:page-size="adminsPg.pageSize"
+        :total="adminsPg.total"
+      />
       <p class="acc-page__hint">
         数据写入 <code class="acc-page__mono">localStorage</code>（<code class="acc-page__mono">trinity-ai-admin:platform-admins-rows</code>）；「绑定角色」填角色
         <strong>id</strong>，逗号分隔，须与「角色」子页一致。「权限」列为各角色<strong>菜单 + 数据范围</strong>要点合并去重（不含页内按钮）；改要点请在<strong>角色</strong>子页编辑。<strong>删除</strong>经
-        <strong>ModalPanel</strong> 二次确认。
+        弹窗二次确认。
       </p>
-    </section>
+    </el-card>
 
     <!-- 角色 -->
-    <section v-show="panel === 'roles'" class="acc-page__panel" aria-label="角色">
-      <AdminSectionHead title="角色">
+    <el-card v-show="panel === 'roles'" shadow="never" class="admin-ep-card acc-page__panel" aria-label="角色">
+      <AdminSectionHead toolbar-only title="角色">
         <template #annot>
           <AdminInternalTip heading="角色 · 原型" explain="角色权限对内说明（原型）">
             <p>预置/自定义角色为 mock；本期菜单粒度授权，按钮级二期（详设 §4.12）。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>角色职责与权限要点；表格内编辑写 <code class="acc-page__mono">localStorage</code>。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="roleListFilter"
+          <template #tools>
+          <AdminListQuery
+            v-model:search="roleListFilter"
             :input-id="`${idPrefix}-acc-role-search`"
-            placeholder="按角色名、ID、说明、权限要点…"
-            width="17.5rem"
-            aria-label="搜索角色"
-          />
-          <TButton variant="gradient" type="button" @click="onAddRoleClick">新增角色</TButton>
+            search-placeholder="角色名、ID、说明、权限…"
+            search-aria-label="搜索角色"
+          >
+            <el-button type="primary" @click="onAddRoleClick">新增角色</el-button>
+          </AdminListQuery>
         </template>
       </AdminSectionHead>
       <p class="acc-page__callout acc-page__callout--roles-help">
         「<strong>说明</strong>」为职责摘要。「<strong>权限要点</strong>」里写<strong>菜单</strong>、<strong>数据范围</strong>等，在表格中点<strong>编辑</strong>打开弹窗修改，保存后写入浏览器
         <code class="acc-page__mono">localStorage</code>（键 <code class="acc-page__mono">trinity-ai-admin:platform-roles-rows</code>），并影响「管理员」页的权限聚合列。<br />
-        <button type="button" class="acc-int__textlink acc-int__textlink--scope-doc" @click="openScopeDocModal">
-          查看数据范围语义详情
-        </button>
+        <el-button link type="primary" class="acc-int__textlink--scope-doc" @click="openScopeDocModal">查看数据范围语义详情</el-button>
         <span class="acc-page__roles-help-note">（只读词典，与菜单路由正交；不在此弹窗里编辑角色数据）</span>
       </p>
-      <div class="acc-page__table-wrap">
-        <table class="acc-page__table">
-          <thead>
-            <tr>
-              <th>角色 ID</th>
-              <th>名称</th>
-              <th>绑定人数</th>
-              <th>说明</th>
-              <th class="acc-page__th-perm">权限要点</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredRoles" :key="r.id">
-              <td class="acc-page__mono">{{ r.id }}</td>
-              <td>{{ r.name }}</td>
-              <td>{{ roleMemberCount(r.id) }}</td>
-              <td>{{ r.description }}</td>
-              <td class="acc-page__perm-cell">
-                <ul class="acc-page__perm-list">
-                  <li v-for="(line, i) in rolePermissionLines(r)" :key="i">{{ line }}</li>
-                </ul>
-              </td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="acc-int__textlink" @click="onEditRoleClick(r)">编辑</button>
-                <button type="button" class="acc-int__textlink acc-int__textlink--danger" @click="requestDeleteRole(r)">
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="acc-page__hint">
-        有绑定管理员时不可删角色；<strong>删除</strong>经 <strong>ModalPanel</strong> 二次确认。数据范围释义见上方「查看详情」。
-      </p>
-    </section>
+      <el-table :data="rolesPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="id" label="角色 ID" min-width="112" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="acc-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="name" label="名称" min-width="96" sortable/>
+        <el-table-column label="绑定人数" width="88">
+          <template #default="scope">
+              <template v-if="scope?.row">{{ roleMemberCount(scope.row.id) }}
+              </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="description" label="说明" min-width="112" sortable/>
+        <el-table-column label="权限要点" min-width="192" class-name="acc-page__th-perm">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="acc-page__perm-cell">
+              <ul class="acc-page__perm-list">
+                <li v-for="(line, i) in rolePermissionLines(scope.row)" :key="i">{{ line }}</li>
+              </ul>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
+        <el-table-column label="操作" width="112" fixed="right">
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <div class="admin-ep-row-actions">
+              <el-button link type="primary" @click="onEditRoleClick(scope.row)">
+                <el-icon><Edit /></el-icon>
+                编辑
+              </el-button>
+              <el-button link type="danger" @click="requestDeleteRole(scope.row)">
+                <el-icon><Delete /></el-icon>
+                删除
+              </el-button>
+            </div>
+            </template>
+            </template>
+        </el-table-column>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="rolesPg.currentPage"
+        v-model:page-size="rolesPg.pageSize"
+        :total="rolesPg.total"
+      />
+      <p class="acc-page__hint">有绑定管理员时不可删角色；<strong>删除</strong>经弹窗二次确认。数据范围释义见上方「查看详情」。</p>
+    </el-card>
 
     <!-- 菜单（路由） -->
-    <section v-show="panel === 'menus'" class="acc-page__panel" aria-label="菜单（路由）">
-      <AdminSectionHead title="菜单（路由）">
+    <el-card v-show="panel === 'menus'" shadow="never" class="admin-ep-card acc-page__panel" aria-label="菜单（路由）">
+      <AdminSectionHead toolbar-only title="菜单（路由）">
         <template #annot>
           <AdminInternalTip heading="菜单（路由） · 原型" explain="菜单授权对内说明（原型）">
             <p>与侧栏子路由名对齐；勾选状态本地 mock，真实环境从权限服务下发。</p>
           </AdminInternalTip>
         </template>
-        <template #desc>
-          只读预览：由 <code class="acc-page__mono">ADMIN_NAV_TREE</code> 扁平化；各角色路由级可见/可改示意，不含页内按钮（mock）。
+        <template #tools>
+          <AdminListQuery
+            v-model:search="menuSearchQ"
+            :input-id="`${idPrefix}-acc-menu-q`"
+            search-placeholder="侧栏标签、路由 name…"
+            search-aria-label="检索菜单路由"
+          />
         </template>
       </AdminSectionHead>
-      <div class="acc-page__table-wrap">
-        <table class="acc-page__table">
-          <thead>
-            <tr>
-              <th>侧栏标签</th>
-              <th>路由 name</th>
-              <th>运营（路由·示意）</th>
-              <th>财务只读（路由·示意）</th>
-              <th>全局只读（路由）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in menuPreviewRows" :key="row.routeName">
-              <td>{{ row.label }}</td>
-              <td class="acc-page__mono">{{ row.routeName }}</td>
-              <td>{{ row.ops }}</td>
-              <td>{{ row.fin }}</td>
-              <td>{{ row.ro }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-table :data="menuPg.paginatedRows" class="admin-ep-table-wrap">
+        <el-table-column prop="label" label="侧栏标签" min-width="128" sortable/>
+        <el-table-column prop="routeName" label="路由 name" min-width="176" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="acc-page__mono">{{ scope.row.routeName }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="ops" label="运营（路由·示意）" width="128" sortable/>
+        <el-table-column prop="fin" label="财务只读（路由·示意）" width="144" sortable/>
+        <el-table-column prop="ro" label="全局只读（路由）" width="128" sortable/>
+      </el-table>
+      <AdminTablePagination
+        v-model:current-page="menuPg.currentPage"
+        v-model:page-size="menuPg.pageSize"
+        :total="menuPg.total"
+      />
       <p class="acc-page__hint">与「角色」里的菜单要点对照使用；页内按钮级授权二期单独做。</p>
-    </section>
+    </el-card>
 
-    <Teleport to="body">
-      <div
-        v-show="adminModalOpen"
-        class="or-modal-root acc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!adminModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeAdminModal" />
-        <ModalPanel
-          :title="adminModalTitle"
-          :title-id="`${idPrefix}-acc-adm-title`"
-          head-note="绑定角色请填写角色 id，多个用英文逗号分隔。"
-          close-label="关闭"
-          @close="closeAdminModal"
-        >
-          <div class="acc-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftAdminName"
-              label="姓名"
-              :input-id="`${idPrefix}-acc-adm-nm`"
-              placeholder="员工显示名"
-            />
-            <TTextField1Labeled
-              v-model="draftAdminLogin"
-              label="登录名"
-              :input-id="`${idPrefix}-acc-adm-lg`"
-              :disabled="adminModalMode === 'edit'"
-              placeholder="sso 用户名或邮箱前缀"
-            />
-            <TTextField1Labeled
-              v-model="draftAdminRoleIds"
-              label="绑定角色 id"
-              :input-id="`${idPrefix}-acc-adm-rl`"
-              placeholder="如 role-ops, role-readonly"
-            />
-            <TTextField1Labeled
-              v-model="draftAdminStatus"
-              label="状态"
-              :input-id="`${idPrefix}-acc-adm-st`"
-              placeholder="启用 或 禁用"
-            />
-          </div>
-          <p v-if="adminFormError" class="acc-int-modal-err">{{ adminFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeAdminModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveAdminModal">保存</TButton>
+    <AdminDialog
+      v-model="adminModalOpen"
+      :title="adminModalTitle"
+      head-note="绑定角色请填写角色 id，多个用英文逗号分隔。"
+    >
+      <el-form label-position="top" class="admin-ep-form acc-int-modal-grid">
+        <el-form-item label="姓名">
+          <el-input :id="`${idPrefix}-acc-adm-nm`" v-model="draftAdminName" placeholder="员工显示名" />
+        </el-form-item>
+        <el-form-item label="登录名">
+          <el-input
+            :id="`${idPrefix}-acc-adm-lg`"
+            v-model="draftAdminLogin"
+            placeholder="sso 用户名或邮箱前缀"
+            :disabled="adminModalMode === 'edit'"
+          />
+        </el-form-item>
+        <el-form-item label="绑定角色 id">
+          <el-input :id="`${idPrefix}-acc-adm-rl`" v-model="draftAdminRoleIds" placeholder="如 role-ops, role-readonly" />
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-input :id="`${idPrefix}-acc-adm-st`" v-model="draftAdminStatus" placeholder="启用 或 禁用" />
+        </el-form-item>
+      </el-form>
+      <p v-if="adminFormError" class="acc-int-modal-err">{{ adminFormError }}</p>
+      <template #footer>
+        <el-button @click="closeAdminModal">取消</el-button>
+        <el-button type="primary" @click="saveAdminModal">保存</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog
+      v-model="roleModalOpen"
+      :title="roleModalTitle"
+      width="560px"
+      head-note="本期仅维护菜单（路由）与数据范围要点；页内按钮级二期再做。"
+    >
+      <el-form label-position="top" class="admin-ep-form acc-int-modal-grid">
+        <el-form-item label="角色 ID">
+          <el-input
+            :id="`${idPrefix}-acc-role-id`"
+            v-model="draftRoleId"
+            placeholder="新增时必填，如 role-audit"
+            :disabled="roleModalMode === 'edit'"
+          />
+        </el-form-item>
+        <el-form-item label="名称">
+          <el-input :id="`${idPrefix}-acc-role-nm`" v-model="draftRoleName" />
+        </el-form-item>
+        <el-form-item label="说明">
+          <el-input :id="`${idPrefix}-acc-role-dc`" v-model="draftRoleDesc" placeholder="职责与数据范围摘要" />
+        </el-form-item>
+        <el-form-item label="权限要点（每行一条，建议：菜单 / 数据范围）">
+          <el-input
+            :id="`${idPrefix}-acc-role-perm`"
+            v-model="draftRolePermissions"
+            type="textarea"
+            :rows="6"
+            placeholder="第一行写菜单范围，第二行写数据范围；不含页内按钮"
+          />
+        </el-form-item>
+      </el-form>
+      <p v-if="roleFormError" class="acc-int-modal-err">{{ roleFormError }}</p>
+      <template #footer>
+        <el-button @click="closeRoleModal">取消</el-button>
+        <el-button type="primary" @click="saveRoleModal">保存</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog
+      v-model="accessDangerOpen"
+      :title="accessDangerTitle"
+      head-note="原型将直接更新 localStorage。"
+    >
+      <p class="or-keys-editor-banner" role="status">{{ accessDangerMessage }}</p>
+      <template #footer>
+        <el-button @click="closeAccessDanger">取消</el-button>
+        <el-button type="danger" @click="executeAccessDanger">确认删除</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog v-model="infoModalOpen" :title="infoModalTitle">
+      <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
+      <template #footer>
+        <el-button type="primary" @click="closeInfoModal">知道了</el-button>
+      </template>
+    </AdminDialog>
+
+    <AdminDialog
+      v-model="scopeDocModalOpen"
+      title="数据范围语义说明"
+      width="720px"
+      head-note="只读词典。各角色的实际范围请在「权限要点」中编辑，保存到 trinity-ai-admin:platform-roles-rows。"
+    >
+      <div class="acc-scope-doc">
+        <p class="acc-page__callout" style="margin-top: 0">
+          与<strong>菜单（路由）</strong>正交：能进某页不代表能看到全站数据；下列为 §4.12 / §3 语义定义，供「数据范围：」一行对照。
+        </p>
+
+        <h3 class="acc-page__subcap">核心枚举（列表与检索默认语义）</h3>
+        <div class="acc-page__scope-stack">
+          <article v-for="b in DATA_SCOPE_BLOCKS" :key="b.key" class="acc-page__scope-card">
+            <h4 class="acc-page__scope-h">{{ b.title }}</h4>
+            <p class="acc-page__scope-intro">{{ b.intro }}</p>
+            <ul class="acc-page__scope-ul">
+              <li v-for="(line, i) in b.bullets" :key="i">{{ line }}</li>
+            </ul>
+            <p class="acc-page__scope-meta"><span class="acc-page__scope-k">列表行为</span>{{ b.listBehavior }}</p>
+            <p class="acc-page__scope-meta"><span class="acc-page__scope-k">典型角色</span>{{ b.typicalRoles }}</p>
+          </article>
+        </div>
+
+        <h3 class="acc-page__subcap">其它常见切片（延伸说明）</h3>
+        <p class="acc-page__hint" style="margin-top: 0; margin-bottom: 0.5rem">
+          下列来自 §3 角色表常见组合；可在角色「权限要点」中写清；二期可做下拉枚举并与组织/标签服务绑定。
+        </p>
+        <dl class="acc-page__dl acc-page__dl--scope-ext">
+          <template v-for="row in DATA_SCOPE_EXTENDED_SLICES" :key="row.key">
+            <dt class="acc-page__dt">{{ row.title }}</dt>
+            <dd class="acc-page__dd">{{ row.body }}</dd>
           </template>
-        </ModalPanel>
+        </dl>
+
+        <h3 class="acc-page__subcap">多角色时的合并（示意）</h3>
+        <p class="acc-page__scope-para">{{ DATA_SCOPE_COMBINE_RULE }}</p>
+
+        <h3 class="acc-page__subcap">与「角色」配置的关系</h3>
+        <p class="acc-page__scope-para">{{ DATA_SCOPE_ROLE_BINDING_NOTE }}</p>
       </div>
-    </Teleport>
-
-    <Teleport to="body">
-      <div
-        v-show="roleModalOpen"
-        class="or-modal-root acc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!roleModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeRoleModal" />
-        <ModalPanel
-          :title="roleModalTitle"
-          :title-id="`${idPrefix}-acc-role-title`"
-          head-note="本期仅维护菜单（路由）与数据范围要点；页内按钮级二期再做。"
-          close-label="关闭"
-          @close="closeRoleModal"
-        >
-          <div class="acc-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftRoleId"
-              label="角色 ID"
-              :input-id="`${idPrefix}-acc-role-id`"
-              :disabled="roleModalMode === 'edit'"
-              placeholder="新增时必填，如 role-audit"
-            />
-            <TTextField1Labeled v-model="draftRoleName" label="名称" :input-id="`${idPrefix}-acc-role-nm`" />
-            <TTextField1Labeled
-              v-model="draftRoleDesc"
-              label="说明"
-              :input-id="`${idPrefix}-acc-role-dc`"
-              placeholder="职责与数据范围摘要"
-            />
-            <div class="form-group">
-              <label :for="`${idPrefix}-acc-role-perm`">权限要点（每行一条，建议：菜单 / 数据范围）</label>
-              <textarea
-                :id="`${idPrefix}-acc-role-perm`"
-                v-model="draftRolePermissions"
-                rows="6"
-                placeholder="第一行写菜单范围，第二行写数据范围；不含页内按钮"
-              />
-            </div>
-          </div>
-          <p v-if="roleFormError" class="acc-int-modal-err">{{ roleFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeRoleModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveRoleModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
-
-    <Teleport to="body">
-      <div
-        v-show="accessDangerOpen"
-        class="or-modal-root acc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!accessDangerOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeAccessDanger" />
-        <ModalPanel
-          :title="accessDangerTitle"
-          :title-id="`${idPrefix}-acc-dg-title`"
-          head-note="原型将直接更新 localStorage。"
-          close-label="关闭"
-          @close="closeAccessDanger"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ accessDangerMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeAccessDanger">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeAccessDanger">确认删除</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
-
-    <Teleport to="body">
-      <div
-        v-show="infoModalOpen"
-        class="or-modal-root acc-int-modal-host"
-        role="presentation"
-        :aria-hidden="!infoModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeInfoModal" />
-        <ModalPanel
-          :title="infoModalTitle"
-          :title-id="`${idPrefix}-acc-info-title`"
-          close-label="关闭"
-          @close="closeInfoModal"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ infoModalMessage }}</p>
-          <template #actions>
-            <TButton variant="gradient" type="button" @click="closeInfoModal">知道了</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
-
-    <Teleport to="body">
-      <div
-        v-show="scopeDocModalOpen"
-        class="or-modal-root acc-int-modal-host acc-scope-doc-host"
-        role="presentation"
-        :aria-hidden="!scopeDocModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeScopeDocModal" />
-        <ModalPanel
-          title="数据范围语义说明"
-          :title-id="`${idPrefix}-acc-scope-doc-title`"
-          head-note="只读词典。各角色的实际范围请在「权限要点」中编辑，保存到 trinity-ai-admin:platform-roles-rows。"
-          close-label="关闭"
-          @close="closeScopeDocModal"
-        >
-          <div class="acc-scope-doc">
-            <p class="acc-page__callout" style="margin-top: 0">
-              与<strong>菜单（路由）</strong>正交：能进某页不代表能看到全站数据；下列为 §4.12 / §3 语义定义，供「数据范围：」一行对照。
-            </p>
-
-            <h3 class="acc-page__subcap">核心枚举（列表与检索默认语义）</h3>
-            <div class="acc-page__scope-stack">
-              <article v-for="b in DATA_SCOPE_BLOCKS" :key="b.key" class="acc-page__scope-card">
-                <h4 class="acc-page__scope-h">{{ b.title }}</h4>
-                <p class="acc-page__scope-intro">{{ b.intro }}</p>
-                <ul class="acc-page__scope-ul">
-                  <li v-for="(line, i) in b.bullets" :key="i">{{ line }}</li>
-                </ul>
-                <p class="acc-page__scope-meta"><span class="acc-page__scope-k">列表行为</span>{{ b.listBehavior }}</p>
-                <p class="acc-page__scope-meta"><span class="acc-page__scope-k">典型角色</span>{{ b.typicalRoles }}</p>
-              </article>
-            </div>
-
-            <h3 class="acc-page__subcap">其它常见切片（延伸说明）</h3>
-            <p class="acc-page__hint" style="margin-top: 0; margin-bottom: 0.5rem">
-              下列来自 §3 角色表常见组合；可在角色「权限要点」中写清；二期可做下拉枚举并与组织/标签服务绑定。
-            </p>
-            <dl class="acc-page__dl acc-page__dl--scope-ext">
-              <template v-for="row in DATA_SCOPE_EXTENDED_SLICES" :key="row.key">
-                <dt class="acc-page__dt">{{ row.title }}</dt>
-                <dd class="acc-page__dd">{{ row.body }}</dd>
-              </template>
-            </dl>
-
-            <h3 class="acc-page__subcap">多角色时的合并（示意）</h3>
-            <p class="acc-page__scope-para">{{ DATA_SCOPE_COMBINE_RULE }}</p>
-
-            <h3 class="acc-page__subcap">与「角色」配置的关系</h3>
-            <p class="acc-page__scope-para">{{ DATA_SCOPE_ROLE_BINDING_NOTE }}</p>
-          </div>
-          <template #actions>
-            <TButton variant="gradient" type="button" @click="closeScopeDocModal">关闭</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+      <template #footer>
+        <el-button type="primary" @click="closeScopeDocModal">关闭</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

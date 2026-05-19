@@ -1,0 +1,94 @@
+/**
+ * Element Plus 主题桥接（仅 `.admin-shell` 内生效）。
+ * 运营后台统一使用 Element Plus；主色与间距对齐 admin-theme / packages/tokens。
+ */
+.admin-shell {
+  --el-color-primary: var(--admin-primary, var(--blue, #2563eb));
+  /* light-* 用于底色/描边；勿全填 #dbeafe，否则 link 按钮 hover 文字会「消失」 */
+  --el-color-primary-light-3: #79bbff;
+  --el-color-primary-light-5: #a0cfff;
+  --el-color-primary-light-7: #c6e2ff;
+  --el-color-primary-light-8: #d9ecff;
+  --el-color-primary-light-9: var(--admin-primary-soft, #eff6ff);
+  --el-color-primary-dark-2: var(--admin-primary-text, #1d4ed8);
+
+  --el-button-hover-link-text-color: var(--admin-primary-text, #1d4ed8);
+  --el-button-hover-link-bg-color: transparent;
+
+  --el-color-success: var(--admin-success, var(--success, #16a34a));
+  --el-color-warning: var(--admin-warning, var(--warning, #d97706));
+  --el-color-danger: var(--admin-danger, var(--danger, #dc2626));
+  --el-color-error: var(--admin-danger, var(--danger, #dc2626));
+
+  --el-text-color-primary: var(--admin-text, var(--text, #1a1a1a));
+  --el-text-color-regular: var(--admin-muted, var(--muted, #4b5563));
+  --el-text-color-secondary: var(--admin-muted-2, var(--muted-2, #9ca3af));
+  --el-border-color: var(--admin-border, var(--border, #e5e7eb));
+  --el-border-color-light: var(--admin-border, var(--border, #e5e7eb));
+  --el-fill-color-blank: var(--admin-surface, var(--bg, #ffffff));
+  --el-bg-color: var(--admin-surface, var(--bg, #ffffff));
+  --el-bg-color-page: var(--admin-bg, var(--surface, #f9fafb));
+
+  --el-font-size-base: 0.8125rem;
+  --el-component-size: 2rem;
+  --el-component-size-small: 2rem;
+  --el-border-radius-base: var(--admin-radius-sm, 0.375rem);
+
+  --el-table-header-bg-color: var(--admin-table-header-bg, #f5f7fa);
+  --el-table-header-text-color: var(--admin-table-header-text, #606266);
+  --el-table-row-hover-bg-color: var(--admin-table-row-hover, #f5f7fa);
+  --el-table-border-color: var(--admin-table-row-border, #ebeef5);
+}
+
+/* 表格行内 link 按钮：与若依式「图标 + 文字」密度接近 */
+.admin-shell .el-button.is-link {
+  padding: 0 0.35rem;
+  height: auto;
+  font-size: 0.75rem;
+  background-color: transparent !important;
+}
+
+.admin-shell .el-button--primary.is-link:hover,
+.admin-shell .el-button--primary.is-link:focus-visible {
+  color: var(--admin-primary-text, #1d4ed8) !important;
+  background-color: transparent !important;
+}
+
+.admin-shell .el-button--danger.is-link:hover,
+.admin-shell .el-button--danger.is-link:focus-visible {
+  color: var(--admin-danger-ink, #b91c1c) !important;
+  background-color: transparent !important;
+}
+
+.admin-shell .el-button--info.is-link:hover,
+.admin-shell .el-button--info.is-link:focus-visible {
+  color: var(--admin-primary, #2563eb) !important;
+  background-color: transparent !important;
+}
+
+.admin-shell .el-button--default:hover,
+.admin-shell .el-button--default:focus-visible {
+  color: var(--admin-primary, #2563eb);
+  border-color: var(--blue-ring, #bfdbfe);
+  background-color: var(--admin-primary-soft, #eff6ff);
+}
+
+.admin-shell .el-button--primary:not(.is-link):hover,
+.admin-shell .el-button--primary:not(.is-link):focus-visible {
+  background-color: var(--admin-primary-text, #1d4ed8);
+  border-color: var(--admin-primary-text, #1d4ed8);
+  color: #fff;
+}
+
+.admin-shell .el-button--danger:not(.is-link):hover,
+.admin-shell .el-button--danger:not(.is-link):focus-visible {
+  background-color: var(--admin-danger-ink, #b91c1c);
+  border-color: var(--admin-danger-ink, #b91c1c);
+  color: #fff;
+}
+
+.admin-shell .el-table {
+  font-size: 0.8125rem;
+}
+
+/* 业务卡片样式见 admin-ruoyi.css（.admin-ep-card） */

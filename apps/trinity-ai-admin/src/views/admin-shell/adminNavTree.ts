@@ -4,12 +4,14 @@
  */
 
 import { BILLING_TABS } from "../admin-billing/mock";
-import { SECONDARY_PAGES_BY_ROUTE_NAME } from "./moduleSecondaryPages";
+import { leafIconKey, MODULE_ICON_BY_PATH, type NavIconKey } from "./adminNavIcons";
+import { getValidSecondaryPages } from "./moduleSecondaryPages";
 
 export type NavLeaf = {
   path: string;
   routeName: string;
   label: string;
+  iconKey: NavIconKey;
   designRef: string;
   planBatch: string;
 };
@@ -18,6 +20,7 @@ export type NavSubmenu = {
   kind: "submenu";
   id: string;
   label: string;
+  iconKey: NavIconKey;
   designRef: string;
   planBatch: string;
   children: NavLeaf[];
@@ -61,12 +64,13 @@ export const ADMIN_STUB_MODULE_BASES: AdminModuleBase[] = [
 export const ADMIN_ALL_MODULE_BASES: AdminModuleBase[] = [ADMIN_KEYS_MODULE, ...ADMIN_STUB_MODULE_BASES];
 
 function stubChildren(mod: AdminModuleBase): NavLeaf[] {
-  const rows = SECONDARY_PAGES_BY_ROUTE_NAME[mod.parentRouteName];
-  if (!rows?.length) return [];
+  const rows = getValidSecondaryPages(mod.parentRouteName);
+  if (!rows.length) return [];
   return rows.map((r) => ({
     path: `${mod.pathBase}/${r.id}`,
     routeName: `${mod.parentRouteName}-${r.id}`,
     label: r.title,
+    iconKey: leafIconKey(r.id),
     designRef: mod.designRef,
     planBatch: mod.planBatch,
   }));
@@ -77,6 +81,7 @@ function moduleToSubmenu(mod: AdminModuleBase): NavSubmenu {
     kind: "submenu",
     id: `nav-${mod.pathBase}`,
     label: mod.label,
+    iconKey: MODULE_ICON_BY_PATH[mod.pathBase] ?? "menu",
     designRef: mod.designRef,
     planBatch: mod.planBatch,
     children: stubChildren(mod),
@@ -87,6 +92,7 @@ const billingChildren: NavLeaf[] = BILLING_TABS.map((t) => ({
   path: `billing/${t.id}`,
   routeName: `tai-admin-billing-${t.id}`,
   label: t.label,
+  iconKey: leafIconKey(t.id),
   designRef: "§4.3",
   planBatch: "P2",
 }));
@@ -97,6 +103,7 @@ export const ADMIN_NAV_TREE: NavEntry[] = [
     path: "dashboard",
     routeName: "tai-admin-dashboard",
     label: "工作台",
+    iconKey: "dashboard",
     designRef: "§4.1",
     planBatch: "P0",
   },
@@ -106,6 +113,7 @@ export const ADMIN_NAV_TREE: NavEntry[] = [
     path: "ops/live",
     routeName: "tai-admin-ops-live",
     label: "实时大盘",
+    iconKey: "monitor",
     designRef: "§4.2",
     planBatch: "P1",
   },
@@ -113,6 +121,7 @@ export const ADMIN_NAV_TREE: NavEntry[] = [
     kind: "submenu",
     id: "nav-billing",
     label: "用量与计费",
+    iconKey: "billing",
     designRef: "§4.3",
     planBatch: "P2",
     children: billingChildren,
@@ -129,6 +138,7 @@ export function flattenNavLeaves(tree: NavEntry[] = ADMIN_NAV_TREE): NavLeaf[] {
         path: e.path,
         routeName: e.routeName,
         label: e.label,
+        iconKey: e.iconKey,
         designRef: e.designRef,
         planBatch: e.planBatch,
       });

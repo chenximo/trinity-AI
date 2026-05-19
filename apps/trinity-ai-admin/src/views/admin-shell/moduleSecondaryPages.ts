@@ -85,9 +85,21 @@ export function getParentRouteNameFromStubChildRoute(routeName: string): string 
   return undefined;
 }
 
+/** 过滤无 id 的二级项，避免生成 `tai-admin-*-undefined` 路由 */
+export function getValidSecondaryPages(parentRouteName: string): SecondaryPageDef[] {
+  return (SECONDARY_PAGES_BY_ROUTE_NAME[parentRouteName] ?? []).filter(
+    (p): p is SecondaryPageDef => typeof p?.id === "string" && p.id.length > 0,
+  );
+}
+
 /** 占位子页：取父模块下全部二级定义 */
 export function getSecondaryPagesForParent(parentRouteName: string): SecondaryPageDef[] {
-  return SECONDARY_PAGES_BY_ROUTE_NAME[parentRouteName] ?? [];
+  return getValidSecondaryPages(parentRouteName);
+}
+
+export function defaultSecondaryRouteName(parentRouteName: string): string | undefined {
+  const first = getValidSecondaryPages(parentRouteName)[0];
+  return first ? `${parentRouteName}-${first.id}` : undefined;
 }
 
 /** 兼容：根据子路由名解析父模块后返回整表（供占位页高亮当前子页） */

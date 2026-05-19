@@ -28,6 +28,9 @@
 |------|------|
 | `AdminShellLayout.vue` | 布局 + 侧栏（一级 + 二级子菜单）+ 顶栏 + Tags + `RouterView` |
 | `admin-shell.css` | 壳层布局与侧栏样式 |
+| `../../styles/admin-element-plus.css` | Element Plus 主题变量桥接（`.admin-shell`） |
+
+**UI**：业务页统一 **Element Plus**（见 app 根 `README.md` · UI 组件库）。
 | `adminNavTree.ts` | **`ADMIN_NAV_TREE`**：侧栏 IA 真源（与路由子项对齐） |
 | `mock.ts` | 仅占位类型说明（导航以 `adminNavTree` 为准） |
 | `shellInteractions.ts` | 侧栏收起状态 `localStorage` |

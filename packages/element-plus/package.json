@@ -1,0 +1,17 @@
+{
+  "name": "@trinity/element-plus",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Element Plus 全项目统一注册（中文 locale + 基础样式）",
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "element-plus": "^2.14.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": ["src"]
+}

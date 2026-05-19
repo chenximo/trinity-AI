@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, useId, watch, watchEffect } from "vue";
+import { Delete, Edit } from "@element-plus/icons-vue";
+import { computed, onMounted, onUnmounted, ref, useId, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import {
-  FilterForm2PillListbox,
-  type FilterForm2ListboxItem,
-  InternalHelpTip,
-  ModalPanel,
-  TButton,
-  TSearchForm1Fixed,
-  TTabSwitch1Underline,
-  TTextField1Labeled,
-} from "@trinity/ui";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { filterByQuery } from "../../utils/adminListFilter";
 import "./suppliers.css";
 import {
   DEFAULT_INTEGRATION_BINDINGS,
-  INTEGRATION_MODAL_TABS,
   SUPPLIER_INTEGRATION,
   SUPPLIER_KEY_ROTATION,
   SUPPLIER_LIST_ROWS,
@@ -34,7 +29,6 @@ import {
   writeIntegrationBindingsJson,
   writeSupplierListFilter,
   writeSupplierListRowsJson,
-  setSupplierModalBodyLock,
 } from "./suppliersInteractions";
 
 const route = useRoute();
@@ -49,7 +43,6 @@ const panel = computed<SupplierPanelId>(() => {
 
 const listFilter = ref("");
 const supplierStatusFilter = ref<"all" | "ok" | "warn">("all");
-const supplierStatusFilterOpen = ref(false);
 const supplierImportInputRef = ref<HTMLInputElement | null>(null);
 
 const supplierListRows = ref<SupplierListRow[]>([]);
@@ -110,31 +103,6 @@ function loadSupplierListRows(): void {
 
 function persistSupplierListRows(): void {
   writeSupplierListRowsJson(JSON.stringify(supplierListRows.value));
-}
-
-const supplierStatusListboxItems = computed<FilterForm2ListboxItem[]>(() => {
-  const v = supplierStatusFilter.value;
-  return [
-    { label: "全部状态", checked: v === "all" },
-    { label: "仅正常", checked: v === "ok" },
-    { label: "仅异常/降级", checked: v === "warn" },
-  ];
-});
-
-const supplierStatusPillLabel = computed(() => {
-  switch (supplierStatusFilter.value) {
-    case "ok":
-      return "仅正常";
-    case "warn":
-      return "异常/降级";
-    default:
-      return "全部状态";
-  }
-});
-
-function onSupplierStatusListboxSelect(i: number): void {
-  const keys: Array<"all" | "ok" | "warn"> = ["all", "ok", "warn"];
-  supplierStatusFilter.value = keys[i] ?? "all";
 }
 
 function onAddSupplierClick(): void {
@@ -263,32 +231,8 @@ function onExportSuppliersClick(): void {
 const integrationRows = ref<IntegrationBindingRow[]>([]);
 const integrationSearchQuery = ref("");
 const integrationScopeFilter = ref<"all" | "chat" | "emb">("all");
-const integrationScopeFilterOpen = ref(false);
-
-const integrationScopeListboxItems = computed<FilterForm2ListboxItem[]>(() => {
-  const v = integrationScopeFilter.value;
-  return [
-    { label: "全部配置", checked: v === "all" },
-    { label: "含 chat", checked: v === "chat" },
-    { label: "含 embedding", checked: v === "emb" },
-  ];
-});
-
-const integrationScopePillLabel = computed(() => {
-  switch (integrationScopeFilter.value) {
-    case "chat":
-      return "含 chat";
-    case "emb":
-      return "含 embedding";
-    default:
-      return "全部配置";
-  }
-});
-
-function onIntegrationScopeListboxSelect(i: number): void {
-  const keys: Array<"all" | "chat" | "emb"> = ["all", "chat", "emb"];
-  integrationScopeFilter.value = keys[i] ?? "all";
-}
+const probeSearchQ = ref("");
+const probeResultFilter = ref("");
 
 const modalOpen = ref(false);
 const modalTab = ref<"input" | "output">("input");
@@ -445,17 +389,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", onDocKeydown);
-  setSupplierModalBodyLock(false);
 });
 
 watch(listFilter, (v) => {
   writeSupplierListFilter(v);
-});
-
-watchEffect(() => {
-  setSupplierModalBodyLock(
-    modalOpen.value || supplierFormModalOpen.value || dangerConfirmOpen.value
-  );
 });
 
 const filteredList = computed(() => {
@@ -463,532 +400,489 @@ const filteredList = computed(() => {
   const st = supplierStatusFilter.value;
   if (st === "ok") rows = rows.filter((r) => r.status === "正常");
   else if (st === "warn") rows = rows.filter((r) => r.status !== "正常");
-
-  const q = listFilter.value.trim().toLowerCase();
-  if (!q) return rows;
-  return rows.filter(
-    (r) =>
-      r.name.toLowerCase().includes(q) ||
-      r.id.toLowerCase().includes(q) ||
-      r.type.toLowerCase().includes(q) ||
-      r.region.toLowerCase().includes(q)
+  return filterByQuery(rows, listFilter.value, (r) =>
+    [r.name, r.id, r.type, r.region, r.health].join(" "),
   );
 });
 
 const filteredIntegrationRows = computed(() => {
   let rows = integrationRows.value;
-  const q = integrationSearchQuery.value.trim().toLowerCase();
-  if (q) {
-    rows = rows.filter(
-      (r) =>
-        r.configName.toLowerCase().includes(q) ||
-        r.inputName.toLowerCase().includes(q) ||
-        r.outputName.toLowerCase().includes(q) ||
-        r.inputJson.toLowerCase().includes(q) ||
-        r.outputJson.toLowerCase().includes(q) ||
-        r.updatedAt.toLowerCase().includes(q)
-    );
-  }
   const sc = integrationScopeFilter.value;
   if (sc === "chat") {
     rows = rows.filter(
       (r) =>
         r.configName.toLowerCase().includes("chat") ||
         r.inputJson.toLowerCase().includes("chat") ||
-        r.outputJson.toLowerCase().includes("chat")
+        r.outputJson.toLowerCase().includes("chat"),
     );
   } else if (sc === "emb") {
     rows = rows.filter(
       (r) =>
         r.configName.toLowerCase().includes("embed") ||
         r.inputJson.toLowerCase().includes("embed") ||
-        r.outputJson.toLowerCase().includes("embed")
+        r.outputJson.toLowerCase().includes("embed"),
     );
   }
-  return rows;
+  return filterByQuery(rows, integrationSearchQuery.value, (r) =>
+    [r.configName, r.inputName, r.outputName, r.inputJson, r.outputJson, r.updatedAt].join(" "),
+  );
 });
+
+const filteredProbeRows = computed(() => {
+  let rows = SUPPLIER_PROBE_ROWS;
+  if (probeResultFilter.value) rows = rows.filter((r) => r.result === probeResultFilter.value);
+  return filterByQuery(rows, probeSearchQ.value, (r) =>
+    [r.id, r.target, r.lastRun, r.latency, r.result, r.detail].join(" "),
+  );
+});
+
+function resetSupplierListQuery(): void {
+  supplierStatusFilter.value = "all";
+}
+
+function resetIntegrationQuery(): void {
+  integrationScopeFilter.value = "all";
+}
+
+function resetProbeQuery(): void {
+  probeResultFilter.value = "";
+}
+
+const integrationDialogTitle = computed(() => (editingId.value ? "编辑对接配置" : "新增对接配置"));
+
+const listPg = useAdminTablePagination(filteredList);
+const integrationPg = useAdminTablePagination(filteredIntegrationRows);
+const probePg = useAdminTablePagination(filteredProbeRows);
 </script>
 
 <template>
   <div class="sup-page">
     <!-- 供应商列表 -->
     <section v-show="panel === 'list'" class="sup-page__panel" aria-label="供应商列表">
-      <AdminSectionHead title="供应商列表">
-        <template #annot>
-          <AdminInternalTip heading="供应商列表 · 原型" explain="供应商列表对内说明（原型）">
-            <p>列表与筛选为 mock；导入/导出示意，工程期接主数据与审批。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>主数据检索、状态筛选与导入导出（<strong>§4.4</strong>，mock）。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="listFilter"
-            :input-id="`${idPrefix}-sp-search`"
-            placeholder="按名称 / ID / 类型 / 区域搜索…"
-            width="17.5rem"
-            aria-label="搜索供应商"
-          />
-          <FilterForm2PillListbox
-            v-model:open="supplierStatusFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-sp-st-wrap`"
-            :btn-id="`${idPrefix}-sp-st-btn`"
-            :panel-id="`${idPrefix}-sp-st-panel`"
-            :label-span-id="`${idPrefix}-sp-st-lbl`"
-            listbox-aria-label="按状态筛选"
-            beak-x="2.75rem"
-            :items="supplierStatusListboxItems"
-            @select="onSupplierStatusListboxSelect"
-          >
-            {{ supplierStatusPillLabel }}
-          </FilterForm2PillListbox>
-          <input
-            ref="supplierImportInputRef"
-            type="file"
-            class="sup-visually-hidden"
-            accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
-            tabindex="-1"
-            aria-hidden="true"
-            @change="onSupplierImportFileChange"
-          />
-          <TButton variant="gradient" type="button" @click="onAddSupplierClick">新增供应商</TButton>
-          <TButton variant="outline" type="button" @click="triggerSupplierImport">导入</TButton>
-          <TButton variant="outline" type="button" @click="onExportSuppliersClick">导出</TButton>
-        </template>
-      </AdminSectionHead>
-      <div class="sup-page__table-wrap">
-        <table class="sup-page__table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>名称</th>
-              <th>类型</th>
-              <th>状态</th>
-              <th>健康</th>
-              <th>区域</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredList" :key="r.id">
-              <td class="sup-page__mono">{{ r.id }}</td>
-              <td>{{ r.name }}</td>
-              <td>{{ r.type }}</td>
-              <td>
-                <span
-                  class="sup-page__badge"
-                  :class="r.status === '正常' ? 'sup-page__badge--ok' : 'sup-page__badge--warn'"
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="供应商列表">
+          <template #annot>
+            <AdminInternalTip heading="供应商列表 · 原型" explain="供应商列表对内说明（原型）">
+              <p>列表与筛选为 mock；导入/导出示意，工程期接主数据与审批。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="listFilter"
+              :input-id="`${idPrefix}-sp-search`"
+              search-placeholder="名称 / ID / 类型 / 区域…"
+              search-aria-label="搜索供应商"
+              @reset="resetSupplierListQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="supplierStatusFilter"
+                  placeholder="状态"
+                  aria-label="按状态筛选"
+                  style="width: 9rem"
                 >
-                  {{ r.status }}
-                </span>
-              </td>
-              <td>{{ r.health }}</td>
-              <td>{{ r.region }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="sup-int__textlink" @click="onEditSupplierClick(r)">编辑</button>
-                <button
-                  type="button"
-                  class="sup-int__textlink sup-int__textlink--danger"
-                  @click="requestDeleteSupplier(r)"
-                >
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sup-page__hint">
-        列表数据与新增/编辑写入 <code class="sup-page__mono">localStorage</code>（键 <code class="sup-page__mono">trinity-ai-admin:suppliers-list-rows</code>）；搜索关键字另存；状态为前端即时过滤；导入/导出为原型占位；编辑为 <strong>ModalPanel</strong> + <strong>TTextField1Labeled</strong>；<strong>删除</strong>经二次 <strong>ModalPanel</strong> 确认（<code class="sup-page__mono">@trinity/ui</code>）。
-      </p>
+                  <el-option label="全部状态" value="all" />
+                  <el-option label="仅正常" value="ok" />
+                  <el-option label="仅异常/降级" value="warn" />
+                </el-select>
+              </template>
+            <input
+              ref="supplierImportInputRef"
+              type="file"
+              class="sup-visually-hidden"
+              accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
+              tabindex="-1"
+              aria-hidden="true"
+              @change="onSupplierImportFileChange"
+            />
+            <el-button type="primary" @click="onAddSupplierClick">新增供应商</el-button>
+            <el-button @click="triggerSupplierImport">导入</el-button>
+            <el-button @click="onExportSuppliersClick">导出</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table :data="listPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column label="ID" min-width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="sup-page__mono">{{ scope.row.id }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="name" label="名称" min-width="120" sortable/>
+          <el-table-column prop="type" label="类型" min-width="100" sortable/>
+          <el-table-column label="状态" width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span
+                class="sup-page__badge"
+                :class="scope.row.status === '正常' ? 'sup-page__badge--ok' : 'sup-page__badge--warn'"
+              >
+                {{ scope.row.status }}
+              </span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="health" label="健康" min-width="90" sortable/>
+          <el-table-column prop="region" label="区域" min-width="90" sortable/>
+          <el-table-column prop="updatedAt" label="更新" min-width="130" sortable/>
+          <el-table-column label="操作" width="140" fixed="right">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <div class="admin-ep-row-actions">
+                <el-button link type="primary" :icon="Edit" @click="onEditSupplierClick(scope.row)">编辑</el-button>
+                <el-button link type="danger" :icon="Delete" @click="requestDeleteSupplier(scope.row)">删除</el-button>
+              </div>
+              </template>
+            </template>
+          </el-table-column>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="listPg.currentPage"
+          v-model:page-size="listPg.pageSize"
+          :total="listPg.total"
+        />
+        <p class="sup-page__hint">
+          列表数据与新增/编辑写入 <code class="sup-page__mono">localStorage</code>（键 <code class="sup-page__mono">trinity-ai-admin:suppliers-list-rows</code>）；搜索关键字另存；状态为前端即时过滤；导入/导出为原型占位；编辑为 Element Plus 表单弹窗；<strong>删除</strong>经二次确认。
+        </p>
+      </el-card>
     </section>
 
     <!-- 档案与结算 -->
     <section v-show="panel === 'profile'" class="sup-page__panel" aria-label="档案与结算">
-      <AdminSectionHead title="档案与结算">
-        <template #annot>
-          <AdminInternalTip heading="档案与结算 · 原型" explain="供应商档案对内说明（原型）">
-            <p>结算周期与账户信息为占位；与财务对账字段在工程期对齐。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>法人、结算周期与付款条款只读示意（mock）。</template>
-        <template #tools>
-          <TButton variant="outline">编辑档案（示意）</TButton>
-          <TButton variant="gradient">保存（示意）</TButton>
-        </template>
-      </AdminSectionHead>
-      <dl class="sup-page__dl">
-        <dt class="sup-page__dt">法人主体</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.legalName }}</dd>
-        <dt class="sup-page__dt">税号</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.taxId }}</dd>
-        <dt class="sup-page__dt">结算周期</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.billingCycle }}</dd>
-        <dt class="sup-page__dt">付款条件</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.paymentTerms }}</dd>
-        <dt class="sup-page__dt">联系人</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.contact }}</dd>
-        <dt class="sup-page__dt">备注</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.remark }}</dd>
-      </dl>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="档案与结算">
+          <template #annot>
+            <AdminInternalTip heading="档案与结算 · 原型" explain="供应商档案对内说明（原型）">
+              <p>结算周期与账户信息为占位；与财务对账字段在工程期对齐。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <el-button type="button">编辑档案（示意）</el-button>
+            <el-button type="primary">保存（示意）</el-button>
+          </template>
+        </AdminSectionHead>
+        <dl class="sup-page__dl">
+          <dt class="sup-page__dt">法人主体</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.legalName }}</dd>
+          <dt class="sup-page__dt">税号</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.taxId }}</dd>
+          <dt class="sup-page__dt">结算周期</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.billingCycle }}</dd>
+          <dt class="sup-page__dt">付款条件</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.paymentTerms }}</dd>
+          <dt class="sup-page__dt">联系人</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.contact }}</dd>
+          <dt class="sup-page__dt">备注</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_PROFILE.remark }}</dd>
+        </dl>
+      </el-card>
     </section>
 
     <!-- 对接配置 -->
     <section v-show="panel === 'integration'" class="sup-page__panel" aria-label="对接配置">
-      <AdminSectionHead title="对接配置">
-        <template #annot>
-          <AdminInternalTip heading="对接配置 · 原型" explain="对接配置对内说明（原型）">
-            <p>Base URL、鉴权方式为示意；上线前须走配置审计与密钥轮换（§4.4）。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>API 连通、JSON 模板列表与范围筛选（<strong>§4.4</strong>，mock）。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="integrationSearchQuery"
-            :input-id="`${idPrefix}-int-search`"
-            placeholder="搜索配置名称、模板名、JSON…"
-            width="17.5rem"
-            aria-label="搜索对接配置"
-          />
-          <FilterForm2PillListbox
-            v-model:open="integrationScopeFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-int-sc-wrap`"
-            :btn-id="`${idPrefix}-int-sc-btn`"
-            :panel-id="`${idPrefix}-int-sc-panel`"
-            :label-span-id="`${idPrefix}-int-sc-lbl`"
-            listbox-aria-label="快捷筛选配置范围"
-            beak-x="2.75rem"
-            :items="integrationScopeListboxItems"
-            @select="onIntegrationScopeListboxSelect"
-          >
-            {{ integrationScopePillLabel }}
-          </FilterForm2PillListbox>
-          <TButton variant="gradient" type="button" @click="openAddIntegration">新增对接配置</TButton>
-          <TButton variant="outline" type="button" @click="router.push({ name: 'tai-admin-suppliers-probe' })">
-            跳转拨测子页
-          </TButton>
-          <TButton variant="outline" type="button" @click="router.push({ name: 'tai-admin-ops-live' })">
-            监控 · 供应商健康
-          </TButton>
-          <TButton variant="outline" type="button">探测连通性（示意）</TButton>
-        </template>
-      </AdminSectionHead>
-      <dl class="sup-page__dl">
-        <dt class="sup-page__dt">API 类型</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.apiKind }}</dd>
-        <dt class="sup-page__dt">Base URL</dt>
-        <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.baseUrl }}</span></dd>
-        <dt class="sup-page__dt">Profile 引用</dt>
-        <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.profileRef }}</span></dd>
-        <dt class="sup-page__dt">JSON 契约引用</dt>
-        <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.jsonRef }}</span></dd>
-        <dt class="sup-page__dt">超时 (ms)</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.timeoutMs }}</dd>
-        <dt class="sup-page__dt">重试默认</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.retryDefault }}</dd>
-      </dl>
-      <p class="sup-page__callout">{{ SUPPLIER_INTEGRATION.api2Note }}</p>
-
-      <h3 class="sup-int__subcap">输入 / 输出模板（Tab 切换列表 + 增删改查）</h3>
-      <p class="sup-page__hint" style="margin-top: 0; margin-bottom: 0.65rem">
-        列表用 <strong>Tab</strong> 切换「输入模板 / 输出模板」；弹窗内同样用 Tab 编辑两侧 JSON。组件来自 <strong>@trinity/ui</strong>，对齐
-        <code>DesignSpec.vue</code>；数据存 <code class="sup-page__mono">localStorage</code>；<strong>删除</strong>经二次 <strong>ModalPanel</strong> 确认。
-      </p>
-
-      <TTabSwitch1Underline
-        v-model="integrationListTab"
-        :tabs="INTEGRATION_MODAL_TABS"
-        tablist-label="输入或输出模板列表"
-        class="sup-int-list-tabs"
-      />
-
-      <div v-show="integrationListTab === 'input'" class="sup-page__table-wrap">
-        <table class="sup-page__table">
-          <thead>
-            <tr>
-              <th>配置名称</th>
-              <th>模板名称</th>
-              <th>JSON 预览</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredIntegrationRows" :key="`${r.id}-in`">
-              <td>{{ r.configName }}</td>
-              <td>{{ r.inputName }}</td>
-              <td class="sup-page__mono">{{ jsonPreview(r.inputJson) }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="sup-int__textlink" @click="openEditIntegration(r, 'input')">编辑</button>
-                <button
-                  type="button"
-                  class="sup-int__textlink sup-int__textlink--danger"
-                  @click="requestDeleteIntegration(r)"
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="对接配置">
+          <template #annot>
+            <AdminInternalTip heading="对接配置 · 原型" explain="对接配置对内说明（原型）">
+              <p>Base URL、鉴权方式为示意；上线前须走配置审计与密钥轮换（§4.4）。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="integrationSearchQuery"
+              :input-id="`${idPrefix}-int-search`"
+              search-placeholder="配置名、模板、JSON…"
+              search-aria-label="搜索对接配置"
+              @reset="resetIntegrationQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="integrationScopeFilter"
+                  placeholder="配置范围"
+                  aria-label="快捷筛选配置范围"
+                  style="width: 9rem"
                 >
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                  <el-option label="全部配置" value="all" />
+                  <el-option label="含 chat" value="chat" />
+                  <el-option label="含 embedding" value="emb" />
+                </el-select>
+              </template>
+            <el-button type="primary" @click="openAddIntegration">新增对接配置</el-button>
+            <el-button @click="router.push({ name: 'tai-admin-suppliers-probe' })">跳转拨测子页</el-button>
+            <el-button @click="router.push({ name: 'tai-admin-ops-live' })">监控 · 供应商健康</el-button>
+            <el-button type="button">探测连通性（示意）</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <dl class="sup-page__dl">
+          <dt class="sup-page__dt">API 类型</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.apiKind }}</dd>
+          <dt class="sup-page__dt">Base URL</dt>
+          <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.baseUrl }}</span></dd>
+          <dt class="sup-page__dt">Profile 引用</dt>
+          <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.profileRef }}</span></dd>
+          <dt class="sup-page__dt">JSON 契约引用</dt>
+          <dd class="sup-page__dd"><span class="sup-page__mono">{{ SUPPLIER_INTEGRATION.jsonRef }}</span></dd>
+          <dt class="sup-page__dt">超时 (ms)</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.timeoutMs }}</dd>
+          <dt class="sup-page__dt">重试默认</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_INTEGRATION.retryDefault }}</dd>
+        </dl>
+        <p class="sup-page__callout">{{ SUPPLIER_INTEGRATION.api2Note }}</p>
 
-      <div v-show="integrationListTab === 'output'" class="sup-page__table-wrap">
-        <table class="sup-page__table">
-          <thead>
-            <tr>
-              <th>配置名称</th>
-              <th>模板名称</th>
-              <th>JSON 预览</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredIntegrationRows" :key="`${r.id}-out`">
-              <td>{{ r.configName }}</td>
-              <td>{{ r.outputName }}</td>
-              <td class="sup-page__mono">{{ jsonPreview(r.outputJson) }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button type="button" class="sup-int__textlink" @click="openEditIntegration(r, 'output')">编辑</button>
-                <button
-                  type="button"
-                  class="sup-int__textlink sup-int__textlink--danger"
-                  @click="requestDeleteIntegration(r)"
-                >
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <h3 class="sup-int__subcap">输入 / 输出模板（Tab 切换列表 + 增删改查）</h3>
+        <p class="sup-page__hint" style="margin-top: 0; margin-bottom: 0.65rem">
+          列表用 <strong>Tab</strong> 切换「输入模板 / 输出模板」；弹窗内同样用 Tab 编辑两侧 JSON。数据存 <code class="sup-page__mono">localStorage</code>；<strong>删除</strong>经二次确认。
+        </p>
+
+        <el-tabs v-model="integrationListTab" class="sup-int-list-tabs">
+          <el-tab-pane label="输入模板" name="input">
+            <el-table :data="integrationPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+              <el-table-column prop="configName" label="配置名称" min-width="120" sortable/>
+              <el-table-column prop="inputName" label="模板名称" min-width="120" sortable/>
+              <el-table-column label="JSON 预览" min-width="160" show-overflow-tooltip>
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                  <span class="sup-page__mono">{{ jsonPreview(scope.row.inputJson) }}</span>
+                  </template>
+            </template>
+              </el-table-column>
+              <el-table-column prop="updatedAt" label="更新" min-width="130" sortable/>
+              <el-table-column label="操作" width="140" fixed="right">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                  <div class="admin-ep-row-actions">
+                    <el-button link type="primary" :icon="Edit" @click="openEditIntegration(scope.row, 'input')">编辑</el-button>
+                    <el-button link type="danger" :icon="Delete" @click="requestDeleteIntegration(scope.row)">删除</el-button>
+                  </div>
+                  </template>
+            </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+          <el-tab-pane label="输出模板" name="output">
+            <el-table :data="integrationPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+              <el-table-column prop="configName" label="配置名称" min-width="120" sortable/>
+              <el-table-column prop="outputName" label="模板名称" min-width="120" sortable/>
+              <el-table-column label="JSON 预览" min-width="160" show-overflow-tooltip>
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                  <span class="sup-page__mono">{{ jsonPreview(scope.row.outputJson) }}</span>
+                  </template>
+            </template>
+              </el-table-column>
+              <el-table-column prop="updatedAt" label="更新" min-width="130" sortable/>
+              <el-table-column label="操作" width="140" fixed="right">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                  <div class="admin-ep-row-actions">
+                    <el-button link type="primary" :icon="Edit" @click="openEditIntegration(scope.row, 'output')">编辑</el-button>
+                    <el-button link type="danger" :icon="Delete" @click="requestDeleteIntegration(scope.row)">删除</el-button>
+                  </div>
+                  </template>
+            </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </el-tabs>
+        <AdminTablePagination
+          v-model:current-page="integrationPg.currentPage"
+          v-model:page-size="integrationPg.pageSize"
+          :total="integrationPg.total"
+        />
+      </el-card>
     </section>
 
     <!-- 连通性探测 -->
     <section v-show="panel === 'probe'" class="sup-page__panel" aria-label="连通性探测">
-      <AdminSectionHead title="连通性探测">
-        <template #annot>
-          <AdminInternalTip heading="连通性探测 · 原型" explain="连通性探测对内说明（原型）">
-            <p>探测结果为 mock；真实环境应限频、落审计并区分供应商沙箱/生产。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>拨测任务与最近结果只读（mock）。</template>
-        <template #tools>
-          <TButton variant="gradient">立即执行拨测（示意）</TButton>
-          <TButton variant="outline">调度策略</TButton>
-        </template>
-      </AdminSectionHead>
-      <div class="sup-page__table-wrap">
-        <table class="sup-page__table">
-          <thead>
-            <tr>
-              <th>任务</th>
-              <th>目标</th>
-              <th>最近执行</th>
-              <th>延迟</th>
-              <th>结果</th>
-              <th>说明</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in SUPPLIER_PROBE_ROWS" :key="r.id">
-              <td class="sup-page__mono">{{ r.id }}</td>
-              <td>{{ r.target }}</td>
-              <td>{{ r.lastRun }}</td>
-              <td>{{ r.latency }}</td>
-              <td>
-                <span
-                  class="sup-page__badge"
-                  :class="r.result === '成功' ? 'sup-page__badge--ok' : 'sup-page__badge--warn'"
-                >
-                  {{ r.result }}
-                </span>
-              </td>
-              <td>{{ r.detail }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="连通性探测">
+          <template #annot>
+            <AdminInternalTip heading="连通性探测 · 原型" explain="连通性探测对内说明（原型）">
+              <p>探测结果为 mock；真实环境应限频、落审计并区分供应商沙箱/生产。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="probeSearchQ"
+              :input-id="`${idPrefix}-sp-probe-q`"
+              search-placeholder="任务、目标、说明…"
+              search-aria-label="检索拨测任务"
+              @reset="resetProbeQuery"
+            >
+              <template #filters>
+                <el-select v-model="probeResultFilter" clearable placeholder="结果" style="width: 7rem">
+                  <el-option label="成功" value="成功" />
+                  <el-option label="失败" value="失败" />
+                </el-select>
+              </template>
+              <el-button type="primary">立即执行拨测（示意）</el-button>
+              <el-button>调度策略</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table :data="probePg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column label="任务" min-width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="sup-page__mono">{{ scope.row.id }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="target" label="目标" min-width="160" sortable/>
+          <el-table-column prop="lastRun" label="最近执行" min-width="130" sortable/>
+          <el-table-column prop="latency" label="延迟" width="100" sortable/>
+          <el-table-column label="结果" width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span
+                class="sup-page__badge"
+                :class="scope.row.result === '成功' ? 'sup-page__badge--ok' : 'sup-page__badge--warn'"
+              >
+                {{ scope.row.result }}
+              </span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="detail" label="说明" min-width="180" show-overflow-tooltip sortable/>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="probePg.currentPage"
+          v-model:page-size="probePg.pageSize"
+          :total="probePg.total"
+        />
+      </el-card>
     </section>
 
     <!-- 密钥轮换策略 -->
     <section v-show="panel === 'key-rotation'" class="sup-page__panel" aria-label="密钥轮换策略">
-      <AdminSectionHead title="密钥轮换策略">
-        <template #annot>
-          <AdminInternalTip heading="密钥轮换策略 · 原型" explain="密钥轮换对内说明（原型）">
-            <p>轮换窗口与通知策略为占位；与平台密钥中心联动见详设。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>{{ SUPPLIER_KEY_ROTATION.policy }}</template>
-      </AdminSectionHead>
-      <dl class="sup-page__dl">
-        <dt class="sup-page__dt">下一窗口</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_KEY_ROTATION.nextWindow }}</dd>
-        <dt class="sup-page__dt">负责人</dt>
-        <dd class="sup-page__dd">{{ SUPPLIER_KEY_ROTATION.owner }}</dd>
-      </dl>
-      <p class="sup-page__hint">网关注入与 KMS 对接为工程项，此处仅占位说明。</p>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="密钥轮换策略">
+          <template #annot>
+            <AdminInternalTip heading="密钥轮换策略 · 原型" explain="密钥轮换对内说明（原型）">
+              <p>轮换窗口与通知策略为占位；与平台密钥中心联动见详设。</p>
+            </AdminInternalTip>
+          </template>
+</AdminSectionHead>
+        <dl class="sup-page__dl">
+          <dt class="sup-page__dt">下一窗口</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_KEY_ROTATION.nextWindow }}</dd>
+          <dt class="sup-page__dt">负责人</dt>
+          <dd class="sup-page__dd">{{ SUPPLIER_KEY_ROTATION.owner }}</dd>
+        </dl>
+        <p class="sup-page__hint">网关注入与 KMS 对接为工程项，此处仅占位说明。</p>
+      </el-card>
     </section>
 
-    <Teleport to="body">
-      <div
-        v-show="modalOpen"
-        class="or-modal-root sup-int-modal-host"
-        role="presentation"
-        :aria-hidden="!modalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeIntegrationModal" />
-        <ModalPanel
-          :title="editingId ? '编辑对接配置' : '新增对接配置'"
-          head-note="名称与 JSON；「输入模板 / 输出模板」用 Tab 切换编辑（对齐 DesignSpec 弹窗 + Tab）。"
-          @close="closeIntegrationModal"
-        >
-          <template #headTrail>
-            <InternalHelpTip title="对内说明" aria-label="对内说明" layout="inline">
-              <p style="margin: 0; font-size: 0.75rem; line-height: 1.45">列表为同一配置行的输入/输出两视图；删除任一侧即删除整行。</p>
-            </InternalHelpTip>
-          </template>
-          <p class="or-keys-editor-banner" role="status">保存前校验两处 JSON 均为合法 JSON；配置名称必填。</p>
-          <div class="or-keys-editor-grid sup-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftConfigName"
-              label="配置名称"
-              :input-id="`${idPrefix}-cfg-name`"
-              placeholder="如 chat · 线路 A"
-            />
-          </div>
-          <TTabSwitch1Underline
-            v-model="modalTab"
-            :tabs="INTEGRATION_MODAL_TABS"
-            tablist-label="输入或输出模板"
-            class="sup-int-modal-tabs"
-          />
-          <div v-show="modalTab === 'input'" class="sup-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftInputName"
-              label="输入模板名称"
-              :input-id="`${idPrefix}-in-name`"
-              placeholder="如 OpenAI 请求体映射入参"
-            />
-            <div class="form-group">
-              <label :for="`${idPrefix}-in-json`">输入 JSON</label>
-              <textarea :id="`${idPrefix}-in-json`" v-model="draftInputJson" spellcheck="false" />
-            </div>
-          </div>
-          <div v-show="modalTab === 'output'" class="sup-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftOutputName"
-              label="输出模板名称"
-              :input-id="`${idPrefix}-out-name`"
-              placeholder="如统一出参包装"
-            />
-            <div class="form-group">
-              <label :for="`${idPrefix}-out-json`">输出 JSON</label>
-              <textarea :id="`${idPrefix}-out-json`" v-model="draftOutputJson" spellcheck="false" />
-            </div>
-          </div>
-          <p v-if="modalError" class="sup-int-modal-err">{{ modalError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeIntegrationModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveIntegrationModal">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="modalOpen"
+      :title="integrationDialogTitle"
+      width="640px"
+      head-note="名称与 JSON；「输入模板 / 输出模板」用 Tab 切换编辑。"
+    >
+      <AdminInternalTip heading="对内说明" explain="对接配置弹窗">
+        <p style="margin: 0; font-size: 0.75rem; line-height: 1.45">列表为同一配置行的输入/输出两视图；删除任一侧即删除整行。</p>
+      </AdminInternalTip>
+      <p class="or-keys-editor-banner" role="status">保存前校验两处 JSON 均为合法 JSON；配置名称必填。</p>
+      <el-form label-position="top" class="admin-ep-form">
+        <el-form-item label="配置名称">
+          <el-input :id="`${idPrefix}-cfg-name`" v-model="draftConfigName" placeholder="如 chat · 线路 A" />
+        </el-form-item>
+      </el-form>
+      <el-tabs v-model="modalTab" class="sup-int-modal-tabs">
+        <el-tab-pane label="输入模板" name="input">
+          <el-form label-position="top" class="admin-ep-form sup-int-modal-grid">
+            <el-form-item label="输入模板名称">
+              <el-input
+                :id="`${idPrefix}-in-name`"
+                v-model="draftInputName"
+                placeholder="如 OpenAI 请求体映射入参"
+              />
+            </el-form-item>
+            <el-form-item label="输入 JSON">
+              <el-input
+                :id="`${idPrefix}-in-json`"
+                v-model="draftInputJson"
+                type="textarea"
+                :rows="10"
+                spellcheck="false"
+              />
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
+        <el-tab-pane label="输出模板" name="output">
+          <el-form label-position="top" class="admin-ep-form sup-int-modal-grid">
+            <el-form-item label="输出模板名称">
+              <el-input
+                :id="`${idPrefix}-out-name`"
+                v-model="draftOutputName"
+                placeholder="如统一出参包装"
+              />
+            </el-form-item>
+            <el-form-item label="输出 JSON">
+              <el-input
+                :id="`${idPrefix}-out-json`"
+                v-model="draftOutputJson"
+                type="textarea"
+                :rows="10"
+                spellcheck="false"
+              />
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
+      </el-tabs>
+      <p v-if="modalError" class="sup-int-modal-err">{{ modalError }}</p>
+      <template #footer>
+        <el-button @click="closeIntegrationModal">取消</el-button>
+        <el-button type="primary" @click="saveIntegrationModal">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="supplierFormModalOpen"
-        class="or-modal-root sup-int-modal-host"
-        role="presentation"
-        :aria-hidden="!supplierFormModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeSupplierFormModal" />
-        <ModalPanel
-          :title="supplierFormTitle"
-          :title-id="`${idPrefix}-sup-form-title`"
-          head-note="原型：仅写入列表与 localStorage；正式版接主数据 API 与权限审计。"
-          close-label="关闭"
-          @close="closeSupplierFormModal"
-        >
-          <div class="or-keys-editor-grid sup-int-modal-grid">
-            <TTextField1Labeled
-              v-if="supplierFormMode === 'edit'"
-              v-model="draftSupplierId"
-              label="供应商 ID"
-              :input-id="`${idPrefix}-sup-id`"
-              disabled
-            />
-            <TTextField1Labeled
-              v-model="draftSupplierName"
-              label="名称"
-              :input-id="`${idPrefix}-sup-name`"
-              placeholder="供应商显示名"
-            />
-            <TTextField1Labeled
-              v-model="draftSupplierType"
-              label="类型"
-              :input-id="`${idPrefix}-sup-type`"
-              placeholder="如 API₂ 聚合、API₁"
-            />
-            <TTextField1Labeled
-              v-model="draftSupplierRegion"
-              label="区域"
-              :input-id="`${idPrefix}-sup-region`"
-              placeholder="如 cn-east"
-            />
-            <TTextField1Labeled
-              v-model="draftSupplierStatus"
-              label="状态"
-              :input-id="`${idPrefix}-sup-status`"
-              placeholder="正常 或 降级 等"
-            />
-            <TTextField1Labeled
-              v-model="draftSupplierHealth"
-              label="健康摘要"
-              :input-id="`${idPrefix}-sup-health`"
-              placeholder="如 99.92% 或 —"
-            />
-          </div>
-          <p v-if="supplierFormError" class="sup-int-modal-err">{{ supplierFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeSupplierFormModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveSupplierForm">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="supplierFormModalOpen"
+      :title="supplierFormTitle"
+      width="520px"
+      head-note="原型：仅写入列表与 localStorage；正式版接主数据 API 与权限审计。"
+    >
+      <el-form label-position="top" class="admin-ep-form sup-int-modal-grid">
+        <el-form-item v-if="supplierFormMode === 'edit'" label="供应商 ID">
+          <el-input :id="`${idPrefix}-sup-id`" v-model="draftSupplierId" disabled />
+        </el-form-item>
+        <el-form-item label="名称">
+          <el-input :id="`${idPrefix}-sup-name`" v-model="draftSupplierName" placeholder="供应商显示名" />
+        </el-form-item>
+        <el-form-item label="类型">
+          <el-input :id="`${idPrefix}-sup-type`" v-model="draftSupplierType" placeholder="如 API₂ 聚合、API₁" />
+        </el-form-item>
+        <el-form-item label="区域">
+          <el-input :id="`${idPrefix}-sup-region`" v-model="draftSupplierRegion" placeholder="如 cn-east" />
+        </el-form-item>
+        <el-form-item label="状态">
+          <el-input :id="`${idPrefix}-sup-status`" v-model="draftSupplierStatus" placeholder="正常 或 降级 等" />
+        </el-form-item>
+        <el-form-item label="健康摘要">
+          <el-input :id="`${idPrefix}-sup-health`" v-model="draftSupplierHealth" placeholder="如 99.92% 或 —" />
+        </el-form-item>
+      </el-form>
+      <p v-if="supplierFormError" class="sup-int-modal-err">{{ supplierFormError }}</p>
+      <template #footer>
+        <el-button @click="closeSupplierFormModal">取消</el-button>
+        <el-button type="primary" @click="saveSupplierForm">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="dangerConfirmOpen"
-        class="or-modal-root sup-int-modal-host"
-        role="presentation"
-        :aria-hidden="!dangerConfirmOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeDangerConfirm" />
-        <ModalPanel
-          :title="dangerConfirmTitle"
-          :title-id="`${idPrefix}-sup-danger-title`"
-          head-note="请再次确认；原型将直接更新 localStorage。"
-          close-label="关闭"
-          @close="closeDangerConfirm"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ dangerConfirmMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeDangerConfirm">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeSupplierDangerConfirm">
-              {{ dangerConfirmPrimaryLabel }}
-            </TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="dangerConfirmOpen"
+      :title="dangerConfirmTitle"
+      width="480px"
+      head-note="请再次确认；原型将直接更新 localStorage。"
+    >
+      <p class="or-keys-editor-banner" role="status">{{ dangerConfirmMessage }}</p>
+      <template #footer>
+        <el-button @click="closeDangerConfirm">取消</el-button>
+        <el-button type="danger" @click="executeSupplierDangerConfirm">{{ dangerConfirmPrimaryLabel }}</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>

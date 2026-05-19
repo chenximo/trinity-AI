@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { TButton } from "@trinity/ui";
 import "../../styles/admin-theme.css";
 import "./admin-login.css";
 import {
@@ -52,7 +51,7 @@ onMounted(() => {
 
 <template>
   <div class="admin-login" data-or-page="admin-login">
-    <div class="admin-login__card">
+    <el-card class="admin-login__card" shadow="hover">
       <div class="admin-login__brand">
         <span class="admin-login__mark" aria-hidden="true">T</span>
         <div>
@@ -61,36 +60,29 @@ onMounted(() => {
         </div>
       </div>
 
-      <form class="admin-login__form" @submit.prevent="onSubmit">
-        <label class="admin-login__field">
-          <span class="admin-login__label">账号</span>
-          <input
-            v-model="loginId"
-            type="text"
-            name="username"
-            autocomplete="username"
-            class="admin-login__input"
-            placeholder="zhang.san"
-          />
-        </label>
-        <label class="admin-login__field">
-          <span class="admin-login__label">密码</span>
-          <input
+      <el-form class="admin-login__form" label-position="top" @submit.prevent="onSubmit">
+        <el-form-item label="账号">
+          <el-input v-model="loginId" name="username" autocomplete="username" placeholder="zhang.san" />
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input
             v-model="password"
             type="password"
             name="password"
             autocomplete="current-password"
-            class="admin-login__input"
             placeholder="原型不校验，任意输入即可"
+            show-password
           />
-        </label>
-        <p v-if="error" class="admin-login__error" role="alert">{{ error }}</p>
-        <TButton type="submit" variant="gradient" class="admin-login__submit">登录并进入工作台</TButton>
-      </form>
+        </el-form-item>
+        <el-alert v-if="error" :title="error" type="error" show-icon :closable="false" class="admin-login__error" />
+        <el-button type="primary" native-type="submit" class="admin-login__submit" style="width: 100%">
+          登录并进入工作台
+        </el-button>
+      </el-form>
 
       <p class="admin-login__hint">
         演示账号 <code>{{ DEMO_ADMIN_CREDENTIALS.loginId }}</code>；正式环境对接 SSO / MFA。
       </p>
-    </div>
+    </el-card>
   </div>
 </template>

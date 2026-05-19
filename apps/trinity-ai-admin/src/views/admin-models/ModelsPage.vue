@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, useId, watch, watchEffect } from "vue";
+import { Bottom, CircleCheck, Delete, Edit } from "@element-plus/icons-vue";
+import { computed, onMounted, onUnmounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import {
-  FilterForm2PillListbox,
-  type FilterForm2ListboxItem,
-  ModalPanel,
-  TButton,
-  TSearchForm1Fixed,
-  TTextField1Labeled,
-} from "@trinity/ui";
+import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
+import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
+import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { filterByQuery } from "../../utils/adminListFilter";
 import "./models.css";
 import {
   MODEL_LIST_ROWS,
@@ -26,7 +24,6 @@ import {
   readModelListRowsJson,
   writeModelListFilter,
   writeModelListRowsJson,
-  setModelsModalBodyLock,
 } from "./modelsInteractions";
 
 const route = useRoute();
@@ -40,7 +37,8 @@ const panel = computed<ModelPanelId>(() => {
 
 const listFilter = ref("");
 const modelShelfFilter = ref<"all" | "on" | "off" | "gray">("all");
-const modelShelfFilterOpen = ref(false);
+const lineSearchQ = ref("");
+const pricingSearchQ = ref("");
 const modelImportInputRef = ref<HTMLInputElement | null>(null);
 
 const modelListRows = ref<ModelListRow[]>([]);
@@ -102,34 +100,6 @@ function loadModelListRows(): void {
 
 function persistModelListRows(): void {
   writeModelListRowsJson(JSON.stringify(modelListRows.value));
-}
-
-const modelShelfListboxItems = computed<FilterForm2ListboxItem[]>(() => {
-  const v = modelShelfFilter.value;
-  return [
-    { label: "全部", checked: v === "all" },
-    { label: "上架", checked: v === "on" },
-    { label: "下架", checked: v === "off" },
-    { label: "灰度", checked: v === "gray" },
-  ];
-});
-
-const modelShelfPillLabel = computed(() => {
-  switch (modelShelfFilter.value) {
-    case "on":
-      return "上架";
-    case "off":
-      return "下架";
-    case "gray":
-      return "灰度";
-    default:
-      return "上下架";
-  }
-});
-
-function onModelShelfListboxSelect(i: number): void {
-  const keys: Array<"all" | "on" | "off" | "gray"> = ["all", "on", "off", "gray"];
-  modelShelfFilter.value = keys[i] ?? "all";
 }
 
 function onAddModelClick(): void {
@@ -303,15 +273,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", onDocKeydown);
-  setModelsModalBodyLock(false);
 });
 
 watch(listFilter, (v) => {
   writeModelListFilter(v);
-});
-
-watchEffect(() => {
-  setModelsModalBodyLock(modelFormModalOpen.value || modelDangerConfirmOpen.value);
 });
 
 const filteredModelList = computed(() => {
@@ -320,320 +285,312 @@ const filteredModelList = computed(() => {
   if (sf === "on") rows = rows.filter((r) => r.shelf === "上架");
   else if (sf === "off") rows = rows.filter((r) => r.shelf === "下架");
   else if (sf === "gray") rows = rows.filter((r) => r.shelf === "灰度");
-
-  const q = listFilter.value.trim().toLowerCase();
-  if (!q) return rows;
-  return rows.filter(
-    (r) =>
-      r.displayName.toLowerCase().includes(q) ||
-      r.id.toLowerCase().includes(q) ||
-      r.apiKind.toLowerCase().includes(q) ||
-      r.shelf.toLowerCase().includes(q)
+  return filterByQuery(rows, listFilter.value, (r) =>
+    [r.displayName, r.id, r.apiKind, r.shelf].join(" "),
   );
 });
+
+const filteredSupplyLines = computed(() =>
+  filterByQuery(MODEL_SUPPLY_LINE_ROWS, lineSearchQ.value, (r) =>
+    [String(r.priority), r.channel, r.supplier, r.upstreamModelId, r.profileRef, r.region, r.costRef].join(" "),
+  ),
+);
+
+const filteredPricingRows = computed(() =>
+  filterByQuery(MODEL_PRICING_ROWS, pricingSearchQ.value, (r) =>
+    [r.sku, r.listPrice, r.internalCost, r.note].join(" "),
+  ),
+);
+
+function resetModelListQuery(): void {
+  modelShelfFilter.value = "all";
+}
 
 function shelfBadgeClass(shelf: string): string {
   if (shelf === "上架") return "mdl-page__badge mdl-page__badge--ok";
   if (shelf === "下架") return "mdl-page__badge mdl-page__badge--muted";
   return "mdl-page__badge mdl-page__badge--warn";
 }
+
+const modelListPg = useAdminTablePagination(filteredModelList);
+const supplyLinesPg = useAdminTablePagination(filteredSupplyLines);
+const pricingPg = useAdminTablePagination(filteredPricingRows);
 </script>
 
 <template>
   <div class="mdl-page">
     <!-- 模型列表 -->
     <section v-show="panel === 'list'" class="mdl-page__panel" aria-label="模型列表">
-      <AdminSectionHead title="模型列表">
-        <template #annot>
-          <AdminInternalTip heading="模型列表 · 原型" explain="模型列表对内说明（原型）">
-            <p>上架状态与供应商标识为 mock；与线路、刊例三表联动在工程期校验。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>逻辑模型检索、上下架筛选与导入导出（<strong>§4.5</strong>，mock）；上架即时、下架/删除二次确认。</template>
-        <template #tools>
-          <TSearchForm1Fixed
-            v-model="listFilter"
-            :input-id="`${idPrefix}-mdl-search`"
-            placeholder="按展示名 / 平台 ID / 通道 / 上下架…"
-            width="17.5rem"
-            aria-label="搜索模型"
-          />
-          <FilterForm2PillListbox
-            v-model:open="modelShelfFilterOpen"
-            managed-panel
-            :wrap-id="`${idPrefix}-mdl-sf-wrap`"
-            :btn-id="`${idPrefix}-mdl-sf-btn`"
-            :panel-id="`${idPrefix}-mdl-sf-panel`"
-            :label-span-id="`${idPrefix}-mdl-sf-lbl`"
-            listbox-aria-label="按上下架筛选"
-            beak-x="2.75rem"
-            :items="modelShelfListboxItems"
-            @select="onModelShelfListboxSelect"
-          >
-            {{ modelShelfPillLabel }}
-          </FilterForm2PillListbox>
-          <input
-            ref="modelImportInputRef"
-            type="file"
-            class="mdl-visually-hidden"
-            accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
-            tabindex="-1"
-            aria-hidden="true"
-            @change="onModelImportFileChange"
-          />
-          <TButton variant="gradient" type="button" @click="onAddModelClick">新增模型</TButton>
-          <TButton variant="outline" type="button" @click="triggerModelImport">导入</TButton>
-          <TButton variant="outline" type="button" @click="onExportModelsClick">导出</TButton>
-        </template>
-      </AdminSectionHead>
-      <div class="mdl-page__table-wrap">
-        <table class="mdl-page__table">
-          <thead>
-            <tr>
-              <th>平台模型 ID</th>
-              <th>展示名</th>
-              <th>通道</th>
-              <th>上下架</th>
-              <th>线路数</th>
-              <th>更新</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in filteredModelList" :key="r.id">
-              <td class="mdl-page__mono">{{ r.id }}</td>
-              <td>{{ r.displayName }}</td>
-              <td>{{ r.apiKind }}</td>
-              <td><span :class="shelfBadgeClass(r.shelf)">{{ r.shelf }}</span></td>
-              <td>{{ r.routeCount }}</td>
-              <td>{{ r.updatedAt }}</td>
-              <td>
-                <button
-                  v-if="r.shelf !== '上架'"
-                  type="button"
-                  class="mdl-int__textlink"
-                  @click="setModelShelfStatus(r.id, '上架')"
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="模型列表">
+          <template #annot>
+            <AdminInternalTip heading="模型列表 · 原型" explain="模型列表对内说明（原型）">
+              <p>上架状态与供应商标识为 mock；与线路、刊例三表联动在工程期校验。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="listFilter"
+              :input-id="`${idPrefix}-mdl-search`"
+              search-placeholder="展示名 / 平台 ID / 通道…"
+              search-aria-label="搜索模型"
+              @reset="resetModelListQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="modelShelfFilter"
+                  placeholder="上下架"
+                  aria-label="按上下架筛选"
+                  style="width: 8rem"
+                >
+                  <el-option label="全部" value="all" />
+                  <el-option label="上架" value="on" />
+                  <el-option label="下架" value="off" />
+                  <el-option label="灰度" value="gray" />
+                </el-select>
+              </template>
+            <input
+              ref="modelImportInputRef"
+              type="file"
+              class="mdl-visually-hidden"
+              accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
+              tabindex="-1"
+              aria-hidden="true"
+              @change="onModelImportFileChange"
+            />
+            <el-button type="primary" @click="onAddModelClick">新增模型</el-button>
+            <el-button @click="triggerModelImport">导入</el-button>
+            <el-button @click="onExportModelsClick">导出</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table :data="modelListPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column label="平台模型 ID" min-width="120">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="mdl-page__mono">{{ scope.row.id }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="displayName" label="展示名" min-width="120" sortable/>
+          <el-table-column prop="apiKind" label="通道" min-width="80" sortable/>
+          <el-table-column label="上下架" width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span :class="shelfBadgeClass(scope.row.shelf)">{{ scope.row.shelf }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="routeCount" label="线路数" width="90" sortable/>
+          <el-table-column prop="updatedAt" label="更新" min-width="130" sortable/>
+          <el-table-column label="操作" width="260" fixed="right">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <div class="admin-ep-row-actions">
+                <el-button
+                  v-if="scope.row.shelf !== '上架'"
+                  link
+                  type="primary"
+                  :icon="CircleCheck"
+                  @click="setModelShelfStatus(scope.row.id, '上架')"
                 >
                   上架
-                </button>
-                <button
-                  v-if="r.shelf !== '下架'"
-                  type="button"
-                  class="mdl-int__textlink mdl-int__textlink--danger"
-                  @click="requestModelShelfDown(r)"
+                </el-button>
+                <el-button
+                  v-if="scope.row.shelf !== '下架'"
+                  link
+                  type="danger"
+                  :icon="Bottom"
+                  @click="requestModelShelfDown(scope.row)"
                 >
                   下架
-                </button>
-                <button type="button" class="mdl-int__textlink" @click="onEditModelClick(r)">编辑</button>
-                <button
-                  type="button"
-                  class="mdl-int__textlink mdl-int__textlink--danger"
-                  @click="requestDeleteModel(r)"
-                >
-                  删除
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="mdl-page__hint">
-        列表与新增/编辑写入 <code class="mdl-page__mono">localStorage</code>（<code class="mdl-page__mono">trinity-ai-admin:models-list-rows</code>）；搜索关键字
-        <code class="mdl-page__mono">trinity-ai-admin:models-list-filter</code>；操作列<strong>下架</strong>与<strong>删除</strong>经二次 <strong>ModalPanel</strong> 确认；<strong>上架</strong>为即时生效；导入/导出为原型占位；编辑为
-        <strong>ModalPanel</strong> + <strong>TTextField1Labeled</strong>（<code class="mdl-page__mono">@trinity/ui</code>）。
-      </p>
+                </el-button>
+                <el-button link type="primary" :icon="Edit" @click="onEditModelClick(scope.row)">编辑</el-button>
+                <el-button link type="danger" :icon="Delete" @click="requestDeleteModel(scope.row)">删除</el-button>
+              </div>
+              </template>
+            </template>
+          </el-table-column>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="modelListPg.currentPage"
+          v-model:page-size="modelListPg.pageSize"
+          :total="modelListPg.total"
+        />
+        <p class="mdl-page__hint">
+          列表与新增/编辑写入 <code class="mdl-page__mono">localStorage</code>（<code class="mdl-page__mono">trinity-ai-admin:models-list-rows</code>）；搜索关键字
+          <code class="mdl-page__mono">trinity-ai-admin:models-list-filter</code>；操作列<strong>下架</strong>与<strong>删除</strong>经二次确认；<strong>上架</strong>为即时生效；导入/导出为原型占位；编辑为 Element Plus 表单弹窗。
+        </p>
+      </el-card>
     </section>
 
     <!-- 主数据 -->
     <section v-show="panel === 'master'" class="mdl-page__panel" aria-label="主数据">
-      <AdminSectionHead title="主数据">
-        <template #annot>
-          <AdminInternalTip heading="主数据 · 原型" explain="模型主数据对内说明（原型）">
-            <p>能力标签与上下文长度为占位；应对接模型注册中心版本号。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>当前逻辑模型样例字段只读（mock）。</template>
-        <template #tools>
-          <TButton variant="outline" type="button">编辑主数据（示意）</TButton>
-        </template>
-      </AdminSectionHead>
-      <dl class="mdl-page__dl">
-        <dt class="mdl-page__dt">逻辑模型 ID</dt>
-        <dd class="mdl-page__dd"><span class="mdl-page__mono">{{ MODEL_MASTER_SAMPLE.logicalId }}</span></dd>
-        <dt class="mdl-page__dt">展示名</dt>
-        <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.displayName }}</dd>
-        <dt class="mdl-page__dt">上下文长度</dt>
-        <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.contextWindow }}</dd>
-        <dt class="mdl-page__dt">能力标签</dt>
-        <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.capabilities }}</dd>
-        <dt class="mdl-page__dt">对外文档锚点</dt>
-        <dd class="mdl-page__dd"><span class="mdl-page__mono">{{ MODEL_MASTER_SAMPLE.docAnchor }}</span></dd>
-        <dt class="mdl-page__dt">API₁ 原生研发商</dt>
-        <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.api1Vendor }}</dd>
-        <dt class="mdl-page__dt">备注</dt>
-        <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.remark }}</dd>
-      </dl>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="主数据">
+          <template #annot>
+            <AdminInternalTip heading="主数据 · 原型" explain="模型主数据对内说明（原型）">
+              <p>能力标签与上下文长度为占位；应对接模型注册中心版本号。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <el-button type="button">编辑主数据（示意）</el-button>
+          </template>
+        </AdminSectionHead>
+        <dl class="mdl-page__dl">
+          <dt class="mdl-page__dt">逻辑模型 ID</dt>
+          <dd class="mdl-page__dd"><span class="mdl-page__mono">{{ MODEL_MASTER_SAMPLE.logicalId }}</span></dd>
+          <dt class="mdl-page__dt">展示名</dt>
+          <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.displayName }}</dd>
+          <dt class="mdl-page__dt">上下文长度</dt>
+          <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.contextWindow }}</dd>
+          <dt class="mdl-page__dt">能力标签</dt>
+          <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.capabilities }}</dd>
+          <dt class="mdl-page__dt">对外文档锚点</dt>
+          <dd class="mdl-page__dd"><span class="mdl-page__mono">{{ MODEL_MASTER_SAMPLE.docAnchor }}</span></dd>
+          <dt class="mdl-page__dt">API₁ 原生研发商</dt>
+          <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.api1Vendor }}</dd>
+          <dt class="mdl-page__dt">备注</dt>
+          <dd class="mdl-page__dd">{{ MODEL_MASTER_SAMPLE.remark }}</dd>
+        </dl>
+      </el-card>
     </section>
 
     <!-- 供应线路 -->
     <section v-show="panel === 'lines'" class="mdl-page__panel" aria-label="供应线路">
-      <AdminSectionHead title="供应线路">
-        <template #annot>
-          <AdminInternalTip heading="供应线路 · 原型" explain="供应线路对内说明（原型）">
-            <p>路由优先级与降级策略为示意；生产需与网关路由表同步。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>
-          示意模型：<strong>{{ MODEL_MASTER_SAMPLE.displayName }}</strong>；多线路优先级、Profile、Mapper（§4.5.1 / §4.6，mock）。
-        </template>
-        <template #tools>
-          <TButton variant="outline" type="button">线路探测（示意）</TButton>
-          <TButton variant="gradient" type="button">调整优先级（示意）</TButton>
-        </template>
-      </AdminSectionHead>
-      <div class="mdl-page__table-wrap">
-        <table class="mdl-page__table">
-          <thead>
-            <tr>
-              <th>优先级</th>
-              <th>通道</th>
-              <th>供应商</th>
-              <th>上游 model_id</th>
-              <th>Profile</th>
-              <th>区域</th>
-              <th>成本引用</th>
-              <th>更新</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="r in MODEL_SUPPLY_LINE_ROWS" :key="r.id">
-              <td>{{ r.priority }}</td>
-              <td>{{ r.channel }}</td>
-              <td>{{ r.supplier }}</td>
-              <td class="mdl-page__mono">{{ r.upstreamModelId }}</td>
-              <td class="mdl-page__mono">{{ r.profileRef }}</td>
-              <td>{{ r.region }}</td>
-              <td>{{ r.costRef }}</td>
-              <td>{{ r.updatedAt }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="供应线路">
+          <template #annot>
+            <AdminInternalTip heading="供应线路 · 原型" explain="供应线路对内说明（原型）">
+              <p>路由优先级与降级策略为示意；生产需与网关路由表同步。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="lineSearchQ"
+              :input-id="`${idPrefix}-mdl-line-q`"
+              search-placeholder="通道、供应商、区域…"
+              search-aria-label="检索供应线路"
+            >
+              <el-button>线路探测（示意）</el-button>
+              <el-button type="primary">调整优先级（示意）</el-button>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table :data="supplyLinesPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column prop="priority" label="优先级" width="90" sortable/>
+          <el-table-column prop="channel" label="通道" min-width="90" sortable/>
+          <el-table-column prop="supplier" label="供应商" min-width="100" sortable/>
+          <el-table-column label="上游 model_id" min-width="120">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="mdl-page__mono">{{ scope.row.upstreamModelId }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column label="Profile" min-width="100">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="mdl-page__mono">{{ scope.row.profileRef }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="region" label="区域" width="100" sortable/>
+          <el-table-column prop="costRef" label="成本引用" min-width="100" sortable/>
+          <el-table-column prop="updatedAt" label="更新" min-width="130" sortable/>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="supplyLinesPg.currentPage"
+          v-model:page-size="supplyLinesPg.pageSize"
+          :total="supplyLinesPg.total"
+        />
+      </el-card>
     </section>
 
     <!-- 刊例与成本 -->
     <section v-show="panel === 'pricing'" class="mdl-page__panel" aria-label="刊例与成本">
-      <AdminSectionHead title="刊例与成本">
-        <template #annot>
-          <AdminInternalTip heading="刊例与成本 · 原型" explain="刊例成本对内说明（原型）">
-            <p>成本与毛利率为 mock；财务口径与供应商对账单需二期对齐。</p>
-          </AdminInternalTip>
-        </template>
-        <template #desc>SKU 刊例价与内部成本参考（可选，mock）。</template>
-      </AdminSectionHead>
-      <div class="mdl-page__table-wrap">
-        <table class="mdl-page__table">
-          <thead>
-            <tr>
-              <th>SKU</th>
-              <th>刊例价</th>
-              <th>内部成本参考</th>
-              <th>备注</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(r, i) in MODEL_PRICING_ROWS" :key="i">
-              <td class="mdl-page__mono">{{ r.sku }}</td>
-              <td>{{ r.listPrice }}</td>
-              <td>{{ r.internalCost }}</td>
-              <td>{{ r.note }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="刊例与成本">
+          <template #annot>
+            <AdminInternalTip heading="刊例与成本 · 原型" explain="刊例成本对内说明（原型）">
+              <p>成本与毛利率为 mock；财务口径与供应商对账单需二期对齐。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="pricingSearchQ"
+              :input-id="`${idPrefix}-mdl-price-q`"
+              search-placeholder="SKU、刊例价、备注…"
+              search-aria-label="检索刊例"
+            />
+          </template>
+        </AdminSectionHead>
+        <el-table :data="pricingPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+          <el-table-column label="SKU" min-width="120">
+            <template #default="scope">
+              <template v-if="scope?.row">
+              <span class="mdl-page__mono">{{ scope.row.sku }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="listPrice" label="刊例价" min-width="100" sortable/>
+          <el-table-column prop="internalCost" label="内部成本参考" min-width="120" sortable/>
+          <el-table-column prop="note" label="备注" min-width="160" show-overflow-tooltip sortable/>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="pricingPg.currentPage"
+          v-model:page-size="pricingPg.pageSize"
+          :total="pricingPg.total"
+        />
+      </el-card>
     </section>
 
-    <Teleport to="body">
-      <div
-        v-show="modelFormModalOpen"
-        class="or-modal-root mdl-int-modal-host"
-        role="presentation"
-        :aria-hidden="!modelFormModalOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeModelFormModal" />
-        <ModalPanel
-          :title="modelFormTitle"
-          :title-id="`${idPrefix}-mdl-form-title`"
-          head-note="原型：写入列表与 localStorage；正式版接主数据与审计。"
-          close-label="关闭"
-          @close="closeModelFormModal"
-        >
-          <div class="or-keys-editor-grid mdl-int-modal-grid">
-            <TTextField1Labeled
-              v-model="draftModelDisplayName"
-              label="展示名称"
-              :input-id="`${idPrefix}-mdl-dn`"
-              placeholder="租户可见名称"
-            />
-            <TTextField1Labeled
-              v-model="draftModelId"
-              label="平台模型 ID"
-              :input-id="`${idPrefix}-mdl-id`"
-              :disabled="modelFormMode === 'edit'"
-              :placeholder="modelFormMode === 'edit' ? '编辑时不可改 ID' : '留空则自动生成 lm-时间戳'"
-            />
-            <TTextField1Labeled
-              v-model="draftModelApiKind"
-              label="通道类型"
-              :input-id="`${idPrefix}-mdl-api`"
-              placeholder="API₁ 或 API₂"
-            />
-            <TTextField1Labeled
-              v-model="draftModelShelf"
-              label="上下架"
-              :input-id="`${idPrefix}-mdl-shelf`"
-              placeholder="上架 / 下架 / 灰度"
-            />
-            <TTextField1Labeled
-              v-model="draftModelRouteCount"
-              label="绑定线路数"
-              :input-id="`${idPrefix}-mdl-rc`"
-              placeholder="0"
-            />
-          </div>
-          <p v-if="modelFormError" class="mdl-int-modal-err">{{ modelFormError }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeModelFormModal">取消</TButton>
-            <TButton variant="gradient" type="button" @click="saveModelForm">保存</TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="modelFormModalOpen"
+      :title="modelFormTitle"
+      width="560px"
+      head-note="原型：写入列表与 localStorage；正式版接主数据与审计。"
+    >
+      <el-form label-position="top" class="admin-ep-form">
+        <el-form-item label="展示名称">
+          <el-input :id="`${idPrefix}-mdl-dn`" v-model="draftModelDisplayName" placeholder="租户可见名称" />
+        </el-form-item>
+        <el-form-item label="平台模型 ID">
+          <el-input
+            :id="`${idPrefix}-mdl-id`"
+            v-model="draftModelId"
+            :disabled="modelFormMode === 'edit'"
+            :placeholder="modelFormMode === 'edit' ? '编辑时不可改 ID' : '留空则自动生成 lm-时间戳'"
+          />
+        </el-form-item>
+        <el-form-item label="通道类型">
+          <el-input :id="`${idPrefix}-mdl-api`" v-model="draftModelApiKind" placeholder="API₁ 或 API₂" />
+        </el-form-item>
+        <el-form-item label="上下架">
+          <el-input :id="`${idPrefix}-mdl-shelf`" v-model="draftModelShelf" placeholder="上架 / 下架 / 灰度" />
+        </el-form-item>
+        <el-form-item label="绑定线路数">
+          <el-input :id="`${idPrefix}-mdl-rc`" v-model="draftModelRouteCount" placeholder="0" />
+        </el-form-item>
+      </el-form>
+      <p v-if="modelFormError" class="mdl-int-modal-err">{{ modelFormError }}</p>
+      <template #footer>
+        <el-button @click="closeModelFormModal">取消</el-button>
+        <el-button type="primary" @click="saveModelForm">保存</el-button>
+      </template>
+    </AdminDialog>
 
-    <Teleport to="body">
-      <div
-        v-show="modelDangerConfirmOpen"
-        class="or-modal-root mdl-int-modal-host"
-        role="presentation"
-        :aria-hidden="!modelDangerConfirmOpen"
-      >
-        <div class="or-modal-backdrop" tabindex="-1" aria-hidden="true" @click="closeModelDangerConfirm" />
-        <ModalPanel
-          :title="modelDangerConfirmTitle"
-          :title-id="`${idPrefix}-mdl-danger-title`"
-          head-note="请再次确认；原型将直接更新 localStorage。"
-          close-label="关闭"
-          @close="closeModelDangerConfirm"
-        >
-          <p class="or-keys-editor-banner" role="status">{{ modelDangerConfirmMessage }}</p>
-          <template #actions>
-            <TButton type="button" @click="closeModelDangerConfirm">取消</TButton>
-            <TButton variant="gradient" type="button" @click="executeModelDangerConfirm">
-              {{ modelDangerConfirmPrimaryLabel }}
-            </TButton>
-          </template>
-        </ModalPanel>
-      </div>
-    </Teleport>
+    <AdminDialog
+      v-model="modelDangerConfirmOpen"
+      :title="modelDangerConfirmTitle"
+      width="480px"
+      head-note="请再次确认；原型将直接更新 localStorage。"
+    >
+      <p class="or-keys-editor-banner" role="status">{{ modelDangerConfirmMessage }}</p>
+      <template #footer>
+        <el-button @click="closeModelDangerConfirm">取消</el-button>
+        <el-button type="danger" @click="executeModelDangerConfirm">{{ modelDangerConfirmPrimaryLabel }}</el-button>
+      </template>
+    </AdminDialog>
   </div>
 </template>
