@@ -60,6 +60,22 @@
   text-decoration: underline;
 }
 
+.cus-page__mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+
+.cus-page__muted {
+  color: var(--muted);
+}
+
+.cus-page__section-gap {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
 .cus-page__actions {
   display: flex;
   flex-wrap: wrap;

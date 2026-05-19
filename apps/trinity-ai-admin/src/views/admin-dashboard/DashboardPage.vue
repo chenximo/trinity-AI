@@ -166,7 +166,7 @@ const todoPg = useAdminTablePagination(filteredTodos);
               </template>
             </el-table-column>
             <el-table-column prop="timeLabel" label="时间" width="120" class-name="admin-dashboard__th-time" sortable />
-            <el-table-column label="操作" width="100" fixed="right">
+            <el-table-column label="操作" width="100"fixed="right">
               <template #default="scope">
                 <div v-if="scope?.row" class="admin-ep-row-actions">
                   <el-button link type="primary" @click="goRoute(scope.row.routeName)">

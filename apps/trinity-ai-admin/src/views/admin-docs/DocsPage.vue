@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { Edit } from "@element-plus/icons-vue";
 import AdminDialog from "../../components/AdminDialog.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import { filterByQuery } from "../../utils/adminListFilter";
@@ -8,6 +9,7 @@ import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import AdminTablePagination from "../../components/AdminTablePagination.vue";
 import { useAdminTablePagination } from "../../utils/adminTablePagination";
+import { ADMIN_TABLE_COL, ADMIN_TABLE_COL_OPS } from "../../utils/adminTableColumns";
 import "./docs.css";
 import {
   DEFAULT_DOC_ROWS,
@@ -55,12 +57,6 @@ const docRows = ref<DocRow[]>([]);
 const versionRows = ref<DocVersionRow[]>([]);
 const publishRows = ref<PublishJobRow[]>([]);
 const visibilityRows = ref<VisibilityRuleRow[]>([]);
-
-const TYPE_FILTER_VALUES = ["", "用户指南", "供应商 API", "公告", "内部 Runbook"] as const;
-const TYPE_FILTER_LABELS = ["全部类型", "用户指南", "供应商 API", "公告", "内部 Runbook"] as const;
-
-const STATUS_FILTER_VALUES = ["", "草稿", "评审中", "已发布", "已归档"] as const;
-const STATUS_FILTER_LABELS = ["全部状态", "草稿", "评审中", "已发布", "已归档"] as const;
 
 const NEW_DOC_TYPES: DocRow["type"][] = ["用户指南", "供应商 API", "公告", "内部 Runbook"];
 const VIS_SCOPES: VisibilityRuleRow["scope"][] = ["公开", "登录可见", "指定客户"];
@@ -165,13 +161,23 @@ const filteredVisibilityRows = computed(() =>
 );
 
 function resetDocsQuery(): void {
+  searchQ.value = "";
   filterType.value = "";
   filterStatus.value = "";
 }
 
 function resetPublishQuery(): void {
+  publishSearchQ.value = "";
   publishStatusFilter.value = "";
 }
+
+function resetVisQuery(): void {
+  visSearchQ.value = "";
+}
+
+const editorDocMissing = computed(
+  () => Boolean(selectedEditorId.value && !selectedDoc.value),
+);
 
 function syncEditorBody(): void {
   editorBody.value = selectedDoc.value?.body ?? "";
@@ -252,11 +258,14 @@ function saveNewDoc(): void {
   persistDocs();
   persistVersions();
   closeNewModal();
-  showInfo("已创建", `文档「${title}」已加入列表（mock）。`);
+  goEditor(id);
 }
 
 function goEditor(id: string): void {
-  void router.push({ name: "tai-admin-docs-editor", query: { id } });
+  void router.push({
+    name: "tai-admin-docs-list",
+    query: id ? { id } : {},
+  });
 }
 
 function saveDraft(): void {
@@ -344,21 +353,39 @@ function saveVisRule(): void {
 
 onMounted(() => loadAll());
 
+watch(
+  () => panel.value,
+  (p) => {
+    if (p !== "editor") return;
+    void router.replace({
+      name: "tai-admin-docs-list",
+      query: selectedEditorId.value ? { id: selectedEditorId.value } : {},
+    });
+  },
+  { immediate: true },
+);
+
 const docsPg = useAdminTablePagination(filteredDocs);
 const publishPg = useAdminTablePagination(filteredPublishRows);
 const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
 </script>
 
 <template>
-  <div class="doc-page">
-    <el-card v-show="panel === 'list'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="文档列表">
-      <AdminSectionHead toolbar-only title="文档列表">
+  <div class="doc-page doc-page--flow">
+    <el-card v-show="panel === 'list'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="文档">
+      <AdminSectionHead toolbar-only>
         <template #annot>
-          <AdminInternalTip heading="文档列表 · 原型" explain="文档列表对内说明（原型）">
-            <p>元数据与筛选写 <code>localStorage</code> 示意；与静态站点发布流水线对齐在工程期。</p>
+          <AdminInternalTip
+            :heading="selectedDoc ? '文档 · 编辑中' : '文档 · 原型'"
+            explain="文档列表与编辑对内说明（原型）"
+          >
+            <p v-if="selectedDoc">
+              左侧切换文档；正文与预览写 <code>localStorage</code>。URL：<code>?id=doc-xxx</code>。
+            </p>
+            <p v-else>点击「编辑」或行进入编辑区；筛选与新建在同一页。</p>
           </AdminInternalTip>
         </template>
-          <template #tools>
+        <template #tools>
           <AdminListQuery
             v-model:search="searchQ"
             :input-id="`${idPrefix}-doc-search`"
@@ -367,142 +394,215 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
             @reset="resetDocsQuery"
           >
             <template #filters>
-              <el-select v-model="filterType" clearable placeholder="文档类型" style="width: 9rem">
-                <el-option v-for="(v, i) in TYPE_FILTER_VALUES" :key="i" :label="TYPE_FILTER_LABELS[i] ?? ''" :value="v" />
+              <el-select
+                v-model="filterType"
+                clearable
+                placeholder="类型"
+                aria-label="按文档类型筛选"
+                style="width: 8rem"
+              >
+                <el-option label="用户指南" value="用户指南" />
+                <el-option label="供应商 API" value="供应商 API" />
+                <el-option label="公告" value="公告" />
+                <el-option label="内部 Runbook" value="内部 Runbook" />
               </el-select>
-              <el-select v-model="filterStatus" clearable placeholder="发布状态" style="width: 9rem">
-                <el-option v-for="(v, i) in STATUS_FILTER_VALUES" :key="i" :label="STATUS_FILTER_LABELS[i] ?? ''" :value="v" />
+              <el-select
+                v-model="filterStatus"
+                clearable
+                placeholder="状态"
+                aria-label="按发布状态筛选"
+                style="width: 8rem"
+              >
+                <el-option label="草稿" value="草稿" />
+                <el-option label="评审中" value="评审中" />
+                <el-option label="已发布" value="已发布" />
+                <el-option label="已归档" value="已归档" />
               </el-select>
             </template>
             <template #actions>
-              <el-button type="primary" @click="openNewModal">新建文档</el-button>
+              <template v-if="selectedDoc">
+                <el-button type="primary" @click="saveDraft">保存草稿</el-button>
+                <el-button @click="router.push({ name: 'tai-admin-docs-publish' })">去发布队列</el-button>
+                <el-button @click="goEditor('')">关闭编辑</el-button>
+              </template>
+              <el-button v-else type="primary" @click="openNewModal">新建文档</el-button>
             </template>
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="docsPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="title" label="标题" min-width="112" sortable/>
-        <el-table-column prop="slug" label="Slug" min-width="112" sortable>
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.slug }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column prop="type" label="类型" width="112" sortable/>
-        <el-table-column label="状态" width="88">
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span :class="statusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column prop="version" label="版本" width="80" sortable>
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.version }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column prop="owner" label="负责人" width="96" sortable>
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.owner }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column label="操作" width="80" fixed="right">
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <div class="admin-ep-row-actions doc-page__ops">
-              <el-button link type="primary" @click="goEditor(scope.row.id)">编辑</el-button>
-            </div>
-            </template>
-            </template>
-        </el-table-column>
-      </el-table>
-      <AdminTablePagination
-        v-model:current-page="docsPg.currentPage"
-        v-model:page-size="docsPg.pageSize"
-        :total="docsPg.total"
-      />
-      <p v-if="filteredDocs.length === 0" class="doc-page__hint">无匹配文档。</p>
-    </el-card>
 
-    <el-card v-show="panel === 'editor'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="编辑与版本">
-      <template v-if="!selectedDoc">
-        <AdminSectionHead toolbar-only title="编辑与版本">
-          <template #annot>
-            <AdminInternalTip heading="编辑与版本 · 未选中文档" explain="文档编辑入口对内说明（原型）">
-              <p>未选中时仅提示入口；对内标注不替代列表中的用户引导。</p>
-            </AdminInternalTip>
+      <div :class="['doc-page__workspace', { 'doc-page__workspace--editing': selectedDoc }]">
+        <aside v-if="selectedDoc" class="doc-page__workspace-aside" aria-label="文档目录">
+          <p class="doc-page__workspace-aside-cap">文档（{{ filteredDocs.length }}）</p>
+          <nav class="doc-page__workspace-nav">
+            <button
+              v-for="row in filteredDocs"
+              :key="row.id"
+              type="button"
+              class="doc-page__workspace-nav-item"
+              :class="{ 'is-active': row.id === selectedEditorId }"
+              @click="goEditor(row.id)"
+            >
+              <span class="doc-page__workspace-nav-title">{{ row.title }}</span>
+              <span class="doc-page__workspace-nav-meta">
+                <span :class="statusBadgeClass(row.status)">{{ row.status }}</span>
+                · {{ row.version }}
+              </span>
+            </button>
+          </nav>
+        </aside>
+
+        <div class="doc-page__workspace-main">
+          <template v-if="!selectedDoc">
+            <el-table
+              :data="docsPg.paginatedRows"
+              row-key="id"
+              class="admin-ep-table-wrap doc-page__picker-table"
+              style="width: 100%"
+              :default-sort="{ prop: 'updatedAt', order: 'descending' }"
+              highlight-current-row
+              @row-click="(row: DocRow) => goEditor(row.id)"
+            >
+              <el-table-column
+                prop="title"
+                label="标题"
+                :min-width="ADMIN_TABLE_COL.primary"
+                sortable
+                show-overflow-tooltip
+              />
+              <el-table-column
+                prop="slug"
+                label="Slug"
+                :min-width="ADMIN_TABLE_COL.md"
+                sortable
+                show-overflow-tooltip
+              >
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                    <span class="doc-page__mono">{{ scope.row.slug }}</span>
+                  </template>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="type"
+                label="类型"
+                :min-width="ADMIN_TABLE_COL.md"
+                sortable
+                show-overflow-tooltip
+              />
+              <el-table-column label="状态" :min-width="ADMIN_TABLE_COL.sm" sortable prop="status">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                    <span :class="statusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
+                  </template>
+                </template>
+              </el-table-column>
+              <el-table-column label="版本" :min-width="ADMIN_TABLE_COL.xs" sortable prop="version">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                    <span class="doc-page__mono">{{ scope.row.version }}</span>
+                  </template>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="owner"
+                label="负责人"
+                :min-width="ADMIN_TABLE_COL.sm"
+                sortable
+                show-overflow-tooltip
+              />
+              <el-table-column label="更新于" :min-width="ADMIN_TABLE_COL.lg" sortable prop="updatedAt">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                    <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
+                  </template>
+                </template>
+              </el-table-column>
+              <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm">
+                <template #default="scope">
+                  <template v-if="scope?.row">
+                    <div class="admin-ep-row-actions" @click.stop>
+                      <el-button link type="primary" :icon="Edit" @click="goEditor(scope.row.id)">编辑</el-button>
+                    </div>
+                  </template>
+                </template>
+              </el-table-column>
+            </el-table>
+            <AdminTablePagination
+              v-model:current-page="docsPg.currentPage"
+              v-model:page-size="docsPg.pageSize"
+              :total="docsPg.total"
+            />
+            <p v-if="filteredDocs.length === 0" class="doc-page__hint">无匹配文档。</p>
           </template>
-</AdminSectionHead>
-      </template>
-      <template v-else>
-        <AdminSectionHead toolbar-only title="编辑与版本">
-          <template #annot>
-            <AdminInternalTip heading="编辑与版本 · Markdown" explain="文档编辑器对内说明（原型）">
-              <p>预览由 <code>marked</code> + 净化渲染；版本树为 mock。长说明勿塞进顶栏 <code>head-note</code>，用本 ⓘ（<code>#ds-internal-tip</code>）。</p>
-            </AdminInternalTip>
+
+          <template v-else-if="editorDocMissing">
+            <p class="doc-page__hint">
+              未找到文档 <code class="doc-page__mono">{{ selectedEditorId }}</code>，请
+              <el-button link type="primary" @click="goEditor('')">返回列表</el-button>。
+            </p>
           </template>
-          <template #tools>
-            <el-button type="primary" @click="saveDraft">保存草稿</el-button>
-            <el-button @click="router.push({ name: 'tai-admin-docs-publish' })">去发布队列</el-button>
-          </template>
-        </AdminSectionHead>
-        <div class="doc-page__editor-layout">
-          <div class="doc-page__editor-main">
-            <div class="doc-page__md-preview-grid">
-              <div class="doc-page__md-wrap">
-                <label :for="`${idPrefix}-body`">Markdown</label>
-                <textarea
-                  :id="`${idPrefix}-body`"
-                  v-model="editorBody"
-                  class="doc-page__md-input"
-                  spellcheck="false"
-                  aria-label="文档 Markdown 正文"
-                />
+
+          <template v-else>
+            <div class="doc-page__editor-meta">
+              <h2 class="doc-page__editor-meta-title">{{ selectedDoc!.title }}</h2>
+              <p class="doc-page__editor-meta-sub">
+                <span class="doc-page__mono">{{ selectedDoc!.slug }}</span>
+                · {{ selectedDoc!.type }}
+                ·
+                <span :class="statusBadgeClass(selectedDoc!.status)">{{ selectedDoc!.status }}</span>
+                · {{ selectedDoc!.version }}
+                · 负责人 {{ selectedDoc!.owner }}
+                · 更新 {{ selectedDoc!.updatedAt }}
+              </p>
+            </div>
+            <div class="doc-page__editor-layout">
+              <div class="doc-page__editor-main">
+                <div class="doc-page__md-preview-grid">
+                  <div class="doc-page__md-wrap">
+                    <label :for="`${idPrefix}-body`">Markdown</label>
+                    <textarea
+                      :id="`${idPrefix}-body`"
+                      v-model="editorBody"
+                      class="doc-page__md-input"
+                      spellcheck="false"
+                      aria-label="文档 Markdown 正文"
+                    />
+                  </div>
+                  <div class="doc-page__preview-pane">
+                    <p class="doc-page__preview-pane__title">预览</p>
+                    <div
+                      class="doc-page__preview"
+                      tabindex="0"
+                      role="region"
+                      aria-label="Markdown 渲染预览"
+                      v-html="editorPreviewHtml"
+                    />
+                  </div>
+                </div>
               </div>
-              <div class="doc-page__preview-pane">
-                <p class="doc-page__preview-pane__title">预览</p>
-                <div
-                  class="doc-page__preview"
-                  tabindex="0"
-                  role="region"
-                  aria-label="Markdown 渲染预览"
-                  v-html="editorPreviewHtml"
-                />
+              <div>
+                <p class="doc-page__cap">版本树（mock）</p>
+                <ul class="doc-page__version-list">
+                  <li v-for="v in versionsForSelected" :key="v.id" class="doc-page__version-item">
+                    <span class="doc-page__mono">{{ v.version }}</span>
+                    · {{ v.branch === "draft" ? "草稿" : "发布" }}
+                    <br />
+                    <span class="doc-page__version-meta">{{ v.at }} · {{ v.author }}</span>
+                    <br />
+                    <span class="doc-page__version-note">{{ v.note }}</span>
+                  </li>
+                </ul>
+                <p class="doc-page__hint">正式版 diff、分支合并见工程实现。</p>
               </div>
             </div>
-          </div>
-          <div>
-            <p class="doc-page__cap">版本树（mock）</p>
-            <ul class="doc-page__version-list">
-              <li v-for="v in versionsForSelected" :key="v.id" class="doc-page__version-item">
-                <span class="doc-page__mono">{{ v.version }}</span>
-                · {{ v.branch === "draft" ? "草稿" : "发布" }}
-                <br />
-                <span style="font-size: 0.6875rem; color: var(--muted)">{{ v.at }} · {{ v.author }}</span>
-                <br />
-                <span style="font-size: 0.6875rem">{{ v.note }}</span>
-              </li>
-            </ul>
-            <p class="doc-page__hint">正式版 diff、分支合并见工程实现。</p>
-          </div>
+          </template>
         </div>
-      </template>
+      </div>
     </el-card>
 
     <el-card v-show="panel === 'publish'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="发布与回滚">
-      <AdminSectionHead toolbar-only title="发布与回滚">
+      <AdminSectionHead toolbar-only>
         <template #annot>
           <AdminInternalTip heading="发布与回滚 · 原型" explain="文档发布对内说明（原型）">
             <p>审批单与回滚为状态机示意；静态刷新与 CDN 失效策略见详设 §4.9。</p>
@@ -517,7 +617,13 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
             @reset="resetPublishQuery"
           >
             <template #filters>
-              <el-select v-model="publishStatusFilter" clearable placeholder="状态" style="width: 9rem">
+              <el-select
+                v-model="publishStatusFilter"
+                clearable
+                placeholder="状态"
+                aria-label="按发布单状态筛选"
+                style="width: 8rem"
+              >
                 <el-option label="待发布审批" value="待发布审批" />
                 <el-option label="已上线" value="已上线" />
                 <el-option label="已回滚" value="已回滚" />
@@ -526,60 +632,92 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="publishPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="id" label="单号" min-width="112" sortable>
+      <el-table
+        :data="publishPg.paginatedRows"
+        row-key="id"
+        class="admin-ep-table-wrap"
+        style="width: 100%"
+        :default-sort="{ prop: 'requestedAt', order: 'descending' }"
+      >
+        <el-table-column label="单号" :min-width="ADMIN_TABLE_COL.md" sortable prop="id">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.id }}</span>
+              <span class="doc-page__mono">{{ scope.row.id }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column prop="docTitle" label="文档" min-width="96" sortable/>
-        <el-table-column prop="targetVersion" label="目标版本" width="96" sortable>
+        <el-table-column
+          prop="docTitle"
+          label="文档"
+          :min-width="ADMIN_TABLE_COL.primary"
+          flex
+          sortable
+          show-overflow-tooltip
+        />
+        <el-table-column label="目标版本" :min-width="ADMIN_TABLE_COL.xs" sortable prop="targetVersion">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.targetVersion }}</span>
+              <span class="doc-page__mono">{{ scope.row.targetVersion }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column prop="requestedBy" label="申请人" width="96" sortable>
+        <el-table-column
+          prop="requestedBy"
+          label="申请人"
+          :min-width="ADMIN_TABLE_COL.sm"
+          sortable
+          show-overflow-tooltip
+        />
+        <el-table-column label="申请时间" :min-width="ADMIN_TABLE_COL.lg" sortable prop="requestedAt">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.requestedBy }}</span>
+              <span class="doc-page__mono">{{ scope.row.requestedAt }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column prop="requestedAt" label="申请时间" width="136" sortable>
+        <el-table-column label="状态" :min-width="ADMIN_TABLE_COL.sm" sortable prop="status">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.requestedAt }}</span>
+              <span :class="publishStatusClass(scope.row.status)">{{ scope.row.status }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column label="状态" width="96">
+        <el-table-column label="上线/排期" :min-width="ADMIN_TABLE_COL.lg" sortable prop="scheduledAt">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span :class="publishStatusClass(scope.row.status)">{{ scope.row.status }}</span>
+              <span class="doc-page__mono">{{ scope.row.scheduledAt }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column prop="scheduledAt" label="上线/排期" width="136" sortable>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.md" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.scheduledAt }}</span>
+              <div class="admin-ep-row-actions">
+                <el-button
+                  v-if="scope.row.status === '待发布审批'"
+                  link
+                  type="primary"
+                  @click="approvePublish(scope.row)"
+                >
+                  批准上线
+                </el-button>
+                <el-button
+                  v-if="scope.row.status === '已上线'"
+                  link
+                  type="danger"
+                  @click="rollbackPublish(scope.row)"
+                >
+                  标记回滚
+                </el-button>
+                <span
+                  v-if="scope.row.status !== '待发布审批' && scope.row.status !== '已上线'"
+                  class="doc-page__muted"
+                >
+                  —
+                </span>
+              </div>
             </template>
-            </template>
-        </el-table-column>
-        <el-table-column label="操作" width="112" fixed="right">
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <div class="admin-ep-row-actions doc-page__ops">
-              <el-button v-if="scope.row.status === '待发布审批'" link type="primary" @click="approvePublish(scope.row)">批准上线</el-button>
-              <el-button v-if="scope.row.status === '已上线'" link type="danger" @click="rollbackPublish(scope.row)">标记回滚</el-button>
-              <span v-if="scope.row.status !== '待发布审批' && scope.row.status !== '已上线'" class="doc-page__muted">—</span>
-            </div>
-            </template>
-            </template>
+          </template>
         </el-table-column>
       </el-table>
       <AdminTablePagination
@@ -590,18 +728,19 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
     </el-card>
 
     <el-card v-show="panel === 'visibility'" shadow="never" class="admin-ep-card doc-page__panel" aria-label="可见范围">
-      <AdminSectionHead toolbar-only title="可见范围">
+      <AdminSectionHead toolbar-only>
         <template #annot>
           <AdminInternalTip heading="可见范围 · 原型" explain="文档可见范围对内说明（原型）">
             <p>公开/登录/指定客户组为配置占位；应对接客户组织 ID 与鉴权中间件。</p>
           </AdminInternalTip>
         </template>
-          <template #tools>
+        <template #tools>
           <AdminListQuery
             v-model:search="visSearchQ"
             :input-id="`${idPrefix}-doc-vis-q`"
             search-placeholder="文档、范围、客户说明…"
             search-aria-label="检索可见范围"
+            @reset="resetVisQuery"
           >
             <template #actions>
               <el-button type="primary" @click="openVisModal">新增规则</el-button>
@@ -609,16 +748,30 @@ const visibilityPg = useAdminTablePagination(filteredVisibilityRows);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="visibilityPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="docTitle" label="文档" min-width="112" sortable/>
-        <el-table-column prop="scope" label="范围" width="96" sortable/>
-        <el-table-column prop="customerHint" label="客户 / 组织说明" min-width="128" sortable/>
-        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+      <el-table :data="visibilityPg.paginatedRows" class="admin-ep-table-wrap" style="width: 100%">
+        <el-table-column
+          prop="docTitle"
+          label="文档"
+          :min-width="ADMIN_TABLE_COL.primary"
+          flex
+          sortable
+          show-overflow-tooltip
+        />
+        <el-table-column prop="scope" label="范围" :min-width="ADMIN_TABLE_COL.sm" sortable />
+        <el-table-column
+          prop="customerHint"
+          label="客户 / 组织说明"
+          :min-width="ADMIN_TABLE_COL.md"
+          flex
+          sortable
+          show-overflow-tooltip
+        />
+        <el-table-column label="更新于" :min-width="ADMIN_TABLE_COL.lg" sortable prop="updatedAt">
           <template #default="scope">
             <template v-if="scope?.row">
-            <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
+              <span class="doc-page__mono">{{ scope.row.updatedAt }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
       </el-table>
       <AdminTablePagination

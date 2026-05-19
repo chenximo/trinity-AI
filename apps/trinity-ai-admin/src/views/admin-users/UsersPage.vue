@@ -818,7 +818,7 @@ const kycPg = useAdminTablePagination(filteredKyc);
             </template>
         </el-table-column>
         <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
-        <el-table-column label="操作" width="176" fixed="right">
+        <el-table-column label="操作" width="176"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -876,7 +876,7 @@ const kycPg = useAdminTablePagination(filteredKyc);
         <el-table-column prop="displayName" label="展示名" sortable/>
         <el-table-column prop="orgName" label="组织" sortable/>
         <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
-        <el-table-column label="操作" width="128" fixed="right">
+        <el-table-column label="操作" width="128"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -944,7 +944,7 @@ const kycPg = useAdminTablePagination(filteredKyc);
         </el-table-column>
         <el-table-column prop="note" label="说明" min-width="96" sortable/>
         <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="112" fixed="right">
+        <el-table-column label="操作" width="112"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -1020,7 +1020,7 @@ const kycPg = useAdminTablePagination(filteredKyc);
         </el-table-column>
         <el-table-column prop="reason" label="原因" min-width="80" sortable/>
         <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="112" fixed="right">
+        <el-table-column label="操作" width="112"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -1095,7 +1095,7 @@ const kycPg = useAdminTablePagination(filteredKyc);
         </el-table-column>
         <el-table-column prop="submittedAt" label="提交" width="136" sortable/>
         <el-table-column prop="remark" label="备注" min-width="80" sortable/>
-        <el-table-column label="操作" width="160" fixed="right">
+        <el-table-column label="操作" width="160"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">

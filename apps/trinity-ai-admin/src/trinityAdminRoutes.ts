@@ -101,6 +101,16 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
   /** 旧书签：错误二级 id */
   routes.push({ path: "reports/undefined", redirect: { name: "tai-admin-reports-preset" } });
 
+  /** 文档：编辑子页已并入列表（?id=） */
+  routes.push({
+    path: "docs/editor",
+    name: "tai-admin-docs-editor",
+    redirect: (to) => ({
+      name: "tai-admin-docs-list",
+      query: to.query.id ? { id: String(to.query.id) } : {},
+    }),
+  });
+
   for (const mod of ADMIN_ALL_MODULE_BASES) {
     const secondaries = getValidSecondaryPages(mod.parentRouteName);
     if (!secondaries.length) continue;

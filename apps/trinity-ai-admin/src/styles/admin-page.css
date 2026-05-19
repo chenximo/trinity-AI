@@ -103,6 +103,12 @@
   margin-left: auto;
 }
 
+/* 插槽按钮在父组件渲染，须全局清零 EP 相邻 margin · 见 doc/运营后台-若依式列表规范.md §2.3 */
+.admin-shell__main .admin-section-head--toolbar .admin-list-query__main > .el-button + .el-button,
+.admin-shell__main .admin-section-head--toolbar .admin-list-query__actions > .el-button + .el-button {
+  margin-left: 0;
+}
+
 .admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-search,
 .admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-filter-select,
 .admin-shell__main .admin-section-head--toolbar .admin-list-query .admin-ep-date-range,

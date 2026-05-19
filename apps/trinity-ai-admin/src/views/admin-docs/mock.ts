@@ -1,6 +1,6 @@
 /** 文档中心（§4.9）子路由 id，须与 `moduleSecondaryPages` 中 `tai-admin-docs` 一致 */
 
-export const DOC_PANEL_ORDER = ["list", "editor", "publish", "visibility"] as const;
+export const DOC_PANEL_ORDER = ["list", "publish", "visibility"] as const;
 
 export type DocPanelId = (typeof DOC_PANEL_ORDER)[number];
 

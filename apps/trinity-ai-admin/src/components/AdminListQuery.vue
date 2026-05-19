@@ -11,12 +11,15 @@ withDefaults(
     inputId?: string;
     searchAriaLabel?: string;
     showReset?: boolean;
+    /** 无关键词检索时设为 false（如档案页仅供应商下拉） */
+    showSearch?: boolean;
   }>(),
   {
     searchPlaceholder: "关键词检索…",
     searchWidth: "16rem",
     searchAriaLabel: "检索",
     showReset: true,
+    showSearch: true,
   },
 );
 
@@ -34,6 +37,7 @@ function onReset(): void {
   <div class="admin-list-query" role="search">
     <div class="admin-list-query__main">
       <AdminSearchInput
+        v-if="showSearch"
         v-model="searchQ"
         :input-id="inputId"
         :placeholder="searchPlaceholder"

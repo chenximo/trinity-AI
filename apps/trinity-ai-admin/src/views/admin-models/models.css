@@ -271,3 +271,106 @@
 body.or-modal-open {
   overflow: hidden;
 }
+
+/* —— 主数据 —— */
+.mdl-master__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 0.75rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.8125rem;
+  background: var(--admin-subtle-bg, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--el-border-color-lighter, var(--border));
+  border-radius: 0.375rem;
+}
+
+.mdl-master__summary-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+@media (min-width: 720px) {
+  .mdl-master__summary-metrics {
+    margin-left: auto;
+  }
+}
+
+.mdl-master__metric-label {
+  margin-right: 0.35rem;
+  color: var(--muted);
+  font-size: 0.6875rem;
+}
+
+.mdl-master__summary-edit {
+  flex-shrink: 0;
+}
+
+.mdl-master__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .mdl-master__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mdl-master__card {
+  padding: 0.75rem 0.85rem;
+  background: var(--admin-surface, #fff);
+  border: 1px solid var(--el-border-color-lighter, var(--border));
+  border-radius: 0.375rem;
+}
+
+.mdl-master__card-title {
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--el-border-color-lighter, var(--border));
+}
+
+.mdl-master__dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.4rem 0.65rem;
+  font-size: 0.8125rem;
+}
+
+.mdl-master__dl dt {
+  margin: 0;
+  color: var(--muted);
+}
+
+.mdl-master__dl dd {
+  margin: 0;
+  color: var(--text);
+}
+
+.mdl-master__remark {
+  line-height: 1.5;
+}
+
+.mdl-master__empty {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  border: 1px dashed var(--el-border-color-lighter, var(--border));
+  border-radius: 0.25rem;
+}
+
+.mdl-lines__hint {
+  background: var(--admin-subtle-bg, rgba(0, 0, 0, 0.02));
+}

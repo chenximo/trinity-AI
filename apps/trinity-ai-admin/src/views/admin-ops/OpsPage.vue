@@ -368,8 +368,8 @@ onUnmounted(() => {
               </el-table-column>
               <el-table-column prop="route" label="路由" :min-width="ADMIN_TABLE_COL.lg" show-overflow-tooltip />
               <el-table-column prop="line" label="线路" :min-width="ADMIN_TABLE_COL.md" show-overflow-tooltip />
-              <el-table-column prop="count" label="次数" :min-width="ADMIN_TABLE_COL.sm" align="right" />
-              <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
+              <el-table-column prop="count" label="次数" :min-width="ADMIN_TABLE_COL.sm" sortable />
+              <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm"fixed="right">
                 <template #default="scope">
                   <el-button
                     v-if="scope?.row"

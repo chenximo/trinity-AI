@@ -101,7 +101,20 @@ apps/<name>/src/
 
 ---
 
+## 运营后台列表（trinity-ai-admin）
+
+改 **检索 + 表格 + 分页** 子页时，除工程方案外须遵循：
+
+- **Skill**：`.cursor/skills/trinity-admin-ruoyi-list/SKILL.md`（若依式工具栏、列宽、**全部左对齐**）
+- **文档**：`apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md`
+- **样式真源**：`src/styles/admin-ruoyi.css`（`.admin-ep-table-wrap`）
+
+列表表格勿写列级 `align`；勿对操作列单独居中。
+
+---
+
 ## 扩展阅读（按需打开）
 
 - 工程方案全文：`docs/Trinity前端Vue与Monorepo工程方案.md`
-- 设计 token 技能（若存在）：`.cursor/skills/trinity-design-tokens/SKILL.md`
+- 设计 token 技能：`.cursor/skills/trinity-design-tokens/SKILL.md`
+- 运营后台列表技能：`.cursor/skills/trinity-admin-ruoyi-list/SKILL.md`

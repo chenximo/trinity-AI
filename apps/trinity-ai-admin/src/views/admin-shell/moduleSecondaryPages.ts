@@ -23,7 +23,7 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
     { id: "master", title: "主数据", summary: "展示名、能力标签、文档锚点；**API₁ 原生商**主数据可挂此页。" },
     { id: "lines", title: "供应线路", summary: "**API₁/API₂**、Profile、Mapper、成本与区域；线路优先级与探测。" },
     { id: "bindings", title: "路由绑定", summary: "模型路由与平台密钥绑定、优先级与启停（对齐后端 §4.2.4）。" },
-    { id: "pricing", title: "刊例与成本（可选）", summary: "刊例价、内部成本；与用量试算联动。" },
+    { id: "pricing", title: "刊例与成本", summary: "对外刊例价、采购成本、供应商刊例（线路）；多供应商对比。" },
   ],
   // v1 不做「API 与路由策略」（§4.6 / P5）；与 `adminNavTree.ts` 中 routing 模块同步恢复。
   // "tai-admin-routing": [
@@ -50,8 +50,11 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
     { id: "action-logs", title: "风控动作日志", summary: "已执行的限流/拉黑记录；按 IP、动作、时间检索。" },
   ],
   "tai-admin-docs": [
-    { id: "list", title: "文档列表", summary: "类型、状态、负责人；筛选与批量操作。" },
-    { id: "editor", title: "编辑与版本", summary: "Markdown/外链、diff、草稿与发布分支。" },
+    {
+      id: "list",
+      title: "文档",
+      summary: "列表筛选与 Markdown 编辑、版本树；URL ?id= 打开编辑区。",
+    },
     { id: "publish", title: "发布与回滚", summary: "发布审批、一键回滚、静态刷新说明。" },
     { id: "visibility", title: "可见范围", summary: "公开/登录/指定客户组；与客户组织 ID 绑定。" },
   ],

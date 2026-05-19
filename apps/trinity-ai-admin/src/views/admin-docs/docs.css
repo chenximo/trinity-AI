@@ -81,10 +81,9 @@
   color: var(--muted);
 }
 
-.doc-page__ops {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.5rem;
+.doc-page__muted {
+  color: var(--muted);
+  font-size: 0.75rem;
 }
 
 .doc-page__badge {
@@ -409,4 +408,119 @@
   margin: 0;
   font-size: 0.8125rem;
   color: var(--danger);
+}
+
+.doc-page__workspace {
+  display: block;
+}
+
+.doc-page__workspace--editing {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.doc-page__workspace-aside {
+  min-width: 0;
+  max-height: min(75vh, 42rem);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface);
+}
+
+.doc-page__workspace-aside-cap {
+  margin: 0;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-page__workspace-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-page__workspace-nav-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.doc-page__workspace-nav-item:hover {
+  background: var(--surface-2);
+}
+
+.doc-page__workspace-nav-item.is-active {
+  background: var(--blue-soft);
+}
+
+.doc-page__workspace-nav-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.doc-page__workspace-nav-meta {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.doc-page__workspace-main {
+  min-width: 0;
+}
+
+.doc-page__picker-table :deep(.el-table__row) {
+  cursor: pointer;
+}
+
+.doc-page__editor-meta {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.doc-page__editor-meta-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.doc-page__editor-meta-sub {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .doc-page__workspace--editing {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-page__workspace-aside {
+    max-height: 12rem;
+  }
+
+  .doc-page__editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-page__md-preview-grid {
+    grid-template-columns: 1fr;
+  }
 }

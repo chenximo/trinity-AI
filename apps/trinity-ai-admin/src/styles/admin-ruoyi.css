@@ -95,11 +95,17 @@
   background: transparent !important;
 }
 
-/* 列表单元格：统一水平/垂直内边距（避免 Element Plus 默认 padding 不一导致列距忽大忽小） */
+/* 列表单元格：统一水平/垂直内边距；数据列默认左对齐 */
 .admin-shell .admin-ep-table-wrap .el-table .cell {
   line-height: 1.45;
   padding: 0.5rem 0.75rem;
   word-break: break-word;
+  text-align: left;
+}
+
+.admin-shell .admin-ep-table-wrap .el-table th.el-table__cell,
+.admin-shell .admin-ep-table-wrap .el-table td.el-table__cell {
+  text-align: left;
 }
 
 .admin-shell .admin-ep-table-wrap .el-table__header th.el-table__cell .cell,
@@ -107,11 +113,14 @@
   box-sizing: border-box;
 }
 
-/* 表头排序：若依式灰色箭头 */
+/* 表头排序：若依式灰色箭头（左对齐，占满单元格宽度） */
 .admin-shell .admin-ep-table-wrap .el-table th.el-table__cell.is-sortable .cell {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.15rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .admin-shell .admin-ep-table-wrap .el-table .caret-wrapper {
@@ -150,20 +159,70 @@
   max-width: min(20rem, calc(100vw - 2rem));
 }
 
-/* 行内操作列：图标 + 文字（若依默认密度） */
+/* 行内操作列：与工具栏控件间距一致（0.5rem）· 见 doc/运营后台-若依式列表规范.md §2.3 */
 .admin-shell .admin-ep-row-actions {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.15rem 0.35rem;
+  gap: 0.5rem;
 }
 
 .admin-shell .admin-ep-row-actions .el-button.is-link {
   padding: 0 0.25rem;
   height: auto;
   font-size: 0.75rem;
+  margin-left: 0;
 }
 
 .admin-shell .admin-ep-row-actions .el-button.is-link + .el-button.is-link {
   margin-left: 0;
+}
+
+.admin-shell .admin-ep-row-actions .el-button.is-link .el-icon {
+  margin-right: 0.25rem;
+}
+
+/* §3.1.1 自然滚动：列表随主区滚动，表头不钉在卡片内（`{module}-page--flow`） */
+.admin-shell__main > [class$="-page--flow"] {
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.admin-shell__main > [class$="-page--flow"] > [class$="-page__panel"] {
+  flex: none;
+  min-height: auto;
+  overflow: visible;
+}
+
+.admin-shell__main > [class$="-page--flow"] .admin-ep-card .el-card__body {
+  overflow: visible;
+  flex: none;
+  display: block;
+}
+
+.admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap {
+  flex: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+.admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap .el-table__inner-wrapper {
+  height: auto !important;
+}
+
+.admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap .el-table__body-wrapper,
+.admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap .el-table__header-wrapper {
+  overflow: visible !important;
+}
+
+@media (max-width: 960px) {
+  .admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap {
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-shell__main > [class$="-page--flow"] .admin-list-query__main {
+    flex-wrap: wrap;
+  }
 }

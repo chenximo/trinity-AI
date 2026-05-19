@@ -40,6 +40,7 @@
 ### 若依式列表（检索 + 表格 + 分页）
 
 **规范真源**（新页 / 改列表必读）：[`doc/运营后台-若依式列表规范.md`](doc/运营后台-若依式列表规范.md)  
+**Agent Skill**：`.cursor/skills/trinity-admin-ruoyi-list/SKILL.md`（含 **表头与单元格左对齐** 等执行清单）  
 **参考实现**：`src/views/admin-keys/KeysPage.vue`（平台密钥 / 用户密钥 / 审计三表）
 
 摘要：
@@ -48,8 +49,9 @@
 |----|------|
 | 页眉 | `AdminSectionHead` **`toolbar-only`** + `AdminListQuery`（勿在卡片内重复大标题） |
 | 表格 | `el-table` + `admin-ep-table-wrap`，无 `border`/`stripe` |
-| 数据列 | 仅 `min-width` + `ADMIN_TABLE_COL.*`，**不写** `width` / `align` |
+| 数据列 | 仅 `min-width` + `ADMIN_TABLE_COL.*`，**不写** `width` / `align`（**左对齐**） |
 | 操作列 | `ADMIN_TABLE_COL_OPS.*` + `fixed="right"` + `div.admin-ep-row-actions` + `link` 按钮与图标 |
+| 按钮间距 | 工具栏左/右与操作列统一 **`0.5rem`**，见规范 **§2.3** |
 | 列宽档位 | `src/utils/adminTableColumns.ts`；表头单元格 padding 见 `admin-ruoyi.css` |
 
 ## 色彩（admin-shell 专用）
@@ -83,7 +85,7 @@ npm run dev
 - **P5**：**API 与路由策略（§4.6）— v1 不做**，侧栏与路由已注释，不参与本版原型/开发。  
 - **P6**：客户与合同（`admin-customers/`，五子路由共 **`CustomersPage.vue`**：租户列表 CRUD mock、组织/项目、合同、发票、授信）。  
 - **P7**：API 密钥（`admin-keys/`，**`KeysPage.vue`**：API 列表含冻结/吊销与行内详情、审计、风险 mock）。  
-- **P8**：文档中心（`admin-docs/`，**`DocsPage.vue`**：列表 / 编辑与版本 / 发布与回滚 / 可见范围 mock）。  
+- **P8**：文档中心（`admin-docs/`，**`DocsPage.vue`**：文档（列表+编辑）/ 发布与回滚 / 可见范围 mock）。  
 - **P9**：用户与认证（`admin-users/`）。  
 - **P10**：平台权限（`admin-access/`）与系统与合规（`admin-system/`，**`SystemPage.vue`**）。  
 - **报表中心等**：侧栏子菜单仍部分指向 **`AdminStubPage`**，见交付计划。

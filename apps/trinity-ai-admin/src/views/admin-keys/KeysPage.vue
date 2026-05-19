@@ -821,7 +821,7 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
               </template>
             </template>
           </el-table-column>
-          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
+          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"fixed="right">
             <template #default="scope">
               <template v-if="scope?.row">
                 <div class="admin-ep-row-actions" @click.stop>
@@ -973,7 +973,7 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
             </template>
           </el-table-column>
           <el-table-column prop="updatedAt" label="最近更新" :min-width="ADMIN_TABLE_COL.lg" sortable />
-          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
+          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"fixed="right">
             <template #default="scope">
               <template v-if="scope?.row">
                 <div class="admin-ep-row-actions" @click.stop>

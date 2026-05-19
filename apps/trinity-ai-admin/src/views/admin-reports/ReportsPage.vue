@@ -82,7 +82,7 @@ const exportPg = useAdminTablePagination(filteredExportRows);
         <el-table-column prop="period" label="周期" width="120" sortable />
         <el-table-column prop="owner" label="负责人" width="100" sortable />
         <el-table-column prop="updatedAt" label="更新" min-width="140" sortable />
-        <el-table-column label="操作" width="100" fixed="right">
+        <el-table-column label="操作" width="100"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
               <el-button link type="primary">查看</el-button>

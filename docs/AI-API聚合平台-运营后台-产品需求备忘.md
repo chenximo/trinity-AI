@@ -23,6 +23,7 @@
 | 2026-05-18 | **D-06～D-08**：列表「导出 + 时间范围」分档规则；必加/建议加页原型落地 |
 | 2026-05-18 | **C-06**：全后台数据列表统一底部分页（`AdminTablePagination` + `useAdminTablePagination`） |
 | 2026-05-19 | **G-01～G-09**：V1 页面对照后端文档已齐，登记 **文档优化 TODO**（五件套 README、总览 §2.4、计费二期说明） |
+| 2026-05-19 | **B-08**：列表工具栏右侧与左侧、表格操作列按钮间距统一（§2.3） |
 
 ---
 
@@ -50,6 +51,7 @@
 | B-05 | 行内操作列：`#default` 插槽须 **守卫** `scope?.row`，避免 EP 表头占位渲染报错 | 原型已实现 | 2026-05-18 走查 | — | 各 `*Page.vue` 表格模板 |
 | B-06 | 工具栏 **查询行单行展示**：搜索、筛选、日期、按钮 **不换行**（窄屏可横向滚工具区，勿拆两行） | 原型已实现 | 2026-05-18 走查 | 交付计划 §2.1 | `admin-page.css` `--toolbar` `nowrap`；`AdminSectionHead` 工具顺序 |
 | B-07 | 查询栏内 **Element Plus 控件垂直对齐、同高**（`el-input` / `el-select` / `el-date-picker` / `el-button` 均为 32px 行高，禁止 date-picker 单独 `small` 导致错位） | 原型已实现 | 2026-05-18 走查 | — | `AdminListQuery` 容器；`admin-page.css`；`AdminFilterSelect` |
+| B-08 | 列表工具栏 **右侧** `#actions` 与 **左侧** 检索区、表格 **操作列** 行内按钮：**间距一致**（`gap: 0.5rem`）；禁止 EP 默认相邻 `margin-left` 叠加 | 原型已实现 | 2026-05-19 走查 | **[运营后台-若依式列表规范.md](../apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md) §2.3** | `admin-page.css`、`admin-ruoyi.css` |
 
 ---
 

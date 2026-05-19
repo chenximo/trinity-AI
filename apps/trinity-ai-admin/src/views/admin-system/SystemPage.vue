@@ -525,7 +525,7 @@ onMounted(() => loadAll());
             </template>
             </template>
         </el-table-column>
-        <el-table-column label="操作" width="80" fixed="right">
+        <el-table-column label="操作" width="80"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -620,7 +620,7 @@ onMounted(() => loadAll());
             </template>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="112" fixed="right">
+        <el-table-column label="操作" width="112"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
               <div v-if="scope.row.status === '待审批'" class="admin-ep-row-actions sys-page__ops">
@@ -768,7 +768,7 @@ onMounted(() => loadAll());
             </template>
             </template>
         </el-table-column>
-        <el-table-column label="操作" width="80" fixed="right">
+        <el-table-column label="操作" width="80"fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
