@@ -1,22 +1,59 @@
 /* 登录 / 登出 · 壳外认证页共用底衬 */
 .admin-login {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   font-family: inherit;
-  background: linear-gradient(165deg, var(--surface, #f1f5f9) 0%, var(--bg, #fff) 42%);
+  overflow: hidden;
+  background-color: var(--surface, #f1f5f9);
+}
+
+.admin-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("./assets/login-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.admin-login::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    165deg,
+    rgb(248 250 252 / 0.55) 0%,
+    rgb(255 255 255 / 0.35) 45%,
+    rgb(239 246 255 / 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+.admin-login > * {
+  position: relative;
+  z-index: 1;
 }
 
 .admin-login__card {
   width: 100%;
   max-width: 22rem;
   padding: 1.75rem 1.5rem 1.35rem;
-  border-radius: var(--radius-lg, 12px);
-  border: 1px solid var(--border, #e2e8f0);
-  background: var(--bg, #fff);
-  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border-radius: var(--admin-radius, var(--radius-lg, 12px));
+  border: 1px solid var(--admin-border, var(--border, #e5e7eb));
+  background: rgb(255 255 255 / 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.1),
+    0 0 0 1px rgb(255 255 255 / 0.6) inset;
 }
 
 /* —— 登录页 —— */
@@ -33,8 +70,8 @@
   width: 3rem;
   height: 3rem;
   margin-bottom: 0.35rem;
-  border-radius: var(--radius, 10px);
-  background: var(--grad, linear-gradient(135deg, #2563eb, #4f46e5));
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
+  background: var(--grad);
   color: #fff;
   font-size: 1.125rem;
   font-weight: 700;
@@ -48,26 +85,26 @@
   margin: 0;
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--text, #0f172a);
+  color: var(--admin-text, var(--text, #0f172a));
   line-height: 1.3;
 }
 
 .admin-login__sub {
   margin: 0;
   font-size: 0.8125rem;
-  color: var(--muted, #64748b);
+  color: var(--admin-muted, var(--muted, #64748b));
 }
 
 .admin-login__notice {
   margin: 0 0 1rem;
   padding: 0.5rem 0.65rem;
-  border-radius: var(--radius, 8px);
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
   font-size: 0.8125rem;
   line-height: 1.45;
   text-align: center;
-  color: var(--success-800, #166534);
-  background: var(--success-soft, #ecfdf5);
-  border: 1px solid var(--success-ring, #bbf7d0);
+  color: var(--admin-success-ink, var(--success-800, #166534));
+  background: var(--admin-success-soft, var(--success-soft, #ecfdf5));
+  border: 1px solid var(--admin-success-ring, var(--success-ring, #bbf7d0));
 }
 
 .admin-login__form :deep(.el-form-item) {
@@ -78,17 +115,24 @@
   padding-bottom: 0.3rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text, #0f172a);
+  color: var(--admin-text, var(--text, #0f172a));
   line-height: 1.35;
 }
 
 .admin-login__form :deep(.el-input__wrapper) {
-  border-radius: var(--radius, 8px);
-  box-shadow: 0 0 0 1px var(--border, #e2e8f0) inset;
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
+  box-shadow: 0 0 0 1px var(--admin-border, var(--border, #e5e7eb)) inset;
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-login__form :deep(.el-input__wrapper:hover) {
+  box-shadow: 0 0 0 1px var(--admin-primary, var(--blue, #2563eb)) inset;
 }
 
 .admin-login__form :deep(.el-input__wrapper.is-focus) {
-  box-shadow: 0 0 0 1px var(--blue, #2563eb) inset, 0 0 0 3px var(--blue-ring, rgba(37, 99, 235, 0.2));
+  box-shadow:
+    0 0 0 1px var(--admin-primary, var(--blue, #2563eb)) inset,
+    0 0 0 3px var(--admin-primary-ring, var(--blue-ring, rgba(37, 99, 235, 0.2)));
 }
 
 .admin-login__submit {
@@ -98,30 +142,51 @@
   font-size: 0.9375rem;
   font-weight: 600;
   border: none;
-  border-radius: var(--radius, 8px);
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
+  background: var(--admin-primary, var(--blue, #2563eb));
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.admin-login__submit:hover:not(:disabled) {
+  background: var(--blue-hover, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+.admin-login__submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.admin-login__submit:disabled {
+  background: var(--admin-primary, var(--blue, #2563eb));
+  opacity: 0.7;
 }
 
 .admin-login__demo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  margin: 1rem 0 0;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--admin-border, var(--border, #e5e7eb));
   font-size: 0.75rem;
-  color: var(--muted, #64748b);
+  color: var(--admin-muted, var(--muted, #64748b));
 }
 
 .admin-login__demo-label {
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
   font-size: 0.6875rem;
   font-weight: 600;
-  color: var(--muted, #64748b);
-  background: var(--surface, #f1f5f9);
+  color: var(--admin-primary-text, var(--pill-text, #1d4ed8));
+  background: var(--admin-primary-soft, var(--blue-soft, #eff6ff));
 }
 
 .admin-login__demo code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.75rem;
-  color: var(--text, #0f172a);
+  font-weight: 600;
+  color: var(--admin-text, var(--text, #0f172a));
 }

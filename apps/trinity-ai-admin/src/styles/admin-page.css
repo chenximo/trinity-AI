@@ -237,6 +237,8 @@
   flex-direction: column;
   gap: 0.75rem;
   min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .admin-shell__main > .admin-dashboard .admin-dashboard__grid {

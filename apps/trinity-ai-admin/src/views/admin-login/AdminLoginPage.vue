@@ -16,8 +16,6 @@ const route = useRoute();
 const formRef = ref<FormInstance>();
 const loading = ref(false);
 
-const signedOutNotice = computed(() => route.query.signedOut === "1");
-
 const form = reactive({
   loginId: DEMO_ADMIN_CREDENTIALS.loginId,
   password: "",
@@ -86,8 +84,6 @@ onMounted(() => {
         <h1 class="admin-login__title">Trinity 运营后台</h1>
         <p class="admin-login__sub">聚合平台 · 管理端</p>
       </div>
-
-      <p v-if="signedOutNotice" class="admin-login__notice" role="status">已安全退出，请重新登录</p>
 
       <el-form
         ref="formRef"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, useId } from "vue";
 import { useRouter, type RouteRecordName } from "vue-router";
-import { Right } from "@element-plus/icons-vue";
+import { ArrowRight, Grid, Key, Management, TrendCharts, WarningFilled } from "@element-plus/icons-vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
@@ -71,7 +71,7 @@ const todoPg = useAdminTablePagination(filteredTodos);
           <p>监控 KPI 对齐 §4.1；趋势与五图见侧栏<strong>实时大盘</strong>。</p>
         </AdminInternalTip>
       </template>
-      <template #desc>监控与运营摘要、待办队列、常用入口（mock）。</template>
+
     </AdminSectionHead>
 
     <div class="admin-dashboard__grid">
@@ -166,11 +166,11 @@ const todoPg = useAdminTablePagination(filteredTodos);
               </template>
             </el-table-column>
             <el-table-column prop="timeLabel" label="时间" width="120" class-name="admin-dashboard__th-time" sortable />
-            <el-table-column label="操作" width="100"fixed="right">
+            <el-table-column label="操作" width="100" fixed="right">
               <template #default="scope">
-                <div v-if="scope?.row" class="admin-ep-row-actions">
+                <div v-if="scope?.row" class="admin-ep-row-actions" @click.stop>
                   <el-button link type="primary" @click="goRoute(scope.row.routeName)">
-                    <el-icon><Right /></el-icon>
+                    <el-icon><ArrowRight /></el-icon>
                     去处理
                   </el-button>
                 </div>
@@ -190,14 +190,24 @@ const todoPg = useAdminTablePagination(filteredTodos);
           <h3 class="admin-dashboard__side-title">常用入口</h3>
           <nav class="admin-dashboard__nav-links">
             <button
-              v-for="w in DASHBOARD_QUICK_LINKS"
+              v-for="(w, i) in DASHBOARD_QUICK_LINKS"
               :key="w.id"
               type="button"
               class="admin-dashboard__nav-link"
               @click="goRoute(w.routeName)"
             >
-              <span class="admin-dashboard__nav-link-title">{{ w.title }}</span>
-              <span class="admin-dashboard__nav-link-desc">{{ w.summary }}</span>
+              <span class="admin-dashboard__nav-link-ico">
+                <el-icon v-if="i === 0"><Management /></el-icon>
+                <el-icon v-else-if="i === 1"><Key /></el-icon>
+                <el-icon v-else-if="i === 2"><TrendCharts /></el-icon>
+                <el-icon v-else-if="i === 3"><WarningFilled /></el-icon>
+                <el-icon v-else><Grid /></el-icon>
+              </span>
+              <span class="admin-dashboard__nav-link-text">
+                <span class="admin-dashboard__nav-link-title">{{ w.title }}</span>
+                <span class="admin-dashboard__nav-link-desc">{{ w.summary }}</span>
+              </span>
+              <el-icon class="admin-dashboard__nav-link-arrow"><ArrowRight /></el-icon>
             </button>
           </nav>
           <el-button type="primary" plain class="admin-dashboard__ops-link" @click="goRoute('tai-admin-ops-live')">
@@ -215,8 +225,12 @@ const todoPg = useAdminTablePagination(filteredTodos);
               class="admin-dashboard__alert"
               @click="goRoute(w.routeName)"
             >
-              <span class="admin-dashboard__alert-title">{{ w.title }}</span>
-              <span class="admin-dashboard__alert-summary">{{ w.summary }}</span>
+              <el-icon class="admin-dashboard__alert-icon"><WarningFilled /></el-icon>
+              <span class="admin-dashboard__alert-text">
+                <span class="admin-dashboard__alert-title">{{ w.title }}</span>
+                <span class="admin-dashboard__alert-summary">{{ w.summary }}</span>
+              </span>
+              <el-icon class="admin-dashboard__alert-arrow"><ArrowRight /></el-icon>
             </button>
           </div>
         </el-card>
