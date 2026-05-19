@@ -60,7 +60,7 @@ export const SECONDARY_PAGES_BY_ROUTE_NAME: Partial<Record<string, SecondaryPage
   ],
   "tai-admin-reports": [
     { id: "preset", title: "预置报表", summary: "用量与消耗、收入试算等固定模板与参数面板。" },
-    { id: "olap", title: "多维分析", summary: "OLAP 类探索（可二期）；与用量明细互跳。" },
+    { id: "olap", title: "多维分析", summary: "维度/指标配置、聚合透视表；下钻用量明细（一期 mock）。" },
     { id: "export", title: "导出任务", summary: "异步导出、下载链接有效期；与导出审批衔接。" },
     { id: "subscribe", title: "订阅推送（二期）", summary: "周期推送与订阅管理。" },
   ],

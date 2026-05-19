@@ -36,6 +36,15 @@ export type SecurityEventRow = {
   ip: string;
 };
 
+/** 安全事件类型 · 展示标签 */
+export const SECURITY_EVENT_TYPE_LABEL: Record<string, string> = {
+  login_failed: "登录失败",
+  credential_gate_failed: "凭据门禁失败",
+  forbidden: "越权访问",
+  mfa_challenge_failed: "MFA 验证失败",
+  session_hijack_suspect: "会话异常",
+};
+
 export type SensitiveRuleRow = {
   id: string;
   operation: string;
@@ -332,6 +341,33 @@ export const DEFAULT_SECURITY_EVENTS: SecurityEventRow[] = [
     subject: "guest",
     detail: "越权访问 /v1/admin/models",
     ip: "198.51.100.3",
+  },
+  {
+    id: "se-004",
+    at: "2026-05-16 19:20:00",
+    eventType: "mfa_challenge_failed",
+    severity: "低",
+    subject: "zhang.san",
+    detail: "TOTP 连续 2 次错误",
+    ip: "10.0.0.18",
+  },
+  {
+    id: "se-005",
+    at: "2026-05-16 11:03:00",
+    eventType: "session_hijack_suspect",
+    severity: "高",
+    subject: "zhang.san",
+    detail: "同账号 5 分钟内跨省 IP 切换",
+    ip: "121.44.88.2",
+  },
+  {
+    id: "se-006",
+    at: "2026-05-15 09:30:00",
+    eventType: "forbidden",
+    severity: "高",
+    subject: "li.si",
+    detail: "只读角色尝试修改供应商刊例",
+    ip: "10.2.8.22",
   },
 ];
 

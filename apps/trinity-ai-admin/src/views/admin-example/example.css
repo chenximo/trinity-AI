@@ -1,0 +1,87 @@
+/**
+ * 列表页模板示例 · 模块样式
+ * 参考 keys.css 的规范实现
+ */
+
+/* ==================== 面板容器 ==================== */
+.example-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.example-page__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ==================== 等宽字体 ==================== */
+.example-page__mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ==================== 弱化文字 ==================== */
+.example-page__muted {
+  color: var(--muted);
+}
+
+/* ==================== 状态标签（与 keys 页面一致） ==================== */
+.example-page__badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.example-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.example-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.example-page__badge--danger {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+.example-page__badge--muted {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+/* ==================== 详情网格 ==================== */
+.example-page__detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.example-page__detail-k {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.example-page__detail-v {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* ==================== 表单错误提示 ==================== */
+.example-page__form-err {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--el-color-danger);
+}

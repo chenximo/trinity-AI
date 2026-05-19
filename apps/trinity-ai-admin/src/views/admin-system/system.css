@@ -4,6 +4,20 @@
   min-height: 0;
 }
 
+/* 面板必须作为 flex 容器，才能让内部的 .admin-ep-card 撑满高度 */
+.sys-page__panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 表格撑满剩余高度 */
+.sys-page .admin-ep-table-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
 .sys-page__callout {
   margin: 0 0 0.75rem;
   padding: 0.5rem 0.65rem;
@@ -46,6 +60,10 @@
 .sys-page__mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.6875rem;
+}
+
+.sys-page__muted {
+  color: var(--muted);
 }
 
 .sys-page__ops {
@@ -99,6 +117,36 @@
 
 .sys-page__toggle.is-on::after {
   transform: translateX(1rem);
+}
+
+/* 状态徽章（与 keys 页面一致） */
+.sys-page__badge {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sys-page__badge--ok {
+  background: var(--success-soft);
+  color: var(--success-800);
+}
+
+.sys-page__badge--warn {
+  background: var(--warning-soft);
+  color: var(--warning-ink);
+}
+
+.sys-page__badge--danger {
+  background: var(--danger-soft);
+  color: var(--danger-ink);
+}
+
+.sys-page__badge--muted {
+  background: var(--surface-2);
+  color: var(--muted);
 }
 
 .sys-form-stack {

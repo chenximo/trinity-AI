@@ -162,7 +162,7 @@
 /* 行内操作列：与工具栏控件间距一致（0.5rem）· 见 doc/运营后台-若依式列表规范.md §2.3 */
 .admin-shell .admin-ep-row-actions {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.5rem;
 }
@@ -203,7 +203,9 @@
 .admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap {
   flex: none;
   min-height: 0;
-  overflow: visible;
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 100%;
 }
 
 .admin-shell__main > [class$="-page--flow"] .admin-ep-table-wrap .el-table__inner-wrapper {

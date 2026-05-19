@@ -1,34 +1,39 @@
+/* 登录 / 登出 · 壳外认证页共用底衬 */
 .admin-login {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: var(--surface, #f1f5f9);
   font-family: inherit;
+  background: linear-gradient(165deg, var(--surface, #f1f5f9) 0%, var(--bg, #fff) 42%);
 }
 
 .admin-login__card {
   width: 100%;
-  max-width: 24rem;
-  padding: 1.75rem 1.5rem 1.5rem;
+  max-width: 22rem;
+  padding: 1.75rem 1.5rem 1.35rem;
   border-radius: var(--radius-lg, 12px);
   border: 1px solid var(--border, #e2e8f0);
   background: var(--bg, #fff);
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
 }
 
-.admin-login__brand {
+/* —— 登录页 —— */
+.admin-login__hero {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  text-align: center;
+  gap: 0.35rem;
+  margin-bottom: 1.35rem;
 }
 
 .admin-login__mark {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius, 8px);
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.35rem;
+  border-radius: var(--radius, 10px);
   background: var(--grad, linear-gradient(135deg, #2563eb, #4f46e5));
   color: #fff;
   font-size: 1.125rem;
@@ -36,7 +41,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .admin-login__title {
@@ -44,68 +49,79 @@
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--text, #0f172a);
+  line-height: 1.3;
 }
 
 .admin-login__sub {
-  margin: 0.15rem 0 0;
-  font-size: 0.75rem;
+  margin: 0;
+  font-size: 0.8125rem;
   color: var(--muted, #64748b);
 }
 
-.admin-login__form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+.admin-login__notice {
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius, 8px);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--success-800, #166534);
+  background: var(--success-soft, #ecfdf5);
+  border: 1px solid var(--success-ring, #bbf7d0);
 }
 
-.admin-login__field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+.admin-login__form :deep(.el-form-item) {
+  margin-bottom: 0.9rem;
 }
 
-.admin-login__label {
+.admin-login__form :deep(.el-form-item__label) {
+  padding-bottom: 0.3rem;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text, #0f172a);
+  line-height: 1.35;
 }
 
-.admin-login__input {
-  height: var(--ctrl-h, 36px);
-  padding: 0 0.75rem;
-  border: 1px solid var(--border, #e2e8f0);
+.admin-login__form :deep(.el-input__wrapper) {
   border-radius: var(--radius, 8px);
-  font: inherit;
-  font-size: 0.875rem;
-  color: var(--text, #0f172a);
-  background: var(--bg, #fff);
+  box-shadow: 0 0 0 1px var(--border, #e2e8f0) inset;
 }
 
-.admin-login__input:focus {
-  outline: 2px solid var(--blue-ring, rgba(37, 99, 235, 0.35));
-  outline-offset: 0;
-  border-color: var(--blue, #2563eb);
-}
-
-.admin-login__error {
-  margin: 0;
-  font-size: 0.8125rem;
-  color: var(--danger, #dc2626);
+.admin-login__form :deep(.el-input__wrapper.is-focus) {
+  box-shadow: 0 0 0 1px var(--blue, #2563eb) inset, 0 0 0 3px var(--blue-ring, rgba(37, 99, 235, 0.2));
 }
 
 .admin-login__submit {
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
+  height: 2.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius, 8px);
 }
 
-.admin-login__hint {
+.admin-login__demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   margin: 1rem 0 0;
   font-size: 0.75rem;
   color: var(--muted, #64748b);
-  line-height: 1.5;
 }
 
-.admin-login__hint code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+.admin-login__demo-label {
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
   font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted, #64748b);
+  background: var(--surface, #f1f5f9);
+}
+
+.admin-login__demo code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--text, #0f172a);
 }

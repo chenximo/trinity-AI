@@ -40,6 +40,12 @@ export default createRouter({
       meta: { title: "登录", public: true },
     },
     {
+      path: "/trinity-ai-admin/logout",
+      name: "tai-admin-logout",
+      component: () => import("@trinity-ai-admin/views/admin-logout/AdminLogoutPage.vue"),
+      meta: { title: "退出登录", public: true },
+    },
+    {
       path: "/trinity-ai-admin",
       name: "trinity-ai-admin",
       component: () => import("@trinity-ai-admin/views/admin-shell/AdminShellLayout.vue"),

@@ -7,6 +7,7 @@ import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { ADMIN_TABLE_COL, ADMIN_TABLE_COL_OPS } from "../../utils/adminTableColumns";
 import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import { filterByQuery } from "../../utils/adminListFilter";
 import {
@@ -640,10 +641,10 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
           </template>
         </el-table-column>
         <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="220"fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <el-button link type="primary" @click="toggleAdminStatus(scope.row)">
                 {{ scope.row.status === "启用" ? "禁用" : "启用" }}
               </el-button>
@@ -728,10 +729,10 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
             </template>
         </el-table-column>
         <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="112"fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <el-button link type="primary" @click="onEditRoleClick(scope.row)">
                 <el-icon><Edit /></el-icon>
                 编辑
@@ -786,18 +787,23 @@ const menuPg = useAdminTablePagination(filteredMenuPreview);
           />
         </template>
       </AdminSectionHead>
-      <el-table :data="menuPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="label" label="侧栏标签" min-width="128" sortable/>
-        <el-table-column prop="routeName" label="路由 name" min-width="176" sortable>
+      <el-table
+        :data="menuPg.paginatedRows"
+        row-key="routeName"
+        class="admin-ep-table-wrap"
+        style="width: 100%"
+      >
+        <el-table-column prop="label" label="侧栏标签" :min-width="ADMIN_TABLE_COL.md" sortable show-overflow-tooltip />
+        <el-table-column prop="routeName" label="路由 name" :min-width="ADMIN_TABLE_COL.xl" sortable show-overflow-tooltip>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="acc-page__mono">{{ scope.row.routeName }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="ops" label="运营（路由·示意）" width="128" sortable/>
-        <el-table-column prop="fin" label="财务只读（路由·示意）" width="144" sortable/>
-        <el-table-column prop="ro" label="全局只读（路由）" width="128" sortable/>
+        <el-table-column prop="ops" label="运营（路由·示意）" :min-width="ADMIN_TABLE_COL.md" sortable />
+        <el-table-column prop="fin" label="财务只读（路由·示意）" :min-width="ADMIN_TABLE_COL.lg" sortable />
+        <el-table-column prop="ro" label="全局只读（路由）" :min-width="ADMIN_TABLE_COL.md" sortable />
       </el-table>
       <AdminTablePagination
         v-model:current-page="menuPg.currentPage"

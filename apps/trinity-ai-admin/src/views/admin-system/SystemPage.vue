@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import { Edit, Setting } from "@element-plus/icons-vue";
+import { CircleClose, Edit, Select, Setting, View } from "@element-plus/icons-vue";
 import AdminAuditDiffPanel from "../../components/AdminAuditDiffPanel.vue";
 import AdminDateRangePicker from "../../components/AdminDateRangePicker.vue";
 import AdminDialog from "../../components/AdminDialog.vue";
@@ -10,6 +10,11 @@ import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import {
+  ADMIN_TABLE_COL,
+  ADMIN_TABLE_COL_MIN,
+  ADMIN_TABLE_COL_OPS,
+} from "../../utils/adminTableColumns";
 import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import { type AdminDateRange, isWithinAdminDateRange } from "../../utils/adminDateRange";
 import { filterByQuery, uniqueFieldValues } from "../../utils/adminListFilter";
@@ -18,6 +23,7 @@ import {
   AUDIT_RETENTION_NOTE,
   DEFAULT_AUDIT_LOG_ROWS,
   DEFAULT_SECURITY_EVENTS,
+  SECURITY_EVENT_TYPE_LABEL,
   DEFAULT_EXPORT_APPROVALS,
   DEFAULT_FEATURE_FLAGS,
   DEFAULT_GLOBAL_PARAMS,
@@ -70,6 +76,9 @@ const globalCategoryFilter = ref("");
 const auditRows = ref<AuditLogRow[]>([]);
 const securityRows = ref<SecurityEventRow[]>(JSON.parse(JSON.stringify(DEFAULT_SECURITY_EVENTS)));
 const securitySearchQ = ref("");
+const securitySeverityFilter = ref<SecurityEventRow["severity"] | "">("");
+const securityTypeFilter = ref("");
+const securityDateRange = ref<AdminDateRange | null>(null);
 const auditDiffOpen = ref(false);
 const auditDiffRow = ref<AuditLogRow | null>(null);
 const sensitiveRows = ref<SensitiveRuleRow[]>([]);
@@ -205,6 +214,12 @@ function resetGlobalQuery(): void {
   globalCategoryFilter.value = "";
 }
 
+function resetSecurityQuery(): void {
+  securitySeverityFilter.value = "";
+  securityTypeFilter.value = "";
+  securityDateRange.value = null;
+}
+
 const editingSensitive = computed(() =>
   sensitiveEditingId.value ? sensitiveRows.value.find((r) => r.id === sensitiveEditingId.value) : undefined,
 );
@@ -222,14 +237,28 @@ const globalModalTitle = computed(() =>
 );
 
 function auditResultClass(result: AuditLogRow["result"]): string {
-  return result === "成功" ? "sys-page__badge--ok" : "sys-page__badge--danger";
+  if (result === "成功") return "sys-page__badge sys-page__badge--ok";
+  if (result === "失败") return "sys-page__badge sys-page__badge--danger";
+  return "sys-page__badge sys-page__badge--muted";
 }
 
 function exportStatusClass(status: ExportApprovalRow["status"]): string {
-  if (status === "待审批") return "sys-page__badge--warn";
-  if (status === "已通过") return "sys-page__badge--ok";
-  return "sys-page__badge--danger";
+  if (status === "待审批") return "sys-page__badge sys-page__badge--warn";
+  if (status === "已通过") return "sys-page__badge sys-page__badge--ok";
+  return "sys-page__badge sys-page__badge--danger";
 }
+
+function securitySeverityClass(severity: SecurityEventRow["severity"]): string {
+  if (severity === "高") return "sys-page__badge sys-page__badge--danger";
+  if (severity === "中") return "sys-page__badge sys-page__badge--warn";
+  return "sys-page__badge sys-page__badge--muted";
+}
+
+function securityEventTypeLabel(eventType: string): string {
+  return SECURITY_EVENT_TYPE_LABEL[eventType] ?? eventType;
+}
+
+const securityTypeOptions = computed(() => uniqueFieldValues(securityRows.value, (r) => r.eventType));
 
 function openSensitiveModal(row: SensitiveRuleRow): void {
   sensitiveEditingId.value = row.id;
@@ -322,11 +351,29 @@ function yesNo(v: boolean): string {
 
 watch(auditFilter, (v) => writeAuditFilter(v));
 
-const filteredSecurity = computed(() =>
-  filterByQuery(securityRows.value, securitySearchQ.value, (r) =>
-    [r.eventType, r.subject, r.detail, r.ip, r.severity].join(" "),
-  ),
-);
+const filteredSecurity = computed(() => {
+  let rows = securityRows.value;
+  if (securitySeverityFilter.value) {
+    rows = rows.filter((r) => r.severity === securitySeverityFilter.value);
+  }
+  if (securityTypeFilter.value) {
+    rows = rows.filter((r) => r.eventType === securityTypeFilter.value);
+  }
+  if (securityDateRange.value) {
+    rows = rows.filter((r) => isWithinAdminDateRange(r.at, securityDateRange.value));
+  }
+  return filterByQuery(rows, securitySearchQ.value, (r) =>
+    [
+      r.eventType,
+      securityEventTypeLabel(r.eventType),
+      r.subject,
+      r.detail,
+      r.ip,
+      r.severity,
+      r.at,
+    ].join(" "),
+  );
+});
 
 function openAuditDiff(row: AuditLogRow): void {
   auditDiffRow.value = row;
@@ -345,8 +392,9 @@ onMounted(() => loadAll());
 
 <template>
   <div class="sys-page">
-    <el-card v-show="panel === 'audit-log'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="操作审计">
-      <AdminSectionHead toolbar-only title="操作审计">
+    <section v-show="panel === 'audit-log'" class="sys-page__panel" aria-label="操作审计">
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="操作审计">
         <template #annot>
           <AdminInternalTip heading="操作审计 · 原型" explain="操作审计对内说明（原型）">
             <p>检索与导出为示意；保留周期与不可抵赖存证见 <strong>§4.13</strong>。</p>
@@ -386,14 +434,14 @@ onMounted(() => loadAll());
         style="width: 100%"
         :default-sort="{ prop: 'at', order: 'descending' }"
       >
-        <el-table-column prop="at" label="时间" min-width="160" show-overflow-tooltip sortable>
+        <el-table-column prop="at" label="时间" :min-width="ADMIN_TABLE_COL.lg" show-overflow-tooltip sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.at }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="actorName" label="操作人" min-width="112" sortable>
+        <el-table-column prop="actorName" label="操作人" :min-width="ADMIN_TABLE_COL.xl" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             {{ scope.row.actorName }}
@@ -402,33 +450,41 @@ onMounted(() => loadAll());
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="module" label="模块" width="96" sortable/>
-        <el-table-column prop="action" label="动作" width="96" sortable/>
-        <el-table-column prop="target" label="目标" min-width="112" show-overflow-tooltip sortable>
+        <el-table-column prop="module" label="模块" :min-width="ADMIN_TABLE_COL.md" sortable show-overflow-tooltip />
+        <el-table-column prop="action" label="动作" :min-width="ADMIN_TABLE_COL.md" show-overflow-tooltip sortable />
+        <el-table-column
+          prop="target"
+          label="目标"
+          :min-width="ADMIN_TABLE_COL_MIN.detail"
+          show-overflow-tooltip
+          sortable
+        >
           <template #default="scope">
             <template v-if="scope?.row">
               <span class="sys-page__mono">{{ scope.row.target }}</span>
             </template>
           </template>
         </el-table-column>
-        <el-table-column prop="result" label="结果" width="80" sortable>
-            <template #default="scope">
-              <template v-if="scope?.row">
-            <span :class="auditResultClass(scope.row.result)">{{ scope.row.result }}</span>
+        <el-table-column prop="result" label="结果" :min-width="ADMIN_TABLE_COL.xs" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+              <span :class="auditResultClass(scope.row.result)">{{ scope.row.result }}</span>
             </template>
-            </template>
+          </template>
         </el-table-column>
-        <el-table-column prop="ip" label="来源 IP" width="112" sortable>
+        <el-table-column prop="ip" label="来源 IP" :min-width="ADMIN_TABLE_COL.md" sortable show-overflow-tooltip>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.ip }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column label="Diff" width="72" fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-              <el-button link type="primary" @click="openAuditDiff(scope.row)">查看</el-button>
+              <div class="admin-ep-row-actions" @click.stop>
+                <el-button link type="primary" :icon="View" @click="openAuditDiff(scope.row)">查看</el-button>
+              </div>
             </template>
           </template>
         </el-table-column>
@@ -439,35 +495,125 @@ onMounted(() => loadAll());
         :total="auditPg.total"
       />
       <p v-if="filteredAudit.length === 0" class="sys-page__hint">无匹配记录。</p>
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'security-events'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="安全事件">
-      <AdminSectionHead toolbar-only title="安全事件">
-        <template #tools>
-          <AdminListQuery
-            v-model:search="securitySearchQ"
-            :input-id="`${idPrefix}-sec-q`"
-            search-placeholder="类型、主体、详情…"
-            search-aria-label="检索安全事件"
+    <section v-show="panel === 'security-events'" class="sys-page__panel" aria-label="安全事件">
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="安全事件">
+          <template #annot>
+            <AdminInternalTip heading="安全事件 · 原型" explain="安全事件对内说明（原型）">
+              <p>登录失败、越权、credential gate 等为 mock；工程期对接 SIEM / 审计流水与告警订阅。</p>
+            </AdminInternalTip>
+          </template>
+          <template #tools>
+            <AdminListQuery
+              v-model:search="securitySearchQ"
+              :input-id="`${idPrefix}-sec-q`"
+              search-placeholder="类型、主体、详情、IP…"
+              search-aria-label="检索安全事件"
+              @reset="resetSecurityQuery"
+            >
+              <template #filters>
+                <el-select
+                  v-model="securitySeverityFilter"
+                  clearable
+                  placeholder="级别"
+                  aria-label="按级别筛选"
+                  style="width: 6.5rem"
+                >
+                  <el-option label="高" value="高" />
+                  <el-option label="中" value="中" />
+                  <el-option label="低" value="低" />
+                </el-select>
+                <el-select
+                  v-model="securityTypeFilter"
+                  clearable
+                  placeholder="类型"
+                  aria-label="按事件类型筛选"
+                  style="width: 9.5rem"
+                >
+                  <el-option
+                    v-for="t in securityTypeOptions"
+                    :key="t"
+                    :label="securityEventTypeLabel(t)"
+                    :value="t"
+                  />
+                </el-select>
+              </template>
+              <AdminDateRangePicker v-model="securityDateRange" aria-label="安全事件时间范围" />
+              <template #actions>
+                <AdminExportCsvButton
+                  label="导出"
+                  hint="将导出当前筛选结果（原型占位，工程期接异步任务与审批）。"
+                />
+              </template>
+            </AdminListQuery>
+          </template>
+        </AdminSectionHead>
+        <el-table
+          :data="securityPg.paginatedRows"
+          row-key="id"
+          class="admin-ep-table-wrap"
+          style="width: 100%"
+          :default-sort="{ prop: 'at', order: 'descending' }"
+        >
+          <el-table-column prop="at" label="时间" min-width="160" show-overflow-tooltip sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+                <span class="sys-page__mono">{{ scope.row.at }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="eventType" label="类型" :min-width="ADMIN_TABLE_COL.lg" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+                <span>{{ securityEventTypeLabel(scope.row.eventType) }}</span>
+                <br />
+                <span class="sys-page__mono sys-page__muted">{{ scope.row.eventType }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="severity" label="级别" :min-width="ADMIN_TABLE_COL.xs" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+                <span :class="securitySeverityClass(scope.row.severity)">{{ scope.row.severity }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column prop="subject" label="主体" :min-width="ADMIN_TABLE_COL.md" sortable show-overflow-tooltip>
+            <template #default="scope">
+              <template v-if="scope?.row">
+                <span class="sys-page__mono">{{ scope.row.subject }}</span>
+              </template>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="detail"
+            label="详情"
+            :min-width="ADMIN_TABLE_COL_MIN.detail"
+            sortable
+            show-overflow-tooltip
           />
-        </template>
-      </AdminSectionHead>
-      <el-table :data="securityPg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
-        <el-table-column prop="at" label="时间" min-width="140" sortable />
-        <el-table-column prop="eventType" label="类型" width="140" sortable />
-        <el-table-column prop="severity" label="级别" width="72" sortable />
-        <el-table-column prop="subject" label="主体" min-width="96" sortable />
-        <el-table-column prop="detail" label="详情" min-width="160" sortable />
-        <el-table-column prop="ip" label="IP" width="112" sortable />
-      </el-table>
-      <AdminTablePagination
-        v-model:current-page="securityPg.currentPage"
-        v-model:page-size="securityPg.pageSize"
-        :total="securityPg.total"
-      />
-    </el-card>
+          <el-table-column prop="ip" label="来源 IP" :min-width="ADMIN_TABLE_COL.md" sortable>
+            <template #default="scope">
+              <template v-if="scope?.row">
+                <span class="sys-page__mono">{{ scope.row.ip }}</span>
+              </template>
+            </template>
+          </el-table-column>
+        </el-table>
+        <AdminTablePagination
+          v-model:current-page="securityPg.currentPage"
+          v-model:page-size="securityPg.pageSize"
+          :total="securityPg.total"
+        />
+        <p v-if="filteredSecurity.length === 0" class="sys-page__hint">无匹配安全事件。</p>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'sensitive'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="敏感操作审批">
+    <section v-show="panel === 'sensitive'" class="sys-page__panel" aria-label="敏感操作审批">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="敏感操作审批">
         <template #annot>
           <AdminInternalTip heading="敏感操作审批 · 原型" explain="敏感操作对内说明（原型）">
@@ -500,32 +646,32 @@ onMounted(() => loadAll());
       <el-table :data="sensitivePg.paginatedRows" row-key="id" class="admin-ep-table-wrap" style="width: 100%">
         <el-table-column prop="operation" label="操作类型" min-width="128" sortable/>
         <el-table-column prop="description" label="说明" min-width="128" sortable/>
-        <el-table-column prop="requireMfa" label="需 MFA" width="80" sortable>
+        <el-table-column prop="requireMfa" label="需 MFA" min-width="80" sortable>
           <template #default="scope">
               <template v-if="scope?.row">{{ yesNo(scope.row.requireMfa) }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column prop="requireDualApproval" label="双人复核" width="88" sortable>
+        <el-table-column prop="requireDualApproval" label="双人复核" min-width="88" sortable>
           <template #default="scope">
               <template v-if="scope?.row">{{ yesNo(scope.row.requireDualApproval) }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column prop="enabled" label="启用" width="64" sortable>
+        <el-table-column prop="enabled" label="启用" min-width="64" sortable>
             <template #default="scope">
               <template v-if="scope?.row">{{ yesNo(scope.row.enabled) }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+        <el-table-column prop="updatedAt" label="更新于" min-width="136" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column label="操作" width="80"fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -543,9 +689,11 @@ onMounted(() => loadAll());
         v-model:page-size="sensitivePg.pageSize"
         :total="sensitivePg.total"
       />
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'export-approval'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="数据导出审批">
+    <section v-show="panel === 'export-approval'" class="sys-page__panel" aria-label="数据导出审批">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="数据导出审批">
         <template #annot>
           <AdminInternalTip heading="数据导出审批 · 原型" explain="导出审批对内说明（原型）">
@@ -593,15 +741,15 @@ onMounted(() => loadAll());
             </template>
         </el-table-column>
         <el-table-column prop="scope" label="范围" min-width="96" sortable/>
-        <el-table-column prop="rowEstimate" label="预估行数" width="88" sortable/>
-        <el-table-column prop="requestedAt" label="申请时间" width="136" sortable>
+        <el-table-column prop="rowEstimate" label="预估行数" min-width="88" sortable/>
+        <el-table-column prop="requestedAt" label="申请时间" min-width="136" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.requestedAt }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="status" label="状态" width="88" sortable>
+        <el-table-column prop="status" label="状态" min-width="88" sortable>
             <template #default="scope">
               <template v-if="scope?.row">
             <span :class="exportStatusClass(scope.row.status)">{{ scope.row.status }}</span>
@@ -620,13 +768,19 @@ onMounted(() => loadAll());
             </template>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="112"fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.md" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-              <div v-if="scope.row.status === '待审批'" class="admin-ep-row-actions sys-page__ops">
-              <el-button link type="primary" @click="reviewExport(scope.row, true)">通过</el-button>
-              <el-button link type="danger" @click="reviewExport(scope.row, false)">拒绝</el-button>
-            </div>
+              <div v-if="scope.row.status === '待审批'" class="admin-ep-row-actions" @click.stop>
+                <el-button link type="primary" @click="reviewExport(scope.row, true)">
+                  <el-icon><Select /></el-icon>
+                  通过
+                </el-button>
+                <el-button link type="danger" @click="reviewExport(scope.row, false)">
+                  <el-icon><CircleClose /></el-icon>
+                  拒绝
+                </el-button>
+              </div>
               <span v-else class="sys-page__muted">—</span>
             </template>
           </template>
@@ -637,9 +791,11 @@ onMounted(() => loadAll());
         v-model:page-size="exportPg.pageSize"
         :total="exportPg.total"
       />
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'flags'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="特性开关">
+    <section v-show="panel === 'flags'" class="sys-page__panel" aria-label="特性开关">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="特性开关">
         <template #annot>
           <AdminInternalTip heading="特性开关 · 原型" explain="特性开关对内说明（原型）">
@@ -677,14 +833,14 @@ onMounted(() => loadAll());
             </template>
         </el-table-column>
         <el-table-column prop="name" label="名称" min-width="96" sortable/>
-        <el-table-column prop="env" label="环境" width="80" sortable/>
-        <el-table-column prop="rolloutPct" label="灰度 %" width="80" sortable>
+        <el-table-column prop="env" label="环境" min-width="80" sortable/>
+        <el-table-column prop="rolloutPct" label="灰度 %" min-width="80" sortable>
           <template #default="scope">
               <template v-if="scope?.row">{{ scope.row.rolloutPct }}%
               </template>
             </template>
         </el-table-column>
-        <el-table-column label="启用" width="80">
+        <el-table-column label="启用" min-width="80">
           <template #default="scope">
             <template v-if="scope?.row">
             <button
@@ -699,7 +855,7 @@ onMounted(() => loadAll());
             </template>
         </el-table-column>
         <el-table-column prop="note" label="备注" min-width="96" sortable/>
-        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+        <el-table-column prop="updatedAt" label="更新于" min-width="136" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
@@ -712,9 +868,11 @@ onMounted(() => loadAll());
         v-model:page-size="flagsPg.pageSize"
         :total="flagsPg.total"
       />
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'global'" shadow="never" class="admin-ep-card sys-page__panel" aria-label="全局参数">
+    <section v-show="panel === 'global'" class="sys-page__panel" aria-label="全局参数">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="全局参数">
         <template #annot>
           <AdminInternalTip heading="全局参数 · 原型" explain="全局参数对内说明（原型）">
@@ -752,23 +910,23 @@ onMounted(() => loadAll());
             </template>
         </el-table-column>
         <el-table-column prop="label" label="名称" min-width="96" sortable/>
-        <el-table-column prop="category" label="分类" width="96" sortable/>
+        <el-table-column prop="category" label="分类" min-width="96" sortable/>
         <el-table-column prop="value" label="当前值" min-width="96" sortable/>
-        <el-table-column prop="updatedBy" label="更新人" width="96" sortable>
+        <el-table-column prop="updatedBy" label="更新人" min-width="96" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.updatedBy }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="updatedAt" label="更新于" width="136" sortable>
+        <el-table-column prop="updatedAt" label="更新于" min-width="136" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="sys-page__mono">{{ scope.row.updatedAt }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column label="操作" width="80"fixed="right">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
             <div class="admin-ep-row-actions">
@@ -786,7 +944,8 @@ onMounted(() => loadAll());
         v-model:page-size="globalPg.pageSize"
         :total="globalPg.total"
       />
-    </el-card>
+      </el-card>
+    </section>
 
     <AdminDialog
       v-model="sensitiveModalOpen"

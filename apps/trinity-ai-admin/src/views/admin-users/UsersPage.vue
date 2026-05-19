@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, useId, watch } from "vue";
 import { useRoute } from "vue-router";
-import { CircleClose, Delete, Edit, Select } from "@element-plus/icons-vue";
+import { CircleClose, Delete, Edit, Select, View } from "@element-plus/icons-vue";
 import AdminDialog from "../../components/AdminDialog.vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminListQuery from "../../components/AdminListQuery.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import AdminTablePagination from "../../components/AdminTablePagination.vue";
+import { ADMIN_TABLE_COL, ADMIN_TABLE_COL_OPS } from "../../utils/adminTableColumns";
 import { useAdminTablePagination } from "../../utils/adminTablePagination";
 import { filterByQuery } from "../../utils/adminListFilter";
 import "./users.css";
@@ -92,6 +93,11 @@ const auditUserId = ref<string | null>(null);
 const kycAuditModalOpen = ref(false);
 const kycAuditKind = ref<"approve" | "reject">("approve");
 const kycAuditRowId = ref<string | null>(null);
+
+const detailCardOpen = ref(false);
+const detailCardId = ref("");
+
+const detailRow = computed(() => userRows.value.find((r) => r.id === detailCardId.value) ?? null);
 
 const usrDangerOpen = ref(false);
 const usrDangerKind = ref<
@@ -391,6 +397,15 @@ function saveUserModal(): void {
   }
   persistUsers();
   closeUserModal();
+}
+
+function openDetailCard(row: TerminalUserRow): void {
+  detailCardId.value = row.id;
+  detailCardOpen.value = true;
+}
+
+function closeDetailCard(): void {
+  detailCardOpen.value = false;
 }
 
 function requestDeleteUser(row: TerminalUserRow): void {
@@ -701,6 +716,11 @@ function kycStatusClass(s: KycApplicationRow["status"]): string {
 
 function onDocKeydown(e: KeyboardEvent): void {
   if (e.key !== "Escape") return;
+  if (detailCardOpen.value) {
+    closeDetailCard();
+    e.preventDefault();
+    return;
+  }
   if (usrDangerOpen.value) {
     closeUsrDanger();
     e.preventDefault();
@@ -758,8 +778,9 @@ const kycPg = useAdminTablePagination(filteredKyc);
 
 <template>
   <div class="usr-page">
-    <el-card v-show="panel === 'list'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="用户列表">
-      <AdminSectionHead toolbar-only title="用户列表">
+    <section v-show="panel === 'list'" class="usr-page__panel" aria-label="用户列表">
+      <el-card shadow="never" class="admin-ep-card">
+        <AdminSectionHead toolbar-only title="用户列表">
         <template #annot>
           <AdminInternalTip heading="用户列表 · 原型" explain="用户列表对内说明（原型）">
             <p>检索与状态为 mock；与组织归属、KYC 状态在工程期对齐账号中心。</p>
@@ -793,43 +814,44 @@ const kycPg = useAdminTablePagination(filteredKyc);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="usersPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="id" label="用户 ID" min-width="112" sortable>
-          <template #default="scope">
-            <template v-if="scope?.row">
-            <span class="usr-page__mono">{{ scope.row.id }}</span>
-            </template>
-            </template>
-        </el-table-column>
-        <el-table-column prop="email" label="邮箱" min-width="144" sortable>
+      <el-table :data="usersPg.paginatedRows" class="admin-ep-table-wrap" row-key="id">
+        <el-table-column prop="email" label="邮箱" :min-width="ADMIN_TABLE_COL.xl" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.email }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="displayName" label="展示名" min-width="96" sortable/>
-        <el-table-column prop="orgName" label="所属组织" min-width="96" sortable/>
-        <el-table-column label="状态" width="88">
+        <el-table-column prop="displayName" label="展示名" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="orgName" label="所属组织" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="id" label="用户 ID" :min-width="ADMIN_TABLE_COL.lg" sortable>
+          <template #default="scope">
+            <template v-if="scope?.row">
+            <span class="usr-page__mono">{{ scope.row.id }}</span>
+            </template>
+            </template>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" :min-width="ADMIN_TABLE_COL.xs">
           <template #default="scope">
             <template v-if="scope?.row">
             <span :class="userStatusBadgeClass(scope.row.status)">{{ scope.row.status }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
-        <el-table-column label="操作" width="176"fixed="right">
+        <el-table-column prop="registeredAt" label="注册" :min-width="ADMIN_TABLE_COL.lg" sortable/>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
-              <el-button link type="primary" @click="onEditUserClick(scope.row)">
-                <el-icon><Edit /></el-icon>
+            <div class="admin-ep-row-actions" @click.stop>
+              <el-button link type="primary" :icon="View" @click="openDetailCard(scope.row)">
+                详情
+              </el-button>
+              <el-button link type="primary" :icon="Edit" @click="onEditUserClick(scope.row)">
                 编辑
               </el-button>
               <el-button v-if="scope.row.status === '正常'" link type="primary" @click="requestFreezeUser(scope.row)">冻结</el-button>
               <el-button v-if="scope.row.status === '已冻结'" link type="primary" @click="requestUnfreezeUser(scope.row)">解冻</el-button>
-              <el-button link type="danger" @click="requestDeleteUser(scope.row)">
-                <el-icon><Delete /></el-icon>
+              <el-button link type="danger" :icon="Delete" @click="requestDeleteUser(scope.row)">
                 删除
               </el-button>
             </div>
@@ -846,9 +868,11 @@ const kycPg = useAdminTablePagination(filteredKyc);
         键 <code class="usr-page__mono">trinity-ai-admin:terminal-users-rows</code>；搜索键
         <code class="usr-page__mono">trinity-ai-admin:terminal-users-filter</code>；删除 / 冻结 / 解冻经弹窗二次确认。
       </p>
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'audit-queue'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="审核队列">
+    <section v-show="panel === 'audit-queue'" class="usr-page__panel" aria-label="审核队列">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="审核队列">
         <template #annot>
           <AdminInternalTip heading="审核队列 · 原型" explain="审核队列对内说明（原型）">
@@ -865,21 +889,21 @@ const kycPg = useAdminTablePagination(filteredKyc);
         </template>
       </AdminSectionHead>
       <div v-if="!pendingUsers.length" class="usr-page__hint">当前无待审核用户。</div>
-      <el-table v-else :data="pendingPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="email" label="邮箱" min-width="144" sortable>
+      <el-table v-else :data="pendingPg.paginatedRows" class="admin-ep-table-wrap" row-key="id">
+        <el-table-column prop="email" label="邮箱" :min-width="ADMIN_TABLE_COL.xl" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.email }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="displayName" label="展示名" sortable/>
-        <el-table-column prop="orgName" label="组织" sortable/>
-        <el-table-column prop="registeredAt" label="注册" width="136" sortable/>
-        <el-table-column label="操作" width="128"fixed="right">
+        <el-table-column prop="displayName" label="展示名" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="orgName" label="组织" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="registeredAt" label="注册" :min-width="ADMIN_TABLE_COL.lg" sortable/>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <el-button link type="primary" @click="openAuditModal('approve', scope.row.id)">
                 <el-icon><Select /></el-icon>
                 通过
@@ -898,9 +922,11 @@ const kycPg = useAdminTablePagination(filteredKyc);
         v-model:page-size="pendingPg.pageSize"
         :total="pendingPg.total"
       />
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'whitelist'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="白名单">
+    <section v-show="panel === 'whitelist'" class="usr-page__panel" aria-label="白名单">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="白名单">
         <template #annot>
           <AdminInternalTip heading="白名单 · 原型" explain="白名单对内说明（原型）">
@@ -927,27 +953,27 @@ const kycPg = useAdminTablePagination(filteredKyc);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="whitelistPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="pattern" label="规则" min-width="128" sortable>
+      <el-table :data="whitelistPg.paginatedRows" class="admin-ep-table-wrap" row-key="id">
+        <el-table-column prop="pattern" label="规则" :min-width="ADMIN_TABLE_COL.lg" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.pattern }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="patternType" label="类型" width="96" sortable/>
-        <el-table-column label="启用" width="64">
+        <el-table-column prop="patternType" label="类型" :min-width="ADMIN_TABLE_COL.xs" sortable/>
+        <el-table-column label="启用" :min-width="ADMIN_TABLE_COL.xs">
           <template #default="scope">
               <template v-if="scope?.row">{{ scope.row.enabled ? "是" : "否" }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column prop="note" label="说明" min-width="96" sortable/>
-        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="112"fixed="right">
+        <el-table-column prop="note" label="说明" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="updatedAt" label="更新" :min-width="ADMIN_TABLE_COL.lg" sortable/>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <el-button link type="primary" @click="onEditWlClick(scope.row)">
                 <el-icon><Edit /></el-icon>
                 编辑
@@ -967,9 +993,11 @@ const kycPg = useAdminTablePagination(filteredKyc);
         :total="whitelistPg.total"
       />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-whitelist-rows</code>。</p>
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'blacklist'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="黑名单">
+    <section v-show="panel === 'blacklist'" class="usr-page__panel" aria-label="黑名单">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="黑名单">
         <template #annot>
           <AdminInternalTip heading="黑名单 · 原型" explain="黑名单对内说明（原型）">
@@ -997,33 +1025,33 @@ const kycPg = useAdminTablePagination(filteredKyc);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="blacklistPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="target" label="目标" min-width="112" sortable>
+      <el-table :data="blacklistPg.paginatedRows" class="admin-ep-table-wrap" row-key="id">
+        <el-table-column prop="target" label="目标" :min-width="ADMIN_TABLE_COL.lg" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.target }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="targetType" label="类型" width="88" sortable/>
-        <el-table-column label="拒绝登录" width="80">
+        <el-table-column prop="targetType" label="类型" :min-width="ADMIN_TABLE_COL.xs" sortable/>
+        <el-table-column label="拒绝登录" :min-width="ADMIN_TABLE_COL.xs">
           <template #default="scope">
               <template v-if="scope?.row">{{ scope.row.blockLogin ? "是" : "否" }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column label="拒绝调用" width="80">
+        <el-table-column label="拒绝调用" :min-width="ADMIN_TABLE_COL.xs">
           <template #default="scope">
               <template v-if="scope?.row">{{ scope.row.blockApi ? "是" : "否" }}
               </template>
             </template>
         </el-table-column>
-        <el-table-column prop="reason" label="原因" min-width="80" sortable/>
-        <el-table-column prop="updatedAt" label="更新" width="136" sortable/>
-        <el-table-column label="操作" width="112"fixed="right">
+        <el-table-column prop="reason" label="原因" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="updatedAt" label="更新" :min-width="ADMIN_TABLE_COL.lg" sortable/>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <el-button link type="primary" @click="onEditBlClick(scope.row)">
                 <el-icon><Edit /></el-icon>
                 编辑
@@ -1043,9 +1071,11 @@ const kycPg = useAdminTablePagination(filteredKyc);
         :total="blacklistPg.total"
       />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-blacklist-rows</code>；审计必填为二期。</p>
-    </el-card>
+      </el-card>
+    </section>
 
-    <el-card v-show="panel === 'kyc'" shadow="never" class="admin-ep-card usr-page__panel" aria-label="实名与企业认证">
+    <section v-show="panel === 'kyc'" class="usr-page__panel" aria-label="实名与企业认证">
+      <el-card shadow="never" class="admin-ep-card">
       <AdminSectionHead toolbar-only title="实名 / 企业认证">
         <template #annot>
           <AdminInternalTip heading="实名 / 企业认证 · 原型" explain="KYC 对内说明（原型）">
@@ -1070,40 +1100,40 @@ const kycPg = useAdminTablePagination(filteredKyc);
           </AdminListQuery>
         </template>
       </AdminSectionHead>
-      <el-table :data="kycPg.paginatedRows" class="admin-ep-table-wrap">
-        <el-table-column prop="id" label="记录 ID" min-width="112" sortable>
+      <el-table :data="kycPg.paginatedRows" class="admin-ep-table-wrap" row-key="id">
+        <el-table-column prop="id" label="记录 ID" :min-width="ADMIN_TABLE_COL.lg" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.id }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="userId" label="用户 ID" min-width="112" sortable>
+        <el-table-column prop="userId" label="用户 ID" :min-width="ADMIN_TABLE_COL.lg" sortable>
           <template #default="scope">
             <template v-if="scope?.row">
             <span class="usr-page__mono">{{ scope.row.userId }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="kind" label="类型" width="96" sortable/>
-        <el-table-column label="状态" width="80">
+        <el-table-column prop="kind" label="类型" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column prop="status" label="状态" :min-width="ADMIN_TABLE_COL.xs">
           <template #default="scope">
             <template v-if="scope?.row">
             <span :class="kycStatusClass(scope.row.status)">{{ scope.row.status }}</span>
             </template>
             </template>
         </el-table-column>
-        <el-table-column prop="submittedAt" label="提交" width="136" sortable/>
-        <el-table-column prop="remark" label="备注" min-width="80" sortable/>
-        <el-table-column label="操作" width="160"fixed="right">
+        <el-table-column prop="submittedAt" label="提交" :min-width="ADMIN_TABLE_COL.lg" sortable/>
+        <el-table-column prop="remark" label="备注" :min-width="ADMIN_TABLE_COL.md" sortable/>
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
-            <div class="admin-ep-row-actions">
+            <div class="admin-ep-row-actions" @click.stop>
               <template v-if="scope.row.status === '待审'">
                 <el-button link type="primary" @click="openKycAudit('approve', scope.row.id)">通过</el-button>
                 <el-button link type="danger" @click="openKycAudit('reject', scope.row.id)">拒绝</el-button>
-                </template>
-                <el-button link type="danger" @click="requestDeleteKyc(scope.row)">
+              </template>
+              <el-button link type="danger" @click="requestDeleteKyc(scope.row)">
                   <el-icon><Delete /></el-icon>
                   删除
                 </el-button>
@@ -1118,7 +1148,47 @@ const kycPg = useAdminTablePagination(filteredKyc);
         :total="kycPg.total"
       />
       <p class="usr-page__hint">键 <code class="usr-page__mono">trinity-ai-admin:users-kyc-rows</code>。</p>
-    </el-card>
+      </el-card>
+    </section>
+
+    <!-- ==================== 详情弹窗 ==================== -->
+    <AdminDialog v-model="detailCardOpen" :title="detailRow?.email ?? '用户详情'" width="560px">
+      <div v-if="detailRow" class="usr-page__detail-grid">
+        <div>
+          <div class="usr-page__detail-k">用户 ID</div>
+          <p class="usr-page__detail-v usr-page__mono">{{ detailRow.id }}</p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">邮箱</div>
+          <p class="usr-page__detail-v usr-page__mono">{{ detailRow.email }}</p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">展示名</div>
+          <p class="usr-page__detail-v">{{ detailRow.displayName }}</p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">所属组织</div>
+          <p class="usr-page__detail-v">{{ detailRow.orgName }}</p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">状态</div>
+          <p class="usr-page__detail-v">
+            <span :class="userStatusBadgeClass(detailRow.status)">{{ detailRow.status }}</span>
+          </p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">手机</div>
+          <p class="usr-page__detail-v">{{ detailRow.phone ?? '—' }}</p>
+        </div>
+        <div>
+          <div class="usr-page__detail-k">注册时间</div>
+          <p class="usr-page__detail-v">{{ detailRow.registeredAt }}</p>
+        </div>
+      </div>
+      <template #footer>
+        <el-button @click="closeDetailCard">关闭</el-button>
+      </template>
+    </AdminDialog>
 
     <AdminDialog
       v-model="userModalOpen"

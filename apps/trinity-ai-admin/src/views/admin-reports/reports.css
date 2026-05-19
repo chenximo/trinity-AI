@@ -1,16 +1,119 @@
+/**
+ * 报表中心 · 模块样式
+ * 基于 admin-ruoyi.css 全局规范
+ */
+
+/* ==================== 面板容器 ==================== */
+.rpt-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
 .rpt-page__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ==================== 占位面板 ==================== */
+.rpt-page__placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.875rem;
+  background: var(--el-fill-color-light);
+  border-radius: 4px;
+  min-height: 200px;
+}
+
+/* ==================== 工具栏（admin-section-head__end）====================
+ * 与 admin-ruoyi.css 配合，实现左侧查询 + 右侧操作的布局
+ * 间距统一 0.5rem
+ */
+.rpt-page .admin-section-head__end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.rpt-page .admin-section-head__end > * {
+  margin-left: 0;
+}
+
+.rpt-page .admin-section-head__end > * + * {
+  margin-left: 0;
+}
+
+/* 查询条件组与操作按钮组之间的间距 */
+.rpt-page .admin-section-head__end .el-input,
+.rpt-page .admin-section-head__end .el-select,
+.rpt-page .admin-section-head__end .el-date-editor {
+  margin-right: 0;
+}
+
+.rpt-page .admin-section-head__end > .el-input + .el-button,
+.rpt-page .admin-section-head__end > .el-select + .el-button,
+.rpt-page .admin-section-head__end > .el-date-editor + .el-button {
+  margin-left: 0;
+}
+
+/* ==================== 表格 ==================== */
+.rpt-page .admin-ep-table-wrap {
+  flex: 1 1 auto;
   min-height: 0;
 }
 
-.rpt-page__hint {
-  margin: 0.5rem 0 0;
-  font-size: 0.8125rem;
-  color: var(--muted);
+/* 列宽档位 */
+.rpt-page .el-table-column--xs { min-width: 80px; }
+.rpt-page .el-table-column--sm { min-width: 96px; }
+.rpt-page .el-table-column--md { min-width: 112px; }
+.rpt-page .el-table-column--lg { min-width: 128px; }
+.rpt-page .el-table-column--primary { min-width: 120px; }
+.rpt-page .el-table-column--detail { min-width: 200px; }
+
+/* ==================== 多维分析（一期）==================== */
+.rpt-olap__summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
 }
 
-.rpt-page__placeholder {
-  padding: 2rem 1rem;
-  text-align: center;
+.rpt-olap__stat {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface);
+}
+
+.rpt-olap__stat-label {
+  display: block;
+  font-size: 0.6875rem;
   color: var(--muted);
-  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.rpt-olap__stat-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.rpt-olap__config-hint {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+}
+
+@media (max-width: 960px) {
+  .rpt-olap__summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

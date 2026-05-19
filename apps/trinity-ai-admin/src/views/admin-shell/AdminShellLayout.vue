@@ -14,7 +14,6 @@ import {
 import {
   readAdminSession,
   readSidebarCollapsed,
-  signOutAdmin,
   writeSidebarCollapsed,
 } from "./shellInteractions";
 
@@ -101,9 +100,8 @@ function onDocumentPointerDown(e: PointerEvent): void {
 }
 
 function onSignOut(): void {
-  signOutAdmin();
   closeUserMenu();
-  void router.push({ name: "tai-admin-login" });
+  void router.push({ name: "tai-admin-logout" });
 }
 
 onMounted(() => {

@@ -1,188 +1,91 @@
-.usr-page__cap {
-  margin: 0 0 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text);
-}
+/**
+ * 用户与认证模块 · 模块样式
+ * 遵循 ExamplePage 模版规范
+ */
 
-.usr-toolbar-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
-}
-
-.usr-toolbar-row__start {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.usr-toolbar-row__end {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-left: auto;
-}
-
-.usr-page__table-wrap {
-  overflow: auto;
-}
-
-.usr-page__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.75rem;
-}
-
-.usr-page__table th,
-.usr-page__table td {
-  padding: 0.45rem 0.5rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-
-.usr-page__table th {
-  font-weight: 600;
-  color: var(--text);
-  background: var(--surface);
-  font-size: 0.6875rem;
-}
-
-.usr-page__mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.75rem;
-  word-break: break-all;
-}
-
-.usr-page__badge {
-  display: inline-block;
-  padding: 0.1em 0.4em;
-  border-radius: 0.25rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-}
-
-.usr-page__badge--ok {
-  background: var(--success-soft);
-  color: var(--success-800);
-}
-
-.usr-page__badge--warn {
-  background: var(--warning-soft);
-  color: var(--warning-ink);
-}
-
-.usr-page__badge--danger {
-  background: var(--danger-soft);
-  color: var(--danger-ink);
-}
-
-.usr-page__badge--muted {
-  background: var(--surface-2);
-  color: var(--muted);
-}
-
-.usr-page__callout {
-  margin: 0 0 0.75rem;
-  padding: 0.65rem 0.75rem;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--muted);
-  background: var(--blue-soft);
-  border: 1px solid var(--blue-ring);
-  border-radius: 0.375rem;
-}
-
-.usr-page__hint {
-  margin: 0.5rem 0 0;
-  font-size: 0.6875rem;
-  color: var(--muted);
-}
-
-.usr-int__textlink {
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 0.75rem;
-  color: var(--blue);
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.usr-int__textlink:hover {
-  color: var(--pill-text);
-}
-
-.usr-int__textlink + .usr-int__textlink {
-  margin-left: 0.5rem;
-}
-
-.usr-int__textlink--danger {
-  color: var(--danger-ink);
-  margin-left: 0.5rem;
-}
-
-.usr-int__textlink--danger:hover {
-  color: var(--danger-dark);
-}
-
-.usr-int-modal-host.or-modal-root {
-  z-index: 600;
-}
-
-.usr-int-modal-host .or-modal-card.or-keys-editor-modal-card {
-  width: min(720px, calc(100vw - 2rem));
-  max-width: min(720px, calc(100vw - 2rem));
-  max-height: min(85vh, 760px);
+/* ==================== 页面容器 ==================== */
+.usr-page {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-
-.usr-int-modal-host .t-modal-panel-body {
-  overflow: auto;
-  flex: 1;
   min-height: 0;
 }
 
-.usr-int-modal-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.usr-page__panel {
+  /* 跟随 admin-ruoyi.css 中 .admin-ep-card 的 flex 布局 */
 }
 
-.usr-int-modal-grid .form-group {
-  margin: 0;
+/* ==================== 等宽字体 ==================== */
+.usr-page__mono {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 }
 
-.usr-int-modal-grid .form-group label {
-  display: block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--muted, var(--muted));
-  margin-bottom: 0.35rem;
+/* ==================== 状态标签 ==================== */
+.usr-page__badge {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
-.usr-int-modal-grid .form-group--row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8125rem;
+.usr-page__badge--ok {
+  background: var(--el-color-success-light-9);
+  color: var(--el-color-success);
+}
+
+.usr-page__badge--warn {
+  background: var(--el-color-warning-light-9);
+  color: var(--el-color-warning);
+}
+
+.usr-page__badge--danger {
+  background: var(--el-color-danger-light-9);
+  color: var(--el-color-danger);
+}
+
+.usr-page__badge--muted {
+  background: var(--el-fill-color-light);
   color: var(--muted);
 }
 
-.usr-int-modal-err {
-  margin: 0 0 0.5rem;
+/* ==================== 提示文字 ==================== */
+.usr-page__hint {
+  margin: 0.5rem 0 0;
   font-size: 0.75rem;
-  color: var(--danger-ink);
+  color: var(--muted);
 }
 
-body.or-modal-open {
-  overflow: hidden;
+.usr-page__hint code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  padding: 0 0.25rem;
+  background: var(--el-fill-color-light);
+  border-radius: 2px;
+}
+
+/* ==================== 表单错误提示 ==================== */
+.usr-int-modal-err {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--el-color-danger);
+}
+
+/* ==================== 详情网格 ==================== */
+.usr-page__detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.usr-page__detail-k {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.usr-page__detail-v {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  word-break: break-word;
 }

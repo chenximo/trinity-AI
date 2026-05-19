@@ -33,12 +33,6 @@ body {
   overflow: hidden;
 }
 
-/* 门户嵌套：顶栏与个人菜单置于枢纽悬浮层之上 */
-.design-hub-shell:has(.admin-shell) .admin-shell__header {
-  position: relative;
-  z-index: 200;
-}
-
 .admin-shell {
   min-height: 100vh;
   height: 100vh;
@@ -330,9 +324,11 @@ body {
   display: none;
 }
 
-/* —— 顶栏 —— */
+/* —— 顶栏（账户下拉须 overflow:visible，并叠在 main 之上；门户 FAB 为 z-index 150） —— */
 .admin-shell__header {
   grid-area: header;
+  position: relative;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -343,7 +339,7 @@ body {
   border-bottom: 1px solid var(--admin-border);
   box-shadow: var(--admin-shadow-header);
   gap: 0.75rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .admin-shell__header-left {
@@ -415,6 +411,7 @@ body {
   align-items: center;
   gap: 0.25rem;
   flex-shrink: 0;
+  overflow: visible;
 }
 
 .admin-shell__icon-btn {
@@ -461,6 +458,7 @@ body {
 
 .admin-shell__user-wrap {
   position: relative;
+  z-index: 1;
   margin-left: 0.35rem;
 }
 

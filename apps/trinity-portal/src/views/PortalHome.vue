@@ -8,5 +8,33 @@
       <li><strong>设计</strong>：设计色板、设计规范（与独立 <code>trinity-design</code> 路由一致）</li>
       <li><strong>骨架</strong>：Trinity AI、AI Cloud、GEO、Admin</li>
     </ul>
+
+    <h2 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text)">运营后台 · 登录 / 登出</h2>
+    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.75; color: var(--text)">
+      <li>
+        <a href="/trinity-ai-admin/login" style="color: var(--el-color-primary)">登录页</a>
+        — 演示账号 <code>zhang.san</code>
+      </li>
+      <li>
+        <a href="/trinity-ai-admin/logout" style="color: var(--el-color-primary)">登出页</a>
+        — 需先登录；壳内菜单「退出登录」亦进入此页
+      </li>
+    </ul>
+
+    <h2 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text)">运营后台样板</h2>
+    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.75; color: var(--text)">
+      <li>
+        <a href="/trinity-ai-admin/example" style="color: var(--el-color-primary)">
+          列表页模板示例
+        </a>
+        — 搜索、筛选、表格、操作按钮的规范实现
+      </li>
+      <li>
+        <a href="/trinity-ai-admin/reports/preset" style="color: var(--el-color-primary)">
+          报表中心
+        </a>
+        — 按新规范重构的列表页参考
+      </li>
+    </ul>
   </main>
 </template>
