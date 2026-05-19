@@ -91,12 +91,11 @@
 }
 
 .admin-dashboard__kpi-cap {
-  margin: 0 0 0.65rem;
-  font-size: 0.75rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--admin-muted, var(--muted, #64748b));
+  letter-spacing: 0.01em;
+  color: var(--admin-text, var(--text, #0f172a));
 }
 
 .admin-dashboard__kpis {

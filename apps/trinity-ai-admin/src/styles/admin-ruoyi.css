@@ -162,9 +162,9 @@
 /* 行内操作列：与工具栏控件间距一致（0.5rem）· 见 doc/运营后台-若依式列表规范.md §2.3 */
 .admin-shell .admin-ep-row-actions {
   display: inline-flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem 0.5rem;
 }
 
 .admin-shell .admin-ep-row-actions .el-button.is-link {

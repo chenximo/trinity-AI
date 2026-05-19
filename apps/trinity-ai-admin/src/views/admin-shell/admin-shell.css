@@ -131,6 +131,7 @@ body {
 .admin-shell__nav {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 0.15rem;
   flex: 1;
   min-height: 0;
@@ -139,6 +140,12 @@ body {
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+}
+
+/* 禁止顶栏单入口被下方展开子菜单挤压（flex 子项默认 shrink:1） */
+.admin-shell__nav > .admin-shell__nav-link,
+.admin-shell__nav > .admin-shell__nav-group {
+  flex-shrink: 0;
 }
 
 .admin-shell__nav::-webkit-scrollbar {
@@ -158,11 +165,14 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 2.25rem;
+  box-sizing: border-box;
   padding: 0.55rem 0.65rem;
   margin: 0 0.35rem;
   border-radius: 0;
   font-size: 0.8125rem;
   font-weight: 500;
+  line-height: 1.25;
   color: var(--admin-sidebar-text);
   text-decoration: none;
   white-space: nowrap;
@@ -246,6 +256,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 2.25rem;
+  box-sizing: border-box;
   width: calc(100% - 0.7rem);
   margin: 0 0.35rem;
   padding: 0.55rem 0.5rem 0.55rem 0.875rem;
@@ -300,6 +312,9 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex-shrink: 0;
+  min-height: 2rem;
+  box-sizing: border-box;
   padding: 0.45rem 0.65rem 0.45rem 1.35rem;
   margin: 0 0.35rem 0.1rem;
   font-size: 0.75rem;
@@ -396,6 +411,13 @@ body {
 .admin-shell__breadcrumb-sep {
   color: var(--admin-muted-2);
   user-select: none;
+}
+
+.admin-shell__breadcrumb-parent {
+  color: var(--admin-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .admin-shell__breadcrumb-current {
@@ -661,7 +683,7 @@ body {
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
-  padding: 0.375rem 0.625rem 0.625rem;
+  padding: 0.125rem 0.625rem 0.625rem;
   background: var(--admin-surface);
 }
 

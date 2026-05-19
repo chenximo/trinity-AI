@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, useId } from "vue";
 import { useRouter, type RouteRecordName } from "vue-router";
-import { Refresh, WarningFilled } from "@element-plus/icons-vue";
+import { ArrowRight, Refresh, Search, WarningFilled } from "@element-plus/icons-vue";
 import AdminInternalTip from "../../components/AdminInternalTip.vue";
 import AdminSectionHead from "../../components/AdminSectionHead.vue";
 import { ADMIN_TABLE_COL, ADMIN_TABLE_COL_OPS } from "../../utils/adminTableColumns";
@@ -140,10 +140,7 @@ onUnmounted(() => {
           </p>
         </AdminInternalTip>
       </template>
-      <template #desc>
-        值班视图（{{ windowLabel }}）· 更新 {{ lastRefreshAt }} · 摘要见
-        <el-button link type="primary" class="ops-page__desc-link" @click="goRoute('tai-admin-dashboard')">工作台</el-button>
-      </template>
+
       <template #tools>
         <el-select :model-value="windowHours" class="ops-page__window-select" @change="onWindowChange(Number($event))">
           <el-option :value="2" label="2 小时" />
@@ -181,11 +178,6 @@ onUnmounted(() => {
 
     <section class="ops-page__panel" aria-label="大盘内容">
       <div class="ops-page__scroll">
-        <p class="ops-page__context" role="note">
-          <strong>与工作台分工：</strong>工作台 = 近 5m/15m 摘要 + 待办；本页 = 同窗
-          <strong>趋势、模型占比、Top 榜、供应商健康</strong>。
-        </p>
-
         <!-- ① 值班 KPI -->
         <section class="ops-page__block" aria-label="值班核心指标">
           <h3 class="ops-page__group-title">值班指标</h3>
@@ -369,16 +361,18 @@ onUnmounted(() => {
               <el-table-column prop="route" label="路由" :min-width="ADMIN_TABLE_COL.lg" show-overflow-tooltip />
               <el-table-column prop="line" label="线路" :min-width="ADMIN_TABLE_COL.md" show-overflow-tooltip />
               <el-table-column prop="count" label="次数" :min-width="ADMIN_TABLE_COL.sm" sortable />
-              <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm"fixed="right">
+              <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
                 <template #default="scope">
-                  <el-button
-                    v-if="scope?.row"
-                    link
-                    type="primary"
-                    @click="goRoute('tai-admin-billing-usage', { status: scope.row.code })"
-                  >
-                    用量
-                  </el-button>
+                  <div v-if="scope?.row" class="admin-ep-row-actions" @click.stop>
+                    <el-button
+                      link
+                      type="primary"
+                      @click="goRoute('tai-admin-billing-usage', { status: scope.row.code })"
+                    >
+                      <el-icon><Search /></el-icon>
+                      用量
+                    </el-button>
+                  </div>
                 </template>
               </el-table-column>
             </el-table>
@@ -429,17 +423,18 @@ onUnmounted(() => {
                 <span v-if="scope?.row" :class="supplierStatusClass(scope.row.status)">{{ scope.row.status }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
+            <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
               <template #default="scope">
-                <el-button
-                  v-if="scope?.row?.status === '降级中'"
-                  link
-                  type="warning"
-                  :icon="WarningFilled"
-                  @click="goRoute('tai-admin-models-lines')"
-                >
-                  线路
-                </el-button>
+                <div v-if="scope?.row?.status === '降级中'" class="admin-ep-row-actions" @click.stop>
+                  <el-button
+                    link
+                    type="warning"
+                    @click="goRoute('tai-admin-models-lines')"
+                  >
+                    <el-icon><WarningFilled /></el-icon>
+                    线路
+                  </el-button>
+                </div>
               </template>
             </el-table-column>
           </el-table>

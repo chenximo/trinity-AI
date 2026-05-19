@@ -150,6 +150,17 @@ const olapActiveMetrics = computed(() => {
   return ["requests", "costCny"] as ReportOlapMetricId[];
 });
 
+const olapSummaryCards = computed(() => {
+  const s = olapSummary.value;
+  const defs: { id: ReportOlapMetricId; label: string; value: string }[] = [
+    { id: "requests", label: "请求次数", value: formatOlapMetric(s.requests, "requests") },
+    { id: "tokensIn", label: "入向 Token", value: formatOlapMetric(s.tokensIn, "tokensIn") },
+    { id: "tokensOut", label: "出向 Token", value: formatOlapMetric(s.tokensOut, "tokensOut") },
+    { id: "costCny", label: "预估消耗", value: formatOlapMetric(s.costCny, "costCny") },
+  ];
+  return defs.filter((d) => olapActiveMetrics.value.includes(d.id));
+});
+
 const olapDimensionLabel = (id: ReportOlapDimensionId): string =>
   REPORT_OLAP_DIMENSIONS.find((d) => d.id === id)?.label ?? id;
 
@@ -218,10 +229,10 @@ function onOlapExportClick(): void {
         class="admin-ep-table-wrap"
       >
         <!-- 列：仅 min-width，全部左对齐 -->
-        <el-table-column prop="name" label="报表" min-width="primary" show-overflow-tooltip sortable />
-        <el-table-column prop="period" label="周期" min-width="sm" sortable />
-        <el-table-column prop="owner" label="负责人" min-width="xs" sortable />
-        <el-table-column prop="updatedAt" label="更新时间" min-width="lg" sortable />
+        <el-table-column prop="name" label="报表" :min-width="ADMIN_TABLE_COL.primary" show-overflow-tooltip sortable />
+        <el-table-column prop="period" label="周期" :min-width="ADMIN_TABLE_COL.sm" sortable />
+        <el-table-column prop="owner" label="负责人" :min-width="ADMIN_TABLE_COL.xs" sortable />
+        <el-table-column prop="updatedAt" label="更新时间" :min-width="ADMIN_TABLE_COL.lg" sortable />
 
         <!-- 操作列：固定右侧 -->
         <el-table-column label="操作" width="120" fixed="right">
@@ -247,7 +258,7 @@ function onOlapExportClick(): void {
     </div>
 
     <!-- ==================== 多维分析（一期：配置 + 透视表）==================== -->
-    <div v-show="panel === 'olap'" class="rpt-page__panel">
+    <div v-show="panel === 'olap'" class="rpt-page__panel rpt-page__panel--olap">
       <AdminSectionHead toolbar-only>
         <template #annot>
           <AdminInternalTip heading="多维分析 · 一期" explain="OLAP 对内说明（原型）">
@@ -266,49 +277,17 @@ function onOlapExportClick(): void {
             @reset="resetOlapQuery"
           >
             <template #filters>
-              <el-select v-model="olapGrain" aria-label="时间粒度" style="width: 6.5rem">
+              <el-select v-model="olapGrain" aria-label="时间粒度" class="rpt-olap__grain">
                 <el-option label="按日" value="day" />
                 <el-option label="按周" value="week" />
                 <el-option label="按月" value="month" />
-              </el-select>
-              <el-select
-                v-model="olapDimensions"
-                multiple
-                collapse-tags
-                collapse-tags-tooltip
-                placeholder="维度"
-                aria-label="分组维度"
-                style="width: 14rem"
-              >
-                <el-option
-                  v-for="d in REPORT_OLAP_DIMENSIONS"
-                  :key="d.id"
-                  :label="d.label"
-                  :value="d.id"
-                />
-              </el-select>
-              <el-select
-                v-model="olapMetrics"
-                multiple
-                collapse-tags
-                collapse-tags-tooltip
-                placeholder="指标"
-                aria-label="指标"
-                style="width: 13rem"
-              >
-                <el-option
-                  v-for="m in REPORT_OLAP_METRICS"
-                  :key="m.id"
-                  :label="m.label"
-                  :value="m.id"
-                />
               </el-select>
               <el-select
                 v-model="olapTenantFilter"
                 clearable
                 placeholder="客户"
                 aria-label="筛选客户"
-                style="width: 9rem"
+                class="rpt-olap__filter-tenant"
               >
                 <el-option
                   v-for="opt in REPORT_OLAP_TENANT_OPTIONS"
@@ -322,7 +301,7 @@ function onOlapExportClick(): void {
                 clearable
                 placeholder="模型"
                 aria-label="筛选模型"
-                style="width: 11rem"
+                class="rpt-olap__filter-model"
               >
                 <el-option
                   v-for="opt in REPORT_OLAP_MODEL_OPTIONS"
@@ -343,31 +322,59 @@ function onOlapExportClick(): void {
         </template>
       </AdminSectionHead>
 
-      <div class="rpt-olap__summary">
-        <div class="rpt-olap__stat">
-          <span class="rpt-olap__stat-label">请求次数</span>
-          <span class="rpt-olap__stat-value">{{ formatOlapMetric(olapSummary.requests, "requests") }}</span>
+      <div class="rpt-olap__config" role="group" aria-label="分组维度与指标">
+        <div class="rpt-olap__config-row">
+          <span class="rpt-olap__config-label">维度</span>
+          <el-select
+            v-model="olapDimensions"
+            multiple
+            collapse-tags
+            collapse-tags-tooltip
+            placeholder="选择维度"
+            aria-label="分组维度"
+            class="rpt-olap__select-dim"
+          >
+            <el-option
+              v-for="d in REPORT_OLAP_DIMENSIONS"
+              :key="d.id"
+              :label="d.label"
+              :value="d.id"
+            />
+          </el-select>
         </div>
-        <div class="rpt-olap__stat">
-          <span class="rpt-olap__stat-label">入向 Token</span>
-          <span class="rpt-olap__stat-value">{{ formatOlapMetric(olapSummary.tokensIn, "tokensIn") }}</span>
+        <div class="rpt-olap__config-row">
+          <span class="rpt-olap__config-label">指标</span>
+          <el-select
+            v-model="olapMetrics"
+            multiple
+            collapse-tags
+            collapse-tags-tooltip
+            placeholder="选择指标"
+            aria-label="指标"
+            class="rpt-olap__select-metric"
+          >
+            <el-option
+              v-for="m in REPORT_OLAP_METRICS"
+              :key="m.id"
+              :label="m.label"
+              :value="m.id"
+            />
+          </el-select>
         </div>
-        <div class="rpt-olap__stat">
-          <span class="rpt-olap__stat-label">出向 Token</span>
-          <span class="rpt-olap__stat-value">{{ formatOlapMetric(olapSummary.tokensOut, "tokensOut") }}</span>
-        </div>
-        <div class="rpt-olap__stat">
-          <span class="rpt-olap__stat-label">预估消耗</span>
-          <span class="rpt-olap__stat-value">{{ formatOlapMetric(olapSummary.costCny, "costCny") }}</span>
-        </div>
+        <p class="rpt-olap__config-hint">
+          当前分组：{{ olapActiveDimensions.map(olapDimensionLabel).join(" · ") }}；指标：{{
+            olapActiveMetrics.map(olapMetricLabel).join("、")
+          }}
+          · 共 {{ olapDisplayedRows.length }} 行（事实表 mock {{ olapFilteredFacts.length }} 条）
+        </p>
       </div>
 
-      <p class="rpt-page__hint rpt-olap__config-hint">
-        当前分组：{{ olapActiveDimensions.map(olapDimensionLabel).join(" · ") }}；指标：{{
-          olapActiveMetrics.map(olapMetricLabel).join("、")
-        }}
-        · 共 {{ olapDisplayedRows.length }} 行（事实表 mock {{ olapFilteredFacts.length }} 条）
-      </p>
+      <div v-if="olapSummaryCards.length" class="rpt-olap__summary">
+        <div v-for="card in olapSummaryCards" :key="card.id" class="rpt-olap__stat">
+          <span class="rpt-olap__stat-label">{{ card.label }}</span>
+          <span class="rpt-olap__stat-value">{{ card.value }}</span>
+        </div>
+      </div>
 
       <el-table
         :data="olapPg.paginatedRows"
@@ -419,11 +426,11 @@ function onOlapExportClick(): void {
             </template>
           </template>
         </el-table-column>
-        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm">
+        <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.sm" fixed="right">
           <template #default="scope">
             <template v-if="scope?.row">
               <div class="admin-ep-row-actions" @click.stop>
-                <el-button link type="primary" @click="goBillingUsageFromOlap(scope.row)">明细</el-button>
+                <el-button link type="primary" :icon="View" @click="goBillingUsageFromOlap(scope.row)">明细</el-button>
               </div>
             </template>
           </template>

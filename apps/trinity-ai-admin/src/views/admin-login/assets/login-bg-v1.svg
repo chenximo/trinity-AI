@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eef2ff"/>
+      <stop offset="0.45" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="glow-a" x1="240" y1="120" x2="920" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="glow-b" x1="1200" y1="200" x2="1780" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#94a3b8" stroke-opacity="0.12" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <ellipse cx="520" cy="380" rx="520" ry="420" fill="url(#glow-a)"/>
+  <ellipse cx="1420" cy="620" rx="480" ry="380" fill="url(#glow-b)"/>
+  <g stroke="#2563eb" stroke-opacity="0.08" stroke-width="1.5">
+    <path d="M120 720 C 420 520, 680 880, 980 640 S 1520 420, 1820 560"/>
+    <path d="M80 420 C 360 280, 720 520, 1040 360 S 1580 180, 1860 320"/>
+  </g>
+  <g fill="#2563eb" fill-opacity="0.35">
+    <circle cx="320" cy="280" r="4"/>
+    <circle cx="680" cy="520" r="3"/>
+    <circle cx="1040" cy="340" r="4"/>
+    <circle cx="1380" cy="640" r="3"/>
+    <circle cx="1620" cy="380" r="4"/>
+    <circle cx="860" cy="780" r="3"/>
+  </g>
+</svg>

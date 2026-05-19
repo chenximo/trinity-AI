@@ -7,16 +7,27 @@
 .rpt-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+}
+
+.rpt-page.rpt-page--flow {
+  height: auto;
+  overflow: visible;
 }
 
 .rpt-page__panel {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
+  min-width: 0;
+  gap: 0.5rem;
+}
+
+.rpt-page.rpt-page--flow .rpt-page__panel {
+  flex: none;
+  min-height: auto;
+  overflow: visible;
 }
 
 /* ==================== 占位面板 ==================== */
@@ -32,84 +43,133 @@
   min-height: 200px;
 }
 
-/* ==================== 工具栏（admin-section-head__end）====================
- * 与 admin-ruoyi.css 配合，实现左侧查询 + 右侧操作的布局
- * 间距统一 0.5rem
- */
-.rpt-page .admin-section-head__end {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-left: auto;
-}
-
-.rpt-page .admin-section-head__end > * {
-  margin-left: 0;
-}
-
-.rpt-page .admin-section-head__end > * + * {
-  margin-left: 0;
-}
-
-/* 查询条件组与操作按钮组之间的间距 */
-.rpt-page .admin-section-head__end .el-input,
-.rpt-page .admin-section-head__end .el-select,
-.rpt-page .admin-section-head__end .el-date-editor {
-  margin-right: 0;
-}
-
-.rpt-page .admin-section-head__end > .el-input + .el-button,
-.rpt-page .admin-section-head__end > .el-select + .el-button,
-.rpt-page .admin-section-head__end > .el-date-editor + .el-button {
-  margin-left: 0;
+.rpt-page__hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--admin-muted, var(--muted, #64748b));
 }
 
 /* ==================== 表格 ==================== */
-.rpt-page .admin-ep-table-wrap {
-  flex: 1 1 auto;
+.rpt-page.rpt-page--flow .admin-ep-table-wrap {
+  flex: none;
   min-height: 0;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
-/* 列宽档位 */
-.rpt-page .el-table-column--xs { min-width: 80px; }
-.rpt-page .el-table-column--sm { min-width: 96px; }
-.rpt-page .el-table-column--md { min-width: 112px; }
-.rpt-page .el-table-column--lg { min-width: 128px; }
-.rpt-page .el-table-column--primary { min-width: 120px; }
-.rpt-page .el-table-column--detail { min-width: 200px; }
-
 /* ==================== 多维分析（一期）==================== */
+.rpt-page__panel--olap .admin-section-head--toolbar {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  row-gap: 0.5rem;
+}
+
+.rpt-page__panel--olap .admin-section-head--toolbar .admin-section-tools {
+  width: 100%;
+  min-width: 0;
+}
+
+.rpt-page__panel--olap .admin-list-query {
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.rpt-page__panel--olap .admin-list-query__main {
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.rpt-olap__grain {
+  width: 6.5rem;
+}
+
+.rpt-olap__filter-tenant {
+  width: 9rem;
+}
+
+.rpt-olap__filter-model {
+  width: 11rem;
+}
+
+/* —— 维度/指标配置栏（扁平化） —— */
+.rpt-olap__config {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--admin-border, var(--border, #e5e7eb));
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
+  background: var(--admin-surface, var(--bg, #ffffff));
+}
+
+.rpt-olap__config-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.rpt-olap__config-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--admin-muted, var(--muted, #64748b));
+  white-space: nowrap;
+}
+
+.rpt-olap__select-dim {
+  width: min(14rem, 100%);
+}
+
+.rpt-olap__select-metric {
+  width: min(13rem, 100%);
+}
+
+.rpt-olap__config-hint {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--admin-muted-2, var(--muted-2, #9ca3af));
+  flex: 1 1 auto;
+  min-width: 12rem;
+}
+
+/* —— 摘要卡片 —— */
 .rpt-olap__summary {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-bottom: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .rpt-olap__stat {
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md, 8px);
-  background: var(--surface);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--admin-border, var(--border, #e5e7eb));
+  border-radius: var(--admin-radius-sm, var(--radius, 8px));
+  background: var(--admin-surface, var(--bg, #ffffff));
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  cursor: default;
+}
+
+.rpt-olap__stat:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 .rpt-olap__stat-label {
   display: block;
   font-size: 0.6875rem;
-  color: var(--muted);
-  margin-bottom: 0.25rem;
+  color: var(--admin-muted, var(--muted, #64748b));
+  margin-bottom: 0.2rem;
 }
 
 .rpt-olap__stat-value {
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text);
+  font-weight: 700;
+  color: var(--admin-text, var(--text, #0f172a));
   font-variant-numeric: tabular-nums;
-}
-
-.rpt-olap__config-hint {
-  margin-top: 0;
-  margin-bottom: 0.65rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 @media (max-width: 960px) {

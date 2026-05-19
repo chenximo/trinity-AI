@@ -41,6 +41,18 @@ function toggleSidebar(): void {
 }
 
 const leafTitle = computed(() => (route.meta.title as string) ?? "运营后台");
+
+/** 面包屑：查找当前路由在导航树中的父级模块 */
+const breadcrumbParent = computed(() => {
+  for (const e of ADMIN_NAV_TREE) {
+    if (e.kind === "single") continue;
+    if (e.children.some((c) => c.routeName === route.name)) {
+      return e.label;
+    }
+  }
+  return null;
+});
+
 function isSubmenuExpanded(entry: NavSubmenu): boolean {
   const v = submenuOpen.value[entry.id];
   if (v !== undefined) return v;
@@ -208,8 +220,10 @@ onUnmounted(() => {
           </svg>
         </button>
         <nav class="admin-shell__breadcrumb" aria-label="面包屑">
-          <RouterLink :to="{ name: 'tai-admin-dashboard' }">首页</RouterLink>
-          <span class="admin-shell__breadcrumb-sep">/</span>
+          <template v-if="breadcrumbParent">
+            <span class="admin-shell__breadcrumb-parent">{{ breadcrumbParent }}</span>
+            <span class="admin-shell__breadcrumb-sep">/</span>
+          </template>
           <span class="admin-shell__breadcrumb-current">{{ leafTitle }}</span>
         </nav>
       </div>

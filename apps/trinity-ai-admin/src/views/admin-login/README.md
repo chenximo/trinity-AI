@@ -23,8 +23,10 @@
 admin-login/
 ├── AdminLoginPage.vue
 ├── admin-login.css
-├── assets/login-bg.svg   # 全屏背景（蓝紫渐变 + 轻网格）
+├── assets/login-bg.svg      # 当前使用：蓝紫渐变 + 轻网格 + 双侧光晕 + 曲线节点
+├── assets/login-bg-v1.svg   # 与 login-bg.svg 相同（初版归档副本）
 └── README.md
+```
 
 admin-logout/
 ├── AdminLogoutPage.vue
