@@ -1,5 +1,5 @@
 /* Trinity 套件全局基础样式（Trinity AI / Cloud 等共用）
- * 色板与顶栏约定与产品首页、内页同源；版式见 docs/Trinity原型版式与视觉规范.md */
+ * 色板与顶栏约定与产品首页、内页同源；版式见 docs/01-原型与交付规范/Trinity版式与视觉规范.md */
 @import "../packages/tokens/src/core.css";
 @import "../packages/ui/styles/ui-kit.css";
 

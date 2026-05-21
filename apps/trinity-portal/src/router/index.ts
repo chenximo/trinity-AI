@@ -18,6 +18,22 @@ export default createRouter({
       component: () => import("@trinity-design/views/DesignSpec.vue"),
     },
     {
+      path: "/admin-ops-spec",
+      name: "admin-ops-spec",
+      component: () => import("@trinity-design/views/ops-admin-system/OpsAdminSpecHub.vue"),
+      meta: { title: "运营后台列表规范样板" },
+    },
+    {
+      path: "/user-console-spec",
+      name: "user-console-spec",
+      component: () => import("@trinity-design/views/user-admin-system/UserConsoleSpecHub.vue"),
+      meta: { title: "用户管理系统规范索引" },
+    },
+    {
+      path: "/trinity-ai-admin/example",
+      redirect: { name: "admin-ops-spec" },
+    },
+    {
       path: "/trinity-ai",
       name: "trinity-ai",
       component: () => import("@trinity-ai/views/shell/TrinityAiShellLayout.vue"),

@@ -58,6 +58,12 @@
         background: var(--surface-2);
       }
 
+      .dt-sidebar-link.is-active-route {
+        color: var(--text);
+        font-weight: 600;
+        background: var(--surface-2);
+      }
+
       .dt-content {
         flex: 1;
         min-width: 0;

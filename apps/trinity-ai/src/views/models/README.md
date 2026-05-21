@@ -43,4 +43,4 @@
 ## 7. 参考
 
 - 静态原型：`TrinityAI/app/models.html`
-- 域说明写作模板：`docs/Trinity域模块说明-写作模板.md`
+- 域级说明：按需写 `` 或 PRD（见五件套规范 §5.1）

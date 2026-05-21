@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Delete, Edit, Lock, Unlock, View } from "@element-plus/icons-vue";
+import { Delete, Edit, Lock, Unlock, Upload, View } from "@element-plus/icons-vue";
 import { computed, onMounted, ref, useId, watch } from "vue";
 import { useRoute, useRouter, type RouteRecordName } from "vue-router";
 import AdminDateRangePicker from "../../components/AdminDateRangePicker.vue";
@@ -62,6 +62,8 @@ const auditRows = ref<KeyAuditRow[]>([]);
 const searchQ = ref("");
 const filterOrg = ref("");
 const filterStatus = ref<PlatformKeyRow["status"] | "">("");
+const keysDateRange = ref<AdminDateRange | null>(null);
+const keysImportInputRef = ref<HTMLInputElement | null>(null);
 
 const userKeySearchQ = ref("");
 const userKeyStatusFilter = ref("");
@@ -158,6 +160,9 @@ const filteredKeys = computed(() => {
   let rows = keyRows.value;
   if (filterOrg.value) rows = rows.filter((r) => r.orgId === filterOrg.value);
   if (filterStatus.value) rows = rows.filter((r) => r.status === filterStatus.value);
+  if (keysDateRange.value) {
+    rows = rows.filter((r) => isWithinAdminDateRange(r.createdAt, keysDateRange.value));
+  }
   return filterByQuery(rows, searchQ.value, (r) =>
     [r.id, r.displayName, r.fingerprintPrefix, r.orgName, r.projectName, r.creatorLogin, r.purpose, r.tags.join(" ")].join(
       " ",
@@ -284,6 +289,39 @@ function loadFilters(): void {
 function resetKeysQuery(): void {
   filterOrg.value = "";
   filterStatus.value = "";
+  keysDateRange.value = null;
+}
+
+function triggerKeysImport(): void {
+  keysImportInputRef.value?.click();
+}
+
+function onKeysImportFileChange(e: Event): void {
+  const el = e.target as HTMLInputElement;
+  const f = el.files?.[0];
+  if (f) {
+    appendAudit({
+      at: nowLabel(),
+      actor: MOCK_OPERATOR,
+      keyId: "—",
+      keyLabel: "—",
+      action: "新建",
+      detail: `导入文件（示意）：${f.name}`,
+    });
+    window.alert(`原型：已选择导入文件「${f.name}」（未解析）`);
+  }
+  el.value = "";
+}
+
+function onExportKeysClick(): void {
+  appendAudit({
+    at: nowLabel(),
+    actor: MOCK_OPERATOR,
+    keyId: "—",
+    keyLabel: "—",
+    action: "导出审计",
+    detail: `导出平台密钥 CSV（示意），共 ${filteredKeys.value.length} 条`,
+  });
 }
 
 function resetAuditKeyQuery(): void {
@@ -745,8 +783,18 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
                   <el-option label="已冻结" value="已冻结" />
                   <el-option label="已吊销" value="已吊销" />
                 </el-select>
+                <AdminDateRangePicker v-model="keysDateRange" aria-label="平台密钥创建时间范围" />
               </template>
               <template #actions>
+                <input
+                  ref="keysImportInputRef"
+                  type="file"
+                  class="key-page__visually-hidden"
+                  accept=".csv,.xlsx,.xls,application/vnd.ms-excel"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  @change="onKeysImportFileChange"
+                />
                 <el-button
                   v-if="KEYS_PROTOTYPE_PERMISSIONS.canWrite"
                   type="primary"
@@ -754,6 +802,11 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
                 >
                   新建平台密钥
                 </el-button>
+                <el-button :icon="Upload" @click="triggerKeysImport">导入</el-button>
+                <AdminExportCsvButton
+                  :hint="`将导出当前 ${filteredKeys.length} 条平台密钥（原型占位，工程期接异步任务与 §4.13 审批）。`"
+                  @export="onExportKeysClick"
+                />
               </template>
             </AdminListQuery>
           </template>
@@ -821,7 +874,8 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
               </template>
             </template>
           </el-table-column>
-          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"fixed="right">
+          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"
+            fixed="right">
             <template #default="scope">
               <template v-if="scope?.row">
                 <div class="admin-ep-row-actions" @click.stop>
@@ -973,7 +1027,8 @@ watch(filterOrg, (v) => writeKeysFilterOrg(v));
             </template>
           </el-table-column>
           <el-table-column prop="updatedAt" label="最近更新" :min-width="ADMIN_TABLE_COL.lg" sortable />
-          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"fixed="right">
+          <el-table-column label="操作" :width="ADMIN_TABLE_COL_OPS.lg"
+            fixed="right">
             <template #default="scope">
               <template v-if="scope?.row">
                 <div class="admin-ep-row-actions" @click.stop>

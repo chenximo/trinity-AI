@@ -222,6 +222,18 @@
   color: var(--danger-ink);
 }
 
+.key-page__visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .key-page__secret-pre {
   margin: 0.5rem 0 0;
   padding: 0.65rem 0.75rem;

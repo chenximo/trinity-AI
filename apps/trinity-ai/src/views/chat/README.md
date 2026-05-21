@@ -41,5 +41,5 @@
 ## 6. 参考
 
 - 静态原型：`TrinityAI/app/chat/`（`index.html`、`chat-openrouter.js`、`chat-openrouter.css`）
-- 域说明写作模板：`docs/Trinity域模块说明-写作模板.md`
-- 迁移计划：`docs/Trinity对话页Vue迁移计划.md`
+- 迁移计划：`docs/04-工程与迁移/Trinity对话页Vue迁移计划.md`
+- 静态期交互备忘（归档）：`docs/06-归档与提示词/Trinity对话页原型说明（归档）.md`

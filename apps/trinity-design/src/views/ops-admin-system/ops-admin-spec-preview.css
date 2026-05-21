@@ -1,0 +1,30 @@
+/**
+ * 设计枢纽 · 运营后台列表规范预览
+ * 无侧栏/顶栏，但保留 .admin-shell / .admin-shell__main，使 admin-ruoyi 与 admin-page 样式生效。
+ */
+
+.admin-ops-spec-preview__shell.admin-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  background: var(--admin-bg, var(--surface, #f9fafb));
+  color: var(--admin-text, var(--text, #1a1a1a));
+}
+
+.admin-ops-spec-preview__shell .admin-shell__main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.125rem 0.625rem 0.625rem;
+  background: var(--admin-surface, var(--bg, #fff));
+}
+
+.admin-ops-spec-preview__shell .admin-shell__main > * {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}

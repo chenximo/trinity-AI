@@ -1,0 +1,97 @@
+/* 设计枢纽 · 运营/用户规范站顶栏（与产品 admin-shell 无关） */
+
+.spec-hub {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--admin-surface, var(--bg, #f5f6f8));
+}
+
+.spec-hub__bar {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  background: var(--bg, #fff);
+}
+
+.spec-hub__bar-inner {
+  padding: 0.75rem var(--page-gutter, 1rem);
+  max-width: 100%;
+}
+
+.spec-hub__back {
+  font-size: 0.8125rem;
+  color: var(--el-color-primary, #409eff);
+  text-decoration: none;
+}
+
+.spec-hub__title {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text, #111);
+}
+
+.spec-hub__note {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted, #6b7280);
+}
+
+.spec-hub__main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.125rem 0.625rem 0.625rem;
+  overflow: hidden;
+}
+
+.spec-hub__main > * {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+.spec-hub--doc-only .spec-hub__main {
+  overflow: auto;
+  padding: 1rem var(--page-gutter, 1rem) 1.5rem;
+}
+
+.spec-hub__links {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text, #111);
+}
+
+.spec-hub__links a {
+  color: var(--el-color-primary, #409eff);
+}
+
+.spec-hub-cross-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.spec-hub-cross-nav__link {
+  color: var(--blue, var(--el-color-primary, #409eff));
+  text-decoration: none;
+}
+
+.spec-hub-cross-nav__link:hover {
+  color: var(--purple, var(--el-color-primary-light-3, #79bbff));
+}
+
+.spec-hub-cross-nav__link.is-active {
+  color: var(--text, #111);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

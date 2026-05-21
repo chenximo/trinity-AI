@@ -1,6 +1,7 @@
 # Account 域（原型 · 精简五件套）
 
-> 目录与 **§7.1 多路由精简契约** 见：`docs/Trinity原型模块目录与交付规范.md`。
+> 目录与 **§7.1 多路由精简契约** 见：`docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md`。  
+> **用户后台文档索引**：`docs/03-用户后台管理系统/README.md`（与平台运营后台 `docs/02-后台运营管理系统设计/` 分轨）。
 
 ## 路由真源（工程 ↔ 静态）
 
@@ -52,7 +53,7 @@
 | 无整页页脚 | 模板不渲染 `page-foot`；`account.css` 对遗留 `.page-foot` `display: none` 兜底 |
 | 留白 | 主列 `.or-main` 使用收紧的 `padding`；侧栏 `sticky` 顶距与 `max-height` 与 `--nav-h` 对齐 |
 
-全站页边距、50px gutter 等仍以 **`docs/Trinity原型版式与视觉规范.md`** 为准；控制台 Vue 特例以上表 + `account.css` 为准。
+全站页边距、50px gutter 等仍以 **`docs/01-原型与交付规范/Trinity版式与视觉规范.md`** 为准；控制台 Vue 特例以上表 + `account.css` 为准。
 
 ## 5. 数据与交互
 

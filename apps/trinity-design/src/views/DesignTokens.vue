@@ -37,7 +37,12 @@ function onClickNav(e: MouseEvent) {
   const a = el.closest("a[href]");
   if (!a) return;
   const href = a.getAttribute("href") || "";
-  if (href === "/design-spec" || href === "/design-tokens") {
+  if (
+    href === "/design-spec" ||
+    href === "/design-tokens" ||
+    href === "/admin-ops-spec" ||
+    href === "/user-console-spec"
+  ) {
     e.preventDefault();
     if (router.currentRoute.value.path === href) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -51,6 +56,13 @@ function onClickNav(e: MouseEvent) {
 <template>
   <div class="dt-page">
     <aside class="dt-sidebar" aria-label="色板目录">
+      <p class="dt-sidebar-title">规范站点</p>
+      <nav class="dt-sidebar-nav" aria-label="设计枢纽规范">
+        <RouterLink to="/design-tokens" class="dt-sidebar-link" active-class="is-active-route">设计色板</RouterLink>
+        <RouterLink to="/design-spec" class="dt-sidebar-link" active-class="is-active-route">UI 组件规范</RouterLink>
+        <RouterLink to="/admin-ops-spec" class="dt-sidebar-link" active-class="is-active-route">运营后台管理系统</RouterLink>
+        <RouterLink to="/user-console-spec" class="dt-sidebar-link" active-class="is-active-route">用户管理系统</RouterLink>
+      </nav>
       <p class="dt-sidebar-title">本页章节</p>
       <nav class="dt-sidebar-nav" aria-label="锚点跳转">
         <a v-for="row in toc" :key="row.id" class="dt-sidebar-link" :href="'#' + row.id">{{ row.label }}</a>

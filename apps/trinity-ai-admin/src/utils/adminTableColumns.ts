@@ -1,7 +1,7 @@
 /**
  * 运营后台列表列宽档位（Element Plus `el-table-column` · **min-width**）。
  *
- * 约定（见 `doc/运营后台-若依式列表规范.md`、`admin-ruoyi.css`）：
+ * 约定（见 `docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md`、`admin-ruoyi.css`）：
  * - 数据列统一 **`min-width`**，由表格按内容与剩余宽度自适应（勿写死 `width`）。
  * - 勿设 `table-layout: fixed`；勿对多列混用固定 `width`。
  * - **对齐**：数据列与操作列均左对齐；`el-table-column` 不写 `align`。

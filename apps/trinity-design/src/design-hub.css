@@ -140,6 +140,26 @@
   gap: 0.15rem;
 }
 
+.design-hub-fab-nav--scroll {
+  max-height: min(52vh, 22rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.1rem;
+}
+
+.design-hub-fab-nav-group + .design-hub-fab-nav-group {
+  margin-top: 0.55rem;
+}
+
+.design-hub-fab-nav-group-label {
+  margin: 0 0 0.25rem;
+  padding: 0 0.15rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted-2, var(--muted));
+}
+
 .design-hub-fab-card-foot {
   margin-top: 0.75rem;
   padding-top: 0.75rem;

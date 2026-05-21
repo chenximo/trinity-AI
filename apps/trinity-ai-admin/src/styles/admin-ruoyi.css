@@ -159,7 +159,7 @@
   max-width: min(20rem, calc(100vw - 2rem));
 }
 
-/* 行内操作列：与工具栏控件间距一致（0.5rem）· 见 doc/运营后台-若依式列表规范.md §2.3 */
+/* 行内操作列：与工具栏控件间距一致（0.5rem）· 见 docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md §2.3 */
 .admin-shell .admin-ep-row-actions {
   display: inline-flex;
   flex-wrap: wrap;

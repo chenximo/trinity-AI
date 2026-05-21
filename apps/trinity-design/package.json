@@ -8,6 +8,7 @@
     "preview": "sh scripts/kill-port-listen.sh 5210 && vite preview"
   },
   "dependencies": {
+    "@trinity/element-plus": "*",
     "@trinity/tokens": "*",
     "@trinity/ui": "*",
     "vue": "^3.5.13",

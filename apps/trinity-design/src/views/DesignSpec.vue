@@ -21,7 +21,6 @@ import {
   type FilterForm3SegmentItem,
   type TabSwitchItem,
 } from "@trinity/ui";
-import "@repo/TrinityAI_Admin/admin.css";
 import "@repo/TrinityAI/app/chat/chat-openrouter.css";
 import "../assets/design-spec-page.css";
 import { useDesignSpecDropdowns } from "../composables/useDesignSpecDropdowns";
@@ -74,7 +73,12 @@ function onClickNav(e: MouseEvent) {
   const a = el.closest("a[href]");
   if (!a) return;
   const href = a.getAttribute("href") || "";
-  if (href === "/design-spec" || href === "/design-tokens") {
+  if (
+    href === "/design-spec" ||
+    href === "/design-tokens" ||
+    href === "/admin-ops-spec" ||
+    href === "/user-console-spec"
+  ) {
     e.preventDefault();
     if (router.currentRoute.value.path === href) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -99,6 +103,8 @@ function onClickNav(e: MouseEvent) {
           <a href="#ds-internal-tip">标注</a>
           <a href="#ds-buttons">按钮</a>
           <RouterLink to="/design-tokens">色板 →</RouterLink>
+          <RouterLink to="/admin-ops-spec">运营后台管理系统 →</RouterLink>
+          <RouterLink to="/user-console-spec">用户管理系统 →</RouterLink>
         </nav>
       </header>
 
@@ -697,7 +703,7 @@ function onClickNav(e: MouseEvent) {
           <div class="ds-btn-row">
             <div>
               <p class="ds-btn-type">后台 · 线框主色</p>
-              <p class="ds-btn-meta">a.adm-btn-logout / button.adm-btn-logout · admin.css</p>
+              <p class="ds-btn-meta">a.adm-btn-logout / button.adm-btn-logout · admin-buttons.css</p>
             </div>
             <div class="ds-btn-states">
               <div class="ds-btn-state">

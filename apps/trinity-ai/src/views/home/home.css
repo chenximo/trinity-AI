@@ -14,7 +14,7 @@
         padding-inline: 15%;
       }
 
-      /* 首页正文已由 main 15% 留白，内层不再叠加 50px gutter（见 docs/Trinity原型版式与视觉规范.md） */
+      /* 首页正文已由 main 15% 留白，内层不再叠加 50px gutter（见 docs/01-原型与交付规范/Trinity版式与视觉规范.md） */
       main#main:has(.marketing-root) .wrap,
       main#main:has(.marketing-root) .wrap-wide {
         padding-inline: 0;

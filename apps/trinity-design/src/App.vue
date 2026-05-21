@@ -9,7 +9,11 @@ const { setTheme } = useTrinityDesignThemeBar();
 
 const menuOpen = ref(false);
 
-type HubPath = "/design-tokens" | "/design-spec";
+type HubPath =
+  | "/design-tokens"
+  | "/design-spec"
+  | "/admin-ops-spec"
+  | "/user-console-spec";
 
 function hubNav(to: HubPath, e: MouseEvent) {
   e.preventDefault();
@@ -74,7 +78,7 @@ onUnmounted(() => {
         aria-label="设计枢纽导航"
         @click.stop
       >
-        <p class="design-hub-fab-card-lead">Vue 迁移 · 与 <code>TrinityAI/design-*.html</code> 对齐</p>
+        <p class="design-hub-fab-card-lead">色板 · UI 规范 · 运营/用户后台规范</p>
         <nav class="design-hub-fab-nav design-hub-fab-nav--dense" aria-label="设计页">
           <a
             href="/design-tokens"
@@ -88,6 +92,18 @@ onUnmounted(() => {
             :class="{ 'is-active': hubNavActive('/design-spec') }"
             @click="hubNavFromMenu('/design-spec', $event)"
             >设计规范</a>
+          <a
+            href="/admin-ops-spec"
+            class="design-hub-nav-link"
+            :class="{ 'is-active': hubNavActive('/admin-ops-spec') }"
+            @click="hubNavFromMenu('/admin-ops-spec', $event)"
+            >运营后台管理系统</a>
+          <a
+            href="/user-console-spec"
+            class="design-hub-nav-link"
+            :class="{ 'is-active': hubNavActive('/user-console-spec') }"
+            @click="hubNavFromMenu('/user-console-spec', $event)"
+            >用户管理系统</a>
         </nav>
         <div class="design-hub-fab-card-foot">
           <div class="dt-theme-bar" role="group" aria-label="预览主题">

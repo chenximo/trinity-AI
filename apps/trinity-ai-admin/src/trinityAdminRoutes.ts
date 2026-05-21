@@ -13,7 +13,6 @@ import SystemPage from "./views/admin-system/SystemPage.vue";
 import DocsPage from "./views/admin-docs/DocsPage.vue";
 import ReportsPage from "./views/admin-reports/ReportsPage.vue";
 import RiskPage from "./views/admin-risk/RiskPage.vue";
-import ExamplePage from "./views/admin-example/ExamplePage.vue";
 import { ADMIN_ALL_MODULE_BASES } from "./views/admin-shell/adminNavTree";
 import { OPS_TABS } from "./views/admin-ops/mock";
 import { BILLING_TABS } from "./views/admin-billing/mock";
@@ -161,14 +160,6 @@ export function getTrinityAdminChildRoutes(): RouteRecordRaw[] {
       });
     }
   }
-
-  // 模板示例页面（不在侧栏导航中）
-  routes.push({
-    path: "example",
-    name: "tai-admin-example",
-    component: ExamplePage,
-    meta: { title: "列表页模板示例", designRef: "doc/Admin列表页模板.md" },
-  });
 
   return routes;
 }

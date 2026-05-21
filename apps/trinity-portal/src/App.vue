@@ -13,6 +13,8 @@ type HubPath =
   | "/"
   | "/design-tokens"
   | "/design-spec"
+  | "/admin-ops-spec"
+  | "/user-console-spec"
   | "/trinity-ai"
   | "/ai-cloud"
   | "/trinity-geo"
@@ -96,49 +98,69 @@ onUnmounted(() => {
         <p class="design-hub-fab-card-lead">
           单端口 <code>:5173</code> · 各 app 仍可按原端口独立启动
         </p>
-        <nav class="design-hub-fab-nav" aria-label="应用与文档">
+        <nav class="design-hub-fab-nav design-hub-fab-nav--scroll" aria-label="应用与文档">
           <a
             href="/"
             class="design-hub-nav-link"
             :class="{ 'is-active': hubNavActive('/') }"
             @click="hubNavFromMenu('/', $event)"
             >首页</a>
-          <a
-            href="/design-tokens"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/design-tokens') }"
-            @click="hubNavFromMenu('/design-tokens', $event)"
-            >设计色板</a>
-          <a
-            href="/design-spec"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/design-spec') }"
-            @click="hubNavFromMenu('/design-spec', $event)"
-            >设计规范</a>
-          <a
-            href="/trinity-ai"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/trinity-ai') }"
-            @click="hubNavFromMenu('/trinity-ai', $event)"
-            >Trinity AI</a>
-          <a
-            href="/ai-cloud"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/ai-cloud') }"
-            @click="hubNavFromMenu('/ai-cloud', $event)"
-            >AI Cloud</a>
-          <a
-            href="/trinity-geo"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/trinity-geo') }"
-            @click="hubNavFromMenu('/trinity-geo', $event)"
-            >GEO</a>
-          <a
-            href="/trinity-ai-admin"
-            class="design-hub-nav-link"
-            :class="{ 'is-active': hubNavActive('/trinity-ai-admin') }"
-            @click="hubNavFromMenu('/trinity-ai-admin', $event)"
-            >Admin</a>
+
+          <div class="design-hub-fab-nav-group">
+            <p class="design-hub-fab-nav-group-label">设计枢纽 · 规范展示</p>
+            <a
+              href="/design-tokens"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/design-tokens') }"
+              @click="hubNavFromMenu('/design-tokens', $event)"
+              >设计色板</a>
+            <a
+              href="/design-spec"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/design-spec') }"
+              @click="hubNavFromMenu('/design-spec', $event)"
+              >设计规范</a>
+            <a
+              href="/admin-ops-spec"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/admin-ops-spec') }"
+              @click="hubNavFromMenu('/admin-ops-spec', $event)"
+              >运营后台管理系统</a>
+            <a
+              href="/user-console-spec"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/user-console-spec') }"
+              @click="hubNavFromMenu('/user-console-spec', $event)"
+              >用户管理系统</a>
+          </div>
+
+          <div class="design-hub-fab-nav-group">
+            <p class="design-hub-fab-nav-group-label">产品原型</p>
+            <a
+              href="/trinity-ai"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/trinity-ai') }"
+              @click="hubNavFromMenu('/trinity-ai', $event)"
+              >Trinity AI</a>
+            <a
+              href="/ai-cloud"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/ai-cloud') }"
+              @click="hubNavFromMenu('/ai-cloud', $event)"
+              >AI Cloud</a>
+            <a
+              href="/trinity-geo"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/trinity-geo') }"
+              @click="hubNavFromMenu('/trinity-geo', $event)"
+              >GEO</a>
+            <a
+              href="/trinity-ai-admin"
+              class="design-hub-nav-link"
+              :class="{ 'is-active': hubNavActive('/trinity-ai-admin') }"
+              @click="hubNavFromMenu('/trinity-ai-admin', $event)"
+              >Admin · 运营后台原型</a>
+          </div>
         </nav>
         <div class="design-hub-fab-card-foot">
           <div class="dt-theme-bar" role="group" aria-label="预览主题">

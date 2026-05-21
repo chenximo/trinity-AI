@@ -1,0 +1,43 @@
+/**
+ * 设计枢纽 · 用户控制台（Account）嵌入预览
+ * 提供 #main 宿主，使 account.css 中 main#main:has(.account-console-root) 规则生效。
+ */
+
+.design-hub-shell:has(.spec-hub--console-preview) {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.design-hub-main:has(.user-console-spec-preview__main) {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.spec-hub--console-preview .spec-hub__main {
+  overflow: hidden;
+  padding: 0;
+}
+
+.spec-hub--console-preview .spec-hub__bar {
+  flex-shrink: 0;
+}
+
+.user-console-spec-preview__main {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 与 Trinity AI 壳内 #main 一致，供 account.css 选择器匹配 */
+#user-console-spec-main.user-console-spec-preview__main:has(.account-console-root) {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}

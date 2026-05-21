@@ -5,7 +5,7 @@
 > **参考实现**：`src/views/admin-keys/KeysPage.vue`（平台密钥 Tab）
 > 
 > **规范文档**：
-> - [`doc/运营后台-若依式列表规范.md`](../doc/运营后台-若依式列表规范.md)
+> - [`docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md`](../../../docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md)
 > - [`src/utils/adminTableColumns.ts`](../src/utils/adminTableColumns.ts)
 
 ---

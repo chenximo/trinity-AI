@@ -67,3 +67,26 @@
   outline: 2px solid var(--danger-border);
   outline-offset: 2px;
 }
+
+/** 设计规范画板 · 侧栏「退出登录」（遗留类名 adm-*，与静态 TrinityAI_Admin/admin.css 一致） */
+a.adm-btn-logout,
+button.adm-btn-logout {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--blue, #2563eb);
+  border-radius: var(--radius, 8px);
+  background: var(--bg, #fff);
+  color: var(--blue, #2563eb);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.adm-btn-logout:hover,
+button.adm-btn-logout:hover {
+  background: var(--blue-soft, #eff6ff);
+}
