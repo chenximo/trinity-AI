@@ -1,0 +1,391 @@
+/**
+ * /user-console-spec · 规范索引页（可滚动文档区，非全屏打样）
+ */
+
+.user-console-spec-guide__intro {
+  margin: 0 0 0.65rem;
+  max-width: 52rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* 重要规范说明（页顶与各 § 内复用同一视觉） */
+.user-console-spec-guide__status {
+  margin: 0 0 1rem;
+  max-width: 52rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--blue-soft);
+  border: 1px solid var(--blue-ring);
+  border-radius: var(--radius, 8px);
+}
+
+.user-console-spec-block__body .user-console-spec-guide__status {
+  margin: 0.65rem 0;
+  max-width: none;
+}
+
+.user-console-spec-guide__status-title {
+  display: block;
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.user-console-spec-guide__status-index {
+  margin: 0 0 1rem;
+  max-width: 52rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.user-console-spec-guide__status-index li {
+  margin: 0.35rem 0;
+  padding-left: 0.65rem;
+  border-left: 3px solid var(--blue-ring);
+}
+
+.user-console-spec-guide__status-index a {
+  font-weight: 600;
+}
+
+.user-console-spec-guide__section {
+  margin-top: 1.25rem;
+  max-width: 52rem;
+}
+
+.user-console-spec-guide__h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.user-console-spec-guide__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.user-console-spec-guide__table th,
+.user-console-spec-guide__table td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+.user-console-spec-guide__table th {
+  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--muted-2);
+}
+
+.user-console-spec-guide__cta {
+  margin-top: 1.5rem;
+}
+
+.user-console-spec-guide__cta .btn {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+/* 规范块（布局 / 主列 / 表格 · /user-console-spec 专用） */
+.user-console-spec-block {
+  margin: 0 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.user-console-spec-block__sum {
+  padding: 0.55rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.user-console-spec-block__sum::-webkit-details-marker {
+  display: none;
+}
+
+.user-console-spec-block__body {
+  padding: 0.75rem 0.85rem 0.85rem;
+}
+
+.user-console-spec-block__lead {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.user-console-spec-block__lead a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.user-console-spec-block__lead--agent {
+  padding: 0.45rem 0.6rem;
+  background: var(--surface-2);
+  border-radius: var(--radius, 6px);
+  border-left: 3px solid var(--blue);
+}
+
+.user-console-spec-block__matrix--agent code {
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.user-console-spec-block__skill-ref {
+  margin: 0.5rem 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.user-console-spec-block__skill-ref code {
+  font-size: 0.6875rem;
+}
+
+.user-console-spec-diagram {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.user-console-spec-block__matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.user-console-spec-block__matrix th,
+.user-console-spec-block__matrix td {
+  padding: 0.5rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--border);
+}
+
+.user-console-spec-block__matrix th {
+  font-weight: 700;
+  color: var(--muted-2);
+  background: var(--surface-2);
+}
+
+.user-console-spec-block__matrix tr.is-highlight td {
+  background: var(--blue-soft);
+}
+
+.user-console-spec-block__matrix code {
+  font-size: 0.6875rem;
+}
+
+.user-console-spec-block__refs {
+  margin: 0.65rem 0 0;
+  padding-left: 1.15rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.user-console-spec-block__refs a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* 主列五步结构 */
+.user-console-main-spec__steps {
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.user-console-main-spec__steps > li {
+  margin-bottom: 0.65rem;
+}
+
+.user-console-main-spec__steps ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.user-console-main-spec__steps code {
+  font-size: 0.6875rem;
+}
+
+.user-console-main-spec__ex {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--muted-2);
+}
+
+/* 规范索引页壳：与 trinity token 对齐，避免仅用 admin 回退色 */
+.spec-hub--doc-only.user-console-spec-guide {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.spec-hub--doc-only.user-console-spec-guide .spec-hub__bar {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+}
+
+/* 内联样例框（各 § 条文下） */
+.user-console-spec-sample {
+  margin-top: 0.75rem;
+}
+
+.user-console-spec-sample__cap {
+  margin: 0 0 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.user-console-spec-sample__frame {
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 8px);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.user-console-spec-sample__shell.or-shell {
+  display: flex;
+  min-height: 10rem;
+  max-height: 14rem;
+}
+
+.user-console-spec-sample__shell .or-side {
+  flex-shrink: 0;
+}
+
+.user-console-spec-sample__shell .or-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+}
+
+.user-console-spec-sample__placeholder {
+  margin: 0;
+  max-width: 18rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--muted);
+}
+
+.user-console-spec-sample__main-inline.or-main {
+  padding: 0.75rem 1rem 1rem;
+  min-width: 0;
+  background: var(--bg);
+}
+
+.user-console-spec-sample__frame {
+  overflow-x: auto;
+}
+
+.user-console-spec-sample__panel--table-only {
+  padding: 0;
+}
+
+.user-console-spec-guide .or-keys-table-wrap {
+  margin-top: 0;
+}
+
+/* §2 说明行 · ⓘ 紧跟小标题「仅在创建时展示一次」（仅规范页样例，产品落地前勿抄到 trinity-base） */
+.user-console-spec-guide .user-console-spec-lead-with-tip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.35rem;
+  margin: 0;
+}
+
+.user-console-spec-guide .user-console-spec-lead-sub {
+  font-weight: inherit;
+  color: inherit;
+}
+
+.user-console-spec-guide .user-console-spec-lead-info {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+/* §3 样例 · 对齐统一：表头与数据列一律左对齐（勿混用 or-keys-th-center 居中） */
+.user-console-spec-guide .data-table.or-keys-table th,
+.user-console-spec-guide .data-table.or-keys-table td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.user-console-spec-guide .data-table.or-keys-table th.or-keys-th-center,
+.user-console-spec-guide .data-table.or-keys-table td.or-keys-col-center {
+  text-align: left;
+}
+
+.user-console-spec-guide .data-table.or-keys-table .or-preset-name-cell strong {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* 操作列：与角色表一致，左对齐 + 内容横排；线框列需足够宽度 */
+.user-console-spec-guide .data-table.or-keys-table th.or-table-th-ops,
+.user-console-spec-guide .data-table.or-keys-table td.or-table-td-ops {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.user-console-spec-guide .data-table.or-keys-table td.or-table-td-ops:has(.or-preset-actions) {
+  min-width: 13.5rem;
+}
+
+.user-console-spec-guide .data-table.or-keys-table td.or-table-td-ops:has(.or-keys-ops) {
+  width: 3.25rem;
+}
+
+.user-console-spec-guide .data-table.or-keys-table .or-preset-actions {
+  display: inline-flex;
+  flex-flow: row wrap;
+  gap: 0.35rem;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  max-width: none;
+}
+
+.user-console-spec-guide .data-table.or-keys-table .or-preset-actions .or-btn-outline {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.user-console-spec-guide .data-table.or-keys-table .or-table-td-ops .or-keys-ops {
+  display: inline-flex;
+  vertical-align: middle;
+}

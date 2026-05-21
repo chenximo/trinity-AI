@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { getAiCloudChildRoutes } from "@app-ai-cloud/aiCloudRoutes";
 import { getTrinityAiChildRoutes } from "@trinity-ai/trinityAiRoutes";
 import { getTrinityAdminChildRoutes } from "@trinity-ai-admin/trinityAdminRoutes";
 import { adminShellAuthGuard } from "@trinity-ai-admin/views/admin-shell/shellInteractions";
@@ -27,7 +28,11 @@ export default createRouter({
       path: "/user-console-spec",
       name: "user-console-spec",
       component: () => import("@trinity-design/views/user-admin-system/UserConsoleSpecHub.vue"),
-      meta: { title: "用户管理系统规范索引" },
+      meta: { title: "用户后台 · 规范索引" },
+    },
+    {
+      path: "/user-console-preview",
+      redirect: { name: "user-console-spec", hash: "#spec-2-main" },
     },
     {
       path: "/trinity-ai-admin/example",
@@ -42,7 +47,8 @@ export default createRouter({
     {
       path: "/ai-cloud",
       name: "ai-cloud",
-      component: () => import("@app-ai-cloud/views/Home.vue"),
+      component: () => import("@app-ai-cloud/views/shell/AiCloudShellLayout.vue"),
+      children: getAiCloudChildRoutes(),
     },
     {
       path: "/trinity-geo",

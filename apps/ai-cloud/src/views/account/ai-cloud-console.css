@@ -1,0 +1,174 @@
+/**
+ * AI 云用户中心 · 在 account.css / trinity-base 之上
+ * 账号表对齐 Trinity AI account/console#preset（or-preset-table / or-preset-actions）
+ */
+
+@media (min-width: 900px) {
+  .account-console-root .or-shell {
+    align-items: stretch;
+  }
+}
+
+.account-console-root [data-or-panel][hidden] {
+  display: none !important;
+}
+
+.account-console-root .or-main {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.account-console-root .or-keys-title-row {
+  align-items: center;
+}
+
+/* 列宽（在 or-preset-table 基础上） */
+.or-cloud-accounts-page .or-cloud-accounts-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 52rem;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(1) {
+  width: 9%;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(2) {
+  width: 18%;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(3) {
+  width: 11%;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(4) {
+  width: 24%;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(5) {
+  width: 12%;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table th:nth-child(6) {
+  width: 26%;
+}
+
+.or-cloud-th-center,
+.or-cloud-td-center {
+  text-align: center;
+}
+
+.or-cloud-td-identity {
+  max-width: 0;
+}
+
+.or-cloud-col-identity-inner {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.or-cloud-vendor-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.or-cloud-vendor-dot {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.or-cloud-vendor-cell[data-vendor="aliyun"] .or-cloud-vendor-dot {
+  background: #ff6a00;
+}
+
+.or-cloud-vendor-cell[data-vendor="tencent"] .or-cloud-vendor-dot {
+  background: #006eff;
+}
+
+.or-cloud-vendor-cell[data-vendor="huawei"] .or-cloud-vendor-dot {
+  background: #cf0a2c;
+}
+
+.or-cloud-vendor-cell[data-vendor="aws"] .or-cloud-vendor-dot {
+  background: #ff9900;
+}
+
+.or-cloud-vendor-cell[data-vendor="gcp"] .or-cloud-vendor-dot {
+  background: #4285f4;
+}
+
+.or-cloud-accounts-page .or-preset-name-cell {
+  margin-bottom: 0.2rem;
+}
+
+.or-cloud-accounts-page .or-preset-name-cell strong {
+  font-size: 0.8125rem;
+}
+
+.or-cloud-accounts-page .or-cloud-accounts-table .or-keys-mask {
+  margin-top: 0.1rem;
+}
+
+.or-cloud-status-badge {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.or-cloud-status-badge[data-status="合约生效中"],
+.or-cloud-status-badge[data-status="已认证"] {
+  color: #047857;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.or-cloud-status-badge[data-status="已配置优惠"] {
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.or-cloud-status-badge[data-status="技术支持中"] {
+  color: #7c3aed;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.or-cloud-status-badge[data-status="待补充资料"] {
+  color: #b45309;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.account-console-root .or-keys-summary {
+  margin-top: 0.65rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+@media (max-width: 899px) {
+  .or-cloud-accounts-page .or-cloud-accounts-table {
+    min-width: 44rem;
+  }
+}

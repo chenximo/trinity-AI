@@ -15,6 +15,15 @@ type HubPath =
   | "/admin-ops-spec"
   | "/user-console-spec";
 
+function isHubPath(path: string): path is HubPath {
+  return (
+    path === "/design-tokens" ||
+    path === "/design-spec" ||
+    path === "/admin-ops-spec" ||
+    path === "/user-console-spec"
+  );
+}
+
 function hubNav(to: HubPath, e: MouseEvent) {
   e.preventDefault();
   if (route.path === to) {
@@ -25,7 +34,7 @@ function hubNav(to: HubPath, e: MouseEvent) {
 }
 
 function hubNavActive(to: HubPath) {
-  return route.path === to;
+  return isHubPath(route.path) && route.path === to;
 }
 
 function hubNavFromMenu(to: HubPath, e: MouseEvent) {
@@ -103,7 +112,7 @@ onUnmounted(() => {
             class="design-hub-nav-link"
             :class="{ 'is-active': hubNavActive('/user-console-spec') }"
             @click="hubNavFromMenu('/user-console-spec', $event)"
-            >用户管理系统</a>
+            >用户后台·规范</a>
         </nav>
         <div class="design-hub-fab-card-foot">
           <div class="dt-theme-bar" role="group" aria-label="预览主题">

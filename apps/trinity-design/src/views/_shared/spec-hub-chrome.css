@@ -53,9 +53,15 @@
   min-width: 0;
 }
 
+.spec-hub--doc-only {
+  background: var(--bg, #fff);
+  color: var(--text, #111);
+}
+
 .spec-hub--doc-only .spec-hub__main {
   overflow: auto;
   padding: 1rem var(--page-gutter, 1rem) 1.5rem;
+  background: var(--bg, #fff);
 }
 
 .spec-hub__links {

@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5202",
+    "gen:home": "node scripts/gen-cloud-home.mjs",
     "build": "vite build",
     "preview": "vite preview --port 5202"
   },

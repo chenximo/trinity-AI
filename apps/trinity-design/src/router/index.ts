@@ -20,7 +20,11 @@ export default createRouter({
       path: "/user-console-spec",
       name: "user-console-spec",
       component: UserConsoleSpecHub,
-      meta: { title: "用户管理系统规范索引" },
+      meta: { title: "用户后台 · 规范索引" },
+    },
+    {
+      path: "/user-console-preview",
+      redirect: { name: "user-console-spec", hash: "#spec-2-main" },
     },
     { path: "/trinity-ai-admin/example", redirect: { name: "admin-ops-spec" } },
   ],
