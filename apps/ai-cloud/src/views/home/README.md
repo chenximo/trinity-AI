@@ -8,15 +8,29 @@
 
 | 锚点 | 内容 |
 |------|------|
-| 首屏 | 一站式多云采购与管理、渠道优惠与 7×24 支持、集采降本叙事 |
+| 首屏 | 一站式多云采购与管理、渠道优惠与专属支持、集采降本叙事 |
 | `#cloud-solutions` | 五云 Tab（GPU / 推理 / 治理叙事） |
-| `#why` | 顶部降本条+四指标 / 核心模式三卡 / 四大优势 / 合作价值六点 |
+| `#why` | 顶部降本条 / 三大零承诺 / 四大核心赋能 / 合作价值六点 |
 | `#benefits` | 专属福利三栏对比（服务项目 / Trinity / 厂商直销） |
 | `#process` | 优惠购买五步流程 |
-| `#cloud` | AI 云服务四卡（纳管 / GPU / 成本 / 合规） |
-| `#arch` | 架构优势 |
-| `#promo` | 限时优惠 |
 | `#consult` | 咨询表单（邮箱 + 电话）+ 侧栏联系方式 |
+
+## 字阶（px，`:root` in `HomePage.vue`）
+
+| Token | px | 用途 |
+|-------|-----|------|
+| `--home-font-display` | 52 | 首屏 h1 |
+| `--home-font-highlight` | 44 | 20%–40% 强调数字 |
+| `--home-font-step` | 36 | 流程序号 |
+| `--home-font-title` | 32 | 区块 h2 |
+| `--home-font-module` | 24 | why 区三大模块标题（零承诺 / 核心赋能 / 合作价值） |
+| `--home-font-subtitle` | 18 | 卡片内小标题、首屏副标题、案例 h3 |
+| `--home-font-body` | 16 | 正文、按钮（页内覆盖） |
+| `--home-font-body-sm` | 14 | 导航、列表、导语 |
+| `--home-font-caption` | 12 | 标签、脚注；窄屏单行导语 |
+| `--home-font-micro` | 11 | 图例、免责 |
+
+无 `rem` / `clamp` / `vw` 字号；窄屏仅 `@media (max-width: 1100px)` 将单行导语降为 12px。
 
 ## 路由
 

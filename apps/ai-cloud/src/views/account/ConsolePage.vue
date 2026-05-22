@@ -1715,7 +1715,7 @@ onUnmounted(() => {
               <h1 class="or-page-title or-keys-page-title">联系我们</h1>
             </div>
             <div class="or-keys-lead-row">
-              <p class="or-lead or-keys-lead">专属上云顾问与 7×24 技术支持（演示）。</p>
+              <p class="or-lead or-keys-lead">专属上云顾问与技术支持（演示）。</p>
             </div>
           </header>
           <div class="or-cloud-contact-card">

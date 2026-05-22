@@ -3,6 +3,9 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 import { AI_CLOUD_CONSOLE_HASH } from "../account/mock";
+import advantagePricing from "../../assets/home/advantage-pricing.png";
+import advantageConsulting from "../../assets/home/advantage-consulting.png";
+import advantageSupport from "../../assets/home/advantage-support.png";
 
 defineOptions({ name: "AiCloudHomePage" });
 
@@ -96,6 +99,71 @@ onMounted(() => {
       window.removeEventListener("resize", onResize);
       drawer.removeEventListener("click", onDrawerClick);
     });
+  }
+
+  const overlapLinks = Array.from(root.querySelectorAll<HTMLAnchorElement>(".home-overlap-item[href^='#']"));
+  if (overlapLinks.length) {
+    const sections = overlapLinks
+      .map((link) => {
+        const id = link.getAttribute("href")?.slice(1);
+        const el = id ? document.getElementById(id) : null;
+        return id && el ? { id, el } : null;
+      })
+      .filter((x): x is { id: string; el: HTMLElement } => Boolean(x));
+
+    const setOverlapActive = (id: string) => {
+      overlapLinks.forEach((link) => {
+        const on = link.getAttribute("href") === `#${id}`;
+        link.classList.toggle("is-active", on);
+        if (on) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const ratios = new Map<string, number>();
+    const overlapObserver =
+      sections.length > 0
+        ? new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                ratios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+              });
+              let bestId = sections[0].id;
+              let best = -1;
+              ratios.forEach((ratio, sid) => {
+                if (ratio > best) {
+                  best = ratio;
+                  bestId = sid;
+                }
+              });
+              if (best > 0) setOverlapActive(bestId);
+            },
+            { rootMargin: "-32% 0px -48% 0px", threshold: [0, 0.12, 0.28, 0.45, 0.6] },
+          )
+        : null;
+
+    sections.forEach(({ el }) => overlapObserver?.observe(el));
+    if (overlapObserver) cleanups.push(() => overlapObserver.disconnect());
+
+    overlapLinks.forEach((link) => {
+      const onClick = () => {
+        const id = link.getAttribute("href")?.slice(1);
+        if (id) setOverlapActive(id);
+      };
+      link.addEventListener("click", onClick);
+      cleanups.push(() => link.removeEventListener("click", onClick));
+    });
+
+    const onHash = () => {
+      const id = location.hash.slice(1);
+      if (id && sections.some((s) => s.id === id)) setOverlapActive(id);
+    };
+    window.addEventListener("hashchange", onHash);
+    cleanups.push(() => window.removeEventListener("hashchange", onHash));
+
+    const hashId = location.hash.slice(1);
+    if (hashId && sections.some((s) => s.id === hashId)) setOverlapActive(hashId);
+    else setOverlapActive(sections[0]?.id ?? "cloud-solutions");
   }
 
   const tabRoot = root.querySelector("#home-cloud-tabs");
@@ -234,7 +302,6 @@ onUnmounted(() => {
           </svg>
         </button>
         <div class="home-nav-dd-panel" role="menu">
-          <a href="#cloud" role="menuitem">AI 云能力总览</a>
           <a href="#cloud-solutions" role="menuitem">多云对接与各云说明</a>
           <a href="#why" role="menuitem">核心优势</a>
           <a href="#benefits" role="menuitem">专属福利</a>
@@ -256,8 +323,7 @@ onUnmounted(() => {
     </div>
   </div>
   <div class="home-drawer" id="home-drawer">
-    <span style="display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted-2); padding: 0.35rem 0">AI 云</span>
-    <a href="#cloud">能力总览</a>
+    <span style="display: block; font-size: 11px; font-weight: 700; color: var(--muted-2); padding: 0.35rem 0">AI 云</span>
     <a href="#cloud-solutions">多云对接与各云说明</a>
     <a href="#why">核心优势</a>
     <a href="#benefits">专属福利</a>
@@ -293,26 +359,14 @@ onUnmounted(() => {
         <div class="home-hero-left">
           <p class="home-eyebrow"><span class="home-eyebrow-dot" aria-hidden="true"></span> 云资源集采整合 · 一站式多云采购与管理</p>
           <h1><em>Trinity AI 云</em></h1>
-          <p class="home-banner-sub">
-            一站式多云采购与管理，覆盖阿里云、腾讯云、华为云、AWS、Google Cloud 等主流公有云，提供渠道优惠价、上云方案咨询与 7×24 技术支持，助力企业降低上云成本、提升业务效率。依托集团体量议价，企业零门槛享大客户级折扣、灵活账期与统一账单；仅收透明服务费，不赚差价。
-          </p>
-          <div class="home-banner-cta">
-            <a href="#consult" class="btn btn-gradient">立即咨询</a>
-            <a href="#why" class="home-btn-outline-light">核心优势与降本</a>
-            <a href="#cloud-solutions" class="btn">云产品说明</a>
-          </div>
-          <div class="home-hero-stats" aria-label="平台关键指标">
-            <div class="home-stat-chip home-stat-chip--accent"><b>20%–40%</b><span>云成本典型节省</span></div>
-            <div class="home-stat-chip"><b>5+</b><span>主流云厂商集采</span></div>
-            <div class="home-stat-chip"><b>三零</b><span>门槛 · 保底 · 业绩</span></div>
-            <div class="home-stat-chip"><b>7×24</b><span>原厂级技术支持</span></div>
-          </div>
-          <p class="home-banner-footnote">典型节省区间为历史客户参考值，具体以商务合同为准。</p>
-          <div class="home-hero-pills" aria-label="能力标签">
-            <span class="home-pill">顶级折扣共享</span>
-            <span class="home-pill">灵活授信账期</span>
-            <span class="home-pill">统一账单管理</span>
-            <span class="home-pill">上云方案咨询</span>
+          <p class="home-banner-save" role="status">企业上云成本优化最优解，让每家企业都用上云厂商大客户价</p>
+          <div class="home-banner-action">
+            <p class="home-banner-sub">
+              一站式多云采购与管理，覆盖<span class="home-cloud-name">阿里云</span>、<span class="home-cloud-name">腾讯云</span>、<span class="home-cloud-name">华为云</span>、<span class="home-cloud-name">AWS</span>、<span class="home-cloud-name">Google Cloud</span> 等主流公有云，提供渠道优惠价、上云方案咨询，助力企业降低上云成本、提升业务效率。依托集团体量议价，企业零门槛享大客户级折扣、灵活账期与统一账单；仅收透明服务费，不赚差价。
+            </p>
+            <div class="home-banner-cta">
+              <a href="#consult" class="btn btn-gradient">立即咨询优惠权益</a>
+            </div>
           </div>
         </div>
         <div class="home-hero-right">
@@ -324,7 +378,7 @@ onUnmounted(() => {
             <div class="home-preview-body">
               <div class="home-preview-kpis">
                 <div class="home-preview-kpi"><div class="v">6</div><div class="l">已纳管主账号</div></div>
-                <div class="home-preview-kpi home-preview-kpi--save"><div class="v">≈32%</div><div class="l">较直销预估节省</div></div>
+                <div class="home-preview-kpi home-preview-kpi--save"><div class="v">20%–40%</div><div class="l">较直销预估节省</div></div>
                 <div class="home-preview-kpi"><div class="v">2</div><div class="l">待对账项</div></div>
               </div>
               <div class="home-preview-chart" aria-hidden="true">
@@ -336,9 +390,9 @@ onUnmounted(() => {
                   <span class="home-preview-seg home-preview-seg--d" style="flex: 12"></span>
                 </div>
                 <div class="home-preview-legend">
-                  <span><span class="home-preview-dot home-preview-dot--a" aria-hidden="true"></span>阿里云 38%</span>
-                  <span><span class="home-preview-dot home-preview-dot--b" aria-hidden="true"></span>腾讯云 28%</span>
-                  <span><span class="home-preview-dot home-preview-dot--c" aria-hidden="true"></span>华为云 22%</span>
+                  <span><span class="home-preview-dot home-preview-dot--a" aria-hidden="true"></span><span class="home-cloud-name">阿里云</span> 38%</span>
+                  <span><span class="home-preview-dot home-preview-dot--b" aria-hidden="true"></span><span class="home-cloud-name">腾讯云</span> 28%</span>
+                  <span><span class="home-preview-dot home-preview-dot--c" aria-hidden="true"></span><span class="home-cloud-name">华为云</span> 22%</span>
                   <span><span class="home-preview-dot home-preview-dot--d" aria-hidden="true"></span>其他 12%</span>
                 </div>
               </div>
@@ -355,37 +409,55 @@ onUnmounted(() => {
     </div>
   </section>
 
-  <div class="home-overlap">
+  <nav class="home-overlap" aria-label="页面章节导航">
     <div class="home-overlap-inner">
       <div class="home-overlap-grid">
-        <a class="home-overlap-item" href="#cloud-solutions">
-          <strong>主流云厂商</strong>
-          <span>阿里云、腾讯云、华为云、AWS、GCP 全覆盖</span>
+        <a class="home-overlap-item is-active" href="#cloud-solutions" data-overlap-section="cloud-solutions">
+          <span class="home-overlap-kicker">多云对接</span>
+          <span class="home-overlap-title-row">
+            <strong class="home-overlap-title">主流云厂商</strong>
+            <svg class="home-overlap-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </span>
+          <span class="home-overlap-desc"><span class="home-cloud-name">阿里云</span>、<span class="home-cloud-name">腾讯云</span>、<span class="home-cloud-name">华为云</span>、<span class="home-cloud-name">AWS</span>、<span class="home-cloud-name">Google Cloud</span> 全覆盖</span>
         </a>
-        <a class="home-overlap-item" href="#why">
-          <strong>为什么选择我们</strong>
-          <span>四大核心优势，降低企业上云成本</span>
+        <a class="home-overlap-item" href="#why" data-overlap-section="why">
+          <span class="home-overlap-kicker">核心优势</span>
+          <span class="home-overlap-title-row">
+            <strong class="home-overlap-title">为什么选择我们</strong>
+            <svg class="home-overlap-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </span>
+          <span class="home-overlap-desc">三大「零」承诺，四大核心赋能</span>
         </a>
-        <a class="home-overlap-item" href="#benefits">
-          <strong>专属福利</strong>
-          <span>渠道优惠、灵活账期、原厂技术支持</span>
+        <a class="home-overlap-item" href="#benefits" data-overlap-section="benefits">
+          <span class="home-overlap-kicker">专属福利</span>
+          <span class="home-overlap-title-row">
+            <strong class="home-overlap-title">专属福利</strong>
+            <svg class="home-overlap-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </span>
+          <span class="home-overlap-desc">渠道优惠、灵活账期、原厂技术支持</span>
         </a>
-        <a class="home-overlap-item" href="#process">
-          <strong>优惠合作流程</strong>
-          <span>五步闭环，从咨询到售后全程护航</span>
+        <a class="home-overlap-item" href="#process" data-overlap-section="process">
+          <span class="home-overlap-kicker">合作流程</span>
+          <span class="home-overlap-title-row">
+            <strong class="home-overlap-title">优惠合作流程</strong>
+            <svg class="home-overlap-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </span>
+          <span class="home-overlap-desc">五步闭环，从咨询到售后全程护航</span>
         </a>
-        <a class="home-overlap-item" href="#consult">
-          <strong>获取专属咨询</strong>
-          <span>留下联系方式，1～2 个工作日内回复</span>
+        <a class="home-overlap-item" href="#consult" data-overlap-section="consult">
+          <span class="home-overlap-kicker">专属咨询</span>
+          <span class="home-overlap-title-row">
+            <strong class="home-overlap-title">获取专属咨询</strong>
+            <svg class="home-overlap-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </span>
+          <span class="home-overlap-desc">留下联系方式，1～2 个工作日内回复</span>
         </a>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <section class="home-usecase" id="cloud-solutions" aria-labelledby="home-usecase-heading">
+  <section class="home-usecase" id="cloud-solutions" aria-label="主流云厂商">
     <div class="home-shell" id="home-cloud-tabs">
-      <p class="home-usecase-kicker" id="home-usecase-heading">已支持对接的主流公有云</p>
-
       <div class="home-usecase-tablist" role="tablist" aria-label="选择云厂商">
         <button type="button" class="home-usecase-tab" role="tab" id="tab-aliyun" aria-controls="panel-aliyun" aria-selected="true" tabindex="0">阿里云</button>
         <button type="button" class="home-usecase-tab" role="tab" id="tab-tencent" aria-controls="panel-tencent" aria-selected="false" tabindex="-1">腾讯云</button>
@@ -672,143 +744,144 @@ onUnmounted(() => {
     </div>
   </section>
 
-  <section class="home-section is-tight-top" id="why" aria-labelledby="why-h">
-    <div class="home-shell home-why-shell">
-      <header class="home-why-intro">
-        <h2 id="why-h">为什么选择 Trinity AI 云</h2>
-        <p class="home-section-lead">
-          云资源<strong>集采整合方</strong>：以集团体量向主流云厂商议价，共享顶级折扣、授信账期与上云服务；企业零门槛采购，专注业务增长。
-        </p>
-      </header>
+  <section class="home-section" id="why" aria-labelledby="why-h">
+    <div class="home-why-top-band">
+      <div class="home-shell home-why-top-inner">
+        <header class="home-why-intro">
+          <h2 id="why-h">为什么选择 Trinity AI 云</h2>
+        </header>
 
-      <div class="home-why-highlight" aria-label="降本亮点">
+        <div class="home-why-highlight" aria-label="降本亮点">
         <div class="home-why-highlight-main">
           <b>20%–40%</b>
           <span>企业云成本典型节省</span>
         </div>
-        <p class="home-why-highlight-note">按实际云消费 + 透明服务费 · 无隐形消费 · 不赚差价（具体以商务合同为准）</p>
-      </div>
+          <p class="home-why-highlight-note">按实际云消费 + 透明服务费 · 无隐形消费 · 不赚差价（具体以商务合同为准）</p>
+        </div>
 
-      <div class="home-why-metrics" aria-label="核心数据">
-        <div class="home-why-metric home-why-metric--accent">
-          <b>2折起</b><span>VIP 级折扣</span>
-        </div>
-        <div class="home-why-metric">
-          <b>三零</b><span>门槛 · 保底 · 业绩</span>
-        </div>
-        <div class="home-why-metric">
-          <b>5+</b><span>主流云集采</span>
-        </div>
-        <div class="home-why-metric">
-          <b>7×24</b><span>专属技术支持</span>
-        </div>
+        <p class="home-section-lead home-why-lead">
+          云资源<strong>集采整合方</strong>：以集团体量向主流云厂商议价，共享顶级折扣、授信账期与上云服务；企业零门槛采购，专注业务增长。
+        </p>
       </div>
+    </div>
 
+    <div class="home-shell home-why-shell">
       <div class="home-why-block">
-        <h3 class="home-why-block-title">我们的核心模式</h3>
-        <p class="home-why-block-desc">连接云厂商与企业客户，集采议价、账单协同与合规保障一站完成。</p>
-        <div class="home-why-model" aria-label="核心模式">
+        <h3 class="home-why-block-title">三大「零」承诺</h3>
+        <p class="home-why-block-desc">无门槛挂靠、无保底消费、无业绩压力，企业轻装上阵享集采价。</p>
+        <div class="home-why-model" aria-label="三大「零」承诺">
           <article class="home-why-model-card">
-            <span class="home-why-model-num" aria-hidden="true">01</span>
-            <h4>集团集采</h4>
-            <p>以集团大客户身份统一向云厂商集采，争取行业顶级折扣，同等资源更低成本。</p>
+            <h4>「零」门槛挂靠</h4>
+            <p>无资质与业绩门槛，快速接入集团集采架构，即享大客户级权益。</p>
           </article>
           <article class="home-why-model-card">
-            <span class="home-why-model-num" aria-hidden="true">02</span>
-            <h4>共享折扣</h4>
-            <p>挂靠集采架构即享大客户价、授信账期与灵活付款，缓解资金压力。</p>
+            <h4>「零」保底消费</h4>
+            <p>无最低消费与保底要求，按实际云用量计费，用多少付多少。</p>
           </article>
           <article class="home-why-model-card">
-            <span class="home-why-model-num" aria-hidden="true">03</span>
-            <h4>简单计费</h4>
-            <p>按实际云消费量计费，另加透明固定服务费，成本清晰可控。</p>
+            <h4>「零」业绩承诺</h4>
+            <p>无强制业绩承诺，合作灵活、压力更小，专注业务本身增长。</p>
           </article>
         </div>
       </div>
 
       <div class="home-why-block">
-        <h3 class="home-why-block-title">四大核心优势</h3>
+        <h3 class="home-why-block-title">四大核心赋能</h3>
         <div class="home-why-advantages">
           <article class="home-why-adv">
-            <div class="home-why-adv-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="home-why-adv-visual home-why-adv-visual--svg" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
-            <div>
+            <div class="home-why-adv-body">
               <h4>资源优势</h4>
               <p>覆盖国内外主流云，节点灵活可选，满足出海与国内一站式部署。</p>
             </div>
           </article>
           <article class="home-why-adv">
-            <div class="home-why-adv-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <div class="home-why-adv-visual" aria-hidden="true">
+              <img :src="advantagePricing" alt="" loading="lazy" />
             </div>
-            <div>
+            <div class="home-why-adv-body">
               <h4>商务优势</h4>
               <p><strong>最低 2 折起</strong>，VIP 级优惠；<strong>无保底、无门槛</strong>，按需使用。</p>
             </div>
           </article>
           <article class="home-why-adv">
-            <div class="home-why-adv-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <div class="home-why-adv-visual" aria-hidden="true">
+              <img :src="advantageConsulting" alt="" loading="lazy" />
             </div>
-            <div>
+            <div class="home-why-adv-body">
               <h4>增值服务（免费）</h4>
               <p>上云咨询、架构设计、资源选型与多云成本统一管控。</p>
             </div>
           </article>
           <article class="home-why-adv">
-            <div class="home-why-adv-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="home-why-adv-visual" aria-hidden="true">
+              <img :src="advantageSupport" alt="" loading="lazy" />
             </div>
-            <div>
+            <div class="home-why-adv-body">
               <h4>技术支持</h4>
-              <p><strong>VIP 专属团队</strong>，优先响应，7×24 运维保障。</p>
+              <p><strong>VIP专属技术团队</strong>，快速响应、问题优先处理。</p>
             </div>
           </article>
         </div>
       </div>
+    </div>
 
-      <div class="home-why-block home-why-block--values">
-        <h3 class="home-why-block-title">合作带来的核心价值</h3>
+    <div class="home-why-values-band">
+      <div class="home-shell home-why-values-inner">
+        <h3 class="home-why-values-title">合作带来的核心价值</h3>
         <ul class="home-why-values" aria-label="客户收益">
           <li class="home-why-value-item">
-            <span class="home-why-value-num">01</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>云成本立省 20%–40%</strong>
               <span>降低 IT 运营支出，减少资源浪费</span>
             </div>
           </li>
           <li class="home-why-value-item">
-            <span class="home-why-value-num">02</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>零门槛享大客户折扣</strong>
               <span>无需年框与保底，灵活按需采购</span>
             </div>
           </li>
           <li class="home-why-value-item">
-            <span class="home-why-value-num">03</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M6 15h2M10 15h4"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>共享集团授信账期</strong>
               <span>缓解现金流压力，提升周转效率</span>
             </div>
           </li>
           <li class="home-why-value-item">
-            <span class="home-why-value-num">04</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>免费增值服务</strong>
               <span>咨询、架构优化与持续成本建议</span>
             </div>
           </li>
           <li class="home-why-value-item">
-            <span class="home-why-value-num">05</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>VIP 技术支持</strong>
               <span>专属通道，更快更专业的保障</span>
             </div>
           </li>
           <li class="home-why-value-item">
-            <span class="home-why-value-num">06</span>
-            <div>
+            <div class="home-why-value-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><path d="M12 12v4M10 14h4"/></svg>
+            </div>
+            <div class="home-why-value-body">
               <strong>一站式多云管理</strong>
               <span>统一入口，团队聚焦核心业务</span>
             </div>
@@ -823,8 +896,9 @@ onUnmounted(() => {
 
   <section class="home-section" id="benefits" aria-labelledby="benefits-h">
     <div class="home-shell">
-      <h2 id="benefits-h">专属福利</h2>
-      <p class="home-section-lead">同样的云厂商与官网资源，通过 Trinity AI 云集采采购可获得更多商务与增值服务；下表为「我们的服务」与「厂商直销」对照。</p>
+      <header class="home-benefits-head">
+        <h2 id="benefits-h">专属福利</h2>
+      </header>
       <div class="home-compare-wrap">
         <div class="home-compare-stage" role="table" aria-label="专属福利服务对比">
           <div class="home-compare-panel home-compare-panel--labels" role="rowgroup">
@@ -901,211 +975,95 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-      <p class="home-compare-footnote">云服务购买与发票流程与厂商官网一致；差异主要体现在价格优惠、配置推荐、专属支持与免费增值服务。</p>
     </div>
   </section>
 
   <section class="home-section alt" id="process" aria-labelledby="process-h">
     <div class="home-shell home-process">
-      <h2 id="process-h">优惠合作流程</h2>
-      <p class="home-section-lead">五步闭环流程，从商务咨询到售后支持，全程专人跟进。</p>
-      <div class="home-process-steps" aria-label="购买流程">
-        <div class="home-process-step">
-          <div class="home-process-num">1</div>
-          <div class="home-process-label">咨询商务<br/>优惠规则</div>
-        </div>
-        <div class="home-process-arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-        <div class="home-process-step">
-          <div class="home-process-num">2</div>
-          <div class="home-process-label">合约 +<br/>厂商账号配置</div>
-        </div>
-        <div class="home-process-arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-        <div class="home-process-step">
-          <div class="home-process-num">3</div>
-          <div class="home-process-label">选择对应<br/>云服务</div>
-        </div>
-        <div class="home-process-arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-        <div class="home-process-step">
-          <div class="home-process-num">4</div>
-          <div class="home-process-label">支付订单<br/>（对公/代付）</div>
-        </div>
-        <div class="home-process-arrow" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </div>
-        <div class="home-process-step">
-          <div class="home-process-num">5</div>
-          <div class="home-process-label">售后专家<br/>支持</div>
-        </div>
-      </div>
+      <header class="home-process-head">
+        <h2 id="process-h">优惠合作流程</h2>
+        <p class="home-process-tagline">极简 · 高效 · 放心</p>
+      </header>
+      <ol class="home-process-flow" aria-label="优惠合作流程五步">
+        <li class="home-process-step">
+          <div class="home-process-step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="home-process-step-title">需求沟通</h3>
+          <p class="home-process-step-desc">深入了解您的云资源类型、用量和预算需求，制定专属方案。</p>
+        </li>
+        <li class="home-process-step">
+          <div class="home-process-step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="home-process-step-title">成本诊断</h3>
+          <p class="home-process-step-desc">免费为您测算优惠空间，出具详细的<strong class="home-process-em">节省报告</strong>，让收益清晰可见。</p>
+        </li>
+        <li class="home-process-step">
+          <div class="home-process-step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 class="home-process-step-title">签约合作</h3>
+          <p class="home-process-step-desc">签署简洁、透明的标准化合作合同，明确双方权责，保障您的权益。</p>
+        </li>
+        <li class="home-process-step">
+          <div class="home-process-step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3 class="home-process-step-title">快速接入</h3>
+          <p class="home-process-step-desc">挂靠集团架构，<strong class="home-process-em">1–3 个工作日内</strong>即可开通优惠，流程极简。</p>
+        </li>
+        <li class="home-process-step">
+          <div class="home-process-step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          </div>
+          <h3 class="home-process-step-title">持续服务</h3>
+          <p class="home-process-step-desc">统一账单管理、定期成本优化建议与专属 VIP 技术支持，全程无忧。</p>
+        </li>
+      </ol>
       <div class="home-process-cta">
         <a href="#consult" class="btn btn-gradient">联系在线客服，获取上云优惠</a>
       </div>
     </div>
   </section>
 
-  <section class="home-section is-tight-top" id="cloud" aria-labelledby="cloud-h">
-    <div class="home-shell">
-      <h2 id="cloud-h">AI 云服务</h2>
-      <p class="home-section-lead">
-        面向企业 IT 与平台团队：在阿里云、腾讯云、华为云、AWS、Google Cloud 等主流公有云上，统一纳管 AI 推理与 GPU 算力资源，提供配额调度、成本分账与合规留痕，支撑从接入到持续运营的全链路治理。
-      </p>
-      <div class="home-cards">
-        <article class="home-card">
-          <div class="home-card-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-            </svg>
-          </div>
-          <h3>多云纳管</h3>
-          <p>统一接入多家云主账号与子账号，资源目录、标签与权限边界一致治理。</p>
-        </article>
-        <article class="home-card">
-          <div class="home-card-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
-          <h3>GPU 与弹性算力</h3>
-          <p>推理实例模板、弹性伸缩与队列优先级，按业务峰谷自动扩缩 GPU 资源池。</p>
-        </article>
-        <article class="home-card">
-          <div class="home-card-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
-          </div>
-          <h3>云成本与分账</h3>
-          <p>按云账号、项目、部门拆分账单，预算告警与预留实例建议，降低闲置与超支风险。</p>
-        </article>
-        <article class="home-card">
-          <div class="home-card-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-          </div>
-          <h3>安全与合规</h3>
-          <p>密钥与数据分级策略、审计日志与导出，满足金融与政务类采购要求。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section alt" id="arch" aria-labelledby="arch-h">
-    <div class="home-shell">
-      <h2 id="arch-h">我们的架构优势</h2>
-      <p class="home-section-lead">从云账号到算力交付的分层设计，突出高可用、可审计与弹性扩展。</p>
-      <div class="home-arch">
-        <div class="home-arch-diagram" aria-hidden="true">
-          <div class="home-arch-row">公有云账号与网络接入层（API / 专线 / VPC）</div>
-          <div class="home-arch-arrow">↓</div>
-          <div class="home-arch-row">资源编排与 GPU 算力池层（模板、队列、伸缩）</div>
-          <div class="home-arch-arrow">↓</div>
-          <div class="home-arch-row">成本、配额与合规审计层（账单、告警、留痕）</div>
-        </div>
-        <div>
-          <p class="home-arch-note">
-            <strong>高可用：</strong>多地域算力池与健康检查，故障域隔离与分钟级切换预案。<br /><br />
-            <strong>可审计：</strong>资源变更、配额调整与账单导出全链路留痕，满足内控与等保测评材料需求。<br /><br />
-            <strong>弹性扩展：</strong>按队列与优先级横向扩容 GPU 节点，峰值过后自动回收。
+  <section class="home-section" id="consult" aria-labelledby="consult-h">
+    <div class="home-shell home-consult-wrap">
+      <div class="home-consult-panel">
+        <div class="home-consult-panel-deco" aria-hidden="true"></div>
+        <div class="home-consult-promo">
+          <h2 id="consult-h">立即行动，开启云成本优化之旅</h2>
+          <p class="home-consult-promo-lead">
+            现在联系<span class="home-ours-em">我们</span>的优惠专员，即刻免费获得成本优化方案，开启云上优惠权益之旅。
           </p>
         </div>
-      </div>
-      <div class="home-arch-highlights">
-        <div class="home-arch-hl">
-          <strong>多活容灾</strong>
-          多地域部署与健康检查，故障域隔离，分钟级切换。
-        </div>
-        <div class="home-arch-hl">
-          <strong>成本可视</strong>
-          按云账号、项目与部门维度拆分账单，支持预算告警与预留容量建议。
-        </div>
-        <div class="home-arch-hl">
-          <strong>企业集成</strong>
-          对接企业 IAM、CMDB 与工单系统；变更 Webhook 同步至运维平台。
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section" id="promo" aria-labelledby="promo-h">
-    <div class="home-shell">
-      <h2 id="promo-h">限时优惠 / 折扣活动</h2>
-      <p class="home-section-lead">面向新用户与企业客户的算力与套餐方案，具体权益与价格以商务合同及官网公示为准。</p>
-      <div class="home-promo-grid">
-        <div class="home-promo">
-          <div>
-            <h3>新用户首月抵扣</h3>
-            <p>完成企业认证即可获得算力抵扣券；大额合约可叠加上云架构咨询与迁移工时包。</p>
-            <span class="home-promo-badge">限时礼遇</span>
-          </div>
-          <div>
-            <a href="#consult" class="btn btn-gradient">联系销售</a>
-          </div>
-        </div>
-        <div class="home-promo home-promo--slate">
-          <div>
-            <h3>企业年度框架</h3>
-            <p>承诺年度 GPU 卡时或云消费规模享阶梯折扣；含专属技术支持与季度容量复盘。</p>
-            <span class="home-promo-badge" style="background: var(--text)">企业专享</span>
-          </div>
-          <div>
-            <a href="#consult" class="btn">获取报价单</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section alt" id="consult" aria-labelledby="consult-h">
-    <div class="home-shell">
-      <h2 id="consult-h">获取专属咨询</h2>
-      <p class="home-section-lead">留下联系方式，我们将在 1～2 个工作日内与您沟通方案与报价。</p>
-      <div class="home-arch">
-        <form class="home-form home-arch-diagram" id="home-consult-form">
-          <div class="home-form-row">
-            <label for="c-name">姓名</label>
-            <input id="c-name" type="text" name="name" autocomplete="name" placeholder="您的称呼" />
-          </div>
-          <div class="home-form-row">
-            <label for="c-email">工作邮箱</label>
-            <input id="c-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" />
-          </div>
-          <div class="home-form-row">
-            <label for="c-phone">联系电话</label>
-            <input id="c-phone" type="tel" name="phone" autocomplete="tel" placeholder="选填" />
-          </div>
-          <div class="home-form-row">
-            <label for="c-co">公司 / 团队</label>
-            <input id="c-co" type="text" name="company" autocomplete="organization" placeholder="选填" />
-          </div>
-          <div class="home-form-row">
-            <label for="c-msg">需求简述</label>
-            <textarea id="c-msg" name="message" placeholder="例如：目标地域、GPU 型号与卡数、峰值并发、合规等级、是否需专线等"></textarea>
-          </div>
-          <button type="submit" class="btn btn-gradient" style="margin-top: 0.25rem">提交咨询</button>
-        </form>
-        <div>
-          <div class="home-arch-highlights">
-            <div class="home-arch-hl">
-              <strong>电话咨询</strong>
-              400-xxx-xxxx<br/>工作日 9:00-18:00
+        <div class="home-consult-card">
+          <h3 class="home-consult-card-title">申请咨询与折扣</h3>
+          <form class="home-consult-form" id="home-consult-form">
+            <div class="home-consult-field">
+              <label for="c-email">企业邮箱</label>
+              <input
+                id="c-email"
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="name@company.com"
+              />
             </div>
-            <div class="home-arch-hl">
-              <strong>商务邮箱</strong>
-              contact@trinity.ai<br/>24 小时内回复
+            <div class="home-consult-field">
+              <label for="c-scale">需求规模</label>
+              <div class="home-consult-select-wrap">
+                <select id="c-scale" name="scale" required>
+                  <option value="startup">初创团队（1–20 人）</option>
+                  <option value="growth">成长期企业（21–100 人）</option>
+                  <option value="enterprise">大型企业（100 人以上）</option>
+                </select>
+              </div>
             </div>
-            <div class="home-arch-hl">
-              <strong>公司地址</strong>
-              北京市xxx区xxx路xxx号<br/>欢迎预约到访
-            </div>
-          </div>
+            <button type="submit" class="btn btn-gradient home-consult-submit">提交申请并领取福利</button>
+          </form>
+          <p class="home-consult-footnote">2026 年特惠计划受配额限制，请尽快提交</p>
         </div>
       </div>
     </div>
@@ -1114,19 +1072,16 @@ onUnmounted(() => {
   <footer class="home-footer">
     <div class="home-shell home-footer-grid">
       <div>
-        <strong style="color: var(--text); font-size: 0.9375rem">Trinity AI 云</strong>
+        <strong style="color: var(--text); font-size: 14px">Trinity AI 云</strong>
         <p style="margin: 0.5rem 0 0; max-width: 22rem">多云 AI 算力纳管与企业级交付，专注上云与用算力。</p>
       </div>
       <div>
         <h4>本页产品</h4>
         <ul>
-          <li><a href="#cloud">AI 云能力</a></li>
           <li><a href="#cloud-solutions">多云对接与各云说明</a></li>
           <li><a href="#why">核心优势</a></li>
           <li><a href="#benefits">专属福利</a></li>
           <li><a href="#process">购买流程</a></li>
-          <li><a href="#arch">架构与合规</a></li>
-          <li><a href="#promo">折扣活动</a></li>
           <li><a href="#consult">咨询与报价</a></li>
         </ul>
       </div>
@@ -1154,9 +1109,25 @@ onUnmounted(() => {
 <style>
 :root {
   --home-max: 1180px;
-  --home-banner-min: min(76vh, 700px);
+  --home-banner-min: min(78vh, 760px);
   /* 顶栏/页脚/抽屉左右与 index 一致：用 mvp 的 --page-gutter；main 内正文区块 15%（见 docs/Trinity原型版式与视觉规范.md） */
   --home-content-inline: 15%;
+  --home-why-body-inline: 10%;
+  --home-section-inline-narrow: 3%;
+  --home-why-values-inline: var(--home-section-inline-narrow);
+  --home-banner-inline: 8%;
+  /* 官网首页字阶（px 固定，不用 rem/clamp/vw） */
+  --home-font-display: 52px;
+  --home-font-highlight: 44px;
+  --home-font-step: 36px;
+  --home-font-title: 32px;
+  --home-font-module: 24px;
+  --home-font-subtitle: 18px;
+  --home-font-body: 16px;
+  --home-font-body-sm: 14px;
+  --home-font-caption: 12px;
+  --home-font-micro: 11px;
+  --home-section-title-size: var(--home-font-title);
 }
 
 body.home-page {
@@ -1182,8 +1153,13 @@ main#main > section {
   box-sizing: border-box;
 }
 
+main#main > section.home-banner {
+  padding-inline: var(--home-banner-inline);
+}
+
 main#main > .home-overlap {
-  padding-inline: var(--home-content-inline);
+  width: 100%;
+  padding-inline: 0;
   box-sizing: border-box;
 }
 
@@ -1221,7 +1197,7 @@ main#main > footer.home-footer {
   align-items: center;
   gap: 0.5rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: var(--home-font-body);
   letter-spacing: -0.02em;
   color: var(--text);
   flex-shrink: 0;
@@ -1270,7 +1246,7 @@ main#main > footer.home-footer {
   border-radius: var(--radius);
   background: transparent;
   font: inherit;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 500;
   color: var(--muted);
   cursor: pointer;
@@ -1313,7 +1289,7 @@ main#main > footer.home-footer {
   border-radius: var(--radius);
   color: inherit;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 500;
 }
 
@@ -1324,7 +1300,7 @@ main#main > footer.home-footer {
 .home-nav-link {
   padding: 0.45rem 0.75rem;
   border-radius: var(--radius);
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 500;
   color: var(--muted);
 }
@@ -1347,7 +1323,7 @@ main#main > footer.home-footer {
   border-radius: var(--radius);
   background: var(--bg);
   font: inherit;
-  font-size: 0.75rem;
+  font-size: var(--home-font-caption);
   font-weight: 600;
   color: var(--muted);
   cursor: pointer;
@@ -1365,7 +1341,7 @@ main#main > footer.home-footer {
   border-radius: var(--radius);
   background: transparent;
   font: inherit;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   color: var(--blue);
   cursor: pointer;
@@ -1427,7 +1403,7 @@ main#main > footer.home-footer {
   width: 100%;
   text-align: left;
   padding: 0.6rem 0;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 500;
   color: var(--muted);
   border: none;
@@ -1480,26 +1456,25 @@ main#main > footer.home-footer {
 .home-banner-inner {
   position: relative;
   z-index: 1;
-  padding: 1.5rem 0 1.25rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 2rem 0 1.5rem;
 }
 
 .home-hero-grid {
   display: grid;
-  gap: 2rem 2.5rem;
+  gap: 2.25rem 3rem;
   align-items: center;
 }
 
 @media (min-width: 960px) {
   .home-hero-grid {
-    grid-template-columns: 1fr minmax(300px, 400px);
+    grid-template-columns: 1fr minmax(360px, 520px);
   }
 
   .home-hero-left {
     text-align: left;
-  }
-
-  .home-banner-cta {
-    justify-content: flex-start;
   }
 
   .home-hero-stats {
@@ -1518,11 +1493,11 @@ main#main > footer.home-footer {
 .home-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  margin: -30px 0 10px;
-  padding: 0.28rem 0.65rem;
+  gap: 0.45rem;
+  margin: -30px 0 12px;
+  padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   color: var(--pill-text);
   background: var(--blue-soft);
@@ -1530,19 +1505,19 @@ main#main > footer.home-footer {
 }
 
 .home-eyebrow-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--blue);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .home-banner h1 {
-  margin: 0 0 0.85rem;
-  font-size: clamp(1.95rem, 4.2vw, 2.75rem);
+  margin: 0 0 1rem;
+  font-size: var(--home-font-display);
   font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 1.12;
+  line-height: 1.1;
   color: var(--text);
 }
 
@@ -1551,28 +1526,62 @@ main#main > footer.home-footer {
   color: var(--blue);
 }
 
-.home-banner-sub {
-  margin: calc(0.75rem + 30px) auto 1.95rem;
-  max-width: 32rem;
-  font-size: 1rem;
+.home-banner-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto 1.15rem;
+  padding: 0.75rem 50px;
+  border-radius: 999px;
+  font-size: var(--home-font-body-sm);
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+  white-space: nowrap;
   color: var(--muted);
-  line-height: 1.65;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.08) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.12);
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .home-banner-save {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: var(--home-font-body);
+  }
+}
+
+.home-banner-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 1.35rem;
+}
+
+.home-banner-sub {
+  margin: 0 0 1.25rem;
+  max-width: none;
+  font-size: var(--home-font-subtitle);
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: left;
 }
 
 @media (min-width: 960px) {
   .home-banner-sub {
-    margin-top: calc(1rem + 30px);
-    margin-bottom: 2.2rem;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 38rem;
+    margin-bottom: 1.5rem;
+    max-width: 44rem;
   }
 }
 
 .home-banner-footnote {
   margin: -0.35rem 0 1rem;
   max-width: 38rem;
-  font-size: 0.6875rem;
+  font-size: var(--home-font-micro);
   color: var(--muted-2);
   line-height: 1.45;
   text-align: center;
@@ -1589,16 +1598,19 @@ main#main > footer.home-footer {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  justify-content: center;
-  margin-bottom: 1.35rem;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin: 0;
 }
 
-/* 首屏三按钮：统一高度与 1px 边框（.btn 40px / 渐变无边框 与 outline 44px 不一致） */
+/* 首屏 CTA：胶囊按钮，左右 50px，左下对齐 */
 .home-banner-cta > a {
   box-sizing: border-box;
-  min-height: 44px;
-  height: 44px;
-  padding: 0 1.25rem;
+  min-height: 48px;
+  height: 48px;
+  padding: 0 50px;
+  border-radius: 999px;
+  font-size: var(--home-font-body);
   border-width: 1px;
   border-style: solid;
 }
@@ -1632,14 +1644,14 @@ main#main > footer.home-footer {
 
 .home-stat-chip b {
   display: block;
-  font-size: 1.125rem;
+  font-size: var(--home-font-subtitle);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
 }
 
 .home-stat-chip span {
-  font-size: 0.6875rem;
+  font-size: var(--home-font-micro);
   font-weight: 500;
   color: var(--muted-2);
   text-transform: uppercase;
@@ -1666,7 +1678,7 @@ main#main > footer.home-footer {
 .home-pill {
   padding: 0.28rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: var(--home-font-caption);
   font-weight: 500;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.75);
@@ -1686,7 +1698,7 @@ main#main > footer.home-footer {
 
 .home-preview-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 520px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.95);
@@ -1699,51 +1711,51 @@ main#main > footer.home-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0.85rem;
+  padding: 0.85rem 1.1rem;
   background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
   border-bottom: 1px solid var(--border);
-  font-size: 0.75rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   color: var(--muted);
 }
 
 .home-preview-badge {
-  padding: 0.15rem 0.45rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 6px;
-  font-size: 0.625rem;
+  font-size: var(--home-font-caption);
   font-weight: 700;
   background: #ecfdf5;
   color: #047857;
 }
 
 .home-preview-body {
-  padding: 0.85rem 0.85rem 1rem;
+  padding: 1.05rem 1.1rem 1.2rem;
 }
 
 .home-preview-kpis {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 0.85rem;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
 }
 
 .home-preview-kpi {
-  padding: 0.45rem 0.5rem;
+  padding: 0.6rem 0.65rem;
   border-radius: var(--radius);
   background: var(--surface);
   border: 1px solid var(--border);
 }
 
 .home-preview-kpi .v {
-  font-size: 0.9375rem;
+  font-size: var(--home-font-subtitle);
   font-weight: 700;
   color: var(--text);
 }
 
 .home-preview-kpi .l {
-  font-size: 0.625rem;
+  font-size: var(--home-font-caption);
   color: var(--muted-2);
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
 .home-preview-kpi--save {
@@ -1757,23 +1769,23 @@ main#main > footer.home-footer {
 
 /* 首屏预览卡：账单 / 消费示意（非资源拓扑） */
 .home-preview-chart {
-  margin-bottom: 0.65rem;
-  padding: 0.5rem 0.45rem 0.45rem;
+  margin-bottom: 0.8rem;
+  padding: 0.65rem 0.6rem 0.55rem;
   border-radius: var(--radius);
   background: var(--surface-2);
   border: 1px solid var(--border);
 }
 
 .home-preview-chart-cap {
-  font-size: 0.625rem;
+  font-size: var(--home-font-caption);
   font-weight: 600;
   color: var(--muted);
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.55rem;
 }
 
 .home-preview-stack {
   display: flex;
-  height: 12px;
+  height: 14px;
   border-radius: 999px;
   overflow: hidden;
   background: var(--border);
@@ -1803,9 +1815,9 @@ main#main > footer.home-footer {
 .home-preview-legend {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.3rem 0.45rem;
-  margin-top: 0.45rem;
-  font-size: 0.5625rem;
+  gap: 0.4rem 0.55rem;
+  margin-top: 0.55rem;
+  font-size: var(--home-font-micro);
   color: var(--muted);
 }
 
@@ -1816,8 +1828,8 @@ main#main > footer.home-footer {
 }
 
 .home-preview-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 2px;
   flex-shrink: 0;
 }
@@ -1839,14 +1851,14 @@ main#main > footer.home-footer {
 }
 
 .home-preview-rows {
-  font-size: 0.6875rem;
+  font-size: var(--home-font-caption);
   color: var(--muted);
 }
 
 .home-preview-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.35rem 0;
+  padding: 0.45rem 0;
   border-top: 1px solid var(--border);
 }
 
@@ -1856,7 +1868,7 @@ main#main > footer.home-footer {
 }
 
 .home-preview-row code {
-  font-size: 0.65rem;
+  font-size: var(--home-font-caption);
   color: var(--text);
 }
 
@@ -1870,60 +1882,124 @@ main#main > footer.home-footer {
 }
 
 .home-overlap-inner {
-  max-width: var(--home-max);
-  margin: 0 auto;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
   border: none;
-  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
   box-shadow: none;
+  overflow: hidden;
 }
 
 .home-overlap-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-}
-
-@media (min-width: 640px) {
-  .home-overlap-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-overlap-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  display: flex;
+  align-items: stretch;
 }
 
 .home-overlap-item {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 0.75rem 0.65rem;
-  border-radius: var(--radius);
+  gap: 0.4rem;
+  padding: 1.1rem 1.15rem 1rem;
   border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
   background: var(--bg);
   text-decoration: none;
   color: inherit;
-  transition: background 0.18s ease;
+  text-align: left;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
 }
 
+.home-overlap-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 2.75rem;
+  background: var(--border);
+  pointer-events: none;
+}
+
+.home-overlap-item.is-active,
 .home-overlap-item:hover {
-  background: var(--surface-2);
+  border-bottom-color: var(--blue);
 }
 
-.home-overlap-item strong {
-  font-size: 0.8125rem;
+.home-overlap-kicker {
+  font-size: var(--home-font-caption);
+  font-weight: 500;
+  color: var(--muted-2);
+  line-height: 1.3;
+}
+
+.home-overlap-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.home-overlap-title {
+  font-size: var(--home-font-body);
   font-weight: 700;
   color: var(--text);
+  line-height: 1.35;
 }
 
-.home-overlap-item span {
-  font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.4;
+.home-overlap-chevron {
+  flex-shrink: 0;
+  color: var(--muted-2);
+  opacity: 0.85;
+}
+
+.home-overlap-item.is-active .home-overlap-chevron,
+.home-overlap-item:hover .home-overlap-chevron {
+  color: var(--blue);
+  opacity: 1;
+}
+
+.home-overlap-desc {
+  font-size: var(--home-font-body-sm);
+  color: var(--text);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .home-overlap-item {
+    padding: 1.25rem 1.35rem 1.1rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .home-overlap-inner {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home-overlap-grid {
+    min-width: 100%;
+    width: max-content;
+  }
+
+  .home-overlap-item {
+    flex: 0 0 10.5rem;
+    min-width: 10.5rem;
+  }
 }
 
 .home-btn-outline-light {
@@ -1936,7 +2012,7 @@ main#main > footer.home-footer {
   border: 1px solid var(--border-strong);
   background: var(--bg);
   color: var(--text);
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
@@ -1954,16 +2030,6 @@ main#main > footer.home-footer {
   padding: 2.5rem 0 3.25rem;
   border-top: none;
   background: var(--bg);
-}
-
-.home-usecase-kicker {
-  margin: 0 0 1.5rem;
-  text-align: center;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-2);
 }
 
 .home-usecase-tablist {
@@ -1990,14 +2056,25 @@ main#main > footer.home-footer {
   }
 }
 
+/* 云厂商名：统一黑色；选中 Tab /「我们」等用主题色高亮 */
+.home-cloud-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.home-ours-em {
+  color: var(--blue);
+  font-weight: 700;
+}
+
 .home-usecase-tab {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.25rem;
   border-radius: 999px;
   border: none;
   background: var(--surface);
-  color: var(--muted);
+  color: var(--text);
   font: inherit;
-  font-size: 0.8125rem;
+  font-size: var(--home-font-body);
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
@@ -2047,7 +2124,7 @@ main#main > footer.home-footer {
 
   .home-usecase-desc {
     flex: 0 1 auto;
-    font-size: 0.9375rem;
+    font-size: var(--home-font-body-sm);
     line-height: 1.72;
   }
 
@@ -2083,7 +2160,7 @@ main#main > footer.home-footer {
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 0.75rem;
-  font-size: 0.75rem;
+  font-size: var(--home-font-caption);
   font-weight: 600;
   color: var(--muted);
 }
@@ -2184,7 +2261,7 @@ main#main > footer.home-footer {
 }
 
 .home-uc-scene-tag {
-  font-size: 0.625rem;
+  font-size: var(--home-font-micro);
   font-weight: 600;
   padding: 0.2rem 0.45rem;
   border-radius: 999px;
@@ -2200,7 +2277,7 @@ main#main > footer.home-footer {
 
 .home-usecase-copy h3 {
   margin: 0 0 0.85rem;
-  font-size: 1.2rem;
+  font-size: var(--home-font-subtitle);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.3;
@@ -2225,7 +2302,7 @@ main#main > footer.home-footer {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   color: var(--text);
   line-height: 1.4;
@@ -2239,7 +2316,7 @@ main#main > footer.home-footer {
 
 .home-usecase-desc {
   margin: 0 0 1.25rem;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   color: var(--muted);
   line-height: 1.65;
   max-width: none;
@@ -2253,7 +2330,7 @@ main#main > footer.home-footer {
   border-radius: 999px;
   border: 1px solid var(--blue);
   color: var(--blue);
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
@@ -2263,10 +2340,10 @@ main#main > footer.home-footer {
   background: var(--blue-soft);
 }
 
-/* 通用区块 */
+/* 通用区块（区块间仅用背景色区分，不用顶部分割线） */
 .home-section {
   padding: 3rem 0;
-  border-top: 1px solid var(--border);
+  border-top: none;
 }
 
 .home-section.is-tight-top {
@@ -2279,15 +2356,16 @@ main#main > footer.home-footer {
 
 .home-section h2 {
   margin: 0 0 0.5rem;
-  font-size: 1.35rem;
+  font-size: var(--home-section-title-size);
   font-weight: 700;
+  line-height: 1.25;
   letter-spacing: -0.03em;
 }
 
 .home-section-lead {
   margin: 0 0 1.75rem;
   max-width: 40rem;
-  font-size: 0.9375rem;
+  font-size: var(--home-font-body-sm);
   color: var(--muted);
   line-height: 1.6;
 }
@@ -2341,114 +2419,126 @@ main#main > footer.home-footer {
 
 .home-card h3 {
   margin: 0 0 0.45rem;
-  font-size: 1rem;
+  font-size: var(--home-font-body);
   font-weight: 700;
 }
 
 .home-card p {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: var(--home-font-body-sm);
   color: var(--muted);
   line-height: 1.55;
 }
 
 /* —— 为什么选择 —— */
-.home-why-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+main#main > section#why {
+  padding-inline: 0;
+  padding-top: 0;
 }
 
-.home-why-intro .home-section-lead {
-  margin-bottom: 0;
-  max-width: 40rem;
-}
-
-.home-why-highlight {
+.home-why-top-band {
   width: 100%;
-  max-width: var(--home-max);
-  margin: 0 auto 1.15rem;
-  padding: 1.35rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, #047857 0%, #059669 55%, #10b981 100%);
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 16px 40px rgba(4, 120, 87, 0.22);
+  padding: 2.5rem var(--home-content-inline) 2.25rem;
+  background: var(--surface);
   box-sizing: border-box;
 }
 
+.home-why-top-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.home-why-intro {
+  width: 100%;
+  text-align: center;
+}
+
+.home-why-intro #why-h {
+  margin: 0 auto 0.65rem;
+  text-align: center;
+}
+
+.home-why-lead {
+  width: 100%;
+  margin: 0 auto;
+  max-width: none;
+  text-align: center;
+  white-space: nowrap;
+  font-size: var(--home-font-subtitle);
+  line-height: 1.55;
+}
+
+@media (max-width: 1100px) {
+  .home-why-lead {
+    font-size: var(--home-font-body);
+  }
+}
+
+.home-shell.home-why-shell {
+  max-width: 1320px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2.5rem var(--home-why-body-inline) 0;
+  box-sizing: border-box;
+}
+
+.home-why-highlight {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 50px 1.15rem;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.28);
+  box-sizing: border-box;
+}
+
+.home-why-highlight-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35rem 0.6rem;
+  margin: 0;
+}
+
+.home-why-highlight-label {
+  font-size: var(--home-font-subtitle);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 .home-why-highlight-main b {
-  display: block;
-  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-size: var(--home-font-highlight);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
 
-.home-why-highlight-main span {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 1rem;
+.home-why-highlight-tagline {
+  margin: 0.5rem 0 0;
+  font-size: var(--home-font-body);
   font-weight: 600;
-  opacity: 0.95;
+  line-height: 1.45;
+  white-space: nowrap;
+  opacity: 0.96;
 }
 
 .home-why-highlight-note {
-  margin: 0.85rem 0 0;
-  font-size: 0.8125rem;
+  margin: 0.65rem 0 0;
+  max-width: 32rem;
+  font-size: var(--home-font-caption);
   line-height: 1.5;
   opacity: 0.9;
-}
-
-.home-why-metrics {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.65rem;
-  max-width: var(--home-max);
-  margin: 0 auto 0.25rem;
-}
-
-@media (min-width: 720px) {
-  .home-why-metrics {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-}
-
-.home-why-metric {
-  padding: 1.25rem 1rem;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.06) 0%, rgba(37, 99, 235, 0.02) 100%);
-  border: 1px solid rgba(37, 99, 235, 0.1);
-  text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.home-why-metric:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.12);
-}
-
-.home-why-metric--accent {
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.08) 0%, var(--surface) 100%);
-  border-color: rgba(37, 99, 235, 0.2);
-}
-
-.home-why-metric b {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--blue);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.home-why-metric span {
-  display: block;
-  margin-top: 0.2rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: var(--muted);
 }
 
 .home-why-block {
@@ -2457,23 +2547,28 @@ main#main > footer.home-footer {
   gap: 1rem;
 }
 
-.home-why-block-title {
+.home-why-block-title,
+.home-why-values-title {
   margin: 0;
-  padding-left: 0.75rem;
-  border-left: 3px solid var(--blue);
-  font-size: 1.125rem;
+  font-size: var(--home-font-module);
   font-weight: 700;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.home-why-block-title {
+  padding-left: 0.85rem;
+  border-left: 4px solid var(--blue);
 }
 
 .home-why-block-desc {
-  margin: -0.35rem 0 0;
-  padding-left: 0.75rem;
-  font-size: 0.875rem;
+  margin: 0.15rem 0 0;
+  padding-left: 0.85rem;
+  font-size: var(--home-font-body);
   color: var(--muted);
-  line-height: 1.55;
-  max-width: 36rem;
+  line-height: 1.6;
+  max-width: 40rem;
 }
 
 .home-why-model {
@@ -2514,83 +2609,89 @@ main#main > footer.home-footer {
   box-shadow: 0 10px 24px rgba(37, 99, 235, 0.1);
 }
 
-.home-why-model-num {
-  display: inline-grid;
-  place-items: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-bottom: 0.55rem;
-  border-radius: 50%;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  color: #fff;
-  background: var(--blue);
-}
-
 .home-why-model-card h4 {
-  margin: 0 0 0.35rem;
-  font-size: 0.9375rem;
+  margin: 0 0 0.4rem;
+  font-size: var(--home-font-body);
   font-weight: 700;
 }
 
 .home-why-model-card p {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: var(--home-font-body-sm);
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .home-why-advantages {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 @media (min-width: 640px) {
   .home-why-advantages {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
+    gap: 1rem;
   }
 }
 
 .home-why-adv {
   display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  padding: 1rem 0.9rem;
-  border-radius: var(--radius-lg);
+  flex-direction: column;
+  padding: 0;
+  border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--surface);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-why-adv:hover {
-  border-color: rgba(37, 99, 235, 0.25);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.12);
 }
 
-.home-why-adv-icon {
-  flex-shrink: 0;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 10px;
-  background: var(--blue-soft);
-  color: var(--blue);
+.home-why-adv-visual {
+  position: relative;
   display: grid;
   place-items: center;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.home-why-adv-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-why-adv-visual--svg {
+  color: #fff;
+}
+
+.home-why-adv-visual--svg svg {
+  opacity: 0.9;
+}
+
+.home-why-adv-body {
+  padding: 1.15rem 1.25rem 1.25rem;
 }
 
 .home-why-adv h4 {
-  margin: 0 0 0.25rem;
-  font-size: 0.9375rem;
+  margin: 0 0 0.4rem;
+  font-size: var(--home-font-subtitle);
   font-weight: 700;
   color: var(--text);
 }
 
 .home-why-adv p {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: var(--home-font-body-sm);
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .home-why-adv p strong {
@@ -2598,330 +2699,508 @@ main#main > footer.home-footer {
   font-weight: 600;
 }
 
-.home-why-block--values {
-  padding: 1.25rem 1.15rem;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
-  border: 1px solid var(--border);
+.home-why-values-band {
+  width: 100%;
+  margin-top: 50px;
+  padding: 2.5rem var(--home-section-inline-narrow) 2.25rem;
+  background: var(--surface);
+  box-sizing: border-box;
+}
+
+.home-shell.home-why-values-inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.home-why-values-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.home-why-values-title {
+  width: 100%;
+  padding: 0;
+  border: none;
+  text-align: center;
 }
 
 .home-why-values {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
   display: grid;
-  gap: 0.65rem;
-}
-
-@media (min-width: 640px) {
-  .home-why-values {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-why-values {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  align-items: stretch;
 }
 
 .home-why-value-item {
+  min-width: 0;
+  width: 100%;
   display: flex;
-  gap: 0.65rem;
-  align-items: flex-start;
-  padding: 0.65rem 0.5rem;
-  border-radius: var(--radius);
-  background: var(--bg);
-  border: 1px solid transparent;
-  transition: border-color 0.18s ease;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.25rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
 }
 
-.home-why-value-item:hover {
-  border-color: var(--border);
+@media (max-width: 899px) {
+  .home-why-values {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .home-why-values::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .home-why-value-item {
+    flex: 0 0 auto;
+    min-width: 9.5rem;
+    scroll-snap-align: start;
+  }
 }
 
-.home-why-value-num {
+.home-why-value-icon {
   flex-shrink: 0;
-  width: 1.5rem;
-  font-size: 0.6875rem;
-  font-weight: 800;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  background: var(--blue-soft);
   color: var(--blue);
-  line-height: 1.4;
+  display: grid;
+  place-items: center;
+}
+
+.home-why-value-icon svg {
+  display: block;
+}
+
+.home-why-value-body {
+  min-width: 0;
 }
 
 .home-why-value-item strong {
   display: block;
-  font-size: 0.8125rem;
+  font-size: var(--home-font-body);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.home-why-value-item .home-why-value-body > span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--home-font-body-sm);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (min-width: 900px) {
+  .home-why-values {
+    gap: 1.15rem 1.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .home-why-values {
+    gap: 1.25rem 1.75rem;
+  }
+
+  .home-why-value-item strong {
+    font-size: var(--home-font-subtitle);
+  }
+}
+
+.home-why-disclaimer {
+  margin: 0.75rem 0 0;
+  font-size: var(--home-font-micro);
+  color: var(--muted-2);
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* —— 获取专属咨询：蓝底双栏 + 白卡表单 —— */
+main#main > section#consult {
+  padding-inline: 8%;
+}
+
+.home-consult-wrap {
+  padding: 0 0 3rem;
+}
+
+.home-consult-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 3rem 2rem;
+  border-radius: 3rem;
+  background: var(--grad);
+  box-shadow: 0 24px 48px rgba(37, 99, 235, 0.28);
+  box-sizing: border-box;
+}
+
+.home-consult-panel-deco {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: skewX(12deg) translateX(8rem);
+  pointer-events: none;
+}
+
+.home-consult-promo {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  color: #fff;
+}
+
+.home-consult-promo #consult-h {
+  margin: 0 0 1.25rem;
+  font-size: var(--home-section-title-size);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.home-consult-promo-lead {
+  margin: 0 0 1.75rem;
+  font-size: var(--home-font-subtitle);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.home-consult-card {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--bg);
+  border-radius: 1rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  box-sizing: border-box;
+}
+
+.home-consult-card-title {
+  margin: 0 0 1.5rem;
+  font-size: var(--home-font-subtitle);
   font-weight: 700;
   color: var(--text);
   line-height: 1.35;
 }
 
-.home-why-value-item span {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.75rem;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.home-why-disclaimer {
-  margin: 0.75rem 0 0;
-  font-size: 0.6875rem;
-  color: var(--muted-2);
-  line-height: 1.45;
-}
-
-/* 架构 */
-.home-arch {
-  display: grid;
-  gap: 1.5rem;
-  align-items: start;
-}
-
 @media (min-width: 900px) {
-  .home-arch {
-    grid-template-columns: 1fr 1fr;
+  .home-consult-panel {
+    flex-direction: row;
+    align-items: center;
+    padding: 4rem 3.5rem;
+    gap: 2rem;
+  }
+
+  .home-consult-promo {
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .home-consult-card {
+    margin: 0;
+    width: 100%;
+    max-width: 28rem;
   }
 }
 
-.home-arch-diagram {
-  padding: 1.25rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  font-size: 0.8125rem;
+.home-consult-field {
+  margin-bottom: 1.1rem;
 }
 
-.home-arch-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 0.75rem;
-  margin-bottom: 0.5rem;
-  border-radius: var(--radius);
-  background: var(--surface-2);
-  font-weight: 600;
-  color: var(--text);
-}
-
-.home-arch-row:last-child {
-  margin-bottom: 0;
-}
-
-.home-arch-arrow {
-  text-align: center;
-  color: var(--muted-2);
-  font-size: 0.75rem;
-  padding: 0.15rem 0;
-}
-
-.home-arch-note {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.home-arch-note strong {
-  color: var(--text);
-}
-
-.home-arch-highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.35rem;
-}
-
-@media (max-width: 640px) {
-  .home-arch-highlights {
-    grid-template-columns: 1fr;
-  }
-}
-
-.home-arch-hl {
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-size: 0.8125rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.home-arch-hl strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 0.8125rem;
-  color: var(--text);
-}
-
-/* 优惠 */
-.home-promo-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .home-promo-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.home-promo {
-  padding: 1.75rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.06) 100%);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.home-promo--slate {
-  background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
-  border-color: var(--border-strong);
-}
-
-.home-promo h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.home-promo p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-
-.home-promo-badge {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  background: var(--blue);
-  color: #fff;
-}
-
-/* 咨询表单 */
-.home-form {
-  max-width: 32rem;
-}
-
-.home-form-row {
-  margin-bottom: 1rem;
-}
-
-.home-form-row label {
+.home-consult-field label {
   display: block;
   margin-bottom: 0.35rem;
-  font-size: 0.8125rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
-  color: var(--muted);
+  color: var(--text);
 }
 
-.home-form-row input,
-.home-form-row textarea {
+.home-consult-field input,
+.home-consult-select-wrap select {
   width: 100%;
-  padding: 0.55rem 0.75rem;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 12px;
   font-family: inherit;
-  font-size: 0.9375rem;
+  font-size: var(--home-font-body-sm);
+  color: var(--text);
+  background: var(--bg);
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.home-form-row textarea {
-  min-height: 100px;
-  resize: vertical;
+.home-consult-select-wrap {
+  position: relative;
 }
 
-.home-form-row input:focus,
-.home-form-row textarea:focus {
+.home-consult-select-wrap select {
+  appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.home-consult-select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--muted-2);
+  border-bottom: 2px solid var(--muted-2);
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+.home-consult-field input:focus,
+.home-consult-select-wrap select:focus {
   outline: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 3px var(--blue-ring);
 }
 
-/* —— 优惠购买流程 —— */
+.home-consult-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 1rem 1.25rem;
+  justify-content: center;
+  font-size: var(--home-font-body);
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+}
+
+.home-consult-footnote {
+  margin: 1rem 0 0;
+  font-size: var(--home-font-caption);
+  font-style: italic;
+  color: var(--muted-2);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* —— 优惠合作流程（横向连线流程，无卡片框） —— */
+main#main > section#process {
+  padding-inline: 0;
+}
+
+.home-shell.home-process {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: var(--home-section-inline-narrow);
+  box-sizing: border-box;
+}
+
 .home-process {
   text-align: center;
 }
 
-.home-process-steps {
+.home-process-head {
+  margin-bottom: 0.25rem;
+}
+
+.home-process-head #process-h {
+  margin: 0 0 0.35rem;
+}
+
+.home-process-tagline {
+  margin: 0;
+  font-size: var(--home-font-body-sm);
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.home-process-flow {
+  list-style: none;
+  margin: 2rem 0 1.5rem;
+  padding: 0;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1.5rem 0 1.25rem;
-  flex-wrap: wrap;
+  gap: 0;
 }
 
 .home-process-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 7rem;
-  max-width: 9rem;
-  flex: 1;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.home-process-num {
-  width: 44px;
-  height: 44px;
+.home-process-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  left: calc(50% + 2rem);
+  right: calc(-50% + 2rem);
+  height: 2px;
+  background: #93c5fd;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home-process-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(2rem - 4px);
+  right: calc(-50% + 2rem - 4px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #93c5fd;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-process-step:not(:first-child) .home-process-step-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -1.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #93c5fd;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.home-process-step-icon {
+  position: relative;
+  z-index: 2;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
   border-radius: 50%;
   background: var(--blue-soft);
   color: var(--blue);
   display: grid;
   place-items: center;
-  font-size: 1rem;
-  font-weight: 700;
-  border: 2px solid var(--blue);
+  box-shadow: 0 0 0 6px var(--surface);
 }
 
-.home-process-label {
-  font-size: 0.8125rem;
-  font-weight: 600;
+.home-process-step-icon svg {
+  display: block;
+}
+
+.home-process-step-title {
+  margin: 1rem 0 0.45rem;
+  font-size: var(--home-font-subtitle);
+  font-weight: 700;
   color: var(--text);
   line-height: 1.35;
 }
 
-.home-process-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10px;
-  color: var(--muted-2);
-  flex-shrink: 0;
+.home-process-step-desc {
+  margin: 0;
+  padding: 0 0.15rem;
+  font-size: var(--home-font-body-sm);
+  color: var(--muted);
+  line-height: 1.6;
 }
 
-@media (max-width: 640px) {
-  .home-process-steps {
-    gap: 0.35rem;
-  }
-  .home-process-step {
-    min-width: 5.5rem;
-    max-width: 7rem;
-  }
-  .home-process-num {
-    width: 36px;
-    height: 36px;
-    font-size: 0.875rem;
-  }
-  .home-process-label {
-    font-size: 0.75rem;
-  }
+.home-process-em {
+  font-weight: 600;
+  color: var(--blue);
 }
 
 .home-process-cta {
   margin-top: 0.5rem;
+}
+
+.home-process-cta > a {
+  box-sizing: border-box;
+  min-height: 52px;
+  height: 52px;
+  padding: 0 2rem;
+  font-size: var(--home-font-subtitle);
+  font-weight: 700;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+@media (max-width: 1099px) {
+  .home-process-flow {
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .home-process-step {
+    flex: 0 0 11.5rem;
+    scroll-snap-align: start;
+  }
+
+  .home-process-step:not(:last-child)::after,
+  .home-process-step:not(:last-child)::before,
+  .home-process-step:not(:first-child) .home-process-step-icon::before {
+    display: none;
+  }
+}
+
+@media (min-width: 1100px) {
+  .home-process-step:not(:last-child)::after {
+    left: calc(50% + 2.25rem);
+    right: calc(-50% + 2.25rem);
+  }
+}
+
+/* —— 专属福利 —— */
+#benefits.home-section {
+  padding-bottom: calc(3rem + 30px);
+}
+
+.home-benefits-head {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.home-benefits-head #benefits-h {
+  margin: 0;
 }
 
 /* —— 专属福利：三栏面板对比（参考深蓝 + 中栏凸起） —— */
@@ -2931,11 +3210,19 @@ main#main > footer.home-footer {
   --compare-blue: #4a8ef5;
   --compare-blue-mid: #3b7de8;
   --compare-blue-deep: #2f6fd4;
-  margin-top: 0.75rem;
-  padding: 1.75rem 1rem 1.5rem;
-  border-radius: 20px;
-  background: #e9eef5;
-  border: 1px solid #d8e0ec;
+  --compare-panel-extra-h: 50px;
+  --compare-row-extra-h: calc(var(--compare-panel-extra-h) / 7);
+  --compare-side-reduce-h: 60px;
+  --compare-side-row-reduce-h: calc(var(--compare-side-reduce-h) / 7);
+  --compare-side-w: calc(11.5rem + 10px);
+  --compare-ours-min-w: calc(14rem - 10px);
+  --compare-ours-max-w: calc(25rem - 10px);
+  --compare-ours-lift: 22px;
+  margin-top: 0;
+  /* 中栏负边距上浮，用 padding 预留标题下与区块底间距 */
+  padding: var(--compare-ours-lift) 0;
+  background: transparent;
+  border: none;
 }
 
 .home-compare-stage {
@@ -2943,7 +3230,7 @@ main#main > footer.home-footer {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  max-width: 58rem;
+  max-width: calc(58rem + 30px);
   margin: 0 auto;
 }
 
@@ -2965,9 +3252,12 @@ main#main > footer.home-footer {
 
 .home-compare-panel--labels,
 .home-compare-panel--vendor {
-  flex: 0 0 20%;
-  max-width: 9.25rem;
-  min-width: 7.5rem;
+  flex: 0 0 var(--compare-side-w);
+  width: var(--compare-side-w);
+  min-width: var(--compare-side-w);
+  max-width: var(--compare-side-w);
+  z-index: 1;
+  align-self: center;
 }
 
 .home-compare-panel--labels {
@@ -2981,11 +3271,12 @@ main#main > footer.home-footer {
 }
 
 .home-compare-panel--ours {
-  flex: 1 1 52%;
-  min-width: 14rem;
-  max-width: 26rem;
-  z-index: 2;
-  margin-block: -14px;
+  flex: 1 1 46%;
+  min-width: var(--compare-ours-min-w);
+  max-width: var(--compare-ours-max-w);
+  z-index: 3;
+  align-self: center;
+  margin-block: calc(-1 * var(--compare-ours-lift));
   border-radius: 20px;
   background: linear-gradient(165deg, #5ca3ff 0%, var(--compare-blue) 28%, var(--compare-blue-mid) 55%, var(--compare-blue-deep) 100%);
   box-shadow:
@@ -2995,20 +3286,23 @@ main#main > footer.home-footer {
 }
 
 .home-compare-panel-head {
-  padding: 1rem 0.65rem;
-  font-size: 0.9375rem;
+  padding: 1.1rem 0.75rem;
+  font-size: var(--home-font-body);
   font-weight: 700;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.35;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(0, 0, 0, 0.08);
 }
 
 .home-compare-panel--ours .home-compare-panel-head {
-  padding: 1.15rem 0.75rem;
-  font-size: 1.0625rem;
+  padding: 1.2rem 0.85rem;
+  font-size: var(--home-font-subtitle);
+  font-weight: 800;
+  color: #fff;
   border-bottom-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.35) 0%, rgba(255, 255, 255, 0.1) 100%);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.2);
 }
 
 .home-compare-panel-row {
@@ -3017,8 +3311,8 @@ main#main > footer.home-footer {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  min-height: 4.35rem;
-  padding: 0.75rem 0.65rem;
+  min-height: calc(4.75rem + var(--compare-row-extra-h));
+  padding: 0.85rem 0.75rem;
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
@@ -3030,39 +3324,45 @@ main#main > footer.home-footer {
 
 .home-compare-panel--labels .home-compare-panel-row,
 .home-compare-panel--vendor .home-compare-panel-row {
-  min-height: 4.1rem;
+  min-height: calc(4.35rem + var(--compare-row-extra-h) - var(--compare-side-row-reduce-h));
+  padding: 0.6rem 0.45rem;
 }
 
 .home-compare-panel--labels .home-compare-panel-row {
-  font-size: 0.75rem;
+  font-size: var(--home-font-body-sm);
   font-weight: 600;
-  line-height: 1.35;
-  padding-inline: 0.35rem;
+  line-height: 1.4;
+  padding-inline: 0.4rem;
 }
 
 .home-compare-panel--labels .home-compare-panel-head,
 .home-compare-panel--vendor .home-compare-panel-head {
-  padding: 0.85rem 0.45rem;
-  font-size: 0.8125rem;
-}
-
-.home-compare-panel--ours .home-compare-panel-row,
-.home-compare-panel--vendor .home-compare-panel-row {
-  flex-direction: row;
+  padding: 0.75rem 0.5rem;
+  font-size: var(--home-font-body);
+  min-height: 2.75rem;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  text-align: left;
-  gap: 0.4rem;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .home-compare-panel--ours .home-compare-panel-row {
-  padding: 0.85rem 0.75rem;
-  min-height: 4.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.55rem;
+  padding: 0.85rem 0.65rem;
+  min-height: calc(4.5rem + var(--compare-row-extra-h));
   border-bottom-color: rgba(255, 255, 255, 0.16);
 }
 
 .home-compare-panel--vendor .home-compare-panel-row {
-  padding: 0.75rem 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
 }
 
 .home-compare-panel-row--emph .home-compare-text {
@@ -3070,20 +3370,34 @@ main#main > footer.home-footer {
 }
 
 .home-compare-text {
-  font-size: 0.75rem;
-  line-height: 1.45;
+  font-size: var(--home-font-body-sm);
+  line-height: 1.5;
   opacity: 0.96;
 }
 
-.home-compare-panel--ours .home-compare-text,
-.home-compare-panel--vendor .home-compare-text {
-  flex: 1;
-  font-size: 0.75rem;
+.home-compare-panel--ours .home-compare-text {
+  width: 100%;
+  max-width: 100%;
+  font-size: var(--home-font-body);
+  line-height: 1.45;
   text-align: center;
 }
 
-.home-compare-panel--ours .home-compare-text {
-  font-size: 0.875rem;
+.home-compare-panel--vendor .home-compare-text {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: calc(100% - 1.85rem);
+  font-size: var(--home-font-body-sm);
+  line-height: 1.45;
+  text-align: center;
+}
+
+.home-compare-panel--ours .home-compare-mark {
+  margin-top: 0.1rem;
+}
+
+.home-compare-panel--vendor .home-compare-mark {
+  margin-top: 0;
 }
 
 .home-compare-mark {
@@ -3117,18 +3431,10 @@ main#main > footer.home-footer {
   opacity: 0.85;
 }
 
-.home-compare-footnote {
-  margin: 1rem 0 0;
-  padding: 0 0.25rem;
-  font-size: 0.75rem;
-  color: var(--muted-2);
-  line-height: 1.55;
-  text-align: center;
-}
-
 @media (min-width: 900px) {
   .home-compare-wrap {
-    padding: 2rem 1.5rem 1.65rem;
+    --compare-ours-lift: 28px;
+    padding: var(--compare-ours-lift) 0;
   }
 
   .home-compare-stage {
@@ -3136,25 +3442,29 @@ main#main > footer.home-footer {
   }
 
   .home-compare-panel--ours {
-    margin-block: -18px;
+    margin-block: calc(-1 * var(--compare-ours-lift));
   }
 
   .home-compare-panel-row {
-    min-height: 4.6rem;
+    min-height: calc(4.6rem + var(--compare-row-extra-h));
   }
 
-  .home-compare-footnote {
-    text-align: left;
+  .home-compare-panel--labels .home-compare-panel-row,
+  .home-compare-panel--vendor .home-compare-panel-row {
+    min-height: calc(4.6rem + var(--compare-row-extra-h) - var(--compare-side-row-reduce-h));
   }
+
+  .home-compare-panel--ours .home-compare-panel-row {
+    min-height: calc(4.5rem + var(--compare-row-extra-h));
+  }
+
 }
 
 @media (max-width: 767px) {
   .home-compare-wrap {
-    margin-inline: calc(-1 * var(--page-gutter, 1rem));
-    padding: 1.25rem 0.5rem 1rem;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+    --compare-ours-lift: 16px;
+    margin-inline: 0;
+    padding-block: var(--compare-ours-lift);
   }
 
   .home-compare-stage {
@@ -3167,203 +3477,30 @@ main#main > footer.home-footer {
 
   .home-compare-panel {
     flex: 0 0 auto;
-    width: 7.75rem;
+    width: calc(7.75rem + 10px);
   }
 
   .home-compare-panel--ours {
-    width: 13.25rem;
-    margin-block: -10px;
+    width: calc(12rem - 10px);
+    max-width: calc(12rem - 10px);
+    margin-block: calc(-1 * var(--compare-ours-lift));
+    z-index: 3;
   }
 
   .home-compare-panel--labels,
   .home-compare-panel--vendor {
-    width: 7.75rem;
+    width: calc(8.75rem + 10px);
+    min-width: calc(8.75rem + 10px);
     max-width: none;
   }
 }
 
-/* 架构 */
-.home-arch {
-  display: grid;
-  gap: 1.5rem;
-  align-items: start;
-}
-
-@media (min-width: 900px) {
-  .home-arch {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.home-arch-diagram {
-  padding: 1.25rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  font-size: 0.8125rem;
-}
-
-.home-arch-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 0.75rem;
-  margin-bottom: 0.5rem;
-  border-radius: var(--radius);
-  background: var(--surface-2);
-  font-weight: 600;
-  color: var(--text);
-}
-
-.home-arch-row:last-child {
-  margin-bottom: 0;
-}
-
-.home-arch-arrow {
-  text-align: center;
-  color: var(--muted-2);
-  font-size: 0.75rem;
-  padding: 0.15rem 0;
-}
-
-.home-arch-note {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.home-arch-note strong {
-  color: var(--text);
-}
-
-.home-arch-highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.35rem;
-}
-
-@media (max-width: 640px) {
-  .home-arch-highlights {
-    grid-template-columns: 1fr;
-  }
-}
-
-.home-arch-hl {
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-size: 0.8125rem;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.home-arch-hl strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-size: 0.8125rem;
-  color: var(--text);
-}
-
-/* 优惠 */
-.home-promo-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .home-promo-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.home-promo {
-  padding: 1.75rem 1.5rem;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.06) 100%);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.home-promo--slate {
-  background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
-  border-color: var(--border-strong);
-}
-
-.home-promo h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.home-promo p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: var(--muted);
-}
-
-.home-promo-badge {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  background: var(--blue);
-  color: #fff;
-}
-
-/* 咨询表单 */
-.home-form {
-  max-width: 32rem;
-}
-
-.home-form-row {
-  margin-bottom: 1rem;
-}
-
-.home-form-row label {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.home-form-row input,
-.home-form-row textarea {
-  width: 100%;
-  padding: 0.55rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-family: inherit;
-  font-size: 0.9375rem;
-}
-
-.home-form-row textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.home-form-row input:focus,
-.home-form-row textarea:focus {
-  outline: none;
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px var(--blue-ring);
-}
-
 /* 页脚简化 */
 .home-footer {
-  border-top: 1px solid var(--border);
+  border-top: none;
   padding: 2rem 0;
   background: var(--surface);
-  font-size: 0.8125rem;
+  font-size: var(--home-font-caption);
   color: var(--muted);
 }
 
@@ -3386,7 +3523,7 @@ main#main > footer.home-footer {
 
 .home-footer h4 {
   margin: 0 0 0.5rem;
-  font-size: 0.75rem;
+  font-size: var(--home-font-caption);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -3412,10 +3549,10 @@ main#main > footer.home-footer {
 .home-footer-bottom {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
+  border-top: none;
   text-align: center;
   color: var(--muted-2);
-  font-size: 0.75rem;
+  font-size: var(--home-font-caption);
 }
 
 .home-footer .home-shell {
