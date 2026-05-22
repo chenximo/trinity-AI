@@ -236,6 +236,9 @@ onUnmounted(() => {
         <div class="home-nav-dd-panel" role="menu">
           <a href="#cloud" role="menuitem">AI 云能力总览</a>
           <a href="#cloud-solutions" role="menuitem">多云对接与各云说明</a>
+          <a href="#why" role="menuitem">核心优势</a>
+          <a href="#benefits" role="menuitem">专属福利</a>
+          <a href="#process" role="menuitem">购买流程</a>
         </div>
       </div>
       <a href="/trinity-ai" class="home-nav-link">Trinity AI</a>
@@ -256,6 +259,9 @@ onUnmounted(() => {
     <span style="display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted-2); padding: 0.35rem 0">AI 云</span>
     <a href="#cloud">能力总览</a>
     <a href="#cloud-solutions">多云对接与各云说明</a>
+    <a href="#why">核心优势</a>
+    <a href="#benefits">专属福利</a>
+    <a href="#process">购买流程</a>
     <a href="/trinity-ai">Trinity AI</a>
     <button type="button" id="home-drawer-login">登录</button>
     <button type="button" id="home-drawer-register">注册</button>
@@ -285,39 +291,40 @@ onUnmounted(() => {
     <div class="home-banner-inner home-shell">
       <div class="home-hero-grid">
         <div class="home-hero-left">
-          <p class="home-eyebrow"><span class="home-eyebrow-dot" aria-hidden="true"></span> 企业级多云 AI 算力与服务</p>
+          <p class="home-eyebrow"><span class="home-eyebrow-dot" aria-hidden="true"></span> 云资源集采整合 · 一站式多云采购与管理</p>
           <h1><em>Trinity AI 云</em></h1>
           <p class="home-banner-sub">
-            纳管阿里云、腾讯云、华为云、AWS、Google Cloud 等主流公有云账号与 GPU / 推理资源池，提供算力编排、弹性配额、成本分账与合规审计能力，助力企业专注上云与用算力。
+            一站式多云采购与管理，覆盖阿里云、腾讯云、华为云、AWS、Google Cloud 等主流公有云，提供渠道优惠价、上云方案咨询与 7×24 技术支持，助力企业降低上云成本、提升业务效率。依托集团体量议价，企业零门槛享大客户级折扣、灵活账期与统一账单；仅收透明服务费，不赚差价。
           </p>
           <div class="home-banner-cta">
             <a href="#consult" class="btn btn-gradient">立即咨询</a>
-            <a href="#promo" class="home-btn-outline-light">查看折扣</a>
+            <a href="#why" class="home-btn-outline-light">核心优势与降本</a>
             <a href="#cloud-solutions" class="btn">云产品说明</a>
           </div>
           <div class="home-hero-stats" aria-label="平台关键指标">
-            <div class="home-stat-chip"><b>12+</b><span>公有云区域接入</span></div>
-            <div class="home-stat-chip"><b>99.95%</b><span>算力池可用性目标</span></div>
-            <div class="home-stat-chip"><b>5K+</b><span>GPU 卡时 / 日</span></div>
-            <div class="home-stat-chip"><b>8</b><span>自建与托管地域节点</span></div>
+            <div class="home-stat-chip home-stat-chip--accent"><b>20%–40%</b><span>云成本典型节省</span></div>
+            <div class="home-stat-chip"><b>5+</b><span>主流云厂商集采</span></div>
+            <div class="home-stat-chip"><b>三零</b><span>门槛 · 保底 · 业绩</span></div>
+            <div class="home-stat-chip"><b>7×24</b><span>原厂级技术支持</span></div>
           </div>
+          <p class="home-banner-footnote">典型节省区间为历史客户参考值，具体以商务合同为准。</p>
           <div class="home-hero-pills" aria-label="能力标签">
-            <span class="home-pill">多云账号纳管</span>
-            <span class="home-pill">GPU 弹性配额</span>
-            <span class="home-pill">专线 / VPC 互联</span>
-            <span class="home-pill">账单分账与审计</span>
+            <span class="home-pill">顶级折扣共享</span>
+            <span class="home-pill">灵活授信账期</span>
+            <span class="home-pill">统一账单管理</span>
+            <span class="home-pill">上云方案咨询</span>
           </div>
         </div>
         <div class="home-hero-right">
           <div class="home-preview-card" aria-hidden="true">
             <div class="home-preview-head">
-              <span>云控制台 · 账号与账单</span>
-              <span class="home-preview-badge">账单日更</span>
+              <span>云控制台 · 集采账单</span>
+              <span class="home-preview-badge">透明对账</span>
             </div>
             <div class="home-preview-body">
               <div class="home-preview-kpis">
                 <div class="home-preview-kpi"><div class="v">6</div><div class="l">已纳管主账号</div></div>
-                <div class="home-preview-kpi"><div class="v">¥42.8w</div><div class="l">本月预估消费</div></div>
+                <div class="home-preview-kpi home-preview-kpi--save"><div class="v">≈32%</div><div class="l">较直销预估节省</div></div>
                 <div class="home-preview-kpi"><div class="v">2</div><div class="l">待对账项</div></div>
               </div>
               <div class="home-preview-chart" aria-hidden="true">
@@ -352,20 +359,24 @@ onUnmounted(() => {
     <div class="home-overlap-inner">
       <div class="home-overlap-grid">
         <a class="home-overlap-item" href="#cloud-solutions">
-          <strong>各云对接说明</strong>
-          <span>主流公有云按标签查看对接能力与交付边界</span>
+          <strong>主流云厂商</strong>
+          <span>阿里云、腾讯云、华为云、AWS、GCP 全覆盖</span>
         </a>
-        <a class="home-overlap-item" href="#arch">
-          <strong>架构与合规</strong>
-          <span>接入、编排、成本与审计分层设计</span>
+        <a class="home-overlap-item" href="#why">
+          <strong>为什么选择我们</strong>
+          <span>四大核心优势，降低企业上云成本</span>
         </a>
-        <a class="home-overlap-item" href="#promo">
-          <strong>商务折扣</strong>
-          <span>算力券与年度框架</span>
+        <a class="home-overlap-item" href="#benefits">
+          <strong>专属福利</strong>
+          <span>渠道优惠、灵活账期、原厂技术支持</span>
+        </a>
+        <a class="home-overlap-item" href="#process">
+          <strong>优惠合作流程</strong>
+          <span>五步闭环，从咨询到售后全程护航</span>
         </a>
         <a class="home-overlap-item" href="#consult">
-          <strong>上云与交付</strong>
-          <span>迁移评估、网络规划与专人交付</span>
+          <strong>获取专属咨询</strong>
+          <span>留下联系方式，1～2 个工作日内回复</span>
         </a>
       </div>
     </div>
@@ -661,6 +672,283 @@ onUnmounted(() => {
     </div>
   </section>
 
+  <section class="home-section is-tight-top" id="why" aria-labelledby="why-h">
+    <div class="home-shell home-why-shell">
+      <header class="home-why-intro">
+        <h2 id="why-h">为什么选择 Trinity AI 云</h2>
+        <p class="home-section-lead">
+          云资源<strong>集采整合方</strong>：以集团体量向主流云厂商议价，共享顶级折扣、授信账期与上云服务；企业零门槛采购，专注业务增长。
+        </p>
+      </header>
+
+      <div class="home-why-highlight" aria-label="降本亮点">
+        <div class="home-why-highlight-main">
+          <b>20%–40%</b>
+          <span>企业云成本典型节省</span>
+        </div>
+        <p class="home-why-highlight-note">按实际云消费 + 透明服务费 · 无隐形消费 · 不赚差价（具体以商务合同为准）</p>
+      </div>
+
+      <div class="home-why-metrics" aria-label="核心数据">
+        <div class="home-why-metric home-why-metric--accent">
+          <b>2折起</b><span>VIP 级折扣</span>
+        </div>
+        <div class="home-why-metric">
+          <b>三零</b><span>门槛 · 保底 · 业绩</span>
+        </div>
+        <div class="home-why-metric">
+          <b>5+</b><span>主流云集采</span>
+        </div>
+        <div class="home-why-metric">
+          <b>7×24</b><span>专属技术支持</span>
+        </div>
+      </div>
+
+      <div class="home-why-block">
+        <h3 class="home-why-block-title">我们的核心模式</h3>
+        <p class="home-why-block-desc">连接云厂商与企业客户，集采议价、账单协同与合规保障一站完成。</p>
+        <div class="home-why-model" aria-label="核心模式">
+          <article class="home-why-model-card">
+            <span class="home-why-model-num" aria-hidden="true">01</span>
+            <h4>集团集采</h4>
+            <p>以集团大客户身份统一向云厂商集采，争取行业顶级折扣，同等资源更低成本。</p>
+          </article>
+          <article class="home-why-model-card">
+            <span class="home-why-model-num" aria-hidden="true">02</span>
+            <h4>共享折扣</h4>
+            <p>挂靠集采架构即享大客户价、授信账期与灵活付款，缓解资金压力。</p>
+          </article>
+          <article class="home-why-model-card">
+            <span class="home-why-model-num" aria-hidden="true">03</span>
+            <h4>简单计费</h4>
+            <p>按实际云消费量计费，另加透明固定服务费，成本清晰可控。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="home-why-block">
+        <h3 class="home-why-block-title">四大核心优势</h3>
+        <div class="home-why-advantages">
+          <article class="home-why-adv">
+            <div class="home-why-adv-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <h4>资源优势</h4>
+              <p>覆盖国内外主流云，节点灵活可选，满足出海与国内一站式部署。</p>
+            </div>
+          </article>
+          <article class="home-why-adv">
+            <div class="home-why-adv-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <h4>商务优势</h4>
+              <p><strong>最低 2 折起</strong>，VIP 级优惠；<strong>无保底、无门槛</strong>，按需使用。</p>
+            </div>
+          </article>
+          <article class="home-why-adv">
+            <div class="home-why-adv-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div>
+              <h4>增值服务（免费）</h4>
+              <p>上云咨询、架构设计、资源选型与多云成本统一管控。</p>
+            </div>
+          </article>
+          <article class="home-why-adv">
+            <div class="home-why-adv-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>技术支持</h4>
+              <p><strong>VIP 专属团队</strong>，优先响应，7×24 运维保障。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="home-why-block home-why-block--values">
+        <h3 class="home-why-block-title">合作带来的核心价值</h3>
+        <ul class="home-why-values" aria-label="客户收益">
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">01</span>
+            <div>
+              <strong>云成本立省 20%–40%</strong>
+              <span>降低 IT 运营支出，减少资源浪费</span>
+            </div>
+          </li>
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">02</span>
+            <div>
+              <strong>零门槛享大客户折扣</strong>
+              <span>无需年框与保底，灵活按需采购</span>
+            </div>
+          </li>
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">03</span>
+            <div>
+              <strong>共享集团授信账期</strong>
+              <span>缓解现金流压力，提升周转效率</span>
+            </div>
+          </li>
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">04</span>
+            <div>
+              <strong>免费增值服务</strong>
+              <span>咨询、架构优化与持续成本建议</span>
+            </div>
+          </li>
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">05</span>
+            <div>
+              <strong>VIP 技术支持</strong>
+              <span>专属通道，更快更专业的保障</span>
+            </div>
+          </li>
+          <li class="home-why-value-item">
+            <span class="home-why-value-num">06</span>
+            <div>
+              <strong>一站式多云管理</strong>
+              <span>统一入口，团队聚焦核心业务</span>
+            </div>
+          </li>
+        </ul>
+        <p class="home-why-disclaimer">典型节省区间为参考值，具体权益以商务合同为准。</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="home-section" id="benefits" aria-labelledby="benefits-h">
+    <div class="home-shell">
+      <h2 id="benefits-h">专属福利</h2>
+      <p class="home-section-lead">同样的云厂商与官网资源，通过 Trinity AI 云集采采购可获得更多商务与增值服务；下表为「我们的服务」与「厂商直销」对照。</p>
+      <div class="home-compare-wrap">
+        <div class="home-compare-stage" role="table" aria-label="专属福利服务对比">
+          <div class="home-compare-panel home-compare-panel--labels" role="rowgroup">
+            <div class="home-compare-panel-head" role="columnheader">服务项目</div>
+            <div class="home-compare-panel-row" role="rowheader">云服务购买</div>
+            <div class="home-compare-panel-row" role="rowheader">合同与发票</div>
+            <div class="home-compare-panel-row" role="rowheader">云服务价格</div>
+            <div class="home-compare-panel-row" role="rowheader">配置推荐与报价</div>
+            <div class="home-compare-panel-row" role="rowheader">技术支持服务</div>
+            <div class="home-compare-panel-row" role="rowheader">售后服务</div>
+            <div class="home-compare-panel-row" role="rowheader">增值服务</div>
+          </div>
+          <div class="home-compare-panel home-compare-panel--ours" role="rowgroup">
+            <div class="home-compare-panel-head" role="columnheader">Trinity AI 云</div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">厂商官网资源，集采渠道代购</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">统一账单 / 灵活开票或多抬头</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row home-compare-panel-row--emph" role="cell">
+              <span class="home-compare-text">官网价格 + 额外优惠 + 折扣返点</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">架构师免费推荐配置，择优最大优惠</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">1v1 VIP 专属客服售后服务</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">开户、续费与对账全程专人跟进</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">免费上云咨询、架构设计、多云成本统一管控</span>
+              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="home-compare-panel home-compare-panel--vendor" role="rowgroup">
+            <div class="home-compare-panel-head" role="columnheader">厂商直销</div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">厂商官网自行购买</span>
+              <span class="home-compare-mark home-compare-mark--ring-ok" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">厂商官网申请发票</span>
+              <span class="home-compare-mark home-compare-mark--ring-ok" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">官网价格</span>
+              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">无</span>
+              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">工单服务</span>
+              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">工单服务</span>
+              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            </div>
+            <div class="home-compare-panel-row" role="cell">
+              <span class="home-compare-text">无</span>
+              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="home-compare-footnote">云服务购买与发票流程与厂商官网一致；差异主要体现在价格优惠、配置推荐、专属支持与免费增值服务。</p>
+    </div>
+  </section>
+
+  <section class="home-section alt" id="process" aria-labelledby="process-h">
+    <div class="home-shell home-process">
+      <h2 id="process-h">优惠合作流程</h2>
+      <p class="home-section-lead">五步闭环流程，从商务咨询到售后支持，全程专人跟进。</p>
+      <div class="home-process-steps" aria-label="购买流程">
+        <div class="home-process-step">
+          <div class="home-process-num">1</div>
+          <div class="home-process-label">咨询商务<br/>优惠规则</div>
+        </div>
+        <div class="home-process-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="home-process-step">
+          <div class="home-process-num">2</div>
+          <div class="home-process-label">合约 +<br/>厂商账号配置</div>
+        </div>
+        <div class="home-process-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="home-process-step">
+          <div class="home-process-num">3</div>
+          <div class="home-process-label">选择对应<br/>云服务</div>
+        </div>
+        <div class="home-process-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="home-process-step">
+          <div class="home-process-num">4</div>
+          <div class="home-process-label">支付订单<br/>（对公/代付）</div>
+        </div>
+        <div class="home-process-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="home-process-step">
+          <div class="home-process-num">5</div>
+          <div class="home-process-label">售后专家<br/>支持</div>
+        </div>
+      </div>
+      <div class="home-process-cta">
+        <a href="#consult" class="btn btn-gradient">联系在线客服，获取上云优惠</a>
+      </div>
+    </div>
+  </section>
+
   <section class="home-section is-tight-top" id="cloud" aria-labelledby="cloud-h">
     <div class="home-shell">
       <h2 id="cloud-h">AI 云服务</h2>
@@ -779,25 +1067,47 @@ onUnmounted(() => {
     <div class="home-shell">
       <h2 id="consult-h">获取专属咨询</h2>
       <p class="home-section-lead">留下联系方式，我们将在 1～2 个工作日内与您沟通方案与报价。</p>
-      <form class="home-form" id="home-consult-form">
-        <div class="home-form-row">
-          <label for="c-name">姓名</label>
-          <input id="c-name" type="text" name="name" autocomplete="name" placeholder="您的称呼" />
+      <div class="home-arch">
+        <form class="home-form home-arch-diagram" id="home-consult-form">
+          <div class="home-form-row">
+            <label for="c-name">姓名</label>
+            <input id="c-name" type="text" name="name" autocomplete="name" placeholder="您的称呼" />
+          </div>
+          <div class="home-form-row">
+            <label for="c-email">工作邮箱</label>
+            <input id="c-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" />
+          </div>
+          <div class="home-form-row">
+            <label for="c-phone">联系电话</label>
+            <input id="c-phone" type="tel" name="phone" autocomplete="tel" placeholder="选填" />
+          </div>
+          <div class="home-form-row">
+            <label for="c-co">公司 / 团队</label>
+            <input id="c-co" type="text" name="company" autocomplete="organization" placeholder="选填" />
+          </div>
+          <div class="home-form-row">
+            <label for="c-msg">需求简述</label>
+            <textarea id="c-msg" name="message" placeholder="例如：目标地域、GPU 型号与卡数、峰值并发、合规等级、是否需专线等"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gradient" style="margin-top: 0.25rem">提交咨询</button>
+        </form>
+        <div>
+          <div class="home-arch-highlights">
+            <div class="home-arch-hl">
+              <strong>电话咨询</strong>
+              400-xxx-xxxx<br/>工作日 9:00-18:00
+            </div>
+            <div class="home-arch-hl">
+              <strong>商务邮箱</strong>
+              contact@trinity.ai<br/>24 小时内回复
+            </div>
+            <div class="home-arch-hl">
+              <strong>公司地址</strong>
+              北京市xxx区xxx路xxx号<br/>欢迎预约到访
+            </div>
+          </div>
         </div>
-        <div class="home-form-row">
-          <label for="c-email">工作邮箱</label>
-          <input id="c-email" type="email" name="email" autocomplete="email" placeholder="name@company.com" />
-        </div>
-        <div class="home-form-row">
-          <label for="c-co">公司 / 团队</label>
-          <input id="c-co" type="text" name="company" autocomplete="organization" placeholder="选填" />
-        </div>
-        <div class="home-form-row">
-          <label for="c-msg">需求简述</label>
-          <textarea id="c-msg" name="message" placeholder="例如：目标地域、GPU 型号与卡数、峰值并发、合规等级、是否需专线等"></textarea>
-        </div>
-        <button type="submit" class="btn btn-gradient" style="margin-top: 0.25rem">提交咨询</button>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -812,6 +1122,9 @@ onUnmounted(() => {
         <ul>
           <li><a href="#cloud">AI 云能力</a></li>
           <li><a href="#cloud-solutions">多云对接与各云说明</a></li>
+          <li><a href="#why">核心优势</a></li>
+          <li><a href="#benefits">专属福利</a></li>
+          <li><a href="#process">购买流程</a></li>
           <li><a href="#arch">架构与合规</a></li>
           <li><a href="#promo">折扣活动</a></li>
           <li><a href="#consult">咨询与报价</a></li>
@@ -1256,6 +1569,22 @@ main#main > footer.home-footer {
   }
 }
 
+.home-banner-footnote {
+  margin: -0.35rem 0 1rem;
+  max-width: 38rem;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .home-banner-footnote {
+    text-align: left;
+    margin-left: 0;
+  }
+}
+
 .home-banner-cta {
   display: flex;
   flex-wrap: wrap;
@@ -1315,6 +1644,15 @@ main#main > footer.home-footer {
   color: var(--muted-2);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.home-stat-chip--accent {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+.home-stat-chip--accent b {
+  color: var(--blue);
 }
 
 .home-hero-pills {
@@ -1406,6 +1744,15 @@ main#main > footer.home-footer {
   font-size: 0.625rem;
   color: var(--muted-2);
   margin-top: 0.1rem;
+}
+
+.home-preview-kpi--save {
+  border-color: rgba(4, 120, 87, 0.25);
+  background: #ecfdf5;
+}
+
+.home-preview-kpi--save .v {
+  color: #047857;
 }
 
 /* 首屏预览卡：账单 / 消费示意（非资源拓扑） */
@@ -1538,9 +1885,15 @@ main#main > footer.home-footer {
   gap: 0.85rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 640px) {
   .home-overlap-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-overlap-grid {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -1997,6 +2350,836 @@ main#main > footer.home-footer {
   font-size: 0.875rem;
   color: var(--muted);
   line-height: 1.55;
+}
+
+/* —— 为什么选择 —— */
+.home-why-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.home-why-intro .home-section-lead {
+  margin-bottom: 0;
+  max-width: 40rem;
+}
+
+.home-why-highlight {
+  width: 100%;
+  max-width: var(--home-max);
+  margin: 0 auto 1.15rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #047857 0%, #059669 55%, #10b981 100%);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(4, 120, 87, 0.22);
+  box-sizing: border-box;
+}
+
+.home-why-highlight-main b {
+  display: block;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.home-why-highlight-main span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.home-why-highlight-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.home-why-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  max-width: var(--home-max);
+  margin: 0 auto 0.25rem;
+}
+
+@media (min-width: 720px) {
+  .home-why-metrics {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+.home-why-metric {
+  padding: 1.25rem 1rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.06) 0%, rgba(37, 99, 235, 0.02) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-why-metric:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.12);
+}
+
+.home-why-metric--accent {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.08) 0%, var(--surface) 100%);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.home-why-metric b {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.home-why-metric span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.home-why-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-why-block-title {
+  margin: 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--blue);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.home-why-block-desc {
+  margin: -0.35rem 0 0;
+  padding-left: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.home-why-model {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .home-why-model {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.home-why-model-card {
+  position: relative;
+  padding: 1.15rem 1rem 1.1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-why-model-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(90deg, var(--blue) 0%, #60a5fa 100%);
+}
+
+.home-why-model-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.1);
+}
+
+.home-why-model-num {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.55rem;
+  border-radius: 50%;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--blue);
+}
+
+.home-why-model-card h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.home-why-model-card p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.home-why-advantages {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .home-why-advantages {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+.home-why-adv {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 0.9rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-why-adv:hover {
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.home-why-adv-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+}
+
+.home-why-adv h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.home-why-adv p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.home-why-adv p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.home-why-block--values {
+  padding: 1.25rem 1.15rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+}
+
+.home-why-values {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .home-why-values {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-why-values {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-why-value-item {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius);
+  background: var(--bg);
+  border: 1px solid transparent;
+  transition: border-color 0.18s ease;
+}
+
+.home-why-value-item:hover {
+  border-color: var(--border);
+}
+
+.home-why-value-num {
+  flex-shrink: 0;
+  width: 1.5rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1.4;
+}
+
+.home-why-value-item strong {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.home-why-value-item span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.home-why-disclaimer {
+  margin: 0.75rem 0 0;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+  line-height: 1.45;
+}
+
+/* 架构 */
+.home-arch {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .home-arch {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.home-arch-diagram {
+  padding: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 0.8125rem;
+}
+
+.home-arch-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.home-arch-row:last-child {
+  margin-bottom: 0;
+}
+
+.home-arch-arrow {
+  text-align: center;
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  padding: 0.15rem 0;
+}
+
+.home-arch-note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.home-arch-note strong {
+  color: var(--text);
+}
+
+.home-arch-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+@media (max-width: 640px) {
+  .home-arch-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-arch-hl {
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.home-arch-hl strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--text);
+}
+
+/* 优惠 */
+.home-promo-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .home-promo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.home-promo {
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.06) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.home-promo--slate {
+  background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
+  border-color: var(--border-strong);
+}
+
+.home-promo h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.home-promo p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.home-promo-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: var(--blue);
+  color: #fff;
+}
+
+/* 咨询表单 */
+.home-form {
+  max-width: 32rem;
+}
+
+.home-form-row {
+  margin-bottom: 1rem;
+}
+
+.home-form-row label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.home-form-row input,
+.home-form-row textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.home-form-row textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.home-form-row input:focus,
+.home-form-row textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+/* —— 优惠购买流程 —— */
+.home-process {
+  text-align: center;
+}
+
+.home-process-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1.25rem;
+  flex-wrap: wrap;
+}
+
+.home-process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 7rem;
+  max-width: 9rem;
+  flex: 1;
+}
+
+.home-process-num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue-soft);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 2px solid var(--blue);
+}
+
+.home-process-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.home-process-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  color: var(--muted-2);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .home-process-steps {
+    gap: 0.35rem;
+  }
+  .home-process-step {
+    min-width: 5.5rem;
+    max-width: 7rem;
+  }
+  .home-process-num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+  }
+  .home-process-label {
+    font-size: 0.75rem;
+  }
+}
+
+.home-process-cta {
+  margin-top: 0.5rem;
+}
+
+/* —— 专属福利：三栏面板对比（参考深蓝 + 中栏凸起） —— */
+.home-compare-wrap {
+  --compare-navy: #1e3358;
+  --compare-navy-deep: #162a47;
+  --compare-blue: #4a8ef5;
+  --compare-blue-mid: #3b7de8;
+  --compare-blue-deep: #2f6fd4;
+  margin-top: 0.75rem;
+  padding: 1.75rem 1rem 1.5rem;
+  border-radius: 20px;
+  background: #e9eef5;
+  border: 1px solid #d8e0ec;
+}
+
+.home-compare-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  max-width: 58rem;
+  margin: 0 auto;
+}
+
+.home-compare-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.home-compare-panel--labels,
+.home-compare-panel--vendor {
+  background: linear-gradient(180deg, var(--compare-navy) 0%, var(--compare-navy-deep) 100%);
+  box-shadow: 0 8px 24px rgba(22, 42, 71, 0.28);
+}
+
+.home-compare-panel--labels,
+.home-compare-panel--vendor {
+  flex: 0 0 20%;
+  max-width: 9.25rem;
+  min-width: 7.5rem;
+}
+
+.home-compare-panel--labels {
+  margin-right: -20px;
+  border-radius: 18px 0 0 18px;
+}
+
+.home-compare-panel--vendor {
+  margin-left: -20px;
+  border-radius: 0 18px 18px 0;
+}
+
+.home-compare-panel--ours {
+  flex: 1 1 52%;
+  min-width: 14rem;
+  max-width: 26rem;
+  z-index: 2;
+  margin-block: -14px;
+  border-radius: 20px;
+  background: linear-gradient(165deg, #5ca3ff 0%, var(--compare-blue) 28%, var(--compare-blue-mid) 55%, var(--compare-blue-deep) 100%);
+  box-shadow:
+    0 22px 48px rgba(47, 111, 212, 0.45),
+    0 8px 16px rgba(30, 64, 120, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.home-compare-panel-head {
+  padding: 1rem 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.home-compare-panel--ours .home-compare-panel-head {
+  padding: 1.15rem 0.75rem;
+  font-size: 1.0625rem;
+  border-bottom-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.home-compare-panel-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 4.35rem;
+  padding: 0.75rem 0.65rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+
+.home-compare-panel-row:last-child {
+  border-bottom: none;
+}
+
+.home-compare-panel--labels .home-compare-panel-row,
+.home-compare-panel--vendor .home-compare-panel-row {
+  min-height: 4.1rem;
+}
+
+.home-compare-panel--labels .home-compare-panel-row {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  padding-inline: 0.35rem;
+}
+
+.home-compare-panel--labels .home-compare-panel-head,
+.home-compare-panel--vendor .home-compare-panel-head {
+  padding: 0.85rem 0.45rem;
+  font-size: 0.8125rem;
+}
+
+.home-compare-panel--ours .home-compare-panel-row,
+.home-compare-panel--vendor .home-compare-panel-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  gap: 0.4rem;
+}
+
+.home-compare-panel--ours .home-compare-panel-row {
+  padding: 0.85rem 0.75rem;
+  min-height: 4.5rem;
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+.home-compare-panel--vendor .home-compare-panel-row {
+  padding: 0.75rem 0.5rem;
+}
+
+.home-compare-panel-row--emph .home-compare-text {
+  font-weight: 600;
+}
+
+.home-compare-text {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  opacity: 0.96;
+}
+
+.home-compare-panel--ours .home-compare-text,
+.home-compare-panel--vendor .home-compare-text {
+  flex: 1;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.home-compare-panel--ours .home-compare-text {
+  font-size: 0.875rem;
+}
+
+.home-compare-mark {
+  flex-shrink: 0;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.8rem;
+}
+
+.home-compare-mark--yes {
+  background-color: #f5c518;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 12.5l4 4L18 8.5' stroke='%231e3a5f' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-compare-mark--ring-ok,
+.home-compare-mark--ring-no {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+.home-compare-mark--ring-ok {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 12.5l4 4L18 8.5' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.home-compare-mark--ring-no {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8 8l8 8M16 8l-8 8' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  opacity: 0.85;
+}
+
+.home-compare-footnote {
+  margin: 1rem 0 0;
+  padding: 0 0.25rem;
+  font-size: 0.75rem;
+  color: var(--muted-2);
+  line-height: 1.55;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .home-compare-wrap {
+    padding: 2rem 1.5rem 1.65rem;
+  }
+
+  .home-compare-stage {
+    gap: 0.65rem;
+  }
+
+  .home-compare-panel--ours {
+    margin-block: -18px;
+  }
+
+  .home-compare-panel-row {
+    min-height: 4.6rem;
+  }
+
+  .home-compare-footnote {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-compare-wrap {
+    margin-inline: calc(-1 * var(--page-gutter, 1rem));
+    padding: 1.25rem 0.5rem 1rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .home-compare-stage {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 0.35rem;
+    min-width: 100%;
+  }
+
+  .home-compare-panel {
+    flex: 0 0 auto;
+    width: 7.75rem;
+  }
+
+  .home-compare-panel--ours {
+    width: 13.25rem;
+    margin-block: -10px;
+  }
+
+  .home-compare-panel--labels,
+  .home-compare-panel--vendor {
+    width: 7.75rem;
+    max-width: none;
+  }
 }
 
 /* 架构 */

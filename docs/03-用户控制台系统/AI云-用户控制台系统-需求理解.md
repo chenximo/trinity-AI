@@ -369,7 +369,7 @@ src/views/
 - `apps/ai-cloud`：壳层 + `account/console` 五区；默认 `#accounts`；复用 `account.css`
 - `#accounts` §5.1、`#billing` §5.2 已按 `trinity-user-console` 落地
 - 门户：`/ai-cloud/account/console#accounts`
-- 官网：`HomePage.vue` 单文件（`npm run gen:home` 可从静态再生成）
+- 官网：`apps/ai-cloud/src/views/home/HomePage.vue` 单文件直接维护（HTML 已迁移至 Vue）
 
 **后续可选**
 
