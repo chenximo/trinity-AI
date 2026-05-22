@@ -30,11 +30,12 @@ Trinity 网关对错误采用 **OpenAI 风格 JSON 体**（`error.message`、`er
 
 ## 排查清单
 
-1. 确认 `base_url` 含 `/v1` 前缀且与 [快速开始](../quickstart.md) 一致。
+1. 确认 `TRINITY_BASE_URL` 含 `/v1` 前缀且与 [快速入门](../quickstart.md) 一致。
 2. 确认 `model` 为 `provider/model`。
 3. 记录响应头中的 `x-request-id`（若提供）并联系支持。
 
 ## 相关
 
-- [快速开始](../quickstart.md)
+- [快速入门](../quickstart.md)
 - [对话补全 API](../api/chat-completions.md)
+- [速率与限额](../guides/rate-limits.md)

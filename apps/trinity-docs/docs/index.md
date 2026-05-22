@@ -3,32 +3,32 @@ layout: home
 hero:
   name: Trinity AI
   text: API 文档
-  tagline: OpenAI 兼容网关 · provider/model 路由 · 流式 SSE 与标准错误体
+  tagline: HTTP API · 生文 · 生图 · 生视频 · OpenAI 兼容
   actions:
     - theme: brand
-      text: 快速开始
+      text: 快速入门
       link: /quickstart
     - theme: alt
-      text: 对话补全
-      link: /api/chat-completions
+      text: API 概述
+      link: /api/overview
 features:
-  - title: OpenAI 兼容
-    details: 将 base_url 指向 Trinity，沿用官方 SDK，仅替换 API Key。
-  - title: provider/model
-    details: 与 OpenRouter 相同的模型 slug 风格，例如 openai/gpt-4o。
+  - title: HTTP API
+    details: OpenAI 兼容 REST，Bearer 密钥 + 标准 JSON 请求体。
+  - title: 生文 / 生图 / 生视频
+    details: 对话补全、图像生成、视频生成（样例对齐 OpenRouter / OpenAI）。
   - title: 流式 SSE
-    details: stream:true 时 chunk 格式与 OpenAI 对齐，便于前端无感切换。
+    details: stream:true 时 chunk 格式与 OpenAI 对齐。
 ---
 
 ## 文档目录
 
 | 章节 | 说明 |
 | --- | --- |
-| [快速开始](./quickstart.md) | 密钥、环境变量、HTTP / SDK 示例 |
-| [对话补全](./api/chat-completions.md) | `POST /v1/chat/completions` |
-| [流式 SSE](./guides/streaming-sse.md) | Server-Sent Events |
-| [错误码](./reference/error-codes.md) | 网关与上游错误处理 |
+| [快速入门](./quickstart.md) · [管理 API 密钥](./manage-api-keys.md) | 接入与密钥 |
+| [模块](./modules.md) · [多模态](./multimodal/) | 产品能力树 |
+| [流式 SSE](./guides/streaming-sse.md) · [错误码](./reference/error-codes.md) | 闭环指南 / 参考 |
+| [API 概述](./api/overview.md) | 接口参考（API Tab） |
 
 ::: tip
-内容真源为 `apps/trinity-docs/docs/**/*.md`。版式参考 [OpenRouter 文档](https://openrouter.ai/docs/quickstart)；二期由运营后台 `admin-docs` 发布 Markdown 并触发构建。
+一期页面清单与验收闭环见工程文档 `docs/04-工程与迁移/Trinity文档站-一期MVP文档清单.md`。代码样例待产品校验后替换域名与字段。
 :::

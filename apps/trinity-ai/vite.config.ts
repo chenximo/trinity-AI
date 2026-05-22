@@ -12,6 +12,10 @@ const docsDevProxy = {
     changeOrigin: true,
     ws: true,
   },
+  "/__trinity_dev_docs": {
+    target: "http://127.0.0.1:5205",
+    changeOrigin: true,
+  },
 } as const;
 
 export default defineConfig({

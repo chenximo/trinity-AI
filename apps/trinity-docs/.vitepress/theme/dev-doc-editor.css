@@ -1,4 +1,4 @@
-/* 仅开发环境 · 文档页 Markdown 分栏编辑（左编右览，无 iframe） */
+/* 仅开发环境 · 文档页 Markdown 分栏编辑（左编 + 右实时预览） */
 
 .tdocs-dev-edit-trigger {
   position: fixed;
@@ -21,7 +21,6 @@
   background: var(--grad-hover);
 }
 
-/* 左侧固定编辑栏 */
 .tdocs-dev-editor-dock {
   position: fixed;
   left: 0;
@@ -102,7 +101,8 @@
   cursor: not-allowed;
 }
 
-.tdocs-dev-editor-pane__label {
+.tdocs-dev-editor-pane__label,
+.tdocs-dev-preview-pane__label {
   flex-shrink: 0;
   padding: 0.35rem 0.75rem;
   font-size: 0.6875rem;
@@ -144,11 +144,14 @@
   color: var(--danger);
 }
 
-/**
- * 编辑态：主内容区右移，右侧为真实 VitePress 预览（HMR 生效）
- */
+/* 右侧实时预览层 */
+.tdocs-dev-preview-wrap {
+  display: none;
+}
+
 html.tdocs-editing {
   --tdocs-editor-w: min(46vw, 40rem);
+  --tdocs-layout-top: calc(var(--vp-nav-height, 64px) + var(--tdocs-subnav-h, 3rem));
   overflow-x: hidden;
 }
 
@@ -160,71 +163,30 @@ html.tdocs-editing .VPSidebar {
   visibility: hidden;
 }
 
+/* 隐藏 VitePress 缓存正文，改用实时预览 */
 html.tdocs-editing .VPContent {
-  margin-left: var(--tdocs-editor-w) !important;
-  width: calc(100vw - var(--tdocs-editor-w)) !important;
-  max-width: calc(100vw - var(--tdocs-editor-w)) !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-html.tdocs-editing .VPDoc {
-  padding: 0 !important;
+html.tdocs-editing .tdocs-dev-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: var(--tdocs-layout-top);
+  right: 0;
+  bottom: 0;
+  left: var(--tdocs-editor-w);
+  z-index: 40;
+  background: var(--bg);
+  overflow: hidden;
 }
 
-html.tdocs-editing .VPDoc .container {
-  max-width: none !important;
-  margin: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-html.tdocs-editing .VPDoc .content,
-html.tdocs-editing .VPDoc .content-container {
-  max-width: none !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* 编辑预览时隐藏右侧「本页目录」，避免挤占宽度 */
-html.tdocs-editing .VPDoc .aside,
-html.tdocs-editing .VPDocAside {
-  display: none !important;
-}
-
-html.tdocs-editing .VPDoc.has-aside .content-container {
-  max-width: none !important;
-}
-
-html.tdocs-editing .VPDoc .container {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
-
-html.tdocs-editing .vp-doc {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* 取消 VP 代码块负边距，避免撑出横向滚动条 */
-html.tdocs-editing .vp-doc div[class*="language-"],
-html.tdocs-editing .vp-doc .vp-code-group .tabs {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-html.tdocs-editing .vp-doc .vp-code-group {
-  max-width: 100%;
-}
-
-html.tdocs-editing .vp-doc table {
-  display: block;
-  max-width: 100%;
-  overflow-x: auto;
+html.tdocs-editing .tdocs-dev-preview {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem 1.5rem 2rem;
+  max-width: var(--tdocs-content-max, 48rem);
 }
 
 html.tdocs-editing .tdocs-dev-edit-trigger {
@@ -244,10 +206,8 @@ html.tdocs-editing .tdocs-dev-edit-trigger {
     --tdocs-editor-w: 0px;
   }
 
-  html.tdocs-editing .VPContent {
-    margin-left: 0 !important;
-    margin-top: 52vh;
-    width: 100vw !important;
-    max-width: 100vw !important;
+  html.tdocs-editing .tdocs-dev-preview-wrap {
+    top: calc(52vh + var(--tdocs-layout-top));
+    left: 0;
   }
 }

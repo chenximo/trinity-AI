@@ -14,6 +14,11 @@ const docsDevProxy = {
     changeOrigin: true,
     ws: true,
   },
+  /** 开发文档编辑 API（旧路径兼容；新客户端走 /docs/__trinity_dev_docs） */
+  "/__trinity_dev_docs": {
+    target: "http://127.0.0.1:5205",
+    changeOrigin: true,
+  },
 } as const;
 
 export default defineConfig({

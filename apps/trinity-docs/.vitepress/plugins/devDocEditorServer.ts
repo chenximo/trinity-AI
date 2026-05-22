@@ -6,7 +6,13 @@ import { pageSlugToMdRel } from "../shared/docPath";
 
 const PLUGIN_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const DOCS_DIR = path.join(PLUGIN_ROOT, "docs");
-const API_PREFIX = "/__trinity_dev_docs";
+
+/** 与 VitePress `base` 一致；经 portal `/docs` 反代时 API 须在 base 下 */
+const SITE_BASE = (process.env.VITEPRESS_BASE ?? "/docs/").replace(/\/+$/, "");
+const API_PREFIXES = [
+  "/__trinity_dev_docs",
+  ...(SITE_BASE ? [`${SITE_BASE}/__trinity_dev_docs`] : []),
+];
 
 function isLocalhostHost(host: string | undefined): boolean {
   if (!host) return false;
@@ -23,6 +29,18 @@ export function resolveDocsMd(rel: string): string | null {
   return full;
 }
 
+function matchApiRoute(pathname: string): "raw" | "save" | null {
+  for (const prefix of API_PREFIXES) {
+    if (pathname === `${prefix}/raw`) return "raw";
+    if (pathname === `${prefix}/save`) return "save";
+  }
+  return null;
+}
+
+function matchesApi(pathname: string): boolean {
+  return API_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+}
+
 async function readRequestBody(req: Connect.IncomingMessage): Promise<string> {
   const chunks: Buffer[] = [];
   for await (const chunk of req) chunks.push(chunk as Buffer);
@@ -36,7 +54,9 @@ export function devDocEditorServer(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url ?? "";
-        if (!url.startsWith(API_PREFIX)) {
+        const pathname = new URL(url, "http://127.0.0.1").pathname;
+
+        if (!matchesApi(pathname)) {
           next();
           return;
         }
@@ -50,8 +70,9 @@ export function devDocEditorServer(): Plugin {
 
         try {
           const parsed = new URL(url, "http://127.0.0.1");
+          const route = matchApiRoute(parsed.pathname);
 
-          if (req.method === "GET" && parsed.pathname === `${API_PREFIX}/raw`) {
+          if (req.method === "GET" && route === "raw") {
             const relParam = parsed.searchParams.get("rel")?.trim();
             const pageParam = parsed.searchParams.get("page");
             const rel = relParam
@@ -84,22 +105,25 @@ export function devDocEditorServer(): Plugin {
             return;
           }
 
-          if (req.method === "POST" && parsed.pathname === `${API_PREFIX}/save`) {
+          if (req.method === "POST" && route === "save") {
             const body = JSON.parse(await readRequestBody(req)) as { rel?: string; content?: string };
             const rel = body.rel?.trim();
             const content = body.content;
             if (!rel || typeof content !== "string") {
               res.statusCode = 400;
-              res.end("Missing rel or content");
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "Missing rel or content" }));
               return;
             }
             const filePath = resolveDocsMd(rel);
             if (!filePath) {
               res.statusCode = 400;
-              res.end("Invalid rel");
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "Invalid rel", rel }));
               return;
             }
             await fs.writeFile(filePath, content, "utf-8");
+
             res.setHeader("Content-Type", "application/json; charset=utf-8");
             res.end(JSON.stringify({ ok: true, rel }));
             return;
@@ -109,8 +133,12 @@ export function devDocEditorServer(): Plugin {
           res.end("Not found");
         } catch (err) {
           res.statusCode = 500;
-          res.setHeader("Content-Type", "text/plain; charset=utf-8");
-          res.end(err instanceof Error ? err.message : "Server error");
+          res.setHeader("Content-Type", "application/json; charset=utf-8");
+          res.end(
+            JSON.stringify({
+              error: err instanceof Error ? err.message : "Server error",
+            }),
+          );
         }
       });
     },

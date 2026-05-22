@@ -1,14 +1,6 @@
-# 快速开始
+# 快速入门
 
-Trinity 提供 **OpenAI 兼容** 的统一 HTTP API：将 `base_url` 指向 Trinity 网关，沿用现有 OpenAI SDK，**仅替换 API Key** 即可访问多模型路由。
-
-根据集成深度，可选用以下方式：
-
-| 方式 | 适用场景 |
-| --- | --- |
-| **[HTTP API](#使用-http-api)** | 任意语言、零依赖、完全可控 |
-| **[OpenAI SDK](#使用-openai-sdk)** | 已有 OpenAI 客户端，改 `baseURL` 即可迁移 |
-| **[原生 fetch / curl](#使用-http-api)** | 脚本、边缘函数、快速验证 |
+Trinity 当前仅提供 **OpenAI 兼容的 HTTP API** 接入：向网关发送标准 REST 请求（如 `POST /v1/chat/completions`），在请求头携带 API Key 即可调用多模型路由。
 
 ::: tip
 模型标识使用 **`provider/model`** 格式（与 [OpenRouter](https://openrouter.ai/docs/quickstart) 一致），例如 `openai/gpt-4o`、`anthropic/claude-sonnet-4`。
@@ -27,42 +19,46 @@ Trinity 提供 **OpenAI 兼容** 的统一 HTTP API：将 `base_url` 指向 Trin
 请勿在公共仓库、前端 bundle 或日志中暴露完整密钥。
 :::
 
+也可参阅 [管理 API 密钥](./manage-api-keys.md)。
+
 ---
 
-## 使用 HTTP API
+## 2. 配置接入地址与密钥
 
-直接向 `POST /v1/chat/completions` 发送标准 JSON 请求，与 [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) 请求体一致。
-
-### 配置环境变量
+将网关 `base_url` 与密钥写入环境变量（域名以实际部署为准）：
 
 ::: code-group
 
 ```bash [Shell]
 export TRINITY_API_KEY="sk-trinity-..."
-export OPENAI_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinity.example/v1"
 ```
 
 ```typescript [TypeScript]
 process.env.TRINITY_API_KEY = "sk-trinity-...";
-process.env.OPENAI_BASE_URL = "https://api.trinity.example/v1";
+process.env.TRINITY_BASE_URL = "https://api.trinity.example/v1";
 ```
 
 ```python [Python]
 import os
 os.environ["TRINITY_API_KEY"] = "sk-trinity-..."
-os.environ["OPENAI_BASE_URL"] = "https://api.trinity.example/v1"
+os.environ["TRINITY_BASE_URL"] = "https://api.trinity.example/v1"
 ```
 
 :::
 
-### 发送首次请求
+---
+
+## 3. 发送首次 API 请求
+
+请求体与 [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) 保持一致。
 
 ::: code-group
 
 ```bash [Shell]
-curl "https://api.trinity.example/v1/chat/completions" \
+curl "${TRINITY_BASE_URL}/chat/completions" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $TRINITY_API_KEY" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
     "model": "openai/gpt-4o",
     "messages": [{ "role": "user", "content": "你好" }]
@@ -70,7 +66,7 @@ curl "https://api.trinity.example/v1/chat/completions" \
 ```
 
 ```typescript [TypeScript]
-const res = await fetch("https://api.trinity.example/v1/chat/completions", {
+const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -91,7 +87,7 @@ import os
 import requests
 
 response = requests.post(
-    url="https://api.trinity.example/v1/chat/completions",
+    url=f"{os.environ['TRINITY_BASE_URL']}/chat/completions",
     headers={
         "Authorization": f"Bearer {os.environ['TRINITY_API_KEY']}",
         "Content-Type": "application/json",
@@ -106,67 +102,7 @@ print(response.json()["choices"][0]["message"]["content"])
 
 :::
 
----
-
-## 使用 OpenAI SDK
-
-将官方 OpenAI SDK 的 `baseURL` 指向 Trinity，即可复用现有代码结构。
-
-安装依赖（示例）：
-
-::: code-group
-
-```bash [npm]
-npm install openai
-```
-
-```bash [pnpm]
-pnpm add openai
-```
-
-```bash [yarn]
-yarn add openai
-```
-
-:::
-
-::: code-group
-
-```typescript [TypeScript]
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  apiKey: process.env.TRINITY_API_KEY,
-  baseURL: "https://api.trinity.example/v1",
-});
-
-const completion = await client.chat.completions.create({
-  model: "openai/gpt-4o",
-  messages: [{ role: "user", content: "你好" }],
-});
-
-console.log(completion.choices[0]?.message?.content);
-```
-
-```python [Python]
-import os
-from openai import OpenAI
-
-client = OpenAI(
-    api_key=os.environ["TRINITY_API_KEY"],
-    base_url="https://api.trinity.example/v1",
-)
-
-completion = client.chat.completions.create(
-    model="openai/gpt-4o",
-    messages=[{"role": "user", "content": "你好"}],
-)
-print(completion.choices[0].message.content)
-```
-
-:::
-
-API 亦支持 `stream: true` 的 SSE，见 [流式 SSE](./guides/streaming-sse.md)。
+流式输出在请求体中设置 `"stream": true`，响应为 SSE，详见 [流式 SSE](./guides/streaming-sse.md)。
 
 ---
 
@@ -181,6 +117,10 @@ API 亦支持 `stream: true` 的 SSE，见 [流式 SSE](./guides/streaming-sse.m
 
 ## 下一步
 
-- [对话补全 API](./api/chat-completions.md)
-- [流式 SSE](./guides/streaming-sse.md)
-- [错误码](./reference/error-codes.md)
+| 能力 | 指南 | API |
+| --- | --- | --- |
+| 生文 | [流式输出](./guides/streaming-sse.md) | [对话补全](./api/chat-completions.md) |
+| 生图 | [生图](./guides/image-generation.md) | [图像生成](./api/images-generations.md) |
+| 生视频 | [生视频](./guides/video-generation.md) | [视频生成](./api/videos-generations.md) |
+
+- [API 概述](./api/overview.md) · [请求参数](./guides/request-parameters.md) · [错误与调试](./reference/error-codes.md)

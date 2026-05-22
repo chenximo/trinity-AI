@@ -11,6 +11,7 @@
     "@trinity/tokens": "*"
   },
   "devDependencies": {
+    "marked": "^15.0.12",
     "vitepress": "^1.6.3"
   }
 }
