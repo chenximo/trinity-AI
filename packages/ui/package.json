@@ -13,7 +13,9 @@
   "exports": {
     ".": "./src/index.ts",
     "./styles/ui-base.css": "./styles/ui-base.css",
-    "./styles/ui-kit.css": "./styles/ui-kit.css"
+    "./styles/ui-kit.css": "./styles/ui-kit.css",
+    "./styles/auth-signup-modal.css": "./styles/auth-signup-modal.css",
+    "./styles/auth-modal.css": "./styles/auth-signup-modal.css"
   },
   "files": ["src", "styles"]
 }

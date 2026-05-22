@@ -6,3 +6,4 @@
  *   import "@trinity/ui/styles/ui-base.css";
  */
 @import "./ui-kit.css";
+@import "./auth-signup-modal.css";

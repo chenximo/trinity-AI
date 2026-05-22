@@ -4,7 +4,7 @@
 
 ## 1. 一句话
 
-全站顶栏、移动抽屉、`RouterView` 正文槽与登录/注册弹层集中在 **`TrinityAiShellLayout.vue` 单文件**（原 `layouts/` + `components/TrinityAiAuthModal.vue` 已合并）；会话 / 主题 / 界面语言 composable 与 `window.TrinityOR` 桥接在 **`shellInteractions.ts`**；导航项与 `localStorage` 键名在 **`mock.ts`**。
+全站顶栏、移动抽屉、`RouterView` 正文槽与登录/注册弹层在 **`TrinityAiShellLayout.vue`** 挂载 **`@trinity/ui` · `TrinityAuthModal`**（登录/注册 UI 真源见 `packages/ui/src/auth/`）；会话 / 主题 / 界面语言 composable 与 `window.TrinityOR` 桥接在 **`shellInteractions.ts`**；导航项与 `localStorage` 键名在 **`mock.ts`**。
 
 ## 2. 五件套（本目录仅五个文件）
 

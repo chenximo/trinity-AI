@@ -1,0 +1,13 @@
+/* 登录 / 注册弹窗壳层（内容区样式在 TrinityAuthSignupPanel.vue scoped） */
+
+.or-auth-modal--signup {
+  max-width: 420px;
+  padding: 2rem 2rem 0;
+  overflow: hidden;
+}
+
+.or-auth-modal--signup .or-auth-divider {
+  margin-bottom: 1.15rem;
+  font-size: 0.8125rem;
+  color: var(--muted-2);
+}

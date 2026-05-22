@@ -45,6 +45,10 @@ export { default as TabSwitch1Underline } from "./tabs/TabSwitch1Underline.vue";
 export { default as TabSwitch2Capsule } from "./tabs/TabSwitch2Capsule.vue";
 
 export { default as ModalPanel } from "./modal/ModalPanel.vue";
+export { default as TrinityAuthModal } from "./auth/TrinityAuthModal.vue";
+export { default as TrinityAuthSigninPanel } from "./auth/TrinityAuthSigninPanel.vue";
+export { default as TrinityAuthSignupPanel } from "./auth/TrinityAuthSignupPanel.vue";
+export type { TrinityAuthMode } from "./auth/TrinityAuthModal.vue";
 export { default as InternalHelpTip } from "./internal/InternalHelpTip.vue";
 
 export { default as SelectListForm1ModelRow } from "./select-list/SelectListForm1ModelRow.vue";
