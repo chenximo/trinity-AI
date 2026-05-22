@@ -2,6 +2,23 @@
  * /user-console-spec · 规范索引页（可滚动文档区，非全屏打样）
  */
 
+/* 大屏：顶栏与正文左右留白，内容区居中 */
+@media (min-width: 960px) {
+  .user-console-spec-guide.spec-hub--doc-only .spec-hub__bar-inner {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    box-sizing: border-box;
+  }
+
+  .user-console-spec-guide.spec-hub--doc-only .spec-hub__main {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    box-sizing: border-box;
+  }
+}
+
 .user-console-spec-guide__intro {
   margin: 0 0 0.65rem;
   max-width: 52rem;

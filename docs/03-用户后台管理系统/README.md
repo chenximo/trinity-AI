@@ -15,7 +15,7 @@
 | **Agent Skill** | `.cursor/skills/trinity-user-console/SKILL.md`（生成 Vue 时的操作手册；样例见 `/user-console-spec`） |
 | **方法论** | [08/Vue原型生成最佳实践-Skill规范页与验收.md](../08-方法论与汇报/Vue原型生成最佳实践-Skill规范页与验收.md)（为何三层、流程、规范先行） |
 | **Agent 验收** | `/user-console-spec` · `.cursor/skills/trinity-user-console/SKILL.md` |
-| **[AI云-用户后台-需求理解.md](./AI云-用户后台-需求理解.md)** | AI 云登录后用户中心：IA、五模块内容、旅程、待确认项 |
+| **[AI云-用户后台-需求理解.md](./AI云-用户后台-需求理解.md)** | **AI 云产品需求真源**（IA、§5.1 账号管理定稿、其余模块 §5.2～5.5） |
 | [用户控制台-布局与样式规范.md](./用户控制台-布局与样式规范.md) | OpenRouter 式壳层、`account.css`、**§4.1 列表表头/操作列** |
 | 用户后台 · 原型总览（待写） | 模块 ↔ `views` 对照（Trinity AI / AI 云） |
 
