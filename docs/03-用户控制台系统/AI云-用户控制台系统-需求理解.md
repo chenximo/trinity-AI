@@ -1,16 +1,16 @@
-# AI 云 · 用户后台管理 — 需求理解
+# AI 云 · 用户控制台系统 — 需求理解
 
 > **产品需求真源（本文件）**：业务字段、交互、分期范围写在此；**勿**把 PRD 整段抄进 `apps/ai-cloud/src/views/account/README.md`（五件套 README 仅工程索引，链到本文 §5.x）。  
 > **状态**：产品/设计对齐稿（2026-05-21）；§5.1 账号管理已定稿  
 > **读者**：产品、设计、前端（`apps/ai-cloud`）  
-> **规范母版**：[用户后台管理风格统一规范.md](./用户后台管理风格统一规范.md) · 工程五件套 `apps/ai-cloud/src/views/account/README.md`  
+> **规范母版**：[用户控制台系统-风格统一规范.md](./用户控制台系统-风格统一规范.md) · 工程五件套 `apps/ai-cloud/src/views/account/README.md`  
 > **营销对照**：`TrinityCloud/home.html` Hero 右侧「用户中心 · 账号与费用概览」示意卡
 
 ---
 
 ## 1. 一句话目标
 
-在 **AI 云** 完成官网注册/登录（含 **SSO**）之后，为 **企业租户** 提供一套 **自助式用户后台**：按 Trinity **用户后台规范**（OpenRouter 式控制台，非运营后台）管理 **多云账号、费用、合同、发票与联系**，与官网叙事（多云代理、渠道优惠、合约与开票）闭环。
+在 **AI 云** 完成官网注册/登录（含 **SSO**）之后，为 **企业租户** 提供一套 **自助式用户控制台系统**：按 Trinity **用户控制台系统规范**（OpenRouter 式控制台，非运营后台）管理 **多云账号、费用、合同、发票与联系**，与官网叙事（多云代理、渠道优惠、合约与开票）闭环。
 
 ---
 
@@ -18,8 +18,8 @@
 
 | 资产 | 角色 |
 |------|------|
-| **`TrinityCloud/home.html`** | 官网落地页；顶栏登录/注册弹层；Hero 已 **预告**「用户中心 · 账号与费用概览 + SSO」——用户后台是该校验卡的产品化实现 |
-| **`apps/ai-cloud`** | Vue 原型 app（当前仅骨架 `Home.vue`）；用户后台宜在此按 **account 五件套** 落地 |
+| **`TrinityCloud/home.html`** | 官网落地页；顶栏登录/注册弹层；Hero 已 **预告**「用户中心 · 账号与费用概览 + SSO」——用户控制台系统是该校验卡的产品化实现 |
+| **`apps/ai-cloud`** | Vue 原型 app（当前仅骨架 `Home.vue`）；用户控制台系统宜在此按 **account 五件套** 落地 |
 | **`apps/trinity-ai/.../account/`** | **DOM / CSS / 交互** 工程母版（`ConsolePage.vue`、`account.css`、`mock.ts`） |
 | **`/user-console-spec`** | 设计枢纽打样（布局 + token，非完整业务） |
 | **`docs/02` 运营后台** | **平台内部** 用的若依式后台；**不**承接本需求（若将来有 `ai-cloud-admin` 另立项） |
@@ -36,7 +36,7 @@
 flowchart LR
   A[AI 云官网] --> B{未登录?}
   B -->|是| C[注册 / 登录]
-  B -->|否| D[用户后台控制台]
+  B -->|否| D[用户控制台系统]
   C --> E[SSO / 企业账号]
   E --> D
   D --> F[账号管理]
@@ -51,7 +51,7 @@ flowchart LR
 | **官网** | `TrinityCloud/home.html` 或迁入 `apps/ai-cloud` 的营销首页；顶栏 **登录 / 注册** | 登录成功后可跳转控制台或顶栏显示「进入用户中心」 |
 | **注册 / 登录** | 企业账号（邮箱/手机 + 密码）+ 可选 **Google / GitHub**（与现网 auth 弹层一致） | 注册与登录 **不在** 控制台壳内重做布局；可 hash 弹层或独立路由，对齐 Trinity AI `account/login` → 首页 `#login` 的 redirect 策略 |
 | **SSO** | 单点登录：同一 Trinity 身份可进入 AI 云用户中心（与 Hero 徽章「SSO 单点登录」一致） | 原型阶段可用 **已登录 Mock 态** + 顶栏账户菜单；真 SSO 协议（OIDC/SAML）属后端契约，UI 只预留「当前企业 / 用户」展示位 |
-| **用户后台** | 登录后默认进入 **账号管理** 或 **费用概览**（待产品拍板默认 landing hash） | 单路由 `account/console` + hash 分区，与 `@account` 同构 |
+| **用户控制台系统** | 登录后默认进入 **账号管理** 或 **费用概览**（待产品拍板默认 landing hash） | 单路由 `account/console` + hash 分区，与 `@account` 同构 |
 
 ---
 
@@ -75,7 +75,7 @@ flowchart LR
 
 ### 4.2 与 Trinity AI Account 的差异
 
-| Trinity AI `@account` | AI 云用户后台 |
+| Trinity AI `@account` | AI 云用户控制台系统 |
 |----------------------|---------------|
 | API 管理：密钥、Preset | **无**（或远期「API 密钥」若云 API 代理另开） |
 | 账户：额度、活动、用量 | 替换为 **费用、合同、发票** |

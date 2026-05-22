@@ -16,7 +16,7 @@ const docsSiteUrl = getTrinityDocsSiteUrl();
         <strong>设计枢纽</strong>（<code>trinity-design</code>）：<a href="/design-tokens" style="color: var(--el-color-primary)">色板</a> ·
         <a href="/design-spec" style="color: var(--el-color-primary)">UI 规范</a> ·
         <a href="/admin-ops-spec" style="color: var(--el-color-primary)">运营后台管理系统</a> ·
-        <a href="/user-console-spec" style="color: var(--el-color-primary)">用户管理系统</a>
+        <a href="/user-console-spec" style="color: var(--el-color-primary)">用户控制台系统</a>
       </li>
       <li>
         <strong>产品骨架</strong>：Trinity AI、AI Cloud、GEO、Admin

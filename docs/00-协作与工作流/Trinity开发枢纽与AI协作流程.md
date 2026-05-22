@@ -55,7 +55,7 @@
 - **UI 组件库**：运营后台 **统一 Element Plus**（仅 `trinity-ai-admin`）；见 **`apps/trinity-ai-admin/README.md`** · UI 组件库。  
 - **规范展示（`trinity-design` · 勿进产品路由）**  
   - 运营后台列表样板：**`/admin-ops-spec`** → `apps/trinity-design/src/views/ops-admin-system/`。  
-  - 用户后台索引：**`/user-console-spec`** → `apps/trinity-design/src/views/user-admin-system/`。  
+  - 用户控制台系统索引：**`/user-console-spec`** → `apps/trinity-design/src/views/user-admin-system/`。  
   - 全站 UI：**`/design-tokens`**、**`/design-spec`** 仍在 `views/` 根下。  
   - **不要**在 `getTrinityAdminChildRoutes()` 注册 `example` 等规范 path；旧链 **`/trinity-ai-admin/example`** 重定向 **`/admin-ops-spec`**。  
   - 文字真源：**`docs/02`**、**`docs/03`**；运营列表代码模板 **`apps/trinity-ai-admin/doc/Admin列表页模板.md`**。  
@@ -155,7 +155,7 @@
 |------|------|
 | 新增 `@trinity/ui` 组件流程（规范 → 包 → 可点可看） | `docs/Trinity开发枢纽与AI协作流程.md` **§4.1.5** |
 | 门户入口与路由 | `apps/trinity-portal/src/main.ts`、`router/index.ts`、`App.vue` |
-| 运营后台 / 用户后台规范展示 | `apps/trinity-design/src/views/ops-admin-system/`、`apps/trinity-design/src/views/user-admin-system/` |
+| 运营后台 / 用户控制台系统规范展示 | `apps/trinity-design/src/views/ops-admin-system/`、`apps/trinity-design/src/views/user-admin-system/` |
 | 运营后台子路由真源（门户 `/trinity-ai-admin` 与独立 app 共用） | `apps/trinity-ai-admin/src/trinityAdminRoutes.ts`、`views/admin-shell/README.md` |
 | 门户构建配置 | `apps/trinity-portal/vite.config.ts`、`package.json` |
 | 设计站路由与页面 | `apps/trinity-design/src/router/index.ts`、`views/DesignTokens.vue`、`views/DesignSpec.vue` |

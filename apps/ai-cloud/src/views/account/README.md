@@ -1,7 +1,7 @@
 # AI 云 · 用户中心（Account 五件套）
 
-> **模块需求 / 字段 / 交互定稿**：[`docs/03-用户后台管理系统/AI云-用户后台-需求理解.md`](../../../../docs/03-用户后台管理系统/AI云-用户后台-需求理解.md) **§5.1**（产品真源，改需求只改该处）  
-> **用户后台视觉与 DOM**：`.cursor/skills/trinity-user-console/SKILL.md` · `/user-console-spec#spec-sample-main`  
+> **模块需求 / 字段 / 交互定稿**：[`docs/03-用户控制台系统/AI云-用户控制台系统-需求理解.md`](../../../../docs/03-用户控制台系统/AI云-用户控制台系统-需求理解.md) **§5.1**（产品真源，改需求只改该处）  
+> **用户控制台系统视觉与 DOM**：`.cursor/skills/trinity-user-console/SKILL.md` · `/user-console-spec#spec-sample-main`  
 > **交付规范**：[`docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md`](../../../../docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md) §6（**本 README = 工程索引，非 PRD**）
 
 ## 路由真源
@@ -58,4 +58,4 @@
 ## 参考
 
 - 对照母版：`apps/trinity-ai/src/views/account/README.md`（五件套 README 写法示例）  
-- 用户后台文档索引：`docs/03-用户后台管理系统/README.md`
+- 用户控制台系统文档索引：`docs/03-用户控制台系统/README.md`

@@ -61,7 +61,7 @@ function onClickNav(e: MouseEvent) {
         <RouterLink to="/design-tokens" class="dt-sidebar-link" active-class="is-active-route">设计色板</RouterLink>
         <RouterLink to="/design-spec" class="dt-sidebar-link" active-class="is-active-route">UI 组件规范</RouterLink>
         <RouterLink to="/admin-ops-spec" class="dt-sidebar-link" active-class="is-active-route">运营后台管理系统</RouterLink>
-        <RouterLink to="/user-console-spec" class="dt-sidebar-link" active-class="is-active-route">用户管理系统</RouterLink>
+        <RouterLink to="/user-console-spec" class="dt-sidebar-link" active-class="is-active-route">用户控制台系统</RouterLink>
       </nav>
       <p class="dt-sidebar-title">本页章节</p>
       <nav class="dt-sidebar-nav" aria-label="锚点跳转">

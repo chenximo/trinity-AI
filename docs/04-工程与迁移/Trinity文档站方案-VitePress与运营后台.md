@@ -19,7 +19,7 @@
 | **格式** | 正文、示例代码均以 **Markdown** 为准；后台编辑器落库为 **md 字符串**（`body` / `body_md`），不以富文本 HTML 为真源。 |
 | **展示** | 对外文档站 = **VitePress**（侧栏、本地搜索、多语言代码 Tab、`::: tip` 等由配置 + md 提供）。 |
 | **一期数据** | 「正式」= **已纳入构建的 md + 静态部署结果**；不是 Vue 页面里的假数据。 |
-| **二期编辑** | **运营后台**（`trinity-ai-admin` · `admin-docs`）管理 md；**租户用户后台（`docs/03`）不负责**对外 API 文档发布。 |
+| **二期编辑** | **运营后台**（`trinity-ai-admin` · `admin-docs`）管理 md；**租户用户控制台系统（`docs/03`）不负责**对外 API 文档发布。 |
 | **避免双轨** | 不同时维护「VitePress 静态站」与「`trinity-ai` 内 API 渲染正文」两套用户可见形态。 |
 
 ---
@@ -210,7 +210,7 @@ apps/trinity-docs/
 |------|------|
 | 一期 `views/docs/mock.ts` 当正文源 | ❌ 与「正式 md」冲突；仅允许过渡期占位 |
 | 一期用户站 `GET /docs/pages/:slug` 读库渲染 | ❌ 与 VitePress 双轨；除非不做 VitePress |
-| 租户用户后台（`docs/03`）发布对外 API 文档 | ❌ 对外文档由 **运营后台** 维护 |
+| 租户用户控制台系统（`docs/03`）发布对外 API 文档 | ❌ 对外文档由 **运营后台** 维护 |
 | 正文真源用富文本 HTML | ❌ 统一 Markdown |
 | 独立 Mintlify 托管且与仓库 md 双轨 | ❌ 除非团队明确不自建 VitePress |
 

@@ -87,7 +87,7 @@ onUnmounted(() => {
         aria-label="设计枢纽导航"
         @click.stop
       >
-        <p class="design-hub-fab-card-lead">色板 · UI 规范 · 运营/用户后台规范</p>
+        <p class="design-hub-fab-card-lead">色板 · UI 规范 · 运营/用户控制台系统规范</p>
         <nav class="design-hub-fab-nav design-hub-fab-nav--dense" aria-label="设计页">
           <a
             href="/design-tokens"
@@ -112,7 +112,7 @@ onUnmounted(() => {
             class="design-hub-nav-link"
             :class="{ 'is-active': hubNavActive('/user-console-spec') }"
             @click="hubNavFromMenu('/user-console-spec', $event)"
-            >用户后台·规范</a>
+            >用户控制台系统·规范</a>
         </nav>
         <div class="design-hub-fab-card-foot">
           <div class="dt-theme-bar" role="group" aria-label="预览主题">

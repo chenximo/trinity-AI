@@ -29,7 +29,7 @@
 | `trinity-geo` | `@trinity/app-trinity-geo` | 5203 | Trinity GEO |
 | `trinity-ai-admin` | `@trinity/app-trinity-ai-admin` | 5204 | 运营后台原型 |
 | `trinity-docs` | `@trinity/app-trinity-docs` | **5205** | **API 文档站**（VitePress）；开发枢纽 FAB 外链 |
-| `trinity-design` | `@trinity/app-trinity-design` | 5210 | 设计枢纽：色板、UI 规范、运营/用户后台规范展示 |
+| `trinity-design` | `@trinity/app-trinity-design` | 5210 | 设计枢纽：色板、UI 规范、运营/用户控制台系统规范展示 |
 
 根目录：`npm install` 后 **`npm run dev`**（5173）；单 app 见根 `package.json` 的 `dev:*` scripts。
 

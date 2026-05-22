@@ -1,19 +1,19 @@
 ---
 name: trinity-user-console
 description: >-
-  Trinity 用户后台 Vue/HTML：规则 ID、禁止项、检查清单。用于 account/console、用户中心列表；
-  触发词：用户后台规范、trinity-user-console、user-console-spec、#keys、#preset、#accounts。
+  Trinity 用户控制台系统 Vue/HTML：规则 ID、禁止项、检查清单。用于 account/console、用户中心列表；
+  触发词：用户控制台系统规范、trinity-user-console、user-console-spec、#keys、#preset、#accounts。
   Agent 必读本 Skill；样例验收 /user-console-spec；类名见附录 A。勿与运营后台混用。
 disable-model-invocation: true
 ---
 
-# Trinity 用户后台 · Agent 操作手册
+# Trinity 用户控制台系统 · Agent 操作手册
 
 **Agent 唯一执行真源**。规范页 `/user-console-spec` 仅做**视觉验收**；`docs/03` 给人读叙事。方法论：`docs/08-方法论与汇报/Vue原型生成最佳实践-Skill规范页与验收.md`。
 
 ## 触发词（任务里出现则应读本 Skill）
 
-`用户后台规范` · `trinity-user-console` · `user-console-spec` · `account/console` · `#keys` · `#preset` · `#accounts` · `AI 云用户中心` · `租户控制台` · `OpenRouter 式控制台`
+`用户控制台系统规范` · `trinity-user-console` · `user-console-spec` · `account/console` · `#keys` · `#preset` · `#accounts` · `AI 云用户中心` · `租户控制台` · `OpenRouter 式控制台`
 
 **勿用本 Skill**：运营后台、`el-table`、`admin-ops-spec` → `trinity-admin-ruoyi-list`。
 
@@ -120,7 +120,7 @@ header.or-inject          ← 产品壳，非 account 内
 
 ## 唯一风格示范（整页只认一个）
 
-**`/user-console-spec#spec-sample-main`（§2 · API 密钥主列）** = 用户后台统一视觉真源（含表头/对齐）。`#preset`、`#logs`、AI 云等须**收敛到此风格**。§3 **仅** `#spec-sample-table-actions-buttons` / `#spec-sample-table-actions-menu` 两个操作列分叉样例。
+**`/user-console-spec#spec-sample-main`（§2 · API 密钥主列）** = 用户控制台系统统一视觉真源（含表头/对齐）。`#preset`、`#logs`、AI 云等须**收敛到此风格**。§3 **仅** `#spec-sample-table-actions-buttons` / `#spec-sample-table-actions-menu` 两个操作列分叉样例。
 
 ## 附录 B · 验收锚点（/user-console-spec）
 

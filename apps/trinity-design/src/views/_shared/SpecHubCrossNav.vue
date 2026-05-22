@@ -7,7 +7,7 @@ const links = [
   { to: "/design-tokens", label: "设计色板" },
   { to: "/design-spec", label: "UI 规范" },
   { to: "/admin-ops-spec", label: "运营后台管理系统" },
-  { to: "/user-console-spec", label: "用户后台·规范" },
+  { to: "/user-console-spec", label: "用户控制台系统·规范" },
 ] as const;
 </script>
 

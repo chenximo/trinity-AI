@@ -49,21 +49,21 @@
 
 ## 1. 派活前 30 秒（复制长模板时用）
 
-- [ ] 已确定轨道：**用户后台**（非运营后台 `trinity-ai-admin`）
+- [ ] 已确定轨道：**用户控制台系统**（非运营后台 `trinity-ai-admin`）
 - [ ] 已选模板（下文 §2～§6）
 - [ ] 验收锚点写进任务（`/user-console-spec#…`）
 - [ ] 是否允许改工程：默认 **否**（不写则禁止动 `trinity-base`、全仓 `ConsolePage`）
 
 ---
 
-## 2. 用户后台 · 新建/改列表页 Vue（最常用）
+## 2. 用户控制台系统 · 新建/改列表页 Vue（最常用）
 
 **适用**：AI 云账号表、新 hash 面板、Trinity AI 控制台新列表区等。
 
 **复制以下内容**，把 `××` 换成具体需求：
 
 ```text
-按 trinity-user-console 用户后台规范，实现「××」列表 Vue 原型。
+按 trinity-user-console 用户控制台系统规范，实现「××」列表 Vue 原型。
 
 【范围】
 - 产品/应用：（例：AI 云 / Trinity AI account）
@@ -92,7 +92,7 @@
 
 ---
 
-## 3. 用户后台 · 只改某一屏/区块（非整表）
+## 3. 用户控制台系统 · 只改某一屏/区块（非整表）
 
 ```text
 按 trinity-user-console，只改「××」面板的（页头 / 表格 / 面包屑）Vue，其余不动。
@@ -109,7 +109,7 @@
 **适用**：对齐表头、操作列横排、补 §3 样例、调整 ⓘ 位置等。**每次只改规范页**，不要顺带改全仓产品。
 
 ```text
-按 trinity-user-console 与 /user-console-spec，迭代用户后台规范（仅规范页）：
+按 trinity-user-console 与 /user-console-spec，迭代用户控制台系统规范（仅规范页）：
 
 【变更】
 - （例：全表左对齐 UC-TBL-ALIGN-01；<4 操作横排 UC-TBL-OPS-01）
@@ -120,7 +120,7 @@
 2. apps/trinity-design/src/views/user-admin-system/console-sample/*
 3. apps/trinity-design/src/views/user-admin-system/user-console-spec-guide.css
 4. .cursor/skills/trinity-user-console/SKILL.md
-5. docs/03/用户控制台-布局与样式规范.md（按需）
+5. docs/03/用户控制台系统-布局与样式规范.md（按需）
 
 【须同步】
 - Skill 规则 ID + 附录 B 锚点 ↔ 规范页样例 DOM 一致
@@ -139,7 +139,7 @@
 **仅当你已评审 `/user-console-spec` 样例并确认定稿后**使用：
 
 ```text
-用户后台规范已定稿。按 trinity-user-console 规则 ID，落地工程对齐：
+用户控制台系统规范已定稿。按 trinity-user-console 规则 ID，落地工程对齐：
 
 【范围】
 - trinity-base.css（表格扁平表头、左对齐、操作列）
@@ -156,7 +156,7 @@
 
 ---
 
-## 6. 运营后台（勿用用户后台 Skill）
+## 6. 运营后台（勿用用户控制台系统 Skill）
 
 ```text
 按 trinity-admin-ruoyi-list 运营后台若依列表规范，实现「××」列表页。
@@ -179,7 +179,7 @@
 
 ---
 
-## 8. 验收锚点速查（用户后台）
+## 8. 验收锚点速查（用户控制台系统）
 
 | 验收什么 | 打开 |
 |----------|------|
@@ -222,7 +222,7 @@
 |------|------|
 | Agent Skill | `.cursor/skills/trinity-user-console/SKILL.md` |
 | 规范验收页 | `/user-console-spec` |
-| 用户后台文档 | `docs/03-用户后台管理系统/` |
+| 用户控制台系统文档 | `docs/03-用户控制台系统/` |
 | 方法论 | `docs/08-方法论与汇报/Vue原型生成最佳实践-Skill规范页与验收.md` |
 | 五件套总则 | `docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md` |
 
@@ -232,5 +232,5 @@
 
 | 日期 | 说明 |
 |------|------|
-| 2026-05-21 | 初稿：用户后台列表 Vue 派活模板、规范迭代、落地工程、运营分轨、锚点与规则 ID 速查。 |
+| 2026-05-21 | 初稿：用户控制台系统列表 Vue 派活模板、规范迭代、落地工程、运营分轨、锚点与规则 ID 速查。 |
 | 2026-05-21 | §0 短提示语 + `trinity-pm-dispatch` 规则：输入一行由 Agent 展开，无需复制长模板。 |

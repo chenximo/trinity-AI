@@ -1,7 +1,7 @@
-# user-admin-system · 用户后台（规范展示）
+# user-admin-system · 用户控制台系统（规范展示）
 
 > **目录**：`apps/trinity-design/src/views/user-admin-system/`  
-> **文档真源**：[`docs/03-用户后台管理系统/用户后台管理风格统一规范.md`](../../../../docs/03-用户后台管理系统/用户后台管理风格统一规范.md)  
+> **文档真源**：[`docs/03-用户控制台系统/用户控制台系统-风格统一规范.md`](../../../../docs/03-用户控制台系统/用户控制台系统-风格统一规范.md)  
 > **Agent 操作手册**：[`trinity-user-console`](../../../../.cursor/skills/trinity-user-console/SKILL.md)（生成 Vue 前先读；本页为视觉样例）  
 > **工程真源**：[`apps/trinity-ai/src/views/account/`](../../../trinity-ai/src/views/account/README.md)
 
@@ -9,7 +9,7 @@
 
 | path | 页面 |
 |------|------|
-| `/user-console-spec` | [`UserConsoleSpecHub.vue`](./UserConsoleSpecHub.vue) · **用户后台·规范**（条文 + 内联样例） |
+| `/user-console-spec` | [`UserConsoleSpecHub.vue`](./UserConsoleSpecHub.vue) · **用户控制台系统·规范**（条文 + 内联样例） |
 | `/user-console-preview` | 重定向至 `/user-console-spec#spec-2-main`（已合并，勿再维护独立打样页） |
 
 ## 锚点

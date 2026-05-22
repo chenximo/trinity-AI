@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * 用户后台 · 规范（条文 + 内联样例，单页阅读）。
+ * 用户控制台系统 · 规范（条文 + 内联样例，单页阅读）。
  */
 import "@trinity-ai/views/account/account.css";
 import LayoutSpecCallout from "./console-sample/LayoutSpecCallout.vue";
@@ -12,11 +12,11 @@ import "./user-console-spec-guide.css";
 
 <template>
   <div class="spec-hub spec-hub--doc-only user-console-spec-guide">
-    <header class="spec-hub__bar" aria-label="用户后台规范">
+    <header class="spec-hub__bar" aria-label="用户控制台系统规范">
       <div class="spec-hub__bar-inner">
         <RouterLink to="/design-tokens" class="spec-hub__back">← 设计枢纽</RouterLink>
         <SpecHubCrossNav />
-        <h1 class="spec-hub__title">用户后台 · 规范</h1>
+        <h1 class="spec-hub__title">用户控制台系统 · 规范</h1>
         <p class="spec-hub__note">
           路由 <code>/user-console-spec</code> · Agent 读 <code>trinity-user-console</code> Skill · 完整交互
           <a href="/trinity-ai/account/console">/trinity-ai/account/console</a>
@@ -26,7 +26,7 @@ import "./user-console-spec-guide.css";
 
     <main class="spec-hub__main">
       <p class="user-console-spec-guide__intro">
-        <strong>唯一示范</strong>：§2 主列样例（API 密钥全流程）代表用户后台统一风格；§3 仅为<strong>同一风格</strong>下操作列两种分支（&lt;4 按钮 / ≥4 ⋮），不是第二套界面。
+        <strong>唯一示范</strong>：§2 主列样例（API 密钥全流程）代表用户控制台系统统一风格；§3 仅为<strong>同一风格</strong>下操作列两种分支（&lt;4 按钮 / ≥4 ⋮），不是第二套界面。
         Agent 先读 <code>trinity-user-console</code> Skill，再对照本节样例。控件 <RouterLink to="/design-spec">/design-spec</RouterLink>。
       </p>
       <p class="user-console-spec-guide__status" role="note">
@@ -101,8 +101,8 @@ import "./user-console-spec-guide.css";
           </li>
           <li>
             文档：
-            <code>docs/03-用户后台管理系统/用户后台管理风格统一规范.md</code>、
-            <code>用户控制台-布局与样式规范.md</code> §4
+            <code>docs/03-用户控制台系统/用户控制台系统-风格统一规范.md</code>、
+            <code>用户控制台系统-布局与样式规范.md</code> §4
           </li>
           <li>工程母版：<code>apps/trinity-ai/src/views/account/</code></li>
         </ul>

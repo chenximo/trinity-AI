@@ -44,7 +44,7 @@ export default createRouter({
       path: "/user-console-spec",
       name: "user-console-spec",
       component: () => import("@trinity-design/views/user-admin-system/UserConsoleSpecHub.vue"),
-      meta: { title: "用户后台 · 规范索引" },
+      meta: { title: "用户控制台系统 · 规范索引" },
     },
     {
       path: "/user-console-preview",

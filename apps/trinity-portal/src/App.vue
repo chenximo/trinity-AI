@@ -140,7 +140,7 @@ onUnmounted(() => {
               class="design-hub-nav-link"
               :class="{ 'is-active': hubNavActive('/user-console-spec') }"
               @click="hubNavFromMenu('/user-console-spec', $event)"
-              >用户管理系统</a>
+              >用户控制台系统</a>
           </div>
 
           <div class="design-hub-fab-nav-group">

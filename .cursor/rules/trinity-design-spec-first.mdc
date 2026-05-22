@@ -10,7 +10,7 @@ alwaysApply: true
 - **色板与 token**：`TrinityAI/design-tokens.html`；语义色与变量以 **`assets/trinity-base.css`** 的 `:root` / `html[data-theme="dark"]` / `html[data-theme="system"]` 为准。
 - **控件形态与类名**：`TrinityAI/design-spec.html`（形式 1 / 2 / 3、按钮、筛选等）。
 - **版式与产品约定**：`docs/Trinity原型版式与视觉规范.md`（按需）。
-- **清单与细节**：`.cursor/skills/trinity-design-tokens/SKILL.md`（色板、形式 2、按钮、弹窗）；**用户后台落地**：`.cursor/skills/trinity-user-console/SKILL.md`（壳层、主列、表格对齐与操作列；样例 `/user-console-spec`）。
+- **清单与细节**：`.cursor/skills/trinity-design-tokens/SKILL.md`（色板、形式 2、按钮、弹窗）；**用户控制台系统落地**：`.cursor/skills/trinity-user-console/SKILL.md`（壳层、主列、表格对齐与操作列；样例 `/user-console-spec`）。
 
 ## 实现规则（后续生成或修改页面时遵守）
 
@@ -30,4 +30,4 @@ alwaysApply: true
 
 用户在任务中说 **「按 Trinity 设计规范 / 色板 / design-spec」** 或 **「遵循 trinity-design-tokens」** 时，须再对照上述路径核对一遍后再交稿。
 
-用户后台 Vue/列表页：必读 **`.cursor/skills/trinity-user-console/SKILL.md`**（规则 ID）；`/user-console-spec` 仅验收样例。
+用户控制台系统 Vue/列表页：必读 **`.cursor/skills/trinity-user-console/SKILL.md`**（规则 ID）；`/user-console-spec` 仅验收样例。

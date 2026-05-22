@@ -104,7 +104,7 @@ function onClickNav(e: MouseEvent) {
           <a href="#ds-buttons">按钮</a>
           <RouterLink to="/design-tokens">色板 →</RouterLink>
           <RouterLink to="/admin-ops-spec">运营后台管理系统 →</RouterLink>
-          <RouterLink to="/user-console-spec">用户管理系统 →</RouterLink>
+          <RouterLink to="/user-console-spec">用户控制台系统 →</RouterLink>
         </nav>
       </header>
 

@@ -1,5 +1,5 @@
 /**
- * AI 云用户控制台 · 与侧栏 hash / 壳菜单对齐的常量。
+ * AI 云用户控制台系统 · 与侧栏 hash / 壳菜单对齐的常量。
  */
 
 export const AI_CLOUD_CONSOLE_HASH = {
