@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onActivated, onMounted, onUnmounted, ref } from "vue";
 import { RouterLink } from "vue-router";
+import { getTrinityDocsSiteUrl } from "../../trinityDocsSite";
 import "./account.css";
 import {
   mountAccountConsoleInteractions,
@@ -9,6 +10,7 @@ import {
 
 defineOptions({ name: "TaiAccountConsolePage" });
 
+const docsSiteUrl = getTrinityDocsSiteUrl();
 const rootRef = ref<HTMLElement | null>(null);
 let handle: AccountConsoleHandle | undefined;
 
@@ -43,7 +45,7 @@ onUnmounted(() => {
           <div class="or-side-heading" style="margin-top: 0.65rem">产品</div>
           <RouterLink :to="{ name: 'tai-models' }">模型</RouterLink>
           <RouterLink :to="{ name: 'tai-chat' }">对话</RouterLink>
-          <RouterLink :to="{ name: 'tai-docs' }">文档</RouterLink>
+          <a :href="docsSiteUrl">文档</a>
         </aside>
 
         <div class="or-main">

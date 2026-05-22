@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { getTrinityDocsSiteUrl } from "@trinity-ai/trinityDocsSite";
 import { useTrinityDesignThemeBar } from "@trinity-design/composables/useTrinityDesignTheme";
+
+const docsSiteUrl = getTrinityDocsSiteUrl();
 
 const route = useRoute();
 const router = useRouter();
@@ -37,6 +40,12 @@ function hubNav(to: HubPath, e: MouseEvent) {
     return;
   }
   void router.push(to);
+}
+
+function openDocsSite(e: MouseEvent) {
+  e.preventDefault();
+  menuOpen.value = false;
+  window.location.assign(docsSiteUrl);
 }
 
 function hubNavActive(to: HubPath) {
@@ -160,6 +169,17 @@ onUnmounted(() => {
               :class="{ 'is-active': hubNavActive('/trinity-ai-admin') }"
               @click="hubNavFromMenu('/trinity-ai-admin', $event)"
               >Admin · 运营后台原型</a>
+          </div>
+
+          <div class="design-hub-fab-nav-group">
+            <p class="design-hub-fab-nav-group-label">对外文档（VitePress）</p>
+            <a :href="docsSiteUrl" class="design-hub-nav-link design-hub-nav-link--external" @click="openDocsSite">
+              API 文档站
+              <span class="design-hub-nav-port">/docs</span>
+            </a>
+            <p class="design-hub-fab-nav-hint">
+              需另开 <code>npm run dev:trinity-docs</code>；开发时经枢纽同源 <code>/docs/</code> 打开。
+            </p>
           </div>
         </nav>
         <div class="design-hub-fab-card-foot">

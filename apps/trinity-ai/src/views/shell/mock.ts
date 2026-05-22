@@ -5,9 +5,17 @@ export const TRINITY_OR_SESSION_KEY = "trinity_or_session";
 export const TRINITY_OR_THEME_KEY = "trinity_or_theme";
 export const TRINITY_UI_LANG_KEY = "trinity_ui_lang";
 
-export const SHELL_PRIMARY_NAV = [
-  { name: "tai-home" as const, label: "首页", orPage: "home" },
-  { name: "tai-models" as const, label: "模型", orPage: "models" },
-  { name: "tai-chat" as const, label: "对话", orPage: "chat" },
-  { name: "tai-docs" as const, label: "文档", orPage: "docs" },
-] as const;
+export type ShellNavItem = {
+  name: string;
+  label: string;
+  orPage: string;
+  /** 外链：浏览器内为同源 /docs/（dev 由 Vite 代理到 :5205） */
+  external?: boolean;
+};
+
+export const SHELL_PRIMARY_NAV: ShellNavItem[] = [
+  { name: "tai-home", label: "首页", orPage: "home" },
+  { name: "tai-models", label: "模型", orPage: "models" },
+  { name: "tai-chat", label: "对话", orPage: "chat" },
+  { name: "tai-docs", label: "文档", orPage: "docs", external: true },
+];

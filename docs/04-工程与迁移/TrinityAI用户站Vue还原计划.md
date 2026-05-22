@@ -106,6 +106,8 @@ apps/trinity-ai  →  packages/ui  →  packages/tokens
 
 ### 阶段 D — `models` / `docs`
 
+> **文档站目标态**（Markdown + `apps/trinity-docs` VitePress + 二期 `admin-docs` 发布构建）见：[Trinity文档站方案-VitePress与运营后台.md](./Trinity文档站方案-VitePress与运营后台.md)。当前 `views/docs/` 为路由占位，非最终文档站。
+
 - 路由视图 + 内容块；同样优先 UI 包。
 
 ### 阶段 E — 账户控制台

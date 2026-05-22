@@ -2,10 +2,12 @@
 import { RouterLink } from "vue-router";
 import { TButton } from "@trinity/ui";
 import { HOME_HERO_PROVIDERS } from "./mock";
+import { getTrinityDocsSiteUrl } from "../../trinityDocsSite";
 import { useHomeNavigation } from "./homeInteractions";
 import "./home.css";
 
-const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
+const { goConsole, goDocs, openDemoAuth, docsSiteUrl } = useHomeNavigation();
+const docsApiRefUrl = getTrinityDocsSiteUrl("/api/chat-completions");
 </script>
 
 <template>
@@ -136,7 +138,7 @@ const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
             <p>
               多活推理与自动降级：单链路异常时秒级切换备用线路，兼顾业务连续与时延上限。
             </p>
-            <RouterLink class="more" :to="{ name: 'tai-docs' }">了解更多 →</RouterLink>
+            <a class="more" :href="docsSiteUrl">了解更多 →</a>
           </article>
           <article class="fcard">
             <div class="fcard-visual" aria-hidden="true">
@@ -182,7 +184,7 @@ const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
             <p>
               边缘就近接入与动态选路，成本与时延策略可配；控制台按项目、模型与供应商拆分用量与账单。
             </p>
-            <RouterLink class="more" :to="{ name: 'tai-docs' }">了解更多 →</RouterLink>
+            <a class="more" :href="docsSiteUrl">了解更多 →</a>
           </article>
           <article class="fcard">
             <div class="fcard-visual" aria-hidden="true">
@@ -302,7 +304,7 @@ const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
             <p>
               细粒度控制可调模型、数据区域与日志留存；满足企业内控与审计要求，降低数据出境风险。
             </p>
-            <RouterLink class="more" :to="{ name: 'tai-docs' }">查看文档 →</RouterLink>
+            <a class="more" :href="docsSiteUrl">查看文档 →</a>
           </article>
         </div>
       </section>
@@ -451,7 +453,7 @@ const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
           <div class="step">
             <div class="step-num">3</div>
             <h3>获取 API 密钥</h3>
-            <p>创建密钥即可调用接口；<RouterLink class="text-link" :to="{ name: 'tai-docs' }">兼容 OpenAI 生态</RouterLink>，现有 SDK 可平滑迁移。</p>
+            <p>创建密钥即可调用接口；<a class="text-link" :href="docsSiteUrl">兼容 OpenAI 生态</a>，现有 SDK 可平滑迁移。</p>
             <div class="key-mock">
               TRINITY_AI_API_KEY<br />
               <span class="key-dots">••••••••••••••••</span>
@@ -549,10 +551,10 @@ const { goConsole, goDocs, openDemoAuth } = useHomeNavigation();
         <div class="footer-col" id="docs">
           <h4>开发者</h4>
           <ul>
-            <li><RouterLink :to="{ name: 'tai-docs' }">文档中心</RouterLink></li>
-            <li><RouterLink :to="{ name: 'tai-docs' }">API 参考</RouterLink></li>
-            <li><RouterLink :to="{ name: 'tai-docs' }">SDK</RouterLink></li>
-            <li><RouterLink :to="{ name: 'tai-docs' }">服务状态</RouterLink></li>
+            <li><a :href="docsSiteUrl">文档中心</a></li>
+            <li><a :href="docsApiRefUrl">API 参考</a></li>
+            <li><a :href="docsSiteUrl">SDK</a></li>
+            <li><a :href="docsSiteUrl">服务状态</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -18,6 +18,11 @@ Thumbs.db
 node_modules/
 dist/
 .cache/
+**/.vitepress/dist
+**/.vitepress/cache
+
+# Local image exports (Cursor / design drafts; not repo assets)
+generated-images/
 
 # Archives (local backups; avoid bloating the repo)
 *.zip

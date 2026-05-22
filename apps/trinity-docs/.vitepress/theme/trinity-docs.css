@@ -1,0 +1,456 @@
+/**
+ * Trinity 文档站 · 对齐 OpenRouter Docs 版式（https://openrouter.ai/docs/quickstart）
+ * Token：@trinity/tokens/core.css
+ */
+@import "@trinity/tokens/core.css";
+
+html.dark {
+  color-scheme: dark;
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1f1f1f;
+  --border: #2a2a2a;
+  --border-strong: #3f3f3f;
+  --text: #fafafa;
+  --muted: #a3a3a3;
+  --muted-2: #737373;
+  --blue-soft: rgba(37, 99, 235, 0.12);
+  --blue-ring: rgba(59, 130, 246, 0.35);
+  --pill-text: #93c5fd;
+  --tdocs-code-bg: #141414;
+  --tdocs-code-tab-bg: #1a1a1a;
+  --tdocs-code-border: var(--border);
+}
+
+:root {
+  --tdocs-sidebar-w: 17.5rem;
+  --tdocs-nav-h: 3.5rem;
+  --tdocs-content-max: 48rem;
+  /* 浅色代码块（对齐 OpenRouter 截图） */
+  --tdocs-code-bg: var(--bg);
+  --tdocs-code-tab-bg: var(--surface);
+  --tdocs-code-tab-active: var(--bg);
+  --tdocs-code-border: var(--border);
+
+  --vp-font-family-base: var(--font);
+  --vp-font-family-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+
+  --vp-c-bg: var(--bg);
+  --vp-c-bg-alt: var(--surface);
+  --vp-c-bg-elv: var(--bg);
+  --vp-c-bg-soft: var(--surface-2);
+
+  --vp-c-text-1: var(--text);
+  --vp-c-text-2: var(--muted);
+  --vp-c-text-3: var(--muted-2);
+
+  --vp-c-border: var(--border);
+  --vp-c-divider: var(--border);
+  --vp-c-gutter: 1.5rem;
+
+  --vp-c-brand-1: var(--blue);
+  --vp-c-brand-2: var(--indigo-500);
+  --vp-c-brand-3: var(--pill-text);
+  --vp-c-brand-soft: var(--blue-soft);
+
+  --vp-c-default-1: var(--muted);
+  --vp-c-default-2: var(--muted-2);
+  --vp-c-default-3: var(--border-strong);
+
+  --vp-c-tip-1: var(--blue);
+  --vp-c-tip-2: var(--pill-text);
+  --vp-c-tip-3: var(--blue-soft);
+  --vp-c-warning-1: var(--warning);
+  --vp-c-warning-2: var(--warning-ink);
+  --vp-c-warning-3: var(--warning-soft);
+  --vp-c-danger-1: var(--danger);
+  --vp-c-danger-2: var(--danger-ink);
+  --vp-c-danger-3: var(--danger-soft);
+
+  --vp-button-brand-bg: var(--blue);
+  --vp-button-brand-hover-bg: var(--indigo-500);
+  --vp-button-brand-active-bg: var(--purple-deep);
+
+  --vp-nav-height: var(--tdocs-nav-h);
+  --vp-sidebar-width: var(--tdocs-sidebar-w);
+  --vp-layout-max-width: 90rem;
+
+  --vp-custom-block-tip-border: var(--blue-ring);
+  --vp-custom-block-warning-border: var(--warning-ring);
+
+  /* VitePress 代码块 / Tab（布局用默认，只改色） */
+  --vp-code-block-bg: var(--bg);
+  --vp-code-block-divider-color: var(--border);
+  --vp-code-tab-bg: var(--surface);
+  --vp-code-tab-divider: var(--border);
+  --vp-code-tab-text-color: var(--muted);
+  --vp-code-tab-hover-text-color: var(--text);
+  --vp-code-tab-active-text-color: var(--text);
+  --vp-code-tab-active-bar-color: var(--blue);
+  --vp-code-line-number-color: var(--muted-2);
+  --vp-code-copy-code-border-color: var(--border);
+  --vp-code-copy-code-hover-border-color: var(--blue-ring);
+  --vp-code-line-height: 1.65;
+  --vp-code-font-size: 0.8125rem;
+}
+
+html.dark {
+  --vp-c-bg: var(--bg);
+  --vp-c-bg-alt: var(--surface);
+  --vp-c-bg-elv: var(--bg);
+  --vp-c-bg-soft: var(--surface-2);
+  --vp-c-text-1: var(--text);
+  --vp-c-text-2: var(--muted);
+  --vp-c-text-3: var(--muted-2);
+  --vp-c-border: var(--border);
+  --vp-c-divider: var(--border);
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #818cf8;
+  --vp-c-brand-3: var(--pill-text);
+  --vp-c-brand-soft: var(--blue-soft);
+  --vp-code-block-bg: var(--tdocs-code-bg);
+  --vp-code-tab-bg: var(--tdocs-code-tab-bg);
+  --vp-code-block-divider-color: var(--border);
+}
+
+/* —— 顶栏（OpenRouter：白底、细底边、紧凑高度） —— */
+.VPNav {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg) !important;
+  backdrop-filter: none;
+}
+
+.VPNavBar .title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink.active {
+  color: var(--text);
+}
+
+/* —— 侧栏 —— */
+.VPSidebar {
+  background: var(--surface) !important;
+  border-right: 1px solid var(--border);
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.VPSidebarItem .link {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border-radius: 6px;
+}
+
+.VPSidebarItem .link:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.VPSidebarItem .is-active > .link {
+  background: var(--blue-soft);
+  color: var(--pill-text);
+  font-weight: 500;
+}
+
+html.dark .VPSidebarItem .is-active > .link {
+  color: var(--pill-text);
+}
+
+/* —— 正文区 —— */
+.VPDoc .container {
+  max-width: var(--tdocs-content-max);
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.vp-doc {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.vp-doc h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.vp-doc h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0;
+  border: none;
+}
+
+.vp-doc h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+}
+
+.vp-doc p {
+  color: var(--muted);
+}
+
+.vp-doc p strong,
+.vp-doc li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.vp-doc hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.vp-doc a {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.vp-doc a:hover {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 表格（OpenRouter 集成方式表） */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  margin: 1.25rem 0 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 1px solid var(--border);
+  padding: 0.625rem 0.875rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.vp-doc th {
+  background: var(--surface);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vp-doc td {
+  color: var(--muted);
+}
+
+.vp-doc tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+}
+
+/* 自定义块：更扁、更贴 OR */
+.vp-doc .custom-block {
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  margin: 1.25rem 0;
+}
+
+.vp-doc .custom-block.tip {
+  background: var(--blue-soft);
+  border-color: var(--blue-ring);
+}
+
+.vp-doc .custom-block.warning {
+  background: var(--warning-soft);
+}
+
+/* 行内代码 */
+.vp-doc :not(pre) > code {
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  border: 1px solid var(--border);
+}
+
+/*
+ * 代码块 / 代码组：保留 VitePress 默认布局（行号绝对定位、Tab 下划线、复制按钮），
+ * 仅修正与正文左缘对齐，避免重复边框导致「框套框」错位。
+ */
+
+/* 取消 VP 移动端 -24px 负边距，与正文、Tab 左缘对齐 */
+.vp-doc div[class*="language-"],
+.vp-doc .vp-code-group .tabs {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+@media (min-width: 640px) {
+  .vp-doc div[class*="language-"] {
+    margin-top: 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+/* 代码组：单层外框（Tab + 代码同属一组） */
+.vp-doc .vp-code-group {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--tdocs-code-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.vp-doc .vp-code-group .tabs {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* 代码块默认细边框 */
+.vp-doc div[class*="language-"] {
+  border: 1px solid var(--tdocs-code-border);
+  border-radius: var(--radius-lg);
+}
+
+/* 组内代码区：不再单独描边，与 Tab 同宽、同左缘 */
+.vp-doc .vp-code-group div[class*="language-"] {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background-color: var(--vp-code-block-bg) !important;
+}
+
+/* 隐藏右上角语言角标（OpenRouter 无此元素） */
+.vp-doc div[class*="language-"] > .lang {
+  display: none;
+}
+
+/* 行号：仅改色，不改 VP 的 absolute + width:32px */
+.vp-doc .line-numbers-wrapper {
+  color: var(--vp-code-line-number-color);
+  border-right-color: var(--vp-code-block-divider-color);
+}
+
+/* 避免 pre 聚焦出现蓝色描边（截图中的「蓝框」） */
+.vp-doc [class*="language-"] pre:focus,
+.vp-doc [class*="language-"] pre:focus-visible {
+  outline: none;
+}
+
+/* 浅色 Shiki */
+html:not(.dark) .vp-doc .shiki,
+html:not(.dark) .vp-doc .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: transparent !important;
+}
+
+html:not(.dark) .vp-doc [class*="language-"] pre {
+  background-color: var(--vp-code-block-bg) !important;
+}
+
+html.dark .vp-doc .shiki,
+html.dark .vp-doc .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
+
+/* 右侧本页目录 */
+.VPDocAside .content-container {
+  font-size: 0.8125rem;
+}
+
+.VPDocAsideOutline .outline-link {
+  color: var(--muted);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--pill-text);
+  font-weight: 500;
+}
+
+/* 首页：收敛为文档入口风格 */
+.VPHome {
+  padding-bottom: 3rem;
+}
+
+.VPHome .VPHero {
+  padding: 3rem 1.5rem 2rem;
+}
+
+.VPHome .VPHero .name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.VPHome .VPHero .text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.VPHome .VPHero .tagline {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+.VPHome .VPFeature {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+}
+
+.VPHome .VPFeature .title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.vp-doc a.tdocs-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--grad);
+  color: var(--on-primary) !important;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.25);
+}
+
+.vp-doc a.tdocs-cta:hover {
+  background: var(--grad-hover);
+  color: var(--on-primary) !important;
+  text-decoration: none;
+}
+
+/* 页脚 */
+.VPFooter {
+  border-top: 1px solid var(--border);
+  background: var(--surface) !important;
+  font-size: 0.8125rem;
+}

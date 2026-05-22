@@ -1,0 +1,16 @@
+{
+  "name": "@trinity/app-trinity-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev --port 5205",
+    "build": "vitepress build",
+    "preview": "vitepress preview --port 5202"
+  },
+  "dependencies": {
+    "@trinity/tokens": "*"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}

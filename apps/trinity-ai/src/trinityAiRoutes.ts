@@ -1,6 +1,12 @@
 import type { RouteRecordRaw } from "vue-router";
 import { ACCOUNT_CONSOLE_HASH } from "./views/account/mock";
+import { getTrinityDocsSiteUrl } from "./trinityDocsSite";
 import HomePage from "./views/home/HomePage.vue";
+
+function redirectToDocsSite() {
+  window.location.assign(getTrinityDocsSiteUrl());
+  return false;
+}
 
 /**
  * 子路由表：供独立 `apps/trinity-ai` 与 `apps/trinity-portal` 下 `/trinity-ai` 嵌套复用。
@@ -31,7 +37,8 @@ export function getTrinityAiChildRoutes(): RouteRecordRaw[] {
     {
       path: "docs",
       name: "tai-docs",
-      component: () => import("./views/DocsPage.vue"),
+      beforeEnter: redirectToDocsSite,
+      component: () => import("./views/docs/DocsPage.vue"),
       meta: { title: "文档", orPage: "docs" },
     },
     {

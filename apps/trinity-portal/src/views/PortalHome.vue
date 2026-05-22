@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { RouterLink } from "vue-router";
+import { getTrinityDocsSiteUrl } from "@trinity-ai/trinityDocsSite";
+
+const docsSiteUrl = getTrinityDocsSiteUrl();
+</script>
+
 <template>
   <main class="portal-home or-site" style="padding: 1.25rem var(--page-gutter, 1rem); max-width: 44rem">
     <h1 style="font-size: 1.125rem; font-weight: 700; margin: 0 0 0.5rem; color: var(--text)">开发枢纽</h1>
@@ -11,7 +18,14 @@
         <a href="/admin-ops-spec" style="color: var(--el-color-primary)">运营后台管理系统</a> ·
         <a href="/user-console-spec" style="color: var(--el-color-primary)">用户管理系统</a>
       </li>
-      <li><strong>产品骨架</strong>：Trinity AI、AI Cloud、GEO、Admin</li>
+      <li>
+        <strong>产品骨架</strong>：Trinity AI、AI Cloud、GEO、Admin
+      </li>
+      <li>
+        <strong>对外 API 文档</strong>（<code>trinity-docs</code> · VitePress）：
+        <a :href="docsSiteUrl" style="color: var(--el-color-primary)">打开文档站</a>
+        · 另开 <code>npm run dev:trinity-docs</code>；开发访问 <code>/docs/</code>（代理到 :5205）。<em>非</em> <code>admin-docs</code>。
+      </li>
     </ul>
 
     <h2 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--text)">运营后台 · 登录 / 登出</h2>

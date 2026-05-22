@@ -249,3 +249,22 @@
   color: var(--blue);
   background: var(--blue-soft);
 }
+
+.design-hub-nav-link--external .design-hub-nav-port {
+  margin-left: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted-2);
+}
+
+.design-hub-fab-nav-hint {
+  margin: 0.25rem 0 0;
+  padding: 0 0.55rem;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+.design-hub-fab-nav-hint code {
+  font-size: 0.65rem;
+}

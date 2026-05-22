@@ -10,6 +10,7 @@ import {
 } from "./shellInteractions";
 import "./shell.css";
 import { ACCOUNT_CONSOLE_HASH } from "../account/mock";
+import { getTrinityDocsSiteUrl } from "../../trinityDocsSite";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 
 const suiteHomeHref =
@@ -120,6 +121,7 @@ watch(
 const orPage = computed(() => (route.meta.orPage as string) || "home");
 
 const primaryNav = SHELL_PRIMARY_NAV;
+const docsSiteUrl = getTrinityDocsSiteUrl();
 
 function isNavActive(orPageKey: string) {
   return (route.meta.orPage as string | undefined) === orPageKey;
@@ -243,14 +245,24 @@ onUnmounted(() => {
 
         <div class="header-end">
           <nav class="primary or-ornav" aria-label="主导航">
-            <RouterLink
-              v-for="item in primaryNav"
-              :key="item.name"
-              :to="{ name: item.name }"
-              :class="{ 'is-active': isNavActive(item.orPage) }"
-            >
-              {{ item.label }}
-            </RouterLink>
+            <template v-for="item in primaryNav" :key="item.name">
+              <a
+                v-if="item.external"
+                :href="docsSiteUrl"
+                class="or-nav-external-docs"
+                :class="{ 'is-active': isNavActive(item.orPage) }"
+                rel="noopener noreferrer"
+              >
+                {{ item.label }}
+              </a>
+              <RouterLink
+                v-else
+                :to="{ name: item.name }"
+                :class="{ 'is-active': isNavActive(item.orPage) }"
+              >
+                {{ item.label }}
+              </RouterLink>
+            </template>
           </nav>
 
           <div class="or-header-actions">
@@ -469,15 +481,26 @@ onUnmounted(() => {
       </div>
 
       <div id="drawer" class="mobile-drawer" :class="{ open: drawerOpen }">
-        <RouterLink
-          v-for="item in primaryNav"
-          :key="item.name"
-          :to="{ name: item.name }"
-          :class="{ 'is-active': isNavActive(item.orPage) }"
-          @click="closeDrawer"
-        >
-          {{ item.label }}
-        </RouterLink>
+        <template v-for="item in primaryNav" :key="item.name">
+          <a
+            v-if="item.external"
+            :href="docsSiteUrl"
+            class="or-nav-external-docs"
+            :class="{ 'is-active': isNavActive(item.orPage) }"
+            rel="noopener noreferrer"
+            @click="closeDrawer"
+          >
+            {{ item.label }}
+          </a>
+          <RouterLink
+            v-else
+            :to="{ name: item.name }"
+            :class="{ 'is-active': isNavActive(item.orPage) }"
+            @click="closeDrawer"
+          >
+            {{ item.label }}
+          </RouterLink>
+        </template>
         <RouterLink
           :to="{ name: 'tai-account-console' }"
           class="or-drawer-ref-link"

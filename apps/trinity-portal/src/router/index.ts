@@ -1,13 +1,29 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, type RouteLocationNormalized } from "vue-router";
+import { getTrinityDocsSiteUrl } from "@trinity-ai/trinityDocsSite";
 import { getAiCloudChildRoutes } from "@app-ai-cloud/aiCloudRoutes";
 import { getTrinityAiChildRoutes } from "@trinity-ai/trinityAiRoutes";
 import { getTrinityAdminChildRoutes } from "@trinity-ai-admin/trinityAdminRoutes";
 import { adminShellAuthGuard } from "@trinity-ai-admin/views/admin-shell/shellInteractions";
 
+/** `/docs` 不在 portal 内渲染；开发时整页打开同源 `/docs/`（Vite 代理到 :5205） */
+function leaveHubForDocs(to: RouteLocationNormalized) {
+  const rest = to.params.pathMatch;
+  const suffix =
+    typeof rest === "string" ? rest : Array.isArray(rest) ? rest.filter(Boolean).join("/") : "";
+  window.location.assign(getTrinityDocsSiteUrl(suffix ? `/${suffix}` : ""));
+  return false;
+}
+
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", name: "portal-home", component: () => import("../views/PortalHome.vue") },
+    {
+      path: "/docs/:pathMatch(.*)*",
+      name: "portal-docs",
+      alias: ["/docs"],
+      beforeEnter: leaveHubForDocs,
+    },
     {
       path: "/design-tokens",
       name: "design-tokens",

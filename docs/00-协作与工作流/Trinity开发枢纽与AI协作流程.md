@@ -21,6 +21,7 @@
 | **推荐日常**：单端口看全站骨架 + 设计页 | 仓库根：`npm run dev` | `http://localhost:5173`（`@trinity/app-portal`） |
 | 仅设计枢纽（与门户内路由路径一致） | `npm run dev:trinity-design` | `http://localhost:5210` |
 | 仅 Trinity AI 骨架 | `npm run dev:trinity-ai` | `http://localhost:5201` |
+| **对外 API 文档**（VitePress） | `npm run dev:trinity-docs`（另开终端） | 枢纽菜单点击后 **整页跳转** `:5205`（独立应用，非门户内嵌）；`/docs` 路由仅作跳转；**非** `admin-docs` |
 | 仅 **Trinity AI 运营后台原型** | `npm run dev:trinity-ai-admin` | `http://localhost:5204` |
 | 仅 AI Cloud / GEO | `npm run dev:ai-cloud`、`npm run dev:trinity-geo` 等 | 见根 `package.json` 与 `apps/README.md` |
 

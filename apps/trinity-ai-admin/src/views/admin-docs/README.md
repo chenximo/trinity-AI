@@ -1,5 +1,8 @@
 # admin-docs · 文档中心（P8）
 
+> **对外文档站架构**（Markdown 真源、VitePress 构建、本模块二期发布 md）：  
+> [`docs/04-工程与迁移/Trinity文档站方案-VitePress与运营后台.md`](../../../../docs/04-工程与迁移/Trinity文档站方案-VitePress与运营后台.md)
+
 | 文件 | 说明 |
 |------|------|
 | `DocsPage.vue` | 三子页：**文档**（列表 + 编辑合一）/ 发布与回滚 / 可见范围 |

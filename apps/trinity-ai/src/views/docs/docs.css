@@ -1,0 +1,33 @@
+/* 文档中心模块增量样式；布局与 .docs-* / .mvp-* 真源见 assets/trinity-base.css */
+
+.docs-page-root {
+  /* 与静态 docs.html 的 main.mvp-main 一致，壳层 #main 已提供 flex 槽 */
+}
+
+.docs-page-root .docs-nav button.docs-nav-link {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.4rem 0.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.docs-page-root .docs-nav button.docs-nav-link:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.docs-page-root .docs-nav a.docs-nav-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
