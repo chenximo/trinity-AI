@@ -1,16 +1,25 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from "vue";
-import { useRouter } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 import { AI_CLOUD_CONSOLE_HASH } from "../account/mock";
+import CloudVendorLogo from "../../components/CloudVendorLogo.vue";
+import advantageResources from "../../assets/home/advantage-resources.png";
 import advantagePricing from "../../assets/home/advantage-pricing.png";
-import advantageConsulting from "../../assets/home/advantage-consulting.png";
 import advantageSupport from "../../assets/home/advantage-support.png";
+import { useTrinityOrSession, useTrinityOrUiLang } from "../shell/shellInteractions";
 
 defineOptions({ name: "AiCloudHomePage" });
 
 const router = useRouter();
 const pageRef = ref<HTMLElement | null>(null);
+
+const uiLang = useTrinityOrUiLang();
+const { isSignedIn, setSignedIn } = useTrinityOrSession();
+
+const drawerOpen = ref(false);
+const userMenuOpen = ref(false);
+const userWrapRef = ref<HTMLElement | null>(null);
 
 const authVisible = ref(false);
 const authSignup = ref(false);
@@ -23,19 +32,51 @@ function setBodyModal(open: boolean) {
   document.body.classList.toggle("or-modal-open", open);
 }
 
+function closeDrawer() {
+  drawerOpen.value = false;
+}
+
+function toggleDrawer() {
+  drawerOpen.value = !drawerOpen.value;
+}
+
+function toggleUserMenu() {
+  userMenuOpen.value = !userMenuOpen.value;
+}
+
+function closeUserMenu() {
+  userMenuOpen.value = false;
+}
+
+function onDocumentPointerDown(e: MouseEvent) {
+  const wrap = userWrapRef.value;
+  if (wrap && !wrap.contains(e.target as Node)) closeUserMenu();
+}
+
+function onResizeDrawer() {
+  if (window.matchMedia("(min-width: 900px)").matches) closeDrawer();
+}
+
 function openAuthModal(signup = false) {
   authSignup.value = signup;
   authFormError.value = "";
   if (signup) signupMountKey.value += 1;
   authVisible.value = true;
   setBodyModal(true);
-  const drawer = pageRef.value?.querySelector("#home-drawer");
-  const menuBtn = pageRef.value?.querySelector("#home-menu-btn");
-  drawer?.classList.remove("open");
-  menuBtn?.setAttribute("aria-expanded", "false");
+  closeDrawer();
   setTimeout(() => {
     pageRef.value?.querySelector<HTMLInputElement>("#home-auth-email")?.focus();
   }, 0);
+}
+
+function openAuthSignIn() {
+  closeDrawer();
+  openAuthModal(false);
+}
+
+function openAuthSignUp() {
+  closeDrawer();
+  openAuthModal(true);
 }
 
 function closeAuthModal() {
@@ -48,6 +89,7 @@ function oauthToConsole() {
 }
 
 function onSigninSubmit() {
+  setSignedIn(true);
   oauthToConsole();
 }
 
@@ -57,7 +99,14 @@ function onAuthModeChange(next: TrinityAuthMode) {
 
 function onSignupSubmit() {
   authFormError.value = "";
+  setSignedIn(true);
   oauthToConsole();
+}
+
+function onSignOut(e: Event) {
+  e.preventDefault();
+  setSignedIn(false);
+  closeUserMenu();
 }
 
 let disposeDom: (() => void) | undefined;
@@ -68,38 +117,12 @@ onMounted(() => {
 
   const cleanups: Array<() => void> = [];
 
-  const menuBtn = root.querySelector<HTMLButtonElement>("#home-menu-btn");
-  const drawer = root.querySelector<HTMLElement>("#home-drawer");
-  if (menuBtn && drawer) {
-    const onMenu = () => {
-      const open = !drawer.classList.contains("open");
-      drawer.classList.toggle("open", open);
-      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    };
-    const onResize = () => {
-      if (window.matchMedia("(min-width: 900px)").matches) {
-        drawer.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-      }
-    };
-    const onDrawerClick = (e: Event) => {
-      const a = (e.target as HTMLElement).closest("a");
-      if (!a) return;
-      const href = a.getAttribute("href") || "";
-      if (href.startsWith("#") && href.length > 1) {
-        drawer.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-      }
-    };
-    menuBtn.addEventListener("click", onMenu);
-    window.addEventListener("resize", onResize);
-    drawer.addEventListener("click", onDrawerClick);
-    cleanups.push(() => {
-      menuBtn.removeEventListener("click", onMenu);
-      window.removeEventListener("resize", onResize);
-      drawer.removeEventListener("click", onDrawerClick);
-    });
-  }
+  document.addEventListener("pointerdown", onDocumentPointerDown, true);
+  window.addEventListener("resize", onResizeDrawer);
+  cleanups.push(() => {
+    document.removeEventListener("pointerdown", onDocumentPointerDown, true);
+    window.removeEventListener("resize", onResizeDrawer);
+  });
 
   const overlapLinks = Array.from(root.querySelectorAll<HTMLAnchorElement>(".home-overlap-item[href^='#']"));
   if (overlapLinks.length) {
@@ -208,44 +231,6 @@ onMounted(() => {
     });
   }
 
-  const lang = root.querySelector<HTMLButtonElement>("#home-lang");
-  if (lang) {
-    const onLang = () => {
-      const isZh = (lang.textContent || "").includes("中");
-      lang.textContent = isZh ? "中文 / EN" : "中 / EN";
-    };
-    lang.addEventListener("click", onLang);
-    cleanups.push(() => lang.removeEventListener("click", onLang));
-  }
-
-  const wireOpen = (id: string, signup: boolean) => {
-    const el = root.querySelector<HTMLElement>("#" + id);
-    if (!el) return;
-    const fn = () => openAuthModal(signup);
-    el.addEventListener("click", fn);
-    cleanups.push(() => el.removeEventListener("click", fn));
-  };
-  wireOpen("home-open-login", false);
-  wireOpen("home-open-register", true);
-  wireOpen("home-drawer-login", false);
-  wireOpen("home-drawer-register", true);
-
-  const signupLink = root.querySelector('[data-or-open-signup="1"]');
-  if (signupLink) {
-    const fn = (e: Event) => {
-      e.preventDefault();
-      openAuthModal(true);
-    };
-    signupLink.addEventListener("click", fn);
-    cleanups.push(() => signupLink.removeEventListener("click", fn));
-  }
-
-  const toSigninBtn = root.querySelector("#home-auth-to-signin");
-  if (toSigninBtn) {
-    const fn = () => openAuthModal(false);
-    toSigninBtn.addEventListener("click", fn);
-    cleanups.push(() => toSigninBtn.removeEventListener("click", fn));
-  }
 
   const onEscape = (e: KeyboardEvent) => {
     if (e.key === "Escape" && authVisible.value) closeAuthModal();
@@ -276,61 +261,145 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="pageRef" class="home-page">
+  <div ref="pageRef" class="home-page or-site">
 <a class="skip" href="#main">跳转至正文</a>
 
-<header class="home-header">
-  <div class="home-header-inner">
-    <a href="/ai-cloud" class="home-brand" aria-label="Trinity 首页">
-      <span class="home-brand-mark" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-      Trinity
-    </a>
+<header class="or-inject" data-or-page="home">
+  <div class="header-row">
+    <div class="header-brand-cluster">
+      <RouterLink :to="{ name: 'aic-home' }" class="brand-row" aria-label="Trinity AI 云首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Trinity AI 云
+      </RouterLink>
+    </div>
 
-    <nav class="home-nav-center" aria-label="主导航">
-      <div class="home-nav-dd">
-        <button type="button" class="home-nav-dd-btn" aria-expanded="false" aria-haspopup="true">
-          AI 云
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" />
+    <div class="header-end">
+      <nav class="primary or-ornav home-nav-or" aria-label="主导航">
+        <div class="home-nav-dd">
+          <button type="button" class="home-nav-dd-btn" aria-expanded="false" aria-haspopup="true">
+            AI 云
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="home-nav-dd-panel" role="menu">
+            <a href="#cloud-solutions" role="menuitem" @click="closeDrawer">多云对接与各云说明</a>
+            <a href="#why" role="menuitem" @click="closeDrawer">核心优势</a>
+            <a href="#benefits" role="menuitem" @click="closeDrawer">专属福利</a>
+            <a href="#process" role="menuitem" @click="closeDrawer">购买流程</a>
+          </div>
+        </div>
+        <RouterLink to="/trinity-ai" class="home-nav-or-link">Trinity AI</RouterLink>
+      </nav>
+
+      <div class="or-header-actions">
+        <button
+          id="or-lang-btn"
+          type="button"
+          class="or-lang-btn"
+          :title="uiLang.titleText"
+          :aria-label="uiLang.ariaLabel"
+          @click="uiLang.toggle"
+        >
+          <svg
+            class="or-lang-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6"
+            />
+          </svg>
+          <span class="or-lang-label">{{ uiLang.labelText }}</span>
+        </button>
+
+        <span class="or-header-rule or-header-rule--after-lang" aria-hidden="true" />
+
+        <div v-show="!isSignedIn" class="or-guest-cluster">
+          <button type="button" class="sign-in" @click="openAuthSignUp">注册</button>
+          <button type="button" class="btn btn-gradient or-login-pill" @click="openAuthSignIn">登录</button>
+        </div>
+
+        <div v-show="isSignedIn" ref="userWrapRef" class="or-user-wrap">
+          <button
+            type="button"
+            class="or-user-trigger"
+            :aria-expanded="userMenuOpen ? 'true' : 'false'"
+            aria-haspopup="true"
+            aria-label="账户菜单"
+            @click.stop="toggleUserMenu"
+          >
+            <span class="or-user-avatar" aria-hidden="true">企</span>
+            <svg class="or-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="or-user-menu" role="menu" :hidden="!userMenuOpen">
+            <div class="or-user-menu-head">
+              <span class="or-user-avatar sm" aria-hidden="true">企</span>
+              <span class="or-user-menu-title">上海某某科技</span>
+            </div>
+            <RouterLink
+              class="or-menu-item"
+              role="menuitem"
+              :to="{ name: 'aic-account-console', hash: AI_CLOUD_CONSOLE_HASH.ACCOUNTS }"
+              @click="closeUserMenu"
+            >
+              用户中心
+            </RouterLink>
+            <button type="button" class="or-menu-item danger" role="menuitem" @click="onSignOut">退出登录</button>
+          </div>
+        </div>
+
+        <button
+          id="menu-btn"
+          type="button"
+          class="menu-toggle"
+          :aria-expanded="drawerOpen ? 'true' : 'false'"
+          aria-controls="drawer"
+          aria-label="打开菜单"
+          @click="toggleDrawer"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <div class="home-nav-dd-panel" role="menu">
-          <a href="#cloud-solutions" role="menuitem">多云对接与各云说明</a>
-          <a href="#why" role="menuitem">核心优势</a>
-          <a href="#benefits" role="menuitem">专属福利</a>
-          <a href="#process" role="menuitem">购买流程</a>
-        </div>
       </div>
-      <a href="/trinity-ai" class="home-nav-link">Trinity AI</a>
-    </nav>
-
-    <div class="home-actions">
-      <button type="button" class="home-lang" id="home-lang" title="切换语言">中 / EN</button>
-      <button type="button" class="home-btn-ghost" id="home-open-register">注册</button>
-      <button type="button" class="btn btn-gradient" id="home-open-login">登录</button>
-      <button type="button" class="home-menu-btn" id="home-menu-btn" aria-expanded="false" aria-controls="home-drawer" aria-label="打开菜单">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
   </div>
-  <div class="home-drawer" id="home-drawer">
-    <span style="display: block; font-size: 11px; font-weight: 700; color: var(--muted-2); padding: 0.35rem 0">AI 云</span>
-    <a href="#cloud-solutions">多云对接与各云说明</a>
-    <a href="#why">核心优势</a>
-    <a href="#benefits">专属福利</a>
-    <a href="#process">购买流程</a>
-    <a href="/trinity-ai">Trinity AI</a>
-    <button type="button" id="home-drawer-login">登录</button>
-    <button type="button" id="home-drawer-register">注册</button>
+
+  <div id="drawer" class="mobile-drawer" :class="{ open: drawerOpen }">
+    <span class="home-drawer-kicker">AI 云</span>
+    <a href="#cloud-solutions" @click="closeDrawer">多云对接与各云说明</a>
+    <a href="#why" @click="closeDrawer">核心优势</a>
+    <a href="#benefits" @click="closeDrawer">专属福利</a>
+    <a href="#process" @click="closeDrawer">购买流程</a>
+    <RouterLink to="/trinity-ai" @click="closeDrawer">Trinity AI</RouterLink>
+    <button v-show="!isSignedIn" type="button" class="sign-in or-drawer-register" @click="openAuthSignUp">注册</button>
+    <button v-show="!isSignedIn" type="button" class="or-drawer-signin" @click="openAuthSignIn">登录</button>
+    <RouterLink
+      v-show="isSignedIn"
+      class="or-drawer-ref-link"
+      :to="{ name: 'aic-account-console', hash: AI_CLOUD_CONSOLE_HASH.ACCOUNTS }"
+      @click="closeDrawer"
+    >
+      用户中心
+    </RouterLink>
   </div>
 </header>
 
@@ -366,41 +435,6 @@ onUnmounted(() => {
             </p>
             <div class="home-banner-cta">
               <a href="#consult" class="btn btn-gradient">立即咨询优惠权益</a>
-            </div>
-          </div>
-        </div>
-        <div class="home-hero-right">
-          <div class="home-preview-card" aria-hidden="true">
-            <div class="home-preview-head">
-              <span>云控制台 · 集采账单</span>
-              <span class="home-preview-badge">透明对账</span>
-            </div>
-            <div class="home-preview-body">
-              <div class="home-preview-kpis">
-                <div class="home-preview-kpi"><div class="v">6</div><div class="l">已纳管主账号</div></div>
-                <div class="home-preview-kpi home-preview-kpi--save"><div class="v">20%–40%</div><div class="l">较直销预估节省</div></div>
-                <div class="home-preview-kpi"><div class="v">2</div><div class="l">待对账项</div></div>
-              </div>
-              <div class="home-preview-chart" aria-hidden="true">
-                <div class="home-preview-chart-cap">多云消费占比（示意）</div>
-                <div class="home-preview-stack">
-                  <span class="home-preview-seg home-preview-seg--a" style="flex: 38"></span>
-                  <span class="home-preview-seg home-preview-seg--b" style="flex: 28"></span>
-                  <span class="home-preview-seg home-preview-seg--c" style="flex: 22"></span>
-                  <span class="home-preview-seg home-preview-seg--d" style="flex: 12"></span>
-                </div>
-                <div class="home-preview-legend">
-                  <span><span class="home-preview-dot home-preview-dot--a" aria-hidden="true"></span><span class="home-cloud-name">阿里云</span> 38%</span>
-                  <span><span class="home-preview-dot home-preview-dot--b" aria-hidden="true"></span><span class="home-cloud-name">腾讯云</span> 28%</span>
-                  <span><span class="home-preview-dot home-preview-dot--c" aria-hidden="true"></span><span class="home-cloud-name">华为云</span> 22%</span>
-                  <span><span class="home-preview-dot home-preview-dot--d" aria-hidden="true"></span>其他 12%</span>
-                </div>
-              </div>
-              <div class="home-preview-rows">
-                <div class="home-preview-row"><span>华为云 · 生产主账号</span><code>财务视图 · 只读</code></div>
-                <div class="home-preview-row"><span>腾讯云 · 按项目分账</span><code>标签映射已生效</code></div>
-                <div class="home-preview-row"><span>2026-04 汇总账单</span><code>待财务确认</code></div>
-              </div>
             </div>
           </div>
         </div>
@@ -459,7 +493,12 @@ onUnmounted(() => {
   <section class="home-usecase" id="cloud-solutions" aria-label="主流云厂商">
     <div class="home-shell" id="home-cloud-tabs">
       <div class="home-usecase-tablist" role="tablist" aria-label="选择云厂商">
-        <button type="button" class="home-usecase-tab" role="tab" id="tab-aliyun" aria-controls="panel-aliyun" aria-selected="true" tabindex="0">阿里云</button>
+        <button type="button" class="home-usecase-tab" role="tab" id="tab-aliyun" aria-controls="panel-aliyun" aria-selected="true" tabindex="0">
+          <span class="home-usecase-tab__inner">
+            <span class="home-usecase-tab__logo" aria-hidden="true"><CloudVendorLogo vendor="aliyun" /></span>
+            <span>阿里云</span>
+          </span>
+        </button>
         <button type="button" class="home-usecase-tab" role="tab" id="tab-tencent" aria-controls="panel-tencent" aria-selected="false" tabindex="-1">腾讯云</button>
         <button type="button" class="home-usecase-tab" role="tab" id="tab-huawei" aria-controls="panel-huawei" aria-selected="false" tabindex="-1">华为云</button>
         <button type="button" class="home-usecase-tab" role="tab" id="tab-aws" aria-controls="panel-aws" aria-selected="false" tabindex="-1">AWS</button>
@@ -587,13 +626,17 @@ onUnmounted(() => {
       </div>
 
       <div class="home-usecase-panel" role="tabpanel" id="panel-aliyun" aria-labelledby="tab-aliyun">
-        <div class="home-usecase-grid">
-          <div class="home-uc-visual" aria-hidden="true">
-            <div class="home-uc-vis-inner">
-              <div class="home-uc-vis-top"><span>阿里云 · 电商与金融经营</span></div>
-              <div class="home-uc-scene home-uc-scene--aliyun">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="home-usecase-layout home-usecase-layout--lrbt">
+          <div class="home-usecase-layout__top">
+            <div class="home-uc-visual home-uc-visual--lrbt" aria-hidden="true">
+              <div class="home-uc-vis-inner">
+                <div class="home-uc-vis-top">
+                  <span class="home-uc-vis-top__logo" aria-hidden="true"><CloudVendorLogo vendor="aliyun" /></span>
+                  <span>阿里云 · 电商与金融经营</span>
+                </div>
+                <div class="home-uc-scene home-uc-scene--aliyun">
+                  <div class="home-uc-scene-main">
+                    <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <defs><linearGradient id="al-bar" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fbbf24"/><stop offset="1" stop-color="#ea580c"/></linearGradient></defs>
 <rect x="16" y="24" width="112" height="168" rx="10" fill="#fff" stroke="#fcd34d" stroke-width="1.5" filter="drop-shadow(0 4px 8px rgba(234,88,12,0.12))"/>
 <path d="M52 148 A40 40 0 1 1 52 147.9" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.85"/>
@@ -607,36 +650,52 @@ onUnmounted(() => {
 <path d="M296 154 L312 138 L328 146 L344 122 L360 130" stroke="#b45309" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="312" cy="172" r="5" fill="#fcd34d"/><circle cx="328" cy="172" r="5" fill="#fbbf24"/><circle cx="344" cy="172" r="5" fill="#f59e0b"/>
 </svg>
-                </div>
-                <div class="home-uc-scene-legend">
-                  <span class="home-uc-scene-tag">大促容量与弹性预算</span>
-                  <span class="home-uc-scene-tag">多 BU / 多主体分账</span>
-                  <span class="home-uc-scene-tag">经营看板 + 成本归因</span>
+                  </div>
+                  <div class="home-uc-scene-legend">
+                    <span class="home-uc-scene-tag">大促容量与弹性预算</span>
+                    <span class="home-uc-scene-tag">多 BU / 多主体分账</span>
+                    <span class="home-uc-scene-tag">经营看板 + 成本归因</span>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="home-usecase-copy home-usecase-copy--lrbt">
+              <h3 class="home-usecase-copy__title">
+                <span class="home-usecase-copy__title-logo" aria-hidden="true"><CloudVendorLogo vendor="aliyun" /></span>
+                阿里云上云，成本按部门、按项目看得清
+              </h3>
+              <p class="home-usecase-kicker">Trinity 集采价 · 一张账单汇总 · 对账透明</p>
+              <div class="home-usecase-body">
+                <p class="home-usecase-desc-block">
+                  <strong class="home-usecase-desc-label">适合谁</strong>
+                  电商、金融等已在用阿里云、账单越来越复杂的团队——大促、多主体、多部门分账是常见诉求。
+                </p>
+                <p class="home-usecase-desc-block">
+                  <strong class="home-usecase-desc-label">Trinity 做什么</strong>
+                  帮谈集采价、汇总账单、做对账视图；开通与售后仍以阿里云为准。
+                </p>
+              </div>
+              <a href="#consult" class="home-usecase-cta">预约对接咨询</a>
+            </div>
           </div>
-          <div class="home-usecase-copy">
-            <h3>把灵骏算力与财务单元拆到「部门看得懂」</h3>
-            <ul class="home-usecase-features">
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                资源组、RAM 与 IdP 联邦
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                分账报表与预算告警
-              </li>
-              <li>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                ACK / PAI 推理模板编排
-              </li>
-            </ul>
-            <p class="home-usecase-desc">
-              适合电商、金融科技等主体采购在阿里云完成的客户。平台强调算力成本「拆得清」，并与阿里云成本数据对齐校验。
-            </p>
-            <a href="#consult" class="home-usecase-cta">预约对接咨询</a>
-          </div>
+          <ul class="home-usecase-highlights" aria-label="阿里云核心能力">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              大促、日常流量都能控预算，超支有告警
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              多公司、多部门各自一张分账，财务好核对
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              AI / 容器算力有标准方案，少踩坑、少返工
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              享集采渠道优惠，账单与 Trinity 统一对账
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -789,8 +848,8 @@ onUnmounted(() => {
         <h3 class="home-why-block-title">四大核心赋能</h3>
         <div class="home-why-advantages">
           <article class="home-why-adv">
-            <div class="home-why-adv-visual home-why-adv-visual--svg" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="home-why-adv-visual" aria-hidden="true">
+              <img :src="advantageResources" alt="全球多云节点与资源部署示意" loading="lazy" />
             </div>
             <div class="home-why-adv-body">
               <h4>资源优势</h4>
@@ -799,7 +858,7 @@ onUnmounted(() => {
           </article>
           <article class="home-why-adv">
             <div class="home-why-adv-visual" aria-hidden="true">
-              <img :src="advantagePricing" alt="" loading="lazy" />
+              <img :src="advantagePricing" alt="企业云采购商务洽谈与成本优化示意" loading="lazy" />
             </div>
             <div class="home-why-adv-body">
               <h4>商务优势</h4>
@@ -807,8 +866,40 @@ onUnmounted(() => {
             </div>
           </article>
           <article class="home-why-adv">
-            <div class="home-why-adv-visual" aria-hidden="true">
-              <img :src="advantageConsulting" alt="" loading="lazy" />
+            <div class="home-why-adv-visual home-why-adv-visual--preview" aria-hidden="true">
+              <div class="home-preview-card" aria-hidden="true">
+                <div class="home-preview-head">
+                  <span>云控制台 · 集采账单</span>
+                  <span class="home-preview-badge">透明对账</span>
+                </div>
+                <div class="home-preview-body">
+                  <div class="home-preview-kpis">
+                    <div class="home-preview-kpi"><div class="v">6</div><div class="l">已纳管主账号</div></div>
+                    <div class="home-preview-kpi home-preview-kpi--save"><div class="v">20%–40%</div><div class="l">较直销预估节省</div></div>
+                    <div class="home-preview-kpi"><div class="v">2</div><div class="l">待对账项</div></div>
+                  </div>
+                  <div class="home-preview-chart" aria-hidden="true">
+                    <div class="home-preview-chart-cap">多云消费占比（示意）</div>
+                    <div class="home-preview-stack">
+                      <span class="home-preview-seg home-preview-seg--a" style="flex: 38"></span>
+                      <span class="home-preview-seg home-preview-seg--b" style="flex: 28"></span>
+                      <span class="home-preview-seg home-preview-seg--c" style="flex: 22"></span>
+                      <span class="home-preview-seg home-preview-seg--d" style="flex: 12"></span>
+                    </div>
+                    <div class="home-preview-legend">
+                      <span><span class="home-preview-dot home-preview-dot--a" aria-hidden="true"></span><span class="home-cloud-name">阿里云</span> 38%</span>
+                      <span><span class="home-preview-dot home-preview-dot--b" aria-hidden="true"></span><span class="home-cloud-name">腾讯云</span> 28%</span>
+                      <span><span class="home-preview-dot home-preview-dot--c" aria-hidden="true"></span><span class="home-cloud-name">华为云</span> 22%</span>
+                      <span><span class="home-preview-dot home-preview-dot--d" aria-hidden="true"></span>其他 12%</span>
+                    </div>
+                  </div>
+                  <div class="home-preview-rows">
+                    <div class="home-preview-row"><span>华为云 · 生产主账号</span><code>财务视图 · 只读</code></div>
+                    <div class="home-preview-row"><span>腾讯云 · 按项目分账</span><code>标签映射已生效</code></div>
+                    <div class="home-preview-row"><span>2026-04 汇总账单</span><code>待财务确认</code></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="home-why-adv-body">
               <h4>增值服务（免费）</h4>
@@ -817,7 +908,7 @@ onUnmounted(() => {
           </article>
           <article class="home-why-adv">
             <div class="home-why-adv-visual" aria-hidden="true">
-              <img :src="advantageSupport" alt="" loading="lazy" />
+              <img :src="advantageSupport" alt="VIP 技术支持团队远程协助示意" loading="lazy" />
             </div>
             <div class="home-why-adv-body">
               <h4>技术支持</h4>
@@ -1169,68 +1260,26 @@ main#main > footer.home-footer {
   box-sizing: border-box;
 }
 
-/* 顶栏：与 index.html .header-row 相同（全宽、左右 var(--page-gutter)），不用 home-max 收窄 */
-.home-header {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid var(--border);
-}
-
-.home-header-inner {
-  max-width: none;
-  width: 100%;
-  margin: 0;
-  padding: 0 var(--page-gutter);
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  box-sizing: border-box;
-}
-
-.home-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: var(--home-font-body);
-  letter-spacing: -0.02em;
-  color: var(--text);
-  flex-shrink: 0;
-}
-
-.home-brand-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: var(--blue);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.35);
-}
-
-.home-brand-mark svg {
-  width: 17px;
-  height: 17px;
-}
-
-.home-nav-center {
-  display: none;
-  align-items: center;
+/* 顶栏：壳层样式见 trinity-base（.or-inject / .header-row）；以下为 AI 云首页导航补充 */
+.home-nav-or {
   gap: 0.25rem;
-  flex: 1;
-  justify-content: center;
 }
 
-@media (min-width: 900px) {
-  .home-nav-center {
-    display: flex;
-  }
+.home-nav-or-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.home-nav-or-link:hover {
+  color: var(--text);
+  background: var(--surface);
 }
 
 .home-nav-dd {
@@ -1241,12 +1290,12 @@ main#main > footer.home-footer {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.45rem 0.65rem;
+  padding: 0.45rem 0.75rem;
   border: none;
   border-radius: var(--radius);
   background: transparent;
   font: inherit;
-  font-size: var(--home-font-body-sm);
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--muted);
   cursor: pointer;
@@ -1273,6 +1322,7 @@ main#main > footer.home-footer {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 20;
 }
 
 .home-nav-dd:hover .home-nav-dd-panel,
@@ -1297,128 +1347,34 @@ main#main > footer.home-footer {
   background: var(--surface-2);
 }
 
-.home-nav-link {
-  padding: 0.45rem 0.75rem;
-  border-radius: var(--radius);
-  font-size: var(--home-font-body-sm);
-  font-weight: 500;
-  color: var(--muted);
+.home-drawer-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-2);
+  padding: 0.35rem 0;
 }
 
-.home-nav-link:hover {
-  background: var(--surface);
-  color: var(--text);
-}
-
-.home-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
-}
-
-.home-lang {
-  padding: 0.4rem 0.55rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg);
-  font: inherit;
-  font-size: var(--home-font-caption);
+button.or-drawer-register {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.home-lang:hover {
-  border-color: var(--border-strong);
-  color: var(--text);
-}
-
-.home-btn-ghost {
-  display: none;
-  padding: 0.4rem 0.75rem;
+  font-family: inherit;
+  color: var(--blue);
+  background: transparent;
   border: none;
   border-radius: var(--radius);
-  background: transparent;
-  font: inherit;
-  font-size: var(--home-font-body-sm);
-  font-weight: 600;
-  color: var(--blue);
   cursor: pointer;
+  text-align: left;
 }
 
-.home-btn-ghost:hover {
+button.or-drawer-register:hover {
   background: var(--blue-soft);
 }
 
-@media (min-width: 480px) {
-  .home-btn-ghost {
-    display: inline-flex;
-  }
-}
-
-.home-menu-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-}
-
-.home-menu-btn:hover {
-  background: var(--surface);
-}
-
-@media (min-width: 900px) {
-  .home-menu-btn {
-    display: none;
-  }
-}
-
-.home-drawer {
-  display: none;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  padding: 0.5rem var(--page-gutter) 1rem;
-}
-
-.home-drawer.open {
-  display: block;
-}
-
-@media (min-width: 900px) {
-  .home-drawer {
-    display: none !important;
-  }
-}
-
-.home-drawer a,
-.home-drawer button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.6rem 0;
-  font-size: var(--home-font-body-sm);
-  font-weight: 500;
-  color: var(--muted);
-  border: none;
-  border-bottom: 1px solid var(--border);
-  background: none;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.home-drawer a:last-of-type,
-.home-drawer button:last-of-type {
-  border-bottom: none;
-}
-
-/* 首屏 Banner */
 .home-banner {
   position: relative;
   min-height: var(--home-banner-min);
@@ -1469,10 +1425,6 @@ main#main > footer.home-footer {
 }
 
 @media (min-width: 960px) {
-  .home-hero-grid {
-    grid-template-columns: 1fr minmax(360px, 520px);
-  }
-
   .home-hero-left {
     text-align: left;
   }
@@ -1683,17 +1635,6 @@ main#main > footer.home-footer {
   color: var(--muted);
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid var(--border);
-}
-
-.home-hero-right {
-  display: flex;
-  justify-content: center;
-}
-
-@media (min-width: 960px) {
-  .home-hero-right {
-    justify-content: flex-end;
-  }
 }
 
 .home-preview-card {
@@ -2035,6 +1976,7 @@ main#main > footer.home-footer {
 .home-usecase-tablist {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 2rem;
@@ -2065,6 +2007,25 @@ main#main > footer.home-footer {
 .home-ours-em {
   color: var(--blue);
   font-weight: 700;
+}
+
+.home-usecase-tab__inner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.home-usecase-tab__logo {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.home-usecase-tab:has(.home-usecase-tab__inner) {
+  padding: 0.55rem 0.9rem;
+  white-space: normal;
 }
 
 .home-usecase-tab {
@@ -2099,6 +2060,123 @@ main#main > footer.home-footer {
 
 .home-usecase-panel[hidden] {
   display: none !important;
+}
+
+/* 阿里云 Tab：左 + 右 + 下（2×2 要点） */
+.home-usecase-layout--lrbt {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.home-usecase-layout__top {
+  display: grid;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .home-usecase-layout__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.home-uc-visual--lrbt {
+  min-height: 380px;
+}
+
+.home-uc-visual--lrbt .home-uc-vis-inner {
+  min-height: 380px;
+  padding: 1.15rem 1.15rem 1.1rem;
+}
+
+.home-uc-visual--lrbt .home-uc-scene {
+  min-height: 320px;
+}
+
+.home-uc-visual--lrbt .home-uc-scene-main {
+  padding: 0.35rem 0.5rem;
+}
+
+.home-uc-visual--lrbt .home-uc-scene-main svg {
+  max-height: 300px;
+}
+
+.home-usecase-copy--lrbt {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: start;
+  padding-block: 0.15rem;
+}
+
+.home-usecase-copy--lrbt h3 {
+  margin-bottom: 0.55rem;
+  font-size: var(--home-font-module);
+  line-height: 1.28;
+}
+
+.home-usecase-kicker {
+  margin: 0 0 1.15rem;
+  font-size: var(--home-font-body-sm);
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.home-usecase-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.35rem;
+}
+
+.home-usecase-desc-block {
+  margin: 0;
+  font-size: var(--home-font-body-sm);
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.home-usecase-desc-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: var(--home-font-body-sm);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.home-usecase-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 1.35rem 0 0;
+  display: grid;
+  gap: 1rem 2.5rem;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 640px) {
+  .home-usecase-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.home-usecase-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: var(--home-font-body-sm);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.home-usecase-highlights svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: #16a34a;
 }
 
 .home-usecase-grid {
@@ -2159,10 +2237,31 @@ main#main > footer.home-footer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 0.5rem;
   margin-bottom: 0.75rem;
   font-size: var(--home-font-caption);
   font-weight: 600;
   color: var(--muted);
+}
+
+.home-uc-vis-top__logo {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.home-usecase-copy__title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.home-usecase-copy__title-logo {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
 }
 
 /* 各云场景配图（SVG + 标签，典型行业与架构） */
@@ -2490,11 +2589,11 @@ main#main > section#why {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 1rem 50px 1.15rem;
-  border-radius: 999px;
+  padding: 1.75rem 5rem 1.85rem;
+  border-radius: 30px;
   background: var(--grad);
   color: #fff;
   text-align: center;
@@ -2507,7 +2606,7 @@ main#main > section#why {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
-  gap: 0.35rem 0.6rem;
+  gap: 0.45rem 0.75rem;
   margin: 0;
 }
 
@@ -2518,10 +2617,17 @@ main#main > section#why {
 }
 
 .home-why-highlight-main b {
-  font-size: var(--home-font-highlight);
+  font-size: 56px;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
+}
+
+.home-why-highlight-main span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
 .home-why-highlight-tagline {
@@ -2534,11 +2640,11 @@ main#main > section#why {
 }
 
 .home-why-highlight-note {
-  margin: 0.65rem 0 0;
-  max-width: 32rem;
-  font-size: var(--home-font-caption);
-  line-height: 1.5;
-  opacity: 0.9;
+  margin: 0.85rem 0 0;
+  max-width: 42rem;
+  font-size: var(--home-font-body-sm);
+  line-height: 1.55;
+  opacity: 0.92;
 }
 
 .home-why-block {
@@ -2674,6 +2780,55 @@ main#main > section#why {
 
 .home-why-adv-visual--svg svg {
   opacity: 0.9;
+}
+
+.home-why-adv-visual--preview {
+  aspect-ratio: auto;
+  background: var(--surface-2);
+  place-items: stretch;
+  align-content: start;
+}
+
+.home-why-adv-visual--preview .home-preview-card {
+  width: 100%;
+  max-width: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.home-why-adv-visual--preview .home-preview-head {
+  padding: 0.65rem 0.85rem;
+  font-size: var(--home-font-caption);
+}
+
+.home-why-adv-visual--preview .home-preview-body {
+  padding: 0.75rem 0.85rem 0.9rem;
+}
+
+.home-why-adv-visual--preview .home-preview-kpis {
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-why-adv-visual--preview .home-preview-kpi {
+  padding: 0.4rem 0.45rem;
+}
+
+.home-why-adv-visual--preview .home-preview-kpi .v {
+  font-size: var(--home-font-body);
+}
+
+.home-why-adv-visual--preview .home-preview-chart {
+  padding: 0.55rem 0.65rem;
+}
+
+.home-why-adv-visual--preview .home-preview-legend {
+  gap: 0.35rem 0.5rem;
+}
+
+.home-why-adv-visual--preview .home-preview-row {
+  padding: 0.35rem 0;
 }
 
 .home-why-adv-body {
