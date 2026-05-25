@@ -3,7 +3,13 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 import { AI_CLOUD_CONSOLE_HASH } from "../account/mock";
+import AliyunCloudSceneVisual from "../../components/AliyunCloudSceneVisual.vue";
+import AwsCloudSceneVisual from "../../components/AwsCloudSceneVisual.vue";
+import AzureCloudSceneVisual from "../../components/AzureCloudSceneVisual.vue";
 import CloudVendorLogo from "../../components/CloudVendorLogo.vue";
+import GcpCloudSceneVisual from "../../components/GcpCloudSceneVisual.vue";
+import HuaweiCloudSceneVisual from "../../components/HuaweiCloudSceneVisual.vue";
+import TencentCloudSceneVisual from "../../components/TencentCloudSceneVisual.vue";
 import HomeHeroCloudOrbit from "../../components/HomeHeroCloudOrbit.vue";
 import advantageResources from "../../assets/home/advantage-resources.png";
 import advantagePricing from "../../assets/home/advantage-pricing.png";
@@ -622,29 +628,8 @@ onUnmounted(() => {
                   <span>腾讯云 · 直播与实时音视频</span>
                 </div>
               <div class="home-uc-scene home-uc-scene--tencent">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs>
-<linearGradient id="tc-screen" x1="200" y1="52" x2="200" y2="178" gradientUnits="userSpaceOnUse"><stop stop-color="#155e75"/><stop offset="0.5" stop-color="#0e7490"/><stop offset="1" stop-color="#042f2e"/></linearGradient>
-<linearGradient id="tc-bezel" x1="118" y1="36" x2="292" y2="188" gradientUnits="userSpaceOnUse"><stop stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
-<linearGradient id="tc-meter" x1="332" y1="168" x2="332" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#06b6d4"/></linearGradient>
-</defs>
-<g opacity="0.35" stroke="#64748b" stroke-width="1"><path d="M8 28h384M8 40h384M8 52h384M8 64h384M8 76h384M8 88h384M8 100h384M8 112h384M8 124h384M8 136h384M8 148h384M8 160h384M8 172h384M8 184h384M8 196h384M8 208h384"/></g>
-<rect x="12" y="8" width="376" height="18" rx="3" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-<g fill="#0f172a"><circle cx="22" cy="17" r="2"/><circle cx="32" cy="17" r="2"/><circle cx="42" cy="17" r="2"/><circle cx="52" cy="17" r="2"/><circle cx="62" cy="17" r="2"/><circle cx="72" cy="17" r="2"/><circle cx="82" cy="17" r="2"/><circle cx="92" cy="17" r="2"/></g>
-<g stroke="#94a3b8" stroke-width="1.2"><circle cx="28" cy="120" r="26"/><circle cx="28" cy="120" r="18"/><circle cx="28" cy="120" r="10"/><path d="M8 120h40M28 94v52" opacity="0.6"/></g>
-<rect x="10" y="98" width="36" height="44" rx="6" stroke="#475569" stroke-width="1.5" fill="#1e293b"/>
-<rect x="108" y="32" width="196" height="156" rx="14" fill="url(#tc-bezel)" stroke="#64748b" stroke-width="1.5"/>
-<rect x="122" y="46" width="168" height="112" rx="6" fill="url(#tc-screen)" stroke="#22d3ee" stroke-width="1" opacity="0.95"/>
-<path d="M134 132c10-18 18-18 28 0s18 18 28 0 18-18 28 0 18 18 28 0 18-18 28-18 18 18 28 18 18-18 28-18 18 18 28 18" stroke="#5eead4" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.95"/>
-<path d="M134 148c8-10 14-10 22 0s14 10 22 0 14-10 22 0 14 10 22 0 14-10 22-10 14 10 22 10" stroke="#67e8f9" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.75"/>
-<circle cx="206" cy="88" r="22" stroke="#fbbf24" stroke-width="2" fill="rgba(251,191,36,0.12)"/>
-<path d="M198 88l10 8 18-22" stroke="#fcd34d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-<rect x="258" y="46" width="36" height="16" rx="3" fill="#7f1d1d" stroke="#fca5a5" stroke-width="0.8"/><circle cx="268" cy="54" r="3" fill="#ef4444"/><path d="M276 50h2v8h-2zM280 50h2v8h-2zM284 50h2v8h-2z" fill="#fecaca"/>
-<rect x="318" y="48" width="62" height="124" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
-<g fill="url(#tc-meter)" opacity="0.9"><rect x="326" y="148" width="6" height="16" rx="1"/><rect x="336" y="132" width="6" height="32" rx="1"/><rect x="346" y="156" width="6" height="8" rx="1"/><rect x="356" y="124" width="6" height="40" rx="1"/><rect x="366" y="140" width="6" height="24" rx="1"/></g>
-<path d="M326 56h46v14H326z" fill="#1e293b" stroke="#475569"/><path d="M332 62h34M332 68h24" stroke="#64748b" stroke-width="1.2" stroke-linecap="round"/>
-</svg>
+                <div class="home-uc-scene-main home-uc-scene-main--tencent">
+                  <TencentCloudSceneVisual />
                 </div>
                 <div class="home-uc-scene-legend">
                   <span class="home-uc-scene-tag">连麦 / 互动直播</span>
@@ -712,25 +697,8 @@ onUnmounted(() => {
                   <span>华为云 · 政企与运营商专线</span>
                 </div>
               <div class="home-uc-scene home-uc-scene--huawei">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs><marker id="hw-arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#64748b"/></marker></defs>
-<path d="M48 168h300" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4"/>
-<path d="M52 168 V56" stroke="#64748b" stroke-width="1" marker-end="url(#hw-arr)"/>
-<path d="M52 56h88" stroke="#64748b" stroke-width="1" marker-end="url(#hw-arr)"/>
-<path d="M140 56V120" stroke="#64748b" stroke-width="1" marker-end="url(#hw-arr)"/>
-<path d="M52 120h240" stroke="#64748b" stroke-width="1" marker-end="url(#hw-arr)"/>
-<g stroke="#475569" stroke-width="2" fill="#f8fafc"><path d="M68 160 L68 72 L88 52 L108 72 L108 160z"/><path d="M78 160V88M98 160V88M88 72V52"/></g>
-<path d="M108 96 L180 96" stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="6 4"/>
-<path d="M180 96 L180 118" stroke="#0ea5e9" stroke-width="2"/>
-<polygon points="180,52 230,82 230,158 180,188 130,158 130,82" stroke="#c2410c" stroke-width="2.2" fill="#fff7ed"/>
-<g stroke="#ea580c" stroke-width="1.4" opacity="0.9"><path d="M148 120h64M148 132h52M148 144h60M148 156h48"/></g>
-<rect x="168" y="104" width="24" height="24" rx="2" fill="#fb923c" opacity="0.45" stroke="#c2410c"/>
-<path d="M248 48h112v132H248z" fill="#fff" stroke="#334155" stroke-width="2"/>
-<path d="M262 68h84M262 88h72M262 108h80M262 128h64" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-<rect x="270" y="140" width="68" height="28" rx="4" fill="#fef2f2" stroke="#f87171" stroke-width="1.2"/>
-<path d="M286 154l8 8 16-16" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>
+                <div class="home-uc-scene-main home-uc-scene-main--huawei">
+                  <HuaweiCloudSceneVisual />
                 </div>
                 <div class="home-uc-scene-legend">
                   <span class="home-uc-scene-tag">运营商骨干 / 专线入云</span>
@@ -798,21 +766,8 @@ onUnmounted(() => {
                   <span>阿里云 · 电商与金融经营</span>
                 </div>
                 <div class="home-uc-scene home-uc-scene--aliyun">
-                  <div class="home-uc-scene-main">
-                    <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs><linearGradient id="al-bar" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fbbf24"/><stop offset="1" stop-color="#ea580c"/></linearGradient></defs>
-<rect x="16" y="24" width="112" height="168" rx="10" fill="#fff" stroke="#fcd34d" stroke-width="1.5" filter="drop-shadow(0 4px 8px rgba(234,88,12,0.12))"/>
-<path d="M52 148 A40 40 0 1 1 52 147.9" stroke="#f59e0b" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.85"/>
-<circle cx="52" cy="108" r="6" fill="#ea580c" opacity="0.9"/>
-<path d="M36 172h64M36 184h48" stroke="#d6d3d1" stroke-width="3" stroke-linecap="round"/>
-<rect x="144" y="24" width="120" height="168" rx="10" fill="#fff" stroke="#fb923c" stroke-width="1.5" filter="drop-shadow(0 4px 8px rgba(234,88,12,0.1))"/>
-<rect x="158" y="148" width="14" height="36" rx="2" fill="url(#al-bar)" opacity="0.9"/><rect x="178" y="124" width="14" height="60" rx="2" fill="url(#al-bar)" opacity="0.95"/><rect x="198" y="100" width="14" height="84" rx="2" fill="#ea580c" opacity="0.95"/><rect x="218" y="132" width="14" height="52" rx="2" fill="#fb923c"/><rect x="238" y="116" width="14" height="68" rx="2" fill="#f59e0b"/>
-<path d="M152 88 Q200 8 248 52 T332 40" stroke="#ea580c" stroke-width="2.5" fill="none" opacity="0.45" stroke-dasharray="5 4"/>
-<rect x="280" y="24" width="104" height="168" rx="10" fill="#fff" stroke="#f59e0b" stroke-width="1.5" filter="drop-shadow(0 4px 8px rgba(234,88,12,0.1))"/>
-<rect x="292" y="44" width="80" height="10" rx="2" fill="#fef3c7"/><rect x="292" y="62" width="64" height="10" rx="2" fill="#fde68a"/><rect x="292" y="80" width="72" height="10" rx="2" fill="#fcd34d"/><rect x="292" y="98" width="56" height="10" rx="2" fill="#fbbf24"/><rect x="292" y="116" width="68" height="10" rx="2" fill="#f59e0b"/>
-<path d="M296 154 L312 138 L328 146 L344 122 L360 130" stroke="#b45309" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="312" cy="172" r="5" fill="#fcd34d"/><circle cx="328" cy="172" r="5" fill="#fbbf24"/><circle cx="344" cy="172" r="5" fill="#f59e0b"/>
-</svg>
+                  <div class="home-uc-scene-main home-uc-scene-main--aliyun">
+                    <AliyunCloudSceneVisual />
                   </div>
                   <div class="home-uc-scene-legend">
                     <span class="home-uc-scene-tag">大促容量与弹性预算</span>
@@ -880,20 +835,8 @@ onUnmounted(() => {
                   <span>Google Cloud · 出海与全球数据面</span>
                 </div>
               <div class="home-uc-scene home-uc-scene--gcp">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs>
-<filter id="g-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<linearGradient id="g-arc" x1="0" y1="180" x2="400" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#34d399" stop-opacity="0"/><stop offset="0.5" stop-color="#2dd4bf" stop-opacity="0.9"/><stop offset="1" stop-color="#818cf8" stop-opacity="0"/></linearGradient>
-</defs>
-<path d="M20 178 Q200 120 380 178" stroke="url(#g-arc)" stroke-width="3" fill="none" opacity="0.85"/>
-<path d="M40 172 Q200 88 360 168" stroke="#6366f1" stroke-width="1.2" fill="none" opacity="0.35" stroke-dasharray="4 6"/>
-<circle cx="72" cy="72" r="7" fill="#4ade80" filter="url(#g-glow)"/><circle cx="140" cy="48" r="9" fill="#60a5fa" filter="url(#g-glow)"/><circle cx="210" cy="40" r="8" fill="#a78bfa" filter="url(#g-glow)"/><circle cx="288" cy="58" r="10" fill="#f472b6" filter="url(#g-glow)"/><circle cx="340" cy="96" r="7" fill="#38bdf8" filter="url(#g-glow)"/><circle cx="200" cy="100" r="11" fill="#fbbf24" filter="url(#g-glow)"/><circle cx="118" cy="118" r="6" fill="#94a3b8" opacity="0.9"/>
-<path d="M72 72 Q136 56 200 100" stroke="#a5b4fc" stroke-width="1.5" fill="none" opacity="0.8"/><path d="M200 100 Q248 48 288 58" stroke="#a5b4fc" stroke-width="1.5" fill="none" opacity="0.8"/><path d="M200 100 Q230 120 340 96" stroke="#6ee7b7" stroke-width="1.5" fill="none" opacity="0.75"/><path d="M118 118 Q160 90 200 100" stroke="#94a3b8" stroke-width="1.2" fill="none" opacity="0.6"/>
-<path d="M320 36 L352 52 L338 28 Z" fill="#38bdf8" opacity="0.85"/>
-<path d="M328 44 L360 40 L352 56 Z" fill="#67e8f9" opacity="0.5"/>
-<rect x="24" y="150" width="72" height="28" rx="6" stroke="#818cf8" stroke-width="1" fill="rgba(99,102,241,0.15)"/><rect x="304" y="132" width="72" height="36" rx="6" stroke="#34d399" stroke-width="1" fill="rgba(52,211,153,0.12)"/>
-</svg>
+                <div class="home-uc-scene-main home-uc-scene-main--gcp">
+                  <GcpCloudSceneVisual />
                 </div>
                 <div class="home-uc-scene-legend">
                   <span class="home-uc-scene-tag">多 Region 主动 / 主动</span>
@@ -961,23 +904,8 @@ onUnmounted(() => {
                   <span>Azure · 混合云与 AI 工作负载</span>
                 </div>
               <div class="home-uc-scene home-uc-scene--azure">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs>
-<linearGradient id="az-a" x1="120" y1="40" x2="280" y2="180" gradientUnits="userSpaceOnUse">
-<stop stop-color="#0078D4"/><stop offset="1" stop-color="#50E6FF"/>
-</linearGradient>
-</defs>
-<rect x="24" y="28" width="352" height="164" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-<path d="M200 52 L248 168 L200 140 L152 168 Z" fill="url(#az-a)" opacity="0.92"/>
-<path d="M168 168 L200 92 L232 168 Z" fill="#0078D4" opacity="0.35"/>
-<rect x="48" y="48" width="88" height="12" rx="3" fill="#e2e8f0"/>
-<rect x="48" y="68" width="64" height="10" rx="2" fill="#e2e8f0"/>
-<rect x="280" y="48" width="72" height="36" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
-<path d="M292 62h48M292 74h36" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
-<circle cx="96" cy="148" r="18" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
-<path d="M88 148 L94 154 L106 140" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>
+                <div class="home-uc-scene-main home-uc-scene-main--azure">
+                  <AzureCloudSceneVisual />
                 </div>
                 <div class="home-uc-scene-legend">
                   <span class="home-uc-scene-tag">订阅与资源组治理</span>
@@ -1045,16 +973,8 @@ onUnmounted(() => {
                   <span>AWS · 企业多账号着陆区</span>
                 </div>
               <div class="home-uc-scene home-uc-scene--aws">
-                <div class="home-uc-scene-main">
-                  <svg viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs><linearGradient id="aw-pl" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient></defs>
-<g transform="translate(200,120)"><path d="M-120 20 L0 -40 L120 20 L0 80 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/><path d="M-100 8 L0 -52 L100 8 L0 68 Z" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/><path d="M-80 -4 L0 -64 L80 -4 L0 56 Z" fill="url(#aw-pl)" stroke="#475569" stroke-width="1.2"/></g>
-<g transform="translate(200,58)"><rect x="-28" y="-18" width="56" height="36" rx="4" fill="#fff" stroke="#f59e0b" stroke-width="2"/><path d="M-12 -6h24M-12 4h16" stroke="#78716c" stroke-width="2" stroke-linecap="round"/></g>
-<path d="M200 76 L200 92" stroke="#64748b" stroke-width="2"/>
-<g transform="translate(200,108)"><rect x="-130" y="0" width="80" height="44" rx="5" fill="#fff" stroke="#ea580c" stroke-width="1.5" transform="skewX(-8)"/><rect x="-30" y="8" width="80" height="44" rx="5" fill="#fff" stroke="#f59e0b" stroke-width="1.5" transform="skewX(-8)"/><rect x="70" y="16" width="80" height="44" rx="5" fill="#fff" stroke="#ea580c" stroke-width="1.5" transform="skewX(-8)"/></g>
-<path d="M88 124h32M88 136h20M248 132h28M248 144h36" stroke="#78716c" stroke-width="2" stroke-linecap="round"/>
-<rect x="168" y="168" width="64" height="28" rx="6" fill="#fff7ed" stroke="#fb923c" stroke-width="1.5"/><path d="M184 182h32M184 190h24" stroke="#b45309" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
+                <div class="home-uc-scene-main home-uc-scene-main--aws">
+                  <AwsCloudSceneVisual />
                 </div>
                 <div class="home-uc-scene-legend">
                   <span class="home-uc-scene-tag">Control Tower 蓝图</span>
@@ -2511,6 +2431,7 @@ button.or-drawer-register:hover {
 }
 
 .home-uc-visual--lrbt {
+  --home-uc-art-h: 268px;
   min-height: 380px;
   height: fit-content;
   align-self: center;
@@ -2526,11 +2447,24 @@ button.or-drawer-register:hover {
 .home-uc-visual--lrbt .home-uc-scene {
   min-height: 320px;
   flex: 1;
-  justify-content: center;
+  justify-content: stretch;
 }
 
 .home-uc-visual--lrbt .home-uc-scene-main {
-  padding: 0.35rem 0.5rem;
+  flex: 0 0 var(--home-uc-art-h);
+  width: 100%;
+  min-height: var(--home-uc-art-h);
+  height: var(--home-uc-art-h);
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.home-uc-visual--lrbt .home-uc-scene-main > * {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
 }
 
 .home-uc-visual--lrbt .home-uc-scene-main svg {
@@ -2659,7 +2593,7 @@ button.or-drawer-register:hover {
   position: relative;
   border-radius: 16px;
   border: none;
-  background: var(--surface);
+  background: transparent;
   box-shadow: none;
   min-height: 300px;
   overflow: hidden;
@@ -2713,7 +2647,7 @@ button.or-drawer-register:hover {
   border-radius: 12px;
   border: none;
   overflow: hidden;
-  background: var(--surface);
+  background: transparent;
 }
 
 .home-uc-scene-main {
@@ -2797,6 +2731,21 @@ button.or-drawer-register:hover {
 
 .home-uc-scene--aws .home-uc-scene-legend {
   background: rgba(248, 250, 252, 0.96);
+}
+
+/* Azure：浅蓝混合云 + OpenAI 工作负载 */
+.home-uc-scene--azure {
+  background: linear-gradient(165deg, #f0f9ff 0%, #e0f2fe 35%, #f8fafc 100%);
+}
+
+.home-uc-scene--azure .home-uc-scene-legend {
+  background: rgba(240, 249, 255, 0.95);
+}
+
+.home-uc-scene--azure .home-uc-scene-tag {
+  background: #fff;
+  border: none;
+  color: #0369a1;
 }
 
 .home-uc-scene-tag {

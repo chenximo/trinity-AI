@@ -94,9 +94,7 @@ defineProps<{
 }
 
 .cloud-vendor-logo--aws {
-  padding: 0;
-  transform: scale(1.12);
-  transform-origin: center;
+  padding: 6%;
 }
 
 .cloud-vendor-logo--gcp {
