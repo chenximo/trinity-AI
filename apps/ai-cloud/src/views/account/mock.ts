@@ -5,7 +5,6 @@
 export const AI_CLOUD_CONSOLE_HASH = {
   ACCOUNTS: "#accounts",
   BILLING: "#billing",
-  CONTRACTS: "#contracts",
   INVOICES: "#invoices",
   CONTACT: "#contact",
 } as const;
@@ -13,7 +12,6 @@ export const AI_CLOUD_CONSOLE_HASH = {
 export type AiCloudConsolePanelId =
   | "accounts"
   | "billing"
-  | "contracts"
   | "invoices"
   | "contact";
 
@@ -24,7 +22,6 @@ export const AI_CLOUD_CONSOLE_PANELS: ReadonlyArray<{
 }> = [
   { id: "accounts", label: "账号管理", hash: AI_CLOUD_CONSOLE_HASH.ACCOUNTS },
   { id: "billing", label: "费用", hash: AI_CLOUD_CONSOLE_HASH.BILLING },
-  { id: "contracts", label: "合同", hash: AI_CLOUD_CONSOLE_HASH.CONTRACTS },
   { id: "invoices", label: "发票", hash: AI_CLOUD_CONSOLE_HASH.INVOICES },
   { id: "contact", label: "联系我们", hash: AI_CLOUD_CONSOLE_HASH.CONTACT },
 ] as const;
@@ -467,6 +464,67 @@ export const MOCK_INVOICE_RECORDS: MockInvoiceRecord[] = [
 ];
 
 export const INVOICE_TYPE_OPTIONS: InvoiceType[] = ["增值税普通发票", "增值税专用发票"];
+
+export type MockContactItem = {
+  label: string;
+  value: string;
+  href?: string;
+};
+
+export type MockContactChannel = {
+  id: string;
+  title: string;
+  desc: string;
+  items: MockContactItem[];
+};
+
+export const MOCK_CONTACT_ADVISOR = {
+  badge: "VIP 专属通道",
+  name: "张先生",
+  role: "专属上云顾问",
+  summary: "开户、集采议价、多云架构与账单对账，一对一跟进您的上云项目。",
+  phone: "400-888-0626",
+  wechat: "Trinity-AI-Cloud",
+  hours: "工作日 9:00–18:00（GMT+8）",
+  email: "cloud@trinity.example",
+} as const;
+
+export const MOCK_CONTACT_CHANNELS: MockContactChannel[] = [
+  {
+    id: "support",
+    title: "技术支持",
+    desc: "控制台使用、云账号纳管、对账与权限异常。",
+    items: [
+      { label: "服务邮箱", value: "support@trinity.example", href: "mailto:support@trinity.example" },
+      { label: "响应时效", value: "工作日 4 小时内首次回复" },
+      { label: "紧急热线", value: "400-888-0626 转 2", href: "tel:4008880626" },
+    ],
+  },
+  {
+    id: "finance",
+    title: "财务与开票",
+    desc: "账单、发票申请与对公付款相关问题。",
+    items: [
+      { label: "财务邮箱", value: "finance@trinity.example", href: "mailto:finance@trinity.example" },
+      { label: "控制台", value: "费用 · 发票模块在线提交" },
+      { label: "服务时间", value: "工作日 9:00–17:30" },
+    ],
+  },
+  {
+    id: "biz",
+    title: "商务合作",
+    desc: "渠道折扣、合同账期与多云采购方案咨询。",
+    items: [
+      { label: "商务邮箱", value: "cloud@trinity.example", href: "mailto:cloud@trinity.example" },
+      { label: "预约咨询", value: "官网填写需求，顾问 1 个工作日内联系" },
+    ],
+  },
+];
+
+export const MOCK_CONTACT_NOTES: string[] = [
+  "演示环境：联系方式为占位数据，正式环境由租户商务合同与平台运营配置。",
+  "费用、发票类问题请优先在控制台对应模块操作，便于财务留痕对账。",
+];
 
 export function formatCny(amount: number): string {
   return `¥${amount.toLocaleString("zh-CN")}`;

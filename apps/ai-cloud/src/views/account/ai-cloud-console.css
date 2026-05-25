@@ -1399,3 +1399,216 @@
 .or-cloud-invoice-detail-row a {
   color: var(--blue);
 }
+
+/* 联系我们 */
+.or-cloud-contact-page .or-cloud-lead-with-tip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.35rem;
+  margin: 0;
+}
+
+.or-cloud-contact-page .or-cloud-lead-sub {
+  font-weight: inherit;
+  color: inherit;
+}
+
+.or-cloud-contact-page .or-cloud-lead-info {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.or-cloud-contact-hero {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1.35rem;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--blue) 22%, var(--border));
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--blue) 8%, var(--surface)) 0%, var(--surface) 55%);
+  box-shadow: 0 8px 28px rgba(37, 99, 235, 0.08);
+}
+
+@media (min-width: 768px) {
+  .or-cloud-contact-hero {
+    grid-template-columns: 1fr minmax(12rem, 16rem);
+    align-items: start;
+    gap: 1.75rem;
+  }
+}
+
+.or-cloud-contact-hero__badge {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--blue);
+  background: var(--blue-soft);
+  border: 1px solid color-mix(in srgb, var(--blue) 18%, var(--border));
+}
+
+.or-cloud-contact-hero__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.or-cloud-contact-hero__summary {
+  margin: 0 0 1.1rem;
+  max-width: 36rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.or-cloud-contact-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.or-cloud-contact-hero__actions .btn {
+  min-height: 40px;
+  padding-inline: 1.25rem;
+}
+
+.or-cloud-contact-hero__meta {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  display: grid;
+  gap: 0.65rem;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+  border: 1px solid var(--border);
+}
+
+.or-cloud-contact-hero__meta-row {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.or-cloud-contact-hero__meta-row dt {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted-2);
+  letter-spacing: 0.02em;
+}
+
+.or-cloud-contact-hero__meta-row dd {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.or-cloud-contact-hero__meta-row a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.or-cloud-contact-hero__meta-row a:hover {
+  text-decoration: underline;
+}
+
+.or-cloud-contact-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .or-cloud-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.or-cloud-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 100%;
+  padding: 1.1rem 1.15rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.or-cloud-contact-card__title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.or-cloud-contact-card__desc {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.or-cloud-contact-card__list {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.or-cloud-contact-card__row {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.or-cloud-contact-card__row dt {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.or-cloud-contact-card__row dd {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.or-cloud-contact-card__row a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.or-cloud-contact-card__row a:hover {
+  text-decoration: underline;
+}
+
+.or-cloud-contact-notes {
+  margin: 0;
+  padding: 0.85rem 1rem 0.85rem 1.15rem;
+  list-style: disc;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.or-cloud-contact-notes li + li {
+  margin-top: 0.35rem;
+}
+
+.or-cloud-contact-notes li::marker {
+  color: var(--muted-2);
+}

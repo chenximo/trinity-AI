@@ -22,6 +22,9 @@ import {
   MOCK_INVOICE_RECORDS,
   MOCK_INVOICE_TITLES,
   MOCK_INVOICE_ENTITY,
+  MOCK_CONTACT_ADVISOR,
+  MOCK_CONTACT_CHANNELS,
+  MOCK_CONTACT_NOTES,
   channelDiscountLabel,
   formatCny,
   formatPctSigned,
@@ -46,6 +49,10 @@ const router = useRouter();
 
 function goHome() {
   void router.push({ name: "aic-home" });
+}
+
+function goConsultHome() {
+  void router.push({ name: "aic-home", hash: "#consult" });
 }
 
 function openVendorConsole(url: string) {
@@ -590,7 +597,7 @@ onUnmounted(() => {
                     </svg>
                   </summary>
                   <div class="or-keys-info-panel" role="note">
-                    列表展示纳管状态（正常 / 过期 / 冻结）；渠道优惠与合约摘要请在详情或费用、合同模块查看。
+                    列表展示纳管状态（正常 / 过期 / 冻结）；渠道优惠与合约摘要请在详情或费用模块查看。
                     「打开××控制台」将跳转该云厂商官方登录页，非 Trinity SSO 代登。
                   </div>
                 </details>
@@ -1273,28 +1280,6 @@ onUnmounted(() => {
           </div>
         </section>
 
-        <!-- 合同 · 简版 -->
-        <section data-or-panel="contracts" id="or-panel-contracts" hidden>
-          <nav class="or-crumb" aria-label="面包屑">
-            <a href="#" @click.prevent="goHome">Trinity AI 云</a>
-            <span aria-hidden="true"> / </span>
-            <span>合同</span>
-          </nav>
-          <header class="or-keys-pagehead">
-            <div class="or-keys-title-row">
-              <h1 class="or-page-title or-keys-page-title">合同</h1>
-            </div>
-            <div class="or-keys-lead-row">
-              <p class="or-lead or-keys-lead">渠道框架合约与补充协议状态（演示）。</p>
-            </div>
-          </header>
-          <ul class="or-cloud-simple-list">
-            <li><span>TC-2024-001 · 框架采购</span><strong>生效中</strong></li>
-            <li><span>TC-2025-014 · 腾讯云补充</span><strong>生效中</strong></li>
-            <li><span>TC-2025-022 · AWS 出海</span><strong>待签署</strong></li>
-          </ul>
-        </section>
-
         <!-- 发票 · P0 -->
         <section data-or-panel="invoices" id="or-panel-invoices" class="or-cloud-invoices-page" hidden>
           <nav class="or-crumb" aria-label="面包屑">
@@ -1330,9 +1315,7 @@ onUnmounted(() => {
                   <div class="or-keys-info-panel" role="note">
                     可开票额度仅统计已结算、已支付的消费（与
                     <a href="#billing" @click.prevent="goConsoleHash('#billing')">费用</a>
-                    应付口径一致），归属
-                    <a href="#contracts" @click.prevent="goConsoleHash('#contracts')">合约账期</a>
-                    管控；禁止超额开票。
+                    应付口径一致），按合约账期管控；禁止超额开票。
                   </div>
                 </details>
               </p>
@@ -1401,8 +1384,7 @@ onUnmounted(() => {
                 <div>
                   <h2 id="or-cloud-invoice-quota-title" class="or-cloud-invoice-card__title">可开票金额</h2>
                   <p class="or-cloud-invoice-card__sub">
-                    账期 {{ invoiceQuota.periodLabel }} ·
-                    <a href="#contracts" @click.prevent="goConsoleHash('#contracts')">{{ invoiceQuota.contractId }}</a>
+                    账期 {{ invoiceQuota.periodLabel }} · 合约编号 <code>{{ invoiceQuota.contractId }}</code>
                   </p>
                 </div>
               </div>
@@ -1589,7 +1571,7 @@ onUnmounted(() => {
                   <span>合约账期</span>
                   <strong>{{ invoiceQuota.periodLabel }}</strong>
                   <span>合约编号</span>
-                  <a href="#contracts" @click.prevent="goConsoleHash('#contracts')">{{ invoiceQuota.contractId }}</a>
+                  <code>{{ invoiceQuota.contractId }}</code>
                 </div>
                 <div class="form-group">
                   <label for="or-invoice-apply-amount">申请开票金额</label>
@@ -1668,8 +1650,7 @@ onUnmounted(() => {
                 <div class="or-cloud-invoice-detail-row">
                   <dt>账期 / 合约</dt>
                   <dd>
-                    {{ invoiceDetailRow.periodLabel }} ·
-                    <a href="#contracts" @click.prevent="goConsoleHash('#contracts')">{{ invoiceDetailRow.contractId }}</a>
+                    {{ invoiceDetailRow.periodLabel }} · <code>{{ invoiceDetailRow.contractId }}</code>
                   </dd>
                 </div>
                 <div class="or-cloud-invoice-detail-row">
@@ -1703,8 +1684,8 @@ onUnmounted(() => {
           </div>
         </section>
 
-        <!-- 联系我们 · 简版 -->
-        <section data-or-panel="contact" id="or-panel-contact" hidden>
+        <!-- 联系我们 -->
+        <section data-or-panel="contact" id="or-panel-contact" class="or-cloud-contact-page" hidden>
           <nav class="or-crumb" aria-label="面包屑">
             <a href="#" @click.prevent="goHome">Trinity AI 云</a>
             <span aria-hidden="true"> / </span>
@@ -1713,20 +1694,87 @@ onUnmounted(() => {
           <header class="or-keys-pagehead">
             <div class="or-keys-title-row">
               <h1 class="or-page-title or-keys-page-title">联系我们</h1>
+              <div class="or-keys-title-actions">
+                <button type="button" class="btn btn-gradient" @click="goConsultHome">官网预约咨询</button>
+              </div>
             </div>
             <div class="or-keys-lead-row">
-              <p class="or-lead or-keys-lead">专属上云顾问与技术支持（演示）。</p>
+              <p class="or-lead or-keys-lead or-cloud-lead-with-tip">
+                <span class="or-cloud-lead-sub">专属顾问、技术支持与财务通道；</span>开户与优惠可在线预约。
+                <details class="or-keys-info or-cloud-lead-info">
+                  <summary class="or-keys-info-sum" aria-label="服务说明">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 16v-4M12 8h.01" stroke-linecap="round" />
+                    </svg>
+                  </summary>
+                  <div class="or-keys-info-panel" role="note">
+                    紧急故障请致电并说明租户与云账号 ID；账单与发票问题请优先使用控制台
+                    <a href="#billing" @click.prevent="goConsoleHash('#billing')">费用</a>
+                    、
+                    <a href="#invoices" @click.prevent="goConsoleHash('#invoices')">发票</a>
+                    模块留痕。
+                  </div>
+                </details>
+              </p>
             </div>
           </header>
-          <div class="or-cloud-contact-card">
-            <p><strong>专属顾问</strong> · 张先生</p>
-            <p>电话 400-xxx-xxxx · 企微 Trinity-AI-Cloud</p>
-            <p class="or-cloud-contact-hint">
-              开户与优惠咨询请前往
-              <a href="#" @click.prevent="goHome">官网预约</a>
-              ，或发送邮件至 cloud@trinity.example
-            </p>
+
+          <section class="or-cloud-contact-hero" aria-labelledby="or-cloud-contact-hero-title">
+            <div class="or-cloud-contact-hero__main">
+              <span class="or-cloud-contact-hero__badge">{{ MOCK_CONTACT_ADVISOR.badge }}</span>
+              <h2 id="or-cloud-contact-hero-title" class="or-cloud-contact-hero__title">
+                {{ MOCK_CONTACT_ADVISOR.name }} · {{ MOCK_CONTACT_ADVISOR.role }}
+              </h2>
+              <p class="or-cloud-contact-hero__summary">{{ MOCK_CONTACT_ADVISOR.summary }}</p>
+              <div class="or-cloud-contact-hero__actions">
+                <a class="btn btn-gradient" href="tel:4008880626">致电顾问</a>
+                <button type="button" class="or-btn-outline" @click="goConsultHome">填写预约表单</button>
+              </div>
+            </div>
+            <dl class="or-cloud-contact-hero__meta">
+              <div class="or-cloud-contact-hero__meta-row">
+                <dt>服务热线</dt>
+                <dd><a :href="`tel:${MOCK_CONTACT_ADVISOR.phone.replace(/-/g, '')}`">{{ MOCK_CONTACT_ADVISOR.phone }}</a></dd>
+              </div>
+              <div class="or-cloud-contact-hero__meta-row">
+                <dt>企业微信</dt>
+                <dd>{{ MOCK_CONTACT_ADVISOR.wechat }}</dd>
+              </div>
+              <div class="or-cloud-contact-hero__meta-row">
+                <dt>服务时间</dt>
+                <dd>{{ MOCK_CONTACT_ADVISOR.hours }}</dd>
+              </div>
+              <div class="or-cloud-contact-hero__meta-row">
+                <dt>商务邮箱</dt>
+                <dd><a :href="`mailto:${MOCK_CONTACT_ADVISOR.email}`">{{ MOCK_CONTACT_ADVISOR.email }}</a></dd>
+              </div>
+            </dl>
+          </section>
+
+          <div class="or-cloud-contact-grid">
+            <article
+              v-for="channel in MOCK_CONTACT_CHANNELS"
+              :key="channel.id"
+              class="or-cloud-contact-card"
+            >
+              <h3 class="or-cloud-contact-card__title">{{ channel.title }}</h3>
+              <p class="or-cloud-contact-card__desc">{{ channel.desc }}</p>
+              <dl class="or-cloud-contact-card__list">
+                <div v-for="(item, idx) in channel.items" :key="idx" class="or-cloud-contact-card__row">
+                  <dt>{{ item.label }}</dt>
+                  <dd>
+                    <a v-if="item.href" :href="item.href">{{ item.value }}</a>
+                    <template v-else>{{ item.value }}</template>
+                  </dd>
+                </div>
+              </dl>
+            </article>
           </div>
+
+          <ul class="or-cloud-contact-notes" aria-label="温馨提示">
+            <li v-for="(note, idx) in MOCK_CONTACT_NOTES" :key="idx">{{ note }}</li>
+          </ul>
         </section>
       </div>
     </div>
@@ -1783,24 +1831,5 @@ onUnmounted(() => {
 .or-cloud-simple-list strong {
   font-weight: 600;
   color: var(--text);
-}
-.or-cloud-contact-card {
-  padding: 1rem 1.15rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-.or-cloud-contact-card p {
-  margin: 0 0 0.5rem;
-}
-.or-cloud-contact-hint {
-  margin-top: 0.75rem !important;
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-.or-cloud-contact-hint a {
-  color: var(--blue);
 }
 </style>

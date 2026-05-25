@@ -1,8 +1,8 @@
 # 云厂商 Logo 素材（可选）
 
-业务页使用 **`CloudVendorLogo.vue`** 内嵌 SVG（透明底，适配 Tab / 浅色背景）。
+业务页使用 **`CloudVendorLogo.vue`**，各厂商引用本目录 PNG（透明底官方图形标）。
 
-若需替换为自有 PNG / SVG，可放入此目录备用（组件当前未读取目录文件）：
+其它厂商若需替换，可放入此目录并在组件中引用：
 
 | 文件名 | 云厂商 |
 |--------|--------|
@@ -12,4 +12,5 @@
 | `aws.png` | AWS |
 | `gcp.png` | Google Cloud |
 
-建议：正方形、透明底；边长约 64–128px。
+**已接入**：`aliyun.png`、`tencent.png`、`huawei.png`、`aws.png`、`gcp.png`、`azure.png`  
+建议：正方形、透明底；边长约 64–640px。
