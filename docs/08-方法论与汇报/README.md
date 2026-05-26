@@ -20,6 +20,8 @@
 
 | 文档 | 说明 |
 |------|------|
+| [**AI实现Tob官网原型方法论/**](./AI实现Tob官网原型方法论/) | ToB 营销页方法论 + 参考图；**Agent 入口** [`.cursor/skills/trinity-tob-marketing-site/SKILL.md`](../../.cursor/skills/trinity-tob-marketing-site/SKILL.md) |
+| [**AI云-云介绍左侧配图-派活说明.md**](./AI云-云介绍左侧配图-派活说明.md) | 方案矩阵配图 · **AI 云六云厂商** 落地案例（真源：`apps/ai-cloud`） |
 | [**原型即代码与五件套-AI协作价值说明.md**](./原型即代码与五件套-AI协作价值说明.md) | 「为什么对 AI 友好」总表（**汇报首选**） |
 | [**Vue原型生成最佳实践-Skill规范页与验收.md**](./Vue原型生成最佳实践-Skill规范页与验收.md) | **生成 Vue 原型**：Skill + `/user-console-spec` 三层、流程、规范先行、检查清单 |
 | [**TrinityAI时代原型工作流与协作模式总结.md**](./TrinityAI时代原型工作流与协作模式总结.md) | 模式评估、瓶颈、演进方向 |

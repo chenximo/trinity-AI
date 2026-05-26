@@ -1,7 +1,7 @@
 /**
  * Trinity AI 应用壳（原 mvp-or-shell.js）：OpenRouter 风格顶栏注入、主题、用户菜单、登录相关与移动抽屉。
  * Expects <header class="or-inject" data-or-page="home|models|chat|docs|console"></header>
- * HTML 位于 app/、account/ 子目录时，导航链接自动加 ../ 指向 TrinityAI 根下页面路径（见 orPathPrefix）；共享脚本与样式在 static/。品牌行链至 TrinityCloud/home.html（与 index.html 顶栏一致，见 suiteHomeHref）。
+ * HTML 位于 app/、account/ 子目录时，导航链接自动加 ../ 指向 TrinityAI 根下页面路径（见 orPathPrefix）；共享脚本与样式在 static/。品牌行链至门户 AI 云 `/ai-cloud`（见 suiteHomeHref）。
  */
 (function () {
   "use strict";
@@ -96,25 +96,22 @@
     return orPathPrefix() + String(rel).replace(/^\//, "");
   }
 
-  /** 套件门户 Trinity Cloud（与 TrinityAI 同级目录） */
+  /** 套件 AI 云营销首页（门户 Vue：`/ai-cloud`） */
   function suiteHomeHref() {
     try {
       var path = (window.location.pathname || "").replace(/\\/g, "/");
-      if (/\/TrinityAI_Admin\//i.test(path)) {
-        return "../TrinityCloud/home.html";
-      }
-      if (/\/app\//i.test(path)) {
-        var afterApp = (path.split(/\/app\//i)[1] || "").split("/").filter(Boolean);
-        var d = afterApp.length;
-        return new Array(d + 2).join("../") + "TrinityCloud/home.html";
-      }
-      if (/\/account\//i.test(path)) {
-        var afterAc = (path.split(/\/account\//i)[1] || "").split("/").filter(Boolean);
-        var d2 = afterAc.length;
-        return new Array(d2 + 2).join("../") + "TrinityCloud/home.html";
+      if (
+        /^\/(trinity-ai|ai-cloud|trinity-ai-admin|trinity-geo)(\/|$)/.test(path) ||
+        path === "/" ||
+        /\/TrinityAI\//i.test(path) ||
+        /\/TrinityAI_Admin\//i.test(path) ||
+        /\/app\//i.test(path) ||
+        /\/account\//i.test(path)
+      ) {
+        return "/ai-cloud";
       }
     } catch (e0) {}
-    return "../TrinityCloud/home.html";
+    return "/ai-cloud";
   }
 
   function buildHeader(page) {

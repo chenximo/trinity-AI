@@ -26,3 +26,6 @@ generated-images/
 
 # Archives (local backups; avoid bloating the repo)
 *.zip
+
+# Local tooling scratch (e.g. pip --target installs)
+.tmp/

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite --port 5202",
     "build": "vite build",
+    "build:trinityai-demo": "VITE_APP_BASE=/trinityai-demo/ vite build",
     "preview": "vite preview --port 5202"
   },
   "dependencies": {

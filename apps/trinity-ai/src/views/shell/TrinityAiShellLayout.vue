@@ -13,8 +13,9 @@ import { ACCOUNT_CONSOLE_HASH } from "../account/mock";
 import { getTrinityDocsSiteUrl } from "../../trinityDocsSite";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 
+/** AI 云营销首页（门户同源 `/ai-cloud`）；可用 `VITE_TRINITY_SUITE_HOME` 覆盖 */
 const suiteHomeHref =
-  (import.meta.env.VITE_TRINITY_SUITE_HOME as string | undefined) ?? "../TrinityCloud/home.html";
+  (import.meta.env.VITE_TRINITY_SUITE_HOME as string | undefined) ?? "/ai-cloud";
 
 const route = useRoute();
 const router = useRouter();

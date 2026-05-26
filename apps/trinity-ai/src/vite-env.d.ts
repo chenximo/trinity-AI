@@ -1,5 +1,14 @@
 /// <reference types="vite/client" />
 
+interface ImportMetaEnv {
+  /** 顶栏品牌「AI 云首页」链接，门户默认 `/ai-cloud` */
+  readonly VITE_TRINITY_SUITE_HOME?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
 import "vue-router";
 
 declare module "vue-router" {

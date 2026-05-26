@@ -9,7 +9,7 @@
 | 锚点 | 内容 |
 |------|------|
 | 首屏 | 一站式多云采购与管理、渠道优惠与专属支持、集采降本叙事 |
-| `#cloud-solutions` | 五云 Tab（GPU / 推理 / 治理叙事） |
+| `#cloud-solutions` | 六云 Tab + 左侧场景 mockup（见派活说明） |
 | `#why` | 顶部降本条 / 三大零承诺 / 四大核心赋能 / 合作价值六点 |
 | `#benefits` | 专属福利三栏对比（服务项目 / Trinity / 厂商直销） |
 | `#process` | 优惠购买五步流程 |
@@ -36,6 +36,26 @@
 
 | path | name |
 |------|------|
-| ``（`/ai-cloud`） | `aic-home` |
+| 门户 ``（`/ai-cloud`） | `aic-home` |
+| 独立部署 ``（`/trinityai-demo/`） | 同上（见下方 COS） |
 
 登录 / OAuth 演示提交后进入 `aic-account-console#accounts`。
+
+## 部署到 `http://{host}/trinityai-demo/`（COS / Nginx）
+
+1. 构建：`npm run build:trinityai-demo -w @trinity/app-ai-cloud`（或默认 `npm run build`，`vite.config` 默认 `base` 为 `/trinityai-demo/`）
+2. 将 **`apps/ai-cloud/dist/` 内全部文件** 上传到桶或服务器目录 **`trinityai-demo/`**（与 URL 路径一致）
+3. 静态站 / Nginx：**索引** `index.html`；**404 / 错误文档** 也指向 `trinityai-demo/index.html`（History 路由）
+4. 访问：`http://43.159.57.43/trinityai-demo/`（末尾建议带 `/`）
+
+本地预览：`npm run preview -w @trinity/app-ai-cloud` → `http://localhost:5202/trinityai-demo/`
+
+门户开发（`/ai-cloud`）构建请设：`VITE_APP_BASE=/ai-cloud/ npm run build -w @trinity/app-ai-cloud`
+
+## 云介绍左侧配图（场景 mockup）
+
+- **组件**：`apps/ai-cloud/src/components/*CloudSceneVisual.vue`（六家云各一）
+- **ToB 官网 Agent Skill**：[`trinity-tob-marketing-site`](../../../../.cursor/skills/trinity-tob-marketing-site/SKILL.md)（色板/版式/模块/配图统一入口）
+- **配图方法论**：[ToB官网-方案矩阵导览区配图协作方法论.md](../../../../docs/08-方法论与汇报/AI实现Tob官网原型方法论/ToB官网-方案矩阵导览区配图协作方法论.md)
+- **参考图**：[方案矩阵配图-参考图/](../../../../docs/08-方法论与汇报/AI实现Tob官网原型方法论/方案矩阵配图-参考图/)
+- **本模块案例**：[AI云-云介绍左侧配图-派活说明.md](../../../../docs/08-方法论与汇报/AI云-云介绍左侧配图-派活说明.md)
