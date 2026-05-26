@@ -1,0 +1,263 @@
+/* 开发环境 · 产品手册 Markdown 分栏编辑 */
+
+/* 标题行：h1 + 编辑图标 */
+.tdocs-doc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  margin: 0 0 1rem;
+}
+
+.tdocs-doc-title-row > h1 {
+  margin: 0 !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+.tdocs-title-edit-mount {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.tdocs-dev-edit-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--vp-c-divider, #e2e8f0);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft, #f8fafc);
+  color: var(--vp-c-text-2, #64748b);
+  cursor: pointer;
+  vertical-align: middle;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.tdocs-dev-edit-icon:hover {
+  color: var(--vp-c-brand-1, #2563eb);
+  border-color: var(--vp-c-brand-1, #2563eb);
+  background: var(--vp-c-bg, #fff);
+}
+
+.tdocs-dev-edit-icon:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1, #2563eb);
+  outline-offset: 2px;
+}
+
+.tdocs-dev-editor-dock {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 250;
+  width: var(--tdocs-editor-w, min(46vw, 40rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--vp-c-bg, #f8fafc);
+  color: var(--vp-c-text-1, #0f172a);
+  border-right: 1px solid var(--vp-c-divider, #e2e8f0);
+  box-shadow: 4px 0 24px rgba(15, 23, 42, 0.08);
+}
+
+.tdocs-dev-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-shrink: 0;
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--vp-c-divider, #e2e8f0);
+  background: var(--vp-c-bg-alt, #fff);
+}
+
+.tdocs-dev-editor-toolbar__title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2, #475569);
+}
+
+.tdocs-dev-editor-toolbar__title code {
+  font-size: 0.8125rem;
+  color: var(--vp-c-text-1, #0f172a);
+  background: var(--vp-c-bg-soft, #f1f5f9);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.tdocs-dev-editor-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.tdocs-dev-editor-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider, #e2e8f0);
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-1, #0f172a);
+  cursor: pointer;
+}
+
+.tdocs-dev-editor-btn:not(.tdocs-dev-editor-btn--primary):hover {
+  background: var(--vp-c-bg-soft, #f8fafc);
+}
+
+.tdocs-dev-editor-btn--primary {
+  border: none;
+  color: var(--on-primary, #fff);
+  background: var(--blue, var(--vp-c-brand-1, #2563eb));
+}
+
+.tdocs-dev-editor-btn--primary:hover,
+.tdocs-dev-editor-btn--primary:focus-visible {
+  color: var(--on-primary, #fff);
+  background: var(--indigo-500, #4f46e5);
+}
+
+.tdocs-dev-editor-btn--primary:disabled {
+  color: var(--on-primary, #fff);
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.tdocs-dev-editor-pane__label,
+.tdocs-dev-preview-pane__label {
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3, #64748b);
+  background: var(--vp-c-bg-alt, #fff);
+  border-bottom: 1px solid var(--vp-c-divider, #e2e8f0);
+}
+
+.tdocs-dev-editor-md {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  resize: none;
+  font-family: var(--vp-font-family-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-1, #0f172a);
+  background: var(--vp-c-bg, #f8fafc);
+  outline: none;
+}
+
+.tdocs-dev-editor-status {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--vp-c-text-2, #475569);
+  border-top: 1px solid var(--vp-c-divider, #e2e8f0);
+  background: var(--vp-c-bg-alt, #fff);
+}
+
+.tdocs-dev-editor-status--error {
+  color: var(--danger, #dc2626);
+}
+
+.tdocs-dev-preview-wrap {
+  display: none;
+}
+
+html.tdocs-editing {
+  --tdocs-editor-w: min(46vw, 40rem);
+  --tdocs-subnav-h: 0px;
+  --tdocs-layout-top: var(--vp-nav-height, 64px);
+}
+
+/* 编辑态：只让预览区滚动，避免隐藏正文仍撑高整页 */
+html.tdocs-editing,
+html.tdocs-editing body {
+  overflow: hidden;
+  height: 100%;
+}
+
+html.tdocs-editing .VPApp {
+  height: 100vh;
+  overflow: hidden;
+}
+
+html.tdocs-editing .tdocs-dev-editor-dock {
+  width: var(--tdocs-editor-w);
+}
+
+html.tdocs-editing .VPSidebar,
+html.tdocs-editing .VPContent {
+  display: none !important;
+}
+
+html.tdocs-editing .tdocs-dev-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: var(--tdocs-layout-top);
+  right: 0;
+  bottom: 0;
+  left: var(--tdocs-editor-w);
+  z-index: 40;
+  background: var(--vp-c-bg, #f8fafc);
+  overflow: hidden;
+}
+
+html.tdocs-editing .tdocs-dev-preview {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  overflow-x: auto;
+  padding: 1rem 1.5rem 2rem;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html.tdocs-editing .tdocs-dev-preview .mermaid {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+html.tdocs-editing .tdocs-dev-preview .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .tdocs-dev-editor-dock {
+    width: 100%;
+    height: 52vh;
+    bottom: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--vp-c-divider, #e2e8f0);
+  }
+
+  html.tdocs-editing {
+    --tdocs-editor-w: 0px;
+  }
+
+  html.tdocs-editing .tdocs-dev-preview-wrap {
+    top: calc(52vh + var(--tdocs-layout-top));
+    left: 0;
+  }
+}

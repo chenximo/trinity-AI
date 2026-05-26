@@ -20,6 +20,7 @@ dist/
 .cache/
 **/.vitepress/dist
 **/.vitepress/cache
+**/.vitepress/.temp
 
 # Local image exports (Cursor / design drafts; not repo assets)
 generated-images/

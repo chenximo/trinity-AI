@@ -1,0 +1,219 @@
+@import "@trinity/tokens/core.css";
+
+/*
+ * 版式对齐 apps/trinity-docs（OpenRouter 式：侧栏 + 正文 + 右侧目录同一行铺满）
+ * 产品手册表格列多，正文略宽于开发者文档 48rem
+ */
+:root {
+  --vp-font-family-base: "Inter", "Noto Sans SC", var(--font), system-ui, sans-serif;
+  --vp-c-brand-1: var(--blue, #2563eb);
+
+  --tdocs-sidebar-w: 17.5rem;
+  --tdocs-content-max: 56rem;
+  --tdocs-doc-pl: calc(1.25rem + 25px);
+  --tdocs-doc-pr: calc(1.25rem + 25px);
+  --tdocs-aside-col: 12.5rem;
+
+  --vp-sidebar-width: var(--tdocs-sidebar-w);
+  /* 1920 屏：版心略宽于开发者文档 90rem，多列表格少留白 */
+  --vp-layout-max-width: 112rem;
+}
+
+.product-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.product-metrics li {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+
+.product-metrics strong {
+  display: block;
+  font-size: 1.35rem;
+  color: var(--vp-c-brand-1);
+  line-height: 1.3;
+}
+
+.product-metrics span {
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc table {
+  font-size: 0.875rem;
+}
+
+/* ✅🟡⬜ 进度列：居中、略放大，便于扫读 */
+.vp-doc table th:nth-child(3),
+.vp-doc table th:nth-child(4),
+.vp-doc table td:nth-child(3),
+.vp-doc table td:nth-child(4) {
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* 宽表在容器内横向滚动，勿 clip 整页（会裁切表格） */
+html {
+  overflow-x: auto;
+}
+
+.VPContent .vp-doc {
+  box-sizing: border-box;
+}
+
+/* VitePress 1.6：有右侧目录时默认 max-width 688px，产品手册宽表需取消 */
+.VPDoc.has-aside .content-container {
+  max-width: none !important;
+  width: 100%;
+  margin: 0 !important;
+}
+
+.vp-doc .vp-table-container,
+.vp-doc div[class*="vp-table"] {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.vp-doc table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.vp-doc pre,
+.vp-doc div[class*="language-"] {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.vp-doc .mermaid {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.vp-doc .mermaid svg {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* —— 正文区：对齐 trinity-docs；容器宽度用 100%（父级 VPContent 已扣除左栏） —— */
+.VPDoc:not(.has-sidebar) .container {
+  max-width: var(--tdocs-content-max);
+  margin-inline: auto;
+}
+
+.VPDoc.has-sidebar .container {
+  padding-top: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 960px) {
+  .VPDoc.has-sidebar {
+    padding: 1.5rem 0 0 !important;
+  }
+
+  .VPDoc.has-sidebar .container {
+    max-width: none;
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .VPDoc.has-sidebar .content {
+    margin: 0 !important;
+    padding: 0 var(--tdocs-doc-pr) 4rem var(--tdocs-doc-pl) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  /* 取消 VP 默认 justify-content: center，避免正文挤在中间 */
+  .VPDoc.has-sidebar .container {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: var(--tdocs-doc-pl);
+    padding-right: var(--tdocs-doc-pr);
+  }
+
+  .VPDoc.has-sidebar .content {
+    flex: 1 1 auto !important;
+    min-width: 0;
+    max-width: none !important;
+    padding-right: 2rem !important;
+    padding-left: 0 !important;
+  }
+
+  /* 目录跟 flex 行走，勿用 VP 默认 fixed（1920 下会像「正文窄条 + 目录贴屏右」） */
+  .VPDoc.has-sidebar .aside {
+    position: relative !important;
+    display: block !important;
+    order: 2;
+    flex: 0 0 var(--tdocs-aside-col) !important;
+    flex-grow: 0 !important;
+    width: var(--tdocs-aside-col) !important;
+    max-width: var(--tdocs-aside-col) !important;
+    margin-left: auto !important;
+    padding: 0 !important;
+  }
+
+  .VPDoc.has-sidebar .aside-container {
+    position: relative !important;
+    top: auto !important;
+    width: var(--tdocs-aside-col) !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    overflow: visible;
+  }
+
+  .VPDoc.has-sidebar .aside-curtain {
+    display: none !important;
+  }
+
+  .VPDoc.has-sidebar .aside-content {
+    min-height: 0;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2) !important;
+  }
+
+  .VPDoc.has-sidebar .container {
+    width: 100% !important;
+    max-width: calc(var(--vp-layout-max-width) - var(--vp-sidebar-width)) !important;
+    margin-inline: 0 auto !important;
+  }
+
+  .VPSidebar {
+    width: var(--vp-sidebar-width) !important;
+    max-width: var(--vp-sidebar-width) !important;
+  }
+}
+
+/* 1920 全高清：版心已 112rem，两侧留白约各 64px */
+@media (min-width: 1920px) {
+  .VPDoc.has-sidebar .container {
+    padding-left: 1.5rem;
+    padding-right: 1.25rem;
+  }
+
+  .VPDoc.has-sidebar .content {
+    padding-right: 1.5rem !important;
+  }
+}

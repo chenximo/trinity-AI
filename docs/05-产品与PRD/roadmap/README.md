@@ -1,6 +1,7 @@
-# AI API 聚合平台 · 产品路线图（文档真源）
+# AI API 聚合平台 · 产品路线图（摘抄 / PPT 源）
 
-> **用途**：「先总后分」里程碑与完成度 **%** 的真源；周会 PPT 从此复制，不在 PPT 里维护长表。  
+> **浏览（推荐）**：[`apps/trinity-product`](../../../apps/trinity-product/) · `npm run dev:trinity-product` → http://127.0.0.1:5206/product/  
+> **用途**：里程碑与 **%** 草稿；周会 PPT 从此复制。与产品手册同步时 **优先改 handbook**，再回抄本目录。  
 > **口径**：对标 [OpenRouter](https://openrouter.ai/) 商用能力；**5.31 内测** / **6.30 商用** 为节点验收目标（非当前状态）。
 
 ## 文档结构

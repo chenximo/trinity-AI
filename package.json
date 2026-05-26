@@ -17,7 +17,9 @@
     "dev:trinity-design": "npm run dev -w @trinity/app-trinity-design",
     "dev:ui-standalone-demo": "npm run dev -w @trinity/app-ui-standalone-demo",
     "dev:trinity-docs": "npm run dev -w @trinity/app-trinity-docs",
+    "dev:trinity-product": "npm run dev -w @trinity/app-trinity-product",
     "build:trinity-docs": "npm run build -w @trinity/app-trinity-docs",
+    "build:trinity-product": "npm run build -w @trinity/app-trinity-product",
     "build:apps": "npm run build -w @trinity/app-portal && npm run build -w @trinity/app-trinity-ai && npm run build -w @trinity/app-ai-cloud && npm run build -w @trinity/app-trinity-geo && npm run build -w @trinity/app-trinity-ai-admin && npm run build -w @trinity/app-trinity-design",
     "build:all": "npm run build:apps"
   }
