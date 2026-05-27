@@ -117,7 +117,7 @@ title: 用户控制台
 | [开发者文档](./developer-docs) | Quickstart 用 Key 调 API |
 | [Chat 在线体验](./chat-experience) | Preset「在对话中测试」 |
 | 平台侧 · 生文 API | 调用产生用量与日志 |
-| 运营侧 · 模型上架 | 日志中的 `model` id 与上架一致 |
+| 运营后台 · 模型上架 | 日志中的 `model` id 与上架一致 |
 
 ## 修订
 

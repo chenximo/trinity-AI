@@ -63,11 +63,6 @@
   line-height: 1.4;
 }
 
-/* 宽表在容器内横向滚动，勿 clip 整页（会裁切表格） */
-html {
-  overflow-x: auto;
-}
-
 .VPContent .vp-doc {
   box-sizing: border-box;
 }
@@ -156,35 +151,28 @@ html {
     padding-left: 0 !important;
   }
 
-  /* 目录跟 flex 行走，勿用 VP 默认 fixed（1920 下会像「正文窄条 + 目录贴屏右」） */
+  /*
+   * 本页目录：保留 VitePress 默认 position:fixed（随滚动钉在视口）
+   * 勿改 relative/sticky + align-self:flex-start（父列太矮会导致目录跟着滚走）
+   */
   .VPDoc.has-sidebar .aside {
-    position: relative !important;
-    display: block !important;
-    order: 2;
     flex: 0 0 var(--tdocs-aside-col) !important;
     flex-grow: 0 !important;
     width: var(--tdocs-aside-col) !important;
     max-width: var(--tdocs-aside-col) !important;
     margin-left: auto !important;
-    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .VPDoc.has-sidebar .aside-container {
-    position: relative !important;
-    top: auto !important;
+    position: fixed !important;
     width: var(--tdocs-aside-col) !important;
-    height: auto !important;
-    padding-top: 0 !important;
-    overflow: visible;
   }
 
   .VPDoc.has-sidebar .aside-curtain {
-    display: none !important;
-  }
-
-  .VPDoc.has-sidebar .aside-content {
-    min-height: 0;
-    padding-bottom: 1rem;
+    position: fixed !important;
+    width: var(--tdocs-aside-col) !important;
   }
 }
 
@@ -216,4 +204,54 @@ html {
   .VPDoc.has-sidebar .content {
     padding-right: 1.5rem !important;
   }
+}
+
+/* 本页目录：与 trinity-docs 一致（蓝条当前节） */
+.VPDocAside {
+  padding-top: 0.25rem;
+}
+
+.VPDocAsideOutline .outline-marker {
+  display: none !important;
+}
+
+.VPDocAsideOutline .content {
+  border-left: 1px solid var(--vp-c-divider);
+  padding-left: 0.875rem;
+}
+
+.VPDocAsideOutline .outline-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+  padding-left: 0;
+  margin: 0 0 0.35rem;
+}
+
+.VPDocAsideOutline .outline-link {
+  display: block;
+  padding: 0.2rem 0 0.2rem 0.625rem;
+  margin-left: 0;
+  border-left: 2px solid transparent;
+  color: var(--vp-c-text-2);
+  line-height: 1.45;
+  white-space: normal;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.VPDocAsideOutline .outline-link:hover {
+  color: var(--vp-c-text-1);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  border-left-color: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline .VPDocOutlineItem.nested {
+  padding-left: 0.75rem;
 }

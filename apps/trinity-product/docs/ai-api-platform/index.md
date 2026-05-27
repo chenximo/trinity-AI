@@ -17,12 +17,12 @@ title: AI API 聚合平台
 
 ## 三层分工（怎么读这张图）
 
-平台按**用户侧 / 平台侧 / 运营侧**拆分。调用链：**运营先配好供给与规则 → 平台侧对外暴露 API → 用户侧使用产品**。
+平台按**用户侧 / 平台侧 / 运营后台管理平台**拆分。调用链：**运营后台先配好供给与规则 → 平台侧对外暴露 API → 用户侧使用产品**。
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'fontFamily': 'Inter, Noto Sans SC, sans-serif', 'fontSize': '14px', 'primaryColor': '#eff6ff', 'primaryTextColor': '#0f172a', 'primaryBorderColor': '#2563eb', 'secondaryColor': '#f5f3ff', 'secondaryTextColor': '#0f172a', 'secondaryBorderColor': '#7c3aed', 'tertiaryColor': '#f0fdf4', 'tertiaryTextColor': '#0f172a', 'tertiaryBorderColor': '#16a34a', 'lineColor': '#94a3b8'}}}%%
 flowchart LR
-  subgraph ops["运营侧 · 内部"]
+  subgraph ops["运营后台管理平台"]
     direction TB
     O1["供应商 / 模型上架"]
     O2["计费 · 监控 · 审计"]
@@ -44,10 +44,10 @@ flowchart LR
 |------|----------|----------|:----:|
 | **用户侧模块** | 官网、登录、广场、Chat、文档、控制台 | [进入](./user/) | 🟡 |
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
-| **运营侧模块** | 上架、供应商、计费、租户、审计（内部后台） | [进入](./operations/) | ⬜ |
+| **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
 
 ::: tip 和「OpenRouter」怎么对照
-OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营侧**为 B2B 自建，工程在 `trinity-ai-admin`。
+OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营后台管理平台**为 B2B 自建，工程在 `trinity-ai-admin`。
 :::
 
 ## 5.30 能力主链（草案）
