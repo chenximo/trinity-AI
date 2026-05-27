@@ -21,6 +21,8 @@ const props = withDefaults(
     closeLabel?: string;
     /** 打开注册时递增以重置注册表单状态 */
     signupResetKey?: number;
+    /** 注册页协议链接是否新标签打开 */
+    legalOpenInNewTab?: boolean;
   }>(),
   {
     mode: "signin",
@@ -31,6 +33,7 @@ const props = withDefaults(
     signinHint: "静态演示，不会向服务器发送任何数据。",
     closeLabel: "关闭",
     signupResetKey: 0,
+    legalOpenInNewTab: false,
   }
 );
 
@@ -81,9 +84,11 @@ function switchMode(next: TrinityAuthMode) {
         :key="signupResetKey"
         :id-prefix="idPrefix"
         :form-error="signupFormError"
+        :legal-open-in-new-tab="legalOpenInNewTab"
         @oauth="emit('oauth')"
         @submit="emit('signup')"
         @sign-in="switchMode('signin')"
+        @before-legal-navigate="onClose"
       />
 
       <TrinityAuthSigninPanel

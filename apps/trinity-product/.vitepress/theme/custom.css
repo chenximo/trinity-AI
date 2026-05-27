@@ -36,6 +36,25 @@
   background: var(--vp-c-bg-soft);
 }
 
+/* 法律文稿：待运营确认块在 caution 基础上加强可视提示 */
+.vp-doc .custom-block.caution {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+html[data-theme="dark"] .vp-doc .custom-block.caution {
+  border-color: #d97706;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.vp-doc .custom-block.caution .custom-block-title {
+  color: #b45309;
+}
+
+html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
+  color: #fbbf24;
+}
+
 .product-metrics strong {
   display: block;
   font-size: 1.35rem;

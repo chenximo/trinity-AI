@@ -9,6 +9,14 @@ const BASE = process.env.VITEPRESS_BASE ?? "/product/";
 const sidebarProduct: DefaultTheme.SidebarItem[] = [
   { text: "总览", link: "/" },
   {
+    text: "法律与合规（草案）",
+    collapsed: true,
+    items: [
+      { text: "说明", link: "/legal/" },
+      { text: "隐私政策", link: "/legal/privacy-policy" },
+    ],
+  },
+  {
     text: "AI 云",
     collapsed: false,
     items: [{ text: "业务总览", link: "/ai-cloud/" }],

@@ -6,4 +6,5 @@
  *   import "@trinity/ui/styles/ui-base.css";
  */
 @import "./ui-kit.css";
+/* auth 表单样式须在宿主应用里于 Uno 之后引入；此处仅 signup 壳层 */
 @import "./auth-signup-modal.css";

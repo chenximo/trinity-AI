@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
+import { getTrinityLegalChildRoutes } from "@trinity/ui";
 import { ACCOUNT_CONSOLE_HASH } from "./views/account/mock";
 import { getTrinityDocsSiteUrl } from "./trinityDocsSite";
 import HomePage from "./views/home/HomePage.vue";
@@ -73,5 +74,6 @@ export function getTrinityAiChildRoutes(): RouteRecordRaw[] {
       component: () => import("./views/UiKitPlayground.vue"),
       meta: { title: "UI 烟测", orPage: "dev" },
     },
+    ...getTrinityLegalChildRoutes(),
   ];
 }

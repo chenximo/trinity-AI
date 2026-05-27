@@ -37,6 +37,92 @@
     } catch (e1) {}
   }
 
+  var signinCaptchaCode = "";
+  var signupCaptchaCode = "";
+
+  function generateDemoCaptchaCode() {
+    var out = "";
+    for (var i = 0; i < 4; i++) {
+      out += String(Math.floor(Math.random() * 10));
+    }
+    return out;
+  }
+
+  function readDemoCaptchaColors() {
+    var style = getComputedStyle(document.documentElement);
+    function pick(name, fb) {
+      var v = style.getPropertyValue(name).trim();
+      return v || fb;
+    }
+    return {
+      bg: pick("--blue-soft", "#eff6ff"),
+      text: pick("--purple", "#7c3aed"),
+      line: "rgba(148, 163, 184, 0.55)",
+    };
+  }
+
+  function drawDemoCaptcha(canvas, code) {
+    var palette = readDemoCaptchaColors();
+    var w = canvas.width;
+    var h = canvas.height;
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = palette.bg;
+    ctx.fillRect(0, 0, w, h);
+    var n;
+    for (n = 0; n < 5; n++) {
+      ctx.strokeStyle = palette.line;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(Math.random() * w, Math.random() * h);
+      ctx.lineTo(Math.random() * w, Math.random() * h);
+      ctx.stroke();
+    }
+    var chars = String(code).split("");
+    var slot = w / (chars.length + 1);
+    chars.forEach(function (ch, idx) {
+      ctx.save();
+      ctx.translate(slot * (idx + 0.85), h / 2 + (Math.random() * 6 - 3));
+      ctx.rotate(Math.random() * 0.3 - 0.15);
+      ctx.font = "700 " + (22 + Math.floor(Math.random() * 4)) + "px ui-sans-serif, system-ui, sans-serif";
+      ctx.fillStyle = palette.text;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(ch, 0, 0);
+      ctx.restore();
+    });
+  }
+
+  function setSigninCaptchaError(msg) {
+    var err = document.getElementById("or-auth-signin-captcha-error");
+    if (!err) return;
+    if (msg) {
+      err.textContent = msg;
+      err.hidden = false;
+    } else {
+      err.textContent = "";
+      err.hidden = true;
+    }
+  }
+
+  function refreshSigninCaptcha() {
+    signinCaptchaCode = generateDemoCaptchaCode();
+    var canvas = document.getElementById("or-auth-signin-captcha-canvas");
+    if (canvas) drawDemoCaptcha(canvas, signinCaptchaCode);
+    var input = document.getElementById("or-auth-signin-captcha-input");
+    if (input) input.value = "";
+    setSigninCaptchaError("");
+  }
+
+  function refreshSignupCaptcha() {
+    signupCaptchaCode = generateDemoCaptchaCode();
+    var canvas = document.getElementById("or-auth-signup-captcha-canvas");
+    if (canvas) drawDemoCaptcha(canvas, signupCaptchaCode);
+    var input = document.getElementById("or-auth-signup-captcha-input");
+    if (input) input.value = "";
+  }
+
   function bootTheme() {
     try {
       var t = localStorage.getItem(STORAGE_THEME);
@@ -94,6 +180,18 @@
 
   function H(rel) {
     return orPathPrefix() + String(rel).replace(/^\//, "");
+  }
+
+  function legalHref(path) {
+    var normalized = String(path).charAt(0) === "/" ? path : "/" + path;
+    try {
+      var pathname = (window.location.pathname || "").replace(/\\/g, "/");
+      var m = pathname.match(/^(.*\/trinity-ai)\/?/i);
+      if (m) return m[1] + normalized;
+    } catch (eHref) {
+      /* ignore */
+    }
+    return normalized;
   }
 
   /** 套件 AI 云营销首页（门户 Vue：`/ai-cloud`） */
@@ -246,20 +344,31 @@
       '<button type="button" class="or-auth-tab" id="or-auth-tab-signup" role="tab" aria-selected="false" data-or-auth-tab="signup">注册</button>' +
       "</div>" +
       '<div class="or-auth-oauth-wrap" id="or-auth-oauth-wrap">' +
-      '<div class="or-oauth-row">' +
-      '<button type="button" class="or-oauth-btn" id="or-auth-google" title="演示登录（未连接）" aria-label="Google 登录（演示）">' +
-      '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>' +
-      "Google 登录</button>" +
-      '<button type="button" class="or-oauth-btn" id="or-auth-github" title="演示登录（未连接）" aria-label="GitHub 登录（演示）">' +
+      '<div class="or-oauth-row or-oauth-row--labeled">' +
+      '<button type="button" class="or-oauth-btn or-oauth-btn--labeled" id="or-auth-github" title="演示登录（未连接）" aria-label="GitHub 登录">' +
       '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1C5.92 1 1 5.92 1 12c0 4.87 3.16 8.99 7.55 10.45.55.1.75-.24.75-.53 0-.26-.01-.95-.01-1.86-3.06.67-3.71-1.47-3.71-1.47-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.97 1.67 2.55 1.19 3.17.91.1-.71.38-1.19.69-1.46-2.44-.28-5-1.22-5-5.45 0-1.2.43-2.19 1.13-2.96-.11-.28-.49-1.39.11-2.9 0 0 .92-.3 3.03 1.13.88-.25 1.82-.37 2.76-.37.94 0 1.88.12 2.76.37 2.11-1.43 3.03-1.13 3.03-1.13.6 1.51.22 2.62.11 2.9.7.77 1.13 1.76 1.13 2.96 0 4.24-2.57 5.17-5.02 5.44.39.34.74 1.01.74 2.04 0 1.47-.01 2.66-.01 3.02 0 .29.2.64.75.53C19.84 20.99 23 16.87 23 12 23 5.92 18.08 1 12 1z"/></svg>' +
-      "GitHub 登录</button>" +
+      '<span class="or-oauth-btn-label">GitHub 登录</span></button>' +
+      '<button type="button" class="or-oauth-btn or-oauth-btn--labeled" id="or-auth-google" title="演示登录（未连接）" aria-label="Google 登录">' +
+      '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>' +
+      '<span class="or-oauth-btn-label">Google 登录</span></button>' +
+      '<button type="button" class="or-oauth-btn or-oauth-btn--labeled" id="or-auth-gitlab" title="演示登录（未连接）" aria-label="GitLab 登录">' +
+      '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#E24329" d="M23.955 13.587l-1.342-4.135-2.664-8.175c-.135-.423-.865-.423-1 0l-2.629 8.175H7.68L5.051 1.277c-.135-.423-.865-.423-1 0L1.422 9.452.08 13.587a.96.96 0 0 0 .331 1.054L12 23.911l11.589-8.27a.96.96 0 0 0 .366-1.054z"/><path fill="#FC6D26" d="M12 23.911 7.092 14.763H2.05L12 2.088l9.95 12.675h-5.041z"/></svg>' +
+      '<span class="or-oauth-btn-label">GitLab 登录</span></button>' +
       "</div>" +
-      '<div class="or-auth-divider" role="separator">或者使用邮箱</div>' +
+      '<div class="or-auth-divider" role="separator">或</div>' +
       "</div>" +
       '<div id="or-auth-panel-signin" class="or-auth-panel" role="tabpanel" aria-labelledby="or-auth-tab-signin">' +
       '<form class="or-auth-form" id="or-auth-form-signin" novalidate>' +
       '<div class="form-group"><label for="or-auth-email">邮箱或用户名</label><input id="or-auth-email" type="text" autocomplete="username" placeholder="name@example.com" required /></div>' +
       '<div class="form-group"><div class="or-auth-label-row"><label for="or-auth-password">密码</label><a href="#" class="or-auth-forgot" id="or-auth-forgot">忘记密码？</a></div><input id="or-auth-password" type="password" autocomplete="current-password" placeholder="••••••••" required /></div>' +
+      '<div class="form-group or-auth-captcha-group">' +
+      '<div class="or-auth-label-row"><label for="or-auth-signin-captcha-input">验证码</label>' +
+      '<button type="button" class="or-auth-captcha-refresh" id="or-auth-signin-captcha-refresh">换一张</button></div>' +
+      '<div class="or-auth-captcha-row">' +
+      '<canvas id="or-auth-signin-captcha-canvas" class="or-auth-captcha-img" width="140" height="44" role="img" aria-label="图形验证码，点击可刷新" tabindex="0"></canvas>' +
+      '<input id="or-auth-signin-captcha-input" class="or-auth-captcha-input" type="text" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="图中数字" required />' +
+      "</div></div>" +
+      '<p class="or-auth-inline-error or-auth-captcha-error" id="or-auth-signin-captcha-error" hidden></p>' +
       '<label class="or-auth-remember"><input type="checkbox" id="or-auth-remember" />记住我</label>' +
       '<button type="submit" class="or-auth-login-btn">登录</button>' +
       '<p class="or-auth-hint">静态演示，不会向服务器发送任何数据。</p>' +
@@ -270,90 +379,31 @@
       "</form>" +
       "</div>" +
       '<div id="or-auth-panel-signup" class="or-auth-panel or-auth-panel--signup" role="tabpanel" aria-labelledby="or-auth-tab-signup" hidden>' +
-      '<form class="or-auth-form or-auth-form-signup" id="or-auth-form-signup" novalidate>' +
-      '<div class="or-auth-signup-card">' +
-      '<div class="or-auth-server-head">' +
-      '<span class="or-auth-server-head-label">账号信息</span>' +
-      '<a href="#" class="or-auth-server-head-link" id="or-auth-reg-help" title="帮助" aria-label="注册帮助">' +
-      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>' +
-      "</a></div>" +
-      '<div class="or-auth-server-row">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<strong class="or-auth-server-title">邮箱</strong>' +
-      '<span class="or-auth-server-desc">用于登录与找回密码</span>' +
-      '<input id="or-auth-reg-email" class="or-auth-server-input" type="email" autocomplete="email" placeholder="name@example.com" required />' +
-      "</div>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      '<div class="or-auth-server-row">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<strong class="or-auth-server-title">密码</strong>' +
-      '<span class="or-auth-server-desc">至少 8 位，建议含大小写、数字与符号</span>' +
-      '<span class="or-auth-server-meta">强度 · <span id="or-auth-strength-text">—</span></span>' +
-      '<input id="or-auth-reg-password" class="or-auth-server-input" type="password" autocomplete="new-password" placeholder="输入密码" required />' +
-      '<div class="or-auth-strength or-auth-strength--signup" aria-live="polite">' +
-      '<div class="or-auth-strength-track"><div class="or-auth-strength-fill" id="or-auth-strength-fill"></div></div>' +
-      "</div></div>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      '<div class="or-auth-server-row">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<strong class="or-auth-server-title">确认密码</strong>' +
-      '<span class="or-auth-server-desc">须与上一栏密码一致</span>' +
-      '<input id="or-auth-reg-password2" class="or-auth-server-input" type="password" autocomplete="new-password" placeholder="再次输入密码" required />' +
-      "</div>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      '<div class="or-auth-server-row">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<div class="or-auth-server-title-row">' +
-      '<strong class="or-auth-server-title">验证码</strong>' +
-      '<button type="button" class="or-auth-server-link" id="or-auth-captcha-refresh">换一张</button>' +
-      "</div>" +
-      '<span class="or-auth-server-meta">演示 · 图形码</span>' +
-      '<span class="or-auth-server-desc">请输入图中数字（可任意填写）</span>' +
-      '<input id="or-auth-captcha" class="or-auth-server-input" type="text" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="例如 5829" />' +
-      "</div>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      '<div class="or-auth-server-row">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<strong class="or-auth-server-title">订阅邮件</strong>' +
-      '<span class="or-auth-server-desc">产品更新、安全与账单提醒</span>' +
-      '<span class="or-auth-server-meta">可选 · 默认关闭</span>' +
-      "</div>" +
-      '<label class="or-auth-switch" for="or-auth-newsletter">' +
-      '<input type="checkbox" id="or-auth-newsletter" class="or-auth-switch-input" />' +
-      '<span class="or-auth-switch-track" aria-hidden="true"><span class="or-auth-switch-knob"></span></span>' +
-      "</label>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      '<div class="or-auth-server-row or-auth-server-row--last">' +
-      '<div class="or-auth-server-row-inner">' +
-      '<span class="or-auth-server-ico" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>' +
-      '<div class="or-auth-server-body">' +
-      '<strong class="or-auth-server-title">用户协议</strong>' +
-      '<span class="or-auth-server-desc">请阅读 <a href="#" class="or-auth-foot-link" id="or-auth-terms-link">《用户协议》</a></span>' +
-      '<span class="or-auth-server-meta">必选 · 开启以继续</span>' +
-      "</div>" +
-      '<label class="or-auth-switch" for="or-auth-agree">' +
-      '<input type="checkbox" id="or-auth-agree" class="or-auth-switch-input" required />' +
-      '<span class="or-auth-switch-track" aria-hidden="true"><span class="or-auth-switch-knob"></span></span>' +
-      "</label>" +
-      '<span class="or-auth-server-chevron" aria-hidden="true">›</span>' +
-      "</div></div>" +
-      "</div>" +
+      '<form class="or-auth-form" id="or-auth-form-signup" novalidate>' +
       '<p class="or-auth-inline-error" id="or-auth-signup-error" hidden></p>' +
+      '<div class="form-group"><label for="or-auth-reg-email">邮箱</label><input id="or-auth-reg-email" type="email" autocomplete="email" placeholder="you@company.com" required /></div>' +
+      '<div class="form-group"><label for="or-auth-reg-password">密码</label><input id="or-auth-reg-password" type="password" autocomplete="new-password" placeholder="请输入密码" required /></div>' +
+      '<div class="form-group"><label for="or-auth-reg-password2">确认密码</label><input id="or-auth-reg-password2" type="password" autocomplete="new-password" placeholder="请再次输入密码" required /></div>' +
+      '<div class="form-group or-auth-captcha-group">' +
+      '<div class="or-auth-label-row"><label for="or-auth-signup-captcha-input">验证码</label>' +
+      '<button type="button" class="or-auth-captcha-refresh" id="or-auth-signup-captcha-refresh">换一张</button></div>' +
+      '<div class="or-auth-captcha-row">' +
+      '<canvas id="or-auth-signup-captcha-canvas" class="or-auth-captcha-img" width="140" height="44" role="img" aria-label="图形验证码，点击可刷新" tabindex="0"></canvas>' +
+      '<input id="or-auth-signup-captcha-input" class="or-auth-captcha-input" type="text" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="图中数字" required />' +
+      "</div></div>" +
+      '<div class="or-auth-terms-row"><label class="or-auth-terms">' +
+      '<input type="checkbox" id="or-auth-agree" class="or-auth-terms-check" required />' +
+      '<span class="or-auth-terms-text">我已阅读并同意 ' +
+      '<a href="' +
+      legalHref("/legal/terms") +
+      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/terms">《服务条款》</a>、' +
+      '<a href="' +
+      legalHref("/legal/privacy") +
+      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/privacy">《隐私政策》</a>与' +
+      '<a href="' +
+      legalHref("/legal/model-terms") +
+      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/model-terms">《模型使用条款》</a>' +
+      "</span></label></div>" +
       '<button type="submit" class="or-auth-login-btn or-auth-signup-submit">创建账号</button>' +
       "</form>" +
       '<p class="or-auth-hint">静态演示，不会向服务器发送任何数据。</p>' +
@@ -424,6 +474,8 @@
       err.textContent = "";
       err.hidden = true;
     }
+    if (isSignup) refreshSignupCaptcha();
+    else refreshSigninCaptcha();
     var focusEl = isSignup ? document.getElementById("or-auth-reg-email") : document.getElementById("or-auth-email");
     if (focusEl) focusEl.focus();
     try {
@@ -596,19 +648,37 @@
     });
 
     document.body.addEventListener("click", function (e) {
-      if (e.target.closest("#or-auth-terms-link") || e.target.closest("#or-auth-reg-help")) {
+      var legalA = e.target.closest("a[data-or-legal-path]");
+      if (legalA) {
         e.preventDefault();
+        var legalPath = legalA.getAttribute("data-or-legal-path");
+        if (legalPath) {
+          closeAuthModal();
+          window.location.assign(legalHref(legalPath));
+        }
       }
     });
 
     document.body.addEventListener("click", function (e) {
-      if (e.target.closest("#or-auth-captcha-refresh")) {
+      if (e.target.closest("#or-auth-signup-captcha-refresh")) {
         e.preventDefault();
-        var cap = document.getElementById("or-auth-captcha");
-        if (cap) {
-          cap.value = "";
-          cap.focus();
-        }
+        refreshSignupCaptcha();
+        var capUp = document.getElementById("or-auth-signup-captcha-input");
+        if (capUp) capUp.focus();
+      }
+      if (e.target.closest("#or-auth-signup-captcha-canvas")) {
+        e.preventDefault();
+        refreshSignupCaptcha();
+      }
+      if (e.target.closest("#or-auth-signin-captcha-refresh")) {
+        e.preventDefault();
+        refreshSigninCaptcha();
+        var capIn = document.getElementById("or-auth-signin-captcha-input");
+        if (capIn) capIn.focus();
+      }
+      if (e.target.closest("#or-auth-signin-captcha-canvas")) {
+        e.preventDefault();
+        refreshSigninCaptcha();
       }
     });
 
@@ -639,56 +709,22 @@
       }
     }
 
-    function wireSignupPasswordStrength() {
-      var input = document.getElementById("or-auth-reg-password");
-      var fill = document.getElementById("or-auth-strength-fill");
-      var label = document.getElementById("or-auth-strength-text");
-      if (!input || !fill || !label) return;
-      function run() {
-        var v = input.value || "";
-        var score = 0;
-        if (v.length >= 6) score++;
-        if (v.length >= 10) score++;
-        if (/[A-Z]/.test(v)) score++;
-        if (/[a-z]/.test(v)) score++;
-        if (/[0-9]/.test(v)) score++;
-        if (/[^A-Za-z0-9]/.test(v)) score++;
-        if (v.length === 0) {
-          fill.style.width = "0%";
-          fill.className = "or-auth-strength-fill";
-          if (label) {
-            label.textContent = "—";
-            label.className = "";
-          }
-          return;
-        }
-        var tier = 1;
-        var text = "弱";
-        if (score >= 5) {
-          tier = 3;
-          text = "强";
-        } else if (score >= 3) {
-          tier = 2;
-          text = "中";
-        }
-        var pct = tier === 1 ? 33 : tier === 2 ? 66 : 100;
-        fill.style.width = pct + "%";
-        fill.className = "or-auth-strength-fill" + (tier === 1 ? " is-weak" : tier === 2 ? " is-mid" : " is-strong");
-        if (label) {
-          label.textContent = text;
-          label.className = tier === 1 ? "is-weak" : tier === 2 ? "is-mid" : "is-strong";
-        }
-      }
-      input.addEventListener("input", run);
-      input.addEventListener("change", run);
-    }
-
-    wireSignupPasswordStrength();
+    refreshSigninCaptcha();
+    refreshSignupCaptcha();
 
     var formIn = document.getElementById("or-auth-form-signin");
     if (formIn) {
       formIn.addEventListener("submit", function (e) {
         e.preventDefault();
+        setSigninCaptchaError("");
+        var capIn = document.getElementById("or-auth-signin-captcha-input");
+        var typed = capIn ? String(capIn.value || "").replace(/\s/g, "") : "";
+        if (typed !== signinCaptchaCode) {
+          setSigninCaptchaError("验证码不正确，请重试。");
+          refreshSigninCaptcha();
+          if (capIn) capIn.focus();
+          return;
+        }
         try {
           var r = document.getElementById("or-auth-remember");
           if (r && r.checked) localStorage.setItem(STORAGE_REMEMBER, "1");
@@ -709,7 +745,15 @@
         setSignupError("");
         var agree = document.getElementById("or-auth-agree");
         if (agree && !agree.checked) {
-          setSignupError("请先开启「用户协议」开关。");
+          setSignupError("请先勾选同意相关协议。");
+          return;
+        }
+        var capUp = document.getElementById("or-auth-signup-captcha-input");
+        var typedUp = capUp ? String(capUp.value || "").replace(/\s/g, "") : "";
+        if (typedUp !== signupCaptchaCode) {
+          setSignupError("验证码不正确，请重试。");
+          refreshSignupCaptcha();
+          if (capUp) capUp.focus();
           return;
         }
         var p1 = document.getElementById("or-auth-reg-password");
@@ -734,14 +778,10 @@
       redirectAfterDemoLoginIfNeeded();
     }
 
-    var g = document.getElementById("or-auth-google");
-    if (g) {
-      g.addEventListener("click", oauthDemoLogin);
-    }
-    var gh = document.getElementById("or-auth-github");
-    if (gh) {
-      gh.addEventListener("click", oauthDemoLogin);
-    }
+    ["or-auth-google", "or-auth-github", "or-auth-gitlab"].forEach(function (oauthId) {
+      var btn = document.getElementById(oauthId);
+      if (btn) btn.addEventListener("click", oauthDemoLogin);
+    });
 
     syncAuthChrome();
     syncThemeSegments();

@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Design-spec primitives: Vue in src/; import @trinity/tokens/core.css then @trinity/ui/styles/ui-base.css (chains ui-kit.css). Full site shell still uses assets/trinity-base.css which imports ui-kit.",
   "peerDependencies": {
-    "vue": "^3.5.0"
+    "vue": "^3.5.0",
+    "vue-router": "^4.5.0"
   },
   "dependencies": {
     "@trinity/tokens": "*"
@@ -15,7 +16,10 @@
     "./styles/ui-base.css": "./styles/ui-base.css",
     "./styles/ui-kit.css": "./styles/ui-kit.css",
     "./styles/auth-signup-modal.css": "./styles/auth-signup-modal.css",
-    "./styles/auth-modal.css": "./styles/auth-signup-modal.css"
+    "./styles/auth-modal.css": "./styles/auth-signup-modal.css",
+    "./styles/legal.css": "./styles/legal.css",
+    "./styles/auth-form.css": "./styles/auth-form.css",
+    "./styles/trinity-shell-chrome.css": "./styles/trinity-shell-chrome.css"
   },
   "files": ["src", "styles"]
 }

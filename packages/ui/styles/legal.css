@@ -1,0 +1,161 @@
+/* Trinity 协议页（@trinity/ui/legal）— 依赖应用已引入 trinity-base / tokens */
+
+.trinity-legal-doc {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem var(--tdocs-doc-pl, 1.25rem) 3rem;
+  color: var(--text);
+}
+
+.trinity-legal-doc__head {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.trinity-legal-doc__back {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.trinity-legal-doc__back:hover {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.trinity-legal-doc__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.trinity-legal-doc__updated {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.trinity-legal-section {
+  margin-top: 2rem;
+}
+
+.trinity-legal-h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.trinity-legal-h3 {
+  margin: 1.15rem 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.trinity-legal-p {
+  margin: 0 0 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.trinity-legal-ul {
+  margin: 0 0 0.85rem;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.trinity-legal-ul li {
+  margin-bottom: 0.35rem;
+}
+
+.trinity-legal-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+}
+
+.trinity-legal-table,
+.trinity-legal-tbd__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.trinity-legal-table th,
+.trinity-legal-table td,
+.trinity-legal-tbd__table th,
+.trinity-legal-tbd__table td {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.trinity-legal-table th,
+.trinity-legal-tbd__table th {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.trinity-legal-tbd {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius, 8px);
+  background: #fffbeb;
+}
+
+html[data-theme="dark"] .trinity-legal-tbd {
+  border-color: #d97706;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.trinity-legal-tbd__badge {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+
+html[data-theme="dark"] .trinity-legal-tbd__badge {
+  color: #fbbf24;
+}
+
+.trinity-legal-tbd__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.trinity-legal-tbd__list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.trinity-legal-footnote {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}

@@ -48,7 +48,17 @@ export { default as ModalPanel } from "./modal/ModalPanel.vue";
 export { default as TrinityAuthModal } from "./auth/TrinityAuthModal.vue";
 export { default as TrinityAuthSigninPanel } from "./auth/TrinityAuthSigninPanel.vue";
 export { default as TrinityAuthSignupPanel } from "./auth/TrinityAuthSignupPanel.vue";
+export { default as TrinityAuthTermsAgree } from "./auth/TrinityAuthTermsAgree.vue";
 export type { TrinityAuthMode } from "./auth/TrinityAuthModal.vue";
+export { getTrinityLegalChildRoutes } from "./legal/routes";
+export {
+  TRINITY_LEGAL_PATHS,
+  TRINITY_LEGAL_ROUTE_NAMES,
+  type TrinityLegalRouteKey,
+} from "./legal/types";
+export { default as TrinityPrivacyPolicyPage } from "./legal/TrinityPrivacyPolicyPage.vue";
+export { default as TrinityTermsOfServicePage } from "./legal/TrinityTermsOfServicePage.vue";
+export { default as TrinityModelTermsPage } from "./legal/TrinityModelTermsPage.vue";
 export { default as InternalHelpTip } from "./internal/InternalHelpTip.vue";
 
 export { default as SelectListForm1ModelRow } from "./select-list/SelectListForm1ModelRow.vue";

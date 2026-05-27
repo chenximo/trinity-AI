@@ -21,6 +21,10 @@
     "build:trinity-docs": "npm run build -w @trinity/app-trinity-docs",
     "build:trinity-product": "npm run build -w @trinity/app-trinity-product",
     "build:apps": "npm run build -w @trinity/app-portal && npm run build -w @trinity/app-trinity-ai && npm run build -w @trinity/app-ai-cloud && npm run build -w @trinity/app-trinity-geo && npm run build -w @trinity/app-trinity-ai-admin && npm run build -w @trinity/app-trinity-design",
-    "build:all": "npm run build:apps"
+    "build:all": "npm run build:apps",
+    "sync:web": "node scripts/sync-to-trinityai-web.mjs",
+    "sync:web:apply": "node scripts/sync-to-trinityai-web.mjs --apply",
+    "sync:web:apps": "node scripts/sync-to-trinityai-web.mjs --apps --apply",
+    "sync:web:packages": "node scripts/sync-to-trinityai-web.mjs --packages --apply"
   }
 }

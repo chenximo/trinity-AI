@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { TButton } from "@trinity/ui";
+import { TButton, TRINITY_LEGAL_ROUTE_NAMES } from "@trinity/ui";
 import { HOME_HERO_PROVIDERS } from "./mock";
 import { getTrinityDocsSiteUrl } from "../../trinityDocsSite";
 import { useHomeNavigation } from "./homeInteractions";
@@ -438,7 +438,7 @@ const docsApiRefUrl = getTrinityDocsSiteUrl("/api/chat-completions");
             <div class="step-oauth">
               <button type="button" class="oauth-btn" @click="openDemoAuth">Google</button>
               <button type="button" class="oauth-btn" @click="openDemoAuth">GitHub</button>
-              <button type="button" class="oauth-btn" title="Web3 钱包" @click="openDemoAuth">◇</button>
+              <button type="button" class="oauth-btn" @click="openDemoAuth">GitLab</button>
             </div>
           </div>
           <div class="step" id="pricing">
@@ -540,8 +540,12 @@ const docsApiRefUrl = getTrinityDocsSiteUrl("/api/chat-completions");
             <li><a href="#">关于我们</a></li>
             <li><a href="#why-trinity">为什么选择</a></li>
             <li><a href="#">加入我们</a><span class="hiring">热招</span></li>
-            <li><a href="#">隐私政策</a></li>
-            <li><a href="#">服务条款</a></li>
+            <li>
+              <RouterLink :to="{ name: TRINITY_LEGAL_ROUTE_NAMES.privacy }">隐私政策</RouterLink>
+            </li>
+            <li>
+              <RouterLink :to="{ name: TRINITY_LEGAL_ROUTE_NAMES.terms }">服务条款</RouterLink>
+            </li>
             <li><a href="#">支持</a></li>
             <li><a href="#">AI 态势</a></li>
             <li><a href="#">与 Trinity 集成</a></li>

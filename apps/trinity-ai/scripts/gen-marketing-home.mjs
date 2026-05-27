@@ -69,10 +69,10 @@ for (const label of ["文档中心", "API 参考", "SDK", "服务状态"]) {
 }
 
 body = body.replace(
-  /<button type="button" class="oauth-btn">Google<\/button>\s*<button type="button" class="oauth-btn">GitHub<\/button>\s*<button type="button" class="oauth-btn" title="Web3 钱包">◇<\/button>/,
+  /<button type="button" class="oauth-btn">Google<\/button>\s*<button type="button" class="oauth-btn">GitHub<\/button>\s*<button type="button" class="oauth-btn">GitLab<\/button>/,
   `<button type="button" class="oauth-btn" @click="openDemoAuth">Google</button>
               <button type="button" class="oauth-btn" @click="openDemoAuth">GitHub</button>
-              <button type="button" class="oauth-btn" title="Web3 钱包" @click="openDemoAuth">◇</button>`
+              <button type="button" class="oauth-btn" @click="openDemoAuth">GitLab</button>`
 );
 
 body = body.replace(

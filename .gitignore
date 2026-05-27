@@ -28,5 +28,9 @@ generated-images/
 # Archives (local backups; avoid bloating the repo)
 *.zip
 
+# sync-to-trinityai-web 本地报告与覆盖前备份
+scripts/sync-reports/
+*.sync-backup-*
+
 # Local tooling scratch (e.g. pip --target installs)
 .tmp/

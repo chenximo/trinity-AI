@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
+import { getTrinityLegalChildRoutes } from "@trinity/ui";
 import HomePage from "./views/home/HomePage.vue";
 
 /**
@@ -18,5 +19,6 @@ export function getAiCloudChildRoutes(): RouteRecordRaw[] {
       component: () => import("./views/account/ConsolePage.vue"),
       meta: { title: "用户中心", orPage: "console" },
     },
+    ...getTrinityLegalChildRoutes(),
   ];
 }

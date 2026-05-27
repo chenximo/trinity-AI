@@ -1,0 +1,77 @@
+/* 登录 / 注册 · 共用表单区（与 trinity-base .form-group 叠加；须在 Uno 之后引入） */
+
+.or-auth-form .form-group .or-auth-password-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.or-auth-form .form-group .or-auth-password-wrap input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 2.75rem;
+}
+
+.or-auth-form .form-group .or-auth-password-wrap .or-auth-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.35rem;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  min-width: 2.25rem;
+  max-width: 2.25rem;
+  height: 2.25rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  flex: none;
+}
+
+.or-auth-form .form-group .or-auth-password-wrap .or-auth-password-toggle:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.or-auth-form .form-group .or-auth-password-wrap .or-auth-password-toggle svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.or-auth-form > .or-auth-inline-error {
+  margin: 0 0 0.75rem;
+}
+
+.or-auth-form .or-auth-inline-error.or-auth-captcha-error {
+  margin: -0.35rem 0 0.75rem;
+}
+
+.or-auth-form .or-auth-captcha-group {
+  margin-bottom: 0;
+}
+
+.or-auth-form .or-auth-captcha-group .or-auth-label-row label,
+.or-auth-form .or-auth-captcha-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.or-auth-form-submit,
+.or-auth-signin-submit,
+.or-auth-signup-submit {
+  width: 100%;
+  height: 46px;
+  margin: 0;
+  padding: 0 1rem;
+  font-size: 0.9375rem;
+  box-sizing: border-box;
+}

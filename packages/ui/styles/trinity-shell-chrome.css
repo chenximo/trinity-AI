@@ -1,0 +1,7 @@
+/*
+ * Trinity 壳层应用（portal / trinity-ai / ai-cloud）在 Uno 预检之后引入。
+ * 含：登录注册弹窗、协议页排版。
+ */
+@import "./auth-signup-modal.css";
+@import "./auth-form.css";
+@import "./legal.css";

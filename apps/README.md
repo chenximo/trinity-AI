@@ -33,6 +33,17 @@
 
 根目录：`npm install` 后 **`npm run dev`**（5173）；单 app 见根 `package.json` 的 `dev:*` scripts。
 
+## 同步到 TrinityAI-web（`apps_ui`）
+
+原型定稿后，将本目录同步到工程仓 **`TrinityAI-web/apps_ui/`**（`packages/` 一并见脚本）：
+
+```bash
+npm run sync:web          # 预览
+npm run sync:web:apply    # 写入
+```
+
+说明与冲突处理：[`scripts/SYNC-TO-TRINITYAI-WEB.md`](../scripts/SYNC-TO-TRINITYAI-WEB.md)。
+
 ## 尚未创建（按需再加）
 
 - `ai-cloud-admin`

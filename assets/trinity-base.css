@@ -3227,6 +3227,25 @@ button.or-drawer-signin:hover {
   flex-shrink: 0;
 }
 
+.or-oauth-row--labeled {
+  margin-bottom: 0.75rem;
+}
+
+.or-oauth-btn--labeled {
+  height: 44px;
+  padding: 0 0.4rem;
+  gap: 0.35rem;
+}
+
+.or-oauth-btn-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .or-auth-divider {
   display: flex;
   align-items: center;
@@ -3294,6 +3313,71 @@ button.or-auth-forgot {
   height: 1rem;
   accent-color: var(--blue);
   cursor: pointer;
+}
+
+.or-auth-captcha-group .or-auth-label-row {
+  margin-bottom: 0.35rem;
+}
+
+button.or-auth-captcha-refresh {
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--blue);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+button.or-auth-captcha-refresh:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.or-auth-captcha-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: stretch;
+}
+
+.or-auth-captcha-img {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+}
+
+.or-auth-captcha-input {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--text);
+  background: var(--bg);
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.or-auth-captcha-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.or-auth-captcha-error {
+  margin: -0.35rem 0 0.75rem;
 }
 
 .or-auth-login-btn {
