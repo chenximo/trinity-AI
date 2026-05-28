@@ -13,7 +13,7 @@
 | `#why` | 顶部降本条 / 三大零承诺 / 四大核心赋能 / 合作价值六点 |
 | `#benefits` | 专属福利三栏对比（服务项目 / Trinity / 厂商直销） |
 | `#process` | 优惠购买五步流程 |
-| `#consult` | 咨询表单（邮箱 + 电话）+ 侧栏联系方式 |
+| `#consult` | 咨询表单（邮箱 + 联系电话 + 需求规模）；按钮「提交申请并联系商务」经 FormSubmit 发送至 `starsea@trinitydesk.com`（失败则 `mailto:` 草稿）；副本写入 `localStorage`（`trinity-aic-consult-leads`）。可选 `VITE_AIC_CONSULT_MAIL_ENDPOINT` 覆盖投递地址 |
 
 ## 字阶（px，`:root` in `HomePage.vue`）
 
@@ -30,7 +30,7 @@
 | `--home-font-caption` | 12 | 标签、脚注；窄屏单行导语 |
 | `--home-font-micro` | 11 | 图例、免责 |
 
-无 `rem` / `clamp` / `vw` 字号；窄屏仅 `@media (max-width: 1100px)` 将单行导语降为 12px。
+无 `rem` / `clamp` / `vw` 字号。窄屏（`max-width: 899px`）在 `HomePage.vue` 内降级字阶与边距（`15%` → `1rem`）；`max-width: 1100px` 将 why 区单行导语降为 16px 并可换行。
 
 ## 路由
 

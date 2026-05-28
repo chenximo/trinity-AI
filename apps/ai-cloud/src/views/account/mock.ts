@@ -486,7 +486,7 @@ export const MOCK_CONTACT_ADVISOR = {
   phone: "400-888-0626",
   wechat: "Trinity-AI-Cloud",
   hours: "工作日 9:00–18:00（GMT+8）",
-  email: "cloud@trinity.example",
+  email: "starsea@trinitydesk.com",
 } as const;
 
 export const MOCK_CONTACT_CHANNELS: MockContactChannel[] = [
@@ -515,7 +515,11 @@ export const MOCK_CONTACT_CHANNELS: MockContactChannel[] = [
     title: "商务合作",
     desc: "渠道折扣、合同账期与多云采购方案咨询。",
     items: [
-      { label: "商务邮箱", value: "cloud@trinity.example", href: "mailto:cloud@trinity.example" },
+      {
+        label: "商务邮箱",
+        value: "starsea@trinitydesk.com",
+        href: "mailto:starsea@trinitydesk.com",
+      },
       { label: "预约咨询", value: "官网填写需求，顾问 1 个工作日内联系" },
     ],
   },

@@ -71,11 +71,11 @@ const stagger = convergeDuration / orbitVendors.length;
 
 <style scoped>
 .home-hero-orbit {
-  --orbit-size: 520px;
-  --orbit-r-edge: 220px;
-  --orbit-r-core: 82px;
-  --hub-size: 10.75rem;
-  --icon-size: 3.75rem;
+  --orbit-size: min(92vw, 300px);
+  --orbit-r-edge: 128px;
+  --orbit-r-core: 52px;
+  --hub-size: 7.25rem;
+  --icon-size: 2.5rem;
   --ring-outer-inset: 2.5%;
   --ring-inner-inset: 26%;
   --ring-band-inner-hole: 25%;
@@ -89,6 +89,16 @@ const stagger = convergeDuration / orbitVendors.length;
   isolation: isolate;
   border-radius: 50%;
   overflow: visible;
+}
+
+@media (min-width: 960px) {
+  .home-hero-orbit {
+    --orbit-size: 520px;
+    --orbit-r-edge: 220px;
+    --orbit-r-core: 82px;
+    --hub-size: 10.75rem;
+    --icon-size: 3.75rem;
+  }
 }
 
 .home-hero-orbit__plate {

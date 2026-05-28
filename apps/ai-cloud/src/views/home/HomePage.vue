@@ -3,6 +3,19 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { TrinityAuthModal, type TrinityAuthMode } from "@trinity/ui";
 import { AI_CLOUD_CONSOLE_HASH } from "../account/mock";
+import {
+  HOME_CONSULT_EMAIL,
+  HOME_CONSULT_HOTLINE,
+  HOME_CONSULT_HOTLINE_TEL,
+  HOME_CONSULT_HOURS,
+  HOME_CONSULT_SCALE_OPTIONS,
+  type HomeConsultScale,
+} from "./mock";
+import {
+  submitHomeConsultLead,
+  validateConsultForm,
+  type ConsultLeadDelivery,
+} from "./submitConsultLead";
 import AliyunCloudSceneVisual from "../../components/AliyunCloudSceneVisual.vue";
 import AwsCloudSceneVisual from "../../components/AwsCloudSceneVisual.vue";
 import AzureCloudSceneVisual from "../../components/AzureCloudSceneVisual.vue";
@@ -18,6 +31,58 @@ import { useTrinityOrSession, useTrinityOrUiLang } from "../shell/shellInteracti
 defineOptions({ name: "AiCloudHomePage" });
 
 type HomeCloudVendor = "aliyun" | "tencent" | "huawei" | "aws" | "gcp" | "azure";
+
+const BENEFIT_COMPARE_ROWS = [
+  {
+    label: "云服务购买",
+    ours: "厂商官网资源，集采渠道代购",
+    vendor: "厂商官网自行购买",
+    vendorOk: true,
+    emph: false,
+  },
+  {
+    label: "合同与发票",
+    ours: "统一账单 / 灵活开票或多抬头",
+    vendor: "厂商官网申请发票",
+    vendorOk: true,
+    emph: false,
+  },
+  {
+    label: "云服务价格",
+    ours: "官网价格 + 额外优惠 + 折扣返点",
+    vendor: "官网价格",
+    vendorOk: false,
+    emph: true,
+  },
+  {
+    label: "配置推荐与报价",
+    ours: "架构师免费推荐配置，择优最大优惠",
+    vendor: "无",
+    vendorOk: false,
+    emph: false,
+  },
+  {
+    label: "技术支持服务",
+    ours: "1v1 VIP 专属客服售后服务",
+    vendor: "工单服务",
+    vendorOk: false,
+    emph: false,
+  },
+  {
+    label: "售后服务",
+    ours: "开户、续费与对账全程专人跟进",
+    vendor: "工单服务",
+    vendorOk: false,
+    emph: false,
+  },
+  {
+    label: "增值服务",
+    ours: "免费上云咨询、架构设计、多云成本统一管控",
+    vendor: "无",
+    vendorOk: false,
+    emph: false,
+  },
+] as const;
 
 const HOME_CLOUD_NAV_VENDORS = [
   { vendor: "aliyun" as const, label: "阿里云", hash: "cloud-aliyun", panelId: "cloud-aliyun" },
@@ -47,6 +112,14 @@ const authVisible = ref(false);
 const authSignup = ref(false);
 const authFormError = ref("");
 const signupMountKey = ref(0);
+
+const consultEmail = ref("");
+const consultPhone = ref("");
+const consultScale = ref<HomeConsultScale>("startup");
+const consultSubmitting = ref(false);
+const consultSuccess = ref(false);
+const consultDeliveredVia = ref<ConsultLeadDelivery | null>(null);
+const consultError = ref("");
 
 const authMode = computed<TrinityAuthMode>(() => (authSignup.value ? "signup" : "signin"));
 
@@ -129,6 +202,42 @@ function onSignOut(e: Event) {
   e.preventDefault();
   setSignedIn(false);
   closeUserMenu();
+}
+
+async function onConsultSubmit(e: Event) {
+  e.preventDefault();
+  if (consultSubmitting.value || consultSuccess.value) return;
+
+  consultError.value = "";
+  const checked = validateConsultForm({
+    email: consultEmail.value,
+    phone: consultPhone.value,
+    scale: consultScale.value,
+  });
+  if (!checked.ok) {
+    consultError.value = checked.message;
+    return;
+  }
+
+  consultSubmitting.value = true;
+  try {
+    const result = await submitHomeConsultLead(checked.data);
+    consultDeliveredVia.value = result.delivery;
+    consultSuccess.value = true;
+  } catch {
+    consultError.value = "发送失败，请稍后重试、致电优惠专线或邮件联系商务。";
+  } finally {
+    consultSubmitting.value = false;
+  }
+}
+
+function resetConsultForm() {
+  consultSuccess.value = false;
+  consultDeliveredVia.value = null;
+  consultError.value = "";
+  consultEmail.value = "";
+  consultPhone.value = "";
+  consultScale.value = "startup";
 }
 
 let disposeDom: (() => void) | undefined;
@@ -230,6 +339,12 @@ onMounted(() => {
   if (tabRoot) {
     const tabs = Array.from(tabRoot.querySelectorAll<HTMLElement>('[role="tab"]'));
     const panels = Array.from(tabRoot.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+    const scrollTabIntoView = (tab: HTMLElement) => {
+      const scroller = tab.closest(".home-usecase-tabs-scroll");
+      if (!scroller || !window.matchMedia("(max-width: 899px)").matches) return;
+      const left = tab.offsetLeft - (scroller.clientWidth - tab.offsetWidth) / 2;
+      scroller.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+    };
     const selectTabIndex = (i: number) => {
       if (i < 0 || i >= tabs.length) return;
       tabs.forEach((t, j) => {
@@ -242,6 +357,8 @@ onMounted(() => {
         if (activeId && p.id === activeId) p.removeAttribute("hidden");
         else p.setAttribute("hidden", "");
       });
+      const activeTab = tabs[i];
+      if (activeTab) scrollTabIntoView(activeTab);
     };
     const tabIndexOf = (el: Element) => tabs.indexOf(el as HTMLElement);
     tabs.forEach((tab) => {
@@ -292,16 +409,6 @@ onMounted(() => {
   };
   document.addEventListener("keydown", onEscape);
   cleanups.push(() => document.removeEventListener("keydown", onEscape));
-
-  const consultForm = root.querySelector("#home-consult-form");
-  if (consultForm) {
-    const fn = (e: Event) => {
-      e.preventDefault();
-      alert("感谢您的留言，我们会尽快与您联系。");
-    };
-    consultForm.addEventListener("submit", fn);
-    cleanups.push(() => consultForm.removeEventListener("submit", fn));
-  }
 
   disposeDom = () => {
     cleanups.forEach((fn) => fn());
@@ -579,7 +686,8 @@ onUnmounted(() => {
 
   <section class="home-usecase" id="cloud-solutions" aria-label="主流云厂商">
     <div class="home-shell" id="home-cloud-tabs">
-      <div class="home-usecase-tablist" role="tablist" aria-label="选择云厂商">
+      <div class="home-usecase-tabs-scroll">
+        <div class="home-usecase-tablist" role="tablist" aria-label="选择云厂商">
         <button type="button" class="home-usecase-tab" role="tab" id="tab-aliyun" aria-controls="cloud-aliyun" aria-selected="true" tabindex="0">
           <span class="home-usecase-tab__inner">
             <span class="home-usecase-tab__logo" aria-hidden="true"><CloudVendorLogo vendor="aliyun" /></span>
@@ -616,6 +724,7 @@ onUnmounted(() => {
             <span class="home-usecase-tab__label">Azure</span>
           </span>
         </button>
+        </div>
       </div>
 
       <div class="home-usecase-panel" role="tabpanel" id="cloud-tencent" aria-labelledby="tab-tencent" hidden>
@@ -1274,79 +1383,74 @@ onUnmounted(() => {
         <h2 id="benefits-h">专属福利</h2>
       </header>
       <div class="home-compare-wrap">
-        <div class="home-compare-stage" role="table" aria-label="专属福利服务对比">
+        <div class="home-compare-stage home-compare-stage--desktop" role="table" aria-label="专属福利服务对比">
           <div class="home-compare-panel home-compare-panel--labels" role="rowgroup">
             <div class="home-compare-panel-head" role="columnheader">服务项目</div>
-            <div class="home-compare-panel-row" role="rowheader">云服务购买</div>
-            <div class="home-compare-panel-row" role="rowheader">合同与发票</div>
-            <div class="home-compare-panel-row" role="rowheader">云服务价格</div>
-            <div class="home-compare-panel-row" role="rowheader">配置推荐与报价</div>
-            <div class="home-compare-panel-row" role="rowheader">技术支持服务</div>
-            <div class="home-compare-panel-row" role="rowheader">售后服务</div>
-            <div class="home-compare-panel-row" role="rowheader">增值服务</div>
+            <div
+              v-for="row in BENEFIT_COMPARE_ROWS"
+              :key="`label-${row.label}`"
+              class="home-compare-panel-row"
+              role="rowheader"
+            >
+              {{ row.label }}
+            </div>
           </div>
           <div class="home-compare-panel home-compare-panel--ours" role="rowgroup">
             <div class="home-compare-panel-head" role="columnheader">Trinity AI 云</div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">厂商官网资源，集采渠道代购</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">统一账单 / 灵活开票或多抬头</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row home-compare-panel-row--emph" role="cell">
-              <span class="home-compare-text">官网价格 + 额外优惠 + 折扣返点</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">架构师免费推荐配置，择优最大优惠</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">1v1 VIP 专属客服售后服务</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">开户、续费与对账全程专人跟进</span>
-              <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">免费上云咨询、架构设计、多云成本统一管控</span>
+            <div
+              v-for="row in BENEFIT_COMPARE_ROWS"
+              :key="`ours-${row.label}`"
+              class="home-compare-panel-row"
+              :class="{ 'home-compare-panel-row--emph': row.emph }"
+              role="cell"
+            >
+              <span class="home-compare-text">{{ row.ours }}</span>
               <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
             </div>
           </div>
           <div class="home-compare-panel home-compare-panel--vendor" role="rowgroup">
             <div class="home-compare-panel-head" role="columnheader">厂商直销</div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">厂商官网自行购买</span>
-              <span class="home-compare-mark home-compare-mark--ring-ok" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">厂商官网申请发票</span>
-              <span class="home-compare-mark home-compare-mark--ring-ok" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">官网价格</span>
-              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">无</span>
-              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">工单服务</span>
-              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">工单服务</span>
-              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
-            </div>
-            <div class="home-compare-panel-row" role="cell">
-              <span class="home-compare-text">无</span>
-              <span class="home-compare-mark home-compare-mark--ring-no" aria-hidden="true"></span>
+            <div
+              v-for="row in BENEFIT_COMPARE_ROWS"
+              :key="`vendor-${row.label}`"
+              class="home-compare-panel-row"
+              role="cell"
+            >
+              <span class="home-compare-text">{{ row.vendor }}</span>
+              <span
+                class="home-compare-mark"
+                :class="row.vendorOk ? 'home-compare-mark--ring-ok' : 'home-compare-mark--ring-no'"
+                aria-hidden="true"
+              ></span>
             </div>
           </div>
+        </div>
+
+        <div class="home-benefit-mobile" aria-label="专属福利服务对比">
+          <p class="home-benefit-mobile-lead">
+            同一项服务，Trinity AI 云在价格、账单与专属支持上相对厂商直销更具优势。
+          </p>
+          <article v-for="row in BENEFIT_COMPARE_ROWS" :key="row.label" class="home-benefit-mobile-card">
+            <h3 class="home-benefit-mobile-card__title">{{ row.label }}</h3>
+            <div class="home-benefit-mobile-col home-benefit-mobile-col--ours">
+              <div class="home-benefit-mobile-col__head">
+                <span class="home-benefit-mobile-col__brand">Trinity AI 云</span>
+                <span class="home-compare-mark home-compare-mark--yes" aria-hidden="true"></span>
+              </div>
+              <p class="home-benefit-mobile-col__text">{{ row.ours }}</p>
+            </div>
+            <div class="home-benefit-mobile-col home-benefit-mobile-col--vendor">
+              <div class="home-benefit-mobile-col__head">
+                <span class="home-benefit-mobile-col__brand">厂商直销</span>
+                <span
+                  class="home-compare-mark"
+                  :class="row.vendorOk ? 'home-compare-mark--ring-ok' : 'home-compare-mark--ring-no'"
+                  aria-hidden="true"
+                ></span>
+              </div>
+              <p class="home-benefit-mobile-col__text">{{ row.vendor }}</p>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1410,34 +1514,117 @@ onUnmounted(() => {
           <p class="home-consult-promo-lead">
             现在联系<span class="home-ours-em">我们</span>的优惠专员，即刻免费获得成本优化方案，开启云上优惠权益之旅。
           </p>
+          <p class="home-consult-hotline">
+            优惠专线：
+            <a :href="`tel:${HOME_CONSULT_HOTLINE_TEL}`">{{ HOME_CONSULT_HOTLINE }}</a>
+            <span class="home-consult-hotline-sep">·</span>
+            商务邮箱：
+            <a :href="`mailto:${HOME_CONSULT_EMAIL}`">{{ HOME_CONSULT_EMAIL }}</a>
+            <span class="home-consult-hotline-hint">{{ HOME_CONSULT_HOURS }}</span>
+          </p>
         </div>
         <div class="home-consult-card">
           <h3 class="home-consult-card-title">申请咨询与折扣</h3>
-          <form class="home-consult-form" id="home-consult-form">
+
+          <div
+            v-if="consultSuccess"
+            class="home-consult-alert home-consult-alert--success"
+            role="status"
+            aria-live="polite"
+          >
+            <p class="home-consult-alert__title">申请已提交</p>
+            <p v-if="consultDeliveredVia === 'email'" class="home-consult-alert__body">
+              您的申请已发送至商务邮箱
+              <a :href="`mailto:${HOME_CONSULT_EMAIL}`">{{ HOME_CONSULT_EMAIL }}</a>，我们将在 1
+              个工作日内通过您填写的邮箱或电话回复。紧急需求请致电
+              <a :href="`tel:${HOME_CONSULT_HOTLINE_TEL}`">{{ HOME_CONSULT_HOTLINE }}</a>。
+            </p>
+            <p v-else class="home-consult-alert__body">
+              已为您打开邮件应用，请确认发送后完成申请（收件人：
+              <a :href="`mailto:${HOME_CONSULT_EMAIL}`">{{ HOME_CONSULT_EMAIL }}</a>）。也可直接致电
+              <a :href="`tel:${HOME_CONSULT_HOTLINE_TEL}`">{{ HOME_CONSULT_HOTLINE }}</a>。
+            </p>
+            <button type="button" class="home-consult-reset" @click="resetConsultForm">
+              继续提交其他需求
+            </button>
+          </div>
+
+          <form
+            v-else
+            class="home-consult-form"
+            id="home-consult-form"
+            novalidate
+            @submit="onConsultSubmit"
+          >
+            <p
+              v-if="consultError"
+              class="home-consult-alert home-consult-alert--error"
+              role="alert"
+            >
+              {{ consultError }}
+            </p>
             <div class="home-consult-field">
               <label for="c-email">企业邮箱</label>
               <input
                 id="c-email"
+                v-model="consultEmail"
                 type="email"
                 name="email"
                 required
                 autocomplete="email"
                 placeholder="name@company.com"
+                :disabled="consultSubmitting"
+              />
+            </div>
+            <div class="home-consult-field">
+              <label for="c-phone">联系电话</label>
+              <input
+                id="c-phone"
+                v-model="consultPhone"
+                type="tel"
+                name="phone"
+                required
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="手机或固话，如 13800138000"
+                :disabled="consultSubmitting"
               />
             </div>
             <div class="home-consult-field">
               <label for="c-scale">需求规模</label>
               <div class="home-consult-select-wrap">
-                <select id="c-scale" name="scale" required>
-                  <option value="startup">初创团队（1–20 人）</option>
-                  <option value="growth">成长期企业（21–100 人）</option>
-                  <option value="enterprise">大型企业（100 人以上）</option>
+                <select
+                  id="c-scale"
+                  v-model="consultScale"
+                  name="scale"
+                  required
+                  :disabled="consultSubmitting"
+                >
+                  <option
+                    v-for="opt in HOME_CONSULT_SCALE_OPTIONS"
+                    :key="opt.value"
+                    :value="opt.value"
+                  >
+                    {{ opt.label }}
+                  </option>
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-gradient home-consult-submit">提交申请并领取福利</button>
+            <button
+              type="submit"
+              class="btn btn-gradient home-consult-submit"
+              :disabled="consultSubmitting"
+              :aria-busy="consultSubmitting ? 'true' : undefined"
+            >
+              {{ consultSubmitting ? "正在发送…" : "提交申请并联系商务" }}
+            </button>
           </form>
-          <p class="home-consult-footnote">2026 年特惠计划受配额限制，请尽快提交</p>
+          <p class="home-consult-footnote">
+            2026 年特惠计划受配额限制，请尽快提交；也可致电
+            <a :href="`tel:${HOME_CONSULT_HOTLINE_TEL}`">{{ HOME_CONSULT_HOTLINE }}</a>
+            或邮件
+            <a :href="`mailto:${HOME_CONSULT_EMAIL}`">{{ HOME_CONSULT_EMAIL }}</a>
+          </p>
         </div>
       </div>
     </div>
@@ -1800,13 +1987,16 @@ button.or-drawer-register:hover {
     justify-content: flex-start;
   }
 
+  .home-eyebrow {
+    margin: -75px 0 12px;
+  }
 }
 
 .home-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin: -75px 0 12px;
+  margin: 0 0 0.75rem;
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
   font-size: var(--home-font-body-sm);
@@ -2268,17 +2458,23 @@ button.or-drawer-register:hover {
 @media (max-width: 899px) {
   .home-overlap-inner {
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    scroll-snap-type: x proximity;
   }
 
   .home-overlap-grid {
-    min-width: 100%;
+    flex-wrap: nowrap;
     width: max-content;
+    min-width: 100%;
   }
 
   .home-overlap-item {
     flex: 0 0 10.5rem;
     min-width: 10.5rem;
+    scroll-snap-align: start;
   }
 }
 
@@ -2312,6 +2508,11 @@ button.or-drawer-register:hover {
   background: var(--bg);
 }
 
+.home-usecase-tabs-scroll {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 .home-usecase-tablist {
   --home-cloud-tab-gap: 48px;
   display: flex;
@@ -2320,23 +2521,34 @@ button.or-drawer-register:hover {
   justify-content: center;
   column-gap: var(--home-cloud-tab-gap);
   row-gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 899px) {
+  .home-usecase-tabs-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    padding-bottom: 0.35rem;
+    margin-bottom: 1.35rem;
+  }
+
   .home-usecase-tablist {
+    display: inline-flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    column-gap: var(--home-cloud-tab-gap);
-    overflow-x: auto;
-    padding-bottom: 0.35rem;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    width: max-content;
+    min-width: 100%;
+    column-gap: 1.5rem;
   }
 
   .home-usecase-tab {
-    scroll-snap-align: start;
     flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 }
 
@@ -3689,10 +3901,41 @@ main#main > section#consult {
 }
 
 .home-consult-promo-lead {
-  margin: 0 0 1.75rem;
+  margin: 0 0 1rem;
   font-size: var(--home-font-subtitle);
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.88);
+}
+
+.home-consult-hotline {
+  margin: 0 0 1.25rem;
+  font-size: var(--home-font-body);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.home-consult-hotline a {
+  font-weight: 800;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.home-consult-hotline a:hover {
+  opacity: 0.92;
+}
+
+.home-consult-hotline-sep {
+  margin-inline: 0.35rem;
+  opacity: 0.65;
+}
+
+.home-consult-hotline-hint {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: var(--home-font-body-sm);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .home-consult-card {
@@ -3805,6 +4048,60 @@ main#main > section#consult {
   box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
 }
 
+.home-consult-alert {
+  margin: 0 0 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius);
+  font-size: var(--home-font-body-sm);
+  line-height: 1.55;
+}
+
+.home-consult-alert--error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #b91c1c;
+}
+
+.home-consult-alert--success {
+  padding: 1rem 0.9rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #166534;
+}
+
+.home-consult-alert__title {
+  margin: 0 0 0.35rem;
+  font-size: var(--home-font-body);
+  font-weight: 700;
+}
+
+.home-consult-alert__body {
+  margin: 0 0 0.85rem;
+}
+
+.home-consult-alert__body a {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.home-consult-reset {
+  width: 100%;
+  justify-content: center;
+}
+
+.home-consult-field input:disabled,
+.home-consult-select-wrap select:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.home-consult-submit:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
 .home-consult-footnote {
   margin: 1rem 0 0;
   font-size: var(--home-font-caption);
@@ -3812,6 +4109,16 @@ main#main > section#consult {
   color: var(--muted-2);
   line-height: 1.5;
   text-align: center;
+}
+
+.home-consult-footnote a {
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.home-consult-footnote a:hover {
+  text-decoration: underline;
 }
 
 /* —— 优惠合作流程（横向连线流程，无卡片框） —— */
@@ -4027,13 +4334,17 @@ main#main > section#process {
   border: none;
 }
 
-.home-compare-stage {
+.home-compare-stage--desktop {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
   max-width: calc(58rem + 30px);
   margin: 0 auto;
+}
+
+.home-benefit-mobile {
+  display: none;
 }
 
 .home-compare-panel {
@@ -4239,7 +4550,7 @@ main#main > section#process {
     padding: var(--compare-ours-lift) 0;
   }
 
-  .home-compare-stage {
+  .home-compare-stage--desktop {
     gap: 0.65rem;
   }
 
@@ -4262,38 +4573,110 @@ main#main > section#process {
 
 }
 
-@media (max-width: 767px) {
+/* H5：专属福利改为按服务项纵向卡片，避免三栏表横向挤压重叠 */
+@media (max-width: 899px) {
   .home-compare-wrap {
-    --compare-ours-lift: 16px;
-    margin-inline: 0;
-    padding-block: var(--compare-ours-lift);
+    padding: 0;
   }
 
-  .home-compare-stage {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    justify-content: flex-start;
-    padding-bottom: 0.35rem;
-    min-width: 100%;
+  .home-compare-stage--desktop {
+    display: none;
   }
 
-  .home-compare-panel {
-    flex: 0 0 auto;
-    width: calc(7.75rem + 10px);
+  .home-benefit-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  .home-compare-panel--ours {
-    width: calc(12rem - 10px);
-    max-width: calc(12rem - 10px);
-    margin-block: calc(-1 * var(--compare-ours-lift));
-    z-index: 3;
+  .home-benefit-mobile-lead {
+    margin: 0;
+    font-size: var(--home-font-body-sm);
+    line-height: 1.6;
+    color: var(--muted);
+    text-align: center;
   }
 
-  .home-compare-panel--labels,
-  .home-compare-panel--vendor {
-    width: calc(8.75rem + 10px);
-    min-width: calc(8.75rem + 10px);
-    max-width: none;
+  .home-benefit-mobile-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    padding: 0.85rem;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  }
+
+  .home-benefit-mobile-card__title {
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--home-font-body);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .home-benefit-mobile-col {
+    padding: 0.7rem 0.75rem;
+    border-radius: var(--radius);
+    box-sizing: border-box;
+  }
+
+  .home-benefit-mobile-col--ours {
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.06) 100%);
+    border: 1px solid rgba(37, 99, 235, 0.22);
+  }
+
+  .home-benefit-mobile-col--vendor {
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .home-benefit-mobile-col__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .home-benefit-mobile-col__brand {
+    font-size: var(--home-font-body-sm);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .home-benefit-mobile-col--ours .home-benefit-mobile-col__brand {
+    color: var(--blue);
+  }
+
+  .home-benefit-mobile-col--vendor .home-benefit-mobile-col__brand {
+    color: var(--muted);
+  }
+
+  .home-benefit-mobile-col__text {
+    margin: 0;
+    font-size: var(--home-font-body-sm);
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .home-benefit-mobile-col--vendor .home-benefit-mobile-col__text {
+    color: var(--muted);
+  }
+
+  .home-benefit-mobile .home-compare-mark--ring-ok,
+  .home-benefit-mobile .home-compare-mark--ring-no {
+    border-color: var(--border-strong);
+  }
+
+  .home-benefit-mobile .home-compare-mark--ring-ok {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 12.5l4 4L18 8.5' stroke='%231e3a5f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  .home-benefit-mobile .home-compare-mark--ring-no {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8 8l8 8M16 8l-8 8' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    opacity: 1;
   }
 }
 
@@ -4386,5 +4769,122 @@ main#main > section#process {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+}
+
+/* —— 窄屏（≤899px）：边距、字阶与模块堆叠 —— */
+@media (max-width: 899px) {
+  .home-page {
+    --page-gutter: 1rem;
+    --layout-edge: 1rem;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --home-content-inline: 1rem;
+    --home-banner-inline: 1rem;
+    --home-why-body-inline: 1rem;
+    --home-section-inline-narrow: 1rem;
+    --home-font-display: 32px;
+    --home-font-highlight: 28px;
+    --home-font-step: 28px;
+    --home-font-title: 26px;
+    --home-font-module: 20px;
+  }
+
+  main#main > .home-overlap {
+    padding-inline: var(--page-gutter);
+  }
+
+  main#main > section#consult {
+    padding-inline: 1rem;
+  }
+
+  .home-banner {
+    min-height: auto;
+  }
+
+  .home-banner-inner {
+    padding: 1.15rem 0 1rem;
+  }
+
+  .home-banner-sub {
+    padding-bottom: 0;
+    font-size: var(--home-font-body);
+    line-height: 1.65;
+  }
+
+  .home-banner-cta--sub {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: stretch;
+  }
+
+  .home-banner-cta--sub > a {
+    width: 100%;
+    padding: 0 1.25rem;
+    justify-content: center;
+  }
+
+  .home-hero-right {
+    margin-top: 0.25rem;
+  }
+
+  .home-usecase-layout__top {
+    gap: 1.5rem;
+  }
+
+  .home-uc-visual--lrbt {
+    min-height: auto;
+  }
+
+  .home-uc-visual--lrbt .home-uc-vis-inner {
+    min-height: 240px;
+  }
+
+  .home-uc-visual--lrbt .home-uc-scene-main {
+    flex: 0 0 200px;
+    min-height: 200px;
+    height: 200px;
+  }
+
+  .home-why-lead,
+  .home-why-highlight-tagline {
+    white-space: normal;
+  }
+
+  .home-why-highlight {
+    padding: 1.35rem 1rem 1.4rem;
+    border-radius: 20px;
+  }
+
+  .home-why-highlight-main b {
+    font-size: 36px;
+  }
+
+  .home-why-highlight-main span {
+    font-size: 16px;
+  }
+
+  .home-shell.home-why-shell {
+    --home-why-shell-inline: 1rem;
+    max-width: 100%;
+    padding-inline: 1rem;
+    gap: 2.25rem;
+  }
+
+  .home-why-top-band {
+    padding-inline: 1rem;
+  }
+
+  .home-consult-panel {
+    padding: 1.75rem 1.15rem;
+    border-radius: 1.5rem;
+    gap: 1.75rem;
+  }
+
+  .home-consult-card {
+    padding: 1.35rem 1.1rem;
+  }
 }
 </style>
