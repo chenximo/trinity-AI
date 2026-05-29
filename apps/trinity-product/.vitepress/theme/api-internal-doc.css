@@ -1,0 +1,188 @@
+.api-internal-doc-wrap {
+  margin: 0.5rem 0 2rem;
+}
+
+.api-internal-doc-source {
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+}
+
+.api-internal-doc-source code {
+  font-size: 0.75rem;
+}
+
+/* 与 VitePress 正文排版对齐，覆盖页顶 H1 后由组件渲染全文 */
+.api-internal-doc-wrap .api-internal-doc {
+  padding-top: 0;
+}
+
+.api-internal-doc-wrap .api-internal-doc > h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.api-internal-doc-wrap .api-internal-doc table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* —— JSON / Shell 示例模块 —— */
+.api-json-module,
+.api-shell-module {
+  margin: 1rem 0 1.25rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.api-json-module__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+
+.api-json-module__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+  background: #dbeafe;
+  border-radius: 4px;
+}
+
+html[data-theme="dark"] .api-json-module__badge {
+  color: #93c5fd;
+  background: rgba(37, 99, 235, 0.22);
+}
+
+.api-json-module__badge--shell {
+  color: #047857;
+  background: #d1fae5;
+}
+
+html[data-theme="dark"] .api-json-module__badge--shell {
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.api-json-module__hint {
+  flex: 1;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+}
+
+.api-json-module__copy {
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.api-json-module__copy:hover:not(:disabled) {
+  color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+}
+
+.api-json-module__copy:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.api-json-module__body {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  background: var(--vp-code-block-bg, #f4f4f5);
+  color: var(--vp-c-text-1, #334155);
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+html[data-theme="dark"] .api-json-module__body {
+  background: var(--vp-code-block-bg, #2e2e32);
+  color: var(--vp-c-text-1, #e2e8f0);
+}
+
+.api-json-module__body--shell {
+  background: var(--vp-code-block-bg, #f4f4f5);
+}
+
+html[data-theme="dark"] .api-json-module__body--shell {
+  background: var(--vp-code-block-bg, #2e2e32);
+}
+
+.api-json-module__body code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: inherit;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.api-json-k {
+  color: #2563eb;
+}
+
+.api-json-s {
+  color: #059669;
+}
+
+.api-json-n {
+  color: #b45309;
+}
+
+.api-json-b {
+  color: #7c3aed;
+}
+
+html[data-theme="dark"] .api-json-k {
+  color: #93c5fd;
+}
+
+html[data-theme="dark"] .api-json-s {
+  color: #6ee7b7;
+}
+
+html[data-theme="dark"] .api-json-n {
+  color: #fcd34d;
+}
+
+html[data-theme="dark"] .api-json-b {
+  color: #d8b4fe;
+}
+
+.api-internal-doc-wrap .api-internal-doc pre.api-code-block {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  overflow-x: auto;
+}
+
+/* 避免旧式 pre 与 JSON 模块重复样式 */
+.api-internal-doc-wrap .api-internal-doc pre:not(.api-json-module__body):not(.api-code-block) {
+  overflow-x: auto;
+}

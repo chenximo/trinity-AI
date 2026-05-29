@@ -1,0 +1,130 @@
+/* API 验证汇总：结果列 Tag + 悬停 Tooltip（对齐运营后台「上架」浅色标签） */
+
+.vp-doc .api-val-report {
+  overflow: visible;
+}
+
+.vp-doc .api-val-report table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  overflow: visible;
+}
+
+.vp-doc .api-val-report th,
+.vp-doc .api-val-report td {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--vp-c-divider);
+  vertical-align: top;
+  overflow: visible;
+}
+
+.vp-doc .api-val-report th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+  text-align: left;
+}
+
+.vp-doc .api-val-report td:nth-child(3) {
+  white-space: normal;
+}
+
+.vp-doc .api-val-report code {
+  font-size: 0.8125rem;
+}
+
+.vp-doc .api-val-tag {
+  display: inline-block;
+  max-width: 18rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  vertical-align: middle;
+  border: 1px solid transparent;
+}
+
+.vp-doc .api-val-tag.is-pass {
+  color: #1a7f37;
+  background: #e8f7ec;
+  border-color: rgba(26, 127, 55, 0.18);
+}
+
+.vp-doc .api-val-tag.is-fail {
+  color: #c0392b;
+  background: #fdeeed;
+  border-color: rgba(192, 57, 43, 0.16);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+html[data-theme="dark"] .vp-doc .api-val-tag.is-pass {
+  color: #6ee7a0;
+  background: rgba(26, 127, 55, 0.18);
+  border-color: rgba(110, 231, 160, 0.22);
+}
+
+html[data-theme="dark"] .vp-doc .api-val-tag.is-fail {
+  color: #fca5a5;
+  background: rgba(192, 57, 43, 0.16);
+  border-color: rgba(252, 165, 165, 0.2);
+}
+
+.vp-doc .api-val-tip-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  cursor: help;
+}
+
+.vp-doc .api-val-tip-wrap:hover,
+.vp-doc .api-val-tip-wrap:focus-within {
+  z-index: 20;
+}
+
+.vp-doc .api-val-tip-bubble {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  bottom: calc(100% + 0.45rem);
+  transform: translateX(-50%);
+  min-width: 14rem;
+  max-width: min(32rem, 85vw);
+  padding: 0.55rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    visibility 0.15s ease;
+}
+
+.vp-doc .api-val-tip-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--vp-c-divider);
+}
+
+.vp-doc .api-val-tip-wrap:hover .api-val-tip-bubble,
+.vp-doc .api-val-tip-wrap:focus-within .api-val-tip-bubble {
+  opacity: 1;
+  visibility: visible;
+}

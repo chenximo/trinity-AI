@@ -1,0 +1,147 @@
+{
+  "version": 3,
+  "endpoint": "/v1/chat/completions",
+  "defaultModel": "gpt-5.5",
+  "cases": [
+    {
+      "id": "T-API-01",
+      "title": "文档完整参数 · 生文",
+      "category": "api",
+      "request": {
+        "messages": [
+          { "role": "system", "content": "只答十字内。" },
+          { "role": "user", "content": "十字内说星瀚。" }
+        ],
+        "stream": false,
+        "temperature": 0.7,
+        "top_p": 1,
+        "max_tokens": 16,
+        "modalities": ["text"]
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "hints": {
+        "temperature": "0.7：参数连通；提示与 max_tokens 已压到省 token。",
+        "top_p": "1：与 temperature 同测；输出仍限约十字。",
+        "max_tokens": "16：约十个汉字上限（验收省 token，非业务推荐值）。",
+        "modalities": "[\"text\"]：显式文本输出。"
+      }
+    },
+    {
+      "id": "T-STREAM-01",
+      "title": "stream 流式",
+      "category": "param",
+      "request": {
+        "messages": [{ "role": "user", "content": "十字内：网关。" }],
+        "stream": true,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["sse_completed", "has_delta_content"] },
+      "hints": {
+        "stream": "true：SSE 连通；输出仍限十字内。",
+        "max_tokens": "16：流式也压到最小输出。"
+      }
+    },
+    {
+      "id": "T-MSG-01",
+      "title": "messages 多轮",
+      "category": "api",
+      "request": {
+        "messages": [
+          { "role": "system", "content": "简答。" },
+          { "role": "user", "content": "Trinity？" },
+          { "role": "assistant", "content": "AI平台。" },
+          { "role": "user", "content": "十字内复述。" }
+        ],
+        "stream": false,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "hints": {
+        "messages": "最短多轮上下文；末轮仍要求十字内回复。",
+        "max_tokens": "16：限制输出长度。"
+      }
+    },
+    {
+      "id": "T-MSG-02",
+      "title": "messages 省略 role",
+      "category": "api",
+      "request": {
+        "messages": [{ "content": "回复二字：好" }],
+        "stream": false,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "hints": {
+        "messages": "省略 role + 二字回复，省 token。",
+        "max_tokens": "16：输出上限。"
+      }
+    },
+    {
+      "id": "T-PARAM-01",
+      "title": "max_tokens",
+      "category": "param",
+      "request": {
+        "messages": [{ "role": "user", "content": "十字内：云。" }],
+        "stream": false,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "hints": {
+        "max_tokens": "16：验 max_tokens 字段；输出约十字。"
+      }
+    },
+    {
+      "id": "T-PARAM-02",
+      "title": "temperature · top_p",
+      "category": "param",
+      "request": {
+        "messages": [{ "role": "user", "content": "十字内：路由。" }],
+        "stream": false,
+        "temperature": 0.5,
+        "top_p": 0.9,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "hints": {
+        "temperature": "0.5：采样参数连通。",
+        "top_p": "0.9：与 temperature 同测。",
+        "max_tokens": "16：输出约十字。"
+      }
+    },
+    {
+      "id": "T-PARAM-03",
+      "title": "省略 modalities",
+      "category": "param",
+      "request": {
+        "messages": [{ "role": "user", "content": "十字内：多云。" }],
+        "stream": false,
+        "max_tokens": 16
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "note": "故意不传 modalities；提示与输出均压到最小，验默认生文行为。",
+      "hints": {
+        "modalities": "省略 modalities；其余同省 token 策略。",
+        "max_tokens": "16：约十字输出。"
+      }
+    },
+    {
+      "id": "T-PARAM-04",
+      "title": "thinking_enabled 深度思考",
+      "category": "param",
+      "request": {
+        "messages": [{ "role": "user", "content": "9.9与9.11谁大？十字内答。" }],
+        "stream": false,
+        "max_tokens": 16,
+        "thinking_enabled": true,
+        "reasoning_effort": "low"
+      },
+      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
+      "note": "reasoning_effort 按模型能力取值（如 gpt-5.5 支持 none/low/medium/high/xhigh，不支持 minimal）；失败时应返回 HTTP 400 JSON，汇总文档须记录 error.message。",
+      "hints": {
+        "thinking_enabled": "true：深度思考连通；最终可见回复仍限十字内。",
+        "reasoning_effort": "low：在模型支持的取值中取较低档以省 token（勿用 minimal，部分模型不支持）。",
+        "max_tokens": "16：可见输出约十字；思考链可能另计 usage。"
+      }
+    }
+  ]
+}

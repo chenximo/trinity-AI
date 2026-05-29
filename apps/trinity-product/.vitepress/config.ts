@@ -1,10 +1,17 @@
 import { defineConfig } from "vitepress";
 import type { DefaultTheme } from "vitepress";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { withMermaid } from "vitepress-plugin-mermaid";
+import { apiAcceptanceServer } from "./plugins/apiAcceptanceServer";
 import { devDocEditorServer } from "./plugins/devDocEditorServer";
 
 /** 独立产品手册；默认 `/product/` 子路径，本地根路径：`VITEPRESS_BASE=/` */
 const BASE = process.env.VITEPRESS_BASE ?? "/product/";
+
+const CONFIG_DIR = fileURLToPath(new URL(".", import.meta.url));
+const REPO_ROOT = path.resolve(CONFIG_DIR, "../../..");
+const ENGINEER_DOCS = path.join(REPO_ROOT, "docs/00-协作与工作流/工程师");
 
 const sidebarProduct: DefaultTheme.SidebarItem[] = [
   { text: "总览", link: "/" },
@@ -70,6 +77,20 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "报表中心", link: "/ai-api-platform/operations/reports" },
         ],
       },
+      {
+        text: "API 测试",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/ai-api-platform/api-test/" },
+          { text: "API 内测文档", link: "/ai-api-platform/api-test/internal-api-doc" },
+          { text: "生文验收台", link: "/ai-api-platform/api-test/chat-completions" },
+          { text: "API 验证 · GPT-5.5（样例）", link: "/ai-api-platform/api-test/reports/gpt-5.5" },
+          {
+            text: "API 验证 · Claude Opus 4.7（样例）",
+            link: "/ai-api-platform/api-test/reports/claude-opus-4-7",
+          },
+        ],
+      },
     ],
   },
 ];
@@ -77,9 +98,19 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
 export default withMermaid(
   defineConfig({
   vite: {
-    plugins: [devDocEditorServer()],
-    server: { port: 5206, strictPort: true, host: "127.0.0.1" },
+    plugins: [devDocEditorServer(), apiAcceptanceServer()],
+    server: {
+      port: 5206,
+      strictPort: true,
+      host: "127.0.0.1",
+      fs: { allow: [REPO_ROOT] },
+    },
     preview: { port: 5206, strictPort: true },
+    resolve: {
+      alias: {
+        "@trinity-engineer-docs": ENGINEER_DOCS,
+      },
+    },
   },
   lang: "zh-CN",
   title: "Trinity 产品手册",

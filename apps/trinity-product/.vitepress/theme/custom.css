@@ -104,6 +104,17 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
   table-layout: auto;
 }
 
+/* 生文验收台：铺满正文可用宽度，避免右侧留白 */
+.vp-doc .api-acc,
+.vp-doc .api-acc-table-wrap,
+.vp-doc .api-acc-table {
+  max-width: none;
+}
+
+.vp-doc .api-acc-table {
+  table-layout: fixed;
+}
+
 .vp-doc pre,
 .vp-doc div[class*="language-"] {
   max-width: 100%;
