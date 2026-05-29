@@ -18,7 +18,7 @@ flowchart LR
 |------|--------|------|
 | **1 选择模型** | 顶栏选 **测试模型**（可点 **新增** 临时加如 `gpt-5.4`），填 **API Key** / **BASE_URL** | 验收台顶栏 |
 | **2 测试模型** | 点 **运行全部**，看表格里每条用例的结果 | 用例表格 |
-| **3 记录汇总** | 点 **导出测试汇总**，得到该模型的 Markdown 报告 | 顶栏按钮 |
+| **3 记录汇总** | 点 **导出测试汇总** → 写入 [Chat API Test](./reports/chat-api-test)（每模型覆盖一节） | JSON 进 git |
 
 每个模型跑完导出一份；多模型就重复 1～3。
 
@@ -41,16 +41,9 @@ flowchart LR
 
 共 **8 条**通用用例；`model` 由顶栏注入，不写死在 JSON 里。
 
-## 测试汇总（Markdown）
+## Chat API Test（汇总报告）
 
-导出文件命名：`{model}-api-validation-{日期}.md`。版式样例：
-
-| 模型 | 样例 |
-|------|------|
-| GPT-5.5 | [API 验证 · gpt-5.5](./reports/gpt-5.5) |
-| Claude Opus 4.7 | [API 验证 · claude-opus-4-7](./reports/claude-opus-4-7) |
-
-结果列为 Tag；悬停 Tag 可查看原始响应摘要，可直接纳入对外 API 参考文档。
+所有模型汇集在 **[Chat API Test](./reports/chat-api-test)**：每模型一张表，支持按模型 / 结果筛选。数据文件：`reports/chat-api-test.data.json`。
 
 ## 修订
 

@@ -16,8 +16,20 @@ import {
 } from "../../acceptance/config/chatParamHints";
 import { formatTokenUsage, type TokenUsage } from "../../acceptance/runner/tokenUsage";
 import {
-  acceptanceReportFilename,
-  formatAcceptanceReportMarkdown,
+  type ChatApiTestReportFile,
+  type ChatApiTestReportRow,
+  toReportRows,
+} from "../../acceptance/runner/chatApiTestReport";
+import {
+  computeRunFingerprint,
+  getModelCacheEntry,
+  markModelExported,
+  pickModelRuns,
+  rowCacheKey,
+  saveModelCacheEntry,
+  type SerializableRunRecord,
+} from "../../acceptance/runner/acceptanceRunCache";
+import {
   type AcceptanceSignoff,
   type ReportCaseRow,
 } from "../../acceptance/runner/formatAcceptanceReport";
@@ -72,6 +84,11 @@ const apiBase = computed(() => {
   return `${base.replace(/\/+$/, "")}/__trinity_api_acceptance`;
 });
 
+const reportPageUrl = computed(() => {
+  const base = import.meta.env.BASE_URL ?? "/product/";
+  return `${base.replace(/\/+$/, "")}/ai-api-platform/api-test/reports/chat-api-test`;
+});
+
 const loading = ref(true);
 const loadError = ref("");
 const baseUrl = ref("");
@@ -101,6 +118,11 @@ const detailBodyText = ref("");
 const detailBodyDefaultText = ref("");
 const detailBodyJsonError = ref("");
 const detailRunning = ref(false);
+const exportMessage = ref("");
+const exportError = ref("");
+const exportInfo = ref(false);
+const hydrateSource = ref<"cache" | "report" | null>(null);
+const duplicateExportAck = ref("");
 
 function rowKey(caseId: string, model: string) {
   return `${caseId}::${model}`;
@@ -160,6 +182,17 @@ const detailRow = computed(() => {
 });
 
 const detailRun = computed(() => (detailKey.value ? runs[detailKey.value] : null));
+
+/** 与 Postman 一致：仅展示格式化后的原始响应体 */
+const detailResponseText = computed(() => {
+  const run = detailRun.value;
+  if (!run) return "（未运行）";
+  if (run.running) return "运行中…";
+  const body = run.responsePreview || run.responseRaw;
+  if (body) return body;
+  if (run.error) return run.error;
+  return "（空响应）";
+});
 
 const detailRequestUrl = computed(() => {
   if (detailRun.value?.requestUrl) return detailRun.value.requestUrl;
@@ -256,6 +289,141 @@ function defaultRun(): RunRecord {
     requestBody: null,
     assertionErrors: [],
   };
+}
+
+function toSerializableRun(run: RunRecord): SerializableRunRecord {
+  return {
+    pass: run.pass,
+    httpStatus: run.httpStatus,
+    durationMs: run.durationMs,
+    tokenUsage: run.tokenUsage,
+    responsePreview: run.responsePreview,
+    responseRaw: run.responseRaw,
+    isGatewayHtml: run.isGatewayHtml,
+    apiErrorMessage: run.apiErrorMessage ?? null,
+    requestMethod: run.requestMethod,
+    requestUrl: run.requestUrl,
+    requestHeaders: run.requestHeaders,
+    requestBody: run.requestBody,
+    error: run.error,
+    assertionErrors: run.assertionErrors,
+  };
+}
+
+function fromSerializableRun(rec: SerializableRunRecord): RunRecord {
+  return {
+    ...rec,
+    running: false,
+    requestHeaderRows: null,
+    tokenUsage: rec.tokenUsage,
+  };
+}
+
+function modelCaseIds(): string[] {
+  return cases.value.map((c) => c.id);
+}
+
+function hasExecutedRunsForModel(model: string): boolean {
+  return modelCaseIds().some((caseId) => runs[rowKey(caseId, model)]?.pass != null);
+}
+
+function applyReportRows(model: string, rows: ChatApiTestReportRow[]) {
+  for (const row of rows) {
+    if (row.machinePass == null) continue;
+    const key = rowKey(row.caseId, model);
+    runs[key] = {
+      ...defaultRun(),
+      pass: row.machinePass,
+      httpStatus: row.httpStatus,
+      responsePreview: row.responsePreview ?? "",
+      responseRaw: row.responsePreview ?? "",
+      apiErrorMessage: row.apiErrorMessage ?? null,
+      assertionErrors:
+        row.machinePass === false && row.apiErrorMessage ? [row.apiErrorMessage] : [],
+    };
+  }
+}
+
+function persistActiveModelRuns() {
+  const model = activeModel.value;
+  if (!model || model === "—" || !isClient) return;
+
+  const caseIds = modelCaseIds();
+  const modelRuns: Record<string, SerializableRunRecord> = {};
+  for (const caseId of caseIds) {
+    const key = rowKey(caseId, model);
+    const run = runs[key];
+    if (!run || run.pass == null) continue;
+    modelRuns[key] = toSerializableRun(run);
+  }
+  if (!Object.keys(modelRuns).length) return;
+
+  const fingerprint = computeRunFingerprint(model, caseIds, runs);
+  const prev = getModelCacheEntry(model);
+  const keepExport =
+    prev?.exportedFingerprint && prev.exportedFingerprint === fingerprint
+      ? { exportedAt: prev.exportedAt, exportedFingerprint: prev.exportedFingerprint }
+      : {};
+
+  saveModelCacheEntry(model, {
+    runs: modelRuns,
+    fingerprint,
+    ...keepExport,
+  });
+}
+
+function formatExportedAt(iso: string): string {
+  try {
+    return new Date(iso).toLocaleString("zh-CN", {
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } catch {
+    return iso;
+  }
+}
+
+async function hydrateActiveModelRuns() {
+  const model = activeModel.value;
+  if (!model || model === "—") return;
+
+  for (const caseDef of cases.value) {
+    const key = rowKey(caseDef.id, model);
+    if (!runs[key]) runs[key] = defaultRun();
+  }
+
+  if (hasExecutedRunsForModel(model)) {
+    hydrateSource.value = null;
+    return;
+  }
+
+  const cached = getModelCacheEntry(model);
+  if (cached?.runs && Object.keys(cached.runs).length) {
+    for (const [key, rec] of Object.entries(cached.runs)) {
+      runs[key] = fromSerializableRun(rec);
+    }
+    hydrateSource.value = "cache";
+    return;
+  }
+
+  try {
+    const res = await fetch(`${apiBase.value}/report`);
+    if (res.ok) {
+      const data = (await res.json()) as ChatApiTestReportFile;
+      const section = data.models?.[model];
+      if (section?.rows?.length) {
+        applyReportRows(model, section.rows);
+        hydrateSource.value = "report";
+        return;
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
+  hydrateSource.value = null;
 }
 
 function loadSignoff() {
@@ -392,10 +560,7 @@ async function loadConfig() {
     selectedModel.value =
       savedModel && modelIds.has(savedModel) ? savedModel : defaultModel.value;
     cases.value = data.cases;
-    for (const row of expandRows()) {
-      const key = rowKey(row.caseId, row.model);
-      if (!runs[key]) runs[key] = defaultRun();
-    }
+    await hydrateActiveModelRuns();
   } catch (e) {
     loadError.value = e instanceof Error ? e.message : String(e);
   } finally {
@@ -438,6 +603,7 @@ async function runRow(
         error: data.error,
         assertionErrors: [data.error],
       };
+      persistActiveModelRuns();
       return;
     }
     runs[key] = {
@@ -458,6 +624,7 @@ async function runRow(
       error: data.error,
       assertionErrors: data.assertionErrors ?? [],
     };
+    persistActiveModelRuns();
   } catch (e) {
     runs[key] = {
       ...defaultRun(),
@@ -465,15 +632,27 @@ async function runRow(
       error: e instanceof Error ? e.message : String(e),
       assertionErrors: ["请求失败"],
     };
+    persistActiveModelRuns();
   }
 }
 
 async function runAll() {
+  const model = activeModel.value;
   runningAll.value = true;
   for (const row of tableRows.value) {
     await runRow(row.caseId, row.model);
   }
   runningAll.value = false;
+  hydrateSource.value = null;
+
+  if (
+    model &&
+    model !== "—" &&
+    runSummary.value.executed === runSummary.value.total &&
+    runSummary.value.total > 0
+  ) {
+    await exportModelReport(model, { auto: true });
+  }
 }
 
 function setAcceptance(key: RowKey, state: AcceptanceState) {
@@ -558,6 +737,11 @@ function resetBaseUrl() {
 
 function onModelChange() {
   if (isClient) sessionStorage.setItem(MODEL_STORAGE, selectedModel.value);
+  duplicateExportAck.value = "";
+  exportMessage.value = "";
+  exportError.value = "";
+  exportInfo.value = false;
+  void hydrateActiveModelRuns();
 }
 
 function resetModel() {
@@ -577,7 +761,7 @@ function buildReportRows(model: string): ReportCaseRow[] {
       httpStatus: run.httpStatus,
       machinePass: run.pass,
       acceptance: acceptance[key] ?? "pending",
-      responsePreview: run.responsePreview || run.error || "",
+      responsePreview: run.responsePreview || run.responseRaw || run.error || "",
       apiErrorMessage: run.apiErrorMessage ?? null,
       assertionErrors: run.assertionErrors,
       note: caseDef.note,
@@ -585,30 +769,93 @@ function buildReportRows(model: string): ReportCaseRow[] {
   });
 }
 
-function downloadMarkdown(filename: string, content: string) {
-  const blob = new Blob([content], { type: "text/markdown;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.click();
-  URL.revokeObjectURL(url);
-}
-
-function exportModelReport(model: string) {
+async function exportModelReport(model: string, opts?: { auto?: boolean; force?: boolean }) {
+  exportMessage.value = "";
+  exportError.value = "";
+  exportInfo.value = false;
   const modelMeta = models.value.find((m) => m.id === model);
-  const markdown = formatAcceptanceReportMarkdown({
-    model,
-    modelLabel: modelMeta?.label,
-    rows: buildReportRows(model),
-  });
-  downloadMarkdown(acceptanceReportFilename(model), markdown);
+  const rows = toReportRows(buildReportRows(model)).filter((r) => r.machinePass != null);
+  if (!rows.length) {
+    exportError.value = "无测试结果可导出，请先运行用例";
+    return;
+  }
+  if (rows.length < cases.value.length) {
+    exportError.value = `仅 ${rows.length}/${cases.value.length} 条已执行，请先运行全部`;
+    return;
+  }
+
+  const fingerprint = computeRunFingerprint(model, modelCaseIds(), runs);
+  const cached = getModelCacheEntry(model);
+  const alreadyExported =
+    cached?.exportedFingerprint === fingerprint && Boolean(cached?.exportedAt);
+
+  if (!opts?.force && alreadyExported && cached?.exportedAt) {
+    const when = formatExportedAt(cached.exportedAt);
+    if (opts?.auto) {
+      exportInfo.value = true;
+      exportMessage.value = `已于 ${when} 导出（结果未变），无需重复写入`;
+      return;
+    }
+    if (duplicateExportAck.value !== fingerprint) {
+      duplicateExportAck.value = fingerprint;
+      exportInfo.value = true;
+      exportMessage.value = `已于 ${when} 导出，结果未变化。再次点击「导出测试汇总」将覆盖写入。`;
+      return;
+    }
+  }
+
+  duplicateExportAck.value = "";
+
+  try {
+    const res = await fetch(`${apiBase.value}/report`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model,
+        modelLabel: modelMeta?.label,
+        endpoint: "POST /v1/chat/completions",
+        rows,
+      }),
+    });
+    const data = (await res.json()) as { ok?: boolean; error?: string };
+    if (!res.ok) {
+      exportError.value = data.error ?? `导出失败 HTTP ${res.status}`;
+      return;
+    }
+    markModelExported(model, fingerprint);
+    const caseIds = modelCaseIds();
+    const modelRuns = pickModelRuns(
+      model,
+      caseIds,
+      Object.fromEntries(
+        caseIds
+          .map((caseId) => {
+            const key = rowCacheKey(caseId, model);
+            const run = runs[key];
+            if (!run || run.pass == null) return null;
+            return [key, toSerializableRun(run)] as const;
+          })
+          .filter((x): x is [string, SerializableRunRecord] => x != null),
+      ),
+    );
+    saveModelCacheEntry(model, {
+      runs: modelRuns,
+      fingerprint,
+      exportedAt: new Date().toISOString(),
+      exportedFingerprint: fingerprint,
+    });
+    exportMessage.value = opts?.auto
+      ? `已自动写入 Chat API Test（模型 ${model}）`
+      : `已写入 Chat API Test 报告（模型 ${model}）`;
+  } catch (e) {
+    exportError.value = e instanceof Error ? e.message : "导出失败";
+  }
 }
 
 function exportCurrentModelReport() {
   const model = activeModel.value;
   if (!model || model === "—") return;
-  exportModelReport(model);
+  void exportModelReport(model);
 }
 
 watch(showAddModel, (open) => {
@@ -639,7 +886,7 @@ watch(showAddModel, (open) => {
       </li>
       <li class="api-acc-flow-step" :class="{ 'is-active': runSummary.executed === runSummary.total && runSummary.total > 0 }">
         <span class="api-acc-flow-num">3</span>
-        <span class="api-acc-flow-text"><strong>记录汇总</strong> · 导出本模型 Markdown 报告（每模型一份）</span>
+        <span class="api-acc-flow-text"><strong>记录汇总</strong> · 导出至 <a :href="reportPageUrl">Chat API Test</a></span>
       </li>
     </ol>
 
@@ -721,6 +968,27 @@ watch(showAddModel, (open) => {
           </button>
         </div>
       </div>
+
+      <p
+        v-if="exportMessage"
+        class="api-acc-export-ok"
+        :class="{ 'api-acc-export-info': exportInfo }"
+      >
+        {{ exportMessage }}
+        <template v-if="!exportInfo">
+          ·
+          <a :href="reportPageUrl">查看报告</a>
+          · 提交 git 后线上文档站同步
+        </template>
+      </p>
+      <p v-if="exportError" class="api-acc-export-err">{{ exportError }}</p>
+
+      <p v-if="hydrateSource === 'cache'" class="api-acc-hydrate-hint">
+        已恢复本机 24 小时内缓存（含完整响应与耗时）
+      </p>
+      <p v-else-if="hydrateSource === 'report'" class="api-acc-hydrate-hint">
+        已从 Chat API Test 历史导出回填（耗时 / Tokens 需重跑获取）
+      </p>
 
       <p v-if="!loading && !loadError" class="api-acc-summary">
         当前模型 <code>{{ activeModel }}</code> ·
@@ -918,19 +1186,24 @@ watch(showAddModel, (open) => {
             :case-hints="detailRow.caseDef.hints"
             :case-note="detailRow.caseDef.note"
           />
-          <h4>响应摘要</h4>
-          <p v-if="detailRun?.isGatewayHtml" class="api-acc-drawer-warn">
-            网关返回 HTML 错误页（如 nginx 502），非 API JSON 业务错误；请排查上游路由或服务，不要当作「参数不支持」。
+          <h4>响应</h4>
+          <p class="api-acc-drawer-meta api-acc-drawer-meta--mono">
+            HTTP {{ detailRun?.httpStatus ?? "—" }}
+            <template v-if="detailRun?.durationMs != null"> · {{ detailRun.durationMs }} ms</template>
+            <template v-if="detailRun && formatTokenUsage(detailRun.tokenUsage) !== '—'">
+              · {{ formatTokenUsage(detailRun.tokenUsage) }}
+            </template>
           </p>
-          <pre class="api-acc-pre">{{ detailRun?.responsePreview || detailRun?.error || "（未运行）" }}</pre>
+          <p v-if="detailRun?.isGatewayHtml" class="api-acc-drawer-warn">
+            网关返回 HTML 错误页（如 nginx 502），非 API JSON；请直接看下方响应体排查。
+          </p>
+          <pre class="api-acc-pre api-acc-pre--response">{{ detailResponseText }}</pre>
           <template v-if="detailRun?.assertionErrors?.length">
             <h4>断言</h4>
             <ul class="api-acc-errors">
               <li v-for="(err, i) in detailRun.assertionErrors" :key="i">{{ err }}</li>
             </ul>
           </template>
-          <h4>原始响应（截断）</h4>
-          <pre class="api-acc-pre api-acc-pre--raw">{{ detailRun?.responseRaw || "—" }}</pre>
         </div>
       </aside>
     </div>

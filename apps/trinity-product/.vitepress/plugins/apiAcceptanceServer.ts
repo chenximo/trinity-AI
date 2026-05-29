@@ -6,9 +6,19 @@ import { normalizeApiKey } from "../../acceptance/runner/chatRequestHeaders";
 import { executeChatCase } from "../../acceptance/runner/executeCase";
 import { buildChatCompletionRequest } from "../../acceptance/runner/formatChatRequest";
 import { resolveCaseExpect } from "../../acceptance/runner/resolveCaseExpect";
+import {
+  emptyReportFile,
+  mergeModelSection,
+  type ChatApiTestReportFile,
+  type ChatApiTestReportRow,
+} from "../../acceptance/runner/chatApiTestReport";
 
 const PLUGIN_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const ACCEPTANCE_DIR = path.join(PLUGIN_ROOT, "acceptance");
+const REPORT_FILE = path.join(
+  PLUGIN_ROOT,
+  "docs/ai-api-platform/api-test/reports/chat-api-test.data.json",
+);
 
 const SITE_BASE = (process.env.VITEPRESS_BASE ?? "/product/").replace(/\/+$/, "");
 const API_PREFIXES = [
@@ -122,6 +132,20 @@ function resolveBaseUrl(override: string | undefined, fallback: string): string 
   } catch {
     throw new Error(`无效的内测 BASE_URL：${raw}`);
   }
+}
+
+async function readReportFile(): Promise<ChatApiTestReportFile> {
+  try {
+    const raw = await fs.readFile(REPORT_FILE, "utf-8");
+    return JSON.parse(raw) as ChatApiTestReportFile;
+  } catch {
+    return emptyReportFile();
+  }
+}
+
+async function writeReportFile(file: ChatApiTestReportFile): Promise<void> {
+  await fs.mkdir(path.dirname(REPORT_FILE), { recursive: true });
+  await fs.writeFile(REPORT_FILE, `${JSON.stringify(file, null, 2)}\n`, "utf-8");
 }
 
 export function apiAcceptanceServer(): Plugin {
@@ -247,6 +271,55 @@ export function apiAcceptanceServer(): Plugin {
                 caseId: caseDef.id,
                 model: (requestBody.model as string) ?? body.model ?? null,
                 ...result,
+              }),
+            );
+            return;
+          }
+
+          if (req.method === "GET" && subPath === "/report") {
+            const report = await readReportFile();
+            res.setHeader("Content-Type", "application/json; charset=utf-8");
+            res.end(JSON.stringify(report));
+            return;
+          }
+
+          if (req.method === "POST" && subPath === "/report") {
+            const body = JSON.parse(await readRequestBody(req)) as {
+              model?: string;
+              modelLabel?: string;
+              endpoint?: string;
+              rows?: ChatApiTestReportRow[];
+            };
+            const model = body.model?.trim();
+            if (!model) {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "缺少 model" }));
+              return;
+            }
+            if (!Array.isArray(body.rows) || body.rows.length === 0) {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "缺少 rows" }));
+              return;
+            }
+
+            const current = await readReportFile();
+            const next = mergeModelSection(current, {
+              model,
+              modelLabel: body.modelLabel,
+              endpoint: body.endpoint,
+              rows: body.rows,
+            });
+            await writeReportFile(next);
+
+            res.setHeader("Content-Type", "application/json; charset=utf-8");
+            res.end(
+              JSON.stringify({
+                ok: true,
+                model,
+                reportPath: "docs/ai-api-platform/api-test/reports/chat-api-test.data.json",
+                updatedAt: next.updatedAt,
               }),
             );
             return;

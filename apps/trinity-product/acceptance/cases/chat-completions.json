@@ -135,8 +135,8 @@
         "thinking_enabled": true,
         "reasoning_effort": "low"
       },
-      "expect": { "httpStatus": 200, "assertions": ["has_assistant_content"] },
-      "note": "reasoning_effort 按模型能力取值（如 gpt-5.5 支持 none/low/medium/high/xhigh，不支持 minimal）；失败时应返回 HTTP 400 JSON，汇总文档须记录 error.message。",
+      "expect": { "httpStatus": 200, "assertions": ["has_completion_usage"] },
+      "note": "深度思考时 content 可能为空（token 先入 reasoning）；以 HTTP 200 + usage.completion_tokens 为准，详情看原始响应 JSON。",
       "hints": {
         "thinking_enabled": "true：深度思考连通；最终可见回复仍限十字内。",
         "reasoning_effort": "low：在模型支持的取值中取较低档以省 token（勿用 minimal，部分模型不支持）。",

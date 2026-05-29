@@ -5,6 +5,7 @@ import {
   type RequestHeaderRow,
 } from "./chatRequestHeaders";
 import { parseApiResponseBody } from "./parseApiResponseBody";
+import { formatResponseBody } from "./formatResponseBody";
 import { extractTokenUsage, type TokenUsage } from "./tokenUsage";
 
 export type CaseExpect = {
@@ -69,14 +70,22 @@ function runAssertions(
   ctx: {
     httpStatus: number;
     assistantText: string;
+    completionTokens: number | null;
     sseDone: boolean;
     sseHasDelta: boolean;
   },
 ): string[] {
   const errors: string[] = [];
   for (const id of assertions ?? []) {
-    if (id === "has_assistant_content" && !ctx.assistantText.trim()) {
-      errors.push("缺少非空 assistant 文本");
+    if (id === "has_assistant_content") {
+      const hasContent = Boolean(ctx.assistantText.trim());
+      const hasCompletionUsage = (ctx.completionTokens ?? 0) > 0;
+      if (!hasContent && !hasCompletionUsage) {
+        errors.push("缺少非空 assistant 文本，且 usage.completion_tokens 为 0");
+      }
+    }
+    if (id === "has_completion_usage" && (ctx.completionTokens ?? 0) <= 0) {
+      errors.push("usage.completion_tokens 为 0（深度思考等场景可能仅有 reasoning，需看原始响应）");
     }
     if (id === "has_delta_content" && !ctx.sseHasDelta) {
       errors.push("流式响应未收到 content delta");
@@ -210,6 +219,7 @@ export async function executeChatCase(input: {
       const assertionErrors = runAssertions(input.expect.assertions, {
         httpStatus: res.status,
         assistantText: sse.assistantText,
+        completionTokens: sse.tokenUsage?.completionTokens ?? null,
         sseDone: sse.sseDone,
         sseHasDelta: sse.sseHasDelta,
       });
@@ -224,7 +234,7 @@ export async function executeChatCase(input: {
         durationMs,
         tokenUsage: sse.tokenUsage,
         ...base,
-        responsePreview: sse.assistantText.slice(0, 500) || sse.raw.slice(0, 500),
+        responsePreview: formatResponseBody(sse.raw, 8000),
         responseRaw: sse.raw.slice(0, 8000),
         assertionErrors,
       };
@@ -244,6 +254,7 @@ export async function executeChatCase(input: {
     const assertionErrors = runAssertions(input.expect.assertions, {
       httpStatus: res.status,
       assistantText,
+      completionTokens: tokenUsage?.completionTokens ?? null,
       sseDone: false,
       sseHasDelta: false,
     });
@@ -251,10 +262,7 @@ export async function executeChatCase(input: {
       assertionErrors.unshift(formatStatusMismatch(res.status, input.expect, parsed));
     }
 
-    const responsePreview =
-      assistantText.trim() ||
-      parsed.preview ||
-      (parsed.isGatewayHtml ? parsed.preview : text.slice(0, 500));
+    const formattedBody = formatResponseBody(text, 8000);
 
     return {
       pass: assertionErrors.length === 0,
@@ -262,7 +270,7 @@ export async function executeChatCase(input: {
       durationMs,
       tokenUsage,
       ...base,
-      responsePreview: responsePreview.slice(0, 500),
+      responsePreview: formattedBody,
       responseRaw: text.slice(0, 8000),
       isGatewayHtml: parsed.isGatewayHtml,
       apiErrorMessage: parsed.apiErrorMessage,

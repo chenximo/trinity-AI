@@ -1,0 +1,258 @@
+{
+  "version": 1,
+  "title": "Chat API Test",
+  "endpoint": "POST /v1/chat/completions",
+  "updatedAt": "2026-05-29T03:16:24.602Z",
+  "models": {
+    "gpt-5.5": {
+      "modelLabel": "GPT-5.5",
+      "testedAt": "2026-05-29T03:03:21.996Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "文档完整参数 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"5c72e029-a040-4b3b-8d21-cae326718499\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023780,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 40\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": false,
+          "responsePreview": "data: {\"id\":\"0de02723-3a81-4e0b-8e6c-f3292be1f198\",\"object\":\"chat.completion.chunk\",\"created\":1780023785,\"model\":\"gpt-5.5\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"0de02723-3a81-4e0b-8e6c-f3292be1f198\",\"object\":\"chat.completion.chunk\",\"created\":1780023785,\"model\":\"gpt-5.5\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"0de02723-3a81-4e0b-8e6c-f3292be1f198\",\"object\":\"chat.completion.chunk\",\"created\":1780023785,\"model\":\"gpt-5.5\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":16,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"355b5a16-80b8-4343-a965-eae7321a2223\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023787,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 51\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"6144ad0d-6977-4b34-854e-9d28fa87ce80\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023790,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 27\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"57dad8d2-2a6d-4cef-a68e-e4e850ecb482\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023793,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"de147dda-32b2-4ed2-8b3c-9c0078d94d81\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023795,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"2fc9add9-8911-4bbd-8da7-861e3c323194\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023797,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f0ba5c63-45b0-42ff-b3ae-963656145e9f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780023799,\n  \"model\": \"gpt-5.5\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 21,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 37\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gpt-5.4": {
+      "modelLabel": "GPT-5.4",
+      "testedAt": "2026-05-29T03:16:24.602Z",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "文档完整参数 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"36df16ca-eafc-4838-8a25-6c53bd99aaa7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024569,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星瀚，浩渺无垠。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 15,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 39\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"内\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"：\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"关\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"”\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"通常\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"可\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"简\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"写\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"为\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"75edf625-1502-43b4-82df-fe3fe04e2582\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024573,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Trinity是AI平台。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 10,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 45\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f4cb2434-f1bf-4d41-8fe7-82cb8575d675\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024575,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 5,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 16\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"fc63430f-7c42-4fe7-97e5-1582cbc9ee05\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024577,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"云。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 6,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"ef24a8d6-2709-4d35-bc74-f1ea1bcfc85c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024579,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"可用：\\n\\n- 路由转发\\n- 路\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"bf34567f-4810-404c-a256-e97148fbb857\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024581,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"多云。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 7,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 20\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"850c58e8-b5b9-460e-a897-62dd947cd6f8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024583,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 21,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 37\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    }
+  }
+}

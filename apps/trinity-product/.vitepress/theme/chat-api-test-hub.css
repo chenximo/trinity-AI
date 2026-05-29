@@ -1,0 +1,112 @@
+.vp-doc .chat-api-test-hub {
+  margin: 1rem 0 2rem;
+}
+
+.chat-api-test-hub-lead {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.chat-api-test-hub-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+
+.chat-api-test-hub-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}
+
+.chat-api-test-hub-select {
+  min-width: 11rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.chat-api-test-hub-refresh {
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.chat-api-test-hub-refresh:hover:not(:disabled) {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.chat-api-test-hub-meta {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--vp-c-text-3);
+}
+
+.chat-api-test-hub-error {
+  margin: 0 0 1rem;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.chat-api-test-hub-empty {
+  padding: 1.25rem;
+  border: 1px dashed var(--vp-c-divider);
+  border-radius: 8px;
+  color: var(--vp-c-text-2);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.chat-api-test-hub-section {
+  margin-bottom: 2rem;
+}
+
+.chat-api-test-hub-section-head {
+  margin-bottom: 0.65rem;
+}
+
+.vp-doc .chat-api-test-hub-section-title {
+  margin: 0 0 0.25rem;
+  padding: 0;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.chat-api-test-hub-model-id {
+  margin-left: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+}
+
+.chat-api-test-hub-section-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--vp-c-text-3);
+}
+
+.vp-doc .chat-api-test-hub-section .api-val-report table code {
+  font-size: 0.8125rem;
+}

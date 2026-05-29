@@ -84,11 +84,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "总览", link: "/ai-api-platform/api-test/" },
           { text: "API 内测文档", link: "/ai-api-platform/api-test/internal-api-doc" },
           { text: "生文验收台", link: "/ai-api-platform/api-test/chat-completions" },
-          { text: "API 验证 · GPT-5.5（样例）", link: "/ai-api-platform/api-test/reports/gpt-5.5" },
-          {
-            text: "API 验证 · Claude Opus 4.7（样例）",
-            link: "/ai-api-platform/api-test/reports/claude-opus-4-7",
-          },
+          { text: "Chat API Test", link: "/ai-api-platform/api-test/reports/chat-api-test" },
         ],
       },
     ],
