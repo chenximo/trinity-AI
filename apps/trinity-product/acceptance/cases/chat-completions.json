@@ -5,7 +5,7 @@
   "cases": [
     {
       "id": "T-API-01",
-      "title": "文档完整参数 · 生文",
+      "title": "常用参数组合 · 生文",
       "category": "api",
       "request": {
         "messages": [

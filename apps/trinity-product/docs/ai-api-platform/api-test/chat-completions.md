@@ -28,7 +28,8 @@ flowchart LR
 3. 内测网关默认 `http://43.159.57.43`，可在顶栏修改
 :::
 
-> **用例真源**：`acceptance/cases/chat-completions.json` · **模型列表**：`acceptance/config/models.mvp.json`
+> **用例真源**：`acceptance/cases/chat-completions.json` · **模型列表**：`acceptance/config/models.mvp.json`  
+> **阶段说明**：当前为一期 MVP，与内测文档为双份维护；二期文档驱动见 [验收路线图](./roadmap)。
 
 <ApiAcceptanceConsole />
 

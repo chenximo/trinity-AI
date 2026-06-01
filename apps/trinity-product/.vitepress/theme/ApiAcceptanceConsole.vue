@@ -582,6 +582,7 @@ async function runRow(
     };
     return;
   }
+  clearSignoffForKey(key);
   runs[key] = { ...defaultRun(), running: true };
   try {
     const res = await fetch(`${apiBase.value}/run`, {
@@ -657,6 +658,12 @@ async function runAll() {
 
 function setAcceptance(key: RowKey, state: AcceptanceState) {
   acceptance[key] = state;
+  saveSignoff();
+}
+
+function clearSignoffForKey(key: RowKey) {
+  if (!(key in acceptance)) return;
+  delete acceptance[key];
   saveSignoff();
 }
 
@@ -993,8 +1000,8 @@ watch(showAddModel, (open) => {
       <p v-if="!loading && !loadError" class="api-acc-summary">
         当前模型 <code>{{ activeModel }}</code> ·
         <strong>{{ runSummary.executed }}/{{ runSummary.total }}</strong> 已测 ·
-        <strong>{{ runSummary.machinePass }}/{{ runSummary.total }}</strong> 通过
-        <template v-if="runSummary.machineFail"> · {{ runSummary.machineFail }} 未通过</template>
+        <strong>{{ runSummary.machinePass }}/{{ runSummary.total }}</strong> 机器通过
+        <template v-if="runSummary.machineFail"> · {{ runSummary.machineFail }} 机器失败</template>
         <template v-if="runSummary.executed === runSummary.total && runSummary.total > 0">
           · 可执行步骤 3 导出汇总
         </template>
@@ -1008,7 +1015,7 @@ watch(showAddModel, (open) => {
               <th class="api-acc-col-cat">类别</th>
               <th class="api-acc-col-status">机器结果</th>
               <th class="api-acc-col-metrics">耗时 / Tokens</th>
-              <th class="api-acc-col-signoff">验收</th>
+              <th class="api-acc-col-signoff">人工验收</th>
               <th class="api-acc-col-actions">操作</th>
             </tr>
           </thead>
@@ -1084,10 +1091,10 @@ watch(showAddModel, (open) => {
                 >
                   {{
                     acceptanceLabel(rowKey(row.caseId, row.model)) === "accepted"
-                      ? "已验收"
+                      ? "已确认"
                       : acceptanceLabel(rowKey(row.caseId, row.model)) === "rejected"
-                        ? "未通过"
-                        : "待验收"
+                        ? "验收驳回"
+                        : "待确认"
                   }}
                 </span>
               </td>
@@ -1112,14 +1119,14 @@ watch(showAddModel, (open) => {
                   class="api-acc-btn api-acc-btn--sm api-acc-btn--ok"
                   @click="setAcceptance(rowKey(row.caseId, row.model), 'accepted')"
                 >
-                  验收✓
+                  确认✓
                 </button>
                 <button
                   type="button"
                   class="api-acc-btn api-acc-btn--sm api-acc-btn--no"
                   @click="setAcceptance(rowKey(row.caseId, row.model), 'rejected')"
                 >
-                  不通过
+                  驳回
                 </button>
               </td>
             </tr>

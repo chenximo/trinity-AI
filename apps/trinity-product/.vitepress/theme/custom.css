@@ -74,8 +74,10 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
 /* ✅🟡⬜ 进度列：居中、略放大，便于扫读 */
 .vp-doc table th:nth-child(3),
 .vp-doc table th:nth-child(4),
+.vp-doc table th:nth-child(5),
 .vp-doc table td:nth-child(3),
-.vp-doc table td:nth-child(4) {
+.vp-doc table td:nth-child(4),
+.vp-doc table td:nth-child(5) {
   text-align: center;
   white-space: nowrap;
   font-size: 1rem;

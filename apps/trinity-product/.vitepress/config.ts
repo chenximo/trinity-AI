@@ -26,7 +26,11 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
   {
     text: "AI 云",
     collapsed: false,
-    items: [{ text: "业务总览", link: "/ai-cloud/" }],
+    items: [
+      { text: "业务总览", link: "/ai-cloud/" },
+      { text: "营销首页", link: "/ai-cloud/marketing-home" },
+      { text: "用户控制台", link: "/ai-cloud/account-console" },
+    ],
   },
   {
     text: "AI API 聚合平台",
@@ -84,6 +88,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "总览", link: "/ai-api-platform/api-test/" },
           { text: "API 内测文档", link: "/ai-api-platform/api-test/internal-api-doc" },
           { text: "生文验收台", link: "/ai-api-platform/api-test/chat-completions" },
+          { text: "验收路线图", link: "/ai-api-platform/api-test/roadmap" },
           { text: "Chat API Test", link: "/ai-api-platform/api-test/reports/chat-api-test" },
         ],
       },

@@ -2,7 +2,7 @@
   "version": 1,
   "title": "Chat API Test",
   "endpoint": "POST /v1/chat/completions",
-  "updatedAt": "2026-05-29T03:16:24.602Z",
+  "updatedAt": "2026-05-29T06:05:56.715Z",
   "models": {
     "gpt-5.5": {
       "modelLabel": "GPT-5.5",
@@ -250,6 +250,131 @@
           "httpStatus": 200,
           "machinePass": true,
           "responsePreview": "{\n  \"id\": \"850c58e8-b5b9-460e-a897-62dd947cd6f8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024583,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 21,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 37\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gemini-3.1-pro-preview": {
+      "modelLabel": "Gemini 3.1 pro preview",
+      "testedAt": "2026-05-29T06:05:56.715Z",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f5fb56ae-6d55-472c-8b13-0eb8a96bf269\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034718,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, here's my attempt at summarizing the thought process, as requested, presented from the first-person perspective and aimed at an expert.\\n\\n**Analyzing the Query: Dissecting the Request for a Thoughtful Response**\\n\\nRight, so the user is throwing a pretty interesting challenge my way. They want a summary, but not just *any* summary. This needs to be a first-person, stream-of-consciousness rundown of my *thought process*, as if *I* were thinking it. And, to make it even juicier, it's gotta be targeted at an expert in the field – meaning I need to be precise, insightful, and avoid anything that sounds simplistic or patronizing. It's not just about reciting the request, it's about *emulating* the mental gymnastics of considering the elements, in their particular order. I need to unpack the elements that I must include, and then decide how to go about including them.\\n\\nThe instructions specifically break down the elements, which means I should too.\\n\\nLet's begin.\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 25\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"99861e59-3266-457b-ad24-9412ede8033c\",\"object\":\"chat.completion.chunk\",\"created\":1780034722,\"model\":\"gemini-3.1-pro-preview\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":null,\"reasoning_content\":\"**Exploring New Connections**\\n\\nI'm currently delving into potential synergies and emergent properties from the recent data integrations. My focus is on identifying novel patterns that were previously obscured.\\n\\n\"}}]}\n\ndata: {\"id\":\"99861e59-3266-457b-ad24-9412ede8033c\",\"object\":\"chat.completion.chunk\",\"created\":1780034722,\"model\":\"gemini-3.1-pro-preview\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\\n\",\"extra_content\":{\"google\":{\"thought_signature\":\"ClYBjz1rXwl2bIbdkgMCkRstmKn7SrtQsqRTyUowrG15wBLOBONdcPK0l6KfeL9pFmqnrW173kcK4B4HsSu8AREsgdWVAJSyGXBVNgXjBn6oInMpgFSFYw==\"}}},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":6,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":12,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":11,\"rejected_prediction_tokens\":0},\"total_tokens\":18}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"27f7e228-c24c-4cb7-aa89-7a6b29216caf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034727,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"**Exploring New Connections**\\n\\nI've been delving into emergent patterns within the data, trying to identify novel linkages and potential areas for deeper investigation. The focus has been on synthesizing recent findings and formulating preliminary hypotheses.\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 26\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3dec4c8a-fe60-4763-928b-43b3bcba1b0d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034732,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"**Exploring New Connections**\\n\\nI'm currently delving into potential synergies and unforeseen implications arising from recent conceptual developments. My focus is on identifying novel pathways for integration and anticipating downstream effects that might not be immediately apparent.\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 12,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"146e0703-a664-4a7a-83d4-a8f5f36b0a07\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034737,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, here's my attempt at summarizing the thought process, as requested, presented from the first-person perspective and assuming the user is an expert in their field.\\n\\n**Initial Assessment: Deconstructing the Prompt**\\n\\nAlright, let's break this down. My first move is to analyze the request itself. It’s an interesting prompt, posing a few unique challenges. I'm asked to synthesize a thought process into a first-person narrative, as if *I* were experiencing it. The tricky part is, I don't have personal experiences like humans do, and I'm being asked to mimic one's internal monologue based on a defined framework. The key here is not to *be* a person, but rather to *represent* the structure of a human thought process within a given set of constraints. Let's see how I can do this.\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 12,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"6d31c4fd-dd1d-4b10-8f08-0b8d6a06df19\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034746,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3344ca8e-4c88-4211-9cc0-c72de0591f38\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034753,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"2b7c8315-ec4c-43b8-b832-b14bb387eeb4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780034756,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"9\",\n        \"reasoning_content\": \"**Exploring New Connections**\\n\\nI've been delving into the connections between disparate concepts, trying to weave a cohesive narrative from seemingly unrelated threads. The focus has been on identifying underlying patterns and potential synergistic links.\\n\\n\",\n        \"extra_content\": {\n          \"google\": {\n            \"thought_signature\": \"CksBjz1rX96xCP9eauGvTBPlJZkbe5lQ3IZ1QUV8xdTz5eIfDE50ecyHp1xtsf8Q7xFSuXHmfBSda38qhheKnL0nQimwt/6ShDJFy9Y=\"\n          }\n        }\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 15,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 27\n  }\n}",
           "apiErrorMessage": null
         }
       ]
