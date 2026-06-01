@@ -19,6 +19,65 @@
   --vp-layout-max-width: 112rem;
 }
 
+/* 全局隐藏滚动条，保留滚轮 / 触控板 / 触摸滑动 */
+html,
+body,
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* —— 顶栏：全宽底边 + 不透明底，避免正文从搜索左侧透出 —— */
+.VPNav {
+  border-bottom: none;
+  background: var(--vp-c-bg) !important;
+  backdrop-filter: none;
+}
+
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar {
+    background-color: var(--vp-c-bg) !important;
+  }
+
+  .VPNavBar.has-sidebar .wrapper {
+    background-color: var(--vp-c-bg);
+  }
+
+  .VPNavBar.has-sidebar .title {
+    background-color: var(--vp-c-bg) !important;
+  }
+
+  .VPNavBar.has-sidebar .content,
+  .VPNavBar.has-sidebar .content-body {
+    background-color: var(--vp-c-bg) !important;
+  }
+
+  /* 默认 VP 会 padding-left 跳过侧栏，底边在搜索左侧断线 */
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
+  }
+
+  /* 标题区自带 border-bottom（仅文字宽），与 .divider-line 重复 → 去掉 */
+  .VPNavBarTitle.has-sidebar .title {
+    border-bottom-color: transparent !important;
+  }
+
+  .VPNavBar.has-sidebar .title .VPNavBarTitle {
+    width: 100%;
+  }
+}
+
+.VPNavBar:not(.home) .divider-line,
+.VPNavBar:not(.home.top) .divider-line {
+  background-color: var(--vp-c-divider);
+}
+
 .product-metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
@@ -30,10 +89,29 @@
 
 .product-metrics li {
   margin: 0;
+  list-style: none;
   padding: 0.75rem 1rem;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg-soft);
+}
+
+.product-metrics li::marker {
+  content: none;
+}
+
+.vp-doc .product-metrics {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+.vp-doc .product-metrics > li {
+  list-style: none !important;
+}
+
+.vp-doc .product-metrics > li::before {
+  content: none !important;
+  display: none !important;
 }
 
 /* 法律文稿：待运营确认块在 caution 基础上加强可视提示 */
@@ -71,6 +149,58 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
   font-size: 0.875rem;
 }
 
+/* 前言 · 能力总览表：左对齐、备注换行、禁止横向滚动 */
+.vp-doc .product-handbook-cap-wrap {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.vp-doc .product-handbook-cap-wrap .vp-table-container,
+.vp-doc .product-handbook-cap-wrap div[class*="vp-table"] {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.vp-doc .product-handbook-cap-wrap table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+.vp-doc .product-handbook-cap-wrap table th,
+.vp-doc .product-handbook-cap-wrap table td {
+  text-align: left;
+  white-space: normal;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.vp-doc .product-handbook-cap-wrap table th:nth-child(1),
+.vp-doc .product-handbook-cap-wrap table td:nth-child(1) {
+  width: 10%;
+}
+
+.vp-doc .product-handbook-cap-wrap table th:nth-child(2),
+.vp-doc .product-handbook-cap-wrap table td:nth-child(2) {
+  width: 22%;
+}
+
+.vp-doc .product-handbook-cap-wrap table th:nth-child(3),
+.vp-doc .product-handbook-cap-wrap table td:nth-child(3) {
+  width: 18%;
+}
+
+.vp-doc .product-handbook-cap-wrap table th:nth-child(4),
+.vp-doc .product-handbook-cap-wrap table td:nth-child(4) {
+  width: 50%;
+  min-width: 0;
+  color: var(--vp-c-text-2);
+}
+
 /* ✅🟡⬜ 进度列：居中、略放大，便于扫读 */
 .vp-doc table th:nth-child(3),
 .vp-doc table th:nth-child(4),
@@ -82,6 +212,15 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
   white-space: nowrap;
   font-size: 1rem;
   line-height: 1.4;
+}
+
+/* 能力总览表不受子能力 emoji 列样式影响 */
+.vp-doc .product-handbook-cap-wrap table th,
+.vp-doc .product-handbook-cap-wrap table td {
+  text-align: left !important;
+  white-space: normal !important;
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
 }
 
 .VPContent .vp-doc {

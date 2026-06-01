@@ -9,25 +9,14 @@ title: 用户控制台
 - 走查与 Bug：[飞书 · 5.30 体验测试表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)
 :::
 
-<ul class="product-metrics">
-  <li><strong>⬜</strong><span>模块盘点（当前已做）</span></li>
-</ul>
-
-> **对标**：OpenRouter Account（Keys · Credits · Activity · Logs · Presets）  
-> **工程**：`apps/trinity-ai/src/views/account/ConsolePage.vue` · `/account/console`  
-> **路由**：`#keys` · `#preset` · `#credits` · `#activity` · `#logs`（默认 `#keys`）
-
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | `TrinityAI/account/console.html` |
-| **体验地址** | [http://43.159.57.43/trinityai/account/console](http://43.159.57.43/trinityai/account/console)（本地：[127.0.0.1:5201/account/console](http://127.0.0.1:5201/account/console)） |
-| **规范验收页** | `trinity-ai` → `/user-console-spec`（控制台 UI 规则样例，非业务数据） |
+> **工程**：`apps/trinity-ai/src/views/account/ConsolePage.vue` · 路由 `/account/console`（`#keys` · `#preset` · `#credits` · `#activity` · `#logs`）  
+> **地址**：见 [聚合平台总览](../)（用户面 `/account/console`）
 
 ## 说明
 
 企业租户自助：**API 密钥**、**角色（Preset）**、**额度**、**活动概览**、**用量明细**。单页多面板，侧栏 hash 切换；列表与图表当前多为**演示数据**，5.30 重点验收「能创建 Key 并用于调 API」「用量可读」是否已接后端。
+
+UI 规范验收样例：`trinity-ai` → `/user-console-spec`（非业务数据）。
 
 **不必先给截图**：子能力已从工程页面拆出；你只需在表里改 **✅🟡⬜**。若某条与线上不一致，再补 1～2 张对应面板截图即可。
 

@@ -9,16 +9,8 @@ title: 运营后台管理平台
 - 摘抄 `docs/05-产品与PRD/roadmap/运营面-00-总览.md`；**5.30 商用** / **6.30 商用** 见 [手册总览](../../)
 :::
 
-> **运营后台管理平台**：内部上架、供应商、密钥、计费、监控、审计等（`trinity-ai-admin`）。  
-> **工程**：`apps/trinity-ai-admin` · 本地 `npm run dev:trinity-ai-admin` → [http://127.0.0.1:5204/](http://127.0.0.1:5204/)  
-> **说明**：OpenRouter **无**公开运营后台；本表为 Trinity B2B **必备运营能力**。
-
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | 各子模块 Vue 高保真（见下表「工程目录」） |
-| **体验地址** | [运营后台首页](http://127.0.0.1:5204/dashboard)（需登录） |
+> **工程**：`apps/trinity-ai-admin`  
+> **地址**：见 [聚合平台总览](../)（运营后台）
 
 ## 模块总览
 
@@ -40,7 +32,7 @@ title: 运营后台管理平台
 
 | 运营后台 | 支撑 |
 |--------|------|
-| 供应商 + 模型 + 线路 | [用户面 · 模型广场](../user/model-catalog) live、[平台侧 · 路由](../platform/routing-fallback) |
+| 供应商 + 模型 + 线路 | [用户面 · 模型广场 · 列表](../user/models/list) live、[平台侧 · 路由](../platform/routing-fallback) |
 | 密钥 + 用户审核 | [用户面 · 控制台](../user/account-console)、[平台侧 · 鉴权](../platform/auth-rate-quota) |
 | 用量与计费 | [用户面 · 控制台](../user/account-console)、[平台侧 · 计量](../platform/metering-billing) |
 | 监控与风控 | [平台侧 · 限流](../platform/auth-rate-quota) |

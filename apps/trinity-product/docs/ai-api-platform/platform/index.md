@@ -9,15 +9,8 @@ title: 平台侧模块
 - 进度摘抄自 `docs/05-产品与PRD/roadmap/平台面-00-总览.md`，网关联调后请你改 emoji
 :::
 
-> **平台侧**：对外 **HTTP API**（网关、鉴权、路由、计量）；无独立营销 UI，以 [开发者文档](http://127.0.0.1:5205/docs/api/overview) 与网关行为为准。  
-> **关联**：[用户侧](../user/) · [运营后台管理平台](../operations/) · `apps/trinity-ai-admin`
-
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | —（无独立页面） |
-| **体验地址** | [API 总览](http://127.0.0.1:5205/docs/api/overview) · Quickstart [生文](http://127.0.0.1:5205/docs/quickstart)（`npm run dev:trinity-docs`） |
+> **工程**：网关服务（见 `trinity-docs` API 章）· 文档 `apps/trinity-docs`  
+> **地址**：见 [聚合平台总览](../)（对外文档；API 说明在文档站内）
 
 ## 模块总览
 
@@ -36,7 +29,7 @@ title: 平台侧模块
 
 | 用户侧 | 依赖的平台侧 |
 |--------|----------------|
-| [模型广场](../user/model-catalog) | 模型目录 API + 运营上架 |
+| [模型广场 · 列表](../user/models/list) | 模型目录 API + 运营上架 |
 | [Chat](../user/chat-experience) | 生文 API + 鉴权 |
 | [开发者文档](../user/developer-docs) | 生文 API + 标准错误 |
 | [用户控制台](../user/account-console) | 计量与计费 |

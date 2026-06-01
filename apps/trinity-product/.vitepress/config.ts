@@ -42,7 +42,14 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
         collapsed: false,
         items: [
           { text: "总览", link: "/ai-api-platform/user/" },
-          { text: "模型广场列表", link: "/ai-api-platform/user/model-catalog" },
+          {
+            text: "模型广场",
+            collapsed: false,
+            items: [
+              { text: "列表", link: "/ai-api-platform/user/models/list" },
+              { text: "模型详情页需求", link: "/ai-api-platform/user/models/model-detail-requirements" },
+            ],
+          },
           { text: "Chat 在线体验", link: "/ai-api-platform/user/chat-experience" },
           { text: "开发者文档", link: "/ai-api-platform/user/developer-docs" },
           { text: "用户控制台", link: "/ai-api-platform/user/account-console" },

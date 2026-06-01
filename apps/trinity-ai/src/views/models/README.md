@@ -6,15 +6,18 @@
 
 模型目录页原型：筛选、排序与列表在 `ModelsPage.vue` 单文件模板中；示例数据与纯函数在 `mock.ts`；样式为全局 `models.css`（非 CSS Modules，避免 `orc-*` 等类名被哈希）；`body` 类名等 DOM 副作用在 `modelsInteractions.ts`。
 
-## 2. 五件套（本目录仅五个文件）
+## 2. 目录结构
 
-| 文件 | 职责 |
+| 路径 | 职责 |
 |------|------|
-| `ModelsPage.vue` | 路由入口：侧栏筛选、主列目录、页脚 |
-| `models.css` | 模块样式（自 `TrinityAI/app/models.html` 迁入；与 `main#main:has(.models-root)` 等壳层配合） |
+| `ModelsPage.vue` | 列表路由入口：侧栏筛选、主列目录、页脚 |
+| `models.css` | 列表样式（自 `TrinityAI/app/models.html` 迁入） |
 | `modelsInteractions.ts` | 窄屏筛选抽屉与 `document.body` 类名同步 |
-| `mock.ts` | `CATALOG_MODELS`、`PROVIDER_PILLS`、`MODALITY_ORDER`、`contextLabel`、`priceInSortKey` 等 |
+| `mock.ts` | `CATALOG_MODELS`、`PROVIDER_PILLS` 等 |
+| `detail/` | **模型详情子页**（规划 `/models/:modelId`；见 `detail/README.md`） |
 | `README.md` | 本说明 |
+
+**产品需求**：`apps/trinity-product/docs/ai-api-platform/user/models/`（列表 `list.md` · 详情 `model-detail-requirements.md`）
 
 ## 3. 路由
 
@@ -43,4 +46,5 @@
 ## 7. 参考
 
 - 静态原型：`TrinityAI/app/models.html`
+- 模型详情需求：产品手册 `user/models/model-detail-requirements.md` · 工程 `detail/README.md`
 - 域级说明：按需写 `` 或 PRD（见五件套规范 §5.1）

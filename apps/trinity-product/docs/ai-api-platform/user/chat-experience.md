@@ -8,19 +8,8 @@ title: Chat 在线体验
 - 填写 **当前已做**、**5.30 验收**、**6.30 商用**（✅ 🟡 ⬜）；试用范围待产品确认  
 :::
 
-<ul class="product-metrics">
-  <li><strong>⬜</strong><span>模块盘点结论</span></li>
-</ul>
-
-> **对标**：[OpenRouter · Chat](https://openrouter.ai/chat)  
-> **工程**：`apps/trinity-ai/src/views/chat/` · `/chat`
-
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | `TrinityAI/app/chat/index.html` |
-| **体验地址** | [http://43.159.57.43/trinityai/chat](http://43.159.57.43/trinityai/chat)（本地：[127.0.0.1:5201/chat](http://127.0.0.1:5201/chat)） |
+> **工程**：`apps/trinity-ai/src/views/chat/` · 路由 `/chat`  
+> **地址**：见 [聚合平台总览](../)（用户面 `/chat`）
 
 ## 说明
 
@@ -47,7 +36,7 @@ title: Chat 在线体验
 
 - [ ] 选模型后可发送并收到回复（真调用 `chat/completions`）
 - [ ] 流式输出可用（若纳入本阶段）
-- [ ] 与 [模型广场](./model-catalog) 跳转带 model 参数
+- [ ] 与 [模型广场 · 列表](./models/list) 跳转带 model 参数
 
 ## 6.30 商用（草案）
 
@@ -60,6 +49,6 @@ title: Chat 在线体验
 
 | 模块 | 关系 |
 |------|------|
-| [模型广场](./model-catalog) | 理想：卡片 → Chat |
+| [模型广场 · 列表](./models/list) | 理想：卡片 → Chat |
 | [开发者文档](./developer-docs) | API 集成 vs 试用 |
 | 平台侧 · 生文 API | 后端 `chat/completions` |

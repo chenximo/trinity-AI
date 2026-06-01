@@ -8,19 +8,8 @@ title: 开发者文档
 - **✅ 🟡 ⬜** 见 [用户侧总览](./)；**5.30 能力** / **6.30 商用** 分列填写
 :::
 
-<ul class="product-metrics">
-  <li><strong>⬜</strong><span>模块盘点（当前已做）</span></li>
-</ul>
-
-> **对标**：[OpenRouter · Docs](https://openrouter.ai/docs)  
-> **工程**：`apps/trinity-docs`
-
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | `TrinityAI/app/docs.html`（旧静态，仅供参考） |
-| **体验地址** | [http://127.0.0.1:5205/docs/](http://127.0.0.1:5205/docs/)（`npm run dev:trinity-docs`） |
+> **工程**：`apps/trinity-docs`  
+> **地址**：见 [聚合平台总览](../)（对外文档行）
 
 ## 说明
 

@@ -45,4 +45,4 @@ npm run build:trinity-product
 ## 导出 PDF / Word
 
 - PDF：浏览器打开页面 → 打印 → 存为 PDF
-- Word：`pandoc apps/trinity-product/docs/ai-api-platform/user/model-catalog.md -o model-catalog.docx`
+- Word：`pandoc apps/trinity-product/docs/ai-api-platform/user/models/list.md -o model-catalog.docx`
