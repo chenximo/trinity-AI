@@ -1,0 +1,91 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 营销首页 · 首屏 Hero + 页脚
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: 品牌与主价值主张 · 5.30 完成并落锁
+  - name: 营销首页 · 六云 Tab + 场景配图
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: "#cloud-solutions · CloudSceneVisual · 5.30 完成并落锁"
+  - name: 营销首页 · 优势 / 福利 / 流程区块
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: "#why · #benefits · #process · 5.30 完成并落锁"
+  - name: 营销首页 · H5 适配
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: "Tab 滚动、Hero、福利卡 · max-width:899px 降级 · 5.30 落锁"
+  - name: 营销首页 · 咨询表单
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: "#consult · 5.30 完成并落锁"
+  - name: 营销首页 · 顶栏登录 / 注册
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: TrinityAuthModal · 协议页 · 5.30 完成并落锁
+  - name: 营销首页 · 登录跳转控制台
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: "→ #accounts · 5.30 完成并落锁"
+  - name: "用户控制台 · #accounts 账号列表"
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: 搜索/筛选 · 形式1+2 · 跳转厂商控制台 · 5.30 完成并落锁
+  - name: "用户控制台 · #billing 费用汇总与明细"
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": -
+    note: KPI、分云占比、明细与对账状态 · 5.30 完成并落锁
+  - name: "用户控制台 · #invoices 发票申请与记录"
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 开票主体、抬头、额度 · 依赖企业资料 · 5.30 完成并落锁
+  - name: "用户控制台 · #contact 联系我们"
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 顾问主卡 + 支持/财务/商务三通道 · 5.30 完成并落锁
+  - name: 用户控制台 · 企业认证弹窗
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 与发票共用 · 5.30 完成并落锁
+  - name: 用户控制台 · 与后端 API 联调
+    prototype: ✅
+    backend: 🟡 60%
+    "5.30": 🔵
+    "6.30": ⬜
+    note: mock.ts → live · 5.30 完成并落锁
+  - name: 用户控制台 · 运营后台配置
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": -
+    note: 租户/账号/费用配置 · 5.30 完成并落锁

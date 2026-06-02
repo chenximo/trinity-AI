@@ -15,3 +15,28 @@ export function pageSlugToMdRel(slug: string, baseUrl = "/product/"): string {
   const cleaned = normalizePageSlug(slug, baseUrl);
   return cleaned ? `${cleaned}.md` : "index.md";
 }
+
+/** 是否为子目录子能力表 `roadmap.yml`（含 `ai-cloud/roadmap.yml`） */
+export function isRoadmapYamlRel(rel: string): boolean {
+  const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
+  return r.endsWith("roadmap.yml") || r.endsWith(".roadmap.yml");
+}
+
+/** 总览周进度表 `week-progress.yml` */
+export function isWeekProgressYamlRel(rel: string): boolean {
+  const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
+  return r.endsWith("week-progress.yml");
+}
+
+/** 手册可经 dev API / 静态发布的 YAML（子能力表、周进度等） */
+export function isProductYamlRel(rel: string): boolean {
+  return isRoadmapYamlRel(rel) || isWeekProgressYamlRel(rel);
+}
+
+/** API `rel` 参数规范化：已有 .md / .yml 则不再追加 .md */
+export function normalizeDocsRelParam(rel: string): string {
+  const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
+  if (!r) return r;
+  if (r.endsWith(".md") || r.endsWith(".yml") || r.endsWith(".yaml")) return r;
+  return `${r}.md`;
+}

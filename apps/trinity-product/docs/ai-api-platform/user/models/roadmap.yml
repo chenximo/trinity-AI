@@ -1,0 +1,70 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 列表 · 模型卡片列表
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": 🟡
+  - name: 列表 · 主栏搜索
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 列表 · 结果数 / 空态
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 列表 · 排序
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": 🟡
+  - name: 筛选 · 提供商
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 筛选 · 上下文长度
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 筛选 · 模态快捷
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 筛选 · 高级筛选
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 系列/标签等
+  - name: 筛选 · 重置 / 移动抽屉
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+  - name: 交互 · 跳转 Chat
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 列表卡片
+  - name: 交互 · 跳转 API 文档
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+  - name: 交互 · 模型详情页
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: "/models/:id · 见 model-detail-requirements"

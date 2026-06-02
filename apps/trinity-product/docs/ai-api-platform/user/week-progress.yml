@@ -1,0 +1,44 @@
+months:
+  - id: "2026-06"
+    goal: 面向 6.30
+    weeks:
+      - id: W23
+        period: 06-01～06-07
+        focus: 模型广场、Chat、开发者文档
+        plan: 继续模型上架与 Chat API 测试；体验优化；对齐 6 月二期商用范围
+        result: 🟡
+        blockers: 二期范围待产品拍板
+      - id: W24
+        period: 06-08～06-14
+        focus: —
+        plan: 待周会填写
+        result: ⬜
+        blockers: —
+      - id: W25
+        period: 06-15～06-21
+        focus: —
+        plan: 待周会填写
+        result: ⬜
+        blockers: —
+      - id: W26
+        period: 06-22～06-28
+        focus: —
+        plan: 待周会填写
+        result: ⬜
+        blockers: —
+  - id: "2026-05"
+    goal: 5.30 收官
+    archived: true
+    weeks:
+      - id: W22
+        period: 05-25～05-31
+        focus: 模型广场、开发者文档、Chat / 验收台
+        plan: 5.30 v1 上线收口；上架 3 款模型；产品手册站与 Chat API 验收台
+        result: ✅
+        blockers: 批量上架依赖网关联调与表格同步
+      - id: W21
+        period: 05-18～05-24
+        focus: 模型广场、用户控制台
+        plan: 手册用户侧铺稿；控制台 Key + 用量走查准备
+        result: 🟡
+        blockers: —

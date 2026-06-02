@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { withMermaid } from "vitepress-plugin-mermaid";
 import { apiAcceptanceServer } from "./plugins/apiAcceptanceServer";
 import { devDocEditorServer } from "./plugins/devDocEditorServer";
+import { roadmapYamlPlugin } from "./plugins/roadmapYamlPlugin";
 
 /** 独立产品手册；默认 `/product/` 子路径，本地根路径：`VITEPRESS_BASE=/` */
 const BASE = process.env.VITEPRESS_BASE ?? "/product/";
@@ -106,7 +107,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
 export default withMermaid(
   defineConfig({
   vite: {
-    plugins: [devDocEditorServer(), apiAcceptanceServer()],
+    plugins: [roadmapYamlPlugin(), devDocEditorServer(), apiAcceptanceServer()],
     server: {
       port: 5206,
       strictPort: true,
