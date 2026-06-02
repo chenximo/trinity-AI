@@ -1,0 +1,44 @@
+months:
+  - id: "2026-06"
+    goal: 6.30 二期收口
+    weeks:
+      - id: W23
+        period: 06-01～06-07
+        focus: 用户侧模块、平台侧模块、运营后台管理平台
+        owner: PM@聚合平台
+        plan: 梳理 6.30 范围并锁定周计划字段，建立统一周计划看板
+        result: ✅
+        dependencies: 运营/研发周会统一口径
+        testLink: https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne
+        bugList: https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne
+        blockers: —
+      - id: W24
+        period: 06-08～06-14
+        focus: 模型上架、Chat 验收、控制台用量
+        owner: PM@用户侧
+        plan: 对齐模型上架清单与 Chat API 验收项，更新周会依赖与验收链接
+        result: 🟡
+        dependencies: 网关联调、运营上架节奏
+        testLink: https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne
+        bugList: https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne
+        blockers: 批量上架效率与联调窗口待确认
+      - id: W25
+        period: 06-15～06-21
+        focus: 平台侧鉴权/计量、运营后台计费
+        owner: PM@平台侧
+        plan: 收敛 P0 闭环并同步半月众测范围
+        result: ⬜
+        dependencies: 账单口径与风控策略确认
+        testLink: —
+        bugList: —
+        blockers: 待周会填写
+      - id: W26
+        period: 06-22～06-28
+        focus: 6.30 收口验收
+        owner: PM@聚合平台
+        plan: 汇总模块达成、依赖关闭、验收链接归档
+        result: ⬜
+        dependencies: 各模块里程碑达成状态
+        testLink: —
+        bugList: —
+        blockers: 待周会填写

@@ -44,6 +44,16 @@ flowchart LR
 OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营后台管理平台**为 B2B 自建，工程在 `trinity-ai-admin`。
 :::
 
+## 周计划与验收看板
+
+::: tip 维护规则
+- **真源**：`docs/ai-api-platform/week-progress.yml`（本页渲染 `<ProductWeekProgress rel="ai-api-platform/week-progress.yml" />`）。
+- **责任闭环字段**：负责人、依赖。
+- **验收字段**：测试链接、Bug 列表（半月众测详情放飞书，本页只做入口与摘要）。
+:::
+
+<ProductWeekProgress rel="ai-api-platform/week-progress.yml" />
+
 ## 5.30 能力主链（草案）
 
 对外文档 Quickstart → 创建 Key → `POST /v1/chat/completions` 成功 → 运营上架至少 1 个模型 → 控制台可见用量

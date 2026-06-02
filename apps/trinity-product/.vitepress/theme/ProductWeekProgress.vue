@@ -129,6 +129,26 @@ function monthHeading(m: WeekProgressMonth): string {
   return goal ? `${m.id}（${goal}）` : m.id;
 }
 
+function isHttpLink(v: string): boolean {
+  return /^https?:\/\//.test(v.trim());
+}
+
+function focusItems(v: string): string[] {
+  const raw = (v || "").trim();
+  if (!raw || raw === "—") return [];
+  return raw
+    .split(/[、,，]\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function focusHref(item: string): string | null {
+  if (item.includes("用户侧模块")) return "./user/";
+  if (item.includes("平台侧模块")) return "./platform/";
+  if (item.includes("运营后台管理平台")) return "./operations/";
+  return null;
+}
+
 function addMonth() {
   editorDraft.value.months.unshift({
     id: "2026-07",
@@ -149,8 +169,12 @@ function addWeek(mIdx: number) {
     id: "W00",
     period: "",
     focus: "",
+    owner: "—",
     plan: "",
     result: "⬜",
+    dependencies: "—",
+    testLink: "—",
+    bugList: "—",
     blockers: "—",
   });
 }
@@ -190,22 +214,44 @@ function removeWeek(mIdx: number, wIdx: number) {
                 <th class="pw-col-week">周</th>
                 <th class="pw-col-period">周期</th>
                 <th class="pw-col-focus">重点模块</th>
+                <th class="pw-col-owner">负责人</th>
                 <th class="pw-col-plan">计划</th>
                 <th class="pw-col-result">结果</th>
-                <th class="pw-col-blockers">阻塞</th>
+                <th class="pw-col-dependencies">依赖</th>
+                <th class="pw-col-link">测试链接</th>
+                <th class="pw-col-link">Bug 列表</th>
+                <th class="pw-col-blockers">备注</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(w, wIdx) in month.weeks" :key="w.id + wIdx">
                 <td class="pw-col-week"><strong>{{ w.id }}</strong></td>
                 <td class="pw-col-period">{{ w.period || "—" }}</td>
-                <td class="pw-col-focus">{{ w.focus || "—" }}</td>
+                <td class="pw-col-focus">
+                  <template v-if="focusItems(w.focus).length">
+                    <span v-for="(item, itemIdx) in focusItems(w.focus)" :key="item + itemIdx" class="pw-focus-item">
+                      <a v-if="focusHref(item)" :href="focusHref(item) || '#'" class="pw-focus-link">{{ item }}</a>
+                      <span v-else>{{ item }}</span>
+                    </span>
+                  </template>
+                  <span v-else>—</span>
+                </td>
+                <td class="pw-col-owner">{{ w.owner || "—" }}</td>
                 <td class="pw-col-plan">{{ w.plan || "—" }}</td>
                 <td class="pw-col-result">{{ w.result || "⬜" }}</td>
+                <td class="pw-col-dependencies">{{ w.dependencies || "—" }}</td>
+                <td class="pw-col-link">
+                  <a v-if="isHttpLink(w.testLink)" :href="w.testLink" target="_blank" rel="noreferrer">打开</a>
+                  <span v-else>{{ w.testLink || "—" }}</span>
+                </td>
+                <td class="pw-col-link">
+                  <a v-if="isHttpLink(w.bugList)" :href="w.bugList" target="_blank" rel="noreferrer">打开</a>
+                  <span v-else>{{ w.bugList || "—" }}</span>
+                </td>
                 <td class="pw-col-blockers">{{ w.blockers || "—" }}</td>
               </tr>
               <tr v-if="!month.weeks.length">
-                <td colspan="6" class="product-roadmap-muted">暂无周记录</td>
+                <td colspan="10" class="product-roadmap-muted">暂无周记录</td>
               </tr>
             </tbody>
           </table>
@@ -290,9 +336,13 @@ function removeWeek(mIdx: number, wIdx: number) {
                     <th>周</th>
                     <th>周期</th>
                     <th>重点模块</th>
+                    <th>负责人</th>
                     <th>计划</th>
                     <th>结果</th>
-                    <th>阻塞</th>
+                    <th>依赖</th>
+                    <th>测试链接</th>
+                    <th>Bug 列表</th>
+                    <th>备注</th>
                     <th />
                   </tr>
                 </thead>
@@ -301,12 +351,16 @@ function removeWeek(mIdx: number, wIdx: number) {
                     <td><input v-model="w.id" type="text" class="pr-input" /></td>
                     <td><input v-model="w.period" type="text" class="pr-input" /></td>
                     <td><input v-model="w.focus" type="text" class="pr-input pr-input--wide" /></td>
+                    <td><input v-model="w.owner" type="text" class="pr-input" /></td>
                     <td><input v-model="w.plan" type="text" class="pr-input pr-input--note" /></td>
                     <td>
                       <select v-model="w.result" class="pr-select">
                         <option v-for="s in WEEK_RESULT_OPTIONS" :key="s" :value="s">{{ s }}</option>
                       </select>
                     </td>
+                    <td><input v-model="w.dependencies" type="text" class="pr-input pr-input--wide" /></td>
+                    <td><input v-model="w.testLink" type="text" class="pr-input pr-input--note" /></td>
+                    <td><input v-model="w.bugList" type="text" class="pr-input pr-input--note" /></td>
                     <td><input v-model="w.blockers" type="text" class="pr-input pr-input--note" /></td>
                     <td>
                       <button type="button" class="pr-btn pr-btn--danger" @click="removeWeek(mIdx, wIdx)">删</button>
@@ -323,8 +377,9 @@ function removeWeek(mIdx: number, wIdx: number) {
           <div v-show="editorTab === 'yaml'" class="product-roadmap-yaml-pane">
             <p class="product-roadmap-yaml-hint">
               结构：<code>months</code> → 每月 <code>id</code> / <code>goal</code> / <code>archived</code> /
-              <code>weeks</code>（<code>id</code>、<code>period</code>、<code>focus</code>、<code>plan</code>、
-              <code>result</code>、<code>blockers</code>）。结果符号：✅ 🟡 ⬜ ➖。
+              <code>weeks</code>（<code>id</code>、<code>period</code>、<code>focus</code>、<code>owner</code>、
+              <code>plan</code>、<code>result</code>、<code>dependencies</code>、<code>testLink</code>、
+              <code>bugList</code>、<code>blockers</code>（备注列）。结果符号：✅ 🟡 ⬜ ➖。
             </p>
             <textarea
               v-model="editorRawYaml"
@@ -340,6 +395,19 @@ function removeWeek(mIdx: number, wIdx: number) {
 </template>
 
 <style scoped>
+.product-week-progress-wrap :deep(.product-roadmap) {
+  overflow-x: hidden;
+}
+.product-week-progress-wrap :deep(.product-roadmap table) {
+  table-layout: fixed;
+  width: 100%;
+}
+.product-week-progress-wrap :deep(.product-roadmap th),
+.product-week-progress-wrap :deep(.product-roadmap td) {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
 .product-week-progress-month {
   margin: 1.25rem 0 1.75rem;
 }
@@ -355,13 +423,48 @@ function removeWeek(mIdx: number, wIdx: number) {
   color: var(--vp-c-text-2);
 }
 .pw-col-week {
-  width: 4.5rem;
+  width: 5%;
 }
 .pw-col-period {
-  width: 8.5rem;
+  width: 8%;
+}
+.pw-col-focus,
+.pw-col-plan,
+.pw-col-dependencies,
+.pw-col-change,
+.pw-col-delay,
+.pw-col-impact,
+.pw-col-blockers {
+  width: 14%;
+  min-width: 0;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+.pw-focus-item {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.pw-focus-item:last-child {
+  margin-bottom: 0;
+}
+.pw-focus-link {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+}
+.pw-col-owner,
+.pw-col-link {
+  width: 8%;
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
 }
 .pw-col-result {
-  width: 3rem;
+  width: 5%;
   text-align: center;
 }
 .product-week-progress-editor-month {

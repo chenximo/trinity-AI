@@ -4,8 +4,12 @@ export interface WeekProgressRow {
   id: string;
   period: string;
   focus: string;
+  owner: string;
   plan: string;
   result: string;
+  dependencies: string;
+  testLink: string;
+  bugList: string;
   blockers: string;
 }
 
@@ -47,8 +51,12 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
       id: currentWeek.id,
       period: currentWeek.period ?? "",
       focus: currentWeek.focus ?? "",
+      owner: currentWeek.owner ?? "—",
       plan: currentWeek.plan ?? "",
       result: currentWeek.result ?? "⬜",
+      dependencies: currentWeek.dependencies ?? "—",
+      testLink: currentWeek.testLink ?? "—",
+      bugList: currentWeek.bugList ?? "—",
       blockers: currentWeek.blockers ?? "—",
     });
     currentWeek = null;
@@ -107,7 +115,7 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
 
     if (!currentWeek) continue;
 
-    const kv = trimmed.match(/^(period|focus|plan|result|blockers):\s*(.*)$/);
+    const kv = trimmed.match(/^(period|focus|owner|plan|result|dependencies|testLink|bugList|blockers):\s*(.*)$/);
     if (kv) {
       const val = kv[2].trim().replace(/^["']|["']$/g, "");
       (currentWeek as Record<string, string>)[kv[1]] = val;
@@ -129,8 +137,16 @@ export function stringifyWeekProgressYaml(data: WeekProgressData): string {
       lines.push(`      - id: ${yamlQuote(w.id)}`);
       if (w.period?.trim()) lines.push(`        period: ${yamlQuote(w.period.trim())}`);
       if (w.focus?.trim()) lines.push(`        focus: ${yamlQuote(w.focus.trim())}`);
+      const owner = w.owner?.trim() || "—";
+      lines.push(`        owner: ${yamlQuote(owner)}`);
       if (w.plan?.trim()) lines.push(`        plan: ${yamlQuote(w.plan.trim())}`);
       lines.push(`        result: ${yamlQuote(w.result || "⬜")}`);
+      const dependencies = w.dependencies?.trim() || "—";
+      lines.push(`        dependencies: ${yamlQuote(dependencies)}`);
+      const testLink = w.testLink?.trim() || "—";
+      lines.push(`        testLink: ${yamlQuote(testLink)}`);
+      const bugList = w.bugList?.trim() || "—";
+      lines.push(`        bugList: ${yamlQuote(bugList)}`);
       const blockers = w.blockers?.trim() || "—";
       lines.push(`        blockers: ${yamlQuote(blockers)}`);
     }
@@ -149,8 +165,12 @@ export function normalizeWeekProgressData(data: WeekProgressData): WeekProgressD
         id: w.id.trim(),
         period: w.period?.trim() ?? "",
         focus: w.focus?.trim() ?? "",
+        owner: w.owner?.trim() || "—",
         plan: w.plan?.trim() ?? "",
         result: w.result?.trim() || "⬜",
+        dependencies: w.dependencies?.trim() || "—",
+        testLink: w.testLink?.trim() || "—",
+        bugList: w.bugList?.trim() || "—",
         blockers: w.blockers?.trim() || "—",
       })),
     })),
