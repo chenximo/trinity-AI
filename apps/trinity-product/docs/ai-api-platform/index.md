@@ -1,8 +1,8 @@
 ---
-title: AI API 聚合平台
+title: AI API 聚合产品
 ---
 
-# AI API 聚合平台 · 总览
+# AI API 聚合产品 · 总览
 
 > **一句话介绍**：上游多家大模型 → 平台统一 API 出口 → 客户用 Key / 控制台调用；内部运营负责上架、定价、计量与风控。  
 > **工程**：`apps/trinity-ai`（用户面）· `apps/trinity-ai-admin`（运营后台）· `apps/trinity-docs`（对外文档）  
@@ -36,7 +36,7 @@ flowchart LR
 
 | 分层 | 包含什么 | 手册入口 | 整体 |
 |------|----------|----------|:----:|
-| **用户侧模块** | 官网、登录、广场、Chat、文档、控制台 | [进入](./user/)（含 **[周进度](./user/#周进度)**） | 🟡 |
+| **用户侧模块** | 官网、登录、广场、Chat、文档、控制台 | [进入](./user/) | 🟡 |
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
 | **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
 
@@ -47,12 +47,22 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 ## 周计划与验收看板
 
 ::: tip 维护规则
-- **真源**：`docs/ai-api-platform/week-progress.yml`（本页渲染 `<ProductWeekProgress rel="ai-api-platform/week-progress.yml" />`）。
-- **责任闭环字段**：负责人、依赖。
-- **验收字段**：测试链接、Bug 列表（半月众测详情放飞书，本页只做入口与摘要）。
+真源 `ai-api-platform/week-progress.yml`，仅此一处。字段与符号见 [更新规范](../产品手册更新规范.md)。
 :::
 
 <ProductWeekProgress rel="ai-api-platform/week-progress.yml" />
+
+## 半月众测记录
+
+::: tip 模板说明
+明细在飞书；本表只保留摘要。见 [更新规范 §六](../产品手册更新规范.md)。
+:::
+
+| 周期 | 范围 | 结论 | Top 问题 | 责任人 | 截止时间 | 复盘 |
+|------|------|------|----------|--------|----------|------|
+| _待填写_ | 例：模型广场、Chat、控制台 | 通过 / 有条件通过 / 不通过 | 链飞书或简述 | — | — | [飞书表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne) |
+
+**执行表（明细）**：[5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)
 
 ## 5.30 能力主链（草案）
 

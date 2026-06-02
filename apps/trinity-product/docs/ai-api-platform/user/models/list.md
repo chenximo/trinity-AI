@@ -5,7 +5,7 @@ title: 列表
 # 模型广场 · 列表
 
 > **工程**：`apps/trinity-ai/src/views/models/` · 路由 `/models`  
-> **体验 / 在线**：见 [聚合平台总览](../../)（用户面 `/models`）
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../../)（用户面 `/models`）
 
 ## 说明
 

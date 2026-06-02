@@ -17,6 +17,14 @@ const ENGINEER_DOCS = path.join(REPO_ROOT, "docs/00-协作与工作流/工程师
 const sidebarProduct: DefaultTheme.SidebarItem[] = [
   { text: "总览", link: "/" },
   {
+    text: "手册规范",
+    collapsed: false,
+    items: [
+      { text: "文档规范", link: "/产品手册文档规范" },
+      { text: "更新规范", link: "/产品手册更新规范" },
+    ],
+  },
+  {
     text: "法律与合规（草案）",
     collapsed: true,
     items: [
@@ -34,10 +42,10 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: "AI API 聚合平台",
+    text: "AI API 聚合产品",
     collapsed: false,
     items: [
-      { text: "平台总览", link: "/ai-api-platform/" },
+      { text: "产品总览", link: "/ai-api-platform/" },
       {
         text: "用户侧模块",
         collapsed: false,
@@ -123,7 +131,7 @@ export default withMermaid(
   },
   lang: "zh-CN",
   title: "Trinity 产品手册",
-  description: "Trinity 产品能力树：AI 云、AI API 聚合平台（用户侧 / 平台侧 / 运营后台管理平台）。",
+  description: "Trinity 产品能力树：AI 云、AI API 聚合产品（用户侧 / 平台侧 / 运营后台管理平台）。",
   base: BASE,
   srcDir: "./docs",
   cleanUrls: true,
@@ -153,7 +161,7 @@ export default withMermaid(
     nav: [
       { text: "开发者文档", link: "http://127.0.0.1:5205/docs/", target: "_blank" },
       { text: "AI 云", link: "/ai-cloud/" },
-      { text: "API 聚合平台", link: "/ai-api-platform/" },
+      { text: "API 聚合产品", link: "/ai-api-platform/" },
     ],
     sidebar: sidebarProduct,
     footer: {

@@ -9,7 +9,7 @@ title: Chat 在线体验
 :::
 
 > **工程**：`apps/trinity-ai/src/views/chat/` · 路由 `/chat`  
-> **地址**：见 [聚合平台总览](../)（用户面 `/chat`）
+> **地址**：见 [AI API 聚合产品 · 总览](../)（用户面 `/chat`）
 
 ## 说明
 

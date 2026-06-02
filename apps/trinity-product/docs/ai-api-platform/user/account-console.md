@@ -10,7 +10,7 @@ title: 用户控制台
 :::
 
 > **工程**：`apps/trinity-ai/src/views/account/ConsolePage.vue` · 路由 `/account/console`（`#keys` · `#preset` · `#credits` · `#activity` · `#logs`）  
-> **地址**：见 [聚合平台总览](../)（用户面 `/account/console`）
+> **地址**：见 [AI API 聚合产品 · 总览](../)（用户面 `/account/console`）
 
 ## 说明
 
