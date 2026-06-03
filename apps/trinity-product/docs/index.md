@@ -17,7 +17,7 @@ title: 总览
 > 2. **节点**：5.30 / 6.30 列定本阶段验收范围（锁节点见 [更新规范](./产品手册更新规范)）。  
 > 3. **实施**：子能力对应 PRD + 原型 + 工程路径（附录链出，不写进正文）。  
 > 4. **进度**：子清单看 `roadmap`；模块汇总看子总览 / 产品总览；**本周**只看产品总览 **`week-progress.yml`**（不逐条改子能力）。  
-> 5. **验收**：节点列 ✅ + 叶子附录勾选；走查与 Bug 在 [飞书](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)，手册只链入口。  
+> 5. **验收**：节点列 ✅ + 叶子附录链飞书表；走查与 Bug 在 [5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)，手册不抄表。  
 > **周会**：`roadmap.yml` → `week-progress.yml` → 子总览对齐（[更新规范 §七](./产品手册更新规范)）。
 
 <div class="product-handbook-cap-wrap">
@@ -27,7 +27,7 @@ title: 总览
 | **产品地图** | 业务线、模块树、分层与对标（如 OpenRouter） | 接口字段、实现细节 | 入口见下「业务线」；展开见各线 **产品总览** 与侧栏<br>与对外 `trinity-docs` 分离 |
 | **Roadmap / 里程碑** | 5.30、6.30 等阶段目标与模块进度 | 排期、工时、负责人 | `docs/05-产品与PRD/roadmap/` 摘抄逐步并入本站，**维护以本手册为准**<br>叶子页填 **当前已做**、**5.30 / 6.30 能力**（✅ 🟡 ⬜），与 roadmap 里程碑口径一致 |
 | **周进度（周会）** | 产品总览 **`week-progress.yml`**（重点模块 · 计划 · 结果 · 阻塞） | 子能力逐条周状态 | [AI API 聚合产品 · 总览](./ai-api-platform/) · `<ProductWeekProgress />`；localhost 可编辑；历史周不删 |
-| **子能力 + 验收** | 拆条、门禁口径（原型 / 交付 / 节点验收） | 逐步走查步骤、Bug 台账 | 叶子页 `<ProductRoadmap />` 或 Markdown 表；符号与四段结构见 [文档规范](./产品手册文档规范)<br>走查：[体验走查与 Bug（飞书）](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne) |
+| **子能力 + 验收** | 拆条、门禁口径（原型 / 交付 / 节点验收） | 逐步走查步骤、Bug 台账 | 标准叶子五件套：说明 · 工程（含原型五件套路径）· 体验/在线 · `roadmap.yml` · 附录飞书链；样板 [`user/models/list`](./ai-api-platform/user/models/list) |
 | **PRD / 原型索引** | 各页链 PRD、原型与工程目录 | 替代 PRD 全文 | ≈ 闭环 · **实施**；链放子模块 **附录**，体验/在线仅在 **产品总览** 四行 |
 | **宣讲与导出** | 浏览器阅读、打印 PDF、按模块导出 | 客户-facing API 说明 | 非源码模式阅读<br>`npm run dev:trinity-product` → [127.0.0.1:5206/product/](http://127.0.0.1:5206/product/) |
 
@@ -37,5 +37,5 @@ title: 总览
 
 | 业务 | 说明 | 入口 |
 |------|------|------|
-| **AI 云** | 多云营销站 + 企业用户控制台 | [AI 云总览](./ai-cloud/) |
+| **AI 云** | 多云营销站 + 企业用户控制台 | [产品总览](./ai-cloud/) |
 | **AI API 聚合产品** | 对标 OpenRouter 的统一 API + 运营后台（B2B） | [产品总览](./ai-api-platform/) |

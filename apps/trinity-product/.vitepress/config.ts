@@ -36,7 +36,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     text: "AI 云",
     collapsed: false,
     items: [
-      { text: "业务总览", link: "/ai-cloud/" },
+      { text: "产品总览", link: "/ai-cloud/" },
       { text: "营销首页", link: "/ai-cloud/marketing-home" },
       { text: "用户控制台", link: "/ai-cloud/account-console" },
     ],
