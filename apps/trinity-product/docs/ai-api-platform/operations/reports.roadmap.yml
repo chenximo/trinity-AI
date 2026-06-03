@@ -1,0 +1,22 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: 预设报表 / 成本收入
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ✅
+  - name: 导出
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ✅
+  - name: 与计费数据一致
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ✅

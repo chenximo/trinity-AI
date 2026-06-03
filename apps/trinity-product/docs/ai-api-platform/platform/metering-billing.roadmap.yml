@@ -1,0 +1,25 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: 调用写入 `usage_event`
+    prototype: ⬜
+    backend: ⬜
+    note: P0
+  - name: token / 费用字段完整
+    prototype: ⬜
+    backend: ⬜
+  - name: 控制台可读汇总
+    prototype: ⬜
+    backend: ⬜
+    note: 可与演示数据分期
+  - name: 自动扣费 / 钱包
+    prototype: ⬜
+    backend: ⬜
+    note: 5.30 可人工记账
+  - name: 与运营计费策略一致
+    prototype: ⬜
+    backend: ⬜

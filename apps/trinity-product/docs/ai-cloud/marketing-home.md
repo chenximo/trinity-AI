@@ -5,7 +5,7 @@ title: 营销首页
 # 营销首页
 
 > **说明**：AI 云对外官网：讲清 **多云采购与管理**、渠道优惠与六云能力，引导咨询与注册/登录；登录成功后进入 [用户控制台](./account-console)。  
-> **工程**：`apps/ai-cloud/src/views/home/HomePage.vue` · 路由 `aic-home`  
+> **工程**：`apps/ai-cloud/src/views/home/`（五件套：`HomePage.vue` · `home.css` · `homeInteractions.ts` · `mock.ts` · `README.md`）· 路由 `aic-home`  
 > **体验 / 在线**：见 [AI 云 · 总览](./)（产品总览）
 
 ## 子能力清单
@@ -14,6 +14,10 @@ title: 营销首页
 
 ## 附录
 
+### 验收（5.30 / 6.30）
+
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **营销首页** / AI 云）。子能力进度以 `ai-cloud/roadmap.yml` 为准，手册不抄验收 checklist。
+
 ### 关联
 
 | 模块 | 关系 |
@@ -21,7 +25,7 @@ title: 营销首页
 | [用户控制台](./account-console) | 登录后 `#accounts` |
 | AI API 聚合产品 | 分轨业务，顶栏可互跳 |
 
-### 变更记录
+### 修订
 
 | 日期 | 说明 |
 |------|------|

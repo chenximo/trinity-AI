@@ -1,0 +1,40 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 选模型 + 会话 UI
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 发送 / 展示回复
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: TODO：真调用
+  - name: 流式输出
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 会话历史
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 5.30后端没启动，延至6.30
+  - name: 模型对比
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 5.30后端没启动，延至6.30
+  - name: 未登录试用策略
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖

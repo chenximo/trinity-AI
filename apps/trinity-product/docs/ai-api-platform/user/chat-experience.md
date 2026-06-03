@@ -4,51 +4,34 @@ title: Chat 在线体验
 
 # Chat 在线体验
 
-::: tip 指标待填（文内含 TODO）
-- 填写 **当前已做**、**5.30 验收**、**6.30 商用**（✅ 🟡 ⬜）；试用范围待产品确认  
-:::
+> **说明**：浏览器内选模型、对话试用。与 [开发者文档](./developer-docs) 分工：文档教集成；Chat 给非开发者体验。真推理是否已接 `chat/completions` 以 roadmap 为准。
 
-> **工程**：`apps/trinity-ai/src/views/chat/` · 路由 `/chat`  
-> **地址**：见 [AI API 聚合产品 · 总览](../)（用户面 `/chat`）
+> **工程**：`apps/trinity-ai/src/views/chat/`（五件套：`ChatPage.vue` · `chat.css` · `chatInteractions.ts` · `mock.ts` · `README.md`）· 路由 `/chat`
 
-## 说明
-
-浏览器内选模型、对话试用。与 [开发者文档](./developer-docs) 分工：文档教集成；Chat 给非开发者体验。
-
-**TODO**：真推理是否已接 `chat/completions`。
-
----
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（用户面 `/chat`）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| 选模型 + 会话 UI | ⬜ | ⬜ | ⬜ | |
-| 发送 / 展示回复 | ⬜ | ⬜ | ⬜ | TODO：真调用 |
-| 流式输出 | ⬜ | ⬜ | ⬜ | |
-| 顶栏进入 Chat | ⬜ | ⬜ | ⬜ | |
-| 广场带 model 跳转 | ⬜ | ⬜ | ⬜ | |
-| 未登录试用策略 | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/user/chat-experience.roadmap.yml" />
 
----
+## 附录
 
-## 5.30 验收（草案）
+### 验收（5.30 / 6.30）
 
-- [ ] 选模型后可发送并收到回复（真调用 `chat/completions`）
-- [ ] 流式输出可用（若纳入本阶段）
-- [ ] 与 [模型广场 · 列表](./models/list) 跳转带 model 参数
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **Chat 在线体验** / 用户面）。子能力进度与节点列以 **`chat-experience.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-## 6.30 商用（草案）
-
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
-
----
-
-## 关联
+### 关联
 
 | 模块 | 关系 |
 |------|------|
-| [模型广场 · 列表](./models/list) | 理想：卡片 → Chat |
+| [模型广场 · 列表](./models/list) | 卡片 → Chat 带 model |
 | [开发者文档](./developer-docs) | API 集成 vs 试用 |
 | 平台侧 · 生文 API | 后端 `chat/completions` |
+
+### 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |
+| 2026-05-26 | 首版 |

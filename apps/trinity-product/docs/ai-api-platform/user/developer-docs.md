@@ -4,34 +4,38 @@ title: 开发者文档
 
 # 开发者文档
 
-::: tip 填写说明
-- **✅ 🟡 ⬜** 见 [用户侧总览](./)；**5.30 能力** / **6.30 商用** 分列填写
-:::
+> **说明**：对外 HTTP API 文档；**内容真源** 在 `apps/trinity-docs/docs/`，本页只做产品盘点与进度。Quickstart 生文调通是 5.30 主链一环。
 
-> **工程**：`apps/trinity-docs`  
-> **地址**：见 [AI API 聚合产品 · 总览](../)（对外文档行）
+> **工程**：`apps/trinity-docs/docs/`（VitePress 内容真源；非 `trinity-ai` 业务 views 五件套）· 用户站 `/docs` → 外链文档站
 
-## 说明
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（文档站 `http://127.0.0.1:5205/docs/`）
 
-对外 HTTP API 文档；**内容真源** 在 `apps/trinity-docs/docs/`，本页只做产品盘点。
+## 子能力清单
 
-| 项 | 当前已做 | 5.30 能力 | 6.30 商用 | 备注 |
-|----|:--------:|:---------:|:---------:|------|
-| 开发者文档（整体） | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/user/developer-docs.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] Quickstart 生文可按文档调通
+### 验收（5.30 / 6.30）
 
-```mermaid
-flowchart LR
-  Docs[开发者文档] --> Key[控制台 Key]
-  Key --> API[平台侧 API]
-  API --> Usage[控制台用量]
-```
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **开发者文档** / 用户面）。子能力进度与节点列以 **`developer-docs.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-## 6.30 商用（草案）
+### 关联
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
+| 模块 | 关系 |
+|------|------|
+| [Chat 在线体验](./chat-experience) | 试用 vs 集成 |
+| [用户控制台](./account-console) | Key 创建后调 API |
+| 平台侧 · 统一 API / 生文 | Quickstart 依赖 |
 
+### PRD / 规范
+
+- 工程内容真源：`apps/trinity-docs/`
+
+### 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套 |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |
+| 2026-05-26 | 首版 |

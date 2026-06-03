@@ -56,7 +56,8 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
             collapsed: false,
             items: [
               { text: "列表", link: "/ai-api-platform/user/models/list" },
-              { text: "模型详情页需求", link: "/ai-api-platform/user/models/model-detail-requirements" },
+              { text: "模型排名", link: "/ai-api-platform/user/models/rankings" },
+              { text: "模型详情", link: "/ai-api-platform/user/models/model-detail-requirements" },
             ],
           },
           { text: "Chat 在线体验", link: "/ai-api-platform/user/chat-experience" },

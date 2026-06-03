@@ -1,0 +1,25 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 客户 / 租户档案
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 原型完成，5.30 后端未启动
+  - name: 合同与授信额度
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 原型完成，5.30 后端未启动
+  - name: 与计费 / 控制台额度联动
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 原型完成，5.30 后端未启动

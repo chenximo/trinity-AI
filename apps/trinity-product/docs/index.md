@@ -26,8 +26,8 @@ title: 总览
 |------|--------|----------|------|
 | **产品地图** | 业务线、模块树、分层与对标（如 OpenRouter） | 接口字段、实现细节 | 入口见下「业务线」；展开见各线 **产品总览** 与侧栏<br>与对外 `trinity-docs` 分离 |
 | **Roadmap / 里程碑** | 5.30、6.30 等阶段目标与模块进度 | 排期、工时、负责人 | `docs/05-产品与PRD/roadmap/` 摘抄逐步并入本站，**维护以本手册为准**<br>叶子页填 **当前已做**、**5.30 / 6.30 能力**（✅ 🟡 ⬜），与 roadmap 里程碑口径一致 |
-| **周进度（周会）** | 产品总览 **`week-progress.yml`**（重点模块 · 计划 · 结果 · 阻塞） | 子能力逐条周状态 | [AI API 聚合产品 · 总览](./ai-api-platform/) · `<ProductWeekProgress />`；localhost 可编辑；历史周不删 |
-| **子能力 + 验收** | 拆条、门禁口径（原型 / 交付 / 节点验收） | 逐步走查步骤、Bug 台账 | 标准叶子五件套：说明 · 工程（含原型五件套路径）· 体验/在线 · `roadmap.yml` · 附录飞书链；样板 [`user/models/list`](./ai-api-platform/user/models/list) |
+| **周进度（周会）** | 产品总览 **`week-progress.yml`**（**重点模块** 标签可点进各层 **子页面** · 计划 · 结果 · 阻塞） | 子能力逐条周状态 · 叶子 `roadmap` | [AI API 聚合产品 · 总览](./ai-api-platform/) · `<ProductWeekProgress />`；`focus` 见 [更新规范 §四](./产品手册更新规范.md) |
+| **子能力 + 验收** | 拆条、门禁口径（原型 / 交付 / 节点验收） | 逐步走查步骤、Bug 台账 | 标准叶子：`*.roadmap.yml` + `<ProductRoadmap />`（localhost 可编辑）；样板 [`user/models/list`](./ai-api-platform/user/models/list) |
 | **PRD / 原型索引** | 各页链 PRD、原型与工程目录 | 替代 PRD 全文 | ≈ 闭环 · **实施**；链放子模块 **附录**，体验/在线仅在 **产品总览** 四行 |
 | **宣讲与导出** | 浏览器阅读、打印 PDF、按模块导出 | 客户-facing API 说明 | 非源码模式阅读<br>`npm run dev:trinity-product` → [127.0.0.1:5206/product/](http://127.0.0.1:5206/product/) |
 

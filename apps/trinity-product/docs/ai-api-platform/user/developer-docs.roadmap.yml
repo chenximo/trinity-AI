@@ -1,0 +1,23 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: Quickstart · 生文调通
+    prototype: ⬜
+    backend: ⬜
+  - name: API 参考（chat/completions）
+    prototype: ⬜
+    backend: ⬜
+  - name: 模型 ID / 定价与广场一致
+    prototype: ⬜
+    backend: ⬜
+  - name: 鉴权与错误码说明
+    prototype: ⬜
+    backend: ⬜
+  - name: trinity-docs 构建与对外发布
+    prototype: 🟡
+    backend: ⬜
+    note: 内容真源 apps/trinity-docs/docs/

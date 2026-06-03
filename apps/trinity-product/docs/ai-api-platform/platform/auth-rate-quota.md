@@ -4,49 +4,32 @@ title: 鉴权 · 限流 · 配额
 
 # 鉴权 · 限流 · 配额
 
-::: tip 填写说明
-- 与用户控制台 **API 密钥**、[运营风控](../operations/monitoring-risk) 联动
-- **5.30 验收** / **6.30 商用** 分列填写 **✅ 🟡 ⬜**
-:::
+> **说明**：API Key 鉴权、限流与配额；控制台 Key 与网关须同一套数据。
 
-> **对标**：API Key · Rate limits  
-> **工程**：网关中间件 · `trinity-ai-admin` 风控（待链手册）
+> **工程**：网关中间件 · `apps/trinity-ai-admin/src/views/admin-risk/`（五件套：`RiskPage.vue` · `risk.css` · `riskInteractions.ts` · `mock.ts` · `README.md`）· 运营 `/risk/rules`
 
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | — |
-| **体验地址** | 用 [控制台 Key](../user/account-console) 调 [Quickstart](http://127.0.0.1:5205/docs/quickstart) 验证 |
-
-## 说明
-
-`Authorization: Bearer <key>`；按 Key / 租户限流与配额；无效、过期、停用 Key 拒绝访问。
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（Doc `/manage-api-keys`）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| Bearer Key 校验 | ⬜ | ⬜ | ⬜ | **P0** |
-| 无效/过期 Key → 401 | ⬜ | ⬜ | ⬜ | |
-| 按 Key 基础限流 | ⬜ | ⬜ | ⬜ | P1 |
-| 配额 / 额度上限（与控制台一致） | ⬜ | ⬜ | ⬜ | |
-| 与运营风控规则联动 | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/platform/auth-rate-quota.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] 文档 Key 可调通；伪造 Key 401
-- [ ] 控制台创建的 Key 与网关同一套数据（非两套演示库）
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **配额** / 平台侧）。子能力进度与节点列以 **`auth-rate-quota.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
-
-
-## 关联
+### 关联
 
 | 模块 | 关系 |
 |------|------|
 | [用户控制台](../user/account-console) | 发 Key |
 | [生文 API](./chat-completions) | 调用入口 |
+
+### 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

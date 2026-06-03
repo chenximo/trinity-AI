@@ -1,0 +1,23 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 基址与版本路径 `/v1`
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: OpenAI 兼容请求体约定
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 与文档模型 ID 一致
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: 对齐运营上架

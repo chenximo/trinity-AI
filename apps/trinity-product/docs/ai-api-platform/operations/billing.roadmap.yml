@@ -1,26 +1,28 @@
 milestones:
   - id: "5.30"
-    date: "2026-05-30"
+    date: 2026-05-30
   - id: "6.30"
-    date: "2026-06-30"
+    date: 2026-06-30
 
 features:
-  - name: "用量明细 / 聚合"
-    prototype: "🟡"
-    backend: "🟡"
-    note: "P0 · usage_event · 原型80% · 后端60%"
-
-  - name: "价目 / 计费规则"
-    prototype: "🟡"
-    backend: "⬜"
-    note: "原型60% · 后端未启动"
-
-  - name: "钱包 / 扣费（商用）"
-    prototype: "⬜"
-    backend: "⬜"
-    note: "5.30 可人工"
-
-  - name: "对账 / 导出"
-    prototype: "⬜"
-    backend: "⬜"
-    note: "未启动"
+  - name: 用量明细 / 聚合
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 价目 / 计费规则
+    prototype: ✅
+    backend: 🟡
+    "5.30": 🔵
+    "6.30": 🟡
+  - name: 钱包 / 扣费（商用）
+    prototype: 🟡
+    backend: 🟡
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 5.30 可人工
+  - name: 对账 / 导出
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖

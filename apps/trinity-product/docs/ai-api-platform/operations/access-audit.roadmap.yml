@@ -1,0 +1,28 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 角色 / 权限配置 UI
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 运营账号登录
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 操作审计日志查询
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: P0
+  - name: 数据范围 / 租户隔离
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖

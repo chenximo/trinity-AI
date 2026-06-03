@@ -1,6 +1,6 @@
 # 模型详情子模块（规划）
 
-> **需求真源（产品手册）**：`apps/trinity-product/docs/ai-api-platform/user/models/`（`list.md` · `model-detail-requirements.md`）  
+> **需求真源（产品手册）**：`apps/trinity-product/docs/ai-api-platform/user/models/model-detail-requirements.md` · `detail-roadmap.yml`（列表见 `list.md`）  
 > **列表模块**：`../README.md` · `ModelsPage.vue` · `/models`
 
 ## 1. 一句话

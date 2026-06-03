@@ -1,0 +1,28 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: `model` → 上游映射
+    prototype: ⬜
+    backend: ⬜
+    note: 单线路
+  - name: 与运营上架 model id 一致
+    prototype: ⬜
+    backend: ⬜
+  - name: 上游不可用时的错误响应
+    prototype: ⬜
+    backend: ⬜
+    note: 非 Fallback
+  - name: 多上游 Fallback 链
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ✅
+  - name: 权重 / 优先级路由
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ✅

@@ -1,0 +1,65 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 详情 · 路由 `/models/:modelId`
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": 🟡
+    note: "tai-model-detail 待建 · slug=网关 id"
+  - name: 详情 · 概览区（名/id/描述/模态/价/上下文）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D1–D7 · 与列表卡片一致
+  - name: 详情 · 404 / 未上架空态
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D7
+  - name: 详情 · 试玩 → Chat（预填 model）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D8
+  - name: 详情 · API 文档链出
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D9 · trinity-docs
+  - name: 详情 · 支持参数摘要
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D11 · P1
+  - name: 详情 · 控制台创建 Key 入口
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: D10 · 可 6.30 后
+  - name: 详情 · 返回模型广场
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+  - name: 后期 · Providers / Performance / 曲线
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+    note: 不阻塞 6.30 商用最小集
+  - name: 后期 · Compare / 页内 API 实验室
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜

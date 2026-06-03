@@ -1,0 +1,22 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 图像生成端点
+    prototype: ➖
+    backend: 🟡 60%
+    "5.30": 🔵
+    "6.30": ⬜
+  - name: 视频生成端点
+    prototype: ➖
+    backend: 🟡 40%
+    "5.30": 🔵
+    "6.30": ⬜
+  - name: 与文档请求/响应一致
+    prototype: ➖
+    backend: 🟡
+    "5.30": 🔵
+    "6.30": ⬜

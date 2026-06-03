@@ -1,0 +1,23 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: 统一 JSON 错误体
+    prototype: ⬜
+    backend: ⬜
+  - name: HTTP 状态与业务码一致
+    prototype: ⬜
+    backend: ⬜
+  - name: Request ID 响应头/体
+    prototype: ⬜
+    backend: ⬜
+  - name: 文档列举常见错误
+    prototype: 🟡
+    backend: ⬜
+    note: 文档侧可能已有
+  - name: 网关日志关联 Request ID
+    prototype: ⬜
+    backend: ⬜

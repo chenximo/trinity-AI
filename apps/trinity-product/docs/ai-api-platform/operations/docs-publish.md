@@ -4,33 +4,25 @@ title: 文档中心（运营发布）
 
 # 文档中心（运营发布）
 
-> **对标**：对内 Docs 发布（非对外 `trinity-docs` 编辑流）  
-> **工程**：`admin-docs/` · `/v1/admin/docs`
+> **说明**：运营侧文档发布与同步 `trinity-docs`。
 
-## 原型与体验
+> **工程**：`apps/trinity-ai-admin/src/views/admin-docs/`（五件套：`DocsPage.vue` · `docs.css` · `docsInteractions.ts` · `mock.ts` · `README.md`）
 
-| | 链接 |
-|--|------|
-| **体验地址** | [http://127.0.0.1:5204/docs](http://127.0.0.1:5204/docs) |
-
-## 说明
-
-运营发布/维护对外文档元数据或公告；**对外浏览真源** 仍为 [用户面 · 开发者文档](../user/developer-docs)（`trinity-docs`）。
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（运营 `/docs`）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| 文档列表 | ⬜ | ⬜ | 🟡 | |
-| 编辑 / 发布状态 | ⬜ | ⬜ | 🟡 | |
-| 与对外文档站同步策略 | ⬜ | ⬜ | ⬜ | 待产品定 |
+<ProductRoadmap rel="ai-api-platform/operations/docs-publish.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] 列表 + 编辑 UI 可演示；真同步可 🟡
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **文档中心（运营发布）** / 运营后台）。子能力进度与节点列以 **`docs-publish.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
+### 修订
 
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

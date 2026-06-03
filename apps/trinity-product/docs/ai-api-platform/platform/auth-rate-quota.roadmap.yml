@@ -1,0 +1,34 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: Bearer Key 校验
+    prototype: ➖
+    backend: ✅
+    "5.30": ⬜
+    "6.30": ⬜
+    note: P0
+  - name: 无效/过期 Key → 401
+    prototype: ➖
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+  - name: 按 Key 基础限流
+    prototype: ➖
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: P1
+  - name: 配额 / 额度上限（与控制台一致）
+    prototype: ➖
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+  - name: 与运营风控规则联动
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜

@@ -1,0 +1,29 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 平台（上游）密钥 CRUD
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: P0
+  - name: 用户 Key 列表 / 检索
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 冻结 / 限额 / 风控联动
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: P1
+  - name: 明文查看 gate
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖

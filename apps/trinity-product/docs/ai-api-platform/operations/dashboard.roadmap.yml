@@ -1,0 +1,23 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: KPI 卡片 / 概览
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+    note: mock
+  - name: 待办 / 告警入口
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+  - name: 跳转各模块快捷入口
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡

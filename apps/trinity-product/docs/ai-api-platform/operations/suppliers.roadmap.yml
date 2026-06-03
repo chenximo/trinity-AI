@@ -1,0 +1,28 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 供应商列表 / 检索
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 新建 / 编辑供应商
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 接入状态 · 凭证配置
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: P0 链路
+  - name: 与模型上架关联
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖

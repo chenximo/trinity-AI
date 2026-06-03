@@ -1,0 +1,49 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 模型上架 · 自动化工具
+    prototype: ➖
+    backend: 🟡
+    "5.30": ⬜
+    "6.30": 🟡
+    note: P0；本子模块新增
+  - name: 模型上架 · 统计看板（总数 / 多模态）
+    prototype: 🟡
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: P0；与上架工具同页或同模块
+  - name: 模型列表 / 上下架
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: 原型 models/list
+  - name: 模型元数据（名称、模态、定价）
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: 主数据 + 列表
+  - name: 绑定供应商 / 上游
+    prototype: ✅
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+    note: 供应线路
+  - name: 用户面广场 live 一致
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 广场改接目录 API，弃纯 mock
+  - name: 供应线路 / 路由策略页
+    prototype: ➖
+    backend: 🟡
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 独立页，商用再做

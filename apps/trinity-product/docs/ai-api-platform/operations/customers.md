@@ -4,33 +4,25 @@ title: 客户与合同
 
 # 客户与合同
 
-> **对标**：B2B 租户 · 合同授信  
-> **工程**：`admin-customers/`
+> **说明**：B2B 租户与客户额度关系。
 
-## 原型与体验
+> **工程**：`apps/trinity-ai-admin/src/views/admin-customers/`（五件套：`CustomersPage.vue` · `customers.css` · `customersInteractions.ts` · `mock.ts` · `README.md`）
 
-| | 链接 |
-|--|------|
-| **体验地址** | [http://127.0.0.1:5204/customers](http://127.0.0.1:5204/customers) |
-
-## 说明
-
-5.30 以 **mock 演示** 为主；驱动额度、价目与合同条款，商用再收紧。
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（运营 `/customers`）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| 客户 / 租户档案 | ⬜ | ⬜ | 🟡 | mock |
-| 合同与授信额度 | ⬜ | ⬜ | 🟡 | |
-| 与计费 / 控制台额度联动 | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/operations/customers.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] P2：页面可演示客户与额度关系
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **客户与合同** / 运营后台）。子能力进度与节点列以 **`customers.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
+### 修订
 
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

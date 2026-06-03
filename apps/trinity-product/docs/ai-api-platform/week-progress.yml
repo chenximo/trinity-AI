@@ -4,41 +4,65 @@ months:
     weeks:
       - id: W23
         period: 06-01～06-07
-        focus: 用户侧模块、平台侧模块、运营后台管理平台
-        owner: PM@聚合产品
-        plan: 梳理 6.30 范围并锁定周计划字段，建立统一周计划看板
-        result: ✅
-        dependencies: 运营/研发周会统一口径
+        focus: 模型上架与供应线路、开发者文档
+        owner: @崔宇光、@李玲
+        plan: |-
+          1）自动化模型上架（供应商/模型/线路）@崔宇光
+          2）生图/生视频 模型接续接入
+          3）修复 官网模型列表体验问题 @崔宇光
+          4）6月规划、手册、生文 API 测试与文档站 @李玲
+          5）产品走查体验整体 @李玲
+        acceptance: |-
+          ① 已对接生文模型上架（对标 OpenRouter 模型列表）
+          ② OpenRouter 文档核心稿对齐；trinity-docs + api-test 支撑生文
+        result: 🟡
         testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
-        bugList: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
         blockers: —
       - id: W24
         period: 06-08～06-14
-        focus: 模型上架、Chat 验收、控制台用量
-        owner: PM@用户侧
-        plan: 对齐模型上架清单与 Chat API 验收项，更新周会依赖与验收链接
-        result: 🟡
-        dependencies: 网关联调、运营上架节奏
+        focus: Chat 在线体验、模型上架与供应线路、开发者文档、用户控制台、路由与 Fallback
+        owner: @崔宇光、@李玲
+        plan: |-
+          chat 在线体验，对比，历史记录对接正式数据 @崔宇光
+          
+          多模态 （生图，生视频模型）@崔宇光
+          
+          修复 chat 模块体验问题 @崔宇光
+          
+          商用路由策略 @崔宇光
+          
+          文档站建设多模态对接文档 @李玲
+          
+          API 实际场景应用接入文档（codex，cursor等） @李玲
+          
+          用户控制台企业工作区，商用鉴权，限流，配额（设计交互，原型）@李玲
+        result: ⬜
         testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
-        bugList: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
         blockers: 批量上架效率与联调窗口待确认
       - id: W25
         period: 06-15～06-21
-        focus: 平台侧鉴权/计量、运营后台计费
-        owner: PM@平台侧
-        plan: 收敛 P0 闭环并同步半月众测范围
+        focus: 计量与计费、用户控制台、鉴权 · 限流 · 配额、数据策略、标准错误与可观测
+        owner: @崔宇光、@李玲
+        plan: |-
+          1）美国主体下来后，接入美元充值，对接商用充值和计费@崔宇光
+          
+          2）测试美元计费，对账体系 @崔宇光
+          
+          3）商用鉴权，限流，配额@崔宇光 
+          
+          4）商用安全，数据策略 @崔宇光
+          
+          5）6.30 商用规划和推广准备 @李玲
+          
+          6） rankings 原型和五件套设计@李玲
         result: ⬜
-        dependencies: 账单口径与风控策略确认
         testLink: —
-        bugList: —
         blockers: 待周会填写
       - id: W26
         period: 06-22～06-28
         focus: 6.30 收口验收、隐私条款等（法律和合规）
-        owner: 测试体验修复 @宇光，隐私条款@雷哥
-        plan: 汇总模块达成、依赖关闭、验收链接归档
+        owner: @崔宇光、@李玲
+        plan: 6.30 商用上线全面复盘，走差优化
         result: ⬜
-        dependencies: 各模块里程碑达成状态
         testLink: —
-        bugList: —
         blockers: 待周会填写

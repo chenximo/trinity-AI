@@ -4,47 +4,32 @@ title: 多模态 API
 
 # 多模态 API
 
-::: tip 填写说明
-- **5.30** 允许 **🟡 降级**（至少演示一条通路即可）
-- **6.30 商用**：生图 / 生视频各至少一条生产通路
-:::
+> **说明**：Images / Videos 等多模态通路；5.30 可降级验收。
 
-> **对标**：OpenRouter Images / Videos generations  
-> **文档**：`trinity-docs` → `/api/images-generations` · `/api/videos-generations`（以站內导航为准）
+> **工程**：`apps/trinity-docs`（`/multimodal/` · `/api/images-generations` · `/api/videos-generations`）· 网关实现
 
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | — |
-| **体验地址** | [多模态索引](http://127.0.0.1:5205/docs/multimodal/) |
-
-## 说明
-
-生图、生视频等；内测非 P0，文档可先齐、网关可分期上线。
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（多模态文档）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| 图像生成端点 | ⬜ | ⬜ | ⬜ | |
-| 视频生成端点 | ⬜ | ⬜ | ⬜ | |
-| 与文档请求/响应一致 | ⬜ | ⬜ | ⬜ | |
-| 计量按次/按 token | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/platform/multimodal-api.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] 文档与网关至少 **1** 条多模态通路端到端演示；或明确标注「仅文档、未开网关」
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **多模态 API** / 平台侧）。子能力进度与节点列以 **`multimodal-api.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
-
-
-## 关联
+### 关联
 
 | 模块 | 关系 |
 |------|------|
 | [统一 API 基座](./unified-api) | 同基址鉴权 |
 | [计量](./metering-billing) | 用量事件 |
+
+### 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

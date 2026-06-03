@@ -1,0 +1,20 @@
+milestones:
+  - id: "5.30"
+    date: "2026-05-30"
+  - id: "6.30"
+    date: "2026-06-30"
+
+features:
+  - name: 策略模型（租户 / 模型 / 地域）
+    prototype: ⬜
+    backend: ⬜
+  - name: 网关执行拦截
+    prototype: ⬜
+    backend: ⬜
+  - name: 运营配置界面
+    prototype: ⬜
+    backend: ⬜
+  - name: 合同模板与对外说明
+    prototype: ⬜
+    backend: ⬜
+    note: 可替代

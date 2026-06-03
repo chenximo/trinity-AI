@@ -1,0 +1,39 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 排名 · 总览页壳层与导航
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+    note: 顶栏 Rankings 入口 · 五件套
+  - name: 排名 · 列表（模型 + 指标列）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+  - name: 排名 · 时间维度（日/周/月）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+  - name: 排名 · 排序与筛选
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+  - name: 交互 · 进入模型详情 / 列表
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+  - name: 数据 · 对接计量聚合 API
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+    note: 依赖平台侧计量与在架目录

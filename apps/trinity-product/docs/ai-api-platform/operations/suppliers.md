@@ -4,30 +4,25 @@ title: 供应商管理
 
 # 供应商管理
 
-> **对标**：Provider 接入 · 档案  
-> **工程**：`admin-suppliers/` · `/v1/admin/providers`（部分）
+> **说明**：上游供应商接入与配置。
 
-## 原型与体验
+> **工程**：`apps/trinity-ai-admin/src/views/admin-suppliers/`（五件套：`SuppliersPage.vue` · `suppliers.css` · `suppliersInteractions.ts` · `mock.ts` · `README.md`）
 
-| | 链接 |
-|--|------|
-| **体验地址** | [http://127.0.0.1:5204/suppliers](http://127.0.0.1:5204/suppliers) |
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（运营 `/suppliers`）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| 供应商列表 / 检索 | ⬜ | ⬜ | 🟡 | |
-| 新建 / 编辑供应商 | ⬜ | ⬜ | 🟡 | |
-| 接入状态 · 凭证配置 | ⬜ | ⬜ | 🟡 | **P0 链路** |
-| 与模型上架关联 | ⬜ | ⬜ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/operations/suppliers.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] 至少 1 家供应商可保存并在模型侧可选
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **供应商管理** / 运营后台）。子能力进度与节点列以 **`suppliers.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
+### 修订
 
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

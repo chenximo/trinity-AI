@@ -67,11 +67,11 @@ disable-model-invocation: true
 1. **命名**：对外写 **AI API 聚合产品**（不写「聚合平台」）；标题 `AI API 聚合产品 · 总览`。
 2. **站点总览**：仅前言 + 阅读 tip + `>` 管理闭环 + 能力矩阵 + 业务线；**不要**本阶段简表、子模块全文、规范重复表。
 3. **体验/在线四行**：只在 **产品总览**；子总览/叶子只链上去。
-4. **周计划**：全站仅 `docs/ai-api-platform/week-progress.yml`，只挂在聚合 **产品总览**；`focus` 用更新规范标准名。
+4. **周计划**：全站仅 `week-progress.yml`，挂在聚合 **产品总览**；`focus` 从 **标准叶子页** 多选（`weekProgressFocusLeaves.ts`），看板可点叶子；细则写在 `plan` / `acceptance`（更新规范 §四）。
 5. **子能力 vs 周会**：`roadmap.yml` = 子清单累积；**不**每周改子能力每一行；周会只动 `week-progress.yml`。
 6. **PRD / 原型**：附录链 `docs/05-产品与PRD/…`，不贴全文（能力矩阵称 **PRD / 原型索引** ≈ 闭环 · 实施）。
 7. **新建模块**：走文档规范 §五检查清单 + 侧栏 + 子总览一行。
-8. **标准叶子页（唯一叶型）**：五件套 = 说明 · 工程（含 `views/<模块>/` 原型五件套）· 体验/在线 · 子能力 `roadmap` · 附录（飞书+PRD 链）；禁止需求型叶、tip、手册 checklist。
+8. **标准叶子页（唯一叶型）**：五件套 = 说明 · 工程 · 体验/online · **`{slug}.roadmap.yml` + `<ProductRoadmap rel="…" />`**（与 `models/list` 同，localhost 可编辑；禁止 Markdown 子能力表）· 附录；禁止需求型叶、tip、手册 checklist。
 
 ---
 

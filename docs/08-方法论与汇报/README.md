@@ -26,5 +26,6 @@
 | [**Vue原型生成最佳实践-Skill规范页与验收.md**](./Vue原型生成最佳实践-Skill规范页与验收.md) | **生成 Vue 原型**：Skill + `/user-console-spec` 三层、流程、规范先行、检查清单 |
 | [**TrinityAI时代原型工作流与协作模式总结.md**](./TrinityAI时代原型工作流与协作模式总结.md) | 模式评估、瓶颈、演进方向 |
 | [**Trinity原型形态对比与AI友好交付.md**](./Trinity原型形态对比与AI友好交付.md) | Figma / HTML / 五件套对比 |
+| [**TRTC-Chat-Skill集成复盘与AI严格执行指南.md**](./TRTC-Chat-Skill集成复盘与AI严格执行指南.md) | IM 复盘、踩坑、**§六：四层约束 / 立约模板 / 验收表（如何让 AI 严格按 Skill）** |
 
 工程落地：[docs/README.md](../README.md)（`01`～`05`）· [工程师/](../00-协作与工作流/工程师/)

@@ -1,0 +1,24 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 文档列表
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+    note: 待文档站建设
+  - name: 编辑 / 发布状态
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": ⬜
+  - name: 与对外文档站同步策略
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 待产品定

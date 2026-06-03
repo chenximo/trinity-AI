@@ -34,3 +34,9 @@ scripts/sync-reports/
 
 # Local tooling scratch (e.g. pip --target installs)
 .tmp/
+
+# >>> @tencent-rtc/chat-skills（自动添加，可手动调整）
+# 本地配置 + 会话状态（由 dispatcher 在运行时写入）。
+# 注意：knowledge-base 已迁移到用户级 ~/.trtc-chat/，不再出现在项目里。
+/.trtc-chat/
+# <<< @tencent-rtc/chat-skills

@@ -4,48 +4,32 @@ title: 路由与 Fallback
 
 # 路由与 Fallback
 
-::: tip 填写说明
-- **5.30**：仅验收 **单线路上游**；Fallback 链 **➖** 本期不做
-- **6.30 商用**：Fallback 链与权重路由纳入二期（见 **6.30 商用** 列）
-:::
+> **说明**：模型到上游线路路由；v1 单线路，Fallback 商用再做。
 
-> **对标**：Model routing · 降级  
-> **工程**：`model_supply_route`（详设 §4.6，商用再上 Fallback）
+> **工程**：后端 `model_supply_route` · `apps/trinity-ai-admin/src/views/admin-models/`（五件套：`ModelsPage.vue` · `models.css` · `modelsInteractions.ts` · `mock.ts` · `README.md`）· `/models/lines`
 
-## 原型与体验
-
-| | 链接 |
-|--|------|
-| **原型链接** | — |
-| **体验地址** | — |
-
-## 说明
-
-根据 `model` id 解析上游供应商与端点；v1 内测保证一条通路稳定，不验收自动 Fallback。
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（运营线路配置）
 
 ## 子能力清单
 
-| 子能力 | 5.30 验收 | 6.30 商用 | 当前已做 | 说明 |
-|--------|:---------:|:---------:|:--------:|------|
-| `model` → 上游映射 | ⬜ | ⬜ | ⬜ | 单线路 |
-| 与运营上架 model id 一致 | ⬜ | ⬜ | ⬜ | |
-| 上游不可用时的错误响应 | ⬜ | ⬜ | ⬜ | 非 Fallback |
-| 多上游 Fallback 链 | ➖ | ✅ | ⬜ | |
-| 权重 / 优先级路由 | ➖ | ✅ | ⬜ | |
+<ProductRoadmap rel="ai-api-platform/platform/routing-fallback.roadmap.yml" />
 
-## 5.30 验收（草案）
+## 附录
 
-- [ ] 在架模型均可路由到已配置上游并成功一次调用
+### 验收（5.30 / 6.30）
 
-## 6.30 商用（草案）
+走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **路由与 Fallback** / 平台侧）。子能力进度与节点列以 **`routing-fallback.roadmap.yml`** 为准，手册不抄验收 checklist。
 
-- [ ] 纳入 6.30 商用范围的子能力达标（对照 roadmap **6.30 商用** 列）
-- [ ] 与 5.30 已交付能力衔接，无文档 / 数据口径冲突
-
-
-## 关联
+### 关联
 
 | 模块 | 关系 |
 |------|------|
 | [运营后台 · 模型上架](../operations/models-routes) | 供给配置 |
 | [生文 API](./chat-completions) | 调用面 |
+
+### 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-02 | 对齐标准叶子五件套（文档规范 §5.1） |
+| 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |

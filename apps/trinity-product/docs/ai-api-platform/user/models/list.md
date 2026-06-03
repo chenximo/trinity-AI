@@ -24,7 +24,8 @@ title: 列表
 
 | 模块 | 关系 |
 |------|------|
-| [模型详情页需求（PRD）](./model-detail-requirements) | `/models/:id` · 6.30；进度见本页 roadmap「交互 · 模型详情页」 |
+| [模型排名](./rankings) | `/rankings` · 用量排行 · `rankings.roadmap.yml` |
+| [模型详情页](./model-detail-requirements) | `/models/:id` · 6.30 轻量详情 · `detail-roadmap.yml` |
 
 ### 修订
 

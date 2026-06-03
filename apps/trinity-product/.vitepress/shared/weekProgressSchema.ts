@@ -6,10 +6,10 @@ export interface WeekProgressRow {
   focus: string;
   owner: string;
   plan: string;
+  /** 本周验收达标口径（看板列「达标」） */
+  acceptance: string;
   result: string;
-  dependencies: string;
   testLink: string;
-  bugList: string;
   blockers: string;
 }
 
@@ -26,6 +26,19 @@ export interface WeekProgressData {
 
 export const WEEK_RESULT_OPTIONS = [...STATUS_OPTIONS] as const;
 
+function appendWeekTextField(lines: string[], key: string, value: string | undefined) {
+  const v = value?.trim();
+  if (!v) return;
+  if (v.includes("\n")) {
+    lines.push(`        ${key}: |-`);
+    for (const pl of v.split("\n")) {
+      lines.push(`          ${pl}`);
+    }
+  } else {
+    lines.push(`        ${key}: ${yamlQuote(v)}`);
+  }
+}
+
 function yamlQuote(s: string): string {
   if (/[:#\n"']/.test(s) || s !== s.trim() || /^\d+\.\d+$/.test(s)) {
     return `"${s.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
@@ -35,6 +48,30 @@ function yamlQuote(s: string): string {
 
 export function emptyWeekProgressData(): WeekProgressData {
   return { months: [] };
+}
+
+function readBlockScalar(lines: string[], startIdx: number, weekIndent: number): { value: string; nextIdx: number } {
+  const blockLines: string[] = [];
+  let i = startIdx;
+  while (i < lines.length) {
+    const ln = lines[i];
+    if (!ln.trim()) {
+      blockLines.push("");
+      i += 1;
+      continue;
+    }
+    const ind = (ln.match(/^(\s*)/) || ["", ""])[1].length;
+    if (ind <= weekIndent) break;
+    blockLines.push(ln);
+    i += 1;
+  }
+  const nonempty = blockLines.filter((l) => l.trim());
+  const minIndent =
+    nonempty.length > 0
+      ? Math.min(...nonempty.map((l) => (l.match(/^(\s*)/) || ["", ""])[1].length))
+      : weekIndent + 2;
+  const value = blockLines.map((l) => (l.trim() ? l.slice(minIndent) : "")).join("\n").trimEnd();
+  return { value, nextIdx: i - 1 };
 }
 
 export function parseWeekProgressYaml(raw: string): WeekProgressData {
@@ -53,10 +90,9 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
       focus: currentWeek.focus ?? "",
       owner: currentWeek.owner ?? "—",
       plan: currentWeek.plan ?? "",
+      acceptance: currentWeek.acceptance ?? "",
       result: currentWeek.result ?? "⬜",
-      dependencies: currentWeek.dependencies ?? "—",
       testLink: currentWeek.testLink ?? "—",
-      bugList: currentWeek.bugList ?? "—",
       blockers: currentWeek.blockers ?? "—",
     });
     currentWeek = null;
@@ -69,7 +105,8 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
     inWeeks = false;
   }
 
-  for (const line of lines) {
+  for (let lineIdx = 0; lineIdx < lines.length; lineIdx += 1) {
+    const line = lines[lineIdx];
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith("#")) continue;
 
@@ -115,7 +152,20 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
 
     if (!currentWeek) continue;
 
-    const kv = trimmed.match(/^(period|focus|owner|plan|result|dependencies|testLink|bugList|blockers):\s*(.*)$/);
+    const weekIndent = (line.match(/^(\s*)/) || ["", ""])[1].length;
+    const blockKey = trimmed.match(
+      /^(period|focus|owner|plan|acceptance|result|testLink|blockers):\s*(\|[-+]?)?\s*$/,
+    );
+    if (blockKey && blockKey[2] !== undefined) {
+      const { value, nextIdx } = readBlockScalar(lines, lineIdx + 1, weekIndent);
+      (currentWeek as Record<string, string>)[blockKey[1]] = value;
+      lineIdx = nextIdx;
+      continue;
+    }
+
+    const kv = trimmed.match(
+      /^(period|focus|owner|plan|acceptance|result|testLink|blockers):\s*(.*)$/,
+    );
     if (kv) {
       const val = kv[2].trim().replace(/^["']|["']$/g, "");
       (currentWeek as Record<string, string>)[kv[1]] = val;
@@ -139,14 +189,11 @@ export function stringifyWeekProgressYaml(data: WeekProgressData): string {
       if (w.focus?.trim()) lines.push(`        focus: ${yamlQuote(w.focus.trim())}`);
       const owner = w.owner?.trim() || "—";
       lines.push(`        owner: ${yamlQuote(owner)}`);
-      if (w.plan?.trim()) lines.push(`        plan: ${yamlQuote(w.plan.trim())}`);
+      appendWeekTextField(lines, "plan", w.plan);
+      appendWeekTextField(lines, "acceptance", w.acceptance);
       lines.push(`        result: ${yamlQuote(w.result || "⬜")}`);
-      const dependencies = w.dependencies?.trim() || "—";
-      lines.push(`        dependencies: ${yamlQuote(dependencies)}`);
       const testLink = w.testLink?.trim() || "—";
       lines.push(`        testLink: ${yamlQuote(testLink)}`);
-      const bugList = w.bugList?.trim() || "—";
-      lines.push(`        bugList: ${yamlQuote(bugList)}`);
       const blockers = w.blockers?.trim() || "—";
       lines.push(`        blockers: ${yamlQuote(blockers)}`);
     }
@@ -167,10 +214,9 @@ export function normalizeWeekProgressData(data: WeekProgressData): WeekProgressD
         focus: w.focus?.trim() ?? "",
         owner: w.owner?.trim() || "—",
         plan: w.plan?.trim() ?? "",
+        acceptance: w.acceptance?.trim() ?? "",
         result: w.result?.trim() || "⬜",
-        dependencies: w.dependencies?.trim() || "—",
         testLink: w.testLink?.trim() || "—",
-        bugList: w.bugList?.trim() || "—",
         blockers: w.blockers?.trim() || "—",
       })),
     })),

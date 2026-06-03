@@ -1,0 +1,31 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 实时大盘 KPI
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 原型完成，5.30 后端未启动
+  - name: 调用量 / 错误率趋势
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 原型完成，5.30 后端未启动
+  - name: 风控规则配置
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 原型完成，5.30 后端未启动
+  - name: 告警 / 值班
+    prototype: ✅
+    backend: ⬜
+    "5.30": 🔵
+    "6.30": 🟡
+    note: 原型完成，5.30 后端未启动

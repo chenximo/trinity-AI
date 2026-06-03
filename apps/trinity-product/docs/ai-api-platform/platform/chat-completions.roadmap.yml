@@ -1,0 +1,34 @@
+milestones:
+  - id: "5.30"
+    date: 2026-05-30
+  - id: "6.30"
+    date: 2026-06-30
+
+features:
+  - name: 非流式 `chat/completions`
+    prototype: ➖
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: 流式 SSE
+    prototype: ➖
+    backend: ✅
+    "5.30": ✅
+    "6.30": ➖
+  - name: `model` / `messages` 校验
+    prototype: ➖
+    backend: ✅
+    "5.30": ✅
+    "6.30": ⬜
+  - name: `stream_options` / usage in stream
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 可分期
+  - name: 上游超时与错误映射
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 见 [标准错误](./errors-observability)
