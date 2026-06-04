@@ -27,7 +27,7 @@ Cursor routes requests through **Override OpenAI Base URL** instead of `api.open
    - Enable **Override OpenAI Base URL** and set:
 
      ```text
-     https://api.trinity.example/v1
+     https://api.trinitydesk.ai/v1
      ```
 
      (Replace with your `TRINITY_BASE_URL`; **must include `/v1`**.)

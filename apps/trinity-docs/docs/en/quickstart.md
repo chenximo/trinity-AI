@@ -29,18 +29,18 @@ Set the gateway `base_url` and key via environment variables (replace the host w
 
 ```bash [Shell]
 export TRINITY_API_KEY="xh-..."
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
 ```typescript [TypeScript]
 process.env.TRINITY_API_KEY = "xh-...";
-process.env.TRINITY_BASE_URL = "https://api.trinity.example/v1";
+process.env.TRINITY_BASE_URL = "https://api.trinitydesk.ai/v1";
 ```
 
 ```python [Python]
 import os
 os.environ["TRINITY_API_KEY"] = "xh-..."
-os.environ["TRINITY_BASE_URL"] = "https://api.trinity.example/v1"
+os.environ["TRINITY_BASE_URL"] = "https://api.trinitydesk.ai/v1"
 ```
 
 :::

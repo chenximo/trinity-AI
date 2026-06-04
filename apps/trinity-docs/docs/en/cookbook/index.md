@@ -58,7 +58,7 @@ MCP, Skills, and local execution are covered in [WorkBuddy official docs](https:
 
 ```bash
 export TRINITY_API_KEY="xh-your-key"
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
 - **Cursor / Claude Code / Codex**: usually `TRINITY_BASE_URL` only.

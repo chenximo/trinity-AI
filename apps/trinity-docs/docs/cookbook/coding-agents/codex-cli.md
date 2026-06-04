@@ -21,7 +21,7 @@ Codex 从 `env_key` 指定的环境变量读取 Key（示例）：
 
 ```bash
 export TRINITY_API_KEY="xh-..."
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
 ### 步骤 3：编辑 `config.toml`
@@ -34,7 +34,7 @@ model = "doubao-seed-1-6-thinking-agent-preview"
 
 [model_providers.openai]
 name = "trinity"
-base_url = "https://api.trinity.example/v1"
+base_url = "https://api.trinitydesk.ai/v1"
 env_key = "TRINITY_API_KEY"
 ```
 

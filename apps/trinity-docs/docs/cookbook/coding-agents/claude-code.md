@@ -27,7 +27,7 @@ Claude Code **原生面向 Anthropic Messages API**。Trinity 对外主路径为
 
 ```bash
 export TRINITY_API_KEY="xh-..."
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 
 # 若工具走 OpenAI 兼容：
 export OPENAI_API_KEY="$TRINITY_API_KEY"
@@ -35,7 +35,7 @@ export OPENAI_BASE_URL="$TRINITY_BASE_URL"
 
 # 若工具走 Anthropic 兼容（且网关已支持）：
 # export ANTHROPIC_API_KEY="$TRINITY_API_KEY"
-# export ANTHROPIC_BASE_URL="https://api.trinity.example"  # 以网关 Anthropic 兼容说明为准
+# export ANTHROPIC_BASE_URL="https://api.trinitydesk.ai"  # 以网关 Anthropic 兼容说明为准
 ```
 
 **方式 B · 项目配置**

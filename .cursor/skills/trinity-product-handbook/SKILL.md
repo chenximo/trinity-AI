@@ -21,8 +21,11 @@ disable-model-invocation: true
 | 产品总览样板 | `apps/trinity-product/docs/ai-api-platform/index.md` |
 | 标准叶子样板 | `apps/trinity-product/docs/ai-api-platform/user/models/list.md` + `user/models/roadmap.yml` |
 | 侧栏 | `apps/trinity-product/.vitepress/config.ts` |
+| Scrum 对照（沟通用） | `apps/trinity-product/docs/index.md` §与 Scrum 术语对照 |
 
 细则以两份规范为准；本 skill 只给 **分流 + 模板路径 + 硬规则摘要**。
+
+**进度真源**：仅本站 + 叶子 `roadmap.yml` / `week-progress.yml`。**勿**维护已废止的 `docs/05-产品与PRD/roadmap/`；长 PRD 仍在 `docs/05-产品与PRD/`（非 roadmap 目录）。
 
 本地预览：`npm run dev:trinity-product` → http://127.0.0.1:5206/product/
 

@@ -5,7 +5,7 @@ description: >-
   选中描边与合成浅色卡公式；控制台 account 页「标题行 + 与 API 密钥同源的筛选框」。
   在改色、加 UI、对齐 TrinityAI/TrinityCloud、评审色板或避免硬编码 hex 时使用；
   与 assets/trinity-base.css、TrinityAI/design-tokens.html、TrinityAI/design-spec.html（筛选下拉统一形式 2 与页头约定）、
-  docs/Trinity原型版式与视觉规范.md、account/console 列表页头相关时优先遵循。
+  docs/01-原型与交付规范/Trinity版式与视觉规范.md、account/console 列表页头相关时优先遵循。
   定稿前：组件样式以规范页迭代为准，不扩散改业务页（见 skill 内「规范先行」与 .cursor/rules/trinity-design-spec-first.mdc）。
 disable-model-invocation: true
 ---
@@ -17,7 +17,8 @@ disable-model-invocation: true
 - **全局 token**：`assets/trinity-base.css` 的 `:root` 与 `html[data-theme="dark"]` / `html[data-theme="system"]`（及 `prefers-color-scheme: dark`）覆盖。Trinity AI / Cloud 页面经相对路径引用该文件。
 - **可视化色板**（可切换主题、读计算色与渐变原文）：`TrinityAI/design-tokens.html`。
 - **设计规范**（筛选形式 2、**按钮原子**、**弹窗** `or-modal-head` / 底栏纯文字、类名速查）：`TrinityAI/design-spec.html`（顶栏「规范·参考」入口并列色板）。
-- **版式与产品目录约定**：`docs/Trinity原型版式与视觉规范.md`（含主色 `#2563eb`、圆角 `--radius` / `--radius-lg`、与 Admin 对齐说明）。
+- **版式与产品目录约定**：`docs/01-原型与交付规范/Trinity版式与视觉规范.md`（含主色 `#2563eb`、圆角 `--radius` / `--radius-lg`、与 Admin 对齐说明）。
+- **设计枢纽落地**：`docs/01-原型与交付规范/Trinity设计枢纽（色板+规范）落地计划.md`（`/design-tokens`、`/design-spec`、`packages/tokens`）。
 
 业务样式里**优先 `var(--*)`**，避免与色板漂移；新增语义色应在 `trinity-base.css` 定义变量后再引用。
 
@@ -98,5 +99,6 @@ disable-model-invocation: true
 
 ## 延伸阅读（按需打开）
 
-- `docs/Trinity原型版式与视觉规范.md`：跨产品路径、字号阶梯、布局边距。
+- `docs/01-原型与交付规范/Trinity版式与视觉规范.md`：跨产品路径、字号阶梯、布局边距。
+- `docs/01-原型与交付规范/Trinity设计枢纽（色板+规范）落地计划.md`：色板/规范 Vue 迁移与 Monorepo 关系。
 - `TrinityAI/design-tokens.html` 内联脚本：主题切换、`readCssVar`、渐变/场景变量原文展示逻辑。

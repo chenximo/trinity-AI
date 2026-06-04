@@ -33,7 +33,7 @@ title: 模型详情
 
 ### PRD / 规范
 
-- `docs/05-产品与PRD/roadmap/用户面-03-模型广场.md`（C6 模型详情）
+- [模型广场 · 列表](./list) · `roadmap.yml`（列表子能力）；本页 `detail-roadmap.yml`（详情子能力）
 - 工程规划：`apps/trinity-ai/src/views/models/detail/README.md`
 
 ### 修订

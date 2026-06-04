@@ -61,7 +61,7 @@ MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](htt
 
 ```bash
 export TRINITY_API_KEY="xh-你的密钥"
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
 - **Cursor / Claude Code / Codex**：多数只需 `TRINITY_BASE_URL`（含 `/v1`）。

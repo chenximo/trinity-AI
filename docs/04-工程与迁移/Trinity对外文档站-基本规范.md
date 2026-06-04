@@ -169,7 +169,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ### 6.3 样例与线上
 
-- 域名、`base_url`、示例模型 ID：标注「以实际部署为准」或用 `api.trinity.example` **占位**。  
+- 文档示例 **`TRINITY_BASE_URL`**：`https://api.trinitydesk.ai/v1`；完整对话路径示例 `https://api.trinitydesk.ai/v1/chat/completions`。私有化/内测以运维为准；示例模型 ID 须在模型广场可见或标「示例」。  
 - 文档与线上一致性问题：对外页写「请联系 [技术支持](mailto:support@trinity.ai)」（或实际支持渠道）；**勿**写「去改某内部 md」。
 
 ---

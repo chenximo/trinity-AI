@@ -27,7 +27,7 @@ Cursor 通过 **Override OpenAI Base URL** 将请求发往 Trinity，而不是 `
    - 开启 **Override OpenAI Base URL**，设置为：
 
      ```text
-     https://api.trinity.example/v1
+     https://api.trinitydesk.ai/v1
      ```
 
      （替换为你的 `TRINITY_BASE_URL`，**必须包含 `/v1`**。）

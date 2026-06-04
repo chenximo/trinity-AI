@@ -27,7 +27,7 @@ Use **environment variables** or **project settings** (names per official docs).
 
 ```bash
 export TRINITY_API_KEY="xh-..."
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 
 # OpenAI-compatible tools:
 export OPENAI_API_KEY="$TRINITY_API_KEY"
@@ -35,7 +35,7 @@ export OPENAI_BASE_URL="$TRINITY_BASE_URL"
 
 # Anthropic-compatible tools (if your gateway supports it):
 # export ANTHROPIC_API_KEY="$TRINITY_API_KEY"
-# export ANTHROPIC_BASE_URL="https://api.trinity.example"  # per gateway docs
+# export ANTHROPIC_BASE_URL="https://api.trinitydesk.ai"  # per gateway docs
 ```
 
 **Option B · Project config**

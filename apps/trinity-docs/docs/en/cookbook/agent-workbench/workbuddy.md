@@ -38,7 +38,7 @@ See [Manage API keys](../../manage-api-keys.md) (`xh-...`).
       "name": "Trinity · chat",
       "vendor": "OpenAI",
       "apiKey": "xh-your-key",
-      "url": "https://api.trinity.example/v1/chat/completions",
+      "url": "https://api.trinitydesk.ai/v1/chat/completions",
       "maxInputTokens": 200000,
       "maxOutputTokens": 8192,
       "supportsToolCall": true,

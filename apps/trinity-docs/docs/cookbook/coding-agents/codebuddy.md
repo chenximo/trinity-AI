@@ -9,7 +9,7 @@
 通用桌面 Agent（非编程主线）见同系的 [WorkBuddy](../agent-workbench/workbuddy)。
 
 ::: warning URL 须写完整路径
-CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 **`/chat/completions`** 结尾）。仅填 `https://api.example.com/v1` 这类 Base URL **会失败**。Trinity 应写：`{TRINITY_BASE_URL}/chat/completions`（例如 `https://api.trinity.example/v1/chat/completions`）。
+CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 **`/chat/completions`** 结尾）。仅填 `https://api.example.com/v1` 这类 Base URL **会失败**。Trinity 应写：`{TRINITY_BASE_URL}/chat/completions`（例如 `https://api.trinitydesk.ai/v1/chat/completions`）。
 :::
 
 ---
@@ -41,7 +41,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
       "name": "Trinity · 生文示例",
       "vendor": "OpenAI",
       "apiKey": "xh-你的密钥",
-      "url": "https://api.trinity.example/v1/chat/completions",
+      "url": "https://api.trinitydesk.ai/v1/chat/completions",
       "maxInputTokens": 200000,
       "maxOutputTokens": 8192,
       "supportsToolCall": true,
@@ -76,7 +76,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
 ```bash
 export TRINITY_API_KEY="xh-..."
 export CODEBUDDY_API_KEY="$TRINITY_API_KEY"
-export CODEBUDDY_BASE_URL="https://api.trinity.example/v1"
+export CODEBUDDY_BASE_URL="https://api.trinitydesk.ai/v1"
 codebuddy --model doubao-seed-1-6-thinking-agent-preview
 ```
 

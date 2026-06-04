@@ -21,7 +21,7 @@ Codex reads the key from the variable named in `env_key`:
 
 ```bash
 export TRINITY_API_KEY="xh-..."
-export TRINITY_BASE_URL="https://api.trinity.example/v1"
+export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
 ### Step 3: Edit `config.toml`
@@ -34,7 +34,7 @@ model = "doubao-seed-1-6-thinking-agent-preview"
 
 [model_providers.openai]
 name = "trinity"
-base_url = "https://api.trinity.example/v1"
+base_url = "https://api.trinitydesk.ai/v1"
 env_key = "TRINITY_API_KEY"
 ```
 

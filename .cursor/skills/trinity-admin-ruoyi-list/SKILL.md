@@ -13,13 +13,15 @@ description: >-
 
 | 文档 | 路径 |
 |------|------|
-| 完整规范 | `apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md` |
+| 若依式列表规范（真源） | `docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md` |
+| 列表排错、flex、列宽 | `docs/02-后台运营管理系统设计/运营后台开发规范.md` |
+| 模块 ↔ views 对照 | `docs/02-后台运营管理系统设计/后台原型总览.md` |
 | 列宽常量 | `apps/trinity-ai-admin/src/utils/adminTableColumns.ts` |
 | 表格样式 | `apps/trinity-ai-admin/src/styles/admin-ruoyi.css` |
 | 工具栏样式 | `apps/trinity-ai-admin/src/styles/admin-page.css` |
 | 参考实现 | `apps/trinity-ai-admin/src/views/admin-keys/KeysPage.vue` |
 
-Monorepo 总则见 `.cursor/skills/trinity-vue-prototype-monorepo/SKILL.md`；色板/token 见 `trinity-design-tokens`。
+Monorepo 总则见 `trinity-vue-prototype-monorepo`；色板/token 见 `trinity-design-tokens`。详设与交付计划见 `docs/05-产品与PRD/` 运营后台相关 md。
 
 ---
 

@@ -4,20 +4,24 @@ description: >-
   Guides Trinity high-fidelity Vue3 + Vite + UnoCSS + TypeScript monorepo work:
   packages/tokens, packages/ui, apps per product and *-admin, Mock-as-contract,
   design-spec alignment, and engineer/AI handoff. Use when scaffolding or editing
-  apps/*, packages/*, pnpm workspace, Uno theme, Vue prototypes, Trinity AI /
-  AI Cloud / Trinity GEO admin apps, or when the user mentions 高保真原型、Monorepo、
-  tokens 包、组件库、Mock 契约、工程方案。
+  apps/*, packages/*, pnpm workspace, Uno theme, Vue prototypes, module README,
+  five-piece delivery, Trinity AI / AI Cloud / Trinity GEO admin apps, or when the
+  user mentions 高保真原型、Monorepo、五件套、tokens 包、组件库、Mock 契约、工程方案、双仓、交付工程师。
 ---
 
 # Trinity · Vue 高保真原型 Monorepo
 
 ## 权威文档（先读再改大结构）
 
-完整目录、分期、防踩坑与待定事项见：
+| 任务 | 必读 |
+|------|------|
+| Monorepo 目录、依赖、分期 | `docs/04-工程与迁移/Trinity前端Vue与Monorepo工程方案.md` |
+| 新建/改 `views`、模块 README、交付工程师 | `docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md`（五件套） |
+| 设计枢纽 Vue 化 | `docs/01-原型与交付规范/Trinity设计枢纽（色板+规范）落地计划.md` |
+| 交付工程师、双仓 push | `docs/00-协作与工作流/工程师/双仓协作与原型交付.md` · `如何消费原型.md` |
+| 本地预览命令 | `docs/00-协作与工作流/Trinity开发枢纽与AI协作流程.md` |
 
-**`docs/Trinity前端Vue与Monorepo工程方案.md`**
-
-本 skill 只收束 **必须遵守的规则**；细节与表格以该 md 为准。
+本 skill 只收束 **必须遵守的规则**；细节与表格以工程方案 md 为准。
 
 ---
 
@@ -46,7 +50,7 @@ apps/*  →  packages/mocks-core（可选；仅 apps 引用）
 
 **Admin**：与用户站同级放在 `apps/`，命名 **`{产品线}-admin`**（如 `apps/trinity-ai-admin`），独立构建与部署。
 
-**设计枢纽**：`apps/trinity-design`（端口 **5210**），承载 `design-tokens` / `design-spec` 的 Vue 迁移与对外总览；**消费** `packages/tokens` 与 `packages/ui`，不另建一套色值。详见 `docs/Trinity设计规范与设计色板Vue迁移计划.md`。
+**设计枢纽**：`apps/trinity-design`（端口 **5210**），承载 `design-tokens` / `design-spec` 的 Vue 迁移与对外总览；**消费** `packages/tokens` 与 `packages/ui`，不另建一套色值。详见 `docs/01-原型与交付规范/Trinity设计枢纽（色板+规范）落地计划.md`。
 
 ## 产品线与 app 命名（与文档一致）
 
@@ -75,6 +79,7 @@ apps/<name>/src/
 
 ## 高保真 + 工程师 / AI 还原（防踩坑，执行级）
 
+0. **五件套**：模块交付须满足 `docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md`（说明 · 工程 · 体验/online · roadmap/验收 · 附录）；产品进度写入 `trinity-product` 叶子 `roadmap.yml`，**勿**再维护 `docs/05-产品与PRD/roadmap/`。
 1. **Mock 即契约**：Mock 与 **TypeScript 类型**同源；字段/枚举变更时留 **CHANGELOG 或日期说明**。
 2. **路由溯源**：每 app 维护 **路由 ↔ 旧静态页（若有）↔ `/design-spec` 锚点**（`README.md` 或 `docs/路由与静态页对照-*.md`）。
 3. **命名可检索**：页面与关键组件 **语义化文件名**（忌 `Page1.vue`）；`packages/ui` 命名与设计文档可追溯。
@@ -106,8 +111,8 @@ apps/<name>/src/
 改 **检索 + 表格 + 分页** 子页时，除工程方案外须遵循：
 
 - **Skill**：`.cursor/skills/trinity-admin-ruoyi-list/SKILL.md`（若依式工具栏、列宽、**全部左对齐**）
-- **文档**：`apps/trinity-ai-admin/doc/运营后台-若依式列表规范.md`
-- **样式真源**：`src/styles/admin-ruoyi.css`（`.admin-ep-table-wrap`）
+- **文档**：`docs/02-后台运营管理系统设计/运营后台-若依式列表规范.md`
+- **样式真源**：`apps/trinity-ai-admin/src/styles/admin-ruoyi.css`（`.admin-ep-table-wrap`）
 
 列表表格勿写列级 `align`；勿对操作列单独居中。
 
@@ -115,6 +120,7 @@ apps/<name>/src/
 
 ## 扩展阅读（按需打开）
 
-- 工程方案全文：`docs/Trinity前端Vue与Monorepo工程方案.md`
+- 工程方案全文：`docs/04-工程与迁移/Trinity前端Vue与Monorepo工程方案.md`
+- 五件套全文：`docs/01-原型与交付规范/Trinity原型模块目录与交付规范.md`
 - 设计 token 技能：`.cursor/skills/trinity-design-tokens/SKILL.md`
 - 运营后台列表技能：`.cursor/skills/trinity-admin-ruoyi-list/SKILL.md`

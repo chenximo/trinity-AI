@@ -9,7 +9,7 @@ Reference: [CodeBuddy · models.json](https://www.codebuddy.ai/docs/ide/Features
 For the general-purpose desktop agent [WorkBuddy](../agent-workbench/workbuddy), see the separate guide.
 
 ::: warning Use the full endpoint path
-Custom model **`url` values must be the full API path** (usually ending with **`/chat/completions`**). A base URL alone such as `https://api.example.com/v1` **will fail**. For Trinity use `{TRINITY_BASE_URL}/chat/completions` (e.g. `https://api.trinity.example/v1/chat/completions`).
+Custom model **`url` values must be the full API path** (usually ending with **`/chat/completions`**). A base URL alone such as `https://api.example.com/v1` **will fail**. For Trinity use `{TRINITY_BASE_URL}/chat/completions` (e.g. `https://api.trinitydesk.ai/v1/chat/completions`).
 :::
 
 ---
@@ -39,7 +39,7 @@ Project config overrides user config. **Do not commit real keys to Git.**
       "name": "Trinity · chat example",
       "vendor": "OpenAI",
       "apiKey": "xh-your-key",
-      "url": "https://api.trinity.example/v1/chat/completions",
+      "url": "https://api.trinitydesk.ai/v1/chat/completions",
       "maxInputTokens": 200000,
       "maxOutputTokens": 8192,
       "supportsToolCall": true,
@@ -68,7 +68,7 @@ Reload CodeBuddy per official docs, pick the model ID, and run a short chat smok
 ```bash
 export TRINITY_API_KEY="xh-..."
 export CODEBUDDY_API_KEY="$TRINITY_API_KEY"
-export CODEBUDDY_BASE_URL="https://api.trinity.example/v1"
+export CODEBUDDY_BASE_URL="https://api.trinitydesk.ai/v1"
 codebuddy --model doubao-seed-1-6-thinking-agent-preview
 ```
 

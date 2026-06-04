@@ -40,7 +40,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
       "将 base_url 指向 Trinity 网关地址，使用原有 OpenAI 官方 SDK，仅替换 API Key。",
     ],
     code: `export OPENAI_API_KEY="sk-trinity-..."
-export OPENAI_BASE_URL="https://api.trinity.example/v1"`,
+export OPENAI_BASE_URL="https://api.trinitydesk.ai/v1"`,
   },
   {
     id: "chat",

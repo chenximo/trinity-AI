@@ -17,7 +17,7 @@
 | 生图、生视频（生成类） | Embeddings、OAuth、Analytics、BYOK |
 | 认证、参数、错误、限额（占位） | 与真实计费/配额强绑定的数值（待产品校验） |
 
-**代码示例**：与 OpenAI / OpenRouter 请求体对齐的**样例**；`api.trinity.example`、路径、字段枚举以网关最终实现为准，发布前由研发校验。
+**代码示例**：与 OpenAI / OpenRouter 请求体对齐的**样例**；基址 `https://api.trinitydesk.ai/v1`、路径、字段枚举以网关最终实现为准，发布前由研发校验。
 
 ---
 

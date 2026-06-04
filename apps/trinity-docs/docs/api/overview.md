@@ -6,7 +6,7 @@ Trinity 对外提供 **OpenAI 兼容的 HTTP API**。请求经统一网关鉴权
 
 | 项 | 值（示例） |
 | --- | --- |
-| Base URL | `https://api.trinity.example/v1` |
+| Base URL | `https://api.trinitydesk.ai/v1` |
 | 协议 | HTTPS |
 
 路径均相对于 **含 `/v1` 的 base**（如 `POST {TRINITY_BASE_URL}/chat/completions`）。

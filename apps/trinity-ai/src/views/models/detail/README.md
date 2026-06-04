@@ -38,4 +38,4 @@ Providers、Performance、Benchmarks 等见需求文档 **§5 后期**。
 ## 5. 参考
 
 - 对标页：https://openrouter.ai/openai/gpt-5.5  
-- Roadmap C6：`docs/05-产品与PRD/roadmap/用户面-03-模型广场.md`
+- 产品手册：`apps/trinity-product` → 模型广场 [列表](../../../../trinity-product/docs/ai-api-platform/user/models/list.md) / [详情需求](../../../../trinity-product/docs/ai-api-platform/user/models/model-detail-requirements.md)
