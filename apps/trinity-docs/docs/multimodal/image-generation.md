@@ -318,6 +318,5 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 - [创建图像生成](../api/images-generations.md)
 - [高级参数 · 生图](../api/image-generation-parameters.md)
-- [生图指南（流程）](../guides/image-generation.md)
 - [图片输入](./image-input.md)
 - [错误与调试](../reference/error-codes.md)

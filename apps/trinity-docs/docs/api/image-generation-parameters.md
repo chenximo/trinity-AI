@@ -78,4 +78,3 @@
 
 - [图片生成](../multimodal/image-generation.md)
 - [创建图像生成](./images-generations.md)
-- [生图指南](../guides/image-generation.md)

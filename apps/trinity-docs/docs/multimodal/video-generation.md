@@ -303,6 +303,5 @@ Vidu 多图主体、`object_id` 与 `@hero_a` 写法、GV / PixVerse / Kling 的
 
 - [创建视频生成任务](../api/videos-generations.md)
 - [高级参数 · 生视频](../api/video-generation-parameters.md)
-- [生视频指南（最短路径）](../guides/video-generation.md)
 - [视频输入](./video-input.md)
 - [错误与调试](../reference/error-codes.md)

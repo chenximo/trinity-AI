@@ -50,7 +50,7 @@ features:
     "5.30": 🟡
     "6.30": 🟡
     note: 创建/轮换/吊销说明 · 链控制台
-  - name: 模块说明 · /modules
+  - name: 模块说明 · /modules（已下线）
     prototype: 🟡
     backend: ➖
     "5.30": 🟡
@@ -86,18 +86,12 @@ features:
     "5.30": 🟡
     "6.30": ⬜
     note: /api/video-generation-parameters · object_id/reference_type 全表
-  - name: 指南 · 生图流程
+  - name: 多模态 · 生图/生视频指南
     prototype: 🟡
     backend: ⬜
     "5.30": 🟡
     "6.30": ⬜
-    note: /guides/image-generation · 侧栏挂在多模态 · 互链 API 页
-  - name: 指南 · 生视频流程
-    prototype: 🟡
-    backend: ⬜
-    "5.30": 🟡
-    "6.30": ⬜
-    note: /guides/video-generation · 链 multimodal/video-generation
+    note: /multimodal/image-generation · /multimodal/video-generation（已删 guides 重定向页）
   - name: 参考 · 错误与调试
     prototype: 🟡
     backend: ⬜

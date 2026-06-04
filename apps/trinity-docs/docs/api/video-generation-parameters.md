@@ -177,5 +177,4 @@
 
 - [创建视频生成任务](./videos-generations.md)
 - [视频生成](../multimodal/video-generation.md)
-- [生视频指南](../guides/video-generation.md)
 - [错误与调试](../reference/error-codes.md)

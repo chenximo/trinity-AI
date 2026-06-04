@@ -105,5 +105,4 @@ curl -sS "${TRINITY_BASE_URL}/video/tasks/vidtsk_xxx" \
 
 - [视频生成](../multimodal/video-generation.md)
 - [视频生成 · 高级参数](./video-generation-parameters.md)
-- [生视频指南](../guides/video-generation.md)
 - [API 概述](./overview.md)

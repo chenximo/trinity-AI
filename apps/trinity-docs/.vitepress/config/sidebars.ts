@@ -16,7 +16,6 @@ const LABEL_EN: Record<string, string> = {
   生视频: "Video",
   快速入门: "Quickstart",
   "管理 API 密钥": "Manage API keys",
-  模块: "Modules",
   多模态: "Multimodal",
   图片输入: "Image input",
   图片生成: "Image generation",
@@ -87,7 +86,6 @@ const sidebarApiZh: DefaultTheme.SidebarItem[] = [
 const sidebarDocsZh: DefaultTheme.SidebarItem[] = [
   { text: "快速入门", link: "/quickstart" },
   { text: "管理 API 密钥", link: "/manage-api-keys" },
-  { text: "模块", link: "/modules" },
   {
     text: "多模态",
     collapsed: false,
@@ -152,7 +150,6 @@ function buildSidebarForLocale(locale: "zh" | "en"): DefaultTheme.Sidebar {
     [`${p}/api/`]: api,
     [`${p}/cookbook/`]: cookbook,
     [`${p}/multimodal/`]: docs,
-    [`${p}/modules`]: docs,
     [`${p}/guides/`]: docs,
     [`${p}/reference/`]: docs,
     [`${p}/manage-api-keys`]: docs,

@@ -141,8 +141,8 @@ print(response.json()["choices"][0]["message"]["content"])
 | 能力 | 指南 | API |
 | --- | --- | --- |
 | 生文 | [流式输出](./guides/streaming-sse.md) | [创建对话补全](./api/chat-completions.md) |
-| 生图 | [生图](./guides/image-generation.md) | [图像生成](./api/images-generations.md) |
-| 生视频 | [生视频](./guides/video-generation.md) | [视频生成](./api/videos-generations.md) |
+| 生图 | [图片生成](./multimodal/image-generation.md) | [图像生成](./api/images-generations.md) |
+| 生视频 | [视频生成](./multimodal/video-generation.md) | [创建视频任务](./api/videos-generations.md) |
 | 编程工具 | [应用场景](./cookbook/) | Cursor / Claude Code / Codex CLI |
 
 - [API 概述](./api/overview.md) · [请求参数](./guides/request-parameters.md) · [错误与调试](./reference/error-codes.md)

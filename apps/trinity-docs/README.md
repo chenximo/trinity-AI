@@ -99,7 +99,6 @@ apps/trinity-docs/
 
 ```text
 快速入门
-模块
 多模态 ▾
   ├ 概述
   ├ 图片输入
@@ -114,7 +113,6 @@ apps/trinity-docs/
 flowchart TB
   subgraph docs_v1["文档 Tab · 初版需求"]
     A1[快速入门]
-    A2[模块]
     M[多模态]
     M --> M1[概述]
     M --> M2[图片输入]
@@ -166,7 +164,6 @@ flowchart TB
 ```text
 快速入门
 管理 API 密钥
-模块
 多模态 ▾
   ├ 概述
   ├ 图片输入
@@ -187,7 +184,6 @@ flowchart TB
   subgraph docs_now["文档 Tab · 当前"]
     C1[快速入门]
     C2[管理 API 密钥]
-    C3[模块]
     MM[多模态]
     MM --> M1[概述]
     MM --> M2[图片输入]
@@ -206,7 +202,6 @@ flowchart TB
 
 | 对比 | 初版需求 | MVP 闭环版 | 当前 |
 |------|----------|------------|------|
-| 模块 | ✅ | ❌ | ✅ |
 | 多模态 Tree | ✅ | ❌ | ✅ |
 | 管理 API 密钥 | ✅ | ✅ | ✅ |
 | 指南 / 参考 | ❌ | ✅ | ✅ |

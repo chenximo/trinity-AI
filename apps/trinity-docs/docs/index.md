@@ -28,7 +28,7 @@ features:
 | 章节 | 说明 |
 | --- | --- |
 | [快速入门](./quickstart.md) · [管理 API 密钥](./manage-api-keys.md) | 接入与密钥 |
-| [模块](./modules.md) · [多模态](./multimodal/) | 产品能力树 |
+| [多模态](./multimodal/) | 图片 / 视频输入与生成 |
 | [流式 SSE](./guides/streaming-sse.md) · [错误码](./reference/error-codes.md) | 闭环指南 / 参考 |
 | [API 概述](./api/overview.md) | 接口参考（API 轨） |
 | [应用场景](./cookbook/) | Cookbook · 编程工具（应用场景轨） |

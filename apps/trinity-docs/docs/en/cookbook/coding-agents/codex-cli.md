@@ -1,6 +1,104 @@
-<!-- tdocs-en-stub -->
 # Codex CLI
 
-::: warning English in progress
-This page is not yet available in English. [Read the Chinese version](/cookbook/coding-agents/codex-cli).
+Reference: [OpenRouter · Codex CLI integration](https://openrouter.ai/docs/cookbook/coding-agents/codex-cli)
+
+## What is Codex CLI?
+
+[Codex CLI](https://github.com/openai/codex) is OpenAI’s open-source **terminal coding agent**. Configure an **OpenAI-compatible** provider in `config.toml` to route requests through the **Trinity gateway** with an `xh-...` key and [catalog](https://trinity.ai/models) model IDs.
+
+---
+
+## Quick start
+
+### Step 1: Get a Trinity API key
+
+1. Create a key in the [Trinity console](https://trinity.ai/account/console).
+2. See [Manage API keys](../../manage-api-keys.md).
+
+### Step 2: Set environment variables
+
+Codex reads the key from the variable named in `env_key`:
+
+```bash
+export TRINITY_API_KEY="xh-..."
+export TRINITY_BASE_URL="https://api.trinity.example/v1"
+```
+
+### Step 3: Edit `config.toml`
+
+Usually `~/.codex/config.toml` (confirm in official docs):
+
+```toml
+model_provider = "openai"
+model = "doubao-seed-1-6-thinking-agent-preview"
+
+[model_providers.openai]
+name = "trinity"
+base_url = "https://api.trinity.example/v1"
+env_key = "TRINITY_API_KEY"
+```
+
+| Setting | Description |
+| --- | --- |
+| `model` | Trinity **model ID** |
+| `base_url` | `TRINITY_BASE_URL` with **`/v1`** |
+| `env_key` | Env var for the key, e.g. `TRINITY_API_KEY` |
+
+::: info
+Some Codex builds use `[model_providers.openrouter]` naming; Trinity is **OpenAI-compatible REST**—pick the provider section your Codex version documents and set **`base_url` to Trinity**.
 :::
+
+Or environment-only:
+
+```bash
+export OPENAI_API_KEY="$TRINITY_API_KEY"
+export OPENAI_BASE_URL="$TRINITY_BASE_URL"
+```
+
+### Step 4: Smoke test
+
+Run Codex in a repo with a simple task; confirm `POST /chat/completions` hits your gateway.
+
+---
+
+## Why Trinity + Codex CLI?
+
+### One gateway and key
+
+Same Base URL and key as [Quickstart](../../quickstart) for local and CI use.
+
+### Swap model IDs
+
+Change `model` in `config.toml` to another catalog ID without reinstalling Codex.
+
+### Parameters and streaming
+
+See [Advanced parameters · Text](../../api/chat-completions-parameters.md) and [Streaming (SSE)](../../guides/streaming-sse.md).
+
+---
+
+## Limitations
+
+- `config.toml` fields vary by Codex version—follow **your** official docs.
+- Default Codex paths target OpenAI-compatible chat; Trinity image/video async APIs are out of scope.
+- Codex-only options (`personality`, reasoning effort, etc.) depend on model and passthrough.
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| Still calls `api.openai.com` | Check `OPENAI_BASE_URL` / `config.toml` overrides |
+| 401 | Trinity `xh-...` key |
+| 404 model | Match [catalog](https://trinity.ai/models) |
+| 429 | [Rate limits](../../guides/rate-limits.md) |
+| Parameter errors | [Request parameters](../../guides/request-parameters.md) |
+
+---
+
+## Resources
+
+- [Codex CLI repository](https://github.com/openai/codex)
+- [Cursor](./cursor) · [Claude Code](./claude-code)
+- [Quickstart](../../quickstart) · [Errors & debugging](../../reference/error-codes.md)

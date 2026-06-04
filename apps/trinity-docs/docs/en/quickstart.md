@@ -141,8 +141,8 @@ See also [API overview](./api/overview.md).
 | Capability | Guide | API |
 | --- | --- | --- |
 | Text | [Streaming](./guides/streaming-sse.md) | [Chat completions](./api/chat-completions.md) |
-| Image | [Image generation](./guides/image-generation.md) | [Images (chat)](./api/images-generations.md) |
-| Video | [Video generation](./guides/video-generation.md) | [Video API](./api/videos-generations.md) |
+| Image | [Image generation](./multimodal/image-generation.md) | [Images (chat)](./api/images-generations.md) |
+| Video | [Video generation](./multimodal/video-generation.md) | [Video API](./api/videos-generations.md) |
 | Coding tools | [Cookbook](./cookbook/) | Cursor / Claude Code / Codex CLI |
 
 - [API overview](./api/overview.md) · [Request parameters](./guides/request-parameters.md) · [Errors](./reference/error-codes.md)
