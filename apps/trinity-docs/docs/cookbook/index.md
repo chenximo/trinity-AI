@@ -6,9 +6,7 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 |------|----------------|
 | [文档](../quickstart) | 第一次接 API、密钥、多模态、流式与排错 |
 | [API](../api/overview) | 端点、字段表、复制 curl |
-| **应用场景**（本轨） | 在 **Cursor、Claude Code、Codex CLI** 等工具里配置 Base URL 与 Key |
-
-对标参考：[OpenRouter · Cookbook](https://openrouter.ai/docs/cookbook) · [Coding agents](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)
+| **应用场景**（本轨） | 在各类 **客户端 / Agent 工具** 里配置 Trinity 的 Base URL、Key 与模型 ID |
 
 ::: info
 本轨 **不复述** 完整 API 参数表；字段见 [API 概述](../api/overview) 与 [请求参数](../guides/request-parameters)。
@@ -16,15 +14,39 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 
 ---
 
-## 编程工具
+## 如何选分类
+
+| 分类 | 典型场景 | 工具示例 |
+| --- | --- | --- |
+| **编程 IDE / CLI** | 写代码、仓库内 Agent、终端补全 | Cursor、CodeBuddy IDE/CLI、Claude Code、Codex CLI |
+| **智能体工作台** | 桌面 Agent、办公自动化、本地任务、MCP/Skills | WorkBuddy |
+
+两类产品往往都用 **OpenAI 兼容** `chat/completions`，但 Trinity 文档按**使用场景**分栏，避免把「非编程 Agent」塞进「编程工具」。
+
+---
+
+## 编程 IDE / CLI
 
 | 工具 | 指南 |
 |------|------|
 | [Cursor](./coding-agents/cursor) | IDE：Override OpenAI Base URL + API Key |
-| [Claude Code](./coding-agents/claude-code) | 终端 Agent · Anthropic / 兼容 Base URL |
-| [Codex CLI](./coding-agents/codex-cli) | `config.toml` · OpenAI 兼容网关 |
+| [CodeBuddy](./coding-agents/codebuddy) | 编程向 IDE/CLI：`models.json` |
+| [Claude Code](./coding-agents/claude-code) | 终端 Agent |
+| [Codex CLI](./coding-agents/codex-cli) | `config.toml` |
 
-更多工具（Claude Desktop、OpenCode 等）待产品排期后补充。
+对标 [OpenRouter · Coding agents](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)（OR 侧栏以编程类为主）。
+
+---
+
+## 智能体工作台
+
+| 工具 | 指南 |
+|------|------|
+| [WorkBuddy](./agent-workbench/workbuddy) | 桌面 Agent · `~/.workbuddy/models.json` |
+
+MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](https://www.workbuddy.ai/docs/workbuddy/)；本轨只写 **Trinity 模型接入**。
+
+更多非编程类工具待产品排期后补充。
 
 ---
 
@@ -32,26 +54,26 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 
 ### 1. 获取 API Key
 
-1. 登录 [Trinity 控制台](https://trinity.ai/account/console)（生产环境以实际域名为准）。
-2. 打开 **API 密钥**，创建 Key 并**一次性保存**（前缀一般为 `xh-...`）。
-3. 详见 [管理 API 密钥](../manage-api-keys.md)。
+1. 登录 [Trinity 控制台](https://trinity.ai/account/console)。
+2. 创建 Key（`xh-...`）→ [管理 API 密钥](../manage-api-keys.md)。
 
-### 2. 配置 Base URL
+### 2. Base URL 与完整路径
 
 ```bash
 export TRINITY_API_KEY="xh-你的密钥"
 export TRINITY_BASE_URL="https://api.trinity.example/v1"
 ```
 
-`TRINITY_BASE_URL` **须含 `/v1`**；各工具中的 OpenAI 兼容 Base URL 填同一地址。
+- **Cursor / Claude Code / Codex**：多数只需 `TRINITY_BASE_URL`（含 `/v1`）。
+- **CodeBuddy / WorkBuddy**：`models.json` 里 `url` 须写 **`{TRINITY_BASE_URL}/chat/completions`**（完整路径）。
 
-### 3. 选择模型 ID
+### 3. 模型 ID
 
-在 [模型广场](https://trinity.ai/models) 复制 **模型 ID** 填入工具；勿使用平台未提供的名称。
+从 [模型广场](https://trinity.ai/models) 复制 **模型 ID**。
 
 ### 4. 验收
 
-在工具内发送一条短消息；失败时查 [错误与调试](../reference/error-codes.md)。
+在工具内完成一次短对话或任务；失败见 [错误与调试](../reference/error-codes.md)。
 
 ---
 

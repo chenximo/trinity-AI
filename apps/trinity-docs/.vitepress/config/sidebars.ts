@@ -28,10 +28,12 @@ const LABEL_EN: Record<string, string> = {
   "错误与调试": "Errors & debugging",
   "速率与限额": "Rate limits",
   常见问题: "FAQ",
-  编程工具: "Coding tools",
+  "编程 IDE / CLI": "IDE & CLI",
+  智能体工作台: "Agent workbench",
   Cursor: "Cursor",
   "Claude Code": "Claude Code",
   "Codex CLI": "Codex CLI",
+  CodeBuddy: "CodeBuddy",
 };
 
 function enLink(link: string): string {
@@ -119,13 +121,19 @@ const sidebarDocsZh: DefaultTheme.SidebarItem[] = [
 const sidebarCookbookZh: DefaultTheme.SidebarItem[] = [
   { text: "概述", link: "/cookbook/" },
   {
-    text: "编程工具",
+    text: "编程 IDE / CLI",
     collapsed: false,
     items: [
       { text: "Cursor", link: "/cookbook/coding-agents/cursor" },
+      { text: "CodeBuddy", link: "/cookbook/coding-agents/codebuddy" },
       { text: "Claude Code", link: "/cookbook/coding-agents/claude-code" },
       { text: "Codex CLI", link: "/cookbook/coding-agents/codex-cli" },
     ],
+  },
+  {
+    text: "智能体工作台",
+    collapsed: false,
+    items: [{ text: "WorkBuddy", link: "/cookbook/agent-workbench/workbuddy" }],
   },
 ];
 

@@ -202,6 +202,18 @@ features:
     "5.30": 🟡
     "6.30": ⬜
     note: /cookbook/coding-agents/cursor · Base URL/Key 待域名校验
+  - name: Cookbook · CodeBuddy 接入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /cookbook/coding-agents/codebuddy · 编程 IDE/CLI · models.json
+  - name: Cookbook · WorkBuddy 接入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /cookbook/agent-workbench/workbuddy · 智能体工作台 · 非编程轨
   - name: Cookbook · Claude Code 接入
     prototype: 🟡
     backend: ⬜
@@ -212,7 +224,7 @@ features:
     backend: ⬜
     "5.30": 🟡
     "6.30": ⬜
-  - name: Cookbook · 编程工具（二期）
+  - name: Cookbook · 智能体工作台（二期）
     prototype: ⬜
     backend: ⬜
     "5.30": ➖

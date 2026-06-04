@@ -20,7 +20,7 @@ features:
   - title: API
     details: 端点与字段参考 — 顶栏「API」轨。
   - title: 应用场景
-    details: Cursor、Claude Code、Codex CLI 等编程工具接入 — 顶栏「应用场景」轨。
+    details: 编程 IDE/CLI 与 WorkBuddy 等 Agent 工具接入 — 顶栏「应用场景」轨。
 ---
 
 ## 文档目录
