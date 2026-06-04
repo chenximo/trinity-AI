@@ -17,6 +17,7 @@
 | 场景 | 子 Skill | 不要混用 |
 |------|----------|----------|
 | 产品手册、roadmap、周计划 | [trinity-product-handbook](./trinity-product-handbook/SKILL.md) | trinity-docs、擅自改 apps 代码 |
+| 对外开发者文档 `trinity-docs` | [trinity-docs](./trinity-docs/SKILL.md) | 产品手册、业务 Vue 实现 |
 | 新建/评审 Skill | [trinity-skill-authoring](./trinity-skill-authoring/SKILL.md) | — |
 | Vue Monorepo、apps 工程 | [trinity-vue-prototype-monorepo](./trinity-vue-prototype-monorepo/SKILL.md) | — |
 | 色板、design-spec | [trinity-design-tokens](./trinity-design-tokens/SKILL.md) | — |
@@ -32,6 +33,7 @@
 | 目录 | 说明 |
 |------|------|
 | **`SKILL.md`（根）** | 总机 · 封发 · 长 `description` |
+| `trinity-docs/` | 对外 API 文档站（OR + 工程师契约） |
 | `trinity-product-handbook/` | 手册双规范 + templates |
 | `trinity-skill-authoring/` | 写 Skill 约定 |
 | `trinity-vue-prototype-monorepo/` | 工程方案 |

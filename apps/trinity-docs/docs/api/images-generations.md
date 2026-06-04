@@ -1,71 +1,99 @@
-# 图像生成（生图）
+# 创建图像生成
 
-`POST /v1/images/generations`
+`POST` `{TRINITY_BASE_URL}/chat/completions`
 
-根据文本提示生成图像。请求体对齐 [OpenAI Create image](https://platform.openai.com/docs/api-reference/images/create)。
+`Content-Type: application/json`
+
+通过 `modalities` 与 `image_config` 生成图像。**不是** `POST /images/generations`。
+
+::: warning 易混
+| 能力 | 传图方式 |
+| --- | --- |
+| 生文看图 | `messages[].content[]` · `type: image_url` |
+| 生图 | `modalities` 含 `image` + `image_config` |
+:::
 
 ---
 
-## 请求
+## Authentication
 
-| 字段 | 类型 | 说明 |
-| --- | --- | --- |
-| `model` | string | **必填**。`provider/model`，如 `openai/dall-e-3` |
-| `prompt` | string | **必填**。图像描述 |
-| `n` | integer | 可选。生成数量，默认 1 |
-| `size` | string | 可选。如 `1024x1024` |
-| `response_format` | string | 可选。`url` \| `b64_json` |
+**Authorization** · Bearer — 同 [创建对话补全](./chat-completions.md)。
+
+---
+
+## Body
+
+| 字段 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `model` | string | 是 | 生图模型，如 `hunyuan-image` |
+| `messages` | array | 是 | 通常 `user` 文本为 prompt |
+| `modalities` | array | 建议 | 含 `image` |
+| `stream` | boolean | 否 | 生图**不支持** `true` |
+| `image_config` | object | 否 | 宽高比、参考图等 |
+
+`image_config` 全字段见 [图像生成 · 高级参数](./image-generation-parameters.md)。
+
+---
+
+## SDK 代码示例
 
 ::: code-group
-
-```bash [Shell]
-curl "${TRINITY_BASE_URL}/images/generations" \
-  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/dall-e-3",
-    "prompt": "A serene lake at sunset",
-    "size": "1024x1024"
-  }'
-```
 
 ```python [Python]
 import json, os, requests
 
 r = requests.post(
-    f"{os.environ['TRINITY_BASE_URL']}/images/generations",
+    f"{os.environ['TRINITY_BASE_URL']}/chat/completions",
     headers={
         "Authorization": f"Bearer {os.environ['TRINITY_API_KEY']}",
         "Content-Type": "application/json",
     },
     data=json.dumps({
-        "model": "openai/dall-e-3",
-        "prompt": "A serene lake at sunset",
-        "size": "1024x1024",
+        "model": "hunyuan-image",
+        "messages": [{"role": "user", "content": "赛博朋克风格未来城市夜景"}],
+        "modalities": ["image", "text"],
+        "image_config": {"aspect_ratio": "1:1", "output_format": "url"},
     }),
 )
 print(r.json())
+```
+
+```typescript [TypeScript (fetch)]
+const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
+  },
+  body: JSON.stringify({
+    model: "hunyuan-image",
+    messages: [{ role: "user", content: "赛博朋克风格未来城市夜景" }],
+    modalities: ["image", "text"],
+    image_config: { aspect_ratio: "1:1", output_format: "url" },
+  }),
+});
+console.log(await res.json());
+```
+
+```bash [Shell]
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "hunyuan-image",
+    "messages": [{ "role": "user", "content": "赛博朋克风格未来城市夜景" }],
+    "modalities": ["image", "text"],
+    "image_config": { "aspect_ratio": "1:1", "output_format": "url" }
+  }'
 ```
 
 :::
 
 ---
 
-## 响应
-
-成功时返回 `data` 数组，元素含 `url` 或 `b64_json`（取决于 `response_format`）。
-
-```json
-{
-  "created": 1710000000,
-  "data": [{ "url": "https://..." }]
-}
-```
-
----
-
 ## 相关
 
-- [生图指南](../guides/image-generation.md)
-- [请求参数](../guides/request-parameters.md)
-- [错误与调试](../reference/error-codes.md)
+- [图片生成（完整指南）](../multimodal/image-generation.md)
+- [高级参数 · 生图](./image-generation-parameters.md)
+- [图片输入](../multimodal/image-input.md)
+- [创建对话补全](./chat-completions.md)

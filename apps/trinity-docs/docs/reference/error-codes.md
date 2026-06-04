@@ -10,7 +10,7 @@ Trinity 网关对错误采用 **OpenAI 风格 JSON 体**（`error.message`、`er
 | 502 / 503 / 504 | 上游不可用或超时 | 有限次重试 |
 | 401 / 403 | 密钥或权限（若上游返回） | 检查密钥与模型权限 |
 
-::: tip
+::: info
 429 / 5xx **应透传** 状态码与可解析错误体，便于 SDK 与现有重试逻辑复用。
 :::
 
@@ -31,8 +31,8 @@ Trinity 网关对错误采用 **OpenAI 风格 JSON 体**（`error.message`、`er
 ## 排查清单
 
 1. 确认 `TRINITY_BASE_URL` 含 `/v1` 前缀且与 [快速入门](../quickstart.md) 一致。
-2. 确认 `model` 为 `provider/model`。
-3. 记录响应头中的 `x-request-id`（若提供）并联系支持。
+2. 确认 `model` 为平台提供的模型 ID（见 [API 概述 · 模型 ID](../api/overview.md#模型-idmodel-字段)）。
+3. 记录响应头 `X-Request-Id`、`X-Settlement-Key`（见 [追踪与结算](../api/overview.md#追踪与结算请求头)）并联系支持。
 
 ## 相关
 

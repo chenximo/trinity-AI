@@ -11,13 +11,16 @@ hero:
     - theme: alt
       text: API 概述
       link: /api/overview
+    - theme: alt
+      text: 应用场景
+      link: /cookbook/
 features:
-  - title: HTTP API
-    details: OpenAI 兼容 REST，Bearer 密钥 + 标准 JSON 请求体。
-  - title: 生文 / 生图 / 生视频
-    details: 对话补全、图像生成、视频生成（样例对齐 OpenRouter / OpenAI）。
-  - title: 流式 SSE
-    details: stream:true 时 chunk 格式与 OpenAI 对齐。
+  - title: 文档
+    details: 快速入门、密钥、多模态与指南 — 顶栏「文档」轨。
+  - title: API
+    details: 端点与字段参考 — 顶栏「API」轨。
+  - title: 应用场景
+    details: Cursor、Claude Code、Codex CLI 等编程工具接入 — 顶栏「应用场景」轨。
 ---
 
 ## 文档目录
@@ -27,8 +30,9 @@ features:
 | [快速入门](./quickstart.md) · [管理 API 密钥](./manage-api-keys.md) | 接入与密钥 |
 | [模块](./modules.md) · [多模态](./multimodal/) | 产品能力树 |
 | [流式 SSE](./guides/streaming-sse.md) · [错误码](./reference/error-codes.md) | 闭环指南 / 参考 |
-| [API 概述](./api/overview.md) | 接口参考（API Tab） |
+| [API 概述](./api/overview.md) | 接口参考（API 轨） |
+| [应用场景](./cookbook/) | Cookbook · 编程工具（应用场景轨） |
 
-::: tip
-一期页面清单与验收闭环见工程文档 `docs/04-工程与迁移/Trinity文档站-一期MVP文档清单.md`。代码样例待产品校验后替换域名与字段。
+::: info
+文档中的示例域名与模型 ID 仅为演示；请以您账号所在环境的控制台与模型广场为准。
 :::

@@ -5,19 +5,261 @@ milestones:
     date: "2026-06-30"
 
 features:
-  - name: Quickstart · 生文调通
-    prototype: ⬜
+  # —— 站点基建 ——
+  - name: 三轨顶栏（文档 | API | 应用场景）
+    prototype: 🟡
     backend: ⬜
-  - name: API 参考（chat/completions）
-    prototype: ⬜
+    "5.30": 🟡
+    "6.30": 🟡
+    note: 已上线 trinity-docs · 对标 OR · IA 见 docs/04 Trinity文档站-信息架构与顶栏设计.md
+  - name: 中英双语（中文 / English）
+    prototype: 🟡
     backend: ⬜
-  - name: 模型 ID / 定价与广场一致
-    prototype: ⬜
-    backend: ⬜
-  - name: 鉴权与错误码说明
-    prototype: ⬜
-    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: locales + docs/en/ 镜像 · quickstart 已译 · 其余 en 占位
+  - name: 提示块版式（info 说明 · tip 重要）
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": ➖
+    note: 对齐 OR sky 蓝 / 同色相字色 · trinity-docs.css
   - name: trinity-docs 构建与对外发布
     prototype: 🟡
     backend: ⬜
-    note: 内容真源 apps/trinity-docs/docs/
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 内容真源 apps/trinity-docs/docs/ · npm run dev/build:trinity-docs
+
+  # —— 文档轨 · 核心路径 ——
+  - name: 文档首页 · /
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": 🟡
+    note: /docs/ 入口与三轨导航
+  - name: Quickstart · 快速入门
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: Key · base_url · 首次 chat/completions · 模型 ID 仅模型广场
+  - name: 管理 API 密钥 · /manage-api-keys
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": 🟡
+    note: 创建/轮换/吊销说明 · 链控制台
+  - name: 模块说明 · /modules
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 能力域骨架 · 正文待产品补全
+  - name: 指南 · 流式 SSE
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /guides/streaming-sse · stream:true
+  - name: 指南 · 请求参数（索引）
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /guides/request-parameters · 链 API 短页 + 高级参数三篇
+  - name: 指南 · 对话补全高级参数
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /api/chat-completions-parameters · 全字段/Part/思考/工具
+  - name: 指南 · 图像生成高级参数
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /api/image-generation-parameters · image_config 全表
+  - name: 指南 · 视频生成高级参数
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /api/video-generation-parameters · object_id/reference_type 全表
+  - name: 指南 · 生图流程
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /guides/image-generation · 侧栏挂在多模态 · 互链 API 页
+  - name: 指南 · 生视频流程
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /guides/video-generation · 链 multimodal/video-generation
+  - name: 参考 · 错误与调试
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /reference/error-codes · 401/429/5xx
+  - name: 参考 · 速率与限额
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /guides/rate-limits · 数值占位待产品/商务填
+  - name: 常见问题 · /faq
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 能力范围 · 文档与线上一致性
+
+  # —— API 轨 ——
+  - name: API 概述 · /api/overview
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 基址 · 鉴权 · 追踪/结算头 · 当前能力表
+  - name: API · 创建对话补全（短页）
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /api/chat-completions · 对标 OR API Reference · P0 字段 + 示例
+  - name: API · 创建图像生成（短页）
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 同路径 chat/completions + modalities/image_config
+  - name: API · 创建视频生成任务（短页）
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: POST /video/generations · GET /video/tasks/{taskId}
+  - name: API Reference · 双栏 sticky 示例区
+    prototype: ⬜
+    backend: ➖
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 对标 OR 右侧 curl+200 · VitePress 自定义布局 · 二期
+  - name: API Reference · Try it 交互
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: 依赖 Playground/验收台 · 未开放不写对外文档
+
+  # —— 模型 ID ——
+  - name: 模型 ID 与模型广场一致
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 客户从 trinity.ai/models 复制 ID · 文档示例须可上架
+  - name: GET /v1/models 列举模型（API）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": 🟡
+    note: 对齐 OR List models · 一期网关未开放 · 对外文档不写直至开放
+  - name: GET /v1/models 查询参数（output_modalities 等）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+    note: 对标 OR guides/overview/models · 接口开放后再写指南页
+
+  # —— 多模态（一期边界外 · 侧栏保留） ——
+  - name: 多模态 · 概述 /multimodal/
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": ⬜
+    note: 输入 Part 与生成能力索引
+  - name: 多模态 · 图片/视频输入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": ⬜
+    note: image/video-input 已对齐 OR · 音频/PDF 侧栏已下线，文档待补后再挂
+  - name: 多模态 · 图片/视频生成子页
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: image-generation + video-generation 正文已补 · 链 guides + API
+
+  # —— 应用场景轨（Cookbook） ——
+  - name: Cookbook · 概述 /cookbook/
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": 🟡
+    note: 三轨说明 · 编程工具索引
+  - name: Cookbook · Cursor 接入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+    note: /cookbook/coding-agents/cursor · Base URL/Key 待域名校验
+  - name: Cookbook · Claude Code 接入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+  - name: Cookbook · Codex CLI 接入
+    prototype: 🟡
+    backend: ⬜
+    "5.30": 🟡
+    "6.30": ⬜
+  - name: Cookbook · 编程工具（二期）
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ➖
+    "6.30": ⬜
+    note: Claude Desktop、OpenCode、MCP 等
+
+  # —— 英文站 ——
+  - name: 英文 · Quickstart 正文
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": ⬜
+    note: docs/en/quickstart.md
+  - name: 英文 · 全站页面翻译
+    prototype: ⬜
+    backend: ➖
+    "5.30": ⬜
+    "6.30": 🟡
+    note: docs/en/ 与中文路径镜像 · 除 quickstart 外多为占位
+
+  # —— 发布前产品校验（文档内容） ——
+  - name: 校验 · 生产 base_url 与路径
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": 🟡
+    note: MVP 清单 §6 · 含 /v1 前缀
+  - name: 校验 · 生图/生视频异步与轮询
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": 🟡
+  - name: 校验 · 限额与 402/429 文案
+    prototype: ⬜
+    backend: ⬜
+    "5.30": ⬜
+    "6.30": 🟡
+    note: rate-limits 页数值 · 错误码枚举
+  - name: 校验 · 对外正文无内部路径/阶段用语
+    prototype: 🟡
+    backend: ➖
+    "5.30": 🟡
+    "6.30": 🟡
+    note: Trinity对外文档站-基本规范 §2

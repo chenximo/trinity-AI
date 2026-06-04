@@ -1,65 +1,42 @@
 # 请求参数
 
-本文说明一期 MVP 各 API 的**通用约定**与**分能力字段**。样例与 OpenAI 文档结构一致，具体枚举以网关实现为准。
+Trinity 将 **API Reference** 放在 **API** 顶栏下（对标 [OpenRouter](https://openrouter.ai/docs)）：
+
+| 层级 | 位置 | 适合什么问题 |
+| --- | --- | --- |
+| **端点（短）** | [API 轨](../api/overview.md) · 各端点页 | 复制 curl、跑通最小请求 |
+| **高级参数（长）** | [API 轨](../api/overview.md) · 高级参数分组 | 调参、联调、对全字段 |
+| **概念指南** | 本轨 · 流式 / 生图流程 / 多模态 | 语义、流程、易混说明 |
+
+---
 
 ## 通用
 
-| 字段 | 类型 | 说明 |
+| 项 | 说明 |
+| --- | --- |
+| `Authorization` | **必填**。`Bearer xh-...` |
+| `Content-Type` | **必填**。`application/json` |
+| `X-Request-Id` | 可选。追踪 ID |
+| `X-Idempotency-Key` | 可选。结算幂等；重试同一笔业务时保持不变 |
+| `X-Conversation-Id` | 可选。会话分组 |
+| `model` | **必填**。模型 ID（与 [模型广场](https://trinity.ai/models) 一致） |
+
+详见 [API 概述 · 追踪与结算](../api/overview.md#追踪与结算请求头)。
+
+---
+
+## 分能力（API 轨）
+
+| 能力 | 端点 | 高级参数 |
 | --- | --- | --- |
-| `model` | string | **必填**。`provider/model` |
-| （Header）`Authorization` | string | **必填**。`Bearer <API_KEY>` |
+| 生文 | [创建对话补全](../api/chat-completions.md) | [高级参数 · 生文](../api/chat-completions-parameters.md) |
+| 生图 | [创建图像生成](../api/images-generations.md) | [高级参数 · 生图](../api/image-generation-parameters.md) |
+| 生视频 | [创建视频生成任务](../api/videos-generations.md) | [高级参数 · 生视频](../api/video-generation-parameters.md) |
 
-## 生文 · `POST /v1/chat/completions`
-
-| 字段 | 类型 | 说明 |
-| --- | --- | --- |
-| `messages` | array | **必填**。`role` + `content` |
-| `stream` | boolean | 可选。`true` 时 SSE，见 [流式输出](./streaming-sse.md) |
-| `temperature` | number | 可选。采样温度 |
-| `max_tokens` | integer | 可选。最大生成 token |
-
-::: code-group
-
-```bash [Shell]
-curl "${TRINITY_BASE_URL}/chat/completions" \
-  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-4o",
-    "messages": [{ "role": "user", "content": "你好" }]
-  }'
-```
-
-:::
-
-详见 [对话补全 API](../api/chat-completions.md)。
-
-## 生图 · `POST /v1/images/generations`
-
-| 字段 | 类型 | 说明 |
-| --- | --- | --- |
-| `prompt` | string | **必填**。图像描述 |
-| `n` | integer | 可选。生成张数，默认 1 |
-| `size` | string | 可选。如 `1024x1024`（以模型支持为准） |
-| `response_format` | string | 可选。`url` 或 `b64_json` |
-
-详见 [生图指南](./image-generation.md) 与 [图像生成 API](../api/images-generations.md)。
-
-## 生视频 · `POST /v1/videos/generations`
-
-| 字段 | 类型 | 说明 |
-| --- | --- | --- |
-| `prompt` | string | **必填**。视频描述 |
-| `duration` | integer | 可选。秒数（以模型支持为准） |
-| `aspect_ratio` | string | 可选。如 `16:9` |
-
-部分上游为**异步任务**，响应可能仅返回 `id`，需再查询状态。详见 [生视频指南](./video-generation.md)。
-
-::: info
-异步轮询路径与状态枚举 **待产品确认** 后更新 [视频生成 API](../api/videos-generations.md)。
-:::
+---
 
 ## 相关
 
 - [API 概述](../api/overview.md)
+- [流式输出（SSE）](./streaming-sse.md)
 - [错误与调试](../reference/error-codes.md)

@@ -1,11 +1,25 @@
 # Trinity AI 文档站（VitePress）
 
-> 架构与分期说明：[Trinity文档站方案-VitePress与运营后台.md](../../docs/04-工程与迁移/Trinity文档站方案-VitePress与运营后台.md)  
-> **一期 MVP 页面清单**：[Trinity文档站-一期MVP文档清单.md](../../docs/04-工程与迁移/Trinity文档站-一期MVP文档清单.md)
+> **维护必读**：[Trinity对外文档站-基本规范.md](../../docs/04-工程与迁移/Trinity对外文档站-基本规范.md)（写什么、用语、三轨、发布检查）  
+> 架构与分期：[Trinity文档站方案-VitePress与运营后台.md](../../docs/04-工程与迁移/Trinity文档站方案-VitePress与运营后台.md)  
+> 顶栏与目录：[信息架构与顶栏设计.md](../../docs/04-工程与迁移/Trinity文档站-信息架构与顶栏设计.md)  
+> 页面清单：[一期 MVP 文档清单.md](../../docs/04-工程与迁移/Trinity文档站-一期MVP文档清单.md)
 
 ## 一句话
 
 对外 API 文档静态站：内容真源为 **`docs/**/*.md`**；展示由 VitePress 构建；视觉 token 来自 **`@trinity/tokens`**。
+
+## 中英双语（i18n）
+
+| 语言 | 目录 | 示例 URL（`base=/docs/`） |
+|------|------|---------------------------|
+| 中文（默认） | `docs/` | `/docs/quickstart` |
+| English | `docs/en/` | `/docs/en/quickstart` |
+
+- 顶栏 **中文 / English** 切换（VitePress `locales`）。
+- 新增中文页后：在 `docs/en/` 写英文正文，或运行 `npm run docs:en-mirror -w @trinity/app-trinity-docs` 生成占位（勿覆盖已翻译文件）。
+- 侧栏：`.vitepress/config/sidebars.ts`（中文树 + 自动 `/en` 与英文标签）。
+- 提示块：**`::: info`** = 说明（蓝）；**`::: tip`** = 重要（绿）；默认标题见 `config.ts` → `markdown.container`。
 
 ## 本地开发
 
@@ -73,9 +87,11 @@ apps/trinity-docs/
 - 运营后台文档中心：`apps/trinity-ai-admin/src/views/admin-docs/`
 - 静态对照：`TrinityAI/app/docs.html`
 
-## 文档 Tab · 侧栏演进
+## 顶栏与侧栏（当前）
 
-顶栏二级导航固定为 **文档 | API**（对齐 OpenRouter）。下列仅 **文档 Tab** 左侧栏。
+顶栏二级导航：**文档 | API | 应用场景**（见 [信息架构与顶栏设计](../../docs/04-工程与迁移/Trinity文档站-信息架构与顶栏设计.md)）。
+
+下列为 **文档 Tab** 侧栏历史演进（归档参考）。
 
 ### 初版需求（扁平 + 多模态二级）
 
@@ -89,9 +105,7 @@ apps/trinity-docs/
   ├ 图片输入
   ├ 图片生成
   ├ 视频输入
-  ├ 视频生成
-  ├ 音频
-  └ PDF 文件
+  └ 视频生成
 管理 API 密钥
 常见问题
 ```
@@ -107,8 +121,6 @@ flowchart TB
     M --> M3[图片生成]
     M --> M4[视频输入]
     M --> M5[视频生成]
-    M --> M6[音频]
-    M --> M7[PDF 文件]
     A3[管理 API 密钥]
     A4[常见问题]
   end
@@ -160,9 +172,7 @@ flowchart TB
   ├ 图片输入
   ├ 图片生成
   ├ 视频输入
-  ├ 视频生成
-  ├ 音频
-  └ PDF 文件
+  └ 视频生成
 指南 ▾
   ├ 流式输出（SSE）
   └ 请求参数
@@ -184,8 +194,6 @@ flowchart TB
     MM --> M3[图片生成]
     MM --> M4[视频输入]
     MM --> M5[视频生成]
-    MM --> M6[音频]
-    MM --> M7[PDF 文件]
     G[指南]
     G --> G1[流式输出 SSE]
     G --> G2[请求参数]

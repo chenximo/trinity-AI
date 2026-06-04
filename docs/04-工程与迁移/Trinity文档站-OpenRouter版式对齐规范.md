@@ -27,7 +27,7 @@
 | # | 元素 | OpenRouter 特征 | Trinity 现状 | 状态 | 落点 |
 | --- | --- | --- | --- | --- | --- |
 | L1 | 顶栏高度与底边 | 白底、细灰底边、左 Logo + 右搜索/操作 | VitePress 默认顶栏 + token 色 | 🟡 | `trinity-docs.css` · `themeConfig` |
-| L2 | 顶栏二级导航 | Docs / API Reference / … 横向 Tab | 仅「快速开始 / API / 官网」 | ⬜ | `config.ts` `nav` |
+| L2 | 顶栏二级导航 | Docs / API Reference / Cookbook 横向 Tab | 已有「文档 / API」；应用场景 Tab 待上 | 🟡 | `DocsSubNav` · [信息架构与顶栏设计](./Trinity文档站-信息架构与顶栏设计.md) |
 | L3 | 顶栏「Ask AI」 | 右侧主 CTA | 无 | — | 三期或链 Trinity 对话 |
 | L4 | 左侧栏分组 | Overview / Models & Routing / Features + **图标** | 文字分组、无图标 | ⬜ | `sidebar` + 自定义 `VPSidebarItem` 或 CSS |
 | L5 | 左栏当前项 | 浅蓝底 + 加粗蓝字 | 浅蓝底已有，无图标 | 🟡 | `trinity-docs.css` |
@@ -44,9 +44,9 @@
 | C1 | H1 标题 | 大号、左对齐、无下边框 | 已调字号 | ✅ | `.vp-doc h1` |
 | C2 | 正文链接 | 蓝色、hover 下划线 | `var(--blue)` | ✅ | `.vp-doc a` |
 | C3 | 对照表 | 两列 Approach / Best for，浅灰表头、行分割线 | quickstart 表 + 表格 CSS | ✅ | md + `.vp-doc table` |
-| C4 | Info 提示块 | 蓝底 + **图钉图标** + 可选等宽链接 | VitePress `::: tip` 无自定义图标 | ⬜ | 自定义块 + CSS 或 SVG |
-| C5 | Tip 提示块 | 浅绿底 + **星标图标** | `::: tip` 统一蓝色 | ⬜ | 区分 `tip` / `info` 类名 |
-| C6 | Warning | 黄/橙语义 | `::: warning` 已有 token | 🟡 | token 已有，图标待补 |
+| C4 | 说明（info） | OR sky：`#f0f9ff` / `#bae6fd` / 字 `#0c4a6e` / 图标 `#0ea5e9` | `::: info`（默认「说明」） | ✅ | `--tdocs-or-sky-*` |
+| C5 | 重要（tip） | 同色相：浅绿底 + 中浅绿边 + **深绿字/星标** | `::: tip`（默认「重要」） | ✅ | `--tdocs-callout-tip-*` |
+| C6 | Warning | 黄/橙语义 + 三角图标 | `::: warning` 黄底 + 图标 | ✅ | `.custom-block.warning` |
 
 ### 2.3 代码片段组件（对应截图 2 · **重点**）
 
@@ -133,7 +133,17 @@ import requests
 
 **深色模式**：可保留深色代码块变体，但**浅色为默认验收路径**（与 OpenRouter 线上一致）。
 
-### 3.3 包管理器 Tab 示例（截图：npm / pnpm / yarn）
+### 3.3 API Reference 页分工（对标 OR `api-reference/*`）
+
+| 页面类型 | 路径示例 | 内容上限 |
+| --- | --- | --- |
+| **端点短页** | `/api/chat-completions` | Authentication + Headers + Body（P0）+ 示例 + 短 Response |
+| **高级参数** | `/api/chat-completions-parameters` 等 | 全字段表、Part、思考/工具、联调说明（API 轨侧栏） |
+| **未开放** | — | 仅 `developer-docs.roadmap.yml`，不进对外 md |
+
+右侧 **sticky curl + 200 示例 + Try it** → roadmap 二期（自定义 VitePress 布局）。
+
+### 3.4 包管理器 Tab 示例（截图：npm / pnpm / yarn）
 
 ```markdown
 ::: code-group
@@ -167,7 +177,7 @@ yarn add openai
 
 1. 一句话价值主张  
 2. **集成方式对照表**（| 方式 | 适用场景 |）  
-3. `::: tip` / info（模型 slug 等）  
+3. `::: tip` 重要（模型 ID、密钥等）/ `::: info` 说明（补充信息）  
 4. `---`  
 5. `## 使用 xxx API` + 说明段 + `::: code-group`  
 6. 重复 `---` 分节  

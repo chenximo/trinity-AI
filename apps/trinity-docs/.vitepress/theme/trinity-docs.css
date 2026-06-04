@@ -26,12 +26,29 @@ html.dark {
   --tdocs-sidebar-w: 17.5rem;
   --tdocs-nav-h: var(--vp-nav-height, 64px);
   --tdocs-subnav-h: 3rem;
+  /* 主栏 + 二级导航总高度（侧栏、正文顶距） */
   --tdocs-layout-top: calc(var(--vp-nav-height, 64px) + var(--tdocs-subnav-h));
+  /* 仅二级导航条高度 —— 对应 VitePress layout-top 槽，不含主顶栏 */
+  --tdocs-subnav-offset: var(--tdocs-subnav-h);
   --tdocs-content-max: 48rem;
   --tdocs-doc-pl: calc(1.25rem + 25px);
   --tdocs-doc-pr: calc(1.25rem + 25px);
   --tdocs-aside-col: 14.5rem;
   --tdocs-doc-h1-mt: 25px;
+  /* info 说明块 · 对齐 OpenRouter Docs sky 色（仅文档站，不改全局 --blue） */
+  --tdocs-or-sky-50: #f0f9ff;
+  --tdocs-or-sky-200: #bae6fd;
+  --tdocs-or-sky-500: #0ea5e9;
+  --tdocs-or-sky-900: #0c4a6e;
+  --tdocs-callout-info-bg: var(--tdocs-or-sky-50);
+  --tdocs-callout-info-border: var(--tdocs-or-sky-200);
+  --tdocs-callout-info-ink: var(--tdocs-or-sky-900);
+  --tdocs-callout-info-icon: var(--tdocs-or-sky-500);
+  /* tip / warning 仍用 Trinity 语义绿、橙 */
+  --tdocs-callout-tip-ink: color-mix(in srgb, var(--success) 72%, var(--text));
+  --tdocs-callout-tip-bg: color-mix(in srgb, var(--success) 5%, var(--bg));
+  --tdocs-callout-tip-border: color-mix(in srgb, var(--success) 20%, var(--border));
+  --tdocs-callout-warning-ink: color-mix(in srgb, var(--warning) 70%, var(--text));
   /* 浅色代码块（对齐 OpenRouter 截图） */
   --tdocs-code-bg: var(--bg);
   --tdocs-code-tab-bg: var(--surface);
@@ -118,9 +135,31 @@ html.dark {
   --vp-code-block-divider-color: var(--border);
 }
 
-/* 顶栏 + 二级导航总高度（OpenRouter：Nav + Docs/API 条） */
+/* 全局隐藏滚动条，保留滚轮 / 触控板 / 触摸滑动 */
+html,
+body,
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* 顶栏 + 二级导航（OpenRouter：Nav + Docs/API 条） */
 .VPLayout {
-  --vp-layout-top-height: var(--tdocs-layout-top);
+  /* 勿把主顶栏高度算进 layout-top，否则 VPNav 下移且正文顶距重复计算 */
+  --vp-layout-top-height: var(--tdocs-subnav-offset);
+}
+
+@media (min-width: 960px) {
+  .VPNav {
+    top: 0 !important;
+    z-index: calc(var(--vp-z-index-nav) + 10);
+  }
 }
 
 /* —— 顶栏 —— */
@@ -144,6 +183,7 @@ html.dark {
   flex: 1;
   justify-content: flex-end;
   gap: 0.75rem;
+  overflow: visible;
 }
 
 /* 搜索框（OpenRouter 居中宽搜索） */
@@ -180,7 +220,32 @@ html.dark {
   color: var(--text);
 }
 
-/* —— 二级导航：文档 | API（layout-top 锚点 + fixed 贴在 Nav 下） —— */
+/* 语言切换：菜单置于二级导航之上，缩小 hover 空隙避免未点击就消失 */
+.VPNavBarTranslations {
+  overflow: visible;
+}
+
+.VPNavBarTranslations .VPFlyout {
+  z-index: calc(var(--vp-z-index-sidebar) + 2);
+}
+
+.VPNavBarTranslations .VPFlyout .menu {
+  top: 100%;
+  margin-top: -2px;
+  padding-top: 6px;
+  z-index: calc(var(--vp-z-index-sidebar) + 3);
+}
+
+.VPNavBarTranslations .VPFlyout .menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+/* —— 二级导航：文档 | API | 应用场景（layout-top 锚点 + fixed 贴在 Nav 下） —— */
 .tdocs-subnav-anchor {
   height: 0;
   overflow: visible;
@@ -191,7 +256,8 @@ html.dark {
   top: var(--vp-nav-height);
   left: 0;
   right: 0;
-  z-index: 51;
+  /* 低于主顶栏，避免挡住语言/主题等 VPFlyout 下拉 */
+  z-index: var(--vp-z-index-nav);
   height: var(--tdocs-subnav-h);
   border-bottom: 1px solid var(--border);
   background: var(--bg);
@@ -266,6 +332,10 @@ html.dark {
 
 .tdocs-subnav__icon--api {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M8 6h8l4 4v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3Z'/%3E%3C/svg%3E");
+}
+
+.tdocs-subnav__icon--cookbook {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M6 4h9a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2V4Zm2 0v14h9V6H8Zm3 2h5v2h-5V6Zm0 4h5v2h-5v-2Z'/%3E%3C/svg%3E");
 }
 
 /* —— 侧栏 Tree（对齐 OpenRouter：一级图标 + 右侧 Chevron + 二级缩进竖线） —— */
@@ -700,20 +770,145 @@ html.dark .VPSidebarItem .is-active > .link {
   background: color-mix(in srgb, var(--surface) 40%, transparent);
 }
 
-/* 自定义块：更扁、更贴 OR */
+/* 自定义块：info=说明（蓝+图钉）；tip=重要（浅绿+星标）；warning=注意（黄+三角） */
 .vp-doc .custom-block {
+  position: relative;
+  border: 1px solid transparent;
   border-radius: var(--radius-lg);
   font-size: 0.875rem;
+  line-height: 1.6;
   margin: 1.25rem 0;
+  padding: 0.875rem 1rem 0.75rem 2.625rem;
+}
+
+.vp-doc .custom-block .custom-block-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* 链出仍用品牌蓝（OR 在绿框内链接也为蓝紫），与框内正文色相区分 */
+.vp-doc .custom-block a {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.vp-doc .custom-block a:hover {
+  color: var(--indigo-500);
+}
+
+.vp-doc .custom-block::before {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  top: 1.125rem;
+  width: 1rem;
+  height: 1rem;
+  background: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 
 .vp-doc .custom-block.tip {
-  background: var(--blue-soft);
-  border-color: var(--blue-ring);
+  color: var(--tdocs-callout-tip-ink);
+  background: var(--tdocs-callout-tip-bg);
+  border-color: var(--tdocs-callout-tip-border);
+  --vp-custom-block-tip-text: var(--tdocs-callout-tip-ink);
+}
+
+.vp-doc .custom-block.tip p,
+.vp-doc .custom-block.tip li {
+  color: inherit;
+}
+
+.vp-doc .custom-block.tip::before {
+  color: var(--tdocs-callout-tip-ink);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M12 2l2.39 4.84L20 8.27l-3.5 3.41.83 4.83L12 14.77l-5.33 2.8.83-4.83L4 8.27l5.61-1.43L12 2Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M12 2l2.39 4.84L20 8.27l-3.5 3.41.83 4.83L12 14.77l-5.33 2.8.83-4.83L4 8.27l5.61-1.43L12 2Z'/%3E%3C/svg%3E");
+}
+
+.vp-doc .custom-block.info {
+  color: var(--tdocs-callout-info-ink);
+  background: var(--tdocs-callout-info-bg);
+  border-color: var(--tdocs-callout-info-border);
+  --vp-custom-block-info-text: var(--tdocs-callout-info-ink);
+}
+
+.vp-doc .custom-block.info p,
+.vp-doc .custom-block.info li {
+  color: inherit;
+}
+
+.vp-doc .custom-block.info a {
+  color: var(--tdocs-callout-info-ink);
+}
+
+.vp-doc .custom-block.info a:hover {
+  color: var(--tdocs-or-sky-900);
+  opacity: 0.85;
+}
+
+.vp-doc .custom-block.info::before {
+  color: var(--tdocs-callout-info-icon);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M14 3h-4L8 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2-4Zm-2 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-2.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M14 3h-4L8 7H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2-4Zm-2 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-2.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/%3E%3C/svg%3E");
+}
+
+/* info 内联代码：OR 为浅灰底 + 与正文同深蓝字 */
+.vp-doc .custom-block.info :not(pre) > code {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0.15rem 0;
+  padding: 0.5rem 0.65rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 4%, transparent);
+  color: var(--tdocs-callout-info-ink);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+html.dark {
+  --tdocs-callout-info-bg: #082f49;
+  --tdocs-callout-info-border: #155e75;
+  --tdocs-callout-info-ink: #e0f2fe;
+  --tdocs-callout-info-icon: #38bdf8;
+  --tdocs-callout-tip-ink: color-mix(in srgb, var(--success-bright) 75%, var(--text));
+  --tdocs-callout-tip-bg: color-mix(in srgb, var(--success) 10%, var(--surface));
+  --tdocs-callout-tip-border: color-mix(in srgb, var(--success) 24%, var(--border));
+  --tdocs-callout-warning-ink: color-mix(in srgb, var(--warning) 72%, var(--text));
+}
+
+html.dark .vp-doc .custom-block.info :not(pre) > code {
+  background: color-mix(in srgb, var(--surface) 80%, #0c4a6e);
+  border-color: #155e75;
+  color: var(--tdocs-callout-info-ink);
 }
 
 .vp-doc .custom-block.warning {
-  background: var(--warning-soft);
+  color: var(--tdocs-callout-warning-ink);
+  background: color-mix(in srgb, var(--warning) 8%, var(--bg));
+  border-color: color-mix(in srgb, var(--warning) 18%, var(--border));
+  --vp-custom-block-warning-text: var(--tdocs-callout-warning-ink);
+}
+
+.vp-doc .custom-block.warning p {
+  color: inherit;
+}
+
+.vp-doc .custom-block.warning::before {
+  color: var(--tdocs-callout-warning-ink);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M12 2 2 20h20L12 2Zm0 5 6.5 11h-13L12 7Zm-1 4v3h2v-3h-2Zm0 4v2h2v-2h-2Z'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill='%23000' d='M12 2 2 20h20L12 2Zm0 5 6.5 11h-13L12 7Zm-1 4v3h2v-3h-2Zm0 4v2h2v-2h-2Z'/%3E%3C/svg%3E");
 }
 
 /* 行内代码 */

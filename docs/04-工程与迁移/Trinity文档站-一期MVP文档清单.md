@@ -4,7 +4,7 @@
 > **对照**：[OpenRouter 文档](https://openrouter.ai/docs)（Docs 指南 + API Reference 双轨）  
 > **内容真源**：`apps/trinity-docs/docs/**/*.md`  
 > **MVP 能力**：HTTP API · 生文 · 生图 · 生视频  
-> **关联**：[Trinity文档站方案-VitePress与运营后台.md](./Trinity文档站方案-VitePress与运营后台.md)、[Trinity文档站-OpenRouter版式对齐规范.md](./Trinity文档站-OpenRouter版式对齐规范.md)
+> **关联**：[**对外文档站基本规范（维护入口）**](./Trinity对外文档站-基本规范.md)、[Trinity文档站方案-VitePress与运营后台.md](./Trinity文档站方案-VitePress与运营后台.md)、[OpenRouter 版式对齐](./Trinity文档站-OpenRouter版式对齐规范.md)、[信息架构与顶栏设计](./Trinity文档站-信息架构与顶栏设计.md)
 
 ---
 
@@ -42,6 +42,15 @@ flowchart LR
 ---
 
 ## 3. 页面清单与状态
+
+### 3.0 应用场景 Tab（Cookbook）
+
+| 状态 | 路径 | 标题 | 说明 |
+|------|------|------|------|
+| 🟡 | `/cookbook/` | 概述 | 三轨说明；P0 编程工具索引 |
+| 🟡 | `/cookbook/coding-agents/cursor` | Cursor | 配置步骤占位，待截图走查 |
+| 🟡 | `/cookbook/coding-agents/claude-code` | Claude Code | 同上 |
+| 🟡 | `/cookbook/coding-agents/codex-cli` | Codex CLI | 同上 |
 
 ### 3.1 文档 Tab（指南）
 
@@ -132,6 +141,16 @@ flowchart LR
 | **文档** | 快速入门 → 管理 API 密钥 → 模块 → 多模态 ▾ → 指南 ▾ → 参考 ▾ → 常见问题 |
 | **API** | 概述 → 端点 ▾（对话补全 / 图像生成 / 视频生成） |
 
+### 4.2.1 目标侧栏（三轨 · 拍板）
+
+顶栏二级 Tab 与完整目录树见 **[Trinity文档站-信息架构与顶栏设计.md](./Trinity文档站-信息架构与顶栏设计.md)**：
+
+| Tab | 结构 |
+|-----|------|
+| **文档** | 同上（现行） |
+| **API** | 同上（现行） |
+| **应用场景**（Cookbook） | 概述 → 编程工具 ▾（Cursor / Claude Code / Codex CLI · 二期再扩） |
+
 ---
 
 ## 4.3 侧栏已齐、仍缺内容层
@@ -145,12 +164,14 @@ flowchart LR
 
 ---
 
-## 5. 写作约定（与 OpenRouter 对齐）
+## 5. 写作约定
 
-1. 每个 API 页：**方法 + Path** → 请求表 → `::: code-group`（Shell + TypeScript fetch 或 Python requests）→ 响应说明 → 相关链接。
-2. `model` 一律 **`provider/model`**。
-3. 环境变量：`TRINITY_API_KEY`、`TRINITY_BASE_URL`（含 `/v1`）。
-4. 文内注明：**样例待产品校验** 的用 `::: info` 或表注「待确认」。
+完整条文见 **[Trinity对外文档站-基本规范](./Trinity对外文档站-基本规范.md)**（§1 OpenRouter + 工程师 review、对外用语、三轨、发布检查）。摘要：
+
+1. 每个 API **短页**：**方法 + Path** → P0 字段 → `::: code-group` → 响应；全字段在 `api/*-parameters`。
+2. 对外写 **模型 ID**（仅 [模型广场](https://trinity.ai/models)）；发布前 diff 工程师 `API对外接口支持参数.md`（§1.3）。
+3. `TRINITY_API_KEY`（`xh-...`）、`TRINITY_BASE_URL`（含 `/v1`）；生图走 **chat/completions**；生视频 **video/generations** + **video/tasks/{id}`**。
+4. 待确认项用 `::: info` 或表注。
 
 ---
 

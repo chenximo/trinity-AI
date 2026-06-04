@@ -7,12 +7,12 @@
 ::: code-group
 
 ```bash [Shell]
-curl "${TRINITY_BASE_URL}/chat/completions" \
+curl -sS -N "${TRINITY_BASE_URL}/chat/completions" \
   -H "Content-Type: application/json" \
+  -H "Accept: text/event-stream" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
-  -N \
   -d '{
-    "model": "openai/gpt-4o",
+    "model": "doubao-seed-1-6-thinking-agent-preview",
     "messages": [{ "role": "user", "content": "讲一个短笑话" }],
     "stream": true
   }'
@@ -26,7 +26,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
     Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
   },
   body: JSON.stringify({
-    model: "openai/gpt-4o",
+    model: "doubao-seed-1-6-thinking-agent-preview",
     messages: [{ role: "user", content: "讲一个短笑话" }],
     stream: true,
   }),
@@ -42,7 +42,7 @@ with requests.post(
     f"{os.environ['TRINITY_BASE_URL']}/chat/completions",
     headers={"Authorization": f"Bearer {os.environ['TRINITY_API_KEY']}"},
     json={
-        "model": "openai/gpt-4o",
+        "model": "doubao-seed-1-6-thinking-agent-preview",
         "messages": [{"role": "user", "content": "讲一个短笑话"}],
         "stream": True,
     },

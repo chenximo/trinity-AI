@@ -7,9 +7,9 @@ description: >-
   trinity-vue-prototype-monorepo；色板/design-spec/trinity-base 执行 trinity-design-tokens；
   AI 云营销页执行 trinity-tob-marketing-site；用户控制台 account/console 执行
   trinity-user-console；运营后台若依列表 trinity-ai-admin 执行 trinity-admin-ruoyi-list；
-  TRTC Chat/IM 执行 chat。新建或评审 .cursor/skills 执行 trinity-skill-authoring。
-  手册任务默认不改 apps 业务代码除非用户明确落地工程。索引见 .cursor/skills/README.md。
-  触发词：Trinity、派活、产品手册、roadmap、week-progress、控制台、运营后台、营销页、Monorepo。
+  TRTC Chat/IM 执行 chat；对外开发者文档站 apps/trinity-docs 执行 trinity-docs。
+  新建或评审 .cursor/skills 执行 trinity-skill-authoring。手册任务默认不改 apps 业务代码除非用户明确落地工程。
+  索引见 .cursor/skills/README.md。触发词：Trinity、派活、产品手册、roadmap、trinity-docs、对外文档、API 文档站。
 ---
 
 # Trinity · 项目总机（先分流，再 READ 子 Skill）
@@ -37,6 +37,7 @@ description: >-
 | `account/console`、user-console-spec | `trinity-user-console` | skill + `/user-console-spec` |
 | `trinity-ai-admin`、admin-ep-table | `trinity-admin-ruoyi-list` | skill |
 | IM、Chat、tuikit、TRTC | `chat` | `.cursor/skills/chat/SKILL.md` |
+| `apps/trinity-docs`、对外 API 文档、OpenRouter 文档对齐 | `trinity-docs` | `docs/04-工程与迁移/Trinity对外文档站-基本规范.md` · 工程师 `API对外接口支持参数.md` |
 | 新建/评审 `.cursor/skills/**` | `trinity-skill-authoring` | 本目录约定 |
 
 **手册边界**：默认只改 `apps/trinity-product/docs` 与相关 yml；改 `apps/trinity-ai` 等须用户明确「落地工程」并封发 `trinity-vue-prototype-monorepo` 等。

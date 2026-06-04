@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vitepress dev --port 5205",
     "build": "vitepress build",
-    "preview": "vitepress preview --port 5202"
+    "preview": "vitepress preview --port 5202",
+    "docs:en-mirror": "node ./scripts/ensure-en-mirror.mjs"
   },
   "dependencies": {
     "@trinity/tokens": "*"

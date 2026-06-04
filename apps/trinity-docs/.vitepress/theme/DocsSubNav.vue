@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useData, useRouter, withBase } from "vitepress";
-import { DOCS_SUBNAV, isApiSection } from "./docsNav";
+import { activeSubNavId, getDocsSubnav } from "./docsNav";
 
 const { page } = useData();
 const router = useRouter();
 
+/** 英文页 relativePath 以 `en/` 开头；不依赖 useData().locale（SSR 下可能未注入） */
+const isEn = computed(() => page.value.relativePath?.startsWith("en/") ?? false);
+const tabs = computed(() => getDocsSubnav(isEn.value ? "/en" : ""));
+
 /** 用 relativePath 判断轨；route.path 在浏览器内含 /docs base，不能单独依赖 */
-const activeId = computed(() =>
-  isApiSection(page.value.relativePath) ? "api" : "docs",
-);
+const activeId = computed(() => activeSubNavId(page.value.relativePath));
 
 function tabHref(href: string) {
   return withBase(href);
@@ -25,10 +27,10 @@ function onTabClick(e: MouseEvent, href: string) {
 
 <template>
   <div class="tdocs-subnav-anchor">
-    <nav class="tdocs-subnav" aria-label="文档与 API">
+    <nav class="tdocs-subnav" :aria-label="isEn ? 'Docs, API and Cookbook' : '文档、API 与应用场景'">
       <div class="tdocs-subnav__inner">
         <a
-          v-for="tab in DOCS_SUBNAV"
+          v-for="tab in tabs"
           :key="tab.id"
           :href="tabHref(tab.href)"
           class="tdocs-subnav__tab"

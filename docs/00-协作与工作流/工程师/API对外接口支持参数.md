@@ -5,6 +5,66 @@
 
 ---
 
+## 0. 请求/响应头（追踪 ID 与结算键）
+
+适用于 **`POST /v1/chat/completions`**（对外 API Key）与 **`POST /v1/app/chat/completions`**（站内 JWT）。生图亦走同一路径，请求头语义一致。
+
+### 0.1 概念区分（必读）
+
+| 概念 | HTTP 头 / 响应头 | 是否可重复 | 作用 |
+|---|---|---|---|
+| **追踪 ID** | 请求 `X-Request-Id`；响应回写 `X-Request-Id` | 可重复 | 排障、日志关联；同一用户会话内多次调用可共用同一追踪 ID |
+| **结算键** | 请求 `X-Idempotency-Key`；响应回写 `X-Settlement-Key` | 同 workspace 内应唯一 | **计费幂等**：相同结算键仅产生一笔扣费 |
+| **会话 ID** | 请求 `X-Conversation-Id`；有值时响应回写 | 可重复 | 会话分组、后台筛选 |
+
+> **注意**：`request_id`（落库字段）与追踪 ID、结算键不是同一概念。后台联查单次计费请用 **结算键**；按追踪 ID 可看到同 trace 下多条结算记录。
+
+### 0.2 请求头
+
+| 请求头 | 必填 | 说明 | 格式与约束 |
+|---|---|---|---|
+| `X-Request-Id` | 否 | 追踪 ID | 建议 UUID 或业务 trace 字符串；**最长 128 字符**；未传时服务端用网关/MDC 中的请求 ID，仍无则生成 UUID |
+| `X-Idempotency-Key` | 否 | 结算幂等键 | 建议 UUID；**最长 128 字符**；**同一次业务重试（网络超时、客户端重放）须保持不变**；未传时服务端每次调用生成新 UUID → **每次调用独立计费** |
+| `X-Conversation-Id` | 否 | 会话分组 | 建议业务会话 ID；**最长 128 字符** |
+
+### 0.3 响应头
+
+成功或失败响应（含 **SSE 流式**）均建议回写：
+
+| 响应头 | 说明 |
+|---|---|
+| `X-Request-Id` | 本次调用最终采用的追踪 ID |
+| `X-Settlement-Key` | 本次调用最终采用的结算键（与计费、扣费流水关联） |
+| `X-Conversation-Id` | 仅当请求传入 `X-Conversation-Id` 时回写 |
+
+### 0.4 计费行为摘要
+
+1. **不传 `X-Idempotency-Key`**：每次 HTTP 调用使用新的结算键 → **逐次计费**（符合「同一追踪 ID 多次调用可分别扣费」）。
+2. **传入相同 `X-Idempotency-Key` 重试**：同一 workspace 内仅 **第一笔成功结算** 扣费；后续命中幂等则 **不再重复扣费**（服务端日志关键字：`billing_settlement_idempotent_skip`）。
+3. **追踪 ID 与结算键独立**：可 `X-Request-Id` 相同、`X-Idempotency-Key` 不同 → 多次计费；也可追踪 ID 不同、结算键相同 → 仅计费一次。
+
+### 0.5 curl 示例（带请求头）
+
+```bash
+TRACE_ID="trace-$(uuidgen)"
+SETTLE_KEY="settle-$(uuidgen)"
+CONV_ID="conv-demo-001"
+
+curl -sS -N "${BASE}/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Accept: text/event-stream" \
+  -H "Authorization: Bearer xh-REPLACE_WITH_REAL_KEY" \
+  -H "X-Request-Id: ${TRACE_ID}" \
+  -H "X-Idempotency-Key: ${SETTLE_KEY}" \
+  -H "X-Conversation-Id: ${CONV_ID}" \
+  -D - \
+  -d '{"model":"deepseek-v4-flash","messages":[{"role":"user","content":"hi"}],"stream":true}'
+```
+
+重试同一笔业务时：**保持 `X-Idempotency-Key` 不变**，可更换或复用 `X-Request-Id`。
+
+---
+
 ## 一、生文接口（文本生成）
 
 ### 1) 接口与完整请求示例
@@ -12,6 +72,7 @@
 - 方法：`POST`
 - 路径：`/v1/chat/completions`
 - 鉴权：`Authorization: Bearer xh-...`
+- 追踪/结算头：见 **§0**（`X-Request-Id`、`X-Idempotency-Key`、`X-Conversation-Id`）
 
 ```json
 {
@@ -59,7 +120,7 @@
 | `model` | string | 是 | 指定逻辑模型编码 | 需是已上架且可用的文本模型（如 `gpt-5.5`） |
 | `messages` | array | 是 | 对话上下文输入 | 至少 1 条消息；元素为 `{role, content}` |
 | `messages[].role` | string | 否 | 消息角色 | 可传 `system` / `user` / `assistant` / `tool`；不传时服务端默认按 `user` 处理 |
-| `messages[].content` | string or array | 是 | 消息内容 | 支持纯文本或多模态 Part 数组 |
+| `messages[].content` | string or array | 是 | 消息内容 | 纯文本为 string；图文/音视频为 Part 数组，见 **§2.1** |
 | `messages[].tool_calls` | array | 否 | assistant 工具调用列表 | 仅 `role=assistant` 时可传，元素结构同 OpenAI `tool_calls` |
 | `messages[].tool_call_id` | string | 否 | 工具消息关联 ID | 仅 `role=tool` 时必传 |
 | `stream` | boolean | 否 | 是否流式返回 | `true`/`false`，默认 `false` |
@@ -85,6 +146,162 @@
 | `tool_choice` | string/object | 否 | 工具调用策略 | `none/auto/required` 或指定 function 对象 |
 | `modalities` | array | 否 | 指定输出模态 | 生文场景建议省略或 `["text"]` |
 
+### 2.1) Part 传值规范（`messages[].content` 为数组）
+
+当 `messages[].content` 为 **数组** 时，每个元素为一个 **Part** 对象（兼容 OpenAI Chat Completions 多模态结构）。用于生文场景下的**看图理解、多图对比、音频/文件输入**等；与 **§二 生图** 的 `image_config.reference_images`（文生图参考图）不是同一套字段。
+
+#### 何时用 string / 何时用 Part 数组
+
+| `content` 形态 | 适用场景 |
+|---|---|
+| `string` | 仅文本对话 |
+| `array<Part>` | 需附带图片、音频、文件/视频 URL 等多模态输入 |
+
+约束摘要：
+
+- `content` 为 **string** 或 **array** 时，网关**不校验**是否为空或 Part 结构（与 OpenAI 兼容客户端行为对齐，如 CodeBuddy 多轮历史）。
+- **`model`** 须为支持多模态的生文模型时，仍可能因 `supports_multimodal=false` 在路由层拒绝带图请求（见 `ChatUpstreamVisionPolicy`）。
+
+#### Part 公共字段
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `type` | string | 是 | Part 类型：`text` / `image_url` / `input_audio` / `file` |
+
+#### `type = text`
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `text` | string | 否 | 文本内容（网关不校验是否空白） |
+
+```json
+{ "type": "text", "text": "请描述图片中的主要物体与场景。" }
+```
+
+#### `type = image_url`（生文传图）
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `image_url` | string **或** object | 是 | 图片地址；见下方两种写法 |
+
+**写法一（简写，推荐 URL）：**
+
+```json
+{ "type": "image_url", "image_url": "https://example.com/sample.png" }
+```
+
+**写法二（对象，与 OpenAI 一致）：**
+
+```json
+{
+  "type": "image_url",
+  "image_url": { "url": "https://example.com/sample.png" }
+}
+```
+
+**地址要求：**
+
+- 支持 `http://` / `https://` 公网可访问 URL；
+- 支持 **Base64 Data URL**：`data:image/png;base64,...`（或 `jpeg` / `webp` 等）；
+- 单图大小上限以平台校验为准（契约层按 **70MB 以内** 校验，与 OpenAI 口径对齐）。
+
+**多图 + 文本示例：**
+
+```json
+{
+  "role": "user",
+  "content": [
+    { "type": "text", "text": "对比这两张图的区别" },
+    { "type": "image_url", "image_url": "https://example.com/a.png" },
+    { "type": "image_url", "image_url": { "url": "https://example.com/b.png" } }
+  ]
+}
+```
+
+#### `type = input_audio`
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `input_audio` | object | 是 | 音频载荷 |
+| `input_audio.data` | string | 是 | 音频 Base64 编码 |
+| `input_audio.format` | string | 是 | 仅支持 `mp3` / `wav` |
+
+```json
+{
+  "type": "input_audio",
+  "input_audio": {
+    "data": "<base64-encoded-audio>",
+    "format": "mp3"
+  }
+}
+```
+
+#### `type = file`（文件 / 视频 URL）
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `file_url` | string | 是 | 文件或视频 URL（支持 data URL）；**70MB 以内** |
+| `file_name` | string | 否 | 展示用文件名 |
+| `extra_content` | object | 否 | 仅当模型协议声明支持 `extra_content.google` 时可传 |
+
+```json
+{
+  "type": "file",
+  "file_name": "demo.mp4",
+  "file_url": "https://example.com/demo.mp4"
+}
+```
+
+#### `extra_content.google`（Gemini 媒体分析，可选）
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `google.fps` | number | 视频理解帧率（请求侧） |
+| `google.media_resolution` | string | 输入媒体分辨率策略（按模型 `syntax.enum`） |
+| `google.thought_signature` | string | **仅响应字段**；请求传入返回 `invalid_parameter_value` |
+
+#### 生文多模态完整请求示例
+
+- 方法：`POST`
+- 路径：`/v1/chat/completions`
+- 说明：与纯文本相同接口；**不要**为看图场景设置 `modalities: ["image"]` 或 `image_config`（那是生图语义）。
+
+```json
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        { "type": "text", "text": "请描述图片中的主要物体与场景。" },
+        { "type": "image_url", "image_url": "https://example.com/sample.png" }
+      ]
+    }
+  ],
+  "stream": false,
+  "temperature": 0.7,
+  "max_tokens": 1024
+}
+```
+
+Base64 图片示例：
+
+```json
+{
+  "type": "image_url",
+  "image_url": {
+    "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+  }
+}
+```
+
+#### 与生图传图的区别（易混）
+
+| 能力 | 接口路径 | 传图方式 |
+|---|---|---|
+| **生文看图**（理解/问答） | `POST /v1/chat/completions` | `messages[].content[]` 中 `type: image_url` |
+| **生图**（文生图/参考图） | `POST /v1/chat/completions` | `modalities` 含 `image` + `image_config.reference_images[]` 等（见 §二） |
+
 ### 3) 生文模型差异（思考参数）
 
 - `thinking_enabled` / `reasoning_effort` 已接入统一参数链路，并映射到上游生文模板。
@@ -103,6 +320,7 @@
 - 方法：`POST`
 - 路径：`/v1/chat/completions`
 - 鉴权：`Authorization: Bearer xh-...`
+- 追踪/结算头：见 **§0**（与纯生文相同）
 
 ```json
 {
@@ -343,6 +561,7 @@ curl -X GET "http://43.159.57.43/v1/video/tasks/vidtsk_xxx" \
 ## 文档维护强约束
 
 1. 任何“对外可传参数”的新增、修改、删除（生文/生图/生视频）都必须同步更新本文。  
-2. 更新本文时，必须同时检查：`大模型文本接口.md`、`大模型生图接口.md`、`大模型视频接口.md`。  
-3. 若实际实现与文档不一致，以“先修实现或先修文档”二选一当次收敛，不允许长期漂移。
+2. 追踪/结算相关请求头、响应头变更须同步更新本文 **§0**，并检查 `大模型文本接口.md`、`大模型生图接口.md`、`接口说明文档V1.md`。  
+3. 更新本文时，必须同时检查：`大模型文本接口.md`、`大模型生图接口.md`、`大模型视频接口.md`。  
+4. 若实际实现与文档不一致，以“先修实现或先修文档”二选一当次收敛，不允许长期漂移。
 
