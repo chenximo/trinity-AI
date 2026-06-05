@@ -12,10 +12,12 @@ Reference: [OpenRouter · Codex CLI integration](https://openrouter.ai/docs/cook
 
 ### Step 1: Get a Trinity API key
 
-1. Create a key in the [Trinity console](https://trinity.ai/account/console).
+1. Create a key at [API keys](https://trinitydesk.ai/account/keys).
 2. See [Manage API keys](../../manage-api-keys.md).
 
-### Step 2: Set environment variables
+### Step 2: Connect Codex to Trinity
+
+**Recommended (UI):** Use [CC Switch](./cc-switch) to add a Codex provider (**Requires local routing map** on, endpoint `https://api.trinitydesk.ai/v1`). Below is **manual `config.toml` / environment variable** setup.
 
 Codex reads the key from the variable named in `env_key`:
 

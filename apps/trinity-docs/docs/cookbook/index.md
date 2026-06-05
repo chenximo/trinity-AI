@@ -32,6 +32,7 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 | [Cursor](./coding-agents/cursor) | IDE：Override OpenAI Base URL + API Key |
 | [CodeBuddy](./coding-agents/codebuddy) | 编程向 IDE/CLI：`models.json` |
 | [Claude Code](./coding-agents/claude-code) | 终端 Agent |
+| [CC Switch](./coding-agents/cc-switch) | Claude Code / Codex 等供应商可视化切换 |
 | [Codex CLI](./coding-agents/codex-cli) | `config.toml` |
 
 对标 [OpenRouter · Coding agents](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)（OR 侧栏以编程类为主）。
@@ -54,7 +55,7 @@ MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](htt
 
 ### 1. 获取 API Key
 
-1. 登录 [Trinity 控制台](https://trinity.ai/account/console)。
+1. 在 [控制台 · API 密钥](https://trinitydesk.ai/account/keys) 创建 Key。
 2. 创建 Key（`xh-...`）→ [管理 API 密钥](../manage-api-keys.md)。
 
 ### 2. Base URL 与完整路径

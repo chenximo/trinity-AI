@@ -16,10 +16,12 @@ Claude Code is built for the **Anthropic Messages API**. Trinity’s primary pub
 
 ### Step 1: Get a Trinity API key
 
-1. Create a key in the [console](https://trinity.ai/account/console) (`xh-...`).
+1. Create a key at [API keys](https://trinitydesk.ai/account/keys) (`xh-...`).
 2. See [Manage API keys](../../manage-api-keys.md).
 
 ### Step 2: Connect Claude Code to Trinity
+
+**Recommended (UI):** Use [CC Switch](./cc-switch) under the Claude group (API format **OpenAI Chat Completions**, local routing enabled). Below is **manual environment variable / config file** setup.
 
 Use **environment variables** or **project settings** (names per official docs).
 

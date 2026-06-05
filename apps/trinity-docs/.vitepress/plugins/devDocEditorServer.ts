@@ -2,7 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Connect, Plugin } from "vite";
+import { isCosUploadConfigured } from "../shared/cosEnv";
 import { pageSlugToMdRel } from "../shared/docPath";
+import { loadTrinityDocsDevEnv } from "../shared/loadDevEnv";
 
 const PLUGIN_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const DOCS_DIR = path.join(PLUGIN_ROOT, "docs");
@@ -29,12 +31,32 @@ export function resolveDocsMd(rel: string): string | null {
   return full;
 }
 
-function matchApiRoute(pathname: string): "raw" | "save" | null {
+function normalizeApiPathname(pathname: string): string {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
+function matchApiRoute(pathname: string): "raw" | "save" | "upload-image" | "upload-config" | null {
+  const path = normalizeApiPathname(pathname);
   for (const prefix of API_PREFIXES) {
-    if (pathname === `${prefix}/raw`) return "raw";
-    if (pathname === `${prefix}/save`) return "save";
+    if (path === `${prefix}/raw`) return "raw";
+    if (path === `${prefix}/save`) return "save";
+    if (path === `${prefix}/upload-image`) return "upload-image";
+    if (path === `${prefix}/upload-config`) return "upload-config";
   }
   return null;
+}
+
+function jsonResponse(
+  res: Connect.ServerResponse,
+  status: number,
+  body: Record<string, unknown>,
+): void {
+  res.statusCode = status;
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify(body));
 }
 
 function matchesApi(pathname: string): boolean {
@@ -48,6 +70,8 @@ async function readRequestBody(req: Connect.IncomingMessage): Promise<string> {
 }
 
 export function devDocEditorServer(): Plugin {
+  loadTrinityDocsDevEnv(PLUGIN_ROOT);
+
   return {
     name: "trinity-dev-doc-editor",
     apply: "serve",
@@ -71,6 +95,14 @@ export function devDocEditorServer(): Plugin {
         try {
           const parsed = new URL(url, "http://127.0.0.1");
           const route = matchApiRoute(parsed.pathname);
+
+          if (req.method === "OPTIONS" && route) {
+            res.statusCode = 204;
+            res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+            res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+            res.end();
+            return;
+          }
 
           if (req.method === "GET" && route === "raw") {
             const relParam = parsed.searchParams.get("rel")?.trim();
@@ -129,8 +161,64 @@ export function devDocEditorServer(): Plugin {
             return;
           }
 
-          res.statusCode = 404;
-          res.end("Not found");
+          if (req.method === "GET" && route === "upload-config") {
+            res.setHeader("Content-Type", "application/json; charset=utf-8");
+            res.end(JSON.stringify({ cosEnabled: isCosUploadConfigured() }));
+            return;
+          }
+
+          if (req.method === "POST" && route === "upload-image") {
+            const body = JSON.parse(await readRequestBody(req)) as {
+              mime?: string;
+              filename?: string;
+              dataBase64?: string;
+            };
+            const mime = body.mime?.trim();
+            const dataBase64 = body.dataBase64?.trim();
+            if (!mime || !dataBase64) {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "Missing mime or dataBase64" }));
+              return;
+            }
+            let buffer: Buffer;
+            try {
+              buffer = Buffer.from(dataBase64, "base64");
+            } catch {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "Invalid base64 payload" }));
+              return;
+            }
+            if (buffer.length === 0) {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: "Empty image data" }));
+              return;
+            }
+
+            try {
+              const { uploadImageToCos } = await import("../shared/cosUpload");
+              const { url, key } = await uploadImageToCos(
+                buffer,
+                mime,
+                body.filename?.trim(),
+              );
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ ok: true, url, key }));
+            } catch (uploadErr) {
+              const message =
+                uploadErr instanceof Error ? uploadErr.message : "COS upload failed";
+              res.statusCode = uploadErr instanceof Error && message.includes("未配置") ? 503 : 500;
+              res.setHeader("Content-Type", "application/json; charset=utf-8");
+              res.end(JSON.stringify({ error: message }));
+            }
+            return;
+          }
+
+          jsonResponse(res, 404, {
+            error: `Unknown dev docs API route: ${req.method} ${normalizeApiPathname(parsed.pathname)}`,
+          });
         } catch (err) {
           res.statusCode = 500;
           res.setHeader("Content-Type", "application/json; charset=utf-8");

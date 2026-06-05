@@ -16,10 +16,12 @@ Claude Code **原生面向 Anthropic Messages API**。Trinity 对外主路径为
 
 ### 步骤 1：获取 Trinity API Key
 
-1. 在 [控制台](https://trinity.ai/account/console) 创建 Key（`xh-...`）。
+1. 在 [控制台 · API 密钥](https://trinitydesk.ai/account/keys) 创建 Key（`xh-...`）。
 2. 见 [管理 API 密钥](../../manage-api-keys.md)。
 
 ### 步骤 2：连接 Claude Code 到 Trinity
+
+**推荐（可视化）**：用 [CC Switch](./cc-switch) 管理 Claude 分组供应商（API 格式选 **OpenAI Chat Completions**，并开启本地路由）。下文为 **手写环境变量 / 配置文件** 方式。
 
 按你使用的 Claude Code 版本，选择 **环境变量** 或 **项目配置**（名称以官方文档为准）。
 

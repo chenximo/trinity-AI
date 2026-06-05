@@ -12,10 +12,14 @@
 
 ### 步骤 1：获取 Trinity API Key
 
-1. 在 [Trinity 控制台](https://trinity.ai/account/console) 创建 Key。
+1. 在 [控制台 · API 密钥](https://trinitydesk.ai/account/keys) 创建 Key。
 2. 见 [管理 API 密钥](../../manage-api-keys.md)。
 
-### 步骤 2：设置环境变量
+### 步骤 2：配置 Trinity 端点
+
+**推荐（可视化）**：用 [CC Switch](./cc-switch) 添加 Codex 供应商（开启 **本地路由映射**，端点 `https://api.trinitydesk.ai/v1`）。下文为 **手写 `config.toml` / 环境变量**。
+
+#### 设置环境变量
 
 Codex 从 `env_key` 指定的环境变量读取 Key（示例）：
 
@@ -24,7 +28,7 @@ export TRINITY_API_KEY="xh-..."
 export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 ```
 
-### 步骤 3：编辑 `config.toml`
+### 编辑 `config.toml`
 
 配置文件通常在 `~/.codex/config.toml`（以官方文档为准）。示例：
 
@@ -55,7 +59,7 @@ export OPENAI_API_KEY="$TRINITY_API_KEY"
 export OPENAI_BASE_URL="$TRINITY_BASE_URL"
 ```
 
-### 步骤 4：运行验收
+### 运行验收
 
 在仓库目录执行 Codex，完成一条简单任务（如「用一句话说明当前目录用途」），确认网关收到 `POST /chat/completions` 请求。
 

@@ -4,8 +4,8 @@
 
 ## 创建密钥
 
-1. 登录 [Trinity AI 控制台](https://trinity.ai/account/console)（以实际部署域名为准）。
-2. 进入 **API 密钥** → **创建密钥**。
+1. 打开 [Trinity 控制台 · API 密钥](https://trinitydesk.ai/account/keys)。
+2. 点击 **创建密钥**。
 3. 复制并妥善保存完整密钥（**仅展示一次**，前缀一般为 `xh-...`）。
 
 ::: tip 安全

@@ -14,7 +14,7 @@ Cursor routes requests through **Override OpenAI Base URL** instead of `api.open
 
 ### Step 1: Get a Trinity API key
 
-1. Sign in to the [Trinity console](https://trinity.ai/account/console).
+1. Open [API keys](https://trinitydesk.ai/account/keys) in the Trinity console.
 2. Create an API key (prefix **`xh-...`**).
 3. See [Manage API keys](../../manage-api-keys.md).
 

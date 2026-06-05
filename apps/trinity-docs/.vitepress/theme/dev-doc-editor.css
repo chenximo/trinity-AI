@@ -144,6 +144,11 @@
   color: var(--danger);
 }
 
+.tdocs-dev-editor-status--ok {
+  color: var(--success, #15803d);
+  word-break: break-all;
+}
+
 /* 右侧实时预览层 */
 .tdocs-dev-preview-wrap {
   display: none;
@@ -180,6 +185,7 @@ html.tdocs-editing .tdocs-dev-preview-wrap {
   z-index: 40;
   background: var(--bg);
   overflow: hidden;
+  pointer-events: auto;
 }
 
 html.tdocs-editing .tdocs-dev-preview {
@@ -187,6 +193,54 @@ html.tdocs-editing .tdocs-dev-preview {
   overflow: auto;
   padding: 1rem 1.5rem 2rem;
   max-width: var(--tdocs-content-max, 48rem);
+}
+
+/* 预览区图片（含 Markdown 与 HTML img） */
+.tdocs-dev-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* 预览区图片可拖拽改宽（仅开发编辑） */
+.tdocs-dev-preview .tdocs-dev-img-wrap {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  vertical-align: top;
+  line-height: 0;
+  pointer-events: auto;
+}
+
+.tdocs-dev-preview .tdocs-dev-img-wrap img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.tdocs-dev-preview .tdocs-dev-img-wrap.is-resizing img {
+  outline: 2px solid var(--blue-ring, rgba(37, 99, 235, 0.45));
+  outline-offset: 2px;
+}
+
+.tdocs-dev-preview .tdocs-dev-img-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+  pointer-events: auto;
+  background: var(--blue);
+  border-radius: 3px 0 0 0;
+  opacity: 0.75;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.2);
+}
+
+.tdocs-dev-preview .tdocs-dev-img-wrap:hover .tdocs-dev-img-resize,
+.tdocs-dev-preview .tdocs-dev-img-wrap.is-resizing .tdocs-dev-img-resize {
+  opacity: 1;
 }
 
 html.tdocs-editing .tdocs-dev-edit-trigger {

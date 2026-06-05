@@ -127,6 +127,7 @@ const sidebarCookbookZh: DefaultTheme.SidebarItem[] = [
       { text: "Cursor", link: "/cookbook/coding-agents/cursor" },
       { text: "CodeBuddy", link: "/cookbook/coding-agents/codebuddy" },
       { text: "Claude Code", link: "/cookbook/coding-agents/claude-code" },
+      { text: "CC Switch", link: "/cookbook/coding-agents/cc-switch" },
       { text: "Codex CLI", link: "/cookbook/coding-agents/codex-cli" },
     ],
   },

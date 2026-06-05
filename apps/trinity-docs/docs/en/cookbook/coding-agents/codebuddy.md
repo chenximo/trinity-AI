@@ -18,7 +18,7 @@ Custom model **`url` values must be the full API path** (usually ending with **`
 
 ### Step 1: Get a Trinity API key
 
-1. Sign in to the [Trinity console](https://trinity.ai/account/console).
+1. Open [API keys](https://trinitydesk.ai/account/keys) in the Trinity console.
 2. Create an API key (prefix **`xh-...`**).
 3. See [Manage API keys](../../manage-api-keys.md).
 

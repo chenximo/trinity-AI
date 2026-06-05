@@ -14,7 +14,7 @@ Cursor 通过 **Override OpenAI Base URL** 将请求发往 Trinity，而不是 `
 
 ### 步骤 1：获取 Trinity API Key
 
-1. 登录 [Trinity 控制台](https://trinity.ai/account/console)。
+1. 打开 [Trinity 控制台 · API 密钥](https://trinitydesk.ai/account/keys)。
 2. 创建 API Key（前缀一般为 **`xh-...`**）。
 3. 详见 [管理 API 密钥](../../manage-api-keys.md)。
 

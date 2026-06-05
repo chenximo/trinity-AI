@@ -12,6 +12,7 @@
     "@trinity/tokens": "*"
   },
   "devDependencies": {
+    "cos-nodejs-sdk-v5": "^2.14.6",
     "marked": "^15.0.12",
     "vitepress": "^1.6.3"
   }

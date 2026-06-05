@@ -14,7 +14,7 @@ For streaming, tracing/settlement headers, and errors, see [Streaming (SSE)](./g
 
 ## 1. Create an API key
 
-1. Sign in to the [Trinity AI console](https://trinity.ai/account/console) (use your deployment’s domain in production).
+1. Open [API keys in the Trinity console](https://trinitydesk.ai/account/keys).
 2. Open **API keys**, create a key, and store it securely (shown only once).
 
 See also [Manage API keys](./manage-api-keys.md).
@@ -120,7 +120,7 @@ The **`model`** field must be a Trinity **model ID** (an English slug such as `d
 
 | Method | What to do | Notes |
 | --- | --- | --- |
-| **Model catalog** (recommended) | Sign in to the [Trinity AI console](https://trinity.ai/account/console), open the [model catalog](https://trinity.ai/models), copy the **model ID** into `"model"` | How to get model IDs today |
+| **Model catalog** (recommended) | Copy the **model ID** from the [model catalog](https://trinity.ai/models) into `"model"` (sign in via [API keys](https://trinitydesk.ai/account/keys) if needed) | How to get model IDs today |
 
 ::: info
 In Cursor and other agents, use the same **ID** in tool settings. See [Cookbook · coding tools](./cookbook/).

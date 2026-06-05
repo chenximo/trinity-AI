@@ -8,52 +8,107 @@ Reference: [WorkBuddy · Model configuration](https://www.workbuddy.ai/docs/work
 
 | Product | Focus | Guide |
 | --- | --- | --- |
-| **CodeBuddy** | Coding IDE / CLI | [CodeBuddy](../coding-agents/codebuddy) |
+| **CodeBuddy** | Coding IDE / CLI, `models.json` for coding | [CodeBuddy](../coding-agents/codebuddy) |
 | **WorkBuddy** | General agent workbench | This page |
 
 Trinity docs cover only the **model layer**: OpenAI-compatible `POST /v1/chat/completions`. MCP, Skills, and local execution are documented by WorkBuddy itself.
 
 ---
 
-## Quick start (custom model)
+## Quick start (Trinity custom model)
 
-Use **`models.json`** with a **full** endpoint URL ending in `/chat/completions`.
+WorkBuddy calls Trinity via **OpenAI-compatible** `POST /v1/chat/completions`. Use the **UI** (recommended) or edit **`models.json`**; both require the same **endpoint URL, API key, and model ID**.
 
-### Step 1: Trinity API key
+::: warning Use the full endpoint path
+The **API URL** must be the full path ending in **`/chat/completions`**. `https://api.trinitydesk.ai/v1` alone **will fail**. Use **`https://api.trinitydesk.ai/v1/chat/completions`** (`{TRINITY_BASE_URL}/chat/completions`).
+:::
 
-See [Manage API keys](../../manage-api-keys.md) (`xh-...`).
+### Step 1: Get a Trinity API key
 
-### Step 2: Edit `models.json`
+1. Open [Trinity console · API keys](https://trinitydesk.ai/account/keys).
+2. Create an API key (prefix **`xh-...`**).
+3. See [Manage API keys](../../manage-api-keys.md).
+
+Replace placeholders below with **`xh-your-key`**. Do **not** commit real keys to Git or screenshots.
+
+### Step 2: Configure in the UI (recommended)
+
+On the WorkBuddy **chat page**, open the **Model** dropdown at the bottom and follow the steps below (see also [WorkBuddy · Model](https://www.workbuddy.ai/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Model)).
+
+**1. Open custom model setup**
+
+In the model list, scroll to the bottom and click **「+ Configure custom model」** (or equivalent **Add custom model** entry).
+
+**2. Choose vendor「Custom」**
+
+In the custom model dialog, set **Vendor / Provider** to **Custom** (not a built-in vendor preset).
+
+**3. Add a model and fill the Trinity fields**
+
+Click **「Add model」**, then complete the form per the table below:
+
+| WorkBuddy field | Value | Source |
+| --- | --- | --- |
+| **API URL** / endpoint | `https://api.trinitydesk.ai/v1/chat/completions` | Trinity gateway **`{TRINITY_BASE_URL}/chat/completions`**; must include `/chat/completions`, not `/v1` only |
+| **API Key** | `xh-your-key` | Key from Step 1; sent as `Authorization: Bearer xh-...` |
+| **Model name** / Model ID | Exact Trinity **model ID** | [Model catalog](https://trinity.ai/models), e.g. `doubao-seed-1-6-thinking-agent-preview`; names like `gpt-5.5` must match the catalog **ID string** |
+
+::: tip Model name = request `model` field
+WorkBuddy sends this value as the JSON **`model`** field. A wrong ID causes “model not found” or routing errors.
+
+If the form has **tool calling / image / reasoning** toggles, set them per the model’s capabilities in the [catalog](https://trinity.ai/models) (e.g. disable image support if the model does not support it).
+:::
+
+Save. The new model appears under **Custom models** and can be selected from the **Model** dropdown on the chat page.
+
+### Step 3 (optional): Edit `models.json` for batch setup
+
+For **multiple Trinity models** or team-wide config, edit the user-level file (**do not commit real keys**):
 
 | Scope | Path |
 | --- | --- |
-| User (macOS/Linux) | `~/.workbuddy/models.json` |
+| User (macOS / Linux) | `~/.workbuddy/models.json` |
 | Windows | `C:\Users\<username>\.workbuddy\models.json` |
 
+Saving in the UI writes matching entries locally. WorkBuddy currently uses a **root-level JSON array** (verified), for example:
+
 ```json
-{
-  "models": [
-    {
-      "id": "doubao-seed-1-6-thinking-agent-preview",
-      "name": "Trinity · chat",
-      "vendor": "OpenAI",
-      "apiKey": "xh-your-key",
-      "url": "https://api.trinitydesk.ai/v1/chat/completions",
-      "maxInputTokens": 200000,
-      "maxOutputTokens": 8192,
-      "supportsToolCall": true,
-      "supportsImages": true
-    }
-  ],
-  "availableModels": ["doubao-seed-1-6-thinking-agent-preview"]
-}
+[
+  {
+    "id": "gpt-5.5",
+    "name": "gpt-5.5",
+    "vendor": "Custom",
+    "url": "https://api.trinitydesk.ai/v1/chat/completions",
+    "apiKey": "xh-your-key",
+    "supportsToolCall": false,
+    "supportsImages": true,
+    "supportsReasoning": false,
+    "useCustomProtocol": true
+  }
+]
 ```
 
-You can also add models via **Settings → Model** in the WorkBuddy UI.
+| Field | Description |
+| --- | --- |
+| `id` | **Required.** Same as UI **Model name**; must be a Trinity [catalog](https://trinity.ai/models) model ID |
+| `name` | Display name; may match `id` or use a friendlier label |
+| `url` | **Required.** Same as UI **API URL**; must be `…/v1/chat/completions` |
+| `apiKey` | **Required.** Same as UI **API Key** (`xh-...`) |
+| `vendor` | `Custom` when vendor is **Custom** in the UI |
+| `supportsToolCall` | Tool calling support; per model capability |
+| `supportsImages` | Image input support; `true` for multimodal models |
+| `supportsReasoning` | Reasoning / chain-of-thought; per model capability |
+| `useCustomProtocol` | Custom vendor protocol; usually `true` for UI-added custom models |
 
-### Step 3: Restart and verify
+To add more models, **append objects** to the array (valid JSON, comma-separated).
 
-Fully quit and restart WorkBuddy, select the model ID, and run a short task.
+### Step 4: Restart and verify
+
+1. **Fully quit and restart** WorkBuddy (closing the window may not be enough).
+2. Select the configured **model name** (`id`) in the **Model** dropdown.
+3. Send a short task (e.g. “Describe Trinity API in one sentence”) and confirm a normal reply.
+
+If it fails, see [Troubleshooting](#troubleshooting) below.
 
 ---
 
@@ -61,18 +116,27 @@ Fully quit and restart WorkBuddy, select the model ID, and run a short task.
 
 | Trinity docs | WorkBuddy product docs |
 | --- | --- |
-| Model `id`, `apiKey`, `url` | Local files, sandbox, permissions |
-| [Streaming](../../guides/streaming-sse.md), [parameters](../../api/chat-completions-parameters.md) | MCP, Skills |
+| `model` / `apiKey` / `url` (OpenAI-compatible chat) | Local files, sandbox, permissions |
+| [Streaming SSE](../../guides/streaming-sse.md), [chat parameters](../../api/chat-completions-parameters.md) | MCP |
+| [Errors & debugging](../../reference/error-codes.md) | Skills (`SKILL.md`) |
 
-Image/video generation uses the [API track](../../api/overview), not the default WorkBuddy chat path.
+Image and video generation use the Trinity [API track](../../api/overview), not the default WorkBuddy chat path.
+
+---
+
+## Why Trinity + WorkBuddy?
+
+- **One key and model IDs** shared with HTTP API and coding tools via the [catalog](https://trinity.ai/models).
+- **OpenAI compatibility** matches WorkBuddy custom model requirements.
+- **Multiple models** in `models.json` for different agent tasks.
 
 ---
 
 ## Limitations
 
-- OpenAI Chat Completions-compatible endpoints only.
-- `vendor: "OpenAI"` means protocol type, not vendor brand.
-- Security and local execution policies are governed by WorkBuddy and your organization.
+- **OpenAI Chat Completions** endpoints only; with **Custom** vendor you still need Trinity’s full **`/chat/completions`** URL.
+- Tool calling and image input depend on `supportsToolCall` / `supportsImages` and upstream model capability.
+- Desktop agent compliance, network, and local execution policies are governed by WorkBuddy and your organization.
 
 ---
 
@@ -80,9 +144,10 @@ Image/video generation uses the [API track](../../api/overview), not the default
 
 | Symptom | Fix |
 |---------|-----|
-| Model missing in UI | Restart app; check `availableModels` |
-| Failed requests | Full `.../chat/completions` URL |
-| Wrong config dir | WorkBuddy uses `~/.workbuddy/`, not `~/.codebuddy/` |
+| New model missing in list | Restart WorkBuddy; ensure `models.json` is a valid array with the `id` |
+| Request failed / 404 | **API URL** includes `/chat/completions`; **model name** matches [catalog](https://trinity.ai/models) ID |
+| 401 | Valid `xh-...` **API Key** |
+| Confused with CodeBuddy | CodeBuddy uses `~/.codebuddy/`; WorkBuddy uses `~/.workbuddy/` |
 
 ---
 

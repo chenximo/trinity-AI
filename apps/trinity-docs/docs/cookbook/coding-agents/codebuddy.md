@@ -18,7 +18,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
 
 ### 步骤 1：获取 Trinity API Key
 
-1. 登录 [Trinity 控制台](https://trinity.ai/account/console)。
+1. 打开 [Trinity 控制台 · API 密钥](https://trinitydesk.ai/account/keys)。
 2. 创建 API Key（前缀 **`xh-...`**）。
 3. 详见 [管理 API 密钥](../../manage-api-keys.md)。
 

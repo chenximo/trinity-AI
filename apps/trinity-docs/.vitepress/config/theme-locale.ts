@@ -2,7 +2,8 @@ import type { DefaultTheme } from "vitepress";
 
 /** 中文（root）主题壳层文案 */
 export const themeZh: Partial<DefaultTheme.Config> = {
-  outline: { label: "本页目录" },
+  /** 默认仅 h2；含 [2,3] 后「快速开始」下的「步骤 1」等 h3 会缩进显示 */
+  outline: { label: "本页目录", level: [2, 3] },
   docFooter: { prev: "上一页", next: "下一页" },
   darkModeSwitchLabel: "主题",
   lightModeSwitchTitle: "浅色",
@@ -20,7 +21,7 @@ export const themeZh: Partial<DefaultTheme.Config> = {
 
 /** 英文主题壳层文案 */
 export const themeEn: Partial<DefaultTheme.Config> = {
-  outline: { label: "On this page" },
+  outline: { label: "On this page", level: [2, 3] },
   docFooter: { prev: "Previous", next: "Next" },
   darkModeSwitchLabel: "Appearance",
   lightModeSwitchTitle: "Switch to light theme",

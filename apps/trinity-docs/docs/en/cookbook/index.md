@@ -32,6 +32,7 @@ Both often use OpenAI-compatible `chat/completions`; we separate docs by **usage
 | [Cursor](./coding-agents/cursor) | Override OpenAI Base URL + API Key |
 | [CodeBuddy](./coding-agents/codebuddy) | Coding IDE/CLI · `models.json` |
 | [Claude Code](./coding-agents/claude-code) | Terminal agent |
+| [CC Switch](./coding-agents/cc-switch) | Visual provider switching for Claude Code / Codex |
 | [Codex CLI](./coding-agents/codex-cli) | `config.toml` |
 
 Reference: [OpenRouter · Cursor integration](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration).
