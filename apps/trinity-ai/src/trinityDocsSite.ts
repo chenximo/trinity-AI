@@ -8,8 +8,8 @@ export function getTrinityDocsDevOrigin(): string {
 
 /**
  * 对外 API 文档完整 URL（apps/trinity-docs · VitePress）。
- * 浏览器内：优先同源 `/docs/`（枢纽 / trinity-ai dev 经 Vite 代理到 :5205，避免跨端口与 IDE 预览报错）。
- * 无 window 的 DEV：直连 `http://127.0.0.1:5205/docs/`。
+ * 浏览器内：优先同源 `/docs/quickstart`（枢纽 / trinity-ai dev 经 Vite 代理到 :5205，避免跨端口与 IDE 预览报错）。
+ * 无 window 的 DEV：直连 `http://127.0.0.1:5205/docs/quickstart`。
  * 生产：同源 `/docs` 或 `VITE_TRINITY_DOCS_URL`。
  */
 export function getTrinityDocsSiteUrl(path = ""): string {
@@ -23,15 +23,15 @@ export function getTrinityDocsSiteUrl(path = ""): string {
 
   if (typeof window !== "undefined") {
     const base = new URL("/docs", window.location.origin).href.replace(/\/$/, "");
-    return suffix ? `${base}${suffix}` : `${base}/`;
+    return suffix ? `${base}${suffix}` : `${base}/quickstart`;
   }
 
   if (import.meta.env.DEV) {
     const base = `${getTrinityDocsDevOrigin()}/docs`;
-    return suffix ? `${base}${suffix}` : `${base}/`;
+    return suffix ? `${base}${suffix}` : `${base}/quickstart`;
   }
 
-  return suffix ? `/docs${suffix}` : "/docs";
+  return suffix ? `/docs${suffix}` : "/docs/quickstart";
 }
 
 /** 离开当前 SPA，打开文档站（枢纽 / trinity-ai 顶栏共用） */

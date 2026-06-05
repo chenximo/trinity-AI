@@ -22,7 +22,7 @@ export function getDocsSubnav(localePath: string) {
 /** 将 relativePath 或带 base 的 pathname 规范为站点内路径（如 /api/chat-completions） */
 export function normalizeDocPath(input: string): string {
   let p = (input || "").split("#")[0].split("?")[0].replace(/\\/g, "/");
-  p = p.replace(/\.md$/i, "").replace(/\/index$/i, "");
+  p = p.replace(/\.md$/i, "").replace(/\/index$/i, "").replace(/^\/index$/i, "/");
   if (p.startsWith("/docs/")) p = p.slice(5);
   else if (p === "/docs") p = "/";
   if (p.startsWith("en/")) p = p.slice(3);

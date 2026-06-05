@@ -1,10 +1,20 @@
 # Create chat completion
 
-`POST` `{TRINITY_BASE_URL}/chat/completions`
+Send a list of chat messages to a model and generate a text response. Use this endpoint for text chat, multi-turn conversations, tool calling, and multimodal input understanding with images, audio, or files.
 
-`Content-Type: application/json`
+For real-time output, set `stream` to `true` in the request body. The gateway will return incremental chunks over Server-Sent Events (SSE).
 
-Send chat messages to a model and receive a completion. Supports non-streaming JSON and streaming SSE.
+:::: tip Scope
+This page documents **text chat completions**. Image generation also uses the `/chat/completions` path, but requires `modalities` and `image_config`; see [Create image generation](./images-generations.md).
+::::
+
+---
+
+## Endpoint
+
+| Method | URL |
+| --- | --- |
+| `POST` | `{TRINITY_BASE_URL}/chat/completions` |
 
 ---
 
@@ -28,23 +38,37 @@ Tracing and settlement headers (`X-Request-Id`, `X-Idempotency-Key`, `X-Conversa
 
 ---
 
+## Minimal request
+
+```bash
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "messages": [{ "role": "user", "content": "Hello" }]
+  }'
+```
+
+---
+
 ## Body
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `model` | string | Yes | Model ID from the [model catalog](https://trinity.ai/models) |
 | `messages` | array | Yes | `{ role, content }`; `content` may be string or a Part array |
-| `stream` | boolean | No | Default `false`; `true` returns SSE |
+| `stream` | boolean | No | Default `false`; `true` returns incremental SSE events |
 
 ::: info
-Advanced fields such as `temperature`, `thinking_enabled`, `tools`, and multimodal Parts are documented in [Chat completions · Advanced parameters](./chat-completions-parameters.md). For image generation, use [Create image generation](./images-generations.md) with `image_config`.
+Advanced fields such as `temperature`, `thinking_enabled`, `tools`, `stream_options`, and multimodal Parts are documented in [Chat completions · Advanced parameters](./chat-completions-parameters.md).
 :::
 
 ---
 
 ## Response
 
-Success returns OpenAI-style JSON (`choices[]`, `usage`, etc.). Streaming is documented in [Streaming (SSE)](../guides/streaming-sse.md). Response headers include `X-Request-Id` and `X-Settlement-Key`. Errors: [Errors & debugging](../reference/error-codes.md).
+Non-streaming requests return OpenAI-style JSON (`choices[]`, `usage`, etc.). Streaming requests return `text/event-stream`; read incremental content from `choices[0].delta.content`. See [Streaming (SSE)](../guides/streaming-sse.md). Response headers include `X-Request-Id` and `X-Settlement-Key`. Errors: [Errors & debugging](../reference/error-codes.md).
 
 ```json
 {

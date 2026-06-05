@@ -24,10 +24,12 @@ html.dark {
 
 :root {
   --tdocs-sidebar-w: 17.5rem;
-  --tdocs-nav-h: var(--vp-nav-height, 64px);
+  --tdocs-product-nav-h: var(--nav-h, 60px);
+  --vp-nav-height: var(--tdocs-product-nav-h);
+  --tdocs-nav-h: var(--tdocs-product-nav-h);
   --tdocs-subnav-h: 3rem;
-  /* 主栏 + 二级导航总高度（侧栏、正文顶距） */
-  --tdocs-layout-top: calc(var(--vp-nav-height, 64px) + var(--tdocs-subnav-h));
+  /* 产品顶栏 + 二级导航总高度（侧栏、正文顶距） */
+  --tdocs-layout-top: calc(var(--tdocs-product-nav-h) + var(--tdocs-subnav-h));
   /* 仅二级导航条高度 —— 对应 VitePress layout-top 槽，不含主顶栏 */
   --tdocs-subnav-offset: var(--tdocs-subnav-h);
   --tdocs-content-max: 48rem;
@@ -149,100 +151,139 @@ body,
   height: 0;
 }
 
-/* 顶栏 + 二级导航（OpenRouter：Nav + Docs/API 条） */
+/* 顶栏：TrinityProductNav（对齐 trinitydesk.ai）+ 二级 Docs/API 条 */
 .VPLayout {
-  /* 勿把主顶栏高度算进 layout-top，否则 VPNav 下移且正文顶距重复计算 */
-  --vp-layout-top-height: var(--tdocs-subnav-offset);
+  --vp-layout-top-height: var(--tdocs-layout-top);
 }
 
-@media (min-width: 960px) {
-  .VPNav {
-    top: 0 !important;
-    z-index: calc(var(--vp-z-index-nav) + 10);
-  }
-}
-
-/* —— 顶栏 —— */
+/* 隐藏 VitePress 默认顶栏（由 TrinityProductNav 接管） */
 .VPNav {
+  display: none !important;
+}
+
+.tdocs-product-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: calc(var(--vp-z-index-nav) + 10);
+}
+
+.tdocs-product-nav header.or-inject {
+  position: relative;
+  top: auto;
   border-bottom: none;
-  background: var(--bg) !important;
-  backdrop-filter: none;
 }
 
-.VPNavBar {
-  padding: 0 1.25rem;
+.tdocs-product-nav .header-row {
+  display: grid;
+  grid-template-columns: auto minmax(18rem, 30rem) auto;
+  max-width: none;
+  gap: 1rem;
 }
 
-.VPNavBar .title {
-  font-weight: 600;
-  font-size: 0.9375rem;
-  letter-spacing: -0.02em;
+.tdocs-product-nav .header-brand-cluster {
+  justify-self: start;
 }
 
-.VPNavBar .content-body {
-  flex: 1;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  overflow: visible;
+.tdocs-product-nav .header-end {
+  justify-self: end;
 }
 
-/* 搜索框（OpenRouter 居中宽搜索） */
-.VPNavBarSearch {
-  flex: 1;
-  max-width: 28rem;
-  margin: 0 1rem 0 2rem;
+.tdocs-product-nav .tdocs-nav-search {
+  display: none;
+  align-items: center;
+  justify-self: center;
+  width: min(30rem, 100%);
+  min-width: 0;
 }
 
-.DocSearch-Button {
+.tdocs-product-nav .VPNavBarSearch {
   width: 100%;
-  justify-content: flex-start;
-  border-radius: 999px;
+  padding-left: 0;
+}
+
+.tdocs-product-nav #local-search {
+  width: 100%;
+}
+
+.tdocs-product-nav .DocSearch-Button {
+  width: 100%;
+  height: 2.25rem;
   border: 1px solid var(--border);
-  background: var(--surface) !important;
+  border-radius: 8px;
+  background: var(--bg);
   color: var(--muted);
-  font-size: 0.875rem;
   box-shadow: none;
 }
 
-.DocSearch-Button:hover {
+.tdocs-product-nav .DocSearch-Button:hover {
   border-color: var(--border-strong);
-  background: var(--bg) !important;
+  background: var(--surface);
   color: var(--text);
 }
 
-.VPNavBarMenu .VPNavBarMenuLink {
-  font-size: 0.875rem;
-  font-weight: 500;
+.tdocs-product-nav .DocSearch-Search-Icon {
+  color: var(--muted-2);
+}
+
+.tdocs-product-nav .DocSearch-Button-Placeholder {
+  font-size: 0.8125rem;
+  font-weight: 400;
   color: var(--muted);
 }
 
-.VPNavBarMenu .VPNavBarMenuLink:hover {
-  color: var(--text);
+.tdocs-product-nav .DocSearch-Button-Keys {
+  margin-left: auto;
 }
 
-/* 语言切换：菜单置于二级导航之上，缩小 hover 空隙避免未点击就消失 */
-.VPNavBarTranslations {
-  overflow: visible;
+.tdocs-product-nav .DocSearch-Button-Key {
+  height: 1.25rem;
+  min-width: 1.25rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
 }
 
-.VPNavBarTranslations .VPFlyout {
-  z-index: calc(var(--vp-z-index-sidebar) + 2);
+.tdocs-product-nav .DocSearch-Button-Key + .DocSearch-Button-Key {
+  margin-left: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0 0.35rem;
 }
 
-.VPNavBarTranslations .VPFlyout .menu {
-  top: 100%;
-  margin-top: -2px;
-  padding-top: 6px;
-  z-index: calc(var(--vp-z-index-sidebar) + 3);
+.tdocs-product-nav .DocSearch-Button-Key:first-child {
+  display: none;
 }
 
-.VPNavBarTranslations .VPFlyout .menu::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  right: 0;
-  height: 10px;
+.tdocs-subnav {
+  border-top: none;
+}
+
+@media (min-width: 900px) {
+  .tdocs-product-nav .tdocs-nav-search {
+    display: flex;
+  }
+}
+
+@media (max-width: 1120px) {
+  .tdocs-product-nav .header-row {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .tdocs-product-nav .tdocs-nav-search {
+    width: min(22rem, 100%);
+  }
+}
+
+@media (max-width: 899px) {
+  .tdocs-product-nav .header-row {
+    display: flex;
+  }
 }
 
 /* —— 二级导航：文档 | API | 应用场景（layout-top 锚点 + fixed 贴在 Nav 下） —— */
@@ -253,7 +294,7 @@ body,
 
 .tdocs-subnav {
   position: fixed;
-  top: var(--vp-nav-height);
+  top: var(--tdocs-product-nav-h);
   left: 0;
   right: 0;
   /* 低于主顶栏，避免挡住语言/主题等 VPFlyout 下拉 */

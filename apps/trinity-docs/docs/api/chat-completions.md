@@ -1,10 +1,20 @@
 # 创建对话补全
 
-`POST` `{TRINITY_BASE_URL}/chat/completions`
+向模型发送一组对话消息，生成文本回复。适用于文本对话、多轮聊天、工具调用，以及图片、音频、文件等多模态输入理解。
 
-`Content-Type: application/json`
+需要实时返回时，将请求体中的 `stream` 设置为 `true`，网关会通过 Server-Sent Events（SSE）持续返回增量内容。
 
-向模型发送对话消息，获取补全回复。支持**非流式**与**流式（SSE）**。
+:::: tip 适用范围
+本页说明的是**文本对话补全**能力。图片生成虽然也使用 `/chat/completions` 路径，但需要 `modalities` 与 `image_config`，请参考 [创建图像生成](./images-generations.md)。
+::::
+
+---
+
+## Endpoint
+
+| Method | URL |
+| --- | --- |
+| `POST` | `{TRINITY_BASE_URL}/chat/completions` |
 
 ---
 
@@ -28,23 +38,37 @@
 
 ---
 
+## 最小请求示例
+
+```bash
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "messages": [{ "role": "user", "content": "你好" }]
+  }'
+```
+
+---
+
 ## Body
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | `model` | string | 是 | 模型 ID，见 [模型广场](https://trinity.ai/models) |
 | `messages` | array | 是 | `{ role, content }`；`content` 可为 string 或 Part 数组 |
-| `stream` | boolean | 否 | 默认 `false`；`true` 时为 SSE |
+| `stream` | boolean | 否 | 默认 `false`；`true` 时返回 SSE 增量事件 |
 
 ::: info
-`temperature`、`thinking_enabled`、`tools`、多模态 Part 等**高级字段**见 [对话补全 · 高级参数](./chat-completions-parameters.md)。文生图勿在本端点混用 `image_config`，见 [图像生成](./images-generations.md)。
+`temperature`、`thinking_enabled`、`tools`、`stream_options`、多模态 Part 等高级字段见 [对话补全 · 高级参数](./chat-completions-parameters.md)。
 :::
 
 ---
 
 ## Response
 
-成功时返回 OpenAI 风格 JSON（`choices[]`、`usage` 等）。流式见 [流式输出（SSE）](../guides/streaming-sse.md)。响应头含 `X-Request-Id`、`X-Settlement-Key`。错误见 [错误与调试](../reference/error-codes.md)。
+非流式请求成功时返回 OpenAI 风格 JSON（`choices[]`、`usage` 等）。流式请求返回 `text/event-stream`，从 `choices[0].delta.content` 读取增量内容，详见 [流式输出（SSE）](../guides/streaming-sse.md)。响应头含 `X-Request-Id`、`X-Settlement-Key`。错误见 [错误与调试](../reference/error-codes.md)。
 
 ```json
 {

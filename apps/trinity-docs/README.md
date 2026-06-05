@@ -30,7 +30,7 @@ npm install
 npm run dev:trinity-docs
 ```
 
-默认开发地址：`http://localhost:5205/docs/`（`vitepress dev --port 5205`，与 portal `:5173`、GEO `:5203` 错开）。**开发枢纽** FAB / 首页、`trinity-ai` 顶栏链到该地址（`VITE_TRINITY_DOCS_URL` / `VITE_TRINITY_DOCS_DEV_PORT` 可覆盖）。
+默认开发地址：`http://localhost:5205/docs/quickstart`（`vitepress dev --port 5205`，与 portal `:5173`、GEO `:5203` 错开）。**开发枢纽** FAB / 首页、`trinity-ai` 顶栏链到该地址（`VITE_TRINITY_DOCS_URL` / `VITE_TRINITY_DOCS_DEV_PORT` 可覆盖）。
 
 ### 开发环境 · 页内分栏编辑（仅 DEV）
 

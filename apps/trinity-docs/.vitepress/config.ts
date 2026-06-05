@@ -1,7 +1,11 @@
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vitepress";
 import { devDocEditorServer } from "./plugins/devDocEditorServer";
+import { docsBaseRedirect } from "./plugins/docsBaseRedirect";
 import { buildMergedSidebar } from "./config/sidebars";
 import { themeEn, themeZh } from "./config/theme-locale";
+
+const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
 
 /**
  * 部署路径：
@@ -20,7 +24,8 @@ const markdownShared = {
 
 const sharedTheme = {
   siteTitle: "Trinity AI",
-  nav: [{ text: "官网", link: "https://trinity.ai/", target: "_blank", rel: "noreferrer" }],
+  /** 顶栏由 TrinityProductNav 渲染，对齐 trinitydesk.ai */
+  nav: [] as const,
   sidebar: buildMergedSidebar(),
   socialLinks: [] as const,
   footer: {
@@ -31,7 +36,12 @@ const sharedTheme = {
 
 export default defineConfig({
   vite: {
-    plugins: [devDocEditorServer()],
+    plugins: [docsBaseRedirect(), devDocEditorServer()],
+    resolve: {
+      alias: {
+        "@repo": repoRoot,
+      },
+    },
     server: { port: 5205, strictPort: true, host: "127.0.0.1" },
     preview: { port: 5202, strictPort: true },
   },
@@ -43,6 +53,10 @@ export default defineConfig({
   srcDir: "./docs",
   cleanUrls: true,
   lastUpdated: true,
+  themeConfig: {
+    ...sharedTheme,
+    search: { provider: "local" },
+  },
 
   locales: {
     root: {
@@ -68,13 +82,12 @@ export default defineConfig({
       label: "English",
       lang: "en",
       /** 语言根路径（勿写具体页面）；对应页路由会拼当前 slug，如 /en/quickstart */
-      link: "/en/",
+      link: "/en/quickstart",
       title: "Trinity AI Docs",
       description:
         "Trinity AI API documentation: HTTP API, chat, image and video generation.",
       themeConfig: {
         ...sharedTheme,
-        nav: [{ text: "Website", link: "https://trinity.ai/", target: "_blank", rel: "noreferrer" }],
         ...themeEn,
       },
       markdown: {

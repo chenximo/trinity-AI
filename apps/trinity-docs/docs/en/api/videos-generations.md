@@ -1,10 +1,17 @@
 # Create video generation task
 
-`POST` `{TRINITY_BASE_URL}/video/generations`
+Submit a task to a video generation model and generate video asynchronously. Use this endpoint for text-to-video, first/last-frame video generation, and video generation with image or video references.
 
-`Content-Type: application/json`
+Video generation is a long-running task: first call `POST /video/generations` to create a task, then poll `GET /video/tasks/{taskId}` with the returned `task_id` to retrieve status and results. This is **not** returned synchronously from `/chat/completions`.
 
-Create an async video generation task. Retrieve results with the task query endpoint.
+---
+
+## Endpoint
+
+| Method | URL | Description |
+| --- | --- | --- |
+| `POST` | `{TRINITY_BASE_URL}/video/generations` | Create a video generation task |
+| `GET` | `{TRINITY_BASE_URL}/video/tasks/{taskId}` | Query task status and results |
 
 ---
 
@@ -14,23 +21,48 @@ Create an async video generation task. Retrieve results with the task query endp
 
 ---
 
+## Headers
+
+| Header | Required | Description |
+| --- | --- | --- |
+| `Authorization` | Yes | `Bearer <TRINITY_API_KEY>` |
+| `Content-Type` | When creating a task | `application/json` |
+
+---
+
+## Minimal request
+
+```bash
+curl -sS "${TRINITY_BASE_URL}/video/generations" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "tencent/kling-2.6",
+    "prompt": "Golden hour coastline, cinematic jogger shot",
+    "duration_sec": 5,
+    "aspect_ratio": "16:9"
+  }'
+```
+
+---
+
 ## Body
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Example: `tencent/kling-2.6` |
-| `prompt` | string | Conditional | Required when no input assets are provided |
-| `duration_sec` | integer | No | Default `5` |
-| `resolution` | string | No | Example: `1080p` |
-| `aspect_ratio` | string | No | Example: `16:9` |
+| `model` | string | Yes | Video generation model, e.g. `tencent/kling-2.6` |
+| `prompt` | string | Conditional | Required when no input assets are provided; still recommended for describing camera movement, action, and style |
+| `duration_sec` | integer | No | Default `5`, limited by model capabilities |
+| `resolution` | string | No | Example: `720p`, `1080p` |
+| `aspect_ratio` | string | No | Example: `16:9`, `9:16`, `1:1` |
 
-`frame_images`, `input_references`, `model_specific_config`, and related fields are documented in [Video generation · Advanced parameters](./video-generation-parameters.md).
+`frame_images`, `input_references`, `model_specific_config`, and related fields are documented in [Video generation · Advanced parameters](./video-generation-parameters.md). Full polling flow: [Video generation guide](../multimodal/video-generation.md).
 
 ---
 
 ## Response
 
-Returns an async task identifier. Use `task_id` (or `trinity_task.task_id`) to query status.
+A successful create request returns an async task identifier. Use `task_id` or `trinity_task.task_id` to query status, then read the video URL or error information from the task query response.
 
 ---
 

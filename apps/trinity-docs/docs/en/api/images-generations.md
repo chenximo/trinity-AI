@@ -1,17 +1,23 @@
 # Create image generation
 
-`POST` `{TRINITY_BASE_URL}/chat/completions`
+Send a text prompt to an image generation model and generate image outputs. Use this endpoint for text-to-image, image generation with references, and responses that include both text and images.
 
-`Content-Type: application/json`
-
-Generate images with `modalities` and `image_config`. This is **not** `POST /images/generations`.
+Trinity image generation reuses the `/chat/completions` path. Declare image output with `modalities`, and use `image_config` for aspect ratio, output format, reference images, and related options. This is **not** `POST /images/generations`.
 
 ::: warning Do not confuse schemas
-| Capability | How to pass images |
+| Capability | How to use it |
 | --- | --- |
-| Text model seeing images | `messages[].content[]` · `type: image_url` |
-| Image generation | `modalities` includes `image` + `image_config` |
+| Text model seeing images | Pass `type: image_url` in `messages[].content[]` |
+| Image generation | Set `modalities` to include `image`, and optionally pass `image_config` |
 :::
+
+---
+
+## Endpoint
+
+| Method | URL |
+| --- | --- |
+| `POST` | `{TRINITY_BASE_URL}/chat/completions` |
 
 ---
 
@@ -21,17 +27,47 @@ Generate images with `modalities` and `image_config`. This is **not** `POST /ima
 
 ---
 
+## Headers
+
+| Header | Required | Description |
+| --- | --- | --- |
+| `Authorization` | Yes | `Bearer <TRINITY_API_KEY>` |
+| `Content-Type` | Yes | `application/json` |
+
+---
+
+## Minimal request
+
+```bash
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "hunyuan-image",
+    "messages": [{ "role": "user", "content": "Cyberpunk futuristic city at night" }],
+    "modalities": ["image", "text"]
+  }'
+```
+
+---
+
 ## Body
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `model` | string | Yes | Image model, e.g. `hunyuan-image` |
 | `messages` | array | Yes | Usually a `user` text prompt |
-| `modalities` | array | Recommended | Include `image` |
-| `stream` | boolean | No | Image generation **does not support** `true` |
-| `image_config` | object | No | Aspect ratio, reference images, etc. |
+| `modalities` | array | Recommended | Include `image`; include `text` as well when text explanation is needed |
+| `stream` | boolean | No | Image generation does not support `true`; omit it or set `false` |
+| `image_config` | object | No | Aspect ratio, output format, reference images, etc. |
 
-All `image_config` fields: [Image generation · Advanced parameters](./image-generation-parameters.md).
+All `image_config` fields: [Image generation · Advanced parameters](./image-generation-parameters.md). Full usage: [Image generation guide](../multimodal/image-generation.md).
+
+---
+
+## Response
+
+Success returns OpenAI-style JSON. Generated images are usually in `choices[0].message.images` or model-specific image fields; use the actual model response as the source of truth.
 
 ---
 
