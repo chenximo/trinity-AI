@@ -27,7 +27,7 @@
 | `frame_type` | `first_frame` 或 `last_frame` |
 | `image_url.url` | 可访问图片 URL |
 
-首帧、尾帧**必须**走 `frame_images[]`；不要把腾讯侧 `Usage` 取值（如 `Reference`）当作 `reference_type` 传入。
+首帧、尾帧**必须**走 `frame_images[]`；不要把模型专属配置里的素材用途值（如 `Reference`）当作 `reference_type` 传入。
 
 ### `input_references[]`（基础）
 
@@ -43,7 +43,7 @@
 
 ## `input_references` 进阶 {#input_references-进阶}
 
-`object_id` 与 `reference_type` 均为**可选**，平台映射到上游 `FileInfos[]`，**不做枚举校验**；传错或当前模型不支持时，上游可能忽略或报错。
+`object_id` 与 `reference_type` 均为**可选**。传错或当前模型不支持时，可能被忽略或返回参数错误；请以模型能力说明与实际响应为准。
 
 **适用范围**
 

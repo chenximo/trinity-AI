@@ -15,7 +15,7 @@ Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/
 在 [模型广场](https://trinity.ai/models) 登录后，选择支持**图像输出**的生图模型，复制 **模型 ID** 填入 `model`（例如 `hunyuan-image`）。以你账号可见列表为准。
 
 ::: info
-Trinity 当前不提供对外 `GET /v1/models` 列举接口；勿依赖 `output_modalities` 查询参数（见产品路线图）。
+Trinity 当前不提供对外 `GET /v1/models` 列举接口；请以 [模型广场](https://trinity.ai/models) 中展示的模型能力为准，勿依赖 `output_modalities` 查询参数。
 :::
 
 ---

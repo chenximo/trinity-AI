@@ -31,7 +31,7 @@ Successful and error responses (**including SSE**) typically return `X-Request-I
 Without `X-Idempotency-Key`, **each HTTP call is billed separately**. After a timeout, retry the same business operation with the **same settlement key**; the trace ID may change.
 :::
 
-See [API overview · Tracing & settlement](../api/overview.md#追踪与结算请求头).
+See [API overview · Tracing & settlement](../api/overview.md#tracing-and-settlement-headers).
 
 ---
 

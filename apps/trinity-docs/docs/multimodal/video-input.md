@@ -240,7 +240,7 @@ Data URL 常用 MIME：
 
 具体是否被某模型接受，以 [模型广场](https://trinity.ai/models) 与调用结果为准。
 
-部分模型在协议层支持 `extra_content.google`（如视频理解帧率 `fps` 等），仅当模型声明支持时可传；详见 [高级参数 · 生文](../api/chat-completions-parameters.md) 与工程师实现说明。
+部分模型支持 `extra_content.google`（如视频理解帧率 `fps` 等）这类模型专属扩展；仅在模型能力说明明确支持时传入，未支持时请省略。
 
 ---
 
@@ -267,7 +267,7 @@ Data URL 常用 MIME：
 
 ### 与 OpenRouter 文档的差异
 
-[OpenRouter 视频输入](https://openrouter.ai/docs/guides/overview/multimodal/videos) 示例使用 `type: video_url`。Trinity 生文侧请使用 **`type: file` + `file_url`**（与工程师契约一致）。勿把生视频 API 的 `input_references` 结构抄到本页。
+[OpenRouter 视频输入](https://openrouter.ai/docs/guides/overview/multimodal/videos) 示例使用 `type: video_url`。Trinity 生文侧请使用 **`type: file` + `file_url`**。勿把生视频 API 的 `input_references` 结构用于本页的视频输入。
 
 ---
 

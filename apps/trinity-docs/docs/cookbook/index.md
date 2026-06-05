@@ -47,8 +47,6 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 
 MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](https://www.workbuddy.ai/docs/workbuddy/)；本轨只写 **Trinity 模型接入**。
 
-更多非编程类工具待产品排期后补充。
-
 ---
 
 ## 通用前置

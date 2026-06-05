@@ -162,7 +162,7 @@ After a network drop, retry the **same business operation**:
 - **Keep `X-Idempotency-Key` unchanged** → avoid duplicate charges
 - **Change `X-Request-Id` if you want** → distinguish retry attempts
 
-See [API overview · Tracing & settlement](../api/overview.md#追踪与结算请求头).
+See [API overview · Tracing & settlement](../api/overview.md#tracing-and-settlement-headers).
 
 ---
 
