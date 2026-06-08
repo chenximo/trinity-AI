@@ -7,9 +7,23 @@ description: >-
   apps/*, packages/*, pnpm workspace, Uno theme, Vue prototypes, module README,
   five-piece delivery, Trinity AI / AI Cloud / Trinity GEO admin apps, or when the
   user mentions 高保真原型、Monorepo、五件套、tokens 包、组件库、Mock 契约、工程方案、双仓、交付工程师。
+disable-model-invocation: true
 ---
 
 # Trinity · Vue 高保真原型 Monorepo
+
+边界：[`./DOMAIN.md`](./DOMAIN.md) · 确认：[`./confirmation.md`](./confirmation.md)
+
+## Workflows
+
+| 意图 | 文件 |
+|------|------|
+| 新建模块 | [`./workflows/new-module.md`](./workflows/new-module.md) |
+| 消费原型 | [`./workflows/consume-prototype.md`](./workflows/consume-prototype.md) |
+| 更新页面 | [`./workflows/update-page.md`](./workflows/update-page.md) |
+| 本地预览 | [`./workflows/local-preview.md`](./workflows/local-preview.md) |
+
+---
 
 ## 权威文档（先读再改大结构）
 

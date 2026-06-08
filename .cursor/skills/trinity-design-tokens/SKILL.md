@@ -12,6 +12,8 @@ disable-model-invocation: true
 
 # Trinity 设计色板与规范
 
+边界：[`./DOMAIN.md`](./DOMAIN.md) · Workflows：[`update-token`](./workflows/update-token.md)、[`audit-page-style`](./workflows/audit-page-style.md) · 确认：[`./confirmation.md`](./confirmation.md)
+
 ## 单一事实来源
 
 - **全局 token**：`assets/trinity-base.css` 的 `:root` 与 `html[data-theme="dark"]` / `html[data-theme="system"]`（及 `prefers-color-scheme: dark`）覆盖。Trinity AI / Cloud 页面经相对路径引用该文件。

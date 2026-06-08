@@ -8,9 +8,12 @@ description: >-
   「遵循营销页规范」「方案矩阵配图」时使用。与 trinity-design-tokens、
   trinity-vue-prototype-monorepo 叠加；控制台列表页用 trinity-user-console，后台用
   trinity-admin-ruoyi-list。
+disable-model-invocation: true
 ---
 
 # Trinity · ToB 官网营销页（统一 Skill）
+
+边界：[`./DOMAIN.md`](./DOMAIN.md) · Workflows：[`update-home`](./workflows/update-home.md)、[`update-solution-page`](./workflows/update-solution-page.md)、[`update-pricing`](./workflows/update-pricing.md) · 确认：[`./confirmation.md`](./confirmation.md)
 
 ## 定位
 

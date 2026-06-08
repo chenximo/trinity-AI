@@ -5,9 +5,12 @@ description: >-
   el-table.admin-ep-table-wrap、ADMIN_TABLE_COL 列宽、操作列 admin-ep-row-actions、
   表头与单元格左对齐。在改 apps/trinity-ai-admin 列表/表格/筛选/分页，或用户提到
   若依、运营后台列表、表格对齐、AdminSectionHead、admin-ep-table 时使用。
+disable-model-invocation: true
 ---
 
 # Trinity 运营后台 · 若依式列表
+
+边界：[`./DOMAIN.md`](./DOMAIN.md) · Workflows：[`new-list-page`](./workflows/new-list-page.md)、[`update-list-page`](./workflows/update-list-page.md) · 确认：[`./confirmation.md`](./confirmation.md)
 
 ## 权威文档（先读）
 

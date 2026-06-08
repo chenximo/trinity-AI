@@ -8,6 +8,7 @@ alwaysApply: true
 本仓库任务 **先** 按 `.cursor/skills/SKILL.md`（`trinity-project`）分流并 READ 对应子 Skill，再动手。
 
 - 产品手册：`apps/trinity-product/docs/` + `trinity-product-handbook`
+- API 验收：`acceptance/**`、`api-test/**` + `trinity-api-acceptance`
 - 对外文档站：`apps/trinity-docs/` + `trinity-docs`
 - 全局 UI token：叠加 `trinity-design-spec-first` 规则
 - 子 Skill 索引：`.cursor/skills/README.md`

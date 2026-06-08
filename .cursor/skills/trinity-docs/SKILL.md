@@ -11,6 +11,20 @@ disable-model-invocation: true
 
 # Trinity 对外文档站 · Agent Skill
 
+## 读取顺序
+
+`SKILL.md` → `workflows/<task>.md` → repo 真源 md。边界：[`./DOMAIN.md`](./DOMAIN.md) · 确认：[`./confirmation.md`](./confirmation.md)
+
+## Workflows
+
+| 意图 | 文件 |
+|------|------|
+| 更新 API 文档 | [`./workflows/update-api-doc.md`](./workflows/update-api-doc.md) |
+| 对齐 OpenRouter | [`./workflows/align-openrouter.md`](./workflows/align-openrouter.md) |
+| 更新参数表 | [`./workflows/update-param-table.md`](./workflows/update-param-table.md) |
+
+---
+
 ## 真源（MUST READ，禁止凭记忆写对外正文）
 
 | 任务 | 必读 |
@@ -98,12 +112,7 @@ OR 参考（结构，非照抄未开放能力）：
 
 ## 与其它 Skill 边界
 
-| 场景 | 用 |
-|------|-----|
-| `apps/trinity-docs/**` 对外开发者文档 | **本 skill** |
-| `apps/trinity-product/docs/**` 产品手册、roadmap | `trinity-product-handbook` |
-| `TrinityAI/design-spec`、业务页 CSS | `trinity-design-tokens` |
-| Vue apps 工程实现 | `trinity-vue-prototype-monorepo` |
+见 [`./DOMAIN.md`](./DOMAIN.md)。
 
 ---
 

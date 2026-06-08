@@ -5,11 +5,22 @@ description: >-
   产品总览、子总览、叶子页、roadmap.yml、week-progress.yml。须先读仓库内文档规范
   与更新规范；符号与周会顺序以更新规范为准。触发词：产品手册、trinity-product、
   管理闭环、产品地图、产品总览、子总览、roadmap.yml、week-progress、手册规范。
-  勿与 trinity-docs 对外 API 文档、trinity-vue-prototype-monorepo 工程脚手架混用。
+  勿与 trinity-api-acceptance 验收数据、trinity-docs 对外 API 文档、trinity-vue-prototype-monorepo 工程脚手架混用。
 disable-model-invocation: true
 ---
 
 # Trinity 产品手册 · Agent Skill
+
+## 读取顺序
+
+```text
+SKILL.md → workflows/<task>.md → references/template-*.md → 产品手册文档规范 / 更新规范
+DOMAIN.md、confirmation.md：封发确认或删页时再 READ。
+```
+
+边界：[`./DOMAIN.md`](./DOMAIN.md)
+
+---
 
 ## 真源（MUST READ，禁止凭记忆写）
 
@@ -39,27 +50,20 @@ disable-model-invocation: true
 
 ## 与其它 Skill 边界
 
-| 场景 | 用 |
-|------|-----|
-| 写/改 `apps/trinity-product/docs/**` | **本 skill** |
-| 对外 API 文档 `trinity-docs` | 不是产品手册 |
-| Vue 工程、Monorepo、高保真实现 | `trinity-vue-prototype-monorepo` |
-| 用户控制台 UI 规则 | `trinity-user-console` |
-| 运营后台列表 | `trinity-admin-ruoyi-list` |
+见 [`./DOMAIN.md`](./DOMAIN.md)。
 
 ---
 
-## 分流（先判断再写）
+## 分流（workflows）
 
-| 用户意图 | 页面类型 | 模板 |
-|----------|----------|------|
-| 改手册首页 / 介绍手册能力 | 站点总览 | `./references/template-site-index.md` |
-| 改某业务线全景、周计划看板 | 产品总览 | `./references/template-product-overview.md` |
-| 改用户侧/平台侧/运营侧模块表 | 子总览 | `./references/template-sub-overview.md` |
-| 新建/改单个模块说明与子能力 | 标准叶子页 | 先 READ `docs/ai-api-platform/user/models/list.md` + `./references/template-leaf.md` |
-| 长需求 / PRD 正文 | — | 写 `docs/05-产品与PRD/`；叶子附录链出，**不**新建手册页型 |
-| 只改进度符号 / 周会 / 锁节点 | — | 只 READ **更新规范**，改 `roadmap.yml` 或 `week-progress.yml` |
-| 只改侧栏导航 | — | `.vitepress/config.ts` + 父级子总览表加一行 |
+| 用户意图 | Workflow |
+|----------|----------|
+| 新建/改产品页 | [`./workflows/update-product-page.md`](./workflows/update-product-page.md) |
+| 周会 / week-progress / roadmap 符号 | [`./workflows/update-week-progress.md`](./workflows/update-week-progress.md) |
+| 侧栏导航 | [`./workflows/add-sidebar.md`](./workflows/add-sidebar.md) |
+| 验收台 / 用例 / Chat API Test | `trinity-api-acceptance`（非本 Skill） |
+
+确认规则：[`./confirmation.md`](./confirmation.md)
 
 禁止未 READ 对应模板与规范就生成整页。
 

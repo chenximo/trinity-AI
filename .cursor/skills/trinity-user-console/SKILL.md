@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 # Trinity 用户控制台系统 · Agent 操作手册
 
+边界：[`./DOMAIN.md`](./DOMAIN.md) · Workflows：[`add-console-page`](./workflows/add-console-page.md)、[`adjust-account-flow`](./workflows/adjust-account-flow.md) · 确认：[`./confirmation.md`](./confirmation.md)
+
 **Agent 唯一执行真源**。规范页 `/user-console-spec` 仅做**视觉验收**；`docs/03` 给人读叙事。方法论：`docs/08-方法论与汇报/Vue原型生成最佳实践-Skill规范页与验收.md`。
 
 ## 触发词（任务里出现则应读本 Skill）
