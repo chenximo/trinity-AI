@@ -40,6 +40,8 @@ flowchart LR
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
 | **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
 
+日常查厂商文档、价目表等外链，见 **[上游资料索引](./upstream-references)**（产品总览下侧栏第二项）。
+
 ::: tip 和「OpenRouter」怎么对照
 OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营后台管理平台**为 B2B 自建，工程在 `trinity-ai-admin`。
 :::

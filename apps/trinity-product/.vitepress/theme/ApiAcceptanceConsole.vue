@@ -25,6 +25,7 @@ import {
   getModelCacheEntry,
   markModelExported,
   pickModelRuns,
+  readRunsCache,
   rowCacheKey,
   saveModelCacheEntry,
   type SerializableRunRecord,
@@ -123,6 +124,7 @@ const exportError = ref("");
 const exportInfo = ref(false);
 const hydrateSource = ref<"cache" | "report" | null>(null);
 const duplicateExportAck = ref("");
+const testedModels = ref<Set<string>>(new Set());
 
 function rowKey(caseId: string, model: string) {
   return `${caseId}::${model}`;
@@ -327,6 +329,32 @@ function hasExecutedRunsForModel(model: string): boolean {
   return modelCaseIds().some((caseId) => runs[rowKey(caseId, model)]?.pass != null);
 }
 
+function isModelTested(model: string): boolean {
+  return testedModels.value.has(modelKey(model)) || hasExecutedRunsForModel(model);
+}
+
+function markModelTested(model: string) {
+  if (!model || model === "—") return;
+  testedModels.value = new Set([...testedModels.value, modelKey(model)]);
+}
+
+function refreshTestedModelsFromCache() {
+  const next = new Set<string>();
+  const cache = readRunsCache();
+  if (cache?.models) {
+    for (const [model, entry] of Object.entries(cache.models)) {
+      if (Object.values(entry.runs ?? {}).some((run) => run.pass != null)) {
+        next.add(modelKey(model));
+      }
+    }
+  }
+  testedModels.value = next;
+}
+
+function modelOptionLabel(m: ModelItem): string {
+  return `${isModelTested(m.id) ? "✓ 已测 · " : ""}${m.label}（${m.id}）`;
+}
+
 function applyReportRows(model: string, rows: ChatApiTestReportRow[]) {
   for (const row of rows) {
     if (row.machinePass == null) continue;
@@ -404,6 +432,7 @@ async function hydrateActiveModelRuns() {
     for (const [key, rec] of Object.entries(cached.runs)) {
       runs[key] = fromSerializableRun(rec);
     }
+    markModelTested(model);
     hydrateSource.value = "cache";
     return;
   }
@@ -443,6 +472,33 @@ function saveSignoff() {
   sessionStorage.setItem(ACCEPTANCE_STORAGE, JSON.stringify({ ...acceptance }));
 }
 
+function normalizeModelId(id: string): string {
+  return id.trim();
+}
+
+function modelKey(id: string): string {
+  return normalizeModelId(id).toLowerCase();
+}
+
+function dedupeModelItems(list: ModelItem[]): ModelItem[] {
+  const seen = new Set<string>();
+  const out: ModelItem[] = [];
+  for (const m of list) {
+    if (typeof m?.id !== "string") continue;
+    const id = normalizeModelId(m.id);
+    const key = modelKey(id);
+    if (!id || seen.has(key)) continue;
+    seen.add(key);
+    out.push({
+      ...m,
+      id,
+      label: m.label?.trim() || guessModelLabel(id),
+      provider: m.provider?.trim() || "custom",
+    });
+  }
+  return out;
+}
+
 function loadCustomModels(): ModelItem[] {
   if (!isClient) return [];
   try {
@@ -450,13 +506,9 @@ function loadCustomModels(): ModelItem[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw) as ModelItem[];
     if (!Array.isArray(parsed)) return [];
-    return parsed
-      .filter((m) => typeof m?.id === "string" && m.id.trim())
-      .map((m) => ({
-        id: m.id.trim(),
-        label: (m.label?.trim() || guessModelLabel(m.id.trim())),
-        provider: m.provider?.trim() || "custom",
-      }));
+    const deduped = dedupeModelItems(parsed);
+    if (deduped.length !== parsed.length) saveCustomModels(deduped);
+    return deduped;
   } catch {
     return [];
   }
@@ -464,19 +516,11 @@ function loadCustomModels(): ModelItem[] {
 
 function saveCustomModels(list: ModelItem[]) {
   if (!isClient) return;
-  localStorage.setItem(CUSTOM_MODELS_STORAGE, JSON.stringify(list));
+  localStorage.setItem(CUSTOM_MODELS_STORAGE, JSON.stringify(dedupeModelItems(list)));
 }
 
 function mergeModelLists(base: ModelItem[], custom: ModelItem[]): ModelItem[] {
-  const seen = new Set<string>();
-  const out: ModelItem[] = [];
-  for (const m of [...base, ...custom]) {
-    const id = m.id.trim();
-    if (!id || seen.has(id)) continue;
-    seen.add(id);
-    out.push({ ...m, id });
-  }
-  return out;
+  return dedupeModelItems([...base, ...custom]);
 }
 
 function refreshMergedModels() {
@@ -508,7 +552,7 @@ function cancelAddModel() {
 
 function confirmAddModel() {
   addModelError.value = "";
-  const id = newModelId.value.trim();
+  const id = normalizeModelId(newModelId.value);
   if (!id) {
     addModelError.value = "请填写 model id（如 gpt-5.4）";
     return;
@@ -518,17 +562,23 @@ function confirmAddModel() {
     return;
   }
 
-  if (!models.value.some((m) => m.id === id)) {
-    const item: ModelItem = {
-      id,
-      label: newModelLabel.value.trim() || guessModelLabel(id),
-      provider: "custom",
-    };
-    customModels.value = [...customModels.value.filter((m) => m.id !== id), item];
-    saveCustomModels(customModels.value);
-    refreshMergedModels();
+  const key = modelKey(id);
+  const existing = models.value.find((m) => modelKey(m.id) === key);
+  if (existing) {
+    selectedModel.value = existing.id;
+    onModelChange();
+    addModelError.value = `模型 ${existing.id} 已存在，已为你选中，无需重复添加。`;
+    return;
   }
 
+  const item: ModelItem = {
+    id,
+    label: newModelLabel.value.trim() || guessModelLabel(id),
+    provider: "custom",
+  };
+  customModels.value = dedupeModelItems([...customModels.value, item]);
+  saveCustomModels(customModels.value);
+  refreshMergedModels();
   selectedModel.value = id;
   onModelChange();
   cancelAddModel();
@@ -551,9 +601,13 @@ async function loadConfig() {
     const savedBase = isClient ? sessionStorage.getItem(BASE_URL_STORAGE)?.trim() : "";
     baseUrl.value = savedBase || data.baseUrl;
     hasServerKey.value = data.hasServerKey;
-    baseModels.value = data.models;
-    customModels.value = loadCustomModels();
+    baseModels.value = dedupeModelItems(data.models);
+    customModels.value = loadCustomModels().filter(
+      (m) => !baseModels.value.some((base) => modelKey(base.id) === modelKey(m.id)),
+    );
+    saveCustomModels(customModels.value);
     refreshMergedModels();
+    refreshTestedModelsFromCache();
     defaultModel.value = data.defaultModel ?? data.models[0]?.id ?? "gpt-5.5";
     const savedModel = isClient ? sessionStorage.getItem(MODEL_STORAGE)?.trim() : "";
     const modelIds = new Set(models.value.map((m) => m.id));
@@ -605,6 +659,7 @@ async function runRow(
         assertionErrors: [data.error],
       };
       persistActiveModelRuns();
+      markModelTested(model);
       return;
     }
     runs[key] = {
@@ -626,6 +681,7 @@ async function runRow(
       assertionErrors: data.assertionErrors ?? [],
     };
     persistActiveModelRuns();
+    markModelTested(model);
   } catch (e) {
     runs[key] = {
       ...defaultRun(),
@@ -634,6 +690,7 @@ async function runRow(
       assertionErrors: ["请求失败"],
     };
     persistActiveModelRuns();
+    markModelTested(model);
   }
 }
 
@@ -879,28 +936,6 @@ watch(showAddModel, (open) => {
   <div v-if="!isClient" class="api-acc" aria-hidden="true" />
 
   <div v-else class="api-acc">
-    <ol class="api-acc-flow">
-      <li class="api-acc-flow-step" :class="{ 'is-active': Boolean(activeModel && activeModel !== '—') }">
-        <span class="api-acc-flow-num">1</span>
-        <span class="api-acc-flow-text"><strong>选择模型</strong> · 下拉选择或点 <strong>新增</strong> 添加 model id</span>
-      </li>
-      <li
-        class="api-acc-flow-step"
-        :class="{ 'is-active': runSummary.executed > 0, 'is-running': runningAll }"
-      >
-        <span class="api-acc-flow-num">2</span>
-        <span class="api-acc-flow-text"><strong>测试模型</strong> · 运行全部，查看表格结果</span>
-      </li>
-      <li class="api-acc-flow-step" :class="{ 'is-active': runSummary.executed === runSummary.total && runSummary.total > 0 }">
-        <span class="api-acc-flow-num">3</span>
-        <span class="api-acc-flow-text"><strong>记录汇总</strong> · 导出至 <a :href="reportPageUrl">Chat API Test</a></span>
-      </li>
-    </ol>
-
-    <p class="api-acc-lead">
-      流程：<strong>选模型 → 测模型 → 导出汇总</strong>。换模型重复 1～3；汇总样例见侧栏「API 验证」。仅 localhost dev 可用。
-    </p>
-
     <div v-if="loading" class="api-acc-banner">加载用例…</div>
     <div v-else-if="loadError" class="api-acc-banner api-acc-banner--error">{{ loadError }}</div>
 
@@ -934,7 +969,7 @@ watch(showAddModel, (open) => {
               @change="onModelChange"
             >
               <option v-for="m in models" :key="m.id" :value="m.id">
-                {{ m.label }}（{{ m.id }}）
+                {{ modelOptionLabel(m) }}
               </option>
             </select>
             <button type="button" class="api-acc-btn api-acc-btn--sm" @click="openAddModel">
@@ -1007,7 +1042,7 @@ watch(showAddModel, (open) => {
         </template>
       </p>
 
-      <div class="api-acc-table-wrap">
+      <div class="api-acc-table-wrap" aria-label="测试用例表格">
         <table class="api-acc-table">
           <thead>
             <tr>

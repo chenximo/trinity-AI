@@ -4,6 +4,8 @@ title: 生文验收台
 
 # 生文验收台（MVP）
 
+<ApiAcceptanceConsole />
+
 ## 流程
 
 ```mermaid
@@ -30,8 +32,6 @@ flowchart LR
 
 > **用例真源**：`acceptance/cases/chat-completions.json` · **模型列表**：`acceptance/config/models.mvp.json`  
 > **阶段说明**：当前为一期 MVP，与内测文档为双份维护；二期文档驱动见 [验收路线图](./roadmap)。
-
-<ApiAcceptanceConsole />
 
 ## 当前覆盖
 

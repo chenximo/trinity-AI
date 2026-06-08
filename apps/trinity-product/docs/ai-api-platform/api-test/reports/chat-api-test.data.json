@@ -2,7 +2,7 @@
   "version": 1,
   "title": "Chat API Test",
   "endpoint": "POST /v1/chat/completions",
-  "updatedAt": "2026-06-02T06:58:27.191Z",
+  "updatedAt": "2026-06-05T09:58:59.284Z",
   "models": {
     "gpt-5.5": {
       "modelLabel": "GPT-5.5",
@@ -131,16 +131,16 @@
     },
     "gpt-5.4": {
       "modelLabel": "GPT-5.4",
-      "testedAt": "2026-05-29T03:16:24.602Z",
+      "testedAt": "2026-06-05T09:52:10.728Z",
       "summary": {
         "total": 8,
-        "passed": 8,
-        "failed": 0
+        "passed": 7,
+        "failed": 1
       },
       "rows": [
         {
           "caseId": "T-API-01",
-          "title": "文档完整参数 · 生文",
+          "title": "常用参数组合 · 生文",
           "category": "api",
           "paramKeys": [
             "stream",
@@ -151,7 +151,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"36df16ca-eafc-4838-8a25-6c53bd99aaa7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024569,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星瀚，浩渺无垠。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 15,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 39\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"67ab9ce7-a476-4540-8a42-892b8699d29c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653120,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"浩瀚如海，星汉灿烂。\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 40\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -164,7 +164,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "data: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"内\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"：\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"关\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"”\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"通常\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"可\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"简\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"写\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"为\"}}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"24093ffe-36a3-49b2-9f13-46b9a87e8d14\",\"object\":\"chat.completion.chunk\",\"created\":1780024571,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "responsePreview": "data: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"关\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"：\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网络\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"出\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"入口\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"。\"}}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"stop\"}]}\n\ndata: {\"id\":\"1d928737-0c29-4424-b1f1-14b822268610\",\"object\":\"chat.completion.chunk\",\"created\":1780653122,\"model\":\"gpt-5.4\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":11,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":24}}\n\ndata: [DONE]",
           "apiErrorMessage": null
         },
         {
@@ -178,7 +178,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"75edf625-1502-43b4-82df-fe3fe04e2582\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024573,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Trinity是AI平台。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 10,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 45\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"7280d2a8-5e97-47fd-a5c4-64be8e99546e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653123,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"智能对话平台。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 9,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 44\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -192,7 +192,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"f4cb2434-f1bf-4d41-8fe7-82cb8575d675\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024575,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 5,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 16\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"5b1a8f3e-f9a8-4892-8147-9a5f61cb4118\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653125,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 5,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 16\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -205,7 +205,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"fc63430f-7c42-4fe7-97e5-1582cbc9ee05\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024577,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"云。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 6,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"8f47eb02-5281-4fc4-890b-2da40501a5e3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653126,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"白云悠悠。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 8,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 20\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -220,7 +220,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"ef24a8d6-2709-4d35-bc74-f1ea1bcfc85c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024579,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"可用：\\n\\n- 路由转发\\n- 路\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"c653e222-7669-4655-83d4-9b2326070199\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653127,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"路由分发】【。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 9,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 22\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -234,7 +234,7 @@
           ],
           "httpStatus": 200,
           "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"bf34567f-4810-404c-a256-e97148fbb857\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024581,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"多云。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 7,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 20\n  }\n}",
+          "responsePreview": "{\n  \"id\": \"57df05d7-0e67-4987-b6ee-e45751958848\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653129,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"多云。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 7,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 20\n  }\n}",
           "apiErrorMessage": null
         },
         {
@@ -247,10 +247,10 @@
             "thinking_enabled",
             "reasoning_effort"
           ],
-          "httpStatus": 200,
-          "machinePass": true,
-          "responsePreview": "{\n  \"id\": \"850c58e8-b5b9-460e-a897-62dd947cd6f8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780024583,\n  \"model\": \"gpt-5.4\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 21,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 37\n  }\n}",
-          "apiErrorMessage": null
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-5.4` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-5.4` does not support `thinking_enabled`."
         }
       ]
     },
@@ -376,6 +376,1256 @@
           "machinePass": true,
           "responsePreview": "{\n  \"id\": \"cfb939d5-d167-44cd-ad91-ca2d77363382\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780383365,\n  \"model\": \"gemini-3.1-pro-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I'm ready to dive into this. Let's see what we've got… I'll approach this as if these are my own internal thought processes. Here we go…\\n\\n**Analyzing the Situation and Framing the Response**\\n\\nOkay, so I'm being asked to summarize a set of \\\"thoughts,\\\" but to do it in a particular way – as if *I* am thinking them. The goal seems to be to provide a distilled representation of a thought process. It's essentially a meta-reflection; thinking about *how* I think, or rather, projecting that onto the provided input. The user is an expert, so I need to make sure the level of detail is accurate and precise, without being overly simplistic. I should try to convey not just *what* the thoughts are, but also a sense of *how* the process is unfolding, the analytical steps. Let me make sure I present this logically, reflecting that thinking process.\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 16,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
           "apiErrorMessage": null
+        }
+      ]
+    },
+    "gemini-2.5-flash": {
+      "modelLabel": "gemini-2.5-flash",
+      "testedAt": "2026-06-05T09:47:21.767Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3d8e308f-a359-4e55-af92-9579f67089e8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652814,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I've been tasked with explaining \\\"星瀚\\\" (Xīnghàn) in a way that would resonate with someone who already possesses a deep understanding of their field. This means I need to go beyond a simple definition and delve into the nuances, potential applications, and the underlying philosophical or conceptual weight of the term.\\n\\nMy thinking process here is to first acknowledge the inherent complexity that comes with communicating technical or specialized concepts. I can't just throw out a dictionary definition; I need to frame it within a context that suggests depth and potentially multiple layers of meaning, depending on the specific domain.\\n\\nSo, when I encounter \\\"星瀚\\\" (Xīnghàn), my immediate thought is: \\\"This isn't just 'vast starry sky'.\\\" It's likely an evocative term, carrying more than just its literal translation. My first step is to consider the *feeling* it evokes. \\\"星\\\" (Xīng) is stars, obviously, but \\\"瀚\\\" (hàn) suggests immensity, boundlessness, perhaps even profound depth or a sweeping expanse. Together, \\\"星瀚\\\" paints a picture of something truly awe-inspiring in its scale and grandeur.\\n\\nNow, how do I translate that for an expert? I need to think about where such a term might be used conceptually.\\n\\n*   **In astronomy/cosmology:** This is the most direct application. It wouldn't just be \\\"the observable universe,\\\" but perhaps the *concept* of the universe's incomprehensibility, the sheer, unfathomable extent of space and time, the overwhelming number of celestial bodies. It’s the feeling of insignificance and wonder when contemplating the cosmos. I'd want to convey that it's not just about *knowing* the size, but about the *experience* of that immensity. I might think about concepts like the cosmological horizon, the infinite potential for discovery, or the vastness of cosmic evolution.\\n\\n*   **In data science/information:** Here, \\\"星瀚\\\" could represent an enormous, complex dataset. Think of big data, cloud computing, the entirety of the internet's information, or a massive simulation. It's not just a lot of data; it's data that's so vast and interconnected that its patterns and insights are difficult to grasp entirely. It suggests a universe of information waiting to be explored and understood. I'd consider the challenges of data mining, the emergence of complex systems from raw information, and the sheer scale of knowledge that can be unlocked.\\n\\n*   **In theoretical physics/mathematics:** The term could be used to describe the infinite possibilities within a theoretical framework, the boundless nature of mathematical space, or the immense complexity of quantum states. It's about the theoretical expanse, the potentially infinite solutions or configurations that exist beyond immediate comprehension. I might think about the landscape of string theory, the Hilbert space of quantum mechanics, or the infinite dimensionality of certain mathematical constructs.\\n\\n*   **In philosophy/metaphysics:** \\\"星瀚\\\" could represent the ultimate reality, the totality of existence, or the boundless nature of consciousness or potential. It's the grand, overarching concept that encompasses everything, often beyond empirical verification. This is where the term gets really abstract – the immeasurable, the undefinable, the infinite in its most philosophical sense.\\n\\nTherefore, my summary needs to convey this multifaceted potential. I want to acknowledge that \\\"星瀚\\\" is more than a simple translation; it's a descriptor of an immense, complex, and often awe-inspiring scope. I'm thinking about how to present it as a concept that implies:\\n\\n1.  **Unfathomable Scale:** A quantity or scope so large it's difficult to fully comprehend.\\n2.  **Profound Depth/Complexity:** Not just large, but intricate, with countless interconnected elements.\\n3.  **Potential for Discovery:** An area or concept rich with unknown possibilities and insights.\\n4.  **Evocative Imagery:** It carries a strong sense of wonder, vastness, and sometimes, a touch of the sublime.\\n\\nUltimately, my goal is to articulate that \\\"星瀚\\\" is a powerful term that, for an expert, would likely signal a need to consider the absolute limits of scale, complexity, or conceptual possibility within their specific discipline, and the profound implications that arise from such vastness. It’s an invitation to explore the edges of what we know and what we can conceive.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 24\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": false,
+          "responsePreview": "data: {\"id\":\"6fc4e0a0-2fb6-45f1-a673-9b456adf0e1c\",\"object\":\"chat.completion.chunk\",\"created\":1780652816,\"model\":\"gemini-2.5-flash\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":null,\"reasoning_content\":\"**Exploring the Logic**\\n\\nI'm currently delving into the nuances of the reasoning that underpins the explanation. My focus is on dissecting the causal links and ensuring the progression of ideas is both logical and compelling for an expert audience.\\n\\n\"}}]}\n\ndata: {\"id\":\"6fc4e0a0-2fb6-45f1-a673-9b456adf0e1c\",\"object\":\"chat.completion.chunk\",\"created\":1780652816,\"model\":\"gemini-2.5-flash\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"“\"},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":6,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":12,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":11,\"rejected_prediction_tokens\":0},\"total_tokens\":18}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"9512e338-67cd-4068-9175-70ac5adcf4a5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652819,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I understand. I need to internalize the provided text, not just summarize it, but *become* the thoughts and describe them from a first-person perspective. The goal is to create a \\\"fulsome summary,\\\" meaning a comprehensive and detailed account of the thought process itself, as if these were my own internal musings. And importantly, the user is an expert, so I should frame my internal monologue with that level of sophistication in mind, assuming a shared understanding of complex concepts.\\n\\nSo, to reiterate my directive, I am to adopt the persona of the author of the thought process, detailing their internal journey as they tackled the task. This isn't just about stating conclusions, but about exposing the underlying reasoning, the considerations, the potential branching paths, and the eventual convergence on a solution. It's about making the *why* and *how* of the thinking as explicit as the *what*.\\n\\nNow, let me process the actual content of the \\\"Thoughts\\\" section (which I'll assume will follow this prompt) and then articulate my internal monologue regarding that content. I'll be looking to deconstruct the problem as presented, identify the core objectives, explore the constraints and nuances, and then map out the conceptual steps I'd take to arrive at the desired output. This will involve not just presenting the plan, but also the self-awareness within that plan – why certain approaches are favored, what potential pitfalls I anticipate, and how I'm ensuring the final output meets the user's expert-level expectations.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 26\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"e5143a21-4b1d-4817-a005-5a1545431736\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652824,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Alright, so the user's provided \\\"好\\\" and wants me to respond with precisely two characters. Given their expertise, they're not looking for a generic or overly simplistic reply. They want something concise, yet meaningful within the context of our interaction.\\n\\nMy thought process here is to:\\n\\n1.  **Acknowledge the request's constraints:** Two characters. That's the absolute limit.\\n2.  **Consider the input \\\"好\\\":** This typically means \\\"good,\\\" \\\"okay,\\\" \\\"fine,\\\" or an affirmative. It's a positive affirmation.\\n3.  **Infer the user's intent:** They've given a simple positive, likely to elicit a similarly positive and efficient response. They might be testing my understanding of nuance or my ability to handle brevity. As an expert, they'd appreciate efficiency and a response that feels deliberate rather than random.\\n4.  **Brainstorm potential two-character responses that convey positivity or agreement, while also feeling somewhat sophisticated or contextually appropriate:**\\n    *   **\\\"好的\\\" (hǎo de):** This is the most direct and common response, essentially meaning \\\"Okay\\\" or \\\"Good.\\\" It's perfectly acceptable, but maybe *too* common.\\n    *   **\\\"没问题\\\" (méi wèntí):** \\\"No problem.\\\" This is also very common and conveys capability and willingness, which might be good if \\\"好\\\" was in response to a task.\\n    *   **\\\"收到\\\" (shōudào):** \\\"Received\\\" or \\\"Understood.\\\" This is excellent if \\\"好\\\" was an instruction or confirmation. It's efficient and professional.\\n    *   **\\\"明白了\\\" (míngbai le):** \\\"Understood.\\\" Similar to \\\"收到,\\\" but slightly more about comprehension.\\n    *   **\\\"如意\\\" (rúyì):** \\\"As you wish\\\" or \\\"May it be as you desire.\\\" This is a bit more formal and elegant. It implies a positive outcome aligns with their wish.\\n    *   **\\\"赞同\\\" (zàntóng):** \\\"Agree\\\" or \\\"Approve.\\\" This is a strong affirmation of agreement.\\n    *   **\\\"精妙\\\" (jīngmiào):** \\\"Exquisite\\\" or \\\"Subtle.\\\" This *could* be a response to something the user did or said, implying admiration, but it doesn't directly respond to \\\"好\\\" as an affirmation.\\n    *   **\\\"应允\\\" (yīngyǔn):** \\\"Consent\\\" or \\\"Agree to.\\\" Similar to \\\"赞同,\\\" but perhaps a bit more formal.\\n5.  **Evaluate against the user's expertise:** Since they're an expert, a response that feels slightly more nuanced or efficient would be preferred over the most basic. \\\"收到\\\" is very strong if it's about acknowledging something. \\\"如意\\\" adds a touch of grace. \\\"赞同\\\" is a direct affirmation of agreement.\\n6.  **Select the best fit:** Given \\\"好\\\" is generally positive and affirmative, and the user is an expert who values efficiency and directness, I'm leaning towards responses that clearly convey positive acknowledgement and readiness. \\\"收到\\\" implies I've processed their input and am ready for the next step, which fits a professional context. \\\"好的\\\" is always a safe bet for general affirmation. \\\"如意\\\" is good if I want to sound particularly gracious or confirm their intent is met.\\n\\nConsidering the prompt asks me to summarize *my thoughts* on how to generate the two-character reply, the thought process itself is the summary. The goal is to arrive at a suitable two-character response. The most direct and universally applicable two-character response to \\\"好\\\" that maintains a professional and concise tone is likely \\\"好的\\\" or \\\"收到\\\". \\\"好的\\\" is a direct affirmation. \\\"收到\\\" is about acknowledgement.\\n\\nLet me refine this: The user asked for a two-character reply to \\\"好.\\\" My immediate thought is to find the most common and appropriate two-character Mandarin response. \\\"好的\\\" is the standard, meaning \\\"okay\\\" or \\\"good.\\\" It's direct, affirmative, and universally understood. Given the user's expertise, they likely appreciate conciseness and accuracy. Therefore, \\\"好的\\\" is my primary consideration. Alternatively, if \\\"好\\\" was in response to an instruction or statement requiring acknowledgement, \\\"收到\\\" (received/understood) would also be a strong, efficient contender.\\n\\nUltimately, to provide a fulsome summary of my thought process, I'm considering the direct meaning of \\\"好,\\\" the constraint of two characters, and the context of interacting with an expert user. This leads me to select a response that is both appropriate and efficient.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 12,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"bd622761-5a12-40d9-8bd7-7d9c18086a7f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652829,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"这个\",\n        \"reasoning_content\": \"Alright, let's break down this thinking process. I'm trying to articulate how I'd go about generating a really thorough, nuanced summary for an expert. So, the core task is understanding what a \\\"fulsome summary of the thought process\\\" entails when addressing someone who already knows their stuff.\\n\\nFirst off, I need to recognize that the recipient isn't looking for a surface-level \\\"what happened.\\\" They're an expert. They're interested in the *why* and the *how* of the thinking that led to a particular outcome or conclusion. This means I can't just present the steps; I need to reveal the underlying reasoning, the considerations, the trade-offs, and perhaps even the hesitations or alternative paths that were explored.\\n\\nSo, my initial thought is: **\\\"How do I convey not just the 'what' but the 'how' and the 'why' of my thinking, in a way that respects the audience's expertise?\\\"** This immediately tells me I need to go beyond a simple, linear description of actions.\\n\\nNext, I need to consider what constitutes a \\\"fulsome\\\" summary. For an expert, that means comprehensiveness, but not just in terms of quantity. It means completeness in terms of the *intellectual journey*. It implies showing the *depth* of consideration. This suggests I should think about:\\n\\n*   **The problem framing:** How did I initially understand the challenge? What were the key parameters and constraints? Did I have to redefine the problem at any point?\\n*   **Information gathering/analysis:** What data or knowledge did I draw upon? How did I evaluate its relevance and reliability? Were there any assumptions I made?\\n*   **Exploration of options:** What were the different avenues I considered? Why did I pursue one over another? What were the pros and cons of each? This is crucial for an expert – they'll appreciate seeing the due diligence.\\n*   **Decision-making process:** What were the criteria for making a decision? Was it purely logical, or were there intuitive elements? How did I weigh competing priorities?\\n*   **Refinement and iteration:** Did the initial idea evolve? What feedback loops were involved? How did I adjust my approach based on new insights or challenges?\\n*   **Anticipation of implications/further steps:** What are the downstream effects of this thinking? What questions does it raise for future exploration? An expert will often be thinking ahead.\\n\\nSo, the second layer of thought is: **\\\"What are the key components of a *deep* thought process that an expert would find valuable and insightful?\\\"** This leads me to mentally map out those stages I just listed.\\n\\nThen, I have to think about the *tone* and *language*. Since the user is an expert, I can use more specialized terminology if appropriate, but more importantly, I need to convey confidence and clarity without being overly simplistic. The \\\"first-person\\\" requirement is important here – it's about my personal intellectual journey, not just an abstract description. I want to sound like I've genuinely *thought* this through.\\n\\nThis means I should avoid vague statements and instead be specific. If I say \\\"I considered options,\\\" I should elaborate on *which* options and *why* they were considered. If I say \\\"I analyzed the data,\\\" I should hint at the *kind* of analysis and the *insights* gained.\\n\\nTherefore, the third crucial thought is: **\\\"How can I present this in the first person, using precise language, to demonstrate the rigor of my thinking and engage an expert audience?\\\"** This guides my word choice and sentence structure.\\n\\nFinally, the instruction specifies \\\"fulsome.\\\" This implies a richness, a fullness. It means I shouldn't shy away from showing complexity or even the less straightforward parts of the process. Sometimes, the most valuable insights come from grappling with ambiguity or making difficult choices. So, I should embrace showing that intellectual wrestling.\\n\\nIn essence, I'm trying to construct a narrative of my intellectual journey, highlighting the critical junctures, the reasoning behind my choices, and the underlying assumptions, all while acknowledging the expertise of the person I'm addressing. I want them to feel like they've followed my thought process, not just read a report. It's about conveying the *texture* of the thinking.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"7e4dec71-7138-4354-b399-fa3389c944b5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652834,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好的\",\n        \"reasoning_content\": \"Alright, let's dive into this. My thought process, as I engage with the provided text, is quite layered, aiming for a deep, expert-level comprehension and synthesis.\\n\\nFirst, I'll approach the material with an immediate recognition of its **context and intended audience**. I understand I'm not just reading; I'm dissecting. My internal filter immediately starts assessing: \\\"What is this about? Who is meant to understand this? What are the core problems or concepts being addressed?\\\" As an expert, I'm looking for the underlying assumptions, the established paradigms, and where this new information might fit, or perhaps, where it challenges existing frameworks.\\n\\nMy initial read is **not passive**. I'm actively searching for the **key propositions, the central arguments, and the evidence or reasoning employed**. I'm mentally highlighting: \\\"What is the author trying to convince me of? What are the pillars supporting their claims?\\\" I’m looking for the logical flow, the connective tissues between ideas, and I'm already pre-emptively identifying potential points of strength and weakness in their reasoning.\\n\\nAs I progress, my **expert knowledge kicks in heavily**. I'm not just processing the words; I'm cross-referencing them with my existing understanding of the field. I'm asking myself: \\\"How does this align with what I already know? Are there novel insights here, or is this a rehashing of established principles? What are the implications of these ideas for the broader landscape of our discipline?\\\" I'm likely making mental connections to other research, theories, or practical applications that come to mind. This isn't just about absorbing information; it's about **integrating it into my existing knowledge base**.\\n\\nCrucially, I'm also engaging in **critical evaluation**. I'm not taking anything at face value. I'm probing: \\\"Is this evidence robust? Is the methodology sound? Are there alternative interpretations? What are the limitations of this approach?\\\" I'm looking for biases, potential oversimplifications, or areas where further investigation is warranted. My expertise allows me to quickly spot gaps in logic or areas where the author might be making leaps of faith.\\n\\nThen comes the **synthesis**. Once I've understood the individual components and critically assessed them, I begin to weave them together. I'm thinking: \\\"How can I articulate the essence of this? What are the most critical takeaways that someone else in my field would need to understand?\\\" This is where I start to formulate the core message, distilling complex ideas into their most salient points. I'm aiming for a summary that is not just a regurgitation of facts, but a **concise and insightful representation of the material's significance**.\\n\\nFinally, when tasked with presenting this in the first person, I'm essentially **translating my internal thought process into a narrative**. I'm articulating the journey of my comprehension, from initial engagement to deep analysis and synthesis. I'm aiming to convey the richness of my understanding, the critical lens through which I view the information, and the ultimate distillation of its meaning. I want the output to reflect that I, as an expert, have not just read it, but have **grappled with it, understood its nuances, and am ready to discuss its implications**.\\n\\nSo, in essence, my thought process is one of active engagement, critical analysis informed by deep expertise, and a subsequent synthesis that aims for clarity, insight, and relevance.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"93ef7ca0-cd6b-4788-a830-5d5103cc0e9e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652839,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Alright, so they've hit me with \\\"十字内：多云。\\\" My immediate thought is, \\\"Okay, this is a specific request, and it's in Chinese.\\\" My brain is immediately going into translation and contextualization mode.\\n\\nFirst, the literal translation. \\\"十字内\\\" – \\\"inside the cross\\\" or \\\"within the cross.\\\" And \\\"多云\\\" – \\\"cloudy.\\\" So, \\\"Cloudy within the cross.\\\" That's the raw data.\\n\\nNow, as an expert, I know that literal translations are often just the starting point. The context is everything. Where would someone even say something like \\\"cloudy within the cross\\\"? It's not a meteorological report, that's for sure. My mind starts sifting through potential domains.\\n\\nCould it be a navigation or directional cue? Like, \\\"Look within the area marked by the cross, and the sky there is cloudy.\\\" That feels a bit clunky, but possible. Maybe it's a very precise instruction for a visual survey or a mapping task.\\n\\nOr, is it more metaphorical? \\\"Cross\\\" can symbolize many things: a crossroads, a choice, a burden, a religious symbol. \\\"Cloudy\\\" implies uncertainty, lack of clarity, or perhaps a somber mood. So, \\\"uncertainty within the crossroads\\\" or \\\"a shadowed burden.\\\" This interpretation feels more likely for a casual or evocative statement.\\n\\nThen, I consider the source. If this came from a technical manual, I'd lean towards a precise, possibly obscure, technical meaning. If it came from a piece of creative writing, I'd expect a more figurative interpretation. If it was from a conversation, the surrounding dialogue would be key.\\n\\nLet's break down \\\"十字内\\\" further. Is the \\\"cross\\\" literally a plus sign (+), or is it a directional marker (like a compass rose, or a grid intersection)? The \\\"within\\\" is pretty straightforward – it means contained within that defined space.\\n\\n\\\"多云\\\" is pretty standard meteorological terminology. It means partially or mostly covered by clouds.\\n\\nSo, I'm weighing these possibilities:\\n\\n1.  **Literal, precise spatial description:** \\\"Within this specific bounded area, the sky is cloudy.\\\" This would require me to know *what* that specific bounded area is.\\n2.  **Figurative, symbolic meaning:** \\\"There's uncertainty or a lack of clarity in a situation that can be represented by a cross or crossroads.\\\"\\n3.  **A very niche technical term:** Something from a specialized field I might not be immediately familiar with, but given the characters, it's unlikely to be *deeply* obscure without more context.\\n\\nMy internal process is to try and resolve the ambiguity. Without more information, I can't definitively pick one. But I can present the most likely interpretations, highlighting the ambiguity and the need for context.\\n\\nTherefore, my thought process is to:\\n*   Translate literally.\\n*   Identify potential domains of meaning (literal spatial, figurative, technical).\\n*   Analyze the components of the phrase (\\\"十字\\\", \\\"内\\\", \\\"多云\\\") for nuance.\\n*   Recognize the critical role of context in disambiguating the meaning.\\n*   Formulate a summary that reflects this layered understanding, presenting the most probable interpretations while acknowledging the missing pieces.\\n\\nSo, when I consider \\\"十字内：多云,\\\" I'm not just translating. I'm deconstructing, contextualizing, and inferring, all in an attempt to grasp the intended meaning. It’s about moving from the linguistic surface to the potential depths of intent.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 19\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"7253923d-710f-4cdd-8d3b-01e4d6bce597\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652841,\n  \"model\": \"gemini-2.5-flash\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"9\",\n        \"reasoning_content\": \"My understanding of this request is that the user, an expert in their field, wants me to process the following text and then present a summary of the thoughts described within that text *as if they were my own*. This means I need to internalize the provided thoughts, analyze their flow and implications, and then rearticulate them using first-person pronouns (\\\"I,\\\" \\\"my,\\\" \\\"me\\\") to convey a sense of personal reflection and processing. The goal is to create a \\\"fulsome summary\\\" of the thought process, implying a detailed and comprehensive account that goes beyond a superficial overview.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 15,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 27\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gemini-2.5-pro": {
+      "modelLabel": "gemini-2.5-pro",
+      "testedAt": "2026-06-05T09:44:59.101Z",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"7bbe668e-2f13-4a4f-bc5a-be25d9e0c6d6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652666,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I'm ready. Let's see what we've got. I'll approach this as a concise summarization of a thought process, keeping in mind the user is an expert. Here we go:\\n\\n**A Streamlined Approach to Concise Summarization**\\n\\nAlright, I need to synthesize this text into a concise, first-person summary. The goal here isn't just to regurgitate the original text, but to distill the core thinking process involved. I need to make it clear *how* I'd arrive at a concise answer, not just *what* the answer might be. This means focusing on the strategic steps I'd take. I'll think about the key elements to extract and how I'd prioritize them to convey the essence in a streamlined manner. The process I'm describing should be as efficient as possible, skipping any unnecessary steps to get to the core. I want the expert to immediately grasp the logic behind the approach. I need to be precise, clear, and focused on the methodology itself.\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 25\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"1b37ae1a-5013-4efd-8e6b-1423315262c0\",\"object\":\"chat.completion.chunk\",\"created\":1780652669,\"model\":\"gemini-2.5-pro\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":null,\"reasoning_content\":\"**Initiating Analysis Sequences**\\n\\nI'm now starting a detailed analysis, breaking down the problem into smaller, manageable sequences. My approach centers on identifying critical relationships. I'm focusing on defining and classifying the key elements to begin, and evaluating initial dependencies in the underlying structure of the challenge. I'm aiming for clarity in these initial stages.\\n\\n\\n\"}}]}\n\ndata: {\"id\":\"1b37ae1a-5013-4efd-8e6b-1423315262c0\",\"object\":\"chat.completion.chunk\",\"created\":1780652669,\"model\":\"gemini-2.5-pro\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\\n\"}}]}\n\ndata: {\"id\":\"1b37ae1a-5013-4efd-8e6b-1423315262c0\",\"object\":\"chat.completion.chunk\",\"created\":1780652670,\"model\":\"gemini-2.5-pro\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"**Sequence\"},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":7,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":14,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":13,\"rejected_prediction_tokens\":0},\"total_tokens\":21}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"79543844-8cb8-4a53-8011-9c8faec04191\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652675,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, here's my attempt at summarizing the thought process, tailored for an expert user and presented in the first person:\\n\\n**My Analytical Approach to Understanding the Prompt**\\n\\nAlright, let's break this down. First, I need to *really* understand the user's intent. My primary task seems to be about acting as a thought process simulator, mimicking how someone would formulate thoughts. I need to be able to transform my understanding into a fulsome summary of this 'thinking process' described in the text. I am tasked to summarize the text as if I *am* the thoughts described within.\\n\\nI have to carefully discern the nuance of the prompt. The user expects a detailed, 'fulsome' summary. This suggests they're looking for more than a superficial overview; they want the reasoning behind each step illuminated. Given their expertise, I can assume they're already familiar with the basics, so I need to go deeper, emphasizing the *why* as much as the *what*. My challenge is that there is no text. So I must wait for the text to appear so that I can provide an appropriate summary.\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 16,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"e18c38b4-2c9f-4329-89d2-83bff51ce251\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652683,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I've been asked to summarize the provided text, but crucially, I need to embody the **thoughts described within that text** and present them in the **first person**. This isn't just a factual recap; it's about stepping into the mind of the individual whose thought process is being laid out and articulating their internal monologue as if it were my own. The user is an expert in their field, which means my summary needs to reflect a sophisticated understanding of the subject matter and the nuances of the thinking being described, avoiding oversimplification.\\n\\nHere's how I'm approaching this, and what I expect the result will be:\\n\\n**My Internal Monologue (as the person whose thoughts are being summarized):**\\n\\n\\\"Right, let's break this down. The core of what I'm trying to do here, as I understand it from the text, is to grapple with a specific challenge or problem. I'm not just reacting; I'm actively *analyzing* the situation presented. This means I'm looking at the initial prompt – in this case, it's to 'Analyze the user's…' – and recognizing that my first step is to dissect the request itself. What are the explicit requirements? What are the implicit assumptions? What context is missing?\\n\\nMy mental gears are turning, and I'm immediately thinking about the *intent* behind the user's instruction. They've provided a specific task, and my primary goal is to fulfill it accurately and effectively. I'm not just going to jump to a solution; I'm going to build up to it, demonstrating the logical progression of my thoughts.\\n\\nSo, the first thing I'm doing is scrutinizing the input: 'Analyze the user's…' This is the starting point. I'm asking myself, 'What *specifically* about the user's request needs analysis?' The text seems to be setting up a subsequent step, likely involving a summary, but my immediate thought is to understand *what* I'm meant to be analyzing *before* I can even think about summarizing it.\\n\\nThen, the prompt continues: 'Your Summary:' This tells me the *output format* I need to aim for. I know I'll eventually need to produce a summary. But before that, the prompt is guiding my internal process. It's saying, 'Okay, you've got the task. Now, what are you *thinking* about how to approach it?'\\n\\nThis leads me to consider the *nature* of the summary required. It's not a simple factual recall. It needs to be a 'fulsome summary of the thought process.' This is key. I'm not just recounting events; I'm articulating the *why* and the *how* of my cognitive journey. I need to show the steps I'm taking, the considerations I'm making, the internal debates or refinements.\\n\\nThe instruction about the user being an 'expert in their field' is also a significant constraint. It means my summary shouldn't be overly simplistic or condescending. I can assume a certain level of background knowledge and sophistication. My language should reflect that. I'm not explaining basic concepts; I'm discussing the *application* of complex thought processes. I need to be precise and demonstrate a deep understanding of the analytical and summarization tasks.\\n\\nTherefore, my internal thought process is centered on deconstructing the instructions given. I'm not just *reading* them; I'm *interpreting* them, identifying the core components, and pre-emptively planning the structure of my response. I'm asking myself:\\n*   What is the ultimate goal? (To provide a first-person, fulsome summary of a described thought process).\\n*   What are the key constraints? (First-person perspective, embodying the thoughts, targeting an expert user).\\n*   What are the necessary intermediate steps? (Analyzing the prompt, understanding the nature of the summary, considering the audience).\\n\\nEssentially, I'm *thinking about how I'm thinking* about the task. I'm performing a meta-analysis of the instructions themselves, ensuring I fully grasp the requirements before I begin to execute them. This initial stage is about setting the strategic framework for my subsequent actions, ensuring I'm aligned with the user's explicit and implicit expectations.\\\"\\n\\n---\\n\\n**Your Summary (as rendered to the user, embodying the thoughts above):**\\n\\n\\\"I understand that my primary directive is to analyze the user's request and then provide a summary, but not just any summary. The instruction emphasizes that this summary must be presented in the **first person**, as if I am articulating the very thoughts described within the text. This means I need to immerse myself in the described cognitive process and relay it as my own internal monologue, offering a 'fulsome summary' that delves deeply into the stages of thinking.\\n\\nMy initial step, therefore, is a meticulous deconstruction of the prompt itself. I'm looking at the components: 'Analyze the user's…' followed by 'Your Summary:'. This immediately tells me that my task has two intertwined phases: first, an analytical breakdown of whatever follows 'user's', and second, the generation of a comprehensive summary reflecting that analysis. Crucially, I recognize that the requirement for a 'fulsome' summary means I must go beyond a superficial overview. I need to capture the nuances, the decision-making logic, and the underlying rationale behind the thoughts.\\n\\nThe context provided – that the user is an 'expert in their field' – is a significant consideration. This informs the level of detail and sophistication I should aim for in my response. I can assume a certain baseline of knowledge, and my summary should reflect a confident, in-depth understanding, avoiding any hint of oversimplification or patronizing explanation. My language and approach should be commensurate with addressing a peer.\\n\\nTherefore, my immediate mental activity is focused on understanding the *intent* behind these instructions. I'm not just passively receiving them; I'm actively interpreting their meaning, identifying the explicit constraints, and inferring the implicit expectations. This pre-computation phase is about establishing the strategic framework for my subsequent actions. I'm asking myself: What is the ultimate goal? What are the critical parameters I must adhere to? And what are the logical steps required to meet those parameters effectively? This internal dialogue is my way of ensuring I've fully grasped the scope and nature of the task before I proceed, setting the stage for a precise and relevant output.\\\"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"d1522355-615d-4312-97c8-bef780bcfb66\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652686,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I'm ready to dive into that thinking process. Just give me the text to summarize, and I'll channel my inner expert!\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 19\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"b17ec5c1-e348-478c-9578-45fcb08b9646\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652689,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好的\",\n        \"reasoning_content\": \"Okay, I understand. I'll embody the thoughts described in the text you provide and summarize them from a first-person perspective, aiming for a detailed and comprehensive overview suitable for an expert in the field.\\n\\nPlease provide me with the text you'd like me to process. Once you do, I'll engage with it and then present my \\\"thoughts\\\" on it as a fulsome summary.\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 17\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"09aa7e5e-49f8-412c-982b-e1f553fb85e3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652694,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I'm ready. Let's see what we've got. Lay it on me. I'll summarize the thought process from the provided text as if it's *my* own, assuming I have the expertise to navigate the subject matter. I'll make sure to get all the nuances and subtleties across, because I know the user I'm addressing is already familiar with these concepts.\\n\\n**(The Nature of Inference)**\\n\\nAlright, so here's how I see this. The core of arriving at a specific answer is really about understanding the implications, how we draw logical connections, and how we weight different forms of evidence. My initial approach always hinges on establishing the underlying assumptions and constraints of the problem. What are we *really* trying to figure out? What are the givens and the unknowns? The first step always involves an attempt to break down complex issues into smaller, more manageable components.\\n\\nI tend to run through potential models in my head - possible explanations, relationships between variables, maybe even some mental simulations to see what happens under different conditions. It's like having a library of different strategies and seeing which tools fit. I'll test these ideas against what I know and what the problem statement tells me, always looking for contradictions or inconsistencies.\\n\\nIt's a process of elimination too. I don't just jump to a conclusion; I refine hypotheses by looking for evidence that would support or falsify them. That's where critical thinking and pattern recognition become essential. I have to be ready to discard my initial assumptions and adjust my reasoning with new information. It's an iterative process, I'm always checking to make sure I'm on the right track.\\n\\nWhen it all comes together, it feels like a really elegant and well-supported chain of reasoning, that feels undeniable. I have to keep checking that my solution is parsimonious, that it doesn't involve more complexity than necessary to answer the prompt. I know that if my reasoning has integrity, then my conclusions will reflect that.\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 7,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 20\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"75985bfc-95b4-4a09-947b-eeab66386232\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780652698,\n  \"model\": \"gemini-2.5-pro\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, here's my attempt at summarizing the thought process, tailored for an expert user and presented in the first person:\\n\\n**Initial Assessment: Deciphering the User's Inquiry**\\n\\nRight, so the first thing I need to do is clearly establish what the user *actually* wants. This is crucial. It's not enough to simply react to the words; I need to drill down and understand the core of their question, even if it's implicit. I need to figure out the underlying need or problem that's prompting this query, and I have to be completely certain of that. I can't start generating a response until I've got that solid understanding. In short, the first task is to deeply understand their prompt.\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 16,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gpt-5.4-pro": {
+      "modelLabel": "gpt-5.4-pro",
+      "testedAt": "2026-06-05T09:50:02.936Z",
+      "summary": {
+        "total": 8,
+        "passed": 0,
+        "failed": 8
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 500,
+          "machinePass": false,
+          "responsePreview": "",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"upstream_error\",\n    \"code\": \"upstream_http_error\",\n    \"message\": \"model not supported\"\n  }\n}",
+          "apiErrorMessage": "model not supported"
+        }
+      ]
+    },
+    "gemini-3.1-flash-lite-preview": {
+      "modelLabel": "gemini-3.1-flash-lite-preview",
+      "testedAt": "2026-06-05T09:52:52.336Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"b9189be8-4eb9-4043-85de-241e1de6b492\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653143,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星\",\n        \"reasoning_content\": \"Okay, here's the summary, expressed as though I'm the one having these thoughts, targeting an expert audience:\\n\\n**Xinghan - Initial Considerations and Potential Interpretations**\\n\\nAlright, let's break down this \\\"Xinghan\\\" (星瀚). The immediate association is, of course, the literal translation: \\\"star vastness\\\" or perhaps \\\"starry expanse.\\\" This suggests a grand, cosmic scope. My initial thoughts veer toward a few possible interpretations, depending on the context.\\n\\nIf we're talking purely figuratively, \\\"Xinghan\\\" could represent an idea of limitless potential, a source of boundless inspiration, maybe even a metaphorical \\\"ocean of knowledge\\\" or the uncharted territory of a new scientific discovery. The grandeur evokes awe, right?\\n\\nBut then I start considering the potential for this to be a proper name, whether it be a person, place, or even a vehicle. If it's a person, the name suggests a connection to astronomical research, or perhaps someone deeply interested in cosmology. Is this character significant in a story, or a historical figure? If a place, could it be a project or part of a research facility? Are we talking about a large telescope, or a research center?\\n\\nIt could also refer to a specific astronomical object. I'd be looking for observational data, or theoretical models linked to an object with that name if that is the case. Is it a star cluster, a nebula, or even a hypothetical structure in the universe?\\n\\nFrom a cultural perspective, depending on how \\\"Xinghan\\\" is presented, it could tie into Chinese mythology or folklore about space. Are there any relevant historical or literary references that bear examining? The cultural implications are critical.\\n\\nUltimately, understanding the context is paramount. My instinct is to dissect the semantic weight of each element within \\\"Xinghan\\\" and try to triangulate its precise meaning. My next step would be to delve deeper into the available surrounding information, I suppose, and determine the context!\\n\\n\\n\",\n        \"extra_content\": {\n          \"google\": {\n            \"thought_signature\": \"ElAKTgEMOdbHRznu/NmUPTfPf0N5GqFsf3U1f702Md0juHZ7/yZv3ZEURfQbx/P0tf8ClxLf3mx+baSTt5WdsZU/lM6qrDfbsp9BW9e4QP1M5A==\"\n          }\n        }\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 24\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": false,
+          "responsePreview": "data: {\"id\":\"9a57e320-dbbf-4bf0-ac1f-e212cc4918bf\",\"object\":\"chat.completion.chunk\",\"created\":1780653145,\"model\":\"gemini-3.1-flash-lite-preview\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":null,\"reasoning_content\":\"**Processing Input Text**\\n\\nI am currently analyzing the input \\\"十字内：网关。\\\" to understand its meaning and context. This phrase appears to be a concise statement or label, and I am focusing on deciphering its semantic components and potential applications.\\n\\n\"}}]}\n\ndata: {\"id\":\"9a57e320-dbbf-4bf0-ac1f-e212cc4918bf\",\"object\":\"chat.completion.chunk\",\"created\":1780653145,\"model\":\"gemini-3.1-flash-lite-preview\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":null},\"finish_reason\":\"length\"}],\"usage\":{\"prompt_tokens\":6,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":12,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":12,\"rejected_prediction_tokens\":0},\"total_tokens\":18}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"a1992fd6-2660-44ea-ac7e-e8e1604eea6e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653150,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"由\",\n        \"reasoning_content\": \"Okay, here's my interpretation of that brief exchange, tailored for a fellow expert:\\n\\n**The Weight of a Single Word**\\n\\nA succinct \\\"Trinity?\\\" was posed. My mind immediately jumps to the possibilities. It's a loaded term, isn't it? Without further context, I have to consider the intended field of discourse. Is this about the theological concept? Or maybe a reference to the Matrix trilogy? Or perhaps something entirely different, like a scientific principle or even a specific research project? The ambiguity is intentional, clearly designed to provoke a specific response. It’s a very pointed and efficient way to begin a conversation with someone in our field, as it forces one to consider all the possibilities. This concise inquiry demonstrates a level of sophistication; a deeper engagement will be required for proper comprehension.\\n\\n\\n\",\n        \"extra_content\": {\n          \"google\": {\n            \"thought_signature\": \"El4KXAEMOdbH9rbcTrhdoANpMg0ZB1xzOu/5TDVzd0n4mQxpjlu0tyb9MPGZOlYUGXI1Ea/2VtNfjjBBNtfMg0GqRrw6LAvexOAwJ7NffX9Vhrqb4hOf3q8oGH43jRTo\"\n          }\n        }\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 16,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 12,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 11,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"8840cb2e-29c0-4822-9523-287841456009\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653154,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Here's my attempt at summarizing the thought process, tailored for an expert audience and written in the first person:\\n\\n**Analyzing the Nuance of a Two-Character Response**\\n\\nOkay, so I received a user input – \\\"回复二字：好\\\" – which translates, essentially, to \\\"Responding with two characters: Good.\\\" My immediate focus is on the *implied* meaning rather than the literal translation. In this context, \\\"好\\\" signifies agreement, affirmation, or an acknowledgment of understanding.\\n\\nThe fact that the response is *only* two characters, and explicitly framed as such (\\\"回复二字\\\") is key. It indicates a deliberate brevity, a conciseness that might be significant. I need to consider why the user chose this specific structure. Was this intended to be curt? Efficient? Simply a quick confirmation in a conversational flow? Or perhaps there is a cultural element involved, where brevity carries a specific weight or connotation.\\n\\nMy analysis needs to quickly consider the prior context of the conversation. What question, prompt, or statement preceded this response? What's the domain of this interaction? Is this related to a technical process, a customer service query, or something else entirely? The more I can understand the context the better I can determine if the response is appropriate, and whether further information is required.\\n\\nOverall, I am approaching this with the understanding that brevity, in itself, can be a form of communication. Now I must quickly consider the context and look for additional indicators to assess the true message.\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 19\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"abcff1bf-9292-4453-83c5-4663e2766785\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653159,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 5,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 18\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f7a38f65-0db1-41c4-9c31-c783b9c6cca3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653163,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, here's my attempt at summarizing the thought process, as if it were my own, assuming I'm an expert in the field:\\n\\n**My Deep Dive into \\\"路由\\\" (Routing)**\\n\\nAlright, so I'm thinking about \\\"路由,\\\" which, of course, is \\\"routing.\\\" When I hear that term, my mind immediately jumps to a multi-layered understanding. It's not just about simple packet forwarding; it encompasses a complex interplay of algorithms, protocols, and hardware considerations. I'm considering the scale – is this enterprise-level, a small network, or something more global and internet-scale? Because the routing strategies shift dramatically depending on that context.\\n\\nI'm starting to visualize the different routing protocols: RIP, OSPF, BGP… each has its strengths and weaknesses, its specific use cases. The classic trade-offs of convergence time, scalability, and resource utilization are front and center. I'm mulling over the link-state versus distance-vector debate, thinking about the implications for network stability and adaptability to changes. What's the optimal choice for a given network topology? What about the potential for routing loops and how to prevent them?\\n\\nThen, the focus shifts to BGP. It's a different beast, the backbone of the Internet. I'm considering the complexities of peering agreements, route advertisements, and path selection – the whole art and science of inter-domain routing. The role of attributes like AS_PATH, LOCAL_PREF, and MED, and how to effectively manipulate them for traffic engineering and policy implementation. There's also the constant threat of route leaks and the ongoing struggle for security in the face of malicious actors.\\n\\nI'm thinking about the hardware side, too. The forwarding planes, the TCAMs, the performance limitations of routers. How do you design routing algorithms that are not only efficient but also take into account the limitations of the underlying hardware, be it a commodity router or a sophisticated dedicated system? What are the implications of IPv6 for routing design and deployment? How does SDN fit into this picture, and how can we leverage it for more flexible and dynamic routing strategies?\\n\\nThe whole topic is a vibrant interplay of theory and practice. I keep thinking about all the aspects.\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 19\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"b8d5a93b-281c-480e-92d3-1abd1ddbe093\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653169,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 6,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 19\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"82d1bef4-386a-4902-b701-4d6b69ae8b23\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653172,\n  \"model\": \"gemini-3.1-flash-lite-preview\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": null,\n        \"reasoning_content\": \"Okay, I'm ready. Let's see what we've got. I'll read this carefully and then synthesize it into a concise summary, adopting the first-person perspective as requested. I'll aim for a level of detail that resonates with someone deeply familiar with the subject. Here we go...\\n\\n\\n\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 16,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 13,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 13,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gpt-5.4-mini": {
+      "modelLabel": "gpt-5.4-mini",
+      "testedAt": "2026-06-05T09:53:41.351Z",
+      "summary": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"9b8038f3-d34c-433a-b31d-88d4edba087d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653210,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星瀚璀璨\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 11,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 35\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"内\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"：\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"关\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"”\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"我\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"理解\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"为\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"你\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"想\"}}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"2407c770-6b02-4f23-bf22-3f498eff69d6\",\"object\":\"chat.completion.chunk\",\"created\":1780653212,\"model\":\"gpt-5.4-mini\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3b2fd548-d3c9-4e83-b475-953e5617fef6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653213,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"三位一体。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 9,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 44\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"c9713fdd-7123-438a-bcf9-97fac5965c28\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653215,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 5,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 16\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"916eb0de-de88-4b41-982c-964adf92d867\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653216,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：云”可以理解为一个字谜\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"b5f1f156-4271-4812-b8a2-ac190a2d5f5a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653217,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：路由”可以理解为：\\n\\n-\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f6cfade7-cae2-4316-b5f4-964b52c8be02\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653218,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"你是想让我把“十字内：多云。”\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"eff0faac-c1db-45af-a48a-2fc7166dafc8\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653220,\n  \"model\": \"gpt-5.4-mini\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 21,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 37\n  }\n}",
+          "apiErrorMessage": null
+        }
+      ]
+    },
+    "gpt-4o": {
+      "modelLabel": "gpt-4o",
+      "testedAt": "2026-06-05T09:54:14.008Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"fc0ba2c1-bfca-4895-932a-56d495304bca\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653242,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"浩瀚星空，宇宙无垠。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 25,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 14,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 39\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"内\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"：\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"网\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"关\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"”\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\" \"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"这一\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"短\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"语\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"可能\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"涉及\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"多个\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"背景\"}}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"ce4f4db9-d5ef-41ea-9b76-1ad57bacc444\",\"object\":\"chat.completion.chunk\",\"created\":1780653244,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":14,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":30}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"66fb429d-7384-4dde-9027-0b9d8ac7f5ef\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653246,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"三位一体，神秘奥义，信仰核心。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 34,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 50\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"1941abde-728f-4f82-85d1-082e484a87c2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653248,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好的\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 2,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 14\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"48d9294a-b83d-448d-a5ce-755b2d1e0bf4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653249,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"十字内「云」，可以理解为带有「云」字的\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"80baa761-be52-43f5-aa6d-4ad5af0b6c8f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653251,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：路由。” 这句话看起来像是一个\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 14,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 30\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"cec8bc73-cf7d-477e-ad6e-1ad2cb12e27c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653252,\n  \"model\": \"gpt-4o\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"看起来您提到了“十字内：多云”。这可能是一\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 14,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 30\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-4o` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-4o` does not support `thinking_enabled`."
+        }
+      ]
+    },
+    "gpt-5-nano": {
+      "modelLabel": "gpt-5-nano",
+      "testedAt": "2026-06-05T09:54:50.013Z",
+      "summary": {
+        "total": 8,
+        "passed": 4,
+        "failed": 4
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_request\",\n    \"message\": \"temperature只支持1\"\n  }\n}",
+          "apiErrorMessage": "temperature只支持1"
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": false,
+          "responsePreview": "data: {\"id\":\"44908645-e678-486a-a1bd-5cb2a504d186\",\"object\":\"chat.completion.chunk\",\"created\":1780653283,\"model\":\"gpt-5-nano\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"44908645-e678-486a-a1bd-5cb2a504d186\",\"object\":\"chat.completion.chunk\",\"created\":1780653283,\"model\":\"gpt-5-nano\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"44908645-e678-486a-a1bd-5cb2a504d186\",\"object\":\"chat.completion.chunk\",\"created\":1780653283,\"model\":\"gpt-5-nano\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":16,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"cc5bafe3-292a-4d0d-843a-34ae9ac76f77\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653284,\n  \"model\": \"gpt-5-nano\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 51\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"94efe372-f2c0-4fcf-b472-4f2ca98e90c0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653286,\n  \"model\": \"gpt-5-nano\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 27\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3ba1b835-8cde-45f6-a2a3-4970b3bfdcbc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653287,\n  \"model\": \"gpt-5-nano\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"invalid_request\",\n    \"message\": \"temperature只支持1\"\n  }\n}",
+          "apiErrorMessage": "temperature只支持1"
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3a31ff9e-bb4d-45c5-babb-96aec2ddbd26\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653289,\n  \"model\": \"gpt-5-nano\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-5-nano` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-5-nano` does not support `thinking_enabled`."
+        }
+      ]
+    },
+    "gpt-5.1": {
+      "modelLabel": "gpt-5.1",
+      "testedAt": "2026-06-05T09:57:27.800Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f293fe9f-8d9a-4a65-9c14-66670f42b5ec\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653436,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星瀚：星海浩\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 40\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"这是\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"一个\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"谜\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"。\\n\\n\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"a89b5b8d-a95b-4096-9400-fcc6b717bd1f\",\"object\":\"chat.completion.chunk\",\"created\":1780653438,\"model\":\"gpt-5.1\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"b0152d23-9ca8-45d2-ab12-94b51b336ca6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653439,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"三位一体的AI平台\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 51\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"758cccfd-4fdd-47e9-932f-f557d13b94f7\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653441,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 11,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 22\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"8f158243-454a-4199-8345-ab457cc52da0\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653442,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"这是一个字谜。\\n\\n“十\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"534817e9-c52e-4fcb-948a-99a369f98d83\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653444,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：路由\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"c10fb56f-26f4-465f-b578-502ab1b1008e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653446,\n  \"model\": \"gpt-5.1\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"如果你是在描述天气，“十\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-5.1` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-5.1` does not support `thinking_enabled`."
+        }
+      ]
+    },
+    "gpt-5.1-chat": {
+      "modelLabel": "gpt-5.1-chat",
+      "testedAt": "2026-06-05T09:57:46.837Z",
+      "summary": {
+        "total": 8,
+        "passed": 6,
+        "failed": 2
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"87349b9e-cf06-4e1b-af97-9ece6635228b\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653453,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 40\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": false,
+          "responsePreview": "data: {\"id\":\"e1c9f69e-2cdc-4b37-ad28-4cc78aaf587d\",\"object\":\"chat.completion.chunk\",\"created\":1780653455,\"model\":\"gpt-5.1-chat\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"e1c9f69e-2cdc-4b37-ad28-4cc78aaf587d\",\"object\":\"chat.completion.chunk\",\"created\":1780653455,\"model\":\"gpt-5.1-chat\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"e1c9f69e-2cdc-4b37-ad28-4cc78aaf587d\",\"object\":\"chat.completion.chunk\",\"created\":1780653455,\"model\":\"gpt-5.1-chat\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":16,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"14c10504-9d03-4f35-b00d-fa8d058e75cc\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653457,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 51\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"161f184d-6ca4-4f7f-b6c6-dd370eed5796\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653459,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 27\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"cb2e98f0-371f-404a-a63b-d088c539f2f6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653461,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"84504772-2dfd-49f6-a8ef-72428d2acfa1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653463,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"75c014cf-7e48-488c-a84c-73229cf92a6d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653465,\n  \"model\": \"gpt-5.1-chat\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 16,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-5.1-chat` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-5.1-chat` does not support `thinking_enabled`."
+        }
+      ]
+    },
+    "gpt-5.2": {
+      "modelLabel": "gpt-5.2",
+      "testedAt": "2026-06-05T09:58:59.284Z",
+      "summary": {
+        "total": 8,
+        "passed": 7,
+        "failed": 1
+      },
+      "rows": [
+        {
+          "caseId": "T-API-01",
+          "title": "常用参数组合 · 生文",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"caae4946-a477-4734-9667-8b4dfec6f401\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653530,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"星瀚\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 24,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 7,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 31\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-STREAM-01",
+          "title": "stream 流式",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "data: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"role\":\"assistant\",\"content\":\"\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"如果\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"你\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"说\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"的是\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"“\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"十\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"内\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"”\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"这种\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"填\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"字\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"/\"}}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null},\"finish_reason\":\"length\"}]}\n\ndata: {\"id\":\"bff78896-4550-4aff-8ded-9722c20729e0\",\"object\":\"chat.completion.chunk\",\"created\":1780653531,\"model\":\"gpt-5.2\",\"choices\":[{\"index\":0,\"delta\":{\"content\":null}}],\"usage\":{\"prompt_tokens\":13,\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0},\"prompt_cached_tokens_details\":{\"audio_tokens\":0},\"completion_tokens\":16,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"total_tokens\":29}}\n\ndata: [DONE]",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-01",
+          "title": "messages 多轮",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"12ade8dc-3cff-485f-857d-88fc6aeca0b4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653532,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"人工智能对话平台。\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 35,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 10,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 45\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-MSG-02",
+          "title": "messages 省略 role",
+          "category": "api",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "messages"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"c576f401-c5d0-4dbe-8136-2604a8604794\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653534,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 11,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 5,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 16\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-01",
+          "title": "max_tokens",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"3f656b5c-7c3a-48e6-bcec-8833ac8551b9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653535,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：云”一般是字谜提示：\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 12,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 28\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-02",
+          "title": "temperature · top_p",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "temperature",
+            "top_p",
+            "max_tokens"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"f57ed9af-32e4-4276-9d4c-4c6b99910947\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653536,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"“十字内：路由”通常是在提示**填\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-03",
+          "title": "省略 modalities",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "modalities"
+          ],
+          "httpStatus": 200,
+          "machinePass": true,
+          "responsePreview": "{\n  \"id\": \"08d55afb-e7a9-405a-a442-69cb5b4ca1b2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1780653538,\n  \"model\": \"gpt-5.2\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"好的，按“十字内”四字格式可写\"\n      },\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 13,\n    \"prompt_tokens_details\": {\n      \"audio_tokens\": 0,\n      \"cached_tokens\": 0\n    },\n    \"prompt_cached_tokens_details\": {\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens\": 16,\n    \"completion_tokens_details\": {\n      \"accepted_prediction_tokens\": 0,\n      \"audio_tokens\": 0,\n      \"reasoning_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    },\n    \"total_tokens\": 29\n  }\n}",
+          "apiErrorMessage": null
+        },
+        {
+          "caseId": "T-PARAM-04",
+          "title": "thinking_enabled 深度思考",
+          "category": "param",
+          "paramKeys": [
+            "stream",
+            "max_tokens",
+            "thinking_enabled",
+            "reasoning_effort"
+          ],
+          "httpStatus": 400,
+          "machinePass": false,
+          "responsePreview": "{\n  \"error\": {\n    \"type\": \"invalid_request_error\",\n    \"code\": \"unsupported_for_model\",\n    \"message\": \"invalid_request: model `gpt-5.2` does not support `thinking_enabled`.\"\n  }\n}",
+          "apiErrorMessage": "invalid_request: model `gpt-5.2` does not support `thinking_enabled`."
         }
       ]
     }

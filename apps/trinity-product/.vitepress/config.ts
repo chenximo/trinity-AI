@@ -46,6 +46,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
+      { text: "上游资料索引", link: "/ai-api-platform/upstream-references" },
       {
         text: "用户侧模块",
         collapsed: false,
