@@ -53,6 +53,8 @@ export default defineConfig({
   srcDir: "./docs",
   cleanUrls: true,
   lastUpdated: true,
+  /** 对外文档站固定浅色，不展示导航栏明暗切换 */
+  appearance: false,
   themeConfig: {
     ...sharedTheme,
     search: { provider: "local" },
@@ -102,6 +104,11 @@ export default defineConfig({
   },
 
   head: [
+    [
+      "script",
+      { id: "force-light-appearance" },
+      `(function(){document.documentElement.classList.remove('dark');document.documentElement.removeAttribute('data-theme');try{localStorage.removeItem('vitepress-theme-appearance')}catch(e){}})()`,
+    ],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     ["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],
     [

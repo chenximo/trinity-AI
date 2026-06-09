@@ -165,6 +165,13 @@ body,
   display: none !important;
 }
 
+/* 禁用明暗主题切换（VPNavBarAppearance / 移动端菜单） */
+.VPNavBarAppearance,
+.VPNavScreenAppearance,
+.VPNavBarExtra .item.appearance {
+  display: none !important;
+}
+
 .tdocs-product-nav {
   position: fixed;
   top: 0;
