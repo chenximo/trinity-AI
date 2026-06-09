@@ -1,6 +1,6 @@
 # Request parameters
 
-Trinity keeps **API Reference** under the **API** tab (aligned with [OpenRouter](https://openrouter.ai/docs)). This page is a **cross-capability index**: where to find common headers and body fields. It does **not** replace full parameter tables per endpoint.
+Trinity keeps **API Reference** under the **API** tab. This page is a **cross-capability index**: where to find common headers and body fields. It does **not** replace full parameter tables per endpoint.
 
 | Layer | Location | Use when |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Trinity keeps **API Reference** under the **API** tab (aligned with [OpenRouter]
 | **Advanced parameters (long)** | API track · Advanced parameters group | Tuning, integration, full field lists |
 | **Concept guides** | Docs track · [Streaming](./streaming-sse.md), multimodal | Semantics, flows, easy-to-confuse topics |
 
-Reference: OpenRouter puts sampling params in [API Reference · Parameters](https://openrouter.ai/docs/api/reference/parameters) and endpoint schemas in [Chat completions](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request). Trinity uses **advanced parameters** pages for the same role.
+Endpoint short pages help you run minimal requests; sampling params and full schemas live on each capability’s **advanced parameters** page (e.g. [Chat completions parameters](../api/chat-completions-parameters.md)).
 
 ---
 
@@ -41,7 +41,7 @@ See [API overview · Tracing & settlement](../api/overview.md#tracing-and-settle
 | --- | --- | --- |
 | `model` | Yes | **Model ID** from the [model catalog](https://trinity.ai/models) |
 
-Trinity does **not** expose a public `GET /v1/models` listing. Do not rely on OpenRouter-only query params such as `output_modalities`.
+Trinity does **not** expose a public `GET /v1/models` listing. Do not rely on third-party-only query params such as `output_modalities`.
 
 ---
 

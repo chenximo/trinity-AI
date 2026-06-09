@@ -56,4 +56,6 @@
 
 手册文档真源：`apps/trinity-product/docs/产品手册文档规范.md` · `产品手册更新规范.md` · 预览 `npm run dev:trinity-product`
 
+产品手册内 Skill 全景（给人）：`apps/trinity-product/docs/cursor-skills-全景图.md` → `/product/cursor-skills-全景图`
+
 验收台预览：`npm run dev -w @trinity/app-trinity-product` → `/product/ai-api-platform/api-test/chat-completions`

@@ -65,11 +65,11 @@ Content-Type: application/json
 - 成功：JSON 或 SSE（`stream: true`），结构对齐 OpenAI 同能力（字段可能随上游略有差异）。
 - 失败：OpenAI 风格 `error` 对象；见 [错误与调试](../reference/error-codes.md)。
 
-## 文档分层（对齐 OpenRouter）
+## 文档分层
 
 | 类型 | 说明 |
 | --- | --- |
-| **API 端点页**（本轨） | 短页：`POST`、鉴权、P0 字段、代码示例（对标 OR API Reference） |
+| **API 端点页**（本轨） | 短页：`POST`、鉴权、P0 字段、代码示例 |
 | **高级参数**（API 轨） | 全字段表、调参与联调：侧栏「高级参数」或 [请求参数索引](../guides/request-parameters.md) |
 | **流程指南** | 流式 SSE、生图/生视频流程、多模态概念 |
 

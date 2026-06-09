@@ -1,7 +1,5 @@
 # Cursor
 
-对标参考：[OpenRouter · Cursor integration](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)
-
 ## Cursor 是什么？
 
 [Cursor](https://cursor.com) 是基于 VS Code 的 AI 代码编辑器，支持 Agent 模式、Tab 补全、内联编辑与 CLI。通过 **OpenAI 兼容 Base URL**，可将 Cursor 的 OpenAI 提供方槽位指向 **Trinity 网关**，用自有 `xh-...` Key 调用 [模型广场](https://trinity.ai/models) 中的模型 ID。

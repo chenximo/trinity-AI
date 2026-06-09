@@ -100,10 +100,25 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 | 「待产品填写」「待产品校验」「工程表」 | 「以控制台为准」「联系技术支持」 |
 | 运营后台发布文档、Git 维护流程 | 不写 |
 | 链到 `trinity-product`、飞书表 | 不写 |
+| **`OpenRouter`、`openrouter.ai`、`openrouter` 字样** | **禁止**出现在对外正文（含中英文 `docs/`、`docs/en/`） |
+| **「对标参考」「对标」「aligned with OpenRouter」** 及页首链到 openrouter.ai 的 Reference 行 | **禁止**；页首直接写 Trinity 场景与步骤 |
+| **「与 OpenRouter 文档的差异」「OR 专属」** 等第三方对标句 | 改为「与其他平台示例的差异」「第三方专属」「OpenAI 兼容」等客户向表述 |
 
-**维护者**核对字段、路径时可在仓库内查阅 `API对外接口支持参数.md`（§12），**不得**把该路径写进对外 md。
+**维护者**核对字段、路径时可在仓库内查阅 `API对外接口支持参数.md`（§12），**不得**把该文件名或 `OpenRouter` 对标说明写进对外 md。  
+**结构借鉴** OpenRouter 仅在 §1、版式规范等**维护者文档**内讨论；`apps/trinity-docs/docs/**` 读者只看到 Trinity 品牌与能力。
 
 对外页只描述：**如何拿 Key、调哪些 API、填什么模型 ID、在 Cursor 等工具里怎么配、出错怎么办**。
+
+### 2.1 版式与布局（改 `trinity-docs.css` 时 · 冻结）
+
+以下约定写入主题 CSS，**勿在调留白时破坏**（细则见 [版式规范 §2.1.1](./Trinity文档站-OpenRouter版式对齐规范.md#211-vitepress-默认布局陷阱通病--必覆盖)）：
+
+| 项 | 要求 |
+| --- | --- |
+| 本页目录 | `.aside-container` **保留 `position: fixed`**；禁止改 `sticky`（长文滚动时目录会跟着走） |
+| 正文宽度 | 覆盖 `.VPDoc.has-aside .content-container { max-width: 688px }` → `max-width: none` |
+| 中间区留白 | 只调 container 的 `padding-inline`（与 `--tdocs-doc-cluster-gap` 统一，当前 `5rem`）；**禁止**对 container 负 `margin` 外扩 |
+| CC Switch 等地址 | `127.0.0.1:15721` 写明是 **CC Switch 本机默认**，非 Trinity 固定公网端点；Trinity 端点为 `https://api.trinitydesk.ai/v1` |
 
 ---
 
@@ -201,7 +216,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 - **目标**：某工具里填 Base URL、Key、模型 ID 的步骤。  
 - **结构**（每工具一页）：适用版本 → 前置 → 配置步骤 → 推荐模型 ID → 验收 → 故障排除 → 相关链接。  
-- **禁止**：粘贴 API 全参数表；用 OpenRouter 专属头（Referer 排行等）除非产品明确要求。
+- **禁止**：粘贴 API 全参数表；写「对标 OpenRouter」或链 `openrouter.ai`；用第三方平台专属头（Referer 排行等）除非产品明确要求。
 
 ---
 
@@ -230,7 +245,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 6. **内部进度**（可选）：`trinity-product` roadmap，**不**写入对外 md。  
 7. **本地**：`npm run dev:trinity-docs` → 中/英各切换顶栏语言，三轨侧栏与互链各点一遍。  
 8. **构建**：`npm run build:trinity-docs`。  
-9. **对外扫雷**：全文检索 §2 禁止词（`docs/00`、`产品手册`、`内测`、`一期` 等）。
+9. **对外扫雷**：在 `apps/trinity-docs/docs` 全文检索 §2 禁止词（`docs/00`、`产品手册`、`内测`、`一期`、`OpenRouter`、`openrouter`、`对标参考` 等）。
 
 ### 9.1 中英双语约定
 
@@ -251,6 +266,8 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 **对外正文**
 
 - [ ] 无 §2 禁止的内部路径、手册、阶段用语  
+- [ ] 中英文 `docs/` 正文无 `OpenRouter` / `openrouter` / `对标参考` / 页首 openrouter.ai 外链  
+- [ ] 若改 `trinity-docs.css`：本页目录仍为 `fixed`；`content-container` 无 688px 限制  
 - [ ] `TRINITY_BASE_URL`、路径与线上一致  
 - [ ] 示例 **模型 ID** 在模型广场可见或已标「示例」  
 - [ ] API Key 为 **`xh-...`** 表述  
@@ -308,6 +325,7 @@ npm run build:trinity-docs
 
 | 日期 | 说明 |
 |------|------|
+| 2026-06-09 | §2：禁止对外正文出现 OpenRouter / 对标参考；新增 §2.1 版式布局冻结；§10 扫雷项 |
 | 2026-06-03 | §1：OpenRouter 对齐 + 工程师 `API对外接口支持参数.md` review 流程与勾选清单 |
 | 2026-06-03 | 明确对外读者为开发者客户；§2 禁止内部信息进入 `trinity-docs/docs` |
 | 2026-06-03 | 首版：三轨、用语、页面模板与发布检查 |

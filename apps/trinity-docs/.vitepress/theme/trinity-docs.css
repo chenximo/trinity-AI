@@ -32,10 +32,14 @@ html.dark {
   --tdocs-layout-top: calc(var(--tdocs-product-nav-h) + var(--tdocs-subnav-h));
   /* 仅二级导航条高度 —— 对应 VitePress layout-top 槽，不含主顶栏 */
   --tdocs-subnav-offset: var(--tdocs-subnav-h);
-  --tdocs-content-max: 48rem;
-  --tdocs-doc-pl: calc(1.25rem + 25px);
-  --tdocs-doc-pr: calc(1.25rem + 25px);
+  --tdocs-content-max: 56rem;
+  --tdocs-doc-gutter: 1.5rem;
   --tdocs-aside-col: 14.5rem;
+  /* 大屏：左留白 = 右留白 = 正文与目录间距 */
+  --tdocs-doc-cluster-gap: 5rem;
+  --tdocs-doc-gutter-lg: var(--tdocs-doc-cluster-gap);
+  --tdocs-doc-pl: var(--tdocs-doc-gutter);
+  --tdocs-doc-pr: var(--tdocs-doc-gutter);
   --tdocs-doc-h1-mt: 25px;
   /* info 说明块 · 对齐 OpenRouter Docs sky 色（仅文档站，不改全局 --blue） */
   --tdocs-or-sky-50: #f0f9ff;
@@ -641,10 +645,15 @@ html.dark .VPSidebarItem .is-active > .link {
 }
 
 /*
- * 侧栏文档页：正文 + On this page 作为一行居中，左右留白对称
- * （取消 VP 1440px 整块左推；aside flex-grow:1 会造成右侧大块空白）
+ * 侧栏文档页：左导航 | 中间区（正文 + 本页目录，总宽不变）| 视口右缘
+ * 留白与正文-目录间距统一为 --tdocs-doc-cluster-gap（5rem）；勿用 VP content-container max-width:688px。
  */
 @media (min-width: 960px) {
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+    padding-right: 0 !important;
+  }
+
   .VPDoc.has-sidebar {
     padding: 1.5rem 0 0 !important;
   }
@@ -655,7 +664,7 @@ html.dark .VPSidebarItem .is-active > .link {
 
   .VPDoc.has-sidebar .content {
     margin: 0 !important;
-    padding: 0 var(--tdocs-doc-pr) 4rem var(--tdocs-doc-pl) !important;
+    padding: 0 var(--tdocs-doc-gutter) 4rem var(--tdocs-doc-gutter) !important;
   }
 }
 
@@ -664,37 +673,63 @@ html.dark .VPSidebarItem .is-active > .link {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: flex-start;
+    gap: var(--tdocs-doc-cluster-gap);
     box-sizing: border-box;
-    width: calc(100vw - var(--vp-sidebar-width));
-    max-width: calc(var(--vp-layout-max-width) - var(--vp-sidebar-width));
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: var(--tdocs-doc-pl);
-    padding-right: var(--tdocs-doc-pr);
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding-inline: var(--tdocs-doc-gutter-lg);
+  }
+
+  /* VitePress 1.6 scoped：有 aside 时正文限死 688px，与产品手册站同样需覆盖 */
+  .VPDoc.has-aside .content-container,
+  .VPDoc.has-sidebar.has-aside .content-container {
+    max-width: none !important;
+    width: 100%;
+    margin: 0 !important;
   }
 
   .VPDoc.has-sidebar .content {
-    flex: 0 1 var(--tdocs-content-max);
-    min-width: 0;
-    max-width: var(--tdocs-content-max);
-    padding-right: 2rem !important;
-    padding-left: 0 !important;
+    flex: 1 1 auto;
+    min-width: 0 !important;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 0 4rem !important;
   }
 
-  /* 目录列贴容器右缘（不再紧跟正文） */
+  /* 目录列固定宽、紧跟正文；覆盖 VP 默认 flex-grow:1 / padding-left:32px */
   .VPDoc.has-sidebar .aside {
     flex: 0 0 var(--tdocs-aside-col) !important;
     flex-grow: 0 !important;
     width: var(--tdocs-aside-col) !important;
     max-width: var(--tdocs-aside-col) !important;
-    margin-left: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* 勿用 right 相对视口定位 fixed 目录，会与正文区重叠；由 flex 列锚定即可 */
-  .VPDoc.has-sidebar .aside-container,
+  /*
+   * 本页目录：保留 VP position:fixed（钉在视口，长文滚动时仍可见）。
+   * 勿改 sticky——父列高度不足时目录会跟着正文滚走（产品手册站同理）。
+   */
+  .VPDoc.has-sidebar .aside-container {
+    position: fixed !important;
+    top: 0 !important;
+    padding-top: calc(
+      var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 48px
+    ) !important;
+    width: var(--tdocs-aside-col) !important;
+    height: 100vh !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .VPDoc.has-sidebar .aside-container::-webkit-scrollbar {
+    display: none;
+  }
+
   .VPDoc.has-sidebar .aside-curtain {
+    position: fixed !important;
     width: var(--tdocs-aside-col) !important;
   }
 }

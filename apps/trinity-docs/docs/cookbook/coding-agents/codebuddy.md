@@ -1,6 +1,6 @@
 # CodeBuddy
 
-对标参考：[CodeBuddy · models.json 配置](https://www.codebuddy.ai/docs/ide/Features/models)（腾讯云代码助手）
+延伸阅读：[CodeBuddy · models.json 配置](https://www.codebuddy.ai/docs/ide/Features/models)（腾讯云代码助手）
 
 ## CodeBuddy 是什么？
 

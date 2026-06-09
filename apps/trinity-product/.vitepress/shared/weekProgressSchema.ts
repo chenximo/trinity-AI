@@ -194,8 +194,7 @@ export function stringifyWeekProgressYaml(data: WeekProgressData): string {
       lines.push(`        result: ${yamlQuote(w.result || "⬜")}`);
       const testLink = w.testLink?.trim() || "—";
       lines.push(`        testLink: ${yamlQuote(testLink)}`);
-      const blockers = w.blockers?.trim() || "—";
-      lines.push(`        blockers: ${yamlQuote(blockers)}`);
+      appendWeekTextField(lines, "blockers", w.blockers?.trim() ? w.blockers : "—");
     }
   }
   lines.push("");

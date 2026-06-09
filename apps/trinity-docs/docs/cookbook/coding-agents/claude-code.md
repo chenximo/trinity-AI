@@ -1,7 +1,5 @@
 # Claude Code
 
-对标参考：[OpenRouter · Claude Code integration](https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration)
-
 ## Claude Code 是什么？
 
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 是 Anthropic 的**终端编程 Agent**（`claude` CLI）。若网关提供 **Anthropic API 兼容** 或工具支持 **OpenAI 兼容 Base URL**，可将请求指向 Trinity，复用 `xh-...` Key 与 [模型广场](https://trinity.ai/models) 模型 ID。

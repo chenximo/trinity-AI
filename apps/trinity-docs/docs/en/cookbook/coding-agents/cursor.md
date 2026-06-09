@@ -1,7 +1,5 @@
 # Cursor
 
-Reference: [OpenRouter · Cursor integration](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)
-
 ## What is Cursor?
 
 [Cursor](https://cursor.com) is an AI code editor built on VS Code with Agent mode, tab completions, inline edits, and a CLI. Using an **OpenAI-compatible Base URL**, you can point Cursor’s OpenAI provider slot at the **Trinity gateway** and call **model IDs** from the [model catalog](https://trinity.ai/models) with your `xh-...` key.

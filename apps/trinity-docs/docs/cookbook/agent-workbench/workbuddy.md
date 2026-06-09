@@ -1,6 +1,6 @@
 # WorkBuddy
 
-对标参考：[WorkBuddy · 模型配置](https://www.workbuddy.ai/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Model)
+延伸阅读：[WorkBuddy · 模型配置](https://www.workbuddy.ai/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Model)
 
 ## WorkBuddy 是什么？
 

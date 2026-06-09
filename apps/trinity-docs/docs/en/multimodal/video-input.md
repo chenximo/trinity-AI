@@ -2,7 +2,7 @@
 
 To send video to a **text model** that supports multimodal input, use **`POST /v1/chat/completions`** (same as [Create chat completion](../api/chat-completions.md)) and pass video in a **multi-part `content` array** inside `messages`.
 
-Trinity uses a **`type: file`** Part with **`file_url`** (public URL or Base64 data URL). This differs from [OpenRouter · Video Inputs](https://openrouter.ai/docs/guides/overview/multimodal/videos), which uses a `video_url` Part name—the purpose is the same: **help the model understand video content** (summaries, scene recognition, etc.).
+Trinity uses a **`type: file`** Part with **`file_url`** (public URL or Base64 data URL). Some other platforms use a `video_url` Part name; on Trinity **text chat**, use **`file_url`**—the purpose is the same: **help the model understand video content** (summaries, scene recognition, etc.).
 
 ::: warning Do not confuse with video generation
 **Video understanding (input)** uses this page: `POST /chat/completions` + `file` Part. **Generating new video** uses async `POST /video/generations`—see [Video generation](./video-generation.md) and [Create video generation task](../api/videos-generations.md). The `input_references[].type: video_url` field on video **generation** requests is a **different schema**, not this chat Part.
@@ -265,9 +265,9 @@ Some models support `extra_content.google` at the protocol layer (for example vi
 - State what to analyze (plot, anomalies, on-screen text, motion, etc.)  
 - Pair the video Part with a clear text instruction  
 
-### Difference from OpenRouter docs
+### Field naming
 
-[OpenRouter video input](https://openrouter.ai/docs/guides/overview/multimodal/videos) examples use `type: video_url`. On Trinity **text chat**, use **`type: file` + `file_url`**. Do not copy video **generation** `input_references` into chat requests.
+Many third-party examples use `type: video_url`. On Trinity **text chat**, use **`type: file` + `file_url`**. Do not copy video **generation** `input_references` into chat requests.
 
 ---
 

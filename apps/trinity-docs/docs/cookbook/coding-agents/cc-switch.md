@@ -64,6 +64,10 @@
 2. 确认 CC Switch：路由 **运行中**、**Codex** 已勾选路由启用、Trinity 供应商为 **启用**。
 3. 在 Codex 执行短任务；若 CLI 正常返回回答，且 Trinity 侧出现 `POST /v1/chat/completions`，`model` 与配置一致，即表示接入成功。
 
+::: tip Codex 模型与配置文件
+多模型、`auth.json`、`cc-switch-model-catalog.json`、App 下拉为空等说明见 [CC Switch 对接 Codex（连接与模型选择）](./codex-cc-switch.md)。
+:::
+
 ---
 
 ## 接入流程（Claude Code，可选）

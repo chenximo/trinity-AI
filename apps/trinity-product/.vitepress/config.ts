@@ -22,6 +22,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     items: [
       { text: "文档规范", link: "/产品手册文档规范" },
       { text: "更新规范", link: "/产品手册更新规范" },
+      { text: "Cursor Skills 全景图", link: "/cursor-skills-全景图" },
     ],
   },
   {

@@ -2,8 +2,6 @@
 
 Set `"stream": true` on **`POST /v1/chat/completions`** to receive incremental output as **Server-Sent Events (SSE)**. The stream follows **OpenAI Chat Completions streaming** conventions so existing clients and parsers often work with minimal changes.
 
-Reference: [OpenRouter · API Streaming](https://openrouter.ai/docs/api/reference/streaming)
-
 ::: warning Scope
 **Streaming applies to text chat** (and other chat completions that return text deltas). Image generation must use `stream: false` or omit `stream`. Video uses async polling—see [Video generation](../multimodal/video-generation.md).
 :::

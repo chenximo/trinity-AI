@@ -1,7 +1,5 @@
 # Codex CLI
 
-Reference: [OpenRouter · Codex CLI integration](https://openrouter.ai/docs/cookbook/coding-agents/codex-cli)
-
 ## What is Codex CLI?
 
 [Codex CLI](https://github.com/openai/codex) is OpenAI’s open-source **terminal coding agent**. Configure an **OpenAI-compatible** provider in `config.toml` to route requests through the **Trinity gateway** with an `xh-...` key and [catalog](https://trinity.ai/models) model IDs.
@@ -47,7 +45,7 @@ env_key = "TRINITY_API_KEY"
 | `env_key` | Env var for the key, e.g. `TRINITY_API_KEY` |
 
 ::: info
-Some Codex builds use `[model_providers.openrouter]` naming; Trinity is **OpenAI-compatible REST**—pick the provider section your Codex version documents and set **`base_url` to Trinity**.
+Some Codex builds use different provider section names; Trinity is **OpenAI-compatible REST**—pick the provider section your Codex version documents and set **`base_url` to Trinity**.
 :::
 
 Or environment-only:

@@ -4,8 +4,6 @@
 
 可在同一条 `content` 数组中放**多张图**；单请求可附带的图片数量因**模型与上游**而异。解析时建议**先放文本 Part、再放图片**；若必须先图后文，可将说明放进 `system` 消息。
 
-对标参考：[OpenRouter · Image Inputs](https://openrouter.ai/docs/guides/overview/multimodal/image-understanding)
-
 ::: warning 勿与生图混淆
 **看图理解**用本页的 `image_url` Part。**文生图 / 参考图生图**用 `modalities` + `image_config`，见 [创建图像生成](../api/images-generations.md)。
 :::

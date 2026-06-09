@@ -2,8 +2,6 @@
 
 在 **`POST /v1/chat/completions`** 请求体中设置 `"stream": true`，网关以 **Server-Sent Events (SSE)** 增量返回内容。事件格式对齐 **OpenAI Chat Completions 流式**，便于复用现有 SDK 与解析逻辑。
 
-对标参考：[OpenRouter · API Streaming](https://openrouter.ai/docs/api/reference/streaming)
-
 ::: warning 适用范围
 **流式仅适用于生文（及带文本增量的对话补全）**。生图须 `stream: false` 或省略；生视频为异步任务轮询，见 [视频生成](../multimodal/video-generation.md)。
 :::

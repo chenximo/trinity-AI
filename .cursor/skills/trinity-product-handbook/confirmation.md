@@ -13,7 +13,7 @@
 ## 不需要确认
 
 - 单页文案修订（不改页型）
-- 周会 routine 更新 `week-progress.yml` plan/acceptance 行
+- 周会 routine 更新 `week-progress.yml` 的 `plan` / `blockers`（备注）行
 - 修正链接 typo
 
 ## 确认话术

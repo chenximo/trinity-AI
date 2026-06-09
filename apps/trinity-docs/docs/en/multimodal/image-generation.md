@@ -2,8 +2,6 @@
 
 Trinity generates images via **[Create chat completion](../api/chat-completions.md)** (`POST /v1/chat/completions`) by setting **`modalities`** and **`image_config`** in the request body. This is **not** OpenAI’s standalone `POST /images/generations`.
 
-Reference: [OpenRouter · Image Generation](https://openrouter.ai/docs/guides/overview/multimodal/image-generation)
-
 ::: warning Do not confuse with image input
 **Text-to-image / reference-image generation** uses `modalities` + `image_config` on this page. **Image understanding** uses the `image_url` Part in `messages[].content`—see [Image input](./image-input.md).
 :::
@@ -241,7 +239,7 @@ Image generation **does not** support `stream: true`. Wait for a synchronous JSO
 
 ## Response format
 
-On success, the assistant message usually includes generated images (structure follows OpenAI / OpenRouter conventions; upstream may differ slightly):
+On success, the assistant message usually includes generated images (structure follows OpenAI-compatible conventions; upstream may differ slightly):
 
 ```json
 {

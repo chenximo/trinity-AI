@@ -31,11 +31,32 @@
 | L3 | 顶栏「Ask AI」 | 右侧主 CTA | 无 | — | 三期或链 Trinity 对话 |
 | L4 | 左侧栏分组 | Overview / Models & Routing / Features + **图标** | 文字分组、无图标 | ⬜ | `sidebar` + 自定义 `VPSidebarItem` 或 CSS |
 | L5 | 左栏当前项 | 浅蓝底 + 加粗蓝字 | 浅蓝底已有，无图标 | 🟡 | `trinity-docs.css` |
-| L6 | 正文最大宽度 | 居中窄栏（约 720–768px 体感） | `48rem` max-width | ✅ | `.VPDoc .container` |
+| L6 | 正文区留白 | 左留白 = 右留白 = 正文与目录间距 | `--tdocs-doc-cluster-gap: 5rem`（≥1280px）；**禁止** VP `688px` | ✅ | `trinity-docs.css` §布局覆盖 |
 | L7 | 正文左对齐轴 | 标题、段落、表格同左缘 | 已统一 | ✅ | `.vp-doc` |
 | L8 | 右侧「本页目录」 | On this page + **左侧蓝竖条** 表当前节 | VitePress outline，样式偏弱 | 🟡 | `VPDocAsideOutline` CSS |
 | L9 | 章节分隔 | `---` 大间距 + 细横线 | quickstart 已用 `---` | ✅ | md 约定 |
 | L10 | 首页形态 | 以文档目录为主，非大 Hero 营销 | 仍保留 VPHome Hero | 🟡 | `index.md` / 可改 `layout: doc` |
+
+#### 2.1.1 VitePress 默认布局陷阱（通病 · 必覆盖）
+
+> **对外正文禁止出现 OpenRouter 字样**（含「对标参考」、openrouter.ai 链接）→ 见 [基本规范 §2](./Trinity对外文档站-基本规范.md#2-首要原则对外正文零内部信息)。本节与下表仅供**维护者**改 CSS / 验收版式。
+
+凡用 **VitePress 1.6 默认主题** 的文档站（`trinity-docs`、`trinity-product` 等）都会遇到同一组 scoped 样式，**不要靠改 md**，须在主题 CSS 统一覆盖：
+
+| 来源 | 默认行为 | 现象 | Trinity 做法 |
+| --- | --- | --- | --- |
+| `VPDoc.vue` scoped | `.VPDoc.has-aside .content-container { max-width: 688px }` | 有「本页目录」时正文被限死 ~688px，两侧出现大块空白 | `max-width: none; width: 100%`（见 `trinity-docs.css`、`trinity-product/.../custom.css`） |
+| `VPDoc.vue` scoped | `.aside { flex-grow: 1; padding-left: 32px }` | 目录列被撑宽或间距异常 | `flex-grow: 0` + 固定 `--tdocs-aside-col` |
+| `VPDoc.vue` scoped | `.aside-container { position: fixed }` | **须保留 fixed**：本页目录钉在视口；改 sticky 会长文滚走 | **不要**改 sticky；留白用 container `padding-inline` 调 |
+| `VPContent.vue` scoped | `@media (min-width: 1440px)` 按 `--vp-layout-max-width` 视口居中 | 超宽屏左右留白过大，且左右算法不对称 | 主列 `padding-left: sidebar` only；**中间区**用 container `padding-inline` 控留白 |
+| 布局调优误区 | 对 container 用负 `margin` 撑宽 | 目录被挤出视口 | **只减 container 内 padding**；中间区（正文+目录）总宽保持 `width:100%` |
+
+**约定（冻结）**：
+
+1. **中间区** = `.VPDoc .container`（flex：正文 + 本页目录），总宽度占满 `VPContent` 主列，**不**负 margin 外扩。
+2. **左右留白** = container 的 `padding-inline`（`--tdocs-doc-gutter-lg`，与 `--tdocs-doc-cluster-gap` 同为 `5rem`），**不**再叠 `content-container` 的 `max-width`。
+3. 正文变宽 = 取消 688px 限制后 `flex: 1` 吸收 padding 释放的空间；目录列宽度不变。
+4. 新站复用同一套时，复制上述覆盖块并改 gutter token，勿只改 `.container` 而漏掉 `.content-container`。
 
 ### 2.2 正文组件
 

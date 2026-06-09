@@ -2,7 +2,7 @@
 
 向支持多模态的**生文模型**发送带视频素材的请求时，使用 **`POST /v1/chat/completions`**（与 [创建对话补全](../api/chat-completions.md) 相同），在 `messages` 里用 **多段 `content` 数组** 传入视频。
 
-Trinity 将视频作为 **`type: file`** 的 Part，通过 **`file_url`** 传入（公网 URL 或 Base64 Data URL）。与 [OpenRouter · Video Inputs](https://openrouter.ai/docs/guides/overview/multimodal/videos) 的 `video_url` Part 命名不同，但用途一致：**让模型理解视频内容**（摘要、场景识别等）。
+Trinity 将视频作为 **`type: file`** 的 Part，通过 **`file_url`** 传入（公网 URL 或 Base64 Data URL）。部分其他平台示例使用 `video_url` 命名，Trinity 生文侧请用 **`file_url`**，用途一致：**让模型理解视频内容**（摘要、场景识别等）。
 
 ::: warning 勿与生视频混淆
 **视频理解（输入）**用本页 · `POST /chat/completions` + `file` Part。**生成新视频**用 `POST /video/generations` 异步任务，见 [视频生成](./video-generation.md) 与 [创建视频生成任务](../api/videos-generations.md)。生视频里的 `input_references[].type: video_url` 是**另一套字段**，不是本页 Part。
@@ -265,9 +265,9 @@ Data URL 常用 MIME：
 - 说明要分析什么（情节、异常、文字、运动等）  
 - 视频 Part 与文本 Part 一并给出明确任务  
 
-### 与 OpenRouter 文档的差异
+### 字段命名说明
 
-[OpenRouter 视频输入](https://openrouter.ai/docs/guides/overview/multimodal/videos) 示例使用 `type: video_url`。Trinity 生文侧请使用 **`type: file` + `file_url`**。勿把生视频 API 的 `input_references` 结构用于本页的视频输入。
+常见第三方示例使用 `type: video_url`。Trinity 生文侧请使用 **`type: file` + `file_url`**。勿把生视频 API 的 `input_references` 结构用于本页的视频输入。
 
 ---
 

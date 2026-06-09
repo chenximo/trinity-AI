@@ -32,7 +32,7 @@ disable-model-invocation: true
 | **维护入口（先读）** | `docs/04-工程与迁移/Trinity对外文档站-基本规范.md`（§1 OR+工程师 review、§2 禁止项、§7 页面模板、§10 发布检查） |
 | **API 字段** | `docs/00-协作与工作流/工程师/API对外接口支持参数.md` |
 | **顶栏 / 侧栏 IA** | `docs/04-工程与迁移/Trinity文档站-信息架构与顶栏设计.md` |
-| **版式 / code-group** | `docs/04-工程与迁移/Trinity文档站-OpenRouter版式对齐规范.md` |
+| **版式 / code-group** | `docs/04-工程与迁移/Trinity文档站-OpenRouter版式对齐规范.md`（含 §2.1.1 VP 布局通病） |
 | **页面清单** | `docs/04-工程与迁移/Trinity文档站-一期MVP文档清单.md` |
 | **对外正文** | `apps/trinity-docs/docs/**/*.md`（中文 root；英文 `docs/en/` 镜像） |
 | **侧栏注册** | `apps/trinity-docs/.vitepress/config/sidebars.ts` |
@@ -93,6 +93,10 @@ OR 参考（结构，非照抄未开放能力）：
 | Base URL | `TRINITY_BASE_URL`，含 **`/v1`** |
 | 追踪/计费重试 | `X-Request-Id`、`X-Idempotency-Key`（重试同一笔业务**结算键不变**） |
 
+**禁止写入 `apps/trinity-docs/docs/**`（含 `en/`）**：`OpenRouter`、`openrouter.ai`、`对标参考`、页首链 openrouter.ai 的 Reference 行。结构借鉴仅在维护者规范内（`基本规范` §1、版式 §2.1.1）。
+
+**改 `trinity-docs.css` 时**：本页目录保留 `aside-container: fixed`；覆盖 `content-container` 688px；留白用 `padding-inline` + `--tdocs-doc-cluster-gap`（见版式 §2.1.1）。
+
 提示块：`::: info` 一般说明（蓝）；`::: tip` 非常重要（绿）；`::: warning` 易混/破坏性。
 
 ---
@@ -103,7 +107,7 @@ OR 参考（结构，非照抄未开放能力）：
 2. 中文 md：`apps/trinity-docs/docs/...`  
 3. 英文：`docs/en/...` 翻译或 `npm run docs:en-mirror -w @trinity/app-trinity-docs` 占位  
 4. `sidebars.ts`：`sidebarDocsZh` / `sidebarApiZh` / `sidebarCookbookZh`  
-5. 完成 **基本规范 §1.3** 工程师 review + §10 扫雷（禁止词）  
+5. 完成 **基本规范 §1.3** 工程师 review + §10 扫雷（禁止词含 `OpenRouter` / `对标参考`）  
 6. `npm run build:trinity-docs`  
 
 **改 API 参数顺序**：先工程师 `API对外接口支持参数.md` → 再 `trinity-docs` 对应页 → 再 product roadmap（可选）。
@@ -122,7 +126,7 @@ OR 参考（结构，非照抄未开放能力）：
 |----|------|
 | VitePress 配置 | `apps/trinity-docs/.vitepress/config.ts` |
 | 顶栏 Tab | `apps/trinity-docs/.vitepress/theme/docsNav.ts` |
-| 样式 token | `apps/trinity-docs/.vitepress/theme/trinity-docs.css` |
+| 样式 token | `apps/trinity-docs/.vitepress/theme/trinity-docs.css`（必覆盖 `.VPDoc.has-aside .content-container` 688px） |
 | 工作区包名 | `@trinity/app-trinity-docs` |
 
 ```bash

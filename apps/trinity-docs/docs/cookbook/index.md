@@ -1,6 +1,6 @@
 # 应用场景
 
-Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/docs) 顶栏）：
+Trinity 文档站按三条轨组织：
 
 | 顶栏 | 适合什么问题 |
 |------|----------------|
@@ -33,9 +33,8 @@ Trinity 文档站按三条轨组织（对标 [OpenRouter](https://openrouter.ai/
 | [CodeBuddy](./coding-agents/codebuddy) | 编程向 IDE/CLI：`models.json` |
 | [Claude Code](./coding-agents/claude-code) | 终端 Agent |
 | [CC Switch](./coding-agents/cc-switch) | Claude Code / Codex 等供应商可视化切换 |
-| [Codex CLI](./coding-agents/codex-cli) | `config.toml` |
-
-对标 [OpenRouter · Coding agents](https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration)（OR 侧栏以编程类为主）。
+| [CC Switch · Codex](./coding-agents/codex-cc-switch) | Codex 连接、多模型与切换（完整说明） |
+| [Codex CLI](./coding-agents/codex-cli) | `config.toml` 手写直连 |
 
 ---
 

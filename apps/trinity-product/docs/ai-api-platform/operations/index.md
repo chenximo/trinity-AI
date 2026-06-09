@@ -6,7 +6,7 @@ title: 运营后台管理平台
 
 > **工程**：`apps/trinity-ai-admin`
 
-> **地址**：见 [AI API 聚合产品 · 总览](../)（运营后台体验基址见该页）
+> **地址**：见 [AI API 聚合产品 · 总览](http://43.159.57.43/trinityai-admin/models/list)（运营后台体验基址见该页）
 
 ## 模块总览
 

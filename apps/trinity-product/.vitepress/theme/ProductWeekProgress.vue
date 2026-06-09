@@ -96,14 +96,14 @@ const {
 type EditorTab = "table" | "yaml";
 const editorTab = ref<EditorTab>("table");
 
-type TextEditField = "plan" | "acceptance";
+type TextEditField = "plan" | "blockers";
 const textEditOpen = ref(false);
 const textEditField = ref<TextEditField>("plan");
 const textEditDraft = ref("");
 const textEditMonthIdx = ref(-1);
 const textEditWeekIdx = ref(-1);
 
-const textEditTitle = computed(() => (textEditField.value === "plan" ? "编辑计划" : "编辑达标"));
+const textEditTitle = computed(() => (textEditField.value === "plan" ? "编辑计划" : "编辑备注"));
 const textEditWeekLabel = computed(() => {
   const m = editorDraft.value.months[textEditMonthIdx.value];
   const w = m?.weeks[textEditWeekIdx.value];
@@ -336,7 +336,6 @@ function saveTextEdit() {
                 <th class="pw-col-focus">重点模块</th>
                 <th class="pw-col-owner">负责人</th>
                 <th class="pw-col-plan">计划</th>
-                <th class="pw-col-acceptance">达标</th>
                 <th class="pw-col-result">结果</th>
                 <th class="pw-col-link">测试链接</th>
                 <th class="pw-col-blockers">备注</th>
@@ -380,16 +379,30 @@ function saveTextEdit() {
                     </div>
                   </div>
                 </td>
-                <td class="pw-col-acceptance">{{ w.acceptance || "—" }}</td>
                 <td class="pw-col-result">{{ w.result || "⬜" }}</td>
                 <td class="pw-col-link">
                   <a v-if="isHttpLink(w.testLink)" :href="w.testLink" target="_blank" rel="noreferrer">打开</a>
                   <span v-else>{{ w.testLink || "—" }}</span>
                 </td>
-                <td class="pw-col-blockers">{{ w.blockers || "—" }}</td>
+                <td class="pw-col-blockers">
+                  <template v-if="!w.blockers?.trim() || w.blockers === '—'">—</template>
+                  <div v-else class="pw-plan-body">
+                    <div
+                      v-for="(line, li) in planDisplayLines(w.blockers)"
+                      :key="li"
+                      class="pw-plan-line"
+                      :class="{ 'pw-plan-line--task': isPlanTaskLine(line) }"
+                    >
+                      <template v-for="(seg, si) in planLineSegments(line)" :key="si">
+                        <span v-if="seg.kind === 'at'" class="pw-plan-at">{{ seg.value }}</span>
+                        <span v-else>{{ seg.value }}</span>
+                      </template>
+                    </div>
+                  </div>
+                </td>
               </tr>
               <tr v-if="!month.weeks.length">
-                <td colspan="8" class="product-roadmap-muted">暂无周记录</td>
+                <td colspan="7" class="product-roadmap-muted">暂无周记录</td>
               </tr>
             </tbody>
           </table>
@@ -450,6 +463,7 @@ function saveTextEdit() {
             <p class="product-week-progress-editor-hint">
               <strong>重点模块</strong>：从下拉 <strong>+ 添加标准叶子页</strong> 多选（与侧栏叶子 <code>title</code> 一致）；已选标签可点 × 移除。
               保存后看板显示为可点击链接。清单见 <code>.vitepress/shared/weekProgressFocusLeaves.ts</code>。
+              <strong>计划 / 备注</strong>：书写与看板样式相同（<code>①</code> 分行、<code>@姓名</code>、续行）；点 <strong>编辑计划</strong> / <strong>编辑备注</strong> 多行编辑。见 <code>产品手册更新规范.md</code> §四。
             </p>
             <div
               v-for="(month, mIdx) in editorDraft.months"
@@ -479,7 +493,6 @@ function saveTextEdit() {
                     <th>重点模块</th>
                     <th>负责人</th>
                     <th>计划</th>
-                    <th>达标</th>
                     <th>结果</th>
                     <th>测试链接</th>
                     <th>备注</th>
@@ -543,28 +556,19 @@ function saveTextEdit() {
                       <span v-if="w.plan?.trim()" class="pw-editor-text-badge" :title="textPreview(w.plan)">已填</span>
                       <span v-else class="pw-editor-text-badge is-empty">未填</span>
                     </td>
-                    <td class="pw-editor-text-td">
-                      <button
-                        type="button"
-                        class="pr-btn pw-editor-text-btn"
-                        @click="openTextEdit(mIdx, wIdx, 'acceptance')"
-                      >
-                        编辑达标
-                      </button>
-                      <span
-                        v-if="w.acceptance?.trim()"
-                        class="pw-editor-text-badge"
-                        :title="textPreview(w.acceptance)"
-                      >已填</span>
-                      <span v-else class="pw-editor-text-badge is-empty">未填</span>
-                    </td>
                     <td>
                       <select v-model="w.result" class="pr-select">
                         <option v-for="s in WEEK_RESULT_OPTIONS" :key="s" :value="s">{{ s }}</option>
                       </select>
                     </td>
                     <td><input v-model="w.testLink" type="text" class="pr-input pr-input--note" /></td>
-                    <td><input v-model="w.blockers" type="text" class="pr-input pr-input--note" /></td>
+                    <td class="pw-editor-text-td">
+                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(mIdx, wIdx, 'blockers')">
+                        编辑备注
+                      </button>
+                      <span v-if="w.blockers?.trim() && w.blockers !== '—'" class="pw-editor-text-badge" :title="textPreview(w.blockers)">已填</span>
+                      <span v-else class="pw-editor-text-badge is-empty">未填</span>
+                    </td>
                     <td>
                       <button type="button" class="pr-btn pr-btn--danger" @click="removeWeek(mIdx, wIdx)">删</button>
                     </td>
@@ -581,8 +585,8 @@ function saveTextEdit() {
             <p class="product-roadmap-yaml-hint">
               结构：<code>months</code> → 每月 <code>id</code> / <code>goal</code> / <code>archived</code> /
               <code>weeks</code>（<code>id</code>、<code>period</code>、<code>focus</code>、<code>owner</code>、
-              <code>plan</code>、<code>acceptance</code>（达标）、<code>result</code>、<code>testLink</code>、
-              <code>blockers</code>（备注）。结果符号：✅ 🟡 ⬜ ➖。
+              <code>plan</code>、<code>result</code>、<code>testLink</code>、<code>blockers</code>（备注）。
+              结果符号：✅ 🟡 ⬜ ➖。
             </p>
             <textarea
               v-model="editorRawYaml"
@@ -616,9 +620,12 @@ function saveTextEdit() {
               v-model="textEditDraft"
               class="pw-text-modal-area"
               spellcheck="false"
-              :placeholder="textEditField === 'plan' ? '① 子项 @负责人\n模块：operations/…\n待依赖：…' : '① 达标口径\n② …'"
+              :placeholder="'① 子项 @负责人\n模块：operations/…\n待依赖：…'"
             />
-            <p class="pw-text-modal-hint">支持多行；保存周进度时写入 YAML（<code>plan: |-</code> / <code>acceptance: |-</code>）。</p>
+            <p class="pw-text-modal-hint">
+              与<strong>计划</strong>相同书写与展示：子项 <code>①</code> <code>②</code> 分行，<code>@姓名</code> 蓝色高亮，续行缩进；多行写入
+              <code>|-</code>。见手册 <code>产品手册更新规范.md</code> §四「plan 与 blockers」。
+            </p>
           </div>
         </div>
       </div>
@@ -657,7 +664,6 @@ function saveTextEdit() {
   font-weight: 600;
 }
 .product-week-progress-wrap :deep(.pw-col-focus),
-.product-week-progress-wrap :deep(.pw-col-acceptance),
 .product-week-progress-wrap :deep(.pw-col-blockers) {
   white-space: pre-line;
 }
@@ -691,13 +697,8 @@ function saveTextEdit() {
   width: 6%;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-plan) {
-  width: 34%;
+  width: 40%;
   min-width: 10rem;
-}
-.product-week-progress-wrap :deep(.pw-table-wrap .pw-col-acceptance) {
-  width: 16%;
-  min-width: 5.5rem;
-  max-width: 14rem;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-result) {
   width: 4%;
@@ -706,7 +707,8 @@ function saveTextEdit() {
   width: 5%;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-blockers) {
-  width: 14%;
+  width: 20%;
+  min-width: 8rem;
 }
 .product-week-progress-month {
   margin: 1.25rem 0 1.75rem;

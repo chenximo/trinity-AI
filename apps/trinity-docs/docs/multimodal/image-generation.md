@@ -2,8 +2,6 @@
 
 Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/chat/completions`）生成图像：在请求体中设置 **`modalities`** 与 **`image_config`**。**不是** OpenAI 独立的 `POST /images/generations`。
 
-对标参考：[OpenRouter · Image Generation](https://openrouter.ai/docs/guides/overview/multimodal/image-generation)
-
 ::: warning 勿与图片输入混淆
 **文生图 / 参考图生图**用本页的 `modalities` + `image_config`。**看图理解**在 `messages[].content` 里传 `image_url` Part，见 [图片输入](./image-input.md)。
 :::
@@ -241,7 +239,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## 响应格式
 
-成功时，助手消息中通常包含生成的图片（结构对齐 OpenAI / OpenRouter 习惯，上游略有差异）：
+成功时，助手消息中通常包含生成的图片（结构对齐 OpenAI 兼容习惯，上游略有差异）：
 
 ```json
 {

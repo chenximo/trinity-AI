@@ -14,5 +14,6 @@
 | `Trinity官网首页静态原型生成提示词（归档）.md` | 一次性 AI 提示词 |
 | `TrinityAI云落地页FigmaMake生成提示词（归档）.md` | 一次性 AI 提示词 |
 | `Trinity对话页原型说明（归档）.md` | 静态期备忘（真源：`apps/trinity-ai/src/views/chat/`） |
+| `CC-Switch对接Codex联调分析（归档）.md` | CC Switch + Codex + Trinity 联调分析（对外真源：`apps/trinity-docs/docs/cookbook/coding-agents/codex-cc-switch.md`） |
 
 新文件：文件名 **`…（归档）.md`**；文首 **`文档状态：归档`** + 现网真源链接。可复用方法论 → [`08-方法论与汇报/`](../08-方法论与汇报/)。

@@ -1,6 +1,6 @@
 # 请求参数
 
-Trinity 将 **API Reference** 放在 **API** 顶栏下（对标 [OpenRouter](https://openrouter.ai/docs)）。本页是**跨能力索引**：说明通用头与常见字段去哪查，**不**替代各能力的全字段表。
+Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索引**：说明通用头与常见字段去哪查，**不**替代各能力的全字段表。
 
 | 层级 | 位置 | 适合什么问题 |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下（对标 [OpenRouter](htt
 | **高级参数（长）** | [API 轨](../api/overview.md) · 高级参数分组 | 调参、联调、对全字段 |
 | **概念指南** | 本轨 · [流式](./streaming-sse.md) / 多模态 | 语义、流程、易混说明 |
 
-对标参考：OpenRouter 将采样参数集中在 [API Reference · Parameters](https://openrouter.ai/docs/api/reference/parameters)，端点 schema 在 [Chat completions](https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request)；Trinity 用 **高级参数** 页承担同等角色。
+端点短页负责跑通请求；采样参数、全字段 schema 见各能力的 **高级参数** 页（如 [对话补全高级参数](../api/chat-completions-parameters.md)）。
 
 ---
 
@@ -41,7 +41,7 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下（对标 [OpenRouter](htt
 | --- | --- | --- |
 | `model` | 是 | **模型 ID**，与 [模型广场](https://trinity.ai/models) 一致；勿使用列表中不存在的 ID |
 
-Trinity **不提供**对外 `GET /v1/models` 列举；勿依赖 `output_modalities` 等 OR 专属查询参数。
+Trinity **不提供**对外 `GET /v1/models` 列举；勿依赖 `output_modalities` 等第三方专属查询参数。
 
 ---
 

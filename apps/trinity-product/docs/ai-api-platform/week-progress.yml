@@ -15,9 +15,9 @@ months:
         acceptance: |-
           ① 已对接生文模型上架（对标 OpenRouter 模型列表）
           ② OpenRouter 文档核心稿对齐；trinity-docs + api-test 支撑生文
-        result: 🟡
+        result: ✅
         testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
-        blockers: —
+        blockers: 生图/生视频接续接入、模型列表体验优化顺延 W24
       - id: W24
         period: 06-08～06-14
         focus: Chat 在线体验、模型上架与供应线路、开发者文档、用户控制台、路由与 Fallback
@@ -38,7 +38,10 @@ months:
           用户控制台企业工作区，商用鉴权，限流，配额（设计交互，原型）@李玲
         result: ⬜
         testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
-        blockers: 批量上架效率与联调窗口待确认
+        blockers: |-
+          1、补充开发，AI 云在运营后台管理系统中补充各个企业的账号、充值、账单纳管等  @崔宇光
+          
+          2、AI 聚合平台 key 的使用和分配 @崔宇光  @李玲
       - id: W25
         period: 06-15～06-21
         focus: 计量与计费、用户控制台、鉴权 · 限流 · 配额、数据策略、标准错误与可观测

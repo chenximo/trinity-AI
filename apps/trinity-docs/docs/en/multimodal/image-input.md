@@ -4,8 +4,6 @@ To send images to a **text model** that supports multimodal input, use **`POST /
 
 You can attach **multiple images** in the same `content` array; limits depend on the **model and upstream**. For parsing, put the **text Part first, then images**; if images must come first, move instructions into a `system` message.
 
-Reference: [OpenRouter · Image Inputs](https://openrouter.ai/docs/guides/overview/multimodal/image-understanding)
-
 ::: warning Do not confuse with image generation
 **Image understanding** uses the `image_url` Part on this page. **Text-to-image / reference-image generation** uses `modalities` + `image_config`—see [Create image generation](../api/images-generations.md).
 :::

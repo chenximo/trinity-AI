@@ -1,7 +1,5 @@
 # Claude Code
 
-Reference: [OpenRouter · Claude Code integration](https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration)
-
 ## What is Claude Code?
 
 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) is Anthropic’s **terminal coding agent** (`claude` CLI). If your gateway supports **Anthropic-compatible** routing or the tool supports an **OpenAI-compatible Base URL**, you can point it at Trinity with an `xh-...` key and [catalog](https://trinity.ai/models) model IDs.
