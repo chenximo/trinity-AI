@@ -6,10 +6,10 @@ Trinity docs use three tabs:
 |------|----------|
 | [Docs](../quickstart) | First API call, keys, multimodal, streaming, errors |
 | [API](../api/overview) | Endpoints, field tables, curl |
-| **Cookbook** (this track) | Configure Trinity Base URL, key, and model IDs in **clients and agent apps** |
+| **Cookbook** | Configure Trinity Base URL, key, and model IDs in **clients and agent apps** |
 
 ::: info
-This track does not repeat full API parameter tables. See [API overview](../api/overview) and [Request parameters](../guides/request-parameters).
+Cookbook pages do not repeat full API parameter tables. See [API overview](../api/overview) and [Request parameters](../guides/request-parameters).
 :::
 
 ---

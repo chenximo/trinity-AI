@@ -73,7 +73,7 @@ export ANTHROPIC_DEFAULT_HAIKU_MODEL="gpt-4o"
 
 - **统一 Key**：与 Cursor、HTTP 脚本共用 Trinity API Key 策略（在支持的前提下）。
 - **模型广场选型**：按账号可见列表切换模型 ID，无需在终端改多套上游账号。
-- **与 API 文档一致**：排错、流式、工具调用行为对照 [API 轨](../../api/overview)。
+- **与 API 文档一致**：排错、流式、工具调用行为对照 [API 概述](../../api/overview)。
 
 ---
 

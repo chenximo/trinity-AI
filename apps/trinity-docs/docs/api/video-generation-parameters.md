@@ -1,6 +1,6 @@
 # 视频生成 · 高级参数
 
-创建任务：**`POST /v1/video/generations`**。创建时建议携带追踪与结算头（`X-Request-Id`、`X-Idempotency-Key`、`X-Conversation-Id`），见 [API 概述 · 追踪与结算](./overview.md#追踪与结算请求头)。端点速览见 [创建视频生成任务](./videos-generations.md)；概念与轮询流程见 [视频生成](../multimodal/video-generation.md)。
+本文档供**调参、联调、对字段**使用。端点速览见 [创建视频生成任务](./videos-generations.md)；概念与轮询流程见 [视频生成](../multimodal/video-generation.md)。
 
 ---
 

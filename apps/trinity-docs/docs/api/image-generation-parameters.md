@@ -1,21 +1,6 @@
 # 图像生成 · 高级参数
 
-生图走 **`POST /v1/chat/completions`**。追踪与结算头（`X-Request-Id`、`X-Idempotency-Key`、`X-Conversation-Id`；`X-Session-Id` 为 `X-Conversation-Id` 别名）见 [API 概述 · 追踪与结算](./overview.md#追踪与结算请求头)。概念与示例见 [图片生成](../multimodal/image-generation.md)；端点速览见 [创建图像生成](./images-generations.md)。
-
-生图对调用方呈现为**一次同步 HTTP 请求**（通常 10–300 秒）。同步等待超时（`408 generation_timeout`）时，可用响应中的 `trinity_task.task_id` 继续查询（见下文「超时后查询任务」）。
-
----
-
-## 调用语义
-
-| 项 | 行为 |
-| --- | --- |
-| 同步/异步 | 当前生图均为同步：**须 `stream=false` 或省略**；传 `trinity_async` 报 `invalid_request` |
-| Prompt 来源 | 取 `messages` 中最后一条 `user` 消息：string 直接用；Part 数组拼接 `type=text` 的文本 |
-| 参考图 | `image_config.reference_images[]` **优先**；`messages[].content[]` 中 `image_url` 也会映射为参考图，二者可并存 |
-| 参数校验 | 模型支持的 `image_config` 键按能力做枚举/区间校验；不支持或越界返回 `400 invalid_request` |
-| 交付 | 默认上传后返回 HTTPS URL；存储失败时可能按 `output_format=base64` 降级为 data URL |
-| 计费 | 按张计费；`usage` 中 token 字段通常为 0；幂等见追踪与结算头 |
+本文档供**调参、联调、对字段**使用。端点速览见 [创建图像生成](./images-generations.md)；概念与示例见 [图片生成](../multimodal/image-generation.md)。
 
 ---
 

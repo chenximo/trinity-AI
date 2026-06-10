@@ -1,15 +1,15 @@
 # 应用场景
 
-Trinity 文档站按三条轨组织：
+顶栏分为三部分：
 
 | 顶栏 | 适合什么问题 |
 |------|----------------|
 | [文档](../quickstart) | 第一次接 API、密钥、多模态、流式与排错 |
 | [API](../api/overview) | 端点、字段表、复制 curl |
-| **应用场景**（本轨） | 在各类 **客户端 / Agent 工具** 里配置 Trinity 的 Base URL、Key 与模型 ID |
+| **应用场景** | 在各类 **客户端 / Agent 工具** 里配置 Trinity 的 Base URL、Key 与模型 ID |
 
 ::: info
-本轨 **不复述** 完整 API 参数表；字段见 [API 概述](../api/overview) 与 [请求参数](../guides/request-parameters)。
+应用场景 **不复述** 完整 API 参数表；字段见 [API 概述](../api/overview) 与 [请求参数](../guides/request-parameters)。
 :::
 
 ---
@@ -44,7 +44,7 @@ Trinity 文档站按三条轨组织：
 |------|------|
 | [WorkBuddy](./agent-workbench/workbuddy) | 桌面 Agent · `~/.workbuddy/models.json` |
 
-MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](https://www.workbuddy.ai/docs/workbuddy/)；本轨只写 **Trinity 模型接入**。
+MCP、Skills、本地执行等属产品能力，见 [WorkBuddy 官方文档](https://www.workbuddy.ai/docs/workbuddy/)；此处只写 **Trinity 模型接入**。
 
 ---
 

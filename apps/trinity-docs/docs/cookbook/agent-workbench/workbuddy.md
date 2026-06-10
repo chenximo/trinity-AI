@@ -127,7 +127,7 @@ WorkBuddy 发往网关时，请求 JSON 的 **`model`** 字段即此处 **模型
 | [流式 SSE](../../guides/streaming-sse.md)、[高级参数 · 生文](../../api/chat-completions-parameters.md) | MCP 服务接入 |
 | [错误与调试](../../reference/error-codes.md) | Skills（`SKILL.md`）封装 |
 
-生图、生视频等须直接调用 Trinity [API 轨](../../api/overview)，不能假设 WorkBuddy 默认对话路径支持。
+生图、生视频等须直接调用 Trinity API（见 [API 概述](../../api/overview)），不能假设 WorkBuddy 默认对话路径支持。
 
 ---
 

@@ -120,7 +120,7 @@ If it fails, see [Troubleshooting](#troubleshooting) below.
 | [Streaming SSE](../../guides/streaming-sse.md), [chat parameters](../../api/chat-completions-parameters.md) | MCP |
 | [Errors & debugging](../../reference/error-codes.md) | Skills (`SKILL.md`) |
 
-Image and video generation use the Trinity [API track](../../api/overview), not the default WorkBuddy chat path.
+Image and video generation use the Trinity API directly (see [API overview](../../api/overview)), not the default WorkBuddy chat path.
 
 ---
 

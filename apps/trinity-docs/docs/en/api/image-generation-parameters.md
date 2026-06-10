@@ -1,21 +1,6 @@
 # Image generation · Advanced parameters
 
-Image generation uses **`POST /v1/chat/completions`**. Tracing and settlement headers (`X-Request-Id`, `X-Idempotency-Key`, `X-Conversation-Id`; `X-Session-Id` is an alias for `X-Conversation-Id`) are documented in [API overview · Tracing and settlement](./overview.md#tracing-and-settlement-headers). For concepts and examples, see [Image generation](../multimodal/image-generation.md); for the endpoint summary, see [Create image generation](./images-generations.md).
-
-Image generation appears to callers as **a single synchronous HTTP request** (typically 10–300 seconds). If synchronous wait times out (`408 generation_timeout`), continue with `trinity_task.task_id` from the response (see [Query after timeout](#query-after-timeout) below).
-
----
-
-## Call semantics
-
-| Item | Behavior |
-| --- | --- |
-| Sync / async | Image generation is synchronous today: **`stream` must be `false` or omitted**; `trinity_async` returns `invalid_request` |
-| Prompt source | Last `user` message in `messages`: use string directly; for Part arrays, concatenate `type=text` segments |
-| Reference images | `image_config.reference_images[]` **takes priority**; `image_url` in `messages[].content[]` is also mapped as reference input; both may coexist |
-| Validation | Supported `image_config` keys are validated per model capability; unsupported values return `400 invalid_request` |
-| Delivery | Default is HTTPS URL after upload; storage failure may fall back to data URL per `output_format=base64` |
-| Billing | Charged per image; token fields in `usage` are usually 0; idempotency via tracing/settlement headers |
+Use this page for tuning, integration, and field checks. Endpoint summary: [Create image generation](./images-generations.md). Concepts and examples: [Image generation](../multimodal/image-generation.md).
 
 ---
 

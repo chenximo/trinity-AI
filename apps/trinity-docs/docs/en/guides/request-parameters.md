@@ -4,9 +4,9 @@ Trinity keeps **API Reference** under the **API** tab. This page is a **cross-ca
 
 | Layer | Location | Use when |
 | --- | --- | --- |
-| **Endpoint (short)** | [API track](../api/overview.md) · per-endpoint pages | Copy curl, minimal working request |
-| **Advanced parameters (long)** | API track · Advanced parameters group | Tuning, integration, full field lists |
-| **Concept guides** | Docs track · [Streaming](./streaming-sse.md), multimodal | Semantics, flows, easy-to-confuse topics |
+| **Endpoint (short)** | [API](../api/overview.md) · per-endpoint pages | Copy curl, minimal working request |
+| **Advanced parameters (long)** | [API](../api/overview.md) · Advanced parameters group | Tuning, integration, full field lists |
+| **Concept guides** | [Docs](../quickstart.md) · [Streaming](./streaming-sse.md), multimodal | Semantics, flows, easy-to-confuse topics |
 
 Endpoint short pages help you run minimal requests; sampling params and full schemas live on each capability’s **advanced parameters** page (e.g. [Chat completions parameters](../api/chat-completions-parameters.md)).
 

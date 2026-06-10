@@ -4,9 +4,9 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索
 
 | 层级 | 位置 | 适合什么问题 |
 | --- | --- | --- |
-| **端点（短）** | [API 轨](../api/overview.md) · 各端点页 | 复制 curl、跑通最小请求 |
-| **高级参数（长）** | [API 轨](../api/overview.md) · 高级参数分组 | 调参、联调、对全字段 |
-| **概念指南** | 本轨 · [流式](./streaming-sse.md) / 多模态 | 语义、流程、易混说明 |
+| **端点（短）** | [API](../api/overview.md) · 各端点页 | 复制 curl、跑通最小请求 |
+| **高级参数（长）** | [API](../api/overview.md) · 「高级参数」分组 | 调参、联调、对全字段 |
+| **概念指南** | [文档](../quickstart.md) · [流式](./streaming-sse.md) / 多模态 | 语义、流程、易混说明 |
 
 端点短页负责跑通请求；采样参数、全字段 schema 见各能力的 **高级参数** 页（如 [对话补全高级参数](../api/chat-completions-parameters.md)）。
 

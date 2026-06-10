@@ -1,6 +1,6 @@
 # Video generation · Advanced parameters
 
-Create task: **`POST /v1/video/generations`**. Include tracing and settlement headers (`X-Request-Id`, `X-Idempotency-Key`, `X-Conversation-Id`) when creating a task; see [API overview · Tracing and settlement](./overview.md#tracing-and-settlement-headers). Endpoint summary: [Create video generation task](./videos-generations.md). Workflow and polling: [Video generation](../multimodal/video-generation.md).
+Use this page for tuning, integration, and field checks. Endpoint summary: [Create video generation task](./videos-generations.md). Workflow and polling: [Video generation](../multimodal/video-generation.md).
 
 ---
 
