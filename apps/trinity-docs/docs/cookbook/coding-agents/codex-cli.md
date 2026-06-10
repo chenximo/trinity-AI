@@ -32,7 +32,7 @@ export TRINITY_BASE_URL="https://api.trinitydesk.ai/v1"
 
 ```toml
 model_provider = "openai"
-model = "doubao-seed-1-6-thinking-agent-preview"
+model = "gpt-5.5"
 
 [model_providers.openai]
 name = "trinity"

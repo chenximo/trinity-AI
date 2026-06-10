@@ -35,7 +35,7 @@ Project config overrides user config. **Do not commit real keys to Git.**
 {
   "models": [
     {
-      "id": "doubao-seed-1-6-thinking-agent-preview",
+      "id": "gpt-5.5",
       "name": "Trinity · chat example",
       "vendor": "OpenAI",
       "apiKey": "xh-your-key",
@@ -47,7 +47,7 @@ Project config overrides user config. **Do not commit real keys to Git.**
       "supportsReasoning": false
     }
   ],
-  "availableModels": ["doubao-seed-1-6-thinking-agent-preview"]
+  "availableModels": ["gpt-5.5"]
 }
 ```
 
@@ -69,7 +69,7 @@ Reload CodeBuddy per official docs, pick the model ID, and run a short chat smok
 export TRINITY_API_KEY="xh-..."
 export CODEBUDDY_API_KEY="$TRINITY_API_KEY"
 export CODEBUDDY_BASE_URL="https://api.trinitydesk.ai/v1"
-codebuddy --model doubao-seed-1-6-thinking-agent-preview
+codebuddy --model gpt-5.5
 ```
 
 For IDE users, prefer **`models.json` with the full `url` path**.

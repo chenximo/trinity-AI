@@ -58,7 +58,7 @@ WorkBuddy 通过 **OpenAI 兼容** 的 `POST /v1/chat/completions` 调用 Trinit
 | --- | --- | --- |
 | **接口地址** / API URL | `https://api.trinitydesk.ai/v1/chat/completions` | Trinity 网关 **`{TRINITY_BASE_URL}/chat/completions`**；须含 `/chat/completions`，不要只写到 `/v1` |
 | **API Key** | `xh-你的密钥` | 步骤 1 在控制台创建的 Key；请求头为 `Authorization: Bearer xh-...` |
-| **模型名称** / Model ID | 与 Trinity **模型 ID** 完全一致 | [模型广场](https://trinity.ai/models) 中可见的 ID，例如 `doubao-seed-1-6-thinking-agent-preview`；若你使用 `gpt-5.5` 等名称，须与广场中该模型的 **ID 字符串相同** |
+| **模型名称** / Model ID | 与 Trinity **模型 ID** 完全一致 | [模型广场](https://trinity.ai/models) 中可见的 ID，例如 `gpt-5.5`；须与广场中该模型的 **ID 字符串相同** |
 
 ::: tip 模型名称 = 请求体里的 model
 WorkBuddy 发往网关时，请求 JSON 的 **`model`** 字段即此处 **模型名称**。ID 填错会导致「模型不存在」或路由失败。

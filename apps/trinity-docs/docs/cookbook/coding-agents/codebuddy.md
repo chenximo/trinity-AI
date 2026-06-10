@@ -37,7 +37,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
 {
   "models": [
     {
-      "id": "doubao-seed-1-6-thinking-agent-preview",
+      "id": "gpt-5.5",
       "name": "Trinity · 生文示例",
       "vendor": "OpenAI",
       "apiKey": "xh-你的密钥",
@@ -49,7 +49,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
       "supportsReasoning": false
     }
   ],
-  "availableModels": ["doubao-seed-1-6-thinking-agent-preview"]
+  "availableModels": ["gpt-5.5"]
 }
 ```
 
@@ -77,7 +77,7 @@ CodeBuddy 自定义模型的 **`url` 必须是完整接口路径**（通常以 *
 export TRINITY_API_KEY="xh-..."
 export CODEBUDDY_API_KEY="$TRINITY_API_KEY"
 export CODEBUDDY_BASE_URL="https://api.trinitydesk.ai/v1"
-codebuddy --model doubao-seed-1-6-thinking-agent-preview
+codebuddy --model gpt-5.5
 ```
 
 CLI 与 `models.json` 并存时，以你当前版本文档的**优先级**为准；推荐 IDE 用户以 **`models.json` + 完整 `url`** 为准。

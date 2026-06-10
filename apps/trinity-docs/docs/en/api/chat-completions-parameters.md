@@ -127,7 +127,7 @@ Use the [model catalog](https://trinity.ai/models) and actual model capability a
 
 ```json
 {
-  "model": "doubao-seed-1-6-thinking-agent-preview",
+  "model": "gpt-5.5",
   "messages": [
     { "role": "system", "content": "You are a helpful assistant." },
     { "role": "user", "content": "Hello" }

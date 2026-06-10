@@ -47,7 +47,7 @@ export OPENAI_BASE_URL="$TRINITY_BASE_URL"
 Claude Code 可能通过环境变量区分角色模型，例如（**变量名以官方为准**）：
 
 ```bash
-export ANTHROPIC_DEFAULT_SONNET_MODEL="doubao-seed-1-6-thinking-agent-preview"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="gpt-5.5"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="gpt-4o"
 ```
 

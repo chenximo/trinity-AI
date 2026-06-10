@@ -45,7 +45,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "model": "gpt-5.5",
     "messages": [{ "role": "user", "content": "Hello" }]
   }'
 ```
@@ -100,7 +100,7 @@ import json, os, requests
 
 url = f"{os.environ['TRINITY_BASE_URL']}/chat/completions"
 payload = {
-    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "model": "gpt-5.5",
     "messages": [{"role": "user", "content": "Hello"}],
     "stream": False,
 }
@@ -120,7 +120,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
     Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
   },
   body: JSON.stringify({
-    model: "doubao-seed-1-6-thinking-agent-preview",
+    model: "gpt-5.5",
     messages: [{ role: "user", content: "Hello" }],
   }),
 });
@@ -133,7 +133,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "model": "gpt-5.5",
     "messages": [{ "role": "user", "content": "Hello" }],
     "stream": false
   }'

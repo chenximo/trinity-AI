@@ -101,7 +101,7 @@ Claude Code 原生使用 Anthropic API；经 CC Switch 接入 Trinity 时，须�
     "ANTHROPIC_AUTH_TOKEN": "xh-...",
     "ANTHROPIC_BASE_URL": "http://127.0.0.1:15721"
   },
-  "model": "doubao-seed-1-6-thinking-agent-preview"
+  "model": "gpt-5.5"
 }
 ```
 

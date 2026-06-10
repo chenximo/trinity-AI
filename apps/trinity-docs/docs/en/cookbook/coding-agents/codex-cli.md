@@ -30,7 +30,7 @@ Usually `~/.codex/config.toml` (confirm in official docs):
 
 ```toml
 model_provider = "openai"
-model = "doubao-seed-1-6-thinking-agent-preview"
+model = "gpt-5.5"
 
 [model_providers.openai]
 name = "trinity"

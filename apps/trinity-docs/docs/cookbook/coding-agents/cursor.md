@@ -34,7 +34,7 @@ Cursor 通过 **Override OpenAI Base URL** 将请求发往 Trinity，而不是 `
 
 在 **Models** 中点击 **+ Add model**，填入 [模型广场](https://trinity.ai/models) 中的 **模型 ID**，例如：
 
-- `doubao-seed-1-6-thinking-agent-preview`
+- `gpt-5.5`
 - `gpt-4o`
 
 以你账号可见、且支持对话的 ID 为准。

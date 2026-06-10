@@ -127,7 +127,7 @@ Part 用于**生文看图/听音/读文件**。生图参考图用 `image_config.
 
 ```json
 {
-  "model": "doubao-seed-1-6-thinking-agent-preview",
+  "model": "gpt-5.5",
   "messages": [
     { "role": "system", "content": "你是一个专业助手。" },
     { "role": "user", "content": "你好" }

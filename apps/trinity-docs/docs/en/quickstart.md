@@ -4,7 +4,7 @@ Trinity exposes an **OpenAI-compatible HTTP API**: send standard REST requests (
 
 ::: tip Important · Models & keys
 - API keys usually start with **`xh-...`** (copy the full value once from the console).
-- Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models) (for example `doubao-seed-1-6-thinking-agent-preview`). Do not use model names that are not available on the platform.
+- Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models) (for example `gpt-5.5`). Do not use model names that are not available on the platform.
 - Never commit full keys to public repositories, client bundles, or logs.
 :::
 
@@ -60,7 +60,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
   -H "X-Request-Id: trace-demo-001" \
   -H "X-Idempotency-Key: settle-demo-001" \
   -d '{
-    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "model": "gpt-5.5",
     "messages": [{ "role": "user", "content": "Hello" }]
   }'
 ```
@@ -75,7 +75,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
     "X-Idempotency-Key": crypto.randomUUID(),
   },
   body: JSON.stringify({
-    model: "doubao-seed-1-6-thinking-agent-preview",
+    model: "gpt-5.5",
     messages: [{ role: "user", content: "Hello" }],
   }),
 });
@@ -97,7 +97,7 @@ response = requests.post(
         "X-Idempotency-Key": "settle-demo-001",
     },
     data=json.dumps({
-        "model": "doubao-seed-1-6-thinking-agent-preview",
+        "model": "gpt-5.5",
         "messages": [{"role": "user", "content": "Hello"}],
     }),
 )
@@ -112,7 +112,7 @@ For streaming, set `"stream": true` in the body; the response is SSE. See [Strea
 
 ## Model IDs
 
-The **`model`** field must be a Trinity **model ID** (an English slug such as `doubao-seed-1-6-thinking-agent-preview`), not a display name or an ID copied from another provider’s docs unless it appears in your available list.
+The **`model`** field must be a Trinity **model ID** (an English slug such as `gpt-5.5`), not a display name or an ID copied from another provider’s docs unless it appears in your available list.
 
 ### How to get model IDs
 
@@ -130,7 +130,7 @@ If `model` is not in your available list, the gateway returns a model-not-found 
 
 ### Example IDs (verify against your list before calling)
 
-- Text: `doubao-seed-1-6-thinking-agent-preview`, `gpt-4o`
+- Text: `gpt-5.5`, `gpt-4o`
 - Image: `hunyuan-image` (`POST /v1/chat/completions` + `image_config`; see [Image generation API](./api/images-generations.md))
 - Video: `kling-2.6` (`POST /v1/video/generations`)
 

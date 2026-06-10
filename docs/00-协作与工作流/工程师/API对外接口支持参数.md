@@ -87,7 +87,7 @@ curl -sS -N "${BASE}/v1/chat/completions" \
 
 ```json
 {
-  "model": "doubao-seed-1-6-thinking-agent-preview",
+  "model": "gpt-5.5",
   "messages": [
     { "role": "system", "content": "你是一个专业助手。" },
     { "role": "user", "content": "请用 120 字介绍星瀚平台。"}

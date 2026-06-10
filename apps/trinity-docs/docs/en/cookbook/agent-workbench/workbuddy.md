@@ -51,7 +51,7 @@ Click **「Add model」**, then complete the form per the table below:
 | --- | --- | --- |
 | **API URL** / endpoint | `https://api.trinitydesk.ai/v1/chat/completions` | Trinity gateway **`{TRINITY_BASE_URL}/chat/completions`**; must include `/chat/completions`, not `/v1` only |
 | **API Key** | `xh-your-key` | Key from Step 1; sent as `Authorization: Bearer xh-...` |
-| **Model name** / Model ID | Exact Trinity **model ID** | [Model catalog](https://trinity.ai/models), e.g. `doubao-seed-1-6-thinking-agent-preview`; names like `gpt-5.5` must match the catalog **ID string** |
+| **Model name** / Model ID | Exact Trinity **model ID** | [Model catalog](https://trinity.ai/models), e.g. `gpt-5.5`; must match the catalog **ID string** |
 
 ::: tip Model name = request `model` field
 WorkBuddy sends this value as the JSON **`model`** field. A wrong ID causes “model not found” or routing errors.

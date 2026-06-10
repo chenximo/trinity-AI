@@ -58,7 +58,7 @@ Content-Type: application/json
 
 请求体中的 **`model`** 填写**模型 ID** 字符串，须与 Trinity 当前对外提供的模型一致。示例（以你账号可见列表为准）：
 
-- 生文：`doubao-seed-1-6-thinking-agent-preview`、`gpt-4o`
+- 生文：`gpt-5.5`、`gpt-4o`
 - 生图：`hunyuan-image`
 - 生视频：`kling-2.6`
 

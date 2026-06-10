@@ -58,7 +58,7 @@ See request-header examples in [Create chat completion](./chat-completions.md).
 
 Set request body **`model`** to a **model ID** available to your account. Examples:
 
-- Text: `doubao-seed-1-6-thinking-agent-preview`, `gpt-4o`
+- Text: `gpt-5.5`, `gpt-4o`
 - Image: `hunyuan-image`
 - Video: `kling-2.6`
 

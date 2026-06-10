@@ -34,7 +34,7 @@ Cursor routes requests through **Override OpenAI Base URL** instead of `api.open
 
 In **Models**, click **+ Add model** and enter a **model ID** from the [catalog](https://trinity.ai/models), for example:
 
-- `doubao-seed-1-6-thinking-agent-preview`
+- `gpt-5.5`
 - `gpt-4o`
 
 Use IDs visible to your account that support chat.

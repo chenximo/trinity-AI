@@ -47,7 +47,7 @@ Create `.claude/settings.local.json` in the project root (path per official docs
 Claude Code may use role-specific env vars (examples—verify in official docs):
 
 ```bash
-export ANTHROPIC_DEFAULT_SONNET_MODEL="doubao-seed-1-6-thinking-agent-preview"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="gpt-5.5"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="gpt-4o"
 ```
 

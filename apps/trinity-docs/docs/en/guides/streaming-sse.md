@@ -39,7 +39,7 @@ curl -sS -N "${TRINITY_BASE_URL}/chat/completions" \
   -H "X-Request-Id: trace-$(uuidgen)" \
   -H "X-Idempotency-Key: settle-$(uuidgen)" \
   -d '{
-    "model": "doubao-seed-1-6-thinking-agent-preview",
+    "model": "gpt-5.5",
     "messages": [{ "role": "user", "content": "Tell a short joke" }],
     "stream": true,
     "stream_options": { "include_usage": true }
@@ -55,7 +55,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
     Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
   },
   body: JSON.stringify({
-    model: "doubao-seed-1-6-thinking-agent-preview",
+    model: "gpt-5.5",
     messages: [{ role: "user", content: "Tell a short joke" }],
     stream: true,
     stream_options: { include_usage: true },
@@ -98,7 +98,7 @@ with requests.post(
         "Accept": "text/event-stream",
     },
     json={
-        "model": "doubao-seed-1-6-thinking-agent-preview",
+        "model": "gpt-5.5",
         "messages": [{"role": "user", "content": "Tell a short joke"}],
         "stream": True,
         "stream_options": {"include_usage": True},
