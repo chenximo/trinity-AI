@@ -10,7 +10,7 @@ Trinity generates video through **async tasks**: first **[Create video generatio
 
 ## Model discovery
 
-Sign in to the [model catalog](https://trinity.ai/models), choose a model that supports **video generation**, and copy its **model ID** into `model` (for example `tencent/kling-2.6`). Use only models visible to your account.
+Sign in to the [model catalog](https://trinity.ai/models), choose a model that supports **video generation**, and copy its **model ID** into `model` (for example `kling-2.6`). Use only models visible to your account.
 
 ::: info
 Trinity does not expose a public `GET /v1/models` listing API.
@@ -50,7 +50,7 @@ create = requests.post(
     f"{base}/video/generations",
     headers=headers,
     data=json.dumps({
-        "model": "tencent/kling-2.6",
+        "model": "kling-2.6",
         "prompt": "Golden hour coastline, camera follows a jogger, cinematic lighting",
         "duration_sec": 5,
         "aspect_ratio": "16:9",
@@ -89,7 +89,7 @@ const createRes = await fetch(`${base}/video/generations`, {
   method: "POST",
   headers: { "Content-Type": "application/json", ...auth },
   body: JSON.stringify({
-    model: "tencent/kling-2.6",
+    model: "kling-2.6",
     prompt: "Golden hour coastline, camera follows a jogger, cinematic lighting",
     duration_sec: 5,
     aspect_ratio: "16:9",
@@ -121,7 +121,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "Golden hour coastline, camera follows a jogger, cinematic lighting",
     "duration_sec": 5,
     "aspect_ratio": "16:9"
@@ -193,7 +193,7 @@ Whitelisted keys (e.g. `scene_type`, `enhance_prompt`) map upstream; **other key
 
 ```json
 {
-  "model": "tencent/kling-2.6",
+  "model": "kling-2.6",
   "prompt": "Product close-up slowly rotating, soft studio light",
   "duration_sec": 5,
   "resolution": "1080p",

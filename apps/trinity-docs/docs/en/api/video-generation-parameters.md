@@ -8,7 +8,7 @@ Use this page for tuning, integration, and field checks. Endpoint summary: [Crea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Example: `tencent/kling-2.6` |
+| `model` | string | Yes | Example: `kling-2.6` |
 | `prompt` | string | Conditional | Required when no input assets are provided |
 | `duration_sec` | integer | No | Duration in seconds, default `5` |
 | `resolution` | string | No | `480p`, `720p`, `1080p`, etc. |
@@ -66,7 +66,7 @@ First and last frames **must** use `frame_images[]`; do not pass model-specific 
 
 ```json
 {
-  "model": "tencent/vidu-q2",
+  "model": "vidu-q2",
   "prompt": "@hero_a walking by the sea, cinematic lighting",
   "duration_sec": 5,
   "input_references": [
@@ -108,7 +108,7 @@ First and last frames **must** use `frame_images[]`; do not pass model-specific 
 
 ```json
 {
-  "model": "tencent/gv-3.1",
+  "model": "gv-3.1",
   "prompt": "Product launch event, camera cuts between stage and audience",
   "duration_sec": 8,
   "input_references": [
@@ -142,7 +142,7 @@ First and last frames **must** use `frame_images[]`; do not pass model-specific 
 
 ```json
 {
-  "model": "tencent/kling-2.6",
+  "model": "kling-2.6",
   "prompt": "Golden hour coastline, camera follows a jogger, cinematic lighting.",
   "duration_sec": 5,
   "resolution": "1080p",

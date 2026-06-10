@@ -60,7 +60,7 @@ Set request body **`model`** to a **model ID** available to your account. Exampl
 
 - Text: `doubao-seed-1-6-thinking-agent-preview`, `gpt-4o`
 - Image: `hunyuan-image`
-- Video: `tencent/kling-2.6`
+- Video: `kling-2.6`
 
 **How to find model IDs**: sign in to the [model catalog](https://trinity.ai/models), copy the target model's **model ID**, and use it in `model`. Unknown IDs return model-not-found style errors.
 

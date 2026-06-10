@@ -60,7 +60,7 @@ Content-Type: application/json
 
 - 生文：`doubao-seed-1-6-thinking-agent-preview`、`gpt-4o`
 - 生图：`hunyuan-image`
-- 生视频：`tencent/kling-2.6`
+- 生视频：`kling-2.6`
 
 **如何查可用模型 ID**：登录后打开 [模型广场](https://trinity.ai/models)，复制目标模型的 **模型 ID** 填入 `model`。填写列表中不存在的 ID 会返回「模型不存在」类错误。
 

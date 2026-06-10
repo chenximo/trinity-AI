@@ -8,7 +8,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 如 `tencent/kling-2.6` |
+| `model` | string | 是 | 如 `kling-2.6` |
 | `prompt` | string | 条件 | 无素材时必填 |
 | `duration_sec` | integer | 否 | 时长（秒），默认 `5` |
 | `resolution` | string | 否 | `480p`、`720p`、`1080p` 等 |
@@ -66,7 +66,7 @@
 
 ```json
 {
-  "model": "tencent/vidu-q2",
+  "model": "vidu-q2",
   "prompt": "@hero_a 在海边漫步，电影感光影",
   "duration_sec": 5,
   "input_references": [
@@ -108,7 +108,7 @@
 
 ```json
 {
-  "model": "tencent/gv-3.1",
+  "model": "gv-3.1",
   "prompt": "产品发布会，镜头在舞台与观众间切换",
   "duration_sec": 8,
   "input_references": [
@@ -142,7 +142,7 @@
 
 ```json
 {
-  "model": "tencent/kling-2.6",
+  "model": "kling-2.6",
   "prompt": "黄昏海边，镜头跟随人物慢跑，电影感光影。",
   "duration_sec": 5,
   "resolution": "1080p",

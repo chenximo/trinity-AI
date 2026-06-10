@@ -36,7 +36,7 @@ npm run dev:trinity-docs
 
 任意文档页右下角 **「编辑本页」**：**左侧** Markdown 源文、**右侧** 当前 VitePress 页面（同页热更新，不用 iframe，避免 dev 下模块 MIME 报错）；保存写入 `docs/**/*.md`。仅 `127.0.0.1` / `localhost` 可用，生产构建不包含此功能。
 
-**粘贴图片 → COS**：在编辑区 **Ctrl/Cmd+V 粘贴截图或图片** 时，开发中间件会上传到腾讯云 COS，并在光标处插入 `![…](https://…)`（公开 URL）。在 `apps/trinity-docs/` 复制 [`env.cos.example`](./env.cos.example) 为 **`.env.local`**，填写 `TRINITY_DOCS_COS_SECRET_ID`、`TRINITY_DOCS_COS_SECRET_KEY`、`TRINITY_DOCS_COS_BUCKET`、`TRINITY_DOCS_COS_REGION`；可选 `TRINITY_DOCS_COS_PREFIX`、`TRINITY_DOCS_COS_PUBLIC_BASE`（CDN 域名）。修改后需 **重启** `npm run dev:trinity-docs`。密钥勿提交 Git。
+**粘贴图片 → COS**：在编辑区 **Ctrl/Cmd+V 粘贴截图或图片** 时，开发中间件会上传到对象存储（COS），并在光标处插入 `![…](https://…)`（公开 URL）。在 `apps/trinity-docs/` 复制 [`env.cos.example`](./env.cos.example) 为 **`.env.local`**，填写 `TRINITY_DOCS_COS_SECRET_ID`、`TRINITY_DOCS_COS_SECRET_KEY`、`TRINITY_DOCS_COS_BUCKET`、`TRINITY_DOCS_COS_REGION`；可选 `TRINITY_DOCS_COS_PREFIX`、`TRINITY_DOCS_COS_PUBLIC_BASE`（CDN 域名）。修改后需 **重启** `npm run dev:trinity-docs`。密钥勿提交 Git。
 
 **发布记录（dev · 仅 localhost）**：右下角 **「发布记录」** → 查看 `git` 检测到的 `docs/` 变更 → 填写说明后 **确认发布**。只追加 `docs-meta/dev-changelog.json` 台账（文件列表 + 摘要 + `gitRef`），**不存正文副本**、不触发线上部署；正文仍以 GitHub 为准。发布前请先保存 md；建议随后 `git commit` 以便记录与仓库对齐。
 

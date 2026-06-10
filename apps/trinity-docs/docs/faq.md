@@ -18,7 +18,7 @@
 
 ## 模型名称格式是什么？
 
-请求体里的 **`model`** 即**模型 ID** 字符串，须与 [模型广场](https://trinity.ai/models) 列表一致，例如 `doubao-seed-1-6-thinking-agent-preview`、`hunyuan-image`、`tencent/kling-2.6`。详见 [API 概述 · 模型 ID](./api/overview.md#模型-idmodel-字段)。
+请求体里的 **`model`** 即**模型 ID** 字符串，须与 [模型广场](https://trinity.ai/models) 列表一致，例如 `doubao-seed-1-6-thinking-agent-preview`、`hunyuan-image`、`kling-2.6`。详见 [API 概述 · 模型 ID](./api/overview.md#模型-idmodel-字段)。
 
 ## API Key 是什么格式？
 

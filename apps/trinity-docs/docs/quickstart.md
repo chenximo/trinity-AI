@@ -132,7 +132,7 @@ print(response.json()["choices"][0]["message"]["content"])
 
 - 生文：`doubao-seed-1-6-thinking-agent-preview`、`gpt-4o`
 - 生图：`hunyuan-image`（`POST /v1/chat/completions` + `image_config`，见 [图像生成 API](./api/images-generations.md)）
-- 生视频：`tencent/kling-2.6`（`POST /v1/video/generations`）
+- 生视频：`kling-2.6`（`POST /v1/video/generations`）
 
 更多说明见 [API 概述 · 模型 ID](./api/overview.md#模型-idmodel-字段)。
 

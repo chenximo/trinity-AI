@@ -10,7 +10,7 @@ Trinity 通过 **异步任务** 生成视频：先 **[创建视频生成任务](
 
 ## 模型发现
 
-在 [模型广场](https://trinity.ai/models) 登录后，选择支持**视频生成**的模型，复制 **模型 ID** 填入 `model`（例如 `tencent/kling-2.6`）。以你账号可见列表为准。
+在 [模型广场](https://trinity.ai/models) 登录后，选择支持**视频生成**的模型，复制 **模型 ID** 填入 `model`（例如 `kling-2.6`）。以你账号可见列表为准。
 
 ::: info
 Trinity 当前不提供对外 `GET /v1/models` 列举接口。
@@ -50,7 +50,7 @@ create = requests.post(
     f"{base}/video/generations",
     headers=headers,
     data=json.dumps({
-        "model": "tencent/kling-2.6",
+        "model": "kling-2.6",
         "prompt": "黄昏海边，镜头跟随人物慢跑，电影感光影",
         "duration_sec": 5,
         "aspect_ratio": "16:9",
@@ -89,7 +89,7 @@ const createRes = await fetch(`${base}/video/generations`, {
   method: "POST",
   headers: { "Content-Type": "application/json", ...auth },
   body: JSON.stringify({
-    model: "tencent/kling-2.6",
+    model: "kling-2.6",
     prompt: "黄昏海边，镜头跟随人物慢跑，电影感光影",
     duration_sec: 5,
     aspect_ratio: "16:9",
@@ -121,7 +121,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "黄昏海边，镜头跟随人物慢跑，电影感光影",
     "duration_sec": 5,
     "aspect_ratio": "16:9"
@@ -193,7 +193,7 @@ curl -sS "${TRINITY_BASE_URL}/video/tasks/vidtsk_xxx" \
 
 ```json
 {
-  "model": "tencent/kling-2.6",
+  "model": "kling-2.6",
   "prompt": "产品特写缓慢旋转，柔光棚拍",
   "duration_sec": 5,
   "resolution": "1080p",

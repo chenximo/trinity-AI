@@ -39,7 +39,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "黄昏海边慢跑，电影感",
     "duration_sec": 5,
     "aspect_ratio": "16:9"
@@ -52,7 +52,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 视频生成模型，如 `tencent/kling-2.6` |
+| `model` | string | 是 | 视频生成模型，如 `kling-2.6` |
 | `prompt` | string | 条件 | 无素材时必填；有素材时仍建议描述镜头、动作与风格 |
 | `duration_sec` | integer | 否 | 默认 `5`，受模型能力限制 |
 | `resolution` | string | 否 | 如 `720p`、`1080p` |
@@ -82,7 +82,7 @@ r = requests.post(
         "Content-Type": "application/json",
     },
     data=json.dumps({
-        "model": "tencent/kling-2.6",
+        "model": "kling-2.6",
         "prompt": "黄昏海边慢跑，电影感",
         "duration_sec": 5,
         "aspect_ratio": "16:9",
@@ -99,7 +99,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/video/generations`, {
     Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
   },
   body: JSON.stringify({
-    model: "tencent/kling-2.6",
+    model: "kling-2.6",
     prompt: "黄昏海边慢跑，电影感",
     duration_sec: 5,
     aspect_ratio: "16:9",
@@ -113,7 +113,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "黄昏海边慢跑，电影感",
     "duration_sec": 5,
     "aspect_ratio": "16:9"

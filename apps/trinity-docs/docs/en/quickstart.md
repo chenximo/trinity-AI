@@ -132,7 +132,7 @@ If `model` is not in your available list, the gateway returns a model-not-found 
 
 - Text: `doubao-seed-1-6-thinking-agent-preview`, `gpt-4o`
 - Image: `hunyuan-image` (`POST /v1/chat/completions` + `image_config`; see [Image generation API](./api/images-generations.md))
-- Video: `tencent/kling-2.6` (`POST /v1/video/generations`)
+- Video: `kling-2.6` (`POST /v1/video/generations`)
 
 See also [API overview](./api/overview.md).
 

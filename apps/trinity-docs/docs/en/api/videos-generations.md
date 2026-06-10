@@ -39,7 +39,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "Golden hour coastline, cinematic jogger shot",
     "duration_sec": 5,
     "aspect_ratio": "16:9"
@@ -52,7 +52,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Video generation model, e.g. `tencent/kling-2.6` |
+| `model` | string | Yes | Video generation model, e.g. `kling-2.6` |
 | `prompt` | string | Conditional | Required when no input assets are provided; still recommended for describing camera movement, action, and style |
 | `duration_sec` | integer | No | Default `5`, limited by model capabilities |
 | `resolution` | string | No | Example: `720p`, `1080p` |
@@ -82,7 +82,7 @@ r = requests.post(
         "Content-Type": "application/json",
     },
     data=json.dumps({
-        "model": "tencent/kling-2.6",
+        "model": "kling-2.6",
         "prompt": "Golden hour coastline, cinematic jogger shot",
         "duration_sec": 5,
         "aspect_ratio": "16:9",
@@ -99,7 +99,7 @@ const res = await fetch(`${process.env.TRINITY_BASE_URL}/video/generations`, {
     Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
   },
   body: JSON.stringify({
-    model: "tencent/kling-2.6",
+    model: "kling-2.6",
     prompt: "Golden hour coastline, cinematic jogger shot",
     duration_sec: 5,
     aspect_ratio: "16:9",
@@ -113,7 +113,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer ${TRINITY_API_KEY}" \
   -d '{
-    "model": "tencent/kling-2.6",
+    "model": "kling-2.6",
     "prompt": "Golden hour coastline, cinematic jogger shot",
     "duration_sec": 5,
     "aspect_ratio": "16:9"
