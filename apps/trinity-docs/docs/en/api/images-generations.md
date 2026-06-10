@@ -34,6 +34,8 @@ Trinity image generation reuses the `/chat/completions` path. Declare image outp
 | `Authorization` | Yes | `Bearer <TRINITY_API_KEY>` |
 | `Content-Type` | Yes | `application/json` |
 
+Tracing and settlement (`X-Request-Id`, `X-Idempotency-Key`, `X-Conversation-Id`) are documented in [API overview · Tracing and settlement](./overview.md#tracing-and-settlement-headers).
+
 ---
 
 ## Minimal request
@@ -67,7 +69,24 @@ All `image_config` fields: [Image generation · Advanced parameters](./image-gen
 
 ## Response
 
-Success returns OpenAI-style JSON. Generated images are usually in `choices[0].message.images` or model-specific image fields; use the actual model response as the source of truth.
+Success returns OpenAI-style JSON. Generated images are usually in `choices[0].message.images`; the response may include `trinity_task.task_id` (e.g. `imgtsk_xxx`) and `usage.image_count`. Use the actual model response as the source of truth.
+
+Image generation is a **synchronous long-running** request (typically 10–300 seconds). On `408 generation_timeout`, query by `trinity_task.task_id` (see below).
+
+---
+
+## Query after timeout
+
+| Method | URL |
+| --- | --- |
+| `GET` | `{TRINITY_BASE_URL}/image/tasks/{taskId}` |
+
+`taskId` is `trinity_task.task_id` from the create or timeout response. See [Advanced parameters · Image generation](./image-generation-parameters.md#query-after-timeout).
+
+```bash
+curl -sS "${TRINITY_BASE_URL}/image/tasks/imgtsk_xxx" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}"
+```
 
 ---
 

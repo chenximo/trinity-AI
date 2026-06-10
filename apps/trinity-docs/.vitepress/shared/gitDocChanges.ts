@@ -1,11 +1,29 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import path from "node:path";
-import type { PendingDocChange } from "./changelogTypes";
+import type { PendingDocChange, PendingDocChangesResult } from "./changelogTypes";
 
 const execFileAsync = promisify(execFile);
 
 const DOCS_GIT_PREFIX = "apps/trinity-docs/docs/";
+
+const PAGE_LABELS: Record<string, string> = {
+  "image-generation-parameters": "生图高级参数",
+  "images-generations": "创建图像生成",
+  "image-generation": "图片生成指南",
+  "image-input": "图片输入",
+  "video-generation-parameters": "生视频高级参数",
+  "videos-generations": "创建视频生成",
+  "video-generation": "视频生成指南",
+  "video-input": "视频输入",
+  overview: "API 概述",
+  "error-codes": "错误码",
+  "request-parameters": "请求参数索引",
+  "chat-completions": "创建对话补全",
+  "chat-completions-parameters": "对话补全高级参数",
+  quickstart: "快速入门",
+  faq: "FAQ",
+};
 
 function toDocsRel(gitPath: string): string | null {
   const normalized = gitPath.replace(/\\/g, "/");
@@ -51,20 +69,53 @@ export async function isGitWorkingTreeDirty(repoRoot: string, docsPrefix: string
   }
 }
 
-function autoSummary(linesAdded: number, linesRemoved: number, status: string): string {
-  if (status === "?" || status === "A") return `新增文档（约 ${linesAdded} 行）`;
-  if (status === "D") return "删除文档";
-  if (linesAdded === 0 && linesRemoved === 0) return "内容调整（无行数变化）";
-  return `约 +${linesAdded} / -${linesRemoved} 行`;
+function pageLabel(rel: string): string {
+  const isEn = rel.startsWith("en/");
+  const base = path.basename(rel, ".md");
+  const label = PAGE_LABELS[base] ?? base.replace(/-/g, " ");
+  return isEn ? `${label}（英）` : label;
+}
+
+function buildFileLabel(rel: string, status: string): string {
+  const label = pageLabel(rel);
+  if (status === "?" || status === "A") return `${label}（新增）`;
+  if (status === "D") return `${label}（删除）`;
+  return label;
+}
+
+function detectAreas(rels: string[]): string[] {
+  const areas: string[] = [];
+  const has = (re: RegExp) => rels.some((r) => re.test(r));
+  if (has(/image-generation|images-generations|image-input/)) areas.push("生图");
+  if (has(/video-generation|videos-generations|video-input/)) areas.push("生视频");
+  if (has(/chat-completions/)) areas.push("生文");
+  if (has(/overview|request-parameters|error-codes/)) areas.push("API 通用");
+  if (has(/quickstart|faq/)) areas.push("入门/FAQ");
+  if (has(/cookbook/)) areas.push("应用场景");
+  return areas;
+}
+
+/** 按路径推断能力域，拼一两句发布说明建议（不解析 diff 正文） */
+export function buildSuggestedReleaseNote(files: PendingDocChange[]): string {
+  if (!files.length) return "";
+
+  const rels = files.map((f) => f.rel);
+  const areas = detectAreas(rels);
+  const hasEn = rels.some((r) => r.startsWith("en/"));
+  const n = files.length;
+
+  const parts: string[] = [];
+  if (areas.length) parts.push(`更新 ${areas.join("、")} 对外文档`);
+  else parts.push("更新对外文档");
+
+  if (hasEn) parts.push("含 en 镜像");
+  parts.push(`共 ${n} 个文件`);
+
+  return `${parts[0]}${parts.length > 1 ? `（${parts.slice(1).join("，")}）` : ""}。`;
 }
 
 /** 相对 HEAD 的 docs 目录变更（含未提交、未跟踪） */
-export async function getPendingDocChanges(appRoot: string): Promise<{
-  repoRoot: string;
-  gitRef: string | null;
-  gitDirty: boolean;
-  files: PendingDocChange[];
-}> {
+export async function getPendingDocChanges(appRoot: string): Promise<PendingDocChangesResult> {
   const repoRoot = await getGitRepoRoot(appRoot);
   const gitRef = await getGitHeadShort(repoRoot);
   const docsPrefix = DOCS_GIT_PREFIX;
@@ -125,10 +176,14 @@ export async function getPendingDocChanges(appRoot: string): Promise<{
       status: entry.status,
       linesAdded: entry.linesAdded,
       linesRemoved: entry.linesRemoved,
-      summary: autoSummary(entry.linesAdded, entry.linesRemoved, entry.status),
+      label: buildFileLabel(rel, entry.status),
     }));
 
-  const gitDirty = files.length > 0;
-
-  return { repoRoot, gitRef, gitDirty, files };
+  return {
+    repoRoot,
+    gitRef,
+    gitDirty: files.length > 0,
+    files,
+    suggestedNote: buildSuggestedReleaseNote(files),
+  };
 }

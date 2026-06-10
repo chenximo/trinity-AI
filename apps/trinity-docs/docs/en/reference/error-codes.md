@@ -23,8 +23,19 @@ For 429 / 5xx, Trinity preserves parseable error bodies where possible so SDKs a
 | 402 | Insufficient balance or quota | Check account balance, plan, or top-up status |
 | 403 | Permission denied, model not enabled, or key restricted | Check key permissions and model access |
 | 404 | Model not found, task not found, or wrong path | Check model ID, `taskId`, and URL path |
+| 408 | Image generation sync wait timeout (`generation_timeout`) | Query `GET /image/tasks/{taskId}` with `trinity_task.task_id` from the response |
 | 429 | Requests too fast, or account / key limit triggered | Back off per [Rate limits](../guides/rate-limits.md) |
 | 5xx | Temporary gateway or upstream issue | Retry a limited number of times and record request ID |
+
+### Common image-generation `error.code` (selected)
+
+| HTTP | `error.code` | Meaning | Client guidance |
+| --- | --- | --- | --- |
+| 400 | `invalid_request` | Missing/invalid parameters or unsupported fields | See [Advanced parameters · Image generation](../api/image-generation-parameters.md) |
+| 400 | `content_policy_violation` | Content moderation blocked the request | Adjust prompt or reference images |
+| 404 | `model_not_found` | Model disabled or unknown | Verify model ID in the [model catalog](https://trinity.ai/models) |
+| 408 | `generation_timeout` | Synchronous poll timeout | Query `/image/tasks/{taskId}` with `trinity_task.task_id` |
+| 502 | `upstream_task_failed` | Upstream task failed at terminal state | Check parameters and assets; failure is usually not billed |
 
 ::: warning
 Do not expose upstream stack traces or internal hosts to end users; record response header `X-Request-Id` for troubleshooting.

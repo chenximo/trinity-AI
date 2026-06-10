@@ -24,6 +24,7 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索
 | `X-Request-Id` | 否 | **追踪 ID**，排障关联；最长 128 字符 |
 | `X-Idempotency-Key` | 否 | **结算幂等键**；同 workspace 内相同键仅首笔成功扣费；**重试须不变** |
 | `X-Conversation-Id` | 否 | 会话分组；最长 128 字符 |
+| `X-Session-Id` | 否 | `X-Conversation-Id` 别名；仅当未传后者时生效 |
 
 成功或失败响应（**含 SSE**）通常回写 `X-Request-Id`、`X-Settlement-Key`；传入 `X-Conversation-Id` 时会回写该头。
 

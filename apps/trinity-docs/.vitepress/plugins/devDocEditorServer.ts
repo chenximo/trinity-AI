@@ -45,7 +45,8 @@ type DevDocsApiRoute =
   | "upload-config"
   | "changelog"
   | "pending-changes"
-  | "publish";
+  | "publish"
+  | "delete-release";
 
 function matchApiRoute(pathname: string): DevDocsApiRoute | null {
   const path = normalizeApiPathname(pathname);
@@ -57,6 +58,7 @@ function matchApiRoute(pathname: string): DevDocsApiRoute | null {
     if (path === `${prefix}/changelog`) return "changelog";
     if (path === `${prefix}/pending-changes`) return "pending-changes";
     if (path === `${prefix}/publish`) return "publish";
+    if (path === `${prefix}/delete-release`) return "delete-release";
   }
   return null;
 }
@@ -246,36 +248,37 @@ export function devDocEditorServer(): Plugin {
             const body = JSON.parse(await readRequestBody(req)) as {
               note?: string;
               author?: string;
-              files?: Array<{ rel?: string; summary?: string }>;
+              files?: Array<{
+                rel?: string;
+                linesAdded?: number;
+                linesRemoved?: number;
+                status?: string;
+              }>;
             };
             const note = body.note?.trim() ?? "";
             if (!note) {
-              jsonResponse(res, 400, { error: "请填写本次发布说明（note）" });
+              jsonResponse(res, 400, { error: "请填写本次发布说明（一两句话）" });
               return;
             }
             const { getPendingDocChanges, getGitAuthor } = await import("../shared/gitDocChanges");
             const { appendRelease } = await import("../shared/changelogStore");
             const pending = await getPendingDocChanges(PLUGIN_ROOT);
             const inputFiles = (body.files ?? []).filter((f) => f.rel?.trim());
-            const fileMap = new Map(inputFiles.map((f) => [f.rel!.trim(), f.summary?.trim() ?? ""]));
 
             const files =
               inputFiles.length > 0
                 ? inputFiles.map((f) => {
                     const rel = f.rel!.trim();
                     const detected = pending.files.find((p) => p.rel === rel);
-                    const summary = fileMap.get(rel) || detected?.summary || "内容更新";
                     return {
                       rel,
-                      summary,
-                      linesAdded: detected?.linesAdded,
-                      linesRemoved: detected?.linesRemoved,
-                      status: detected?.status,
+                      linesAdded: f.linesAdded ?? detected?.linesAdded,
+                      linesRemoved: f.linesRemoved ?? detected?.linesRemoved,
+                      status: f.status ?? detected?.status,
                     };
                   })
                 : pending.files.map((p) => ({
                     rel: p.rel,
-                    summary: p.summary,
                     linesAdded: p.linesAdded,
                     linesRemoved: p.linesRemoved,
                     status: p.status,
@@ -303,6 +306,24 @@ export function devDocEditorServer(): Plugin {
             };
             const data = await appendRelease(PLUGIN_ROOT, release);
             jsonResponse(res, 200, { ok: true, release, changelog: data });
+            return;
+          }
+
+          if (req.method === "POST" && route === "delete-release") {
+            const body = JSON.parse(await readRequestBody(req)) as { id?: string };
+            const id = body.id?.trim() ?? "";
+            if (!id) {
+              jsonResponse(res, 400, { error: "缺少发布记录 id" });
+              return;
+            }
+            const { deleteRelease } = await import("../shared/changelogStore");
+            try {
+              const data = await deleteRelease(PLUGIN_ROOT, id);
+              jsonResponse(res, 200, { ok: true, id, changelog: data });
+            } catch (delErr) {
+              const message = delErr instanceof Error ? delErr.message : "删除失败";
+              jsonResponse(res, 404, { error: message });
+            }
             return;
           }
 

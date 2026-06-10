@@ -28,6 +28,8 @@
 | `Authorization` | 是 | `Bearer <TRINITY_API_KEY>` |
 | `Content-Type` | 创建任务时 | `application/json` |
 
+创建任务时建议携带追踪与结算头（`X-Request-Id`、`X-Idempotency-Key`、`X-Conversation-Id`），见 [API 概述 · 追踪与结算](./overview.md#追踪与结算请求头)。
+
 ---
 
 ## 最小请求示例

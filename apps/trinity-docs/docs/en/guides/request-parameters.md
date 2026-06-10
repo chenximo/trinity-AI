@@ -24,6 +24,7 @@ Applies to **`POST /v1/chat/completions`** (text, images, streaming) and most JS
 | `X-Request-Id` | No | **Trace ID** for support; max 128 chars |
 | `X-Idempotency-Key` | No | **Settlement idempotency key**; same key in a workspace → charge once on success; **keep unchanged on retry** |
 | `X-Conversation-Id` | No | Conversation grouping; max 128 chars |
+| `X-Session-Id` | No | Alias for `X-Conversation-Id`; used only when the latter is omitted |
 
 Successful and error responses (**including SSE**) typically return `X-Request-Id` and `X-Settlement-Key`; `X-Conversation-Id` is echoed when sent.
 

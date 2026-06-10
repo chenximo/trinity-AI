@@ -23,8 +23,19 @@ Trinity 网关返回 **OpenAI 风格 JSON 错误体**（如 `error.message`、`e
 | 402 | 余额或额度不足 | 检查账户余额、套餐或充值状态 |
 | 403 | 权限不足、模型未开通或 Key 被限制 | 检查 Key 权限与模型开通状态 |
 | 404 | 模型不存在、任务不存在或路径错误 | 检查模型 ID、`taskId` 与 URL 路径 |
+| 408 | 生图同步等待超时（`generation_timeout`） | 用响应中 `trinity_task.task_id` 调 `GET /image/tasks/{taskId}` 补偿查询 |
 | 429 | 请求过快或账户 / Key 限额触发 | 按 [速率与限额](../guides/rate-limits.md) 退避重试 |
 | 5xx | 网关或上游临时异常 | 有限次重试，并记录请求 ID |
+
+### 生图常见 `error.code`（节选）
+
+| HTTP | `error.code` | 说明 | 客户端建议 |
+| --- | --- | --- | --- |
+| 400 | `invalid_request` | 参数缺失、类型错误、模型不支持的字段 | 对照 [高级参数 · 生图](../api/image-generation-parameters.md) |
+| 400 | `content_policy_violation` | 内容审核拦截 | 调整 prompt 或参考图 |
+| 404 | `model_not_found` | 模型未启用或不存在 | 在 [模型广场](https://trinity.ai/models) 核对模型 ID |
+| 408 | `generation_timeout` | 同步轮询超时 | 用 `trinity_task.task_id` 查询 `/image/tasks/{taskId}` |
+| 502 | `upstream_task_failed` | 上游任务终态失败 | 检查参数与素材；失败通常不扣费 |
 
 ::: warning
 请勿将上游原始堆栈或内部 host 暴露给终端用户；排查时记录响应头 `X-Request-Id`。

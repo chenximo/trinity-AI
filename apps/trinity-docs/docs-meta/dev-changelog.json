@@ -1,4 +1,111 @@
 {
   "schemaVersion": 1,
-  "releases": []
+  "releases": [
+    {
+      "id": "release-20260610T085537",
+      "publishedAt": "2026-06-10T08:55:37.297Z",
+      "author": "linda",
+      "note": "更新 生图、生视频、API 通用 对外文档（含 en 镜像，共 16 个文件）。",
+      "gitRef": "a7b83c1",
+      "gitDirty": true,
+      "files": [
+        {
+          "rel": "api/image-generation-parameters.md",
+          "linesAdded": 178,
+          "linesRemoved": 30,
+          "status": "M"
+        },
+        {
+          "rel": "api/images-generations.md",
+          "linesAdded": 20,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "api/overview.md",
+          "linesAdded": 3,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "api/video-generation-parameters.md",
+          "linesAdded": 1,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "api/videos-generations.md",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/image-generation-parameters.md",
+          "linesAdded": 178,
+          "linesRemoved": 30,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/images-generations.md",
+          "linesAdded": 20,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/overview.md",
+          "linesAdded": 3,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/video-generation-parameters.md",
+          "linesAdded": 1,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/videos-generations.md",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "en/guides/request-parameters.md",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "en/multimodal/image-generation.md",
+          "linesAdded": 31,
+          "linesRemoved": 8,
+          "status": "M"
+        },
+        {
+          "rel": "en/reference/error-codes.md",
+          "linesAdded": 11,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "guides/request-parameters.md",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "multimodal/image-generation.md",
+          "linesAdded": 31,
+          "linesRemoved": 8,
+          "status": "M"
+        },
+        {
+          "rel": "reference/error-codes.md",
+          "linesAdded": 11,
+          "linesRemoved": 0,
+          "status": "M"
+        }
+      ]
+    }
+  ]
 }

@@ -30,3 +30,15 @@ export async function appendRelease(appRoot: string, release: ChangelogRelease):
   await fs.writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf-8");
   return data;
 }
+
+export async function deleteRelease(appRoot: string, id: string): Promise<DevChangelog> {
+  const filePath = changelogFilePath(appRoot);
+  const data = await readDevChangelog(appRoot);
+  const before = data.releases.length;
+  data.releases = data.releases.filter((r) => r.id !== id);
+  if (data.releases.length === before) {
+    throw new Error("发布记录不存在或已删除");
+  }
+  await fs.writeFile(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf-8");
+  return data;
+}

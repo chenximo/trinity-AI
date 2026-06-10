@@ -29,6 +29,8 @@ Send JSON to `{TRINITY_BASE_URL}/chat/completions`. Set `modalities` based on mo
 
 Image generation requests must use **`stream: false`** or omit `stream` (streaming image generation is not supported).
 
+From the caller's perspective this is **a single synchronous HTTP request**, typically **10–300 seconds**. Set a sufficient client read timeout. When retrying the same business operation after a network timeout, **keep `X-Idempotency-Key` unchanged** (see [API overview](../api/overview.md#tracing-and-settlement-headers)).
+
 ---
 
 ## Basic image generation
@@ -119,12 +121,14 @@ Common values (**model-dependent**):
 | `4:5` / `5:4` | Social formats |
 | `21:9` | Ultra-wide |
 
-### Resolution `image_size`
+### Resolution `image_size` and `custom_size`
 
 | `image_size` | Description |
 | --- | --- |
 | `1K` | Standard tier (common default) |
 | `2K` / `4K` | Higher resolution (model-dependent) |
+
+Some models (e.g. Hunyuan 3.0, Qwen 0925, SI series) **do not support** `aspect_ratio`; use **`custom_size`** (e.g. `1024x1024`) instead.
 
 ### Output format
 
@@ -151,8 +155,12 @@ Pass URL references in `image_config.reference_images[]` (`type` is currently `u
 
 | Field | Description |
 | --- | --- |
-| `person_generation` | Person-generation policy |
+| `person_generation` | `allow_adult` / `disallowed` |
 | `input_compliance_check` / `output_compliance_check` | Input/output compliance checks: `true` / `false` |
+
+### Model-specific `model_specific_config`
+
+Vendor-specific parameters such as `negative_prompt`, `enhance_prompt`, and `seed` belong in **`model_specific_config`**, not mixed into `image_config`. Full field list: [Advanced parameters · Image generation](../api/image-generation-parameters.md#model-specific-config).
 
 ### Combined example
 
@@ -247,18 +255,22 @@ On success, the assistant message usually includes generated images (structure f
     {
       "message": {
         "role": "assistant",
-        "content": "Here is your generated image.",
+        "content": "",
         "images": [
           {
             "type": "image_url",
-            "image_url": {
-              "url": "https://..."
-            }
+            "image_url": { "url": "https://..." }
           }
         ]
       }
     }
-  ]
+  ],
+  "usage": { "image_count": 1 },
+  "trinity_task": {
+    "task_id": "imgtsk_xxx",
+    "mode": "sync",
+    "status": "succeeded"
+  }
 }
 ```
 
@@ -275,6 +287,16 @@ Check `choices[0].message.images` first; if empty, inspect `message.content` for
 
 ---
 
+## Sync timeout and compensating query
+
+If the create request returns **`408 generation_timeout`**, synchronous wait timed out but the upstream task may still be running. Poll with **`trinity_task.task_id`** from the response (e.g. `imgtsk_xxx`):
+
+`GET {TRINITY_BASE_URL}/image/tasks/{taskId}`
+
+A successful terminal state still returns image URLs and completes billing. See [Create image generation](../api/images-generations.md#query-after-timeout) and [Advanced parameters](../api/image-generation-parameters.md#query-after-timeout).
+
+---
+
 ## Model compatibility
 
 1. **`model`** must be an **image-generation model ID** from the catalog.
@@ -288,7 +310,8 @@ Check `choices[0].message.images` first; if empty, inspect `message.content` for
 - **Prompts**: Describe subject, style, lighting, and composition—avoid vague one-liners.
 - **Model choice**: Confirm image output in the catalog before integrating.
 - **Reference images**: Use `reference_images` with `text` to say what to keep or change.
-- **Errors**: Check HTTP status and the `error` object before parsing `images`.
+- **Errors**: Check HTTP status and the `error` object before parsing `images`; on `408`, query by `trinity_task.task_id`.
+- **Idempotency**: Keep `X-Idempotency-Key` unchanged when retrying the same image generation.
 - **Storage**: `url` links may expire; decode and save `base64` yourself.
 
 ---

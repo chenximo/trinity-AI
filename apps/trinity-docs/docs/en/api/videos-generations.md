@@ -28,6 +28,8 @@ Video generation is a long-running task: first call `POST /video/generations` to
 | `Authorization` | Yes | `Bearer <TRINITY_API_KEY>` |
 | `Content-Type` | When creating a task | `application/json` |
 
+When creating a task, include tracing and settlement headers (`X-Request-Id`, `X-Idempotency-Key`, `X-Conversation-Id`); see [API overview · Tracing and settlement](./overview.md#tracing-and-settlement-headers).
+
 ---
 
 ## Minimal request

@@ -32,6 +32,7 @@ Content-Type: application/json
 | `X-Request-Id` | 否 | **追踪 ID**，排障与日志关联；最长 128 字符；未传时服务端生成 |
 | `X-Idempotency-Key` | 否 | **结算幂等键**；同 workspace 内相同键仅首笔成功扣费；**重试须保持不变** |
 | `X-Conversation-Id` | 否 | 会话分组 ID；最长 128 字符 |
+| `X-Session-Id` | 否 | `X-Conversation-Id` 别名；仅当未传后者时生效 |
 
 响应（含 SSE）建议回写：`X-Request-Id`、`X-Settlement-Key`；传入 `X-Conversation-Id` 时回写该头。
 
@@ -46,7 +47,8 @@ Content-Type: application/json
 | 能力 | 方法 | 路径 | 说明 |
 | --- | --- | --- | --- |
 | 生文（创建对话补全） | `POST` | `/chat/completions` | 纯文本、工具调用、多模态输入（Part） |
-| 生图 | `POST` | `/chat/completions` | 须 `modalities` 含 `image` + `image_config`（**非** `/images/generations`） |
+| 生图 | `POST` | `/chat/completions` | 须 `modalities` 含 `image` + `image_config`（**非** `/images/generations`）；同步长耗时 |
+| 查询生图任务 | `GET` | `/image/tasks/{taskId}` | 同步超时（`408`）后补偿查询；`taskId` 为 `trinity_task.task_id` |
 | 生视频 | `POST` | `/video/generations` | 创建异步任务 |
 | 查询视频任务 | `GET` | `/video/tasks/{taskId}` | `taskId` 为创建返回的 `trinity_task.task_id` |
 

@@ -19,10 +19,11 @@ const gitRef = ref<string | null>(null);
 const gitDirty = ref(false);
 
 const note = ref("");
+const suggestedNote = ref("");
 const author = ref("");
-const fileSummaries = ref<Record<string, string>>({});
-
 const selectedRels = ref<Set<string>>(new Set());
+const expandedReleases = ref<Set<string>>(new Set());
+const deletingId = ref<string | null>(null);
 
 const isClient = typeof window !== "undefined";
 
@@ -50,18 +51,13 @@ async function loadPending() {
     files?: PendingDocChange[];
     gitRef?: string | null;
     gitDirty?: boolean;
+    suggestedNote?: string;
   };
   pendingFiles.value = data.files ?? [];
   gitRef.value = data.gitRef ?? null;
   gitDirty.value = Boolean(data.gitDirty);
-  const summaries: Record<string, string> = {};
-  const selected = new Set<string>();
-  for (const f of pendingFiles.value) {
-    summaries[f.rel] = fileSummaries.value[f.rel] ?? f.summary;
-    selected.add(f.rel);
-  }
-  fileSummaries.value = summaries;
-  selectedRels.value = selected;
+  suggestedNote.value = data.suggestedNote?.trim() ?? "";
+  selectedRels.value = new Set(pendingFiles.value.map((f) => f.rel));
 }
 
 async function refresh() {
@@ -80,8 +76,13 @@ async function openPanel() {
   open.value = true;
   tab.value = "publish";
   note.value = "";
+  suggestedNote.value = "";
   status.value = "";
   await refresh();
+}
+
+function applySuggestedNote() {
+  if (suggestedNote.value) note.value = suggestedNote.value;
 }
 
 function closePanel() {
@@ -97,6 +98,13 @@ function toggleFile(rel: string, checked: boolean) {
   selectedRels.value = next;
 }
 
+function toggleReleaseFiles(id: string) {
+  const next = new Set(expandedReleases.value);
+  if (next.has(id)) next.delete(id);
+  else next.add(id);
+  expandedReleases.value = next;
+}
+
 const selectedFiles = computed(() =>
   pendingFiles.value.filter((f) => selectedRels.value.has(f.rel)),
 );
@@ -108,7 +116,9 @@ async function publishRelease() {
   try {
     const files = selectedFiles.value.map((f) => ({
       rel: f.rel,
-      summary: fileSummaries.value[f.rel]?.trim() || f.summary,
+      linesAdded: f.linesAdded,
+      linesRemoved: f.linesRemoved,
+      status: f.status,
     }));
     const res = await fetch(`${API}/publish`, {
       method: "POST",
@@ -128,6 +138,27 @@ async function publishRelease() {
     error.value = e instanceof Error ? e.message : "发布失败";
   } finally {
     publishing.value = false;
+  }
+}
+
+async function deleteRelease(id: string) {
+  if (!window.confirm("确定删除这条发布记录？（仅删 dev 便签，不影响 Git 正文）")) return;
+  deletingId.value = id;
+  error.value = "";
+  try {
+    const res = await fetch(`${API}/delete-release`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (!res.ok) throw new Error(await parseApiError(res));
+    expandedReleases.value.delete(id);
+    await loadChangelog();
+    status.value = "已删除该条发布记录";
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : "删除失败";
+  } finally {
+    deletingId.value = null;
   }
 }
 
@@ -166,7 +197,7 @@ onUnmounted(() => {
           <div>
             <h2 class="tdocs-changelog-title">文档发布记录（dev）</h2>
             <p class="tdocs-changelog-lead">
-              只记 changelog，不存正文副本；正文以 GitHub 为准。发布 ≠ 线上部署。
+              只记一两句说明 + 文件清单；正文以 Git 为准。发布 ≠ 线上部署。
             </p>
           </div>
           <button type="button" class="tdocs-changelog-close" @click="closePanel">关闭</button>
@@ -205,12 +236,26 @@ onUnmounted(() => {
           </p>
 
           <label class="tdocs-changelog-field">
-            <span>发布说明</span>
+            <span class="tdocs-changelog-field__label-row">
+              <span>发布说明（一两句话）</span>
+              <button
+                v-if="suggestedNote && note !== suggestedNote"
+                type="button"
+                class="tdocs-changelog-link-btn"
+                @click="applySuggestedNote"
+              >
+                采用建议
+              </button>
+            </span>
             <textarea
               v-model="note"
-              rows="3"
-              placeholder="例如：补充生图 image_config 参数说明；同步 en 镜像"
+              rows="2"
+              maxlength="280"
+              :placeholder="suggestedNote || '例如：同步工程师稿 §二生图；补补偿查询与中英镜像'"
             />
+            <p v-if="suggestedNote" class="tdocs-changelog-hint">
+              建议：<span>{{ suggestedNote }}</span>
+            </p>
           </label>
 
           <label class="tdocs-changelog-field tdocs-changelog-field--inline">
@@ -218,11 +263,11 @@ onUnmounted(() => {
             <input v-model="author" type="text" placeholder="默认取 git user.name" />
           </label>
 
-          <h3 class="tdocs-changelog-subtitle">本次变更文件</h3>
+          <h3 class="tdocs-changelog-subtitle">变更文件（{{ pendingFiles.length }}）</h3>
           <p v-if="!pendingFiles.length" class="tdocs-changelog-empty">
             未检测到 <code>docs/</code> 下相对 HEAD 的变更。请先编辑并保存 Markdown，或执行 git 提交后再发布。
           </p>
-          <ul v-else class="tdocs-changelog-file-list">
+          <ul v-else class="tdocs-changelog-file-list tdocs-changelog-file-list--compact">
             <li v-for="file in pendingFiles" :key="file.rel" class="tdocs-changelog-file">
               <label class="tdocs-changelog-file__check">
                 <input
@@ -230,16 +275,10 @@ onUnmounted(() => {
                   :checked="selectedRels.has(file.rel)"
                   @change="toggleFile(file.rel, ($event.target as HTMLInputElement).checked)"
                 />
-                <code>docs/{{ file.rel }}</code>
+                <span class="tdocs-changelog-file__label">{{ file.label }}</span>
+                <code class="tdocs-changelog-file__path">docs/{{ file.rel }}</code>
                 <span class="tdocs-changelog-file__stat">+{{ file.linesAdded }} / -{{ file.linesRemoved }}</span>
               </label>
-              <input
-                v-model="fileSummaries[file.rel]"
-                class="tdocs-changelog-file__summary"
-                type="text"
-                :placeholder="file.summary"
-                :disabled="!selectedRels.has(file.rel)"
-              />
             </li>
           </ul>
 
@@ -265,11 +304,29 @@ onUnmounted(() => {
                 <span>{{ item.author }}</span>
                 <code v-if="item.gitRef">{{ item.gitRef }}</code>
                 <span v-if="item.gitDirty" class="tdocs-changelog-tag">含未提交变更</span>
+                <button
+                  type="button"
+                  class="tdocs-changelog-delete-btn"
+                  :disabled="deletingId === item.id"
+                  @click="deleteRelease(item.id)"
+                >
+                  {{ deletingId === item.id ? "删除中…" : "删除" }}
+                </button>
               </div>
               <p class="tdocs-changelog-release__note">{{ item.note }}</p>
-              <ul class="tdocs-changelog-release__files">
+              <button
+                type="button"
+                class="tdocs-changelog-link-btn"
+                @click="toggleReleaseFiles(item.id)"
+              >
+                {{ expandedReleases.has(item.id) ? "收起" : "展开" }}文件（{{ item.files.length }}）
+              </button>
+              <ul
+                v-if="expandedReleases.has(item.id)"
+                class="tdocs-changelog-release__files"
+              >
                 <li v-for="file in item.files" :key="`${item.id}-${file.rel}`">
-                  <code>docs/{{ file.rel }}</code> — {{ file.summary }}
+                  <code>docs/{{ file.rel }}</code>
                   <span v-if="file.linesAdded != null" class="tdocs-changelog-file__stat">
                     (+{{ file.linesAdded }}/-{{ file.linesRemoved ?? 0 }})
                   </span>
