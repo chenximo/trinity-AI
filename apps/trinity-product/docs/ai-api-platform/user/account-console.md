@@ -21,6 +21,9 @@ title: 用户控制台
 走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **用户控制台** / 用户面）。子能力进度与节点列以 **`account-console.roadmap.yml`** 为准，手册不抄验收 checklist。
 
 ### 关联
+<img src="https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-product-ling/images/8caa01c7-95d6-4232-ac6e-292858976e64.png" alt="image" width="619" />
+
+
 
 | 模块 | 关系 |
 |------|------|

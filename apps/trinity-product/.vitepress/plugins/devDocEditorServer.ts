@@ -2,7 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Connect, Plugin } from "vite";
+import { isCosUploadConfigured } from "../shared/cosEnv";
 import { isProductYamlRel, normalizeDocsRelParam, pageSlugToMdRel } from "../shared/docPath";
+import { loadTrinityProductDevEnv } from "../shared/loadDevEnv";
 
 const PLUGIN_ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const DOCS_DIR = path.join(PLUGIN_ROOT, "docs");
@@ -36,10 +38,22 @@ export function resolveDocsMd(rel: string): string | null {
   return rel.endsWith(".md") ? resolveDocsFile(rel) : null;
 }
 
-function matchApiRoute(pathname: string): "raw" | "save" | null {
+function normalizeApiPathname(pathname: string): string {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
+function matchApiRoute(
+  pathname: string,
+): "raw" | "save" | "upload-image" | "upload-config" | null {
+  const path = normalizeApiPathname(pathname);
   for (const prefix of API_PREFIXES) {
-    if (pathname === `${prefix}/raw`) return "raw";
-    if (pathname === `${prefix}/save`) return "save";
+    if (path === `${prefix}/raw`) return "raw";
+    if (path === `${prefix}/save`) return "save";
+    if (path === `${prefix}/upload-image`) return "upload-image";
+    if (path === `${prefix}/upload-config`) return "upload-config";
   }
   return null;
 }
@@ -58,6 +72,8 @@ async function handleDevProductApi(
   req: Connect.IncomingMessage,
   res: Connect.ServerResponse,
 ): Promise<void> {
+  loadTrinityProductDevEnv(PLUGIN_ROOT);
+
   if (!isLocalhostHost(req.headers.host)) {
     res.statusCode = 403;
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
@@ -69,6 +85,14 @@ async function handleDevProductApi(
   const parsed = new URL(url, "http://127.0.0.1");
   const route = matchApiRoute(parsed.pathname);
   const baseUrl = `${SITE_BASE}/` || "/product/";
+
+  if (req.method === "OPTIONS" && route) {
+    res.statusCode = 204;
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.end();
+    return;
+  }
 
   if (req.method === "GET" && route === "raw") {
     const relParam = parsed.searchParams.get("rel")?.trim();
@@ -128,8 +152,72 @@ async function handleDevProductApi(
     return;
   }
 
+  if (req.method === "GET" && route === "upload-config") {
+    const { getCosUploadConfig } = await import("../shared/cosEnv");
+    const config = getCosUploadConfig();
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(
+      JSON.stringify({
+        cosEnabled: Boolean(config),
+        cosSource: config?.source ?? null,
+        cosPrefix: config?.prefix ?? null,
+      }),
+    );
+    return;
+  }
+
+  if (req.method === "POST" && route === "upload-image") {
+    const body = JSON.parse(await readRequestBody(req)) as {
+      mime?: string;
+      filename?: string;
+      dataBase64?: string;
+    };
+    const mime = body.mime?.trim();
+    const dataBase64 = body.dataBase64?.trim();
+    if (!mime || !dataBase64) {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ error: "Missing mime or dataBase64" }));
+      return;
+    }
+    let buffer: Buffer;
+    try {
+      buffer = Buffer.from(dataBase64, "base64");
+    } catch {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ error: "Invalid base64 payload" }));
+      return;
+    }
+    if (buffer.length === 0) {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ error: "Empty image data" }));
+      return;
+    }
+
+    try {
+      const { uploadImageToCos } = await import("../shared/cosUpload");
+      const { url: imageUrl, key } = await uploadImageToCos(
+        buffer,
+        mime,
+        body.filename?.trim(),
+      );
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ ok: true, url: imageUrl, key }));
+    } catch (uploadErr) {
+      const message =
+        uploadErr instanceof Error ? uploadErr.message : "COS upload failed";
+      res.statusCode = uploadErr instanceof Error && message.includes("未配置") ? 503 : 500;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ error: message }));
+    }
+    return;
+  }
+
   res.statusCode = 404;
-  res.end("Not found");
+  res.setHeader("Content-Type", "application/json; charset=utf-8");
+  res.end(JSON.stringify({ error: `Unknown dev product API route: ${req.method} ${parsed.pathname}` }));
 }
 
 function devProductApiMiddleware(
@@ -151,8 +239,11 @@ function devProductApiMiddleware(
 }
 
 export function devDocEditorServer(): Plugin {
+  loadTrinityProductDevEnv(PLUGIN_ROOT);
+
   return {
     name: "trinity-dev-product-editor",
+    apply: "serve",
     configureServer(server) {
       server.middlewares.use(devProductApiMiddleware);
     },

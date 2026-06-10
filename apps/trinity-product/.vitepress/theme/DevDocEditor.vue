@@ -10,15 +10,22 @@ const {
   open,
   loading,
   saving,
+  uploadingImage,
   error,
   status,
+  statusHint,
   content,
   mdRel,
   canEdit,
   previewHtml,
+  textareaRef,
+  previewRef,
   closeEditor,
   saveMd,
   tryReopenFromStorage,
+  onEditorPaste,
+  onEditorDragOver,
+  onEditorDrop,
 } = useDevDocEditor();
 
 onMounted(() => {
@@ -43,7 +50,7 @@ onUnmounted(() => {
           <button
             type="button"
             class="tdocs-dev-editor-btn tdocs-dev-editor-btn--primary"
-            :disabled="loading || saving"
+            :disabled="loading || saving || uploadingImage"
             @click="saveMd"
           >
             {{ saving ? "保存中…" : "保存" }}
@@ -53,25 +60,31 @@ onUnmounted(() => {
 
       <div class="tdocs-dev-editor-pane__label">Markdown 源文</div>
       <textarea
+        ref="textareaRef"
         v-model="content"
         class="tdocs-dev-editor-md"
         spellcheck="false"
-        :disabled="loading"
+        :readonly="loading"
+        :disabled="uploadingImage"
         aria-label="Markdown 正文"
+        @dragover="onEditorDragOver"
+        @drop="onEditorDrop"
       />
 
-      <p class="tdocs-dev-editor-status" :class="{ 'tdocs-dev-editor-status--error': error }">
-        {{
-          error ||
-          status ||
-          "右侧随输入实时预览；点「保存」写入磁盘。关闭后刷新为完整 VitePress 页面。"
-        }}
+      <p
+        class="tdocs-dev-editor-status"
+        :class="{
+          'tdocs-dev-editor-status--error': error,
+          'tdocs-dev-editor-status--ok': !error && status,
+        }"
+      >
+        {{ error || status || statusHint }}
       </p>
     </aside>
 
     <div class="tdocs-dev-preview-wrap" aria-live="polite">
       <div class="tdocs-dev-preview-pane__label">实时预览</div>
-      <article class="tdocs-dev-preview vp-doc" v-html="previewHtml" />
+      <article ref="previewRef" class="tdocs-dev-preview vp-doc" v-html="previewHtml" />
     </div>
   </template>
 </template>

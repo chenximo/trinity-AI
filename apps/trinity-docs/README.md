@@ -38,6 +38,8 @@ npm run dev:trinity-docs
 
 **粘贴图片 → COS**：在编辑区 **Ctrl/Cmd+V 粘贴截图或图片** 时，开发中间件会上传到腾讯云 COS，并在光标处插入 `![…](https://…)`（公开 URL）。在 `apps/trinity-docs/` 复制 [`env.cos.example`](./env.cos.example) 为 **`.env.local`**，填写 `TRINITY_DOCS_COS_SECRET_ID`、`TRINITY_DOCS_COS_SECRET_KEY`、`TRINITY_DOCS_COS_BUCKET`、`TRINITY_DOCS_COS_REGION`；可选 `TRINITY_DOCS_COS_PREFIX`、`TRINITY_DOCS_COS_PUBLIC_BASE`（CDN 域名）。修改后需 **重启** `npm run dev:trinity-docs`。密钥勿提交 Git。
 
+**发布记录（dev · 仅 localhost）**：右下角 **「发布记录」** → 查看 `git` 检测到的 `docs/` 变更 → 填写说明后 **确认发布**。只追加 `docs-meta/dev-changelog.json` 台账（文件列表 + 摘要 + `gitRef`），**不存正文副本**、不触发线上部署；正文仍以 GitHub 为准。发布前请先保存 md；建议随后 `git commit` 以便记录与仓库对齐。
+
 ## 构建与预览
 
 ```bash

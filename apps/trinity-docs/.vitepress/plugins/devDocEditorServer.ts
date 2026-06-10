@@ -38,13 +38,25 @@ function normalizeApiPathname(pathname: string): string {
   return pathname;
 }
 
-function matchApiRoute(pathname: string): "raw" | "save" | "upload-image" | "upload-config" | null {
+type DevDocsApiRoute =
+  | "raw"
+  | "save"
+  | "upload-image"
+  | "upload-config"
+  | "changelog"
+  | "pending-changes"
+  | "publish";
+
+function matchApiRoute(pathname: string): DevDocsApiRoute | null {
   const path = normalizeApiPathname(pathname);
   for (const prefix of API_PREFIXES) {
     if (path === `${prefix}/raw`) return "raw";
     if (path === `${prefix}/save`) return "save";
     if (path === `${prefix}/upload-image`) return "upload-image";
     if (path === `${prefix}/upload-config`) return "upload-config";
+    if (path === `${prefix}/changelog`) return "changelog";
+    if (path === `${prefix}/pending-changes`) return "pending-changes";
+    if (path === `${prefix}/publish`) return "publish";
   }
   return null;
 }
@@ -213,6 +225,84 @@ export function devDocEditorServer(): Plugin {
               res.setHeader("Content-Type", "application/json; charset=utf-8");
               res.end(JSON.stringify({ error: message }));
             }
+            return;
+          }
+
+          if (req.method === "GET" && route === "changelog") {
+            const { readDevChangelog } = await import("../shared/changelogStore");
+            const data = await readDevChangelog(PLUGIN_ROOT);
+            jsonResponse(res, 200, data as unknown as Record<string, unknown>);
+            return;
+          }
+
+          if (req.method === "GET" && route === "pending-changes") {
+            const { getPendingDocChanges } = await import("../shared/gitDocChanges");
+            const pending = await getPendingDocChanges(PLUGIN_ROOT);
+            jsonResponse(res, 200, pending as unknown as Record<string, unknown>);
+            return;
+          }
+
+          if (req.method === "POST" && route === "publish") {
+            const body = JSON.parse(await readRequestBody(req)) as {
+              note?: string;
+              author?: string;
+              files?: Array<{ rel?: string; summary?: string }>;
+            };
+            const note = body.note?.trim() ?? "";
+            if (!note) {
+              jsonResponse(res, 400, { error: "请填写本次发布说明（note）" });
+              return;
+            }
+            const { getPendingDocChanges, getGitAuthor } = await import("../shared/gitDocChanges");
+            const { appendRelease } = await import("../shared/changelogStore");
+            const pending = await getPendingDocChanges(PLUGIN_ROOT);
+            const inputFiles = (body.files ?? []).filter((f) => f.rel?.trim());
+            const fileMap = new Map(inputFiles.map((f) => [f.rel!.trim(), f.summary?.trim() ?? ""]));
+
+            const files =
+              inputFiles.length > 0
+                ? inputFiles.map((f) => {
+                    const rel = f.rel!.trim();
+                    const detected = pending.files.find((p) => p.rel === rel);
+                    const summary = fileMap.get(rel) || detected?.summary || "内容更新";
+                    return {
+                      rel,
+                      summary,
+                      linesAdded: detected?.linesAdded,
+                      linesRemoved: detected?.linesRemoved,
+                      status: detected?.status,
+                    };
+                  })
+                : pending.files.map((p) => ({
+                    rel: p.rel,
+                    summary: p.summary,
+                    linesAdded: p.linesAdded,
+                    linesRemoved: p.linesRemoved,
+                    status: p.status,
+                  }));
+
+            if (files.length === 0) {
+              jsonResponse(res, 400, {
+                error: "没有可发布的文档变更（请先保存 md 或确认 git 能检测到 docs/ 下的改动）",
+              });
+              return;
+            }
+
+            const author =
+              body.author?.trim() || (await getGitAuthor(pending.repoRoot));
+            const now = new Date();
+            const id = `release-${now.toISOString().replace(/[-:]/g, "").slice(0, 15)}`;
+            const release = {
+              id,
+              publishedAt: now.toISOString(),
+              author,
+              note,
+              gitRef: pending.gitRef,
+              gitDirty: pending.gitDirty,
+              files,
+            };
+            const data = await appendRelease(PLUGIN_ROOT, release);
+            jsonResponse(res, 200, { ok: true, release, changelog: data });
             return;
           }
 

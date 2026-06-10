@@ -15,7 +15,7 @@
 |---|---|---|---|
 | **追踪 ID** | 请求 `X-Request-Id`；响应回写 `X-Request-Id` | 可重复 | 排障、日志关联；同一用户会话内多次调用可共用同一追踪 ID |
 | **结算键** | 请求 `X-Idempotency-Key`；响应回写 `X-Settlement-Key` | 同 workspace 内应唯一 | **计费幂等**：相同结算键仅产生一笔扣费 |
-| **会话 ID** | 请求 `X-Conversation-Id`；有值时响应回写 | 可重复 | 会话分组、后台筛选 |
+| **会话 ID** | 请求 `X-Conversation-Id`（或 `X-Session-Id` 别名）；有值时响应回写 | 可重复 | 会话分组、后台筛选；腾讯云 Prompt Cache 时建议固定传同一值（见 §0.6） |
 
 > **注意**：`request_id`（落库字段）与追踪 ID、结算键不是同一概念。后台联查单次计费请用 **结算键**；按追踪 ID 可看到同 trace 下多条结算记录。
 
@@ -25,7 +25,8 @@
 |---|---|---|---|
 | `X-Request-Id` | 否 | 追踪 ID | 建议 UUID 或业务 trace 字符串；**最长 128 字符**；未传时服务端用网关/MDC 中的请求 ID，仍无则生成 UUID |
 | `X-Idempotency-Key` | 否 | 结算幂等键 | 建议 UUID；**最长 128 字符**；**同一次业务重试（网络超时、客户端重放）须保持不变**；未传时服务端每次调用生成新 UUID → **每次调用独立计费** |
-| `X-Conversation-Id` | 否 | 会话分组 | 建议业务会话 ID；**最长 128 字符** |
+| `X-Conversation-Id` | 否 | 会话分组 / Prompt Cache 会话键 | 建议业务会话 ID；**最长 128 字符**；多轮 Agent 应固定传同一值 |
+| `X-Session-Id` | 否 | `X-Conversation-Id` 别名 | 与 `X-Conversation-Id` 等价；仅当未传后者时生效 |
 
 ### 0.3 响应头
 
@@ -62,6 +63,16 @@ curl -sS -N "${BASE}/v1/chat/completions" \
 ```
 
 重试同一笔业务时：**保持 `X-Idempotency-Key` 不变**，可更换或复用 `X-Request-Id`。
+
+### 0.6 Prompt Cache 与 cached token 计费
+
+适用于走 **腾讯云 AIGC 生文** 的模型（网关自动注入上游 Session，客户端无需传 `Tx-User-Session-Id`）。
+
+1. **提升命中率**：同一 Agent / Chat 任务内，请固定 `X-Conversation-Id`（或 Responses body `metadata.cursorConversationId` 等，见内部设计文档）。
+2. **usage 字段**：上游响应 `prompt_tokens_details.cached_tokens`（Chat）或 `input_tokens_details.cached_tokens`（Responses）表示缓存命中 input token 数。
+3. **扣费公式**（模型已配置 `token_kind=cached_input` 价目时）：
+   - `userCharge ≈ uncached_prompt × P_input + cached_prompt × P_cached_input + completion × P_output`（单价均为 USD/百万 Token）
+4. **未配置 `cached_input` 价**：cached 部分暂按 `input` 价计费（服务端 WARN 日志 `pricing_cached_input_fallback_billing`）。
 
 ---
 
@@ -315,65 +326,272 @@ Base64 图片示例：
 
 ## 二、生图接口（图片生成）
 
+> 当前实现：**统一走 Chat Completions 入口**，平台内部创建腾讯云 AIGC 生图任务并轮询至终态，对调用方呈现为**一次同步 HTTP 请求**（通常 10–300s）。  
+> 详细错误码与映射规则另见 [`大模型生图接口.md`](./大模型生图接口.md)。
+
 ### 1) 接口与完整请求示例
 
+#### 1.1 创建生图（同步）
+
 - 方法：`POST`
-- 路径：`/v1/chat/completions`
-- 鉴权：`Authorization: Bearer xh-...`
-- 追踪/结算头：见 **§0**（与纯生文相同）
+- 路径：`/v1/chat/completions`（对外 API Key）；站内 Web 为 `/v1/app/chat/completions`（JWT）
+- 鉴权：`Authorization: Bearer xh-...` 或 Bearer JWT
+- 追踪/结算头：见 **§0**（`X-Request-Id`、`X-Idempotency-Key`、`X-Conversation-Id`）
+- 触发条件：`modalities` 含 `image`，且 `model` 为已上架生图模型（`GET /v1/models` 中 `metadata.modality_type=image`）
 
 ```json
 {
-  "model": "hunyuan-image",
+  "model": "GG-2.5",
   "messages": [
-    { "role": "user", "content": "生成一张未来城市夜景，赛博朋克风格。" }
+    { "role": "user", "content": "赛博朋克城市夜景，霓虹倒影，电影光效" }
   ],
   "modalities": ["image", "text"],
+  "stream": false,
   "image_config": {
     "image_size": "1K",
-    "aspect_ratio": "1:1",
+    "aspect_ratio": "16:9",
     "output_format": "url",
-    "person_generation": "allow",
+    "output_image_format": "png",
+    "person_generation": "allow_adult",
     "input_compliance_check": true,
     "output_compliance_check": true,
-    "output_image_format": "png",
-    "custom_size": "1024x1024",
-    "sequential_image_generation": false,
     "reference_images": [
       {
         "type": "url",
-        "url": "https://example.com/ref.png",
-        "text": "保持主建筑轮廓，不改变几何结构"
+        "url": "https://example.com/ref-building.png",
+        "text": "保留主建筑轮廓，不改变几何结构"
       }
     ]
+  },
+  "model_specific_config": {
+    "negative_prompt": "低清晰度, 模糊, 变形",
+    "enhance_prompt": true,
+    "seed": 123456
   }
 }
 ```
 
-### 2) 参数说明表
+带请求头的 curl 示例：
+
+```bash
+TRACE_ID="trace-$(uuidgen)"
+SETTLE_KEY="settle-$(uuidgen)"
+
+curl -sS "${BASE}/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer xh-REPLACE_WITH_REAL_KEY" \
+  -H "X-Request-Id: ${TRACE_ID}" \
+  -H "X-Idempotency-Key: ${SETTLE_KEY}" \
+  -d '{
+    "model": "Hunyuan-3.0",
+    "messages": [{"role": "user", "content": "一只橘猫坐在窗台上看雪景"}],
+    "modalities": ["image"],
+    "stream": false,
+    "image_config": {
+      "custom_size": "1024x1024",
+      "output_format": "url"
+    }
+  }'
+```
+
+#### 1.2 超时后查询任务（补偿）
+
+同步等待超时（默认 300s）返回 `408 generation_timeout` 后，可用任务 ID 继续查询；平台会向上游 `DescribeTaskDetail` 做补偿更新，成功终态时补结算。
+
+- 方法：`GET`
+- 路径：`/v1/image/tasks/{taskId}`
+- 鉴权：与创建请求相同 API Key
+- `taskId`：成功/超时响应中 `trinity_task.task_id`（形如 `imgtsk_xxx`）
+
+```bash
+curl -sS "${BASE}/v1/image/tasks/imgtsk_xxx" \
+  -H "Authorization: Bearer xh-REPLACE_WITH_REAL_KEY"
+```
+
+### 2) 调用语义（必读）
+
+| 项 | 行为 |
+|---|---|
+| 同步/异步 | 当前全部生图模型为 `async_support_mode=sync_only`：**必须 `stream=false`**；传 `trinity_async` 报 `invalid_request` |
+| Prompt 来源 | 取 `messages` 中最后一条 `user` 消息：`content` 为 string 时直接用；为 Part 数组时拼接 `type=text` 的文本 |
+| 参考图 | `image_config.reference_images[]` **优先**；`messages[].content[]` 中 `type=image_url` 也会映射为上游参考图，二者可并存 |
+| 参数校验 | `image_config` 中带 `supported=true` 的键按模型 `special_param_schema_json` 做枚举/区间校验；不支持或越界直接 `400 invalid_request` |
+| 交付 | 默认上传自有 COS 后返回 HTTPS URL；COS 失败时按 `output_format=base64` 策略降级为 data URL |
+| 计费 | 按张：`model_metered_price_policy(charge_unit=image_count)`；`usage` 中 token 字段通常为 0；幂等见 **§0.4** |
+
+### 3) 顶层参数说明
 
 | 参数 | 类型 | 必填 | 作用 | 支持值/约束 |
 |---|---|---|---|---|
-| `model` | string | 是 | 指定生图模型编码 | 需是已上架可用生图模型（如 `hunyuan-image`） |
-| `messages` | array | 是 | 输入提示词来源 | 通常从 `user` 文本提取 prompt |
-| `modalities` | array | 建议 | 声明输出模态 | 建议包含 `image`（可包含 `text`） |
-| `stream` | boolean | 否 | 是否流式 | 生图当前不支持 `true`，只能同步返回 |
-| `image_config` | object | 否 | 生图专用参数容器 | 见下方子字段 |
-| `image_config.image_size` | string | 否 | 图片尺寸档位 | 由具体模型能力决定（如 `1K`） |
-| `image_config.aspect_ratio` | string | 否 | 宽高比 | 如 `1:1` / `16:9` / `9:16` |
-| `image_config.output_format` | string | 否 | 对外返回格式偏好 | `url` / `base64` |
-| `image_config.person_generation` | string | 否 | 人物生成人脸相关策略 | 由模型与上游能力约束 |
-| `image_config.input_compliance_check` | boolean | 否 | 输入合规检查开关 | `true` / `false` |
-| `image_config.output_compliance_check` | boolean | 否 | 输出合规检查开关 | `true` / `false` |
-| `image_config.output_image_format` | string | 否 | 输出文件格式 | `png` / `jpeg` |
-| `image_config.custom_size` | string | 否 | 自定义尺寸透传参数 | 仅部分模型生效 |
-| `image_config.sequential_image_generation` | boolean | 否 | 顺序生成策略 | 仅部分模型生效 |
-| `image_config.reference_images` | array | 否 | 参考图列表 | 当前仅支持 URL 参考图 |
-| `image_config.reference_images[].type` | string | 是（项内） | 参考图来源类型 | 当前仅支持 `url` |
-| `image_config.reference_images[].url` | string | 是（项内） | URL 参考图地址 | 需为可访问 URL |
-| `image_config.reference_images[].text` | string | 否 | 参考图语义描述 | 可选 |
-| `trinity_async.mode` | string | 否 | 异步模式参数 | 生图当前不支持，传入会报 `invalid_request` |
-| `trinity_async.poll_interval_sec` | integer | 否 | 轮询间隔参数 | 生图当前不支持，传入会报 `invalid_request` |
+| `model` | string | 是 | 生图模型编码 | 须为 `modality_type=image` 的已启用模型，见 **§2.8** |
+| `messages` | array | 是 | 提示词与可选参考图 | 至少 1 条；无参考图时须能从 `user` 消息提取非空 prompt |
+| `messages[].role` | string | 否 | 消息角色 | 生图场景通常仅 `user`；默认按 `user` 处理 |
+| `messages[].content` | string or array | 是 | 文本 prompt 或 Part 数组 | string：纯文本 prompt；array：可含 `text` / `image_url`（见 **§2.6.3**） |
+| `modalities` | array | 建议 | 声明输出模态 | 须含 `image`；可含 `text` |
+| `stream` | boolean | 否 | 流式 | **必须为 `false`**（或省略）；`true` 报 `invalid_request` |
+| `image_config` | object | 否 | 生图公共参数 | 见 **§2.4** |
+| `model_specific_config` | object | 否 | 供应商专有参数 | 见 **§2.5**；仅当前模型白名单键生效，未知键忽略 |
+| `trinity_async` | object | 否 | 异步模式 | **当前不支持**；传入报 `invalid_request` |
+
+### 4) `image_config` 参数说明
+
+| 参数 | 类型 | 必填 | 作用 | 支持值/约束 |
+|---|---|---|---|---|
+| `image_size` | string | 否 | 分辨率档位 | 映射上游 `OutputConfig.Resolution`；枚举因模型而异（如 `1K`/`2K`/`4K`、`1080p`、Kling 小写 `1k`/`2k` 等），以模型 schema 为准 |
+| `aspect_ratio` | string | 否 | 宽高比 | 映射 `OutputConfig.AspectRatio`；如 `1:1`、`16:9`、`9:16`；**Hunyuan 3.0 / Qwen 0925 / SI 系列等不支持此字段**，须用 `custom_size` |
+| `output_format` | string | 否 | 对外交付形态 | `url`（默认，COS 稳定链接）/ `base64`（data URL） |
+| `output_image_format` | string | 否 | 输出文件格式 | `png` / `jpeg`，映射 `OutputConfig.OutputFormat` |
+| `person_generation` | string | 否 | 人物/人脸生成策略 | `allow_adult` / `disallowed`，映射 `PersonGeneration` |
+| `input_compliance_check` | boolean | 否 | 输入合规检查 | 默认 `true`；映射 `Enabled`/`Disabled` |
+| `output_compliance_check` | boolean | 否 | 输出合规检查 | 默认 `true`；映射 `Enabled`/`Disabled` |
+| `custom_size` | string | 否 | 自定义像素尺寸 | 如 `1024x1024`、`728x1024`；写入 `ExtInfo.AdditionalParameters.size`；**Hunyuan / Qwen / SI 等依赖此字段** |
+| `sequential_image_generation` | boolean or string | 否 | 多图顺序生成 | 如 `false` 或 `"auto"`；写入 `ExtInfo`；仅部分模型（如 SI 系列）支持 |
+| `reference_images` | array | 否 | 参考图列表 | 映射上游 `FileInfos`；张数上限见 **§2.6.2** |
+| `output_image_count` | integer | 否 | 输出张数 | 仅部分模型支持（如 OG-image-2 支持 1–8）；未传时平台默认 **1** |
+| `logo_add` | string | 否 | 水印开关 | **不对外开放**；平台固定 `Disabled`，传入无效 |
+
+### 5) `model_specific_config` 参数说明
+
+供应商专有参数统一放此对象，**不要**与 `image_config` 混用（合规类 boolean 已在 `image_config` 暴露的，优先用 `image_config`）。
+
+| 参数 | 类型 | 必填 | 作用 | 说明 |
+|---|---|---|---|---|
+| `negative_prompt` | string | 否 | 负向提示词 | 映射上游 `NegativePrompt` |
+| `enhance_prompt` | boolean or string | 否 | 自动优化 prompt | `true`/`Enabled` 开启；`false`/`Disabled` 关闭 |
+| `scene_type` | string | 否 | 场景扩展 | 如 Hunyuan `3d_panorama`、Kling `image_expand` |
+| `seed` | integer | 否 | 随机种子 | 复现生成结果 |
+| `session_id` | string | 否 | 上游去重 ID | ≤50 字符；3 天内重复可能去重 |
+| `session_context` | string | 否 | 透传上下文 | ≤1000 字符 |
+| `tasks_priority` | integer | 否 | 任务优先级 | `-10` ~ `10`，默认 `0` |
+| `input_region` | string | 否 | 输入区域 | `Mainland` / `Oversea` / `OverseaUSWest`；默认由路由配置，通常 `Mainland` |
+
+以下字段由平台内部固定，**调用方勿传**：`SubAppId`、`ModelName`、`ModelVersion`（由 `model` 编码映射）、`StorageMode` 默认值等。
+
+### 6) `image_config.reference_images[]` 与 messages 传图
+
+#### 6.1 `reference_images[]` 字段
+
+| 字段 | 类型 | 必填 | 说明 |
+|---|---|---|---|
+| `type` | string | 是 | 当前仅支持 `url` |
+| `url` | string | 是（项内） | 可公网访问的图片 URL；推荐单图 **< 7MB** |
+| `text` | string | 否 | 参考图语义说明；GG 2.5/3.0/3.1 等模型生效 |
+| `file_id` | string | 否 | **暂不支持**；传入报 `invalid_request` |
+
+支持格式：`jpeg` / `jpg` / `png` / `webp`。
+
+#### 6.2 各模型参考图张数上限
+
+| 模型 | 上限 |
+|---|---|
+| GG-2.5 | 3 |
+| GG-3.0 / GG-3.1 | 14 |
+| Kling-2.1 | 4 |
+| Kling-3.0 | 1 |
+| Kling-3.0-omni / Kling-O1 | 10 |
+| SI-4.0 / SI-4.5 / SI-5.0-lite | 14 |
+| Vidu-q2 | 7 |
+| Hunyuan-3.0 | 3 |
+| Qwen-0925 | 1 |
+| MJ-v7 | 3 |
+| JI-4.0 / OG-image-2 | 按模型能力配置 |
+
+#### 6.3 `messages[].content` 中的 `image_url`（可选）
+
+与 **§1.2 生文 Part** 结构相同，可作为参考图补充输入：
+
+```json
+{
+  "role": "user",
+  "content": [
+    { "type": "text", "text": "保持角色服装主色调" },
+    { "type": "image_url", "image_url": { "url": "https://example.com/ref.png" } }
+  ]
+}
+```
+
+### 7) 成功响应示例
+
+```json
+{
+  "id": "chatcmpl-imgtsk_xxx",
+  "object": "chat.completion",
+  "created": 1777777777,
+  "model": "GG-2.5",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "images": [
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-image/20260520/imgtsk_xxx.png"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "image_count": 1
+  },
+  "trinity_task": {
+    "task_id": "imgtsk_xxx",
+    "mode": "sync",
+    "status": "succeeded",
+    "fallback_used": false
+  }
+}
+```
+
+响应头仍回写 **§0.3** 中的 `X-Request-Id`、`X-Settlement-Key` 等。
+
+### 8) 当前可用生图模型（`model_code`）
+
+| model_code | 说明 |
+|---|---|
+| `GG-2.5` / `GG-3.0` / `GG-3.1` | Gemini 图像系列 |
+| `Kling-2.1` / `Kling-3.0` / `Kling-3.0-omni` / `Kling-O1` | Kling 图像系列 |
+| `SI-4.0` / `SI-4.5` / `SI-5.0-lite` | Seedream 系列 |
+| `Vidu-q2` | Vidu 图像 |
+| `Hunyuan-3.0` | 混元 3.0 |
+| `Qwen-0925` | 通义万相 |
+| `MJ-v7` | Midjourney v7 |
+| `JI-4.0` | 即梦 4.0 |
+| `OG-image-2` | OpenAI 兼容图像（质量档 `image2_low/medium/high` 由模型路由映射） |
+
+各模型支持的 `image_size`、`aspect_ratio`、`custom_size` 等以 **`GET /v1/models` 返回的能力 metadata / Admin 配置的 schema** 为准；文档无法穷举全部枚举组合。
+
+### 9) 常见错误码（生图）
+
+| HTTP | error.code | 说明 |
+|---|---|---|
+| 400 | `invalid_request` | 参数缺失、类型错误、模型不支持的字段/枚举 |
+| 400 | `content_policy_violation` | 内容审核拦截 |
+| 401 | `invalid_api_key` | API Key 无效 |
+| 402 | `insufficient_balance` | 余额不足 |
+| 404 | `model_not_found` | 模型未启用或不存在 |
+| 408 | `generation_timeout` | 同步轮询超时；可凭 `trinity_task.task_id` 调 **§2.1.2** 补偿查询 |
+| 429 | `rate_limit_exceeded` | 限流 |
+| 502 | `upstream_task_failed` | 上游任务终态失败（不扣费） |
+| 502 | `upstream_query_failed` | 上游查询失败 |
+| 502 | `storage_error` | COS 与 base64 兜底均不可用 |
+
+### 10) 与生文「看图」的区别（易混）
+
+| 能力 | 路径 | 传图方式 | 输出 |
+|---|---|---|---|
+| **生文看图**（理解/问答） | `POST /v1/chat/completions` | `messages[].content[]` 中 `type: image_url` | 文本 |
+| **生图**（文生图/图生图） | `POST /v1/chat/completions` | `modalities` 含 `image` + `image_config.reference_images[]` 等 | `choices[].message.images[]` |
+
+生图请求**不要**仅依赖生文模型；须使用 **§2.8** 中的 `model_code`，且 `modalities` 含 `image`。
 
 ---
 
