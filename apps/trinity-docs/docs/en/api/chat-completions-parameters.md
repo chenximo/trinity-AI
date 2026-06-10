@@ -59,11 +59,55 @@ Parts are for **text models reading images/audio/files**. Image generation refer
 | --- | --- |
 | `X-Request-Id` | Trace ID; max 128 chars |
 | `X-Idempotency-Key` | Settlement idempotency key; **keep unchanged when retrying the same business operation** |
-| `X-Conversation-Id` | Conversation grouping |
+| `X-Conversation-Id` | Conversation grouping; keep stable per Agent / chat for prompt cache |
 
 ::: tip
 Without `X-Idempotency-Key`, each HTTP call is billed independently. After a network timeout, replay with the **same settlement key**.
 :::
+
+---
+
+## Prompt cache {#prompt-cache}
+
+Applies to **text models that support prompt caching** (see the [model catalog](https://trinity.ai/models)). The gateway maintains session context automatically—**no cache-control fields in the request body**.
+
+### Improve hit rate
+
+Within the same Agent or multi-turn chat, **keep** `X-Conversation-Id` stable (or use `X-Session-Id` when the former is omitted). Changing the conversation ID often reduces cache hits.
+
+### Response `usage`
+
+| Field | Description |
+| --- | --- |
+| `usage.prompt_tokens_details.cached_tokens` | Input tokens read from cache (**> 0** on a hit) |
+| `usage.prompt_tokens_details.cache_write_tokens` | Tokens written to cache on first request (when returned upstream) |
+
+For streaming, these fields appear on the **final** SSE chunk when `stream_options.include_usage` is set. See [Streaming (SSE)](../guides/streaming-sse.md).
+
+Example (non-streaming):
+
+```json
+{
+  "usage": {
+    "prompt_tokens": 1500,
+    "completion_tokens": 120,
+    "total_tokens": 1620,
+    "prompt_tokens_details": {
+      "cached_tokens": 1200
+    }
+  }
+}
+```
+
+### Billing
+
+When the model has a **cached input** unit price, input charges are roughly:
+
+- Uncached prompt × input unit price
+- Cached prompt × cached input unit price (usually lower than input)
+- Completion × output unit price
+
+If no cached input price is configured, cached tokens are billed at the **input** unit price for now. See the console and model page for actual rates.
 
 ---
 

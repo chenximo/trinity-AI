@@ -23,10 +23,18 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索
 | `Accept` | 流式时建议 | 流式生文：`text/event-stream` |
 | `X-Request-Id` | 否 | **追踪 ID**，排障关联；最长 128 字符 |
 | `X-Idempotency-Key` | 否 | **结算幂等键**；同 workspace 内相同键仅首笔成功扣费；**重试须不变** |
-| `X-Conversation-Id` | 否 | 会话分组；最长 128 字符 |
+| `X-Conversation-Id` | 否 | 会话分组；多轮 Agent / Prompt Cache 建议固定传同一值；最长 128 字符 |
 | `X-Session-Id` | 否 | `X-Conversation-Id` 别名；仅当未传后者时生效 |
 
 成功或失败响应（**含 SSE**）通常回写 `X-Request-Id`、`X-Settlement-Key`；传入 `X-Conversation-Id` 时会回写该头。
+
+### Prompt Cache（生文）
+
+部分生文模型支持 **Prompt Cache**：对多轮对话中重复的前缀 prompt 降低 input 成本。网关自动维护会话上下文，**无需在请求体中传额外缓存控制字段**。
+
+- **提升命中率**：同一 Agent / Chat 任务内固定 `X-Conversation-Id`（或 `X-Session-Id`）。
+- **查看命中**：响应 `usage.prompt_tokens_details.cached_tokens`（流式时在最后一个 chunk，需 `stream_options.include_usage`）。
+- **计费说明**：模型已配置 cached input 单价时，缓存命中的 input 按该单价计费；否则暂按 input 单价。详见 [对话补全 · 高级参数 · Prompt Cache](../api/chat-completions-parameters.md#prompt-cache)。
 
 ::: warning 计费
 不传 `X-Idempotency-Key` 时，每次 HTTP 调用**独立计费**。网络超时后重放同一笔业务：**保持结算键不变**，追踪 ID 可换可不变。

@@ -59,11 +59,55 @@ Part 用于**生文看图/听音/读文件**。生图参考图用 `image_config.
 | --- | --- |
 | `X-Request-Id` | 追踪 ID；最长 128 字符 |
 | `X-Idempotency-Key` | 结算幂等；**重试同一笔业务须不变** |
-| `X-Conversation-Id` | 会话分组 |
+| `X-Conversation-Id` | 会话分组；多轮 Agent / Prompt Cache 建议固定传同一值 |
 
 ::: tip
 不传 `X-Idempotency-Key` 时每次 HTTP 调用独立计费。网络超时重放应**固定结算键**。
 :::
+
+---
+
+## Prompt Cache {#prompt-cache}
+
+适用于**支持 Prompt Cache 的生文模型**（以 [模型广场](https://trinity.ai/models) 说明为准）。网关自动维护会话上下文，**客户端无需在 body 中传缓存控制字段**。
+
+### 提升命中率
+
+同一 Agent 或多轮 Chat 内，请**固定** `X-Conversation-Id`（未传时可用 `X-Session-Id`）。频繁更换会话 ID 会降低缓存命中。
+
+### 响应 `usage`
+
+| 字段 | 说明 |
+| --- | --- |
+| `usage.prompt_tokens_details.cached_tokens` | 从缓存读取的 input token 数（命中时 **> 0**） |
+| `usage.prompt_tokens_details.cache_write_tokens` | 首次写入缓存的 token 数（若上游返回） |
+
+流式请求在**最后一个** SSE chunk 中附带上述字段（需 `stream_options.include_usage`），见 [流式输出（SSE）](../guides/streaming-sse.md)。
+
+示例（非流式）：
+
+```json
+{
+  "usage": {
+    "prompt_tokens": 1500,
+    "completion_tokens": 120,
+    "total_tokens": 1620,
+    "prompt_tokens_details": {
+      "cached_tokens": 1200
+    }
+  }
+}
+```
+
+### 计费
+
+模型已配置 **cached input** 单价时，input 费用大致为：
+
+- 未缓存 prompt × input 单价
+- 缓存命中 prompt × cached input 单价（通常低于 input）
+- completion × output 单价
+
+若模型尚未配置 cached input 价目，缓存命中的 token **暂按 input 单价**计费。具体单价以控制台与模型说明为准。
 
 ---
 

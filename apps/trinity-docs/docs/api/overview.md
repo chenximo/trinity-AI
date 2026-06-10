@@ -31,10 +31,12 @@ Content-Type: application/json
 | --- | --- | --- |
 | `X-Request-Id` | 否 | **追踪 ID**，排障与日志关联；最长 128 字符；未传时服务端生成 |
 | `X-Idempotency-Key` | 否 | **结算幂等键**；同 workspace 内相同键仅首笔成功扣费；**重试须保持不变** |
-| `X-Conversation-Id` | 否 | 会话分组 ID；最长 128 字符 |
+| `X-Conversation-Id` | 否 | 会话分组 ID；多轮 Agent / Prompt Cache 建议固定传同一值；最长 128 字符 |
 | `X-Session-Id` | 否 | `X-Conversation-Id` 别名；仅当未传后者时生效 |
 
 响应（含 SSE）建议回写：`X-Request-Id`、`X-Settlement-Key`；传入 `X-Conversation-Id` 时回写该头。
+
+部分生文模型支持 **Prompt Cache**（降低重复前缀的 input 成本）。固定 `X-Conversation-Id` 可提升命中率；命中量见 `usage.prompt_tokens_details.cached_tokens`。计费与字段说明见 [对话补全 · 高级参数 · Prompt Cache](./chat-completions-parameters.md#prompt-cache)。
 
 ::: warning 计费
 不传 `X-Idempotency-Key` 时，每次 HTTP 调用独立计费。网络超时重放同一笔业务时，应**固定结算键**、可更换追踪 ID。

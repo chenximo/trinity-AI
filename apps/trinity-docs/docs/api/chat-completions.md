@@ -68,7 +68,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## Response
 
-非流式请求成功时返回 OpenAI 风格 JSON（`choices[]`、`usage` 等）。流式请求返回 `text/event-stream`，从 `choices[0].delta.content` 读取增量内容，详见 [流式输出（SSE）](../guides/streaming-sse.md)。响应头含 `X-Request-Id`、`X-Settlement-Key`。错误见 [错误与调试](../reference/error-codes.md)。
+非流式请求成功时返回 OpenAI 风格 JSON（`choices[]`、`usage` 等）。支持 Prompt Cache 的模型可能在 `usage.prompt_tokens_details.cached_tokens` 中返回缓存命中量，见 [高级参数 · Prompt Cache](./chat-completions-parameters.md#prompt-cache)。流式请求返回 `text/event-stream`，从 `choices[0].delta.content` 读取增量内容，详见 [流式输出（SSE）](../guides/streaming-sse.md)。响应头含 `X-Request-Id`、`X-Settlement-Key`。错误见 [错误与调试](../reference/error-codes.md)。
 
 ```json
 {

@@ -23,10 +23,18 @@ Applies to **`POST /v1/chat/completions`** (text, images, streaming) and most JS
 | `Accept` | Recommended for streams | Text streaming: `text/event-stream` |
 | `X-Request-Id` | No | **Trace ID** for support; max 128 chars |
 | `X-Idempotency-Key` | No | **Settlement idempotency key**; same key in a workspace → charge once on success; **keep unchanged on retry** |
-| `X-Conversation-Id` | No | Conversation grouping; max 128 chars |
+| `X-Conversation-Id` | No | Conversation grouping; use a stable value per Agent / chat for Prompt Cache; max 128 chars |
 | `X-Session-Id` | No | Alias for `X-Conversation-Id`; used only when the latter is omitted |
 
 Successful and error responses (**including SSE**) typically return `X-Request-Id` and `X-Settlement-Key`; `X-Conversation-Id` is echoed when sent.
+
+### Prompt cache (text)
+
+Some text models support **prompt caching** to reduce input cost when later turns reuse the same prompt prefix. The gateway maintains session context automatically—**no extra cache-control fields in the request body**.
+
+- **Improve hit rate**: Keep `X-Conversation-Id` (or `X-Session-Id`) stable within the same Agent or chat task.
+- **Read hits**: `usage.prompt_tokens_details.cached_tokens` in the response (on the final SSE chunk when `stream_options.include_usage` is set).
+- **Billing**: When the model has a cached-input unit price, cached input tokens bill at that rate; otherwise they bill as regular input for now. See [Chat completions · Advanced parameters · Prompt cache](../api/chat-completions-parameters.md#prompt-cache).
 
 ::: warning Billing
 Without `X-Idempotency-Key`, **each HTTP call is billed separately**. After a timeout, retry the same business operation with the **same settlement key**; the trace ID may change.

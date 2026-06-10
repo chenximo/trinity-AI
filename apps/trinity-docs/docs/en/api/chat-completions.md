@@ -68,7 +68,7 @@ Advanced fields such as `temperature`, `thinking_enabled`, `tools`, `stream_opti
 
 ## Response
 
-Non-streaming requests return OpenAI-style JSON (`choices[]`, `usage`, etc.). Streaming requests return `text/event-stream`; read incremental content from `choices[0].delta.content`. See [Streaming (SSE)](../guides/streaming-sse.md). Response headers include `X-Request-Id` and `X-Settlement-Key`. Errors: [Errors & debugging](../reference/error-codes.md).
+Non-streaming requests return OpenAI-style JSON (`choices[]`, `usage`, etc.). Models with prompt caching may return `usage.prompt_tokens_details.cached_tokens`; see [Advanced parameters · Prompt cache](./chat-completions-parameters.md#prompt-cache). Streaming requests return `text/event-stream`; read incremental content from `choices[0].delta.content`. See [Streaming (SSE)](../guides/streaming-sse.md). Response headers include `X-Request-Id` and `X-Settlement-Key`. Errors: [Errors & debugging](../reference/error-codes.md).
 
 ```json
 {

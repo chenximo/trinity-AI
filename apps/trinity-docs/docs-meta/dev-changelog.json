@@ -2,6 +2,64 @@
   "schemaVersion": 1,
   "releases": [
     {
+      "id": "release-20260610T094414",
+      "publishedAt": "2026-06-10T09:44:14.511Z",
+      "author": "linda",
+      "note": "更新 生文、API 通用 对外文档（含 en 镜像，共 8 个文件）。",
+      "gitRef": "34d1c9c",
+      "gitDirty": true,
+      "files": [
+        {
+          "rel": "api/chat-completions-parameters.md",
+          "linesAdded": 45,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "api/chat-completions.md",
+          "linesAdded": 1,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "api/overview.md",
+          "linesAdded": 3,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/chat-completions-parameters.md",
+          "linesAdded": 45,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/chat-completions.md",
+          "linesAdded": 1,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/api/overview.md",
+          "linesAdded": 3,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/guides/request-parameters.md",
+          "linesAdded": 9,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "guides/request-parameters.md",
+          "linesAdded": 9,
+          "linesRemoved": 1,
+          "status": "M"
+        }
+      ]
+    },
+    {
       "id": "release-20260610T085537",
       "publishedAt": "2026-06-10T08:55:37.297Z",
       "author": "linda",
