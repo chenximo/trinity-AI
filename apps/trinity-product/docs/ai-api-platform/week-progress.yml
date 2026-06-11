@@ -60,7 +60,7 @@ months:
           6） rankings 原型和五件套设计@李玲
         result: ⬜
         testLink: —
-        blockers: 待周会填写
+        blockers: 1、AI 云接入文档补充在控制台
       - id: W26
         period: 06-22～06-28
         focus: 6.30 收口验收、隐私条款等（法律和合规）
