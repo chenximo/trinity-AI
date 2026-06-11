@@ -1,29 +1,27 @@
 # 快速入门
 
-Trinity 当前仅提供 **OpenAI 兼容的 HTTP API** 接入：向网关发送标准 REST 请求（如 `POST /v1/chat/completions`），在请求头携带 API Key 即可调用平台提供的模型。
+Trinity 提供 HTTP API：生文、多模态输入与生图走 `POST /v1/chat/completions`；视频生成走 `POST /v1/video/generations` 异步任务。`POST /v1/chat/completions` 兼容 OpenAI Chat Completions，替换 `base_url` 与 API Key 即可调用。
+
+| 方式 | 适用场景 |
+| --- | --- |
+| **[HTTP API](#使用-api)** | 任意语言，直接发请求 |
+| **[OpenAI SDK](#使用-openai-sdk)** | 已有 OpenAI SDK 代码，替换 `base_url` |
+| **[应用场景](./cookbook/)** | Cursor、Codex CLI、WorkBuddy 等工具内配置 |
 
 ::: tip 重要 · 模型与密钥
-- API Key 前缀一般为 **`xh-...`**（控制台创建后完整复制）。
-- 请求里的 **`model`** 填**模型 ID**（与 [模型广场](https://trinity.ai/models) 列表一致），例如 `gpt-5.5`。勿填写平台未提供的模型名。
+- API Key 前缀一般为 **`xh-...`**（[控制台](https://trinitydesk.ai/account/keys) 创建后完整复制，仅展示一次）。
+- 请求里的 **`model`** 填**模型 ID**（与 [模型广场](https://trinity.ai/models) 或 [获取模型](./api/models.md) 列表一致），例如 `gpt-5.5`。
 - 请勿在公共仓库、前端 bundle 或日志中暴露完整密钥。
 :::
 
-有关流式、追踪/结算头与错误处理，见 [流式 SSE](./guides/streaming-sse.md)、[API 概述](./api/overview.md#追踪与结算请求头) 与 [错误码](./reference/error-codes.md)。
+可选传入 `X-Request-Id`、`X-Idempotency-Key` 等追踪/结算头，见 [API 概述](./api/overview.md#追踪与结算请求头)。流式与排错见 [流式 SSE](./guides/streaming-sse.md)、[错误码](./reference/error-codes.md)。
 
 ---
 
-## 1. 创建 API 密钥
+## 准备工作
 
-1. 打开 [Trinity 控制台 · API 密钥](https://trinitydesk.ai/account/keys)。
-2. 进入 **API 密钥**，创建密钥并妥善保存（仅展示一次）。
-
-也可参阅 [管理 API 密钥](./manage-api-keys.md)。
-
----
-
-## 2. 配置接入地址与密钥
-
-将网关 `base_url` 与密钥写入环境变量（生产基址示例如下；如使用专属部署，请以你的交付信息为准）：
+1. 在 [控制台 · API 密钥](https://trinitydesk.ai/account/keys) 创建 API Key。
+2. 配置环境变量（专属部署请以交付信息为准）：
 
 ::: code-group
 
@@ -45,43 +43,15 @@ os.environ["TRINITY_BASE_URL"] = "https://api.trinitydesk.ai/v1"
 
 :::
 
+也可参阅 [管理 API 密钥](./manage-api-keys.md)。
+
 ---
 
-## 3. 发送首次 API 请求
+## 使用 API
 
-请求体与 [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat) 保持一致；可选传入追踪/结算头（见 [API 概述](./api/overview.md#追踪与结算请求头)）。
+向 `{TRINITY_BASE_URL}/chat/completions` 发送标准 HTTP 请求，请求/响应格式兼容 OpenAI Chat Completions。下文示例使用 `gpt-5.5`；请改为你账号可见的模型 ID。
 
 ::: code-group
-
-```bash [Shell]
-curl -sS "${TRINITY_BASE_URL}/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
-  -H "X-Request-Id: trace-demo-001" \
-  -H "X-Idempotency-Key: settle-demo-001" \
-  -d '{
-    "model": "gpt-5.5",
-    "messages": [{ "role": "user", "content": "你好" }]
-  }'
-```
-
-```typescript [TypeScript]
-const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
-    "X-Request-Id": crypto.randomUUID(),
-    "X-Idempotency-Key": crypto.randomUUID(),
-  },
-  body: JSON.stringify({
-    model: "gpt-5.5",
-    messages: [{ role: "user", content: "你好" }],
-  }),
-});
-const data = await res.json();
-console.log(data.choices[0]?.message?.content);
-```
 
 ```python [Python]
 import json
@@ -93,8 +63,6 @@ response = requests.post(
     headers={
         "Authorization": f"Bearer {os.environ['TRINITY_API_KEY']}",
         "Content-Type": "application/json",
-        "X-Request-Id": "trace-demo-001",
-        "X-Idempotency-Key": "settle-demo-001",
     },
     data=json.dumps({
         "model": "gpt-5.5",
@@ -104,38 +72,109 @@ response = requests.post(
 print(response.json()["choices"][0]["message"]["content"])
 ```
 
+```typescript [TypeScript (fetch)]
+const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
+  },
+  body: JSON.stringify({
+    model: "gpt-5.5",
+    messages: [{ role: "user", content: "你好" }],
+  }),
+});
+const data = await res.json();
+console.log(data.choices[0]?.message?.content);
+```
+
+```bash [Shell]
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "gpt-5.5",
+    "messages": [{ "role": "user", "content": "你好" }]
+  }'
+```
+
 :::
 
-流式输出在请求体中设置 `"stream": true`，响应为 SSE，详见 [流式 SSE](./guides/streaming-sse.md)。
+流式输出在请求体中设置 `"stream": true`，响应为 SSE，详见 [流式 SSE](./guides/streaming-sse.md)。字段说明见 [创建对话补全](./api/chat-completions.md)。
 
 ---
 
-## 模型标识
+## 使用 OpenAI SDK
 
-请求体里的 **`model`** 必须填 Trinity 的**模型 ID**（英文 slug，如 `gpt-5.5`），不是页面上的展示名，也不要直接照搬其他平台文档里的写法，除非该字符串出现在你账号的可用列表中。
+可将 OpenAI 官方 SDK 的 `base_url` 指向 Trinity，无需改动 `chat.completions.create` 调用结构。
 
-### 客户如何获取模型 ID
+安装依赖：
 
-**以你登录账号实际看到的列表为准**（与套餐、权限、区域有关）。
+::: code-group
 
-| 方式 | 操作 | 说明 |
-| --- | --- | --- |
-| **`GET /models`** | 调用 [获取模型](./api/models.md)（可选 `?modality=text\|image\|video`），取响应 `data[].id` | 适合脚本与 Agent 自动发现 |
-| **模型广场** | 在 [模型广场](https://trinity.ai/models) 复制 **模型 ID**（需登录控制台） | 适合人工选型 |
+```bash [npm]
+npm install openai
+```
 
-::: info
-在 IDE / Agent 工具（Cursor 等）里手填或下拉的名称也应与模型广场中的 **ID** 一致，详见 [应用场景 · 编程工具](./cookbook/)。
+```bash [pnpm]
+pnpm add openai
+```
 
-若 `model` 不在可用列表中，网关会返回模型不存在类错误，见 [错误与调试](./reference/error-codes.md)。
+```bash [yarn]
+yarn add openai
+```
+
 :::
 
-### 示例 ID（格式参考，调用前请核对列表）
+::: code-group
 
-- 生文：`gpt-5.5`、`gpt-4o`
-- 生图：`hunyuan-image`（`POST /v1/chat/completions` + `image_config`，见 [图像生成 API](./api/images-generations.md)）
-- 生视频：`kling-2.6`（`POST /v1/video/generations`）
+```python [Python]
+import os
+from openai import OpenAI
 
-更多说明见 [API 概述 · 模型 ID](./api/overview.md#模型-idmodel-字段)。
+client = OpenAI(
+    base_url=os.environ["TRINITY_BASE_URL"],
+    api_key=os.environ["TRINITY_API_KEY"],
+)
+
+completion = client.chat.completions.create(
+    model="gpt-5.5",
+    messages=[{"role": "user", "content": "你好"}],
+)
+print(completion.choices[0].message.content)
+```
+
+```typescript [TypeScript]
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: process.env.TRINITY_BASE_URL,
+  apiKey: process.env.TRINITY_API_KEY,
+});
+
+const completion = await client.chat.completions.create({
+  model: "gpt-5.5",
+  messages: [{ role: "user", content: "你好" }],
+});
+console.log(completion.choices[0].message.content);
+```
+
+:::
+
+---
+
+## 模型 ID
+
+请求体里的 **`model`** 须填 Trinity **模型 ID**（英文 slug），与 [获取模型](./api/models.md) 或 [模型广场](https://trinity.ai/models) 列表一致，勿填展示名。
+
+| 方式 | 操作 |
+| --- | --- |
+| **`GET /models`** | 调用 [获取模型](./api/models.md)（可选 `?modality=text\|image\|video`），取 `data[].id` |
+| **模型广场** | 登录 [模型广场](https://trinity.ai/models) 复制 **模型 ID** |
+
+示例（调用前请核对列表）：生文 `gpt-5.5`；生图 `hunyuan-image`；生视频 `kling-2.6`。
+
+---
 
 ## 下一步
 

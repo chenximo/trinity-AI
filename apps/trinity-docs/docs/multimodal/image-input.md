@@ -1,8 +1,27 @@
 # 图片输入
 
-向支持多模态的**生文模型**发送带图请求时，使用 **`POST /v1/chat/completions`**（与 [创建对话补全](../api/chat-completions.md) 相同），在 `messages` 里用 **多段 `content` 数组** 传入图片。`image_url` 可以是 **公网 URL** 或 **Base64 Data URL**。
+## 如何向 Trinity 模型发送图片
 
-可在同一条 `content` 数组中放**多张图**；单请求可附带的图片数量因**模型与上游**而异。解析时建议**先放文本 Part、再放图片**；若必须先图后文，可将说明放进 `system` 消息。
+Trinity 支持通过 API 向兼容的生文模型发送图片。本页说明如何在请求中传入图片 Part。
+
+Trinity 支持图片的 **URL** 与 **Base64 Data URL** 两种写法：
+
+- **URL**：适用于公网可访问的图片；无需本地编码。
+- **Base64 Data URL**：适用于本地或私有图片；格式为 `data:image/<mime>;base64,...`。
+
+单张图片大小上限为 **70MB**（以平台校验为准）。可在同一 `content` 数组中传多张图；数量上限以模型与上游为准。
+
+::: info
+是否接受某条 URL 或 MIME，以**模型与上游**为准。
+:::
+
+---
+
+## 图片输入
+
+向支持看图能力的模型发送请求时，使用 **`POST /v1/chat/completions`**（见 [创建对话补全](../api/chat-completions.md)），在 `messages[].content` 中指定 **`type: image_url`** Part。
+
+查询可用 **`model`**：[获取模型](../api/models.md) 或 [模型广场](https://trinity.ai/models)。字段表：[高级参数 · 生文](../api/chat-completions-parameters.md)。
 
 ::: warning 勿与生图混淆
 **看图理解**用本页的 `image_url` Part。**文生图 / 参考图生图**用 `modalities` + `image_config`，见 [创建图像生成](../api/images-generations.md)。
@@ -10,20 +29,9 @@
 
 ---
 
-## URL 与 Base64
-
-| 方式 | 适用场景 |
-| --- | --- |
-| **URL** | 公网可访问图片；无需在本地编码，体积更省 |
-| **Base64 Data URL** | 本地文件、内网或私有图；格式 `data:image/<mime>;base64,...` |
-
-单张图片大小上限以平台校验为准（契约按 **70MB 以内**，与 OpenAI 口径对齐）。
-
----
-
 ## 使用图片 URL
 
-`image_url` 支持**简写字符串**或 **OpenAI 对象**写法：
+`image_url` 支持**简写字符串**或**对象**写法：
 
 ```json
 { "type": "image_url", "image_url": "https://example.com/sample.png" }

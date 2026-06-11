@@ -1,6 +1,10 @@
 # Image generation
 
-Trinity generates images via **[Create chat completion](../api/chat-completions.md)** (`POST /v1/chat/completions`) by setting **`modalities`** and **`image_config`** in the request body.
+## How to generate images with Trinity
+
+Trinity generates images through **`POST /v1/chat/completions`**. Set **`modalities`** (must include `image`) and **`image_config`** in the request body for text-to-image or reference-based generation.
+
+Image generation is a **synchronous** long-running request. Use **`stream: false`** or omit `stream` (streaming image generation is not supported). After a sync timeout, query by `trinity_task.task_id`—see [Create image generation](../api/images-generations.md).
 
 ::: warning Do not confuse with image input
 **Text-to-image / reference-image generation** uses `modalities` + `image_config` on this page. **Image understanding** uses the `image_url` Part in `messages[].content`—see [Image input](./image-input.md).

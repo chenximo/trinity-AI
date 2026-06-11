@@ -1,6 +1,10 @@
 # 图片生成
 
-Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/chat/completions`）生成图像：在请求体中设置 **`modalities`** 与 **`image_config`**。
+## 如何使用 Trinity 生成图片
+
+Trinity 支持通过 **`POST /v1/chat/completions`** 生成图片。在请求体中设置 **`modalities`**（须含 `image`）与 **`image_config`**，可进行文生图或参考图生图。
+
+生图为**同步**长耗时请求，须设置 **`stream: false`** 或省略 `stream`（不支持流式生图）。同步超时后可凭 `trinity_task.task_id` 查询，见 [创建图像生成](../api/images-generations.md)。
 
 ::: warning 勿与图片输入混淆
 **文生图 / 参考图生图**用本页的 `modalities` + `image_config`。**看图理解**在 `messages[].content` 里传 `image_url` Part，见 [图片输入](./image-input.md)。

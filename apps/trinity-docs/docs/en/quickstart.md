@@ -1,29 +1,27 @@
 # Quickstart
 
-Trinity exposes an **OpenAI-compatible HTTP API**: send standard REST requests (for example `POST /v1/chat/completions`) with your API key in the `Authorization` header.
+Trinity exposes an **HTTP API**: text, multimodal input, and image generation use `POST /v1/chat/completions`; video generation uses async `POST /v1/video/generations` tasks. `POST /v1/chat/completions` is OpenAI Chat Completions–compatible—set your SDK `base_url` and API key to Trinity.
+
+| Approach | Best for |
+| --- | --- |
+| **[HTTP API](#using-the-api)** | Any language, direct requests |
+| **[OpenAI SDK](#using-the-openai-sdk)** | Existing OpenAI SDK code—swap `base_url` |
+| **[Cookbook](./cookbook/)** | Cursor, Codex CLI, WorkBuddy, and other tools |
 
 ::: tip Important · Models & keys
-- API keys usually start with **`xh-...`** (copy the full value once from the console).
-- Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models) (for example `gpt-5.5`). Do not use model names that are not available on the platform.
+- API keys usually start with **`xh-...`** (copy the full value once from the [console](https://trinitydesk.ai/account/keys)).
+- Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models) or [List models](./api/models.md) (for example `gpt-5.5`).
 - Never commit full keys to public repositories, client bundles, or logs.
 :::
 
-For streaming, tracing/settlement headers, and errors, see [Streaming (SSE)](./guides/streaming-sse.md), [API overview](./api/overview.md), and [Error codes](./reference/error-codes.md).
+Optional tracing/settlement headers (`X-Request-Id`, `X-Idempotency-Key`, etc.) are described in [API overview](./api/overview.md). For streaming and errors, see [Streaming (SSE)](./guides/streaming-sse.md) and [Error codes](./reference/error-codes.md).
 
 ---
 
-## 1. Create an API key
+## Before you start
 
-1. Open [API keys in the Trinity console](https://trinitydesk.ai/account/keys).
-2. Open **API keys**, create a key, and store it securely (shown only once).
-
-See also [Manage API keys](./manage-api-keys.md).
-
----
-
-## 2. Configure base URL and key
-
-Set the gateway `base_url` and key via environment variables (replace the host with your deployment):
+1. Create an API key in the [console](https://trinitydesk.ai/account/keys).
+2. Set environment variables (use your deployment base URL if different):
 
 ::: code-group
 
@@ -45,43 +43,15 @@ os.environ["TRINITY_BASE_URL"] = "https://api.trinitydesk.ai/v1"
 
 :::
 
+See also [Manage API keys](./manage-api-keys.md).
+
 ---
 
-## 3. Send your first request
+## Using the API
 
-The body matches [OpenAI Chat Completions](https://platform.openai.com/docs/api-reference/chat). Optional tracing/settlement headers are described in [API overview](./api/overview.md).
+Send HTTP requests to `{TRINITY_BASE_URL}/chat/completions`. The request/response shape is OpenAI Chat Completions–compatible. Examples below use `gpt-5.5`—replace it with a model ID visible to your account.
 
 ::: code-group
-
-```bash [Shell]
-curl -sS "${TRINITY_BASE_URL}/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
-  -H "X-Request-Id: trace-demo-001" \
-  -H "X-Idempotency-Key: settle-demo-001" \
-  -d '{
-    "model": "gpt-5.5",
-    "messages": [{ "role": "user", "content": "Hello" }]
-  }'
-```
-
-```typescript [TypeScript]
-const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
-    "X-Request-Id": crypto.randomUUID(),
-    "X-Idempotency-Key": crypto.randomUUID(),
-  },
-  body: JSON.stringify({
-    model: "gpt-5.5",
-    messages: [{ role: "user", content: "Hello" }],
-  }),
-});
-const data = await res.json();
-console.log(data.choices[0]?.message?.content);
-```
 
 ```python [Python]
 import json
@@ -93,8 +63,6 @@ response = requests.post(
     headers={
         "Authorization": f"Bearer {os.environ['TRINITY_API_KEY']}",
         "Content-Type": "application/json",
-        "X-Request-Id": "trace-demo-001",
-        "X-Idempotency-Key": "settle-demo-001",
     },
     data=json.dumps({
         "model": "gpt-5.5",
@@ -104,38 +72,109 @@ response = requests.post(
 print(response.json()["choices"][0]["message"]["content"])
 ```
 
+```typescript [TypeScript (fetch)]
+const res = await fetch(`${process.env.TRINITY_BASE_URL}/chat/completions`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.TRINITY_API_KEY}`,
+  },
+  body: JSON.stringify({
+    model: "gpt-5.5",
+    messages: [{ role: "user", content: "Hello" }],
+  }),
+});
+const data = await res.json();
+console.log(data.choices[0]?.message?.content);
+```
+
+```bash [Shell]
+curl -sS "${TRINITY_BASE_URL}/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${TRINITY_API_KEY}" \
+  -d '{
+    "model": "gpt-5.5",
+    "messages": [{ "role": "user", "content": "Hello" }]
+  }'
+```
+
 :::
 
-For streaming, set `"stream": true` in the body; the response is SSE. See [Streaming (SSE)](./guides/streaming-sse.md).
+For streaming, set `"stream": true` in the body; the response is SSE. See [Streaming (SSE)](./guides/streaming-sse.md). Field reference: [Create chat completion](./api/chat-completions.md).
+
+---
+
+## Using the OpenAI SDK
+
+Point the official OpenAI SDK `base_url` at Trinity—your `chat.completions.create` calls stay the same.
+
+Install the package:
+
+::: code-group
+
+```bash [npm]
+npm install openai
+```
+
+```bash [pnpm]
+pnpm add openai
+```
+
+```bash [yarn]
+yarn add openai
+```
+
+:::
+
+::: code-group
+
+```python [Python]
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url=os.environ["TRINITY_BASE_URL"],
+    api_key=os.environ["TRINITY_API_KEY"],
+)
+
+completion = client.chat.completions.create(
+    model="gpt-5.5",
+    messages=[{"role": "user", "content": "Hello"}],
+)
+print(completion.choices[0].message.content)
+```
+
+```typescript [TypeScript]
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: process.env.TRINITY_BASE_URL,
+  apiKey: process.env.TRINITY_API_KEY,
+});
+
+const completion = await client.chat.completions.create({
+  model: "gpt-5.5",
+  messages: [{ role: "user", content: "Hello" }],
+});
+console.log(completion.choices[0].message.content);
+```
+
+:::
 
 ---
 
 ## Model IDs
 
-The **`model`** field must be a Trinity **model ID** (an English slug such as `gpt-5.5`), not a display name or an ID copied from another provider’s docs unless it appears in your available list.
+The **`model`** field must be a Trinity **model ID** (English slug) from [List models](./api/models.md) or the [model catalog](https://trinity.ai/models)—not a display name.
 
-### How to get model IDs
+| Method | What to do |
+| --- | --- |
+| **`GET /models`** | Call [List models](./api/models.md) (optional `?modality=text\|image\|video`); use `data[].id` |
+| **Model catalog** | Sign in to the [model catalog](https://trinity.ai/models) and copy the **model ID** |
 
-**Only models visible to your account** apply (plan, permissions, region).
+Examples (verify against your list): text `gpt-5.5`; image `hunyuan-image`; video `kling-2.6`.
 
-| Method | What to do | Notes |
-| --- | --- | --- |
-| **`GET /models`** | Call [List models](./api/models.md) (optional `?modality=text\|image\|video`); use `data[].id` | For scripts and agent auto-discovery |
-| **Model catalog** | Copy the **model ID** from the [model catalog](https://trinity.ai/models) (sign in required) | For manual selection |
-
-::: info
-In Cursor and other agents, use the same **ID** in tool settings. See [Cookbook · coding tools](./cookbook/).
-
-If `model` is not in your available list, the gateway returns a model-not-found style error. See [Errors](./reference/error-codes.md).
-:::
-
-### Example IDs (verify against your list before calling)
-
-- Text: `gpt-5.5`, `gpt-4o`
-- Image: `hunyuan-image` (`POST /v1/chat/completions` + `image_config`; see [Image generation API](./api/images-generations.md))
-- Video: `kling-2.6` (`POST /v1/video/generations`)
-
-See also [API overview](./api/overview.md).
+---
 
 ## Next steps
 

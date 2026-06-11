@@ -1,14 +1,16 @@
 # 请求参数
 
-Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索引**：说明通用头与常见字段去哪查，**不**替代各能力的全字段表。
+## 本页用途
 
-| 层级 | 位置 | 适合什么问题 |
-| --- | --- | --- |
-| **端点（短）** | [API](../api/overview.md) · 各端点页 | 复制 curl、跑通最小请求 |
-| **高级参数（长）** | [API](../api/overview.md) · 「高级参数」分组 | 调参、联调、对全字段 |
-| **概念指南** | [文档](../quickstart.md) · [流式](./streaming-sse.md) / 多模态 | 语义、流程、易混说明 |
+Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索引**：汇总通用 HTTP 头、`model` 等入口字段，并说明各能力全量参数去哪查——**不**替代各端点的字段表。
 
-端点短页负责跑通请求；采样参数、全字段 schema 见各能力的 **高级参数** 页（如 [对话补全高级参数](../api/chat-completions-parameters.md)）。
+| 想查什么 | 去哪 |
+| --- | --- |
+| 跑通最小请求 | [API](../api/overview.md) · 各端点短页（认证、路径、示例） |
+| 某能力全部字段 | [API](../api/overview.md) · **高级参数**（如 [对话补全](../api/chat-completions-parameters.md)、[生图](../api/image-generation-parameters.md)、[生视频](../api/video-generation-parameters.md)） |
+| 流式、多模态 | [文档](../quickstart.md) · [流式](./streaming-sse.md) · [多模态](../multimodal/) |
+
+下文从**通用请求头**与 **`model` 入口**展开；按能力跳转上表链接查看完整 schema。
 
 ---
 
@@ -33,8 +35,7 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索
 部分生文模型支持 **Prompt Cache**：对多轮对话中重复的前缀 prompt 降低 input 成本。网关自动维护会话上下文，**无需在请求体中传额外缓存控制字段**。
 
 - **提升命中率**：同一 Agent / Chat 任务内固定 `X-Conversation-Id`（或 `X-Session-Id`）。
-- **查看命中**：响应 `usage.prompt_tokens_details.cached_tokens`（流式时在最后一个 chunk，需 `stream_options.include_usage`）。
-- **计费说明**：模型已配置 cached input 单价时，缓存命中的 input 按该单价计费；否则暂按 input 单价。详见 [对话补全 · 高级参数 · Prompt Cache](../api/chat-completions-parameters.md#prompt-cache)。
+- 命中量、流式 `usage` 与计费见 [对话补全 · 高级参数 · Prompt Cache](../api/chat-completions-parameters.md#prompt-cache)。
 
 ::: warning 计费
 不传 `X-Idempotency-Key` 时，每次 HTTP 调用**独立计费**。网络超时后重放同一笔业务：**保持结算键不变**，追踪 ID 可换可不变。

@@ -1,9 +1,13 @@
 # Video generation
 
-Trinity generates video through **async tasks**: first **[Create video generation task](../api/videos-generations.md)** (`POST /v1/video/generations`), then **[poll the task](../api/videos-generations.md)** (`GET /v1/video/tasks/{taskId}`) until completion to obtain the output URL. This is **not** a synchronous `POST /chat/completions` response.
+## How to generate video with Trinity
+
+Trinity generates video **asynchronously** through the API: **`POST /v1/video/generations`** to create a task, then **`GET /v1/video/tasks/{taskId}`** to poll until completion and read the output URL. This page walks through that flow and common parameters.
+
+Video generation is **long-running**. Do not block on the create request until the file is ready; implement polling and timeouts. See [Create video generation task](../api/videos-generations.md).
 
 ::: warning Do not confuse with video input
-**Text-to-video / image-to-video / reference-based generation** uses `/video/generations` and `/video/tasks/{taskId}` on this page. **Understanding existing video** uses `type: file` + `file_url` in `messages[].content`—see [Video input](./video-input.md). `input_references[].type: video_url` on generation requests is a **reference asset field**, not a chat Part.
+**Text-to-video / image-to-video** uses `/video/generations` and `/video/tasks/{taskId}` on this page. **Video understanding (input)** uses `type: file` + `file_url` in `messages[].content`—see [Video input](./video-input.md). `input_references[].type: video_url` on generation requests is a **reference asset field**, not a chat Part.
 :::
 
 ---

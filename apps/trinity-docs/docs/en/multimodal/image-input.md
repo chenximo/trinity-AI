@@ -1,8 +1,27 @@
 # Image input
 
-To send images to a **text model** that supports multimodal input, use **`POST /v1/chat/completions`** (same as [Create chat completion](../api/chat-completions.md)) and pass images in a **multi-part `content` array** inside `messages`. An `image_url` may be a **public URL** or a **Base64 data URL**.
+## How to send images to Trinity models
 
-You can attach **multiple images** in the same `content` array; limits depend on the **model and upstream**. For parsing, put the **text Part first, then images**; if images must come first, move instructions into a `system` message.
+Trinity supports sending images to compatible text models through the API. This page shows how to pass image Parts in your request.
+
+Trinity accepts **URLs** and **Base64 data URLs** for images:
+
+- **URL** — for publicly reachable images; no local encoding.
+- **Base64 data URL** — for local or private images; format `data:image/<mime>;base64,...`.
+
+Maximum **70MB** per image (platform validation). You may send multiple images in one `content` array; limits depend on the model and upstream.
+
+::: info
+Whether a given URL or MIME type is accepted depends on the **model and upstream**.
+:::
+
+---
+
+## Image input
+
+Send requests to models that support image input via **`POST /v1/chat/completions`** (see [Create chat completion](../api/chat-completions.md)). Use a **`type: image_url`** Part in `messages[].content`.
+
+Find available **`model`** IDs: [List models](../api/models.md) or the [model catalog](https://trinity.ai/models). Field table: [Advanced parameters · Text](../api/chat-completions-parameters.md).
 
 ::: warning Do not confuse with image generation
 **Image understanding** uses the `image_url` Part on this page. **Text-to-image / reference-image generation** uses `modalities` + `image_config`—see [Create image generation](../api/images-generations.md).
@@ -10,20 +29,9 @@ You can attach **multiple images** in the same `content` array; limits depend on
 
 ---
 
-## URL vs Base64
-
-| Method | When to use |
-| --- | --- |
-| **URL** | Publicly reachable images; no local encoding, smaller payloads |
-| **Base64 data URL** | Local, private, or intranet images; format `data:image/<mime>;base64,...` |
-
-Per-image size limits follow platform validation (contract: **within 70MB**, aligned with common OpenAI-style limits).
-
----
-
 ## Image URL
 
-`image_url` supports a **shorthand string** or the **OpenAI object** form:
+`image_url` supports a **shorthand string** or an **object** form:
 
 ```json
 { "type": "image_url", "image_url": "https://example.com/sample.png" }

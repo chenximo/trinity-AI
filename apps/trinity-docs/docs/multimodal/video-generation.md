@@ -1,9 +1,13 @@
 # 视频生成
 
-Trinity 通过 **异步任务** 生成视频：先 **[创建视频生成任务](../api/videos-generations.md)**（`POST /v1/video/generations`），再 **[查询任务](../api/videos-generations.md#查询任务)**（`GET /v1/video/tasks/{taskId}`）直至完成并获取输出地址。**不是** `POST /chat/completions` 同步返回。
+## 如何使用 Trinity 生成视频
+
+Trinity 支持通过 API **异步**生成视频：先 **`POST /v1/video/generations`** 创建任务，再 **`GET /v1/video/tasks/{taskId}`** 轮询直至完成并获取输出地址。本页说明该流程及常用参数。
+
+视频生成为**长耗时任务**，请勿在创建请求上阻塞等待成片；客户端应实现轮询与超时。详情见 [创建视频生成任务](../api/videos-generations.md)。
 
 ::: warning 勿与视频输入混淆
-**文生视频 / 图生视频 / 参考素材生视频**用本页的 `/video/generations` 与 `/video/tasks/{taskId}`。**让模型理解已有视频内容**在 `messages[].content` 里传 `type: file` + `file_url` Part，见 [视频输入](./video-input.md)。生视频请求体里的 `input_references[].type: video_url` 是**参考素材字段**，不是聊天 Part。
+**文生视频 / 图生视频**用本页的 `/video/generations` 与 `/video/tasks/{taskId}`。**视频理解（输入）**在 `messages[].content` 里传 `type: file` + `file_url`，见 [视频输入](./video-input.md)。生视频里的 `input_references[].type: video_url` 是**参考素材字段**，不是聊天 Part。
 :::
 
 ---

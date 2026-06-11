@@ -1,10 +1,16 @@
 # Multimodal overview
 
-Trinity supports **image and video** multimodal input and generation through a unified API surface.
+## Trinity multimodal API overview
 
-::: info
-Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models). For multimodal **input**, send Parts in the `messages[].content` array on `POST /v1/chat/completions` (for example `image_url`, `file`)—compatible with the OpenAI-style structure. For **image output**, use the same path with `modalities` and `image_config` (see [Image generation](./image-generation.md)). For **video output**, use the async `POST /v1/video/generations` flow (see [Video generation](./video-generation.md)).
-:::
+Trinity provides **image and video input** (model understanding) and **generation** over a unified HTTP API. Pick the path and Part types for your scenario—do not mix them up.
+
+| Scenario | Endpoint | Notes |
+| --- | --- | --- |
+| Image / video **input** (understanding) | `POST /v1/chat/completions` | Parts such as `image_url`, `file` in `messages[].content` |
+| **Image generation** | `POST /v1/chat/completions` | `modalities` + `image_config` |
+| **Video generation** | `POST /v1/video/generations` | Async task + `GET /video/tasks/{taskId}` |
+
+Set **`model`** to an ID from [List models](../api/models.md) or the [model catalog](https://trinity.ai/models).
 
 ## Guides
 
