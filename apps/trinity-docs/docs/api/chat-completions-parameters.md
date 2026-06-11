@@ -8,7 +8,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 模型 ID，见 [模型广场](https://trinity.ai/models) |
+| `model` | string | 是 | 模型 ID，见 [获取模型](./models.md) 或 [模型广场](https://trinity.ai/models) |
 | `messages` | array | 是 | 见下节 `messages[]` |
 | `stream` | boolean | 否 | 默认 `false` |
 | `stream_options` | object | 否 | `include_usage`、`chunk_include_usage`（仅 `stream=true`） |
@@ -69,7 +69,7 @@ Part 用于**生文看图/听音/读文件**。生图参考图用 `image_config.
 
 ## Prompt Cache {#prompt-cache}
 
-适用于**支持 Prompt Cache 的生文模型**（以 [模型广场](https://trinity.ai/models) 说明为准）。网关自动维护会话上下文，**客户端无需在 body 中传缓存控制字段**。
+适用于**支持 Prompt Cache 的生文模型**（可用模型见 [获取模型](./models.md) 或 [模型广场](https://trinity.ai/models)）。网关自动维护会话上下文，**客户端无需在 body 中传缓存控制字段**。
 
 ### 提升命中率
 
@@ -119,7 +119,7 @@ Part 用于**生文看图/听音/读文件**。生图参考图用 `image_config.
 | `gemini-3-pro-preview` | 不允许 `thinking_enabled=false`；`reasoning_effort` 为 `low` / `medium` / `high` |
 | `gemini-3-flash-preview` | 默认开启思考；`reasoning_effort` 含 `minimal` 等 |
 
-以 [模型广场](https://trinity.ai/models) 与实际上线能力为准。
+以 [获取模型](./models.md)、[模型广场](https://trinity.ai/models) 与实际上线能力为准。
 
 ---
 
@@ -146,6 +146,7 @@ Part 用于**生文看图/听音/读文件**。生图参考图用 `image_config.
 
 ## 相关
 
+- [获取模型](./models.md)
 - [创建对话补全](./chat-completions.md)
 - [API 概述](./overview.md)
 - [流式输出（SSE）](../guides/streaming-sse.md)

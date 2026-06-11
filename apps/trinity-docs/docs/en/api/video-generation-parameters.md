@@ -8,7 +8,7 @@ Use this page for tuning, integration, and field checks. Endpoint summary: [Crea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Example: `kling-2.6` |
+| `model` | string | Yes | Video model ID from [List models](./models.md) (`modality=video`) or the [model catalog](https://trinity.ai/models) |
 | `prompt` | string | Conditional | Required when no input assets are provided |
 | `duration_sec` | integer | No | Duration in seconds, default `5` |
 | `resolution` | string | No | `480p`, `720p`, `1080p`, etc. |
@@ -175,6 +175,7 @@ First and last frames **must** use `frame_images[]`; do not pass model-specific 
 
 ## Related
 
+- [List models](./models.md) (`modality=video`)
 - [Create video generation task](./videos-generations.md)
 - [Video generation](../multimodal/video-generation.md)
 - [Errors & debugging](../reference/error-codes.md)

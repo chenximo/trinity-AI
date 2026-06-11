@@ -1,25 +1,38 @@
 # 视频输入
 
-向支持多模态的**生文模型**发送带视频素材的请求时，使用 **`POST /v1/chat/completions`**（与 [创建对话补全](../api/chat-completions.md) 相同），在 `messages` 里用 **多段 `content` 数组** 传入视频。
+## 如何向 Trinity 模型发送视频文件
 
-Trinity 将视频作为 **`type: file`** 的 Part，通过 **`file_url`** 传入（公网 URL 或 Base64 Data URL）。部分其他平台示例使用 `video_url` 命名，Trinity 生文侧请用 **`file_url`**，用途一致：**让模型理解视频内容**（摘要、场景识别等）。
+Trinity 支持通过 API 向兼容的生文模型发送视频文件。本页说明如何在请求中传入视频 Part。
 
-::: warning 勿与生视频混淆
-**视频理解（输入）**用本页 · `POST /chat/completions` + `file` Part。**生成新视频**用 `POST /video/generations` 异步任务，见 [视频生成](./video-generation.md) 与 [创建视频生成任务](../api/videos-generations.md)。生视频里的 `input_references[].type: video_url` 是**另一套字段**，不是本页 Part。
+Trinity 支持视频的 **URL** 与 **Base64 Data URL** 两种 `file_url` 写法：
+
+- **URL**：适用于公网可访问的视频；无需本地编码。
+- **Base64 Data URL**：适用于本地文件或无法公网直链的视频；格式为 `data:video/<mime>;base64,...`。
+
+单文件大小上限为 **70MB**（以平台校验为准）。
+
+::: info
+某条 URL 或 MIME 是否被接受，以**模型与上游**为准。
 :::
 
 ---
 
-## URL 与 Base64
+## 视频输入
 
-| 方式 | 适用场景 |
-| --- | --- |
-| **URL** | 公网可访问视频；无需本地编码 |
-| **Base64 Data URL** | 本地或私有文件；格式 `data:video/<mime>;base64,...` |
+向支持视频理解的模型发送请求时，使用 **`POST /v1/chat/completions`**（见 [创建对话补全](../api/chat-completions.md)），在 `messages[].content` 中指定 **`type: file`** Part；**`file_url`** 为 URL 或 Base64 Data URL。仅具备视频理解能力的 **`model`** 可处理此类请求。
 
-单文件大小上限以平台校验为准（契约按 **70MB 以内**）。是否支持某条 URL（如部分平台仅支持特定托管链接）**以模型与上游为准**。
+查询可用 **`model`**：[获取模型](../api/models.md) 或 [模型广场](https://trinity.ai/models)。字段表：[高级参数 · 生文](../api/chat-completions-parameters.md)。
 
-在 [模型广场](https://trinity.ai/models) 选择支持多模态输入的**生文模型 ID**；仅部分模型具备视频理解能力。
+| 字段 | 必填 | 说明 |
+| --- | --- | --- |
+| `type` | 是 | 固定为 `file` |
+| `file_url` | 是 | URL 或 Base64 Data URL |
+| `file_name` | 否 | 文件名 |
+| `extra_content` | 否 | 仅模型文档声明支持时（如 `google.fps`） |
+
+::: warning 勿用 `video_url` / 勿与生视频混淆
+Trinity 生文侧使用 **`type: file` + `file_url`**，不使用 `type: video_url`。生视频任务见 `POST /video/generations` · [视频生成](./video-generation.md)。
+:::
 
 ---
 
@@ -33,7 +46,7 @@ Trinity 将视频作为 **`type: file`** 的 Part，通过 **`file_url`** 传入
 }
 ```
 
-可与文本 Part 组合；建议**先文本、后视频**：
+与 `type: text` 置于同一 `content` 数组：
 
 ```json
 {
@@ -128,13 +141,11 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 :::
 
-将 `model` 换成你账号可用的、支持视频理解的生文模型 ID。
-
 ---
 
 ## 使用 Base64 编码视频
 
-本地视频先转为 Data URL，再放入 `file_url`：
+将本地文件编码为 Data URL 后写入 `file_url`：
 
 ::: code-group
 
@@ -229,65 +240,12 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## 支持的视频类型
 
-Data URL 常用 MIME：
-
 | MIME |
 | --- |
 | `video/mp4` |
 | `video/mpeg` |
 | `video/quicktime`（`.mov`） |
 | `video/webm` |
-
-具体是否被某模型接受，以 [模型广场](https://trinity.ai/models) 与调用结果为准。
-
-部分模型支持 `extra_content.google`（如视频理解帧率 `fps` 等）这类模型专属扩展；仅在模型能力说明明确支持时传入，未支持时请省略。
-
----
-
-## 常见用途
-
-- **视频摘要**：生成文字版内容概要  
-- **场景与动作识别**：描述人物、物体与活动  
-- **监控 / 教学片分析**：按提示词抽取关键信息  
-
----
-
-## 最佳实践
-
-### 文件体积
-
-- 在可接受前提下**压缩、裁剪**视频，降低上传与处理成本  
-- 控制分辨率与帧率：720p 常可满足一般理解任务  
-- 过长视频可**分段**多次请求，或只提交关键片段  
-
-### 提示词
-
-- 说明要分析什么（情节、异常、文字、运动等）  
-- 视频 Part 与文本 Part 一并给出明确任务  
-
-### 字段命名说明
-
-常见第三方示例使用 `type: video_url`。Trinity 生文侧请使用 **`type: file` + `file_url`**。勿把生视频 API 的 `input_references` 结构用于本页的视频输入。
-
----
-
-## 故障排除
-
-**模型没有按预期理解视频？**
-
-- 确认 `model` 为生文且支持多模态/视频理解  
-- 确认使用 `type: file` 且 `file_url` 可访问（或 Base64 完整）  
-- 尝试改用 Base64（部分上游对直连 URL 限制更严）  
-
-**请求过大或超时？**
-
-- 压缩视频、缩短时长、降低分辨率  
-- 检查是否超过 **70MB** 等平台限制  
-
-**和「生成视频」搞混？**
-
-- 理解已有视频 → 本页（`chat/completions` + `file` Part）  
-- 生成新视频 → [视频生成](./video-generation.md)  
 
 ---
 

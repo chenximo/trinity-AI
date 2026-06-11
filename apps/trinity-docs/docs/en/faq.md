@@ -18,7 +18,7 @@ Only the **HTTP API** (OpenAI-compatible REST). See [Quickstart](./quickstart).
 
 ## What format should model names use?
 
-The request body **`model`** is a **model ID** string and must match the [model catalog](https://trinity.ai/models), for example `gpt-5.5`, `hunyuan-image`, or `kling-2.6`. See [API overview · Model ID](./api/overview.md#model-id-model-field).
+The request body **`model`** is a **model ID** string and must match [List models](./api/models.md) or the [model catalog](https://trinity.ai/models), for example `gpt-5.5`, `hunyuan-image`, or `kling-2.6`. See [API overview · Model ID](./api/overview.md#model-id-model-field).
 
 ## What format does the API key use?
 

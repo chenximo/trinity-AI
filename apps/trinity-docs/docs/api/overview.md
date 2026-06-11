@@ -48,6 +48,7 @@ Content-Type: application/json
 
 | 能力 | 方法 | 路径 | 说明 |
 | --- | --- | --- | --- |
+| 获取模型 | `GET` | `/models` | 按 API Key 拉取可用模型；可选 `?modality=text\|image\|video\|all` |
 | 生文（创建对话补全） | `POST` | `/chat/completions` | 纯文本、工具调用、多模态输入（Part） |
 | 生图 | `POST` | `/chat/completions` | 须 `modalities` 含 `image` + `image_config`（**非** `/images/generations`）；同步长耗时 |
 | 查询生图任务 | `GET` | `/image/tasks/{taskId}` | 同步超时（`408`）后补偿查询；`taskId` 为 `trinity_task.task_id` |
@@ -62,7 +63,12 @@ Content-Type: application/json
 - 生图：`hunyuan-image`
 - 生视频：`kling-2.6`
 
-**如何查可用模型 ID**：登录后打开 [模型广场](https://trinity.ai/models)，复制目标模型的 **模型 ID** 填入 `model`。填写列表中不存在的 ID 会返回「模型不存在」类错误。
+**如何查可用模型 ID**：
+
+- **API**：`GET /models`（可选 `modality` 筛选），见 [获取模型](./models.md)
+- **控制台**：[模型广场](https://trinity.ai/models) 复制 **模型 ID**
+
+列表中的 `id` 填入下游请求的 `model`。填写不存在的 ID 会返回「模型不存在」类错误。
 
 ## 响应与错误
 
@@ -81,6 +87,7 @@ Content-Type: application/json
 
 - [快速入门](../quickstart.md)
 - [请求参数](../guides/request-parameters.md)
+- [获取模型](./models.md)
 - [创建对话补全](./chat-completions.md)
 - [创建图像生成](./images-generations.md)
 - [创建视频生成任务](./videos-generations.md)

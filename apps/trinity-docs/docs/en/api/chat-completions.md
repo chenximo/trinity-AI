@@ -56,7 +56,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Model ID from the [model catalog](https://trinity.ai/models) |
+| `model` | string | Yes | Model ID from [List models](./models.md) or the [model catalog](https://trinity.ai/models) |
 | `messages` | array | Yes | `{ role, content }`; `content` may be string or a Part array |
 | `stream` | boolean | No | Default `false`; `true` returns incremental SSE events |
 
@@ -145,6 +145,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## Related
 
+- [List models](./models.md)
 - [Chat completions · Advanced parameters](./chat-completions-parameters.md)
 - [API overview](./overview.md) · [Quickstart](../quickstart.md)
 - [Streaming (SSE)](../guides/streaming-sse.md)

@@ -48,9 +48,9 @@ Trinity 将 **API Reference** 放在 **API** 顶栏下。本页是**跨能力索
 
 | 字段 | 必填 | 说明 |
 | --- | --- | --- |
-| `model` | 是 | **模型 ID**，与 [模型广场](https://trinity.ai/models) 一致；勿使用列表中不存在的 ID |
+| `model` | 是 | **模型 ID**；通过 [获取模型](../api/models.md) 或 [模型广场](https://trinity.ai/models) 获取；勿使用列表中不存在的 ID |
 
-Trinity **不提供**对外 `GET /v1/models` 列举；勿依赖 `output_modalities` 等第三方专属查询参数。
+发现可用模型：`GET /models`，可选 `modality=text|image|video|all`。勿依赖 `output_modalities` 等第三方专属查询参数。字段见 [获取模型 · 高级参数](../api/models-parameters.md)。
 
 ---
 

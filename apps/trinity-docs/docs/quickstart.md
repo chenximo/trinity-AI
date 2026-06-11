@@ -120,7 +120,8 @@ print(response.json()["choices"][0]["message"]["content"])
 
 | 方式 | 操作 | 说明 |
 | --- | --- | --- |
-| **模型广场**（推荐） | 在 [模型广场](https://trinity.ai/models) 复制目标模型的 **模型 ID**，填入 `"model"`（需先登录控制台，可从 [API 密钥页](https://trinitydesk.ai/account/keys) 进入） | 当前获取模型 ID 的方式 |
+| **`GET /models`** | 调用 [获取模型](./api/models.md)（可选 `?modality=text\|image\|video`），取响应 `data[].id` | 适合脚本与 Agent 自动发现 |
+| **模型广场** | 在 [模型广场](https://trinity.ai/models) 复制 **模型 ID**（需登录控制台） | 适合人工选型 |
 
 ::: info
 在 IDE / Agent 工具（Cursor 等）里手填或下拉的名称也应与模型广场中的 **ID** 一致，详见 [应用场景 · 编程工具](./cookbook/)。

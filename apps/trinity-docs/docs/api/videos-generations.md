@@ -52,7 +52,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 视频生成模型，如 `kling-2.6` |
+| `model` | string | 是 | 视频模型 ID；见 [获取模型](./models.md)（`modality=video`）或 [模型广场](https://trinity.ai/models) |
 | `prompt` | string | 条件 | 无素材时必填；有素材时仍建议描述镜头、动作与风格 |
 | `duration_sec` | integer | 否 | 默认 `5`，受模型能力限制 |
 | `resolution` | string | 否 | 如 `720p`、`1080p` |
@@ -137,6 +137,7 @@ curl -sS "${TRINITY_BASE_URL}/video/tasks/vidtsk_xxx" \
 
 ## 相关
 
+- [获取模型](./models.md)（`modality=video`）
 - [视频生成](../multimodal/video-generation.md)
 - [视频生成 · 高级参数](./video-generation-parameters.md)
 - [API 概述](./overview.md)

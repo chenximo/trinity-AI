@@ -52,7 +52,7 @@ curl -sS "${TRINITY_BASE_URL}/video/generations" \
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Video generation model, e.g. `kling-2.6` |
+| `model` | string | Yes | Video model ID from [List models](./models.md) (`modality=video`) or the [model catalog](https://trinity.ai/models) |
 | `prompt` | string | Conditional | Required when no input assets are provided; still recommended for describing camera movement, action, and style |
 | `duration_sec` | integer | No | Default `5`, limited by model capabilities |
 | `resolution` | string | No | Example: `720p`, `1080p` |
@@ -137,6 +137,7 @@ curl -sS "${TRINITY_BASE_URL}/video/tasks/vidtsk_xxx" \
 
 ## Related
 
+- [List models](./models.md) (`modality=video`)
 - [Video generation](../multimodal/video-generation.md)
 - [Video generation · Advanced parameters](./video-generation-parameters.md)
 - [API overview](./overview.md)

@@ -8,7 +8,7 @@ Use this page for tuning, integration, and field checks. Endpoint summary: [Crea
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Image model ID from the [model catalog](https://trinity.ai/models) |
+| `model` | string | Yes | Image model ID from [List models](./models.md) (`modality=image`) or the [model catalog](https://trinity.ai/models) |
 | `messages` | array | Yes | Prompt and optional reference images; at least one message; without references, a non-empty prompt must be extractable from `user` |
 | `messages[].role` | string | No | Usually `user` for image generation |
 | `messages[].content` | string or array | Yes | string: text prompt; array: may include `text` / `image_url` Parts |
@@ -208,6 +208,7 @@ Response headers include `X-Request-Id`, `X-Settlement-Key`, etc.; see [API over
 
 ## Related
 
+- [List models](./models.md) (`modality=image`)
 - [Image generation](../multimodal/image-generation.md)
 - [Create image generation](./images-generations.md)
 - [Errors & debugging](../reference/error-codes.md)

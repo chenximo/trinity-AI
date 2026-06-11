@@ -56,7 +56,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 模型 ID，见 [模型广场](https://trinity.ai/models) |
+| `model` | string | 是 | 模型 ID，见 [获取模型](./models.md) 或 [模型广场](https://trinity.ai/models) |
 | `messages` | array | 是 | `{ role, content }`；`content` 可为 string 或 Part 数组 |
 | `stream` | boolean | 否 | 默认 `false`；`true` 时返回 SSE 增量事件 |
 
@@ -145,6 +145,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## 相关
 
+- [获取模型](./models.md)
 - [对话补全 · 高级参数](./chat-completions-parameters.md)
 - [API 概述](./overview.md) · [快速入门](../quickstart.md)
 - [流式输出（SSE）](../guides/streaming-sse.md)

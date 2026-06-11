@@ -17,6 +17,8 @@ const PAGE_LABELS: Record<string, string> = {
   "video-generation": "视频生成指南",
   "video-input": "视频输入",
   overview: "API 概述",
+  models: "获取模型",
+  "models-parameters": "获取模型高级参数",
   "error-codes": "错误码",
   "request-parameters": "请求参数索引",
   "chat-completions": "创建对话补全",
@@ -89,7 +91,7 @@ function detectAreas(rels: string[]): string[] {
   if (has(/image-generation|images-generations|image-input/)) areas.push("生图");
   if (has(/video-generation|videos-generations|video-input/)) areas.push("生视频");
   if (has(/chat-completions/)) areas.push("生文");
-  if (has(/overview|request-parameters|error-codes/)) areas.push("API 通用");
+  if (has(/overview|request-parameters|error-codes|\/models/)) areas.push("API 通用");
   if (has(/quickstart|faq/)) areas.push("入门/FAQ");
   if (has(/cookbook/)) areas.push("应用场景");
   return areas;

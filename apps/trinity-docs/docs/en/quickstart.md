@@ -120,7 +120,8 @@ The **`model`** field must be a Trinity **model ID** (an English slug such as `g
 
 | Method | What to do | Notes |
 | --- | --- | --- |
-| **Model catalog** (recommended) | Copy the **model ID** from the [model catalog](https://trinity.ai/models) into `"model"` (sign in via [API keys](https://trinitydesk.ai/account/keys) if needed) | How to get model IDs today |
+| **`GET /models`** | Call [List models](./api/models.md) (optional `?modality=text\|image\|video`); use `data[].id` | For scripts and agent auto-discovery |
+| **Model catalog** | Copy the **model ID** from the [model catalog](https://trinity.ai/models) (sign in required) | For manual selection |
 
 ::: info
 In Cursor and other agents, use the same **ID** in tool settings. See [Cookbook · coding tools](./cookbook/).

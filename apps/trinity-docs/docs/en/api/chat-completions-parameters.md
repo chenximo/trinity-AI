@@ -8,7 +8,7 @@ Use this page for tuning, integration, and field checks. For the endpoint summar
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Model ID from the [model catalog](https://trinity.ai/models) |
+| `model` | string | Yes | Model ID from [List models](./models.md) or the [model catalog](https://trinity.ai/models) |
 | `messages` | array | Yes | See `messages[]` below |
 | `stream` | boolean | No | Default `false` |
 | `stream_options` | object | No | `include_usage`, `chunk_include_usage` (only with `stream=true`) |
@@ -69,7 +69,7 @@ Without `X-Idempotency-Key`, each HTTP call is billed independently. After a net
 
 ## Prompt cache {#prompt-cache}
 
-Applies to **text models that support prompt caching** (see the [model catalog](https://trinity.ai/models)). The gateway maintains session context automatically—**no cache-control fields in the request body**.
+Applies to **text models that support prompt caching** (available models: [List models](./models.md) or the [model catalog](https://trinity.ai/models)). The gateway maintains session context automatically—**no cache-control fields in the request body**.
 
 ### Improve hit rate
 
@@ -119,7 +119,7 @@ If no cached input price is configured, cached tokens are billed at the **input*
 | `gemini-3-pro-preview` | Does not allow `thinking_enabled=false`; `reasoning_effort`: `low` / `medium` / `high` |
 | `gemini-3-flash-preview` | Thinking is on by default; `reasoning_effort` includes `minimal` |
 
-Use the [model catalog](https://trinity.ai/models) and actual model capability as the source of truth.
+Use [List models](./models.md), the [model catalog](https://trinity.ai/models), and actual model capability as the source of truth.
 
 ---
 
@@ -146,6 +146,7 @@ Use the [model catalog](https://trinity.ai/models) and actual model capability a
 
 ## Related
 
+- [List models](./models.md)
 - [Create chat completion](./chat-completions.md)
 - [API overview](./overview.md)
 - [Streaming (SSE)](../guides/streaming-sse.md)

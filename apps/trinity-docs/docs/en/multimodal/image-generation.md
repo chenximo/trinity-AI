@@ -1,6 +1,6 @@
 # Image generation
 
-Trinity generates images via **[Create chat completion](../api/chat-completions.md)** (`POST /v1/chat/completions`) by setting **`modalities`** and **`image_config`** in the request body. This is **not** OpenAI’s standalone `POST /images/generations`.
+Trinity generates images via **[Create chat completion](../api/chat-completions.md)** (`POST /v1/chat/completions`) by setting **`modalities`** and **`image_config`** in the request body.
 
 ::: warning Do not confuse with image input
 **Text-to-image / reference-image generation** uses `modalities` + `image_config` on this page. **Image understanding** uses the `image_url` Part in `messages[].content`—see [Image input](./image-input.md).
@@ -10,11 +10,10 @@ Trinity generates images via **[Create chat completion](../api/chat-completions.
 
 ## Model discovery
 
-Sign in to the [model catalog](https://trinity.ai/models), choose a model that supports **image output**, and copy its **model ID** into `model` (for example `hunyuan-image`). Use only models visible to your account.
+- **API**: `GET /models?modality=image`—see [List models](../api/models.md)
+- **Console**: [Model catalog](https://trinity.ai/models)—copy the **model ID** (for example `hunyuan-image`)
 
-::: info
-Trinity does not expose a public `GET /v1/models` listing API; do not rely on `output_modalities` query parameters until they are announced as supported.
-:::
+Use only models visible to your account. Do not rely on third-party-only query params such as `output_modalities`.
 
 ---
 

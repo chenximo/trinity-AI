@@ -57,7 +57,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `model` | string | Yes | Image model, e.g. `hunyuan-image` |
+| `model` | string | Yes | Image model ID from [List models](./models.md) (`modality=image`) or the [model catalog](https://trinity.ai/models) |
 | `messages` | array | Yes | Usually a `user` text prompt |
 | `modalities` | array | Recommended | Include `image`; include `text` as well when text explanation is needed |
 | `stream` | boolean | No | Image generation does not support `true`; omit it or set `false` |
@@ -148,6 +148,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## Related
 
+- [List models](./models.md) (`modality=image`)
 - [Image generation guide](../multimodal/image-generation.md)
 - [Image generation · Advanced parameters](./image-generation-parameters.md)
 - [Image input](../multimodal/image-input.md)

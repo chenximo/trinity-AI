@@ -57,7 +57,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 生图模型，如 `hunyuan-image` |
+| `model` | string | 是 | 生图模型 ID；见 [获取模型](./models.md)（`modality=image`）或 [模型广场](https://trinity.ai/models) |
 | `messages` | array | 是 | 通常为 `user` 文本 prompt |
 | `modalities` | array | 建议 | 包含 `image`；需要文本说明时可同时包含 `text` |
 | `stream` | boolean | 否 | 生图不支持 `true`，请省略或设为 `false` |
@@ -148,6 +148,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## 相关
 
+- [获取模型](./models.md)（`modality=image`）
 - [图片生成（完整指南）](../multimodal/image-generation.md)
 - [高级参数 · 生图](./image-generation-parameters.md)
 - [图片输入](../multimodal/image-input.md)

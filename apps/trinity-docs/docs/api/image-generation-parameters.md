@@ -8,7 +8,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 生图模型 ID；须在 [模型广场](https://trinity.ai/models) 选择支持图像输出的模型 |
+| `model` | string | 是 | 生图模型 ID；见 [获取模型](./models.md)（`modality=image`）或 [模型广场](https://trinity.ai/models) |
 | `messages` | array | 是 | 提示词与可选参考图；至少 1 条；无参考图时须能从 `user` 消息提取非空 prompt |
 | `messages[].role` | string | 否 | 生图场景通常仅 `user` |
 | `messages[].content` | string or array | 是 | string：纯文本 prompt；array：可含 `text` / `image_url` Part |
@@ -208,6 +208,7 @@ curl -sS "${TRINITY_BASE_URL}/image/tasks/imgtsk_xxx" \
 
 ## 相关
 
+- [获取模型](./models.md)（`modality=image`）
 - [图片生成](../multimodal/image-generation.md)
 - [创建图像生成](./images-generations.md)
 - [错误与调试](../reference/error-codes.md)

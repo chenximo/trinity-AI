@@ -10,11 +10,10 @@ Trinity generates video through **async tasks**: first **[Create video generatio
 
 ## Model discovery
 
-Sign in to the [model catalog](https://trinity.ai/models), choose a model that supports **video generation**, and copy its **model ID** into `model` (for example `kling-2.6`). Use only models visible to your account.
+- **API**: `GET /models?modality=video`—see [List models](../api/models.md)
+- **Console**: [Model catalog](https://trinity.ai/models)—copy the **model ID** (for example `kling-2.6`)
 
-::: info
-Trinity does not expose a public `GET /v1/models` listing API.
-:::
+Use only models visible to your account.
 
 ---
 

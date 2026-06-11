@@ -48,6 +48,7 @@ See request-header examples in [Create chat completion](./chat-completions.md).
 
 | Capability | Method | Path | Notes |
 | --- | --- | --- | --- |
+| List models | `GET` | `/models` | Models available to your API key; optional `?modality=text\|image\|video\|all` |
 | Text / chat completions | `POST` | `/chat/completions` | Text, tool calling, multimodal input Parts |
 | Image generation | `POST` | `/chat/completions` | Requires `modalities` with `image` + `image_config`; **not** `/images/generations`; synchronous long-running |
 | Query image task | `GET` | `/image/tasks/{taskId}` | Compensating query after sync timeout (`408`); `taskId` is `trinity_task.task_id` |
@@ -62,7 +63,12 @@ Set request body **`model`** to a **model ID** available to your account. Exampl
 - Image: `hunyuan-image`
 - Video: `kling-2.6`
 
-**How to find model IDs**: sign in to the [model catalog](https://trinity.ai/models), copy the target model's **model ID**, and use it in `model`. Unknown IDs return model-not-found style errors.
+**How to find model IDs**:
+
+- **API**: `GET /models` (optional `modality` filter)—see [List models](./models.md)
+- **Console**: [Model catalog](https://trinity.ai/models)—copy the **model ID**
+
+Use each list item's `id` as `model` in downstream requests. Unknown IDs return model-not-found style errors.
 
 ## Responses and errors
 
@@ -81,6 +87,7 @@ Set request body **`model`** to a **model ID** available to your account. Exampl
 
 - [Quickstart](../quickstart.md)
 - [Request parameters](../guides/request-parameters.md)
+- [List models](./models.md)
 - [Create chat completion](./chat-completions.md)
 - [Create image generation](./images-generations.md)
 - [Create video generation task](./videos-generations.md)

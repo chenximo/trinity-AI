@@ -4,6 +4,7 @@ import type { DefaultTheme } from "vitepress";
 const LABEL_EN: Record<string, string> = {
   概述: "Overview",
   端点: "Endpoints",
+  "获取模型": "List models",
   "创建对话补全": "Create chat completion",
   "对话补全（生文）": "Chat completions",
   "创建图像生成": "Create image generation",
@@ -11,6 +12,7 @@ const LABEL_EN: Record<string, string> = {
   "创建视频生成任务": "Create video generation",
   "视频生成（生视频）": "Video generation",
   "高级参数": "Advanced parameters",
+  模型参数: "Models",
   生文: "Text",
   生图: "Images",
   生视频: "Video",
@@ -69,6 +71,7 @@ const sidebarApiZh: DefaultTheme.SidebarItem[] = [
     text: "端点",
     collapsed: false,
     items: [
+      { text: "获取模型", link: "/api/models" },
       { text: "创建对话补全", link: "/api/chat-completions" },
       { text: "创建图像生成", link: "/api/images-generations" },
       { text: "创建视频生成任务", link: "/api/videos-generations" },
@@ -78,6 +81,7 @@ const sidebarApiZh: DefaultTheme.SidebarItem[] = [
     text: "高级参数",
     collapsed: false,
     items: [
+      { text: "模型参数", link: "/api/models-parameters" },
       { text: "生文", link: "/api/chat-completions-parameters" },
       { text: "生图", link: "/api/image-generation-parameters" },
       { text: "生视频", link: "/api/video-generation-parameters" },

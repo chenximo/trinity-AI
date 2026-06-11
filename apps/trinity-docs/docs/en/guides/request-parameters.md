@@ -48,9 +48,9 @@ See [API overview · Tracing & settlement](../api/overview.md#tracing-and-settle
 
 | Field | Required | Description |
 | --- | --- | --- |
-| `model` | Yes | **Model ID** from the [model catalog](https://trinity.ai/models) |
+| `model` | Yes | **Model ID** from [List models](../api/models.md) or the [model catalog](https://trinity.ai/models); do not use IDs not in your list |
 
-Trinity does **not** expose a public `GET /v1/models` listing. Do not rely on third-party-only query params such as `output_modalities`.
+Discover models with `GET /models` and optional `modality=text|image|video|all`. Do not rely on third-party-only query params such as `output_modalities`. See [List models · Advanced parameters](../api/models-parameters.md).
 
 ---
 

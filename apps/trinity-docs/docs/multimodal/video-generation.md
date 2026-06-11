@@ -10,11 +10,10 @@ Trinity 通过 **异步任务** 生成视频：先 **[创建视频生成任务](
 
 ## 模型发现
 
-在 [模型广场](https://trinity.ai/models) 登录后，选择支持**视频生成**的模型，复制 **模型 ID** 填入 `model`（例如 `kling-2.6`）。以你账号可见列表为准。
+- **API**：`GET /models?modality=video`，见 [获取模型](../api/models.md)
+- **控制台**：[模型广场](https://trinity.ai/models) 复制 **模型 ID**（例如 `kling-2.6`）
 
-::: info
-Trinity 当前不提供对外 `GET /v1/models` 列举接口。
-:::
+以你账号可见列表为准。
 
 ---
 

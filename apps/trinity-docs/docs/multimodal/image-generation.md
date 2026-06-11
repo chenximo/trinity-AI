@@ -1,6 +1,6 @@
 # 图片生成
 
-Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/chat/completions`）生成图像：在请求体中设置 **`modalities`** 与 **`image_config`**。**不是** OpenAI 独立的 `POST /images/generations`。
+Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/chat/completions`）生成图像：在请求体中设置 **`modalities`** 与 **`image_config`**。
 
 ::: warning 勿与图片输入混淆
 **文生图 / 参考图生图**用本页的 `modalities` + `image_config`。**看图理解**在 `messages[].content` 里传 `image_url` Part，见 [图片输入](./image-input.md)。
@@ -10,11 +10,10 @@ Trinity 通过 **[创建对话补全](../api/chat-completions.md)**（`POST /v1/
 
 ## 模型发现
 
-在 [模型广场](https://trinity.ai/models) 登录后，选择支持**图像输出**的生图模型，复制 **模型 ID** 填入 `model`（例如 `hunyuan-image`）。以你账号可见列表为准。
+- **API**：`GET /models?modality=image`，见 [获取模型](../api/models.md)
+- **控制台**：[模型广场](https://trinity.ai/models) 复制 **模型 ID**（例如 `hunyuan-image`）
 
-::: info
-Trinity 当前不提供对外 `GET /v1/models` 列举接口；请以 [模型广场](https://trinity.ai/models) 中展示的模型能力为准，勿依赖 `output_modalities` 查询参数。
-:::
+以你账号可见列表为准。勿依赖 `output_modalities` 等第三方专属查询参数。
 
 ---
 

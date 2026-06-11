@@ -1,25 +1,38 @@
 # Video input
 
-To send video to a **text model** that supports multimodal input, use **`POST /v1/chat/completions`** (same as [Create chat completion](../api/chat-completions.md)) and pass video in a **multi-part `content` array** inside `messages`.
+## How to send video files to Trinity models
 
-Trinity uses a **`type: file`** Part with **`file_url`** (public URL or Base64 data URL). Some other platforms use a `video_url` Part name; on Trinity **text chat**, use **`file_url`**—the purpose is the same: **help the model understand video content** (summaries, scene recognition, etc.).
+Trinity supports sending video files to compatible text models through the API. This page shows how to pass video in your request.
 
-::: warning Do not confuse with video generation
-**Video understanding (input)** uses this page: `POST /chat/completions` + `file` Part. **Generating new video** uses async `POST /video/generations`—see [Video generation](./video-generation.md) and [Create video generation task](../api/videos-generations.md). The `input_references[].type: video_url` field on video **generation** requests is a **different schema**, not this chat Part.
+Trinity accepts **URLs** and **Base64 data URLs** for `file_url`:
+
+- **URL** — for publicly reachable videos; no local encoding.
+- **Base64 data URL** — for local files or videos that are not publicly reachable; format `data:video/<mime>;base64,...`.
+
+Maximum **70MB** per file (platform validation).
+
+::: info
+Whether a given URL or MIME type is accepted depends on the **model and upstream**.
 :::
 
 ---
 
-## URL vs Base64
+## Video input
 
-| Method | When to use |
-| --- | --- |
-| **URL** | Publicly reachable video; no local encoding |
-| **Base64 data URL** | Local or private files; format `data:video/<mime>;base64,...` |
+Send requests to models that support video understanding via **`POST /v1/chat/completions`** (see [Create chat completion](../api/chat-completions.md)). Use a **`type: file`** Part in `messages[].content`; **`file_url`** is a URL or Base64 data URL. Only **`model`** values with video understanding can handle these requests.
 
-Per-file size limits follow platform validation (contract: **within 70MB**). Whether a URL is accepted (some hosts only allow specific CDNs) **depends on the model and upstream**.
+Find available **`model`** IDs: [List models](../api/models.md) or the [model catalog](https://trinity.ai/models). Field table: [Advanced parameters · Text](../api/chat-completions-parameters.md).
 
-Pick a **text model ID** with multimodal input from the [model catalog](https://trinity.ai/models); only some models support video understanding.
+| Field | Required | Description |
+| --- | --- | --- |
+| `type` | Yes | Always `file` |
+| `file_url` | Yes | URL or Base64 data URL |
+| `file_name` | No | Display file name |
+| `extra_content` | No | Only when documented for the model (e.g. `google.fps`) |
+
+::: warning Do not use `video_url` / do not confuse with video generation
+Trinity text chat uses **`type: file` + `file_url`**, not `type: video_url`. For video generation use `POST /video/generations` · [Video generation](./video-generation.md).
+:::
 
 ---
 
@@ -33,7 +46,7 @@ Pick a **text model ID** with multimodal input from the [model catalog](https://
 }
 ```
 
-Combine with a text Part; **text first, then video** is recommended:
+With `type: text` in the same `content` array:
 
 ```json
 {
@@ -128,13 +141,11 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 :::
 
-Replace `model` with a text model ID that supports video understanding for your account.
-
 ---
 
 ## Base64-encoded video
 
-Encode local video as a data URL and set `file_url`:
+Encode a local file as a data URL and set `file_url`:
 
 ::: code-group
 
@@ -229,65 +240,12 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 ## Supported video types
 
-Common MIME types for data URLs:
-
 | MIME |
 | --- |
 | `video/mp4` |
 | `video/mpeg` |
 | `video/quicktime` (`.mov`) |
 | `video/webm` |
-
-Acceptance is model-specific—see the [model catalog](https://trinity.ai/models) and API responses.
-
-Some models support `extra_content.google` at the protocol layer (for example video `fps`); send only when the model documents support. See [Advanced parameters · Text](../api/chat-completions-parameters.md).
-
----
-
-## Common use cases
-
-- **Summaries**: Text overview of video content  
-- **Scene and action recognition**: People, objects, and activities  
-- **Surveillance / training footage**: Extract information per your prompt  
-
----
-
-## Best practices
-
-### File size
-
-- **Compress and trim** when quality allows to reduce upload and processing cost  
-- **Resolution and frame rate**: 720p is often enough for understanding tasks  
-- **Long videos**: Split into segments or send key clips only  
-
-### Prompts
-
-- State what to analyze (plot, anomalies, on-screen text, motion, etc.)  
-- Pair the video Part with a clear text instruction  
-
-### Field naming
-
-Many third-party examples use `type: video_url`. On Trinity **text chat**, use **`type: file` + `file_url`**. Do not copy video **generation** `input_references` into chat requests.
-
----
-
-## Troubleshooting
-
-**Model did not understand the video as expected?**
-
-- Confirm `model` is a multimodal **text** model with video understanding  
-- Confirm `type: file` and a reachable `file_url` (or complete Base64)  
-- Try Base64 if direct URLs are restricted upstream  
-
-**Request too large or times out?**
-
-- Compress, shorten, or lower resolution  
-- Check the **70MB** platform limit  
-
-**Confused with video generation?**
-
-- Understand existing video → this page (`chat/completions` + `file` Part)  
-- Generate new video → [Video generation](./video-generation.md)  
 
 ---
 

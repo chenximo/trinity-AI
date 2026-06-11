@@ -8,7 +8,7 @@
 
 | 字段 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| `model` | string | 是 | 如 `kling-2.6` |
+| `model` | string | 是 | 视频模型 ID；见 [获取模型](./models.md)（`modality=video`）或 [模型广场](https://trinity.ai/models) |
 | `prompt` | string | 条件 | 无素材时必填 |
 | `duration_sec` | integer | 否 | 时长（秒），默认 `5` |
 | `resolution` | string | 否 | `480p`、`720p`、`1080p` 等 |
@@ -175,6 +175,7 @@
 
 ## 相关
 
+- [获取模型](./models.md)（`modality=video`）
 - [创建视频生成任务](./videos-generations.md)
 - [视频生成](../multimodal/video-generation.md)
 - [错误与调试](../reference/error-codes.md)
