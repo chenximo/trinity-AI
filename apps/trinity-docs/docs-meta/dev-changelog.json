@@ -2,6 +2,40 @@
   "schemaVersion": 1,
   "releases": [
     {
+      "id": "release-20260611T030750",
+      "publishedAt": "2026-06-11T03:07:50.865Z",
+      "author": "linda",
+      "note": "更新 应用场景 对外文档（含 en 镜像，共 4 个文件）。",
+      "gitRef": "b802578",
+      "gitDirty": true,
+      "files": [
+        {
+          "rel": "en/cookbook/coding-agents/cc-switch.md",
+          "linesAdded": 2,
+          "linesRemoved": 0,
+          "status": "M"
+        },
+        {
+          "rel": "en/cookbook/coding-agents/codex-cc-switch.md",
+          "linesAdded": 285,
+          "linesRemoved": 0,
+          "status": "?"
+        },
+        {
+          "rel": "en/cookbook/coding-agents/codex-cli.md",
+          "linesAdded": 1,
+          "linesRemoved": 1,
+          "status": "M"
+        },
+        {
+          "rel": "en/cookbook/index.md",
+          "linesAdded": 1,
+          "linesRemoved": 0,
+          "status": "M"
+        }
+      ]
+    },
+    {
       "id": "release-20260610T094414",
       "publishedAt": "2026-06-10T09:44:14.511Z",
       "author": "linda",

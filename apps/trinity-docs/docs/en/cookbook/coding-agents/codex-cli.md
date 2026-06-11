@@ -15,7 +15,7 @@
 
 ### Step 2: Connect Codex to Trinity
 
-**Recommended (UI):** Use [CC Switch](./cc-switch) to add a Codex provider (**Requires local routing map** on, endpoint `https://api.trinitydesk.ai/v1`). Below is **manual `config.toml` / environment variable** setup.
+**Recommended (UI):** Use [CC Switch](./cc-switch) to add a Codex provider (**Requires local routing map** on, endpoint `https://api.trinitydesk.ai/v1`). Full guide for connection, multi-model, and switching: [CC Switch with Codex](./codex-cc-switch.md). Below is **manual `config.toml` / environment variable** setup.
 
 Codex reads the key from the variable named in `env_key`:
 

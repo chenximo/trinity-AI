@@ -33,6 +33,7 @@ Both often use OpenAI-compatible `chat/completions`; we separate docs by **usage
 | [CodeBuddy](./coding-agents/codebuddy) | Coding IDE/CLI · `models.json` |
 | [Claude Code](./coding-agents/claude-code) | Terminal agent |
 | [CC Switch](./coding-agents/cc-switch) | Visual provider switching for Claude Code / Codex |
+| [CC Switch · Codex](./coding-agents/codex-cc-switch) | Codex connection, multi-model, and switching (full guide) |
 | [Codex CLI](./coding-agents/codex-cli) | `config.toml` |
 
 ---

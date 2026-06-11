@@ -60,6 +60,8 @@ Reference: [CC Switch user manual](https://github.com/farion1231/cc-switch/tree/
 2. In CC Switch: routing **Running**, **Codex** checked under routing, Trinity provider **Enabled**.
 3. Run a short task in Codex; on Trinity, confirm `POST /v1/chat/completions` with the configured `model`.
 
+Multi-model setup, `auth.json`, `cc-switch-model-catalog.json`, empty App dropdown, etc.: [CC Switch with Codex (connection & model picker)](./codex-cc-switch.md).
+
 ---
 
 ## Integration flow (Claude Code, optional)
