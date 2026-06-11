@@ -29,7 +29,7 @@ disable-model-invocation: true
 
 | 任务 | 必读 |
 |------|------|
-| **维护入口（先读）** | `docs/04-工程与迁移/Trinity对外文档站-基本规范.md`（§1 OR+工程师 review、§2 禁止项、§7 页面模板、§10 发布检查） |
+| **维护入口（先读）** | `docs/04-工程与迁移/Trinity对外文档站-基本规范.md`（§1 OR+工程师 review、§2 禁止项、§7 三轨模板、**§8 子文档规范**、§11 发布检查） |
 | **API 字段** | `docs/00-协作与工作流/工程师/API对外接口支持参数.md` |
 | **顶栏 / 侧栏 IA** | `docs/04-工程与迁移/Trinity文档站-信息架构与顶栏设计.md` |
 | **版式 / code-group** | `docs/04-工程与迁移/Trinity文档站-OpenRouter版式对齐规范.md`（含 §2.1.1 VP 布局通病） |
@@ -107,7 +107,7 @@ OR 参考（结构，非照抄未开放能力）：
 2. 中文 md：`apps/trinity-docs/docs/...`  
 3. 英文：`docs/en/...` 翻译或 `npm run docs:en-mirror -w @trinity/app-trinity-docs` 占位  
 4. `sidebars.ts`：`sidebarDocsZh` / `sidebarApiZh` / `sidebarCookbookZh`  
-5. 完成 **基本规范 §1.3** 工程师 review + §10 扫雷（禁止词含 `OpenRouter` / `对标参考`）  
+5. 完成 **基本规范 §1.3** 工程师 review + **§8** 单页骨架核对 + §11 扫雷（禁止词含 `OpenRouter` / `对标参考`）  
 6. `npm run build:trinity-docs`  
 
 **改 API 参数顺序**：先工程师 `API对外接口支持参数.md` → 再 `trinity-docs` 对应页 → 再 product roadmap（可选）。

@@ -11,7 +11,7 @@
 
 ## READ
 
-- `Trinity对外文档站-基本规范.md` §1 §2 §7 §10
+- `Trinity对外文档站-基本规范.md` §1 §2 §7 §8 §11
 - `API对外接口支持参数.md` 对应章节
 - 目标页 `apps/trinity-docs/docs/...`
 
@@ -26,4 +26,4 @@
 ## 收尾
 
 - `npm run build:trinity-docs`
-- 基本规范 §10 扫雷（禁止词）
+- 基本规范 §8.10 + §11 扫雷（禁止词）

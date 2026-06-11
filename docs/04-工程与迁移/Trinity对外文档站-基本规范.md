@@ -83,7 +83,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 - [ ] 多模态页具备：模型发现（模型广场）、基础示例、配置项、响应说明、最佳实践/排错（按 OR 同类页）  
 - [ ] API 短页未塞进整段 OpenAPI YAML / 全量参数表  
 
-核对通过后执行 §10 对外扫雷 + `npm run build:trinity-docs`。
+核对通过后执行 §11 对外扫雷 + `npm run build:trinity-docs`。
 
 ---
 
@@ -104,7 +104,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 | **「对标参考」「对标」「aligned with OpenRouter」** 及页首链到 openrouter.ai 的 Reference 行 | **禁止**；页首直接写 Trinity 场景与步骤 |
 | **「与 OpenRouter 文档的差异」「OR 专属」** 等第三方对标句 | 改为「与其他平台示例的差异」「第三方专属」「OpenAI 兼容」等客户向表述 |
 
-**维护者**核对字段、路径时可在仓库内查阅 `API对外接口支持参数.md`（§12），**不得**把该文件名或 `OpenRouter` 对标说明写进对外 md。  
+**维护者**核对字段、路径时可在仓库内查阅 `API对外接口支持参数.md`（§13），**不得**把该文件名或 `OpenRouter` 对标说明写进对外 md。  
 **结构借鉴** OpenRouter 仅在 §1、版式规范等**维护者文档**内讨论；`apps/trinity-docs/docs/**` 读者只看到 Trinity 品牌与能力。
 
 对外页只描述：**如何拿 Key、调哪些 API、填什么模型 ID、在 Cursor 等工具里怎么配、出错怎么办**。
@@ -126,7 +126,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 | 文档 | 解决什么问题 | 何时读 |
 |------|----------------|--------|
-| **本页** | 对外用语、三轨分工、页面模板、同步与发布检查 | 新增/改任意 md **先读** |
+| **本页** | 对外用语、三轨分工、§7 页面模板、**§8 子文档规范**、同步与发布检查 | 新增/改任意 md **先读** |
 | [Agent Skill · trinity-docs](../../.cursor/skills/trinity-docs/SKILL.md) | AI/维护者执行摘要 | 改 `trinity-docs` 时 **@trinity-docs** 或总机封发 |
 | [信息架构与顶栏设计](./Trinity文档站-信息架构与顶栏设计.md) | 顶栏 Tab、侧栏目录、URL 前缀 | 加新轨 / 新侧栏分组 |
 | [一期 MVP 文档清单](./Trinity文档站-一期MVP文档清单.md) | 有哪些页、验收闭环、一期边界 | 排期与勾选进度 |
@@ -210,7 +210,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
   5. **相关** → 对应「高级参数」指南  
 - **禁止**在 API 页放：全量参数表、Part 长表、OpenAPI 大段 YAML、HTTP 状态码长表（链 `reference/error-codes`）。  
 - **全字段 / 调参**：`api/*-parameters.md`（维护者从 `API对外接口支持参数.md` 同步）；`guides/request-parameters` 仅作索引。  
-- **维护者发布前**：在仓库内与 `API对外接口支持参数.md` 核对（§12），对外页不写该文件名。
+- **维护者发布前**：在仓库内与 `API对外接口支持参数.md` 核对（§13），对外页不写该文件名。
 
 ### 7.3 应用场景轨（Cookbook）
 
@@ -220,11 +220,129 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ---
 
-## 8. Markdown 与组件约定
+## 8. 子文档规范（按页面类型）
+
+> **与 §7 的关系**：§7 定三轨分工与通用结构；本节给出**可照抄的章节骨架**、中英文镜像要求、用语禁忌与易混能力写法。新增或改版单页时 **§7 + 本节 + §1.3** 一起对照。
+
+### 8.1 中英文镜像
+
+| 项 | 约定 |
+|----|------|
+| 中文路径 | `apps/trinity-docs/docs/foo/bar.md` |
+| 英文路径 | `apps/trinity-docs/docs/en/foo/bar.md`（**一一对应**，缺 EN 即 404） |
+| 同步范围 | **信息架构与能力一致**；标题与叙述可本地化 |
+| 侧栏 | `sidebars.ts` 中文树 + `localizeSidebar` 自动生成 `/en` 路由 |
+| API 字段名 | 英文不翻译；只翻说明列与段落 |
+
+### 8.2 快速入门（`quickstart.md` · 门户页）
+
+**目标**：最短路径跑通 + 导航到文档 / API / Cookbook。
+
+推荐骨架（顺序固定）：
+
+1. **`## 开始使用 Trinity AI`** — 产品名用 **Trinity AI**；一段价值主张（统一网关、`TRINITY_BASE_URL`、模型 ID、能力边界）。
+2. **集成方式表**（`方法 | 最适合`）— 只列**已支持**接入：
+   - **HTTP API**（直接调 REST）
+   - **应用场景**（链 Cookbook）
+   - **勿写未支持路径**（如整节「OpenAI SDK 改 base_url」— 未支持则不进对外正文）。
+3. `::: tip` — 密钥 `xh-...`、模型 ID、安全提示。
+4. `::: info` — 可选追踪头；链 [速率限制](../../apps/trinity-docs/docs/guides/rate-limits.md)、[FAQ](../../apps/trinity-docs/docs/faq.md)。
+5. `## 认证与接入地址` → `## 使用 API`（`::: code-group`：**Python → TypeScript (fetch) → Shell**）。
+6. `## 下一步` — 导航表；**工具名须为可点击站内链**（Cursor、Codex、WorkBuddy 等）。
+
+### 8.3 API 端点短页（`api/*.md`）
+
+- **开篇**：正面写本端点**做什么**、路径与 `Content-Type`；**不写**「不是 POST /xxx」类排他对比句（改为「与 YY 区分」+ 各自正确路径）。
+- **正文顺序**：Authentication → Headers → Body（P0，≤5 行表）→ Response（简短）→ `::: code-group` → **相关**（链 `*-parameters`）。
+- **能力区分**：用 `::: warning` + **无序列表** + 内链；**禁止在 `::: warning` 内嵌表格**（排版差、移动端难读）。
+- **禁止**：全量参数表、OpenAPI 大段 YAML、HTTP 状态码长表（链 `reference/error-codes`）。
+
+### 8.4 高级参数页（`api/*-parameters.md`）
+
+- 工程师表**全字段**；与短页互链（短页链入，参数页链回短页示例）。
+- 流式细节、`cached_tokens`、`include_usage` 等联调项放此处或 `guides/streaming-sse.md`，**不堆在索引页**。
+
+### 8.5 指南索引（`guides/request-parameters.md`）
+
+- **`## 本页用途`**（一句）+ **「想查什么 | 去哪」导航表**。
+- 汇总通用头、`model` 入口；**不复制**各端点全字段表。
+- **Prompt Cache**：索引页只写固定 `X-Conversation-Id` + 链高级参数；`cached_tokens`、流式 `include_usage` 等细节见 `api/chat-completions-parameters` 或流式专篇。
+
+### 8.6 多模态指南（`multimodal/*`）
+
+**指南体开篇**（在端点/字段节之前）：
+
+| 页面 | 推荐 H2 |
+|------|---------|
+| `image-input.md` | `## 如何向 Trinity 模型发送图片` |
+| `video-input.md` | `## 如何向 Trinity 模型发送视频` |
+| `image-generation.md` | `## 如何使用 Trinity 生成图片` |
+| `video-generation` 相关 | `## 如何使用 Trinity 生成视频` |
+
+开篇段须含：用途、URL/Base64（图）、**70MB**（视频 `file` Part）、模型发现（`GET /models` 或模型广场）。
+
+`---` 后接 `## 端点/字段`、示例、响应说明。
+
+**`multimodal/index.md`**：输入 vs 生图 vs 生视频对照表（端点 + 关键字段）。
+
+**易混（相关页必须写清）**：
+
+| 场景 | 对外写法 |
+|------|----------|
+| 看图理解 | `messages[].content` · `image_url` Part |
+| 看视频理解 | `type: file` + `file_url`（**非**聊天 Part 的 `video_url`） |
+| 生图 | 同路径 `POST /chat/completions` + `modalities` + `image_config`；`stream` 须 `false` |
+| 生视频 | `POST /video/generations` + `GET /video/tasks/{taskId}`；`input_references` 内 `video_url` 是素材字段 |
+
+区分块：`::: warning` + **列表**（参考 [图片生成 API 短页](../../apps/trinity-docs/docs/api/images-generations.md)），不用表。
+
+### 8.7 Cookbook（`cookbook/*`）
+
+- 结构：适用版本 → 前置 → 配置步骤 → 推荐模型 ID → 验收 → 故障排除 → 相关链接。
+- **端点区分**：Trinity 公网 `https://api.trinitydesk.ai/v1` vs CC Switch 本机 `127.0.0.1:15721`（写明后者是 CC Switch 默认，非 Trinity 固定公网）。
+- 工具界面选项名可与产品一致（如 OpenAI Base URL 字段名）；**正文仍禁止** `OpenRouter` / `openrouter.ai`。
+- 长文专页（如 `codex-cc-switch`）中英文须成对存在。
+
+### 8.8 Reference（`reference/error-codes`、`guides/rate-limits`、`faq`）
+
+- 错误体字段、排障、`X-Request-Id` / `X-Settlement-Key` 提示。
+- FAQ 写「以网关实际响应为准」，**勿**链仓库内 md 或工程师文件名。
+
+### 8.9 文风与禁止项（子文档级）
+
+**要写（对接入有用）**
+
+- 路径、`model` ID、请求头名、可复制示例。
+- 「OpenAI 兼容」类**客户向**表述（说明字段/路径习惯），**不写**「对标某厂商文档」。
+
+**不要写**
+
+| 类别 | 示例 |
+|------|------|
+| 内部定位 | 「独立端点」「口径对齐」「source of truth」 |
+| 排他对比 | 「不是 OpenAI」「不是 POST /images/generations」— 改为正面写正确路径 |
+| 未支持当已支持 | OpenAI SDK 专节、Try it、OR 专属未上线参数 |
+| 从 OR 照搬 | Trinity 契约没有的「最佳实践 / 故障排除 Q&A」整段 |
+| 过度收紧 | 删有用 H2、合并开篇、去掉导航表与区分 warning（「去语义化」过猛） |
+
+**callout 选用**：一般说明 `::: info`；密钥/安全红线 `::: tip`；易混能力 / 破坏性操作 `::: warning`（**内用列表，少用表**）。
+
+### 8.10 单页改版检查（速查）
+
+- [ ] 定轨正确（§5）；未越轨写全表或长篇 IDE 步骤  
+- [ ] 开篇符合本节对应骨架（门户 / 指南体 / API 短页）  
+- [ ] `::: code-group` 顺序：Python → TypeScript (fetch) → Shell  
+- [ ] `docs/en/` 镜像已同步  
+- [ ] 无 §2 / §8.9 禁止用语；warning 内无表格  
+- [ ] 已完成 §1.3 工程师字段核对  
+
+---
+
+## 9. Markdown 与组件约定
 
 | 用法 | 约定 |
 |------|------|
-| 代码多语言 | `::: code-group`，优先 Shell + TypeScript + Python |
+| 代码多语言 | `::: code-group`，顺序 **Python → TypeScript (fetch) → Shell**（见 §8） |
 | 提示 | **`::: info`**（蓝底 + 图钉，默认标题「说明」）：一般说明、配置提示、示例补充；**`::: tip`**（浅绿 + 星标，默认「重要」）：密钥/安全/计费红线等**非常重要**内容；**`::: warning`**：已泄露、破坏性操作、易错计费 |
 | 章节分隔 | 大节之间 `---` |
 | 链接 | 站内相对路径 `](./api/overview.md)`；外链注明跳出 |
@@ -235,9 +353,9 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ---
 
-## 9. 新增或修改页面（维护者流程）
+## 10. 新增或修改页面（维护者流程）
 
-1. **定轨**：文档 / API / 应用场景？  
+1. **定轨**：文档 / API / 应用场景？对照 **§8** 选定页面骨架。  
 2. **加中文 md**：`apps/trinity-docs/docs/...`（**不要**放在 `docs/en/` 下），`slug` 与路径一致。  
 3. **加英文镜像**：同路径写入 `apps/trinity-docs/docs/en/...`（完整翻译）；或先运行 `npm run docs:en-mirror -w @trinity/app-trinity-docs` 生成占位，再替换正文（删除文首 `<!-- tdocs-en-stub -->` 表示已翻译）。  
 4. **注册侧栏**：在 `.vitepress/config/sidebars.ts` 的 `sidebarDocsZh` / `sidebarApiZh` / `sidebarCookbookZh` 增加条目（英文侧栏由 `localizeSidebar` 自动生成 `/en` 前缀与英文标签）。  
@@ -247,7 +365,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 8. **构建**：`npm run build:trinity-docs`。  
 9. **对外扫雷**：在 `apps/trinity-docs/docs` 全文检索 §2 禁止词（`docs/00`、`产品手册`、`内测`、`一期`、`OpenRouter`、`openrouter`、`对标参考` 等）。
 
-### 9.1 中英双语约定
+### 10.1 中英双语约定
 
 | 项 | 约定 |
 |----|------|
@@ -261,7 +379,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ---
 
-## 10. 发布前检查清单（维护者）
+## 11. 发布前检查清单（维护者）
 
 **对外正文**
 
@@ -273,18 +391,19 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 - [ ] API Key 为 **`xh-...`** 表述  
 - [ ] 新页已挂侧栏；Tab 高亮正确  
 - [ ] 新中文页已有 `docs/en/` 镜像（翻译或占位 + `docs:en-mirror`）  
+- [ ] 单页符合 **§8** 开篇骨架；`::: warning` 内无表格  
 
 **仓库内（不展示给客户）**
 
 - [ ] 已完成 §1.3 工程师契约 + OpenRouter 结构 review  
-- [ ] 与 `API对外接口支持参数.md` 核对（§12）  
+- [ ] 与 `API对外接口支持参数.md` 核对（§13）  
 - [ ] `npm run build:trinity-docs` 通过  
 
 产品校验项：[MVP 清单 §6](./Trinity文档站-一期MVP文档清单.md#6-产品校验项发布前)。
 
 ---
 
-## 11. 当前能力边界（对外页可写范围）
+## 12. 当前能力边界（对外页可写范围）
 
 **文档站已覆盖**：HTTP API · 生文 · 生图 · 生视频 · 流式 · 密钥 · 错误/限额说明 · 编程工具接入（Cursor / Claude Code / Codex CLI）
 
@@ -294,13 +413,13 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ---
 
-## 12. 维护者专用：API 字段核对真源
+## 13. 维护者专用：API 字段核对真源
 
 仅维护者在仓库内打开，**禁止**复制路径到 `apps/trinity-docs/docs/`：
 
 `docs/00-协作与工作流/工程师/API对外接口支持参数.md`
 
-**流程**：先按 [OpenRouter](https://openrouter.ai/docs) 与 §7 定结构与示例形态 → 再按 **§1.3** 与本文件 §12 逐条 diff 工程师表 → 通过的才保留在对外正文；未开放项只更新 `developer-docs.roadmap.yml`。
+**流程**：先按 [OpenRouter](https://openrouter.ai/docs) 与 **§7 + §8** 定结构与示例形态 → 再按 **§1.3** 与本文件 §13 逐条 diff 工程师表 → 通过的才保留在对外正文；未开放项只更新 `developer-docs.roadmap.yml`。
 
 **改参数顺序（强约束，与工程师文档文末一致）**：
 
@@ -310,7 +429,7 @@ apps/trinity-docs/docs/**/*.md（对外正文）
 
 ---
 
-## 13. 本地命令（速查）
+## 14. 本地命令（速查）
 
 ```bash
 npm run dev:trinity-docs    # http://127.0.0.1:5205/docs/
@@ -321,11 +440,12 @@ npm run build:trinity-docs
 
 ---
 
-## 14. 修订记录
+## 15. 修订记录
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-09 | §2：禁止对外正文出现 OpenRouter / 对标参考；新增 §2.1 版式布局冻结；§10 扫雷项 |
+| 2026-06-05 | 新增 **§8 子文档规范**（按页面类型骨架、中英文镜像、文风禁忌、单页检查）；原 §8–§14 顺延为 §9–§15 |
+| 2026-06-09 | §2：禁止对外正文出现 OpenRouter / 对标参考；新增 §2.1 版式布局冻结；§11 扫雷项 |
 | 2026-06-03 | §1：OpenRouter 对齐 + 工程师 `API对外接口支持参数.md` review 流程与勾选清单 |
 | 2026-06-03 | 明确对外读者为开发者客户；§2 禁止内部信息进入 `trinity-docs/docs` |
 | 2026-06-03 | 首版：三轨、用语、页面模板与发布检查 |
