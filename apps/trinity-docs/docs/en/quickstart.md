@@ -1,27 +1,32 @@
 # Quickstart
 
-Trinity exposes an **HTTP API**: text, multimodal input, and image generation use `POST /v1/chat/completions`; video generation uses async `POST /v1/video/generations` tasks. `POST /v1/chat/completions` is OpenAI Chat Completions–compatible—set your SDK `base_url` and API key to Trinity.
+## Get started with Trinity AI
+
+Trinity AI provides a unified HTTP API gateway: one `base_url` and API key for text, multimodal input, image generation, and more—set **`model`** to an ID from the [model catalog](https://trinity.ai/models) or [List models](./api/models.md). Video generation uses async `POST /v1/video/generations` tasks.
+
+Pick an integration path:
 
 | Approach | Best for |
 | --- | --- |
-| **[HTTP API](#using-the-api)** | Any language, direct requests |
-| **[OpenAI SDK](#using-the-openai-sdk)** | Existing OpenAI SDK code—swap `base_url` |
-| **[Cookbook](./cookbook/)** | Cursor, Codex CLI, WorkBuddy, and other tools |
+| **[HTTP API](#using-the-api)** | Full control, any language, direct HTTP requests |
+| **[Cookbook](./cookbook/)** | Cursor, Codex CLI, WorkBuddy, and other IDE / agent tools |
 
 ::: tip Important · Models & keys
 - API keys usually start with **`xh-...`** (copy the full value once from the [console](https://trinitydesk.ai/account/keys)).
-- Set **`model`** to a **model ID** from the [model catalog](https://trinity.ai/models) or [List models](./api/models.md) (for example `gpt-5.5`).
+- Set **`model`** to a **model ID** (not a display name) from your account’s available list—for example `gpt-5.5`.
 - Never commit full keys to public repositories, client bundles, or logs.
 :::
 
-Optional tracing/settlement headers (`X-Request-Id`, `X-Idempotency-Key`, etc.) are described in [API overview](./api/overview.md). For streaming and errors, see [Streaming (SSE)](./guides/streaming-sse.md) and [Error codes](./reference/error-codes.md).
+::: info
+Tracing and settlement headers such as `X-Request-Id` and `X-Idempotency-Key` are **optional**—see [API overview](./api/overview.md). Rate limits: [Rate limits](./guides/rate-limits.md). Other questions: [FAQ](./faq.md).
+:::
 
 ---
 
-## Before you start
+## Authentication & base URL
 
 1. Create an API key in the [console](https://trinitydesk.ai/account/keys).
-2. Set environment variables (use your deployment base URL if different):
+2. Set environment variables (example production base URL; use your deployment URL if different):
 
 ::: code-group
 
@@ -43,13 +48,15 @@ os.environ["TRINITY_BASE_URL"] = "https://api.trinitydesk.ai/v1"
 
 :::
 
-See also [Manage API keys](./manage-api-keys.md).
+See [Manage API keys](./manage-api-keys.md).
 
 ---
 
 ## Using the API
 
-Send HTTP requests to `{TRINITY_BASE_URL}/chat/completions`. The request/response shape is OpenAI Chat Completions–compatible. Examples below use `gpt-5.5`—replace it with a model ID visible to your account.
+The most direct approach: send a standard HTTP POST to **`{TRINITY_BASE_URL}/chat/completions`**—works with any language or framework.
+
+Examples below use `gpt-5.5`. Replace **`model`** with an ID visible to your account (`GET /models` or the [model catalog](https://trinity.ai/models)).
 
 ::: code-group
 
@@ -100,79 +107,7 @@ curl -sS "${TRINITY_BASE_URL}/chat/completions" \
 
 :::
 
-For streaming, set `"stream": true` in the body; the response is SSE. See [Streaming (SSE)](./guides/streaming-sse.md). Field reference: [Create chat completion](./api/chat-completions.md).
-
----
-
-## Using the OpenAI SDK
-
-Point the official OpenAI SDK `base_url` at Trinity—your `chat.completions.create` calls stay the same.
-
-Install the package:
-
-::: code-group
-
-```bash [npm]
-npm install openai
-```
-
-```bash [pnpm]
-pnpm add openai
-```
-
-```bash [yarn]
-yarn add openai
-```
-
-:::
-
-::: code-group
-
-```python [Python]
-import os
-from openai import OpenAI
-
-client = OpenAI(
-    base_url=os.environ["TRINITY_BASE_URL"],
-    api_key=os.environ["TRINITY_API_KEY"],
-)
-
-completion = client.chat.completions.create(
-    model="gpt-5.5",
-    messages=[{"role": "user", "content": "Hello"}],
-)
-print(completion.choices[0].message.content)
-```
-
-```typescript [TypeScript]
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  baseURL: process.env.TRINITY_BASE_URL,
-  apiKey: process.env.TRINITY_API_KEY,
-});
-
-const completion = await client.chat.completions.create({
-  model: "gpt-5.5",
-  messages: [{ role: "user", content: "Hello" }],
-});
-console.log(completion.choices[0].message.content);
-```
-
-:::
-
----
-
-## Model IDs
-
-The **`model`** field must be a Trinity **model ID** (English slug) from [List models](./api/models.md) or the [model catalog](https://trinity.ai/models)—not a display name.
-
-| Method | What to do |
-| --- | --- |
-| **`GET /models`** | Call [List models](./api/models.md) (optional `?modality=text\|image\|video`); use `data[].id` |
-| **Model catalog** | Sign in to the [model catalog](https://trinity.ai/models) and copy the **model ID** |
-
-Examples (verify against your list): text `gpt-5.5`; image `hunyuan-image`; video `kling-2.6`.
+Streaming: set `"stream": true` in the body for SSE—see [Streaming (SSE)](./guides/streaming-sse.md). Full fields: [Create chat completion](./api/chat-completions.md).
 
 ---
 
@@ -180,9 +115,10 @@ Examples (verify against your list): text `gpt-5.5`; image `hunyuan-image`; vide
 
 | Capability | Guide | API |
 | --- | --- | --- |
-| Text | [Streaming](./guides/streaming-sse.md) | [Chat completions](./api/chat-completions.md) |
-| Image | [Image generation](./multimodal/image-generation.md) | [Images (chat)](./api/images-generations.md) |
-| Video | [Video generation](./multimodal/video-generation.md) | [Video API](./api/videos-generations.md) |
-| Coding tools | [Cookbook](./cookbook/) | Cursor / Claude Code / Codex CLI |
+| Text / streaming | [Streaming (SSE)](./guides/streaming-sse.md) | [Chat completions](./api/chat-completions.md) |
+| Image input / generation | [Multimodal](./multimodal/) | [Image generation](./api/images-generations.md) |
+| Video input / generation | [Video generation](./multimodal/video-generation.md) | [Video API](./api/videos-generations.md) |
+| IDE / agent setup | [Cookbook](./cookbook/) | [Cursor](./cookbook/coding-agents/cursor) · [Codex CLI](./cookbook/coding-agents/codex-cli) · [WorkBuddy](./cookbook/agent-workbench/workbuddy) |
+| Model list | — | [List models](./api/models.md) |
 
 - [API overview](./api/overview.md) · [Request parameters](./guides/request-parameters.md) · [Errors](./reference/error-codes.md)

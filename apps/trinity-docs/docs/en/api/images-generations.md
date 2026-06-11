@@ -2,13 +2,11 @@
 
 Send a text prompt to an image generation model and generate image outputs. Use this endpoint for text-to-image, image generation with references, and responses that include both text and images.
 
-Trinity image generation reuses the `/chat/completions` path. Declare image output with `modalities`, and use `image_config` for aspect ratio, output format, reference images, and related options. This is **not** `POST /images/generations`.
+Trinity image generation uses `POST /chat/completions`. Declare image output with `modalities`, and use `image_config` for aspect ratio, output format, reference images, and related options.
 
-::: warning Do not confuse schemas
-| Capability | How to use it |
-| --- | --- |
-| Text model seeing images | Pass `type: image_url` in `messages[].content[]` |
-| Image generation | Set `modalities` to include `image`, and optionally pass `image_config` |
+::: warning vs image input
+- **Image understanding**: pass a `type: image_url` Part in `messages[].content`—see [Image input](../multimodal/image-input.md).
+- **Image generation** (this page): set `modalities` to include `image`, and optionally pass `image_config`.
 :::
 
 ---

@@ -2,13 +2,11 @@
 
 向生图模型发送文本提示词，生成图片结果。适用于文生图、带参考图的图生图，以及需要同时返回文本说明与图片的场景。
 
-Trinity 的图片生成复用 `/chat/completions` 路径，通过 `modalities` 声明图片输出，并用 `image_config` 控制画幅、格式、参考图等参数。它**不是** `POST /images/generations`。
+Trinity 的图片生成使用 `POST /chat/completions` 路径，通过 `modalities` 声明图片输出，并用 `image_config` 控制画幅、格式、参考图等参数。
 
-::: warning 易混
-| 能力 | 使用方式 |
-| --- | --- |
-| 生文看图 | 在 `messages[].content[]` 中传 `type: image_url` |
-| 生成图片 | 设置 `modalities` 包含 `image`，并按需传 `image_config` |
+::: warning 与图片输入区分
+- **看图理解**：在 `messages[].content` 中传 `type: image_url` Part，见 [图片输入](../multimodal/image-input.md)。
+- **生成图片**（本页）：设置 `modalities` 含 `image`，并按需传 `image_config`。
 :::
 
 ---
