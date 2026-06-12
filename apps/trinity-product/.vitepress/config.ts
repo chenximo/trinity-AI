@@ -49,6 +49,25 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
       { text: "产品总览", link: "/ai-api-platform/" },
       { text: "上游资料索引", link: "/ai-api-platform/upstream-references" },
       {
+        text: "友商产品调研",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/ai-api-platform/competitor-research/" },
+          { text: "OpenRouter", link: "/ai-api-platform/competitor-research/openrouter" },
+          { text: "New API（开源）", link: "/ai-api-platform/competitor-research/new-api" },
+          {
+            text: "New API · Skill",
+            collapsed: true,
+            items: [
+              { text: "落地方案（P0–P3）", link: "/ai-api-platform/competitor-research/new-api-skill" },
+              { text: "P0 实施规格", link: "/ai-api-platform/competitor-research/new-api-skill-p0-spec" },
+              { text: "设计要点（附录）", link: "/ai-api-platform/competitor-research/new-api-skill-design" },
+              { text: "模型 API（附录）", link: "/ai-api-platform/competitor-research/new-api-skill-model-info" },
+            ],
+          },
+        ],
+      },
+      {
         text: "用户侧模块",
         collapsed: false,
         items: [

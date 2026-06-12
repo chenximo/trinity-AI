@@ -28,9 +28,15 @@ export function isWeekProgressYamlRel(rel: string): boolean {
   return r.endsWith("week-progress.yml");
 }
 
+/** 聚合产品总览待办池 `product-backlog.yml` */
+export function isProductBacklogYamlRel(rel: string): boolean {
+  const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
+  return r.endsWith("product-backlog.yml");
+}
+
 /** 手册可经 dev API / 静态发布的 YAML（子能力表、周进度等） */
 export function isProductYamlRel(rel: string): boolean {
-  return isRoadmapYamlRel(rel) || isWeekProgressYamlRel(rel);
+  return isRoadmapYamlRel(rel) || isWeekProgressYamlRel(rel) || isProductBacklogYamlRel(rel);
 }
 
 /** API `rel` 参数规范化：已有 .md / .yml 则不再追加 .md */

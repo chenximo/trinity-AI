@@ -27,7 +27,11 @@ export function resolveDocsFile(rel: string): string | null {
   const isYaml = isProductYamlRel(normalized);
   const isMd = normalized.endsWith(".md") && !isYaml;
   if (!isMd && !isYaml) return null;
-  if (isYaml && !/^[\w./-]*(roadmap\.yml|\.roadmap\.yml|week-progress\.yml)$/.test(normalized)) return null;
+  if (
+    isYaml &&
+    !/^[\w./-]*(roadmap\.yml|\.roadmap\.yml|week-progress\.yml|product-backlog\.yml)$/.test(normalized)
+  )
+    return null;
   const full = path.resolve(DOCS_DIR, normalized);
   if (!full.startsWith(DOCS_DIR + path.sep) && full !== DOCS_DIR) return null;
   return full;

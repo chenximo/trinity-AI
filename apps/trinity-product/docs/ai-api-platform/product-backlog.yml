@@ -1,0 +1,17 @@
+items:
+  - module: 平台侧 · 统一 API 基座
+    leaf: platform/unified-api
+    task: 单接口模型查询 API（GET /v1/models/{model_id}，对齐 OpenAI 单模型查询）
+    target: 6.30
+    note: |-
+      2026-06-12 Skill dogfood：`GET /v1/models` 200；同 Key 下 `GET /v1/models/gpt-5.5` 等返回 401。
+      列表 data[] 已含 metadata（价/描/模态）；待后端确认鉴权/路由。Skill P1 暂从列表过滤，不依赖本接口。
+      附录：competitor-research/new-api-skill-model-info
+  - module: 用户侧 · 模型广场
+    leaf: user/models/list
+    task: 模型筛选 API（按价格、标签、模态等筛选；与广场同源，供 Skill P1 比价/筛选）
+    target: 6.30
+    note: |-
+      `GET /v1/models?modality=text|image|video|all` 仅列可见模型与基础 metadata；P0 Skill 已支持按模态列生文/生图/生视频。
+      按价格排序、多条件筛选需专用接口（或 pricing 过滤），Skill P1 再接；勿依赖列表 metadata 做「最便宜」排序。
+      附录：competitor-research/new-api-skill-model-info · trinity-docs api/models-parameters

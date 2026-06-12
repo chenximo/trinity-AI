@@ -40,7 +40,7 @@ flowchart LR
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
 | **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
 
-日常查厂商文档、价目表等外链，见 **[上游资料索引](./upstream-references)**（产品总览下侧栏第二项）。
+日常查厂商文档、价目表等外链，见 **[上游资料索引](./upstream-references)**；竞品与对标产品调研见 **[友商产品调研 · 总览](./competitor-research/)**（侧栏含 OpenRouter 等二级专页，位于用户侧模块之上）。
 
 ::: tip 和「OpenRouter」怎么对照
 OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营后台管理平台**为 B2B 自建，工程在 `trinity-ai-admin`。
@@ -53,6 +53,14 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 :::
 
 <ProductWeekProgress rel="ai-api-platform/week-progress.yml" />
+
+## 产品待办池
+
+::: tip 维护规则 · 待办池归属
+**模块**：本页 **AI API 聚合产品 · 产品总览**（非叶子、非子总览）。真源 `ai-api-platform/product-backlog.yml`。跨用户/平台/运营事项放这里；每条 **`module`** + 可选 **`leaf`** 标归属模块。不写状态/负责人；**要排期时迁入上方周计划**。字段见 [更新规范 §四 · 待办池](../产品手册更新规范.md)。
+:::
+
+<ProductBacklog rel="ai-api-platform/product-backlog.yml" />
 
 ## 5.30 能力主链
 

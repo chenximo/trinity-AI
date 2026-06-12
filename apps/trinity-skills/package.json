@@ -1,0 +1,10 @@
+{
+  "name": "@trinity/trinity-skills",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Trinity IDE Skills for Cursor and Claude Code (P0: models, help)",
+  "scripts": {
+    "sync:scripts": "node scripts/sync-skill-scripts.mjs",
+    "init:env": "node skills/trinity/scripts/init-env.cjs"
+  }
+}
