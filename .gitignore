@@ -5,6 +5,7 @@ Thumbs.db
 # Editor / IDE
 .idea/
 .vscode/
+.codebuddy/
 *.swp
 *.swo
 *~
@@ -34,3 +35,6 @@ scripts/sync-reports/
 
 # Local tooling scratch (e.g. pip --target installs)
 .tmp/
+
+# npx skills local lock (machine-specific paths)
+skills-lock.json
