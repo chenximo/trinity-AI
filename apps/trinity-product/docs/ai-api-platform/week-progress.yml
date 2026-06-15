@@ -35,8 +35,8 @@ months:
           
           API 实际场景应用接入文档（codex，cursor等） @李玲
           
-          用户控制台企业工作区，商用鉴权，限流，配额（设计交互，原型）@李玲
-        result: ⬜
+          用户控制台企业工作区，商用鉴权，限流，配额（设计交互，原型）@李玲=》 @崔宇光
+        result: ✅
         testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
         blockers: |-
           1、补充开发，AI 云在运营后台管理系统中补充各个企业的账号、充值、账单纳管等  @崔宇光
@@ -62,6 +62,8 @@ months:
           5）6.30 商用规划和推广准备 @李玲
           
           6） rankings 原型和五件套设计@李玲
+          
+          7）trinity AI 后台运营系统增加折扣（和企业商务，费用账单关联）
         result: ⬜
         testLink: —
         blockers: 1、AI 云接入文档补充在控制台
