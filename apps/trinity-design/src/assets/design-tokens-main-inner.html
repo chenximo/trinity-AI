@@ -153,6 +153,144 @@
         </div>
       </section>
 
+      <section class="dt-section" aria-labelledby="dt-cat-geo">
+        <h2 id="dt-cat-geo">Trinity GEO · 产品主色</h2>
+        <p class="dt-section-desc">
+          继承套件 <code>--blue</code> / <code>--purple</code> / <code>--grad</code> 蓝紫族，浅底与描边取自
+          <code>--purple-soft</code>、<code>--violet-200</code>；Hero 与卡片可复用场景卡合成公式（<code>--geo-scene-bg</code>）。海外 SOA 偏
+          <code>--blue-soft</code>，国内 SOA 仍用 <code>--warning</code> 琥珀作数据对比。
+        </p>
+
+        <div class="dt-geo-bridge" aria-label="与套件主色的关系">
+          <span class="dt-geo-bridge-chip" style="background: var(--blue); color: #fff">--blue</span>
+          <span class="dt-geo-bridge-arrow" aria-hidden="true">+</span>
+          <span class="dt-geo-bridge-chip" style="background: var(--purple); color: #fff">--purple</span>
+          <span class="dt-geo-bridge-arrow" aria-hidden="true">=</span>
+          <span class="dt-geo-bridge-chip dt-swatch--geo-grad" style="color: #fff; min-width: 4.5rem">--geo-grad</span>
+          <span class="dt-geo-bridge-note">主渐变与 <code>--grad</code> 同源；GEO 独立感来自布局与 SOA 叙事，而非另起色相</span>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-geo-primary">主色与渐变</h3>
+        <div class="dt-grid">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--geo-accent)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-accent</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--indigo-500</code> · Kicker · 工作流 icon。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--geo-accent-deep)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-accent-deep</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--purple-deep</code> · 线框钮字色 · 定价强调。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--geo-accent-soft)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-accent-soft</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--purple-soft</code> · 公式区 · Bento 高亮底。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background-color: var(--geo-accent-ring)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-accent-ring</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--violet-200</code> · 弱描边 · hover · 定价框。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-gradient>
+            <div class="dt-swatch dt-swatch--geo-grad"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-grad</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--grad</code> · 主 CTA · Logo · 底部转化带。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-gradient>
+            <div class="dt-swatch dt-swatch--geo-grad-hover"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-grad-hover</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--grad-hover</code> · 主按钮悬停。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-geo-scene">场景卡合成底（Hero / 浅区块）</h3>
+        <p class="dt-subsection-desc">复用对话场景卡第三条合成公式，与 <code>--orc-scene-card-bg-3</code> 同源。</p>
+        <div class="dt-grid dt-grid--dual">
+          <article class="dt-card dt-scene-card" data-dt-color>
+            <div
+              class="dt-swatch"
+              style="background: var(--geo-scene-bg); border-bottom: 1px solid var(--geo-scene-border)"
+            ></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-scene-bg</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">165° 蓝 rgba → 浅面 → <code>--bg</code>。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background: var(--geo-grad-subtle)"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-grad-subtle</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">Hero 竖向淡渐变：<code>--purple-soft</code> → <code>--blue-soft</code> → <code>--bg</code>。</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="dt-subsection-title" id="dt-geo-dual">双市场语义色</h3>
+        <p class="dt-subsection-desc">Dashboard / 平台矩阵 / 图表专用；海外套件蓝，国内琥珀对比。</p>
+        <div class="dt-grid dt-grid--dual">
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background: linear-gradient(145deg, var(--geo-overseas-soft), var(--bg))"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-overseas-*</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--blue</code> / <code>--blue-soft</code> / <code>--blue-ring</code> · 海外 SOA。</p>
+            </div>
+          </article>
+          <article class="dt-card" data-dt-color>
+            <div class="dt-swatch" style="background: linear-gradient(145deg, var(--geo-domestic-soft), var(--bg))"></div>
+            <div class="dt-card-body">
+              <span class="dt-var">--geo-domestic-*</span><span class="dt-hex"></span>
+              <p class="dt-atom-desc">= <code>--warning</code> 系 · 国内 SOA · 豆包等。</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="dt-grad-syntax" id="dt-geo-grad-syntax" aria-label="GEO 渐变变量原文"></div>
+
+        <h3 class="dt-subsection-title" id="dt-geo-samples">GEO 组件样例</h3>
+        <p class="dt-subsection-desc">营销首页与控制台预览区的典型组合。</p>
+        <div class="dt-geo-sample-stack">
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">主 CTA（<code>--geo-grad</code>）</p>
+            <div class="dt-sample-row">
+              <button type="button" class="btn dt-geo-btn-primary">免费试用 14 天</button>
+              <button type="button" class="btn dt-geo-btn-outline">了解 SOA 指标</button>
+            </div>
+          </div>
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">双市场 SOA 卡片</p>
+            <div class="dt-geo-metrics">
+              <div class="dt-geo-metric dt-geo-metric--overseas">
+                <span class="dt-geo-metric-label">海外 SOA</span>
+                <span class="dt-geo-metric-value">42%</span>
+              </div>
+              <div class="dt-geo-metric dt-geo-metric--domestic">
+                <span class="dt-geo-metric-label">国内 SOA</span>
+                <span class="dt-geo-metric-value">28%</span>
+              </div>
+            </div>
+          </div>
+          <div class="dt-sample-block">
+            <p class="dt-sample-label">Hero 背景（<code>--geo-grad-subtle</code> + 网格）</p>
+            <div class="dt-geo-hero-mock" aria-hidden="true">
+              <span class="dt-geo-hero-mock-title">用户问 AI 时，<em>你的品牌进答案了吗？</em></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="dt-section" aria-labelledby="dt-cat-surface">
         <h2 id="dt-cat-surface">背景与表面</h2>
         <p class="dt-section-desc">页面底、卡片与次级区块层级。</p>

@@ -1,10 +1,40 @@
 <script setup lang="ts">
-import { TButton } from "@trinity/ui";
+/** 营销首页静态稿：经门户 /__geo_marketing/ 同源托管 */
+import { onMounted, ref } from "vue";
+
+const frameRef = ref<HTMLIFrameElement | null>(null);
+
+function syncFrameHeight() {
+  const frame = frameRef.value;
+  if (!frame?.contentDocument?.body) return;
+  frame.style.height = `${frame.contentDocument.documentElement.scrollHeight}px`;
+}
+
+onMounted(() => {
+  const frame = frameRef.value;
+  if (!frame) return;
+  frame.addEventListener("load", () => {
+    syncFrameHeight();
+    frame.contentWindow?.addEventListener("resize", syncFrameHeight, { passive: true });
+  });
+});
 </script>
 
 <template>
-  <div class="max-w-lg rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-    <p class="mb-3 text-sm text-slate-600">GEO 产品骨架；PRD 确定后补模块说明与路由。</p>
-    <TButton>来自 @trinity/ui</TButton>
-  </div>
+  <iframe
+    ref="frameRef"
+    class="geo-marketing-frame"
+    src="/__geo_marketing/index.html"
+    title="Trinity GEO 营销首页"
+  />
 </template>
+
+<style scoped>
+.geo-marketing-frame {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  background: #fff;
+}
+</style>

@@ -114,10 +114,31 @@ export function useDesignTokensRuntime() {
     if (f) f.textContent = "computed: " + readCssVar("--font");
   }
 
+  function fillGeoGradSyntax() {
+    const box = document.getElementById("dt-geo-grad-syntax");
+    if (!box) return;
+    box.replaceChildren();
+    const p = document.createElement("p");
+    p.textContent = "以下为 GEO 渐变变量原文，便于复制到营销页。";
+    const pre = document.createElement("pre");
+    pre.textContent =
+      "--geo-grad: " +
+      (readCssVar("--geo-grad") || "（空）") +
+      "\n--geo-grad-hover: " +
+      (readCssVar("--geo-grad-hover") || "（空）") +
+      "\n--geo-grad-subtle: " +
+      (readCssVar("--geo-grad-subtle") || "（空）") +
+      "\n--geo-scene-bg: " +
+      (readCssVar("--geo-scene-bg") || "（空）");
+    box.appendChild(p);
+    box.appendChild(pre);
+  }
+
   function refreshAll() {
     fillColors();
     fillGradients();
     fillGradSyntax();
+    fillGeoGradSyntax();
     fillOrcSceneSyntax();
     fillDimensions();
     fillGlassShadow();

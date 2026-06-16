@@ -132,6 +132,26 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "GEO 产品",
+    collapsed: false,
+    items: [
+      { text: "产品总览", link: "/geo/" },
+      { text: "V1 原型页面清单", link: "/geo/v1-prototype-pages" },
+      { text: "官网首页原型", link: "/geo/prototypes/v1-homepage" },
+      { text: "产品设计分析", link: "/geo/product-design-analysis" },
+      { text: "技术架构分析", link: "/geo/tech-architecture" },
+      { text: "产品经理规范手册", link: "/geo/pm-handbook" },
+      {
+        text: "友商产品调研",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/geo/competitor-research/" },
+          { text: "Tier 1 竞品深度分析", link: "/geo/competitor-research/tier1-deep-dive" },
+        ],
+      },
+    ],
+  },
 ];
 
 export default withMermaid(
@@ -153,7 +173,7 @@ export default withMermaid(
   },
   lang: "zh-CN",
   title: "Trinity 产品手册",
-  description: "Trinity 产品能力树：AI 云、AI API 聚合产品（用户侧 / 平台侧 / 运营后台管理平台）。",
+  description: "Trinity 产品能力树：AI 云、AI API 聚合产品、GEO 产品。",
   base: BASE,
   srcDir: "./docs",
   cleanUrls: true,
@@ -184,6 +204,7 @@ export default withMermaid(
       { text: "开发者文档", link: "http://127.0.0.1:5205/docs/", target: "_blank" },
       { text: "AI 云", link: "/ai-cloud/" },
       { text: "API 聚合产品", link: "/ai-api-platform/" },
+      { text: "GEO 产品", link: "/geo/" },
     ],
     sidebar: sidebarProduct,
     footer: {

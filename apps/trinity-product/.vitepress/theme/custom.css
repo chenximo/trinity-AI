@@ -499,3 +499,41 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
 .VPDocAsideOutline .VPDocOutlineItem.nested {
   padding-left: 0.75rem;
 }
+
+/* GEO V1 原型页面清单：「核心内容」列换行展示 */
+.vp-doc .geo-v1-prototype-page-list table {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 100%;
+}
+
+.vp-doc .geo-v1-prototype-page-list table {
+  overflow-x: visible;
+}
+
+.vp-doc .geo-v1-prototype-page-list th,
+.vp-doc .geo-v1-prototype-page-list td {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+  text-align: left;
+  line-height: 1.55;
+}
+
+.vp-doc .geo-v1-prototype-page-list th:first-child,
+.vp-doc .geo-v1-prototype-page-list td:first-child {
+  width: 3.25rem;
+  text-align: center;
+}
+
+.vp-doc .geo-v1-prototype-page-list th:nth-child(2),
+.vp-doc .geo-v1-prototype-page-list td:nth-child(2) {
+  width: 8.5rem;
+}
+
+.vp-doc .geo-v1-prototype-page-list th:nth-child(4),
+.vp-doc .geo-v1-prototype-page-list td:nth-child(4) {
+  width: 3.5rem;
+  text-align: center;
+}

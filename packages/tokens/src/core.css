@@ -67,6 +67,30 @@
   --violet-100: #ede9fe;
   --violet-300: #c4b5fd;
   /*
+   * Trinity GEO 产品色 — 继承套件 --blue / --purple / --grad 与场景卡合成公式
+   * 主色与 Trinity AI 同族（蓝紫渐变）；海外 SOA 偏蓝，国内 SOA 偏琥珀（数据对比）
+   */
+  --geo-accent: var(--indigo-500);
+  --geo-accent-light: var(--indigo-400);
+  --geo-accent-soft: var(--purple-soft);
+  --geo-accent-ring: var(--violet-200);
+  --geo-accent-deep: var(--purple-deep);
+  --geo-accent-ink: var(--pill-text);
+  --geo-grad: var(--grad);
+  --geo-grad-hover: var(--grad-hover);
+  --geo-grad-subtle: linear-gradient(180deg, var(--purple-soft) 0%, var(--blue-soft) 34%, var(--bg) 58%);
+  --geo-overseas: var(--blue);
+  --geo-overseas-soft: var(--blue-soft);
+  --geo-overseas-ring: var(--blue-ring);
+  --geo-overseas-deep: var(--pill-text);
+  --geo-domestic: var(--warning);
+  --geo-domestic-soft: var(--warning-soft);
+  --geo-domestic-ring: var(--warning-ring);
+  --geo-domestic-deep: var(--warning-ink);
+  --geo-grid-line: rgba(79, 70, 229, 0.11);
+  --geo-scene-bg: var(--orc-scene-card-bg-3);
+  --geo-scene-border: var(--orc-scene-card-border-3);
+  /*
    * 浅色「整卡合成底」通用公式（对话场景卡为其一用例；换主色时把下方 RGB 换成新主色即可，不必另起一个实色 hex）：
    * ① linear-gradient(约 165deg, rgba(主色RGB, α0) 0%, rgba(中性浅面, 0.88–0.95) 约 38%–42%, var(--bg) 100%)
    *    α0 建议 0.06–0.12；多卡并列可从高到低递减。中性浅面贴近 --surface，或略染主色色相的淡面（如偏蓝的 #eff6ff 系）。

@@ -17,6 +17,7 @@ useDesignTokensRuntime();
 
 const toc = [
   { id: "dt-cat-brand", label: "品牌与主色" },
+  { id: "dt-cat-geo", label: "Trinity GEO 主色" },
   { id: "dt-cat-surface", label: "背景与表面" },
   { id: "dt-cat-scene-cards", label: "对话场景卡合成底" },
   { id: "dt-cat-text", label: "文字色阶" },
