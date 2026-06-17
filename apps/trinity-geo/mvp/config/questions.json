@@ -1,0 +1,72 @@
+{
+  "platform": "doubao",
+  "collection_channel": "doubao-app-manual + trinity-api",
+  "questions": [
+    {
+      "id": "Q00",
+      "type": "品类词",
+      "text": "推荐两款 API 聚合平台",
+      "note": "用户原问题 · 豆包 App 实测基准"
+    },
+    {
+      "id": "Q01",
+      "type": "品牌词",
+      "text": "Trinity AI 好用吗？适合什么场景？"
+    },
+    {
+      "id": "Q02",
+      "type": "品牌词",
+      "text": "trinitydesk.ai 是什么平台？"
+    },
+    {
+      "id": "Q03",
+      "type": "品类词",
+      "text": "国内有哪些 OpenAI 兼容的大模型 API 聚合平台？"
+    },
+    {
+      "id": "Q04",
+      "type": "品类词",
+      "text": "想一个 Key 调用多家大模型，有什么推荐？"
+    },
+    {
+      "id": "Q05",
+      "type": "品类词",
+      "text": "开发者怎么统一管理多个 LLM API？"
+    },
+    {
+      "id": "Q06",
+      "type": "对比词",
+      "text": "Trinity 和 OpenRouter 哪个更适合国内开发者？"
+    },
+    {
+      "id": "Q07",
+      "type": "对比词",
+      "text": "trinitydesk 和其他 API 中转平台比有什么优势？"
+    },
+    {
+      "id": "Q08",
+      "type": "场景词",
+      "text": "我在做 AI 应用，怎么降低多模型接入成本？"
+    },
+    {
+      "id": "Q09",
+      "type": "场景词",
+      "text": "Cursor 怎么配置第三方 API 网关？"
+    },
+    {
+      "id": "Q10",
+      "type": "场景词",
+      "text": "团队想统一计费、统一看用量，选什么平台？"
+    },
+    {
+      "id": "Q11",
+      "type": "品类词",
+      "text": "豆包模型 API 哪里调用比较方便？"
+    },
+    {
+      "id": "Q12",
+      "type": "对比词",
+      "text": "直连火山引擎和走聚合平台调用豆包，怎么选？"
+    }
+  ]
+}

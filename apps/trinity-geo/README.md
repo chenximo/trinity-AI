@@ -4,15 +4,36 @@
 
 ## 本地预览
 
-**门户（推荐）**：根目录 `npm run dev` → [http://localhost:5173/trinity-geo](http://localhost:5173/trinity-geo)
-
-**静态直出**（须在**仓库根目录**启动，以便加载 `packages/tokens`）：
+**MVP 演示系统（完整六环）**：
 
 ```bash
-cd /path/to/trinity-AI && python3 -m http.server 5210
+cd apps/trinity-geo && bun run dev
 ```
 
-→ [http://127.0.0.1:5210/apps/trinity-geo/index.html](http://127.0.0.1:5210/apps/trinity-geo/index.html)
+→ [http://127.0.0.1:5203/demo](http://127.0.0.1:5203/demo) · 门户 [http://localhost:5173/trinity-geo/demo](http://localhost:5173/trinity-geo/demo)
+
+**营销首页**：`/` 或门户 `/trinity-geo`
+
+**控制台（HTML 原型）**：
+
+| 页面 | 预览 | 解读 |
+|------|------|------|
+| 可见性总览 | [dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html) | [dashboard.md](marketing/console/dashboard.md) |
+| 品牌设置 | [brand-settings.html](http://127.0.0.1:5203/__geo_marketing/console/brand-settings.html) | [brand-settings.md](marketing/console/brand-settings.md) |
+| 问题集管理 | [keywords.html](http://127.0.0.1:5203/__geo_marketing/console/keywords.html) | [keywords.md](marketing/console/keywords.md) |
+| 竞品管理 | [competitors-manage.html](http://127.0.0.1:5203/__geo_marketing/console/competitors-manage.html) | [competitors-manage.md](marketing/console/competitors-manage.md) |
+| 竞品概览 | [competitors.html](http://127.0.0.1:5203/__geo_marketing/console/competitors.html) | [competitors.md](marketing/console/competitors.md) |
+| 竞品详情（OpenRouter） | [competitor-detail.html](http://127.0.0.1:5203/__geo_marketing/console/competitor-detail.html) | [competitor-detail.md](marketing/console/competitor-detail.md) |
+| 诊断列表 | [diagnosis.html](http://127.0.0.1:5203/__geo_marketing/console/diagnosis.html) | [diagnosis.md](marketing/console/diagnosis.md) |
+| 优化待办 | [optimize.html](http://127.0.0.1:5203/__geo_marketing/console/optimize.html) | [optimize.md](marketing/console/optimize.md) |
+| CCR 样本（Q01·ChatGPT） | [answer-detail-brand.html](http://127.0.0.1:5203/__geo_marketing/console/answer-detail-brand.html) | — |
+| 监测概览 | [monitoring.html](http://127.0.0.1:5203/__geo_marketing/console/monitoring.html) | [monitoring.md](marketing/console/monitoring.md) |
+| 关键词详情（Q00） | [keyword-detail.html](http://127.0.0.1:5203/__geo_marketing/console/keyword-detail.html) | [keyword-detail.md](marketing/console/keyword-detail.md) |
+| AI 回答详情（Q00·豆包） | [answer-detail.html](http://127.0.0.1:5203/__geo_marketing/console/answer-detail.html) | [answer-detail.md](marketing/console/answer-detail.md) |
+
+**静态直出**（仓库根目录 `python3 -m http.server 5210`）：
+
+→ [http://127.0.0.1:5210/apps/trinity-geo/marketing/index.html](http://127.0.0.1:5210/apps/trinity-geo/marketing/index.html)
 
 ## 与 Trinity AI 聚合首页的差异
 

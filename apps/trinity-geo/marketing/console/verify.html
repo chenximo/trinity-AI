@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 效果验证（⑥ R1 → R2） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>效果验证 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">◎</span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./monitoring.html">监测</a>
+          <a href="./competitors.html">竞品</a>
+          <a href="./diagnosis.html">诊断</a>
+          <a href="./optimize.html" class="is-active">优化</a>
+          <a href="#">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user"><span class="geo-console-brand">Trinity AI</span></div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="优化子导航">
+          <p class="geo-settings-sidebar-title">优化</p>
+          <nav class="geo-settings-nav">
+            <a href="./optimize.html">优化待办</a>
+            <a href="./verify.html" class="is-active" aria-current="page">效果验证</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">⑥ 验证</p>
+              <h1>效果验证</h1>
+              <p class="dash-toolbar-meta">
+                对比优化前后采集轮次 · <strong>先看信源盘 Δ，再看 SOA Δ</strong>
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./optimize.html" class="geo-btn ghost">返回待办</a>
+              <button type="button" class="geo-btn primary" disabled title="商用：触发 R2 全量采集">触发 R2 采集</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>验收顺序：</strong>信源盘我方域命中往往<strong>早于</strong>正文 SOA 变化。Q00 样本展示「先进盘、后进答案」。
+            样本数据 <code>mvp/data/r2/verify.json</code>
+            · <a href="./verify.md">单页 PRD →</a>
+          </div>
+
+          <div class="dash-kpi-row geo-mon-kpi">
+            <div class="geo-metric-card primary">
+              <div class="geo-metric-label">待验证任务</div>
+              <div class="geo-metric-value">2</div>
+              <div class="geo-metric-delta">含 Q00 opt-s1s2</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">信源盘已改善</div>
+              <div class="geo-metric-value">1</div>
+              <div class="geo-metric-delta">Q00 · 0→1 我方域</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">SOA 已改善</div>
+              <div class="geo-metric-value">0</div>
+              <div class="geo-metric-delta">品类词仍待下一轮</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">R2 最近采集</div>
+              <div class="geo-metric-value" style="font-size: 1rem">6/20</div>
+              <div class="geo-metric-delta">豆包 · Q00</div>
+            </div>
+          </div>
+
+          <section class="geo-settings-card geo-verify-card" aria-labelledby="verify-q00-heading" id="verify-q00">
+            <div class="geo-settings-card-head">
+              <div>
+                <h2 id="verify-q00-heading">Q00 · 推荐两款 API 聚合平台 · 豆包</h2>
+                <p class="geo-settings-card-desc">
+                  关联动作 <a href="./optimize.html#opt-s1s2">opt-s1s2</a> · R1 2026-06-16 → R2 2026-06-20
+                </p>
+              </div>
+              <span class="geo-verify-badge partial">部分改善</span>
+            </div>
+
+            <p class="geo-verify-verdict">
+              <strong>结论：</strong>信源盘先行改善（S1 部分缓解，我方域 0→1）；正文 SOA 仍为 0%，符合「先进盘、后进答案」预期。缺口 S2、S3 仍在。
+            </p>
+
+            <div class="geo-verify-metrics">
+              <div class="dash-verify-compare geo-verify-metric primary">
+                <div class="dash-verify-round">
+                  <div class="label">R1 信源盘 · 我方域</div>
+                  <div class="val bad">0/16</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 信源盘 · 我方域</div>
+                  <div class="val ok">1/17</div>
+                </div>
+                <span class="dash-verify-delta">↑ 先进盘</span>
+              </div>
+
+              <div class="dash-verify-compare geo-verify-metric">
+                <div class="dash-verify-round">
+                  <div class="label">R1 SOA</div>
+                  <div class="val bad">0%</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 SOA</div>
+                  <div class="val bad">0%</div>
+                </div>
+                <span class="dash-verify-delta flat">— 未变</span>
+              </div>
+
+              <div class="dash-verify-compare geo-verify-metric">
+                <div class="dash-verify-round">
+                  <div class="label">R1 缺口</div>
+                  <div class="val" style="font-size: 0.875rem">S1+S2+S3</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 缺口</div>
+                  <div class="val" style="font-size: 0.875rem">S2+S3</div>
+                </div>
+                <span class="dash-verify-delta">S1 缓解</span>
+              </div>
+            </div>
+
+            <div class="geo-verify-added">
+              <h3>R2 新增我方参考链</h3>
+              <ul class="geo-cite-list">
+                <li>
+                  <a href="https://doc.trinitydesk.ai/docs/api-aggregation" rel="noopener noreferrer" target="_blank">doc.trinitydesk.ai/docs/api-aggregation</a>
+                  — Trinity Desk · 大模型 API 聚合选型指南
+                  <span class="geo-verify-new">R2 新增</span>
+                </li>
+              </ul>
+              <p class="geo-form-hint">
+                R1 基线 <a href="./answer-detail.html#cite-heading">16 链全表</a>
+                · R2 数据 <code>mvp/data/r2/cited_sources.json</code>
+              </p>
+            </div>
+
+            <div class="geo-verify-links">
+              <a href="./answer-detail.html#cite-heading" class="geo-btn ghost sm">R1 回答与信源</a>
+              <a href="./diagnosis.html#diag-q00" class="geo-btn ghost sm">诊断</a>
+              <a href="./optimize.html#opt-s3" class="geo-btn ghost sm">继续 S3 评测渗透</a>
+            </div>
+          </section>
+
+          <section class="geo-settings-card compact muted" aria-labelledby="verify-rules-heading">
+            <h2 id="verify-rules-heading">验证规则速查</h2>
+            <div class="geo-kw-table-wrap">
+              <table class="geo-kw-table">
+                <thead>
+                  <tr>
+                    <th>指标</th>
+                    <th>含义</th>
+                    <th>通常先后顺序</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>信源盘 Δ</td><td>我方域 M/N 是否增加</td><td>① 往往最先变化</td></tr>
+                  <tr><td>CCR Δ</td><td>是否被当作依据引用</td><td>② 与信源盘接近</td></tr>
+                  <tr><td>SOA Δ</td><td>是否进答案正文推荐</td><td>③ 可能滞后数轮</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="geo-form-hint">框架见 <a href="../../../trinity-product/docs/geo/product-design-analysis.md#visibility-layers">产品设计 §0.6 ⑤ 验证层</a></p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

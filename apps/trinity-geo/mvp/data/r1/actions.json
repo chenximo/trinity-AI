@@ -1,0 +1,12 @@
+[
+  {
+    "action_id": "A-D1",
+    "diagnosis_id": "D1",
+    "title": "品类失声：补充选型/对比证据页",
+    "detail": "在 doc.trinitydesk.ai 增加「API 聚合平台选型」FAQ：首段定义 + 3 条可验证事实 + 与 OpenRouter / 企业级方案对比表，明确 Trinity 适用场景。",
+    "status": "待办",
+    "linked_questions": [
+      "Q00"
+    ]
+  }
+]

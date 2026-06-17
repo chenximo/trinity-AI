@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 监测概览（② 采集状态） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>监测概览 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="2" fill="currentColor" />
+              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+            </svg>
+          </span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./monitoring.html" class="is-active">监测</a>
+          <a href="./competitors.html">竞品</a>
+          <a href="./diagnosis.html">诊断</a>
+          <a href="./optimize.html">优化</a>
+          <a href="#">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="#" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="监测子导航">
+          <p class="geo-settings-sidebar-title">监测</p>
+          <nav class="geo-settings-nav">
+            <a href="./monitoring.html" class="is-active" aria-current="page">监测概览</a>
+            <a href="./keywords.html">问题集管理</a>
+            <a href="#" title="采集日志 · 后续">采集日志</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">② 监测采集</p>
+              <h1>监测概览</h1>
+              <p class="dash-toolbar-meta">10 平台每日采集状态 · 非 SOA 报表（测量见总览与各下钻页）</p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./keywords.html" class="geo-btn ghost">管理问题集</a>
+              <button type="button" class="geo-btn primary" id="mon-refresh-btn">立即刷新状态</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>运维视角：</strong>看采集是否成功、数据是否新鲜。SOA 与竞品对比请去
+            <a href="./dashboard.html">可见性总览</a> 或 <a href="./keyword-detail.html">关键词详情</a>。
+            <a href="./monitoring.md">单页 PRD →</a>
+          </div>
+
+          <div class="dash-kpi-row geo-mon-kpi">
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">启用问题</div>
+              <div class="geo-metric-value">10</div>
+              <div class="geo-metric-delta"><a href="./keywords.html">问题集 →</a></div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">今日采集</div>
+              <div class="geo-metric-value">100</div>
+              <div class="geo-metric-delta">10 题 × 10 平台</div>
+            </div>
+            <div class="geo-metric-card primary">
+              <div class="geo-metric-label">成功率</div>
+              <div class="geo-metric-value">98%</div>
+              <div class="geo-metric-delta up">2 条失败</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">最近全量</div>
+              <div class="geo-metric-value" style="font-size: 1rem">今日 09:12</div>
+              <div class="geo-metric-delta">下次 明日 06:00</div>
+            </div>
+          </div>
+
+          <section class="geo-settings-card" aria-labelledby="mon-platform-heading">
+            <div class="geo-settings-card-head">
+              <div>
+                <h2 id="mon-platform-heading">10 平台采集状态</h2>
+                <p class="geo-settings-card-desc"><span class="dash-fresh today"></span> 绿 = 今日已采 · <span class="dash-fresh stale"></span> 黄 = 逾 24h · <span class="dash-fresh fail"></span> 红 = 失败</p>
+              </div>
+              <div class="dash-tabs" role="tablist">
+                <button type="button" class="on" data-mon-market="all">全部</button>
+                <button type="button" data-mon-market="overseas">海外</button>
+                <button type="button" data-mon-market="domestic">国内</button>
+              </div>
+            </div>
+            <div class="geo-mon-platform-grid" id="mon-platform-grid">
+              <article class="geo-mon-platform-card overseas" data-market="overseas">
+                <header><span class="dash-fresh today"></span><strong>ChatGPT</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:10</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card overseas" data-market="overseas">
+                <header><span class="dash-fresh today"></span><strong>Gemini</strong><span class="geo-mon-status warn">延迟</span></header>
+                <dl><div><dt>最近采集</dt><dd>昨日 22:40</dd></div><div><dt>今日</dt><dd>8/10</dd></div><div><dt>失败</dt><dd>2</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card overseas" data-market="overseas">
+                <header><span class="dash-fresh today"></span><strong>Claude</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:08</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card overseas" data-market="overseas">
+                <header><span class="dash-fresh today"></span><strong>Perplexity</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:05</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card overseas" data-market="overseas">
+                <header><span class="dash-fresh today"></span><strong>Copilot</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:06</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card domestic" data-market="domestic">
+                <header><span class="dash-fresh today"></span><strong>豆包</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:12</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card domestic" data-market="domestic">
+                <header><span class="dash-fresh today"></span><strong>DeepSeek</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:11</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card domestic" data-market="domestic">
+                <header><span class="dash-fresh stale"></span><strong>通义千问</strong><span class="geo-mon-status warn">延迟</span></header>
+                <dl><div><dt>最近采集</dt><dd>昨日 18:20</dd></div><div><dt>今日</dt><dd>9/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card domestic" data-market="domestic">
+                <header><span class="dash-fresh today"></span><strong>文心一言</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:09</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+              <article class="geo-mon-platform-card domestic" data-market="domestic">
+                <header><span class="dash-fresh today"></span><strong>Kimi</strong><span class="geo-mon-status ok">正常</span></header>
+                <dl><div><dt>最近采集</dt><dd>今日 09:07</dd></div><div><dt>今日</dt><dd>10/10</dd></div><div><dt>失败</dt><dd>0</dd></div></dl>
+              </article>
+            </div>
+          </section>
+
+          <div class="dash-split">
+            <section class="dash-card" aria-labelledby="mon-fail-heading">
+              <div class="dash-card-head"><h2 id="mon-fail-heading">最近失败</h2></div>
+              <div class="dash-card-body" style="padding: 0">
+                <table class="geo-kw-table">
+                  <thead><tr><th>时间</th><th>平台</th><th>问题</th><th>原因</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td class="mono">09:02</td>
+                      <td>Gemini</td>
+                      <td><a href="./keyword-detail.html">Q03 国内 OpenAI 兼容…</a></td>
+                      <td class="geo-muted">429 限流</td>
+                    </tr>
+                    <tr>
+                      <td class="mono">08:58</td>
+                      <td>Gemini</td>
+                      <td><a href="./keyword-detail.html">Q00 推荐两款 API…</a></td>
+                      <td class="geo-muted">超时</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section class="dash-card" aria-labelledby="mon-recent-heading">
+              <div class="dash-card-head">
+                <h2 id="mon-recent-heading">最新入库回答</h2>
+                <a href="./keyword-detail.html" style="font-size:0.8125rem;color:var(--indigo-500)">Q00 详情 →</a>
+              </div>
+              <div class="dash-card-body">
+                <div class="dash-answer-list">
+                  <article class="dash-answer-item">
+                    <div class="dash-answer-main">
+                      <a href="./answer-detail.html" class="dash-answer-kw">推荐两款 API 聚合平台</a>
+                      <p class="dash-answer-snippet"><span class="platform p-domestic">豆包</span> OpenRouter · TokenHub…</p>
+                    </div>
+                    <div class="dash-answer-meta"><span class="dash-badge miss">未进答案</span></div>
+                  </article>
+                  <article class="dash-answer-item">
+                    <div class="dash-answer-main">
+                      <a href="./answer-detail.html?q=Q01" class="dash-answer-kw">Trinity AI 好用吗？</a>
+                      <p class="dash-answer-snippet"><span class="platform p-domestic">豆包</span> Trinity AI 进正文</p>
+                    </div>
+                    <div class="dash-answer-meta"><span class="dash-badge ok">进答案</span></div>
+                  </article>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="geo-toast" id="geo-toast" role="status" hidden></div>
+    <script src="../js/monitoring.js"></script>
+  </body>
+</html>

@@ -5,7 +5,7 @@ title: 官网首页 · 原型规格
 # 官网首页 · V1 原型规格
 
 > **页面**：官网 P0 · 首页（`/）  
-> **上级清单**：[V1 原型页面清单 · 官网](../v1-prototype-pages#一官网约-8-页)  
+> **上级清单**：[原型页面清单 · 官网](../v1-prototype-pages#一官网约-8-页)  
 > **战略对齐**：[产品设计分析 §0](../product-design-analysis#product-scope)  
 > **用途**：Figma / **HTML 静态稿** 的逐块规格。  
 > **视觉原则**：**独立 GEO 视觉**——青蓝 Cyan 主色（比旧 Teal 更协调）、左文案右 Dashboard、Hero/区块背景网格线、SOA 营销叙事；**禁止**复用 `trinity-ai/home.css` 居中 Hero / fcard 布局。  
@@ -18,7 +18,7 @@ title: 官网首页 · 原型规格
 | 优先级 | P0 |
 | 目标用户 | 出海品牌的内容 / SEO / 营销负责人 |
 | 核心转化 | **开始 14 天免费试用** → `/signup` |
-| 次要转化 | 查看定价 `/pricing` · 了解功能 `/features` |
+| 次要转化 | `#pricing` 锚点 · 登录/试用 → **`TrinityAuthModal`** |
 | 产品名 | **Trinity GEO**（Trinity 套件：AI 云 · Trinity AI · GEO） |
 | 设计系统 | 独立 `geo-*` class；Token 来自 `packages/tokens`；**不用** trinity-ai 营销组件 |
 
@@ -26,7 +26,7 @@ title: 官网首页 · 原型规格
 
 **官网 HTML 禁止出现**（属 PRD / 原型 / 手册用语，仅对内）：
 
-- 版本号：`V1`、`V1.5`、`MVP` 等
+- 对内路线图：用 **P0/P1/P2** 表达实现先后；避免在客户可见页写「V1.5 才有」类表述
 - 内部表述：`三角能力`、`能验收、能定价`、`不做未验证的重功能`、`Tier 1`（调研分级）
 - 路线图细节：`CCR`、`信源页面分析在 x.x 规划` 等未商用能力的时间表
 
@@ -86,7 +86,7 @@ L. geo-footer · 深色底；套件链接页脚 + 顶栏（小字，非主导）
 |----|------|
 | 品牌 | Trinity GEO + 一句话副标题 |
 | 产品 | 功能、平台、定价、竞品对比、企业版 |
-| 公司 | 关于、为什么选择、联系、隐私、条款 |
+| 公司 | 联系（mailto）、隐私、条款 → **`/legal/privacy`** · **`/legal/terms`**（套件公共页，见 `packages/ui/src/legal/`） |
 | **Trinity 套件** | Trinity AI 模型聚合 · AI 云算力 · GEO 产品手册 |
 | 资源 | FAQ、帮助、博客 |
 
@@ -107,8 +107,9 @@ L. geo-footer · 深色底；套件链接页脚 + 顶栏（小字，非主导）
 | **H1 渐变行** | ChatGPT 与豆包 · 同屏 SOA（`.line2` + `--grad`） |
 | **Pill** | 面向出海品牌的 GEO 平台（`.hero-pill`） |
 | 副标题 | 监测海外 5 + 国内 5 共 10 个 AI 平台，用 SOA 答案份额与竞品对比，回答「用户提问时，你的品牌有没有进答案」。 |
-| 主 CTA | **免费试用 14 天** → `/signup` |
-| 次 CTA | 查看定价 → `/pricing` |
+| 主 CTA | **免费试用 14 天** → 打开 `TrinityAuthModal`（`signup`） |
+| 次 CTA | 查看定价 → `#pricing`（同页锚点） |
+| 登录 | 顶栏 → `TrinityAuthModal`（`signin`） |
 | CTA 附注 | 全功能专业版 · 无需信用卡（若商用确认需要卡则改文案） |
 
 **右栏视觉 `hero-visual`**
@@ -363,7 +364,7 @@ apps/trinity-geo/
 - [ ] 5 秒内能读懂「双市场 + SOA + 10 平台」  
 - [ ] 首屏可见主 CTA「免费试用 14 天」  
 - [ ] Hero 视觉体现 ChatGPT + 豆包同屏（非 generic AI 图）  
-- [ ] 三能力与 [V1 能力三角](../v1-prototype-pages#align-product-scope) 一致，无审计/优化承诺  
+- [ ] 三能力与 [产品定位摘要](../v1-prototype-pages#product-scope) 一致；首页可简写获客叙事，完整六环以控制台为准  
 - [ ] 定价口径：$79/月 + 14 天试用，与定价页一致  
 - [ ] 移动端无横向溢出；顶栏 CTA 可达  
 - [ ] Lighthouse 可访问性 ≥ 90（HTML 阶段）

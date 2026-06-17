@@ -1,0 +1,25 @@
+[
+  {
+    "question_id": "Q00",
+    "question_text": "推荐两款 API 聚合平台",
+    "question_type": "品类词",
+    "platform": "doubao",
+    "collection_channel": "doubao-app-manual",
+    "diagnosis_ids": [
+      "D1"
+    ],
+    "gap_ids": ["S1", "S2", "S3"],
+    "priority": "P0",
+    "evidence": "未提及 Trinity；16 条参考链接（竞品官方 11 + 第三方评测 5）无我方域",
+    "brand_mentioned": "N",
+    "in_answer_body": "N",
+    "competitors": [
+      "openrouter",
+      "tokenhub",
+      "litellm",
+      "oneapi",
+      "siliconflow",
+      "portkey"
+    ]
+  }
+]

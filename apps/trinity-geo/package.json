@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "vite --port 5203",
     "build": "vite build",
-    "preview": "vite preview --port 5203"
+    "preview": "vite preview --port 5203",
+    "geo:import": "node mvp/scripts/import-manual.mjs",
+    "geo:collect": "node mvp/scripts/collect.mjs",
+    "geo:analyze": "node mvp/scripts/analyze.mjs"
   },
   "dependencies": {
     "@trinity/tokens": "*",

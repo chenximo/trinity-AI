@@ -1,0 +1,43 @@
+{
+  "brand_id": "trinity",
+  "primary_name": "Trinity AI",
+  "product_url": "https://trinitydesk.ai/",
+  "doc_url": "https://doc.trinitydesk.ai/",
+  "tagline": "一个 API 接入百余款大模型",
+  "aliases": [
+    "Trinity",
+    "Trinity AI",
+    "Trinity Desk",
+    "trinitydesk",
+    "trinitydesk.ai",
+    "Trinitydesk",
+    "Trinity 聚合",
+    "Trinity API"
+  ],
+  "competitors": [
+    {
+      "id": "openrouter",
+      "names": ["OpenRouter", "openrouter", "openrouter.ai"]
+    },
+    {
+      "id": "tokenhub",
+      "names": ["TokenHub", "腾讯云TokenHub", "腾讯云 TokenHub", "腾讯 TokenHub"]
+    },
+    {
+      "id": "litellm",
+      "names": ["LiteLLM", "litellm"]
+    },
+    {
+      "id": "oneapi",
+      "names": ["One API", "OneAPI", "one-api", "new-api"]
+    },
+    {
+      "id": "siliconflow",
+      "names": ["硅基流动", "SiliconFlow", "siliconflow"]
+    },
+    {
+      "id": "portkey",
+      "names": ["Portkey", "portkey"]
+    }
+  ]
+}

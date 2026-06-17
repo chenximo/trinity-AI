@@ -1,0 +1,131 @@
+[
+  {
+    "question_id": "Q00",
+    "question_text": "推荐两款 API 聚合平台",
+    "platform": "doubao",
+    "round": "R1",
+    "collection_channel": "doubao-app-manual",
+    "collected_at": "2026-06-16T08:46:25.752Z",
+    "source_note": "豆包 App 实测 · 回答含「官方权威文件链接」与「第三方参考链接」全表",
+    "citation_extractable": true,
+    "brand_domain_hits": 0,
+    "total_cited_urls": 16,
+    "cited_by_category": {
+      "competitor_official": 11,
+      "third_party_review": 5,
+      "brand_official": 0
+    },
+    "diagnosis_ids": ["D1"],
+    "gap_ids": ["S1", "S2", "S3"],
+    "gap_summary": "16 条参考链接均为竞品官方文档或第三方评测，无 trinitydesk.ai / doc.trinitydesk.ai",
+    "cited_urls": [
+      {
+        "url": "https://openrouter.ai/",
+        "label": "OpenRouter 官网首页",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://openrouter.ai/enterprise",
+        "label": "OpenRouter 企业版能力介绍",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://openrouter.ai/docs/",
+        "label": "OpenRouter 官方开发文档",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://openrouter.ai/models",
+        "label": "OpenRouter 模型列表",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://openrouter.ai/api",
+        "label": "OpenRouter API 调用接口文档",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://openrouter.ai/terms",
+        "label": "OpenRouter 平台服务条款",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://cloud.tencent.com.cn/product/tokenhub",
+        "label": "腾讯云 TokenHub 产品介绍主页",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://cloud.tencent.cn/document/product/1823",
+        "label": "TokenHub 产品官方文档中心",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://console.cloud.tencent.com/tokenhub/",
+        "label": "TokenHub 控制台入口",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://cloud.tencent.cn/document/product/1823/130660",
+        "label": "TokenHub OpenAI 兼容接口调用指南",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://cloud.tencent.com/developer/article/2675028",
+        "label": "腾讯云开发者社区深度解析",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://segmentfault.com/a/1190000047675459",
+        "label": "SegmentFault 2026 七大聚合平台实测对比",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      },
+      {
+        "url": "https://tech.ifeng.com/c/8rNIr0ld4HY",
+        "label": "凤凰网科技 2026 全球 API 聚合服务商深度评测",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      },
+      {
+        "url": "https://segmentfault.com/a/1190000047770975",
+        "label": "SegmentFault 九大 API 聚合平台横向排名",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      },
+      {
+        "url": "http://caijing.iqilu.com/cjzx/2026/0603/5919150.shtml",
+        "label": "齐鲁网财经 2026 API 聚合平台选型指南",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      },
+      {
+        "url": "https://blog.csdn.net/2601_96269683/article/details/162058087",
+        "label": "CSDN 企业级 API 中转平台实测对比",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      }
+    ]
+  }
+]

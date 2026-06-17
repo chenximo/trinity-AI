@@ -1,0 +1,31 @@
+[
+  {
+    "question_id": "Q00",
+    "question_text": "推荐两款 API 聚合平台",
+    "platform": "doubao",
+    "linked_action_id": "opt-s1s2",
+    "linked_action_title": "D1 · S1+S2 · doc 建「API 聚合选型」官方文档树",
+    "r1_round": "R1",
+    "r2_round": "R2",
+    "r1_collected_at": "2026-06-16T08:46:25.752Z",
+    "r2_collected_at": "2026-06-20T09:15:00.000Z",
+    "r2_trigger": "opt-s1s2 文档树上线后手工补采",
+    "metrics": {
+      "brand_domain_hits": { "r1": 0, "r2": 1 },
+      "total_cited_urls": { "r1": 16, "r2": 17 },
+      "soa_pct": { "r1": 0, "r2": 0 },
+      "ccr": { "r1": false, "r2": false },
+      "in_answer_body": { "r1": false, "r2": false }
+    },
+    "gap_ids_r1": ["S1", "S2", "S3"],
+    "gap_ids_r2": ["S2", "S3"],
+    "verdict": "partial",
+    "verdict_summary": "信源盘先行改善（S1 部分缓解）；正文 SOA 仍为 0%，符合「先进盘、后进答案」预期",
+    "brand_urls_added_r2": [
+      {
+        "url": "https://doc.trinitydesk.ai/docs/api-aggregation",
+        "label": "Trinity Desk · 大模型 API 聚合选型指南"
+      }
+    ]
+  }
+]

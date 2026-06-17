@@ -1,0 +1,58 @@
+[
+  {
+    "question_id": "Q00",
+    "question_text": "推荐两款 API 聚合平台",
+    "platform": "doubao",
+    "round": "R2",
+    "collection_channel": "doubao-app-manual",
+    "collected_at": "2026-06-20T09:15:00.000Z",
+    "source_note": "R2 补采 · opt-s1s2 文档树上线后；回答参考盘新增我方官方文档 1 链",
+    "citation_extractable": true,
+    "brand_domain_hits": 1,
+    "total_cited_urls": 17,
+    "cited_by_category": {
+      "competitor_official": 11,
+      "third_party_review": 5,
+      "brand_official": 1
+    },
+    "diagnosis_ids": ["D1"],
+    "gap_ids": ["S2", "S3"],
+    "gap_summary": "我方 doc 已进入参考盘；竞品官方与第三方评测仍占多数，正文仍未提及 Trinity",
+    "linked_action_id": "opt-s1s2",
+    "delta_from_r1": {
+      "brand_domain_hits": "+1",
+      "total_cited_urls": "+1",
+      "resolved_gaps": ["S1"]
+    },
+    "cited_urls": [
+      {
+        "url": "https://openrouter.ai/docs/",
+        "label": "OpenRouter 官方开发文档",
+        "category": "competitor_official",
+        "entity_id": "openrouter",
+        "section": "推荐1·官方权威文件链接"
+      },
+      {
+        "url": "https://cloud.tencent.cn/document/product/1823",
+        "label": "TokenHub 产品官方文档中心",
+        "category": "competitor_official",
+        "entity_id": "tokenhub",
+        "section": "推荐2·官方权威文件链接"
+      },
+      {
+        "url": "https://doc.trinitydesk.ai/docs/api-aggregation",
+        "label": "Trinity Desk · 大模型 API 聚合选型指南",
+        "category": "brand_official",
+        "section": "补充参考链接",
+        "is_new_in_r2": true
+      },
+      {
+        "url": "https://segmentfault.com/a/1190000047675459",
+        "label": "SegmentFault 2026 七大聚合平台实测对比",
+        "category": "third_party_review",
+        "section": "行业评测依据"
+      }
+    ],
+    "cited_urls_note": "原型仅列 R2 变化相关链；完整 17 链见 R1 基线 + 上方新增我方链"
+  }
+]

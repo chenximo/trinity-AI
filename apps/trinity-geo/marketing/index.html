@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<!-- Trinity GEO 营销首页 · v1.1（默认入口）· v1 归档见 prototypes/v1/index.html -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="同时监测全球与中国 10 个 AI 平台，SOA 答案份额、竞品对比与基础情感分析。14 天免费试用，$79/月起。"
+    />
+    <title>Trinity GEO — 全球与中国 AI 平台 GEO 监测 | ChatGPT 与豆包 SOA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body class="geo-site">
+    <a class="skip" href="#main">跳转至正文</a>
+
+    <header class="geo-header">
+      <div class="geo-container geo-header-inner">
+        <div class="geo-logo-group">
+          <a href="./" class="geo-logo">
+            <span class="geo-logo-mark" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+              </svg>
+            </span>
+            Trinity GEO
+            <span class="geo-logo-tag">可见性</span>
+          </a>
+          <div class="geo-suite-links" aria-label="Trinity 套件">
+            <a href="/ai-cloud" class="geo-suite-link">AI 云</a>
+            <a href="/trinity-ai" class="geo-suite-link">Trinity AI</a>
+          </div>
+        </div>
+        <nav class="geo-nav" aria-label="主导航">
+          <a href="#soa" class="is-active">SOA 是什么</a>
+          <a href="#platforms">平台覆盖</a>
+          <a href="#features">产品能力</a>
+          <a href="#compare">为何选我们</a>
+          <a href="#pricing">定价</a>
+        </nav>
+        <div class="geo-header-actions">
+          <a href="#login" class="geo-btn geo-btn-ghost">登录</a>
+          <a href="#trial" class="geo-btn geo-btn-primary">开始试用</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero: 左文案 + 右 Dashboard，非居中 API 风 -->
+      <section class="geo-hero geo-band" id="hero">
+        <div class="geo-container geo-hero-grid">
+          <div class="geo-hero-copy">
+            <div class="geo-eyebrow">
+              <span class="geo-eyebrow-line"></span>
+              面向出海品牌的 GEO 平台
+            </div>
+            <h1>主流 AI 答案，一站监测<br /><em>ChatGPT 与豆包 · 同屏 SOA</em></h1>
+            <p class="geo-hero-lead">
+              监测全球 5 + 中国 5 共 10 个 AI 平台，用 SOA 答案份额、竞品对比与基础情感分析，回答「用户提问时，你的品牌有没有进答案」。
+            </p>
+            <div class="geo-hero-cta">
+              <a href="#trial" class="geo-btn geo-btn-primary">免费试用 14 天</a>
+              <a href="#pricing" class="geo-btn geo-btn-outline">查看定价</a>
+            </div>
+            <p class="geo-hero-note">全功能专业版 · 10 平台全开 · 约 5 分钟见首批数据</p>
+          </div>
+
+          <div class="geo-dashboard" aria-label="控制台预览">
+            <div class="geo-dashboard-bar">
+              <span>示例品牌 · 本周概览</span>
+              <div class="geo-dashboard-tabs">
+                <span class="on">全部</span>
+                <span>全球</span>
+                <span>中国</span>
+              </div>
+            </div>
+            <div class="geo-dashboard-body">
+              <div class="geo-dash-metrics">
+                <div class="geo-metric-card overseas">
+                  <div class="geo-metric-label">全球 SOA</div>
+                  <div class="geo-metric-value">42%</div>
+                  <div class="geo-metric-delta up">↑ 6% 较上周</div>
+                </div>
+                <div class="geo-metric-card domestic">
+                  <div class="geo-metric-label">中国 SOA</div>
+                  <div class="geo-metric-value">28%</div>
+                  <div class="geo-metric-delta down">↓ 3% 较上周</div>
+                </div>
+              </div>
+              <div class="geo-dash-chart" aria-hidden="true">
+                <svg viewBox="0 0 400 60" preserveAspectRatio="none">
+                  <polyline
+                    points="0,45 40,42 80,38 120,35 160,30 200,28 240,22 280,20 320,18 360,15 400,12"
+                    fill="none"
+                    stroke="#2563eb"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  />
+                  <polyline
+                    points="0,50 40,48 80,46 120,44 160,42 200,40 240,38 280,36 320,34 360,32 400,30"
+                    fill="none"
+                    stroke="#f59e0b"
+                    stroke-width="2"
+                    stroke-dasharray="4 3"
+                    opacity="0.7"
+                  />
+                </svg>
+              </div>
+              <div class="geo-answer-rows">
+                <div class="geo-answer-row">
+                  <span class="platform p-overseas">ChatGPT</span>
+                  「…推荐 <strong>示例品牌</strong>，其在全球市场以创新设计著称…」
+                </div>
+                <div class="geo-answer-row">
+                  <span class="platform p-domestic">豆包</span>
+                  「…中国用户常提到 <strong>示例品牌</strong> 的性价比…」
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 信任条 v1.1 -->
+      <section class="geo-trust geo-band" aria-label="产品要点">
+        <div class="geo-container">
+          <ul class="geo-trust-list">
+            <li>
+              <span class="geo-trust-icon" aria-hidden="true">10</span>
+              <span>覆盖 <strong>10</strong> 个 AI 平台</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon" aria-hidden="true">2</span>
+              <span><strong>全球 + 中国</strong> 跨生态监测</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon" aria-hidden="true">14</span>
+              <span><strong>14 天</strong> 免费试用</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon geo-trust-icon-price" aria-hidden="true">$</span>
+              <span><strong>$79/月</strong> 起 · 全功能专业版</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SEO → GEO 范式转移 -->
+      <section class="geo-shift geo-band" aria-labelledby="shift-heading">
+        <div class="geo-container">
+          <header class="geo-shift-header">
+            <h2 id="shift-heading">竞争从「排名第几」变成「进没进答案」</h2>
+            <p>GEO（Generative Engine Optimization）是营销团队的新 KPI——当用户直接向 AI 提问，品牌要在答案正文里被看见。</p>
+          </header>
+          <div class="geo-shift-grid">
+            <article class="geo-shift-card">
+              <div class="from">SEO 时代</div>
+              <div class="to">GEO 时代</div>
+              <p>用户搜索关键词 → 点击链接。成功标准是排名与 CTR。</p>
+              <p class="geo-shift-detail">用户向 AI 提问 → 直接读答案。成功标准是<strong>是否进入答案正文</strong>。</p>
+            </article>
+            <article class="geo-shift-card">
+              <div class="from">单市场监测</div>
+              <div class="to">全球 + 中国一盘棋</div>
+              <p>出海品牌在全球看 ChatGPT，在中国看豆包——两个工具、两份报告、开会对不齐。</p>
+            </article>
+            <article class="geo-shift-card">
+              <div class="from">感觉「好像被提到」</div>
+              <div class="to">SOA 可量化</div>
+              <p>用答案份额（SOA）追踪趋势，SOA 下跌邮件告警，竞品出现即时知晓。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOA 解释 -->
+      <section class="geo-soa" id="soa">
+        <div class="geo-container geo-soa-layout">
+          <div>
+            <div class="geo-section-head">
+              <div class="geo-kicker">核心指标</div>
+              <h2>SOA：答案份额，说清「进没进答案」</h2>
+              <p>
+                在您配置的关键问题集上，统计品牌名称出现在 AI 回答<strong>正文</strong>中的占比——不是搜索摘要，不是侧边栏，是用户真正读到的答案。
+              </p>
+            </div>
+            <dl class="geo-soa-formula">
+              <dt>SOA（Share of Answer）</dt>
+              <dd>关键问题集内，品牌进入 AI 答案正文的次数 ÷ 总采集次数</dd>
+              <dt>监测范围</dt>
+              <dd>品牌<strong>提及</strong>与出现<strong>位置</strong>（第几段、占比）——聚焦用户真正读到的答案正文。</dd>
+              <dt>情感与位置</dt>
+              <dd>除出现位置外，追踪品牌在答案中的<strong>情感倾向</strong>（正面 / 中性 / 负面）占比变化。</dd>
+            </dl>
+          </div>
+          <div class="geo-soa-layers">
+            <article class="geo-layer-item">
+              <span class="geo-layer-num">1</span>
+              <div>
+                <h3>时间趋势</h3>
+                <p>日 / 周 / 月 SOA 折线，周会汇报直接截图。</p>
+              </div>
+            </article>
+            <article class="geo-layer-item">
+              <span class="geo-layer-num">2</span>
+              <div>
+                <h3>平台级分布</h3>
+                <p>全球 5 与中国 5 分开看，发现「哪边掉队」。</p>
+              </div>
+            </article>
+            <article class="geo-layer-item">
+              <span class="geo-layer-num">3</span>
+              <div>
+                <h3>关键词级下钻</h3>
+                <p>每个监测词在各平台的回答摘要与变化箭头 ↗↘。</p>
+              </div>
+            </article>
+            <article class="geo-layer-item">
+              <span class="geo-layer-num">4</span>
+              <div>
+                <h3>情感倾向</h3>
+                <p>正 / 中 / 负占比趋势，区分 AI 是在「推荐」还是「中性提及」。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 平台矩阵 -->
+      <section class="geo-platforms geo-band" id="platforms">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">全球 + 中国</div>
+            <h2>全球与中国 AI 平台，同一套面板</h2>
+            <p>10 个主流入口每日自动采集——ChatGPT 与豆包，不必两套工具。</p>
+          </div>
+          <div class="geo-platform-shell" aria-label="跨生态监测面板预览">
+            <div class="geo-dashboard-bar">
+              <span>示例品牌 · 10 平台监测</span>
+              <div class="geo-dashboard-tabs">
+                <span class="on">全部</span>
+                <span>全球</span>
+                <span>中国</span>
+              </div>
+            </div>
+            <div class="geo-platform-shell-body">
+              <div class="geo-platform-summary">
+                <div class="geo-platform-stat">
+                  <strong>10</strong>
+                  <span>AI 平台并行</span>
+                </div>
+                <div class="geo-platform-stat">
+                  <strong>每日</strong>
+                  <span>自动采集</span>
+                </div>
+                <div class="geo-platform-stat">
+                  <strong>同一</strong>
+                  <span>问题集对照</span>
+                </div>
+              </div>
+              <ul class="geo-platform-chips" aria-hidden="true">
+                <li class="global">ChatGPT</li>
+                <li class="global">Gemini</li>
+                <li class="global">Claude</li>
+                <li class="global">Perplexity</li>
+                <li class="global">Copilot</li>
+                <li class="china">豆包</li>
+                <li class="china">DeepSeek</li>
+                <li class="china">通义</li>
+                <li class="china">文心</li>
+                <li class="china">Kimi</li>
+              </ul>
+              <div class="geo-platform-grid">
+                <div class="geo-platform-group overseas">
+                  <h3>全球 AI 平台 <span class="count">5</span></h3>
+                  <p class="geo-platform-group-desc">ChatGPT、Gemini 等全球主流入口，覆盖国际用户提问场景。</p>
+                  <div class="geo-platform-list">
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon overseas" aria-hidden="true">GPT</span>
+                      <span class="geo-platform-name"><span>ChatGPT</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon overseas" aria-hidden="true">G</span>
+                      <span class="geo-platform-name"><span>Gemini</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon overseas" aria-hidden="true">C</span>
+                      <span class="geo-platform-name"><span>Claude</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon overseas" aria-hidden="true">P</span>
+                      <span class="geo-platform-name"><span>Perplexity</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon overseas" aria-hidden="true">Co</span>
+                      <span class="geo-platform-name"><span>Microsoft Copilot</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="geo-platform-group domestic">
+                  <h3>中国 AI 平台 <span class="count">5</span></h3>
+                  <p class="geo-platform-group-desc">豆包、DeepSeek 等中国高频入口，补齐本土用户与竞品视角。</p>
+                  <div class="geo-platform-list">
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon domestic" aria-hidden="true">豆</span>
+                      <span class="geo-platform-name"><span>豆包</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon domestic" aria-hidden="true">DS</span>
+                      <span class="geo-platform-name"><span>DeepSeek</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon domestic" aria-hidden="true">通</span>
+                      <span class="geo-platform-name"><span>通义千问</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon domestic" aria-hidden="true">文</span>
+                      <span class="geo-platform-name"><span>文心一言</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                    <div class="geo-platform-item">
+                      <span class="geo-platform-icon domestic" aria-hidden="true">K</span>
+                      <span class="geo-platform-name"><span>Kimi</span><span class="geo-platform-meta">今日 06:00 已采</span></span>
+                      <span class="status">采集中</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="geo-platform-foot">
+                <span><strong>全部</strong> 视图一览 10 平台 · 按生态筛选全球 / 中国</span>
+                <span>回答全文存档 · 无需切换工具</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 为何选我们 -->
+      <section class="geo-compare" id="compare">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">为何选我们</div>
+            <h2>全球 + 中国 GEO，不用拼两套工具</h2>
+            <p>面向出海品牌设计——把监测、度量、竞品与告警放在同一产品里，常见痛点逐一解决。</p>
+          </div>
+          <div class="geo-reasons-layout">
+            <div class="geo-reasons-featured">
+              <article class="geo-reason-card geo-reason-card--featured">
+                <div class="geo-reason-visual" aria-hidden="true">
+                  <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="360" height="200" fill="#f8fafc" />
+                    <rect x="16" y="14" width="328" height="28" rx="6" fill="#fff" stroke="#e2e8f0" />
+                    <rect x="24" y="20" width="36" height="16" rx="4" fill="#4f46e5" opacity="0.9" />
+                    <text x="42" y="31" text-anchor="middle" fill="#fff" font-size="8" font-weight="600">全部</text>
+                    <text x="78" y="31" fill="#64748b" font-size="8">全球</text>
+                    <text x="108" y="31" fill="#64748b" font-size="8">中国</text>
+                    <rect x="16" y="52" width="150" height="72" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+                    <text x="28" y="72" fill="#1d4ed8" font-size="9" font-weight="600">全球 SOA</text>
+                    <text x="28" y="102" fill="#2563eb" font-size="26" font-weight="700">42%</text>
+                    <rect x="178" y="52" width="150" height="72" rx="8" fill="#fffbeb" stroke="#fde68a" />
+                    <text x="190" y="72" fill="#b45309" font-size="9" font-weight="600">中国 SOA</text>
+                    <text x="190" y="102" fill="#d97706" font-size="26" font-weight="700">28%</text>
+                    <rect x="16" y="136" width="328" height="52" rx="8" fill="#fff" stroke="#e2e8f0" />
+                    <text x="28" y="154" fill="#64748b" font-size="8" font-weight="600">10 平台 · 同一问题集</text>
+                    <rect x="28" y="164" width="44" height="16" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+                    <text x="50" y="175" text-anchor="middle" fill="#1d4ed8" font-size="7" font-weight="600">ChatGPT</text>
+                    <rect x="78" y="164" width="36" height="16" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+                    <text x="96" y="175" text-anchor="middle" fill="#1d4ed8" font-size="7" font-weight="600">Gemini</text>
+                    <rect x="120" y="164" width="32" height="16" rx="4" fill="#eff6ff" stroke="#bfdbfe" />
+                    <text x="136" y="175" text-anchor="middle" fill="#1d4ed8" font-size="7" font-weight="600">Claude</text>
+                    <rect x="158" y="164" width="28" height="16" rx="4" fill="#fffbeb" stroke="#fde68a" />
+                    <text x="172" y="175" text-anchor="middle" fill="#b45309" font-size="7" font-weight="600">豆包</text>
+                    <rect x="192" y="164" width="40" height="16" rx="4" fill="#fffbeb" stroke="#fde68a" />
+                    <text x="212" y="175" text-anchor="middle" fill="#b45309" font-size="7" font-weight="600">DeepSeek</text>
+                    <rect x="238" y="164" width="28" height="16" rx="4" fill="#fffbeb" stroke="#fde68a" />
+                    <text x="252" y="175" text-anchor="middle" fill="#b45309" font-size="7" font-weight="600">Kimi</text>
+                    <text x="280" y="175" fill="#94a3b8" font-size="7">+5</text>
+                  </svg>
+                </div>
+                <div class="geo-reason-body">
+                  <h3>全球 + 中国，一个面板</h3>
+                  <p class="geo-reason-lead">出海团队不必在全球工具与中国平台方案之间来回切换。</p>
+                  <ul class="geo-reason-points">
+                    <li>全球 5 + 中国 5 平台</li>
+                    <li>Tab 切换同屏对照</li>
+                    <li>一份报告对齐周会</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="geo-reason-card geo-reason-card--featured">
+                <div class="geo-reason-visual" aria-hidden="true">
+                  <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="360" height="200" fill="#f8fafc" />
+                    <!-- header -->
+                    <text x="16" y="22" fill="#64748b" font-size="9" font-weight="600">关键问题集 · SOA 答案份额</text>
+                    <rect x="268" y="10" width="22" height="16" rx="4" fill="#fff" stroke="#e2e8f0" />
+                    <text x="279" y="21" text-anchor="middle" fill="#94a3b8" font-size="7">日</text>
+                    <rect x="294" y="10" width="22" height="16" rx="4" fill="#4f46e5" />
+                    <text x="305" y="21" text-anchor="middle" fill="#fff" font-size="7" font-weight="600">周</text>
+                    <rect x="320" y="10" width="24" height="16" rx="4" fill="#fff" stroke="#e2e8f0" />
+                    <text x="332" y="21" text-anchor="middle" fill="#94a3b8" font-size="7">月</text>
+                    <!-- donut: 42% 出现在答案正文 -->
+                    <circle cx="78" cy="88" r="36" fill="none" stroke="#e2e8f0" stroke-width="11" />
+                    <circle
+                      cx="78"
+                      cy="88"
+                      r="36"
+                      fill="none"
+                      stroke="#4f46e5"
+                      stroke-width="11"
+                      stroke-linecap="round"
+                      stroke-dasharray="95 131"
+                      transform="rotate(-90 78 88)"
+                    />
+                    <text x="78" y="85" text-anchor="middle" fill="#4f46e5" font-size="20" font-weight="700">42%</text>
+                    <text x="78" y="98" text-anchor="middle" fill="#64748b" font-size="7" font-weight="600">SOA</text>
+                    <circle cx="24" cy="128" r="3" fill="#4f46e5" />
+                    <text x="32" y="131" fill="#475569" font-size="7">出现在答案 42%</text>
+                    <circle cx="24" cy="142" r="3" fill="#e2e8f0" />
+                    <text x="32" y="145" fill="#94a3b8" font-size="7">未出现 58%</text>
+                    <!-- question list: 进 / 未进 -->
+                    <rect x="148" y="32" width="196" height="120" rx="8" fill="#fff" stroke="#e2e8f0" />
+                    <text x="160" y="50" fill="#64748b" font-size="7" font-weight="600">监测问题 · 本周采集</text>
+                    <line x1="160" y1="56" x2="332" y2="56" stroke="#f1f5f9" />
+                    <text x="160" y="74" fill="#334155" font-size="8">全球护肤品牌推荐？</text>
+                    <rect x="288" y="62" width="32" height="14" rx="4" fill="#dcfce7" />
+                    <text x="304" y="72" text-anchor="middle" fill="#15803d" font-size="7" font-weight="600">出现</text>
+                    <text x="160" y="94" fill="#334155" font-size="8">扫地机器人怎么选？</text>
+                    <rect x="288" y="82" width="32" height="14" rx="4" fill="#dcfce7" />
+                    <text x="304" y="92" text-anchor="middle" fill="#15803d" font-size="7" font-weight="600">出现</text>
+                    <text x="160" y="114" fill="#334155" font-size="8">母婴用品品牌排行？</text>
+                    <rect x="282" y="102" width="38" height="14" rx="4" fill="#f1f5f9" />
+                    <text x="301" y="112" text-anchor="middle" fill="#64748b" font-size="7" font-weight="600">未出现</text>
+                    <text x="160" y="136" fill="#334155" font-size="8">企业级 CRM 哪家好？</text>
+                    <rect x="288" y="124" width="32" height="14" rx="4" fill="#dcfce7" />
+                    <text x="304" y="134" text-anchor="middle" fill="#15803d" font-size="7" font-weight="600">出现</text>
+                    <!-- footer: formula + trend + platforms -->
+                    <rect x="16" y="158" width="328" height="36" rx="6" fill="#fff" stroke="#e2e8f0" />
+                    <text x="26" y="174" fill="#475569" font-size="7" font-weight="600">8 ÷ 19 次进入正文</text>
+                    <text x="112" y="174" fill="#22c55e" font-size="7" font-weight="600">↑ 6%</text>
+                    <text x="26" y="186" fill="#94a3b8" font-size="6">ChatGPT</text>
+                    <text x="64" y="186" fill="#94a3b8" font-size="6">豆包</text>
+                    <text x="88" y="186" fill="#94a3b8" font-size="6">Kimi</text>
+                    <text x="112" y="186" fill="#94a3b8" font-size="6">+7 平台</text>
+                  </svg>
+                </div>
+                <div class="geo-reason-body">
+                  <h3>SOA，一眼能懂</h3>
+                  <p class="geo-reason-lead">用答案份额直接回答「品牌进没进 AI 答案正文」。</p>
+                  <ul class="geo-reason-points">
+                    <li>日 / 周 / 月趋势</li>
+                    <li>平台与关键词下钻</li>
+                    <li>周会截图即可汇报</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="geo-reason-card geo-reason-card--featured">
+                <div class="geo-reason-visual" aria-hidden="true">
+                  <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="360" height="200" fill="#f8fafc" />
+                    <text x="16" y="26" fill="#64748b" font-size="9" font-weight="600">同一问题集 · SOA 对比</text>
+                    <rect x="40" y="48" width="56" height="100" rx="6" fill="#4f46e5" opacity="0.85" />
+                    <text x="68" y="108" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">你</text>
+                    <text x="68" y="162" text-anchor="middle" fill="#4f46e5" font-size="11" font-weight="700">42%</text>
+                    <rect x="148" y="72" width="56" height="76" rx="6" fill="#cbd5e1" />
+                    <text x="176" y="118" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">竞品</text>
+                    <text x="176" y="162" text-anchor="middle" fill="#64748b" font-size="11" font-weight="600">61%</text>
+                    <rect x="256" y="88" width="56" height="60" rx="6" fill="#fee2e2" stroke="#fecaca" />
+                    <text x="284" y="124" text-anchor="middle" fill="#b91c1c" font-size="9" font-weight="600">未出现</text>
+                    <text x="284" y="162" text-anchor="middle" fill="#b91c1c" font-size="9">豆包</text>
+                  </svg>
+                </div>
+                <div class="geo-reason-body">
+                  <h3>竞品，同问题对照</h3>
+                  <p class="geo-reason-lead">同一批监测问题，看清谁被 AI 推荐、谁缺席。</p>
+                  <ul class="geo-reason-points">
+                    <li>柱状 / 趋势对比</li>
+                    <li>按平台拆分差距</li>
+                    <li>「竞品在、我不在」</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="geo-reasons-compact">
+              <article class="geo-reason-card geo-reason-card--compact">
+                <div class="geo-reason-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>真实回答，每日采集</h3>
+                  <p>10 个平台并行提问，回答全文存档，品牌出现位置高亮。</p>
+                </div>
+              </article>
+              <article class="geo-reason-card geo-reason-card--compact">
+                <div class="geo-reason-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>异动告警，不用盯盘</h3>
+                  <p>SOA 下跌或竞品覆盖新问题集时，默认邮件通知。</p>
+                </div>
+              </article>
+              <article class="geo-reason-card geo-reason-card--compact">
+                <div class="geo-reason-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                  </svg>
+                </div>
+                <div>
+                  <h3>快速上手，先看清再优化</h3>
+                  <p>配置品牌与监测词后，约 10 分钟见首批全球 + 中国数据。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bento 能力 -->
+      <section class="geo-bento" id="features">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">产品能力</div>
+            <h2>监测 · 度量 · 竞品，一条链路看清可见性</h2>
+            <p>从采集真实 AI 回答、量化 SOA 答案份额，到对标竞品差距——帮营销团队先看清，再决定优化方向。</p>
+          </div>
+          <div class="geo-bento-grid">
+            <article class="geo-bento-card highlight geo-bento-a">
+              <h3>多平台 AI 监测</h3>
+              <p>配置品牌名、别名与监测关键词，添加竞品列表。系统在 10 个平台并行提问采集，回答全文存档，品牌出现位置高亮，并按全球/中国筛选。</p>
+              <div class="geo-bento-visual" aria-hidden="true">
+                <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="12" width="100" height="76" rx="8" fill="#eff6ff" stroke="#bfdbfe" />
+                  <text x="58" y="38" text-anchor="middle" fill="#1d4ed8" font-size="10" font-weight="600">全球</text>
+                  <text x="58" y="58" text-anchor="middle" fill="#2563eb" font-size="18" font-weight="700">5</text>
+                  <rect x="190" y="40" width="100" height="20" rx="4" fill="#f8fafc" stroke="#e2e8f0" />
+                  <text x="240" y="54" text-anchor="middle" fill="#64748b" font-size="9">关键词采集</text>
+                  <rect x="372" y="12" width="100" height="76" rx="8" fill="#fffbeb" stroke="#fde68a" />
+                  <text x="422" y="38" text-anchor="middle" fill="#b45309" font-size="10" font-weight="600">中国</text>
+                  <text x="422" y="58" text-anchor="middle" fill="#d97706" font-size="18" font-weight="700">5</text>
+                  <path d="M108 50 H182 M298 50 H372" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#arr)" />
+                </svg>
+              </div>
+            </article>
+            <article class="geo-bento-card geo-bento-b">
+              <h3>SOA 仪表板</h3>
+              <p>首页即 SOA 趋势 + 平台分布 + 情感倾向 + 最新回答流。营销负责人 10 分钟内完成配置并看到全球 + 中国数据。</p>
+            </article>
+            <article class="geo-bento-card geo-bento-c">
+              <h3>竞品对比</h3>
+              <p>同一问题集下，雷达图 / 柱状图 / 趋势对比。快速回答：「竞品出现了，我没有」发生在哪些平台。</p>
+            </article>
+            <article class="geo-bento-card geo-bento-d">
+              <h3>邮件告警</h3>
+              <p>SOA 下跌超过阈值、竞品在新问题集出现覆盖——默认邮件通知，无需盯盘。高级规则在通知设置中配置。</p>
+              <div class="geo-bento-visual" aria-hidden="true">
+                <svg viewBox="0 0 480 80" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8" y="8" width="464" height="64" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+                  <circle cx="32" cy="40" r="12" fill="#f5f3ff" stroke="#ddd6fe" />
+                  <text x="32" y="44" text-anchor="middle" fill="#4f46e5" font-size="14">✉</text>
+                  <text x="56" y="36" fill="#0f172a" font-size="11" font-weight="600">SOA 告警</text>
+                  <text x="56" y="52" fill="#64748b" font-size="10">「出海 SaaS 推荐」SOA 下降 18%</text>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 竞品差距演示 -->
+      <section class="geo-gap geo-band" id="gap">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">最痛场景</div>
+            <h2>「竞品在答案里，我不在」</h2>
+            <p>同一问题、三个视角——看见全球与中国差距，才知道先补哪一边。</p>
+          </div>
+          <div class="geo-gap-demo">
+            <article class="geo-gap-panel overseas">
+              <div class="geo-gap-panel-tag">全球</div>
+              <h3>ChatGPT</h3>
+              <p class="geo-gap-answer">
+                常见推荐包括 Competitor A、<span class="brand-them">竞品 B</span>… 也可考虑 <span class="brand-you">你的品牌</span> 在亚太区的本地化能力。
+              </p>
+              <span class="geo-gap-badge ok">✓ 你的品牌被提及</span>
+            </article>
+            <article class="geo-gap-panel insight" aria-label="跨生态差距摘要">
+              <div class="geo-gap-panel-tag">同一问题</div>
+              <h3>「出海 SaaS 工具有哪些推荐？」</h3>
+              <ul class="geo-gap-insight-list">
+                <li class="ok">
+                  <span class="geo-gap-insight-label">全球 SOA</span>
+                  <span class="geo-gap-insight-val">有提及</span>
+                </li>
+                <li class="warn">
+                  <span class="geo-gap-insight-label">中国 SOA</span>
+                  <span class="geo-gap-insight-val">未出现</span>
+                </li>
+              </ul>
+              <p class="geo-gap-insight-hint">竞品 B 在两侧均被推荐，你的品牌仅全球平台出现。</p>
+            </article>
+            <article class="geo-gap-panel alert domestic">
+              <div class="geo-gap-panel-tag">中国</div>
+              <h3>豆包</h3>
+              <p class="geo-gap-answer">
+                中国用户常选 <span class="brand-them">竞品 B</span>、Competitor C… 暂未提及 <span class="brand-you">你的品牌</span>。
+              </p>
+              <span class="geo-gap-badge warn">⚠ 你的品牌未出现 · 需关注</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 工作流 -->
+      <section class="geo-workflow">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">快速上手</div>
+            <h2>14 天试用，10 分钟见数据</h2>
+          </div>
+          <div class="geo-workflow-track">
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3>注册试用</h3>
+              <p>14 天专业版全功能，10 平台全开</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                </svg>
+              </div>
+              <h3>配置品牌</h3>
+              <p>品牌名、别名、监测词与竞品</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3>自动采集</h3>
+              <p>约 5 分钟首批全球 + 中国数据就绪</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 3v18h18" /><path d="M7 16l4-4 4 4 6-8" />
+                </svg>
+              </div>
+              <h3>查看 SOA</h3>
+              <p>Dashboard 趋势 + 竞品对比 + 告警</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 社会证明 v1.1 -->
+      <section class="geo-proof geo-band" id="proof">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">客户与数据</div>
+            <h2>出海团队，同一面板看全球 + 中国</h2>
+            <p>种子用户与出海品牌市场团队的真实反馈。</p>
+          </div>
+          <div class="geo-proof-logos" aria-label="合作品牌（占位）">
+            <span class="geo-logo-chip">出海 SaaS A</span>
+            <span class="geo-logo-chip">跨境消费 B</span>
+            <span class="geo-logo-chip">智能硬件 C</span>
+            <span class="geo-logo-chip">企业服务 D</span>
+            <span class="geo-logo-chip">DTC 品牌 E</span>
+            <span class="geo-logo-chip muted">种子用户合作中</span>
+          </div>
+          <blockquote class="geo-proof-quote">
+            <p>「终于不用分别问海外代理和国内团队要 AI 可见性报告了。」</p>
+            <footer>— 某出海品牌市场负责人</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- 定价 -->
+      <section class="geo-pricing" id="pricing">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <div class="geo-kicker">定价</div>
+            <h2>专业版定价，对出海团队更友好</h2>
+            <p>无永久免费档 · 试用期满后可自助升级或联系企业定制</p>
+          </div>
+          <div class="geo-pricing-card">
+            <div class="plan">专业版</div>
+            <div class="price">$79<span>/月</span></div>
+            <p class="trial">14 天免费试用 · 全功能</p>
+            <ul class="geo-pricing-features">
+              <li>10 个 AI 平台（全球 5 + 中国 5）</li>
+              <li>SOA 仪表板 + 四层可视化（含情感倾向）</li>
+              <li>竞品对比（同问题集）</li>
+              <li>品牌别名 / 监测词 / 竞品配置</li>
+              <li>默认邮件告警</li>
+              <li>约 100 监测关键词（草案）</li>
+            </ul>
+            <a href="#trial" class="geo-btn geo-btn-primary" style="width: 100%">开始免费试用</a>
+          </div>
+          <p class="geo-pricing-enterprise">
+            多品牌 / 多租户 / 定制采集频率？
+            <a href="mailto:sales@trinitydesk.com">联系销售获取企业版 →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="geo-faq" id="faq">
+        <div class="geo-container">
+          <div class="geo-section-head center">
+            <h2>常见问题</h2>
+          </div>
+          <div class="geo-faq-list">
+            <details class="geo-faq-item">
+              <summary>和 Trinity AI 模型聚合是什么关系？</summary>
+              <div class="body">Trinity AI 面向<strong>开发者</strong>——统一 API 接入大模型。Trinity GEO 面向<strong>品牌营销团队</strong>——监测品牌在 AI 答案中的可见性。同属 Trinity 套件，用户与场景不同。</div>
+            </details>
+            <details class="geo-faq-item">
+              <summary>为什么必须同时监测 ChatGPT 和豆包？</summary>
+              <div class="body">出海品牌在全球与中国 AI 生态中的声量往往不一致。分开监测会遗漏一半答案；Trinity GEO 在一个面板里呈现全球 + 中国 SOA。</div>
+            </details>
+            <details class="geo-faq-item">
+              <summary>和 Profound 等全球 GEO 工具比呢？</summary>
+              <div class="body">主流全球 GEO 工具往往无法覆盖中国 AI 平台，全功能档位也常在 $399+/月。Trinity GEO 提供全球 + 中国监测、$79/月专业版与 14 天自助试用。</div>
+            </details>
+            <details class="geo-faq-item">
+              <summary>是否支持「被引用为信源」分析？</summary>
+              <div class="body">当前版本聚焦品牌在 AI 答案中的<strong>提及</strong>与出现<strong>位置</strong>。引用来源与信源页面等深度分析正在规划中，欢迎联系销售了解进展。</div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="geo-cta geo-band" id="trial">
+        <div class="geo-container">
+          <h2>看看你的品牌在 ChatGPT 和豆包里是否被提及</h2>
+          <p>14 天全功能试用，10 分钟完成配置即可看到首批全球 + 中国数据。</p>
+          <div class="geo-cta-actions">
+            <a href="#trial" class="geo-btn geo-btn-primary">免费试用 14 天</a>
+            <a href="mailto:sales@trinitydesk.com" class="geo-btn geo-btn-outline">预约演示</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="geo-footer">
+      <div class="geo-container">
+        <div class="geo-footer-grid">
+          <div class="geo-footer-brand">
+            <strong>
+              <span class="geo-logo-mark" style="width: 28px; height: 28px; display: inline-grid">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" />
+                </svg>
+              </span>
+              Trinity GEO
+            </strong>
+            <p style="margin: 0; max-width: 260px">出海品牌 AI 答案可见性监测 · SOA · 竞品对比</p>
+          </div>
+          <div class="geo-footer-col">
+            <h4>产品</h4>
+            <ul>
+              <li><a href="#soa">SOA 指标</a></li>
+              <li><a href="#platforms">平台覆盖</a></li>
+              <li><a href="#features">能力</a></li>
+              <li><a href="#compare">为何选我们</a></li>
+              <li><a href="#pricing">定价</a></li>
+            </ul>
+          </div>
+          <div class="geo-footer-col">
+            <h4>资源</h4>
+            <ul>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#proof">客户案例</a></li>
+              <li><a href="/product/geo/">产品手册</a></li>
+              <li><a href="prototypes/v1/index.html">v1 原型归档</a></li>
+            </ul>
+          </div>
+          <div class="geo-footer-col">
+            <h4>联系</h4>
+            <ul>
+              <li><a href="mailto:sales@trinitydesk.com">sales@trinitydesk.com</a></li>
+              <li><a href="#">隐私政策</a></li>
+              <li><a href="#">服务条款</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="geo-footer-bottom">
+          <span>© 2026 Trinity GEO</span>
+          <div class="geo-suite-links">
+            <a href="/trinity-ai">Trinity AI · 模型 API</a>
+            <a href="/ai-cloud">Trinity AI 云 · 算力</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/home.js"></script>
+  </body>
+</html>

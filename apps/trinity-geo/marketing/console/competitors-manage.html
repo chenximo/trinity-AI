@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 用户控制台 · 竞品管理（① 策略 · 对比侧别名库） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>竞品管理 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+            </svg>
+          </span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./keywords.html">监测</a>
+          <a href="./competitors.html" class="is-active">竞品</a>
+          <a href="./diagnosis.html" title="诊断与审计">诊断</a>
+          <a href="./optimize.html" title="优化与生成">优化</a>
+          <a href="#" title="报告与验证">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="#" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="竞品子导航">
+          <p class="geo-settings-sidebar-title">竞品</p>
+          <nav class="geo-settings-nav">
+            <a href="./competitors.html">竞品概览</a>
+            <a href="./competitors-manage.html" class="is-active" aria-current="page">竞品管理</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">① 策略规划</p>
+              <h1>竞品管理</h1>
+              <p class="dash-toolbar-meta">
+                维护对比侧实体与<strong>竞品别名</strong>——与品牌共用 <code>entity_aliases</code>（<code>entity_type=competitor</code>）
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
+              <button type="button" class="geo-btn ghost" id="comp-ai-suggest-btn">AI 推荐竞品</button>
+              <button type="button" class="geo-btn primary" id="comp-save-btn">保存更改</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>竞品别名 = 同题 SOA 对比的识别输入。</strong>
+            回答里出现竞品写法时，引擎归一化到对应 entity_id，才能在竞品概览里算「竞品在、我不在」。
+            <a href="./competitors-manage.md">单页 PRD →</a>
+          </div>
+
+          <div class="geo-kw-quota" aria-label="竞品套餐用量">
+            <div class="geo-kw-quota-head">
+              <span>监测竞品 <strong id="comp-active-count">6</strong> / 10（专业版）</span>
+              <span class="geo-muted" id="comp-alias-total">共 18 个别名</span>
+            </div>
+            <div class="geo-kw-quota-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="10">
+              <span id="comp-quota-bar" style="width: 60%"></span>
+            </div>
+          </div>
+
+          <div class="geo-settings-body">
+            <div class="geo-settings-main">
+              <section class="geo-settings-card" aria-labelledby="comp-list-heading">
+                <div class="geo-settings-card-head">
+                  <div>
+                    <h2 id="comp-list-heading">竞品库</h2>
+                    <p class="geo-settings-card-desc">展开卡片编辑别名；暂停后不再参与竞品 SOA 对比统计</p>
+                  </div>
+                </div>
+
+                <section class="geo-kw-manual-add" id="comp-manual-add" aria-labelledby="comp-manual-heading">
+                  <div class="geo-kw-manual-head">
+                    <h3 id="comp-manual-heading">手动添加竞品</h3>
+                    <span class="geo-badge">主路径</span>
+                  </div>
+                  <p class="geo-kw-manual-desc">填写竞品主名称与至少 1 个别名写法；保存后写入别名库。</p>
+                  <div class="geo-comp-manual-form">
+                    <label class="geo-form-field">
+                      <span>竞品主名称</span>
+                      <input type="text" id="comp-add-name" placeholder="例如 OpenRouter" />
+                    </label>
+                    <label class="geo-form-field">
+                      <span>市场</span>
+                      <select id="comp-add-market">
+                        <option value="overseas">海外</option>
+                        <option value="domestic">国内</option>
+                        <option value="both">双市场</option>
+                      </select>
+                    </label>
+                    <label class="geo-form-field geo-comp-alias-field">
+                      <span>首个别名</span>
+                      <input type="text" id="comp-add-alias" placeholder="openrouter.ai" />
+                    </label>
+                    <div class="geo-kw-manual-actions">
+                      <button type="button" class="geo-btn primary" id="comp-add-submit">添加竞品</button>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="geo-kw-ai-panel" id="comp-ai-panel" hidden aria-labelledby="comp-ai-heading">
+                  <div class="geo-kw-manual-head">
+                    <h3 id="comp-ai-heading">AI 推荐竞品（基于行业与问题集）</h3>
+                    <span class="geo-badge muted">辅助 · 须确认</span>
+                  </div>
+                  <ul class="geo-kw-ai-list">
+                    <li>
+                      <label><input type="checkbox" data-name="Together AI" data-market="overseas" data-alias="Together AI" /> Together AI · 海外</label>
+                    </li>
+                    <li>
+                      <label><input type="checkbox" data-name="火山方舟" data-market="domestic" data-alias="火山方舟" /> 火山方舟 · 国内</label>
+                    </li>
+                  </ul>
+                  <div class="geo-kw-add-actions">
+                    <button type="button" class="geo-btn ghost" id="comp-ai-close">收起</button>
+                    <button type="button" class="geo-btn primary" id="comp-ai-apply">加入已选竞品</button>
+                  </div>
+                </section>
+
+                <div class="geo-comp-list" id="comp-list">
+                  <!-- openrouter -->
+                  <article class="geo-comp-card is-open" data-id="openrouter" data-status="active" data-market="overseas">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="true" aria-label="展开别名">▾</button>
+                      <div class="geo-comp-title">
+                        <strong>OpenRouter</strong>
+                        <code class="geo-comp-id">openrouter</code>
+                        <span class="geo-market-pill overseas">海外</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">3</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body">
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" aria-label="新别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="OpenRouter"><span>OpenRouter</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="openrouter"><span>openrouter</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="openrouter.ai"><span>openrouter.ai</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+
+                  <article class="geo-comp-card" data-id="tokenhub" data-status="active" data-market="domestic">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="false" aria-label="展开别名">▸</button>
+                      <div class="geo-comp-title">
+                        <strong>TokenHub</strong>
+                        <code class="geo-comp-id">tokenhub</code>
+                        <span class="geo-market-pill domestic">国内</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">4</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body" hidden>
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="TokenHub"><span>TokenHub</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="腾讯云TokenHub"><span>腾讯云TokenHub</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="腾讯云 TokenHub"><span>腾讯云 TokenHub</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="腾讯 TokenHub"><span>腾讯 TokenHub</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+
+                  <article class="geo-comp-card" data-id="litellm" data-status="active" data-market="overseas">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="false">▸</button>
+                      <div class="geo-comp-title">
+                        <strong>LiteLLM</strong>
+                        <code class="geo-comp-id">litellm</code>
+                        <span class="geo-market-pill overseas">海外</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">2</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body" hidden>
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="LiteLLM"><span>LiteLLM</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="litellm"><span>litellm</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+
+                  <article class="geo-comp-card" data-id="oneapi" data-status="active" data-market="both">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="false">▸</button>
+                      <div class="geo-comp-title">
+                        <strong>One API</strong>
+                        <code class="geo-comp-id">oneapi</code>
+                        <span class="geo-market-pill both">双市场</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">4</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body" hidden>
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="One API"><span>One API</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="OneAPI"><span>OneAPI</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="one-api"><span>one-api</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="new-api"><span>new-api</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+
+                  <article class="geo-comp-card" data-id="siliconflow" data-status="active" data-market="domestic">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="false">▸</button>
+                      <div class="geo-comp-title">
+                        <strong>硅基流动</strong>
+                        <code class="geo-comp-id">siliconflow</code>
+                        <span class="geo-market-pill domestic">国内</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">3</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body" hidden>
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="硅基流动"><span>硅基流动</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="SiliconFlow"><span>SiliconFlow</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                        <li data-alias="siliconflow"><span>siliconflow</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+
+                  <article class="geo-comp-card" data-id="portkey" data-status="active" data-market="overseas">
+                    <header class="geo-comp-card-head">
+                      <button type="button" class="geo-comp-expand" aria-expanded="false">▸</button>
+                      <div class="geo-comp-title">
+                        <strong>Portkey</strong>
+                        <code class="geo-comp-id">portkey</code>
+                        <span class="geo-market-pill overseas">海外</span>
+                      </div>
+                      <span class="geo-comp-meta"><span class="comp-alias-count">2</span> 个别名</span>
+                      <span class="geo-kw-status on comp-status-label">监测中</span>
+                      <div class="geo-comp-head-actions">
+                        <button type="button" class="geo-btn text comp-toggle">暂停</button>
+                        <button type="button" class="geo-btn text danger comp-remove">删除</button>
+                      </div>
+                    </header>
+                    <div class="geo-comp-card-body" hidden>
+                      <div class="geo-alias-add">
+                        <input type="text" class="comp-alias-input" placeholder="添加竞品别名" />
+                        <button type="button" class="geo-btn primary sm comp-alias-add">添加</button>
+                      </div>
+                      <ul class="geo-comp-alias-list">
+                        <li data-alias="Portkey"><span>Portkey</span> <span class="geo-alias-tag">主名称</span> <button type="button" class="geo-btn text danger comp-alias-remove" disabled>—</button></li>
+                        <li data-alias="portkey"><span>portkey</span> <button type="button" class="geo-btn text danger comp-alias-remove">删除</button></li>
+                      </ul>
+                    </div>
+                  </article>
+                </div>
+
+                <p class="geo-form-hint geo-kw-foot">
+                  数据对齐 <code>mvp/config/brand.json</code> · <code>competitors[]</code>；商用写入 <code>entity_aliases</code>（<code>entity_type=competitor</code>）。
+                </p>
+              </section>
+            </div>
+
+            <aside class="geo-settings-aside" aria-label="同步与关联">
+              <div class="geo-settings-card compact">
+                <h3>别名库同步</h3>
+                <dl class="geo-sync-dl">
+                  <div>
+                    <dt>竞品实体</dt>
+                    <dd id="comp-sync-count">6</dd>
+                  </div>
+                  <div>
+                    <dt>竞品别名总数</dt>
+                    <dd id="comp-sync-aliases">18</dd>
+                  </div>
+                  <div>
+                    <dt>上次同步</dt>
+                    <dd>今日 09:00</dd>
+                  </div>
+                  <div>
+                    <dt>待重算</dt>
+                    <dd class="geo-sync-pending" id="comp-recalc-status">无</dd>
+                  </div>
+                </dl>
+                <button type="button" class="geo-btn ghost sm full" id="comp-recalc-btn" disabled>触发竞品标注重算</button>
+              </div>
+
+              <div class="geo-settings-card compact">
+                <h3>关联配置</h3>
+                <ul class="geo-related-links">
+                  <li>
+                    <a href="./brand-settings.html">
+                      <strong>品牌与别名</strong>
+                      <span>本品牌识别</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./keywords.html">
+                      <strong>监测问题集</strong>
+                      <span>同题 SOA 分母</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./competitors.html">
+                      <strong>竞品概览</strong>
+                      <span>对比结果（读）</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="geo-settings-card compact muted">
+                <h3>测量说明</h3>
+                <p class="geo-settings-mini">
+                  单条回答可同时标注本品牌 + 多个竞品提及；竞品 SOA 在<strong>同一问题集</strong>下与品牌对比。
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="geo-toast" id="geo-toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/competitors-manage.js"></script>
+  </body>
+</html>

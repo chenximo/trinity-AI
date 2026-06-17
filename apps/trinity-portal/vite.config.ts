@@ -7,7 +7,7 @@ import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 
 const repoRoot = fileURLToPath(new URL("../..", import.meta.url));
-const geoMarketingRoot = fileURLToPath(new URL("../trinity-geo", import.meta.url));
+const geoMarketingRoot = fileURLToPath(new URL("../trinity-geo/marketing", import.meta.url));
 const appSrc = (dir: string) => fileURLToPath(new URL(`../${dir}/src`, import.meta.url));
 const watchPoll = process.env.VITE_WATCH_POLL === "1";
 

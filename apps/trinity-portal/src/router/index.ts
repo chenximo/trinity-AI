@@ -68,8 +68,19 @@ export default createRouter({
     },
     {
       path: "/trinity-geo",
-      name: "trinity-geo",
-      component: () => import("@trinity-geo/views/Home.vue"),
+      component: () => import("@trinity-geo/views/shell/GeoShellLayout.vue"),
+      children: [
+        {
+          path: "",
+          name: "trinity-geo",
+          component: () => import("@trinity-geo/views/Home.vue"),
+        },
+        {
+          path: "demo",
+          name: "trinity-geo-demo",
+          component: () => import("@trinity-geo/views/demo/DemoApp.vue"),
+        },
+      ],
     },
     {
       path: "/trinity-ai-admin/login",

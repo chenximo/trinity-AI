@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 用户控制台 · 品牌设置（① 策略 · 别名库 = 测量引擎输入） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>品牌设置 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="2" fill="currentColor" />
+              <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+            </svg>
+          </span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./keywords.html" title="监测模块">监测</a>
+          <a href="./competitors.html" title="竞品模块">竞品</a>
+          <a href="./diagnosis.html" title="诊断与审计">诊断</a>
+          <a href="./optimize.html" title="优化与生成">优化</a>
+          <a href="#" title="报告与验证">报告</a>
+          <a href="./brand-settings.html" class="is-active">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="#" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="设置子导航">
+          <p class="geo-settings-sidebar-title">设置</p>
+          <nav class="geo-settings-nav">
+            <a href="./brand-settings.html" class="is-active" aria-current="page">品牌设置</a>
+            <a href="#" title="待做">账户与套餐</a>
+            <a href="#" title="待做">通知与告警</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">① 策略规划</p>
+              <h1>品牌设置</h1>
+              <p class="dash-toolbar-meta">
+                配置品牌实体与<strong>别名库</strong>——测量引擎据此识别回答中的品牌提及与 SOA
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
+              <button type="button" class="geo-btn primary" id="brand-save-btn">保存更改</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>别名库 = 测量引擎输入。</strong>
+            采集层只存原始回答；规则引擎用别名匹配后才会标注「是否提及 / 是否进正文」。
+            新增别名后可触发近期历史重算（见下方同步状态）。
+            <a href="./brand-settings.md">单页 PRD →</a>
+          </div>
+
+          <div class="geo-settings-body">
+            <div class="geo-settings-main">
+              <section class="geo-settings-card" aria-labelledby="brand-basic-heading">
+                <h2 id="brand-basic-heading">品牌基础信息</h2>
+                <p class="geo-settings-card-desc">用于报告展示与实体归一化的主名称（canonical name）</p>
+
+                <div class="geo-form-grid">
+                  <label class="geo-form-field span-2">
+                    <span>品牌主名称 <abbr title="必填">*</abbr></span>
+                    <input type="text" name="primary_name" value="Trinity AI" autocomplete="organization" />
+                  </label>
+
+                  <label class="geo-form-field">
+                    <span>品牌 Logo</span>
+                    <div class="geo-logo-upload">
+                      <div class="geo-logo-preview" aria-hidden="true">T</div>
+                      <button type="button" class="geo-btn ghost sm">上传图片</button>
+                      <span class="geo-form-hint">PNG / SVG，建议 128×128</span>
+                    </div>
+                  </label>
+
+                  <label class="geo-form-field">
+                    <span>所属行业</span>
+                    <select name="industry">
+                      <option value="ai-api" selected>AI / API 聚合</option>
+                      <option value="saas">企业 SaaS</option>
+                      <option value="consumer">消费电子</option>
+                      <option value="ecom">出海电商</option>
+                      <option value="other">其他</option>
+                    </select>
+                  </label>
+
+                  <label class="geo-form-field span-2">
+                    <span>官网 URL</span>
+                    <input type="url" name="product_url" value="https://trinitydesk.ai/" placeholder="https://" />
+                  </label>
+
+                  <label class="geo-form-field span-2">
+                    <span>文档 / 产品页（可选）</span>
+                    <input type="url" name="doc_url" value="https://doc.trinitydesk.ai/" placeholder="https://" />
+                  </label>
+
+                  <label class="geo-form-field span-2">
+                    <span>一句话描述（对外）</span>
+                    <input type="text" name="tagline" value="一个 API 接入百余款大模型" maxlength="120" />
+                    <span class="geo-form-hint">用于报告封面与 Onboarding，不参与测量匹配</span>
+                  </label>
+                </div>
+              </section>
+
+              <section class="geo-settings-card" aria-labelledby="brand-alias-heading">
+                <div class="geo-settings-card-head">
+                  <div>
+                    <h2 id="brand-alias-heading">别名库</h2>
+                    <p class="geo-settings-card-desc">
+                      AI 回答里出现以下任一写法，即计为本品牌提及（大小写不敏感）
+                    </p>
+                  </div>
+                  <span class="geo-badge" id="alias-count-badge">8 个别名</span>
+                </div>
+
+                <div class="geo-alias-suggest" aria-label="推荐别名">
+                  <span class="geo-alias-suggest-label">推荐补充：</span>
+                  <button type="button" class="geo-chip-suggest" data-alias="TrinityDesk">TrinityDesk</button>
+                  <button type="button" class="geo-chip-suggest" data-alias="Trinity 大模型网关">Trinity 大模型网关</button>
+                  <button type="button" class="geo-chip-suggest" data-alias="trinity.ai">trinity.ai</button>
+                </div>
+
+                <div class="geo-alias-add">
+                  <input
+                    type="text"
+                    id="alias-input"
+                    placeholder="输入新别名，如 HUAWEI、华为技术有限公司"
+                    aria-label="新别名"
+                  />
+                  <button type="button" class="geo-btn primary sm" id="alias-add-btn">添加</button>
+                </div>
+
+                <div class="geo-alias-table-wrap">
+                  <table class="geo-alias-table" id="alias-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">别名</th>
+                        <th scope="col">类型</th>
+                        <th scope="col">启用</th>
+                        <th scope="col"><span class="sr-only">操作</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="alias-tbody">
+                      <tr data-alias="Trinity AI">
+                        <td><strong>Trinity AI</strong> <span class="geo-alias-tag">主名称</span></td>
+                        <td>品牌</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" checked disabled />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><span class="geo-muted">—</span></td>
+                      </tr>
+                      <tr data-alias="Trinity">
+                        <td>Trinity</td>
+                        <td>品牌</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="Trinity Desk">
+                        <td>Trinity Desk</td>
+                        <td>品牌</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="trinitydesk">
+                        <td>trinitydesk</td>
+                        <td>域名 / 写法</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="trinitydesk.ai">
+                        <td>trinitydesk.ai</td>
+                        <td>域名 / 写法</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="Trinitydesk">
+                        <td>Trinitydesk</td>
+                        <td>品牌</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="Trinity 聚合">
+                        <td>Trinity 聚合</td>
+                        <td>品牌</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                      <tr data-alias="Trinity API">
+                        <td>Trinity API</td>
+                        <td>产品名</td>
+                        <td>
+                          <label class="geo-toggle">
+                            <input type="checkbox" class="alias-enabled" checked />
+                            <span class="geo-toggle-ui"></span>
+                          </label>
+                        </td>
+                        <td><button type="button" class="geo-btn text danger alias-remove">删除</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="geo-form-hint geo-alias-foot">
+                  竞品别名在 <a href="#" title="竞品管理 · 待做">竞品管理</a> 维护，与品牌共用同一别名库表（entity_type 区分）。
+                </p>
+              </section>
+            </div>
+
+            <aside class="geo-settings-aside" aria-label="测量同步与关联配置">
+              <div class="geo-settings-card compact">
+                <h3>测量同步状态</h3>
+                <dl class="geo-sync-dl">
+                  <div>
+                    <dt>实体 ID</dt>
+                    <dd><code>trinity</code></dd>
+                  </div>
+                  <div>
+                    <dt>已启用别名</dt>
+                    <dd id="alias-enabled-count">8</dd>
+                  </div>
+                  <div>
+                    <dt>上次同步</dt>
+                    <dd>今日 09:00</dd>
+                  </div>
+                  <div>
+                    <dt>待重算</dt>
+                    <dd class="geo-sync-pending" id="recalc-status">无</dd>
+                  </div>
+                </dl>
+                <button type="button" class="geo-btn ghost sm full" id="recalc-btn" disabled>
+                  触发历史重算（保存后可用）
+                </button>
+              </div>
+
+              <div class="geo-settings-card compact">
+                <h3>关联配置</h3>
+                <ul class="geo-related-links">
+                  <li>
+                    <a href="./keywords.html">
+                      <strong>监测问题集</strong>
+                      <span>10 条 · SOA 分母</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./competitors-manage.html">
+                      <strong>竞品库</strong>
+                      <span>6 家 · 对比侧输入</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="geo-settings-card compact muted">
+                <h3>引擎说明</h3>
+                <p class="geo-settings-mini">
+                  主路径：<strong>规则引擎 + 别名库 + 时序库</strong>。NER/LLM 为可选增强，不在本页配置。
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="geo-toast" id="geo-toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/brand-settings.js"></script>
+  </body>
+</html>

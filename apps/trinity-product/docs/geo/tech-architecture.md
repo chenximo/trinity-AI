@@ -6,7 +6,8 @@ title: 技术架构分析
 
 > 配套《GEO产品设计分析报告》，逐模块拆解技术支撑需求
 >
-> 生成日期：2026年6月15日
+> 生成日期：2026年6月15日  
+> **2026-06-16**：§2.1.3–2.1.4 明确测量 SOA 主实现（规则引擎 + 别名库 + 时序库）
 
 ---
 
@@ -78,33 +79,140 @@ title: 技术架构分析
 | 限流控制 | Token Bucket 算法，Redis 实现 |
 | 原始存储 | MongoDB（非结构化原始回答）+ MinIO（截图存档） |
 
-#### 2.1.3 品牌提取与识别
+#### 2.1.3 品牌提取与识别 {#measurement-soa}
 
-| 技术 | 用途 | 实现方式 |
-|------|------|---------|
-| **NER（命名实体识别）** | 从 AI 回答文本中识别品牌名、产品名 | BERT-BiLSTM-CRF / 百度 LAC / HanLP |
-| **实体链接** | 将识别的实体映射到统一品牌 ID | 品牌知识库 + 别名表 + 模糊匹配 |
-| **情感分析** | 判断 AI 对品牌的态度（正面/负面/中性） | BERT 微调情感分类模型 / SnowNLP |
-| **位置检测** | 品牌在答案中出现的位置（开头/中间/尾部） | 正则 + 段落位置索引 |
+> **主实现方案（共识）**：**规则引擎 + 别名库 + 时序库** 为主；NER/LLM 为可选增强。业务全景见 [GEO 业务全景 · ③ 测量](./business-landscape#measurement-soa-impl)；演示代码 `apps/trinity-geo/src/demo/analyze.ts`。
 
-**品牌别名处理的复杂性示例**：
+**三件套分工**：
+
+| 组件 | 职责 | 实现要点 |
+|------|------|----------|
+| **别名库** | 品牌/竞品名称归一化 | 表结构：`entity_id`, `canonical_name`, `alias`, `entity_type`, `enabled`；控制台「品牌设置」写入或同步 |
+| **规则引擎** | 单条回答标注 + SOA 聚合 | if/else：提及、进正文、位置、竞品；诊断 D1–D4 可同进程或下游服务 |
+| **时序库** | 指标按时间存储与查询 | 维度：`brand_id`, `question_id`, `platform`, `round`, `collected_at`；支撑趋势、R1/R2、告警 |
+
+**处理流水线**：
+
+```text
+raw_answer（采集库）
+    → 别名库匹配（brand + competitor aliases）
+    → 规则引擎（in_answer_body, mention_position, …）
+    → annotations 表（单条标注）
+    → 聚合写入 metrics 时序表（SOA / 分平台 / 分类型）
+    → Dashboard / 告警 / 诊断输入
+```
+
+**别名库（主路径）**：
+
+| 能力 | 实现 |
+|------|------|
+| 精确/忽略大小写匹配 | 字符串索引或正则；MVP 用 `brand.json` 同级配置 |
+| 实体链接 | `alias` → `entity_id`（如 `trinity`, `openrouter`） |
+| 竞品与品牌同库 | `entity_type` 区分；测量时一并扫描 |
+
+**品牌别名示例**（复杂性仍适用）：
+
 ```
 "华为" 在 AI 回答中可能出现的表述：
   · 华为 · HUAWEI · 华为技术有限公司 · Huawei Technologies
-  · 华为手机 · 华为 Mate 系列 · 那个深圳的公司 · 任正非的公司
-  
-→ 全部需要归一化到 entity_id: "huawei"
+  · 华为手机 · 华为 Mate 系列 · …
+→ 全部归一化到 entity_id: "huawei"
 ```
+
+**可选增强（非 SOA 主路径）**：
+
+| 技术 | 用途 | 何时启用 |
+|------|------|----------|
+| NER / 模糊匹配 | 别名表未覆盖的变体 | 别名库维护成本高时 |
+| LLM 单次分类 | 弱提及边界、情感、指代消解 | 人工复核队列或抽检 |
+| Spark/Flink | 超大规模批量聚合 | 采样量极大时；中小客户应用层聚合即可 |
+
+**原则**：不以 LLM 直接输出 SOA 分数；指标须可回放（原始回答 + 规则版本 + 标注结果）。
 
 #### 2.1.4 指标计算引擎
 
-| 指标 | 计算逻辑 | 技术实现 |
-|------|---------|---------|
-| **SOA 答案份额** | `含品牌的回答数 / 总采样回答数` | Spark/Flink 流式计算 |
-| **CCR 引用捕获率** | `品牌作为证据源被引用的次数 / 品牌被提及的总次数` | 引用模式分类器（需训练） |
-| **AVI 可见性指数** | `f(频次, 位置, 情感, 平台权重)` | 加权评分算法，权重可配置 |
-| **首推率** | `品牌在回答中被作为第 1 个推荐的比例` | 排序识别 |
-| **趋势对比** | 不同时间段指标的变化 | ClickHouse 时序聚合 |
+| 指标 | 计算逻辑 | 技术实现（主路径） |
+|------|---------|-------------------|
+| **SOA 答案份额** | `in_answer_body=Y 的条数 / 总采样条数` | **规则引擎**聚合 → **时序库** |
+| **提及率** | `brand_mentioned=Y 的条数 / 总采样条数` | 同上 |
+| **首推率** | 品牌首次出现位置在前列的占比 | 规则：`mention_position` ∈ {首推, 前列} |
+| **CCR 引用捕获率** | 作为证据源次数 / 提及次数 | 引用规则或模型（**独立扩展**，非 SOA 前提）；见 [产品设计 · §0.6 ② 引用层](./product-design-analysis#visibility-layers) |
+| **AVI 可见性指数** | `f(频次, 位置, 情感, 平台权重)` | 加权配置表 + 时序库 |
+| **趋势对比** | 不同时间段指标变化 | **时序库**按日/周/月 roll-up；SQLite/PG/ClickHouse 按规模选型 |
+
+#### 2.1.4a 参考来源采集（信源层）{#cited-sources}
+
+> **产品真源**：[产品设计分析 · §0.6 ③ 信源层](./product-design-analysis#visibility-layers)。
+
+部分消费端（如豆包 App）在回答中显式列出「官方依据」「第三方参考」等 **全部 URL**。商用采集须：
+
+| 字段 | 说明 |
+|------|------|
+| `citation_extractable` | 本平台/渠道是否返回可解析链接 |
+| `cited_urls[]` | `{ url, label, category, entity_id? }` |
+| `category` | `competitor_official` / `third_party_review` / `brand_official` / `neutral` |
+| `brand_domain_hits` | 我方域在 `cited_urls` 中的条数 |
+| `gap_type` | 归因 S1–S6（规则或人工） |
+
+**样本数据**：`apps/trinity-geo/mvp/data/r1/cited_sources.json`（Q00 · 16 链 · 0 我方域）。
+
+**存储**：与 `raw_answers` 同行或 `answer_citations` 子表；回答详情页展示信源盘 M/N。
+
+**存储分层（建议）**：
+
+| 层 | 内容 | 说明 |
+|----|------|------|
+| 采集库 `raw_answers` | 全文、截图、platform、round、`cited_urls` | ② 写入；③ 只读 |
+| 标注库 `annotations` | 单条标注字段 | 规则引擎输出 |
+| 别名库 `entity_aliases` | 品牌/竞品别名 | ① 配置同步 |
+| 问题集 `monitoring_questions` | 监测问法、类型、启用状态 | ① 配置；② 采集任务输入；[问题集 PRD](../../../trinity-geo/marketing/console/keywords.md) |
+| 时序库 `metric_snapshots` | SOA 等聚合结果 | ③ 写入；⑥ Dashboard/告警读取 |
+
+#### 2.1.3a 控制台配置同步与历史重算 {#alias-sync-recalc}
+
+> **产品需求真源（本页）**：[品牌设置 PRD](../../../trinity-geo/marketing/console/brand-settings.md) §8–§9。  
+> 控制台「品牌设置」保存的是 **配置**；SOA 数字在 **标注库 + 时序库**，二者通过同步与重算衔接。
+
+**配置写入（保存品牌设置）**：
+
+```text
+PATCH /api/console/brands/:brand_id
+  → 事务写入 brands（主名称、官网、行业…）
+  → 差量更新 entity_aliases（entity_type=brand, enabled）
+  → 更新 brands.aliases_synced_at
+  → 若别名集有变：创建 annotation_recalc_jobs（status=pending）
+```
+
+**侧栏「测量同步状态」↔ 存储映射**：
+
+| UI 字段 | 数据来源 |
+|---------|----------|
+| 实体 ID | `brands.id` 或 slug（如 `trinity`） |
+| 已启用别名 | `COUNT(entity_aliases WHERE enabled)` |
+| 上次同步 | `brands.aliases_synced_at` |
+| 待重算 | 最新 `annotation_recalc_jobs.status`（pending / running / done / failed） |
+
+**历史重算工作流**（非 LLM，不重采集）：
+
+```text
+annotation_recalc_jobs（pending）
+  → Worker 按时间窗读取 raw_answers
+  → 用当前 entity_aliases + 规则版本重跑规则引擎
+  → UPSERT annotations
+  → 重聚合 metric_snapshots（按 question / platform / day）
+  → job.status = done；Dashboard 读新时序
+```
+
+| 表（逻辑名） | 职责 |
+|--------------|------|
+| `brands` | 品牌主档；`aliases_synced_at` |
+| `entity_aliases` | 别名库真源；控制台与竞品管理共用 |
+| `annotation_recalc_jobs` | 重算任务队列（`brand_id`, `window_days`, `status`, `started_at`, `finished_at`） |
+| `raw_answers` | 只读；重算输入 |
+| `annotations` | 重算输出 |
+| `metric_snapshots` | 重算后刷新 |
+
+**MVP 样本**：`mvp/config/brand.json` 等价于 `brands` + `entity_aliases` 的文件态；无任务表时重算可手动脚本触发。HTML 原型为 Mock，不落库。
 
 ---
 
