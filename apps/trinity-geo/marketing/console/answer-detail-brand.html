@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/core.css" />
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
@@ -19,6 +19,8 @@
         <a href="./dashboard.html" class="geo-console-logo"><span class="geo-console-logo-mark" aria-hidden="true">◎</span> Trinity GEO</a>
         <nav class="geo-console-nav">
           <a href="./dashboard.html">总览</a>
+          <a href="./citations.html">引用</a>
+          <a href="./sentiment.html">情感</a>
           <a href="./monitoring.html" class="is-active">监测</a>
           <a href="./competitors.html">竞品</a>
           <a href="./diagnosis.html">诊断</a>
@@ -32,9 +34,9 @@
 
     <main class="geo-console-main geo-answer-detail-main">
       <nav class="geo-breadcrumb" aria-label="面包屑">
-        <a href="./monitoring.html">监测</a> /
-        <a href="./keyword-detail.html">Q01</a> /
-        <span>回答详情 · CCR 样本</span>
+        <a href="./citations.html">引用与信源</a> /
+        <a href="./keywords.html">Q01</a> /
+        <span>CCR 样本 · ChatGPT</span>
       </nav>
 
       <div class="geo-settings-callout ccr-sample" role="note">
@@ -83,9 +85,13 @@
             <p class="geo-settings-mini">
               本题 SOA 与 CCR 同时为是：品牌进正文，且官网文档被当作<strong>证据源</strong>引用——比单纯点名更强。
             </p>
+            <p class="geo-settings-mini" style="margin-top: 0.75rem">
+              R2 验证（定价页 opt-d3）→ <a href="./verify.html#verify-q01">CCR 1/3→2/3</a>
+            </p>
           </div>
 
-          <a href="./answer-detail.md" class="geo-btn ghost sm full">回答详情 PRD（Q00）→</a>
+          <a href="./citations.html" class="geo-btn ghost sm full">引用读口 →</a>
+          <a href="./verify.html#verify-q01" class="geo-btn ghost sm full">效果验证 R2 →</a>
         </aside>
       </div>
     </main>

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/core.css" />
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
@@ -22,6 +22,8 @@
         </a>
         <nav class="geo-console-nav" aria-label="控制台主导航">
           <a href="./dashboard.html">总览</a>
+          <a href="./citations.html">引用</a>
+          <a href="./sentiment.html">情感</a>
           <a href="./monitoring.html">监测</a>
           <a href="./competitors.html">竞品</a>
           <a href="./diagnosis.html">诊断</a>
@@ -76,9 +78,14 @@
               <div class="geo-metric-delta">Q00 · 0→1 我方域</div>
             </div>
             <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">CCR 已改善</div>
+              <div class="geo-metric-value">1</div>
+              <div class="geo-metric-delta">Q01 · 1/3→2/3</div>
+            </div>
+            <div class="geo-metric-card neutral">
               <div class="geo-metric-label">SOA 已改善</div>
-              <div class="geo-metric-value">0</div>
-              <div class="geo-metric-delta">品类词仍待下一轮</div>
+              <div class="geo-metric-value">1</div>
+              <div class="geo-metric-delta">Q01 · 62%→68%</div>
             </div>
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">R2 最近采集</div>
@@ -162,6 +169,84 @@
               <a href="./answer-detail.html#cite-heading" class="geo-btn ghost sm">R1 回答与信源</a>
               <a href="./diagnosis.html#diag-q00" class="geo-btn ghost sm">诊断</a>
               <a href="./optimize.html#opt-s3" class="geo-btn ghost sm">继续 S3 评测渗透</a>
+            </div>
+          </section>
+
+          <section class="geo-settings-card geo-verify-card" aria-labelledby="verify-q01-heading" id="verify-q01">
+            <div class="geo-settings-card-head">
+              <div>
+                <h2 id="verify-q01-heading">Q01 · Trinity AI 好用吗？ · ChatGPT + 豆包</h2>
+                <p class="geo-settings-card-desc">
+                  关联动作 <a href="./optimize.html#opt-d3">opt-d3</a> · 定价页证据前置 · R1 2026-06-14 → R2 2026-06-18
+                </p>
+              </div>
+              <span class="geo-verify-badge ok">CCR 改善</span>
+            </div>
+
+            <p class="geo-verify-verdict">
+              <strong>结论：</strong>定价页审计分 74（+6）后，CCR 从单平台引用扩展到双平台；SOA 同步小幅上升。验证顺序符合「信源/CCR 先于 SOA 大幅变化」— 与 Q00「先进盘、后进答案」形成对照样本。
+            </p>
+
+            <div class="geo-verify-metrics">
+              <div class="dash-verify-compare geo-verify-metric primary">
+                <div class="dash-verify-round">
+                  <div class="label">R1 CCR 命中</div>
+                  <div class="val ok">1/3</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 CCR 命中</div>
+                  <div class="val ok">2/3</div>
+                </div>
+                <span class="dash-verify-delta">↑ ChatGPT + 豆包</span>
+              </div>
+
+              <div class="dash-verify-compare geo-verify-metric">
+                <div class="dash-verify-round">
+                  <div class="label">R1 SOA</div>
+                  <div class="val ok">62%</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 SOA</div>
+                  <div class="val ok">68%</div>
+                </div>
+                <span class="dash-verify-delta up">↑ 6pt</span>
+              </div>
+
+              <div class="dash-verify-compare geo-verify-metric">
+                <div class="dash-verify-round">
+                  <div class="label">R1 引用 URL</div>
+                  <div class="val" style="font-size: 0.875rem">doc 首页</div>
+                </div>
+                <span class="dash-verify-arrow">→</span>
+                <div class="dash-verify-round">
+                  <div class="label">R2 引用 URL</div>
+                  <div class="val" style="font-size: 0.875rem">+ pricing</div>
+                </div>
+                <span class="dash-verify-delta">更精准证据</span>
+              </div>
+            </div>
+
+            <div class="geo-verify-added">
+              <h3>R2 新增引用链</h3>
+              <ul class="geo-cite-list">
+                <li>
+                  <a href="https://trinitydesk.ai/pricing" rel="noopener noreferrer" target="_blank">trinitydesk.ai/pricing</a>
+                  — 按量计费 · 企业套餐说明
+                  <span class="geo-verify-new">R2 新增 · 豆包</span>
+                </li>
+              </ul>
+              <p class="geo-form-hint">
+                R1 基线 <a href="./answer-detail-brand.html">Q01 回答详情</a>
+                · 审计 <a href="./audit.html#audit-pricing">/pricing 74 分</a>
+              </p>
+            </div>
+
+            <div class="geo-verify-links">
+              <a href="./answer-detail-brand.html" class="geo-btn ghost sm">R1 回答（CCR+）</a>
+              <a href="./citations.html" class="geo-btn ghost sm">引用读口</a>
+              <a href="./sentiment.html" class="geo-btn ghost sm">情感 · 正面 72%</a>
             </div>
           </section>
 

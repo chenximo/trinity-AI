@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 审计报告（④ /console/audit/reports） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>审计报告 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">◎</span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./citations.html">引用</a>
+          <a href="./sentiment.html">情感</a>
+          <a href="./monitoring.html">监测</a>
+          <a href="./competitors.html">竞品</a>
+          <a href="./diagnosis.html" class="is-active">诊断</a>
+          <a href="./optimize.html">优化</a>
+          <a href="./reports.html">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="./settings-account.html" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="诊断子导航">
+          <p class="geo-settings-sidebar-title">诊断</p>
+          <nav class="geo-settings-nav">
+            <a href="./diagnosis.html">诊断列表</a>
+            <a href="./audit.html">页面审计</a>
+            <a href="./audit-reports.html" class="is-active" aria-current="page">审计报告</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">④ 诊断与审计</p>
+              <h1>审计报告</h1>
+              <p class="dash-toolbar-meta">
+                站点扫描历史 · 评分趋势 · 导出 PDF（商用） · 与单次 URL 审计互补
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./audit.html" class="geo-btn ghost">返回页面审计</a>
+              <button type="button" class="geo-btn primary" disabled title="商用：触发全站扫描">新建全站扫描</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>与页面审计的区别：</strong>本页保存<strong>批量 / 周期</strong>扫描快照；单 URL 因子明细仍在
+            <a href="./audit.html">页面审计</a>。红灯页修复后可在 <a href="./verify.html">效果验证</a> 看信源盘 Δ。
+          </div>
+
+          <div class="dash-kpi-row geo-mon-kpi">
+            <div class="geo-metric-card primary">
+              <div class="geo-metric-label">历史报告</div>
+              <div class="geo-metric-value">4</div>
+              <div class="geo-metric-delta">近 90 日</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">最近扫描</div>
+              <div class="geo-metric-value" style="font-size: 1rem">6/14 22:30</div>
+              <div class="geo-metric-delta">8 页 · 手动触发</div>
+            </div>
+            <div class="geo-metric-card warn">
+              <div class="geo-metric-label">最新红灯</div>
+              <div class="geo-metric-value">2</div>
+              <div class="geo-metric-delta"><a href="./audit.html#audit-doc-intro">doc/introduction 38</a></div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">均分趋势</div>
+              <div class="geo-metric-value">62</div>
+              <div class="geo-metric-delta up">↑ 4 vs 5/28 基线</div>
+            </div>
+          </div>
+
+          <section class="geo-settings-card" aria-labelledby="audit-rep-list-heading">
+            <div class="geo-settings-card-head">
+              <div>
+                <h2 id="audit-rep-list-heading">扫描历史</h2>
+                <p class="geo-settings-card-desc">点击报告查看摘要 · 明细跳页面审计</p>
+              </div>
+            </div>
+            <div class="geo-kw-table-wrap">
+              <table class="geo-kw-table geo-report-table">
+                <thead>
+                  <tr>
+                    <th>报告 ID</th>
+                    <th>扫描时间</th>
+                    <th>范围</th>
+                    <th>页面数</th>
+                    <th>均分</th>
+                    <th>红灯</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono"><a href="#rep-20260614">AR-20260614</a></td>
+                    <td>2026-06-14 22:30</td>
+                    <td>官网 + doc 子域</td>
+                    <td>8</td>
+                    <td class="num">62</td>
+                    <td class="num bad">2</td>
+                    <td>
+                      <a href="./audit.html#audit-doc-intro">明细</a>
+                      · <span class="geo-muted" title="商用">PDF</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AR-20260528</td>
+                    <td>2026-05-28 10:00</td>
+                    <td>官网 + doc 子域</td>
+                    <td>7</td>
+                    <td class="num mid">58</td>
+                    <td class="num bad">3</td>
+                    <td>
+                      <a href="./audit.html">明细</a>
+                      · <span class="geo-muted" title="商用">PDF</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AR-20260415</td>
+                    <td>2026-04-15 09:00</td>
+                    <td>仅 doc 子域</td>
+                    <td>5</td>
+                    <td class="num mid">55</td>
+                    <td class="num bad">2</td>
+                    <td>
+                      <a href="./audit.html">明细</a>
+                      · <span class="geo-muted" title="商用">PDF</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mono">AR-20240301</td>
+                    <td>2026-03-01 09:00</td>
+                    <td>官网首页</td>
+                    <td>1</td>
+                    <td class="num mid">61</td>
+                    <td class="num">0</td>
+                    <td>
+                      <a href="./audit.html#audit-product">明细</a>
+                      · <span class="geo-muted" title="商用">PDF</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="geo-settings-card" aria-labelledby="rep-20260614-heading" id="rep-20260614">
+            <div class="geo-settings-card-head">
+              <div>
+                <h2 id="rep-20260614-heading">报告摘要 · AR-20260614</h2>
+                <p class="geo-settings-card-desc">与总览「证据密度 62 · 红灯 2」一致 · 关联 Q00 / opt-s1s2</p>
+              </div>
+              <span class="geo-verify-badge partial">待修复 11 项</span>
+            </div>
+
+            <div class="geo-kw-table-wrap">
+              <table class="geo-kw-table">
+                <thead>
+                  <tr>
+                    <th>页面</th>
+                    <th>评分</th>
+                    <th>较上版</th>
+                    <th>优先动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="./audit.html#audit-doc-intro">doc …/introduction</a></td>
+                    <td class="num bad">38</td>
+                    <td class="num">—</td>
+                    <td><a href="./optimize-detail.html">opt-s1s2</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="./audit.html#audit-product">/product</a></td>
+                    <td class="num mid">58</td>
+                    <td class="num up">+3</td>
+                    <td>证据块补全</td>
+                  </tr>
+                  <tr>
+                    <td><a href="./audit.html#audit-pricing">/pricing</a></td>
+                    <td class="num">74</td>
+                    <td class="num up">+6</td>
+                    <td><a href="./optimize.html#opt-d3">opt-d3</a> · Q01 CCR</td>
+                  </tr>
+                  <tr>
+                    <td><a href="./audit.html#audit-about">/about</a></td>
+                    <td class="num mid">61</td>
+                    <td class="num">—</td>
+                    <td>Schema 补全</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="geo-form-hint">
+              修复后验证：
+              <a href="./verify.html#verify-q00">Q00 信源盘</a>
+              · <a href="./verify.html#verify-q01">Q01 CCR</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

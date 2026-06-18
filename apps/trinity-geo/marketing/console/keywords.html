@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/core.css" />
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
@@ -31,6 +31,8 @@
         </a>
         <nav class="geo-console-nav" aria-label="控制台主导航">
           <a href="./dashboard.html">总览</a>
+          <a href="./citations.html">引用</a>
+          <a href="./sentiment.html">情感</a>
           <a href="./monitoring.html" class="is-active">监测</a>
           <a href="./competitors.html" title="竞品模块">竞品</a>
           <a href="./diagnosis.html" title="诊断与审计">诊断</a>
@@ -211,7 +213,8 @@
                         <td class="mono">Q01</td>
                         <td><span class="geo-kw-type type-brand">品牌</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">Trinity AI 好用吗？适合什么场景？</a>
+                          <a href="./answer-detail-brand.html" class="geo-kw-text">Trinity AI 好用吗？适合什么场景？</a>
+                          <span class="geo-kw-flag ok" title="CCR 样本">CCR ✓</span>
                         </td>
                         <td class="num good">62%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -224,7 +227,7 @@
                         <td class="mono">Q02</td>
                         <td><span class="geo-kw-type type-brand">品牌</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">trinitydesk.ai 是什么平台？</a>
+                          <a href="./keyword-detail.html?q=Q02" class="geo-kw-text" title="关键词详情 Q02">trinitydesk.ai 是什么平台？</a>
                         </td>
                         <td class="num good">48%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -237,7 +240,7 @@
                         <td class="mono">Q03</td>
                         <td><span class="geo-kw-type type-category">品类</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">国内有哪些 OpenAI 兼容的大模型 API 聚合平台？</a>
+                          <a href="./keyword-detail.html?q=Q03" class="geo-kw-text" title="关键词详情 Q03">国内有哪些 OpenAI 兼容的大模型 API 聚合平台？</a>
                           <span class="geo-kw-flag warn">未进答案</span>
                         </td>
                         <td class="num bad">8%</td>
@@ -251,7 +254,7 @@
                         <td class="mono">Q04</td>
                         <td><span class="geo-kw-type type-category">品类</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">想一个 Key 调用多家大模型，有什么推荐？</a>
+                          <a href="./keyword-detail.html?q=Q04" class="geo-kw-text" title="关键词详情 Q04">想一个 Key 调用多家大模型，有什么推荐？</a>
                         </td>
                         <td class="num mid">22%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -264,7 +267,7 @@
                         <td class="mono">Q05</td>
                         <td><span class="geo-kw-type type-brand">品牌</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">Trinity Desk 和 OpenRouter 怎么选？</a>
+                          <a href="./keyword-detail.html?q=Q05" class="geo-kw-text" title="关键词详情 Q05">Trinity Desk 和 OpenRouter 怎么选？</a>
                         </td>
                         <td class="num mid">35%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -277,7 +280,7 @@
                         <td class="mono">Q06</td>
                         <td><span class="geo-kw-type type-compare">对比</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">Trinity 和 OpenRouter 哪个更适合国内开发者？</a>
+                          <a href="./keyword-detail.html?q=Q06" class="geo-kw-text" title="关键词详情 Q06">Trinity 和 OpenRouter 哪个更适合国内开发者？</a>
                         </td>
                         <td class="num mid">28%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -290,7 +293,7 @@
                         <td class="mono">Q07</td>
                         <td><span class="geo-kw-type type-compare">对比</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">trinitydesk 和其他 API 中转平台比有什么优势？</a>
+                          <a href="./keyword-detail.html?q=Q07" class="geo-kw-text" title="关键词详情 Q07">trinitydesk 和其他 API 中转平台比有什么优势？</a>
                         </td>
                         <td class="num good">41%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -303,7 +306,7 @@
                         <td class="mono">Q08</td>
                         <td><span class="geo-kw-type type-brand">品牌</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">Trinity API 网关支持哪些模型？</a>
+                          <a href="./keyword-detail.html?q=Q08" class="geo-kw-text" title="关键词详情 Q08">Trinity API 网关支持哪些模型？</a>
                         </td>
                         <td class="num good">55%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>
@@ -316,7 +319,7 @@
                         <td class="mono">Q09</td>
                         <td><span class="geo-kw-type type-scenario">场景</span></td>
                         <td>
-                          <a href="#" class="geo-kw-text">我在做 AI 应用，怎么降低多模型接入成本？</a>
+                          <a href="./keyword-detail.html?q=Q09" class="geo-kw-text" title="关键词详情 Q09">我在做 AI 应用，怎么降低多模型接入成本？</a>
                         </td>
                         <td class="num mid">18%</td>
                         <td><span class="geo-kw-status on">监测中</span></td>

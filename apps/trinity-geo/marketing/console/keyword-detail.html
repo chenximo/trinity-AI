@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Trinity GEO · 关键词详情 Q00（③ 测量下钻） -->
+<!-- Trinity GEO · 可见性下钻 · 单题详情 Q00（≈ Generforce 产品可见性） -->
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/core.css" />
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
@@ -19,6 +19,8 @@
         <a href="./dashboard.html" class="geo-console-logo"><span class="geo-console-logo-mark" aria-hidden="true">◎</span> Trinity GEO</a>
         <nav class="geo-console-nav">
           <a href="./dashboard.html">总览</a>
+          <a href="./citations.html">引用</a>
+          <a href="./sentiment.html">情感</a>
           <a href="./monitoring.html" class="is-active">监测</a>
           <a href="./competitors.html">竞品</a>
           <a href="./diagnosis.html">诊断</a>
@@ -30,152 +32,248 @@
       </div>
     </header>
 
-    <main class="geo-console-main">
+    <main class="geo-console-main geo-kw-detail-page">
       <nav class="geo-breadcrumb" aria-label="面包屑">
-        <a href="./monitoring.html">监测</a> / <a href="./keywords.html">问题集</a> / <span>Q00</span>
+        <a href="./dashboard.html">总览</a> / <span>可见性下钻</span> / <span>Q00</span>
       </nav>
 
-      <div class="dash-toolbar geo-settings-toolbar">
-        <div>
-          <p class="dash-section-label">③ 测量下钻</p>
-          <h1>推荐两款 API 聚合平台</h1>
-          <p class="dash-toolbar-meta">
-            <span class="geo-kw-type type-category">品类词</span>
-            <code class="geo-comp-id">Q00</code>
-            · 监测中 · MVP 样本（D1 · 信源 0/16）
-          </p>
-        </div>
-        <div class="geo-settings-toolbar-actions">
-          <a href="./keywords.html" class="geo-btn ghost">返回问题集</a>
-          <a href="./answer-detail.html" class="geo-btn primary">查看最新回答</a>
-        </div>
-      </div>
-
-      <div class="geo-settings-callout warn" role="alert">
-        <strong><a href="./diagnosis.html#diag-q00">D1 · S1+S2+S3</a>：</strong>
-        SOA 0%；豆包 R1 参考盘 <strong>16 链、我方域 0</strong>，竞品 OpenRouter、TokenHub 占官方依据。
-        <a href="./answer-detail.html#cite-heading">查看信源 →</a>
-        · <a href="./optimize.html#opt-s1s2">优化动作 →</a>
-      </div>
-
-      <div class="dash-kpi-row">
-        <div class="geo-metric-card primary">
-          <div class="geo-metric-label">SOA 7d</div>
-          <div class="geo-metric-value">0%</div>
-          <div class="geo-metric-delta down">↓ 持平</div>
-        </div>
-        <div class="geo-metric-card warn">
-          <div class="geo-metric-label">信源盘 · 豆包 R1</div>
-          <div class="geo-metric-value">0/16</div>
-          <div class="geo-metric-delta">
-            <a href="./answer-detail.html#cite-heading">我方域未命中</a>
+      <div class="geo-kw-detail-layout">
+        <aside class="geo-kw-detail-aside" aria-label="监测问题列表">
+          <div class="geo-kw-detail-aside-head">
+            <h2>问题集</h2>
+            <a href="./keywords.html" class="geo-btn ghost sm">管理</a>
           </div>
-        </div>
-        <div class="geo-metric-card ccr">
-          <div class="geo-metric-label">CCR</div>
-          <div class="geo-metric-value">0%</div>
-          <div class="geo-metric-delta">未被引为信源</div>
-        </div>
-        <div class="geo-metric-card neutral">
-          <div class="geo-metric-label">提及率</div>
-          <div class="geo-metric-value">0%</div>
-          <div class="geo-metric-delta">未出现品牌名</div>
-        </div>
-      </div>
-      <p class="geo-form-hint geo-kw-sample-hint">采集样本 28（10 平台 × 近 3 轮）· R2 验证见 <a href="./verify.html#verify-q00">效果验证</a></p>
+          <p class="geo-kw-detail-aside-hint">单题 = 可见性下钻单元（非 SKU 目录）</p>
+          <ul class="geo-kw-detail-nav">
+            <li class="is-current">
+              <a href="./keyword-detail.html">
+                <span class="geo-kw-type type-category">品类</span>
+                <span class="geo-kw-detail-nav-text">推荐两款 API 聚合平台</span>
+                <span class="geo-kw-detail-nav-soa bad">0%</span>
+              </a>
+            </li>
+            <li>
+              <a href="./keyword-detail.html" title="Q01">
+                <span class="geo-kw-type type-brand">品牌</span>
+                <span class="geo-kw-detail-nav-text">Trinity AI 是什么</span>
+                <span class="geo-kw-detail-nav-soa mid">42%</span>
+              </a>
+            </li>
+            <li>
+              <a href="./keyword-detail.html" title="Q02">
+                <span class="geo-kw-type type-category">品类</span>
+                <span class="geo-kw-detail-nav-text">国内 OpenAI 兼容 API 聚合</span>
+                <span class="geo-kw-detail-nav-soa mid">22%</span>
+              </a>
+            </li>
+            <li>
+              <a href="./keyword-detail.html" title="Q03">
+                <span class="geo-kw-type type-scenario">场景</span>
+                <span class="geo-kw-detail-nav-text">一个 Key 调用多家大模型</span>
+                <span class="geo-kw-detail-nav-soa">35%</span>
+              </a>
+            </li>
+            <li>
+              <a href="./keyword-detail.html" title="Q04">
+                <span class="geo-kw-type type-compare">对比</span>
+                <span class="geo-kw-detail-nav-text">Trinity vs OpenRouter</span>
+                <span class="geo-kw-detail-nav-soa mid">28%</span>
+              </a>
+            </li>
+          </ul>
+          <p class="geo-kw-detail-aside-foot"><a href="./keywords.html">查看全部 10 题 →</a></p>
+        </aside>
 
-      <section class="dash-card" aria-labelledby="kw-trend-heading">
-        <div class="dash-card-head">
-          <h2 id="kw-trend-heading">SOA 趋势 · 本题</h2>
-          <div class="dash-period" role="tablist">
-            <button type="button" data-kw-period="day">日</button>
-            <button type="button" class="on" data-kw-period="week">周</button>
-            <button type="button" data-kw-period="month">月</button>
+        <div class="geo-kw-detail-main">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">可见性 · 单题下钻</p>
+              <h1>推荐两款 API 聚合平台</h1>
+              <p class="dash-toolbar-meta">
+                <span class="geo-kw-type type-category">品类词</span>
+                <code class="geo-comp-id">Q00</code>
+                · 监测中 · MVP 样本（D1 · 信源 0/16）
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
+              <a href="./answer-detail.html" class="geo-btn primary">查看最新回答</a>
+            </div>
           </div>
-        </div>
-        <div class="dash-card-body">
-          <div class="dash-trend-chart geo-kw-trend-flat" aria-hidden="true">
-            <svg viewBox="0 0 400 80" preserveAspectRatio="none">
-              <line x1="0" y1="70" x2="400" y2="70" stroke="#e2e8f0" />
-              <polyline points="0,70 400,70" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
-            </svg>
-            <p class="geo-kw-trend-note">本题 SOA 持续为 0% — 优先优化品类内容资产</p>
+
+          <div class="geo-settings-callout warn" role="alert">
+            <strong><a href="./diagnosis.html#diag-q00">D1 · S1+S2+S3</a>：</strong>
+            SOA 0%；豆包 R1 参考盘 <strong>16 链、我方域 0</strong>，竞品 OpenRouter、TokenHub 占官方依据。
+            <a href="./answer-detail.html#cite-heading">查看信源 →</a>
+            · <a href="./optimize.html#opt-s1s2">优化动作 →</a>
           </div>
-        </div>
-      </section>
 
-      <section class="geo-settings-card" aria-labelledby="kw-platform-heading">
-        <h2 id="kw-platform-heading">分平台摘要</h2>
-        <div class="geo-kw-table-wrap">
-          <table class="geo-kw-table">
-            <thead>
-              <tr>
-                <th>平台</th>
-                <th>市场</th>
-                <th>SOA 7d</th>
-                <th>信源 M/N</th>
-                <th>竞品领先</th>
-                <th>最近回答</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>豆包</td>
-                <td>国内</td>
-                <td class="num bad">0%</td>
-                <td class="num bad">0/16</td>
-                <td>OpenRouter, TokenHub</td>
-                <td><a href="./answer-detail.html">查看</a> · 今日 09:12</td>
-              </tr>
-              <tr>
-                <td>ChatGPT</td>
-                <td>海外</td>
-                <td class="num bad">0%</td>
-                <td class="num muted">—</td>
-                <td>OpenRouter</td>
-                <td><a href="./answer-detail.html">查看</a> · 昨日</td>
-              </tr>
-              <tr>
-                <td>DeepSeek</td>
-                <td>国内</td>
-                <td class="num bad">0%</td>
-                <td class="num muted">—</td>
-                <td>LiteLLM</td>
-                <td><a href="#">查看</a> · 昨日</td>
-              </tr>
-              <tr>
-                <td>Perplexity</td>
-                <td>海外</td>
-                <td class="num mid">12%</td>
-                <td class="num muted">—</td>
-                <td>—</td>
-                <td><a href="#">查看</a> · 2 日前</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="dash-card" aria-labelledby="kw-answers-heading">
-        <div class="dash-card-head"><h2 id="kw-answers-heading">本题 · 最新回答</h2></div>
-        <div class="dash-card-body">
-          <div class="dash-answer-list">
-            <article class="dash-answer-item">
-              <div class="dash-answer-main">
-                <a href="./answer-detail.html" class="dash-answer-kw">豆包 · R1 · 2026-06-16</a>
-                <p class="dash-answer-snippet">主推 OpenRouter 与腾讯云 TokenHub · 参考盘 16 链、我方 0…</p>
+          <div class="dash-kpi-row">
+            <div class="geo-metric-card primary">
+              <div class="geo-metric-label">SOA 7d</div>
+              <div class="geo-metric-value">0%</div>
+              <div class="geo-metric-delta down">↓ 持平</div>
+            </div>
+            <div class="geo-metric-card warn">
+              <div class="geo-metric-label">信源盘 · 豆包 R1</div>
+              <div class="geo-metric-value">0/16</div>
+              <div class="geo-metric-delta">
+                <a href="./answer-detail.html#cite-heading">我方域未命中</a>
               </div>
-              <div class="dash-answer-meta">
-                <span class="dash-badge miss">未进答案</span>
-                <span class="dash-badge cite-miss">信源 0/16</span>
-                <span class="geo-kw-flag warn"><a href="./diagnosis.html#diag-q00">D1</a></span>
-              </div>
-            </article>
+            </div>
+            <div class="geo-metric-card ccr">
+              <div class="geo-metric-label">CCR</div>
+              <div class="geo-metric-value">0%</div>
+              <div class="geo-metric-delta">未被引为信源 · <a href="./citations.html">引用读口 →</a></div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">提及率</div>
+              <div class="geo-metric-value">0%</div>
+              <div class="geo-metric-delta">未出现品牌名</div>
+            </div>
           </div>
-        </div>
-      </section>
+          <p class="geo-form-hint geo-kw-sample-hint">采集样本 28（10 平台 × 近 3 轮）· R2 验证见 <a href="./verify.html#verify-q00">效果验证</a></p>
 
-      <p class="dash-proto-link"><a href="./keyword-detail.md">产品解读</a> · 其他题目见 <a href="./keywords.html">问题集</a></p>
+          <div class="geo-kw-detail-split">
+            <section class="dash-panel" aria-labelledby="kw-trend-heading">
+              <header class="dash-panel-head">
+                <div>
+                  <h2 id="kw-trend-heading">SOA 趋势 · 本题</h2>
+                  <div class="dash-trend-legend dash-trend-legend-multi">
+                    <span class="line-overseas">我方</span>
+                    <span class="line-comp-a">OpenRouter</span>
+                    <span class="line-comp-b">TokenHub</span>
+                  </div>
+                </div>
+                <div class="dash-period" role="tablist">
+                  <button type="button" data-kw-period="day">日</button>
+                  <button type="button" class="on" data-kw-period="week">周</button>
+                  <button type="button" data-kw-period="month">月</button>
+                </div>
+              </header>
+              <div class="dash-trend-chart geo-kw-trend-flat" aria-hidden="true">
+                <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                  <line x1="0" y1="70" x2="400" y2="70" stroke="#e2e8f0" />
+                  <polyline points="0,70 400,70" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+                  <polyline points="0,28 100,26 200,24 300,22 400,20" fill="none" stroke="#7c3aed" stroke-width="2" opacity="0.75" />
+                  <polyline points="0,32 100,34 200,33 300,35 400,34" fill="none" stroke="#64748b" stroke-width="1.75" opacity="0.7" />
+                </svg>
+                <p class="geo-kw-trend-note">本题 SOA 持续为 0%，竞品 OpenRouter / TokenHub 稳定领先</p>
+              </div>
+            </section>
+
+            <section class="dash-panel" aria-labelledby="kw-comp-rank-heading">
+              <header class="dash-panel-head">
+                <h2 id="kw-comp-rank-heading">本题 · 竞品 SOA 排名</h2>
+                <a href="./competitors.html" class="geo-btn ghost sm">竞品模块 →</a>
+              </header>
+              <ol class="geo-comp-rank-list">
+                <li>
+                  <span class="geo-comp-rank-name"><a href="./competitor-detail.html">OpenRouter</a></span>
+                  <span class="geo-comp-rank-bar"><span style="width: 68%"></span></span>
+                  <span class="geo-comp-rank-val">68%</span>
+                </li>
+                <li>
+                  <span class="geo-comp-rank-name"><a href="./competitor-detail.html">TokenHub</a></span>
+                  <span class="geo-comp-rank-bar"><span style="width: 52%"></span></span>
+                  <span class="geo-comp-rank-val">52%</span>
+                </li>
+                <li class="is-us">
+                  <span class="geo-comp-rank-name">Trinity AI</span>
+                  <span class="geo-comp-rank-bar us"><span style="width: 0%"></span></span>
+                  <span class="geo-comp-rank-val bad">0%</span>
+                </li>
+              </ol>
+            </section>
+          </div>
+
+          <section class="dash-panel" aria-labelledby="kw-tags-heading">
+            <header class="dash-panel-head">
+              <h2 id="kw-tags-heading">回答中的叙事标签 · 本题采样</h2>
+            </header>
+            <div class="geo-tag-cloud">
+              <span class="geo-tag-chip hot">API 聚合</span>
+              <span class="geo-tag-chip hot">OpenAI 兼容</span>
+              <span class="geo-tag-chip">按量计费</span>
+              <span class="geo-tag-chip">官方文档</span>
+              <span class="geo-tag-chip muted">Trinity AI</span>
+              <span class="geo-tag-chip">多模型路由</span>
+            </div>
+            <p class="geo-form-hint">灰色 = 本题未进正文提及 · 情感维度见 <a href="./sentiment.html">情感读口</a></p>
+          </section>
+
+          <section class="geo-settings-card" aria-labelledby="kw-platform-heading">
+            <h2 id="kw-platform-heading">分平台摘要</h2>
+            <div class="geo-kw-table-wrap">
+              <table class="geo-kw-table">
+                <thead>
+                  <tr>
+                    <th>平台</th>
+                    <th>市场</th>
+                    <th>SOA 7d</th>
+                    <th>信源 M/N</th>
+                    <th>竞品领先</th>
+                    <th>最近回答</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>豆包</td>
+                    <td>国内</td>
+                    <td class="num bad">0%</td>
+                    <td class="num bad">0/16</td>
+                    <td>OpenRouter, TokenHub</td>
+                    <td><a href="./answer-detail.html">查看</a> · 今日 09:12</td>
+                  </tr>
+                  <tr>
+                    <td>ChatGPT</td>
+                    <td>海外</td>
+                    <td class="num bad">0%</td>
+                    <td class="num muted">—</td>
+                    <td>OpenRouter</td>
+                    <td><a href="./answer-detail.html">查看</a> · 昨日</td>
+                  </tr>
+                  <tr>
+                    <td>DeepSeek</td>
+                    <td>国内</td>
+                    <td class="num bad">0%</td>
+                    <td class="num muted">—</td>
+                    <td>LiteLLM</td>
+                    <td><a href="./answer-detail.html" title="Q00 · DeepSeek">查看</a> · 昨日</td>
+                  </tr>
+                  <tr>
+                    <td>Perplexity</td>
+                    <td>海外</td>
+                    <td class="num mid">12%</td>
+                    <td class="num muted">—</td>
+                    <td>—</td>
+                    <td><a href="./answer-detail-brand.html" title="Q01 · Perplexity">查看</a> · 2 日前</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="dash-panel" aria-labelledby="kw-answers-heading">
+            <header class="dash-panel-head"><h2 id="kw-answers-heading">本题 · 最新回答</h2></header>
+            <div class="dash-answer-list">
+              <article class="dash-answer-item">
+                <div class="dash-answer-main">
+                  <a href="./answer-detail.html" class="dash-answer-kw">豆包 · R1 · 2026-06-16</a>
+                  <p class="dash-answer-snippet">主推 OpenRouter 与腾讯云 TokenHub · 参考盘 16 链、我方 0…</p>
+                </div>
+                <div class="dash-answer-meta">
+                  <span class="dash-badge miss">未进答案</span>
+                  <span class="dash-badge cite-miss">信源 0/16</span>
+                  <span class="geo-kw-flag warn"><a href="./diagnosis.html#diag-q00">D1</a></span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <p class="dash-proto-link"><a href="./keyword-detail.md">产品解读</a> · 总览见 <a href="./dashboard.html">可见性读口 ①</a></p>
+        </div>
+      </div>
     </main>
     <script src="../js/keyword-detail.js"></script>
   </body>

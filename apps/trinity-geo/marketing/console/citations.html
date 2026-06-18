@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 引用与信源（② 引用层 + ③ 信源层） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>引用与信源 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">◎</span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./citations.html" class="is-active">引用</a>
+          <a href="./sentiment.html">情感</a>
+          <a href="./monitoring.html">监测</a>
+          <a href="./competitors.html">竞品</a>
+          <a href="./diagnosis.html">诊断</a>
+          <a href="./optimize.html">优化</a>
+          <a href="./reports.html">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="./settings-account.html" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="dash-toolbar geo-settings-toolbar">
+        <div>
+          <p class="dash-section-label">② 引用 · ③ 信源</p>
+          <h1>引用与信源</h1>
+          <p class="dash-toolbar-meta">AI 把谁当<strong>证据源</strong>（CCR）· 整题参考链构成（信源盘 M/N）</p>
+        </div>
+        <div class="geo-settings-toolbar-actions">
+          <a href="./dashboard.html" class="geo-btn ghost">返回可见性总览</a>
+        </div>
+      </div>
+
+      <div class="geo-layer-legend" role="note">
+        <div class="geo-layer-legend-item">
+          <strong>CCR</strong>
+          <span>在「提到品牌」的回答里，我方 URL 是否出现在引用/依据角色</span>
+        </div>
+        <div class="geo-layer-legend-item">
+          <strong>信源盘 M/N</strong>
+          <span>不管正文提没提你，参考链接里我方域占几条 / 总链数</span>
+        </div>
+        <div class="geo-layer-legend-item muted">
+          <strong>≠ SOA</strong>
+          <span>进答案正文见 <a href="./dashboard.html">可见性总览</a></span>
+        </div>
+        <a href="./citations.md" class="geo-layer-legend-link">单页 PRD →</a>
+      </div>
+
+      <div class="dash-kpi-row geo-mon-kpi">
+        <div class="geo-metric-card ccr primary">
+          <div class="geo-metric-label">CCR · 7d</div>
+          <div class="geo-metric-value">8%</div>
+          <div class="geo-metric-delta">分母 = 有提及的采样 · <a href="./answer-detail-brand.html">正样本 Q01</a></div>
+        </div>
+        <div class="geo-metric-card warn">
+          <div class="geo-metric-label">信源盘命中率</div>
+          <div class="geo-metric-value">12%</div>
+          <div class="geo-metric-delta">可提取样本中 M&gt;0 的占比</div>
+        </div>
+        <div class="geo-metric-card neutral">
+          <div class="geo-metric-label">可提取样本</div>
+          <div class="geo-metric-value">34</div>
+          <div class="geo-metric-delta">豆包 / 部分 App 端 · 10 平台</div>
+        </div>
+        <div class="geo-metric-card neutral">
+          <div class="geo-metric-label">竞品官方链占比</div>
+          <div class="geo-metric-value">58%</div>
+          <div class="geo-metric-delta">在全部 cited_urls 中</div>
+        </div>
+      </div>
+
+      <div class="geo-cite-layout">
+        <section class="geo-settings-card" aria-labelledby="cite-by-q-heading">
+          <h2 id="cite-by-q-heading">按问题 · 信源概况</h2>
+          <p class="geo-settings-card-desc">CCR 与 M/N 分列 · 仅展示可提取平台样本</p>
+          <div class="geo-kw-table-wrap">
+            <table class="geo-kw-table geo-cite-q-table">
+              <thead>
+                <tr>
+                  <th>问题</th>
+                  <th>平台</th>
+                  <th>CCR</th>
+                  <th>信源 M/N</th>
+                  <th>缺口</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="geo-cite-q-row warn">
+                  <td><a href="./keyword-detail.html"><strong>Q00</strong> · 推荐两款 API 聚合平台</a></td>
+                  <td>豆包</td>
+                  <td><span class="geo-cite-pill no">否</span></td>
+                  <td class="num bad"><strong>0</strong>/16</td>
+                  <td><span class="geo-diag-sub">S1+S2+S3</span></td>
+                  <td><a href="./answer-detail.html#cite-heading">信源盘 →</a></td>
+                </tr>
+                <tr class="geo-cite-q-row ok">
+                  <td><a href="./answer-detail-brand.html"><strong>Q01</strong> · Trinity AI 好用吗？</a></td>
+                  <td>ChatGPT</td>
+                  <td><span class="geo-cite-pill yes">是</span></td>
+                  <td class="num good"><strong>1</strong>/3</td>
+                  <td>—</td>
+                  <td><a href="./answer-detail-brand.html">CCR 样本 →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Q06</strong> · vs OpenRouter 国内</td>
+                  <td>DeepSeek</td>
+                  <td><span class="geo-cite-pill no">否</span></td>
+                  <td class="num mid">0/8</td>
+                  <td><span class="geo-diag-sub">S2</span></td>
+                  <td><a href="./diagnosis.html">诊断 →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Q03</strong> · 国内 OpenAI 兼容聚合</td>
+                  <td>豆包</td>
+                  <td><span class="geo-cite-pill no">否</span></td>
+                  <td class="num bad">0/12</td>
+                  <td><span class="geo-diag-sub">S1</span></td>
+                  <td><a href="./answer-detail.html#cite-heading">—</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="geo-settings-card geo-cite-structure-card" aria-labelledby="cite-structure-heading">
+          <h2 id="cite-structure-heading">来源结构 · 近 7 日</h2>
+          <p class="geo-settings-card-desc">全部可提取 cited_urls 分类</p>
+          <ul class="geo-cite-structure-bars">
+            <li>
+              <span class="label"><span class="geo-cite-tag competitor">竞品官方</span></span>
+              <div class="bar-wrap"><div class="bar competitor" style="width: 58%"></div></div>
+              <span class="pct">58%</span>
+            </li>
+            <li>
+              <span class="label"><span class="geo-cite-tag third">第三方评测</span></span>
+              <div class="bar-wrap"><div class="bar third" style="width: 32%"></div></div>
+              <span class="pct">32%</span>
+            </li>
+            <li>
+              <span class="label"><span class="geo-cite-tag us">我方官方</span></span>
+              <div class="bar-wrap"><div class="bar us" style="width: 6%"></div></div>
+              <span class="pct">6%</span>
+            </li>
+            <li>
+              <span class="label"><span class="geo-cite-tag neutral">中立文档</span></span>
+              <div class="bar-wrap"><div class="bar neutral" style="width: 4%"></div></div>
+              <span class="pct">4%</span>
+            </li>
+          </ul>
+          <p class="geo-settings-mini">Q00 样本：竞品官方 11 + 评测 5 + 我方 0 → 叙事由 OpenRouter / TokenHub docs 定型</p>
+          <a href="./optimize.html#opt-s1s2" class="geo-btn ghost sm full">对标 docs 优化 →</a>
+        </aside>
+      </div>
+
+      <section class="geo-settings-card geo-cite-spotlight" aria-labelledby="cite-spotlight-heading">
+        <div class="geo-settings-card-head">
+          <div>
+            <h2 id="cite-spotlight-heading">焦点样本 · Q00 信源盘</h2>
+            <p class="geo-settings-card-desc">豆包 · R1 · 16 条参考链 · 我方域 0</p>
+          </div>
+          <span class="geo-cite-badge danger">M/N = 0/16</span>
+        </div>
+        <div class="geo-cite-spotlight-grid">
+          <div>
+            <h3 class="geo-cite-section-title">竞品官方 · 11</h3>
+            <p class="geo-settings-mini">OpenRouter 6 链 · TokenHub 5 链 — 含 /docs、模型列表、API 指南</p>
+          </div>
+          <div>
+            <h3 class="geo-cite-section-title">第三方评测 · 5</h3>
+            <p class="geo-settings-mini">SegmentFault、凤凰网、CSDN 等横向文定型品类叙事</p>
+          </div>
+          <div class="missing">
+            <h3 class="geo-cite-section-title">我方官方 · 0</h3>
+            <p class="geo-settings-mini">doc.trinitydesk.ai 未进入参考盘 — R2 验证目标 0→1/17</p>
+          </div>
+        </div>
+        <div class="geo-cite-spotlight-actions">
+          <a href="./answer-detail.html#cite-heading" class="geo-btn primary">查看完整 16 链</a>
+          <a href="./verify.html#verify-q00" class="geo-btn ghost">R1 vs R2 信源 Δ</a>
+          <a href="./diagnosis.html#diag-q00" class="geo-btn ghost">诊断 S1+S2+S3</a>
+        </div>
+      </section>
+
+      <section class="geo-settings-card compact muted" aria-labelledby="cite-platform-heading">
+        <h2 id="cite-platform-heading">平台可提取性</h2>
+        <div class="geo-kw-table-wrap">
+          <table class="geo-kw-table">
+            <thead>
+              <tr>
+                <th>平台</th>
+                <th>citation_extractable</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>豆包 App</td><td><span class="geo-cite-pill yes">是</span></td><td>显式列出官方/第三方参考链 · Q00 样本</td></tr>
+              <tr><td>ChatGPT</td><td><span class="geo-cite-pill partial">部分</span></td><td>正文内链 · Q01 CCR 样本</td></tr>
+              <tr><td>Claude / Gemini</td><td><span class="geo-cite-pill partial">部分</span></td><td>视消费端是否返回链接</td></tr>
+              <tr><td>API 直连</td><td><span class="geo-cite-pill no">否</span></td><td>仅正文 · CCR 标「不可观测」</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

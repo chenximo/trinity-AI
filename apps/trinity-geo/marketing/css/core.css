@@ -1,0 +1,6 @@
+/**
+ * Trinity GEO 营销/控制台 · design tokens 桥接
+ * 真源：packages/tokens/src/core.css
+ * console/*.html 经 ../css/core.css 引入（勿用 ../../../packages，路径会指到 apps/packages 导致 404）
+ */
+@import url("../../../../packages/tokens/src/core.css");

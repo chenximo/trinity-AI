@@ -87,6 +87,19 @@ main#main .geo-band {
   padding-inline: 15%;
 }
 
+/* 窄屏：15% → 1rem gutter（对齐 AI 云 HomePage ≤899px） */
+@media (max-width: 899px) {
+  body.geo-site {
+    --page-gutter: 1rem;
+    --layout-edge: 1rem;
+  }
+
+  main#main,
+  main#main .geo-band {
+    padding-inline: var(--page-gutter);
+  }
+}
+
 .geo-container {
   width: 100%;
   margin: 0 auto;
