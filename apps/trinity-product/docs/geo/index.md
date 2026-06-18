@@ -4,12 +4,25 @@ title: GEO 产品
 
 # GEO 产品 · 总览
 
-> **一句话介绍**：面向出海品牌的 **GEO（生成式引擎优化）** SaaS——多平台 AI 可见性监测、SOA 答案份额与竞品对比；官网获客 → 用户控制台闭环 → 运营后台支撑。  
+> **一句话介绍**：面向**全球化产品**的 **GEO（生成式引擎优化）** SaaS——海外 + 国内 AI 平台同屏监测、SOA 答案份额与竞品对比；典型样本 **Trinity AI** API 聚合；官网获客 → 用户控制台闭环 → 运营后台支撑。  
 > **工程**：`apps/trinity-geo`（营销首页静态稿）· 控制台待定  
 > **体验地址**：`npx serve apps/trinity-geo -p 5210` → [http://127.0.0.1:5210](http://127.0.0.1:5210)  
 > **在线地址**：待定
 
 GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可见性、可信度与引用概率**，与传统 SEO 的「排名位置」不同。本线文档为 **0→1 规划期** 真源：产品设计、技术架构、竞品与 **完整原型页面树**。
+
+## 推荐阅读路径
+
+| 读者 | 路径 |
+|------|------|
+| **第一次了解 GEO** | [MVP 实践手册](./mvp-practice) → [业务全景](./business-landscape) |
+| **做行业方案 / onboarding** | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) → [原型 · 问题集](../../../trinity-geo/marketing/console/keywords.md) |
+| **写 PRD / 对齐原型** | [产品设计分析](./product-design-analysis) → [原型页面清单](./v1-prototype-pages) |
+| **研发立项** | [技术架构分析](./tech-architecture) → [MVP 执行包](../../../trinity-geo/mvp/) |
+
+::: tip 行业解决方案（不拆产品）
+平台 **一套六环**；垂直差异通过 **行业 Playbook** 引导——问题集样例、信源预期、优化动作库、演示样本。详见 [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks)。
+:::
 
 ## 模块总览
 
@@ -19,6 +32,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | [官网首页原型](./prototypes/v1-homepage) | 首页逐块规格 + HTML 生成约定 | 🟡 | ⬜ | ⬜ | 原型 |
 | [营销首页静态稿](http://127.0.0.1:5210) | `apps/trinity-geo` · 与 Trinity AI 视觉对齐 | 🟡 | ⬜ | ⬜ | 工程 |
 | [GEO MVP 实践手册](./mvp-practice) | **完整链路动手跑通**（1–2 平台、可演示、无定价） | ✅ | — | — | **入门必读** |
+| [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) | 行业引导包：问题集 / 信源预期 / 动作库 / 演示样本 | ✅ | — | — | **行业方案** |
 | [GEO MVP 执行包](../../../trinity-geo/mvp/) | **可演示系统** `/demo` · 脚本与种子数据 | ✅ | — | — | **动手执行** |
 | [产品设计分析](./product-design-analysis) | 清华 GEO 报告解读、六大模块、**§0.6 可见性分层**、**§0.7 业界 AI 应用**、MVP 优先级 | ✅ | — | — | 附录 |
 | [GEO 业务全景（讨论稿）](./business-landscape) | 行业玩法、完整主链、架构与商业，**不拆版本** | ✅ | — | — | **全景** |
@@ -56,3 +70,5 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | 2026-06-16 | 技术架构：测量 SOA 主方案（规则引擎+别名库+时序库） |
 | 2026-06-12 | 新增 [GEO 业界计费与监测周期](./geo-billing-industry)（含 §4.3 采集成本预算） |
 | 2026-06-12 | 产品设计 / PM 手册 / 原型清单：**去 V1/V1.5/V2**，统一 P0/P1/P2 优先级 |
+| 2026-06-12 | 总览一句话：ICP 对齐为 **全球化产品**（Trinity AI 为典型样本） |
+| 2026-06-12 | 新增 [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) |

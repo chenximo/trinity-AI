@@ -441,7 +441,7 @@ SOA = 品牌 in_answer_body=Y 的回答数 / 该范围内总采样回答数
 
 | 实践环节 | 你亲手做了什么 | 商用产品化（P0） | P1+ |
 |----------|----------------|------------------|-----|
-| ① 策略规划 | Excel 问题集 | Onboarding + 关键词/竞品 CRUD | 主题地图、意图分层 |
+| ① 策略规划 | Excel 问题集 | Onboarding + 关键词/竞品 CRUD | 主题地图、意图分层；**[行业 Playbook](./vertical-industry-playbooks)** 样例导入 |
 | ② 采集 | 手动提问+截图 | 定时任务 + 回答存档 API/Playwright | 10 平台、多轮采样 |
 | ③ 测量 | 人工标注+公式 | 品牌识别 + SOA 引擎 + Dashboard | CCR 引用 vs 提及 |
 | ④ 诊断 | 5 条规则 | **规则建议引擎** | 页面审计、证据密度 |
@@ -614,7 +614,7 @@ re-run same questions with round=R2
 
 ### A.7 演示叙事（对内 / 对外）
 
-> 我们在做的不只是 [trinitydesk.ai](https://trinitydesk.ai/) 的 API 生意，也在验证 **GEO 方法论**：当用户在豆包里问「该用哪个聚合平台」时，Trinity **有没有进答案、份额多少、竞品谁占住**——发现问题后改文档与官网证据块，再采一轮看 SOA 是否回升。这套能力未来可产品化成面向所有出海品牌的 GEO SaaS。
+> 我们在做的不只是 [trinitydesk.ai](https://trinitydesk.ai/) 的 API 生意，也在验证 **GEO 方法论**：当用户在豆包里问「该用哪个聚合平台」时，Trinity **有没有进答案、份额多少、竞品谁占住**——发现问题后改文档与官网证据块，再采一轮看 SOA 是否回升。这套能力未来可产品化成面向**全球化产品**（含跨境 / 出海团队）的 GEO SaaS。
 
 ---
 

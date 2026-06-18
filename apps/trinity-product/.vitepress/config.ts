@@ -137,12 +137,17 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/geo/" },
+      { text: "GEO MVP 实践手册", link: "/geo/mvp-practice" },
+      { text: "垂直行业 Playbook 最佳实践", link: "/geo/vertical-industry-playbooks" },
+      { text: "业务全景（讨论稿）", link: "/geo/business-landscape" },
       { text: "原型页面清单", link: "/geo/v1-prototype-pages" },
       { text: "官网首页原型", link: "/geo/prototypes/v1-homepage" },
+      { text: "控制台总览原型", link: "/geo/prototypes/v1-dashboard" },
       { text: "产品设计分析", link: "/geo/product-design-analysis" },
       { text: "技术架构分析", link: "/geo/tech-architecture" },
       { text: "产品经理规范手册", link: "/geo/pm-handbook" },
       { text: "GEO 业界计费", link: "/geo/geo-billing-industry" },
+      { text: "Agent 多平台发文方案", link: "/geo/agent-multi-platform-publishing" },
       {
         text: "友商产品调研",
         collapsed: false,

@@ -43,10 +43,11 @@ title: GEO 原型页面清单
 
 | 项 | 共识 |
 |----|------|
-| **ICP** | **出海品牌**的内容 / SEO / 营销负责人 |
-| **一句话** | **海外 + 国内 AI 平台**同屏监测，用 SOA、CCR、竞品对比讲清「进没进答案、有没有被当信源」 |
+| **ICP** | **全球化产品**的内容 / SEO / 营销负责人（典型样本：**Trinity AI** API 聚合；**出海品牌**为重要子集） |
+| **一句话** | 帮助全球化产品在 **海外 + 国内 AI 平台**同屏监测，用 SOA、CCR、竞品对比讲清「进没进答案、有没有被当信源」 |
 | **定价（草案）** | **$79/月** 专业版 + **14 天试用**（企业版定制 · 待商用拍板） |
 | **监测平台** | **海外 5 + 国内 5 = 10 个**（每日采集；名单可由采集层轮换） |
+| **行业引导包** | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) — 问题集 / 信源预期 / 动作库 / 演示样本（平台不拆版） |
 
 | 海外市场（5） | 国内市场（5） |
 |---------------|---------------|
@@ -455,6 +456,7 @@ apps/trinity-geo/marketing/
 | 2026-06-12 | **问题集管理**：`keywords.html` + 单页 PRD |
 | 2026-06-12 | **竞品管理**：`competitors-manage.html` + 单页 PRD；**批 1 完成** |
 | 2026-06-12 | **批 2**：`monitoring` + `keyword-detail` + `answer-detail`（HTML + 单页 PRD）；样本 Q00 / 豆包 |
+| 2026-06-12 | 定位摘要：ICP 对齐 **全球化产品**（Trinity AI 典型样本） |
 | 2026-06-12 | **GEO 业界计费**：`geo-billing-industry.md`；§六 套餐链至专文 |
 | 2026-06-12 | **批 3**：`competitors` + `competitor-detail`（HTML + 单页 PRD）；样本 OpenRouter |
 | 2026-06-12 | **批 4**：`diagnosis` + `optimize`（HTML + PRD）；`answer-detail-brand` CCR 样本 |
@@ -463,6 +465,7 @@ apps/trinity-geo/marketing/
 | 2026-06-12 | **官网卫星页**：`product.html` + `pricing.html`；首页 `index.html` 不变，可只做首页上线 |
 | 2026-06-12 | **批 6**：`reports` + `report-preview` + `settings-account` + `settings-notifications` + `optimize-detail` + `monitoring-logs`（HTML + PRD）；控制台 18/20 |
 | 2026-06-12 | **页面审计**：`audit.html` + PRD；诊断侧栏 + 总览闭环卡接通；控制台 19/20 |
+| 2026-06-12 | 定位摘要增 **行业引导包** 链 [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) |
 
 ---
 
