@@ -3,11 +3,16 @@
   var tbody = document.getElementById("kw-tbody");
   var searchInput = document.getElementById("kw-search");
   var filterBtns = document.querySelectorAll(".geo-kw-filters [data-type]");
+  var statusFilterBtns = document.querySelectorAll(".geo-kw-status-filters [data-status]");
   var typeSummary = document.getElementById("kw-type-summary");
   var activeCountEl = document.getElementById("kw-active-count");
   var asideActiveEl = document.getElementById("kw-aside-active");
   var pausedNoteEl = document.getElementById("kw-paused-note");
+  var listMetaEl = document.getElementById("kw-list-meta");
+  var resultCountEl = document.getElementById("kw-result-count");
+  var emptyEl = document.getElementById("kw-empty");
   var manualAdd = document.getElementById("kw-manual-add");
+  var addToggleBtn = document.getElementById("kw-add-toggle");
   var aiPanel = document.getElementById("kw-ai-panel");
   var aiSuggestBtn = document.getElementById("kw-ai-suggest-btn");
   var aiCloseBtn = document.getElementById("kw-ai-close");
@@ -18,6 +23,7 @@
   var toast = document.getElementById("geo-toast");
 
   var currentFilter = "all";
+  var currentStatusFilter = "all";
   var nextId = 11;
 
   function showToast(msg) {
@@ -77,6 +83,9 @@
     if (activeCountEl) activeCountEl.textContent = String(active);
     if (asideActiveEl) asideActiveEl.textContent = String(active);
     if (pausedNoteEl) pausedNoteEl.textContent = paused + " 条已暂停，不计入 SOA 分母";
+    if (listMetaEl) {
+      listMetaEl.textContent = active + " 条监测中 · " + paused + " 条已暂停";
+    }
 
     if (typeSummary) {
       typeSummary.querySelectorAll("[data-type-filter]").forEach(function (chip) {
@@ -89,27 +98,58 @@
 
   function applyFilters() {
     var q = (searchInput && searchInput.value ? searchInput.value : "").trim().toLowerCase();
+    var visible = 0;
 
     rows().forEach(function (row) {
       var type = row.getAttribute("data-type") || "";
+      var status = row.getAttribute("data-status") || "";
       var id = (row.getAttribute("data-id") || "").toLowerCase();
       var textEl = row.querySelector(".geo-kw-text");
       var text = textEl ? textEl.textContent.toLowerCase() : "";
       var typeOk = currentFilter === "all" || type === currentFilter;
+      var statusOk =
+        currentStatusFilter === "all" ||
+        (currentStatusFilter === "active" && status === "active") ||
+        (currentStatusFilter === "paused" && status === "paused");
       var searchOk = !q || id.indexOf(q) !== -1 || text.indexOf(q) !== -1;
-      row.classList.toggle("is-hidden", !(typeOk && searchOk));
+      var show = typeOk && statusOk && searchOk;
+      row.classList.toggle("is-hidden", !show);
+      if (show) visible += 1;
     });
+
+    if (resultCountEl) resultCountEl.textContent = "显示 " + visible + " 条";
+    if (emptyEl) emptyEl.hidden = visible > 0;
   }
 
   function setFilter(type) {
     currentFilter = type;
     filterBtns.forEach(function (btn) {
-      btn.classList.toggle("on", btn.getAttribute("data-type") === type);
+      var on = btn.getAttribute("data-type") === type;
+      btn.classList.toggle("on", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    applyFilters();
+  }
+
+  function setStatusFilter(status) {
+    currentStatusFilter = status;
+    statusFilterBtns.forEach(function (btn) {
+      var on = btn.getAttribute("data-status") === status;
+      btn.classList.toggle("on", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
     });
     applyFilters();
   }
 
   function focusManualForm() {
+    if (manualAdd) {
+      manualAdd.hidden = false;
+      manualAdd.classList.remove("is-collapsed");
+    }
+    if (addToggleBtn) {
+      addToggleBtn.setAttribute("aria-expanded", "true");
+      addToggleBtn.textContent = "收起添加表单";
+    }
     if (manualAdd) manualAdd.scrollIntoView({ behavior: "smooth", block: "nearest" });
     if (addText) addText.focus();
   }
@@ -125,10 +165,15 @@
       statusEl.classList.toggle("off", paused);
     }
 
-    var soaCell = row.querySelector("td:nth-child(4)");
+    var soaCell = row.querySelector(".kw-soa-cell");
     if (soaCell && paused) {
       soaCell.textContent = "—";
-      soaCell.className = "num geo-muted";
+      soaCell.className = "num geo-muted kw-soa-cell";
+    }
+
+    var signalsCell = row.querySelector(".geo-kw-signals");
+    if (signalsCell && paused) {
+      signalsCell.innerHTML = '<span class="geo-kw-signal muted">—</span>';
     }
 
     var link = row.querySelector("a.geo-kw-text");
@@ -153,6 +198,7 @@
     if (toggleBtn) toggleBtn.textContent = paused ? "恢复" : "暂停";
 
     refreshCounts();
+    applyFilters();
     showToast(paused ? "已暂停监测，不再计入 SOA 分母" : "已恢复监测");
   }
 
@@ -174,7 +220,7 @@
       typeShort(type) +
       '</span></td><td><a href="#" class="geo-kw-text" title="关键词详情 · 待做">' +
       escapeHtml(text.trim()) +
-      '</a></td><td class="num geo-muted">—</td><td><span class="geo-kw-status on">监测中</span></td><td class="geo-kw-actions"><button type="button" class="geo-btn text kw-toggle">暂停</button><button type="button" class="geo-btn text danger kw-remove">删除</button></td>';
+      '</a></td><td class="num geo-muted kw-soa-cell">—</td><td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td><td><span class="geo-kw-status on">监测中</span></td><td class="geo-kw-actions"><a href="#" class="geo-btn text">详情</a><button type="button" class="geo-btn text kw-toggle">暂停</button></td>';
     tbody.insertBefore(tr, tbody.firstChild);
     refreshCounts();
     applyFilters();
@@ -208,6 +254,12 @@
     });
   });
 
+  statusFilterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      setStatusFilter(btn.getAttribute("data-status") || "all");
+    });
+  });
+
   if (typeSummary) {
     typeSummary.querySelectorAll("[data-type-filter]").forEach(function (chip) {
       chip.style.cursor = "pointer";
@@ -218,6 +270,16 @@
   }
 
   if (searchInput) searchInput.addEventListener("input", applyFilters);
+
+  if (addToggleBtn && manualAdd) {
+    addToggleBtn.addEventListener("click", function () {
+      var collapsed = manualAdd.classList.toggle("is-collapsed");
+      manualAdd.hidden = collapsed;
+      addToggleBtn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      addToggleBtn.textContent = collapsed ? "添加监测问题" : "收起添加表单";
+      if (!collapsed) focusManualForm();
+    });
+  }
 
   if (addSubmitBtn) {
     addSubmitBtn.addEventListener("click", function () {
@@ -279,4 +341,5 @@
   }
 
   refreshCounts();
+  applyFilters();
 })();

@@ -1,13 +1,13 @@
 # 用户控制台 · 诊断列表 · 产品需求（PRD）
 
 > **文档类型**：**单页 PRD**——本页（`/console/diagnosis`）功能的产品需求真源。  
-> **配套原型**：[diagnosis.html](./diagnosis.html)（HTML v0.1）  
+> **配套原型**：[diagnosis.html](./diagnosis.html)（HTML v0.2 · 扁平 IA）  
 > **样本数据**：[mvp/data/r1/diagnosis.json](../../mvp/data/r1/diagnosis.json)（Q00·D1）  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/diagnosis.html`
 
 | 字段 | 内容 |
 |------|------|
-| 版本 | v0.1 |
+| 版本 | v0.2 |
 | 状态 | 草稿 |
 | 路由 | `/console/diagnosis` |
 | 六环 | ④ 诊断 |
@@ -71,25 +71,30 @@
 
 ### 3.2 诊断列表
 
-每行：类型标签、问题、平台、证据、信源缺口（若有）、优先级、链到关键词/回答/优化。
+紧凑表格：优先级、规则、问题、平台、缺口、证据摘要、链到回答/优化。P0 样本 Q00 置顶 spotlight。
 
 ### 3.3 筛选
 
-按 D1–D5 类型 Tab 筛选。
+按 D1–D5 类型、P0–P2 优先级、搜索问法/Q ID。
 
-### 3.4 子导航
+### 3.4 规则速查
+
+默认折叠 `<details>`：D1–D5 + S1–S4 对照表。
+
+### 3.5 子导航
 
 诊断列表（本期）· [页面审计](./audit.html)（P1 · v0.1）。
 
 ---
 
-## 4. 原型验收（样本）
+## 4. 原型验收（HTML v0.2）
 
 | 项 | 样本 |
 |----|------|
-| P0 | Q00 · D1 + S1–S3 · 豆包 · 16 链 0 我方域 |
-| P1 | Q06 D4、Q02 D3 |
-| 规则表 | 页底 D1–D5 速查 |
+| Mock | 页头 **ⓘ** · `geo-help-tpl-diag-mock` |
+| P0 spotlight | Q00 · D1 + S1–S3 · 豆包 · `#diag-q00` 深链 |
+| 表格 | 5 行 · 筛选 + 搜索 |
+| 规则表 | 折叠 details |
 
 ---
 
@@ -97,4 +102,5 @@
 
 | 日期 | 说明 |
 |------|------|
+| 2026-06-12 | v0.2：扁平 IA · 表格列表 · spotlight · ⓘ Mock · 规则折叠 |
 | 2026-06-12 | 初稿 · 批 4a · 规则诊断 |

@@ -1,10 +1,12 @@
 # 用户控制台 · 页面审计 · 产品需求（PRD）
 
-> **配套原型**：[audit.html](./audit.html)  
-> **全景**：[原型页面清单](../../../../trinity-product/docs/geo/v1-prototype-pages.md) §2.6 序号 12
+> **配套原型**：[audit.html](./audit.html)（HTML v0.2 · 扁平 IA）  
+> **全景**：[原型页面清单](../../../../trinity-product/docs/geo/v1-prototype-pages.md) §2.6 序号 12  
+> **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/audit.html`
 
 | 字段 | 内容 |
 |------|------|
+| 版本 | v0.2 |
 | 路由 | `/console/audit` |
 | 六环 | ④ 诊断与审计 |
 | 优先级 | P1 |
@@ -38,21 +40,29 @@
 
 | 模块 | 说明 | 优先级 |
 |------|------|:------:|
-| 单 URL 审计 | 输入框 + 扫描 | P0 |
-| 站点页面列表 | 评分排序、红 / 黄 / 绿 | P0 |
-| 因子明细 + 建议 | 右侧详情面板 | P0 |
-| 对标 URL | 竞品 docs 样本分 | P1 |
+| 单 URL 审计 | scope 内输入框 + 扫描 | P0 |
+| 站点页面列表 | 8 页 · 红/黄/绿 · 搜索筛选 | P0 |
+| 因子明细 | 右栏紧凑表 + 修复建议 · 点击行切换 | P0 |
+| P0 spotlight | introduction 红灯 · 链 Q00 | P1 |
+| 对标 URL | 折叠 details | P1 |
 | 批量扫描 | 全站 sitemap | P2 |
-| 历史报告 | 见 `audit-reports`（下一页） | P1 |
+| 历史报告 | [audit-reports](./audit-reports.html) | P1 |
 
 ## 4. 样本数据
 
-- **doc.trinitydesk.ai/docs/introduction**：38 分 · 红灯 · 链 Q00 / opt-s1s2  
-- 站点均分 **62**，红灯 **2** — 与 [总览](./dashboard.html) 闭环卡一致  
+- **doc …/introduction**：38 分 · 红灯 · 链 Q00 / opt-s1s2  
+- 站点 **8 页**、均分 **62**、红灯 **2** — 与总览闭环卡一致  
 - 对标：OpenRouter docs 86、TokenHub 81
 
 ## 5. 关联
 
 - 诊断侧栏：[diagnosis.html](./diagnosis.html)  
 - 优化：[optimize-detail.html](./optimize-detail.html)  
-- 下一页：**审计报告** `/console/audit/reports`（批 7）
+- Mock：页头 **ⓘ** · `geo-help-tpl-audit-mock`
+
+## 修订
+
+| 日期 | 说明 |
+|------|------|
+| 2026-06-12 | v0.2：扁平双栏 · 8 页列表 · 因子表 · 行切换 · ⓘ · 对标折叠 |
+| 2026-06-12 | 初稿 v0.1 |

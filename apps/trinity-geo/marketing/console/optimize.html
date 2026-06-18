@@ -48,148 +48,257 @@
           </nav>
         </aside>
 
-        <div class="geo-settings-content">
+        <div class="geo-settings-content geo-opt-page">
           <div class="dash-toolbar geo-settings-toolbar">
             <div>
               <p class="dash-section-label">⑤ 优化</p>
-              <h1>优化待办</h1>
-              <p class="dash-toolbar-meta">由<strong>信源缺口</strong>与诊断规则生成可执行动作 · 每条须绑定参考 URL / 对标页</p>
+              <div class="geo-page-title-row">
+                <h1>优化待办</h1>
+                <button
+                  type="button"
+                  class="geo-help-tip-btn geo-help-tip-btn--inline"
+                  data-geo-prototype-annotation
+                  data-geo-help-tpl="geo-help-tpl-opt-mock"
+                  data-geo-help-title="原型 · 优化说明"
+                  aria-label="原型优化与 Mock 说明"
+                  aria-expanded="false"
+                  aria-controls="geo-help-tip-popover"
+                  title="说明"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <p class="geo-opt-lead">
+                由诊断 <strong>D*</strong> + 信源缺口 <strong>S*</strong> 生成可执行动作 · 每条绑定对标 URL / 目标问题 ·
+                验收见 <a href="./verify.html">效果验证</a>
+              </p>
             </div>
             <div class="geo-settings-toolbar-actions">
-              <a href="./diagnosis.html" class="geo-btn ghost">返回诊断</a>
-              <button type="button" class="geo-btn primary" disabled title="商用：从诊断一键生成">从 P0 诊断生成</button>
+              <a href="./diagnosis.html" class="geo-btn ghost">诊断列表</a>
+              <button type="button" class="geo-btn primary" disabled title="商用：从 P0 诊断一键生成">从 P0 生成</button>
             </div>
           </div>
 
-          <div class="geo-settings-callout" role="note">
-            <strong>依据：</strong>优化项来自回答详情中的<strong>参考链接盘</strong>（如 Q00 共 16 链、我方 0 命中），不是空泛「建议优化」。
-            <a href="./optimize.md">单页 PRD →</a>
+          <div class="geo-opt-scope-bar">
+            <p class="geo-form-hint geo-opt-scope-note">
+              依据来自回答<strong>参考链接盘</strong>（如 Q00：16 链、我方 0）— 非空泛建议。
+              文档类任务链 <a href="./optimize-detail.html">optimize-detail</a> · 审计 <a href="./audit.html">页面审计</a>。
+            </p>
           </div>
 
-          <div class="dash-kpi-row geo-mon-kpi">
+          <p class="dash-section-label">行动 · 汇总</p>
+          <div class="dash-kpi-row geo-opt-kpi">
             <div class="geo-metric-card primary">
               <div class="geo-metric-label">进行中</div>
-              <div class="geo-metric-value">3</div>
-              <div class="geo-metric-delta">Q00 文档对标 + D4</div>
+              <div class="geo-metric-value">2</div>
+              <div class="geo-metric-delta">Q00 文档 + Q06 对比</div>
             </div>
             <div class="geo-metric-card neutral">
-              <div class="geo-metric-label">待发布</div>
+              <div class="geo-metric-label">待办</div>
               <div class="geo-metric-value">2</div>
-              <div class="geo-metric-delta">S3 评测 + D3</div>
+              <div class="geo-metric-delta">S3 评测 + D3 证据</div>
             </div>
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">已完成</div>
               <div class="geo-metric-value">1</div>
-              <div class="geo-metric-delta">待 R2 验证</div>
+              <div class="geo-metric-delta"><a href="./verify.html">待 R2 验证 →</a></div>
             </div>
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">预期 SOA 提升</div>
-              <div class="geo-metric-value" style="font-size: 1rem">品类 +8~15%</div>
-              <div class="geo-metric-delta">基于历史同类动作</div>
+              <div class="geo-metric-value geo-metric-value-sm">品类 +8~15%</div>
+              <div class="geo-metric-delta">历史同类动作</div>
             </div>
           </div>
 
-          <div class="geo-diag-filters" role="tablist" aria-label="任务状态筛选">
-            <button type="button" class="on" data-opt-filter="all">全部</button>
-            <button type="button" data-opt-filter="doing">进行中</button>
-            <button type="button" data-opt-filter="todo">待办</button>
-            <button type="button" data-opt-filter="done">已完成</button>
-          </div>
+          <section class="geo-opt-list-section" aria-labelledby="opt-list-heading">
+            <header class="geo-kw-list-head">
+              <div>
+                <h2 id="opt-list-heading">行动清单</h2>
+                <p class="geo-kw-list-desc">
+                  可勾选指派（商用）· 每条链诊断与信源依据 ·
+                  <span id="opt-list-meta">5 项</span>
+                </p>
+              </div>
+            </header>
 
-          <section class="geo-settings-card" aria-labelledby="opt-list-heading">
-            <h2 id="opt-list-heading">行动清单</h2>
-            <ul class="dash-opt-list geo-opt-page-list">
-              <li class="dash-opt-item geo-opt-row" data-opt-status="doing" id="opt-s1s2">
-                <span class="dash-opt-status"></span>
-                <div class="dash-opt-body">
-                  <strong><a href="./optimize-detail.html">D1 · S1+S2 · doc 建「API 聚合选型」官方文档树（对标竞品 docs）</a></strong>
-                  <p>
-                    目标 <a href="./keyword-detail.html">Q00</a> · doc.trinitydesk.ai
-                    · 首段定义 + 模型列表 + OpenAI 兼容说明 + 计费事实
-                    · 负责人：内容 · 截止 6/18
-                  </p>
-                  <p class="geo-opt-links">
-                    依据：<a href="./answer-detail.html#cite-heading">Q00 信源盘 0/16</a>
-                    · 对标 <a href="https://openrouter.ai/docs/" rel="noopener" target="_blank">openrouter.ai/docs</a>、
-                    <a href="https://cloud.tencent.cn/document/product/1823" rel="noopener" target="_blank">TokenHub 文档中心</a>
-                    · <a href="./diagnosis.html#diag-q00">诊断 D1+S1+S2</a>
-                  </p>
-                  <p class="geo-opt-verify">
-                    R2 验证：<a href="./verify.html#verify-q00">信源盘 0/16 → 1/17</a>（SOA 仍 0%）
-                  </p>
-                </div>
-                <span class="geo-opt-badge doing">进行中</span>
-              </li>
-              <li class="dash-opt-item geo-opt-row" data-opt-status="todo" id="opt-s3">
-                <span class="dash-opt-status"></span>
-                <div class="dash-opt-body">
-                  <strong>D1 · S3 · 公域评测叙事渗透（运营向）</strong>
-                  <p>
-                    品类选型叙事由 SegmentFault / 凤凰网 / CSDN 等横向文定型；评估投稿或合作进入同类榜单
-                  </p>
-                  <p class="geo-opt-links">
-                    依据：Q00 第三方评测 <strong>5/16</strong>
-                    · 对标 <a href="https://segmentfault.com/a/1190000047675459" rel="noopener" target="_blank">SegmentFault 七大平台实测</a>
-                    · <a href="./diagnosis.html#diag-q00">诊断 S3</a>
-                  </p>
-                </div>
-                <span class="geo-opt-badge todo">待办</span>
-              </li>
-              <li class="dash-opt-item geo-opt-row" data-opt-status="doing" id="opt-d4">
-                <span class="dash-opt-status"></span>
-                <div class="dash-opt-body">
-                  <strong>D4 · 增加 vs OpenRouter 对比表（国内线路 / 计费 / 模型数）</strong>
-                  <p>目标 <a href="./keyword-detail.html">Q06</a> 对比词 · 官网产品页新增对比块</p>
-                  <p class="geo-opt-links">来源：<a href="./diagnosis.html">诊断 D4 P1</a> · 类型：对比块</p>
-                </div>
-                <span class="geo-opt-badge doing">进行中</span>
-              </li>
-              <li class="dash-opt-item geo-opt-row" data-opt-status="todo" id="opt-d3">
-                <span class="dash-opt-status"></span>
-                <div class="dash-opt-body">
-                  <strong>D3 · 将「适用团队规模 / 统一计费」移到 Q02 落地页首段</strong>
-                  <p>目标 trinitydesk.ai 关于页 · 弱提及 → 进正文</p>
-                  <p class="geo-opt-links">来源：<a href="./diagnosis.html">诊断 D3 P1</a> · 类型：证据前置</p>
-                </div>
-                <span class="geo-opt-badge todo">待办</span>
-              </li>
-              <li class="dash-opt-item geo-opt-row" data-opt-status="done" id="opt-d2">
-                <span class="dash-opt-status done"></span>
-                <div class="dash-opt-body">
-                  <strong>D2 · 官网统一 Trinity AI / Trinity Desk 别名与 About 全称</strong>
-                  <p>已发布 6/10 · 等待 R2 采集验证品牌词识别率</p>
-                  <p class="geo-opt-links">来源：<a href="./diagnosis.html">诊断 D2</a> · <a href="./brand-settings.html">别名库</a></p>
-                </div>
-                <span class="geo-opt-badge done">已完成</span>
-              </li>
-            </ul>
-          </section>
+            <div class="geo-opt-spotlight" id="opt-s1s2" aria-label="P0 优化样本">
+              <span class="geo-opt-badge doing">进行中</span>
+              <span class="dash-diag-code d1">D1</span>
+              <span class="geo-diag-gap">S1</span><span class="geo-diag-gap">S2</span>
+              <strong>Q00 官方文档树</strong>
+              <span class="geo-opt-spotlight-fact">对标 OpenRouter docs · 信源 0/16</span>
+              <span class="geo-opt-spotlight-links">
+                <a href="./optimize-detail.html">任务详情</a>
+                <a href="./answer-detail.html#cite-heading">信源盘</a>
+              </span>
+            </div>
 
-          <section class="geo-settings-card compact muted" aria-labelledby="opt-map-heading">
-            <h2 id="opt-map-heading">缺口 → 动作映射（D* + S*）</h2>
-            <div class="geo-kw-table-wrap">
-              <table class="geo-kw-table">
+            <div class="geo-kw-toolbar geo-opt-toolbar">
+              <div class="geo-kw-search">
+                <input type="search" id="opt-search" placeholder="搜索行动、Q ID、D/S…" aria-label="搜索优化项" />
+              </div>
+              <div class="geo-kw-status-filters geo-opt-status-filters" role="tablist" aria-label="任务状态">
+                <button type="button" class="on" data-opt-filter="all" role="tab" aria-selected="true">全部</button>
+                <button type="button" data-opt-filter="doing" role="tab">进行中</button>
+                <button type="button" data-opt-filter="todo" role="tab">待办</button>
+                <button type="button" data-opt-filter="done" role="tab">已完成</button>
+              </div>
+              <span class="geo-kw-result-count" id="opt-result-count" aria-live="polite">显示 5 条</span>
+            </div>
+
+            <div class="geo-kw-table-wrap geo-opt-table-wrap">
+              <table class="geo-kw-table geo-opt-table" id="opt-table">
                 <thead>
                   <tr>
-                    <th>缺口</th>
+                    <th scope="col">状态</th>
+                    <th scope="col">诊断</th>
+                    <th scope="col">行动</th>
+                    <th scope="col">目标</th>
+                    <th scope="col">截止</th>
+                    <th scope="col"><span class="sr-only">操作</span></th>
+                  </tr>
+                </thead>
+                <tbody id="opt-tbody">
+                  <tr
+                    class="geo-opt-row geo-opt-row-p0"
+                    data-opt-status="doing"
+                    data-search="q00 d1 s1 s2 文档 官方 doc openrouter"
+                    id="opt-row-s1s2"
+                  >
+                    <td><span class="geo-opt-badge doing">进行中</span></td>
+                    <td class="geo-opt-diag-cell">
+                      <span class="dash-diag-code d1">D1</span>
+                      <span class="geo-diag-gap">S1</span><span class="geo-diag-gap">S2</span>
+                    </td>
+                    <td class="geo-opt-title-cell">
+                      <a href="./optimize-detail.html" class="geo-opt-title">doc 建「API 聚合选型」文档树</a>
+                      <span class="geo-opt-sub">对标竞品 /docs · 内容负责</span>
+                    </td>
+                    <td><a href="./keyword-detail.html" class="mono">Q00</a></td>
+                    <td class="geo-muted">6/18</td>
+                    <td class="geo-kw-actions">
+                      <a href="./optimize-detail.html" class="geo-btn text">详情</a>
+                      <a href="./verify.html#verify-q00" class="geo-btn text">验证</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-opt-row" data-opt-status="todo" data-search="q00 s3 评测 segmentfault 公域" id="opt-row-s3">
+                    <td><span class="geo-opt-badge todo">待办</span></td>
+                    <td class="geo-opt-diag-cell">
+                      <span class="dash-diag-code d1">D1</span>
+                      <span class="geo-diag-gap">S3</span>
+                    </td>
+                    <td class="geo-opt-title-cell">
+                      <span class="geo-opt-title">公域评测叙事渗透</span>
+                      <span class="geo-opt-sub">SegmentFault / CSDN 横向文</span>
+                    </td>
+                    <td><a href="./keyword-detail.html" class="mono">Q00</a></td>
+                    <td class="geo-muted">—</td>
+                    <td class="geo-kw-actions">
+                      <a href="./diagnosis.html#diag-q00" class="geo-btn text">诊断</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-opt-row" data-opt-status="doing" data-search="q06 d4 openrouter 对比" id="opt-row-d4">
+                    <td><span class="geo-opt-badge doing">进行中</span></td>
+                    <td class="geo-opt-diag-cell"><span class="dash-diag-code d4">D4</span></td>
+                    <td class="geo-opt-title-cell">
+                      <span class="geo-opt-title">vs OpenRouter 对比表</span>
+                      <span class="geo-opt-sub">国内线路 / 计费 / 模型数</span>
+                    </td>
+                    <td><a href="./keyword-detail.html?q=Q06" class="mono">Q06</a></td>
+                    <td class="geo-muted">6/22</td>
+                    <td class="geo-kw-actions">
+                      <a href="./diagnosis.html" class="geo-btn text">诊断</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-opt-row" data-opt-status="todo" data-search="q02 d3 弱提及 首段" id="opt-row-d3">
+                    <td><span class="geo-opt-badge todo">待办</span></td>
+                    <td class="geo-opt-diag-cell"><span class="dash-diag-code d3">D3</span></td>
+                    <td class="geo-opt-title-cell">
+                      <span class="geo-opt-title">核心事实前移首段</span>
+                      <span class="geo-opt-sub">trinitydesk.ai 关于页</span>
+                    </td>
+                    <td><a href="./keyword-detail.html?q=Q02" class="mono">Q02</a></td>
+                    <td class="geo-muted">—</td>
+                    <td class="geo-kw-actions">
+                      <a href="./diagnosis.html" class="geo-btn text">诊断</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-opt-row" data-opt-status="done" data-search="d2 别名 about trinity" id="opt-row-d2">
+                    <td><span class="geo-opt-badge done">已完成</span></td>
+                    <td class="geo-opt-diag-cell"><span class="dash-diag-code d2">D2</span></td>
+                    <td class="geo-opt-title-cell">
+                      <span class="geo-opt-title">统一 Trinity AI / Desk 别名</span>
+                      <span class="geo-opt-sub">已发布 6/10 · 待 R2</span>
+                    </td>
+                    <td><a href="./answer-detail-brand.html" class="mono">Q01</a></td>
+                    <td class="geo-muted">6/10</td>
+                    <td class="geo-kw-actions">
+                      <a href="./brand-settings.html" class="geo-btn text">别名</a>
+                      <a href="./verify.html" class="geo-btn text">验证</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="geo-kw-empty" id="opt-empty" hidden>没有匹配的优化项。</p>
+            </div>
+          </section>
+
+          <details class="geo-opt-map-details">
+            <summary>缺口 → 动作映射（D* + S*）</summary>
+            <div class="geo-kw-table-wrap">
+              <table class="geo-kw-table geo-opt-map-table">
+                <thead>
+                  <tr>
+                    <th>缺口 / 症状</th>
                     <th>动作类型</th>
                     <th>最小动作 / 对标</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>S1 信源盘缺席</td><td>官方文档树</td><td>doc 选型页，对标竞品 /docs</td></tr>
-                  <tr><td>S2 竞品官方独占</td><td>同构证据页</td><td>模型列表、API、计费、控制台说明</td></tr>
-                  <tr><td>S3 评测固化</td><td>运营</td><td>第三方横向文结构对标</td></tr>
-                  <tr><td>D4 叙事落后</td><td>对比块</td><td>vs OpenRouter 表</td></tr>
-                  <tr><td>D3 弱提及</td><td>证据前置</td><td>首段核心事实</td></tr>
+                  <tr><td>D1 + <span class="geo-diag-gap">S1</span><span class="geo-diag-gap">S2</span></td><td>官方文档树</td><td>doc 选型页 · openrouter.ai/docs</td></tr>
+                  <tr><td>D1 + <span class="geo-diag-gap">S3</span></td><td>运营渗透</td><td>第三方横向评测文结构</td></tr>
+                  <tr><td><span class="dash-diag-code d4">D4</span></td><td>对比块</td><td>vs OpenRouter 表</td></tr>
+                  <tr><td><span class="dash-diag-code d3">D3</span></td><td>证据前置</td><td>首段核心事实</td></tr>
+                  <tr><td><span class="dash-diag-code d2">D2</span></td><td>别名 / About</td><td><a href="./brand-settings.html">品牌设置</a></td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="geo-form-hint">真源：<a href="../../../trinity-product/docs/geo/product-design-analysis.md#visibility-layers">产品设计 §0.6</a> · 数据：<code>cited_sources.json</code></p>
-          </section>
+          </details>
+
+          <p class="dash-proto-link">
+            优化待办原型 v0.2 ·
+            <a href="./optimize.md">产品解读</a>
+          </p>
         </div>
       </div>
     </main>
+
+    <div
+      id="geo-help-tip-popover"
+      class="geo-help-tip-popover"
+      data-geo-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="geo-help-tip-title"
+    >
+      <p class="geo-help-tip-title" id="geo-help-tip-title"></p>
+      <div class="geo-help-tip-body" id="geo-help-tip-body"></div>
+    </div>
+
+    <template id="geo-help-tpl-opt-mock" data-geo-prototype-annotation>
+      <p>优化项来自<strong>参考链接盘</strong>与诊断规则，须含对标 URL。</p>
+      <ul class="geo-help-mock-list">
+        <li><span class="geo-mock-tag real">样本</span> opt-s1s2 · Q00 D1+S1+S2 · <code>cited_sources.json</code></li>
+        <li><span class="geo-mock-tag demo">演示</span> 5 条行动 · 2 进行中 · 2 待办 · 1 完成</li>
+        <li><span class="geo-mock-tag config">映射</span> <a href="./optimize.md">optimize.md</a> · 产品设计 §0.6</li>
+      </ul>
+    </template>
+
+    <script src="../js/proto-annotations.js"></script>
     <script src="../js/optimize.js"></script>
   </body>
 </html>

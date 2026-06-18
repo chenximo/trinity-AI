@@ -1,15 +1,15 @@
-# 用户控制台 · 监测概览 · 产品需求（PRD）
+# 用户控制台 · 监测采集 · 产品需求（PRD）
 
 > **文档类型**：**单页 PRD**——本页（`/console/monitoring`）功能的产品需求真源。  
-> **配套原型**：[monitoring.html](./monitoring.html)（HTML v0.1）  
+> **配套原型**：[monitoring.html](./monitoring.html)（HTML v0.3 · 双 Tab）  
 > **全景文档**：[GEO 业务全景](../../../../trinity-product/docs/geo/business-landscape.md) · [原型页面清单](../../../../trinity-product/docs/geo/v1-prototype-pages.md)  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/monitoring.html`
 
 | 字段 | 内容 |
 |------|------|
-| 版本 | v0.1 |
+| 版本 | v0.3 |
 | 状态 | 草稿 |
-| 路由 | `/console/monitoring` |
+| 路由 | `/console/monitoring` · 日志深链 `?tab=logs`（商用 `/console/monitoring/logs`） |
 | 六环 | ② 监测采集 |
 | 优先级 | P0（运维可见性） |
 | 顶栏入口 | **监测 → 监测概览** |
@@ -21,6 +21,7 @@
 | 本页：采集 KPI、平台新鲜度、失败列表 | **本文** |
 | SOA / 竞品对比报表 | [可见性总览](./dashboard.html) |
 | 问题配置 | [问题集管理 PRD](./keywords.md) |
+| 采集日志（Tab 规格） | [monitoring-logs.md](./monitoring-logs.md) |
 | 单题 / 单答测量下钻 | [关键词详情](./keyword-detail.md) · [回答详情](./answer-detail.md) |
 
 ---
@@ -59,11 +60,22 @@
 ```text
 ① 问题集（enabled 问题）
     ▼
-② 采集调度（本页可见）
+② 采集调度（本页可见 · 粒度 question × platform × round）
     │  collection_jobs → raw_answers
     ▼
-③ 标注 + SOA（总览 / 关键词详情 / 回答详情）
+③ 标注 + SOA（总览 / 引用 / 情感 / 下钻页）
 ```
+
+### 3.1 本页与平台维度
+
+| 区域 | 平台维度 | 说明 |
+|------|----------|------|
+| 今日 KPI | 汇总 | 全站：启用题 × 平台数 |
+| 10 平台状态卡 | **主维** | 每卡一平台；可筛海外/国内 |
+| 最近失败 | **每行** | 平台 + 问题 |
+| 最新入库 | **每行** | 平台 + 问题 |
+
+与测量读口不同：本页回答「采到了吗」，不回答「SOA 多少」。
 
 ---
 
@@ -87,6 +99,7 @@
 | 最近采集 | 该平台最后一次成功时间 |
 | 今日进度 | 已完成题数 / 启用题数 |
 | 失败数 | 今日失败任务数 |
+| 信源可提取 | `citation_extractable` 渠道配置（链引用页） |
 
 **筛选**：全部 / 海外 / 国内（与总览平台条一致）。
 
@@ -114,6 +127,17 @@
 | 立即刷新状态 | 拉取最新采集任务汇总（商用 API） |
 | 管理问题集 | 跳转问题集管理 |
 
+### 4.6 页内 Tab · 采集日志
+
+MVP **不单独占侧栏**，与概览同页切换：
+
+| Tab | 内容 | 深链 |
+|-----|------|------|
+| **概览** | §4.1–4.4 全部区块 | `monitoring.html` |
+| **采集日志** | 任务表、筛选、重试/导出 | `monitoring.html?tab=logs` |
+
+日志字段与交互详见 [monitoring-logs.md](./monitoring-logs.md)。概览「最近失败」链至日志 Tab。
+
 ---
 
 ## 5. 非功能需求
@@ -125,15 +149,27 @@
 
 ---
 
-## 6. 原型验收（HTML v0.1）
+## 6. 原型验收（HTML v0.3）
+
+> Mock 来源：页头 **ⓘ**（`data-geo-prototype-annotation`）。
 
 | 区块 | 验收点 |
 |------|--------|
-| 侧栏 | 监测概览 active；问题集管理可跳转 |
-| KPI | 10 题、100 采集、98% 成功率 |
-| 平台网格 | 10 卡；海外/国内筛选；Gemini、通义示例延迟 |
-| 失败表 | 2 条 Gemini 失败；链 Q00 / Q03 详情 |
-| 最新回答 | Q00 豆包未进答案；链回答详情 |
+| 侧栏 | 仅 **监测概览** + **问题集管理**（无独立采集日志项） |
+| Tab | 概览 / 采集日志；`?tab=logs` 直达日志 |
+| KPI | 10 题、100 预期、98% 成功率 |
+| 平台网格 | 10 卡；海外/国内筛选；豆包信源可提取 |
+| 失败表 | 2 条 Gemini；链关键词详情 + 日志 Tab |
+| 最新入库 | Q00 豆包、Q01 ChatGPT；链回答详情 |
+| 日志 Tab | 筛选条 + 全表；失败行高亮；重试按钮 |
+
+### 6.1 Mock 真源
+
+| 模块 | 真源 | 状态 |
+|------|------|------|
+| Q00 入库 | `mvp/data/r1/records.json` | 已入库 |
+| 问题集 | `mvp/config/questions.json` | 配置 |
+| 其余 KPI/失败/平台卡 | UI 演示 | 演示 |
 
 ---
 
@@ -141,5 +177,6 @@
 
 | 版本 | 内容 |
 |------|------|
-| v0.2 | 采集日志页、单平台重试 |
-| v1.0 | 告警订阅（连续失败 N 次邮件/ webhook） |
+| v0.3 | 采集日志并入本页 Tab；侧栏收拢为 2 项；`monitoring-logs.html` 重定向 |
+| v0.2 | 扁平 IA · ⓘ Mock · 信源可提取 · 双列失败/入库 |
+| v1.0 | 告警订阅（连续失败 N 次邮件 / webhook） |

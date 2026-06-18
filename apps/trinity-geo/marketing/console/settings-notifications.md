@@ -27,4 +27,4 @@
 ## 3. 关联
 
 - [reports.html](./reports.html) 定时摘要
-- [monitoring-logs.html](./monitoring-logs.html) 失败明细
+- [monitoring.html?tab=logs](./monitoring.html?tab=logs) 失败明细（采集日志 Tab）

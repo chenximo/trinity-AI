@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Trinity GEO · 页面审计（④ /console/audit） -->
+<!-- Trinity GEO · 页面审计（④ /console/audit · S4） -->
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -49,36 +49,56 @@
           </nav>
         </aside>
 
-        <div class="geo-settings-content">
+        <div class="geo-settings-content geo-audit-page">
           <div class="dash-toolbar geo-settings-toolbar">
             <div>
-              <p class="dash-section-label">④ 诊断与审计</p>
-              <h1>页面审计</h1>
-              <p class="dash-toolbar-meta">
-                单 URL 可引用性评分 · 证据密度 · Schema · AI 爬虫友好度（对应缺口 <span class="geo-diag-sub">S4</span>）
+              <p class="dash-section-label">④ 诊断 · 审计</p>
+              <div class="geo-page-title-row">
+                <h1>页面审计</h1>
+                <button
+                  type="button"
+                  class="geo-help-tip-btn geo-help-tip-btn--inline"
+                  data-geo-prototype-annotation
+                  data-geo-help-tpl="geo-help-tpl-audit-mock"
+                  data-geo-help-title="原型 · 审计说明"
+                  aria-label="原型审计与 Mock 说明"
+                  aria-expanded="false"
+                  aria-controls="geo-help-tip-popover"
+                  title="说明"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <p class="geo-audit-lead">
+                单 URL <strong>可引用性</strong>评分 · 证据密度 · Schema · 爬虫可读性 · 对应缺口 <span class="geo-diag-gap">S4</span> ·
+                与 <a href="./diagnosis.html">规则诊断</a> 互补
               </p>
             </div>
             <div class="geo-settings-toolbar-actions">
-              <button type="button" class="geo-btn ghost" disabled title="商用">批量扫描</button>
-              <button type="button" class="geo-btn primary" id="audit-scan-btn">审计 URL</button>
+              <a href="./audit-reports.html" class="geo-btn ghost">审计报告</a>
+              <a href="./optimize-detail.html" class="geo-btn primary">文档优化任务</a>
             </div>
           </div>
 
-          <div class="geo-settings-callout" role="note">
-            <strong>与规则诊断的区别：</strong>诊断列表解释「答案里为什么没你」；本页解释「官网 / 文档页 AI 能不能安全引用」。
-            样本页与 <a href="./optimize-detail.html">opt-s1s2</a> 文档树任务对齐。
-            <a href="./audit.md">单页 PRD →</a>
+          <div class="geo-audit-scope-bar">
+            <p class="geo-form-hint geo-audit-scope-note">
+              诊断列表解释「答案里为什么没你」；本页解释「官网 / 文档 AI 能不能安全引用」。
+              样本页与 <a href="./optimize-detail.html">opt-s1s2</a> 文档树任务对齐。
+            </p>
+            <form class="geo-audit-scan-bar" id="audit-scan-form" aria-label="输入待审计 URL">
+              <label class="geo-audit-scan-field">
+                <span class="geo-kw-manual-label">审计 URL</span>
+                <input type="url" id="audit-url-input" value="https://doc.trinitydesk.ai/docs/introduction" placeholder="https://example.com/page" />
+              </label>
+              <button type="submit" class="geo-btn primary" id="audit-scan-btn">开始审计</button>
+            </form>
           </div>
 
-          <form class="geo-audit-scan-bar" onsubmit="return false" aria-label="输入待审计 URL">
-            <label class="geo-audit-scan-field">
-              <span class="visually-hidden">URL</span>
-              <input type="url" value="https://doc.trinitydesk.ai/docs/introduction" placeholder="https://example.com/page" />
-            </label>
-            <button type="submit" class="geo-btn primary">开始审计</button>
-          </form>
-
-          <div class="dash-kpi-row geo-mon-kpi">
+          <p class="dash-section-label">站点 · 汇总</p>
+          <div class="dash-kpi-row geo-audit-kpi">
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">已审计页面</div>
               <div class="geo-metric-value">8</div>
@@ -92,146 +112,183 @@
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">证据密度均分</div>
               <div class="geo-metric-value">62</div>
-              <div class="geo-metric-delta">满分 100 · 与总览一致</div>
+              <div class="geo-metric-delta">与总览闭环卡一致</div>
             </div>
             <div class="geo-metric-card neutral">
               <div class="geo-metric-label">待修复项</div>
               <div class="geo-metric-value">11</div>
-              <div class="geo-metric-delta"><a href="./optimize.html">链优化待办 →</a></div>
+              <div class="geo-metric-delta"><a href="./optimize.html">优化待办 →</a></div>
             </div>
           </div>
 
-          <div class="geo-audit-layout">
-            <section class="geo-settings-card geo-audit-list-card" aria-labelledby="audit-list-heading">
-              <h2 id="audit-list-heading">站点页面</h2>
-              <p class="geo-settings-card-desc">按可引用性评分排序 · 点击行查看因子明细</p>
-              <div class="geo-kw-table-wrap">
-                <table class="geo-kw-table geo-audit-table">
+          <div class="geo-audit-spotlight" id="audit-spotlight-intro" aria-label="红灯样本">
+            <span class="geo-audit-lamp red" aria-hidden="true"></span>
+            <strong>introduction</strong>
+            <span class="geo-audit-spotlight-fact">38 分 · 无 JS 正文为空 · 链 Q00 我方域 0</span>
+            <span class="geo-audit-spotlight-links">
+              <a href="./diagnosis.html#diag-q00">诊断 Q00</a>
+              <a href="./answer-detail.html#cite-heading">信源盘</a>
+            </span>
+          </div>
+
+          <p class="dash-section-label">站点页面 · 明细</p>
+          <div class="geo-audit-board">
+            <section class="geo-audit-col geo-audit-list-col" aria-labelledby="audit-list-heading">
+              <header class="geo-kw-list-head geo-audit-list-head">
+                <div>
+                  <h2 id="audit-list-heading">页面列表</h2>
+                  <p class="geo-kw-list-desc">按可引用性排序 · 点击行查看因子 · <span id="audit-list-meta">8 页</span></p>
+                </div>
+              </header>
+
+              <div class="geo-kw-toolbar geo-audit-toolbar">
+                <div class="geo-kw-search">
+                  <input type="search" id="audit-search" placeholder="搜索路径或域名…" aria-label="搜索页面" />
+                </div>
+                <div class="geo-kw-status-filters geo-audit-lamp-filters" role="tablist" aria-label="信号灯">
+                  <button type="button" class="on" data-audit-lamp="all" role="tab" aria-selected="true">全部</button>
+                  <button type="button" data-audit-lamp="red" role="tab">红灯</button>
+                  <button type="button" data-audit-lamp="yellow" role="tab">黄灯</button>
+                  <button type="button" data-audit-lamp="green" role="tab">绿灯</button>
+                </div>
+                <span class="geo-kw-result-count" id="audit-result-count" aria-live="polite">显示 8 条</span>
+              </div>
+
+              <div class="geo-kw-table-wrap geo-audit-table-wrap">
+                <table class="geo-kw-table geo-audit-table" id="audit-table">
                   <thead>
                     <tr>
-                      <th>页面</th>
-                      <th>类型</th>
-                      <th>评分</th>
-                      <th>状态</th>
+                      <th scope="col">页面</th>
+                      <th scope="col">类型</th>
+                      <th scope="col">评分</th>
+                      <th scope="col">状态</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr class="geo-audit-row is-selected" data-audit-id="audit-doc-intro">
+                  <tbody id="audit-tbody">
+                    <tr class="geo-audit-row is-selected" data-audit-id="audit-doc-intro" data-audit-lamp="red" data-audit-type="doc" data-search="introduction doc.trinitydesk.ai 文档">
                       <td>
-                        <strong>doc …/introduction</strong>
+                        <strong>…/introduction</strong>
                         <span class="geo-audit-url">doc.trinitydesk.ai</span>
                       </td>
                       <td>文档</td>
                       <td><span class="geo-audit-score bad">38</span></td>
-                      <td><span class="geo-audit-lamp red" aria-label="红灯">红灯</span></td>
+                      <td><span class="geo-audit-lamp red" aria-label="红灯"></span>红灯</td>
                     </tr>
-                    <tr class="geo-audit-row" data-audit-id="audit-product">
+                    <tr class="geo-audit-row" data-audit-id="audit-developers" data-audit-lamp="red" data-audit-type="doc" data-search="developers doc api">
+                      <td>
+                        <strong>…/developers</strong>
+                        <span class="geo-audit-url">doc.trinitydesk.ai</span>
+                      </td>
+                      <td>文档</td>
+                      <td><span class="geo-audit-score bad">44</span></td>
+                      <td><span class="geo-audit-lamp red" aria-label="红灯"></span>红灯</td>
+                    </tr>
+                    <tr class="geo-audit-row" data-audit-id="audit-quickstart" data-audit-lamp="yellow" data-audit-type="doc" data-search="quickstart 快速开始">
+                      <td>
+                        <strong>…/quickstart</strong>
+                        <span class="geo-audit-url">doc.trinitydesk.ai</span>
+                      </td>
+                      <td>文档</td>
+                      <td><span class="geo-audit-score mid">52</span></td>
+                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯"></span>黄灯</td>
+                    </tr>
+                    <tr class="geo-audit-row" data-audit-id="audit-product" data-audit-lamp="yellow" data-audit-type="marketing" data-search="product trinitydesk">
                       <td>
                         <strong>/product</strong>
                         <span class="geo-audit-url">trinitydesk.ai</span>
                       </td>
                       <td>产品</td>
                       <td><span class="geo-audit-score mid">58</span></td>
-                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯">黄灯</span></td>
+                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯"></span>黄灯</td>
                     </tr>
-                    <tr class="geo-audit-row" data-audit-id="audit-pricing">
-                      <td>
-                        <strong>/pricing</strong>
-                        <span class="geo-audit-url">trinitydesk.ai</span>
-                      </td>
-                      <td>定价</td>
-                      <td><span class="geo-audit-score ok">74</span></td>
-                      <td><span class="geo-audit-lamp green" aria-label="绿灯">绿灯</span></td>
-                    </tr>
-                    <tr class="geo-audit-row" data-audit-id="audit-about">
+                    <tr class="geo-audit-row" data-audit-id="audit-about" data-audit-lamp="yellow" data-audit-type="marketing" data-search="about 品牌">
                       <td>
                         <strong>/about</strong>
                         <span class="geo-audit-url">trinitydesk.ai</span>
                       </td>
                       <td>品牌</td>
                       <td><span class="geo-audit-score mid">61</span></td>
-                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯">黄灯</span></td>
+                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯"></span>黄灯</td>
+                    </tr>
+                    <tr class="geo-audit-row" data-audit-id="audit-api-ref" data-audit-lamp="yellow" data-audit-type="doc" data-search="api reference 参考">
+                      <td>
+                        <strong>…/api-reference</strong>
+                        <span class="geo-audit-url">doc.trinitydesk.ai</span>
+                      </td>
+                      <td>文档</td>
+                      <td><span class="geo-audit-score mid">55</span></td>
+                      <td><span class="geo-audit-lamp yellow" aria-label="黄灯"></span>黄灯</td>
+                    </tr>
+                    <tr class="geo-audit-row" data-audit-id="audit-changelog" data-audit-lamp="green" data-audit-type="blog" data-search="changelog 博客">
+                      <td>
+                        <strong>/blog/changelog</strong>
+                        <span class="geo-audit-url">trinitydesk.ai</span>
+                      </td>
+                      <td>博客</td>
+                      <td><span class="geo-audit-score ok">71</span></td>
+                      <td><span class="geo-audit-lamp green" aria-label="绿灯"></span>绿灯</td>
+                    </tr>
+                    <tr class="geo-audit-row" data-audit-id="audit-pricing" data-audit-lamp="green" data-audit-type="marketing" data-search="pricing 定价">
+                      <td>
+                        <strong>/pricing</strong>
+                        <span class="geo-audit-url">trinitydesk.ai</span>
+                      </td>
+                      <td>定价</td>
+                      <td><span class="geo-audit-score ok">74</span></td>
+                      <td><span class="geo-audit-lamp green" aria-label="绿灯"></span>绿灯</td>
                     </tr>
                   </tbody>
                 </table>
+                <p class="geo-kw-empty" id="audit-empty" hidden>没有匹配的页面。</p>
               </div>
             </section>
 
-            <section class="geo-settings-card geo-audit-detail-card" aria-labelledby="audit-detail-heading" id="audit-doc-intro">
-              <div class="geo-settings-card-head">
+            <section class="geo-audit-col geo-audit-detail-col" aria-labelledby="audit-detail-heading" id="audit-detail-panel">
+              <header class="geo-audit-detail-head">
                 <div>
                   <h2 id="audit-detail-heading">审计明细</h2>
-                  <p class="geo-settings-card-desc">
-                    <a href="https://doc.trinitydesk.ai/docs/introduction" rel="noopener" target="_blank">doc.trinitydesk.ai/docs/introduction</a>
-                    · 上次扫描 6/14 22:30
+                  <p class="geo-audit-detail-url">
+                    <a id="audit-detail-url-link" href="https://doc.trinitydesk.ai/docs/introduction" rel="noopener" target="_blank">doc.trinitydesk.ai/docs/introduction</a>
+                    <span class="geo-muted" id="audit-detail-scanned">· 上次 6/14 22:30</span>
                   </p>
                 </div>
-                <div class="geo-audit-score-ring bad" aria-label="总分 38 分">
-                  <strong>38</strong>
+                <div class="geo-audit-score-ring bad" id="audit-detail-ring" aria-live="polite">
+                  <strong id="audit-detail-score">38</strong>
                   <span>/100</span>
                 </div>
-              </div>
+              </header>
 
-              <p class="geo-audit-summary">
+              <p class="geo-audit-summary" id="audit-detail-summary">
                 首屏核心定义依赖客户端渲染；正文缺少可独立引用的「事实块」；无 Article / TechArticle JSON-LD。
-                与 Q00 信源盘「我方域 0 命中」一致 — 见 <a href="./answer-detail.html#cite-heading">回答信源</a>。
+                与 Q00 信源盘「我方域 0 命中」一致。
               </p>
 
               <h3 class="geo-audit-section-title">评分因子</h3>
-              <ul class="geo-audit-factors">
-                <li class="fail">
-                  <span class="geo-audit-factor-name">证据密度</span>
-                  <span class="geo-audit-factor-score">22/100</span>
-                  <p>首 200 字无品类定义句；缺量化事实（模型数、计费、兼容端点）</p>
-                </li>
-                <li class="fail">
-                  <span class="geo-audit-factor-name">可抓取性</span>
-                  <span class="geo-audit-factor-score">35/100</span>
-                  <p>Playwright 对比：无 JS 时正文为空壳；meta description 过短</p>
-                </li>
-                <li class="warn">
-                  <span class="geo-audit-factor-name">Schema.org</span>
-                  <span class="geo-audit-factor-score">0/100</span>
-                  <p>未检测到 JSON-LD；建议 TechArticle + FAQPage</p>
-                </li>
-                <li class="warn">
-                  <span class="geo-audit-factor-name">结构语义</span>
-                  <span class="geo-audit-factor-score">55/100</span>
-                  <p>H1 存在但 H2 层级跳跃；表格未用 &lt;table&gt; 标记</p>
-                </li>
-                <li class="ok">
-                  <span class="geo-audit-factor-name">时效信号</span>
-                  <span class="geo-audit-factor-score">72/100</span>
-                  <p>页脚有更新日期；缺版本号 / changelog 链</p>
-                </li>
-              </ul>
+              <div class="geo-kw-table-wrap geo-audit-factors-wrap">
+                <table class="geo-kw-table geo-audit-factors-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">因子</th>
+                      <th scope="col">分</th>
+                      <th scope="col">要点</th>
+                    </tr>
+                  </thead>
+                  <tbody id="audit-detail-factors"></tbody>
+                </table>
+              </div>
 
-              <h3 class="geo-audit-section-title">优先修复建议</h3>
-              <ol class="geo-audit-recs">
-                <li>
-                  <strong>P0</strong> 首段增加 3 条可引用事实句（定义 + 模型规模 + OpenAI 兼容）
-                  → <a href="./optimize-detail.html">opt-s1s2</a>
-                </li>
-                <li>
-                  <strong>P0</strong> 服务端渲染或预渲染核心正文，确保爬虫无 JS 可读
-                </li>
-                <li>
-                  <strong>P1</strong> 添加 TechArticle JSON-LD（headline、dateModified、author）
-                </li>
-                <li>
-                  <strong>P1</strong> 对标 <a href="https://openrouter.ai/docs/" rel="noopener" target="_blank">OpenRouter docs</a> 目录 IA
-                </li>
-              </ol>
+              <h3 class="geo-audit-section-title">优先修复</h3>
+              <ol class="geo-audit-recs" id="audit-detail-recs"></ol>
 
               <div class="geo-audit-detail-actions">
-                <a href="./optimize-detail.html" class="geo-btn primary">创建优化任务</a>
-                <a href="./diagnosis.html#diag-q00" class="geo-btn ghost">关联诊断 Q00</a>
+                <a href="./optimize-detail.html" class="geo-btn primary" id="audit-detail-optimize">创建优化任务</a>
+                <a href="./diagnosis.html#diag-q00" class="geo-btn ghost" id="audit-detail-diag">关联诊断</a>
               </div>
             </section>
           </div>
 
-          <section class="geo-settings-card compact muted" aria-labelledby="audit-compare-heading">
-            <h2 id="audit-compare-heading">对标参考（样本）</h2>
+          <details class="geo-audit-benchmark-details">
+            <summary>对标参考 · 竞品 docs 样本分</summary>
             <div class="geo-kw-table-wrap">
               <table class="geo-kw-table">
                 <thead>
@@ -245,23 +302,55 @@
                 <tbody>
                   <tr>
                     <td><a href="https://openrouter.ai/docs/" rel="noopener" target="_blank">openrouter.ai/docs</a></td>
-                    <td>86</td>
+                    <td class="num">86</td>
                     <td>有</td>
-                    <td class="muted">Q00 信源盘高频引用</td>
+                    <td class="geo-muted">Q00 信源盘高频引用</td>
                   </tr>
                   <tr>
                     <td><a href="https://cloud.tencent.cn/document/product/1823" rel="noopener" target="_blank">TokenHub 文档</a></td>
-                    <td>81</td>
+                    <td class="num">81</td>
                     <td>有</td>
-                    <td class="muted">国内竞品 docs 结构</td>
+                    <td class="geo-muted">国内竞品 docs 结构</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </section>
+          </details>
+
+          <p class="dash-proto-link">
+            页面审计原型 v0.2 ·
+            <a href="./audit.md">产品解读</a>
+          </p>
         </div>
       </div>
     </main>
+
+    <div class="geo-toast" id="geo-toast" role="status" hidden></div>
+
+    <div
+      id="geo-help-tip-popover"
+      class="geo-help-tip-popover"
+      data-geo-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="geo-help-tip-title"
+    >
+      <p class="geo-help-tip-title" id="geo-help-tip-title"></p>
+      <div class="geo-help-tip-body" id="geo-help-tip-body"></div>
+    </div>
+
+    <template id="geo-help-tpl-audit-mock" data-geo-prototype-annotation>
+      <p><strong>与规则诊断的区别：</strong>诊断解释答案侧；审计解释站点页 AI 能否引用（S4）。</p>
+      <ul class="geo-help-mock-list">
+        <li><span class="geo-mock-tag demo">演示</span> introduction 38 分红灯 · 链 Q00 / opt-s1s2</li>
+        <li><span class="geo-mock-tag demo">演示</span> 站点均分 62 · 红灯 2 · 与总览一致</li>
+        <li><span class="geo-mock-tag config">对标</span> OpenRouter docs 86 · TokenHub 81</li>
+      </ul>
+      <p class="geo-help-foot">详见 <a href="./audit.md">audit.md</a></p>
+    </template>
+
+    <script src="../js/proto-annotations.js"></script>
     <script src="../js/audit.js"></script>
   </body>
 </html>

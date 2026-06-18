@@ -5,12 +5,17 @@
   var aliasAddBtn = document.getElementById("alias-add-btn");
   var aliasCountBadge = document.getElementById("alias-count-badge");
   var aliasEnabledCount = document.getElementById("alias-enabled-count");
+  var aliasListMeta = document.getElementById("alias-list-meta");
+  var aliasSearchInput = document.getElementById("alias-search");
+  var aliasResultCount = document.getElementById("alias-result-count");
+  var aliasEmpty = document.getElementById("alias-empty");
   var recalcStatus = document.getElementById("recalc-status");
   var recalcBtn = document.getElementById("recalc-btn");
   var saveBtn = document.getElementById("brand-save-btn");
   var toast = document.getElementById("geo-toast");
 
   var dirty = false;
+  var filterQuery = "";
 
   function showToast(msg) {
     if (!toast) return;
@@ -24,21 +29,50 @@
     }, 2800);
   }
 
+  function rows() {
+    return Array.prototype.slice.call(tbody ? tbody.querySelectorAll("tr[data-alias]") : []);
+  }
+
   function countAliases() {
-    if (!tbody) return { total: 0, enabled: 0 };
-    var rows = tbody.querySelectorAll("tr[data-alias]");
+    var list = rows();
     var enabled = 0;
-    rows.forEach(function (row) {
+    list.forEach(function (row) {
       var cb = row.querySelector(".alias-enabled");
       if (!cb || cb.checked) enabled += 1;
     });
-    return { total: rows.length, enabled: enabled };
+    return { total: list.length, enabled: enabled };
+  }
+
+  function applyAliasSearch() {
+    var q = filterQuery.trim().toLowerCase();
+    var visible = 0;
+    rows().forEach(function (row) {
+      var search = (row.getAttribute("data-search") || "").toLowerCase();
+      var alias = (row.getAttribute("data-alias") || "").toLowerCase();
+      var show = !q || search.indexOf(q) !== -1 || alias.indexOf(q) !== -1;
+      row.classList.toggle("is-filtered-out", !show);
+      if (show) visible += 1;
+    });
+    if (aliasResultCount) aliasResultCount.textContent = "显示 " + visible + " 条";
+    if (aliasEmpty) aliasEmpty.hidden = visible > 0;
   }
 
   function refreshCounts() {
     var c = countAliases();
     if (aliasCountBadge) aliasCountBadge.textContent = c.total + " 个别名";
     if (aliasEnabledCount) aliasEnabledCount.textContent = String(c.enabled);
+    applyAliasSearch();
+    if (aliasListMeta) {
+      var filtered = filterQuery.trim();
+      if (filtered) {
+        var visible = rows().filter(function (row) {
+          return !row.classList.contains("is-filtered-out");
+        }).length;
+        aliasListMeta.textContent = visible + " 条匹配";
+      } else {
+        aliasListMeta.textContent = c.total + " 条";
+      }
+    }
   }
 
   function markDirty() {
@@ -51,14 +85,20 @@
   }
 
   function aliasExists(name) {
-    if (!tbody) return false;
     var lower = name.toLowerCase();
-    var rows = tbody.querySelectorAll("tr[data-alias]");
-    for (var i = 0; i < rows.length; i++) {
-      var a = rows[i].getAttribute("data-alias") || "";
+    for (var i = 0; i < rows().length; i++) {
+      var a = rows()[i].getAttribute("data-alias") || "";
       if (a.toLowerCase() === lower) return true;
     }
     return false;
+  }
+
+  function escapeHtml(s) {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
   function addAliasRow(name) {
@@ -72,6 +112,7 @@
 
     var tr = document.createElement("tr");
     tr.setAttribute("data-alias", trimmed);
+    tr.setAttribute("data-search", trimmed.toLowerCase() + " 品牌");
     tr.innerHTML =
       "<td>" +
       escapeHtml(trimmed) +
@@ -81,14 +122,6 @@
     refreshCounts();
     markDirty();
     showToast("已添加别名（记得保存）");
-  }
-
-  function escapeHtml(s) {
-    return s
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
   }
 
   function bindRow(row) {
@@ -127,6 +160,13 @@
     });
   }
 
+  if (aliasSearchInput) {
+    aliasSearchInput.addEventListener("input", function () {
+      filterQuery = aliasSearchInput.value;
+      refreshCounts();
+    });
+  }
+
   document.querySelectorAll(".geo-chip-suggest").forEach(function (chip) {
     chip.addEventListener("click", function () {
       addAliasRow(chip.getAttribute("data-alias") || chip.textContent || "");
@@ -137,7 +177,7 @@
     saveBtn.addEventListener("click", function () {
       dirty = false;
       if (recalcStatus) {
-        recalcStatus.textContent = "队列中 · 约 5 分钟";
+        recalcStatus.textContent = "队列中";
         recalcStatus.classList.add("is-pending");
       }
       showToast("品牌设置已保存，历史标注重算已排队");

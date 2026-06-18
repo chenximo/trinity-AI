@@ -38,62 +38,92 @@
       </div>
     </header>
 
-    <main class="geo-console-main">
+    <main class="geo-console-main geo-cite-page">
       <div class="dash-toolbar geo-settings-toolbar">
         <div>
           <p class="dash-section-label">② 引用 · ③ 信源</p>
-          <h1>引用与信源</h1>
-          <p class="dash-toolbar-meta">AI 把谁当<strong>证据源</strong>（CCR）· 整题参考链构成（信源盘 M/N）</p>
+          <div class="geo-page-title-row">
+            <h1>引用与信源</h1>
+            <button
+              type="button"
+              class="geo-help-tip-btn geo-help-tip-btn--inline"
+              data-geo-prototype-annotation
+              data-geo-help-tpl="geo-help-tpl-citations-mock"
+              data-geo-help-title="原型 · Mock 数据来源"
+              aria-label="原型 Mock 数据来源"
+              aria-expanded="false"
+              aria-controls="geo-help-tip-popover"
+              title="说明"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <p class="geo-cite-lead">
+            <strong>CCR</strong> = 有品牌提及时的引用角色 ·
+            <strong>信源 M/N</strong> = 参考链我方域占比 ·
+            进答案正文见 <a href="./dashboard.html">可见性（SOA）</a>
+          </p>
         </div>
         <div class="geo-settings-toolbar-actions">
-          <a href="./dashboard.html" class="geo-btn ghost">返回可见性总览</a>
+          <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
         </div>
       </div>
 
-      <div class="geo-layer-legend" role="note">
-        <div class="geo-layer-legend-item">
-          <strong>CCR</strong>
-          <span>在「提到品牌」的回答里，我方 URL 是否出现在引用/依据角色</span>
+      <div class="geo-cite-scope-bar">
+        <p class="geo-form-hint geo-cite-scope-note">
+          采集粒度 <code>question × platform × round</code> 一条回答 → 解析 <code>cited_urls[]</code>（仅 <code>citation_extractable=true</code>）。
+          <strong>上方 KPI / 来源结构</strong>默认<strong>全平台 rollup</strong>（可筛平台）；<strong>下方按问题表</strong>每行含平台，不跨平台合并。
+        </p>
+        <div class="geo-cite-filters" aria-label="引用页汇总筛选（原型）">
+          <div class="dash-tabs" role="tablist" aria-label="平台筛选">
+            <button type="button" class="on" role="tab" aria-selected="true">全部平台</button>
+            <button type="button" role="tab">豆包</button>
+            <button type="button" role="tab">ChatGPT</button>
+            <button type="button" role="tab">DeepSeek</button>
+            <button type="button" role="tab">更多…</button>
+          </div>
+          <div class="dash-period" role="tablist" aria-label="时间窗">
+            <button type="button" class="on" role="tab" aria-selected="true">近 7 日</button>
+            <button type="button" role="tab">近 30 日</button>
+            <button type="button" role="tab">R1</button>
+            <button type="button" role="tab">R2</button>
+          </div>
         </div>
-        <div class="geo-layer-legend-item">
-          <strong>信源盘 M/N</strong>
-          <span>不管正文提没提你，参考链接里我方域占几条 / 总链数</span>
-        </div>
-        <div class="geo-layer-legend-item muted">
-          <strong>≠ SOA</strong>
-          <span>进答案正文见 <a href="./dashboard.html">可见性总览</a></span>
-        </div>
-        <a href="./citations.md" class="geo-layer-legend-link">单页 PRD →</a>
       </div>
 
-      <div class="dash-kpi-row geo-mon-kpi">
+      <p class="dash-section-label">引用与信源 · 总览 <span class="geo-cite-filter-badge">全部平台 · 近 7 日</span></p>
+      <div class="dash-kpi-row geo-cite-kpi">
         <div class="geo-metric-card ccr primary">
           <div class="geo-metric-label">CCR · 7d</div>
           <div class="geo-metric-value">8%</div>
-          <div class="geo-metric-delta">分母 = 有提及的采样 · <a href="./answer-detail-brand.html">正样本 Q01</a></div>
+          <div class="geo-metric-delta">分母 = 有提及 · <a href="./answer-detail-brand.html">Q01 样本</a></div>
         </div>
         <div class="geo-metric-card warn">
           <div class="geo-metric-label">信源盘命中率</div>
           <div class="geo-metric-value">12%</div>
-          <div class="geo-metric-delta">可提取样本中 M&gt;0 的占比</div>
+          <div class="geo-metric-delta">可提取样本中 M&gt;0</div>
         </div>
         <div class="geo-metric-card neutral">
           <div class="geo-metric-label">可提取样本</div>
           <div class="geo-metric-value">34</div>
-          <div class="geo-metric-delta">豆包 / 部分 App 端 · 10 平台</div>
+          <div class="geo-metric-delta">可提取渠道 · 10 平台配置</div>
         </div>
         <div class="geo-metric-card neutral">
           <div class="geo-metric-label">竞品官方链占比</div>
           <div class="geo-metric-value">58%</div>
-          <div class="geo-metric-delta">在全部 cited_urls 中</div>
+          <div class="geo-metric-delta">全部 cited_urls</div>
         </div>
       </div>
 
-      <div class="geo-cite-layout">
-        <section class="geo-settings-card" aria-labelledby="cite-by-q-heading">
-          <h2 id="cite-by-q-heading">按问题 · 信源概况</h2>
-          <p class="geo-settings-card-desc">CCR 与 M/N 分列 · 仅展示可提取平台样本</p>
-          <div class="geo-kw-table-wrap">
+      <p class="dash-section-label">按问题 · 来源结构</p>
+      <div class="geo-cite-board">
+        <section class="geo-cite-col" aria-labelledby="cite-by-q-heading">
+          <h2 id="cite-by-q-heading" class="geo-cite-col-title">按问题 · 信源概况</h2>
+          <p class="geo-cite-col-desc">CCR 与 M/N 分列 · 每行 = 一题 × 一平台</p>
+          <div class="geo-kw-table-wrap geo-cite-table-wrap">
             <table class="geo-kw-table geo-cite-q-table">
               <thead>
                 <tr>
@@ -143,9 +173,9 @@
           </div>
         </section>
 
-        <aside class="geo-settings-card geo-cite-structure-card" aria-labelledby="cite-structure-heading">
-          <h2 id="cite-structure-heading">来源结构 · 近 7 日</h2>
-          <p class="geo-settings-card-desc">全部可提取 cited_urls 分类</p>
+        <section class="geo-cite-col" aria-labelledby="cite-structure-heading">
+          <h2 id="cite-structure-heading" class="geo-cite-col-title">来源结构 · 近 7 日</h2>
+          <p class="geo-cite-col-desc">与上方筛选一致 · 默认可提取样本全平台汇总</p>
           <ul class="geo-cite-structure-bars">
             <li>
               <span class="label"><span class="geo-cite-tag competitor">竞品官方</span></span>
@@ -168,32 +198,36 @@
               <span class="pct">4%</span>
             </li>
           </ul>
-          <p class="geo-settings-mini">Q00 样本：竞品官方 11 + 评测 5 + 我方 0 → 叙事由 OpenRouter / TokenHub docs 定型</p>
-          <a href="./optimize.html#opt-s1s2" class="geo-btn ghost sm full">对标 docs 优化 →</a>
-        </aside>
+          <p class="geo-cite-insight">Q00 样本：竞品官方 11 + 评测 5 + 我方 0 — 叙事由 OpenRouter / TokenHub docs 定型</p>
+          <a href="./optimize.html#opt-s1s2" class="geo-btn ghost sm">对标 docs 优化 →</a>
+        </section>
       </div>
 
-      <section class="geo-settings-card geo-cite-spotlight" aria-labelledby="cite-spotlight-heading">
-        <div class="geo-settings-card-head">
+      <p class="dash-section-label">焦点样本 · Q00 信源盘 <span class="geo-cite-filter-badge muted">固定下钻 · 不受上方筛选</span></p>
+      <section class="geo-cite-spotlight" aria-labelledby="cite-spotlight-heading">
+        <header class="geo-cite-spotlight-head">
           <div>
-            <h2 id="cite-spotlight-heading">焦点样本 · Q00 信源盘</h2>
-            <p class="geo-settings-card-desc">豆包 · R1 · 16 条参考链 · 我方域 0</p>
+            <h2 id="cite-spotlight-heading">Q00 × 豆包 × R1 · 16 条参考链</h2>
+            <p class="geo-cite-col-desc">
+              单条采集记录信源盘（非平台汇总）· 真源
+              <code>mvp/data/r1/cited_sources.json</code> · 品类失声典型
+            </p>
           </div>
           <span class="geo-cite-badge danger">M/N = 0/16</span>
-        </div>
+        </header>
         <div class="geo-cite-spotlight-grid">
-          <div>
+          <article class="geo-cite-spotlight-cell competitor">
             <h3 class="geo-cite-section-title">竞品官方 · 11</h3>
-            <p class="geo-settings-mini">OpenRouter 6 链 · TokenHub 5 链 — 含 /docs、模型列表、API 指南</p>
-          </div>
-          <div>
+            <p>OpenRouter 6 链 · TokenHub 5 链 — 含 /docs、模型列表、API 指南</p>
+          </article>
+          <article class="geo-cite-spotlight-cell third">
             <h3 class="geo-cite-section-title">第三方评测 · 5</h3>
-            <p class="geo-settings-mini">SegmentFault、凤凰网、CSDN 等横向文定型品类叙事</p>
-          </div>
-          <div class="missing">
+            <p>SegmentFault、凤凰网、CSDN 等横向文定型品类叙事</p>
+          </article>
+          <article class="geo-cite-spotlight-cell missing">
             <h3 class="geo-cite-section-title">我方官方 · 0</h3>
-            <p class="geo-settings-mini">doc.trinitydesk.ai 未进入参考盘 — R2 验证目标 0→1/17</p>
-          </div>
+            <p>doc.trinitydesk.ai 未进入参考盘 — R2 目标 0→1/17</p>
+          </article>
         </div>
         <div class="geo-cite-spotlight-actions">
           <a href="./answer-detail.html#cite-heading" class="geo-btn primary">查看完整 16 链</a>
@@ -202,10 +236,11 @@
         </div>
       </section>
 
-      <section class="geo-settings-card compact muted" aria-labelledby="cite-platform-heading">
-        <h2 id="cite-platform-heading">平台可提取性</h2>
-        <div class="geo-kw-table-wrap">
-          <table class="geo-kw-table">
+      <p class="dash-section-label">平台可提取性</p>
+      <section class="geo-cite-platform" aria-labelledby="cite-platform-heading">
+        <h2 id="cite-platform-heading" class="visually-hidden">平台可提取性</h2>
+        <div class="geo-kw-table-wrap geo-cite-table-wrap">
+          <table class="geo-kw-table geo-cite-platform-table">
             <thead>
               <tr>
                 <th>平台</th>
@@ -214,7 +249,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>豆包 App</td><td><span class="geo-cite-pill yes">是</span></td><td>显式列出官方/第三方参考链 · Q00 样本</td></tr>
+              <tr><td>豆包 App</td><td><span class="geo-cite-pill yes">是</span></td><td>显式列出参考链 · Q00 信源盘样本</td></tr>
               <tr><td>ChatGPT</td><td><span class="geo-cite-pill partial">部分</span></td><td>正文内链 · Q01 CCR 样本</td></tr>
               <tr><td>Claude / Gemini</td><td><span class="geo-cite-pill partial">部分</span></td><td>视消费端是否返回链接</td></tr>
               <tr><td>API 直连</td><td><span class="geo-cite-pill no">否</span></td><td>仅正文 · CCR 标「不可观测」</td></tr>
@@ -222,6 +257,79 @@
           </table>
         </div>
       </section>
+
+      <p class="dash-proto-link">
+        引用页原型 v0.2 ·
+        <a href="./citations.md">产品解读</a>
+      </p>
     </main>
+
+    <div
+      id="geo-help-tip-popover"
+      class="geo-help-tip-popover"
+      data-geo-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="geo-help-tip-title"
+    >
+      <p class="geo-help-tip-title" id="geo-help-tip-title"></p>
+      <div class="geo-help-tip-body" id="geo-help-tip-body"></div>
+    </div>
+
+    <template id="geo-help-tpl-citations-mock" data-geo-prototype-annotation>
+      <p>本页数字与表格的商用逻辑见 <a href="./citations.md">citations.md</a>；下表标注原型真源（非用户可见文案）。</p>
+      <div class="geo-kw-table-wrap geo-cite-table-wrap">
+        <table class="geo-kw-table geo-cite-mock-table">
+          <thead>
+            <tr>
+              <th>页面模块</th>
+              <th>商用逻辑</th>
+              <th>本原型真源</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KPI（CCR 8%、命中率 12%…）</td>
+              <td>筛选窗内可提取样本 rollup</td>
+              <td><span class="geo-mock-tag demo">演示</span> · <code>metric_snapshots</code></td>
+            </tr>
+            <tr>
+              <td>按问题 · Q00</td>
+              <td><code>question × platform × round</code></td>
+              <td><span class="geo-mock-tag real">已入库</span> · <code>mvp/data/r1/cited_sources.json</code></td>
+            </tr>
+            <tr>
+              <td>按问题 · Q01/Q03/Q06</td>
+              <td>同上</td>
+              <td><span class="geo-mock-tag demo">UI 演示</span> · Q01 → answer-detail-brand</td>
+            </tr>
+            <tr>
+              <td>来源结构条</td>
+              <td>筛选下 cited_urls 分类</td>
+              <td><span class="geo-mock-tag derived">派生</span> · Q00 11+5+0 外推</td>
+            </tr>
+            <tr>
+              <td>焦点 Q00</td>
+              <td>单条下钻</td>
+              <td><span class="geo-mock-tag real">已入库</span> · <code>doubao-app-manual</code></td>
+            </tr>
+            <tr>
+              <td>R2 信源 Δ</td>
+              <td>再采集对比</td>
+              <td><span class="geo-mock-tag real">已入库</span> · <code>r2/cited_sources.json</code></td>
+            </tr>
+            <tr>
+              <td>平台可提取性</td>
+              <td>渠道配置</td>
+              <td><span class="geo-mock-tag config">配置</span> · PRD §5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>采集录入：<code>mvp/MANUAL-SUBMIT.md</code> · 数据流 <a href="../../../../trinity-product/docs/geo/product-design-analysis.md#citation-data-pipeline">§0.6.2a</a></p>
+    </template>
+
+    <script src="../js/proto-annotations.js"></script>
   </body>
 </html>

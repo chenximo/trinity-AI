@@ -1,13 +1,13 @@
 # 用户控制台 · 竞品管理 · 产品需求（PRD）
 
 > **文档类型**：**单页 PRD**——本页（`/console/competitors/manage`）功能的产品需求真源。  
-> **配套原型**：[competitors-manage.html](./competitors-manage.html)（HTML v0.1）  
+> **配套原型**：[competitors-manage.html](./competitors-manage.html)（HTML v0.2）  
 > **工程对齐**：[技术架构 · 别名库](../../../../trinity-product/docs/geo/tech-architecture.md#measurement-soa) · [品牌设置 PRD](./brand-settings.md)  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/competitors-manage.html`
 
 | 字段 | 内容 |
 |------|------|
-| 版本 | v0.1 |
+| 版本 | v0.2 |
 | 状态 | 草稿 |
 | 路由 | `/console/competitors/manage` |
 | 六环 | ① 策略规划 |
@@ -59,7 +59,9 @@
 
 | 方式 | UI | 说明 |
 |------|-----|------|
-| **手动添加** | 常显表单：主名称 + 市场 + 首别名 | P0 主路径 |
+| 手动添加 | 可折叠垂直表单：主名称 + 市场 + 首别名 | P0 主路径 |
+| **列表筛选** | 搜索 + 市场 + 监测状态；市场分布快捷 pill | P1 |
+| **SOA 只读链** | 卡片头同题 SOA 7d → 竞品详情 | P1 读口 |
 | **卡片内编辑别名** | 展开竞品卡片 | P0 |
 | **AI 推荐竞品** | 顶栏展开勾选 | P1 辅助，须确认 |
 
@@ -165,9 +167,10 @@ Then  TokenHub 不参与 SOA 对比聚合
 | 概念 | 选择器 |
 |------|--------|
 | 手动添加 | `#comp-manual-add` |
-| 竞品卡片列表 | `#comp-list` · `.geo-comp-card` |
-| 别名编辑 | `.geo-comp-card-body` |
-| 同步侧栏 | `geo-settings-aside` |
+| 竞品表格行 | `#comp-tbody` · `.geo-comp-row` |
+| 别名编辑 | 展开行 `.geo-comp-detail` · chip 列表 |
+| 同步条 | `.geo-comp-sync-strip` |
+| Mock 说明 | 页头 **ⓘ** · `geo-help-tpl-comp-mock` |
 
 ---
 
@@ -175,4 +178,5 @@ Then  TokenHub 不参与 SOA 对比聚合
 
 | 日期 | 说明 |
 |------|------|
+| 2026-06-12 | v0.2：扁平 IA · 搜索筛选 · 可折叠添加 · ⓘ Mock · 底部同步条 |
 | 2026-06-12 | 初稿：HTML v0.1 + 单页 PRD；批 1 策略三页完成 |

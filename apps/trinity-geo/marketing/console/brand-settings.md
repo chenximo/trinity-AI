@@ -1,7 +1,7 @@
 # 用户控制台 · 品牌设置 · 产品需求（PRD）
 
 > **文档类型**：**单页 PRD**——本页（`/console/settings/brand`）功能的产品需求真源，可直接用于评审、研发拆任务、测试写用例。  
-> **配套原型**：[brand-settings.html](./brand-settings.html)（HTML v0.1）  
+> **配套原型**：[brand-settings.html](./brand-settings.html)（HTML v0.2 · 扁平 IA）  
 > **全景文档**（非本 PRD 范围）：[GEO 业务全景](../../../../trinity-product/docs/geo/business-landscape.md) · [产品设计分析](../../../../trinity-product/docs/geo/product-design-analysis.md) · [原型页面清单](../../../../trinity-product/docs/geo/v1-prototype-pages.md)  
 > **工程细则**：[技术架构 · 别名同步与重算](../../../../trinity-product/docs/geo/tech-architecture.md#alias-sync-recalc) · [测量 SOA](../../../../trinity-product/docs/geo/tech-architecture.md#measurement-soa)  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/brand-settings.html`
@@ -348,12 +348,13 @@ And   侧栏提示别名过少可能导致 D2 未识别风险
 | 概念 | `brand-settings.html` |
 |------|------------------------|
 | 设置子导航 | `geo-settings-sidebar` |
-| 策略说明条 | `geo-settings-callout` |
-| 基础信息表单 | `geo-settings-card` + `geo-form-grid` |
-| 别名库 | `geo-alias-table` + `geo-alias-add` |
-| 推荐别名 | `geo-alias-suggest` |
-| 测量同步状态 | `geo-settings-aside` · `geo-sync-dl` · `#recalc-btn` |
-| 关联链接 | `geo-related-links` |
+| 策略说明 | `geo-brand-scope-bar` · ⓘ `geo-help-tpl-brand-mock` |
+| 同步 KPI | `geo-brand-kpi` |
+| 基础信息表单 | `geo-brand-form-grid` |
+| 别名库 | `geo-brand-alias-table` + `geo-brand-alias-add` |
+| 推荐别名 | `geo-brand-alias-suggest` |
+| 测量重算 | `geo-brand-aside` · `#recalc-btn` |
+| 关联链接 | `geo-brand-related` |
 | 保存 / Toast | `#brand-save-btn` · `#geo-toast` |
 
 ---
@@ -362,5 +363,6 @@ And   侧栏提示别名过少可能导致 D2 未识别风险
 
 | 日期 | 说明 |
 |------|------|
+| 2026-06-12 | HTML v0.2：扁平 IA · KPI · 别名搜索 · D2 spotlight · ⓘ |
 | 2026-06-12 | 初稿：产品解读 + HTML v0.1 |
 | 2026-06-12 | **升格为单页 PRD**：数据落库、同步/重算、接口、验收标准；对齐技术架构 §2.1.3a |

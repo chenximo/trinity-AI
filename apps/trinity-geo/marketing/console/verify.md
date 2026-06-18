@@ -1,13 +1,13 @@
 # 用户控制台 · 效果验证 · 产品需求（PRD）
 
 > **文档类型**：**单页 PRD**——本页（`/console/optimize/verify`）功能的产品需求真源。  
-> **配套原型**：[verify.html](./verify.html)（HTML v0.1，样本 **Q00 · 豆包 R1→R2**）  
+> **配套原型**：[verify.html](./verify.html)（HTML v0.2 · 扁平 IA）  
 > **样本数据**：[mvp/data/r2/verify.json](../../mvp/data/r2/verify.json)、[r2/cited_sources.json](../../mvp/data/r2/cited_sources.json)  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/verify.html`
 
 | 字段 | 内容 |
 |------|------|
-| 版本 | v0.1 |
+| 版本 | v0.2 |
 | 状态 | 草稿 |
 | 路由 | `/console/optimize/verify` |
 | 六环 | ⑥ 验证 |
@@ -32,38 +32,38 @@
 
 ## 2. 功能需求
 
-### 2.1 验证卡片（按 question_id）
+### 2.1 任务索引表
 
-| 字段 | 说明 |
-|------|------|
-| 关联动作 | `linked_action_id` → 优化待办 |
-| R1 / R2 采集时间 | 轮次与时间戳 |
-| 信源盘 Δ | 我方域 M/N：R1 vs R2 |
-| SOA Δ | 进正文占比：R1 vs R2 |
-| 缺口 Δ | `gap_ids` R1 vs R2 |
-| 结论 | partial / improved / no_change |
-| 新增我方链 | R2 新进入参考盘的 URL 列表 |
+| 列 | 说明 |
+|----|------|
+| 判定 | partial / CCR / improved |
+| 问题 | question_id + 简述 |
+| 领先 Δ | 信源盘或 CCR 一行摘要 |
+| SOA | R1 → R2 |
+| 动作 | linked_action_id |
 
-### 2.2 验收顺序（产品规则）
+### 2.2 明细块（按 question）
 
-1. **信源盘 Δ** — 我方域是否从 0 增加  
-2. **CCR Δ** — 是否被当作依据  
-3. **SOA Δ** — 是否进推荐正文（可滞后）
+R1→R2 指标表 · 结论一行 · R2 新增链（折叠）· 文本链操作。
 
-### 2.3 触发 R2
+### 2.3 筛选
 
-商用：优化任务完成或手动触发 → 对**动过手的题目**补采。MVP：手工补采 + JSON 存档。
+全部 / 信源先行 / SOA 同步 + 搜索。
+
+### 2.4 P0 spotlight
+
+`#verify-q00` · Q00 先进盘样本。
 
 ---
 
-## 3. 原型样本（Q00）
+## 3. 原型样本
 
-| 指标 | R1 | R2 | 判定 |
-|------|----|----|------|
-| 我方域 | 0/16 | 1/17 | 信源改善 ✓ |
-| SOA | 0% | 0% | 未变（预期内） |
-| 缺口 | S1+S2+S3 | S2+S3 | S1 部分缓解 |
-| 动作 | — | opt-s1s2 | doc 文档树上线 |
+| ID | 类型 | 说明 |
+|----|------|------|
+| verify-q00 | 信源先行 | 0/16→1/17 · SOA 0% |
+| verify-q01 | SOA 同步 | CCR 1/3→2/3 · SOA +6pt |
+
+Mock：页头 **ⓘ** · `geo-help-tpl-verify-mock`
 
 ---
 
@@ -71,4 +71,5 @@
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-12 | 初稿 · 批 5 · 效果验证 + Q00 R1→R2 样本 |
+| 2026-06-12 | v0.2：扁平 IA · 索引表 + 明细 · spotlight · 筛选 · ⓘ |
+| 2026-06-12 | 初稿 v0.1 · Q00 R1→R2 样本 |

@@ -201,12 +201,12 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 ---
 
-### 2.3 ② 监测与采集（2 页）
+### 2.3 ② 监测与采集（1 页 + Tab）
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 5 | **监测概览** | `/console/monitoring` | 关键词总数、今日采集量、成功率；10 平台状态与新鲜度 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring.md) |
-| 6 | **采集日志** | `/console/monitoring/logs` | 任务时间线、失败原因、重试 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring-logs.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring-logs.md) |
+| 5 | **监测采集** | `/console/monitoring` | Tab **概览**：KPI、10 平台状态、失败/入库；Tab **采集日志**：任务表、筛选、重试 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring.md) |
+| — | *采集日志（Tab）* | `/console/monitoring/logs` | 深链 `?tab=logs`；非侧栏独立 IA | ② | [Tab PRD](../../../trinity-geo/marketing/console/monitoring-logs.md) · 旧 HTML 重定向 |
 
 ---
 

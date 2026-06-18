@@ -38,23 +38,60 @@
       </div>
     </header>
 
-    <main class="geo-console-main">
+    <main class="geo-console-main geo-sentiment-page">
       <div class="dash-toolbar geo-settings-toolbar">
         <div>
           <p class="dash-section-label">③ 测量 · 口碑</p>
-          <h1>情感与口碑</h1>
-          <p class="dash-toolbar-meta">品牌在 AI 回答中被提及时的正 / 中 / 负倾向 · 与 SOA、CCR 独立</p>
+          <div class="geo-page-title-row">
+            <h1>情感与口碑</h1>
+            <button
+              type="button"
+              class="geo-help-tip-btn geo-help-tip-btn--inline"
+              data-geo-prototype-annotation
+              data-geo-help-tpl="geo-help-tpl-sentiment-mock"
+              data-geo-help-title="原型 · Mock 数据来源"
+              aria-label="原型 Mock 数据来源"
+              aria-expanded="false"
+              aria-controls="geo-help-tip-popover"
+              title="说明"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <p class="geo-sentiment-lead">
+            仅统计<strong>有品牌提及</strong>的采样 · 正 / 中 / 负倾向 ·
+            与 <a href="./dashboard.html">SOA</a>、<a href="./citations.html">CCR</a> 分列读口
+          </p>
         </div>
         <div class="geo-settings-toolbar-actions">
-          <a href="./dashboard.html" class="geo-btn ghost">返回可见性总览</a>
+          <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
         </div>
       </div>
 
-      <div class="geo-settings-callout" role="note">
-        仅统计<strong>有品牌提及</strong>的采样。品类失声（如 Q00）无情感标签。
-        <a href="./sentiment.md">单页 PRD →</a>
+      <div class="geo-sentiment-scope-bar">
+        <p class="geo-form-hint geo-sentiment-scope-note">
+          采集粒度 <code>question × platform × round</code>；<code>brand_mentioned=true</code> 才有情感标签（品类失声如 Q00 为「—」）。
+          <strong>上方 KPI / 分布条</strong>默认<strong>全平台 rollup</strong>；<strong>下方流与表</strong>每行含平台。
+        </p>
+        <div class="geo-sentiment-filters" aria-label="情感页汇总筛选（原型）">
+          <div class="dash-tabs" role="tablist" aria-label="平台筛选">
+            <button type="button" class="on" role="tab" aria-selected="true">全部平台</button>
+            <button type="button" role="tab">豆包</button>
+            <button type="button" role="tab">ChatGPT</button>
+            <button type="button" role="tab">Claude</button>
+            <button type="button" role="tab">更多…</button>
+          </div>
+          <div class="dash-period" role="tablist" aria-label="时间窗">
+            <button type="button" class="on" role="tab" aria-selected="true">近 7 日</button>
+            <button type="button" role="tab">近 30 日</button>
+          </div>
+        </div>
       </div>
 
+      <p class="dash-section-label">口碑 · 总览 <span class="geo-sentiment-filter-badge">全部平台 · 近 7 日</span></p>
       <div class="dash-kpi-row geo-sentiment-kpi">
         <div class="geo-metric-card primary">
           <div class="geo-metric-label">正面</div>
@@ -69,71 +106,166 @@
         <div class="geo-metric-card warn">
           <div class="geo-metric-label">负面</div>
           <div class="geo-metric-value">7%</div>
-          <div class="geo-metric-delta down">1 条待复核幻觉</div>
+          <div class="geo-metric-delta down">1 条待复核</div>
         </div>
         <div class="geo-metric-card neutral">
           <div class="geo-metric-label">有情感标注</div>
           <div class="geo-metric-value">47</div>
-          <div class="geo-metric-delta">本周提及采样</div>
+          <div class="geo-metric-delta">提及采样分母</div>
         </div>
       </div>
 
-      <div class="geo-sentiment-bar-wrap" aria-label="情感分布">
-        <div class="geo-sentiment-bar">
-          <span class="pos" style="width: 72%"></span>
-          <span class="neu" style="width: 21%"></span>
-          <span class="neg" style="width: 7%"></span>
-        </div>
-        <div class="geo-sentiment-bar-labels">
-          <span>正面 72%</span>
-          <span>中性 21%</span>
-          <span>负面 7%</span>
-        </div>
+      <p class="dash-section-label">提及流 · 按问题</p>
+      <div class="geo-sentiment-board">
+        <section class="geo-sentiment-col" aria-labelledby="sentiment-feed-heading">
+          <h2 id="sentiment-feed-heading" class="geo-sentiment-col-title">提及内容流</h2>
+          <p class="geo-sentiment-col-desc">每行 = 一题 × 一平台 · 有提及才有情感</p>
+          <ul class="geo-sentiment-feed">
+            <li class="geo-sentiment-item pos">
+              <div class="geo-sentiment-item-head">
+                <span class="geo-sentiment-tag">正面</span>
+                <a href="./answer-detail-brand.html"><strong>Q01</strong> · ChatGPT</a>
+                <time datetime="2026-06-14T11:20">6/14 11:20</time>
+              </div>
+              <p>「统一接入多家大模型、按量计费、团队管控 API Key…」— 首推段正面推荐 · <a href="./citations.html">CCR 样本</a></p>
+            </li>
+            <li class="geo-sentiment-item pos">
+              <div class="geo-sentiment-item-head">
+                <span class="geo-sentiment-tag">正面</span>
+                <a href="./keyword-detail.html?q=Q08"><strong>Q08</strong> · Claude</a>
+                <time datetime="2026-06-13T09:05">6/13 09:05</time>
+              </div>
+              <p>「模型覆盖全面、OpenAI 兼容端点稳定」— 功能向正面</p>
+            </li>
+            <li class="geo-sentiment-item neu">
+              <div class="geo-sentiment-item-head">
+                <span class="geo-sentiment-tag">中性</span>
+                <a href="./keyword-detail.html?q=Q05"><strong>Q05</strong> · Gemini</a>
+                <time datetime="2026-06-12T16:40">6/12 16:40</time>
+              </div>
+              <p>「与 OpenRouter 相比，Trinity 更偏国内线路与企业计费」— 对比陈述无褒贬</p>
+            </li>
+            <li class="geo-sentiment-item neg">
+              <div class="geo-sentiment-item-head">
+                <span class="geo-sentiment-tag">负面</span>
+                <a href="./keyword-detail.html?q=Q02"><strong>Q02</strong> · 豆包</a>
+                <time datetime="2026-06-11T08:00">6/11 08:00</time>
+              </div>
+              <p>「定价信息待核实」— <strong>幻觉监测</strong> 待复核</p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="geo-sentiment-col" aria-labelledby="sentiment-dist-heading">
+          <h2 id="sentiment-dist-heading" class="geo-sentiment-col-title">情感分布 · 近 7 日</h2>
+          <p class="geo-sentiment-col-desc">与上方筛选一致 · 默认可提及样本全平台汇总</p>
+          <div class="geo-sentiment-bar-wrap" aria-label="情感分布">
+            <div class="geo-sentiment-bar">
+              <span class="pos" style="width: 72%"></span>
+              <span class="neu" style="width: 21%"></span>
+              <span class="neg" style="width: 7%"></span>
+            </div>
+            <div class="geo-sentiment-bar-labels">
+              <span>正面 72%</span>
+              <span>中性 21%</span>
+              <span>负面 7%</span>
+            </div>
+          </div>
+
+          <h3 class="geo-sentiment-subtitle">按问题 · 情感标签</h3>
+          <div class="geo-kw-table-wrap geo-sentiment-table-wrap">
+            <table class="geo-kw-table geo-sentiment-q-table">
+              <thead>
+                <tr>
+                  <th>问题</th>
+                  <th>平台</th>
+                  <th>情感</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="./answer-detail-brand.html"><strong>Q01</strong> · Trinity 好用吗</a></td>
+                  <td>ChatGPT</td>
+                  <td><span class="geo-sentiment-pill pos">正面</span></td>
+                  <td><a href="./answer-detail-brand.html">回答 →</a></td>
+                </tr>
+                <tr>
+                  <td><a href="./keyword-detail.html?q=Q08"><strong>Q08</strong> · 降本</a></td>
+                  <td>Claude</td>
+                  <td><span class="geo-sentiment-pill pos">正面</span></td>
+                  <td><a href="./keyword-detail.html?q=Q08">详情 →</a></td>
+                </tr>
+                <tr>
+                  <td><a href="./keyword-detail.html?q=Q05"><strong>Q05</strong> · 统一管理 API</a></td>
+                  <td>Gemini</td>
+                  <td><span class="geo-sentiment-pill neu">中性</span></td>
+                  <td><a href="./keyword-detail.html?q=Q05">详情 →</a></td>
+                </tr>
+                <tr class="geo-sentiment-q-row-warn">
+                  <td><a href="./keyword-detail.html?q=Q02"><strong>Q02</strong> · trinitydesk 是什么</a></td>
+                  <td>豆包</td>
+                  <td><span class="geo-sentiment-pill neg">负面</span></td>
+                  <td><a href="./dashboard.html">治理 →</a></td>
+                </tr>
+                <tr class="geo-sentiment-q-row-muted">
+                  <td><strong>Q00</strong> · 推荐 API 聚合</td>
+                  <td>豆包</td>
+                  <td><span class="geo-sentiment-pill none">—</span></td>
+                  <td>未提及</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="geo-sentiment-insight">
+            <strong>叙事主题（P2）</strong>：正面常关联企业计费、国内线路、OpenAI 兼容；负面多集中在定价误述。
+          </p>
+        </section>
       </div>
 
-      <section class="geo-settings-card" aria-labelledby="sentiment-feed-heading">
-        <h2 id="sentiment-feed-heading">提及内容流</h2>
-        <p class="geo-settings-card-desc">近 7 日 · 有品牌提及的回答摘要</p>
-        <ul class="geo-sentiment-feed">
-          <li class="geo-sentiment-item pos">
-            <div class="geo-sentiment-item-head">
-              <span class="geo-sentiment-tag">正面</span>
-              <a href="./answer-detail-brand.html">Q01 · ChatGPT</a>
-              <time>6/14 11:20</time>
-            </div>
-            <p>「统一接入多家大模型、按量计费、团队管控 API Key… 较常见选择之一」— 首推段正面推荐</p>
-          </li>
-          <li class="geo-sentiment-item pos">
-            <div class="geo-sentiment-item-head">
-              <span class="geo-sentiment-tag">正面</span>
-              <a href="./keyword-detail.html?q=Q08" title="Q08 · Claude">Q08 · Claude</a>
-              <time>6/13 09:05</time>
-            </div>
-            <p>「模型覆盖全面、OpenAI 兼容端点稳定」— 功能向正面</p>
-          </li>
-          <li class="geo-sentiment-item neu">
-            <div class="geo-sentiment-item-head">
-              <span class="geo-sentiment-tag">中性</span>
-              <a href="./keyword-detail.html?q=Q05" title="Q05 · Gemini">Q05 · Gemini</a>
-              <time>6/12 16:40</time>
-            </div>
-            <p>「与 OpenRouter 相比，Trinity 更偏国内线路与企业计费」— 对比陈述无褒贬</p>
-          </li>
-          <li class="geo-sentiment-item neg">
-            <div class="geo-sentiment-item-head">
-              <span class="geo-sentiment-tag">负面</span>
-              <a href="./keyword-detail.html?q=Q02" title="Q02 · 豆包">Q02 · 豆包</a>
-              <time>6/11 08:00</time>
-            </div>
-            <p>「定价信息待核实」— <strong>幻觉监测</strong> 待复核 · 链总览治理条</p>
-          </li>
-        </ul>
+      <p class="dash-section-label">需关注</p>
+      <section class="geo-sentiment-alert" aria-labelledby="sentiment-alert-heading">
+        <h2 id="sentiment-alert-heading" class="visually-hidden">需关注项</h2>
+        <div class="geo-sentiment-alert-item">
+          <span class="geo-sentiment-alert-icon" aria-hidden="true">⚠</span>
+          <div>
+            <strong>Q02 · 豆包 · 负面 / 幻觉待复核</strong>
+            <p>回答含「定价信息待核实」— 链总览治理条与人工复核队列（P1）</p>
+          </div>
+          <a href="./dashboard.html" class="geo-btn ghost sm">总览治理 →</a>
+        </div>
       </section>
 
-      <section class="geo-settings-card compact muted" aria-labelledby="sentiment-theme-heading">
-        <h2 id="sentiment-theme-heading">叙事主题（P2）</h2>
-        <p class="geo-settings-card-desc">正面提及常关联：企业计费、国内线路、OpenAI 兼容 · 负面多集中在定价误述</p>
-      </section>
+      <p class="dash-proto-link">
+        情感页原型 v0.2 ·
+        <a href="./sentiment.md">产品解读</a>
+      </p>
     </main>
+
+    <div
+      id="geo-help-tip-popover"
+      class="geo-help-tip-popover"
+      data-geo-prototype-annotation
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="geo-help-tip-title"
+    >
+      <p class="geo-help-tip-title" id="geo-help-tip-title"></p>
+      <div class="geo-help-tip-body" id="geo-help-tip-body"></div>
+    </div>
+
+    <template id="geo-help-tpl-sentiment-mock" data-geo-prototype-annotation>
+      <p>情感仅对 <code>brand_mentioned=true</code> 的采样打标；详见 <a href="./sentiment.md">sentiment.md</a>。</p>
+      <ul class="geo-help-mock-list">
+        <li><span class="geo-mock-tag demo">演示 rollup</span> KPI 72/21/7 · 47 条分母</li>
+        <li><span class="geo-mock-tag real">已入库</span> Q00 豆包 · <code>annotations.json</code> · sentiment「—」</li>
+        <li><span class="geo-mock-tag demo">UI 演示</span> Q01 正面 → <code>answer-detail-brand.html</code></li>
+        <li><span class="geo-mock-tag demo">UI 演示</span> Q02 负面 / 幻觉预警行</li>
+      </ul>
+    </template>
+
+    <script src="../js/proto-annotations.js"></script>
   </body>
 </html>

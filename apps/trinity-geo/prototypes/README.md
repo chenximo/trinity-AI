@@ -18,7 +18,7 @@
 | **控制台 · 效果验证** | [`../marketing/console/verify.html`](../marketing/console/verify.html) · [PRD](../marketing/console/verify.md) | ⑥ R1→R2 信源样本 |
 | **控制台 · 报告列表** | [`../marketing/console/reports.html`](../marketing/console/reports.html) · [PRD](../marketing/console/reports.md) | ⑥ 周报 / 月报 |
 | **控制台 · 报告预览** | [`../marketing/console/report-preview.html`](../marketing/console/report-preview.html) | ⑥ 在线预览样本 |
-| **控制台 · 采集日志** | [`../marketing/console/monitoring-logs.html`](../marketing/console/monitoring-logs.html) · [PRD](../marketing/console/monitoring-logs.md) | ② 失败重试 |
+| **控制台 · 采集日志** | [`monitoring.html?tab=logs`](../marketing/console/monitoring.html?tab=logs) · [Tab PRD](../marketing/console/monitoring-logs.md) | ② 监测页内 Tab |
 | **控制台 · 账户套餐** | [`../marketing/console/settings-account.html`](../marketing/console/settings-account.html) · [PRD](../marketing/console/settings-account.md) | ⑧ 用量 / 升级 |
 | **控制台 · 通知告警** | [`../marketing/console/settings-notifications.html`](../marketing/console/settings-notifications.html) · [PRD](../marketing/console/settings-notifications.md) | ⑧ 邮件 / 定时 |
 | **控制台 · 监测概览** | [`../marketing/console/monitoring.html`](../marketing/console/monitoring.html) · [PRD](../marketing/console/monitoring.md) | ② 采集状态 v0.1 |
