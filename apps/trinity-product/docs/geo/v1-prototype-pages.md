@@ -88,16 +88,20 @@ title: GEO 原型页面清单
 
 ---
 
-## 一、官网（营销 · **1 个 URL**）
+## 一、官网（营销 · **首页 1 + 可选卫星 2**）
 
 > **设计目标**：3 分钟内理解 GEO、双市场、SOA，并进入试用。  
-> **形态**：**单页 Landing**（锚点导航），不是 8 个独立营销 HTML。功能/定价/案例/FAQ 均为首页 **section**，见 [首页规格](./prototypes/v1-homepage#12-页面信息架构geo-独立版--区块)。
+> **形态**：**首页**为单页 Landing（锚点导航），**可独立上线**；需要深讲或投放落地时再挂 **`product.html`**、**`pricing.html`** 两个卫星页（顶栏：首页 | 产品 | 定价）。不是 8 个独立营销 HTML。
 
-### 1.1 GEO 自建页面（仅 1）
+### 1.1 GEO 自建页面
 
 | 路由（规划） | 文件 | 状态 | 说明 |
 |--------------|------|:----:|------|
-| `/` 或 `/geo` | `apps/trinity-geo/index.html`（同源 `marketing/index.html`） | ✅ | 营销首页真源 |
+| `/` 或 `/geo` | `apps/trinity-geo/index.html`（同源 `marketing/index.html`） | ✅ | 营销首页真源，**保持不变** |
+| `/product` | `marketing/product.html` | ✅ | 六环 / 产品深讲（可选） |
+| `/pricing` | `marketing/pricing.html` | ✅ | 套餐表 + 定价 FAQ（可选） |
+
+**上线策略**：只做首页也完全成立；卫星页链入首页顶栏/Footer 为可选项，不阻塞 MVP 获客。
 
 ### 1.2 首页内区块（非独立 URL）
 
@@ -136,15 +140,15 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 页面 | 何时需要 | 优先级 |
 |------|----------|:------:|
+| `product.html` / `pricing.html` | 销售深讲、SEM 定价落地 | ✅ 已有 HTML；链入首页为可选 |
 | `/blog` + 文章详情 | 内容运营、SEO 长尾 | P2 |
 | `/customers` 案例专页 | 案例 >3 且需投放落地 | P2 |
-| `/pricing` 独立页 | 销售常发定价链、SEM 落地 | P2（首页 `#pricing` 已够用） |
 
 ### 1.5 官网 vs 用户控制台
 
 | 视角 | URL 空间 | 页面数（规划） |
 |------|----------|----------------|
-| **官网（未登录）** | `/` · 营销单页 + 套件 `/legal/*` | **自建 1** |
+| **官网（未登录）** | `/` · 可选 `product` / `pricing` · 套件 `/legal/*` | **自建 1（必）+ 2（可选）** |
 | **用户控制台（已登录）** | `/console/*` | 见 [§二](#二用户控制台完整--约-22-页) |
 
 登录成功后进入 **控制台**（`marketing/console/dashboard.html` 等），不属于官网扩页。
@@ -202,7 +206,7 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
 | 5 | **监测概览** | `/console/monitoring` | 关键词总数、今日采集量、成功率；10 平台状态与新鲜度 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring.md) |
-| 6 | **采集日志** | `/console/monitoring/logs` | 任务时间线、失败原因、重试 | ② | ⬜ |
+| 6 | **采集日志** | `/console/monitoring/logs` | 任务时间线、失败原因、重试 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring-logs.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring-logs.md) |
 
 ---
 
@@ -229,7 +233,7 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
 | 11 | **诊断列表** | `/console/diagnosis` | D1–D4 失声类型、优先级、链到问题/回答 | ④ | ✅ [HTML](../../../trinity-geo/marketing/console/diagnosis.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/diagnosis.md) |
-| 12 | **页面审计** | `/console/audit` | URL 可引用性、证据密度、Schema、问题与建议 | ④ | ⬜ |
+| 12 | **页面审计** | `/console/audit` | URL 可引用性、证据密度、Schema、问题与建议 | ④ | ✅ [HTML](../../../trinity-geo/marketing/console/audit.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/audit.md) |
 | 13 | **审计报告** | `/console/audit/reports` | 历史审计、导出 | ④ | ⬜ |
 
 扩展：**批量审计**（多 URL 扫描）— 运营向能力，可并入页 12 或独立子页。
@@ -241,7 +245,7 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
 | 14 | **优化建议列表** | `/console/optimize` | 任务卡片：类型、页面、预期 SOA 提升、状态 | ⑤ | ✅ [HTML](../../../trinity-geo/marketing/console/optimize.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/optimize.md) |
-| 15 | **优化详情** | `/console/optimize/:id` | 问题说明、内容对比、操作步骤 | ⑤ | ⬜ |
+| 15 | **优化详情** | `/console/optimize/:id` | 问题说明、内容对比、操作步骤 | ⑤ | ✅ [HTML](../../../trinity-geo/marketing/console/optimize-detail.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/optimize-detail.md)（样本 opt-s1s2） |
 
 ---
 
@@ -250,8 +254,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
 | 16 | **效果验证** | `/console/verify` | R1 vs R2 SOA；优化前后对比时间线 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/verify.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/verify.md) |
-| 17 | **报告列表** | `/console/reports` | 周报/月报、新建、定时配置 | ⑥ | ⬜ |
-| 18 | **报告预览/下载** | `/console/reports/:id` | 在线预览、PDF/PNG、发邮件 | ⑥ | ⬜ |
+| 17 | **报告列表** | `/console/reports` | 周报/月报、新建、定时配置 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/reports.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/reports.md) |
+| 18 | **报告预览/下载** | `/console/reports/:id` | 在线预览、PDF/PNG、发邮件 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/report-preview.html)（预览样本） |
 
 ---
 
@@ -259,9 +263,9 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 19 | **账户设置** | `/console/settings/account` | 个人信息、套餐、用量看板、升级 | — | ⬜ |
-| 20 | **通知设置** | `/console/settings/notifications` | 告警阈值、邮件/企微/微信 | ⑥ | ⬜ |
-| — | *品牌设置* | 见 §2.2 序号 2 | — | ① | ⬜ |
+| 19 | **账户设置** | `/console/settings/account` | 个人信息、套餐、用量看板、升级 | — | ✅ [HTML](../../../trinity-geo/marketing/console/settings-account.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/settings-account.md) |
+| 20 | **通知设置** | `/console/settings/notifications` | 告警阈值、邮件/企微/微信 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/settings-notifications.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/settings-notifications.md) |
+| — | *品牌设置* | 见 §2.2 序号 2 | — | ① | ✅ 见 brand-settings |
 
 ---
 
@@ -271,13 +275,13 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 |------|:----:|:---------:|
 | 可见性总览 | 1 | 1 |
 | 策略与配置 | 3 | 3 |
-| 监测与采集 | 2 | 1 |
+| 监测与采集 | 2 | 2 |
 | 测量下钻 + 竞品概览 | 4 | 4 |
-| 诊断与审计 | 3 | 1 |
-| 优化 | 2 | 1 |
-| 验证与报告 | 3 | 1 |
-| 设置与账户 | 2 | 0 |
-| **合计** | **20**（+ 流程页） | **13** |
+| 诊断与审计 | 3 | 2 |
+| 优化 | 2 | 2 |
+| 验证与报告 | 3 | 3 |
+| 设置与账户 | 2 | 2 |
+| **合计** | **20**（+ 流程页） | **19** |
 
 ---
 
@@ -301,11 +305,11 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 视角 | 页面数（规划） | HTML / 接入 |
 |------|:-------------:|-------------|
-| 官网营销 | **1**（单页） | ✅ `index.html` |
+| 官网营销 | **1 必 + 2 可选** | ✅ `index.html` · `product.html` · `pricing.html` |
 | 套件公共 | 3（法务，复用） | `@trinity/ui` `/legal/*` |
-| 用户控制台 | 20 | 13 HTML |
+| 用户控制台 | 20 | 19 HTML |
 | 运营后台 | 7 | 0 |
-| **合计（GEO 产品）** | **28** + 套件法务 | **14**（含控制台） |
+| **合计（GEO 产品）** | **28** + 套件法务 | **22**（含控制台 19 + 官网 3） |
 
 ### 流程页（非独立 URL，须画交互）
 
@@ -401,9 +405,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 批 3  ✅ 竞品概览 + 竞品详情
 批 4  ✅ 诊断列表 + 优化待办（+ CCR 样本 answer-detail-brand）
 批 5  ✅ 效果验证 verify.html + .md（Q00 R1→R2 信源样本）
-批 5  → 优化详情（可选）
-批 6  → 报告 + 通知设置 + 账户设置
-批 7  → 官网余页 + 运营后台
+批 6  ✅ 报告列表 + 预览 + 账户 + 通知 + 优化详情 + 采集日志
+批 7  → 页面审计 / 审计报告 + 运营后台
 ```
 
 每页约定：`marketing/console/{page}.html` + 同目录 **`{page}.md` 单页 PRD**（品牌设置见 [brand-settings.md](./../../../trinity-geo/marketing/console/brand-settings.md)）。
@@ -412,7 +415,9 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 ```
 apps/trinity-geo/marketing/
-├── index.html                 # 官网
+├── index.html                 # 官网（单页，可独立上线）
+├── product.html               # 卫星 · 产品深讲（可选）
+├── pricing.html               # 卫星 · 定价（可选）
 ├── console/
 │   ├── dashboard.html + dashboard.md   ✅
 │   ├── brand-settings.html + .md       ✅
@@ -426,6 +431,12 @@ apps/trinity-geo/marketing/
 │   ├── diagnosis.html + .md            ✅
 │   ├── optimize.html + .md             ✅
 │   ├── verify.html + .md               ✅ 批 5 · R1→R2
+│   ├── reports.html + .md              ✅ 批 6
+│   ├── report-preview.html             ✅ 批 6 · 预览
+│   ├── settings-account.html + .md     ✅ 批 6
+│   ├── settings-notifications.html + .md ✅ 批 6
+│   ├── optimize-detail.html + .md      ✅ 批 6 · opt-s1s2
+│   ├── monitoring-logs.html + .md      ✅ 批 6
 │   ├── answer-detail-brand.html        ✅ CCR 样本
 ├── css/
 └── js/
@@ -449,6 +460,9 @@ apps/trinity-geo/marketing/
 | 2026-06-12 | **批 4**：`diagnosis` + `optimize`（HTML + PRD）；`answer-detail-brand` CCR 样本 |
 | 2026-06-12 | **批 5**：`verify`（HTML + PRD）；Q00 R1→R2 信源盘样本；`keyword-detail` / 总览 ⑥ 补信源 Δ |
 | 2026-06-12 | **官网重写**：单页 Landing + 套件 Auth/Legal 复用；去掉「8 页」误读 |
+| 2026-06-12 | **官网卫星页**：`product.html` + `pricing.html`；首页 `index.html` 不变，可只做首页上线 |
+| 2026-06-12 | **批 6**：`reports` + `report-preview` + `settings-account` + `settings-notifications` + `optimize-detail` + `monitoring-logs`（HTML + PRD）；控制台 18/20 |
+| 2026-06-12 | **页面审计**：`audit.html` + PRD；诊断侧栏 + 总览闭环卡接通；控制台 19/20 |
 
 ---
 

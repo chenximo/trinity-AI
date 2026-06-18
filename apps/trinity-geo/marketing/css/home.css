@@ -1656,6 +1656,11 @@ main#main .geo-band {
   font-size: 1rem;
 }
 
+.geo-trust-icon--sm {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
 .geo-trust-list strong {
   color: var(--geo-ink);
   font-weight: 600;
@@ -1891,4 +1896,512 @@ main#main .geo-band {
   font-size: 0.8125rem;
   color: var(--geo-muted);
   font-style: normal;
+}
+
+/* ── 卫星页（product / pricing）：首页 index.html 不改 ── */
+.geo-satellite .geo-block-head {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 2.5rem;
+}
+
+.geo-satellite .geo-block-head .geo-kicker {
+  margin-bottom: 0.5rem;
+}
+
+.geo-satellite .geo-block-title {
+  margin: 0 0 0.65rem;
+  font-size: var(--geo-text-l2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--geo-ink);
+}
+
+.geo-satellite .geo-block-desc {
+  margin: 0;
+  font-size: var(--geo-text-l4);
+  color: var(--geo-muted);
+  line-height: 1.6;
+}
+
+.geo-satellite .geo-block-desc strong {
+  color: var(--geo-ink);
+  font-weight: 600;
+}
+
+.geo-satellite .geo-page-hero {
+  padding: 3.25rem 0 1.5rem;
+  background: var(--geo-bg-a);
+}
+
+.geo-satellite .geo-page-hero .geo-block-head {
+  margin-bottom: 0;
+}
+
+.geo-satellite .geo-page-hero h1.geo-block-title {
+  font-size: var(--geo-text-l2);
+}
+
+.geo-satellite .geo-pricing-plans {
+  padding: 0 0 4rem;
+  margin-top: 0;
+}
+
+.geo-satellite .geo-pricing-compare {
+  padding: 4rem 0;
+}
+
+.geo-satellite .geo-faq {
+  padding: 4rem 0;
+}
+
+.geo-satellite .geo-cta {
+  padding: 4rem 0;
+}
+
+.geo-satellite .geo-cta .geo-block-head {
+  margin-bottom: 1.75rem;
+}
+
+.geo-satellite .geo-block-head--inverse .geo-block-title,
+.geo-satellite .geo-block-head--inverse .geo-block-desc {
+  color: #fff;
+}
+
+.geo-satellite .geo-block-head--inverse .geo-block-desc {
+  opacity: 0.92;
+}
+
+.geo-satellite .geo-cta h2.geo-block-title {
+  max-width: none;
+  margin: 0 auto 0.65rem;
+}
+
+.geo-satellite .geo-compare-table-wrap {
+  margin-top: 0;
+}
+
+.geo-satellite .geo-faq-list {
+  margin-top: 0;
+}
+
+/* ── 产品页：Hero 左对齐 + 渐变标题 ── */
+.geo-satellite .geo-product-hero {
+  padding: 3rem 0 3.5rem;
+}
+
+.geo-satellite .geo-block-head--left {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 34rem;
+}
+
+.geo-satellite .geo-product-hero .geo-block-head {
+  margin-bottom: 0;
+}
+
+.geo-title-accent {
+  font-style: normal;
+  background: var(--geo-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.geo-satellite .geo-product-hero h1.geo-block-title {
+  font-size: clamp(1.65rem, 3.2vw, 2.25rem);
+  line-height: 1.2;
+}
+
+/* ── 产品页：六环能力卡片 ── */
+.geo-product-loop {
+  padding: 4rem 0;
+  background: var(--geo-bg-b);
+}
+
+.geo-loop-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .geo-loop-track {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+.geo-loop-card {
+  padding: 1.5rem 1.35rem 1.35rem;
+  border-radius: var(--geo-radius-lg);
+  background: #fff;
+  border: 1px solid var(--geo-border);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.geo-loop-card.is-key {
+  border-color: var(--geo-accent-ring);
+  background: linear-gradient(165deg, var(--geo-accent-soft) 0%, #fff 58%);
+}
+
+.geo-loop-card .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding: 0 0.35rem;
+  border-radius: 8px;
+  background: var(--geo-accent-soft);
+  color: var(--geo-accent-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.geo-loop-card h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--geo-ink);
+}
+
+.geo-loop-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--geo-muted);
+  line-height: 1.55;
+}
+
+.geo-loop-card p strong {
+  color: var(--geo-ink);
+  font-weight: 600;
+}
+
+/* ── 产品页：控制台预览区 ── */
+.geo-product-preview {
+  padding: 4rem 0;
+  background: var(--geo-bg-a);
+}
+
+.geo-product-shot {
+  margin-top: 0;
+  border-radius: var(--geo-radius-lg);
+  border: 1px solid var(--geo-border);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.geo-product-shot-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1.15rem;
+  font-size: 0.8125rem;
+  color: var(--geo-muted);
+  border-bottom: 1px solid var(--geo-border);
+  background: var(--geo-surface);
+}
+
+.geo-product-shot-meta {
+  font-size: 0.75rem;
+  color: var(--geo-accent-deep);
+  font-weight: 600;
+}
+
+.geo-product-shot-body {
+  padding: 1.25rem 1.15rem 1.5rem;
+  background: linear-gradient(180deg, #fff 0%, var(--geo-surface) 100%);
+}
+
+.geo-product-shot-body .geo-dash-metrics {
+  margin-bottom: 1rem;
+}
+
+.geo-metric-value--sm {
+  font-size: 1.35rem !important;
+  letter-spacing: -0.02em;
+}
+
+.geo-product-shot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.geo-product-shot-chips .chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--geo-border);
+  color: var(--geo-muted);
+}
+
+.geo-product-shot-chips .chip.on {
+  background: var(--geo-accent-soft);
+  border-color: var(--geo-accent-ring);
+  color: var(--geo-accent-deep);
+}
+
+.geo-product-preview-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.85rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--geo-accent);
+  border-radius: var(--geo-radius);
+  border: 1px dashed var(--geo-accent-ring);
+  background: var(--geo-accent-soft);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.geo-product-preview-link:hover {
+  background: #fff;
+  border-color: var(--geo-accent);
+}
+
+.geo-satellite .geo-product-shift {
+  padding: 4rem 0;
+}
+
+.geo-satellite .geo-product-shift .geo-shift-grid {
+  margin-top: 0;
+}
+
+.geo-satellite .geo-workflow .geo-workflow-track {
+  margin-top: 0;
+}
+
+.geo-nav--site a.is-active {
+  color: var(--geo-accent);
+  font-weight: 600;
+}
+
+.geo-page-hero {
+  padding: 3.5rem 0 2.5rem;
+  background: var(--geo-bg-a);
+}
+
+.geo-page-hero h1 {
+  font-size: var(--geo-text-l1);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+.geo-page-hero .lead {
+  font-size: 1.0625rem;
+  color: var(--geo-muted);
+  max-width: 42rem;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.geo-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1080px;
+  margin-inline: auto;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .geo-plans-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+.geo-pricing-plans {
+  padding: 0 0 4rem;
+  background: var(--geo-bg-a);
+  margin-top: -0.5rem;
+}
+
+.geo-pricing-plans .geo-plans-grid {
+  margin-top: 0;
+}
+
+.geo-plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: var(--geo-radius-lg);
+  background: #fff;
+  border: 1px solid var(--geo-border);
+  min-height: 100%;
+}
+
+.geo-plan-card.featured {
+  border: 2px solid var(--geo-accent);
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.12);
+  padding-top: 2rem;
+}
+
+@media (min-width: 961px) {
+  .geo-plan-card.featured {
+    transform: translateY(-6px);
+  }
+}
+
+.geo-plan-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--geo-grad);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.geo-plan-card .plan-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--geo-muted);
+  margin-bottom: 0.5rem;
+}
+
+.geo-plan-card.featured .plan-name {
+  color: var(--geo-accent);
+}
+
+.geo-plan-card .plan-price {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.geo-plan-card .plan-price--text {
+  font-size: 2rem;
+}
+
+.geo-plan-card .plan-price span {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--geo-muted);
+  margin-left: 0.15rem;
+}
+
+.geo-plan-card .plan-note {
+  font-size: 0.8125rem;
+  color: var(--geo-muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+  min-height: 2.5em;
+}
+
+.geo-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  flex: 1;
+}
+
+.geo-plan-features li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--geo-border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.geo-plan-features li:last-child {
+  border-bottom: none;
+}
+
+.geo-plan-features li::before {
+  content: "✓";
+  color: var(--geo-accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.geo-plan-cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.geo-pricing-compare {
+  padding: 3.5rem 0 4.5rem;
+  background: var(--geo-bg-b);
+}
+
+.geo-compare-table-wrap {
+  overflow-x: auto;
+  margin-top: 2rem;
+  background: #fff;
+  border: 1px solid var(--geo-border);
+  border-radius: var(--geo-radius-lg);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+.geo-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  min-width: 520px;
+}
+
+.geo-compare-table th,
+.geo-compare-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--geo-border);
+  text-align: center;
+}
+
+.geo-compare-table th:first-child,
+.geo-compare-table td:first-child {
+  text-align: left;
+  color: var(--geo-muted);
+  width: 34%;
+  padding-left: 1.25rem;
+}
+
+.geo-compare-table th {
+  font-weight: 600;
+  background: var(--geo-surface);
+  font-size: 0.8125rem;
+}
+
+.geo-compare-table th.col-featured,
+.geo-compare-table td.col-featured {
+  background: var(--geo-accent-soft);
+  color: var(--geo-accent-deep);
+  font-weight: 600;
+}
+
+.geo-compare-table tbody tr:last-child td {
+  border-bottom: none;
 }

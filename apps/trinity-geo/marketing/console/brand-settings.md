@@ -163,8 +163,8 @@ MVP 样本对齐 `apps/trinity-geo/mvp/config/brand.json`（Trinity AI）。
 | 项 | 路由 | 本期 |
 |----|------|:----:|
 | 品牌设置 | `/console/settings/brand` | ✅ |
-| 账户与套餐 | `/console/settings/account` | 占位 |
-| 通知与告警 | `/console/settings/notifications` | 占位 |
+| 账户与套餐 | `/console/settings/account` | [settings-account.html](./settings-account.html) |
+| 通知与告警 | `/console/settings/notifications` | [settings-notifications.html](./settings-notifications.html) |
 
 ---
 

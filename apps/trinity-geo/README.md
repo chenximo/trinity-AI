@@ -12,7 +12,14 @@ cd apps/trinity-geo && bun run dev
 
 → [http://127.0.0.1:5203/demo](http://127.0.0.1:5203/demo) · 门户 [http://localhost:5173/trinity-geo/demo](http://localhost:5173/trinity-geo/demo)
 
-**营销首页**：`/` 或门户 `/trinity-geo`
+**营销首页**：`/` 或门户 `/trinity-geo`（单页，可独立上线）
+
+**官网卫星页（可选）**：
+
+| 页面 | 预览 |
+|------|------|
+| 产品能力 | [product.html](http://127.0.0.1:5173/__geo_marketing/product.html) · 门户 [`/trinity-geo/product`](http://127.0.0.1:5173/trinity-geo/product) |
+| 定价 | [pricing.html](http://127.0.0.1:5173/__geo_marketing/pricing.html) · 门户 [`/trinity-geo/pricing`](http://127.0.0.1:5173/trinity-geo/pricing) |
 
 **控制台（HTML 原型）**：
 

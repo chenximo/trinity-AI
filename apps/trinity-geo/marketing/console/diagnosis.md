@@ -19,7 +19,7 @@
 | 范围 | 真源 |
 |------|------|
 | D1–D5 规则与优先级 | **本文** + [MVP 实践手册 §④](../../../trinity-product/docs/geo/mvp-practice.md) |
-| 页面 URL 审计 | P1 · `audit.html`（规划中） |
+| 页面 URL 审计 | P1 · [audit.html](./audit.html) · [PRD](./audit.md) |
 | 优化动作 | [优化待办 PRD](./optimize.md) |
 
 ---
@@ -79,7 +79,7 @@
 
 ### 3.4 子导航
 
-诊断列表（本期）· 页面审计（P1 · 规划中）。
+诊断列表（本期）· [页面审计](./audit.html)（P1 · v0.1）。
 
 ---
 

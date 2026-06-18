@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 产品页 · 卫星页（首页 index.html 保持独立锚点导航） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trinity GEO 产品能力：多平台监测、SOA 答案份额、信源盘归因、诊断优化与 R2 验证——出海品牌 GEO 运营闭环。"
+    />
+    <title>产品能力 — Trinity GEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body class="geo-site geo-satellite">
+    <a class="skip" href="#main">跳转至正文</a>
+
+    <header class="geo-header">
+      <div class="geo-container geo-header-inner">
+        <div class="geo-logo-group">
+          <a href="index.html" class="geo-logo">
+            <span class="geo-logo-mark" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+              </svg>
+            </span>
+            Trinity GEO
+            <span class="geo-logo-tag">可见性</span>
+          </a>
+          <div class="geo-suite-links" aria-label="Trinity 套件">
+            <a href="/ai-cloud" class="geo-suite-link">AI 云</a>
+            <a href="/trinity-ai" class="geo-suite-link">Trinity AI</a>
+          </div>
+        </div>
+        <nav class="geo-nav geo-nav--site" aria-label="主导航">
+          <a href="index.html">首页</a>
+          <a href="product.html" class="is-active">产品</a>
+          <a href="pricing.html">定价</a>
+        </nav>
+        <div class="geo-header-actions">
+          <a href="#login" class="geo-btn geo-btn-ghost">登录</a>
+          <a href="#trial" class="geo-btn geo-btn-primary">开始试用</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero：左文案 + 右 Dashboard（与首页同视觉语言） -->
+      <section class="geo-product-hero geo-hero geo-band">
+        <div class="geo-container geo-hero-grid">
+          <div class="geo-hero-copy">
+            <header class="geo-block-head geo-block-head--left">
+              <p class="geo-kicker">产品</p>
+              <h1 class="geo-block-title">从监测到验证的<br /><em class="geo-title-accent">GEO 经营闭环</em></h1>
+              <p class="geo-block-desc">
+                不只回答「SOA 是多少」——在可提取平台上看清<strong>信源盘</strong>、归因缺口（S*）、可执行优化与 R2 验收。ChatGPT 与豆包同屏对照。
+              </p>
+            </header>
+            <div class="geo-hero-cta">
+              <a href="#trial" class="geo-btn geo-btn-primary">免费试用 14 天</a>
+              <a href="pricing.html" class="geo-btn geo-btn-outline">查看定价</a>
+            </div>
+            <p class="geo-hero-note">策略 → 采集 → 测量 → 诊断 → 优化 → 验证 · 登录后于控制台完成全链路</p>
+          </div>
+
+          <div class="geo-dashboard" aria-label="控制台预览">
+            <div class="geo-dashboard-bar">
+              <span>示例品牌 · 本周概览</span>
+              <div class="geo-dashboard-tabs">
+                <span class="on">全部</span>
+                <span>全球</span>
+                <span>中国</span>
+              </div>
+            </div>
+            <div class="geo-dashboard-body">
+              <div class="geo-dash-metrics">
+                <div class="geo-metric-card overseas">
+                  <div class="geo-metric-label">全球 SOA</div>
+                  <div class="geo-metric-value">42%</div>
+                  <div class="geo-metric-delta up">↑ 6% 较上周</div>
+                </div>
+                <div class="geo-metric-card domestic">
+                  <div class="geo-metric-label">中国 SOA</div>
+                  <div class="geo-metric-value">28%</div>
+                  <div class="geo-metric-delta down">↓ 3% 较上周</div>
+                </div>
+              </div>
+              <div class="geo-dash-chart" aria-hidden="true">
+                <svg viewBox="0 0 400 60" preserveAspectRatio="none">
+                  <polyline
+                    points="0,45 40,42 80,38 120,35 160,30 200,28 240,22 280,20 320,18 360,15 400,12"
+                    fill="none"
+                    stroke="#2563eb"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                  />
+                  <polyline
+                    points="0,50 40,48 80,46 120,44 160,42 200,40 240,38 280,36 320,34 360,32 400,30"
+                    fill="none"
+                    stroke="#f59e0b"
+                    stroke-width="2"
+                    stroke-dasharray="4 3"
+                    opacity="0.7"
+                  />
+                </svg>
+              </div>
+              <div class="geo-answer-rows">
+                <div class="geo-answer-row">
+                  <span class="platform p-overseas">ChatGPT</span>
+                  「…推荐 <strong>示例品牌</strong>，其在全球市场以创新设计著称…」
+                </div>
+                <div class="geo-answer-row">
+                  <span class="platform p-domestic">豆包</span>
+                  「…中国用户常提到 <strong>示例品牌</strong> 的性价比…」
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="geo-trust geo-band" aria-label="产品要点">
+        <div class="geo-container">
+          <ul class="geo-trust-list">
+            <li>
+              <span class="geo-trust-icon" aria-hidden="true">6</span>
+              <span>完整 <strong>六环</strong> 经营闭环</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon" aria-hidden="true">10</span>
+              <span>覆盖 <strong>10</strong> 个 AI 平台</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon geo-trust-icon--sm" aria-hidden="true">验</span>
+              <span><strong>信源盘 Δ</strong> 先于 SOA 验收</span>
+            </li>
+            <li>
+              <span class="geo-trust-icon geo-trust-icon-price" aria-hidden="true">$</span>
+              <span><strong>$79/月</strong> 起 · 专业版</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 六环能力 -->
+      <section class="geo-product-loop geo-band" id="loop">
+        <div class="geo-container">
+          <header class="geo-block-head">
+            <p class="geo-kicker">能力地图</p>
+            <h2 class="geo-block-title">六环能力，一条链路跑通 GEO</h2>
+            <p class="geo-block-desc">从策略配置到效果验证——营销团队不用拼表格、不用猜优化有没有用。</p>
+          </header>
+          <div class="geo-loop-track">
+            <article class="geo-loop-card">
+              <span class="num">⓪</span>
+              <h3>策略配置</h3>
+              <p>品牌别名、问题集（品类 / 品牌 / 对比）、竞品列表——测量与诊断的上游输入。</p>
+            </article>
+            <article class="geo-loop-card">
+              <span class="num">①</span>
+              <h3>监测采集</h3>
+              <p>10 平台日采，回答全文存档；豆包等可显式参考链入库，构成信源盘 M/N。</p>
+            </article>
+            <article class="geo-loop-card">
+              <span class="num">②</span>
+              <h3>测量分析</h3>
+              <p>SOA 答案份额、竞品同题对比、平台 / 关键词下钻；全球与中国 Tab 同屏。</p>
+            </article>
+            <article class="geo-loop-card is-key">
+              <span class="num">③</span>
+              <h3>诊断归因</h3>
+              <p>规则引擎 D1–D5 + 信源缺口 S1–S6；绑定对标 URL，落到可执行归因。</p>
+            </article>
+            <article class="geo-loop-card">
+              <span class="num">④</span>
+              <h3>优化待办</h3>
+              <p>行动清单：D* + S* + 竞品 docs 结构对标；状态流转、负责人与截止日期。</p>
+            </article>
+            <article class="geo-loop-card is-key">
+              <span class="num">⑤</span>
+              <h3>效果验证</h3>
+              <p>R1→R2 对比：<strong>信源盘 Δ 往往先于 SOA Δ</strong>（如 0/16 → 1/17），优化可验收。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 控制台深预览 -->
+      <section class="geo-product-preview">
+        <div class="geo-container">
+          <header class="geo-block-head">
+            <p class="geo-kicker">控制台</p>
+            <h2 class="geo-block-title">登录后，在一张面板里完成全链路</h2>
+            <p class="geo-block-desc">可见性总览 → 关键词下钻 → 回答原文 → 诊断 → 优化 → 验证，原型已可点击体验。</p>
+          </header>
+          <div class="geo-product-shot">
+            <div class="geo-product-shot-bar">
+              <span>可见性总览 · Dashboard 原型</span>
+              <span class="geo-product-shot-meta">全球 SOA 42% · 中国 SOA 28%</span>
+            </div>
+            <div class="geo-product-shot-body">
+              <div class="geo-dash-metrics">
+                <div class="geo-metric-card overseas">
+                  <div class="geo-metric-label">信源盘（豆包·Q00）</div>
+                  <div class="geo-metric-value">0/16</div>
+                  <div class="geo-metric-delta down">我方域名未入库</div>
+                </div>
+                <div class="geo-metric-card domestic">
+                  <div class="geo-metric-label">诊断标签</div>
+                  <div class="geo-metric-value geo-metric-value--sm">D1+S1S2S3</div>
+                  <div class="geo-metric-delta">可下钻对标 URL</div>
+                </div>
+              </div>
+              <div class="geo-product-shot-chips" aria-hidden="true">
+                <span class="chip">监测</span>
+                <span class="chip">SOA</span>
+                <span class="chip on">诊断</span>
+                <span class="chip">优化</span>
+                <span class="chip">验证</span>
+              </div>
+            </div>
+          </div>
+          <a href="console/dashboard.html" class="geo-product-preview-link">打开完整控制台原型 →</a>
+        </div>
+      </section>
+
+      <!-- 差异化 -->
+      <section class="geo-shift geo-product-shift geo-band">
+        <div class="geo-container">
+          <header class="geo-block-head">
+            <p class="geo-kicker">差异化</p>
+            <h2 class="geo-block-title">不止监测 SOA，更要能归因、能验收</h2>
+            <p class="geo-block-desc">与「只看曲线」的纯监测工具相比，Trinity GEO 面向出海品牌的完整经营闭环。</p>
+          </header>
+          <div class="geo-shift-grid">
+            <article class="geo-shift-card">
+              <div class="from">只看 SOA 曲线</div>
+              <div class="to">信源盘 + 归因</div>
+              <p>豆包 16 条参考链里我方 0 条时，能落到 S1/S2/S3 与对标 URL，而不只贴 D1 标签。</p>
+            </article>
+            <article class="geo-shift-card">
+              <div class="from">全球 OR 中国</div>
+              <div class="to">双市场一盘棋</div>
+              <p>海外 5 + 国内 5 同一问题集、同一套 KPI 与告警，周会不必拼两份报告。</p>
+            </article>
+            <article class="geo-shift-card">
+              <div class="from">改完不知道有没有用</div>
+              <div class="to">R2 可验收</div>
+              <p>优化动作关联 verify：信源盘与 SOA 指标可回放，不靠主观感觉判断成效。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 上手路径 -->
+      <section class="geo-workflow">
+        <div class="geo-container">
+          <header class="geo-block-head">
+            <p class="geo-kicker">快速上手</p>
+            <h2 class="geo-block-title">14 天试用，10 分钟见首批数据</h2>
+            <p class="geo-block-desc">配置品牌与问题集后，自动采集全球 + 中国平台，Dashboard 即可汇报。</p>
+          </header>
+          <div class="geo-workflow-track">
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3>注册试用</h3>
+              <p>14 天专业版全功能</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                </svg>
+              </div>
+              <h3>配置策略</h3>
+              <p>品牌、问题集、竞品</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3>自动采集</h3>
+              <p>约 5 分钟见首批数据</p>
+            </div>
+            <div class="geo-workflow-step">
+              <div class="geo-workflow-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 3v18h18" /><path d="M7 16l4-4 4 4 6-8" />
+                </svg>
+              </div>
+              <h3>跑通六环</h3>
+              <p>诊断 → 优化 → 验证</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="geo-cta geo-band" id="trial">
+        <div class="geo-container">
+          <header class="geo-block-head geo-block-head--inverse">
+            <h2 class="geo-block-title">14 天试用，亲自跑通六环</h2>
+            <p class="geo-block-desc">约 10 分钟完成品牌与问题集配置，见首批全球 + 中国数据。</p>
+          </header>
+          <div class="geo-cta-actions">
+            <a href="#trial" class="geo-btn geo-btn-primary">免费试用 14 天</a>
+            <a href="pricing.html" class="geo-btn geo-btn-outline">查看定价</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="geo-footer">
+      <div class="geo-container">
+        <div class="geo-footer-grid">
+          <div class="geo-footer-brand">
+            <strong>Trinity GEO</strong>
+            <p style="margin: 0; max-width: 260px">出海品牌 AI 答案可见性监测 · SOA · 竞品对比</p>
+          </div>
+          <div class="geo-footer-col">
+            <h4>产品</h4>
+            <ul>
+              <li><a href="index.html">首页</a></li>
+              <li><a href="product.html">产品能力</a></li>
+              <li><a href="pricing.html">定价</a></li>
+              <li><a href="console/dashboard.html">控制台预览</a></li>
+            </ul>
+          </div>
+          <div class="geo-footer-col">
+            <h4>资源</h4>
+            <ul>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li><a href="/product/geo/">产品手册</a></li>
+            </ul>
+          </div>
+          <div class="geo-footer-col">
+            <h4>联系</h4>
+            <ul>
+              <li><a href="mailto:sales@trinitydesk.com">sales@trinitydesk.com</a></li>
+              <li><a href="/legal/privacy">隐私政策</a></li>
+              <li><a href="/legal/terms">服务条款</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="geo-footer-bottom">
+          <span>© 2026 Trinity GEO</span>
+          <div class="geo-suite-links">
+            <a href="/trinity-ai">Trinity AI · 模型 API</a>
+            <a href="/ai-cloud">Trinity AI 云 · 算力</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/home.js"></script>
+  </body>
+</html>

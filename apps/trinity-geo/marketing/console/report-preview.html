@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- Trinity GEO · 报告预览（⑥ /reports/:id） -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>周报预览 · Trinity GEO 控制台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../packages/tokens/src/core.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="geo-console">
+    <header class="geo-console-header">
+      <div class="geo-console-header-inner">
+        <a href="./dashboard.html" class="geo-console-logo">
+          <span class="geo-console-logo-mark" aria-hidden="true">◎</span>
+          Trinity GEO
+        </a>
+        <nav class="geo-console-nav" aria-label="控制台主导航">
+          <a href="./dashboard.html">总览</a>
+          <a href="./monitoring.html">监测</a>
+          <a href="./competitors.html">竞品</a>
+          <a href="./diagnosis.html">诊断</a>
+          <a href="./optimize.html">优化</a>
+          <a href="./reports.html" class="is-active">报告</a>
+          <a href="./brand-settings.html">设置</a>
+        </nav>
+        <div class="geo-console-user">
+          <span class="geo-console-brand">Trinity AI</span>
+          <a href="./settings-account.html" class="geo-console-account">账户</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="geo-console-main">
+      <div class="geo-settings-content geo-report-preview-wrap">
+        <div class="dash-toolbar geo-settings-toolbar">
+          <div>
+            <p class="dash-section-label"><a href="./reports.html">← 报告列表</a></p>
+            <h1>GEO 周报 · 2026-W24</h1>
+            <p class="dash-toolbar-meta">Trinity AI · 6/9 – 6/15 · 10 平台 · 10 启用问题</p>
+          </div>
+          <div class="geo-settings-toolbar-actions">
+            <button type="button" class="geo-btn ghost" disabled>发送邮件</button>
+            <button type="button" class="geo-btn primary" disabled>下载 PDF</button>
+          </div>
+        </div>
+
+        <article class="geo-report-preview-sheet" aria-label="报告正文预览">
+          <header class="geo-report-preview-head">
+            <div>
+              <h2>Trinity AI · AI 可见性周报</h2>
+              <p>生成于 2026-06-16 09:00 · 专业版</p>
+            </div>
+            <div class="geo-report-preview-soa">
+              <div><span>全球 SOA</span><strong>42%</strong><em class="up">↑ 6%</em></div>
+              <div><span>中国 SOA</span><strong>28%</strong><em class="down">↓ 3%</em></div>
+            </div>
+          </header>
+
+          <section>
+            <h3>1. 执行摘要</h3>
+            <p>
+              本周全球 SOA 回升，主要受益于 ChatGPT / Claude 品类词提及；中国侧豆包仍缺席 Q00。
+              已完成 doc 文档树首轮发布，<strong>信源盘 0/16 → 1/17</strong>，正文 SOA 尚未变化。
+            </p>
+          </section>
+
+          <section>
+            <h3>2. 平台分布</h3>
+            <div class="geo-report-preview-platforms">
+              <span class="p-overseas">ChatGPT 48%</span>
+              <span class="p-overseas">Claude 44%</span>
+              <span class="p-overseas">Gemini 38%</span>
+              <span class="p-domestic">豆包 0%</span>
+              <span class="p-domestic">DeepSeek 22%</span>
+            </div>
+          </section>
+
+          <section>
+            <h3>3. P0 诊断与优化</h3>
+            <ul class="geo-report-preview-list">
+              <li><a href="./diagnosis.html#diag-q00">Q00 品类失声 · D1+S1+S2+S3</a></li>
+              <li><a href="./optimize.html#opt-s1s2">进行中：doc 文档树对标 OpenRouter</a></li>
+              <li><a href="./verify.html#verify-q00">验证：信源盘已改善，SOA 待观察</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>4. 竞品快照</h3>
+            <p>同题 SOA：OpenRouter 68% · TokenHub 52% · 我方 0%（Q00·豆包）</p>
+          </section>
+
+          <footer class="geo-report-preview-foot">
+            由 Trinity GEO 自动生成 · 数据截止 6/15 日采
+          </footer>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

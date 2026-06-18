@@ -80,7 +80,38 @@ export default createRouter({
           name: "trinity-geo-demo",
           component: () => import("@trinity-geo/views/demo/DemoApp.vue"),
         },
+        {
+          path: "product",
+          name: "trinity-geo-product",
+          beforeEnter: () => {
+            window.location.assign("/__geo_marketing/product.html");
+            return false;
+          },
+        },
+        {
+          path: "pricing",
+          name: "trinity-geo-pricing",
+          beforeEnter: () => {
+            window.location.assign("/__geo_marketing/pricing.html");
+            return false;
+          },
+        },
+        {
+          path: "product.html",
+          redirect: { name: "trinity-geo-product" },
+        },
+        {
+          path: "pricing.html",
+          redirect: { name: "trinity-geo-pricing" },
+        },
       ],
+    },
+    {
+      path: "/apps/trinity-geo/marketing/:page(product|pricing).html",
+      beforeEnter: (to) => {
+        window.location.assign(`/__geo_marketing/${to.params.page}.html`);
+        return false;
+      },
     },
     {
       path: "/trinity-ai-admin/login",
