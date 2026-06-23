@@ -71,7 +71,7 @@ function onSubmit() {
     return;
   }
   if (!termsAgreed.value) {
-    localError.value = "请先勾选同意《服务条款》《隐私政策》与《模型使用条款》。";
+    localError.value = "请先勾选同意《服务条款》与《隐私政策》。";
     return;
   }
   emit("submit");

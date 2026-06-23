@@ -3,7 +3,7 @@ import { TRINITY_LEGAL_ROUTE_NAMES } from "./types";
 
 /**
  * 协议页子路由：合并进各应用 shell 的 `children`（与 `tai-home` 同级）。
- * 路径：`/legal/privacy` · `/legal/terms` · `/legal/model-terms`
+ * 路径：`/legal/privacy` · `/legal/terms`（`/legal/model-terms` 重定向至 terms，兼容旧链接）
  */
 export function getTrinityLegalChildRoutes(): RouteRecordRaw[] {
   return [
@@ -21,9 +21,7 @@ export function getTrinityLegalChildRoutes(): RouteRecordRaw[] {
     },
     {
       path: "legal/model-terms",
-      name: TRINITY_LEGAL_ROUTE_NAMES.modelTerms,
-      component: () => import("./TrinityModelTermsPage.vue"),
-      meta: { title: "模型使用条款", orPage: "legal" },
+      redirect: { name: TRINITY_LEGAL_ROUTE_NAMES.terms },
     },
   ];
 }

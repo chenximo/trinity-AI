@@ -25,7 +25,6 @@ const legalRel = computed(() => (props.legalOpenInNewTab ? "noopener noreferrer"
 
 const termsHref = computed(() => router.resolve({ name: TRINITY_LEGAL_ROUTE_NAMES.terms }).href);
 const privacyHref = computed(() => router.resolve({ name: TRINITY_LEGAL_ROUTE_NAMES.privacy }).href);
-const modelTermsHref = computed(() => router.resolve({ name: TRINITY_LEGAL_ROUTE_NAMES.modelTerms }).href);
 
 function openLegal(routeName: string, href: string, e: MouseEvent) {
   e.preventDefault();
@@ -58,14 +57,7 @@ function openLegal(routeName: string, href: string, e: MouseEvent) {
           :target="legalTarget"
           :rel="legalRel"
           @click="openLegal(TRINITY_LEGAL_ROUTE_NAMES.privacy, privacyHref, $event)"
-        >《隐私政策》</a>与
-        <a
-          :href="modelTermsHref"
-          class="or-auth-terms-link text-link"
-          :target="legalTarget"
-          :rel="legalRel"
-          @click="openLegal(TRINITY_LEGAL_ROUTE_NAMES.modelTerms, modelTermsHref, $event)"
-        >《模型使用条款》</a>
+        >《隐私政策》</a>
       </span>
     </label>
   </div>

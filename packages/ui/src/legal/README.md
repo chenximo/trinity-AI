@@ -21,7 +21,8 @@ export function getXxxChildRoutes() {
 |------|------------|------|
 | `/legal/privacy` | `trinity-legal-privacy` | `TrinityPrivacyPolicyPage` |
 | `/legal/terms` | `trinity-legal-terms` | `TrinityTermsOfServicePage` |
-| `/legal/model-terms` | `trinity-legal-model-terms` | `TrinityModelTermsPage` |
+
+`/legal/model-terms` 重定向至 `/legal/terms`（兼容旧链接；模型与上游责任见服务条款「用户内容」）。
 
 嵌入门户时示例：`/trinity-ai/legal/privacy`。
 
@@ -48,7 +49,6 @@ import "@trinity/ui/styles/trinity-shell-chrome.css";
 
 ## 正文维护
 
-- 隐私政策：`content/privacy-policy.zh.ts`
-- 服务条款 / 模型条款：占位见 `content/terms-stub.zh.ts`、`content/model-terms-stub.zh.ts`
-
-定稿后替换「待运营确认」块（`TrinityLegalTbdBlock`）。
+- 隐私政策：`content/privacy-policy.zh.ts` · `content/privacy-policy.en.ts`（同一路由 `/legal/privacy`，随 `trinity_ui_lang` 切换，无需 `/en` 前缀）
+- 服务条款：`content/terms-of-service.zh.ts`（含用户内容与上游模型责任；无单独《模型使用条款》页）
+- 公司设立文件摘录（内部）：`content/corporate-source-records.md`

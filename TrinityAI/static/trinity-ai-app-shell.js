@@ -399,10 +399,7 @@
       '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/terms">《服务条款》</a>、' +
       '<a href="' +
       legalHref("/legal/privacy") +
-      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/privacy">《隐私政策》</a>与' +
-      '<a href="' +
-      legalHref("/legal/model-terms") +
-      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/model-terms">《模型使用条款》</a>' +
+      '" class="or-auth-terms-link text-link" data-or-legal-path="/legal/privacy">《隐私政策》</a>' +
       "</span></label></div>" +
       '<button type="submit" class="or-auth-login-btn or-auth-signup-submit">创建账号</button>' +
       "</form>" +

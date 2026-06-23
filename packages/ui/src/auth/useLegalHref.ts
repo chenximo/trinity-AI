@@ -13,5 +13,4 @@ export function resolveLegalHref(path: string): string {
 export const LEGAL_HREF = {
   terms: () => resolveLegalHref(TRINITY_LEGAL_PATHS.terms),
   privacy: () => resolveLegalHref(TRINITY_LEGAL_PATHS.privacy),
-  modelTerms: () => resolveLegalHref(TRINITY_LEGAL_PATHS.modelTerms),
 } as const;

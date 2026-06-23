@@ -58,7 +58,6 @@ export {
 } from "./legal/types";
 export { default as TrinityPrivacyPolicyPage } from "./legal/TrinityPrivacyPolicyPage.vue";
 export { default as TrinityTermsOfServicePage } from "./legal/TrinityTermsOfServicePage.vue";
-export { default as TrinityModelTermsPage } from "./legal/TrinityModelTermsPage.vue";
 export { default as InternalHelpTip } from "./internal/InternalHelpTip.vue";
 
 export { default as SelectListForm1ModelRow } from "./select-list/SelectListForm1ModelRow.vue";

@@ -1,24 +1,37 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import TrinityLegalBlocks from "./TrinityLegalBlocks.vue";
 import TrinityLegalDocLayout from "./TrinityLegalDocLayout.vue";
-import TrinityLegalTbdBlock from "./TrinityLegalTbdBlock.vue";
+import {
+  privacyPolicyIntroEn,
+  privacyPolicyMetaEn,
+  privacyPolicySectionsEn,
+} from "./content/privacy-policy.en";
 import {
   privacyPolicyIntro,
-  privacyPolicyMetaTbd,
+  privacyPolicyMeta,
   privacyPolicySections,
 } from "./content/privacy-policy.zh";
+import { useLegalLocale } from "./legalLocale";
+
+const locale = useLegalLocale();
+
+const pageTitle = computed(() => (locale.value === "en" ? privacyPolicyMetaEn.title : "隐私政策"));
+const updated = computed(() =>
+  locale.value === "en" ? privacyPolicyMetaEn.updated : privacyPolicyMeta.updated
+);
+const intro = computed(() => (locale.value === "en" ? privacyPolicyIntroEn : privacyPolicyIntro));
+const sections = computed(() =>
+  locale.value === "en" ? privacyPolicySectionsEn : privacyPolicySections
+);
 </script>
 
 <template>
-  <TrinityLegalDocLayout title="隐私政策" updated="草案 · 待运营确认">
-    <TrinityLegalTbdBlock :title="privacyPolicyMetaTbd.title" :table="privacyPolicyMetaTbd.table" />
-    <TrinityLegalBlocks :blocks="privacyPolicyIntro" />
-    <section v-for="(section, i) in privacyPolicySections" :key="i" class="trinity-legal-section">
+  <TrinityLegalDocLayout :title="pageTitle" :updated="updated">
+    <TrinityLegalBlocks :blocks="intro" />
+    <section v-for="(section, i) in sections" :key="i" class="trinity-legal-section">
       <h2 class="trinity-legal-h2">{{ section.title }}</h2>
       <TrinityLegalBlocks :blocks="section.blocks" />
     </section>
-    <p class="trinity-legal-footnote">
-      本文档为协同草案；对外发布前须经法务审核并替换全部「待运营确认」内容。
-    </p>
   </TrinityLegalDocLayout>
 </template>

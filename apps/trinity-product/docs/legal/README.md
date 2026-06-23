@@ -16,7 +16,6 @@ title: 法律与合规文稿
 | 文档 | Vue 真源 |
 |------|----------|
 | 隐私政策 | `packages/ui/src/legal/content/privacy-policy.zh.ts` |
-| 服务条款 | `packages/ui/src/legal/content/terms-stub.zh.ts` |
-| 模型使用条款 | `packages/ui/src/legal/content/model-terms-stub.zh.ts` |
+| 服务条款 | `packages/ui/src/legal/content/terms-of-service.zh.ts`（含用户内容与上游模型责任） |
 
 详细说明见 `packages/ui/src/legal/README.md`。

@@ -2,7 +2,6 @@
 export const TRINITY_LEGAL_ROUTE_NAMES = {
   privacy: "trinity-legal-privacy",
   terms: "trinity-legal-terms",
-  modelTerms: "trinity-legal-model-terms",
 } as const;
 
 export type TrinityLegalRouteKey = keyof typeof TRINITY_LEGAL_ROUTE_NAMES;
@@ -11,7 +10,6 @@ export type TrinityLegalRouteKey = keyof typeof TRINITY_LEGAL_ROUTE_NAMES;
 export const TRINITY_LEGAL_PATHS = {
   privacy: "/legal/privacy",
   terms: "/legal/terms",
-  modelTerms: "/legal/model-terms",
 } as const;
 
 export type LegalTbdBlock = {

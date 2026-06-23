@@ -132,8 +132,7 @@ title: GEO 原型页面清单
 |------|------|----------|
 | **登录 / 注册** | `@trinity/ui` · `TrinityAuthModal`（`packages/ui/src/auth/`） | 顶栏「登录」「开始试用」→ **弹窗**；`ai-cloud` / `trinity-ai` Shell 已集成，GEO 工程化时同样挂载 |
 | **隐私政策** | `TrinityPrivacyPolicyPage` · `/legal/privacy` | `getTrinityLegalChildRoutes()` 或静态 href；见 `packages/ui/src/legal/` |
-| **服务条款** | `TrinityTermsOfServicePage` · `/legal/terms` | 同上 |
-| **模型使用条款** | `TrinityModelTermsPage` · `/legal/model-terms` | 注册勾选已链（`TrinityAuthTermsAgree`） |
+| **服务条款** | `TrinityTermsOfServicePage` · `/legal/terms` | 同上；含用户内容与上游模型责任；注册勾选《服务条款》+《隐私政策》 |
 
 Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy`**、**`/legal/terms`**（或门户前缀如 `/trinity-geo/legal/privacy`），**无需新建 GEO 法务 HTML**。
 

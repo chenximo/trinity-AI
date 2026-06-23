@@ -126,6 +126,13 @@ export function useTrinityOrUiLang() {
       /* ignore */
     }
     syncDocumentLangAttr();
+    try {
+      window.dispatchEvent(
+        new CustomEvent("trinity:ui-lang-change", { detail: lang.value })
+      );
+    } catch {
+      /* ignore */
+    }
   }
 
   const labelText = computed(() => (lang.value === "en" ? "English" : "简体中文"));
