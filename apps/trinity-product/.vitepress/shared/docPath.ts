@@ -34,9 +34,20 @@ export function isProductBacklogYamlRel(rel: string): boolean {
   return r.endsWith("product-backlog.yml");
 }
 
+/** 聚合产品迭代版本 `release-notes.yml` */
+export function isReleaseNotesYamlRel(rel: string): boolean {
+  const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
+  return r.endsWith("release-notes.yml");
+}
+
 /** 手册可经 dev API / 静态发布的 YAML（子能力表、周进度等） */
 export function isProductYamlRel(rel: string): boolean {
-  return isRoadmapYamlRel(rel) || isWeekProgressYamlRel(rel) || isProductBacklogYamlRel(rel);
+  return (
+    isRoadmapYamlRel(rel) ||
+    isWeekProgressYamlRel(rel) ||
+    isProductBacklogYamlRel(rel) ||
+    isReleaseNotesYamlRel(rel)
+  );
 }
 
 /** API `rel` 参数规范化：已有 .md / .yml 则不再追加 .md */

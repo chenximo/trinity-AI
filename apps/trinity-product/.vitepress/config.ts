@@ -47,6 +47,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
+      { text: "产品迭代版本", link: "/ai-api-platform/release-notes" },
       { text: "上游资料索引", link: "/ai-api-platform/upstream-references" },
       {
         text: "友商产品调研",
@@ -65,6 +66,18 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
               { text: "模型 API（附录）", link: "/ai-api-platform/competitor-research/new-api-skill-model-info" },
             ],
           },
+        ],
+      },
+      {
+        text: "Agent",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/ai-api-platform/agent/" },
+          { text: "产品定位与架构", link: "/ai-api-platform/agent/positioning-and-architecture" },
+          { text: "Agent 项目落地报告", link: "/ai-api-platform/agent/agent-landing-report" },
+          { text: "Agent SDK · 产品设计", link: "/ai-api-platform/agent/agent-sdk-product-design" },
+          { text: "行业现状与跨境落地", link: "/ai-api-platform/agent/industry-cross-border" },
+          { text: "预研 · 跨境投放 Agent", link: "/ai-api-platform/agent/preresearch-cross-border-ads-agent" },
         ],
       },
       {

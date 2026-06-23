@@ -1,0 +1,47 @@
+releases:
+  - version: "2026.06.14"
+    week: W24
+    title: 多模态文档与 Chat 体验优化
+    summary: |-
+      对外文档站补齐多模态与编程工具 Cookbook；Chat 模块对接正式数据并修复关键体验问题。
+    shipped:
+      - module: 用户侧 · Chat 在线体验
+        leaf: user/chat-experience
+        change: |-
+          历史记录对接正式数据
+          Chat 模块体验问题修复
+      - module: 平台侧 · 路由与 Fallback
+        leaf: platform/routing-fallback
+        change: 商用路由策略初版落地
+      - module: 用户侧 · 开发者文档
+        leaf: user/developer-docs
+        change: |-
+          trinity-docs 多模态对接文档
+          Codex / Cursor 等应用场景接入说明
+      - module: 用户侧 · 用户控制台
+        leaf: user/account-console
+        change: 企业工作区、鉴权限流配额交互与原型推进
+    deploy: |-
+      用户面：http://43.159.57.43/trinityai/
+      文档站：http://127.0.0.1:5205/docs/（内测）
+      运营后台：http://127.0.0.1:5204（内测）
+  - version: "2026.06.07"
+    week: W23
+    title: 生文模型上架与文档站核心稿
+    summary: |-
+      对标 OpenRouter 模型列表完成生文模型上架；对外文档站与 API 测试支撑生文闭环。
+    shipped:
+      - module: 运营后台 · 模型上架与供应线路
+        leaf: operations/models-routes
+        change: 已对接生文模型上架（自动化上架流程推进中）
+      - module: 用户侧 · 开发者文档
+        leaf: user/developer-docs
+        change: |-
+          OpenRouter 文档核心稿对齐
+          trinity-docs + api-test 支撑生文验收
+      - module: 用户侧 · 模型广场
+        leaf: user/models/list
+        change: 官网模型列表与上架数据同源（体验问题部分顺延 W24）
+    deploy: |-
+      用户面：http://43.159.57.43/trinityai/
+      文档站：Quickstart / 生文 API 短页可内测

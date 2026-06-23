@@ -14,7 +14,8 @@ function isProductYamlFilename(name: string): boolean {
     name.endsWith("roadmap.yml") ||
     name.endsWith(".roadmap.yml") ||
     name.endsWith("week-progress.yml") ||
-    name.endsWith("product-backlog.yml")
+    name.endsWith("product-backlog.yml") ||
+    name.endsWith("release-notes.yml")
   );
 }
 

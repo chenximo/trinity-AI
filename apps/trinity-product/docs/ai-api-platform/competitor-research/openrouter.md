@@ -47,6 +47,7 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 | 模型列表与筛选 | Trinity 对标 [列表](../user/models/list)；排行见 [rankings](../user/models/rankings) |
 | 单模型详情 | 轻量一屏，对标 OR 单模型页；见 [模型详情](../user/models/model-detail-requirements) |
 | Cookbook（Cursor 等） | Trinity [Cookbook](http://127.0.0.1:5205/docs/cookbook/) 分轨；结构参考 OR，内容以工程师契约为准 |
+| Agent SDK | OR `@openrouter/agent` · `callModel`；Trinity [Agent SDK · 产品设计](../agent/agent-sdk-product-design)（未立项） |
 | 运营上架 / 线路 | OR 无 B2B 后台；Trinity 见 [模型上架与供应线路](../operations/models-routes) |
 | 【待补充：定价策略对比】 | 【待补充】 |
 | 【待补充：飞书深度调研】 | 【待补充】 |

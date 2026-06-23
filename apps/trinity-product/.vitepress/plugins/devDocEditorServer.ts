@@ -29,7 +29,7 @@ export function resolveDocsFile(rel: string): string | null {
   if (!isMd && !isYaml) return null;
   if (
     isYaml &&
-    !/^[\w./-]*(roadmap\.yml|\.roadmap\.yml|week-progress\.yml|product-backlog\.yml)$/.test(normalized)
+    !/^[\w./-]*(roadmap\.yml|\.roadmap\.yml|week-progress\.yml|product-backlog\.yml|release-notes\.yml)$/.test(normalized)
   )
     return null;
   const full = path.resolve(DOCS_DIR, normalized);
