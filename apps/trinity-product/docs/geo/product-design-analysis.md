@@ -71,7 +71,7 @@ title: 产品设计分析
 | [原型页面清单](./v1-prototype-pages) | **完整页面树**（官网 / 控制台 / 运营后台） |
 | [技术架构分析](./tech-architecture) | 采集管线、指标计算、技术选型 |
 | [友商调研](./competitor-research/) | 竞品官网、Tier 1 深度打分 |
-| [PM 手册](./pm-handbook) | PM 工作流与交付标准（工程链接占位） |
+| [PM 补充](./pm-handbook) | GEO 领域判断、种子用户（通用框架见 [产品经理工作手册](../产品经理工作手册)） |
 | [GEO 业界计费](./geo-billing-industry) | 采集周期、SaaS 套餐维度、竞品价位、Trinity 套餐建议 |
 | [MVP 实践手册](./mvp-practice) | MVP 样本全链路；诊断 D*、优化动作、R2 验证 |
 | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) | 行业引导包四层模型；API 范例写满 |

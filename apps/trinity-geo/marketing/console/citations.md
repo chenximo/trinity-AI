@@ -1,14 +1,7 @@
 # 用户控制台 · 引用与信源 · 产品需求（PRD）
 
-> **配套原型**：[citations.html](./citations.html)  
-> **分层真源**：[产品设计分析 · §0.6 ②③](../../../../trinity-product/docs/geo/product-design-analysis.md#visibility-layers) · [§0.6.2a 数据流总图](../../../../trinity-product/docs/geo/product-design-analysis.md#citation-data-pipeline)  
-> **工程真源**：[技术架构 · 参考来源采集](../../../../trinity-product/docs/geo/tech-architecture.md#cited-sources)
-
-| 字段 | 内容 |
-|------|------|
-| 路由 | `/console/citations`（规划） |
-| 读口 | **引用与信源**（对标 Generforce「AI 引用来源」） |
-| 优先级 | P1 |
+> **手册参考样例**：[引用与信源 · 子页 PRD](../../../../trinity-product/docs/geo/samples/citations-prd-sample) · [子页 PRD 规范](../../../../trinity-product/docs/geo/sub-page-prd-standard)  
+> **配套原型**：[citations.html](./citations.html)
 
 ## 1. 定位
 

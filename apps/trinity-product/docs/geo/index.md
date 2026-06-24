@@ -17,7 +17,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 |------|------|
 | **第一次了解 GEO** | [MVP 实践手册](./mvp-practice) → [业务全景](./business-landscape) |
 | **做行业方案 / onboarding** | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) → [原型 · 问题集](../../../trinity-geo/marketing/console/keywords.md) |
-| **写 PRD / 对齐原型** | [产品设计分析](./product-design-analysis) → [原型页面清单](./v1-prototype-pages) |
+| **写 PRD / 对齐原型** | [子页 PRD 规范](./sub-page-prd-standard) → [样例 · 引用与信源](./samples/citations-prd-sample) → [原型页面清单](./v1-prototype-pages) |
 | **研发立项** | [技术架构分析](./tech-architecture) → [MVP 执行包](../../../trinity-geo/mvp/) |
 
 ::: tip 行业解决方案（不拆产品）
@@ -37,7 +37,9 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | [产品设计分析](./product-design-analysis) | 清华 GEO 报告解读、六大模块、**§0.6 可见性分层**、**§0.7 业界 AI 应用**、MVP 优先级 | ✅ | — | — | 附录 |
 | [GEO 业务全景（讨论稿）](./business-landscape) | 行业玩法、完整主链、架构与商业，**不拆版本** | ✅ | — | — | **全景** |
 | [技术架构分析](./tech-architecture) | 分层架构、**测量 SOA（规则引擎+别名库+时序库）**、采集拆解 | ✅ | — | — | 附录 |
-| [产品经理规范手册](./pm-handbook) | PM 文档树、模板与交付标准 | ✅ | — | — | 附录 |
+| [PM 补充（GEO 专属）](./pm-handbook) | 领域判断、种子用户、GEO 合规与计费链 | ✅ | — | — | 附录 |
+| [子页 PRD 规范](./sub-page-prd-standard) | 子页 PRD 写法 · 80% 统一 | ✅ | — | — | **规范** |
+| [参考样例 · 引用与信源](./samples/citations-prd-sample) | 手册唯一 PRD 参考样例 | ✅ | — | — | **样例** |
 | [GEO 业界计费与监测周期](./geo-billing-industry) | 采集周期、SaaS 套餐维度、竞品价位带、Trinity 套餐建议 | ✅ | — | — | **定价** |
 | [友商产品调研](./competitor-research/) | Tier 1 竞品深度分析（Profound 等） | ✅ | — | — | 调研 |
 | [GEO内容AI Agent多平台自动发文落地方案](./agent-multi-platform-publishing) | 官方 API 多平台自动发文落地方案（完整版） | ✅ | — | — | 附录 |

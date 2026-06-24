@@ -20,6 +20,14 @@ title: 用量与计费
 
 走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **用量与计费** / 运营后台）。子能力进度与节点列以 **`billing.roadmap.yml`** 为准，手册不抄验收 checklist。
 
+### 关联
+
+| 模块 | 关系 |
+|------|------|
+| [商用计费与充值](../commercial-billing) | 付款方式 · 充值闭环 · 6.30 商用范围 |
+| [平台侧 · 计量与计费](../platform/metering-billing) | 扣费真源 |
+| [用户控制台](../user/account-console) | 用户余额与用量 |
+
 ### 修订
 
 | 日期 | 说明 |

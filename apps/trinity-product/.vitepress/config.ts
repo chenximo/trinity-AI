@@ -22,6 +22,9 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     items: [
       { text: "文档规范", link: "/产品手册文档规范" },
       { text: "更新规范", link: "/产品手册更新规范" },
+      { text: "产品线产品设计分析模板", link: "/产品线产品设计分析-模板" },
+      { text: "产品经理工作手册", link: "/产品经理工作手册" },
+      { text: "子页 PRD 规范", link: "/geo/sub-page-prd-standard" },
       { text: "Cursor Skills 全景图", link: "/cursor-skills-全景图" },
     ],
   },
@@ -47,6 +50,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
+      { text: "商用计费与充值", link: "/ai-api-platform/commercial-billing" },
       { text: "产品迭代版本", link: "/ai-api-platform/release-notes" },
       { text: "上游资料索引", link: "/ai-api-platform/upstream-references" },
       {
@@ -69,15 +73,21 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
-        text: "Agent",
+        text: "Agent（二期 · 规划期）",
         collapsed: false,
         items: [
           { text: "总览", link: "/ai-api-platform/agent/" },
-          { text: "产品定位与架构", link: "/ai-api-platform/agent/positioning-and-architecture" },
-          { text: "Agent 项目落地报告", link: "/ai-api-platform/agent/agent-landing-report" },
-          { text: "Agent SDK · 产品设计", link: "/ai-api-platform/agent/agent-sdk-product-design" },
-          { text: "行业现状与跨境落地", link: "/ai-api-platform/agent/industry-cross-border" },
-          { text: "预研 · 跨境投放 Agent", link: "/ai-api-platform/agent/preresearch-cross-border-ads-agent" },
+          { text: "战略与架构（L0）", link: "/ai-api-platform/agent/positioning-and-architecture" },
+          { text: "Agent SDK · P0 设计（L2）", link: "/ai-api-platform/agent/agent-sdk-product-design" },
+          {
+            text: "预研",
+            collapsed: false,
+            items: [
+              { text: "落地报告", link: "/ai-api-platform/agent/agent-landing-report" },
+              { text: "跨境投放", link: "/ai-api-platform/agent/preresearch-cross-border-ads-agent" },
+            ],
+          },
+          { text: "附录 · 行业背景", link: "/ai-api-platform/agent/industry-cross-border" },
         ],
       },
       {
@@ -158,7 +168,15 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
       { text: "控制台总览原型", link: "/geo/prototypes/v1-dashboard" },
       { text: "产品设计分析", link: "/geo/product-design-analysis" },
       { text: "技术架构分析", link: "/geo/tech-architecture" },
-      { text: "产品经理规范手册", link: "/geo/pm-handbook" },
+      { text: "PM 补充（GEO 专属）", link: "/geo/pm-handbook" },
+      {
+        text: "子页 PRD",
+        collapsed: false,
+        items: [
+          { text: "通用规范", link: "/geo/sub-page-prd-standard" },
+          { text: "参考样例 · 引用与信源", link: "/geo/samples/citations-prd-sample" },
+        ],
+      },
       { text: "GEO 业界计费", link: "/geo/geo-billing-industry" },
       { text: "Agent 多平台发文方案", link: "/geo/agent-multi-platform-publishing" },
       {

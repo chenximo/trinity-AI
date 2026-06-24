@@ -50,5 +50,5 @@ import "@trinity/ui/styles/trinity-shell-chrome.css";
 ## 正文维护
 
 - 隐私政策：`content/privacy-policy.zh.ts` · `content/privacy-policy.en.ts`（同一路由 `/legal/privacy`，随 `trinity_ui_lang` 切换，无需 `/en` 前缀）
-- 服务条款：`content/terms-of-service.zh.ts`（含用户内容与上游模型责任；无单独《模型使用条款》页）
+- 服务条款：`content/terms-of-service.zh.ts` · `content/terms-of-service.en.ts`（同一路由 `/legal/terms`，随 `trinity_ui_lang` 切换）
 - 公司设立文件摘录（内部）：`content/corporate-source-records.md`

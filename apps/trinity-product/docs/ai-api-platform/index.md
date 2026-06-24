@@ -40,7 +40,7 @@ flowchart LR
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
 | **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
 
-日常查厂商文档、价目表等外链，见 **[上游资料索引](./upstream-references)**；竞品调研见 **[友商产品调研](./competitor-research/)**。**Agent** 规划见 **[Agent · 总览](./agent/)**（[产品定位与架构](./agent/positioning-and-architecture) · [SDK P0](./agent/agent-sdk-product-design)）。每周发布见 **[产品迭代版本](./release-notes)**。
+日常查厂商文档、价目表等外链，见 **[上游资料索引](./upstream-references)**；竞品调研见 **[友商产品调研](./competitor-research/)**。**商用计费与充值**（主体/ICP 前提 · 付款方式 · 6.30 范围）→ **[专文](./commercial-billing)**。**二期 · Agent（规划期）** 见 **[Agent · 总览](./agent/)**（[战略 L0](./agent/positioning-and-architecture) · [SDK P0](./agent/agent-sdk-product-design) · [预研](./agent/agent-landing-report)）。每周发布见 **[产品迭代版本](./release-notes)**。
 
 ::: tip 和「OpenRouter」怎么对照
 OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统一 API**（≈ 平台侧）。**运营后台管理平台**为 B2B 自建，工程在 `trinity-ai-admin`。

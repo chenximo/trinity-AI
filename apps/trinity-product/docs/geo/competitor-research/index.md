@@ -54,7 +54,7 @@ title: 友商产品调研
 | 原型与页面范围 | [原型页面清单](../v1-prototype-pages) |
 | 产品模块与优先级 | [产品设计分析](../product-design-analysis) |
 | 技术分层 | [技术架构分析](../tech-architecture) |
-| PM 文档树 | [产品经理规范手册](../pm-handbook) |
+| PM 工作流 | [产品经理工作手册](../产品经理工作手册) · [GEO PM 补充](../pm-handbook) |
 | 业界计费 | [GEO 业界计费与监测周期](../geo-billing-industry) |
 
 ## 修订
