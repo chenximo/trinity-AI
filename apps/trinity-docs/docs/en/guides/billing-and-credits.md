@@ -141,7 +141,7 @@ You may set a **low-balance threshold** in the console (e.g. $10). Alerts may ap
 2. **Transaction ID** from Payment History (or Stripe Payment Intent ID) and **purchase time**  
 3. Reason (optional)
 
-Send to: **support@trinitydesk.ai**
+Send to: **starsea@trinitydesk.com**
 
 Full legal text: [Terms of Service](https://trinitydesk.ai/legal/terms).
 
@@ -171,7 +171,7 @@ Use **Contact Sales** in the console (company name, work email, estimated monthl
 
 ### How long until balance updates after payment?
 
-Usually **within minutes** after Stripe confirms payment. If balance is unchanged after **1 hour**, email **support@trinitydesk.ai** with your transaction ID.
+Usually **within minutes** after Stripe confirms payment. If balance is unchanged after **1 hour**, email **starsea@trinitydesk.com** with your transaction ID.
 
 ### Are Chat and API prices the same?
 

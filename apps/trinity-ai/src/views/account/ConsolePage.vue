@@ -381,7 +381,7 @@ onUnmounted(() => {
             </div>
             <p class="or-footnote">
               24h 内未使用的充值如需退款，请邮件
-              <a href="mailto:support@trinitydesk.ai">support@trinitydesk.ai</a>
+              <a href="mailto:starsea@trinitydesk.com">starsea@trinitydesk.com</a>
               并提供交易 ID（无控制台自助 Refund 按钮）。
             </p>
 

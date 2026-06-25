@@ -211,7 +211,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 - Payment History 中的 **交易 ID / Stripe Payment Intent / 充值时间**  
 - 退款原因（可选）  
 
-售后邮箱：【待补充，如 `support@trinitydesk.ai`】
+售后邮箱：**starsea@trinitydesk.com**（与 Terms / Privacy 一致）
 
 ### 6.4 运营 SOP（摘要）
 

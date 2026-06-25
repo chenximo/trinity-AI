@@ -20,7 +20,7 @@ description: 已迁移至 packages/ui Vue 真源；本页仅供协同参考。
 | **官方网站** | [https://trinitydesk.ai](https://trinitydesk.ai)（及我们不时指定的子域，**子域清单待补充**） |
 | **本政策公开地址** | `https://trinitydesk.ai/privacy`（**路径待运营确认**） |
 | **服务条款** | `https://trinitydesk.ai/terms`（**路径与文稿待补充**） |
-| **一般咨询** | 【待补充：如 support@trinitydesk.ai】 |
+| **一般咨询** | starsea@trinitydesk.com |
 | **隐私与权利行使** | 【待补充：如 privacy@trinitydesk.ai】 |
 | **适用法律与争议解决** | 【待补充：如中华人民共和国法律及具体管辖约定】 |
 

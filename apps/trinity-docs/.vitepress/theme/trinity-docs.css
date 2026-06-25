@@ -1362,3 +1362,125 @@ html.dark .vp-doc .tdocs-screenshot-guide__card {
     font-size: 0.75rem;
   }
 }
+
+/* —— FAQ 手风琴（对齐 OpenRouter Docs FAQ 分组列表） —— */
+.vp-doc .tdocs-faq-section {
+  margin: 0.35rem 0 0;
+}
+
+.vp-doc h2 + .tdocs-faq-section {
+  margin-top: 0.35rem;
+}
+
+.vp-doc .tdocs-faq-section + h2 {
+  margin-top: 2rem;
+}
+
+.vp-doc .tdocs-faq-section:first-of-type {
+  margin-top: 0.35rem;
+}
+
+.vp-doc .tdocs-faq-list {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+}
+
+.vp-doc .tdocs-faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.vp-doc .tdocs-faq-item:last-child {
+  border-bottom: none;
+}
+
+.vp-doc .tdocs-faq-question {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1rem;
+  margin: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: var(--radius-md);
+  transition: background 0.12s ease;
+}
+
+.vp-doc .tdocs-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.vp-doc .tdocs-faq-question::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-top: 0.05rem;
+  border-right: 2px solid var(--muted-2);
+  border-bottom: 2px solid var(--muted-2);
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.vp-doc .tdocs-faq-item[open] > .tdocs-faq-question::before {
+  transform: rotate(45deg);
+  margin-top: 0.2rem;
+}
+
+.vp-doc .tdocs-faq-question:hover {
+  background: var(--blue-soft);
+}
+
+.vp-doc .tdocs-faq-item[open] > .tdocs-faq-question {
+  margin: 0.4rem 0.5rem 0;
+  padding: 0.85rem 0.75rem;
+  background: var(--blue-soft);
+}
+
+.vp-doc .tdocs-faq-answer {
+  padding: 0 1rem 1rem 1.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.vp-doc .tdocs-faq-item[open] > .tdocs-faq-answer {
+  padding: 0.35rem 1.15rem 1.1rem 2rem;
+  margin: 0 0.5rem 0.45rem;
+}
+
+.vp-doc .tdocs-faq-answer > :first-child {
+  margin-top: 0;
+}
+
+.vp-doc .tdocs-faq-answer > :last-child {
+  margin-bottom: 0;
+}
+
+.vp-doc .tdocs-faq-answer p,
+.vp-doc .tdocs-faq-answer li {
+  color: inherit;
+}
+
+.vp-doc .tdocs-faq-answer a {
+  color: var(--blue);
+}
+
+.vp-doc .tdocs-faq-answer table {
+  font-size: 0.875rem;
+}
+
+.vp-doc .tdocs-faq-answer pre {
+  font-size: 0.8125rem;
+}
+
+.vp-doc .tdocs-faq-related {
+  margin-top: 2.5rem;
+}
