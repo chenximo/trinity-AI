@@ -24,7 +24,8 @@ title: 用量与计费
 
 | 模块 | 关系 |
 |------|------|
-| [商用计费与充值](../commercial-billing) | 付款方式 · 充值闭环 · 6.30 商用范围 |
+| [商用计费与充值](../commercial-billing/) | 付款方式 · 充值闭环 · 6.30 商用范围 |
+| [全球化美金支付与 KYC](../commercial-billing/global-payment) | KYC 分层 · 对公 Wire · OFAC · 充值 UI |
 | [平台侧 · 计量与计费](../platform/metering-billing) | 扣费真源 |
 | [用户控制台](../user/account-console) | 用户余额与用量 |
 

@@ -6,9 +6,21 @@ title: 商用计费与充值
 
 > **文档类型**：**AI API 聚合产品** 商业化真源——**主体与接入合规前提**、**计费模式**、**付款/充值方式**、**6.30 商用范围** 与 **三处口径对齐**。  
 > **读者**：产品、运营、商务、研发（计量/控制台/运营 billing）、法务（复核合规节）。  
-> **关联**：[产品总览](./) · [计量与计费](./platform/metering-billing) · [运营 · 用量与计费](./operations/billing) · [用户控制台](./user/account-console) · [OpenRouter 对标](./competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../legal/privacy-policy)  
+> **关联**：[商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
 > **状态**：**草案 · 待拍板**（合规节为产品理解稿，**非法律意见**；价格与通道以法务/财务/支付服务商为准）  
 > **日期**：2026-06-08
+
+## 文档树
+
+```
+commercial-billing/
+├── index.md                           ← 本页（ICP · 计量 · 6.30 商用范围）
+├── commercial-billing-mvp-prd.md        ← 6.30 MVP PRD 真源（规则 · 落地步骤 · 已/待办）
+├── mvp-openrouter-payment.md          ← 支付 UI / Stripe 弹窗详规
+├── industry-billing-payment-report.md ← 全球化计费/支付/退款 · 行业报告
+├── openrouter-payment-evidence.md     ← OpenRouter 实勘 · 佐证
+└── global-payment.md                  ← 二期 KYC / Wire / OFAC
+```
 
 ---
 
@@ -58,7 +70,7 @@ AI API 聚合的 **可变成本 = 上游模型调用**（token / 张 / 秒）。
 
 | 项 | 结论 | 对产品/计费的含义 |
 |----|------|-------------------|
-| **ICP备案** | **不需要**（源站/deploy 在美国，不使用大陆源站/大陆 CDN 节点） | 官网/API **页脚不展示** `粤ICP备`；展示 Privacy / Terms、公司名（见 [legal](../legal/)） |
+| **ICP备案** | **不需要**（源站/deploy 在美国，不使用大陆源站/大陆 CDN 节点） | 官网/API **页脚不展示** `粤ICP备`；展示 Privacy / Terms、公司名（见 [legal](../../legal/)） |
 | **ICP经营许可证** | **无法办理、当前不需要** | 6.30 **不设计**「国内经营性 ICP 网站充值闭环」为默认路径 |
 | **仍须单独评估** | 个保法/跨境数据、税务、外汇、出口管制、上游模型 ToS | 见 §2.4；**不办 ICP ≠ 合规做完** |
 
@@ -95,24 +107,36 @@ AI API 聚合的 **可变成本 = 上游模型调用**（token / 张 / 秒）。
 
 ---
 
-## 4. 付款与充值方式（可落地方案 · 草案）
+## 4. 付款与充值方式（6.30 MVP · 已拍板）
+
+> **6.30 PRD 真源** → **[商用计费 MVP PRD](./commercial-billing-mvp-prd)**  
+> **支付 UI 详规** → **[MVP 支付（OpenRouter 对齐）](./mvp-openrouter-payment)**  
+> **二期增强** → **[全球化美金支付与 KYC](./global-payment)**
+
+**路径摘要**：**个人** = 邮箱注册 → 自助充值（Stripe 卡/Link + 支付宝 + 微信）；**充 $N 到账 $N**，无充值费行（Stripe 成本平台吸收）；**企业** = Contact Sales → 邮件，**无**对公 Tab。
 
 ### 4.1 原则
 
-1. **6.30 默认一种主路径**：**美元预充值 → 钱包余额 → 按调用扣费**（与 [metering-billing](./platform/metering-billing) 同源）  
+1. **6.30 默认一种主路径**：**美元预充值 → 钱包余额 → 按调用扣费**（与 [metering-billing](../platform/metering-billing) 同源）  
 2. **一种主货币展示**：控制台、运营后台、对外 docs **统一 USD（或统一符号 `$`）**，避免多币种无换算混展示  
-3. **失败语义统一**：余额不足 → **402** + 固定文案（与 [developer-docs](./user/developer-docs) roadmap「402/429 文案」一致）  
+3. **失败语义统一**：余额不足 → **402** + 固定文案（与 [developer-docs](../user/developer-docs) roadmap「402/429 文案」一致）  
+4. **合规轻量化**：与 OpenRouter 一致——**仅 Stripe 支付环节**采集账单地址；**无**注册/充值前置证件、短信实名  
 
 ### 4.2 6.30 建议支持的付款方式
 
 | 方式 | 用户 | 6.30 | 实现落点 | 备注 |
 |------|------|:----:|----------|------|
-| **国际卡 / Stripe 等在线充值** | 开发者、小企业 | **P0 目标** | 控制台 `#credits` · 支付回调 · 钱包入账 | 通道与主体 **待财务/法务确认** |
-| **注册赠送试用额度** | 新用户 | **P0 建议** | 运营配置 · 不上线真实扣上游前先限流 | 额度 **【待拍板：如 $5】** |
-| **运营后台手动充值/调账** | 内测、企业 | **P0 兜底** | [运营 billing](./operations/billing) | 5.30 可人工；6.30 保留审计 |
-| **企业对公 / 合同后付** | 大客户 | P1 | 运营 CRM · 月结 | 6.30 不阻塞 |
-| **国内微信/支付宝个人收单** | 国内 ToC | **不做默认** | — | 与 §2 美国主体路径不一致；若要做须 **国内主体 + 合规单独立项** |
-| **加密货币** | — | **不做** | — | — |
+| **Stripe 卡 / Link** | 个人 | **P0** | `#credits` Purchase Credits | 充 $N 到账 $N · [Stripe Pricing](https://stripe.com/pricing) |
+| **支付宝 / 微信** | 国内个人 | **P0** | Stripe `alipay` / `wechat_pay` | 同上 |
+| **充值费** | — | **吸收通道费** | — | 方案 A 已拍板；见 [MVP PRD §3.2](./commercial-billing-mvp-prd) |
+| **注册赠送试用额度** | 新用户 | **P0** | 运营配置 | 不绑卡；额度待拍板 |
+| **Stripe Invoice / 收据** | 个人 | **P0** | Stripe Customer Portal | 购前更新账单地址；对齐 OR |
+| **运营后台手动充值/调账** | 内测、线下企业 | **P0 兜底** | [运营 billing](../operations/billing) | |
+| **Contact Sales 企业线索** | 企业对公/月结/大额 | **P0 导流** | 表单 → 商务邮件 | **无**前端自助对公入口 |
+| **对公 Fedwire/SWIFT 自助 Tab** | 企业 | **不做（MVP）** | — | 二期见 [global-payment](./global-payment) |
+| **前置 Sumsub KYC / 证件实名** | — | **不做（MVP）** | — | 二期按需 |
+| **国内主体 ToC 直连收单** | — | **不做** | — | 与 §2 美国主体路径不一致 |
+| **加密货币** | — | **不做** | — | OR 有 USDC；Trinity MVP 不做 |
 
 ### 4.3 充值 → 扣费 → 对账闭环（6.30 验收句）
 
@@ -123,9 +147,9 @@ AI API 聚合的 **可变成本 = 上游模型调用**（token / 张 / 秒）。
 | 步 | 用户可见 | 工程/手册真源 |
 |----|----------|---------------|
 | 充值 | `#credits` 余额增加 | 支付 webhook · 钱包表 |
-| 调用 | `#activity` / `#logs` | `usage_event` · [chat-completions](./platform/chat-completions) |
-| 扣费 | 余额减少或用量累计 | [metering-billing](./platform/metering-billing) |
-| 对账 | — | [operations/billing](./operations/billing) |
+| 调用 | `#activity` / `#logs` | `usage_event` · [chat-completions](../platform/chat-completions) |
+| 扣费 | 余额减少或用量累计 | [metering-billing](../platform/metering-billing) |
+| 对账 | — | [operations/billing](../operations/billing) |
 
 ### 4.4 试用与免费档（待拍板）
 
@@ -158,7 +182,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 生图 | 按张 / 次 | `image` 相关字段 | 上游按张 | 6.30 视多模态范围 |
 | 生视频 | 按秒 / 次 | video job 字段 | 上游按秒 | 6.30 视范围 |
 | 余额 | Credits / Balance | `wallet_balance` | — | 与充值同源 |
-| 限流 | RPM / TPM | 429 | 平台策略 | [auth-rate-quota](./platform/auth-rate-quota) |
+| 限流 | RPM / TPM | 429 | 平台策略 | [auth-rate-quota](../platform/auth-rate-quota) |
 
 **禁止**：对外 docs 写「按次」、控制台写「按 token」、运营写另一套单位 **且无换算说明**。
 
@@ -179,7 +203,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 | 项 | 说明 | 状态 |
 |----|------|:----:|
-| 上游成本 | 各供应商/model 进价 | 运营 [models-routes](./operations/models-routes) |
+| 上游成本 | 各供应商/model 进价 | 运营 [models-routes](../operations/models-routes) |
 | 展示价 | 价目表 × markup | **【待拍板：如 cost × 1.2】** |
 | 支付通道费 | Stripe 等 % | 财务填 |
 | 单用户获客试用成本 | 试用额度 × 滥用率 | PM + 运营 |
@@ -194,7 +218,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 ## 7. 6.30 商用范围（卖什么 / 不卖什么）
 
-> 与 [产品总览 · 6.30 主链](./#630-能力主链) 一致；**须管理层拍板**后改「待拍板」为「已确认」。
+> 与 [产品总览 · 6.30 主链](../#630-能力主链) 一致；**须管理层拍板**后改「待拍板」为「已确认」。
 
 ### 7.1 建议纳入 6.30
 
@@ -206,15 +230,16 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 控制台用量/余额可见 | `#credits` · `#activity` |
 | 运营上架 ≥1 模型 + 对账可查 | 运营侧 |
 | 对外 Quickstart + 核心 docs | trinity-docs |
-| Privacy / Terms 可访问 | [legal](../legal/) |
+| Privacy / Terms 可访问 | [legal](../../legal/) |
 
 ### 7.2 建议不纳入 6.30（明确写「不卖」）
 
 | 能力 | 原因 |
 |------|------|
 | 国内 ICP 路径下的 ToC 国内收单 | §2 战略不一致 |
-| Agent SDK 对外商用 | [Agent 二期](./agent/) 规划期 |
-| 完整企业合同/发票自动化 | P1 |
+| Agent SDK 对外商用 | [Agent 二期](../agent/) 规划期 |
+| 自助对公 Wire / 企业 Tab | MVP 走 Contact Sales；Wire 二期 |
+| 完整企业合同/Invoice 自动化 | P1（线下企业可先人工） |
 | 全部多模态生产级 SLA | 视 W24–W26 进度 **待拍板** |
 
 ---
@@ -223,11 +248,16 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 | 内容 | 落点 |
 |------|------|
+| 6.30 MVP 规则 · 落地步骤 | [商用计费 MVP PRD](./commercial-billing-mvp-prd) |
+| 充值 UI · Stripe 弹窗 | [MVP 支付 UI 详规](./mvp-openrouter-payment) |
+| 行业计费/支付/退款 · 竞品对照 | [全球化计费与退款行业报告](./industry-billing-payment-report) |
+| OpenRouter 实勘 · 佐证 · invoice | [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) |
+| 分层 KYC · 对公 Wire · 前置 OFAC（二期） | [全球化美金支付与 KYC](./global-payment) |
 | 价目、充值说明 | 对外 trinity-docs（Pricing / Quickstart 链出） |
-| 充值 UI、余额 | [用户控制台](./user/account-console) `#credits` |
+| 充值 UI、余额 | [用户控制台](../user/account-console) `#credits` |
 | 用量、日志 | `#activity` · `#logs` |
-| 扣费策略、调账 | [运营 billing](./operations/billing) |
-| 计量真源 | [platform/metering-billing](./platform/metering-billing) |
+| 扣费策略、调账 | [运营 billing](../operations/billing) |
+| 计量真源 | [platform/metering-billing](../platform/metering-billing) |
 | L0 商业假设摘要 | 未来 `product-design-analysis.md` §0.3 链本文 |
 
 ---
@@ -238,6 +268,8 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 - [ ] §2 主体与接入 **未变更** 或已重新评估  
 - [ ] §4.2 付款方式 **6.30 列表** 已拍板  
+- [ ] [商用计费 MVP PRD](./commercial-billing-mvp-prd) 已评审（方案 A 吸收通道费 · 永久余额 Terms）  
+- [ ] 前端充值对接与说明文案（§12 落地步骤）  
 - [ ] §5.2 计量维度表 **三列对齐**  
 - [ ] §7 商用范围 **已确认**  
 - [ ] 402/429 文案与 docs 一致  
@@ -245,7 +277,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 ### 9.2 研发
 
-- [ ] `usage_event` 写入完整（[roadmap](./platform/metering-billing.roadmap.yml)）  
+- [ ] `usage_event` 写入完整（[roadmap](../platform/metering-billing.roadmap.yml)）  
 - [ ] 充值回调 → 钱包 → 402 链路可测  
 - [ ] 控制台余额与运营 billing **同一用户同一数字**  
 - [ ] Request-Id / 结算键可追踪（见工程师 API 契约）  
@@ -281,7 +313,10 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-08 | 初稿：ICP 与主体前提 + 预充值计费 + 6.30 范围 + 三处对齐 checklist |
+| 2026-06-08 | 迁入 `commercial-billing/` 子目录；全球支付 → `global-payment.md` |
+| 2026-06-08 | 链入全球化美金支付专文；§4.2 按分层重排 |
+| 2026-06-08 | **战略调整**：6.30 MVP 对齐 OpenRouter → `mvp-openrouter-payment.md`；§4 重写 |
+| 2026-06-08 | 新增 `commercial-billing-mvp-prd.md`：一页纸拍板 · 0 平台费 · 后端完成/前端待办 |
 
 ---
 

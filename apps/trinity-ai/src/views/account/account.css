@@ -158,3 +158,640 @@ main#main:has(.account-console-root) {
 .account-proto-link:hover {
   color: var(--purple, #7c3aed);
 }
+
+/* —— Purchase Credits 充值弹窗（MVP PRD · 方案 A） —— */
+.or-pay-modal-card {
+  width: 100%;
+  max-width: min(28rem, calc(100vw - 2rem));
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--orc-modal-card-radius, 16px);
+  box-shadow: var(--orc-modal-card-shadow);
+}
+
+.or-pay-modal-card > header .or-modal-head {
+  padding: 0.85rem 1.25rem 0.65rem;
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.or-pay-modal-body {
+  padding: 1rem 1.25rem 0.25rem;
+  overflow-y: auto;
+}
+
+.or-pay-account {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.or-pay-account strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.or-pay-summary {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface);
+}
+
+.or-pay-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.or-pay-summary-row + .or-pay-summary-row {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.or-pay-summary-row.is-total {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.or-pay-summary-row.is-total .or-pay-summary-val {
+  color: var(--text);
+}
+
+.or-pay-summary-lbl {
+  color: var(--muted);
+}
+
+.or-pay-summary-val {
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.or-pay-amount-field {
+  margin-bottom: 0.35rem;
+}
+
+.or-pay-amount-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.or-pay-amount-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--bg);
+}
+
+.or-pay-amount-input-wrap:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.or-pay-amount-input-wrap.is-invalid {
+  border-color: var(--danger, #dc2626);
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.15);
+}
+
+.or-pay-amount-input-wrap.is-invalid:focus-within {
+  border-color: var(--danger, #dc2626);
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.2);
+}
+
+.or-pay-amount-error {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--danger, #dc2626);
+  font-weight: 500;
+}
+
+.or-pay-status.is-error {
+  background: rgb(220 38 38 / 0.08);
+  color: var(--danger, #dc2626);
+}
+
+.or-pay-status.is-success {
+  background: var(--blue-soft);
+  color: var(--text);
+}
+
+.or-pay-modal-foot .btn.btn-gradient:disabled,
+.or-pay-purchase-full:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.or-pay-enterprise-note {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.or-pay-enterprise-note strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.or-pay-enterprise-note p {
+  margin: 0;
+}
+
+.or-contact-sales-inline-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--blue);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.or-contact-sales-inline-btn:hover {
+  color: var(--purple, #7c3aed);
+}
+
+.or-contact-sales-lead {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.or-contact-sales-form .form-group {
+  margin-bottom: 0.85rem;
+}
+
+.or-contact-sales-form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.or-contact-sales-form input,
+.or-contact-sales-form textarea {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.or-contact-sales-form textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.or-contact-sales-status {
+  margin: 0.75rem 0 0;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  border-radius: var(--radius-md, 8px);
+}
+
+.or-contact-sales-status.is-error {
+  background: rgb(220 38 38 / 0.08);
+  color: var(--danger, #dc2626);
+}
+
+.or-contact-sales-status.is-success {
+  background: var(--blue-soft);
+  color: var(--text);
+}
+
+.or-credits-sales-foot .or-contact-sales-inline-btn {
+  margin-left: 0.15rem;
+}
+
+.or-pay-currency {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.or-pay-amount-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0.55rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  outline: none;
+}
+
+.or-pay-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0;
+}
+
+.or-pay-preset {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.12s ease,
+    color 0.12s ease,
+    background 0.12s ease;
+}
+
+.or-pay-preset:hover {
+  border-color: var(--muted-2);
+  color: var(--text);
+}
+
+.or-pay-preset.is-active {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.or-pay-summary--compact {
+  margin-bottom: 0.85rem;
+}
+
+.or-pay-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.or-pay-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  min-height: 3.25rem;
+  padding: 0.35rem 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  background: var(--bg);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    border-color 0.12s ease,
+    background 0.12s ease,
+    color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.or-pay-tab:hover {
+  border-color: var(--muted-2);
+  color: var(--text);
+}
+
+.or-pay-tab.is-selected {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue);
+}
+
+.or-pay-tab-ico {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.or-pay-tab-ico--wechat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  background: #07c160;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.or-pay-tab-ico--alipay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  background: #1677ff;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.or-pay-tab-lbl {
+  line-height: 1.2;
+  text-align: center;
+}
+
+.or-pay-panel {
+  margin-bottom: 0.5rem;
+}
+
+.or-pay-card-form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.or-pay-field {
+  display: block;
+}
+
+.or-pay-field-lbl {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.or-pay-field input,
+.or-pay-field select {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.875rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.or-pay-field input:focus,
+.or-pay-field select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-ring);
+}
+
+.or-pay-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.or-pay-scan-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface);
+  min-height: 4.5rem;
+}
+
+.or-pay-scan-hint-ico {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.or-pay-scan-hint p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.or-pay-enterprise-panel {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.or-pay-enterprise-panel p {
+  margin: 0 0 0.65rem;
+}
+
+.or-pay-enterprise-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.or-pay-modal-foot {
+  padding: 0.85rem 1.25rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.or-pay-purchase-full {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.or-pay-purchase-full:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.or-pay-account--foot {
+  margin: 0.65rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* 微信 / 支付宝 · 二维码二级层 */
+.or-pay-credits-modal .or-modal-card {
+  position: relative;
+}
+
+.or-pay-qr-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgb(15 23 42 / 0.45);
+  backdrop-filter: blur(2px);
+  border-radius: inherit;
+}
+
+.or-pay-qr-layer[hidden] {
+  display: none !important;
+}
+
+.or-pay-qr-card {
+  width: min(17rem, 100%);
+  padding: 1rem 1rem 1.1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--orc-modal-card-shadow);
+  text-align: center;
+}
+
+.or-pay-qr-head {
+  position: relative;
+  padding: 0 1.5rem 0.35rem 0;
+  margin-bottom: 0.35rem;
+  border-bottom: none;
+}
+
+.or-pay-qr-head .or-modal-title {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.or-pay-qr-head .or-modal-close {
+  top: -0.15rem;
+  right: -0.35rem;
+}
+
+.or-pay-qr-amount {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.or-pay-qr-card .or-pay-qr-box {
+  width: 10rem;
+  height: 10rem;
+  margin: 0 auto 0.75rem;
+  border-radius: var(--radius-md, 8px);
+  background:
+    linear-gradient(135deg, var(--border) 25%, transparent 25%) 0 0 / 10px 10px,
+    linear-gradient(225deg, var(--border) 25%, transparent 25%) 0 0 / 10px 10px,
+    var(--surface);
+  border: 1px solid var(--border);
+}
+
+.or-pay-qr-tip {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.or-pay-qr-sub {
+  margin: 0 0 0.85rem;
+  font-size: 0.6875rem;
+  color: var(--muted-2);
+}
+
+.or-pay-qr-done {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.or-pay-status {
+  margin: 0.5rem 0 0;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--blue-soft);
+  border-radius: var(--radius-md, 8px);
+}
+
+.or-credits-policy {
+  margin: 1.25rem 0 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.or-credits-policy h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.or-credits-policy ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.or-credits-policy li + li {
+  margin-top: 0.25rem;
+}
+
+.or-credits-policy a {
+  color: var(--blue);
+}
+
+.or-credits-balance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.or-credits-balance-actions .or-btn-outline {
+  font-size: 0.8125rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.or-credits-sales-foot {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.or-credits-sales-foot a {
+  color: var(--blue);
+  font-weight: 600;
+}

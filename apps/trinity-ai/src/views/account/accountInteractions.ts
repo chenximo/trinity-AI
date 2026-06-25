@@ -5,6 +5,8 @@
 
 import inline1 from "./legacy/inline1.js?raw";
 import inline2 from "./legacy/inline2.js?raw";
+import inline3 from "./legacy/inline3.js?raw";
+import inline4 from "./legacy/inline4.js?raw";
 
 export type AccountConsoleHandle = {
   dispose: () => void;
@@ -76,6 +78,8 @@ export async function mountAccountConsoleInteractions(root: HTMLElement): Promis
     appendBodyScript(inline1);
     await import("@repo/assets/adm-form2-dd.js");
     appendBodyScript(inline2);
+    appendBodyScript(inline3);
+    appendBodyScript(inline4);
   }
 
   return {

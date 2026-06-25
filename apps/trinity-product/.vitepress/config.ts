@@ -50,7 +50,18 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
-      { text: "商用计费与充值", link: "/ai-api-platform/commercial-billing" },
+      {
+        text: "商用计费与充值",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/ai-api-platform/commercial-billing/" },
+          { text: "MVP PRD（6.30 商用计费）", link: "/ai-api-platform/commercial-billing/commercial-billing-mvp-prd" },
+          { text: "MVP 支付 UI 详规", link: "/ai-api-platform/commercial-billing/mvp-openrouter-payment" },
+          { text: "行业报告（计费/支付/退款）", link: "/ai-api-platform/commercial-billing/industry-billing-payment-report" },
+          { text: "OpenRouter 支付调研与佐证", link: "/ai-api-platform/commercial-billing/openrouter-payment-evidence" },
+          { text: "全球化美金支付与 KYC（二期）", link: "/ai-api-platform/commercial-billing/global-payment" },
+        ],
+      },
       { text: "产品迭代版本", link: "/ai-api-platform/release-notes" },
       { text: "上游资料索引", link: "/ai-api-platform/upstream-references" },
       {

@@ -39,7 +39,7 @@ onUnmounted(() => {
           <a href="#keys" class="or-dash-nav">API 密钥</a>
           <a href="#preset" class="or-dash-nav">角色管理</a>
           <div class="or-side-heading" style="margin-top: 0.65rem">账户</div>
-          <a href="#credits" class="or-dash-nav">额度</a>
+          <a href="#credits" class="or-dash-nav">Credits</a>
           <a href="#activity" class="or-dash-nav">活动</a>
           <a href="#logs" class="or-dash-nav">用量</a>
           <div class="or-side-heading" style="margin-top: 0.65rem">产品</div>
@@ -280,28 +280,32 @@ onUnmounted(() => {
             <nav class="or-crumb" aria-label="面包屑">
               <RouterLink :to="{ name: 'tai-home' }">Trinity AI</RouterLink>
               <span aria-hidden="true"> / </span>
-              <span>额度</span>
+              <span>Credits</span>
             </nav>
 
             <header class="or-credits-pagehead">
               <div class="or-credits-title-row">
-                <h1 class="or-page-title or-credits-page-title">额度</h1>
+                <h1 class="or-page-title or-credits-page-title">Credits</h1>
                 <div class="or-credits-title-actions">
-                  <button type="button" class="btn btn-gradient or-credits-btn-recharge">充值</button>
-                  <button type="button" class="or-btn-outline or-credits-btn-export">使用量导出</button>
+                  <button type="button" class="btn btn-gradient or-credits-btn-recharge" data-or-open-purchase-credits>
+                    Add Credits
+                  </button>
+                  <button type="button" class="or-btn-outline or-credits-btn-export">Export usage</button>
                 </div>
               </div>
               <div class="or-credits-lead-row">
-                <p class="or-lead or-credits-lead">可用余额、本月消耗与额度流水；信息架构对齐 OpenRouter <strong>Credits</strong>。</p>
+                <p class="or-lead or-credits-lead">
+                  USD 预充值余额 · Chat 与 API Key 共用 · 充多少到账多少（无充值手续费行）。
+                </p>
                 <details class="or-credits-info">
-                  <summary class="or-credits-info-sum" aria-label="关于额度与账单">
+                  <summary class="or-credits-info-sum" aria-label="关于 Credits 与退款">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                       <circle cx="12" cy="12" r="10" />
                       <path d="M12 16v-4M12 8h.01" stroke-linecap="round" />
                     </svg>
                   </summary>
                   <div class="or-credits-info-panel" role="note">
-                    消费按调用后结算展示；充值与赠送可能有独立有效期。导出为占位，接入后可下载 CSV / 对账明细。
+                    Credits 长期有效。24h 内未使用可邮件申请退款；超过 24h 或已消费不退。不支持提现。
                   </div>
                 </details>
               </div>
@@ -309,36 +313,79 @@ onUnmounted(() => {
 
             <div class="or-credit-card">
               <div>
-                <div class="or-credit-label">可用额度</div>
-                <div class="or-credit-val">¥ 1,248.35</div>
+                <div class="or-credit-label">Available balance</div>
+                <div class="or-credit-val" id="or-credits-balance-display">$248.35</div>
                 <p class="or-footnote" style="margin-top: 0.35rem; margin-bottom: 0">
-                  含赠送 <strong>¥ 200.00</strong> · 充值入账 <strong>¥ 1,048.35</strong>
+                  Purchased <strong>$248.35</strong> · Trial grant <strong>$0.00</strong>
                 </p>
+                <div class="or-credits-balance-actions">
+                  <button type="button" class="btn btn-gradient or-credits-btn-recharge" data-or-open-purchase-credits>
+                    Purchase Credits
+                  </button>
+                  <button type="button" class="or-btn-outline" disabled title="P0.5">Manage payment methods</button>
+                </div>
               </div>
             </div>
 
             <div class="or-mini-stats" aria-label="本月概要">
               <div class="or-mini-stat">
-                <div class="lbl">本月消耗</div>
-                <div class="val">¥ 312.08</div>
+                <div class="lbl">Spend this month</div>
+                <div class="val">$42.18</div>
               </div>
               <div class="or-mini-stat">
-                <div class="lbl">本月调用</div>
+                <div class="lbl">API requests</div>
                 <div class="val">18.4k</div>
               </div>
               <div class="or-mini-stat">
-                <div class="lbl">相对预算</div>
-                <div class="val">46%</div>
+                <div class="lbl">Low balance alert</div>
+                <div class="val">$10</div>
               </div>
             </div>
 
-            <div class="panel">
-              <h2>使用进度（示意）</h2>
-              <p style="margin: 0 0 0.5rem; font-size: 0.8125rem; color: var(--muted)">相对本月预算 ¥ 1,500 · 与 OR 用量条同类展示</p>
-              <div class="or-usage-bar" aria-hidden="true"><span style="width: 46%"></span></div>
+            <h2 class="or-section-title">Payment History</h2>
+            <div class="table-wrap">
+              <table class="data-table" id="or-payment-history-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="or-mono-sm">2026-06-07 14:22</td>
+                    <td>$50.00</td>
+                    <td>Card ·••• 4242</td>
+                    <td><span class="badge ok">Completed</span></td>
+                    <td><a href="#" class="text-link">Stripe receipt</a></td>
+                  </tr>
+                  <tr>
+                    <td class="or-mono-sm">2026-05-28 09:15</td>
+                    <td>$25.00</td>
+                    <td>Alipay</td>
+                    <td><span class="badge ok">Completed</span></td>
+                    <td><a href="#" class="text-link">Stripe receipt</a></td>
+                  </tr>
+                  <tr>
+                    <td class="or-mono-sm">2026-05-12 18:40</td>
+                    <td>$10.00</td>
+                    <td>WeChat Pay</td>
+                    <td><span class="badge ok">Completed</span></td>
+                    <td><a href="#" class="text-link">Stripe receipt</a></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+            <p class="or-footnote">
+              24h 内未使用的充值如需退款，请邮件
+              <a href="mailto:support@trinitydesk.ai">support@trinitydesk.ai</a>
+              并提供交易 ID（无控制台自助 Refund 按钮）。
+            </p>
 
-            <h2 class="or-section-title">额度流水</h2>
+            <h2 class="or-section-title">Ledger</h2>
             <div class="or-toolbar or-app-filter-row" style="overflow: visible">
               <div style="display: inline-flex; align-items: center; gap: 0.4rem">
                 <span class="or-keys-expiry-lbl">类型</span>
@@ -436,32 +483,44 @@ onUnmounted(() => {
                 <tbody>
                   <tr>
                     <td class="or-mono-sm">2026-05-09 14:22</td>
-                    <td>消费</td>
+                    <td>Usage</td>
                     <td>chat · gpt-4o</td>
-                    <td>−¥ 0.42</td>
+                    <td>−$0.42</td>
                   </tr>
                   <tr>
                     <td class="or-mono-sm">2026-05-09 11:05</td>
-                    <td>消费</td>
+                    <td>Usage</td>
                     <td>embeddings · text-embedding-3-small</td>
-                    <td>−¥ 0.03</td>
+                    <td>−$0.03</td>
                   </tr>
                   <tr>
                     <td class="or-mono-sm">2026-05-08 09:12</td>
-                    <td>充值</td>
-                    <td>对公汇款 · 订单 INV-20260508-01</td>
-                    <td>+¥ 500.00</td>
+                    <td>Top-up</td>
+                    <td>Stripe · Card ·••• 4242</td>
+                    <td>+$50.00</td>
                   </tr>
                   <tr>
                     <td class="or-mono-sm">2026-05-01 00:00</td>
-                    <td>赠送</td>
-                    <td>新客体验金（30 天有效）</td>
-                    <td>+¥ 200.00</td>
+                    <td>Grant</td>
+                    <td>Welcome credits (demo)</td>
+                    <td>+$5.00</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p class="or-footnote">实际扣费与发票以支付渠道及合同为准；接入后端后可对接 Stripe / 企业汇款与用量明细。</p>
+            <aside class="or-credits-policy" aria-label="充值与退款说明">
+              <h3>充值说明</h3>
+              <ul>
+                <li>USD 计价；单笔最低 <strong>$5</strong>。</li>
+                <li><strong>充 $N 到账 $N Credits</strong> — 无 Service / Processing fee 行。</li>
+                <li>Credits 长期有效；政策变更将至少提前 30 天通知。</li>
+              </ul>
+            </aside>
+
+            <p class="or-credits-sales-foot">
+              需要企业大额预存、对公汇款、定制阶梯折扣或月结方案？
+              <button type="button" class="or-contact-sales-inline-btn" data-or-open-contact-sales>Contact Sales</button>
+            </p>
           </section>
 
           <section data-or-panel="activity" id="or-panel-activity" hidden>
@@ -649,6 +708,10 @@ onUnmounted(() => {
               </div>
             </div>
             <p class="or-footnote">接入后端后图表与图例将随真实用量更新。</p>
+            <p class="or-credits-sales-foot">
+              企业方案？
+              <button type="button" class="or-contact-sales-inline-btn" data-or-open-contact-sales>Contact Sales</button>
+            </p>
           </section>
 
           <section data-or-panel="logs" id="or-panel-logs" hidden>
@@ -1096,6 +1159,199 @@ onUnmounted(() => {
               列表选行后通过<strong>大屏弹窗</strong>编辑；「<strong>取消</strong>」、右上角关闭或按 Esc 关闭弹窗。接入后端后保存即生成/更新 <code>preset_id</code>，并与对话页角色下拉同步。
             </p>
           </section>
+        </div>
+      </div>
+
+      <!-- Purchase Credits · MVP 充值弹窗（PRD 方案 A · Stripe 原型占位） -->
+      <div id="or-pay-credits-shell" class="or-modal-root or-pay-credits-modal" hidden aria-hidden="true" role="presentation">
+        <div class="or-modal-backdrop" id="or-pay-credits-backdrop" tabindex="-1" aria-hidden="true"></div>
+        <div
+          class="or-modal-card or-pay-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="or-pay-credits-title"
+        >
+          <header>
+            <div class="or-modal-head">
+              <h2 id="or-pay-credits-title" class="or-modal-title">Purchase Credits</h2>
+              <button type="button" class="or-modal-close" id="or-pay-credits-dismiss" aria-label="关闭">&times;</button>
+            </div>
+          </header>
+
+          <div class="or-pay-modal-body">
+            <div class="or-pay-summary or-pay-summary--compact">
+              <div class="or-pay-amount-field">
+                <label for="or-pay-amount-input">Amount (USD Credits)</label>
+                <div class="or-pay-amount-input-wrap">
+                  <span class="or-pay-currency" aria-hidden="true">$</span>
+                  <input
+                    id="or-pay-amount-input"
+                    class="or-pay-amount-input"
+                    type="number"
+                    inputmode="decimal"
+                    min="5"
+                    step="0.01"
+                    value="10"
+                    aria-describedby="or-pay-min-hint or-pay-amount-error"
+                  />
+                </div>
+                <p id="or-pay-min-hint" class="or-footnote" style="margin: 0.35rem 0 0">最低 $5 · 充多少到账多少</p>
+                <p id="or-pay-amount-error" class="or-pay-amount-error" hidden role="alert"></p>
+                <div class="or-pay-presets" role="group" aria-label="Quick amounts">
+                  <button type="button" class="or-pay-preset" data-or-pay-preset="5">$5</button>
+                  <button type="button" class="or-pay-preset is-active" data-or-pay-preset="10">$10</button>
+                  <button type="button" class="or-pay-preset" data-or-pay-preset="25">$25</button>
+                  <button type="button" class="or-pay-preset" data-or-pay-preset="50">$50</button>
+                  <button type="button" class="or-pay-preset" data-or-pay-preset="100">$100</button>
+                </div>
+              </div>
+              <div class="or-pay-summary-row is-total">
+                <span class="or-pay-summary-lbl">Total due</span>
+                <span class="or-pay-summary-val" id="or-pay-total-due">$10.00</span>
+              </div>
+            </div>
+
+            <div class="or-pay-tabs" role="tablist" aria-label="Payment method">
+              <button type="button" class="or-pay-tab is-selected" role="tab" aria-selected="true" data-or-pay-method="card">
+                <span class="or-pay-tab-ico" aria-hidden="true">💳</span>
+                <span class="or-pay-tab-lbl">银行卡</span>
+              </button>
+              <button type="button" class="or-pay-tab" role="tab" aria-selected="false" data-or-pay-method="wechat">
+                <span class="or-pay-tab-ico or-pay-tab-ico--wechat" aria-hidden="true">微</span>
+                <span class="or-pay-tab-lbl">微信支付</span>
+              </button>
+              <button type="button" class="or-pay-tab" role="tab" aria-selected="false" data-or-pay-method="enterprise">
+                <span class="or-pay-tab-ico" aria-hidden="true">🏦</span>
+                <span class="or-pay-tab-lbl">对公</span>
+              </button>
+              <button type="button" class="or-pay-tab" role="tab" aria-selected="false" data-or-pay-method="alipay">
+                <span class="or-pay-tab-ico or-pay-tab-ico--alipay" aria-hidden="true">支</span>
+                <span class="or-pay-tab-lbl">支付宝</span>
+              </button>
+            </div>
+
+            <div id="or-pay-panel-card" class="or-pay-panel" role="tabpanel">
+              <div class="or-pay-card-form" aria-label="Stripe Payment Element placeholder">
+                <label class="or-pay-field">
+                  <span class="or-pay-field-lbl">卡号</span>
+                  <input type="text" placeholder="1234 1234 1234 1234" autocomplete="cc-number" />
+                </label>
+                <div class="or-pay-field-row">
+                  <label class="or-pay-field">
+                    <span class="or-pay-field-lbl">有效期</span>
+                    <input type="text" placeholder="月 / 年" autocomplete="cc-exp" />
+                  </label>
+                  <label class="or-pay-field">
+                    <span class="or-pay-field-lbl">安全码</span>
+                    <input type="text" placeholder="CVC" autocomplete="cc-csc" />
+                  </label>
+                </div>
+                <label class="or-pay-field">
+                  <span class="or-pay-field-lbl">国家 / 地区</span>
+                  <select>
+                    <option>中国香港特别行政区</option>
+                    <option>美国</option>
+                    <option>新加坡</option>
+                    <option>其他</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div id="or-pay-panel-scan" class="or-pay-panel" hidden role="tabpanel">
+              <div class="or-pay-scan-hint">
+                <span class="or-pay-scan-hint-ico" aria-hidden="true">📱</span>
+                <p id="or-pay-scan-hint-text">点击 Purchase 后将弹出二维码，请使用所选 App 扫码完成支付。</p>
+              </div>
+            </div>
+
+            <div id="or-pay-panel-enterprise" class="or-pay-panel" hidden role="tabpanel">
+              <div class="or-pay-enterprise-panel">
+                <p>企业大额预存、Wire 对公、月结合同与定制折扣<strong>不提供自助充值</strong>，请通过销售团队办理。</p>
+                <button type="button" class="or-btn-outline or-pay-enterprise-btn" id="or-pay-contact-sales-link">
+                  Contact Sales
+                </button>
+              </div>
+            </div>
+
+            <p id="or-pay-status" class="or-pay-status" hidden role="status" aria-live="polite"></p>
+          </div>
+
+          <footer class="or-pay-modal-foot">
+            <button type="button" class="btn btn-gradient or-pay-purchase-full" id="or-pay-credits-purchase">Purchase</button>
+            <p class="or-pay-account or-pay-account--foot">
+              Personal account: <strong>user@example.com</strong>
+            </p>
+          </footer>
+        </div>
+
+        <!-- 微信 / 支付宝 · 二维码二级弹窗（缩短主弹窗） -->
+        <div id="or-pay-qr-shell" class="or-pay-qr-layer" hidden aria-hidden="true">
+          <div class="or-pay-qr-card" role="dialog" aria-modal="true" aria-labelledby="or-pay-qr-title">
+            <div class="or-modal-head or-pay-qr-head">
+              <h3 id="or-pay-qr-title" class="or-modal-title">微信支付</h3>
+              <button type="button" class="or-modal-close" id="or-pay-qr-dismiss" aria-label="关闭">&times;</button>
+            </div>
+            <p class="or-pay-qr-amount" id="or-pay-qr-amount">$10.00</p>
+            <div class="or-pay-qr-box" aria-hidden="true"></div>
+            <p class="or-pay-qr-tip" id="or-pay-qr-tip">请使用微信扫描二维码完成支付</p>
+            <p class="or-pay-qr-sub">原型占位 · 接入 Stripe 后展示真实二维码</p>
+            <button type="button" class="btn btn-gradient or-pay-qr-done" id="or-pay-qr-done">我已完成支付</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Sales · 企业咨询弹窗（无自助对公 Tab） -->
+      <div id="or-contact-sales-shell" class="or-modal-root or-contact-sales-modal" hidden aria-hidden="true" role="presentation">
+        <div class="or-modal-backdrop" id="or-contact-sales-backdrop" tabindex="-1" aria-hidden="true"></div>
+        <div
+          class="or-modal-card or-pay-modal-card or-contact-sales-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="or-contact-sales-title"
+        >
+          <header>
+            <div class="or-modal-head">
+              <h2 id="or-contact-sales-title" class="or-modal-title">Contact Sales</h2>
+              <button type="button" class="or-modal-close" id="or-contact-sales-dismiss" aria-label="关闭">&times;</button>
+            </div>
+          </header>
+
+          <div class="or-pay-modal-body">
+            <p class="or-contact-sales-lead">
+              企业大额预存、对公 Wire、月结合同与定制阶梯价请通过销售团队办理。控制台<strong>无</strong>自助对公充值入口。
+            </p>
+
+            <form id="or-contact-sales-form" class="or-contact-sales-form" novalidate>
+              <div class="form-group">
+                <label for="or-sales-company">公司名称 <span aria-hidden="true">*</span></label>
+                <input id="or-sales-company" type="text" required autocomplete="organization" placeholder="Acme Inc." />
+              </div>
+              <div class="form-group">
+                <label for="or-sales-email">工作邮箱 <span aria-hidden="true">*</span></label>
+                <input id="or-sales-email" type="email" required autocomplete="email" placeholder="you@company.com" value="user@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="or-sales-spend">预估月消耗（USD，可选）</label>
+                <input id="or-sales-spend" type="text" inputmode="decimal" placeholder="例如 $5,000 / month" />
+              </div>
+              <div class="form-group">
+                <label for="or-sales-needs">需求说明（可选）</label>
+                <textarea
+                  id="or-sales-needs"
+                  rows="4"
+                  placeholder="对公汇款、PO、Net30、私有化 SDK、专属折扣…"
+                ></textarea>
+              </div>
+            </form>
+
+            <p id="or-contact-sales-status" class="or-contact-sales-status" hidden role="status" aria-live="polite"></p>
+          </div>
+
+          <footer class="or-keys-editor-actions">
+            <button type="button" class="or-btn-outline" id="or-contact-sales-cancel">Cancel</button>
+            <button type="button" class="btn btn-gradient" id="or-contact-sales-submit">Submit inquiry</button>
+          </footer>
         </div>
       </div>
 

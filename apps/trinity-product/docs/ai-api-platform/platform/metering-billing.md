@@ -24,7 +24,7 @@ title: 计量与计费
 
 | 模块 | 关系 |
 |------|------|
-| [商用计费与充值](../commercial-billing) | 计费模式 · 充值 · 6.30 商用范围真源 |
+| [商用计费与充值](../commercial-billing/) | 计费模式 · 充值 · 6.30 商用范围真源 |
 | [用户控制台](../user/account-console) | 用量展示 |
 | [生文 API](./chat-completions) | 触发计量 |
 
