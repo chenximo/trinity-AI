@@ -20,7 +20,7 @@ Trinity 网关返回 **OpenAI 风格 JSON 错误体**（如 `error.message`、`e
 | --- | --- | --- |
 | 400 | 请求体非法，如 `model` 格式错误、字段类型错误 | 检查请求 JSON 与参数表 |
 | 401 | 缺少或无效的 `Authorization` | 检查 API Key 与 `Bearer` 头 |
-| 402 | 余额或额度不足 | 检查账户余额、套餐或充值状态 |
+| 402 | 余额或额度不足 | 检查账户余额并 [充值 Credits](../guides/billing-and-credits.md#余额不足402) |
 | 403 | 权限不足、模型未开通或 Key 被限制 | 检查 Key 权限与模型开通状态 |
 | 404 | 模型不存在、任务不存在或路径错误 | 检查模型 ID、`taskId` 与 URL 路径 |
 | 408 | 生图同步等待超时（`generation_timeout`） | 用响应中 `trinity_task.task_id` 调 `GET /image/tasks/{taskId}` 补偿查询 |
@@ -52,3 +52,4 @@ Trinity 网关返回 **OpenAI 风格 JSON 错误体**（如 `error.message`、`e
 - [快速入门](../quickstart.md)
 - [对话补全 API](../api/chat-completions.md)
 - [速率与限额](../guides/rate-limits.md)
+- [计费与 Credits](../guides/billing-and-credits.md)

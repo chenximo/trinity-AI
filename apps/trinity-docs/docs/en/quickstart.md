@@ -18,7 +18,7 @@ Pick an integration path:
 :::
 
 ::: info
-Tracing and settlement headers such as `X-Request-Id` and `X-Idempotency-Key` are **optional**—see [API overview](./api/overview.md). Rate limits: [Rate limits](./guides/rate-limits.md). Other questions: [FAQ](./faq.md).
+Tracing and settlement headers such as `X-Request-Id` and `X-Idempotency-Key` are **optional**—see [API overview](./api/overview.md). Rate limits: [Rate limits](./guides/rate-limits.md). Billing: [Billing & Credits](./guides/billing-and-credits.md). Other questions: [FAQ](./faq.md).
 :::
 
 ---

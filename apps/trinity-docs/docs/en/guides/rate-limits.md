@@ -16,7 +16,7 @@ Trinity enforces request rate, concurrency, and quota controls across account, A
 | Status | Meaning | Guidance |
 | --- | --- | --- |
 | `429` | Too many requests, or upstream provider rate limit | Retry with exponential backoff and a max retry cap |
-| `402` | Insufficient balance or quota | Check balance, plan, or top-up status |
+| `402` | Insufficient balance or quota | Check balance and [top up Credits](./billing-and-credits.md#insufficient-balance-402) |
 | `403` | Permission denied or model unavailable | Check API key permissions and model access |
 | `5xx` | Temporary gateway or upstream issue | Retry a limited number of times and record request ID |
 
@@ -34,4 +34,5 @@ A `429` may come from Trinity account / key limits, or from an upstream model pr
 ## Related
 
 - [Errors & debugging](../reference/error-codes.md)
+- [Billing & Credits](./billing-and-credits.md)
 - [Manage API keys](../manage-api-keys.md)

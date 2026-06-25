@@ -36,7 +36,7 @@ title: MVP 计费支付（OpenRouter 对齐）
 |----|-----------------------------------|------------------|------|
 | **一次性支付开关** | ✅ 充值弹窗底部 **Use one-time payment methods**，默认 **ON** | **P0 不做**（与绑卡/Auto top-up 同批；要做则 UI 分岔） | P0.5 与 Add Payment Method 一并评估 |
 | **微信 / 支付宝** | ✅ 与卡支付 **同一 Purchase Credits 弹窗**内图标切换；微信展示扫码说明 | 同左 | **优先 Stripe 统一收银**（与 OR 同路径），非独立跨境聚合 |
-| **最低充值** | Terms：**$5** / 笔；实勘示例 **$10** | 原稿 **$0.5** | **建议 ≥$5** |
+| **最低充值** | Terms：**$5** / 笔；实勘示例 **$10** | **$10**（已拍板） | **$10** |
 | **充值费** | OR：**5.5%+$0.80** Service fees 行 | **Trinity 方案 A**：充 $N 到账 $N，**无 fee 行**（见 [MVP PRD §3.2](./commercial-billing-mvp-prd)） | 对齐 OpenAI/Together，不对齐 OR 费用行 |
 | **Invoice** | 页脚 *create invoices after buying credits* + Stripe 门户 | 同 Stripe 能力 | ✅ 对齐 |
 | **企业自助** | Organization 共享额度 | MVP **仅 Contact Sales** | P1 再评估 |
@@ -132,7 +132,7 @@ Credits 页
 
 | 元素 | 规则 |
 |------|------|
-| 金额输入 | **USD**；最低 **$5**（建议） |
+| 金额输入 | **USD**；最低 **$10** |
 | **Purchase** 主按钮 | 按所选方式进入 Stripe 收银 / 展示二维码 |
 | 账户标识 | 如 `Personal Account: user@email.com` |
 | **Pay with Link** | 次要入口（绿色 Link 按钮，与 OR 一致） |

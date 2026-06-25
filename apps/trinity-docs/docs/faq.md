@@ -24,11 +24,12 @@
 
 控制台创建的密钥，前缀一般为 **`xh-...`**。请求头写 `Authorization: Bearer xh-...`。
 
-## 流式、错误、限额在哪里查？
+## 流式、错误、限额、计费在哪里查？
 
 - [流式输出](./guides/streaming-sse.md)
 - [错误与调试](./reference/error-codes.md)
 - [速率与限额](./guides/rate-limits.md)
+- [计费与 Credits](./guides/billing-and-credits.md)
 
 ## 文档与线上行为不一致怎么办？
 

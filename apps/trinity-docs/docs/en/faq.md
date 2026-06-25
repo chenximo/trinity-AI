@@ -24,11 +24,12 @@ The request body **`model`** is a **model ID** string and must match [List model
 
 Keys are created in the console and usually start with **`xh-...`**. Send them as `Authorization: Bearer xh-...`.
 
-## Where can I find streaming, errors, and limits?
+## Where can I find streaming, errors, limits, and billing?
 
 - [Streaming (SSE)](./guides/streaming-sse.md)
 - [Errors & debugging](./reference/error-codes.md)
 - [Rate limits](./guides/rate-limits.md)
+- [Billing & Credits](./guides/billing-and-credits.md)
 
 ## What if the docs and live behavior differ?
 

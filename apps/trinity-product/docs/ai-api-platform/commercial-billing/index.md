@@ -253,7 +253,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 行业计费/支付/退款 · 竞品对照 | [全球化计费与退款行业报告](./industry-billing-payment-report) |
 | OpenRouter 实勘 · 佐证 · invoice | [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) |
 | 分层 KYC · 对公 Wire · 前置 OFAC（二期） | [全球化美金支付与 KYC](./global-payment) |
-| 价目、充值说明 | 对外 trinity-docs（Pricing / Quickstart 链出） |
+| 价目、充值说明 | 对外 [计费与 Credits](https://trinitydesk.ai/docs/guides/billing-and-credits)（`trinity-docs`） |
 | 充值 UI、余额 | [用户控制台](../user/account-console) `#credits` |
 | 用量、日志 | `#activity` · `#logs` |
 | 扣费策略、调账 | [运营 billing](../operations/billing) |

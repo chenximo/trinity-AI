@@ -20,7 +20,7 @@ For 429 / 5xx, Trinity preserves parseable error bodies where possible so SDKs a
 | --- | --- | --- |
 | 400 | Invalid request body, such as malformed `model` or wrong field type | Check JSON and parameter tables |
 | 401 | Missing or invalid `Authorization` | Check API key and `Bearer` header |
-| 402 | Insufficient balance or quota | Check account balance, plan, or top-up status |
+| 402 | Insufficient balance or quota | Check balance and [top up Credits](../guides/billing-and-credits.md#insufficient-balance-402) |
 | 403 | Permission denied, model not enabled, or key restricted | Check key permissions and model access |
 | 404 | Model not found, task not found, or wrong path | Check model ID, `taskId`, and URL path |
 | 408 | Image generation sync wait timeout (`generation_timeout`) | Query `GET /image/tasks/{taskId}` with `trinity_task.task_id` from the response |
@@ -52,3 +52,4 @@ Do not expose upstream stack traces or internal hosts to end users; record respo
 - [Quickstart](../quickstart.md)
 - [Chat completions API](../api/chat-completions.md)
 - [Rate limits](../guides/rate-limits.md)
+- [Billing & Credits](../guides/billing-and-credits.md)

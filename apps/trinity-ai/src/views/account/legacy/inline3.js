@@ -25,11 +25,15 @@
         var qrAmount = document.getElementById("or-pay-qr-amount");
         var qrTip = document.getElementById("or-pay-qr-tip");
 
-        var MIN_AMOUNT = 5;
+        var MIN_AMOUNT = 10;
         var activeMethod = "card";
 
         function formatUsd(n) {
           return "$" + n.toFixed(2);
+        }
+
+        function formatMinUsd(n) {
+          return n % 1 === 0 ? "$" + n : formatUsd(n);
         }
 
         function parseRawAmount() {
@@ -49,7 +53,7 @@
             return {
               ok: false,
               code: "min",
-              message: "单笔最低充值 " + formatUsd(MIN_AMOUNT) + "，请调整金额。"
+              message: "单笔最低充值 " + formatMinUsd(MIN_AMOUNT) + "，请调整金额。"
             };
           }
           return { ok: true, value: v, message: "" };

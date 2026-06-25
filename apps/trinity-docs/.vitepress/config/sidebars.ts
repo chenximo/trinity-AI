@@ -29,6 +29,7 @@ const LABEL_EN: Record<string, string> = {
   参考: "Reference",
   "错误与调试": "Errors & debugging",
   "速率与限额": "Rate limits",
+  "计费与 Credits": "Billing & Credits",
   常见问题: "FAQ",
   "编程 IDE / CLI": "IDE & CLI",
   智能体工作台: "Agent workbench",
@@ -109,6 +110,7 @@ const sidebarDocsZh: DefaultTheme.SidebarItem[] = [
     items: [
       { text: "请求参数", link: "/guides/request-parameters" },
       { text: "流式输出（SSE）", link: "/guides/streaming-sse" },
+      { text: "计费与 Credits", link: "/guides/billing-and-credits" },
     ],
   },
   {

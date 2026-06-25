@@ -22,7 +22,7 @@ Trinity AI · 商用计费 MVP（6.30）
 
 【怎么付】ToC：Stripe（卡/Link）+ 支付宝 + 微信；ToB：无自助对公
 
-【怎么卖】USD 预充值 Credits；最低 $5/笔；
+【怎么卖】USD 预充值 Credits；最低 $10/笔；
          充 $N 到账 $N（无充值平台费、无通道费行；Stripe 成本平台吸收，见 usage markup）
 
 【怎么用】Chat + API Key 共用余额；成功请求后扣费；Activity 可查
@@ -124,7 +124,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 
 | 规则 | 值 | 依据 |
 |------|:--:|------|
-| 单笔最低 | **$5** | [OpenRouter Terms](https://openrouter.ai/terms)、[Together $5 门槛](https://docs.together.ai/docs/billing-credits)；Stripe **$0.30** 固定费在小额占比高 |
+| 单笔最低 | **$10** | 对齐 OR 实勘默认 $10；高于 OR Terms $5 下限，降低 Stripe **$0.30** 固定费在小额占比 |
 
 ### 3.4 合规（MVP）
 
@@ -282,7 +282,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 
 **充值**
 
-- 充值金额以 **USD** 计；单笔最低 **$5**。  
+- 充值金额以 **USD** 计；单笔最低 **$10**。  
 - **充多少，到账多少 Credits** — Trinity **不收取**充值平台费，**不向用户另收**支付通道费（与 OpenAI、Together 等一致）。  
 - 实付金额 = 到账 Credits 金额（Sales Tax / VAT 若适用由 Stripe Tax 另计）。  
 

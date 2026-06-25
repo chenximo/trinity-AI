@@ -18,7 +18,7 @@ Trinity AI 提供统一的 HTTP API 网关：通过单一 `base_url` 与 API Key
 :::
 
 ::: info
-`X-Request-Id`、`X-Idempotency-Key` 等追踪/结算头为**可选**，用于排障与重试幂等，见 [API 概述](./api/overview.md#追踪与结算请求头)。限额说明见 [速率限制](./guides/rate-limits.md)；其他问题见 [常见问题](./faq.md)。
+`X-Request-Id`、`X-Idempotency-Key` 等追踪/结算头为**可选**，用于排障与重试幂等，见 [API 概述](./api/overview.md#追踪与结算请求头)。限额见 [速率限制](./guides/rate-limits.md)；计费与充值见 [计费与 Credits](./guides/billing-and-credits.md)；其他问题见 [常见问题](./faq.md)。
 :::
 
 ---

@@ -511,7 +511,7 @@ onUnmounted(() => {
             <aside class="or-credits-policy" aria-label="充值与退款说明">
               <h3>充值说明</h3>
               <ul>
-                <li>USD 计价；单笔最低 <strong>$5</strong>。</li>
+                <li>USD 计价；单笔最低 <strong>$10</strong>。</li>
                 <li><strong>充 $N 到账 $N Credits</strong> — 无 Service / Processing fee 行。</li>
                 <li>Credits 长期有效；政策变更将至少提前 30 天通知。</li>
               </ul>
@@ -1189,16 +1189,15 @@ onUnmounted(() => {
                     class="or-pay-amount-input"
                     type="number"
                     inputmode="decimal"
-                    min="5"
+                    min="10"
                     step="0.01"
                     value="10"
                     aria-describedby="or-pay-min-hint or-pay-amount-error"
                   />
                 </div>
-                <p id="or-pay-min-hint" class="or-footnote" style="margin: 0.35rem 0 0">最低 $5 · 充多少到账多少</p>
+                <p id="or-pay-min-hint" class="or-footnote" style="margin: 0.35rem 0 0">最低 $10 · 充多少到账多少</p>
                 <p id="or-pay-amount-error" class="or-pay-amount-error" hidden role="alert"></p>
                 <div class="or-pay-presets" role="group" aria-label="Quick amounts">
-                  <button type="button" class="or-pay-preset" data-or-pay-preset="5">$5</button>
                   <button type="button" class="or-pay-preset is-active" data-or-pay-preset="10">$10</button>
                   <button type="button" class="or-pay-preset" data-or-pay-preset="25">$25</button>
                   <button type="button" class="or-pay-preset" data-or-pay-preset="50">$50</button>
@@ -1222,7 +1221,7 @@ onUnmounted(() => {
               </button>
               <button type="button" class="or-pay-tab" role="tab" aria-selected="false" data-or-pay-method="enterprise">
                 <span class="or-pay-tab-ico" aria-hidden="true">🏦</span>
-                <span class="or-pay-tab-lbl">对公</span>
+                <span class="or-pay-tab-lbl">企业</span>
               </button>
               <button type="button" class="or-pay-tab" role="tab" aria-selected="false" data-or-pay-method="alipay">
                 <span class="or-pay-tab-ico or-pay-tab-ico--alipay" aria-hidden="true">支</span>
