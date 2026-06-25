@@ -17,7 +17,7 @@ Trinity is an **AI API aggregation gateway** for developers: you call OpenAI-com
 1. Sign up and open the [console](https://trinitydesk.ai/account/keys).
 2. Create an API key (prefix `xh-...`) — see [Manage API keys](./manage-api-keys.md).
 3. Follow [Quickstart](./quickstart.md) to set `TRINITY_BASE_URL` and `TRINITY_API_KEY`, then send your first `POST /v1/chat/completions`.
-4. For paid usage, top up at [Credits](https://trinitydesk.ai/account/console#credits) first (**402** when balance is insufficient).
+4. For paid usage, top up at [Credits](https://trinitydesk.ai/account/workspace/default/balance) first (**402** when balance is insufficient).
 
 </FaqItem>
 
@@ -60,7 +60,7 @@ Use the same address for billing and refund questions.
 
 <FaqItem question="How do I top up?">
 
-[Console · Credits](https://trinitydesk.ai/account/console#credits) → **Purchase Credits** → pay via **card / Stripe Link / WeChat Pay / Alipay** (Stripe-hosted checkout).
+[Console · Credits](https://trinitydesk.ai/account/workspace/default/balance) → **Purchase Credits** → pay via **card / Stripe Link / WeChat Pay / Alipay** (Stripe-hosted checkout).
 
 </FaqItem>
 
@@ -90,7 +90,7 @@ After the request **completes successfully**, based on actual upstream usage (e.
 
 <FaqItem question="What happens when balance runs out?">
 
-The gateway returns **HTTP 402**. Direct users to [Credits](https://trinitydesk.ai/account/console#credits). **402** (no credits) is not **429** (rate limit) — see [Errors & debugging](./reference/error-codes.md) and [Rate limits](./guides/rate-limits.md).
+The gateway returns **HTTP 402**. Direct users to [Credits](https://trinitydesk.ai/account/workspace/default/balance). **402** (no credits) is not **429** (rate limit) — see [Errors & debugging](./reference/error-codes.md) and [Rate limits](./guides/rate-limits.md).
 
 </FaqItem>
 
@@ -129,7 +129,7 @@ Use **Contact Sales** in the console. **No** self-serve wire or enterprise top-u
 
 <FaqItem question="Receipts and invoices?">
 
-**Payment History** on the Credits page; **Stripe receipt** links and Customer Portal. Update billing address in Stripe before purchase; invoices depend on Stripe settings.
+**Payment History** on the Credits page lists top-ups. **Receipt downloads**, **Stripe Customer Portal (billing center)**, and **Invoice** support are **TBD** — we will update docs when finalized. See [Billing & Credits · Payment history & receipts](./guides/billing-and-credits.md#payment-history-receipts).
 
 </FaqItem>
 
@@ -200,7 +200,7 @@ Dedicated deployments may differ. Path must include **`/v1`**.
 
 <FaqItem question="OpenAI SDK?">
 
-Yes — point `base_url` at Trinity `/v1` and use your `xh-...` key. See [Quickstart](./quickstart.md) and [Cookbook](./cookbook/).
+**Not supported yet.** You cannot point the official OpenAI SDK at Trinity (e.g. via `base_url`). Call Trinity over **HTTP** instead — see [Quickstart](./quickstart.md) and [Cookbook](./cookbook/).
 
 </FaqItem>
 
@@ -247,7 +247,7 @@ Storage and logging of inputs/outputs on Trinity’s side are governed by the [P
 
 <FaqItem question="Who processes payments?">
 
-**Stripe** hosts payment forms; Trinity **does not store** full card numbers. Billing address is collected in Stripe checkout.
+**Stripe** hosts payment forms; Trinity **does not store** full card numbers. Billing address, receipts, and invoice flows are **TBD** (billing center approach not finalized).
 
 </FaqItem>
 
@@ -272,14 +272,14 @@ Storage and logging of inputs/outputs on Trinity’s side are governed by the [P
 
 <FaqItem question="Usage and balance?">
 
-- **Balance / payments**: [Credits](https://trinitydesk.ai/account/console#credits)
+- **Balance / payments**: [Credits](https://trinitydesk.ai/account/workspace/default/balance)
 - **Usage detail**: console **Activity**
 
 </FaqItem>
 
 <FaqItem question="Low-balance alerts?">
 
-Configure a **threshold** in the console when available; alerts may appear in-product and by email.
+**Custom thresholds are not available** in the console yet. The system **emails your registration address** automatically: **once** when **80%** of Credits are **consumed**, and **once** when the balance is **fully depleted** (**100%** consumed). See [Billing & Credits](./guides/billing-and-credits.md#low-balance-alerts).
 
 </FaqItem>
 
@@ -303,7 +303,7 @@ Check `Authorization: Bearer xh-...`, key status — [Manage API keys](./manage-
 
 <FaqItem question="402 Payment Required">
 
-Check [Credits](https://trinitydesk.ai/account/console#credits) — [Insufficient balance](./guides/billing-and-credits.md#insufficient-balance-402).
+Check [Credits](https://trinitydesk.ai/account/workspace/default/balance) — [Insufficient balance](./guides/billing-and-credits.md#insufficient-balance-402).
 
 </FaqItem>
 

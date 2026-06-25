@@ -3,7 +3,7 @@
 Trinity uses **USD prepaid Credits**: you top up your account first; after each **successful** API or console Chat call, usage is deducted at the published price for the **model ID** you used. This page covers top-ups, metering, insufficient balance, receipts, and refunds. Legal terms are governed by our [Terms of Service](https://trinitydesk.ai/legal/terms).
 
 ::: tip Quick links
-- Top up & balance: [Console · Credits](https://trinitydesk.ai/account/console#credits)
+- Top up & balance: [Console · Credits](https://trinitydesk.ai/account/workspace/default/balance)
 - Usage detail: console **Activity**
 - Model pricing: [Model catalog](https://trinity.ai/models)
 :::
@@ -55,7 +55,7 @@ Prices shown to you are **all-in** (e.g. per 1K tokens, per image, per second). 
 
 ### Steps
 
-1. Sign in to the [Trinity console](https://trinitydesk.ai/account/console#credits).
+1. Sign in to the [Trinity console](https://trinitydesk.ai/account/workspace/default/balance).
 2. Open **Credits** and click **Purchase Credits** (or **Add Credits**).
 3. Enter an amount and complete payment.
 
@@ -84,9 +84,8 @@ Amounts below $10 cannot be submitted.
 
 ### Payment history & receipts
 
-- **Payment History** on the Credits page lists date, amount, method, and status.
-- Open **Stripe receipt** links or the Stripe Customer Portal for downloads.
-- Update **billing address** in Stripe before purchase; **Invoices** may be available depending on Stripe settings.
+- **Payment History** on the Credits page shows top-up records: date, amount, method, and status.
+- **Receipt downloads**, **Stripe Customer Portal (billing center)**, **Invoices**, and billing-address flows: **TBD** — this page will be updated once the approach is finalized.
 
 ---
 
@@ -109,7 +108,7 @@ When balance is too low for an upcoming call, the gateway returns **HTTP 402**.
 | Item | Guidance |
 | --- | --- |
 | **Meaning** | Insufficient balance or quota |
-| **Client action** | Direct users to [Console · Credits](https://trinitydesk.ai/account/console#credits); do not confuse with **429** (rate limit) |
+| **Client action** | Direct users to [Console · Credits](https://trinitydesk.ai/account/workspace/default/balance); do not confuse with **429** (rate limit) |
 | **See also** | [Errors & debugging](../reference/error-codes.md) · [Rate limits](./rate-limits.md) |
 
 ::: info 402 vs 429
@@ -120,7 +119,18 @@ When balance is too low for an upcoming call, the gateway returns **HTTP 402**.
 
 ## Low-balance alerts
 
-You may set a **low-balance threshold** in the console (e.g. $10). Alerts may appear in-product and by email when enabled.
+You **cannot** customize a low-balance threshold in the console yet.
+
+The system sends **email alerts** to your **account registration address** ( **one email per stage** ):
+
+| Stage | Trigger | Notes |
+| --- | --- | --- |
+| **First alert** | **80%** of Credits **consumed** (~**20%** remaining) | Top up soon to avoid interruption |
+| **Second alert** | Credits **fully depleted** (**100%** consumed, **$0** balance) | API calls then return **402** until you top up |
+
+:::
+If you miss an alert, check spam and confirm your registration email is deliverable.
+:::
 
 ---
 
@@ -162,7 +172,7 @@ Use **Contact Sales** in the console (company name, work email, estimated monthl
 ## Compliance & privacy
 
 - Checkout is **Stripe-hosted**; MVP does **not** require ID upload or SMS verification before sign-up or top-up.
-- Billing address is collected in Stripe for receipts / invoices and compliance.
+- Billing address, receipts, and invoice flows via the billing center are **TBD** and will be documented when finalized.
 - See [Privacy Policy](https://trinitydesk.ai/legal/privacy) for personal data handling.
 
 ---

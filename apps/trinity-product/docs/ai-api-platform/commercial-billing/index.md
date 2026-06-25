@@ -130,7 +130,7 @@ AI API 聚合的 **可变成本 = 上游模型调用**（token / 张 / 秒）。
 | **支付宝 / 微信** | 国内个人 | **P0** | Stripe `alipay` / `wechat_pay` | 同上 |
 | **充值费** | — | **吸收通道费** | — | 方案 A 已拍板；见 [MVP PRD §3.2](./commercial-billing-mvp-prd) |
 | **注册赠送试用额度** | 新用户 | **P0** | 运营配置 | 不绑卡；额度待拍板 |
-| **Stripe Invoice / 收据** | 个人 | **P0** | Stripe Customer Portal | 购前更新账单地址；对齐 OR |
+| **Stripe Invoice / 收据 / 支付中心** | 个人 | **待拍板** | Stripe Customer Portal 等待定 | 见 [MVP PRD §3.5](./commercial-billing-mvp-prd)；对外文档 **待补充** |
 | **运营后台手动充值/调账** | 内测、线下企业 | **P0 兜底** | [运营 billing](../operations/billing) | |
 | **Contact Sales 企业线索** | 企业对公/月结/大额 | **P0 导流** | 表单 → 商务邮件 | **无**前端自助对公入口 |
 | **对公 Fedwire/SWIFT 自助 Tab** | 企业 | **不做（MVP）** | — | 二期见 [global-payment](./global-payment) |

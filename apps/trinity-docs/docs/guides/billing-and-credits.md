@@ -3,7 +3,7 @@
 Trinity 采用 **美元（USD）预充值 Credits** 模式：您先为账户充值，成功调用 API 或控制台 Chat 后，按所用 **模型 ID** 的公开价目从余额中扣减。本文说明充值、扣费、余额不足、收据与退款等对外规则；法律约束以 [服务条款](https://trinitydesk.ai/legal/terms) 为准。
 
 ::: tip 快速入口
-- 充值与余额：[控制台 · Credits](https://trinitydesk.ai/account/console#credits)
+- 充值与余额：[控制台 · Credits](https://trinitydesk.ai/account/workspace/default/balance)
 - 消耗明细：控制台 **Activity**
 - 模型单价：[模型广场](https://trinity.ai/models)
 :::
@@ -57,7 +57,7 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 
 ### 入口
 
-1. 登录 [Trinity 控制台](https://trinitydesk.ai/account/console#credits)。
+1. 登录 [Trinity 控制台](https://trinitydesk.ai/account/workspace/default/balance)。
 2. 打开 **Credits** 面板，点击 **Purchase Credits**（或 **Add Credits**）。
 3. 输入金额并完成支付。
 
@@ -86,9 +86,8 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 
 ### 支付历史与收据
 
-- **Payment History**（Credits 页）列出充值记录：时间、金额、方式、状态。
-- 通过 **Stripe receipt** 或 Stripe Customer Portal 查看 / 下载收据。
-- 购前可在 Stripe 流程中更新 **账单地址**；部分场景支持后续开具 **Invoice**（以 Stripe 能力与账户配置为准）。
+- **Payment History**（Credits 页）可查看充值记录：时间、金额、方式、状态。
+- **收据下载**、**Stripe Customer Portal（支付中心）**、**Invoice** 及账单地址相关能力：**待补充** — 方案定稿后将更新本文档。
 
 ---
 
@@ -111,7 +110,7 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 | 项 | 说明 |
 | --- | --- |
 | **含义** | 余额或可用额度不足 |
-| **客户端建议** | 引导用户至 [控制台 · Credits](https://trinitydesk.ai/account/console#credits) 充值；勿与 **429**（限流）混淆 |
+| **客户端建议** | 引导用户至 [控制台 · Credits](https://trinitydesk.ai/account/workspace/default/balance) 充值；勿与 **429**（限流）混淆 |
 | **相关文档** | [错误与调试](../reference/error-codes.md) · [速率与限额](./rate-limits.md) |
 
 ::: info 402 与 429
@@ -122,7 +121,18 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 
 ## 低余额提醒
 
-您可在控制台设置 **低余额预警阈值**（例如 $10）。触发后可能通过 **站内通知** 与 **邮件** 提醒充值（以控制台实际功能为准）。
+当前 **暂不支持** 在控制台自定义低余额预警阈值。
+
+系统会向账户 **注册邮箱** 自动发送预警邮件（各阶段 **各提醒一次**）：
+
+| 阶段 | 触发条件 | 说明 |
+| --- | --- | --- |
+| **首次预警** | Credits 消耗达 **80%**（剩余约 20%） | 建议尽快充值，避免服务中断 |
+| **再次预警** | Credits **完全用尽**（100% 消耗，余额为 0） | 此后 API 调用将返回 **402**，须充值后恢复 |
+
+:::
+若未收到邮件，请检查垃圾箱，并确认注册邮箱可正常收信。
+:::
 
 ---
 
@@ -164,7 +174,7 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 ## 合规与隐私
 
 - 充值环节由 **Stripe** 托管支付表单；Trinity **不在 MVP 阶段** 要求注册 / 充值前的证件上传或短信实名。
-- 账单地址等信息在 Stripe 支付流程中采集，用于收据 / 发票与合规要求。
+- 账单地址、收据 / 发票等支付中心能力 **待拍板**，定稿后补充对外说明。
 - 个人信息处理见 [隐私政策](https://trinitydesk.ai/legal/privacy)。
 
 ---

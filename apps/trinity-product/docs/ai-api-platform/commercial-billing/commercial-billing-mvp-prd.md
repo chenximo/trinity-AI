@@ -61,7 +61,8 @@ Trinity AI · 商用计费 MVP（6.30）
 |------|:------:|------|
 | **Credits 页 · 充值弹窗对接 Stripe** | **P0** | Purchase Credits + 支付渠道 UI |
 | **Add a Payment Method**（绑卡 / Auto top-up） | P0.5 | 见 [mvp-openrouter-payment §3–4](./mvp-openrouter-payment) |
-| **Payment History** → Stripe 门户 / 收据链接 | P0 | |
+| **Payment History**（充值记录列表） | P0 | Credits 页展示时间 / 金额 / 方式 / 状态 |
+| **发票 / 收据 / 支付中心** | **待拍板** | Stripe receipt、Customer Portal、Invoice、账单地址；对外文档 **待补充**（见 §3.5） |
 | **Models 含费价目展示** | P0 | 一口价千 Token |
 | **Contact Sales 表单 + 发邮件** | P0 | 企业线索 |
 | **充值/退款/余额政策说明文案** | P0 | Credits 页、FAQ、Terms、Refund Policy 链出 |
@@ -130,6 +131,18 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 
 - **仅支付环节**采集账单地址（Stripe 托管）；**无**注册/充值前置证件、短信实名。  
 - 页脚链出 **Privacy · Refund Policy · Terms**。
+
+### 3.5 发票与收据（待拍板）
+
+| 项 | 状态 | 说明 |
+|----|:----:|------|
+| **Payment History** | P0 | Credits 页列出充值记录（时间、金额、方式、状态） |
+| **收据下载** | **待拍板** | 是否在列表链出 Stripe receipt — **未定** |
+| **Stripe Customer Portal（支付中心）** | **待拍板** | Manage Billing、账单地址维护 — **方案未定** |
+| **Stripe Invoice** | **待拍板** | 个人消费收据 / Invoice 开关与流程 — **未定** |
+| **企业 Commercial Invoice** | P1 | 含税号等企业抬头 → **Contact Sales** 线下 |
+
+> **对外文档**：trinity-docs 计费页 / FAQ 已标注 **待补充**；定稿后同步更新公开说明与 Credits 页 UI。
 
 ---
 
@@ -231,7 +244,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 | 余额不足 | **402** + 固定文案 → 引导 `#credits` |
 | 限流 | **429**（与 402 文案分离） |
 | Key 限额 | 单日 / 月度消费上限 → 拦截 |
-| 低余额预警 | 用户设阈值 → 站内信 + 邮件 |
+| 低余额预警 | **暂不支持**控制台自定义阈值；消耗 **80%** / **100%** 各发 **一次** 预警邮件至注册邮箱 |
 | 异常调用 | 高频失败 / 批量异常 → 冻结 Key + 通知 |
 
 ---
@@ -253,7 +266,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 
 | 页面 | 路由 | MVP 范围 |
 |------|------|----------|
-| **Credits** | `#credits` | 余额、Add Credits、Payment History、**退款说明（邮件售后）**、Auto top-up（P0.5） |
+| **Credits** | `/account/workspace/default/balance` | 余额、Add Credits、Payment History（列表）、**退款说明（邮件售后）**；**收据 / 支付中心：待拍板**；Auto top-up（P0.5） |
 | **Activity** | `#activity` | 消耗明细、筛选、CSV（P1） |
 | **Models** | `#models` | 含费价目 |
 | **Contact Sales** | 表单页或 Modal | 公司、邮箱、月消耗、需求 → **商务邮件** |
@@ -318,7 +331,7 @@ Phase A · 充值闭环（P0）
   1. Credits 页接入 Purchase Credits 弹窗（Amount = Total due，无 fee 行）
   2. Stripe Checkout 或 Payment Element：卡 + Alipay + WeChat
   3. Webhook 入账 → 刷新余额（后端已有则仅联调）
-  4. Payment History 列表 + Stripe 收据链接
+  4. Payment History 列表（充值记录；**收据链接 / 支付中心：待拍板**，见 §3.5）
   5. Credits 页退款说明 + Support 邮箱（无自助 Refund 按钮）
   6. 运营 24h 退款 SOP + Stripe 部分退款联调
   7. 充值/退款/余额说明文案 + Refund Policy 页上线
@@ -389,6 +402,7 @@ global-payment.md                 ← 二期 KYC/Wire
 | 2026-06-08 | 退款：规则对齐 OR（24h·未使用·24h 后不退）；**邮件售后**，MVP 无自助 Refund 按钮 |
 | 2026-06-08 | **充值费方案 A**：吸收 Stripe 通道费；充 $N 到账 $N；无 Processing fee 行 |
 | 2026-06-08 | P0 充值弹窗不含 **Use one-time payment methods**（P0.5 与绑卡/Auto top-up 同批） |
+| 2026-06-08 | **发票 / 收据 / 支付中心** 单列 §3.5 **待拍板**；公开文档占位 **待补充** |
 
 ---
 
