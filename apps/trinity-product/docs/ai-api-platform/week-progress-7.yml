@@ -1,0 +1,61 @@
+id: 2026-07
+goal: 7 月商用运营与体验完善
+weeks:
+  - id: W27
+    period: 06-29～07-05
+    focus: 模型上架与供应线路、多模态 API、开发者文档、用户控制台、计量与计费
+    owner: @待周会
+    plan: |-
+      ① 继续接入模型（文本 / 图片 / 视频扩容）@待周会
+      模块：operations/models-routes、platform/multimodal-api
+      ② 商用全量测试与优化 @待周会
+      范围：官网流程、注册登录与充值、Chat / 控制台使用、文档站一致性
+      ③ 商用运营推广筹备 @待周会
+      模块：user/models/list、user/developer-docs
+    result: ⬜
+    testLink: —
+    blockers: |-
+      涉及主体待办（跨团队依赖）：
+      ① 模型接腾讯云海外站点 @待对接
+      ② 支付系统对接 @待对接
+      ③ 隐私政策 / 服务条款等合规文档 @待完善
+      模块：user/developer-docs
+    weeklyReport: —
+  - id: W28
+    period: 07-06～07-12
+    focus: 开发者文档、计量与计费
+    owner: —
+    plan: |-
+      ① 隐私 / 服务条款 / FAQ / support 触点完善 @待周会
+      模块：user/developer-docs
+      ② 支付对接联调与充值流程走查 @待周会
+      模块：platform/metering-billing
+      ③ 腾讯云海外站点模型接入推进 @待周会
+      模块：operations/models-routes
+    result: ⬜
+    testLink: —
+    blockers: 顺延自 W27：支付系统对接、合规文档定稿待外部主体确认
+    weeklyReport: —
+  - id: W29
+    period: 07-13～07-19
+    focus: Chat 在线体验、用户控制台、列表
+    owner: —
+    plan: |-
+      ① 用户反馈与体验优化闭环（官网 / Chat / 控制台）@待周会
+      ② 商用流程 Bug list 收敛与优先级 @待周会
+      ③ OpenRouter 差距项：模型排名页 / 控制台路由预设（二期范围预研）@待周会
+    result: ⬜
+    testLink: —
+    blockers: —
+    weeklyReport: —
+  - id: W30
+    period: 07-20～07-26
+    focus: —
+    owner: —
+    plan: |-
+      ① 7 月迭代范围拍板与验收（含 SDK / Agent 二期是否纳入）@待周会
+      ② 8 月规划预备 @待周会
+    result: ⬜
+    testLink: —
+    blockers: —
+    weeklyReport: —

@@ -537,3 +537,92 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
   width: 3.5rem;
   text-align: center;
 }
+
+/* 产品总览 · 月度能力主链（与周计划看板同款手风琴） */
+.vp-doc .month-goal-accordion {
+  overflow: hidden;
+  margin: 0.35rem 0 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.vp-doc .month-goal-accordion > details {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc .month-goal-accordion > details:last-child {
+  border-bottom: none;
+}
+
+.vp-doc .month-goal-accordion > details > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1rem;
+  margin: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.12s ease;
+}
+
+.vp-doc .month-goal-accordion > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.vp-doc .month-goal-accordion > details > summary::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-top: 0.05rem;
+  border-right: 2px solid var(--vp-c-text-3);
+  border-bottom: 2px solid var(--vp-c-text-3);
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.vp-doc .month-goal-accordion > details[open] > summary::before {
+  transform: rotate(45deg);
+  margin-top: 0.2rem;
+}
+
+.vp-doc .month-goal-accordion > details > summary:hover {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 8%, var(--vp-c-bg-soft));
+}
+
+.vp-doc .month-goal-accordion > details[open] > summary {
+  margin: 0.4rem 0.5rem 0;
+  padding: 0.85rem 0.75rem;
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, var(--vp-c-bg-soft));
+}
+
+.vp-doc .month-goal-accordion > details > :not(summary) {
+  padding: 0.35rem 1.15rem 1.1rem 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .month-goal-accordion > details[open] > :not(summary) {
+  margin: 0 0.5rem 0.45rem;
+}
+
+.vp-doc .month-goal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+}

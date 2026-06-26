@@ -22,10 +22,14 @@ export function isRoadmapYamlRel(rel: string): boolean {
   return r.endsWith("roadmap.yml") || r.endsWith(".roadmap.yml");
 }
 
-/** 总览周进度表 `week-progress.yml` */
+/** 周进度：`week-progress-index.yml` 或单月 `week-progress-N.yml` */
 export function isWeekProgressYamlRel(rel: string): boolean {
   const r = rel.trim().replace(/^\//, "").replace(/\\/g, "/");
-  return r.endsWith("week-progress.yml");
+  return (
+    r.endsWith("week-progress-index.yml") ||
+    /week-progress-\d+\.yml$/i.test(r) ||
+    r.endsWith("week-progress.yml")
+  );
 }
 
 /** 聚合产品总览待办池 `product-backlog.yml` */

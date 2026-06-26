@@ -1,10 +1,15 @@
 import { ref } from "vue";
 import {
   emptyWeekProgressData,
+  isWeekProgressMonthFileRel,
   normalizeWeekProgressData,
+  normalizeWeekProgressMonth,
+  parseWeekProgressMonthFile,
   parseWeekProgressYaml,
+  stringifyWeekProgressMonthFile,
   stringifyWeekProgressYaml,
   type WeekProgressData,
+  type WeekProgressMonth,
 } from "../shared/weekProgressSchema";
 import { canEditRoadmapYaml } from "./useRoadmapEditor";
 
@@ -17,6 +22,28 @@ export function useWeekProgressEditor(getRel: () => string) {
   const error = ref("");
   const draft = ref<WeekProgressData>(emptyWeekProgressData());
   const rawYaml = ref("");
+
+  function isMonthFile(): boolean {
+    return isWeekProgressMonthFileRel(getRel());
+  }
+
+  function draftToYaml(): string {
+    if (isMonthFile()) {
+      const m = draft.value.months[0];
+      if (!m?.id) throw new Error("无月份数据");
+      return stringifyWeekProgressMonthFile(m);
+    }
+    return stringifyWeekProgressYaml(normalizeWeekProgressData(draft.value));
+  }
+
+  function parseRawToDraft(raw: string): WeekProgressData {
+    const trimmed = raw.trim();
+    if (isMonthFile() || !trimmed.startsWith("months:")) {
+      const month = normalizeWeekProgressMonth(parseWeekProgressMonthFile(raw));
+      return { months: [month] };
+    }
+    return normalizeWeekProgressData(parseWeekProgressYaml(raw));
+  }
 
   async function parseApiError(res: Response): Promise<string> {
     const text = await res.text();
@@ -48,7 +75,7 @@ export function useWeekProgressEditor(getRel: () => string) {
     try {
       const raw = await loadYaml();
       rawYaml.value = raw;
-      draft.value = normalizeWeekProgressData(parseWeekProgressYaml(raw));
+      draft.value = parseRawToDraft(raw);
     } catch (e) {
       error.value = e instanceof Error ? e.message : "加载失败";
       draft.value = emptyWeekProgressData();
@@ -63,6 +90,15 @@ export function useWeekProgressEditor(getRel: () => string) {
     void loadTable();
   }
 
+  function openEditorWithSeed(seed: WeekProgressMonth) {
+    open.value = true;
+    loading.value = false;
+    error.value = "";
+    const month = normalizeWeekProgressMonth(seed);
+    draft.value = { months: [month] };
+    rawYaml.value = stringifyWeekProgressMonthFile(month);
+  }
+
   function closeEditor() {
     open.value = false;
     loading.value = false;
@@ -71,16 +107,26 @@ export function useWeekProgressEditor(getRel: () => string) {
   }
 
   function syncYamlFromDraft() {
-    const normalized = normalizeWeekProgressData(draft.value);
-    draft.value = normalized;
-    rawYaml.value = stringifyWeekProgressYaml(normalized);
+    if (isMonthFile()) {
+      const month = normalizeWeekProgressMonth(draft.value.months[0] ?? { id: "", goal: "", archived: false, weeks: [] });
+      draft.value = { months: [month] };
+      rawYaml.value = stringifyWeekProgressMonthFile(month);
+      return;
+    }
+    draft.value = normalizeWeekProgressData(draft.value);
+    rawYaml.value = stringifyWeekProgressYaml(draft.value);
   }
 
   function applyYamlToDraft(text: string): string | null {
     const trimmed = text.trim();
     if (!trimmed) return "YAML 不能为空";
-    if (!trimmed.includes("months:")) return "缺少 months: 段";
     try {
+      if (isMonthFile() || !trimmed.startsWith("months:")) {
+        const month = normalizeWeekProgressMonth(parseWeekProgressMonthFile(text));
+        draft.value = { months: [month] };
+        return null;
+      }
+      if (!trimmed.includes("months:")) return "缺少 months: 段";
       const parsed = parseWeekProgressYaml(text);
       if (!parsed.months.length) return "至少保留一个月份块 months";
       draft.value = normalizeWeekProgressData(parsed);
@@ -115,8 +161,13 @@ export function useWeekProgressEditor(getRel: () => string) {
   }
 
   async function saveFromDraft(): Promise<boolean> {
-    syncYamlFromDraft();
-    return persistYaml(rawYaml.value);
+    try {
+      syncYamlFromDraft();
+      return persistYaml(rawYaml.value);
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : "保存失败";
+      return false;
+    }
   }
 
   async function saveFromRawYaml(): Promise<boolean> {
@@ -125,7 +176,12 @@ export function useWeekProgressEditor(getRel: () => string) {
       error.value = err;
       return false;
     }
-    return persistYaml(stringifyWeekProgressYaml(draft.value));
+    try {
+      return persistYaml(draftToYaml());
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : "保存失败";
+      return false;
+    }
   }
 
   return {
@@ -136,10 +192,12 @@ export function useWeekProgressEditor(getRel: () => string) {
     draft,
     rawYaml,
     openEditor,
+    openEditorWithSeed,
     closeEditor,
     syncYamlFromDraft,
     applyYamlToDraft,
     saveFromDraft,
     saveFromRawYaml,
+    persistYaml,
   };
 }

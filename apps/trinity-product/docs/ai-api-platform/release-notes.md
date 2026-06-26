@@ -16,7 +16,7 @@ title: 产品迭代版本
 
 | 文档 | 写什么 | 何时更新 |
 |------|--------|----------|
-| [周计划](./#周计划与验收看板) `week-progress.yml` | 本周 focus、plan、验收口径、result | 周会 |
+| [周计划](./#周计划与验收看板) `week-progress-index.yml` + `week-progress-N.yml` | 本周 focus、plan、验收口径、result | 周会 |
 | **本页** `release-notes.yml` | 已部署能力、文档、对客户可见的变更 | **每次发布 / 上线后** |
 | [产品待办池](./#产品待办池) `product-backlog.yml` | 尚未排期的发现项 | 随时，排期后迁入周计划 |
 

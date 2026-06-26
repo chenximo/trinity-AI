@@ -41,7 +41,7 @@ npm run build:trinity-product
 
 - **浏览与编辑（推荐）**：`apps/trinity-product/docs/`
 - **手册规范**：`docs/产品手册文档规范.md` · `docs/产品手册更新规范.md`（供 AI / 人工维护）
-- **周计划真源**：`docs/ai-api-platform/week-progress.yml`（仅挂在 AI API 聚合产品 · 总览）
+- **周计划真源**：`docs/ai-api-platform/week-progress-index.yml` + 每月 `week-progress-N.yml`（仅挂在 AI API 聚合产品 · 总览）
 - **路线图 / 汇报**：`npm run dev:trinity-product` → 产品总览、子总览、`roadmap.yml`（原 `docs/05/roadmap` PPT 摘抄已废止）
 
 ## 导出 PDF / Word

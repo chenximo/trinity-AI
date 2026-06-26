@@ -49,10 +49,10 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 ## 周计划与验收看板
 
 ::: tip 维护规则
-真源 `ai-api-platform/week-progress.yml`，仅此一处。字段与符号见 [更新规范](../产品手册更新规范.md)。
+真源 **`week-progress-index.yml`** + 每月独立 **`week-progress-N.yml`**（如 `-7` 当前月、`-6` 归档）。看板手风琴：**一文件一月一表**。同月 **`goal`** 与下方 [月度能力主链](#月度能力主链) 对齐。字段见 [更新规范](../产品手册更新规范.md)。
 :::
 
-<ProductWeekProgress rel="ai-api-platform/week-progress.yml" />
+<ProductWeekProgress rel="ai-api-platform/week-progress" />
 
 ## 产品待办池
 
@@ -62,9 +62,40 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 
 <ProductBacklog rel="ai-api-platform/product-backlog.yml" />
 
-## 5.30 能力主链
+## 月度能力主链
 
-本节点要完成的 **跨模块闭环**（几步串起来能验收，不是模块清单）：
+::: tip 维护规则
+按月折叠；**当前月默认展开**，历史月默认收起。跨模块闭环（主路径串讲），**不是**模块清单；模块级 ✅🟡⬜ 在子总览 / 叶子 / roadmap。新月 **prepend** 到下方列表顶部，上月改折叠归档。
+:::
+
+<div class="month-goal-accordion">
+
+<details open id="2026-07-能力主链">
+<summary><strong>2026-07</strong> · 7 月商用运营与体验完善</summary>
+
+**跨模块闭环**（草案，周会迭代）：
+
+商用计费与充值稳定运营 → 用户反馈与体验优化闭环 → 文档 / 合规 / 支持触点完善 → 7 月迭代范围拍板
+
+是否纳入 7 月，在对应模块 **当前已做** 与周计划 **focus** 中标注。
+
+</details>
+
+<details id="630-能力主链">
+<summary><strong>2026-06</strong> · 6.30 二期收口 <span class="month-goal-badge">归档</span></summary>
+
+**跨模块闭环**：
+
+模型批量自动化上架 → 生图 / 生视频验收扩展 → 应用对接说明 → 对外文档站建设 → 6.30 商用范围产品拍板
+
+是否纳入 6.30，在对应模块 **6.30 能力** / **6.30 商用** 列填写。
+
+</details>
+
+<details id="530-能力主链">
+<summary><strong>5.30</strong> · 一期闭环 <span class="month-goal-badge">归档</span></summary>
+
+**跨模块闭环**：
 
 对外文档 Quickstart → 创建 Key → `POST /v1/chat/completions` 成功 → 运营上架至少 1 个模型 → 控制台可见用量
 
@@ -72,13 +103,9 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 
 走查与 Bug 明细：[5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（手册不抄表）。
 
-## 6.30 能力主链
+</details>
 
-本节点 **跨模块闭环**（草案）：
-
-模型批量自动化上架 → 生图 / 生视频验收扩展 → 应用对接说明 → 对外文档站建设 →  6.30 商用范围产品拍板
-
-是否纳入 6.30，在对应模块 **6.30 能力** / **6.30 商用** 列填写。
+</div>
 
 ## 相关链接
 

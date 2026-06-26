@@ -11,6 +11,8 @@ export interface WeekProgressRow {
   result: string;
   testLink: string;
   blockers: string;
+  /** 周汇报记录（会后纪要、飞书链等） */
+  weeklyReport: string;
 }
 
 export interface WeekProgressMonth {
@@ -24,18 +26,27 @@ export interface WeekProgressData {
   months: WeekProgressMonth[];
 }
 
+/** 索引：手风琴顺序（新→旧） */
+export interface WeekProgressIndex {
+  files: string[];
+}
+
 export const WEEK_RESULT_OPTIONS = [...STATUS_OPTIONS] as const;
 
-function appendWeekTextField(lines: string[], key: string, value: string | undefined) {
+const WEEK_ROW_SCALAR_KEYS =
+  "period|focus|owner|plan|acceptance|result|testLink|blockers|weeklyReport";
+
+function appendWeekTextField(lines: string[], key: string, value: string | undefined, indent = 8) {
+  const pad = " ".repeat(indent);
   const v = value?.trim();
   if (!v) return;
   if (v.includes("\n")) {
-    lines.push(`        ${key}: |-`);
+    lines.push(`${pad}${key}: |-`);
     for (const pl of v.split("\n")) {
-      lines.push(`          ${pl}`);
+      lines.push(`${pad}  ${pl}`);
     }
   } else {
-    lines.push(`        ${key}: ${yamlQuote(v)}`);
+    lines.push(`${pad}${key}: ${yamlQuote(v)}`);
   }
 }
 
@@ -94,6 +105,7 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
       result: currentWeek.result ?? "⬜",
       testLink: currentWeek.testLink ?? "—",
       blockers: currentWeek.blockers ?? "—",
+      weeklyReport: currentWeek.weeklyReport ?? "—",
     });
     currentWeek = null;
   }
@@ -154,7 +166,7 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
 
     const weekIndent = (line.match(/^(\s*)/) || ["", ""])[1].length;
     const blockKey = trimmed.match(
-      /^(period|focus|owner|plan|acceptance|result|testLink|blockers):\s*(\|[-+]?)?\s*$/,
+      new RegExp(`^(${WEEK_ROW_SCALAR_KEYS}):\\s*(\\|[-+]?)?\\s*$`),
     );
     if (blockKey && blockKey[2] !== undefined) {
       const { value, nextIdx } = readBlockScalar(lines, lineIdx + 1, weekIndent);
@@ -163,9 +175,7 @@ export function parseWeekProgressYaml(raw: string): WeekProgressData {
       continue;
     }
 
-    const kv = trimmed.match(
-      /^(period|focus|owner|plan|acceptance|result|testLink|blockers):\s*(.*)$/,
-    );
+    const kv = trimmed.match(new RegExp(`^(${WEEK_ROW_SCALAR_KEYS}):\\s*(.*)$`));
     if (kv) {
       const val = kv[2].trim().replace(/^["']|["']$/g, "");
       (currentWeek as Record<string, string>)[kv[1]] = val;
@@ -195,6 +205,7 @@ export function stringifyWeekProgressYaml(data: WeekProgressData): string {
       const testLink = w.testLink?.trim() || "—";
       lines.push(`        testLink: ${yamlQuote(testLink)}`);
       appendWeekTextField(lines, "blockers", w.blockers?.trim() ? w.blockers : "—");
+      appendWeekTextField(lines, "weeklyReport", w.weeklyReport?.trim() ? w.weeklyReport : "—");
     }
   }
   lines.push("");
@@ -203,21 +214,166 @@ export function stringifyWeekProgressYaml(data: WeekProgressData): string {
 
 export function normalizeWeekProgressData(data: WeekProgressData): WeekProgressData {
   return {
-    months: data.months.map((m) => ({
-      id: m.id.trim(),
-      goal: m.goal?.trim() ?? "",
-      archived: Boolean(m.archived),
-      weeks: m.weeks.map((w) => ({
-        id: w.id.trim(),
-        period: w.period?.trim() ?? "",
-        focus: w.focus?.trim() ?? "",
-        owner: w.owner?.trim() || "—",
-        plan: w.plan?.trim() ?? "",
-        acceptance: w.acceptance?.trim() ?? "",
-        result: w.result?.trim() || "⬜",
-        testLink: w.testLink?.trim() || "—",
-        blockers: w.blockers?.trim() || "—",
-      })),
+    months: data.months.map((m) => normalizeWeekProgressMonth(m)),
+  };
+}
+
+export function normalizeWeekProgressMonth(m: WeekProgressMonth): WeekProgressMonth {
+  return {
+    id: m.id.trim(),
+    goal: m.goal?.trim() ?? "",
+    archived: Boolean(m.archived),
+    weeks: m.weeks.map((w) => ({
+      id: w.id.trim(),
+      period: w.period?.trim() ?? "",
+      focus: w.focus?.trim() ?? "",
+      owner: w.owner?.trim() || "—",
+      plan: w.plan?.trim() ?? "",
+      acceptance: w.acceptance?.trim() ?? "",
+      result: w.result?.trim() || "⬜",
+      testLink: w.testLink?.trim() || "—",
+      blockers: w.blockers?.trim() || "—",
+      weeklyReport: w.weeklyReport?.trim() || "—",
     })),
   };
+}
+
+/** 索引 `week-progress-index.yml` */
+export function parseWeekProgressIndex(raw: string): WeekProgressIndex {
+  const files: string[] = [];
+  for (const line of raw.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const m = trimmed.match(/^-\s+(.+)$/);
+    if (m) {
+      const f = m[1].trim().replace(/^["']|["']$/g, "");
+      if (f) files.push(f);
+      continue;
+    }
+    if (trimmed.startsWith("files:")) continue;
+  }
+  return { files };
+}
+
+export function stringifyWeekProgressIndex(data: WeekProgressIndex): string {
+  const lines = ["files:"];
+  for (const f of data.files) {
+    lines.push(`  - ${yamlQuote(f)}`);
+  }
+  lines.push("");
+  return lines.join("\n");
+}
+
+/** 单月文件 `week-progress-N.yml`（根级 id / goal / weeks，无 months 包裹） */
+export function parseWeekProgressMonthFile(raw: string): WeekProgressMonth {
+  const trimmed = raw.trim();
+  if (trimmed.startsWith("months:")) {
+    const data = parseWeekProgressYaml(raw);
+    const first = data.months[0];
+    if (!first?.id) throw new Error("months 为空");
+    return first;
+  }
+
+  const lines = raw.split("\n");
+  let id = "";
+  let goal = "";
+  let archived = false;
+  const weeks: WeekProgressRow[] = [];
+  let inWeeks = false;
+  let currentWeek: Partial<WeekProgressRow> | null = null;
+
+  function pushWeek() {
+    if (!currentWeek?.id) return;
+    weeks.push({
+      id: currentWeek.id,
+      period: currentWeek.period ?? "",
+      focus: currentWeek.focus ?? "",
+      owner: currentWeek.owner ?? "—",
+      plan: currentWeek.plan ?? "",
+      acceptance: currentWeek.acceptance ?? "",
+      result: currentWeek.result ?? "⬜",
+      testLink: currentWeek.testLink ?? "—",
+      blockers: currentWeek.blockers ?? "—",
+      weeklyReport: currentWeek.weeklyReport ?? "—",
+    });
+    currentWeek = null;
+  }
+
+  for (let lineIdx = 0; lineIdx < lines.length; lineIdx += 1) {
+    const line = lines[lineIdx];
+    const t = line.trim();
+    if (!t || t.startsWith("#")) continue;
+
+    if (t.startsWith("id:") && !inWeeks) {
+      id = t.slice(3).trim().replace(/^["']|["']$/g, "");
+      continue;
+    }
+    if (t.startsWith("goal:") && !inWeeks) {
+      goal = t.slice(5).trim().replace(/^["']|["']$/g, "");
+      continue;
+    }
+    if (t.startsWith("archived:") && !inWeeks) {
+      const v = t.slice(9).trim().toLowerCase();
+      archived = v === "true" || v === "yes";
+      continue;
+    }
+    if (t === "weeks:") {
+      inWeeks = true;
+      continue;
+    }
+    if (!inWeeks) continue;
+
+    if (t.startsWith("- id:")) {
+      pushWeek();
+      currentWeek = { id: t.slice("- id:".length).trim().replace(/^["']|["']$/g, "") };
+      continue;
+    }
+    if (!currentWeek) continue;
+
+    const weekIndent = (line.match(/^(\s*)/) || ["", ""])[1].length;
+    const blockKey = t.match(new RegExp(`^(${WEEK_ROW_SCALAR_KEYS}):\\s*(\\|[-+]?)?\\s*$`));
+    if (blockKey && blockKey[2] !== undefined) {
+      const { value, nextIdx } = readBlockScalar(lines, lineIdx + 1, weekIndent);
+      (currentWeek as Record<string, string>)[blockKey[1]] = value;
+      lineIdx = nextIdx;
+      continue;
+    }
+    const kv = t.match(new RegExp(`^(${WEEK_ROW_SCALAR_KEYS}):\\s*(.*)$`));
+    if (kv) {
+      (currentWeek as Record<string, string>)[kv[1]] = kv[2].trim().replace(/^["']|["']$/g, "");
+    }
+  }
+  pushWeek();
+  if (!id) throw new Error("缺少 id");
+  return { id, goal, archived, weeks };
+}
+
+export function stringifyWeekProgressMonthFile(m: WeekProgressMonth): string {
+  const month = normalizeWeekProgressMonth(m);
+  const lines: string[] = [`id: ${yamlQuote(month.id)}`];
+  if (month.goal?.trim()) lines.push(`goal: ${yamlQuote(month.goal.trim())}`);
+  if (month.archived) lines.push(`archived: true`);
+  lines.push(`weeks:`);
+  for (const w of month.weeks) {
+    lines.push(`  - id: ${yamlQuote(w.id)}`);
+    if (w.period?.trim()) lines.push(`    period: ${yamlQuote(w.period.trim())}`);
+    if (w.focus?.trim()) lines.push(`    focus: ${yamlQuote(w.focus.trim())}`);
+    lines.push(`    owner: ${yamlQuote(w.owner?.trim() || "—")}`);
+    appendWeekTextField(lines, "plan", w.plan, 4);
+    appendWeekTextField(lines, "acceptance", w.acceptance, 4);
+    lines.push(`    result: ${yamlQuote(w.result || "⬜")}`);
+    lines.push(`    testLink: ${yamlQuote(w.testLink?.trim() || "—")}`);
+    appendWeekTextField(lines, "blockers", w.blockers?.trim() ? w.blockers : "—", 4);
+    appendWeekTextField(lines, "weeklyReport", w.weeklyReport?.trim() ? w.weeklyReport : "—", 4);
+  }
+  lines.push("");
+  return lines.join("\n");
+}
+
+export function isWeekProgressMonthFileRel(rel: string): boolean {
+  return /week-progress-\d+\.yml$/i.test(rel.replace(/^\//, ""));
+}
+
+export function isWeekProgressIndexRel(rel: string): boolean {
+  return rel.replace(/^\//, "").endsWith("week-progress-index.yml");
 }

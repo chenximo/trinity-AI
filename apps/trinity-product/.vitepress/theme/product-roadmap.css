@@ -323,3 +323,127 @@
 .pr-btn--add {
   border-style: dashed;
 }
+
+/* 周计划看板 · 按月手风琴（与 FAQ 故障排查同款交互） */
+.product-week-progress-wrap .pw-month-accordion {
+  overflow: hidden;
+  margin: 0.35rem 0 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+}
+
+.product-week-progress-wrap .pw-month-item {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.product-week-progress-wrap .pw-month-item:last-child {
+  border-bottom: none;
+}
+
+.product-week-progress-wrap .pw-month-head {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.product-week-progress-wrap .pw-month-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  margin: 0;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  transition: background 0.12s ease;
+}
+
+.product-week-progress-wrap .pw-month-edit-btn {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-right: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-brand-1, #2563eb);
+  background: color-mix(in srgb, var(--vp-c-brand-1, #2563eb) 8%, var(--vp-c-bg));
+  color: var(--vp-c-brand-1, #2563eb);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.product-week-progress-wrap .pw-month-edit-btn:hover {
+  background: var(--vp-c-brand-1, #2563eb);
+  color: #fff;
+}
+
+.product-week-progress-wrap .pw-month-accordion-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  margin-top: 0.65rem;
+}
+
+.product-week-progress-wrap .pw-month-summary:hover {
+  background: color-mix(in srgb, var(--vp-c-brand-1) 8%, var(--vp-c-bg-soft));
+}
+
+.product-week-progress-wrap .pw-month-item--open > .pw-month-head > .pw-month-summary {
+  margin: 0.4rem 0.5rem 0;
+  padding: 0.85rem 0.75rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--vp-c-brand-1) 10%, var(--vp-c-bg-soft));
+}
+
+.product-week-progress-wrap .pw-month-chevron {
+  flex-shrink: 0;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-top: 0.05rem;
+  border-right: 2px solid var(--vp-c-text-3);
+  border-bottom: 2px solid var(--vp-c-text-3);
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.product-week-progress-wrap .pw-month-item--open > .pw-month-head > .pw-month-summary .pw-month-chevron {
+  transform: rotate(45deg);
+  margin-top: 0.2rem;
+}
+
+.product-week-progress-wrap .pw-month-summary-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.product-week-progress-wrap .pw-month-summary-badge {
+  flex-shrink: 0;
+  padding: 0.08rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+}
+
+.product-week-progress-wrap .pw-month-panel {
+  padding: 0.35rem 0.65rem 0.85rem;
+}
+
+.product-week-progress-wrap .pw-month-item--open > .pw-month-panel {
+  margin: 0 0.5rem 0.45rem;
+}

@@ -2,81 +2,130 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useData } from "vitepress";
 import {
-  emptyWeekProgressData,
-  normalizeWeekProgressData,
-  parseWeekProgressYaml,
+  normalizeWeekProgressMonth,
+  parseWeekProgressIndex,
+  parseWeekProgressMonthFile,
+  stringifyWeekProgressIndex,
   WEEK_RESULT_OPTIONS,
-  type WeekProgressData,
   type WeekProgressMonth,
   type WeekProgressRow,
 } from "../shared/weekProgressSchema";
 import {
   FOCUS_GROUPS,
-  focusHrefForItem,
   focusLeavesByGroup,
   isKnownFocusLabel,
 } from "../shared/weekProgressFocusLeaves";
 import { canEditRoadmapYaml } from "./useRoadmapEditor";
 import { useWeekProgressEditor } from "./useWeekProgressEditor";
+import ProductWeekProgressMonth from "./ProductWeekProgressMonth.vue";
+import {
+  focusItems,
+  formatPeriodLabel,
+  monthHeading,
+  textPreview,
+} from "../shared/weekProgressDisplay";
 import "./product-roadmap.css";
 
 const props = defineProps<{
-  /** docs 下路径，默认 `{当前页目录}/week-progress.yml` */
+  /** 周进度前缀或索引路径：`week-progress` / `ai-api-platform/week-progress` → 同目录 `week-progress-index.yml` */
   rel?: string;
   src?: string;
 }>();
 
 const { page } = useData();
 
-const fileRel = computed(() => {
-  const r = props.rel?.trim();
-  if (r && (r.includes("/") || r.endsWith(".yml")) && !r.startsWith("./")) {
-    return r.replace(/^\//, "");
+interface MonthEntry {
+  fileRel: string;
+  month: WeekProgressMonth;
+}
+
+const indexRel = computed(() => {
+  const r = (props.rel || props.src || "week-progress").trim().replace(/^\.\//, "").replace(/^\//, "");
+  if (r.endsWith("week-progress-index.yml")) return r;
+  if (/week-progress(-\d+)?\.yml$/i.test(r)) {
+    return r.replace(/week-progress(-\d+)?\.yml$/i, "week-progress-index.yml");
   }
-  const file = (r || props.src || "week-progress.yml").replace(/^\.\//, "");
+
   const pageDir = (page.value.relativePath || "").replace(/\/[^/]+$/, "");
-  if (file.includes("/") || file === "week-progress.yml") {
-    return pageDir ? `${pageDir}/${file.replace(/^\//, "")}` : file;
+
+  // `week-progress` 为文件名前缀，非子目录 → 同目录 `week-progress-index.yml`
+  if (r === "week-progress") {
+    return pageDir ? `${pageDir}/week-progress-index.yml` : "week-progress-index.yml";
   }
-  return pageDir ? `${pageDir}/${file}` : file;
+  if (r.endsWith("/week-progress")) {
+    const dir = r.slice(0, -"/week-progress".length);
+    return `${dir}/week-progress-index.yml`;
+  }
+
+  // 显式目录前缀（如 `ai-api-platform`）
+  const base = r.includes("/") ? r.replace(/\/$/, "") : pageDir ? `${pageDir}/${r}` : r;
+  return `${base}/week-progress-index.yml`;
 });
 
-const rawYaml = ref("");
-const loadError = ref("");
+const indexDir = computed(() => {
+  const idx = indexRel.value;
+  const i = idx.lastIndexOf("/");
+  return i >= 0 ? idx.slice(0, i + 1) : "";
+});
 
-async function fetchDisplayYaml() {
-  const rel = fileRel.value;
-  if (!rel) return;
-  loadError.value = "";
-  try {
-    if (canEditRoadmapYaml()) {
-      const API = `${(import.meta.env.BASE_URL || "/product/").replace(/\/?$/, "")}/__trinity_dev_product`;
-      const res = await fetch(`${API}/raw?rel=${encodeURIComponent(rel)}`);
-      const data = (await res.json()) as { content?: string; error?: string };
-      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
-      rawYaml.value = data.content ?? "";
-      return;
-    }
-    const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
-    const res = await fetch(`${base}${rel}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    rawYaml.value = await res.text();
-  } catch (e) {
-    loadError.value = e instanceof Error ? e.message : "加载失败";
-    rawYaml.value = "";
+function resolveMonthFileRel(name: string): string {
+  const n = name.trim().replace(/^\//, "");
+  if (n.includes("/")) return n;
+  return `${indexDir.value}${n}`;
+}
+
+const monthEntries = ref<MonthEntry[]>([]);
+const loadError = ref("");
+const editingFileRel = ref("");
+const pendingIndexFile = ref("");
+
+async function fetchYamlText(rel: string): Promise<string> {
+  if (canEditRoadmapYaml()) {
+    const API = `${(import.meta.env.BASE_URL || "/product/").replace(/\/?$/, "")}/__trinity_dev_product`;
+    const res = await fetch(`${API}/raw?rel=${encodeURIComponent(rel)}`);
+    const data = (await res.json()) as { content?: string; error?: string };
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    return data.content ?? "";
+  }
+  const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
+  const res = await fetch(`${base}${rel.replace(/^\//, "")}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.text();
+}
+
+async function saveYamlText(rel: string, content: string): Promise<void> {
+  const API = `${(import.meta.env.BASE_URL || "/product/").replace(/\/?$/, "")}/__trinity_dev_product`;
+  const res = await fetch(`${API}/save`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ rel, content }),
+  });
+  if (!res.ok) {
+    const data = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(data.error || `HTTP ${res.status}`);
   }
 }
 
-const data = computed<WeekProgressData>(() => {
-  if (!rawYaml.value) return emptyWeekProgressData();
+async function fetchAllMonths() {
+  loadError.value = "";
   try {
-    return normalizeWeekProgressData(parseWeekProgressYaml(rawYaml.value));
-  } catch {
-    return emptyWeekProgressData();
+    const indexRaw = await fetchYamlText(indexRel.value);
+    const { files } = parseWeekProgressIndex(indexRaw);
+    const entries: MonthEntry[] = [];
+    for (const name of files) {
+      const fileRel = resolveMonthFileRel(name);
+      const raw = await fetchYamlText(fileRel);
+      const month = normalizeWeekProgressMonth(parseWeekProgressMonthFile(raw));
+      entries.push({ fileRel, month });
+    }
+    monthEntries.value = entries;
+  } catch (e) {
+    loadError.value = e instanceof Error ? e.message : "加载失败";
+    monthEntries.value = [];
   }
-});
+}
 
-const showEdit = computed(() => canEditRoadmapYaml() && Boolean(fileRel.value));
+const showEdit = computed(() => canEditRoadmapYaml() && Boolean(indexRel.value));
 
 const {
   open: editorOpen,
@@ -86,24 +135,35 @@ const {
   draft: editorDraft,
   rawYaml: editorRawYaml,
   openEditor,
+  openEditorWithSeed,
   closeEditor,
   syncYamlFromDraft,
   applyYamlToDraft,
   saveFromDraft,
   saveFromRawYaml,
-} = useWeekProgressEditor(() => fileRel.value);
+} = useWeekProgressEditor(() => editingFileRel.value);
 
 type EditorTab = "table" | "yaml";
 const editorTab = ref<EditorTab>("table");
+const editingMonthIdx = ref(0);
 
-type TextEditField = "plan" | "blockers";
+const editingMonthLabel = computed(() => {
+  const m = editorDraft.value.months[editingMonthIdx.value];
+  return m ? monthHeading(m) : "";
+});
+
+type TextEditField = "plan" | "blockers" | "weeklyReport";
 const textEditOpen = ref(false);
 const textEditField = ref<TextEditField>("plan");
 const textEditDraft = ref("");
 const textEditMonthIdx = ref(-1);
 const textEditWeekIdx = ref(-1);
 
-const textEditTitle = computed(() => (textEditField.value === "plan" ? "编辑计划" : "编辑备注"));
+const textEditTitle = computed(() => {
+  if (textEditField.value === "plan") return "编辑计划";
+  if (textEditField.value === "weeklyReport") return "编辑周汇报记录";
+  return "编辑备注";
+});
 const textEditWeekLabel = computed(() => {
   const m = editorDraft.value.months[textEditMonthIdx.value];
   const w = m?.weeks[textEditWeekIdx.value];
@@ -113,8 +173,45 @@ const textEditWeekLabel = computed(() => {
 });
 
 watch(editorOpen, (open) => {
-  if (open) editorTab.value = "table";
+  if (!open) {
+    editingFileRel.value = "";
+    pendingIndexFile.value = "";
+    return;
+  }
+  editorTab.value = "table";
 });
+
+function openEditorForEntry(entry: MonthEntry) {
+  pendingIndexFile.value = "";
+  editingFileRel.value = entry.fileRel;
+  editingMonthIdx.value = 0;
+  editorTab.value = "table";
+  openEditor();
+}
+
+function nextMonthFileNum(): number {
+  const nums = monthEntries.value.map((e) => {
+    const m = e.fileRel.match(/week-progress-(\d+)\.yml$/i);
+    return m ? Number.parseInt(m[1], 10) : 0;
+  });
+  return Math.max(6, ...nums, 0) + 1;
+}
+
+function openEditorForNewMonth() {
+  const n = nextMonthFileNum();
+  const fileName = `week-progress-${n}.yml`;
+  pendingIndexFile.value = fileName;
+  editingFileRel.value = resolveMonthFileRel(fileName);
+  editingMonthIdx.value = 0;
+  editorTab.value = "table";
+  const now = new Date();
+  openEditorWithSeed({
+    id: `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`,
+    goal: "",
+    archived: false,
+    weeks: [],
+  });
+}
 
 function switchEditorTab(tab: EditorTab) {
   if (tab === editorTab.value) return;
@@ -132,44 +229,59 @@ function switchEditorTab(tab: EditorTab) {
   editorTab.value = "table";
 }
 
-watch(fileRel, () => {
-  void fetchDisplayYaml();
+watch(indexRel, () => {
+  void fetchAllMonths();
 });
 
 onMounted(() => {
-  void fetchDisplayYaml();
+  void fetchAllMonths();
 });
 
 async function onSaveEditor() {
   const ok = editorTab.value === "yaml" ? await saveFromRawYaml() : await saveFromDraft();
   if (!ok) return;
+  if (pendingIndexFile.value) {
+    try {
+      const indexRaw = await fetchYamlText(indexRel.value);
+      const index = parseWeekProgressIndex(indexRaw);
+      if (!index.files.includes(pendingIndexFile.value)) {
+        index.files.unshift(pendingIndexFile.value);
+        await saveYamlText(indexRel.value, stringifyWeekProgressIndex(index));
+      }
+    } catch (e) {
+      editorError.value = e instanceof Error ? e.message : "更新索引失败";
+      return;
+    }
+  }
+  pendingIndexFile.value = "";
   closeEditor();
-  await fetchDisplayYaml();
+  await fetchAllMonths();
 }
 
-function monthHeading(m: WeekProgressMonth): string {
-  const goal = m.goal?.trim();
-  return goal ? `${m.id}（${goal}）` : m.id;
+const monthExpanded = ref<Record<string, boolean>>({});
+
+function syncMonthExpanded(months: WeekProgressMonth[]) {
+  const next: Record<string, boolean> = {};
+  const firstActiveIdx = months.findIndex((m) => !m.archived);
+  months.forEach((m, i) => {
+    const prev = monthExpanded.value[m.id];
+    next[m.id] = prev !== undefined ? prev : m.archived ? false : i === firstActiveIdx;
+  });
+  monthExpanded.value = next;
 }
 
-function isHttpLink(v: string): boolean {
-  return /^https?:\/\//.test(v.trim());
+watch(
+  () => monthEntries.value.map((e) => `${e.month.id}:${e.month.archived ? 1 : 0}`).join("|"),
+  () => syncMonthExpanded(monthEntries.value.map((e) => e.month)),
+  { immediate: true },
+);
+
+function toggleMonth(id: string) {
+  monthExpanded.value = { ...monthExpanded.value, [id]: !monthExpanded.value[id] };
 }
 
-function focusItems(v: string): string[] {
-  const raw = (v || "").trim();
-  if (!raw || raw === "—") return [];
-  return raw
-    .split(/[、,，]\s*/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
-
-/** 看板展示：06-01～06-07 → 06.01～06.07 */
-function formatPeriodLabel(period: string): string {
-  const p = (period || "").trim();
-  if (!p || p === "—") return "";
-  return p.replace(/(\d{1,2})-(\d{1,2})/g, "$1.$2");
+function isMonthExpanded(id: string): boolean {
+  return Boolean(monthExpanded.value[id]);
 }
 
 function joinFocus(items: string[]): string {
@@ -200,22 +312,10 @@ function focusPickOptions(week: WeekProgressRow, group: (typeof FOCUS_GROUPS)[nu
   return focusLeavesByGroup(group).filter((l) => !selected.has(l.label));
 }
 
-function addMonth() {
-  editorDraft.value.months.unshift({
-    id: "2026-07",
-    goal: "",
-    archived: false,
-    weeks: [],
-  });
-}
-
-function removeMonth(mIdx: number) {
-  editorDraft.value.months.splice(mIdx, 1);
-}
-
-function addWeek(mIdx: number) {
+function addWeek() {
+  const mIdx = editingMonthIdx.value;
   const month = editorDraft.value.months[mIdx];
-  if (!month) return;
+  if (!month || mIdx < 0) return;
   month.weeks.push({
     id: "W00",
     period: "",
@@ -226,62 +326,24 @@ function addWeek(mIdx: number) {
     result: "⬜",
     testLink: "—",
     blockers: "—",
+    weeklyReport: "—",
   });
 }
 
-function removeWeek(mIdx: number, wIdx: number) {
+function removeWeek(wIdx: number) {
+  const mIdx = editingMonthIdx.value;
+  if (mIdx < 0) return;
   editorDraft.value.months[mIdx]?.weeks.splice(wIdx, 1);
 }
 
-type PlanTextSeg = { kind: "text" | "at"; value: string };
-
-const PLAN_TASK_RE = /^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫]/;
-const PLAN_AT_RE = /@[^@\s、，,；;（）()\n]+/g;
-
-/** 计划展示：按 ①②… 拆行；续行（模块/待依赖）跟在上条任务下 */
-function planDisplayLines(plan: string): string[] {
-  const v = (plan || "").trim();
-  if (!v) return [];
-  const rows: string[] = [];
-  for (const raw of v.split("\n")) {
-    const line = raw.trim();
-    if (!line) continue;
-    const pieces = line
-      .split(/(?=[①②③④⑤⑥⑦⑧⑨⑩⑪⑫])/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-    rows.push(...pieces);
-  }
-  return rows;
+function removeEditingMonth() {
+  closeEditor();
 }
 
-function isPlanTaskLine(line: string): boolean {
-  return PLAN_TASK_RE.test(line.trim());
-}
-
-function planLineSegments(line: string): PlanTextSeg[] {
-  const out: PlanTextSeg[] = [];
-  let last = 0;
-  for (const m of line.matchAll(PLAN_AT_RE)) {
-    const idx = m.index ?? 0;
-    if (idx > last) out.push({ kind: "text", value: line.slice(last, idx) });
-    out.push({ kind: "at", value: m[0] });
-    last = idx + m[0].length;
-  }
-  if (last < line.length) out.push({ kind: "text", value: line.slice(last) });
-  return out.length ? out : [{ kind: "text", value: line }];
-}
-
-function textPreview(value: string, maxLen = 56): string {
-  const v = (value || "").trim();
-  if (!v) return "（空，点击编辑）";
-  const oneLine = v.replace(/\s*\n\s*/g, " / ");
-  return oneLine.length > maxLen ? `${oneLine.slice(0, maxLen)}…` : oneLine;
-}
-
-function openTextEdit(mIdx: number, wIdx: number, field: TextEditField) {
+function openTextEdit(wIdx: number, field: TextEditField) {
+  const mIdx = editingMonthIdx.value;
   const week = editorDraft.value.months[mIdx]?.weeks[wIdx];
-  if (!week) return;
+  if (!week || mIdx < 0) return;
   textEditMonthIdx.value = mIdx;
   textEditWeekIdx.value = wIdx;
   textEditField.value = field;
@@ -306,109 +368,28 @@ function saveTextEdit() {
 
 <template>
   <div class="product-roadmap-wrap product-week-progress-wrap">
-    <div v-if="showEdit" class="product-roadmap-toolbar">
-      <button type="button" class="product-roadmap-edit-btn" @click="openEditor">
-        编辑周进度
-      </button>
-      <span class="product-roadmap-toolbar-hint">
-        仅 localhost · <code>docs/{{ fileRel }}</code>
-      </span>
-    </div>
-
     <p v-if="loadError" class="product-roadmap-error">{{ loadError }}</p>
 
     <template v-else>
-      <section
-        v-for="(month, mIdx) in data.months"
-        v-show="!editorOpen"
-        :key="month.id + mIdx"
-        class="product-week-progress-month"
-      >
-        <h3 class="product-week-progress-month-title">
-          {{ monthHeading(month) }}
-          <span v-if="month.archived" class="product-week-progress-archived">归档</span>
-        </h3>
-        <div class="pw-table-wrap product-roadmap" role="region" aria-label="周进度表">
-          <table>
-            <thead>
-              <tr>
-                <th class="pw-col-week">周</th>
-                <th class="pw-col-focus">重点模块</th>
-                <th class="pw-col-owner">负责人</th>
-                <th class="pw-col-plan">计划</th>
-                <th class="pw-col-result">结果</th>
-                <th class="pw-col-link">测试链接</th>
-                <th class="pw-col-blockers">备注</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(w, wIdx) in month.weeks" :key="w.id + wIdx">
-                <td class="pw-col-week">
-                  <div class="pw-week-cell">
-                    <strong class="pw-week-id">{{ w.id }}</strong>
-                    <span v-if="formatPeriodLabel(w.period)" class="pw-week-period">{{ formatPeriodLabel(w.period) }}</span>
-                  </div>
-                </td>
-                <td class="pw-col-focus">
-                  <template v-if="focusItems(w.focus).length">
-                    <span v-for="(item, itemIdx) in focusItems(w.focus)" :key="item + itemIdx" class="pw-focus-item">
-                      <a
-                        v-if="focusHrefForItem(item)"
-                        :href="focusHrefForItem(item) || '#'"
-                        class="pw-focus-link"
-                      >{{ item }}</a>
-                      <span v-else class="pw-focus-unknown" :title="'非标准叶子名，请从编辑里重选'">{{ item }}</span>
-                    </span>
-                  </template>
-                  <span v-else>—</span>
-                </td>
-                <td class="pw-col-owner">{{ w.owner || "—" }}</td>
-                <td class="pw-col-plan">
-                  <template v-if="!w.plan?.trim()">—</template>
-                  <div v-else class="pw-plan-body">
-                    <div
-                      v-for="(line, li) in planDisplayLines(w.plan)"
-                      :key="li"
-                      class="pw-plan-line"
-                      :class="{ 'pw-plan-line--task': isPlanTaskLine(line) }"
-                    >
-                      <template v-for="(seg, si) in planLineSegments(line)" :key="si">
-                        <span v-if="seg.kind === 'at'" class="pw-plan-at">{{ seg.value }}</span>
-                        <span v-else>{{ seg.value }}</span>
-                      </template>
-                    </div>
-                  </div>
-                </td>
-                <td class="pw-col-result">{{ w.result || "⬜" }}</td>
-                <td class="pw-col-link">
-                  <a v-if="isHttpLink(w.testLink)" :href="w.testLink" target="_blank" rel="noreferrer">打开</a>
-                  <span v-else>{{ w.testLink || "—" }}</span>
-                </td>
-                <td class="pw-col-blockers">
-                  <template v-if="!w.blockers?.trim() || w.blockers === '—'">—</template>
-                  <div v-else class="pw-plan-body">
-                    <div
-                      v-for="(line, li) in planDisplayLines(w.blockers)"
-                      :key="li"
-                      class="pw-plan-line"
-                      :class="{ 'pw-plan-line--task': isPlanTaskLine(line) }"
-                    >
-                      <template v-for="(seg, si) in planLineSegments(line)" :key="si">
-                        <span v-if="seg.kind === 'at'" class="pw-plan-at">{{ seg.value }}</span>
-                        <span v-else>{{ seg.value }}</span>
-                      </template>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr v-if="!month.weeks.length">
-                <td colspan="7" class="product-roadmap-muted">暂无周记录</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <p v-if="!data.months.length" class="product-roadmap-muted">周进度为空，localhost 下点击「编辑周进度」添加。</p>
+      <div v-if="monthEntries.length" class="pw-month-accordion">
+        <ProductWeekProgressMonth
+          v-for="entry in monthEntries"
+          :key="entry.fileRel"
+          :month="entry.month"
+          :file-rel="entry.fileRel"
+          :expanded="isMonthExpanded(entry.month.id)"
+          :show-edit="showEdit"
+          @toggle="toggleMonth(entry.month.id)"
+          @edit="openEditorForEntry(entry)"
+        />
+      </div>
+      <p v-else class="product-roadmap-muted">周进度为空，localhost 下点击「添加新月」创建。</p>
+      <div v-if="showEdit" class="pw-month-accordion-footer">
+        <button type="button" class="pr-btn pr-btn--add" @click="openEditorForNewMonth">+ 添加新月</button>
+        <span class="product-roadmap-toolbar-hint">
+          索引 <code>docs/{{ indexRel }}</code> · 每月独立 YAML（如 <code>week-progress-7.yml</code>）
+        </span>
+      </div>
     </template>
 
     <div
@@ -416,13 +397,13 @@ function saveTextEdit() {
       class="product-roadmap-modal-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="编辑周进度"
+      :aria-label="`编辑周进度 ${editingMonthLabel}`"
       @click.self="closeEditor"
     >
       <div class="product-roadmap-modal product-week-progress-modal">
         <header class="product-roadmap-modal-head">
-          <h3>编辑周进度</h3>
-          <code>docs/{{ fileRel }}</code>
+          <h3>编辑周进度 · {{ editingMonthLabel || "YAML" }}</h3>
+          <code>docs/{{ editingFileRel || indexRel }}</code>
           <div class="product-roadmap-modal-actions">
             <button type="button" class="pr-btn" @click="closeEditor">取消</button>
             <button
@@ -461,29 +442,33 @@ function saveTextEdit() {
 
           <div v-show="editorTab === 'table'" class="product-roadmap-editor-scroll">
             <p class="product-week-progress-editor-hint">
-              <strong>重点模块</strong>：从下拉 <strong>+ 添加标准叶子页</strong> 多选（与侧栏叶子 <code>title</code> 一致）；已选标签可点 × 移除。
-              保存后看板显示为可点击链接。清单见 <code>.vitepress/shared/weekProgressFocusLeaves.ts</code>。
-              <strong>计划 / 备注</strong>：书写与看板样式相同（<code>①</code> 分行、<code>@姓名</code>、续行）；点 <strong>编辑计划</strong> / <strong>编辑备注</strong> 多行编辑。见 <code>产品手册更新规范.md</code> §四。
+              仅编辑<strong>当前月文件</strong> <code>{{ editingFileRel }}</code>；保存后写回该 YAML，并更新索引。
+              <strong>重点模块</strong>从下拉多选；<strong>计划 / 备注</strong>点按钮多行编辑。见 <code>产品手册更新规范.md</code> §四。
             </p>
             <div
-              v-for="(month, mIdx) in editorDraft.months"
-              :key="'em-' + mIdx"
+              v-if="editorDraft.months[editingMonthIdx]"
+              :key="'em-' + editingMonthIdx"
               class="product-week-progress-editor-month"
             >
               <div class="product-week-progress-editor-month-head">
                 <label>
                   月份 id
-                  <input v-model="month.id" type="text" class="pr-input" />
+                  <input v-model="editorDraft.months[editingMonthIdx].id" type="text" class="pr-input" />
                 </label>
                 <label>
                   说明 goal
-                  <input v-model="month.goal" type="text" class="pr-input pr-input--wide" placeholder="面向 6.30" />
+                  <input
+                    v-model="editorDraft.months[editingMonthIdx].goal"
+                    type="text"
+                    class="pr-input pr-input--wide"
+                    placeholder="7 月商用运营与体验完善"
+                  />
                 </label>
                 <label class="product-week-progress-check">
-                  <input v-model="month.archived" type="checkbox" />
+                  <input v-model="editorDraft.months[editingMonthIdx].archived" type="checkbox" />
                   归档
                 </label>
-                <button type="button" class="pr-btn pr-btn--danger" @click="removeMonth(mIdx)">删除本月</button>
+                <button type="button" class="pr-btn pr-btn--danger" @click="removeEditingMonth">删除本月</button>
               </div>
 
               <table class="product-roadmap-editor-table">
@@ -496,11 +481,12 @@ function saveTextEdit() {
                     <th>结果</th>
                     <th>测试链接</th>
                     <th>备注</th>
+                    <th>周汇报记录</th>
                     <th />
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(w, wIdx) in month.weeks" :key="'ew-' + wIdx">
+                  <tr v-for="(w, wIdx) in editorDraft.months[editingMonthIdx].weeks" :key="'ew-' + wIdx">
                     <td class="pw-week-editor-cell">
                       <input v-model="w.id" type="text" class="pr-input" placeholder="W23" />
                       <input
@@ -550,7 +536,7 @@ function saveTextEdit() {
                     </td>
                     <td><input v-model="w.owner" type="text" class="pr-input pr-input--owner" /></td>
                     <td class="pw-editor-text-td">
-                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(mIdx, wIdx, 'plan')">
+                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(wIdx, 'plan')">
                         编辑计划
                       </button>
                       <span v-if="w.plan?.trim()" class="pw-editor-text-badge" :title="textPreview(w.plan)">已填</span>
@@ -563,29 +549,35 @@ function saveTextEdit() {
                     </td>
                     <td><input v-model="w.testLink" type="text" class="pr-input pr-input--note" /></td>
                     <td class="pw-editor-text-td">
-                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(mIdx, wIdx, 'blockers')">
+                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(wIdx, 'blockers')">
                         编辑备注
                       </button>
                       <span v-if="w.blockers?.trim() && w.blockers !== '—'" class="pw-editor-text-badge" :title="textPreview(w.blockers)">已填</span>
                       <span v-else class="pw-editor-text-badge is-empty">未填</span>
                     </td>
+                    <td class="pw-editor-text-td">
+                      <button type="button" class="pr-btn pw-editor-text-btn" @click="openTextEdit(wIdx, 'weeklyReport')">
+                        编辑周汇报
+                      </button>
+                      <span v-if="w.weeklyReport?.trim() && w.weeklyReport !== '—'" class="pw-editor-text-badge" :title="textPreview(w.weeklyReport)">已填</span>
+                      <span v-else class="pw-editor-text-badge is-empty">未填</span>
+                    </td>
                     <td>
-                      <button type="button" class="pr-btn pr-btn--danger" @click="removeWeek(mIdx, wIdx)">删</button>
+                      <button type="button" class="pr-btn pr-btn--danger" @click="removeWeek(wIdx)">删</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <button type="button" class="pr-btn pr-btn--add" @click="addWeek(mIdx)">+ 本周块添加一行</button>
+              <button type="button" class="pr-btn pr-btn--add" @click="addWeek">+ 添加一行</button>
             </div>
-
-            <button type="button" class="pr-btn pr-btn--add" @click="addMonth">+ 添加月份块</button>
           </div>
 
           <div v-show="editorTab === 'yaml'" class="product-roadmap-yaml-pane">
             <p class="product-roadmap-yaml-hint">
               结构：<code>months</code> → 每月 <code>id</code> / <code>goal</code> / <code>archived</code> /
               <code>weeks</code>（<code>id</code>、<code>period</code>、<code>focus</code>、<code>owner</code>、
-              <code>plan</code>、<code>result</code>、<code>testLink</code>、<code>blockers</code>（备注）。
+              <code>plan</code>、<code>result</code>、<code>testLink</code>、<code>blockers</code>（备注）、
+              <code>weeklyReport</code>（周汇报记录）。
               结果符号：✅ 🟡 ⬜ ➖。
             </p>
             <textarea
@@ -664,7 +656,8 @@ function saveTextEdit() {
   font-weight: 600;
 }
 .product-week-progress-wrap :deep(.pw-col-focus),
-.product-week-progress-wrap :deep(.pw-col-blockers) {
+.product-week-progress-wrap :deep(.pw-col-blockers),
+.product-week-progress-wrap :deep(.pw-col-report) {
   white-space: pre-line;
 }
 .pw-plan-body {
@@ -697,7 +690,7 @@ function saveTextEdit() {
   width: 6%;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-plan) {
-  width: 40%;
+  width: 34%;
   min-width: 10rem;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-result) {
@@ -707,22 +700,12 @@ function saveTextEdit() {
   width: 5%;
 }
 .product-week-progress-wrap :deep(.pw-table-wrap .pw-col-blockers) {
-  width: 20%;
-  min-width: 8rem;
+  width: 14%;
+  min-width: 6rem;
 }
-.product-week-progress-month {
-  margin: 1.25rem 0 1.75rem;
-}
-.product-week-progress-month-title {
-  margin: 0 0 0.65rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-.product-week-progress-archived {
-  margin-left: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--vp-c-text-2);
+.product-week-progress-wrap :deep(.pw-table-wrap .pw-col-report) {
+  width: 14%;
+  min-width: 6rem;
 }
 .pw-week-cell {
   display: flex;
