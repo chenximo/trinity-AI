@@ -8,6 +8,11 @@ function redirectToMarketing(page: "product.html" | "pricing.html") {
   return false;
 }
 
+function redirectToConsole() {
+  window.location.assign("/__geo_marketing/console/dashboard.html");
+  return false;
+}
+
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +33,16 @@ export default createRouter({
     {
       path: "/pricing.html",
       redirect: { name: "geo-pricing" },
+    },
+    {
+      path: "/console",
+      name: "geo-console",
+      beforeEnter: () => redirectToConsole(),
+    },
+    {
+      path: "/login",
+      name: "geo-login",
+      beforeEnter: () => redirectToConsole(),
     },
     {
       path: "/",
