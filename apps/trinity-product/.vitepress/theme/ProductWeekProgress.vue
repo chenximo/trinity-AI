@@ -660,23 +660,27 @@ function saveTextEdit() {
 .product-week-progress-wrap :deep(.pw-col-report) {
   white-space: pre-line;
 }
-.pw-plan-body {
+.product-week-progress-wrap :deep(.pw-plan-body) {
   white-space: normal;
   line-height: 1.5;
 }
-.pw-plan-line--task + .pw-plan-line--task,
-.pw-plan-line--task:not(:first-child) {
+.product-week-progress-wrap :deep(.pw-plan-line--task + .pw-plan-line--task),
+.product-week-progress-wrap :deep(.pw-plan-line--task:not(:first-child)) {
   margin-top: 0.45em;
   padding-top: 0.4em;
   border-top: 1px dashed var(--vp-c-divider);
 }
-.pw-plan-line:not(.pw-plan-line--task) {
+.product-week-progress-wrap :deep(.pw-plan-line:not(.pw-plan-line--task)) {
   margin-top: 0.12em;
   padding-left: 0.15em;
   color: var(--vp-c-text-2);
   font-size: 0.92em;
 }
-.pw-plan-at {
+.product-week-progress-wrap :deep(.pw-plan-at) {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+.product-week-progress-wrap :deep(.pw-col-owner .pw-plan-at) {
   color: var(--vp-c-brand-1);
   font-weight: 600;
 }

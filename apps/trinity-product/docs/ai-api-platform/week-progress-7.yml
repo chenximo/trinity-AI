@@ -1,61 +1,97 @@
 id: 2026-07
-goal: 7 月商用运营与体验完善
+goal: 7 月 Agent SDK · 智能平台 · 商用与工具接入
 weeks:
   - id: W27
     period: 06-29～07-05
-    focus: 模型上架与供应线路、多模态 API、开发者文档、用户控制台、计量与计费
-    owner: @待周会
+    focus: 计量与计费、开发者文档、用户控制台、统一 API 基座、生文验收路线图
+    owner: @崔宇光 @李玲
     plan: |-
-      ① 继续接入模型（文本 / 图片 / 视频扩容）@待周会
-      模块：operations/models-routes、platform/multimodal-api
-      ② 商用全量测试与优化 @待周会
-      范围：官网流程、注册登录与充值、Chat / 控制台使用、文档站一致性
-      ③ 商用运营推广筹备 @待周会
-      模块：user/models/list、user/developer-docs
+      ① 官网能力：对接支付系统 @崔宇光 @李玲
+      模块：platform/metering-billing
+      ② 平台能力：性能优化、细节持续优化、模型 API 稳定性、自动化测试 @崔宇光
+      模块：platform/unified-api、platform/errors-observability、api-test/roadmap
+      ③ 文档站能力：补充企业全套文档 @李玲
+      模块：user/developer-docs
+      ④ 基础建设：Trinity AI 官网 / 用户控制台完成测试用例与自动化测试建设（减少人力测试、防止漏测）@李玲
+      模块：user/account-console、api-test/reports/chat-api-test
+      ⑤ 全面支持内部应用、工具的接入和需求 @崔宇光 @李玲
+      ⑥ 7 月 Agent SDK、智能平台设计与原型 @李玲
+      模块：agent/agent-sdk-product-design
+      7） 、trinity AI 平台关于API 优化不全（是否支持tool等等）
+      8）对账系统设计
     result: ⬜
-    testLink: —
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
     blockers: |-
       涉及主体待办（跨团队依赖）：
-      ① 模型接腾讯云海外站点 @待对接
-      ② 支付系统对接 @待对接
-      ③ 隐私政策 / 服务条款等合规文档 @待完善
-      模块：user/developer-docs
+      ① 支付系统对接 @待对接
+      模块：platform/metering-billing
+      ② 模型接腾讯云海外站点 @待对接
+      模块：operations/models-routes
+      顺延自 6 月 W26（并行推进）：
+      ③ 继续接入模型（文本 / 图片 / 视频扩容）
+      ④ 商用全量测试与优化（官网流程、注册登录与充值、Chat / 控制台、文档站一致性）
     weeklyReport: —
   - id: W28
     period: 07-06～07-12
-    focus: 开发者文档、计量与计费
-    owner: —
+    focus: 计量与计费、开发者文档、生文 API + 流式、鉴权 · 限流 · 配额
+    owner: @崔宇光 @李玲
     plan: |-
-      ① 隐私 / 服务条款 / FAQ / support 触点完善 @待周会
+      ① 商业化：支付对接联调、充值 / 计费流程走查、企业工作区商用鉴权 @崔宇光
+      模块：platform/metering-billing、platform/auth-rate-quota、user/account-console
+      ② Agent SDK实现：L0 架构对齐、P0 `callModel` / `tool` / `stopWhen` API 定稿 @崔宇光
+      模块：agent/positioning-and-architecture、agent/agent-sdk-product-design
+      ③ 智能平台：信息架构与核心流程原型（智能体工作台 / Web 孵化器 MVP 范围）@李玲
+      模块：agent/positioning-and-architecture、user/developer-docs
+      ④ 应用与工具接入：内部首批场景对接（Cursor / Codex / Skill 等）与接入说明 @崔宇光@李玲
+      模块：user/developer-docs、competitor-research/new-api-skill
+      ⑤ 文档站：企业全套文档续写；Agent SDK 对内设计稿与 Cookbook @李玲
       模块：user/developer-docs
-      ② 支付对接联调与充值流程走查 @待周会
-      模块：platform/metering-billing
-      ③ 腾讯云海外站点模型接入推进 @待周会
-      模块：operations/models-routes
     result: ⬜
-    testLink: —
-    blockers: 顺延自 W27：支付系统对接、合规文档定稿待外部主体确认
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
+    blockers: |-
+      顺延自 W27：支付主体 / 合规文档定稿待外部确认
+      并行：腾讯云海外站点模型接入 @待对接
+      模块：operations/models-routes
     weeklyReport: —
   - id: W29
     period: 07-13～07-19
-    focus: Chat 在线体验、用户控制台、列表
-    owner: —
+    focus: 生文 API + 流式、Chat 在线体验、用户控制台、标准错误与可观测
+    owner: @崔宇光 @李玲
     plan: |-
-      ① 用户反馈与体验优化闭环（官网 / Chat / 控制台）@待周会
-      ② 商用流程 Bug list 收敛与优先级 @待周会
-      ③ OpenRouter 差距项：模型排名页 / 控制台路由预设（二期范围预研）@待周会
+      ① Agent SDK：P0 原型实现与 Dogfood（多轮 tool 循环、流式、步数停止）@崔宇光 @李玲
+      模块：agent/agent-sdk-product-design、platform/chat-completions
+      ② 智能平台：原型迭代与关键路径演示（创建 Agent · 选模型 · 跑通 tool 循环）@崔宇光 @李玲
+      模块：agent/agent-landing-report、user/chat-experience
+      ③ 商业化：充值稳定运营、企业额度 / Key 分配走查、计费对账 @崔宇光 @李玲
+      模块：platform/metering-billing、user/account-console、operations/billing
+      ④ 应用与工具接入：内部需求 backlog 收敛、第二批工具 / 应用接入支持 @崔宇光 @李玲
+      模块：user/developer-docs、platform/unified-api
+      ⑤ 平台底座：模型 API 稳定性、性能与容错持续优化 @崔宇光 
+      模块：platform/errors-observability、platform/unified-api
     result: ⬜
-    testLink: —
-    blockers: —
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
+    blockers: |-
+      Agent SDK P0 依赖网关 `tools` / `usage` 字段稳定；计量展示价策略待与计费模块对齐
+      模块：platform/metering-billing
     weeklyReport: —
   - id: W30
     period: 07-20～07-26
-    focus: —
-    owner: —
+    focus: 开发者文档、生文验收台、用户控制台、计量与计费
+    owner: @崔宇光 @李玲
     plan: |-
-      ① 7 月迭代范围拍板与验收（含 SDK / Agent 二期是否纳入）@待周会
-      ② 8 月规划预备 @待周会
+      ① Agent SDK：P0 验收与示例仓库（npm 包 / README / 最小 Demo）@崔宇光 
+      模块：agent/agent-sdk-product-design、api-test/chat-completions
+      ② 智能平台：mvp agent 助手实践 @李玲
+      模块：agent/positioning-and-architecture、agent/agent-landing-report
+      ③ 商业化：7 月商用运营复盘（支付 · 充值 · 企业租户）与遗留项收口 @崔宇光 @李玲
+      模块：platform/metering-billing、user/account-console
+      ④ 应用与工具接入：接入 SOP / 对接说明沉淀；内部应用需求闭环清单 @崔宇光 @李玲
+      模块：user/developer-docs
+      ⑤ 7 月总验收：自动化测试覆盖复盘、8 月规划预备 
+      模块：api-test/roadmap、api-test/reports/chat-api-test
     result: ⬜
-    testLink: —
-    blockers: —
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
+    blockers: |-
+      7 月底需拍板：Agent SDK 是否写入 `trinity-docs`、智能平台 Web MVP 是否纳入 8 月
+      模块：agent/agent-sdk-product-design、user/developer-docs
     weeklyReport: —

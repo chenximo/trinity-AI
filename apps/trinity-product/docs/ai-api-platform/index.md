@@ -71,11 +71,13 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 <div class="month-goal-accordion">
 
 <details open id="2026-07-能力主链">
-<summary><strong>2026-07</strong> · 7 月商用运营与体验完善</summary>
+<summary><strong>2026-07</strong> · 7 月 Agent SDK · 智能平台 · 商用与工具接入</summary>
 
 **跨模块闭环**（草案，周会迭代）：
 
-商用计费与充值稳定运营 → 用户反馈与体验优化闭环 → 文档 / 合规 / 支持触点完善 → 7 月迭代范围拍板
+W27 商用底座（支付 · 测试 · 企业文档）→ W28–W29 Agent SDK P0 设计与原型 · 智能平台 IA · 内部工具接入 → W30 P0 验收 · 商用复盘 · 8 月范围拍板
+
+**四条主线**：Agent SDK · 智能平台 · 商业化支持 · 应用 / 工具接入与需求。
 
 是否纳入 7 月，在对应模块 **当前已做** 与周计划 **focus** 中标注。
 

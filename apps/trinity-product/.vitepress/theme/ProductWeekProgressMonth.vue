@@ -89,7 +89,15 @@ const emit = defineEmits<{
                 </template>
                 <span v-else>—</span>
               </td>
-              <td class="pw-col-owner">{{ w.owner || "—" }}</td>
+              <td class="pw-col-owner">
+                <template v-if="!w.owner?.trim() || w.owner === '—'">—</template>
+                <span v-else class="pw-owner-body">
+                  <template v-for="(seg, si) in planLineSegments(w.owner)" :key="si">
+                    <span v-if="seg.kind === 'at'" class="pw-plan-at">{{ seg.value }}</span>
+                    <span v-else>{{ seg.value }}</span>
+                  </template>
+                </span>
+              </td>
               <td class="pw-col-plan">
                 <template v-if="!w.plan?.trim()">—</template>
                 <div v-else class="pw-plan-body">

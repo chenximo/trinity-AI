@@ -18,6 +18,7 @@ weeks:
     result: ✅
     testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
     blockers: 生图/生视频接续接入、模型列表体验优化顺延 W24
+    weeklyReport: —
   - id: W24
     period: 06-08～06-14
     focus: Chat 在线体验、模型上架与供应线路、开发者文档、用户控制台、路由与 Fallback
@@ -46,6 +47,7 @@ weeks:
       3、6.11 产品演示体验 ，bug修复。@李玲 @崔宇光
       
       4、 New-api 开源聚合平台产品分析和skill 落地需求文档 @李玲
+    weeklyReport: —
   - id: W25
     period: 06-15～06-21
     focus: 计量与计费、用户控制台、鉴权 · 限流 · 配额、数据策略、标准错误与可观测
@@ -64,23 +66,41 @@ weeks:
       6） GEO 产品调研和设计@李玲
       
       7）trinity AI 后台运营系统增加折扣（和企业商务，费用账单关联）
-    result: ⬜
-    testLink: —
+    result: ✅
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
     blockers: 1、AI 云接入文档补充在控制台
+    weeklyReport: —
   - id: W26
     period: 06-22～06-28
     focus: 6.30 收口验收、隐私条款等（法律和合规）
     owner: @崔宇光、@李玲
     plan: |-
-      一、商用上线全面复盘，走差优化
-      1、官网能力：bug list / 优化项 20+ 
-      核心:支持谷歌登录，用户控制台优化等
+      1、官网能力：全面复盘，走差优化，bug list / 优化项 20+ 
+      核心:支持谷歌登录，用户控制台优化(企业租户隔离，额度分配，成员邀请，key分配等）
       2、平台能力：
       1）、新增模型：文本：40，较上周新增 20
       2）、系统优化：腾讯云IP加速方案落地，页面访问速度已经很快
       3、文档站能力：
       1）补充隐私政策，服务条款等
       2）补充常见问题（入门与产品、计费与 Credits、模型与API、账户与管理等 8个维度提供40+ 常见问题答疑）
-    result: ⬜
-    testLink: —
-    blockers: 待周会填写
+    result: ✅
+    testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
+    blockers: AI 云上架华为云商场套件包准备 @李玲
+    weeklyReport: |-
+      本周产品 Trinity AI 产品进度（06.22～06.28）
+      版本：trinity-ai-1.0.3 已发布，https://trinitydesk.ai/
+      1、官网能力：全面复盘，走差优化，bug list / 优化项 20+
+      核心:支持谷歌登录，用户控制台优化(企业租户隔离，额度分配，成员邀请，key分配等）
+      2、平台能力：
+      1）、新增模型：文本：40，较上周新增 20
+      2）、系统优化：腾讯云IP加速方案落地，页面访问速度已经很快
+      3、文档站能力：
+      1）补充隐私政策，服务条款等
+      2）补充常见问题（入门与产品、计费与 Credits、模型与API、账户与管理等 8个维度提供40+ 常见问题答疑）
+      下周计划：
+      1、官网能力：对接支付系统
+      2、平台能力：性能优化、一些细节持续优化、模型API 稳定性、自动化测试等
+      3、文档站能力：
+      1）、补充企业全套文档
+      4、基础建设：
+      Trinity AI 官网/用户控制台 完成测试用例和自动化测试建设（减少人力的测试和防止漏册）
