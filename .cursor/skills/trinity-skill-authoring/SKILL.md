@@ -25,6 +25,7 @@ DOMAIN.md、confirmation.md：封发确认或边界争议时再 READ。
 
 | 层级 | 放什么 | 路径 |
 |------|--------|------|
+| **架构设计** | 五层模型、tools.yaml、Workflow 分离 | [docs/SKILL-ARCHITECTURE-DESIGN.md](../docs/SKILL-ARCHITECTURE-DESIGN.md) |
 | **Cursor 通用** | frontmatter、description 写法、简洁原则 | 用户级 `create-skill`（勿抄进 repo） |
 | **Trinity 约定** | 本文件：结构、真源、分流、禁止项 | `.cursor/skills/trinity-skill-authoring/` |
 | **领域 Skill** | 可执行步骤 + 链仓库真源 | 如 `trinity-user-console`、`trinity-product-handbook` |
@@ -50,13 +51,13 @@ DOMAIN.md、confirmation.md：封发确认或边界争议时再 READ。
 
 | 体量 | 结构 | 示例 |
 |------|------|------|
-| **大** | `SKILL` + `DOMAIN` + `references/` + `workflows/` + `confirmation`（+ `tools/`） | `trinity-api-acceptance`、`trinity-product-handbook`、`trinity-vue-prototype-monorepo` |
-| **中** | `SKILL` + `DOMAIN` + `workflows/` + `confirmation`（+ 可选 `references/`） | `trinity-docs`、`trinity-user-console`、`trinity-tob-marketing-site` |
+| **大** | `SKILL` + `DOMAIN` + `workflows/` + `confirmation` + `references/` + **`tools.yaml`（命令密集时）** | `trinity-api-acceptance`、`trinity-official-pricing` |
+| **中** | `SKILL` + `DOMAIN` + `workflows/` + `confirmation`（+ 可选 `references/`、`tools.yaml`） | `trinity-docs`、`trinity-user-console` |
 | **小** | `SKILL` + `DOMAIN`（边界写在 DOMAIN） | `trinity-design-tokens`、`trinity-admin-ruoyi-list` |
 
-**默认选小或中**；只有流程 ≥3 步或高风险 ≥2 类才升 **大**。
+详见 [Skill 架构设计](../docs/SKILL-ARCHITECTURE-DESIGN.md) §3–6。
 
-`tools/`：验收类可放脚本说明；可执行脚本优先 `scripts/` 子目录。
+`tools.yaml`：CLI 能力 manifest（L2）；`tools/*.md`：单能力长文说明。可执行脚本优先 `scripts/`。
 
 ---
 

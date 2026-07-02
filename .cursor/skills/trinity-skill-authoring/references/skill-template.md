@@ -6,13 +6,16 @@
 .cursor/skills/<skill-name>/
 ├── SKILL.md              # 入口：分流 + 真源指针 + 读取顺序
 ├── DOMAIN.md             # 边界真源（不管什么、交给谁）
+├── tools.yaml            # 可选 L2：命令密集时必填（见架构设计 §3）
 ├── references/           # 模板、真源路径表、分场景长文
-├── workflows/            # 按任务拆分的执行步骤
-├── confirmation.md       # 须用户确认的操作
-└── tools/                # 可选：可执行脚本说明（验收类）；优先用 scripts/ 放脚本
+├── workflows/            # 按任务拆分的执行步骤（引用 tools.yaml id）
+├── confirmation.md       # 须用户确认的操作（与 tools confirm 对齐）
+└── tools/                # 可选：单能力长文说明（非 manifest）
 ```
 
-适用：`trinity-api-acceptance`、`trinity-product-handbook`、`trinity-vue-prototype-monorepo`
+适用：`trinity-api-acceptance`、`trinity-official-pricing`、`trinity-vue-prototype-monorepo`
+
+架构说明：[docs/SKILL-ARCHITECTURE-DESIGN.md](../docs/SKILL-ARCHITECTURE-DESIGN.md)
 
 ## 中 Skill（2～3 个主流程）
 
@@ -40,8 +43,9 @@
 ## SKILL.md 读取顺序（写在正文顶部）
 
 ```text
-SKILL.md → workflows/<task>.md（按分流）→ references/（按需）→ repo 真源 md
-DOMAIN.md、confirmation.md：封发确认或边界争议时再 READ，不要每轮全读。
+SKILL.md → workflows/<task>.md → tools.yaml（命令密集 Skill，执行 CLI 前）
+         → references/（按需）→ repo 真源 md
+DOMAIN.md、confirmation.md：封发确认或 confirm:required 时再 READ。
 ```
 
 ## frontmatter 约定

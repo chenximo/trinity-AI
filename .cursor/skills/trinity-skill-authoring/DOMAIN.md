@@ -22,7 +22,11 @@
 ```
 L0 .cursor/skills/SKILL.md（路由封发）
     ↓
-各 Skill DOMAIN.md（领域边界真源）
+各 Skill SKILL.md + DOMAIN.md（领域边界）
+    ↓
+命令密集 Skill：tools.yaml（L2 manifest）+ workflows（编排）
+    ↓
+common/confirmation.md + 各 Skill confirmation.md
     ↓
 README.md（给人查表，从 DOMAIN 摘要）
 ```

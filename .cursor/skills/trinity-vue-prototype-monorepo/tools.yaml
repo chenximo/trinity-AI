@@ -1,0 +1,149 @@
+# trinity.tools/v1 · Monorepo 工程原子能力清单
+
+schema: trinity.tools/v1
+skill: trinity-vue-prototype-monorepo
+cwd: trinity-AI
+
+tools:
+  - id: monorepo.dev.portal
+    title: 启动门户 dev
+    summary: apps/trinity-portal 聚合预览
+    command: npm run dev
+    confirm: none
+    network: false
+    git: false
+    tags: [dev, preview]
+
+  - id: monorepo.dev.trinity-ai
+    title: 启动 Trinity AI dev
+    command: npm run dev:trinity-ai
+    summary: 用户站高保真
+    confirm: none
+    network: false
+    git: false
+    tags: [dev]
+
+  - id: monorepo.dev.trinity-product
+    title: 启动产品手册 + 验收 dev
+    command: npm run dev:trinity-product
+    summary: :5206 手册与 api-test
+    confirm: none
+    network: false
+    git: false
+    tags: [dev]
+
+  - id: monorepo.dev.trinity-design
+    title: 启动设计枢纽 dev
+    command: npm run dev:trinity-design
+    summary: :5210 design-tokens / design-spec
+    confirm: none
+    network: false
+    git: false
+    tags: [dev, design]
+
+  - id: monorepo.dev.trinity-docs
+    title: 启动对外文档 dev
+    command: npm run dev:trinity-docs
+    summary: :5205 trinity-docs
+    confirm: none
+    network: false
+    git: false
+    tags: [dev]
+
+  - id: monorepo.dev.ai-cloud
+    title: 启动 AI 云 dev
+    command: npm run dev:ai-cloud
+    confirm: none
+    network: false
+    git: false
+    tags: [dev]
+
+  - id: monorepo.dev.trinity-geo
+    title: 启动 Trinity GEO dev
+    command: npm run dev:trinity-geo
+    confirm: none
+    network: false
+    git: false
+    tags: [dev]
+
+  - id: monorepo.dev.trinity-ai-admin
+    title: 启动运营后台 dev
+    command: npm run dev:trinity-ai-admin
+    confirm: none
+    network: false
+    git: false
+    tags: [dev, admin]
+
+  - id: monorepo.build.apps
+    title: 构建多 app
+    command: npm run build:apps
+    confirm: optional
+    network: false
+    git: false
+    tags: [build]
+
+  - id: monorepo.build.all
+    title: 全量构建
+    command: npm run build:all
+    confirm: optional
+    network: false
+    git: false
+    tags: [build]
+
+  - id: monorepo.sync.web
+    title: 同步到 TrinityAI-web
+    command: npm run sync:web:apply
+    confirm: required
+    network: false
+    git: true
+    tags: [sync, dual-repo]
+
+  - id: monorepo.deps.install
+    title: 安装 workspace 依赖
+    command: npm install
+    confirm: required
+    network: true
+    git: true
+    tags: [deps]
+
+  - id: monorepo.views.edit
+    title: 改 app views / 页面
+    command: null
+    action: edit
+    paths:
+      - apps/*/src/views/
+      - apps/*/src/components/
+    confirm: none
+    network: false
+    git: true
+    tags: [page]
+
+  - id: monorepo.packages.edit
+    title: 改 packages/ui 或 tokens
+    command: null
+    action: edit
+    paths:
+      - packages/ui/
+      - packages/tokens/
+    confirm: optional
+    network: false
+    git: true
+    tags: [packages, design]
+
+  - id: monorepo.structure.refactor
+    title: 重构 apps/packages 目录
+    command: null
+    action: refactor
+    confirm: required
+    network: false
+    git: true
+    tags: [structure]
+
+  - id: monorepo.module.delete
+    title: 删除模块或静态遗留
+    command: null
+    action: delete
+    confirm: required
+    network: false
+    git: true
+    tags: [delete]

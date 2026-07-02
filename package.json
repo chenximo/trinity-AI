@@ -70,7 +70,8 @@
     "compare:fetch-prices:all": "npm run pricing:fetch:all",
     "compare:pricing": "npm run pricing:upstream",
     "compare:validate": "npm run pricing:validate",
-    "aigc:pricing": "npm run pricing:supplier:aigc"
+    "aigc:pricing": "npm run pricing:supplier:aigc",
+    "skill:lint:tools": "node scripts/lint-skill-tools.mjs"
   },
   "devDependencies": {
     "playwright": "^1.61.1",

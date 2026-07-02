@@ -12,8 +12,10 @@ title: Cursor Skills 全景图
 | 层级 | 文件 | 你怎么用 |
 |------|------|----------|
 | **L0 总机（自动）** | `.cursor/skills/SKILL.md` | 日常 **直接说任务**；总机识别意图后 **READ** 一个主 Skill 再执行 |
-| **L1 子 Skill（封发 READ）** | 各目录 `SKILL.md` | 一般不必每次 @；要强制时用 `@trinity-product-handbook` 等 |
-| **本页 + README** | 给人查表 | Agent 不依赖本页，维护时与仓库目录同步 |
+| **L1 子 Skill** | 各目录 `SKILL.md` + `DOMAIN.md` | 封发 READ |
+| **L2 能力清单** | 命令密集 Skill 的 `tools.yaml` | 执行 CLI 前 READ |
+| **Workflow** | `workflows/*.md` | 按任务 READ |
+| **Confirmation** | `common/confirmation.md` + 各 Skill | 改真源 / 推送前 |
 
 子 Skill 均 `disable-model-invocation: true`，避免与总机同时自动加载冲突。
 
@@ -45,39 +47,47 @@ title: Cursor Skills 全景图
     SKILL.md
       # API 验收入口：模型测试、Chat API Test、生文验收台
     DOMAIN.md
-      # 定义验收领域边界
+    tools.yaml
+      # L2 原子能力：dev、跑测、导出、改用例/模型
     references/
-      # 用例、模型、报告、组件、页面的真源路径表
     workflows/
-      # 跑模型测试、更新报告、新增模型、维护用例
     tools/
-      # 验收台、导出汇总、本地预览、数据格式说明
+      # 预览 URL、导出格式长文（链 tools.yaml）
     confirmation.md
-      # 覆盖报告、入库模型、提交、删除缓存等确认规则
 
-  trinity-docs/
+  trinity-official-pricing/
     SKILL.md
-      # 对外开发者文档入口
+      # 模型原厂官方价、三方对比、价目 gate
     DOMAIN.md
-      # 区分对外 API 文档和内部验收资料
-    references/
-      # 对外文档规范、参数真源
+    tools.yaml
+      # L2：official fetch、validate、compare、gate
     workflows/
-      # 更新 API 文档、对齐 OpenRouter、更新参数表
     confirmation.md
-      # 发布、公开内容、参数变更确认
+    references/
 
   trinity-vue-prototype-monorepo/
     SKILL.md
       # Vue Monorepo 与原型工程入口
     DOMAIN.md
-      # 工程实现边界
-    references/
-      # 工程规范、五件套、目录规范
+    tools.yaml
+      # L2：dev/build/sync、改 views/packages
     workflows/
-      # 新建模块、消费原型、更新页面、本地预览
     confirmation.md
-      # 安装依赖、重构、删除文件、提交确认
+
+  common/
+    confirmation.md
+      # 各 Skill 通用确认规则
+
+  docs/
+    SKILL-ARCHITECTURE-DESIGN.md
+      # 五层架构与 tools.yaml 规范
+
+  trinity-docs/
+    SKILL.md
+      # 对外开发者文档入口
+    DOMAIN.md
+    workflows/
+    confirmation.md
 
   trinity-design-tokens/
     SKILL.md
@@ -154,7 +164,8 @@ title: Cursor Skills 全景图
 | AI 云 / ToB 营销页 | `trinity-tob-marketing-site` | `trinity-user-console` |
 | 用户控制台 `account/console` | `trinity-user-console` | `trinity-admin-ruoyi-list` |
 | 运营后台若依式列表 | `trinity-admin-ruoyi-list` | `trinity-user-console` |
-| 新建 / 评审 `.cursor/skills/**` | `trinity-skill-authoring` | — |
+| 价目、官方价、pricing gate | `trinity-official-pricing` | api-acceptance、handbook |
+| 新建 / 评审 `.cursor/skills/` | `trinity-skill-authoring` | — |
 
 歧义时见总机 `.cursor/skills/SKILL.md` **§歧义消解表**（例如「加模型」：验收台 vs 手册能力描述）。
 
@@ -179,4 +190,5 @@ title: Cursor Skills 全景图
 | 手册文档规范 | [产品手册文档规范](./产品手册文档规范) |
 | 手册更新规范 | [产品手册更新规范](./产品手册更新规范) |
 | 开发枢纽与协作流程 | `docs/00-协作与工作流/Trinity开发枢纽与AI协作流程.md` |
-| Workspace 规则（派活先走总机） | `.cursor/rules/trinity-workspace.mdc` |
+| Skill 架构设计 | `.cursor/skills/docs/SKILL-ARCHITECTURE-DESIGN.md` |
+| tools.yaml 校验 | `npm run skill:lint:tools` |

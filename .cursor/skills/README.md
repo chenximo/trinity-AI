@@ -12,6 +12,20 @@
 
 ---
 
+## Skill 五层（CLI 型 Skill）
+
+| 层 | 文件 | 说明 |
+|----|------|------|
+| L0 | `SKILL.md`（根） | 总机封发 |
+| L1 | `<skill>/SKILL.md` + `DOMAIN.md` | 领域入口与边界 |
+| L2 | `<skill>/tools.yaml` | 原子能力 manifest（价目 / 验收 / Monorepo） |
+| Workflow | `<skill>/workflows/` | 编排，引用 tool id |
+| Confirmation | `common/confirmation.md` + 各 Skill | 二次确认 |
+
+详 [`docs/SKILL-ARCHITECTURE-DESIGN.md`](./docs/SKILL-ARCHITECTURE-DESIGN.md) · 校验 `npm run skill:lint:tools`
+
+---
+
 ## 按场景选 Skill（封发目标）
 
 | 场景 | 子 Skill | 不要混用 |
@@ -36,11 +50,11 @@
 | 目录 | 档位 | 说明 |
 |------|------|------|
 | **`SKILL.md`（根）** | L0 | 总机 · 封发 · 歧义消解 |
-| `trinity-api-acceptance/` | 大 | 验收台 · 用例 · 报告 · runner |
+| `trinity-api-acceptance/` | **大** | 验收台 · tools.yaml · 用例 · 报告 |
 | `trinity-product-handbook/` | 大 | 手册双规范 + templates + workflows |
-| `trinity-vue-prototype-monorepo/` | 大 | 工程方案 + 五件套 |
+| `trinity-vue-prototype-monorepo/` | **大** | 工程方案 · tools.yaml · 五件套 |
 | `trinity-docs/` | 中 | 对外 API 文档站 |
-| `trinity-official-pricing/` | 中 | 模型原厂官方价 · 三方对比 |
+| `trinity-official-pricing/` | **大** | 模型原厂官方价 · tools.yaml · 三方对比 · gate |
 | `trinity-user-console/` | 中 | 控制台规范 |
 | `trinity-tob-marketing-site/` | 中 | 营销页 |
 | `trinity-skill-authoring/` | 大 | 写 Skill 约定 |
@@ -48,6 +62,8 @@
 | `trinity-admin-ruoyi-list/` | 小 | 后台列表 |
 
 各 Skill 边界真源：`<skill>/DOMAIN.md`。
+
+**架构设计**（五层、tools.yaml、Workflow 分离）：[docs/SKILL-ARCHITECTURE-DESIGN.md](./docs/SKILL-ARCHITECTURE-DESIGN.md) · 通用确认：[common/confirmation.md](./common/confirmation.md) · Lint：`npm run skill:lint:tools`
 
 ---
 

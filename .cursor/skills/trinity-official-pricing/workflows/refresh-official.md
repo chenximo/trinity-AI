@@ -1,16 +1,18 @@
 # Workflow · 刷新某模态全量官方价
 
-## 命令
+> 能力清单：[`../tools.yaml`](../tools.yaml)
 
-```bash
-cd trinity-AI
+## 能力引用
 
-npm run pricing:supplier:official:text
-npm run pricing:supplier:official:image
-npm run pricing:supplier:official:video
-# 或
-npm run pricing:supplier:official:all
-```
+| 意图 | tool id |
+|------|---------|
+| 生文 | `pricing.supplier.official.text` |
+| 生图 | `pricing.supplier.official.image` |
+| 生视频 | `pricing.supplier.official.video` |
+| 全模态 | `pricing.supplier.official.all` |
+| 刷新后对比（可选） | `pricing.compare.official` |
+
+在 `trinity-AI` 目录执行对应 tool 的 `command`（见 tools.yaml）。
 
 ## 产出
 
@@ -25,6 +27,4 @@ npm run pricing:supplier:official:all
 
 ## 刷新后（可选）
 
-```bash
-npm run pricing:compare:official -- --modality=all
-```
+执行 `pricing.compare.official`，参数 `--modality=all`（见 compare-pricing workflow）。

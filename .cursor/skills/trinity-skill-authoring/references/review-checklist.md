@@ -8,6 +8,13 @@
 - [ ] 有 `DOMAIN.md`（小 Skill 可简短）
 - [ ] 大/中 Skill 有 `confirmation.md`
 - [ ] 有 `workflows/` 时，每个 workflow 对应一个明确用户意图
+- [ ] 命令密集（≥5 npm/脚本）时考虑 `tools.yaml`，workflow 引用 tool id 而非重复命令表
+- [ ] `confirm: required` 与 `confirmation.md` 条目一致
+
+## 架构（命令密集 Skill）
+
+- [ ] 已读 [SKILL-ARCHITECTURE-DESIGN.md](../../docs/SKILL-ARCHITECTURE-DESIGN.md) 相关章节
+- [ ] `tools.yaml` 的 `command` 与 `package.json` scripts 一致（若有）
 
 ## 内容
 

@@ -2,17 +2,29 @@
 
 用户示例：「补充 `gpt-5.6` 的官方价格」。
 
+> 能力清单：[`../tools.yaml`](../tools.yaml) · 确认：[`../confirmation.md`](../confirmation.md)
+
 ## Checklist
 
 ```
 - [ ] Step 1: 判定模态 text | image | video
 - [ ] Step 2: 查重 catalog / trinity-map / TokenHub
 - [ ] Step 3: 核实官网 docUrl、pricingUrl、价目
-- [ ] Step 4: 改 catalog + seeds + trinity-map
-- [ ] Step 5: fetch 验证 JSON
+- [ ] Step 4: 改 catalog + seeds + trinity-map（须确认）
+- [ ] Step 5: pricing.supplier.official.{modality} 验证 JSON
 - [ ] Step 6: 展示 vendor-pricing-table.md
-- [ ] Step 7: （可选）pricing:compare:official
+- [ ] Step 7: （可选）pricing.gate 或 pricing.compare.official
 ```
+
+## 能力引用
+
+| 步骤 | tool id |
+|------|---------|
+| 4 快捷片段 | `pricing.scaffold.model` |
+| 4 编辑 | `pricing.catalog.edit` · `pricing.seed.edit` · `pricing.map.edit` |
+| 5 验证 | `pricing.supplier.official.text` / `.image` / `.video` |
+| 7 门禁 | `pricing.gate` |
+| 7 对比 | `pricing.compare.official` |
 
 ## Step 1 — 模态
 
@@ -27,7 +39,6 @@
 ## Step 2 — 查重
 
 ```bash
-# 在仓库内搜索
 rg "gpt-5.6" pricing/suppliers/official/
 rg "gpt-5.6" pricing/suppliers/tokenhub/output/pricing-console-api.json
 ```
@@ -42,7 +53,7 @@ rg "gpt-5.6" pricing/suppliers/tokenhub/output/pricing-console-api.json
 
 ## Step 4 — 改文件
 
-**快捷**：先跑脚手架，再粘贴核对：
+**快捷**：先跑 `pricing.scaffold.model`，再粘贴核对：
 
 ```bash
 node pricing/suppliers/official/scaffold-official-model.mjs \
@@ -51,24 +62,12 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
   --doc-url=https://developers.openai.com/api/docs/models/gpt-5.6
 ```
 
-### 生文 catalog 模板
-
-```javascript
-{
-  vendor: "openai",
-  vendorLabel: "GPT",
-  vendorModelId: "gpt-5.6",
-  docUrl: "https://developers.openai.com/api/docs/models/gpt-5.6",
-  status: "active",
-},
-```
-
-### 生文 seed 模板
+编辑类操作触发 **confirmation**（`pricing.catalog.edit` / `pricing.seed.edit` / `pricing.map.edit`）。
 
 ### 生文 seed 模板（上线真源 = `tiers[]`）
 
 ```javascript
-// 多档（国内长上下文等）
+// 多档
 "qwen3.5-plus": {
   currency: "CNY",
   tiers: [
@@ -76,28 +75,11 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
     { tierLabel: "输入>128k", input: 2.4, output: 8 },
   ],
 },
-
-// 单档可简写（fetch 后仍为 1 档「标准价」）
+// 单档
 "gpt-5.6": { currency: "USD", input: 1.25, cache: 0.125, output: 10 },
 ```
 
 更新 `TEXT_SEED_VERIFIED_AT`；`fetch` 后核对 `vendor-pricing.json` → `models[].tiers[]`。
-
-### 生图 seed 模板
-
-```javascript
-"hy-image-v3.0": {
-  tiers: [{ tierLabel: "输出", price: 0.2, unit: "元/张" }],
-},
-```
-
-### 生视频 seed 模板
-
-```javascript
-"kl-video-v3": {
-  tiers: [{ tierLabel: "统一价", price: "2.5-25", unit: "积分/次" }],
-},
-```
 
 ### trinity-map 模板
 
@@ -111,16 +93,15 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
 
 ## Step 5 — 验证
 
-```bash
-npm run pricing:supplier:official:text -- gpt-5.6
-```
+执行 `pricing.supplier.official.{modality}`（单模型可加 `-- <id>`）。
 
-确认 `output/text/vendor-pricing.json` 中 `fetchStatus` 为 `ok` 或 `seed`。
+确认 `output/{modality}/vendor-pricing.json` 中 `fetchStatus` 为 `ok` 或 `seed`。
 
 ## Step 6 — 汇报
 
 读取 `output/{modality}/vendor-pricing-table.md`，向用户说明：价、档位、抓取状态、docUrl。
 
-## Step 7 — 可选对比
+## Step 7 — 可选
 
-见 [`compare-pricing.md`](./compare-pricing.md)。
+- 门禁：[`pricing-gate.md`](./pricing-gate.md) → `pricing.gate`
+- 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.compare.official`

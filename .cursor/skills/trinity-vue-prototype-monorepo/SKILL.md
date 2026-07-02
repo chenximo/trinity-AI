@@ -12,7 +12,15 @@ disable-model-invocation: true
 
 # Trinity · Vue 高保真原型 Monorepo
 
-边界：[`./DOMAIN.md`](./DOMAIN.md) · 确认：[`./confirmation.md`](./confirmation.md)
+## 读取顺序
+
+```text
+SKILL.md → workflows/<task>.md → tools.yaml（dev/build/sync 前）
+         → repo 工程方案 md
+DOMAIN.md、confirmation.md：结构变更或 confirm:required 时再 READ
+```
+
+边界：[`./DOMAIN.md`](./DOMAIN.md) · 能力清单：[`./tools.yaml`](./tools.yaml) · 确认：[`./confirmation.md`](./confirmation.md)
 
 ## Workflows
 

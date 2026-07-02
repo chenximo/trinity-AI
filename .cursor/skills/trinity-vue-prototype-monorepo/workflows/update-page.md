@@ -1,5 +1,15 @@
 # 更新页面
 
+> 能力清单：[`../tools.yaml`](../tools.yaml)
+
+## 能力引用
+
+| 步骤 | tool id |
+|------|---------|
+| 改页面 | `monorepo.views.edit` |
+| 改 packages | `monorepo.packages.edit` |
+| 预览 | 见 [`local-preview.md`](./local-preview.md) |
+
 ## 1. 封发叠加
 
 | 页面类型 | 叠加 Skill |

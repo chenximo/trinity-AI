@@ -1,6 +1,10 @@
 # 验收台 · 预览与数据格式
 
+> L2 manifest：[`../tools.yaml`](../tools.yaml) · tool id **`acceptance.dev.product`**
+
 ## 本地预览
+
+执行 **`acceptance.dev.product`**：
 
 ```bash
 npm run dev -w @trinity/app-trinity-product
@@ -18,13 +22,13 @@ npm run dev -w @trinity/app-trinity-product
 |----|------|
 | API Key | 顶栏或 `TRINITY_API_KEY`；格式 `xh-…` |
 | BASE_URL | 顶栏可改；默认内测网关 |
-| 工作区缓存 | `localStorage`，24h；清缓存可重测 |
+| 工作区缓存 | `localStorage`，24h；清缓存 → `acceptance.cache.clear` |
 
 ## 导出数据格式
 
 - 写入：`reports/chat-api-test.data.json`
+- tool id：**`acceptance.report.export`**
 - 生成逻辑：`acceptance/runner/chatApiTestReport.ts`、`formatAcceptanceReport.ts`
-- 每模型一节：用例结果、人工确认、时间戳
 
 ## Runner 模块（改逻辑时 READ）
 
@@ -35,4 +39,4 @@ npm run dev -w @trinity/app-trinity-product
 | `resolveCaseExpect.ts` | 断言 |
 | `acceptanceRunCache.ts` | 本地缓存 |
 
-`tools/` 本目录为**说明文档**；可执行脚本二期放 `acceptance/scripts/`。
+可执行脚本二期放 `acceptance/scripts/`。

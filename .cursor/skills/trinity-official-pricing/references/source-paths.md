@@ -6,6 +6,8 @@
 
 | 路径 | 说明 |
 |------|------|
+| `tools.yaml` | L2 原子能力 manifest |
+| `confirmation.md` | 确认规则 |
 | `suppliers/official/data/catalog/text.mjs` | 生文模型目录（32+） |
 | `suppliers/official/data/catalog/image.mjs` | 生图模型目录 |
 | `suppliers/official/data/catalog/video.mjs` | 生视频模型目录 |

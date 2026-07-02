@@ -1,0 +1,114 @@
+# trinity.tools/v1 · API 验收原子能力清单
+
+schema: trinity.tools/v1
+skill: trinity-api-acceptance
+cwd: trinity-AI
+
+tools:
+  - id: acceptance.dev.product
+    title: 启动验收台 dev
+    summary: trinity-product :5206 · 生文验收台与 Chat API Test
+    command: npm run dev -w @trinity/app-trinity-product
+    confirm: none
+    network: false
+    git: false
+    doc: tools/preview-and-export.md
+    tags: [dev, preview]
+
+  - id: acceptance.run.all
+    title: 运行全部用例
+    summary: 验收台 UI · 当前模型 × chat-completions 用例
+    command: null
+    action: ui
+    confirm: none
+    network: true
+    git: false
+    reads:
+      - apps/trinity-product/acceptance/cases/chat-completions.json
+      - apps/trinity-product/acceptance/config/models.mvp.json
+    env:
+      - TRINITY_API_KEY
+    tags: [run]
+
+  - id: acceptance.report.export
+    title: 导出 Chat API Test 汇总
+    summary: 写入 chat-api-test.data.json；覆盖已有模型节
+    command: null
+    action: ui
+    writes:
+      - apps/trinity-product/docs/ai-api-platform/api-test/reports/chat-api-test.data.json
+    confirm: required
+    network: false
+    git: true
+    doc: tools/preview-and-export.md
+    tags: [report, export]
+
+  - id: acceptance.models.edit
+    title: 持久化 MVP 模型列表
+    summary: 编辑 acceptance/config/models.mvp.json
+    command: null
+    action: edit
+    paths:
+      - apps/trinity-product/acceptance/config/models.mvp.json
+    confirm: required
+    network: false
+    git: true
+    tags: [models]
+
+  - id: acceptance.cases.edit
+    title: 维护用例 JSON
+    summary: 编辑 cases/chat-completions.json；model 由顶栏注入
+    command: null
+    action: edit
+    paths:
+      - apps/trinity-product/acceptance/cases/chat-completions.json
+    confirm: required
+    network: false
+    git: true
+    tags: [cases]
+
+  - id: acceptance.param-hints.edit
+    title: 维护参数悬停说明
+    summary: 编辑 acceptance/config/chatParamHints.ts
+    command: null
+    action: edit
+    paths:
+      - apps/trinity-product/acceptance/config/chatParamHints.ts
+    confirm: optional
+    network: false
+    git: true
+    tags: [cases, hints]
+
+  - id: acceptance.engineer-params.edit
+    title: 改工程师参数 md
+    summary: API对外接口支持参数.md；须评估 trinity-docs
+    command: null
+    action: edit
+    paths:
+      - docs/00-协作与工作流/工程师/API对外接口支持参数.md
+    confirm: required
+    network: false
+    git: true
+    tags: [docs, params]
+
+  - id: acceptance.roadmap.edit
+    title: 更新验收 roadmap 用例表
+    summary: api-test/roadmap.md 用例 ID 对照
+    command: null
+    action: edit
+    paths:
+      - apps/trinity-product/docs/ai-api-platform/api-test/roadmap.md
+    confirm: optional
+    network: false
+    git: true
+    tags: [roadmap]
+
+  - id: acceptance.cache.clear
+    title: 清除验收本地缓存
+    summary: acceptance/runs/ 或浏览器 localStorage
+    command: null
+    action: manual
+    confirm: required
+    network: false
+    git: false
+    tags: [cache]

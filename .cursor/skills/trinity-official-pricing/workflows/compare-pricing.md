@@ -1,38 +1,26 @@
 # Workflow · 三方价对比（官方 vs 上游 vs 线上）
 
-## 前置
+> 能力清单：[`../tools.yaml`](../tools.yaml)
 
-```bash
-cd trinity-AI
+## 能力引用
 
-# 1. 官方价（按模态）
-npm run pricing:supplier:official:text
-npm run pricing:supplier:official:image   # 按需
-npm run pricing:supplier:official:video   # 按需
+| 阶段 | tool id | 必填 |
+|------|---------|------|
+| 前置 | `pricing.supplier.official.text` | 生文对比时 |
+| 前置 | `pricing.supplier.official.image` | 生图对比时 |
+| 前置 | `pricing.supplier.official.video` | 生视频对比时 |
+| 前置 | `pricing.supplier.tokenhub.console` | 需 TH 列时 |
+| 前置 | `pricing.supplier.bailian.doc` | 需百炼列时 |
+| 前置 | `pricing.supplier.aigc` | 需 AIGC 列时 |
+| **主步骤** | `pricing.compare.official` | ✅ |
 
-# 2. 线上刊例
-npm run pricing:fetch   # 对比命令也会自动 GET /v1/prices
+`pricing.compare.official` 会自动 `GET /v1/prices` 刷新线上刊例；本地可设 `PRICING_SKIP_ONLINE_FETCH=1`。  
+单独拉刊例可用 `pricing.fetch`。
 
-# 3. 上游（对比 TokenHub/百炼/AIGC 时需要）
-npm run pricing:supplier:tokenhub:console  # 按需
-npm run pricing:supplier:bailian:doc       # 按需
-npm run pricing:supplier:aigc              # 按需
-```
+### 对比参数（写在命令后，见 workflow 叙事）
 
-## 对比命令
-
-```bash
-# 单模型
-npm run pricing:compare:official -- gpt-5.5
-
-# 整模态（trinity-map 内该模态全部）
-npm run pricing:compare:official -- --modality=text
-npm run pricing:compare:official -- --modality=image
-npm run pricing:compare:official -- --modality=video
-
-# 全模态
-npm run pricing:compare:official -- --modality=all
-```
+- 单模型：`… -- <vendorModelId>`
+- 整模态：`… -- --modality=text|image|video|all`
 
 ## 产出
 
@@ -63,7 +51,7 @@ join 键：`official/trinity-map.json` 的 Trinity `modelId`。
 
 ## 与 validate / gate 区别
 
-| | `pricing:compare:official` | `pricing:validate:official-aigc` | `pricing:gate` |
+| | `pricing.compare.official` | `pricing.validate.official-aigc` | `pricing.gate` |
 |--|---------------------------|----------------------------------|----------------|
 | 含官方价 | ✅ | ✅（种子） | ✅ |
 | 含 L4 线上刊例 | ✅ | ❌ | ❌ |

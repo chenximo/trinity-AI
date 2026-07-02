@@ -1,21 +1,29 @@
 # trinity-api-acceptance · 确认规则
 
-## 须先确认再执行
+> 通用规则：[`../common/confirmation.md`](../common/confirmation.md)  
+> 能力清单：[`./tools.yaml`](./tools.yaml)
 
-| 操作 | 说明 |
-|------|------|
-| **覆盖报告** | 导出 `chat-api-test.data.json` 覆盖已有模型结果 |
-| **入库模型** | 改 `models.mvp.json` 并提交 |
-| **删改用例** | 删/改 `chat-completions.json` 中断历史对比 |
-| **提交验收数据** | git commit `*.data.json`、`cases/*.json` |
-| **删本地缓存** | 清 `acceptance/runs/` 或用户 localStorage（告知会丢人工确认） |
-| **改工程师参数 md** | 影响 docs 发布，须同步评估 `trinity-docs` |
+## 须先确认再执行（`confirm: required`）
+
+| tool id | 操作 | 说明 |
+|---------|------|------|
+| `acceptance.report.export` | 导出测试汇总 | 覆盖 `chat-api-test.data.json` 中该模型节 |
+| `acceptance.models.edit` | 改 `models.mvp.json` | 持久 MVP 模型列表 |
+| `acceptance.cases.edit` | 删/改 `chat-completions.json` | 中断历史对比 |
+| `acceptance.engineer-params.edit` | 改工程师参数 md | 须评估 `trinity-docs` |
+| `acceptance.cache.clear` | 清 runs / localStorage | 丢失人工确认 |
+
+## 建议确认（`confirm: optional`）
+
+| tool id | 操作 |
+|---------|------|
+| `acceptance.param-hints.edit` | 改 `chatParamHints.ts` |
+| `acceptance.roadmap.edit` | 改 `roadmap.md` 用例表 |
 
 ## 不需要确认
 
-- dev 本地跑测试（不写 git）
-- 顶栏临时新增模型（未改 `models.mvp.json`）
-- 修 typos、注释、悬停文案（不改变断言）
+- `acceptance.dev.product` · `acceptance.run.all`（dev 本地跑，不写 git）
+- 验收台顶栏 **临时新增** 模型（未改 `models.mvp.json`）
 
 ## 确认话术模板
 

@@ -1,5 +1,10 @@
 # API 验收 · 真源路径表
 
+| 资产 | 路径 |
+|------|------|
+| **L2 能力清单** | `.cursor/skills/trinity-api-acceptance/tools.yaml` |
+| **确认规则** | `.cursor/skills/trinity-api-acceptance/confirmation.md` |
+
 ## 文档（给人看 + Agent READ）
 
 | 资产 | 路径 |

@@ -1,0 +1,279 @@
+# trinity.tools/v1 · 价目原子能力清单（manifest）
+# 执行真源：package.json scripts · pricing/pipeline/*.mjs
+# 编排：workflows/*.md 引用 tool id，不重复写命令表
+
+schema: trinity.tools/v1
+skill: trinity-official-pricing
+cwd: trinity-AI
+
+tools:
+  # ── 官方真源（编辑类）────────────────────────────────────────
+  - id: pricing.scaffold.model
+    title: 脚手架生成 catalog/seed/map 片段
+    summary: 新增模型时输出可粘贴的代码片段
+    command: node pricing/suppliers/official/scaffold-official-model.mjs
+    confirm: none
+    network: false
+    git: false
+    tags: [official, scaffold]
+
+  - id: pricing.catalog.edit
+    title: 修改官方 catalog
+    summary: 编辑 data/catalog/{text,image,video}.mjs
+    command: null
+    action: edit
+    paths:
+      - pricing/suppliers/official/data/catalog/
+    confirm: required
+    network: false
+    git: true
+    tags: [official, catalog]
+
+  - id: pricing.seed.edit
+    title: 修改官方种子
+    summary: 编辑 seeds/*.mjs；影响 L1 锚点，改后须跑 gate
+    command: null
+    action: edit
+    paths:
+      - pricing/suppliers/official/data/seeds/
+    reads:
+      - pricing/docs/PRICING-GOVERNANCE-WORKFLOW.md
+    confirm: required
+    network: false
+    git: true
+    tags: [official, seed, pricing-L1]
+
+  - id: pricing.map.edit
+    title: 修改 official trinity-map
+    summary: 编辑 suppliers/official/trinity-map.json
+    command: null
+    action: edit
+    paths:
+      - pricing/suppliers/official/trinity-map.json
+    confirm: required
+    network: false
+    git: true
+    tags: [official, map]
+
+  - id: pricing.aigc.sheet.edit
+    title: 修改 AIGC pricing-sheet
+    summary: 编辑 suppliers/aigc/data/pricing-sheet.mjs；影响 L1 交叉
+    command: null
+    action: edit
+    paths:
+      - pricing/suppliers/aigc/data/pricing-sheet.mjs
+    confirm: required
+    network: false
+    git: true
+    tags: [aigc, pricing-L1]
+
+  - id: pricing.tier-key.edit
+    title: 修改档位 tier-key 规则
+    summary: 编辑 pipeline/lib/tier-key.mjs；影响 L1/L3 对齐
+    command: null
+    action: edit
+    paths:
+      - pricing/pipeline/lib/tier-key.mjs
+    confirm: optional
+    network: false
+    git: true
+    tags: [validate, tier-key]
+
+  # ── 官方拉取 ────────────────────────────────────────────────
+  - id: pricing.supplier.official.text
+    title: 拉取生文官方价
+    summary: fetch + gen-table · text 模态；可传 vendorModelId 过滤
+    command: npm run pricing:supplier:official:text
+    writes:
+      - pricing/suppliers/official/output/text/vendor-pricing.json
+      - pricing/suppliers/official/output/text/vendor-pricing-table.md
+    confirm: none
+    network: true
+    git: false
+    tags: [official, fetch, text]
+
+  - id: pricing.supplier.official.image
+    title: 拉取生图官方价
+    summary: fetch + gen-table · image 模态
+    command: npm run pricing:supplier:official:image
+    writes:
+      - pricing/suppliers/official/output/image/vendor-pricing.json
+      - pricing/suppliers/official/output/image/vendor-pricing-table.md
+    confirm: none
+    network: true
+    git: false
+    tags: [official, fetch, image]
+
+  - id: pricing.supplier.official.video
+    title: 拉取生视频官方价
+    summary: fetch + gen-table · video 模态
+    command: npm run pricing:supplier:official:video
+    writes:
+      - pricing/suppliers/official/output/video/vendor-pricing.json
+      - pricing/suppliers/official/output/video/vendor-pricing-table.md
+    confirm: none
+    network: true
+    git: false
+    tags: [official, fetch, video]
+
+  - id: pricing.supplier.official.all
+    title: 拉取全模态官方价
+    summary: text + image + video 一次拉取
+    command: npm run pricing:supplier:official:all
+    confirm: none
+    network: true
+    git: false
+    tags: [official, fetch]
+
+  # ── 上游进货（L2 参照）──────────────────────────────────────
+  - id: pricing.supplier.aigc
+    title: 构建 AIGC 价目
+    summary: 从 pricing-sheet 生成 aigc pricing-api.json
+    command: npm run pricing:supplier:aigc
+    writes:
+      - pricing/suppliers/aigc/output/pricing-api.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, aigc, pricing-L2]
+
+  - id: pricing.supplier.tokenhub.console
+    title: 抓取 TokenHub 控制台价
+    summary: scrape + gen-sample；L1 CNY 交叉需要
+    command: npm run pricing:supplier:tokenhub:console
+    writes:
+      - pricing/suppliers/tokenhub/output/pricing-console-api.json
+    confirm: none
+    network: true
+    git: false
+    tags: [supplier, tokenhub, pricing-L2]
+
+  - id: pricing.supplier.bailian.doc
+    title: 抓取百炼价目
+    summary: L3 转售交叉需要
+    command: npm run pricing:supplier:bailian:doc
+    writes:
+      - pricing/suppliers/bailian/output/pricing-api.json
+    confirm: none
+    network: true
+    git: false
+    tags: [supplier, bailian, pricing-L3]
+
+  # ── 校验与门禁 ──────────────────────────────────────────────
+  - id: pricing.validate.aigc-excel
+    title: AIGC Excel ↔ sheet 校验
+    summary: 商务 Excel 与 pricing-sheet 一致性
+    command: npm run pricing:validate:aigc-excel
+    writes:
+      - pricing/output/validate/aigc-excel-vs-sheet.json
+      - pricing/output/validate/aigc-excel-vs-sheet.md
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, aigc]
+
+  - id: pricing.validate.official-aigc
+    title: L1 官方 ↔ AIGC/TokenHub
+    summary: 交叉校验官方种子与进货参照价
+    command: npm run pricing:validate:official-aigc
+    reads:
+      - pricing/suppliers/official/output/text/vendor-pricing.json
+      - pricing/suppliers/aigc/data/pricing-sheet.mjs
+      - pricing/suppliers/tokenhub/output/pricing-console-api.json
+    writes:
+      - pricing/output/validate/official-aigc-cross.json
+      - pricing/output/validate/official-aigc-cross.md
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, pricing-L1]
+
+  - id: pricing.validate.official-suppliers
+    title: L3 官方 ↔ 转售渠道
+    summary: 官方 vs 百炼等转售档位数与价格
+    command: npm run pricing:validate:official-suppliers
+    writes:
+      - pricing/output/validate/official-vs-suppliers.json
+      - pricing/output/validate/official-vs-suppliers.md
+      - pricing/output/validate/official-vs-suppliers-alerts.json
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, pricing-L3]
+
+  - id: pricing.gate
+    title: 价目门禁 L1→L3
+    summary: official:text + aigc-excel + L1 + L3 + alert dry-run
+    command: npm run pricing:gate
+    reads:
+      - pricing/suppliers/official/output/text/vendor-pricing.json
+      - pricing/suppliers/aigc/data/pricing-sheet.mjs
+    writes:
+      - pricing/output/validate/official-aigc-cross.json
+      - pricing/output/validate/official-vs-suppliers.json
+      - pricing/output/validate/pricing-alerts.json
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, gate, pricing-L1, pricing-L3]
+
+  - id: pricing.alert
+    title: 推送价目告警
+    summary: 合并 validate 报告；配置 webhook 时 POST
+    command: npm run pricing:alert
+    reads:
+      - pricing/output/validate/official-aigc-cross.json
+      - pricing/output/validate/official-vs-suppliers-alerts.json
+    writes:
+      - pricing/output/validate/pricing-alerts.json
+      - pricing/output/validate/pricing-alerts.md
+    confirm: required
+    network: true
+    git: false
+    env:
+      - PRICING_ALERT_WEBHOOK_URL
+    tags: [alert]
+
+  # ── 对比与线上刊例 ──────────────────────────────────────────
+  - id: pricing.fetch
+    title: 拉取线上刊例
+    summary: GET /v1/prices → prices-api.json
+    command: npm run pricing:fetch
+    writes:
+      - pricing/output/online/prices-api.json
+    confirm: none
+    network: true
+    git: false
+    tags: [online, pricing-L4]
+
+  - id: pricing.compare.official
+    title: 三方价对比表
+    summary: 官方 vs 上游 vs 线上；自动刷新线上刊例
+    command: npm run pricing:compare:official
+    reads:
+      - pricing/suppliers/official/output/*/vendor-pricing.json
+      - pricing/output/online/prices-api.json
+    writes:
+      - pricing/output/official/text.md
+      - pricing/output/official/text.json
+      - pricing/output/trinity-pricing-text.xlsx
+    confirm: none
+    network: true
+    git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
+    tags: [compare]
+
+  - id: pricing.upstream
+    title: 生成上游汇总
+    summary: upstream-pricing.json + summary.md；含自动线上价刷新
+    command: npm run pricing:upstream
+    writes:
+      - pricing/output/upstream/upstream-pricing.json
+      - pricing/output/upstream/summary.md
+    confirm: none
+    network: true
+    git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
+    tags: [upstream, compare]
