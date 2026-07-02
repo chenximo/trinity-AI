@@ -1,0 +1,47 @@
+{
+  "modality": "image",
+  "generatedAt": "2026-07-02T02:36:08.915Z",
+  "fxOnlineDomestic": 6.5,
+  "fxCnyPerUsd": 7.25,
+  "officialFetchedAt": "2026-07-01T04:03:46.408Z",
+  "pricesFetchedAt": "2026-06-30T13:38:49.183Z",
+  "tokenhubScrapedAt": "2026-06-30T03:32:07.256Z",
+  "modelCount": 2,
+  "rowCount": 2,
+  "rows": [
+    {
+      "trinityId": "hy-image-v3.0",
+      "vendorModelId": "hy-image-v3.0",
+      "vendor": "tencent_hunyuan",
+      "officialCurrency": "CNY",
+      "officialStatus": "seed",
+      "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
+      "note": "TokenHub hy-image-v3.0",
+      "tierIndex": 0,
+      "tierLabel": "—",
+      "official": "输出: 0.2 元/张",
+      "tokenhub": ": 0.2 元/张",
+      "bailian": "—",
+      "aigcDomestic": "—",
+      "aigcIntl": "—",
+      "online": "—"
+    },
+    {
+      "trinityId": "hy-image-lite",
+      "vendorModelId": "hy-image-lite",
+      "vendor": "tencent_hunyuan",
+      "officialCurrency": "CNY",
+      "officialStatus": "seed",
+      "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
+      "note": "TokenHub hy-image-lite",
+      "tierIndex": 0,
+      "tierLabel": "—",
+      "official": "输出: 0.099 元/张",
+      "tokenhub": ": 0.099 元/张",
+      "bailian": "—",
+      "aigcDomestic": "—",
+      "aigcIntl": "—",
+      "online": "—"
+    }
+  ]
+}

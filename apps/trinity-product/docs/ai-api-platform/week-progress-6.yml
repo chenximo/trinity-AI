@@ -69,7 +69,7 @@ weeks:
     result: ✅
     testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
     blockers: 1、AI 云接入文档补充在控制台
-    weeklyReport: —
+    weeklyReport: 见 docs/周记/2026-W25.md 简版（上交）
   - id: W26
     period: 06-22～06-28
     focus: 6.30 收口验收、隐私条款等（法律和合规）
@@ -104,3 +104,4 @@ weeks:
       1）、补充企业全套文档
       4、基础建设：
       Trinity AI 官网/用户控制台 完成测试用例和自动化测试建设（减少人力的测试和防止漏册）
+      注：个人周记见 docs/周记/2026-W26.md（周一填写上周 W26 产出）

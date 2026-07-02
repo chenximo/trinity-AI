@@ -1,0 +1,1050 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "claude-opus-4-6",
+      "object": "model",
+      "created": 1782787785,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "claude-opus-4-6",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-4-7",
+      "object": "model",
+      "created": 1782787785,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "claude-opus-4-7",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-4-8",
+      "object": "model",
+      "created": 1782787785,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "claude-opus-4-8",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "object": "model",
+      "created": 1782787785,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "claude-sonnet-4-6",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 3,
+        "user_output_price_per_million_usd": 15
+      }
+    },
+    {
+      "id": "deepseek-v3.2",
+      "object": "model",
+      "created": 1780902344,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V3.2",
+        "origin_vendor_name": "DeepSeek",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.307692,
+        "user_output_price_per_million_usd": 0.461538
+      }
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "object": "model",
+      "created": 1777001697,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V4 Flash",
+        "origin_vendor_name": "DeepSeek",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Low latency",
+              "Great value"
+            ],
+            "short_summary": "Low-latency gateway id mapped to DeepSeek Chat.",
+            "description_long": "Low-latency SKU; upstream deepseek-chat; confirm pricing on DeepSeek."
+          },
+          "zh": {
+            "feature_tags": [
+              "低延迟",
+              "高性价比"
+            ],
+            "short_summary": "高速线网关名，映射官方 Chat。",
+            "description_long": "面向低延迟场景；上游为 deepseek-chat；价目以官方为准。"
+          }
+        },
+        "context_length": 64000,
+        "user_input_price_per_million_usd": 0.153846,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "deepseek-v4-flash-202605",
+      "object": "model",
+      "created": 1782722690,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V4 Flash Direct",
+        "origin_vendor_name": "DeepSeek",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.153846,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "object": "model",
+      "created": 1777001697,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V4 Pro",
+        "origin_vendor_name": "DeepSeek",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "High quality",
+              "Reasoning"
+            ],
+            "short_summary": "Quality gateway id mapped to DeepSeek Reasoner.",
+            "description_long": "Quality SKU; upstream deepseek-reasoner; confirm pricing on DeepSeek."
+          },
+          "zh": {
+            "feature_tags": [
+              "高质量输出",
+              "推理"
+            ],
+            "short_summary": "高质量线网关名，映射官方 Reasoner。",
+            "description_long": "面向高质量输出；上游为 deepseek-reasoner；价目以官方为准。"
+          }
+        },
+        "context_length": 64000,
+        "user_input_price_per_million_usd": 1.846154,
+        "user_output_price_per_million_usd": 3.692308
+      }
+    },
+    {
+      "id": "deepseek-v4-pro-202606",
+      "object": "model",
+      "created": 1782722695,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V4 Pro Direct",
+        "origin_vendor_name": "DeepSeek",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.461538,
+        "user_output_price_per_million_usd": 0.923077
+      }
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 2.5 Flash",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "Gemini 2.5 Flash is a fast, high-throughput model that balances reasoning, coding, multimodal understanding, and low latency, suitable for real-time dialogue, batch processing, and lightweight agent tasks."
+          },
+          "zh": {
+            "short_summary": "Gemini 2.5 Flash 是高速高吞吐模型，兼顾推理、代码、多模态理解和低延迟，适合实时对话、批量处理与轻量 Agent 任务。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.3,
+        "user_output_price_per_million_usd": 2.5
+      }
+    },
+    {
+      "id": "gemini-2.5-flash-lite",
+      "object": "model",
+      "created": 1782298995,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 2.5 Flash Lite",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.1,
+        "user_output_price_per_million_usd": 0.4
+      }
+    },
+    {
+      "id": "gemini-2.5-flash-lite-preview",
+      "object": "model",
+      "created": 1782298995,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 2.5 Flash Lite Preview",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.1,
+        "user_output_price_per_million_usd": 0.4
+      }
+    },
+    {
+      "id": "gemini-2.5-pro",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 2.5 Pro",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "Gemini 2.5 Pro is a high-capability multimodal model that excels at advanced reasoning, coding, mathematics, scientific problems, and long-context understanding, suitable for complex analysis and comprehensive tasks."
+          },
+          "zh": {
+            "short_summary": "Gemini 2.5 Pro 是高能力多模态模型，擅长高级推理、代码、数学、科学问题和长上下文理解，适合复杂分析与综合任务。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 2.5,
+        "user_output_price_per_million_usd": 15
+      }
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "object": "model",
+      "created": 1781258148,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3 Flash Preview",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.5,
+        "user_output_price_per_million_usd": 3
+      }
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "object": "model",
+      "created": 1781307059,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Flash Lite",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.25,
+        "user_output_price_per_million_usd": 1.5
+      }
+    },
+    {
+      "id": "gemini-3.1-flash-lite-preview",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Flash Lite Preview",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage."
+          },
+          "zh": {
+            "short_summary": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 0.25,
+        "user_output_price_per_million_usd": 1.5
+      }
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Pro Preview",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Very cheap",
+              "Simple chat"
+            ],
+            "short_summary": "Gemini 3.1 Pro Preview is Google’s frontier reasoning model, significantly improving software engineering performance, agent reliability, and token efficiency in complex workflows. Built on the multimodal foundation of the Gemini 3 family, it provides high-precision reasoning over text, images, video, audio, and code, with a 1 million-token context window. It is designed for advanced development and agentic systems, improving long-term stability, tool orchestration, and token efficiency. It introduces a new intermediate thinking mode to better balance cost, speed, and performance. The model performs well in agentic coding, structured planning, multimodal analysis, and workflow automation, making it well suited for autonomous agents, financial modeling, spreadsheet automation, and high-context enterprise tasks.",
+            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+          },
+          "zh": {
+            "feature_tags": [
+              "极低成本",
+              "简单对话"
+            ],
+            "short_summary": "Gemini 3.1 Pro Preview 是 Google 的前沿推理模型，可显著提升软件工程性能、增强代理可靠性，并在复杂的工作流程中实现更高效的令牌使用。它基于 Gemini 3 系列的多模态基础，结合了对文本、图像、视频、音频和代码的高精度推理，并拥有 100 万个令牌的上下文窗口。Gemini 3.1 Pro Preview 专为高级开发和智能体系统而设计，在提升令牌效率的同时，增强了长期稳定性、工具编排能力。它引入了一种新的中间思维模式，以更好地平衡成本、速度和性能。该模型在智能体编码、结构化规划、多模态分析和工作流自动化方面表现出色，因此非常适合自主智能体、金融建模、电子表格自动化和高上下文企业任务。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 4,
+        "user_output_price_per_million_usd": 18
+      }
+    },
+    {
+      "id": "gemini-3.5-flash",
+      "object": "model",
+      "created": 1781307063,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.5 Flash",
+        "origin_vendor_name": "Google",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 64000,
+        "user_input_price_per_million_usd": 1.5,
+        "user_output_price_per_million_usd": 9
+      }
+    },
+    {
+      "id": "glm-5",
+      "object": "model",
+      "created": 1781254421,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM 5",
+        "origin_vendor_name": "Zhipu",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.615385,
+        "user_output_price_per_million_usd": 2.769231
+      }
+    },
+    {
+      "id": "glm-5-turbo",
+      "object": "model",
+      "created": 1781254136,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM 5 Turbo",
+        "origin_vendor_name": "Zhipu",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.769231,
+        "user_output_price_per_million_usd": 3.384615
+      }
+    },
+    {
+      "id": "glm-5.1",
+      "object": "model",
+      "created": 1781251780,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5.1",
+        "origin_vendor_name": "Zhipu",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.923077,
+        "user_output_price_per_million_usd": 3.692308
+      }
+    },
+    {
+      "id": "glm-5.2",
+      "object": "model",
+      "created": 1782120361,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5.2",
+        "origin_vendor_name": "Zhipu",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.230769,
+        "user_output_price_per_million_usd": 4.307692
+      }
+    },
+    {
+      "id": "glm-5v-turbo",
+      "object": "model",
+      "created": 1782722706,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5V Turbo",
+        "origin_vendor_name": "Zhipu",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.076923,
+        "user_output_price_per_million_usd": 3.384615
+      }
+    },
+    {
+      "id": "gpt-4.1",
+      "object": "model",
+      "created": 1782264411,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-4.1",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "context_length": 128000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 8
+      }
+    },
+    {
+      "id": "gpt-4o",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-4o",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks."
+          },
+          "zh": {
+            "short_summary": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。"
+          }
+        },
+        "context_length": 128000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 2.5,
+        "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "gpt-5",
+      "object": "model",
+      "created": 1782264476,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.25,
+        "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "gpt-5-nano",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5-nano",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5 Nano is a lightweight, low-cost model focused on fast responses and high concurrency, suitable for simple Q&A, classification, summarization, information extraction, and batch automation tasks."
+          },
+          "zh": {
+            "short_summary": "GPT-5 Nano 是轻量低成本模型，强调快速响应和高并发，适合简单问答、分类、摘要、信息抽取和批量自动化任务。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.05,
+        "user_output_price_per_million_usd": 0.4
+      }
+    },
+    {
+      "id": "gpt-5.1",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.1",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.1 is a high-capability general-purpose model that excels at complex reasoning, coding, long-document understanding, and multi-step task execution, suitable for professional analysis and agent workflows."
+          },
+          "zh": {
+            "short_summary": "GPT-5.1 是高能力通用模型，擅长复杂推理、代码、长文档理解和多步骤任务执行，适合专业分析与 Agent 工作流。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.25,
+        "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "gpt-5.1-chat",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.1-chat",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios."
+          },
+          "zh": {
+            "short_summary": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。"
+          }
+        },
+        "context_length": 128000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 1.25,
+        "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "gpt-5.2",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.2",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.2 is an enhanced general-purpose model with stable performance in reasoning, coding, complex planning, and long-context tasks, suitable for high-quality content generation and automated execution."
+          },
+          "zh": {
+            "short_summary": "GPT-5.2 是增强型通用模型，在推理、代码、复杂规划和长上下文任务中表现稳定，适合高质量内容生成与自动化执行。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.75,
+        "user_output_price_per_million_usd": 14
+      }
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "object": "model",
+      "created": 1782896923,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.3-codex",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation."
+          },
+          "zh": {
+            "short_summary": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.75,
+        "user_output_price_per_million_usd": 14
+      }
+    },
+    {
+      "id": "gpt-5.4",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.4",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Very cheap",
+              "Simple chat"
+            ],
+            "short_summary": "GPT-5.4 is OpenAI’s latest frontier model, integrating the Codex and GPT families into a single system. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling high-context reasoning, coding, and multimodal analysis within the same workflow. The model performs strongly in coding, document understanding, tool use, and instruction following. It is designed as a powerful default model for general tasks and software engineering, capable of generating production-grade code, integrating information from multiple sources, and executing complex multi-step workflows with fewer iterations and higher token efficiency.",
+            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+          },
+          "zh": {
+            "feature_tags": [
+              "极低成本",
+              "简单对话"
+            ],
+            "short_summary": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 22.5
+      }
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.4-mini",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance."
+          },
+          "zh": {
+            "short_summary": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.75,
+        "user_output_price_per_million_usd": 4.5
+      }
+    },
+    {
+      "id": "gpt-5.4-pro",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.4-pro",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "short_summary": "GPT-5.4 Pro is a high-capability professional model designed for complex reasoning, deep analysis, code generation, and multi-step agent tasks, suitable for demanding production scenarios."
+          },
+          "zh": {
+            "short_summary": "GPT-5.4 Pro 是高能力专业模型，面向复杂推理、深度分析、代码生成和多步骤 Agent 任务，适合高要求生产场景。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 60,
+        "user_output_price_per_million_usd": 270
+      }
+    },
+    {
+      "id": "gpt-5.5",
+      "object": "model",
+      "created": 1779765034,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "gpt-5.5",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Very cheap",
+              "Simple chat"
+            ],
+            "short_summary": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads. It builds on GPT-5.4 with stronger reasoning, higher reliability, and more efficient token handling for difficult tasks. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.",
+            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+          },
+          "zh": {
+            "feature_tags": [
+              "极低成本",
+              "简单对话"
+            ],
+            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 10,
+        "user_output_price_per_million_usd": 45
+      }
+    },
+    {
+      "id": "hunyuan-role-latest",
+      "object": "model",
+      "created": 1782722709,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-Role Latest",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.369231,
+        "user_output_price_per_million_usd": 1.476923
+      }
+    },
+    {
+      "id": "hy-mt2-lite",
+      "object": "model",
+      "created": 1782722712,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-MT2 Lite",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.046154,
+        "user_output_price_per_million_usd": 0.184615
+      }
+    },
+    {
+      "id": "hy-mt2-plus",
+      "object": "model",
+      "created": 1782722714,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-MT2 Plus",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.076923,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "hy-mt2-pro",
+      "object": "model",
+      "created": 1782722716,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-MT2 Pro",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.076923,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "hy-role",
+      "object": "model",
+      "created": 1782722718,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-Role",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.369231,
+        "user_output_price_per_million_usd": 1.476923
+      }
+    },
+    {
+      "id": "hy-vision-2.0-instruct",
+      "object": "model",
+      "created": 1782722723,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy-Vision 2.0 Instruct",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 1.034483,
+        "user_output_price_per_million_usd": 2.413793
+      }
+    },
+    {
+      "id": "hy3-preview",
+      "object": "model",
+      "created": 1782722728,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hy3 Preview",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.246154,
+        "user_output_price_per_million_usd": 1.230769
+      }
+    },
+    {
+      "id": "kimi-k2.5",
+      "object": "model",
+      "created": 1782120365,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Kimi K2.5",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.615385,
+        "user_output_price_per_million_usd": 3.230769
+      }
+    },
+    {
+      "id": "kimi-k2.6",
+      "object": "model",
+      "created": 1782120363,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Kimi K2.6",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 1,
+        "user_output_price_per_million_usd": 4.153846
+      }
+    },
+    {
+      "id": "kimi-k2.7-code",
+      "object": "model",
+      "created": 1782120362,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Kimi K2.7 Code",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 1,
+        "user_output_price_per_million_usd": 4.153846
+      }
+    },
+    {
+      "id": "kimi-k2.7-code-highspeed",
+      "object": "model",
+      "created": 1782722737,
+      "owned_by": "moonshot",
+      "metadata": {
+        "display_name": "Kimi K2.7 Code HighSpeed",
+        "origin_vendor_name": "Moonshot AI",
+        "modality_type": "text",
+        "context_length": 128000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 8.307692
+      }
+    },
+    {
+      "id": "minimax-m2.5",
+      "object": "model",
+      "created": 1782722740,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "MiniMax M2.5",
+        "origin_vendor_name": "MiniMax",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.323077,
+        "user_output_price_per_million_usd": 1.292308
+      }
+    },
+    {
+      "id": "minimax-m2.7",
+      "object": "model",
+      "created": 1782722742,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "MiniMax M2.7",
+        "origin_vendor_name": "MiniMax",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.323077,
+        "user_output_price_per_million_usd": 1.292308
+      }
+    },
+    {
+      "id": "minimax-m3",
+      "object": "model",
+      "created": 1782722745,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "MiniMax M3",
+        "origin_vendor_name": "MiniMax",
+        "modality_type": "text",
+        "context_length": 1200000,
+        "max_token": 65565,
+        "user_input_price_per_million_usd": 0.323077,
+        "user_output_price_per_million_usd": 2.584615
+      }
+    },
+    {
+      "id": "qwen-flash",
+      "object": "model",
+      "created": 1782120143,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen Flash",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.023077,
+        "user_output_price_per_million_usd": 0.230769
+      }
+    },
+    {
+      "id": "qwen-max",
+      "object": "model",
+      "created": 1782120172,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen Max",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.369231,
+        "user_output_price_per_million_usd": 1.476923
+      }
+    },
+    {
+      "id": "qwen-plus",
+      "object": "model",
+      "created": 1782120141,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen Plus",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.123077,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "qwen-turbo",
+      "object": "model",
+      "created": 1782120173,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen Turbo",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.046154,
+        "user_output_price_per_million_usd": 0.092308
+      }
+    },
+    {
+      "id": "qwen3.5-flash",
+      "object": "model",
+      "created": 1782120140,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.5 Flash",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.030769,
+        "user_output_price_per_million_usd": 0.307692
+      }
+    },
+    {
+      "id": "qwen3.5-plus",
+      "object": "model",
+      "created": 1782120139,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.5 Plus",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.123077,
+        "user_output_price_per_million_usd": 0.738462
+      }
+    },
+    {
+      "id": "qwen3.6-flash",
+      "object": "model",
+      "created": 1782120137,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.6 Flash",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.184615,
+        "user_output_price_per_million_usd": 1.107692
+      }
+    },
+    {
+      "id": "qwen3.6-plus",
+      "object": "model",
+      "created": 1782120136,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.6 Plus",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.307692,
+        "user_output_price_per_million_usd": 1.846154
+      }
+    },
+    {
+      "id": "qwen3.7-max",
+      "object": "model",
+      "created": 1782120042,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.7 Max",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 1.846154,
+        "user_output_price_per_million_usd": 5.538462
+      }
+    },
+    {
+      "id": "qwen3.7-plus",
+      "object": "model",
+      "created": 1782120135,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen3.7 Plus",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "text",
+        "context_length": 128000,
+        "user_input_price_per_million_usd": 0.307692,
+        "user_output_price_per_million_usd": 1.230769
+      }
+    }
+  ]
+}

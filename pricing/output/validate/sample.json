@@ -1,0 +1,160 @@
+{
+  "fxCnyPerUsd": 7.25,
+  "rows": [
+    {
+      "modelId": "deepseek-v3.2",
+      "displayName": "DeepSeek V3.2",
+      "tierLabel": "统一价",
+      "pricingMode": "legacy",
+      "online": {
+        "tierLabel": "标准计价",
+        "input": 0.275862,
+        "output": 0.413793,
+        "cache": 0.027586,
+        "cacheCreation": null,
+        "pricingMode": "legacy"
+      },
+      "summaryList": {
+        "input": 0.275862,
+        "output": 0.413793,
+        "cache": 0.027586
+      },
+      "listMatch": "是",
+      "suppliers": [
+        {
+          "name": "TokenHub",
+          "currency": "CNY",
+          "input": 2,
+          "output": 3,
+          "cache": 0.4,
+          "inputUsd": 0.27586206896551724,
+          "outputUsd": 0.41379310344827586,
+          "cacheUsd": 0.055172413793103454
+        },
+        {
+          "name": "百炼",
+          "currency": "CNY",
+          "input": 2,
+          "output": 3,
+          "cache": 0.4,
+          "inputUsd": 0.27586206896551724,
+          "outputUsd": 0.41379310344827586,
+          "cacheUsd": 0.055172413793103454
+        },
+        {
+          "name": "AIGC国内",
+          "currency": "CNY",
+          "input": 2,
+          "output": 8,
+          "cache": 0.2,
+          "inputUsd": 0.27586206896551724,
+          "outputUsd": 1.103448275862069,
+          "cacheUsd": 0.027586206896551727
+        },
+        {
+          "name": "AIGC国际",
+          "currency": "USD",
+          "input": 0.27,
+          "output": 1.1,
+          "cache": 0.027,
+          "inputUsd": 0.27,
+          "outputUsd": 1.1,
+          "cacheUsd": 0.027
+        }
+      ],
+      "notes": [
+        "三上游 TH/BL/AIGC国内 官网 CNY 一致；线上 USD 约为 2÷7.25≈0.28"
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus",
+      "displayName": "Qwen3.5 Plus",
+      "tierLabel": "输入<=128k",
+      "pricingMode": "legacy",
+      "online": {
+        "tierLabel": "标准计价",
+        "input": 0.110345,
+        "output": 0.662069,
+        "cache": 0.027586,
+        "cacheCreation": null,
+        "pricingMode": "legacy"
+      },
+      "summaryList": {
+        "input": 0.110345,
+        "output": 0.662069,
+        "cache": 0.027586
+      },
+      "listMatch": "是",
+      "suppliers": [
+        {
+          "name": "TokenHub",
+          "currency": "CNY",
+          "input": 0.8,
+          "output": 4.8,
+          "cache": 0.08,
+          "inputUsd": 0.11034482758620691,
+          "outputUsd": 0.6620689655172414,
+          "cacheUsd": 0.01103448275862069
+        },
+        {
+          "name": "百炼",
+          "currency": "CNY",
+          "input": 0.8,
+          "output": 4.8,
+          "cache": 0.16,
+          "inputUsd": 0.11034482758620691,
+          "outputUsd": 0.6620689655172414,
+          "cacheUsd": 0.02206896551724138
+        }
+      ],
+      "notes": [
+        "主档 ≤128k；百炼缓存价高于 TH/AIGC国内"
+      ]
+    },
+    {
+      "modelId": "gpt-4o",
+      "displayName": "gpt-4o",
+      "tierLabel": "统一价",
+      "pricingMode": "legacy",
+      "online": {
+        "tierLabel": "标准计价",
+        "input": 2.5,
+        "output": 10,
+        "cache": 1.25,
+        "cacheCreation": null,
+        "pricingMode": "legacy"
+      },
+      "summaryList": {
+        "input": 2.5,
+        "output": 10,
+        "cache": 1.25
+      },
+      "listMatch": "是",
+      "suppliers": [
+        {
+          "name": "AIGC国内",
+          "currency": "CNY",
+          "input": 18.75,
+          "output": 75,
+          "cache": 9.37,
+          "inputUsd": 2.586206896551724,
+          "outputUsd": 10.344827586206897,
+          "cacheUsd": 1.292413793103448
+        },
+        {
+          "name": "AIGC国际",
+          "currency": "USD",
+          "input": 2.5,
+          "output": 10,
+          "cache": 1.25,
+          "inputUsd": 2.5,
+          "outputUsd": 10,
+          "cacheUsd": 1.25
+        }
+      ],
+      "notes": [
+        "TH/BL 无官网；仅 AIGC 有挂牌"
+      ]
+    }
+  ]
+}

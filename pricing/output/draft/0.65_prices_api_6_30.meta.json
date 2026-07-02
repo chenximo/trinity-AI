@@ -1,0 +1,33 @@
+{
+  "tag": "0.65_prices",
+  "pricingPolicy": "optimized_0.65",
+  "derivedFrom": {
+    "template": "prices-api.json",
+    "upstream": "upstream-pricing.json",
+    "upstreamScrapedAt": "2026-06-30",
+    "templateFetchedAt": "2026-06-30T13:38:49.183Z"
+  },
+  "generatedAt": "2026-07-01T02:14:31.989Z",
+  "pricedModelCount": 57,
+  "pricedBySource": {
+    "aigc_international": 23,
+    "tokenhub": 23,
+    "aigc_domestic": 1,
+    "bailian": 10
+  },
+  "aigcIntlInOutCount": 23,
+  "upstreamPriority": {
+    "cache": [
+      "tokenhub",
+      "bailian",
+      "aigc_domestic",
+      "aigc_international"
+    ],
+    "inOut": [
+      "tokenhub",
+      "bailian",
+      "aigc_domestic",
+      "aigc_international_if_online_matches"
+    ]
+  }
+}

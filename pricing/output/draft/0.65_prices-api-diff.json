@@ -1,0 +1,2867 @@
+{
+  "generatedAt": "2026-06-30T12:58:02.000Z",
+  "scrapedFile": "0.65_prices-api.json",
+  "onlineFetchedAt": "2026-06-30T12:04:42.986Z",
+  "scrapedGeneratedAt": "2026-06-30T12:58:01.860Z",
+  "scrapedPolicy": "optimized_0.65",
+  "upstreamScrapedAt": "2026-06-30",
+  "fxCnyPerUsd": 6.5,
+  "summary": {
+    "total": 58,
+    "withScrape": 57,
+    "withoutScrape": 1,
+    "match": 5,
+    "close": 0,
+    "diff": 52,
+    "partial": 0,
+    "noScrape": 1
+  },
+  "rows": [
+    {
+      "model": "claude-opus-4-6",
+      "displayName": "claude-opus-4-6",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_international",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "一致",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 5,
+              "scraped": 5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 25,
+              "scraped": 25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.5,
+              "scraped": 0.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "claude-opus-4-7",
+      "displayName": "claude-opus-4-7",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_international",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "一致",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 5,
+              "scraped": 5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 25,
+              "scraped": 25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.5,
+              "scraped": 0.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "claude-opus-4-8",
+      "displayName": "claude-opus-4-8",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_international",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "一致",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 5,
+              "scraped": 5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 25,
+              "scraped": 25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.5,
+              "scraped": 0.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "displayName": "claude-sonnet-4-6",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_international",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "一致",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 3,
+              "scraped": 3,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 15,
+              "scraped": 15,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.3,
+              "scraped": 0.3,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "deepseek-v3.2",
+      "displayName": "DeepSeek V3.2",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.413793,
+              "scraped": 0.461538,
+              "delta": -0.047745,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.027586,
+              "scraped": 0.061538,
+              "delta": -0.033952,
+              "deltaPct": -55.2,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "deepseek-v4-flash",
+      "displayName": "DeepSeek V4 Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.137931,
+              "scraped": 0.153846,
+              "delta": -0.015915,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.002759,
+              "scraped": 0.030769,
+              "delta": -0.02801,
+              "deltaPct": -91,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "deepseek-v4-flash-202605",
+      "displayName": "DeepSeek V4 Flash Direct",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.137931,
+              "scraped": 0.153846,
+              "delta": -0.015915,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.002759,
+              "scraped": 0.003077,
+              "delta": -0.000318,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "deepseek-v4-pro",
+      "displayName": "DeepSeek V4 Pro",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.655172,
+              "scraped": 1.846154,
+              "delta": -0.190982,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.310345,
+              "scraped": 3.692308,
+              "delta": -0.381963,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.033103,
+              "scraped": 0.153846,
+              "delta": -0.120743,
+              "deltaPct": -78.5,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "deepseek-v4-pro-202606",
+      "displayName": "DeepSeek V4 Pro Direct",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.413793,
+              "scraped": 0.461538,
+              "delta": -0.047745,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.827586,
+              "scraped": 0.923077,
+              "delta": -0.095491,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.003448,
+              "scraped": 0.003846,
+              "delta": -0.000398,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "displayName": "Gemini 2.5 Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.3,
+              "scraped": 0.3,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 2.5,
+              "scraped": 2.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.03,
+              "scraped": 0.033846,
+              "delta": -0.003846,
+              "deltaPct": -11.4,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash-lite",
+      "displayName": "Gemini 2.5 Flash Lite",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.1,
+              "scraped": 0.1,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 0.4,
+              "scraped": 0.4,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.01,
+              "scraped": 0.011538,
+              "delta": -0.001538,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash-lite-preview",
+      "displayName": "Gemini 2.5 Flash Lite Preview",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.1,
+              "scraped": 0.1,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 0.4,
+              "scraped": 0.4,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.01,
+              "scraped": 0.011538,
+              "delta": -0.001538,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "displayName": "Gemini 2.5 Pro",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 200K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.25,
+              "scraped": 1.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 10,
+              "scraped": 10,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.125,
+              "scraped": 0.143077,
+              "delta": -0.018077,
+              "deltaPct": -12.6,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 200K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 2.5,
+              "scraped": 2.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 15,
+              "scraped": 15,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.25,
+              "scraped": 0.287692,
+              "delta": -0.037692,
+              "deltaPct": -13.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "displayName": "Gemini 3 Flash Preview",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.5,
+              "scraped": 0.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 3,
+              "scraped": 3,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.05,
+              "scraped": 0.053846,
+              "delta": -0.003846,
+              "deltaPct": -7.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.1-flash-lite",
+      "displayName": "Gemini 3.1 Flash Lite",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.25,
+              "scraped": 0.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 1.5,
+              "scraped": 1.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.025,
+              "scraped": 0.027692,
+              "delta": -0.002692,
+              "deltaPct": -9.7,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.1-flash-lite-preview",
+      "displayName": "Gemini 3.1 Flash Lite Preview",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.25,
+              "scraped": 0.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 1.5,
+              "scraped": 1.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.025,
+              "scraped": 0.027692,
+              "delta": -0.002692,
+              "deltaPct": -9.7,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "displayName": "Gemini 3.1 Pro Preview",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 200K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 2,
+              "scraped": 2,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 12,
+              "scraped": 12,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.2,
+              "scraped": 0.230769,
+              "delta": -0.030769,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 200K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 4,
+              "scraped": 4,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 18,
+              "scraped": 18,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.4,
+              "scraped": 0.461538,
+              "delta": -0.061538,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "displayName": "Gemini 3.5 Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.5,
+              "scraped": 1.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 9,
+              "scraped": 9,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.15,
+              "scraped": 0.173077,
+              "delta": -0.023077,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-4-7-251222",
+      "displayName": "GLM 4.7",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 3,
+              "scraped": 0.461538,
+              "delta": 2.538462,
+              "deltaPct": 550,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 14,
+              "scraped": 2.153846,
+              "delta": 11.846154,
+              "deltaPct": 550,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.6,
+              "scraped": 0.092308,
+              "delta": 0.507692,
+              "deltaPct": 550,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-5",
+      "displayName": "GLM 5",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "usage_token_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.616,
+              "scraped": 0.923077,
+              "delta": -0.307077,
+              "deltaPct": -33.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 2.772,
+              "scraped": 3.384615,
+              "delta": -0.612615,
+              "deltaPct": -18.1,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.154,
+              "scraped": 0.154,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.924,
+              "scraped": 0.615385,
+              "delta": 0.308615,
+              "deltaPct": 50.1,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.388,
+              "scraped": 2.769231,
+              "delta": 0.618769,
+              "deltaPct": 22.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.231,
+              "scraped": 0.231,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-5-turbo",
+      "displayName": "GLM 5 Turbo",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "usage_token_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.77,
+              "scraped": 1.076923,
+              "delta": -0.306923,
+              "deltaPct": -28.5,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.388,
+              "scraped": 4,
+              "delta": -0.612,
+              "deltaPct": -15.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.185,
+              "scraped": 0.276923,
+              "delta": -0.091923,
+              "deltaPct": -33.2,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.078,
+              "scraped": 0.769231,
+              "delta": 0.308769,
+              "deltaPct": 40.1,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 4.004,
+              "scraped": 3.384615,
+              "delta": 0.619385,
+              "deltaPct": 18.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.277,
+              "scraped": 0.184615,
+              "delta": 0.092385,
+              "deltaPct": 50,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-5.1",
+      "displayName": "GLM-5.1",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "usage_token_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.924,
+              "scraped": 1.230769,
+              "delta": -0.306769,
+              "deltaPct": -24.9,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.6961,
+              "scraped": 4.307692,
+              "delta": -0.611592,
+              "deltaPct": -14.2,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.2,
+              "scraped": 0.2,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 32.77K",
+          "pricingMode": "usage_token_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.232,
+              "scraped": 0.923077,
+              "delta": 0.308923,
+              "deltaPct": 33.5,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 4.312,
+              "scraped": 3.692308,
+              "delta": 0.619692,
+              "deltaPct": 16.8,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.308,
+              "scraped": 0.308,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-5.2",
+      "displayName": "GLM-5.2",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.1036,
+              "scraped": 1.230769,
+              "delta": -0.127169,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.8621,
+              "scraped": 4.307692,
+              "delta": -0.445592,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.2759,
+              "scraped": 0.307692,
+              "delta": -0.031792,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "glm-5v-turbo",
+      "displayName": "GLM-5V Turbo",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 32.77K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.689655,
+              "scraped": 1.076923,
+              "delta": -0.387268,
+              "deltaPct": -36,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.034483,
+              "scraped": 4,
+              "delta": -0.965517,
+              "deltaPct": -24.1,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.165517,
+              "scraped": 0.276923,
+              "delta": -0.111406,
+              "deltaPct": -40.2,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 32.77K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.965517,
+              "scraped": 0.769231,
+              "delta": 0.196286,
+              "deltaPct": 25.5,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.586207,
+              "scraped": 3.384615,
+              "delta": 0.201592,
+              "deltaPct": 6,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.248276,
+              "scraped": 0.184615,
+              "delta": 0.063661,
+              "deltaPct": 34.5,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-4.1",
+      "displayName": "gpt-4.1",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 2,
+              "scraped": 2,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 8,
+              "scraped": 8,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.5,
+              "scraped": 0.576923,
+              "delta": -0.076923,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-4o",
+      "displayName": "gpt-4o",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 2.5,
+              "scraped": 2.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 10,
+              "scraped": 10,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 1.25,
+              "scraped": 1.441538,
+              "delta": -0.191538,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "displayName": "gpt-5",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.25,
+              "scraped": 1.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 10,
+              "scraped": 10,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.13,
+              "scraped": 0.144231,
+              "delta": -0.014231,
+              "deltaPct": -9.9,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5-nano",
+      "displayName": "gpt-5-nano",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.05,
+              "scraped": 0.05,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 0.4,
+              "scraped": 0.4,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.01,
+              "scraped": 0.005769,
+              "delta": 0.004231,
+              "deltaPct": 73.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.1",
+      "displayName": "gpt-5.1",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.25,
+              "scraped": 1.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 10,
+              "scraped": 10,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.125,
+              "scraped": 0.144231,
+              "delta": -0.019231,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.1-chat",
+      "displayName": "gpt-5.1-chat",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.25,
+              "scraped": 1.25,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 10,
+              "scraped": 10,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.125,
+              "scraped": 0.144231,
+              "delta": -0.019231,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.2",
+      "displayName": "gpt-5.2",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.75,
+              "scraped": 1.75,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 14,
+              "scraped": 14,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.18,
+              "scraped": 0.201923,
+              "delta": -0.021923,
+              "deltaPct": -10.9,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.4",
+      "displayName": "gpt-5.4",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 272K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 2.5,
+              "scraped": 2.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 15,
+              "scraped": 15,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.25,
+              "scraped": 0.288462,
+              "delta": -0.038462,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 272K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 5,
+              "scraped": 5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 22.5,
+              "scraped": 22.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.5,
+              "scraped": 0.576923,
+              "delta": -0.076923,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "displayName": "gpt-5.4-mini",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.75,
+              "scraped": 0.75,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 4.5,
+              "scraped": 4.5,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": 0.075,
+              "scraped": 0.086538,
+              "delta": -0.011538,
+              "deltaPct": -13.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5.4-pro",
+      "displayName": "gpt-5.4-pro",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "aigc_domestic",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "一致",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 272K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 30,
+              "scraped": 30,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 180,
+              "scraped": 180,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "一致"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 272K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 60,
+              "scraped": 60,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "output",
+              "online": 270,
+              "scraped": 270,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "hunyuan-role-latest",
+      "displayName": "Hy-Role Latest",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.331034,
+              "scraped": 0.369231,
+              "delta": -0.038197,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.324138,
+              "scraped": 1.476923,
+              "delta": -0.152785,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "hy-mt2-lite",
+      "displayName": "Hy-MT2 Lite",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.041379,
+              "scraped": 0.046154,
+              "delta": -0.004775,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.165517,
+              "scraped": 0.184615,
+              "delta": -0.019098,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "hy-mt2-plus",
+      "displayName": "Hy-MT2 Plus",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.068966,
+              "scraped": 0.076923,
+              "delta": -0.007957,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "hy-mt2-pro",
+      "displayName": "Hy-MT2 Pro",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.068966,
+              "scraped": 0.076923,
+              "delta": -0.007957,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "hy-role",
+      "displayName": "Hy-Role",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.331034,
+              "scraped": 0.369231,
+              "delta": -0.038197,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.324138,
+              "scraped": 1.476923,
+              "delta": -0.152785,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "hy-vision-2.0-instruct",
+      "displayName": "Hy-Vision 2.0 Instruct",
+      "hasScrapedUpstream": false,
+      "scrapeSource": null,
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "无爬虫",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.034483,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无爬虫"
+            },
+            {
+              "key": "output",
+              "online": 2.413793,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无爬虫"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无爬虫"
+            }
+          ],
+          "verdict": "无爬虫"
+        }
+      ]
+    },
+    {
+      "model": "hy3-preview",
+      "displayName": "Hy3 Preview",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "context_length_range",
+      "tierCount": 3,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 16.38K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.165517,
+              "scraped": 0.184615,
+              "delta": -0.019098,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.551724,
+              "scraped": 0.615385,
+              "delta": -0.063661,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.055172,
+              "scraped": 0.061538,
+              "delta": -0.006366,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "16.39K – 32.77K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.22069,
+              "scraped": 0.246154,
+              "delta": -0.025464,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.882759,
+              "scraped": 0.984615,
+              "delta": -0.101856,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.082759,
+              "scraped": 0.092308,
+              "delta": -0.009549,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 2,
+          "tierLabel": "> 32.77K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.103448,
+              "scraped": 1.230769,
+              "delta": -0.127321,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.110345,
+              "scraped": 0.123077,
+              "delta": -0.012732,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "kimi-k2.5",
+      "displayName": "Kimi K2.5",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.551724,
+              "scraped": 0.615385,
+              "delta": -0.063661,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 2.896552,
+              "scraped": 3.230769,
+              "delta": -0.334217,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.137931,
+              "scraped": 0.107692,
+              "delta": 0.030239,
+              "deltaPct": 28.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "kimi-k2.6",
+      "displayName": "Kimi K2.6",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.8966,
+              "scraped": 1,
+              "delta": -0.1034,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.7242,
+              "scraped": 4.153846,
+              "delta": -0.429646,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.1518,
+              "scraped": 0.169231,
+              "delta": -0.017431,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "kimi-k2.7-code",
+      "displayName": "Kimi K2.7 Code",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.896552,
+              "scraped": 1,
+              "delta": -0.103448,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 3.724138,
+              "scraped": 4.153846,
+              "delta": -0.429708,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": null,
+              "scraped": null,
+              "delta": null,
+              "deltaPct": null,
+              "status": "无"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "kimi-k2.7-code-highspeed",
+      "displayName": "Kimi K2.7 Code HighSpeed",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.793103,
+              "scraped": 2,
+              "delta": -0.206897,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 7.448276,
+              "scraped": 8.307692,
+              "delta": -0.859416,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.358621,
+              "scraped": 0.4,
+              "delta": -0.041379,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "minimax-m2.5",
+      "displayName": "MiniMax M2.5",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.289655,
+              "scraped": 0.323077,
+              "delta": -0.033422,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.158621,
+              "scraped": 1.292308,
+              "delta": -0.133687,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.028966,
+              "scraped": 0.032308,
+              "delta": -0.003342,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "minimax-m2.7",
+      "displayName": "MiniMax M2.7",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.289655,
+              "scraped": 0.323077,
+              "delta": -0.033422,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.158621,
+              "scraped": 1.292308,
+              "delta": -0.133687,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.057931,
+              "scraped": 0.064615,
+              "delta": -0.006684,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "minimax-m3",
+      "displayName": "MiniMax M3",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "context_length_range",
+      "tierCount": 2,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "≤ 524.29K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.289655,
+              "scraped": 0.323077,
+              "delta": -0.033422,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.158621,
+              "scraped": 1.292308,
+              "delta": -0.133687,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.057931,
+              "scraped": 0.064615,
+              "delta": -0.006684,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        },
+        {
+          "tierIndex": 1,
+          "tierLabel": "> 524.29K",
+          "pricingMode": "context_length_range",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.57931,
+              "scraped": 0.646154,
+              "delta": -0.066844,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 2.317241,
+              "scraped": 2.584615,
+              "delta": -0.267374,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.115862,
+              "scraped": 0.129231,
+              "delta": -0.013369,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen-flash",
+      "displayName": "Qwen Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.02069,
+              "scraped": 0.023077,
+              "delta": -0.002387,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.082759,
+              "scraped": 0.230769,
+              "delta": -0.14801,
+              "deltaPct": -64.1,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.005172,
+              "scraped": 0.004615,
+              "delta": 0.000557,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen-max",
+      "displayName": "Qwen Max",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.331034,
+              "scraped": 0.369231,
+              "delta": -0.038197,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.324138,
+              "scraped": 1.476923,
+              "delta": -0.152785,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.082759,
+              "scraped": 0.082759,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen-plus",
+      "displayName": "Qwen Plus",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.110345,
+              "scraped": 0.123077,
+              "delta": -0.012732,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.027586,
+              "scraped": 0.024615,
+              "delta": 0.002971,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen-turbo",
+      "displayName": "Qwen Turbo",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.041379,
+              "scraped": 0.046154,
+              "delta": -0.004775,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.082759,
+              "scraped": 0.092308,
+              "delta": -0.009549,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.010345,
+              "scraped": 0.010345,
+              "delta": 0,
+              "deltaPct": 0,
+              "status": "一致"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.5-flash",
+      "displayName": "Qwen3.5 Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.027586,
+              "scraped": 0.030769,
+              "delta": -0.003183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.006897,
+              "scraped": 0.003077,
+              "delta": 0.00382,
+              "deltaPct": 124.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.5-plus",
+      "displayName": "Qwen3.5 Plus",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "tokenhub",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.110345,
+              "scraped": 0.123077,
+              "delta": -0.012732,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.662069,
+              "scraped": 0.738462,
+              "delta": -0.076393,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.027586,
+              "scraped": 0.012308,
+              "delta": 0.015278,
+              "deltaPct": 124.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.6-flash",
+      "displayName": "Qwen3.6 Flash",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.165517,
+              "scraped": 0.184615,
+              "delta": -0.019098,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 0.993103,
+              "scraped": 1.107692,
+              "delta": -0.114589,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.041379,
+              "scraped": 0.036923,
+              "delta": 0.004456,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.6-plus",
+      "displayName": "Qwen3.6 Plus",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.655172,
+              "scraped": 1.846154,
+              "delta": -0.190982,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.068966,
+              "scraped": 0.061538,
+              "delta": 0.007428,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.7-max",
+      "displayName": "Qwen3.7 Max",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 1.655172,
+              "scraped": 1.846154,
+              "delta": -0.190982,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 4.965517,
+              "scraped": 5.538462,
+              "delta": -0.572945,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.413793,
+              "scraped": 0.369231,
+              "delta": 0.044562,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    },
+    {
+      "model": "qwen3.7-plus",
+      "displayName": "Qwen3.7 Plus",
+      "hasScrapedUpstream": true,
+      "scrapeSource": "bailian",
+      "pricingMode": "legacy",
+      "tierCount": 1,
+      "primaryVerdict": "偏差",
+      "tiers": [
+        {
+          "tierIndex": 0,
+          "tierLabel": "标准计价",
+          "pricingMode": "legacy",
+          "fields": [
+            {
+              "key": "input",
+              "online": 0.275862,
+              "scraped": 0.307692,
+              "delta": -0.03183,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "output",
+              "online": 1.103448,
+              "scraped": 1.230769,
+              "delta": -0.127321,
+              "deltaPct": -10.3,
+              "status": "偏差"
+            },
+            {
+              "key": "cache",
+              "online": 0.068966,
+              "scraped": 0.061538,
+              "delta": 0.007428,
+              "deltaPct": 12.1,
+              "status": "偏差"
+            }
+          ],
+          "verdict": "偏差"
+        }
+      ]
+    }
+  ]
+}

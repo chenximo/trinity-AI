@@ -5,10 +5,11 @@ description: >-
   产品手册执行 trinity-product-handbook；API 验收台/Chat API Test 执行 trinity-api-acceptance；
   Vue Monorepo/高保真执行 trinity-vue-prototype-monorepo；色板/design-spec 执行 trinity-design-tokens；
   AI 云营销页执行 trinity-tob-marketing-site；用户控制台执行 trinity-user-console；
-  运营后台若依列表执行 trinity-admin-ruoyi-list；对外开发者文档站执行 trinity-docs。
+  运营后台若依列表执行 trinity-admin-ruoyi-list；模型原厂官方价、补充官方价、
+  三方价对比执行 trinity-official-pricing；对外开发者文档站执行 trinity-docs。
   新建或评审 .cursor/skills 执行 trinity-skill-authoring。手册任务默认不改 apps 业务代码除非用户明确落地工程。
   索引见 .cursor/skills/README.md。触发词：Trinity、派活、产品手册、roadmap、API 验收、验收台、
-  trinity-docs、对外文档、API 文档站、双仓、交付工程师。
+  官方价、原厂价、trinity-docs、对外文档、API 文档站、双仓、交付工程师。
 ---
 
 # Trinity · 项目总机（先分流，再 READ 子 Skill）
@@ -36,6 +37,7 @@ description: >-
 | `apps/ai-cloud`、营销首页、ToB | `trinity-tob-marketing-site` | skill 内模块索引 |
 | `account/console`、user-console-spec | `trinity-user-console` | skill + `/user-console-spec` |
 | `trinity-ai-admin`、admin-ep-table、若依列表 | `trinity-admin-ruoyi-list` | `运营后台-若依式列表规范.md` |
+| `pricing/suppliers/official/**`、官方价、原厂价、vendor-pricing、三方价对比 | `trinity-official-pricing` | api-acceptance、handbook |
 | `apps/trinity-docs`、对外 API 文档、OpenRouter 文档对齐 | `trinity-docs` | `Trinity对外文档站-基本规范.md` · `API对外接口支持参数.md` |
 | 门户、`npm run dev`、预览端口、日常命令 | —（先读再封发具体 Skill） | `Trinity开发枢纽与AI协作流程.md` |
 | 交付工程师、push 原型、双仓、消费原型 | `trinity-vue-prototype-monorepo`（+ 五件套） | `双仓协作与原型交付.md` · `如何消费原型.md` |
@@ -47,6 +49,7 @@ description: >-
 
 | 用户说 | 主 Skill | 不要误判为 |
 |--------|----------|------------|
+| 加一个模型（官方价 / 原厂价目） | `trinity-official-pricing` | api-acceptance、handbook |
 | 加一个模型（验收/测试） | `trinity-api-acceptance` | handbook 叶子、trinity-docs |
 | 加一个模型（产品手册能力描述） | `trinity-product-handbook` | api-acceptance |
 | 更新模型测试报告 / 导出汇总 | `trinity-api-acceptance` | handbook roadmap |

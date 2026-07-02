@@ -1,0 +1,102 @@
+{
+  "source": "vendor_official_catalog",
+  "modality": "image",
+  "modalityLabel": "生图",
+  "description": "模型原厂官网权威价目（生图）",
+  "currency": "CNY",
+  "unit": "CNY per image (or per request)",
+  "chargeUnit": "image",
+  "fetchedAt": "2026-07-01T04:03:46.408Z",
+  "seedVerifiedAt": "2026-06-28",
+  "catalogCount": 2,
+  "modelCount": 2,
+  "pricedCount": 2,
+  "liveCount": 0,
+  "seedCount": 2,
+  "models": [
+    {
+      "modality": "image",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "vendorModelId": "hy-image-v3.0",
+      "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1729/97732",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "TokenHub hy-image-v3.0",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "腾讯云混元生图 3.0 统一价",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "vendorModelId": "hy-image-lite",
+      "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1729/97732",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "TokenHub hy-image-lite",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.099,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "腾讯云混元生图 Lite 统一价",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.099,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    }
+  ]
+}

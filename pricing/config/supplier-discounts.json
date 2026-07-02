@@ -1,0 +1,24 @@
+{
+  "description": "各上游供应商协议折扣（相对官网价）。1.0 = 无折扣；0.85 = 85 折。留空则成本价显示「待填」。",
+  "updatedAt": null,
+  "fxRate": 7.25,
+  "fxRateNote": "人民币/美元汇率（1 USD = 7.25 CNY），用于将元/百万tokens 成本换算为 USD；与线上一致。",
+  "suppliers": {
+    "tokenhub": {
+      "label": "腾讯云 TokenHub·广州",
+      "defaultDiscount": null,
+      "note": "合同/商务台账；可按全局默认或按模型覆盖"
+    },
+    "bailian": {
+      "label": "阿里云百炼·华北2北京",
+      "defaultDiscount": null,
+      "note": "合同/商务台账；可与 TokenHub 折扣不同"
+    }
+  },
+  "modelOverrides": {
+    "_example_deepseek-v4-pro": {
+      "tokenhub": { "discount": null, "costNote": "例：0.92 表示官网 92%" },
+      "bailian": { "discount": null }
+    }
+  }
+}

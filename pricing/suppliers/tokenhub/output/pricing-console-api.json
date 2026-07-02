@@ -1,0 +1,4702 @@
+{
+  "source": "tencent_tokenhub_console_api",
+  "api": "DescribeModelList",
+  "apiUrl": "https://console.cloud.tencent.com/cgi/capi",
+  "apiCaptureCount": 2,
+  "scrapedAt": "2026-06-30T03:32:07.256Z",
+  "fromFile": "pricing-console-details.json",
+  "modelCount": 58,
+  "pricingTierCount": 87,
+  "models": [
+    {
+      "modelId": "hy3-preview",
+      "modelName": "Hy3 preview",
+      "displayName": "Hy3 preview",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": "代码生成、长上下文与 Agent 能力扎实，适合 Coding Agent、文档自动化及多步工具调用工作流",
+      "description": "混元 Hy3 preview 面向 Agent 工作负载设计，采用 295B/21B 激活的 MoE 架构。在同一个模型内提供 no_think（极速响应）、think_low（快速思考）、think_high（深度推理）三档模式，适配从高频交互到复杂工程任务的不同延迟与深度需求。在 SWE-bench Verified 等代码基准上接近当前最强水平，256K 上下文支持跨文件代码重构与长文档分析。适合需要可靠任务完成度、同时对推理成本敏感的开发者。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "192k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "256k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 192000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 256000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<16k",
+          "input": "1.2",
+          "output": "4",
+          "cache": "0.4",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "16k<=输入<32k",
+          "input": "1.6",
+          "output": "6.4",
+          "cache": "0.6",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.6",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.6",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6.4",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>=32k",
+          "input": "2",
+          "output": "8",
+          "cache": "0.8",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-2.0-instruct-20251111",
+      "modelName": "HY 2.0 Instruct",
+      "displayName": "HY 2.0 Instruct",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "模型基座全面升级，基础能力更稳健。知识、数学、写作与推理达一线水准。指令遵循、多轮及长文理解表现优异。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "128k",
+        "maxOutputTokens": "16k",
+        "contextWindow": "144k",
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": 128000,
+        "maxOutputTokensValue": 16000,
+        "contextWindowValue": 144000,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<输入<=32k",
+          "input": "3.18",
+          "output": "7.95",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3.18",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "7.95",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32k<输入<=128k",
+          "input": "4.505",
+          "output": "11.13",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4.505",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "11.13",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-2.0-thinking-20251109",
+      "modelName": "HY 2.0 Think",
+      "displayName": "HY 2.0 Think",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "擅长文创、多轮、指令遵循实用场景。数理、代码、Agent 能力显著增强。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "128k",
+        "maxOutputTokens": "64k",
+        "contextWindow": "192k",
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": 128000,
+        "maxOutputTokensValue": 64000,
+        "contextWindowValue": 192000,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<输入<=32k",
+          "input": "3.975",
+          "output": "15.9",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3.975",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15.9",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32k<输入<=128k",
+          "input": "5.3",
+          "output": "21.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "5.3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "21.2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.7-code-highspeed",
+      "modelName": "Kimi K2.7 Code HighSpeed",
+      "displayName": "Kimi K2.7 Code HighSpeed",
+      "brand": "月之暗面",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考",
+        "多模态理解"
+      ],
+      "capability": "Kimi K2.7 Code 高速版",
+      "description": "与 Kimi K2.7 Code 相同但输出速度约为普通版的 5-6 倍，常规编程场景下（取输入长度中位数）输出速度约 180 Token/s，短上下文场景可达 260 Token/s ，支持 256K 上下文窗口，带来更极致的编程体验。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "256k",
+        "maxOutputTokens": "256k",
+        "contextWindow": "1000k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 256000,
+        "maxOutputTokensValue": 256000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": "图片分辨率不超过4k (4096*2160)，视频分辨率不超过2k (2048*1080)"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "13",
+          "output": "54",
+          "cache": "2.6",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "13",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "2.6",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "54",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.2",
+      "modelName": "GLM-5.2",
+      "displayName": "GLM-5.2",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": "智谱最新旗舰模型，1M上下文，支持思考长度控制",
+      "description": "GLM-5.2 是智谱最新旗舰模型，支持1M上下文及思考长度控制，在coding及agent场景表现优异",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "128k",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "28",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.7-code",
+      "modelName": "Kimi K2.7 Code",
+      "displayName": "Kimi K2.7 Code",
+      "brand": "月之暗面",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "多模态理解",
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "Kimi 迄今最智能的 Coding 模型",
+      "description": "Kimi 迄今最智能的 Coding 模型，在长上下文中更可靠地遵循指令，能以更高的成功率完成编程任务，同时支持文本、图片与视频输入，思考模式，对话与 Agent 任务。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "256k",
+        "maxOutputTokens": "256k",
+        "contextWindow": "256k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 256000,
+        "maxOutputTokensValue": 256000,
+        "contextWindowValue": 256000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "6.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "27",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m3",
+      "modelName": "MiniMax-M3",
+      "displayName": "MiniMax-M3",
+      "brand": "MiniMax",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "多模态理解",
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "在编程和智能体等专业任务上达到了前沿的能力，1M 超长上下文，原生多模态能力",
+      "description": "MiniMax- M3作为MiniMax最新发布的模型，在编程和智能体等专业任务上达到了前沿的能力，它使用了全新注意力架构 MSA （MiniMax Sparse Attention），最高支持 1M 超长上下文，同时它也是一个原生多模态模型，支持图片和视频的输入。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "1M",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 1000000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=512k",
+          "input": "2.1",
+          "output": "8.4",
+          "cache": "0.42",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.42",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8.4",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "512k<输入",
+          "input": "4.2",
+          "output": "16.8",
+          "cache": "0.84",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.84",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "16.8",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-flash-202605",
+      "modelName": "DeepSeek-V4-Flash",
+      "displayName": "DeepSeek-V4-Flash",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": "标配百万长文本的高并发利器，极低成本释放旗舰级 Agent 效能",
+      "description": "由 DeepSeek 直接提供的 DeepSeek V4 Flash 模型服务，TokenHub 不对该服务提供 SLA 保障。使用该模型即视为您已知晓并同意遵守 DeepSeek 的服务协议，请您在使用前务必仔细阅读相关内容（https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html），如不接受上述内容，请立即停止使用。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "384k",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 384000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "1",
+          "output": "2",
+          "cache": "0.02",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.02",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-pro-202606",
+      "modelName": "DeepSeek-V4-Pro",
+      "displayName": "DeepSeek-V4-Pro",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": "万亿参数原生多模态旗舰，定义复杂推理与深度智能体协作新标准",
+      "description": "由 DeepSeek 直接提供的 DeepSeek V4 Pro 模型服务，TokenHub 不对该服务提供 SLA 保障。使用该模型即视为您已知晓并同意遵守 DeepSeek 的服务协议，请您在使用前务必仔细阅读相关内容（https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html），如不接受上述内容，请立即停止使用。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "384k",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 384000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "3",
+          "output": "6",
+          "cache": "0.025",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.025",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-pro",
+      "modelName": "DeepSeek-V4-Pro",
+      "displayName": "DeepSeek-V4-Pro",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "万亿参数原生多模态旗舰，定义复杂推理与深度智能体协作新标准",
+      "description": "DeepSeek-V4-Pro 1.6T 参数的原生多模态旗舰，通过全新的 CSA+HCA 混合注意力架构，在复杂数学推理、长程代码工程及深度智能体协作领域代表了当前的行业顶尖水平。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "384k",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 384000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "12",
+          "output": "24",
+          "cache": "1",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "12",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "24",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-flash",
+      "modelName": "DeepSeek-V4-Flash",
+      "displayName": "DeepSeek-V4-Flash",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "标配百万长文本的高并发利器，极低成本释放旗舰级 Agent 效能",
+      "description": "DeepSeek-V4-Flash 专为高并发与低延迟设计的生产级利器，以 1M 上下文为全系标配，在极低成本下实现了媲美旗舰的推理表现与卓越的 Agent 响应效率。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "1M",
+        "maxOutputTokens": "384k",
+        "contextWindow": "1M",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 1000000,
+        "maxOutputTokensValue": 384000,
+        "contextWindowValue": 1000000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "1",
+          "output": "2",
+          "cache": "0.2",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-pro",
+      "modelName": "Hy-MT2-Pro",
+      "displayName": "Hy-MT2-Pro",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "翻译"
+      ],
+      "capability": "混元翻译旗舰模型，适合专业领域等对译文质量要求高的场景，有优秀的指令遵循能力",
+      "description": "混元翻译旗舰模型，参数量30B-A3B，上下文窗口8K。支持语种齐全，重点支持33个语种互译，支持5种民汉/方言。业界效果领先，开源测试集Flores200、WMT25效果领先，专业领域和真实业务场景表现优秀。翻译指令遵循优秀，支持翻译场景常用的指令遵循任务，包括结构化翻译、分隔符翻译、上下文翻译、术语表翻译、风格翻译等",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "4k",
+        "maxOutputTokens": "4k",
+        "contextWindow": "8k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 4000,
+        "maxOutputTokensValue": 4000,
+        "contextWindowValue": 8000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-3d-3.1",
+      "modelName": "HY-3D-3.1",
+      "displayName": "HY-3D-3.1",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "3D生成"
+      ],
+      "capability": "高精度3D生成模型，可生成最高150万面三维资产。",
+      "description": "采用混元生3D 3.1模型，可生成更高精度以及更高质量的3D 模型，支持文生3D、图生3D、八视图生3D、单几何生成（白模）、草图生3D、智能拓扑生3D 功能。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "3D"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "3",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15～60",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v3",
+      "modelName": "Kling-Video-v3",
+      "displayName": "Kling-Video-v3",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "智能分镜，15 秒 4K Ultra 连续叙事",
+      "description": "支持智能分镜与15秒长视频生成，最高4K Ultra画质输出，可实现场景切换与连续叙事，适用于企业广告营销与专业影视创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.8-45",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-pro",
+      "modelName": "Vidu-Video-q3-pro",
+      "displayName": "Vidu-Video-q3-pro",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "一次直出 16 秒 1080P 音视频成片",
+      "description": "在音视频一体生成基础上全面强化，画面保真度、音画同步精度与多角色叙事连贯性均达到更高水准，可一次生成16秒1080P音视频直出成片，适用于对画质与声音表现有极致要求的专业创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "540P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.9-14.4",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-32",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4-38.4",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-3d-3.0",
+      "modelName": "HY-3D-3.0",
+      "displayName": "HY-3D-3.0",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "3D生成"
+      ],
+      "capability": "支持高质量3D模型生成，大幅提升创作效率。",
+      "description": "采用混元生3D 3.0模型，可生成更高精度以及更高质量的3D 模型，支持文生3D、图生3D、多视图生3D、单几何生成（白模），草图生3D、智能拓扑生3D 功能。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "3D"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "3",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15～60",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-image-v3.0",
+      "modelName": "HY-Image-3.0",
+      "displayName": "HY-Image-3.0",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "图片生成"
+      ],
+      "capability": "基于混元大模型，能够去思考图像的布局、构图、笔触，利用世界知识去推理常识性的画面。同时可以解析千字级别的复杂语义，生成长文本文字、复杂漫画、表情包，还能生成生动有趣的科普插画。",
+      "description": "基于混元大模型，能够去思考图像的布局、构图、笔触，利用世界知识去推理常识性的画面。同时可以解析千字级别的复杂语义，生成长文本文字、复杂漫画、表情包，还能生成生动有趣的科普插画。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "图片"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "1",
+        "inputDescription": "一、文生图（无参考图）\n默认分辨率：1024:1024；\n尺寸约束：宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024:1024 像素。\n二、图生图（有参考图）\n尺寸约束：宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024:1024 像素。\n\n传入尺寸时（输出自适应，不严格遵循传入尺寸）：\n输入图分辨率分桶与传入尺寸分桶一致时：按输入图长宽比，缩放至接近 1024:1024 面积输出；\n输入图分辨率分桶与传入尺寸分桶不一致时：从尺寸列表中选取最接近传入尺寸的尺寸输出\n不传入尺寸时：模型结合提示词与输入图尺寸，从以下 尺寸列表 37 种尺寸中自动选择：\n2048:512、1984:512、1920:512、1856:512、1792:512、\n1728:512、1664:512、1600:512、1536:512、1472:576、\n1408:640、1344:704、1280:768、1216:832、1152:896、\n1088:960、1024:1024、960:1088、896:1152、832:1216、\n768:1280、704:1344、640:1408、576:1472、512:1536、\n512:1600、512:1664、512:1728、512:1792、512:1856、\n512:1920、512:1984、512:2048、768:1024、720:1280、\n1024:768、1280:720"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "PICTURE",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.2",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-video-1.5",
+      "modelName": "HY-Video-1.5",
+      "displayName": "HY-Video-1.5",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "文本图像多模态输入，高清视频一键直出",
+      "description": "支持文本、图像多模态输入生成高清视频，可实现场景切换与多角色交互，简化制作流程、降低成本，应用于企业广告营销与个人创意落地场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": "分辨率：720p"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "720p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-image-lite",
+      "modelName": "HY-Image-Lite",
+      "displayName": "HY-Image-Lite",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "图片生成"
+      ],
+      "capability": "采用超高压缩编解码器，实现图像生成快速响应与高品质输出。支持电商商品图美化、设计工具素材生成、游戏场景迭代等场景。",
+      "description": "采用超高压缩编解码器，实现图像生成快速响应与高品质输出。支持电商商品图美化、设计工具素材生成、游戏场景迭代等场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "图片"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "1",
+        "inputDescription": "生成图分辨率，默认1024:1024。\n支持的图像宽高比例: 1:1，3:4，4:3，9:16，16:9。\n支持的长边分辨率: 160，200，225，258，512，520，608，768，1024，1080，1280，1600，1620，1920，2048，2400，2560，2592，3440，3840，4096。"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "PICTURE",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.099",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "yt-video-2.0",
+      "modelName": "YT-Video-2.0",
+      "displayName": "YT-Video-2.0",
+      "brand": "优图",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "图生视频动态连贯，专业级广告影视适用",
+      "description": "对图片生成的视频进行动态连贯性高的视频，应用于高要求广告、影视片段与产品展示视频场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": "分辨率：480p、720p、1080p"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "480p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "5",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "5",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "yt-video-humanactor",
+      "modelName": "YT-Video-HumanActor",
+      "displayName": "YT-Video-HumanActor",
+      "brand": "优图",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": null,
+      "description": "单张参考照片即可驱动生成动态人像视频，精准还原表情、姿态，支持写实、二次元等多风格切换。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": "分辨率：720p、1080p"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "720p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1",
+              "unit": "积分/s"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "积分/s"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "yt-video-fx",
+      "modelName": "YT-Video-FX",
+      "displayName": "YT-Video-FX",
+      "brand": "优图",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": null,
+      "description": "通过上传图片和选择特效模板，生成一段特效视频，将静态图像转化为充满活力、动感、有趣的视频画面。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": "分辨率：360p、720p"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "360p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1~4",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720p",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2~6",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-3d-express",
+      "modelName": "HY-3D-Express",
+      "displayName": "HY-3D-Express",
+      "brand": "混元",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "3D生成"
+      ],
+      "capability": "分钟级3D生成模型，可在较短时间内生成3D模型。",
+      "description": "采用混元生3D 极速版模型，可将生成模型时间缩短至1分30秒内，可在较短时间内生成3D 模型文件。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "3D"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "1",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15～25",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-vision-2.0-instruct",
+      "modelName": "HY-Vision-2.0-Instruct",
+      "displayName": "HY-Vision-2.0-Instruct",
+      "brand": "混元",
+      "modelType": "Multimodal",
+      "status": "online",
+      "tags": [
+        "视觉理解"
+      ],
+      "capability": null,
+      "description": "快思考模型，适用通用图生文场景。相比上代模型在基础感知、内容识别、知识、OCR、STEM、推理、图表理解等维度有明显提升。",
+      "inputOutputTypes": {
+        "input": [
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "24k",
+        "maxOutputTokens": "16k",
+        "contextWindow": "44k",
+        "maxTpm": 1000000,
+        "maxQpm": 1000,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "1000",
+        "maxInputTokensValue": 24000,
+        "maxOutputTokensValue": 16000,
+        "contextWindowValue": 44000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "7.5",
+          "output": "17.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "7.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "17.5",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "youtu-vita",
+      "modelName": "YT-VITA",
+      "displayName": "YT-VITA",
+      "brand": "优图",
+      "modelType": "Multimodal",
+      "status": "online",
+      "tags": [
+        "视觉理解"
+      ],
+      "capability": null,
+      "description": "VITA是一款多模态理解模型，支持对视频和图片内容进行分析，可用于视频结构解析、图像目标检测等场景。",
+      "inputOutputTypes": {
+        "input": [
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "100k",
+        "maxOutputTokens": "15k",
+        "contextWindow": "128k",
+        "maxTpm": 1000000,
+        "maxQpm": 1000,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "1000",
+        "maxInputTokensValue": 100000,
+        "maxOutputTokensValue": 15000,
+        "contextWindowValue": 128000,
+        "concurrency": "20",
+        "inputDescription": "图片\n格式：JPG、JPEG、PNG、SVG、WEBP\n图片大小：单个最大 10M\n单图分辨率（最小）：448*448\n\n视频\n格式: MP4、MOV、AVI、WebM\n编码格式: H.264、H.265\n最长时长: 10 分钟\n视频大小: 一次输入1个，最大100MB\n单视频分辨率：≤5 分钟支持 4K，5-10 分钟支持 2K"
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "1.2",
+          "output": "3.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3.5",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-t1-vision-20250916",
+      "modelName": "HY-Vision-1.5-Thinking",
+      "displayName": "HY-Vision-1.5-Thinking",
+      "brand": "混元",
+      "modelType": "Multimodal",
+      "status": "online",
+      "tags": [
+        "视觉理解"
+      ],
+      "capability": null,
+      "description": "深度思考模型，适用通用图文问答、视觉定位、OCR、图表、拍题解题、看图创作等任务，且优化了英文及小语种能力。",
+      "inputOutputTypes": {
+        "input": [
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "16k",
+        "maxOutputTokens": "20k",
+        "contextWindow": "40k",
+        "maxTpm": 1000000,
+        "maxQpm": 1000,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "1000",
+        "maxInputTokensValue": 16000,
+        "maxOutputTokensValue": 20000,
+        "contextWindowValue": 40000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "3",
+          "output": "9",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "9",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-turbos-vision-video-20250728",
+      "modelName": "HY-Vision-Video",
+      "displayName": "HY-Vision-Video",
+      "brand": "混元",
+      "modelType": "Multimodal",
+      "status": "online",
+      "tags": [
+        "视觉理解"
+      ],
+      "capability": null,
+      "description": "视频理解模型，支持视频描述、视频内容问答等基本的视频理解能力。",
+      "inputOutputTypes": {
+        "input": [
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "24k",
+        "maxOutputTokens": "8k",
+        "contextWindow": "32k",
+        "maxTpm": 1000000,
+        "maxQpm": 1000,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "1000",
+        "maxInputTokensValue": 24000,
+        "maxOutputTokensValue": 8000,
+        "contextWindowValue": 32000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "3",
+          "output": "9",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "9",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-role",
+      "modelName": "Hy-Role",
+      "displayName": "Hy-Role",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "角色扮演"
+      ],
+      "capability": "混元角色扮演模型，贴合各种人设、剧情演绎",
+      "description": "混元角色扮演模型（动态更新），专注自然化角色扮演。优化人设贴合度、口语化表达与剧情推进节奏，避免平铺直叙，增强对话吸引力，支持个性化角色深度还原。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "28k",
+        "maxOutputTokens": "4k",
+        "contextWindow": "32k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 28000,
+        "maxOutputTokensValue": 4000,
+        "contextWindowValue": 32000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "9.6",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-lite",
+      "modelName": "Hy-MT2-Lite",
+      "displayName": "Hy-MT2-Lite",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "翻译"
+      ],
+      "capability": "混元翻译轻量级模型，适合对耗时有高要求的场景",
+      "description": "混元翻译轻量级模型，参数量1.8B，上下文窗口8K。支持语种齐全，重点支持33个语种互译，支持5种民汉/方言。业界效果领先，开源测试集Flores200、WMT25效果领先，专业领域和真实业务场景表现优秀。翻译指令遵循优秀，支持翻译场景常用的指令遵循任务，包括结构化翻译、分隔符翻译、上下文翻译、术语表翻译、风格翻译等",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "4k",
+        "maxOutputTokens": "4k",
+        "contextWindow": "8k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 4000,
+        "maxOutputTokensValue": 4000,
+        "contextWindowValue": 8000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-plus",
+      "modelName": "Hy-MT2-Plus",
+      "displayName": "Hy-MT2-Plus",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "翻译"
+      ],
+      "capability": "混元翻译模型，翻译效果领先，有优秀的指令遵循能力",
+      "description": "混元翻译模型，参数量7B，上下文窗口8K。支持语种齐全，重点支持33个语种互译，支持5种民汉/方言。业界效果领先，开源测试集Flores200、WMT25效果领先，专业领域和真实业务场景表现优秀。翻译指令遵循优秀，支持翻译场景常用的指令遵循任务，包括结构化翻译、分隔符翻译、上下文翻译、术语表翻译、风格翻译等",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "4k",
+        "maxOutputTokens": "4k",
+        "contextWindow": "8k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 4000,
+        "maxOutputTokensValue": 4000,
+        "contextWindowValue": 8000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-role-latest",
+      "modelName": "Hy-Role-Latest",
+      "displayName": "Hy-Role-Latest",
+      "brand": "混元",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "角色扮演"
+      ],
+      "capability": "混元角色扮演模型，深度优化聊天体验与剧情互动",
+      "description": "原模型名称Hunyuan-role。混元角色扮演模型（动态更新），专为自然聊天场景优化。大幅提升口语化程度，消除AI味与模板感；调整回复长度、语气浓度与主动性，优化对话节奏，减少冗余，提升即时互动感。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "28k",
+        "maxOutputTokens": "4k",
+        "contextWindow": "32k",
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": 28000,
+        "maxOutputTokensValue": 4000,
+        "contextWindowValue": 32000,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "2.4",
+          "output": "9.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "9.6",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-flash",
+      "modelName": "Qwen3.5-Flash",
+      "displayName": "Qwen3.5-Flash",
+      "brand": "通义千问",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考",
+        "多模态理解"
+      ],
+      "capability": null,
+      "description": "Qwen3.5原生视觉语言系列Flash模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。模型效果在纯文本与多模态方面相较3系列均实现飞跃式进步；响应速度快，兼具推理速度和性能。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "983K",
+        "maxOutputTokens": "64K",
+        "contextWindow": "991K",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 983000,
+        "maxOutputTokensValue": 64000,
+        "contextWindowValue": 991000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<输入<=128k",
+          "input": "0.2",
+          "output": "2",
+          "cache": "0.02",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.02",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入<=256k",
+          "input": "0.8",
+          "output": "8",
+          "cache": "0.08",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.08",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入<=1M",
+          "input": "1.2",
+          "output": "12",
+          "cache": "0.12",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.12",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus",
+      "modelName": "Qwen3.5-Plus",
+      "displayName": "Qwen3.5-Plus",
+      "brand": "通义千问",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": "千问性能最强的视觉理解模型",
+      "description": "Qwen3.5原生视觉语言系列Plus模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。在多项任务评测中，3.5系列均展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果在纯文本与多模态方面相较3系列均实现飞跃式进步。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "983K",
+        "maxOutputTokens": "64k",
+        "contextWindow": "991K",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 983000,
+        "maxOutputTokensValue": 64000,
+        "contextWindowValue": 991000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=128k",
+          "input": "0.8",
+          "output": "4.8",
+          "cache": "0.08",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.08",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.8",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入<=256k",
+          "input": "2",
+          "output": "12",
+          "cache": "0.2",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入<=1M",
+          "input": "4",
+          "output": "24",
+          "cache": "0.4",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "24",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.1",
+      "modelName": "GLM-5.1",
+      "displayName": "GLM-5.1",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "智谱最新旗舰模型，长程任务显著提升",
+      "description": "GLM-5.1 是智谱最新旗舰模型，代码能力大大增强，长程任务显著提升，能够在单次任务中持续、自主地工作长达 8 小时，完成从规划、执行到迭代优化的完整闭环，交付工程级成果。\n在综合能力与 Coding 能力上，GLM-5.1 整体表现对齐 Claude Opus 4.6，并在长程自主执行、复杂工程优化与真实开发场景中展现出更强的持续工作能力，是构建 Autonomous Agent 与长程 Coding Agent 的理想基座。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<=输入<32k",
+          "input": "6",
+          "output": "24",
+          "cache": "1.3",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "6",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "24",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchInput",
+              "displayName": "批量输入",
+              "price": "3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchOutput",
+              "displayName": "批量输出",
+              "price": "12",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchCache",
+              "displayName": "批量缓存命中",
+              "price": "0.65",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32k<=输入",
+          "input": "8",
+          "output": "28",
+          "cache": "2",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "28",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchInput",
+              "displayName": "批量输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchOutput",
+              "displayName": "批量输出",
+              "price": "14",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchCache",
+              "displayName": "批量缓存命中",
+              "price": "1",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5v-turbo",
+      "modelName": "GLM-5V-Turbo",
+      "displayName": "GLM-5V-Turbo",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "多模态理解",
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "智谱首个多模态 Coding 基座模型",
+      "description": "GLM-5V-Turbo 是智谱首个多模态 Coding 基座模型，面向视觉编程任务打造。能够原生处理图片、视频、文本等多模态输入，同时擅长长程规划、复杂编程和动作执行；深度适配 Agent 工作流，能够与 Claude Code、OpenClaw 等 Agent 深度协同。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<=输入<32k",
+          "input": "5",
+          "output": "22",
+          "cache": "1.2",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "22",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>=32k",
+          "input": "7",
+          "output": "26",
+          "cache": "1.8",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "7",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "26",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5",
+      "modelName": "GLM-5",
+      "displayName": "GLM-5",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "GLM-5是智谱新一代旗舰基座模型，面向Agentic Engineering打造，擅长复杂系统工程、长程Agent任务与编程，在Coding与Agent能力上取得开源SOTA表现。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<=输入<32k",
+          "input": "4",
+          "output": "18",
+          "cache": "1",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "18",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchInput",
+              "displayName": "批量输入",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchOutput",
+              "displayName": "批量输出",
+              "price": "9",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchCache",
+              "displayName": "批量缓存命中",
+              "price": "0.5",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32k<=输入",
+          "input": "6",
+          "output": "22",
+          "cache": "1.5",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "6",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "22",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchInput",
+              "displayName": "批量输入",
+              "price": "3",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchOutput",
+              "displayName": "批量输出",
+              "price": "11",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "BatchCache",
+              "displayName": "批量缓存命中",
+              "price": "0.75",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.6",
+      "modelName": "Kimi K2.6",
+      "displayName": "Kimi K2.6",
+      "brand": "月之暗面",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "多模态理解",
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "实现SOTA的代码、长程任务执行和 Agent 集群能力",
+      "description": "Kimi K2.6 作为Kimi最新的开源模型，带来行业领先（state-of-the-art）的代码、长程任务执行和 Agent 集群能力。\nK2.6 在长程代码任务中的表现取得了突破，面对不同编程语言（如 Rust、Go、Python）和任务场景（如前端、运维、性能优化）均具备更可靠的泛化能力。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片",
+          "视频"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "256k",
+        "maxOutputTokens": "256k",
+        "contextWindow": "256k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 256000,
+        "maxOutputTokensValue": 256000,
+        "contextWindowValue": 256000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "6.5",
+          "output": "27",
+          "cache": "1.1",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "6.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "27",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m2.7",
+      "modelName": "MiniMax-M2.7",
+      "displayName": "MiniMax-M2.7",
+      "brand": "MiniMax",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "自行构建复杂 Agent Harness, 完成高度复杂的任务",
+      "description": "MiniMax 推出的自我进化大语言模型，具备卓越的软件工程能力和专业办公能力，支持复杂 Agent 交互与端到端项目交付。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "2.1",
+          "output": "8.4",
+          "cache": "0.42",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.42",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8.4",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.5",
+      "modelName": "Kimi K2.5",
+      "displayName": "Kimi K2.5",
+      "brand": "月之暗面",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "Kimi 迄今最智能、最全能的模型",
+      "description": "kimi k2.5 是 kimi 迄今最全能的模型，原生的多模态架构设计，同时支持视觉与文本输入、思考与非思考模式、对话与 Agent 任务。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "256k",
+        "maxOutputTokens": "256k",
+        "contextWindow": "256k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 256000,
+        "maxOutputTokensValue": 256000,
+        "contextWindowValue": 256000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "4",
+          "output": "21",
+          "cache": "0.7",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.7",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "21",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5-turbo",
+      "modelName": "GLM-5-Turbo",
+      "displayName": "GLM-5-Turbo",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "capability": "面向 OpenClaw 龙虾场景深度优化的基座模型",
+      "description": "面向真实 Agent 长链路任务深度优化的模型，重点提升了复杂指令拆解、工具调用、定时持续执行与长任务稳定性。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<=输入<32k",
+          "input": "5",
+          "output": "22",
+          "cache": "1.2",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "22",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>=32k",
+          "input": "7",
+          "output": "26",
+          "cache": "1.8",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "7",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.8",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "26",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m2.5",
+      "modelName": "MiniMax-M2.5",
+      "displayName": "MiniMax-M2.5",
+      "brand": "MiniMax",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "MiniMax-M2.5 在编程、工具调用和搜索、办公等生产力场景都达到或刷新了行业的 SOTA。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "200k",
+        "maxOutputTokens": "128k",
+        "contextWindow": "200k",
+        "maxTpm": 1000000,
+        "maxQpm": 60,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "60",
+        "maxInputTokensValue": 200000,
+        "maxOutputTokensValue": 128000,
+        "contextWindowValue": 200000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "2.1",
+          "output": "8.4",
+          "cache": "0.21",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.1",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.21",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8.4",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v3.2",
+      "modelName": "Deepseek-v3.2",
+      "displayName": "Deepseek-v3.2",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成"
+      ],
+      "capability": "融合思考与工具调用，具备强大Agent能力",
+      "description": "DeepSeek-V3.2 为685B 参数 MoE 模型，其引入的稀疏注意力架构使长文本处理更高效，并在推理评测中达到GPT-5水平。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "96k",
+        "maxOutputTokens": "32k",
+        "contextWindow": "128k",
+        "maxTpm": 1000000,
+        "maxQpm": 500,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "500",
+        "maxInputTokensValue": 96000,
+        "maxOutputTokensValue": 32000,
+        "contextWindowValue": 128000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou",
+            "ap-singapore"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "2",
+          "output": "3",
+          "cache": "0.4",
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v3.1-terminus",
+      "modelName": "Deepseek-v3.1",
+      "displayName": "Deepseek-v3.1",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "DeepSeek-V3.1-Terminus 为685B 参数 MoE 模型，在保持模型原有能力的基础上，优化了语言一致性和 Agent 能力等问题，输出效果相比前一版本更加稳定。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "96k",
+        "maxOutputTokens": "32k",
+        "contextWindow": "128k",
+        "maxTpm": 1000000,
+        "maxQpm": 500,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "500",
+        "maxInputTokensValue": 96000,
+        "maxOutputTokensValue": 32000,
+        "contextWindowValue": 128000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "4",
+          "output": "12",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-r1-0528",
+      "modelName": "Deepseek-r1-0528",
+      "displayName": "Deepseek-r1-0528",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "DeepSeek-R1-0528为671B 模型，架构优化与训练策略升级后，相比上一版本在代码生成、长文本处理和复杂推理领域提升明显。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "96k",
+        "maxOutputTokens": "16k",
+        "contextWindow": "128k",
+        "maxTpm": 1000000,
+        "maxQpm": 500,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "500",
+        "maxInputTokensValue": 96000,
+        "maxOutputTokensValue": 16000,
+        "contextWindowValue": 128000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "4",
+          "output": "16",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "4",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "16",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v3-0324",
+      "modelName": "Deepseek-v3-0324",
+      "displayName": "Deepseek-v3-0324",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "tags": [
+        "文本生成"
+      ],
+      "capability": null,
+      "description": "DeepSeek-V3-0324 为671B 参数 MoE 模型，在编程与技术能力、上下文理解与长文本处理等方面优势突出。",
+      "inputOutputTypes": {
+        "input": [
+          "文本"
+        ],
+        "output": [
+          "文本"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": "128k",
+        "maxOutputTokens": "16k",
+        "contextWindow": "128k",
+        "maxTpm": 1000000,
+        "maxQpm": 500,
+        "maxTpmRaw": "1000k",
+        "maxQpmRaw": "500",
+        "maxInputTokensValue": 128000,
+        "maxOutputTokensValue": 16000,
+        "contextWindowValue": 128000,
+        "concurrency": null,
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": "2",
+          "output": "8",
+          "cache": null,
+          "unit": "百万tokens",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-turbo",
+      "modelName": "Vidu-Video-q3-turbo",
+      "displayName": "Vidu-Video-q3-turbo",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "16 秒音视频直出，更快更省的量产首选",
+      "description": "以更快生成速度和更低调用成本实现16秒音视频直出，适用于规模化内容生产与高频迭代场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "540P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.7-11.2",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2-19.2",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.3-20.8",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-6",
+      "modelName": "Kling-Video-v2.6",
+      "displayName": "Kling-Video-v2.6",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "画面与人声音效同步生成，运动控制增强",
+      "description": "支持画面与语音、音效、环境音同步生成，运动控制能力增强，适用于有声广告、短视频与多媒体内容创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.5-12",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2",
+      "modelName": "Vidu-Video-q2",
+      "displayName": "Vidu-Video-q2",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "细腻微表情刻画，2 到 8 秒演技级人物动态",
+      "description": "以细腻人物表情生成为核心能力，支持图像与首尾帧输入，可实现微表情与演技级动态刻画，时长2-8秒可选，适用于数字人、人物特写与情感表达类内容创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "540P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1-2.8",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5-6",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-11",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2-turbo",
+      "modelName": "Vidu-Video-q2-turbo",
+      "displayName": "Vidu-Video-q2-turbo",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "极致出片速度与低调用成本",
+      "description": "以极致生成速度与最低调用成本为核心优势，适用于大规模批量生产与快速原型验证场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "540P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.6-2.4",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.8-9.8",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3.5-12.5",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2-pro-fast",
+      "modelName": "Vidu-Video-q2-pro-fast",
+      "displayName": "Vidu-Video-q2-pro-fast",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "高画质保持下，生成速度大幅提升",
+      "description": "通过优化的推理架构，在保持高画质输出的同时大幅提升生成速度，适用于对出片效率有要求的营销素材与快速迭代场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.8-2.6",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6-5.2",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-5-turbo",
+      "modelName": "Kling-Video-v2.5-turbo",
+      "displayName": "Kling-Video-v2.5-turbo",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "稳定性与创意兼顾，高性价比量产",
+      "description": "支持文本与图像输入，在生成稳定性与创意想象力上全面升级，兼顾高性能与高性价比，适用于大批量视频生成与企业级内容生产。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5-5",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2-pro",
+      "modelName": "Vidu-Video-q2-pro",
+      "displayName": "Vidu-Video-q2-pro",
+      "brand": "Vidu",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "多模态输入，电影级短片表现力全面增强",
+      "description": "支持文本、图像、参考图等多模态输入，在表情还原度、运镜流畅性与语义理解深度上全面增强，可呈现电影级短片效果，适用于高品质广告与专业内容创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "540P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1-2.8",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5-6",
+              "unit": "积分/次"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080P",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-11",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-1",
+      "modelName": "Kling-Video-v2.1",
+      "displayName": "Kling-Video-v2.1",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "三档质量可选，高效低成本图生视频",
+      "description": "支持图像输入，提供标准/高质量/大师三档质量模式，生成效率大幅提升、调用成本显著降低，适用于大规模图生视频业务场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-7",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-1-master",
+      "modelName": "Kling-Video-v2.1-master",
+      "displayName": "Kling-Video-v2.1-master",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "面向专业创作的 1080P 影视级输出",
+      "description": "支持文本与图像输入，面向专业创作场景深度优化，1080P高品质输出，适用于影视级短片与精品内容制作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "10-20",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-master",
+      "modelName": "Kling-Video-v2-master",
+      "displayName": "Kling-Video-v2-master",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "语义、动态、美学三维全面升级",
+      "description": "支持文本与图像输入，在语义理解精度、动态质量与画面美学表现上均实现显著提升，适用于高品质品牌广告与创意内容制作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "10-20",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v1-6",
+      "modelName": "Kling-Video-v1.6",
+      "displayName": "Kling-Video-v1.6",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "多图参考输入，标准与高品质双模式",
+      "description": "支持文本、图像及多图参考输入，在文本响应度与画面美感上实现全面升级，提供标准与高品质双模式，适用于多角色交互与复杂场景的视频创作。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-7",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v1-5",
+      "modelName": "Kling-Video-v1.5",
+      "displayName": "Kling-Video-v1.5",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "运动笔刷精细控制，1080P 图生视频",
+      "description": "支持图像输入生成1080P视频，新增运动笔刷功能，可实现精细运动路径控制与动态引导，适用于产品展示与创意内容场景。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2-7",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v1",
+      "modelName": "Kling-Video-v1",
+      "displayName": "Kling-Video-v1",
+      "brand": "可灵",
+      "modelType": "Vision",
+      "status": "online",
+      "tags": [
+        "视频生成"
+      ],
+      "capability": "通用视频生成，最长 2 分钟 1080P 输出",
+      "description": "支持文本与图像输入生成最高1080P、最长2分钟视频，覆盖通用视频生成基础能力，适用于内容创作与营销素材生产。",
+      "inputOutputTypes": {
+        "input": [
+          "文本",
+          "图片"
+        ],
+        "output": [
+          "视频"
+        ],
+        "source": "inferred"
+      },
+      "limits": {
+        "maxInputTokens": null,
+        "maxOutputTokens": null,
+        "contextWindow": null,
+        "maxTpm": null,
+        "maxQpm": null,
+        "maxTpmRaw": null,
+        "maxQpmRaw": null,
+        "maxInputTokensValue": null,
+        "maxOutputTokensValue": null,
+        "contextWindowValue": null,
+        "concurrency": "5",
+        "inputDescription": null
+      },
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "ap-guangzhou"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "unit": "CREDIT",
+          "items": [
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1-7",
+              "unit": "积分/次"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

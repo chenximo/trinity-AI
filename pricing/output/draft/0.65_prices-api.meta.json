@@ -1,0 +1,18 @@
+{
+  "tag": "0.65_prices_api_7_02",
+  "pricingPolicy": "official_vendor",
+  "derivedFrom": {
+    "template": "online/prices-api.json",
+    "official": "suppliers/official/output/text/vendor-pricing.json",
+    "officialFetchedAt": "2026-07-02T02:31:09.466Z",
+    "templateFetchedAt": "2026-06-30T13:38:49.183Z",
+    "archivePreserve": "0.65_prices_api_6_30.json (deepseek only)"
+  },
+  "generatedAt": "2026-07-02T03:56:59.914Z",
+  "pricedModelCount": 54,
+  "preservedModelCount": 5,
+  "noOfficialModelCount": 0,
+  "preserveRules": [
+    "deepseek* → 归档 6/30 稿"
+  ]
+}
