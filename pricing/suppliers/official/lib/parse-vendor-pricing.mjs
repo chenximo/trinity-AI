@@ -244,6 +244,7 @@ const DOMESTIC_TEXT_VENDORS = new Set([
   "zhipu",
   "kimi",
   "minimax",
+  "volcengine",
 ]);
 
 /**

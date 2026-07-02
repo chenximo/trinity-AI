@@ -4,11 +4,11 @@
   "derivedFrom": {
     "template": "online/prices-api.json",
     "official": "suppliers/official/output/text/vendor-pricing.json",
-    "officialFetchedAt": "2026-07-02T02:31:09.466Z",
+    "officialFetchedAt": "2026-07-02T08:11:59.323Z",
     "templateFetchedAt": "2026-06-30T13:38:49.183Z",
     "archivePreserve": "0.65_prices_api_6_30.json (deepseek only)"
   },
-  "generatedAt": "2026-07-02T03:56:59.914Z",
+  "generatedAt": "2026-07-02T08:14:14.622Z",
   "pricedModelCount": 54,
   "preservedModelCount": 5,
   "noOfficialModelCount": 0,

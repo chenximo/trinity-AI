@@ -1,0 +1,748 @@
+{
+  "generatedAt": "2026-07-02T10:04:32.041Z",
+  "familyRuleCount": 10,
+  "familyViolations": [],
+  "officialTooFewTiers": [],
+  "aigcMissing": [],
+  "aigcIntlSkipped": [
+    {
+      "trinityId": "hy3-preview",
+      "aigcKey": "Hunyuan::3-preview",
+      "reason": "domestic_only",
+      "note": "AIGC 无国际价（刊例对比显示 —）"
+    }
+  ],
+  "aigcExcelMissing": [
+    {
+      "trinityId": "claude-opus-4-8",
+      "aigcKey": "CD::Opus 4.5"
+    },
+    {
+      "trinityId": "claude-opus-4-7",
+      "aigcKey": "CD::Opus 4.7"
+    },
+    {
+      "trinityId": "claude-opus-4-6",
+      "aigcKey": "CD::Opus 4.6"
+    },
+    {
+      "trinityId": "claude-sonnet-4-6",
+      "aigcKey": "CD::Sonnet 4.0"
+    },
+    {
+      "trinityId": "gemini-2.5-flash-lite",
+      "aigcKey": "GG::2.5-flash-lite"
+    },
+    {
+      "trinityId": "gemini-2.5-flash-lite-preview",
+      "aigcKey": "GG::2.5-flash-lite-preview"
+    },
+    {
+      "trinityId": "deepseek-v3.2",
+      "aigcKey": "Deepseek::v3.2"
+    },
+    {
+      "trinityId": "deepseek-v4-flash",
+      "aigcKey": "Deepseek::v4-flash (new)"
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "aigcKey": "Deepseek::v4-pro (new)"
+    },
+    {
+      "trinityId": "kimi-k2.5",
+      "aigcKey": "Kim::k1.5 (普通搜索)"
+    },
+    {
+      "trinityId": "minimax-m2.5",
+      "aigcKey": "Minimax::M2.5"
+    },
+    {
+      "trinityId": "minimax-m2.7",
+      "aigcKey": "Minimax::M2.7"
+    }
+  ],
+  "officialVsAigcSheet": [
+    {
+      "trinityId": "gpt-5.3-codex",
+      "vendorModelId": "gpt-5.3-codex",
+      "aigcKey": "OO::5.3-codex",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 1.75,
+              "b": 1.75,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 14,
+              "b": 14,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.175,
+              "b": 0.18,
+              "pct": -2.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "claude-opus-4-8",
+      "vendorModelId": "claude-opus-4-8",
+      "aigcKey": "CD::Opus 4.5",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 5,
+              "b": 5,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 25,
+              "b": 25,
+              "pct": 0
+            },
+            "cache": {
+              "status": "missing",
+              "a": null,
+              "b": 0.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v3.2",
+      "vendorModelId": "deepseek-v3.2",
+      "aigcKey": "Deepseek::v3.2",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 0.3076923076923077,
+              "b": 0.308,
+              "pct": -0.1
+            },
+            "output": {
+              "status": "ok",
+              "a": 0.46153846153846156,
+              "b": 0.462,
+              "pct": -0.1
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.06153846153846154,
+              "b": 0.062,
+              "pct": -0.7
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "aigcKey": "Deepseek::v4-pro (new)",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 0.46153846153846156,
+              "b": 0.462,
+              "pct": -0.1
+            },
+            "output": {
+              "status": "ok",
+              "a": 0.9230769230769231,
+              "b": 0.923,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.0038461538461538464,
+              "b": 0.004,
+              "pct": -3.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "glm-4-7-251222",
+      "vendorModelId": "glm-4.7",
+      "aigcKey": "Zhipu::4.7",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:in32k-out-le0.2k",
+          "tierLabel": "输入≤32k，输出≤0.2k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 0.3076923076923077,
+              "b": 0.308,
+              "pct": -0.1
+            },
+            "output": {
+              "status": "ok",
+              "a": 1.2307692307692308,
+              "b": 1.232,
+              "pct": -0.1
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.06153846153846154,
+              "b": 0.062,
+              "pct": -0.7
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "minimax-m2.5",
+      "vendorModelId": "minimax-m2.5",
+      "aigcKey": "Minimax::M2.5",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 0.3230769230769231,
+              "b": 0.3,
+              "pct": 7.7
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 1.2923076923076924,
+              "b": 1.2,
+              "pct": 7.7
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.03230769230769231,
+              "b": 0.03,
+              "pct": 7.7
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "minimax-m2.7",
+      "vendorModelId": "minimax-m2.7",
+      "aigcKey": "Minimax::M2.7",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 0.3230769230769231,
+              "b": 0.3,
+              "pct": 7.7
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 1.2923076923076924,
+              "b": 1.2,
+              "pct": 7.7
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.06461538461538462,
+              "b": 0.06,
+              "pct": 7.7
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "officialVsAigcDomestic": [
+    {
+      "trinityId": "minimax-m2.5",
+      "vendorModelId": "minimax-m2.5",
+      "aigcKey": "Minimax::M2.5",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 2.1,
+              "b": 2.1,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 8.4,
+              "b": 8.4,
+              "pct": 0
+            },
+            "cache": {
+              "status": "missing",
+              "a": 0.21,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "minimax-m2.7",
+      "vendorModelId": "minimax-m2.7",
+      "aigcKey": "Minimax::M2.7",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 2.1,
+              "b": 2.1,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 8.4,
+              "b": 8.4,
+              "pct": 0
+            },
+            "cache": {
+              "status": "missing",
+              "a": 0.42,
+              "b": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "officialVsAigcExcel": [
+    {
+      "trinityId": "gpt-5.3-codex",
+      "vendorModelId": "gpt-5.3-codex",
+      "aigcKey": "OO::5.3-codex",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 1.75,
+              "b": 1.75,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 14,
+              "b": 14,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.175,
+              "b": 0.18,
+              "pct": -2.8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "hy3-preview",
+      "vendorModelId": "hy3-preview",
+      "aigcKey": "Hunyuan::3-preview",
+      "issues": [
+        {
+          "kind": "tier_count",
+          "leftCount": 3,
+          "rightCount": 0,
+          "leftKeys": [
+            "t:0-16k",
+            "t:16k-32k",
+            "t:32k+"
+          ],
+          "rightKeys": []
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "t:0-16k",
+          "left": true,
+          "right": false
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "t:16k-32k",
+          "left": true,
+          "right": false
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "t:32k+",
+          "left": true,
+          "right": false
+        }
+      ]
+    },
+    {
+      "trinityId": "glm-4-7-251222",
+      "vendorModelId": "glm-4.7",
+      "aigcKey": "Zhipu::4.7",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:in32k-out-le0.2k",
+          "tierLabel": "输入≤32k，输出≤0.2k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 0.3076923076923077,
+              "b": 0.308,
+              "pct": -0.1
+            },
+            "output": {
+              "status": "ok",
+              "a": 1.2307692307692308,
+              "b": 1.232,
+              "pct": -0.1
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.06153846153846154,
+              "b": 0.062,
+              "pct": -0.7
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "officialVsTokenhub": [
+    {
+      "trinityId": "hy3-preview",
+      "vendorModelId": "hy3-preview",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "t:0-16k",
+          "left": true,
+          "right": false
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "t:idx-0",
+          "left": false,
+          "right": true
+        }
+      ]
+    },
+    {
+      "trinityId": "hy-mt2-lite",
+      "vendorModelId": "hy-mt2-lite",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 0.3,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 1.2,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "hy-mt2-plus",
+      "vendorModelId": "hy-mt2-plus",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 0.5,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 2,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "hy-mt2-pro",
+      "vendorModelId": "hy-mt2-pro",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 0.5,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 2,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "hy-role",
+      "vendorModelId": "hy-role",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 2.4,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 9.6,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 1,
+              "b": 1,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 2,
+              "b": 2,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.02,
+              "b": 0.2,
+              "pct": -90
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 3,
+              "b": 12,
+              "pct": -75
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 6,
+              "b": 24,
+              "pct": -75
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.025,
+              "b": 1,
+              "pct": -97.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "glm-5.2",
+      "vendorModelId": "glm-5.2",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 8,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 28,
+              "b": null
+            },
+            "cache": {
+              "status": "missing",
+              "a": 2,
+              "b": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "kimi-k2.7-code",
+      "vendorModelId": "kimi-k2.7-code",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "missing",
+              "a": 6.5,
+              "b": null
+            },
+            "output": {
+              "status": "missing",
+              "a": 27,
+              "b": null
+            },
+            "cache": {
+              "status": "missing",
+              "a": 1.3,
+              "b": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "tokenhubNoCoverage": [
+    {
+      "trinityId": "hy-vision-2.0-instruct",
+      "vendorModelId": "hy-vision-2.0-instruct"
+    },
+    {
+      "trinityId": "qwen-flash",
+      "vendorModelId": "qwen-flash"
+    },
+    {
+      "trinityId": "qwen-max",
+      "vendorModelId": "qwen-max"
+    },
+    {
+      "trinityId": "qwen-plus",
+      "vendorModelId": "qwen-plus"
+    },
+    {
+      "trinityId": "qwen-turbo",
+      "vendorModelId": "qwen-turbo"
+    },
+    {
+      "trinityId": "qwen3.6-flash",
+      "vendorModelId": "qwen3.6-flash"
+    },
+    {
+      "trinityId": "qwen3.6-plus",
+      "vendorModelId": "qwen3.6-plus"
+    },
+    {
+      "trinityId": "qwen3.7-max",
+      "vendorModelId": "qwen3.7-max"
+    },
+    {
+      "trinityId": "qwen3.7-plus",
+      "vendorModelId": "qwen3.7-plus"
+    },
+    {
+      "trinityId": "glm-4-7-251222",
+      "vendorModelId": "glm-4.7"
+    }
+  ],
+  "ok": false
+}

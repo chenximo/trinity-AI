@@ -1,12 +1,14 @@
 # 模型原厂权威价目（生文）
 
-> 真源：`output/text/vendor-pricing.json` · 抓取 2026-07-02T02:31:09Z · live 0 · seed 70 / 70 · **98 档**
+> 真源：`output/text/vendor-pricing.json` · 抓取 2026-07-02T09:26:25Z · live 0 · seed 79 / 79 · **115 档**
 > 单位：**USD per 1M tokens**
 
 | # | 厂商 | 原厂模型 ID | 币种 | 状态 | 抓取 | 档位 | 输入价 | 输出价 | 缓存价 | 价目来源 | 文档 |
 |---|------|-------------|------|------|------|------|--------|--------|--------|----------|------|
-| 1 | GPT | chat-latest | USD | active | seed | 标准价 | 5 | 30 | 0.5 | [来源](https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/chat-latest) |
-| 2 | GPT | gpt-5.5 | USD | active | seed | 标准价 | 5 | 30 | 0.5 | [来源](https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/gpt-5.5) |
+| 1 | GPT | chat-latest | USD | active | seed | 输入<=272K context | 5 | 30 | 0.5 | [来源](https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/chat-latest) |
+|  |  |  |  |  |  | 输入>272K context | 10 | 45 | 1 |  |  |
+| 2 | GPT | gpt-5.5 | USD | active | seed | 输入<=272K context | 5 | 30 | 0.5 | [来源](https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/gpt-5.5) |
+|  |  |  |  |  |  | 输入>272K context | 10 | 45 | 1 |  |  |
 | 3 | GPT | gpt-5.4-pro | USD | active | seed | 输入<=272K context | 30 | 180 | — | [来源](https://developers.openai.com/api/docs/models/gpt-5.4-pro (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/gpt-5.4-pro) |
 |  |  |  |  |  |  | 输入>272K context | 60 | 270 | — |  |  |
 | 4 | GPT | gpt-5.4 | USD | active | seed | 输入<=272K context | 2.5 | 15 | 0.25 | [来源](https://developers.openai.com/api/docs/models/gpt-5.4 (seed 2026-06-29)) | [链接](https://developers.openai.com/api/docs/models/gpt-5.4) |
@@ -84,8 +86,9 @@
 | 57 | 通义 | qwen3.5-flash | CNY | active | seed | 输入≤128k | 0.2 | 2 | 0.02 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)) | [链接](https://help.aliyun.com/zh/model-studio/model-pricing) |
 |  |  |  |  |  |  | 128k<输入≤256k | 0.8 | 8 | 0.08 |  |  |
 |  |  |  |  |  |  | 256k<输入≤1M | 1.2 | 12 | 0.12 |  |  |
-| 58 | 智谱 | glm-4.7 | CNY | active | seed | 输入≤32k | 3 | 14 | — | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)) | [链接](https://bigmodel.cn/pricing) |
-|  |  |  |  |  |  | 32k<输入≤166k | 4 | 16 | — |  |  |
+| 58 | 智谱 | glm-4.7 | CNY | active | seed | 输入≤32k，输出≤0.2k | 2 | 8 | 0.4 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)) | [链接](https://bigmodel.cn/pricing) |
+|  |  |  |  |  |  | 输入≤32k，输出>0.2k | 3 | 14 | 0.6 |  |  |
+|  |  |  |  |  |  | 输入>32k | 4 | 16 | 0.8 |  |  |
 | 59 | 智谱 | glm-5 | CNY | active | seed | 输入<32k | 4 | 18 | 1 | [来源](https://bigmodel.cn/pricing (seed 2026-06-29)) | [链接](https://bigmodel.cn/pricing) |
 |  |  |  |  |  |  | 输入≥32k | 6 | 22 | 1.5 |  |  |
 | 60 | Kimi | kimi-k2.5 | CNY | active | seed | 标准价 | 4 | 21 | 0.7 | [来源](https://platform.kimi.com/docs/pricing/chat (seed 2026-06-29)) | [链接](https://platform.kimi.com/docs/pricing/chat) |
@@ -103,6 +106,20 @@
 | 69 | MiniMax | minimax-m2.7 | CNY | active | seed | 标准价 | 2.1 | 8.4 | 0.42 | [来源](https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-29)) | [链接](https://platform.minimaxi.com/docs/guides/pricing-paygo) |
 | 70 | MiniMax | minimax-m3 | CNY | active | seed | 输入≤512k | 2.1 | 8.4 | 0.42 | [来源](https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-29)) | [链接](https://platform.minimaxi.com/docs/guides/pricing-paygo) |
 |  |  |  |  |  |  | 输入>512k | 4.2 | 16.8 | 0.84 |  |  |
+| 71 | 豆包 | doubao-seed-2-1-pro | CNY | active | seed | 标准价 | 6 | 30 | 1.2 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| 72 | 豆包 | doubao-seed-2-1-turbo | CNY | active | seed | 标准价 | 3 | 15 | 0.6 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| 73 | 豆包 | doubao-seed-2-0-pro | CNY | active | seed | 输入≤32k | 3.2 | 16 | 0.64 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  |  | 输入>32k | 6.4 | 32 | 1.28 |  |  |
+| 74 | 豆包 | doubao-seed-2-0-lite | CNY | active | seed | 输入≤32k | 0.6 | 3.6 | 0.12 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  |  | 输入>32k | 1.2 | 7.2 | 0.24 |  |  |
+| 75 | 豆包 | doubao-seed-2-0-mini | CNY | active | seed | 输入≤32k | 0.2 | 2 | 0.04 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  |  | 输入>32k | 0.4 | 4 | 0.08 |  |  |
+| 76 | 豆包 | doubao-seed-1-8 | CNY | active | seed | 输入≤32k | 0.8 | 2 | 0.16 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  |  | 输入>32k | 1.6 | 4 | 0.32 |  |  |
+| 77 | 豆包 | doubao-seed-1-6 | CNY | active | seed | 输入≤32k | 0.8 | 2 | 0.16 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  |  | 输入>32k | 1.6 | 4 | 0.32 |  |  |
+| 78 | 豆包 | doubao-pro-32k | CNY | active | seed | 标准价 | 0.8 | 2 | 0.16 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| 79 | 豆包 | doubao-lite-32k | CNY | active | seed | 标准价 | 0.3 | 0.6 | 0.06 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
 
 ## 说明
 

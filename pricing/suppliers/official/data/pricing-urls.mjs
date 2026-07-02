@@ -40,6 +40,9 @@ export const VENDOR_PRICING_URLS = {
     image: "https://platform.minimaxi.com/docs/pricing/overview",
     video: "https://platform.minimaxi.com/docs/guides/pricing-video",
   },
+  volcengine: {
+    text: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+  },
   kling: {
     video: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
   },

@@ -21,9 +21,9 @@
 20,hy3-preview,Hy3 Preview,Tencent,输入<16k,hy3-preview,入 ¥1.2 · 出 ¥4 · 缓 ¥0.4,入 ¥1.2 · 出 ¥4 · 缓 ¥0.4,✅ 一致,待填,待填
 21,,,,16k<=输入<32k,hy3-preview,入 ¥1.6 · 出 ¥6.4 · 缓 ¥0.6,入 ¥1.6 · 出 ¥6.4 · 缓 ¥0.6,✅ 一致,待填,待填
 22,,,,输入>=32k,hy3-preview,入 ¥2 · 出 ¥8 · 缓 ¥0.8,入 ¥2 · 出 ¥8 · 缓 ¥0.8,✅ 一致,待填,待填
-23,kimi-k2.5,Kimi K2.5,Tongyi,统一价,kimi-k2.5,入 ¥4 · 出 ¥21 · 缓 ¥0.7,入 ¥4 · 出 ¥21 · 缓 ¥0.7,✅ 一致,待填,待填
-24,kimi-k2.6,Kimi K2.6,Tongyi,统一价,kimi-k2.6,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,✅ 一致,待填,待填
-25,kimi-k2.7-code,Kimi K2.7 Code,Tongyi,统一价,kimi-k2.7-code,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,✅ 一致,待填,待填
+23,kimi-k2.5,Kimi K2.5,Moonshot AI,统一价,kimi-k2.5,入 ¥4 · 出 ¥21 · 缓 ¥0.7,入 ¥4 · 出 ¥21 · 缓 ¥0.7,✅ 一致,待填,待填
+24,kimi-k2.6,Kimi K2.6,Moonshot AI,统一价,kimi-k2.6,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,✅ 一致,待填,待填
+25,kimi-k2.7-code,Kimi K2.7 Code,Moonshot AI,统一价,kimi-k2.7-code,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,✅ 一致,待填,待填
 26,kimi-k2.7-code-highspeed,Kimi K2.7 Code HighSpeed,Moonshot AI,统一价,kimi-k2.7-code-highspeed,入 ¥13 · 出 ¥54 · 缓 ¥2.6,入 ¥13 · 出 ¥54 · 缓 ¥2.6,✅ 一致,待填,待填
 27,minimax-m2.5,MiniMax M2.5,MiniMax,统一价,minimax-m2.5,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,✅ 一致,待填,待填
 28,minimax-m2.7,MiniMax M2.7,MiniMax,统一价,minimax-m2.7,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,✅ 一致,待填,待填

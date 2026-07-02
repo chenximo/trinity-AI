@@ -1,6 +1,7 @@
 # 价目出入登记与二次校验规则
 
-> 适用于 `刊例对比校验-生文`、供应商分表（TokenHub / 百炼 / AIGC）、`output/upstream/summary.md`
+> 适用于 `刊例对比校验-生文`、供应商分表（TokenHub / 百炼 / AIGC）、`output/upstream/summary.md`  
+> 总工作流见 [PRICING-GOVERNANCE-WORKFLOW.md](./PRICING-GOVERNANCE-WORKFLOW.md)
 
 ## 1. 什么算「真出入」（应写入待更新）
 
@@ -55,6 +56,11 @@ npm run pricing:compare:official -- --modality=text
 
 # 二次校验（假阳性 / 缺官方档 / 未登记真出入）
 node pricing/pipeline/validate-pricing-compare.mjs
+
+# L3 官方 vs 渠道 + 告警（见 PRICING-GOVERNANCE-WORKFLOW.md）
+npm run pricing:validate:official-suppliers
+npm run pricing:alert
+npm run pricing:gate
 ```
 
 校验失败时根据输出修正：官方种子 → tierKey → 映射 → annotations。

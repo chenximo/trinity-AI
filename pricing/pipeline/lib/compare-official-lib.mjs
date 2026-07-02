@@ -10,12 +10,12 @@ import {
 } from "./export-excel.mjs";
 import { parseOnlinePricesTiers } from "./parse-online-prices.mjs";
 import { alignTierPairs, tierLabelOf } from "./tier-align.mjs";
+import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
 import {
   TOKENHUB_FILE,
   BAILIAN_FILE,
   AIGC_OUT_FILE,
   SUPPLIERS_DIR,
-  PRICES_API_FILE,
   officialMasterSheetName,
 } from "./paths.mjs";
 
@@ -238,19 +238,22 @@ export async function buildCompareRows(modality, filterIds = []) {
     );
   }
 
-  const [officialRaw, thRaw, blRaw, aigcRaw, pricesRaw] = await Promise.all([
+  const online = await refreshOnlinePricesForCompare(
+    modality === "text" ? "text" : modality,
+  );
+  const prices = online.raw;
+
+  const [officialRaw, thRaw, blRaw, aigcRaw] = await Promise.all([
     readFile(officialPricingPath(modality), "utf8").catch(() => "{}"),
     readFile(TOKENHUB_FILE, "utf8").catch(() => "{}"),
     readFile(BAILIAN_FILE, "utf8").catch(() => "{}"),
     readFile(AIGC_OUT_FILE, "utf8").catch(() => "{}"),
-      readFile(PRICES_API_FILE, "utf8").catch(() => "{}"),
   ]);
 
   const official = JSON.parse(officialRaw);
   const th = JSON.parse(thRaw);
   const bl = JSON.parse(blRaw);
   const aigc = JSON.parse(aigcRaw);
-  const prices = JSON.parse(pricesRaw);
 
   const officialByVendorId = new Map(
     (official.models ?? []).map((m) => [m.vendorModelId.toLowerCase(), m]),

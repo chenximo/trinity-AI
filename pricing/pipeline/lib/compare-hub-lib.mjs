@@ -22,11 +22,11 @@ import {
   formatTokenTextTier,
   num,
 } from "./compare-official-lib.mjs";
+import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
 import {
   OFFICIAL_MAP_FILE,
-  PRICES_API_FILE,
-  officialPricingFile,
   officialComparePaths,
+  officialPricingFile,
   UPSTREAM_SUMMARY_MD,
   UPSTREAM_SUMMARY_CSV,
   SUPPLIERS_DIR,
@@ -146,10 +146,6 @@ function refInputUsdFromTier(t) {
   if (intl != null) return intl;
   const th = parseNum(t.thIn);
   if (th != null) return th / FX_ONLINE_DOMESTIC;
-  const bl = parseNum(t.blIn);
-  if (bl != null) return bl / FX_ONLINE_DOMESTIC;
-  const dom = parseNum(t.aigcDomIn);
-  if (dom != null) return dom / FX_ONLINE_DOMESTIC;
   return null;
 }
 
@@ -488,11 +484,17 @@ export function buildTextCompareHubFromModels(models, opts = {}) {
   };
 }
 
-export async function loadTextCompareHubContext() {
-  const [mapRaw, officialRaw, pricesRaw, orMapRaw, orRaw] = await Promise.all([
+export async function loadTextCompareHubContext(opts = {}) {
+  const modality = opts.modality ?? "text";
+  const online =
+    opts.preloaded ??
+    (await refreshOnlinePricesForCompare(modality, {
+      quiet: opts.quiet ?? false,
+    }));
+
+  const [mapRaw, officialRaw, orMapRaw, orRaw] = await Promise.all([
     readFile(OFFICIAL_MAP_FILE, "utf8").catch(() => "{}"),
     readFile(officialPricingFile("text"), "utf8").catch(() => "{}"),
-    readFile(PRICES_API_FILE, "utf8").catch(() => "{}"),
     readFile(OR_MAP, "utf8").catch(() => "{}"),
     readFile(OR_FILE, "utf8").catch(() => "{}"),
   ]);
@@ -513,7 +515,7 @@ export async function loadTextCompareHubContext() {
 
   const official = JSON.parse(officialRaw);
   const orData = JSON.parse(orRaw);
-  const prices = JSON.parse(pricesRaw);
+  const prices = online.raw;
   const officialByVendorId = new Map(
     (official.models ?? []).map((m) => [m.vendorModelId.toLowerCase(), m]),
   );
@@ -531,7 +533,7 @@ export async function loadTextCompareHubContext() {
     orById,
     orTrinityMap,
     officialFetchedAt: official.fetchedAt ?? null,
-    pricesFetchedAt: prices.fetchedAt ?? null,
+    pricesFetchedAt: online.fetchedAt ?? prices.fetchedAt ?? null,
     openRouterFetchedAt: orData.fetchedAt ?? null,
   };
 }

@@ -1,33 +1,18 @@
 {
-  "tag": "0.65_prices",
-  "pricingPolicy": "optimized_0.65",
+  "tag": "0.65_prices_api_7_02",
+  "pricingPolicy": "official_vendor",
   "derivedFrom": {
-    "template": "prices-api.json",
-    "upstream": "upstream-pricing.json",
-    "upstreamScrapedAt": "2026-06-30",
-    "templateFetchedAt": "2026-06-30T13:38:49.183Z"
+    "template": "online/prices-api.json",
+    "official": "suppliers/official/output/text/vendor-pricing.json",
+    "officialFetchedAt": "2026-07-02T02:31:09.466Z",
+    "templateFetchedAt": "2026-06-30T13:38:49.183Z",
+    "archivePreserve": "0.65_prices_api_6_30.json (deepseek only)"
   },
-  "generatedAt": "2026-07-01T02:14:31.989Z",
-  "pricedModelCount": 57,
-  "pricedBySource": {
-    "aigc_international": 23,
-    "tokenhub": 23,
-    "aigc_domestic": 1,
-    "bailian": 10
-  },
-  "aigcIntlInOutCount": 23,
-  "upstreamPriority": {
-    "cache": [
-      "tokenhub",
-      "bailian",
-      "aigc_domestic",
-      "aigc_international"
-    ],
-    "inOut": [
-      "tokenhub",
-      "bailian",
-      "aigc_domestic",
-      "aigc_international_if_online_matches"
-    ]
-  }
+  "generatedAt": "2026-07-02T03:56:59.914Z",
+  "pricedModelCount": 54,
+  "preservedModelCount": 5,
+  "noOfficialModelCount": 0,
+  "preserveRules": [
+    "deepseek* → 归档 6/30 稿"
+  ]
 }

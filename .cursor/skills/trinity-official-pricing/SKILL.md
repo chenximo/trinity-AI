@@ -27,7 +27,8 @@ DOMAIN.md：边界不清时 READ。
 | 任务 | 必读 |
 |------|------|
 | 目录树、命令 | `pricing/STRUCTURE.md` |
-| 设计稿 | `pricing/docs/OFFICIAL-PRICING-SKILL-DESIGN.md` |
+| **治理工作流 L0–L4** | `pricing/docs/PRICING-GOVERNANCE-WORKFLOW.md` |
+| 设计稿（历史） | `pricing/docs/OFFICIAL-PRICING-SKILL-DESIGN.md` |
 | official 维护 | `pricing/suppliers/official/README.md` |
 | 上游真源索引 | `pricing/suppliers/SOURCES.md` |
 | 六步价目流程 | `pricing/README.md` |
@@ -48,6 +49,7 @@ DOMAIN.md：边界不清时 READ。
 |----------|----------|
 | 新增或更新某模型官方价 | [`./workflows/add-official-model.md`](./workflows/add-official-model.md) |
 | 对比官方 / 上游 / 线上 | [`./workflows/compare-pricing.md`](./workflows/compare-pricing.md) |
+| 价目门禁 L1→L3→告警 | [`./workflows/pricing-gate.md`](./workflows/pricing-gate.md) |
 | 刷新某模态全量官方价 | [`./workflows/refresh-official.md`](./workflows/refresh-official.md) |
 
 ---
@@ -58,8 +60,8 @@ DOMAIN.md：边界不清时 READ。
 2. **按模态分文件**：`text` / `image` / `video` 各自 catalog、seed、output；禁止把生视频价写入生文 seed。
 3. **官网链接必填**：每条 catalog 须有可公开引用的 `docUrl`；Gemini 等补 `pricingUrl`（见 `data/pricing-urls.mjs`）。
 4. **Trinity 已上架必写 map**：`trinity-map.json` 含 `modality` + `vendor` + `vendorModelId`。
-5. **改完必验证**：`npm run pricing:supplier:official:{modality} -- <id>`，检查 `fetchStatus`。
-6. **对比前刷新真源**：official fetch + `pricing:fetch`（按需 tokenhub console）。
+5. **改完必验证**：`npm run pricing:supplier:official:{modality} -- <id>`，检查 `fetchStatus`；生文种子改后跑 `npm run pricing:gate`（L1 含 AIGC + TokenHub）。
+6. **对比前刷新真源**：official fetch + 对比命令会自动 `GET /v1/prices` 刷新线上刊例（`PRICING_SKIP_ONLINE_FETCH=1` 可跳过）。
 
 ---
 
@@ -84,6 +86,11 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
 npm run pricing:compare:official -- gpt-5.5
 npm run pricing:compare:official -- --modality=video
 npm run pricing:compare:official -- --modality=all
+
+# 价目门禁（L1 官方↔AIGC/TokenHub · L3 官方↔百炼 · 告警）
+npm run pricing:validate:official-aigc
+npm run pricing:validate:official-suppliers
+npm run pricing:gate
 ```
 
 ---
@@ -93,5 +100,6 @@ npm run pricing:compare:official -- --modality=all
 - [ ] 模态判定正确（text / image / video）
 - [ ] `catalog/{modality}.mjs` + `seeds/{modality}.mjs` + `trinity-map.json` 三处一致
 - [ ] `output/{modality}/vendor-pricing.json` 已更新
+- [ ] 生文：`pricing:gate` 或至少 `pricing:validate:official-aigc` 已跑
 - [ ] 已向用户展示 `vendor-pricing-table.md` 或对比表摘要
 - [ ] 未误改 TokenHub/百炼/AIGC 真源（除非用户明确要求刷新上游）

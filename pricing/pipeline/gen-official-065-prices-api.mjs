@@ -12,9 +12,9 @@
 import { readFile, writeFile, copyFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { assembleOfficialPricesDocument } from "./lib/build-official-prices-api.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 import {
   OUT_DRAFT_DIR,
-  PRICES_API_FILE,
   DRAFT_065_FILE,
   DRAFT_065_META_FILE,
   DRAFT_065_ARCHIVE_630,
@@ -55,7 +55,7 @@ async function main() {
   }
 
   const [templateData, officialData, mapRaw] = await Promise.all([
-    readFile(PRICES_API_FILE, "utf8").then(JSON.parse),
+    refreshOnlinePricesForCompare("text", { quiet: true }).then((o) => o.raw),
     readFile(officialPricingFile("text"), "utf8").then(JSON.parse),
     readFile(OFFICIAL_MAP_FILE, "utf8").then(JSON.parse),
   ]);

@@ -10,17 +10,35 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
     return "uniform";
   }
 
-  const n = raw.replace(/\s/g, "").toLowerCase();
+  const n = raw
+    .replace(/\s/g, "")
+    .replace(/（/g, "(")
+    .replace(/）/g, ")")
+    .toLowerCase();
 
   if (/音频|audio|has_audio|含音频/.test(n)) return "mod:audio";
   if (/文本|图片|视频|text\/image|text\/video|text\/img/.test(n)) {
     return "mod:text";
   }
 
-  if (/输入<16k|输入≤16k|输入长度\(0,16k|0,16k\]/i.test(n)) return "t:0-16k";
-  if (/16k.*32k|16k<=输入<32k|输入长度\(16k,32k/i.test(n)) return "t:16k-32k";
+  // GLM-4.7：≤32k 内按输出 token 分档（须先于通用 ≤32k）
+  if (/≤32k|<=32k|<32k/i.test(n) && /输出/.test(n)) {
+    if (/输出.*[≤<]=?0\.2k/i.test(n)) return "t:in32k-out-le0.2k";
+    if (/输出.*[>＞]0\.2k/i.test(n)) return "t:in32k-out-gt0.2k";
+  }
+
+  if (/输入<16k|输入≤16k|输入长度\(0,16k|0,16k\)|输入长度\(0,16k\)/i.test(n))
+    return "t:0-16k";
+  if (/16k.*32k|16k<=输入<32k|输入长度\(16k,32k|输入长度\[16k,32k/i.test(n))
+    return "t:16k-32k";
+
+  // 智谱 GLM：仅按输入长度（≤32k / >32k），排除混元 16k–32k 区间
+  if (/输入[:：]?[≤<]=?32k/i.test(n) && !/输出/.test(n) && !/16k/i.test(n))
+    return "t:0-32k";
+  if (/输入[:：]?[>＞≥]=?32k/i.test(n) && !/166k/.test(n)) return "t:32k+";
+
   if (
-    /输入>=32k|输入≥32k|32k\+|32k<=输入|32k<=|输入长度\(32k|输入>32k/i.test(
+    /输入>=32k|输入≥32k|32k\+|32k<=输入|32k<=|输入长度\(32k|输入长度\[32k|输入>32k/i.test(
       n,
     )
   )
@@ -65,8 +83,10 @@ export const TIER_KEY_ORDER = [
   "mod:audio",
   "t:0-16k",
   "t:16k-32k",
-  "t:32k+",
   "t:0-32k",
+  "t:in32k-out-le0.2k",
+  "t:in32k-out-gt0.2k",
+  "t:32k+",
   "t:32k-128k",
   "ctx:0-200k",
   "ctx:200k+",

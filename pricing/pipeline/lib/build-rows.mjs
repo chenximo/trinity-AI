@@ -29,7 +29,9 @@ export function summaryTiersForModel(m) {
       t.aigcDomIn != null ||
       t.aigcDomOut != null ||
       t.aigcIntlIn != null ||
-      t.aigcIntlOut != null,
+      t.aigcIntlOut != null ||
+      t.volIn != null ||
+      t.volOut != null,
   );
   if (priced.length) return priced;
   return tiers.length ? [tiers[0]] : [];
@@ -145,6 +147,55 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
         supplierVsOfficial,
         "待填",
         "待填",
+      ]);
+    }
+  }
+
+  return [header, ...rows];
+}
+
+/** 火山方舟全量目录（直连厂商价 = 官方种子） */
+export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
+  const sup = { catalog: "volcengine" };
+  const header = buildSupplierTableHeader(sup);
+  const currency = "CNY";
+
+  const rows = [];
+  let rowNum = 0;
+
+  for (const m of volcModels) {
+    const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
+    for (let i = 0; i < m.tiers.length; i++) {
+      const t = m.tiers[i];
+      rowNum++;
+      const show = i === 0;
+      const supplierPrices = {
+        input: t.input,
+        output: t.output,
+        cache: t.cache,
+      };
+      const { vendorOfficial, supplierListed, supplierVsOfficial } =
+        officialCellsForTrinityTier(
+          m.trinityId ?? m.modelId,
+          { tierLabel: t.tierName, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          { tierIndex: i, tierTotal: m.tiers.length },
+        );
+
+      rows.push([
+        rowNum,
+        show ? (m.trinityId ?? "") : "",
+        show ? displayName : "",
+        show ? (m.brand ?? "火山方舟") : "",
+        t.tierName,
+        m.modelId,
+        vendorOfficial,
+        supplierListed,
+        supplierVsOfficial,
+        "—",
+        "—",
       ]);
     }
   }

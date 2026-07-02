@@ -31,8 +31,19 @@ export const TEXT_SEED_VERIFIED_AT = "2026-06-29";
 
 /** @type {Record<string, TextSeedEntry>} */
 export const TEXT_SEED = {
-  "chat-latest": { input: 5, cache: 0.5, output: 30, note: "alias → 最新 Instant，同 gpt-5.5 档" },
-  "gpt-5.5": { input: 5, cache: 0.5, output: 30 },
+  "chat-latest": {
+    tiers: [
+      { tierLabel: "输入<=272K context", input: 5, cache: 0.5, output: 30 },
+      { tierLabel: "输入>272K context", input: 10, cache: 1, output: 45 },
+    ],
+    note: "alias → 最新 Instant，同 gpt-5.5 档",
+  },
+  "gpt-5.5": {
+    tiers: [
+      { tierLabel: "输入<=272K context", input: 5, cache: 0.5, output: 30 },
+      { tierLabel: "输入>272K context", input: 10, cache: 1, output: 45 },
+    ],
+  },
   "gpt-5.4-pro": {
     tiers: [
       { tierLabel: "输入<=272K context", input: 30, output: 180 },
@@ -282,10 +293,21 @@ export const TEXT_SEED = {
   "glm-4.7": {
     currency: "CNY",
     tiers: [
-      { tierLabel: "输入≤32k", input: 3, output: 14 },
-      { tierLabel: "32k<输入≤166k", input: 4, output: 16 },
+      {
+        tierLabel: "输入≤32k，输出≤0.2k",
+        input: 2,
+        output: 8,
+        cache: 0.4,
+      },
+      {
+        tierLabel: "输入≤32k，输出>0.2k",
+        input: 3,
+        output: 14,
+        cache: 0.6,
+      },
+      { tierLabel: "输入>32k", input: 4, output: 16, cache: 0.8 },
     ],
-    note: "百炼模型定价 · GLM-4.7",
+    note: "智谱开放平台定价 · GLM-4.7（输入长度 + ≤32k 内输出长度三档，与 AIGC 商务一致）",
   },
   "kimi-k2.5": {
     currency: "CNY",
@@ -367,5 +389,75 @@ export const TEXT_SEED = {
       { tierLabel: "输入>512k", input: 4.2, output: 16.8, cache: 0.84 },
     ],
     note: "MiniMax 按量计费 · M3",
+  },
+
+  // ── 火山方舟 · 豆包（按量付费）https://www.volcengine.com/docs/82379/1544106 ──
+  "doubao-seed-2-1-pro": {
+    currency: "CNY",
+    input: 6,
+    output: 30,
+    cache: 1.2,
+    note: "Doubao-Seed-2.1-Pro",
+  },
+  "doubao-seed-2-1-turbo": {
+    currency: "CNY",
+    input: 3,
+    output: 15,
+    cache: 0.6,
+    note: "Doubao-Seed-2.1-Turbo",
+  },
+  "doubao-seed-2-0-pro": {
+    currency: "CNY",
+    tiers: [
+      { tierLabel: "输入≤32k", input: 3.2, output: 16, cache: 0.64 },
+      { tierLabel: "输入>32k", input: 6.4, output: 32, cache: 1.28 },
+    ],
+    note: "Doubao-Seed-2.0-Pro",
+  },
+  "doubao-seed-2-0-lite": {
+    currency: "CNY",
+    tiers: [
+      { tierLabel: "输入≤32k", input: 0.6, output: 3.6, cache: 0.12 },
+      { tierLabel: "输入>32k", input: 1.2, output: 7.2, cache: 0.24 },
+    ],
+    note: "Doubao-Seed-2.0-Lite",
+  },
+  "doubao-seed-2-0-mini": {
+    currency: "CNY",
+    tiers: [
+      { tierLabel: "输入≤32k", input: 0.2, output: 2, cache: 0.04 },
+      { tierLabel: "输入>32k", input: 0.4, output: 4, cache: 0.08 },
+    ],
+    note: "Doubao-Seed-2.0-Mini",
+  },
+  "doubao-seed-1-8": {
+    currency: "CNY",
+    tiers: [
+      { tierLabel: "输入≤32k", input: 0.8, output: 2, cache: 0.16 },
+      { tierLabel: "输入>32k", input: 1.6, output: 4, cache: 0.32 },
+    ],
+    note: "Doubao-Seed-1.8",
+  },
+  "doubao-seed-1-6": {
+    currency: "CNY",
+    tiers: [
+      { tierLabel: "输入≤32k", input: 0.8, output: 2, cache: 0.16 },
+      { tierLabel: "输入>32k", input: 1.6, output: 4, cache: 0.32 },
+    ],
+    note: "Doubao-Seed-1.6",
+  },
+  "doubao-pro-32k": {
+    currency: "CNY",
+    input: 0.8,
+    output: 2,
+    cache: 0.16,
+    note: "Doubao-Pro-32k",
+  },
+  "doubao-lite-32k": {
+    currency: "CNY",
+    input: 0.3,
+    output: 0.6,
+    cache: 0.06,
+    note: "Doubao-Lite-32k",
   },
 };

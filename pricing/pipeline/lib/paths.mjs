@@ -38,6 +38,7 @@ export const TEXT_SHEET_ORDER = [
   "百炼北京",
   "AIGC国内站",
   "AIGC国际站",
+  "火山方舟",
   "汇总-供应商vs官方",
 ];
 
@@ -94,7 +95,7 @@ export const UPSTREAM_SUMMARY_CSV = path.join(OUT_UPSTREAM_DIR, "summary.csv");
 /** @deprecated 使用 MASTER_PRICING_XLSX */
 export const UPSTREAM_XLSX = MASTER_PRICING_XLSX;
 
-/** @param {string} supplierKey tokenhub | bailian | aigc-domestic | aigc-international */
+/** @param {string} supplierKey tokenhub | bailian | aigc-domestic | aigc-international | volcengine */
 export function upstreamSupplierDir(supplierKey) {
   return path.join(OUT_UPSTREAM_DIR, supplierKey);
 }
@@ -194,6 +195,14 @@ export const AIGC_OUT_FILE = path.join(
   "aigc/output/pricing-api.json",
 );
 export const AIGC_SHEET_PATH = "pricing/suppliers/aigc/data/pricing-sheet.mjs";
+export const VOLCENGINE_FILE = path.join(
+  SUPPLIERS_DIR,
+  "volcengine/output/pricing-api.json",
+);
+export const VOLCENGINE_MAP_FILE = path.join(
+  SUPPLIERS_DIR,
+  "volcengine/trinity-map.json",
+);
 
 export const OFFICIAL_MAP_FILE = path.join(
   SUPPLIERS_DIR,

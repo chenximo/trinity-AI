@@ -3,7 +3,7 @@
  */
 
 /**
- * @typedef {"openai"|"google"|"xai"|"anthropic"|"deepseek"|"bailian"|"tencent_hunyuan"|"zhipu"|"kimi"|"minimax"} VendorKey
+ * @typedef {"openai"|"google"|"xai"|"anthropic"|"deepseek"|"bailian"|"tencent_hunyuan"|"zhipu"|"kimi"|"minimax"|"volcengine"} VendorKey
  * @typedef {"active"|"deprecated"|"retired"} CatalogStatus
  *
  * @typedef {{
@@ -665,6 +665,89 @@ export const TEXT_CATALOG = [
     docUrl: "https://platform.minimaxi.com/docs/guides/pricing-paygo",
     pricingUrl: "https://platform.minimaxi.com/docs/guides/pricing-paygo",
     trinityNote: "512k 以上输入档仍在内测开放中",
+    region: "domestic",
+    status: "active",
+  },
+
+  // ── 火山方舟 · 豆包 ───────────────────────────────────────────
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-2-1-pro",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-2-1-turbo",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-2-0-pro",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-2-0-lite",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-2-0-mini",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-1-8",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seed-1-6",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-pro-32k",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-lite-32k",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
     region: "domestic",
     status: "active",
   },

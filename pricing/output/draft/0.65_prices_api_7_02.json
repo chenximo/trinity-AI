@@ -4,7 +4,7 @@
   "modality": "text",
   "fxCnyPerUsd": 6.5,
   "fxNote": "厂商官方价 CNY ÷ 6.5 → USD；官方 USD 直用",
-  "fetchedAt": "2026-07-02T03:56:59.914Z",
+  "fetchedAt": "2026-07-02T08:14:14.622Z",
   "modelCount": 59,
   "object": "list",
   "data": [
@@ -2056,10 +2056,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "5",
+                "amount": "10",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$5.00 / 百万 input tokens"
+                "display": "$10.00 / 百万 input tokens"
               }
             }
           ]
@@ -2090,10 +2090,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "0.5",
+                "amount": "1",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.50 / 百万 cached input tokens"
+                "display": "$1.00 / 百万 cached input tokens"
               }
             }
           ]
@@ -2124,10 +2124,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "30",
+                "amount": "45",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$30.00 / 百万 output tokens"
+                "display": "$45.00 / 百万 output tokens"
               }
             }
           ]

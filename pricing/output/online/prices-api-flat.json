@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-06-30T13:38:49.183Z",
+  "fetchedAt": "2026-07-02T09:00:29.420Z",
   "modality": "text",
   "fxCnyPerUsd": 7.25,
   "models": [
     {
       "model": "claude-opus-4-6",
-      "displayName": "claude-opus-4-6",
+      "displayName": "Claude Opus 4.6",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -20,7 +20,7 @@
     },
     {
       "model": "claude-opus-4-7",
-      "displayName": "claude-opus-4-7",
+      "displayName": "Claude Opus 4.7",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -35,7 +35,7 @@
     },
     {
       "model": "claude-opus-4-8",
-      "displayName": "claude-opus-4-8",
+      "displayName": "Claude Opus 4.8",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -50,7 +50,7 @@
     },
     {
       "model": "claude-sonnet-4-6",
-      "displayName": "claude-sonnet-4-6",
+      "displayName": "Claude Sonnet 4.6",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -149,9 +149,9 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.3,
       "outputUsd": 2.5,
-      "cacheUsd": 0.033846,
+      "cacheUsd": 0.03,
       "cacheCreationUsd": null,
-      "tierCount": 1
+      "tierCount": 2
     },
     {
       "model": "gemini-2.5-flash-lite",
@@ -164,7 +164,7 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.1,
       "outputUsd": 0.4,
-      "cacheUsd": 0.011538,
+      "cacheUsd": 0.01,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
@@ -179,7 +179,7 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.1,
       "outputUsd": 0.4,
-      "cacheUsd": 0.011538,
+      "cacheUsd": 0.01,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
@@ -194,7 +194,7 @@
       "tierLabel": "≤ 200K",
       "inputUsd": 1.25,
       "outputUsd": 10,
-      "cacheUsd": 0.143077,
+      "cacheUsd": 0.125,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
@@ -209,9 +209,9 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.5,
       "outputUsd": 3,
-      "cacheUsd": 0.053846,
+      "cacheUsd": 0.05,
       "cacheCreationUsd": null,
-      "tierCount": 1
+      "tierCount": 2
     },
     {
       "model": "gemini-3.1-flash-lite",
@@ -224,9 +224,9 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.25,
       "outputUsd": 1.5,
-      "cacheUsd": 0.027692,
+      "cacheUsd": 0.025,
       "cacheCreationUsd": null,
-      "tierCount": 1
+      "tierCount": 2
     },
     {
       "model": "gemini-3.1-flash-lite-preview",
@@ -239,9 +239,9 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.25,
       "outputUsd": 1.5,
-      "cacheUsd": 0.027692,
+      "cacheUsd": 0.025,
       "cacheCreationUsd": null,
-      "tierCount": 1
+      "tierCount": 2
     },
     {
       "model": "gemini-3.1-pro-preview",
@@ -254,7 +254,7 @@
       "tierLabel": "≤ 200K",
       "inputUsd": 2,
       "outputUsd": 12,
-      "cacheUsd": 0.230769,
+      "cacheUsd": 0.2,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
@@ -269,24 +269,9 @@
       "tierLabel": "标准计价",
       "inputUsd": 1.5,
       "outputUsd": 9,
-      "cacheUsd": 0.173077,
+      "cacheUsd": 0.15,
       "cacheCreationUsd": null,
-      "tierCount": 1
-    },
-    {
-      "model": "glm-4-7-251222",
-      "displayName": "GLM 4.7",
-      "modality": "text",
-      "pricingMode": "legacy",
-      "currency": "USD",
-      "priceUnit": "per_million_tokens",
-      "updatedAt": "2026-06-12T03:04:17.692275Z",
-      "tierLabel": "标准计价",
-      "inputUsd": 0.461538,
-      "outputUsd": 2.153846,
-      "cacheUsd": 0.092308,
-      "cacheCreationUsd": null,
-      "tierCount": 1
+      "tierCount": 2
     },
     {
       "model": "glm-5",
@@ -297,9 +282,9 @@
       "priceUnit": "per_million_tokens",
       "updatedAt": "2026-06-12T08:53:43.996754Z",
       "tierLabel": "≤ 32.77K",
-      "inputUsd": 0.923077,
-      "outputUsd": 3.384615,
-      "cacheUsd": 0.154,
+      "inputUsd": 0.615385,
+      "outputUsd": 2.769231,
+      "cacheUsd": 0.153846,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
@@ -312,9 +297,9 @@
       "priceUnit": "per_million_tokens",
       "updatedAt": "2026-06-12T08:48:58.774116Z",
       "tierLabel": "≤ 32.77K",
-      "inputUsd": 1.076923,
-      "outputUsd": 4,
-      "cacheUsd": 0.276923,
+      "inputUsd": 0.769231,
+      "outputUsd": 3.384615,
+      "cacheUsd": 0.184615,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
@@ -327,8 +312,8 @@
       "priceUnit": "per_million_tokens",
       "updatedAt": "2026-06-12T08:13:54.925843Z",
       "tierLabel": "≤ 32.77K",
-      "inputUsd": 1.230769,
-      "outputUsd": 4.307692,
+      "inputUsd": 0.923077,
+      "outputUsd": 3.692308,
       "cacheUsd": 0.2,
       "cacheCreationUsd": null,
       "tierCount": 2
@@ -357,15 +342,15 @@
       "priceUnit": "per_million_tokens",
       "updatedAt": "2026-06-29T10:19:07.077199Z",
       "tierLabel": "≤ 32.77K",
-      "inputUsd": 1.076923,
-      "outputUsd": 4,
-      "cacheUsd": 0.276923,
+      "inputUsd": 0.769231,
+      "outputUsd": 3.384615,
+      "cacheUsd": 0.184615,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
     {
       "model": "gpt-4.1",
-      "displayName": "gpt-4.1",
+      "displayName": "GPT-4.1",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -374,13 +359,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 2,
       "outputUsd": 8,
-      "cacheUsd": 0.576923,
+      "cacheUsd": 0.5,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-4o",
-      "displayName": "gpt-4o",
+      "displayName": "GPT-4o",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -389,13 +374,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 2.5,
       "outputUsd": 10,
-      "cacheUsd": 1.441538,
+      "cacheUsd": 1.25,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5",
-      "displayName": "gpt-5",
+      "displayName": "GPT-5",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -404,13 +389,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 1.25,
       "outputUsd": 10,
-      "cacheUsd": 0.144231,
+      "cacheUsd": 0.125,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5-nano",
-      "displayName": "gpt-5-nano",
+      "displayName": "GPT-5 Nano",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -419,13 +404,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.05,
       "outputUsd": 0.4,
-      "cacheUsd": 0.005769,
+      "cacheUsd": 0.005,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5.1",
-      "displayName": "gpt-5.1",
+      "displayName": "GPT-5.1",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -434,13 +419,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 1.25,
       "outputUsd": 10,
-      "cacheUsd": 0.144231,
+      "cacheUsd": 0.125,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5.1-chat",
-      "displayName": "gpt-5.1-chat",
+      "displayName": "GPT-5.1 Chat",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -449,13 +434,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 1.25,
       "outputUsd": 10,
-      "cacheUsd": 0.144231,
+      "cacheUsd": 0.125,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5.2",
-      "displayName": "gpt-5.2",
+      "displayName": "GPT-5.2",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -464,13 +449,28 @@
       "tierLabel": "标准计价",
       "inputUsd": 1.75,
       "outputUsd": 14,
-      "cacheUsd": 0.201923,
+      "cacheUsd": 0.175,
+      "cacheCreationUsd": null,
+      "tierCount": 1
+    },
+    {
+      "model": "gpt-5.3-codex",
+      "displayName": "GPT-5.3 Codex",
+      "modality": "text",
+      "pricingMode": "legacy",
+      "currency": "USD",
+      "priceUnit": "per_million_tokens",
+      "updatedAt": "2026-07-01T09:09:00.433394Z",
+      "tierLabel": "标准计价",
+      "inputUsd": 1.75,
+      "outputUsd": 14,
+      "cacheUsd": 0.175,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5.4",
-      "displayName": "gpt-5.4",
+      "displayName": "GPT-5.4",
       "modality": "text",
       "pricingMode": "context_length_range",
       "currency": "USD",
@@ -479,13 +479,13 @@
       "tierLabel": "≤ 272K",
       "inputUsd": 2.5,
       "outputUsd": 15,
-      "cacheUsd": 0.288462,
+      "cacheUsd": 0.25,
       "cacheCreationUsd": null,
       "tierCount": 2
     },
     {
       "model": "gpt-5.4-mini",
-      "displayName": "gpt-5.4-mini",
+      "displayName": "GPT-5.4 Mini",
       "modality": "text",
       "pricingMode": "legacy",
       "currency": "USD",
@@ -494,13 +494,13 @@
       "tierLabel": "标准计价",
       "inputUsd": 0.75,
       "outputUsd": 4.5,
-      "cacheUsd": 0.086538,
+      "cacheUsd": 0.075,
       "cacheCreationUsd": null,
       "tierCount": 1
     },
     {
       "model": "gpt-5.4-pro",
-      "displayName": "gpt-5.4-pro",
+      "displayName": "GPT-5.4 Pro",
       "modality": "text",
       "pricingMode": "context_length_range",
       "currency": "USD",
@@ -515,7 +515,7 @@
     },
     {
       "model": "gpt-5.5",
-      "displayName": "gpt-5.5",
+      "displayName": "GPT-5.5",
       "modality": "text",
       "pricingMode": "context_length_range",
       "currency": "USD",
@@ -612,8 +612,8 @@
       "priceUnit": "per_million_tokens",
       "updatedAt": "2026-06-29T10:24:41.908115Z",
       "tierLabel": "标准计价",
-      "inputUsd": 1.034483,
-      "outputUsd": 2.413793,
+      "inputUsd": 1.153846,
+      "outputUsd": 2.692308,
       "cacheUsd": null,
       "cacheCreationUsd": null,
       "tierCount": 1

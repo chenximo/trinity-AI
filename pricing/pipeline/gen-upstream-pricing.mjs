@@ -24,6 +24,7 @@ import {
 import { cell, joinLines } from "./lib/render-markdown.mjs";
 import {
   buildSupplierRows,
+  buildVolcengineCatalogRows,
 } from "./lib/build-rows.mjs";
 import {
   CNY_PER_M,
@@ -39,10 +40,18 @@ import {
 } from "./lib/supplier-official-summary.mjs";
 import { PRICING_SHEET, SHEET_META } from "../suppliers/aigc/data/pricing-sheet.mjs";
 import {
+  PRICING_SHEET as VOLC_PRICING_SHEET,
+  SHEET_META as VOLC_SHEET_META,
+} from "../suppliers/volcengine/data/pricing-sheet.mjs";
+import {
   normalizeAigcPricing,
   indexAigcByTrinity,
 } from "../suppliers/aigc/lib/pricing-api.mjs";
-import { indexOnlinePrices } from "./lib/parse-online-prices.mjs";
+import {
+  normalizeVolcenginePricing,
+  indexVolcengineByTrinity,
+} from "../suppliers/volcengine/lib/pricing-api.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 import { renderOutputReadme } from "./lib/output-readme.mjs";
 import {
   buildTextCompareHubFromModels,
@@ -60,7 +69,6 @@ import {
   OPENROUTER_TEXT_JSON,
   UPSTREAM_PRICING_FILE,
   TRINITY_MODELS_CACHE_FILE,
-  PRICES_API_FILE,
   TEXT_PRICING_XLSX,
   upstreamSupplierPaths,
   DISCOUNTS_FILE,
@@ -69,6 +77,8 @@ import {
   AIGC_MAP_FILE,
   AIGC_OUT_FILE,
   AIGC_SHEET_PATH,
+  VOLCENGINE_FILE,
+  VOLCENGINE_MAP_FILE,
 } from "./lib/paths.mjs";
 
 const TRINITY_MODELS_CACHE = TRINITY_MODELS_CACHE_FILE;
@@ -140,6 +150,22 @@ const SUPPLIERS = [
     costKey: "aigcIntlCost",
     officialPrefix: "AIGC-INTL",
   },
+  {
+    key: "volcengine",
+    outFile: "pricing",
+    title: "火山方舟 · 豆包（按量付费）",
+    region: "中国内地",
+    excelSheet: "火山方舟",
+    priceUnit: "元/百万 tokens",
+    catalog: "volcengine",
+    idKey: "volId",
+    inKey: "volIn",
+    outKey: "volOut",
+    cacheKey: "volCache",
+    discountKey: "volDiscount",
+    costKey: "volCost",
+    officialPrefix: "VOL",
+  },
 ];
 
 async function loadDiscounts() {
@@ -164,12 +190,14 @@ function enrichTierCosts(tier, modelId, discounts) {
   const blDiscount = resolveDiscount(discounts, modelId, "bailian");
   const aigcDomDiscount = resolveDiscount(discounts, modelId, "aigc-domestic");
   const aigcIntlDiscount = resolveDiscount(discounts, modelId, "aigc-international");
+  const volDiscount = resolveDiscount(discounts, modelId, "volcengine");
   return {
     ...tier,
     thDiscount,
     blDiscount,
     aigcDomDiscount,
     aigcIntlDiscount,
+    volDiscount,
     thCost: calcCostTriple(tier.thIn, tier.thOut, tier.thCache, thDiscount),
     blCost: calcCostTriple(tier.blIn, tier.blOut, tier.blCache, blDiscount),
     aigcDomCost: calcCostTriple(
@@ -183,6 +211,12 @@ function enrichTierCosts(tier, modelId, discounts) {
       tier.aigcIntlOut,
       tier.aigcIntlCache,
       aigcIntlDiscount,
+    ),
+    volCost: calcCostTriple(
+      tier.volIn,
+      tier.volOut,
+      tier.volCache,
+      volDiscount,
     ),
   };
 }
@@ -212,6 +246,37 @@ async function loadAigcPricing() {
     "utf8",
   );
   return { models, ...indexAigcByTrinity(models) };
+}
+
+async function loadVolcenginePricing() {
+  let trinityMap = {};
+  try {
+    trinityMap = JSON.parse(await readFile(VOLCENGINE_MAP_FILE, "utf8"));
+    delete trinityMap._comment;
+    delete trinityMap._doc;
+  } catch {
+    /* optional */
+  }
+  const models = normalizeVolcenginePricing(VOLC_PRICING_SHEET, trinityMap);
+  await mkdir(path.dirname(VOLCENGINE_FILE), { recursive: true });
+  await writeFile(
+    VOLCENGINE_FILE,
+    JSON.stringify(
+      {
+        ...VOLC_SHEET_META,
+        generatedAt: new Date().toISOString(),
+        modelCount: models.length,
+        trinityMappedCount: new Set(
+          models.filter((m) => m.trinityId).map((m) => m.trinityId),
+        ).size,
+        models,
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  );
+  return { models, byTrinity: indexVolcengineByTrinity(models) };
 }
 
 async function loadTrinityTextModels() {
@@ -255,24 +320,6 @@ function parseTrinityModels(body) {
   });
 }
 
-/** 刊例以 GET /v1/prices 为准（run compare:fetch-prices）；无文件时回退 models metadata */
-async function loadOnlinePricesMap() {
-  try {
-    const raw = JSON.parse(await readFile(PRICES_API_FILE, "utf8"));
-    const map = indexOnlinePrices(raw.data ?? []);
-    console.log(
-      `Loaded online prices: ${map.size} models from prices-api.json (${raw.fetchedAt ?? "—"})`,
-    );
-    return map;
-  } catch (e) {
-    console.warn(
-      "prices-api.json missing or invalid; 刊例 falls back to /models metadata. Run: npm run compare:fetch-prices",
-      e.message,
-    );
-    return null;
-  }
-}
-
 function applyOnlinePrices(trinityList, priceMap) {
   if (!priceMap?.size) return trinityList;
   return trinityList.map((t) => {
@@ -287,7 +334,7 @@ function applyOnlinePrices(trinityList, priceMap) {
   });
 }
 
-function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap) {
+function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, volcMap) {
   const thById = new Map(thModels.map((m) => [m.modelId.toLowerCase(), m]));
   const list = trinityList ?? thModels.map((m) => ({
     id: m.modelId,
@@ -313,6 +360,7 @@ function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap) {
       bailian: bl,
       aigcDomestic: aigcDomMap.get(id) ?? null,
       aigcInternational: aigcIntlMap.get(id) ?? null,
+      volcengine: volcMap.get(id) ?? null,
     };
   });
 }
@@ -330,12 +378,16 @@ function buildTierRows(entry) {
   const aiMap = entry.aigcInternational
     ? buildTierMap(entry.aigcInternational.tiers ?? [])
     : new Map();
+  const volMap = entry.volcengine
+    ? buildTierMap(entry.volcengine.tiers ?? [])
+    : new Map();
 
   const keys = new Set([
     ...thMap.keys(),
     ...blMap.keys(),
     ...adMap.keys(),
     ...aiMap.keys(),
+    ...volMap.keys(),
   ]);
   if (!keys.size) keys.add("uniform");
 
@@ -346,11 +398,13 @@ function buildTierRows(entry) {
       const bl = blMap.get(key);
       const ad = adMap.get(key);
       const ai = aiMap.get(key);
+      const vol = volMap.get(key);
       const tierLabel =
         th?.tierName ||
         bl?.tierName ||
         ad?.tierName ||
         ai?.tierName ||
+        vol?.tierName ||
         (key === "uniform" ? "统一价" : key);
       const cmpIn = compareField(th?.input, bl?.input);
       const cmpOut = compareField(th?.output, bl?.output);
@@ -374,6 +428,10 @@ function buildTierRows(entry) {
         aigcIntlIn: ai?.input ?? null,
         aigcIntlOut: ai?.output ?? null,
         aigcIntlCache: ai?.cache ?? null,
+        volId: entry.volcengine?.upstreamModelId ?? null,
+        volIn: vol?.input ?? null,
+        volOut: vol?.output ?? null,
+        volCache: vol?.cache ?? null,
         cmpIn: cmpIn.text,
         cmpOut: cmpOut.text,
         cmpCache: cmpCache.text,
@@ -382,17 +440,21 @@ function buildTierRows(entry) {
           (th?.input != null || th?.output != null ? 1 : 0) +
           (bl?.input != null || bl?.output != null ? 1 : 0) +
           (ad?.input != null || ad?.output != null ? 1 : 0) +
-          (ai?.input != null || ai?.output != null ? 1 : 0),
+          (ai?.input != null || ai?.output != null ? 1 : 0) +
+          (vol?.input != null || vol?.output != null ? 1 : 0),
       };
     });
 }
 
-function supplierRows(sup, models, officialCtx) {
+function supplierRows(sup, models, officialCtx, volcModels = []) {
+  if (sup.catalog === "volcengine") {
+    return buildVolcengineCatalogRows(volcModels, officialCtx);
+  }
   return buildSupplierRows(sup, models, officialCtx);
 }
 
-function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx) {
-  const date = sup.catalog === "aigc" ? aigcDate : scrapedAt;
+function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcModels = []) {
+  const date = sup.catalog === "aigc" ? aigcDate : sup.catalog === "volcengine" ? VOLC_SHEET_META.dataDate : scrapedAt;
   const unit = sup.priceUnit ?? CNY_PER_M;
   const headerCols = buildSupplierTableHeader(sup);
   const lines = [
@@ -400,18 +462,28 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx) {
     "",
     `> 供应商：**${sup.key}** · 区域：**${sup.region}** · 数据日期：${date}`,
     `> 供应商挂牌/成本单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）`,
-    `> **范围**：Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`,
+    `> **范围**：${
+      sup.catalog === "volcengine"
+        ? `火山方舟生文模型全目录（${volcModels.length} 款）`
+        : `Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`
+    }`,
     `> **厂商官方价**：模型厂商官网挂牌（\`suppliers/official\`），同档对照`,
     `> 折扣配置：\`supplier-discounts.json\` → suppliers.${sup.key}`,
     ...(sup.catalog === "aigc"
       ? [`> 数据源：\`${AIGC_SHEET_PATH}\``]
+      : []),
+    ...(sup.catalog === "volcengine"
+      ? [
+          `> 数据源：[模型价格 · 火山方舟](${VOLC_SHEET_META.docUrl})`,
+          `> 录入：\`suppliers/volcengine/data/pricing-sheet.mjs\``,
+        ]
       : []),
     "",
     `| ${headerCols.join(" | ")} |`,
     `| ${headerCols.map(() => "---").join(" | ")} |`,
   ];
 
-  const [, ...bodyRows] = supplierRows(sup, models, officialCtx);
+  const [, ...bodyRows] = supplierRows(sup, models, officialCtx, volcModels);
   let modelCount = 0;
   let seen = false;
 
@@ -455,6 +527,7 @@ async function main() {
   const discounts = await loadDiscounts();
   const { models: aigcModels, domestic: aigcDomMap, international: aigcIntlMap } =
     await loadAigcPricing();
+  const { models: volcModels, byTrinity: volcMap } = await loadVolcenginePricing();
 
   const trinityListRaw = await loadTrinityTextModels();
   if (!trinityListRaw?.length) {
@@ -462,7 +535,8 @@ async function main() {
     process.exit(1);
   }
 
-  const priceMap = await loadOnlinePricesMap();
+  const onlinePrices = await refreshOnlinePricesForCompare("text");
+  const priceMap = onlinePrices.map;
   const trinityList = applyOnlinePrices(trinityListRaw, priceMap);
 
   const thModels = pickTokenhubModels(thData.models ?? []);
@@ -473,6 +547,7 @@ async function main() {
     blMap,
     aigcDomMap,
     aigcIntlMap,
+    volcMap,
   );
 
   const models = catalog.map((entry) => ({
@@ -513,7 +588,9 @@ async function main() {
       bailian: "upstream/bailian/beijing.md",
       aigcDomestic: "upstream/aigc-domestic/pricing.md",
       aigcInternational: "upstream/aigc-international/pricing.md",
+      volcengine: "upstream/volcengine/pricing.md",
       aigcJson: "suppliers/aigc/output/pricing-api.json",
+      volcengineJson: "suppliers/volcengine/output/pricing-api.json",
       onlinePrices: "online/prices-api.json",
       openrouter: "openrouter/text.md",
     },
@@ -532,7 +609,7 @@ async function main() {
     })),
   };
 
-  const hubCtx = await loadTextCompareHubContext();
+  const hubCtx = await loadTextCompareHubContext({ preloaded: onlinePrices });
 
   const compareReport = buildTextCompareHubFromModels(models, {
     ...hubCtx,
@@ -549,7 +626,7 @@ async function main() {
     await mkdir(out.dir, { recursive: true });
     await writeFile(
       out.md,
-        renderSupplierMd(sup, models, scrapedAt, aigcDate, hubCtx),
+        renderSupplierMd(sup, models, scrapedAt, aigcDate, hubCtx, volcModels),
       "utf8",
     );
   }
@@ -571,7 +648,7 @@ async function main() {
     "utf8",
   );
 
-  const orSheet = await buildOpenRouterTextSheet();
+  const orSheet = await buildOpenRouterTextSheet([], { preloaded: onlinePrices });
   await mkdir(OUT_OPENROUTER_DIR, { recursive: true });
   await writeFile(
     OPENROUTER_TEXT_MD,
@@ -596,7 +673,7 @@ async function main() {
     { name: TEXT_COMPARE_SHEET, rows: compareExcelRows, merge: MERGE_COMPARE_TEXT },
     ...SUPPLIERS.map((sup) => ({
       name: sup.excelSheet,
-      rows: supplierRows(sup, models, hubCtx),
+      rows: supplierRows(sup, models, hubCtx, volcModels),
       merge: MERGE_SUPPLIER,
     })),
     {
@@ -617,7 +694,7 @@ async function main() {
     const out = upstreamSupplierPaths(sup.key, sup.outFile);
     await writeCsv(
       out.csv,
-      supplierRows(sup, models, hubCtx),
+      supplierRows(sup, models, hubCtx, volcModels),
       writeFile,
     );
   }
@@ -631,14 +708,16 @@ async function main() {
   const aigcMapped = models.filter(
     (m) => m.aigcDomestic || m.aigcInternational,
   ).length;
+  const volcMapped = models.filter((m) => m.volcengine).length;
 
   console.log(`Trinity models: ${models.length}`);
   console.log(
-    `TokenHub priced: ${thModelsOnSup} · Bailian priced: ${blModelsOnSup} · AIGC mapped: ${aigcMapped}`,
+    `TokenHub priced: ${thModelsOnSup} · Bailian priced: ${blModelsOnSup} · AIGC mapped: ${aigcMapped} · Volcengine mapped: ${volcMapped}`,
   );
   console.log(
     `AIGC catalog: ${aigcModels.length} entries (国内 ${aigcModels.filter((m) => m.site === "domestic").length} · 国际 ${aigcModels.filter((m) => m.site === "international").length})`,
   );
+  console.log(`Volcengine catalog: ${volcModels.length} entries`);
   console.log(`Wrote ${comparePaths.summaryMd}`);
   console.log(`Wrote ${comparePaths.summaryCsv}`);
   console.log(`Wrote ${comparePaths.officialMd}`);

@@ -6,14 +6,14 @@
   "currency": "USD",
   "unit": "USD per 1M tokens",
   "chargeUnit": "token",
-  "fetchedAt": "2026-07-02T02:31:09.466Z",
+  "fetchedAt": "2026-07-02T09:26:25.608Z",
   "seedVerifiedAt": "2026-06-29",
-  "catalogCount": 70,
-  "modelCount": 70,
-  "pricingTierCount": 98,
-  "pricedCount": 70,
+  "catalogCount": 79,
+  "modelCount": 79,
+  "pricingTierCount": 115,
+  "pricedCount": 79,
   "liveCount": 0,
-  "seedCount": 70,
+  "seedCount": 79,
   "models": [
     {
       "modality": "text",
@@ -30,7 +30,7 @@
       "currency": "USD",
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
-      "tierCount": 1,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-29)",
@@ -38,10 +38,17 @@
         "currency": "USD",
         "tiers": [
           {
-            "tierLabel": "标准价",
+            "tierLabel": "输入<=272K context",
             "input": 5,
             "output": 30,
             "cache": 0.5,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>272K context",
+            "input": 10,
+            "output": 45,
+            "cache": 1,
             "parseSource": "official_price_seed"
           }
         ],
@@ -54,10 +61,17 @@
       },
       "tiers": [
         {
-          "tierLabel": "标准价",
+          "tierLabel": "输入<=272K context",
           "input": 5,
           "output": 30,
           "cache": 0.5,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
           "parseSource": "official_price_seed"
         }
       ]
@@ -77,7 +91,7 @@
       "currency": "USD",
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
-      "tierCount": 1,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-29)",
@@ -85,10 +99,17 @@
         "currency": "USD",
         "tiers": [
           {
-            "tierLabel": "标准价",
+            "tierLabel": "输入<=272K context",
             "input": 5,
             "output": 30,
             "cache": 0.5,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>272K context",
+            "input": 10,
+            "output": 45,
+            "cache": 1,
             "parseSource": "official_price_seed"
           }
         ],
@@ -101,10 +122,17 @@
       },
       "tiers": [
         {
-          "tierLabel": "标准价",
+          "tierLabel": "输入<=272K context",
           "input": 5,
           "output": 30,
           "cache": 0.5,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
           "parseSource": "official_price_seed"
         }
       ]
@@ -3017,7 +3045,7 @@
       "currency": "CNY",
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
-      "tierCount": 2,
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
       "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
@@ -3025,40 +3053,54 @@
         "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "输入≤32k",
-            "input": 3,
-            "output": 14,
-            "cache": null,
+            "tierLabel": "输入≤32k，输出≤0.2k",
+            "input": 2,
+            "output": 8,
+            "cache": 0.4,
             "parseSource": "official_price_seed"
           },
           {
-            "tierLabel": "32k<输入≤166k",
+            "tierLabel": "输入≤32k，输出>0.2k",
+            "input": 3,
+            "output": 14,
+            "cache": 0.6,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
             "input": 4,
             "output": 16,
-            "cache": null,
+            "cache": 0.8,
             "parseSource": "official_price_seed"
           }
         ],
-        "input": 3,
-        "output": 14,
-        "cache": null,
+        "input": 2,
+        "output": 8,
+        "cache": 0.4,
         "source": "official_price_seed",
-        "seedNote": "百炼模型定价 · GLM-4.7",
+        "seedNote": "智谱开放平台定价 · GLM-4.7（输入长度 + ≤32k 内输出长度三档，与 AIGC 商务一致）",
         "seedVerifiedAt": "2026-06-29"
       },
       "tiers": [
         {
-          "tierLabel": "输入≤32k",
-          "input": 3,
-          "output": 14,
-          "cache": null,
+          "tierLabel": "输入≤32k，输出≤0.2k",
+          "input": 2,
+          "output": 8,
+          "cache": 0.4,
           "parseSource": "official_price_seed"
         },
         {
-          "tierLabel": "32k<输入≤166k",
+          "tierLabel": "输入≤32k，输出>0.2k",
+          "input": 3,
+          "output": 14,
+          "cache": 0.6,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
           "input": 4,
           "output": 16,
-          "cache": null,
+          "cache": 0.8,
           "parseSource": "official_price_seed"
         }
       ]
@@ -3693,6 +3735,499 @@
           "input": 4.2,
           "output": 16.8,
           "cache": 0.84,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-2-1-pro",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "标准价",
+            "input": 6,
+            "output": 30,
+            "cache": 1.2,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 6,
+        "output": 30,
+        "cache": 1.2,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-2.1-Pro",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "标准价",
+          "input": 6,
+          "output": 30,
+          "cache": 1.2,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-2-1-turbo",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "标准价",
+            "input": 3,
+            "output": 15,
+            "cache": 0.6,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 3,
+        "output": 15,
+        "cache": 0.6,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-2.1-Turbo",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "标准价",
+          "input": 3,
+          "output": 15,
+          "cache": 0.6,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-2-0-pro",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输入≤32k",
+            "input": 3.2,
+            "output": 16,
+            "cache": 0.64,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
+            "input": 6.4,
+            "output": 32,
+            "cache": 1.28,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 3.2,
+        "output": 16,
+        "cache": 0.64,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-2.0-Pro",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入≤32k",
+          "input": 3.2,
+          "output": 16,
+          "cache": 0.64,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
+          "input": 6.4,
+          "output": 32,
+          "cache": 1.28,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-2-0-lite",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输入≤32k",
+            "input": 0.6,
+            "output": 3.6,
+            "cache": 0.12,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
+            "input": 1.2,
+            "output": 7.2,
+            "cache": 0.24,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.6,
+        "output": 3.6,
+        "cache": 0.12,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-2.0-Lite",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入≤32k",
+          "input": 0.6,
+          "output": 3.6,
+          "cache": 0.12,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
+          "input": 1.2,
+          "output": 7.2,
+          "cache": 0.24,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-2-0-mini",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输入≤32k",
+            "input": 0.2,
+            "output": 2,
+            "cache": 0.04,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
+            "input": 0.4,
+            "output": 4,
+            "cache": 0.08,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.2,
+        "output": 2,
+        "cache": 0.04,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-2.0-Mini",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入≤32k",
+          "input": 0.2,
+          "output": 2,
+          "cache": 0.04,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
+          "input": 0.4,
+          "output": 4,
+          "cache": 0.08,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-1-8",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输入≤32k",
+            "input": 0.8,
+            "output": 2,
+            "cache": 0.16,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
+            "input": 1.6,
+            "output": 4,
+            "cache": 0.32,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.8,
+        "output": 2,
+        "cache": 0.16,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-1.8",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入≤32k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
+          "input": 1.6,
+          "output": 4,
+          "cache": 0.32,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seed-1-6",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输入≤32k",
+            "input": 0.8,
+            "output": 2,
+            "cache": 0.16,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>32k",
+            "input": 1.6,
+            "output": 4,
+            "cache": 0.32,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.8,
+        "output": 2,
+        "cache": 0.16,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Seed-1.6",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入≤32k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>32k",
+          "input": 1.6,
+          "output": 4,
+          "cache": 0.32,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-pro-32k",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "标准价",
+            "input": 0.8,
+            "output": 2,
+            "cache": 0.16,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.8,
+        "output": 2,
+        "cache": 0.16,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Pro-32k",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "标准价",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-lite-32k",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "标准价",
+            "input": 0.3,
+            "output": 0.6,
+            "cache": 0.06,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.3,
+        "output": 0.6,
+        "cache": 0.06,
+        "source": "official_price_seed",
+        "seedNote": "Doubao-Lite-32k",
+        "seedVerifiedAt": "2026-06-29"
+      },
+      "tiers": [
+        {
+          "tierLabel": "标准价",
+          "input": 0.3,
+          "output": 0.6,
+          "cache": 0.06,
           "parseSource": "official_price_seed"
         }
       ]

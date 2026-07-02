@@ -17,7 +17,6 @@ import { writeCsv } from "./lib/export-excel.mjs";
 
 import {
   OUT_DRAFT_DIR,
-  PRICES_API_FILE,
   UPSTREAM_PRICING_FILE,
   DRAFT_065_FILE,
   DRAFT_065_DIFF_MD,
@@ -25,8 +24,8 @@ import {
   DRAFT_065_DIFF_CSV,
   resolveOutPath,
 } from "./lib/paths.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 
-const ONLINE_FILE = PRICES_API_FILE;
 const DEFAULT_SCRAPED_FILE = DRAFT_065_FILE;
 const UPSTREAM_FILE = UPSTREAM_PRICING_FILE;
 
@@ -203,12 +202,13 @@ async function main() {
   const { scrapedFile, outMd, outJson, outCsv } = parseArgs();
 
   const metaFile = scrapedFile.replace(/\.json$/i, ".meta.json");
-  const [onlineDoc, scrapedDoc, upstreamDoc, scrapedMeta] = await Promise.all([
-    readFile(ONLINE_FILE, "utf8").then(JSON.parse),
+  const [onlineResult, scrapedDoc, upstreamDoc, scrapedMeta] = await Promise.all([
+    refreshOnlinePricesForCompare("text"),
     readFile(scrapedFile, "utf8").then(JSON.parse),
     readFile(UPSTREAM_FILE, "utf8").then(JSON.parse),
     readJsonIfExists(metaFile),
   ]);
+  const onlineDoc = onlineResult.raw;
 
   const upstreamById = new Map(
     (upstreamDoc.models ?? []).map((m) => [m.trinityId.toLowerCase(), m]),

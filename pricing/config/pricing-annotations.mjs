@@ -39,13 +39,14 @@ export const PRICING_ANNOTATIONS = [
       "官网 CNY 为国内百炼挂牌；OpenRouter 多为国际 DashScope USD。官网÷6.5 低于 OR 不一定是错误。",
   },
   {
-    id: "hy3-preview-aigc-gap",
+    id: "hy3-preview-aigc-domestic-only",
     trinityIds: ["hy3-preview"],
-    severity: "warn",
-    flag: "AIGC偏高",
+    severity: "info",
+    flag: "仅国内",
     scopes: ["compare-hub", "supplier-compare"],
-    title: "hy3-preview：AIGC 出/缓高于腾讯官方种子",
-    detail: "需核对 AIGC 价目表与腾讯云最新挂牌；官方种子见 suppliers/official/data/seeds/text.mjs。",
+    title: "hy3-preview：AIGC 无国际价",
+    detail:
+      "混元 3-preview 在 AIGC 价目表仅有国内站报价；刊例对比「AIGC国际」列显示 —。官网价与 AIGC 国内价、TokenHub 对齐。",
   },
   {
     id: "qwen-bailian-cache",
@@ -64,6 +65,7 @@ const SCOPE_ALIASES = {
   "openrouter-compare": "openrouter-compare",
   "compare-hub": "compare-hub",
   "supplier-compare": "supplier-compare",
+  "official-suppliers": "official-suppliers",
 };
 
 const DELTA_CLOSE_PCT = 8;

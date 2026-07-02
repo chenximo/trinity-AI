@@ -10,7 +10,6 @@ import {
   UPSTREAM_PRICING_FILE,
   officialPricingFile,
   OFFICIAL_MAP_FILE,
-  PRICES_API_FILE,
 } from "./lib/paths.mjs";
 import {
   buildTextCompareHubFromModels,

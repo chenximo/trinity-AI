@@ -29,12 +29,16 @@
 | `suppliers/aigc/output/pricing-api.json` | AIGC |
 | `output/online/prices-api.json` | 线上刊例 |
 | `output/official/{text,image,video}.md` | 三方对比产出 |
+| `output/validate/official-aigc-cross.{json,md}` | L1 交叉校验 |
+| `output/validate/official-vs-suppliers.{json,md}` | L3 交叉校验 |
+| `output/validate/pricing-alerts.json` | 合并告警 |
 
 ## 文档
 
 | 路径 | 说明 |
 |------|------|
 | `pricing/STRUCTURE.md` | 目录树 |
-| `pricing/docs/OFFICIAL-PRICING-SKILL-DESIGN.md` | 设计稿 |
+| `pricing/docs/PRICING-GOVERNANCE-WORKFLOW.md` | **治理工作流 L0–L4** |
+| `pricing/docs/OFFICIAL-PRICING-SKILL-DESIGN.md` | 设计稿（历史） |
 | `pricing/suppliers/official/README.md` | official 命令 |
 | `pricing/suppliers/SOURCES.md` | 真源索引 |

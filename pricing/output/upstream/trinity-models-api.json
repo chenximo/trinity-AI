@@ -7,9 +7,25 @@
       "created": 1782787785,
       "owned_by": "anthropic",
       "metadata": {
-        "display_name": "claude-opus-4-6",
+        "display_name": "Claude Opus 4.6",
         "origin_vendor_name": "Anthropic",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-6 text model.",
+            "description_long": "Anthropic claude-opus-4-6 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-6 text 模型。",
+            "description_long": "Anthropic claude-opus-4-6 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 5,
@@ -22,9 +38,25 @@
       "created": 1782787785,
       "owned_by": "anthropic",
       "metadata": {
-        "display_name": "claude-opus-4-7",
+        "display_name": "Claude Opus 4.7",
         "origin_vendor_name": "Anthropic",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-7 text model.",
+            "description_long": "Anthropic claude-opus-4-7 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-7 text 模型。",
+            "description_long": "Anthropic claude-opus-4-7 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 5,
@@ -37,9 +69,25 @@
       "created": 1782787785,
       "owned_by": "anthropic",
       "metadata": {
-        "display_name": "claude-opus-4-8",
+        "display_name": "Claude Opus 4.8",
         "origin_vendor_name": "Anthropic",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-8 text model.",
+            "description_long": "Anthropic claude-opus-4-8 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-8 text 模型。",
+            "description_long": "Anthropic claude-opus-4-8 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 5,
@@ -52,9 +100,25 @@
       "created": 1782787785,
       "owned_by": "anthropic",
       "metadata": {
-        "display_name": "claude-sonnet-4-6",
+        "display_name": "Claude Sonnet 4.6",
         "origin_vendor_name": "Anthropic",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-sonnet-4-6 text model.",
+            "description_long": "Anthropic claude-sonnet-4-6 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-sonnet-4-6 text 模型。",
+            "description_long": "Anthropic claude-sonnet-4-6 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 3,
@@ -70,6 +134,22 @@
         "display_name": "DeepSeek V3.2",
         "origin_vendor_name": "DeepSeek",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "DeepSeek DeepSeek V3.2 text model.",
+            "description_long": "DeepSeek DeepSeek V3.2 text model. Developed by DeepSeek; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "深度求索 DeepSeek V3.2 text 模型。",
+            "description_long": "深度求索 DeepSeek V3.2 text 模型。 由深度求索研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.307692,
@@ -117,6 +197,22 @@
         "display_name": "DeepSeek V4 Flash Direct",
         "origin_vendor_name": "DeepSeek",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "DeepSeek DeepSeek V4 Flash Direct text model.",
+            "description_long": "DeepSeek DeepSeek V4 Flash Direct text model. Developed by DeepSeek; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "深度求索 DeepSeek V4 Flash Direct text 模型。",
+            "description_long": "深度求索 DeepSeek V4 Flash Direct text 模型。 由深度求索研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.153846,
@@ -164,6 +260,22 @@
         "display_name": "DeepSeek V4 Pro Direct",
         "origin_vendor_name": "DeepSeek",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "DeepSeek DeepSeek V4 Pro Direct text model.",
+            "description_long": "DeepSeek DeepSeek V4 Pro Direct text model. Developed by DeepSeek; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "深度求索 DeepSeek V4 Pro Direct text 模型。",
+            "description_long": "深度求索 DeepSeek V4 Pro Direct text 模型。 由深度求索研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.461538,
@@ -174,17 +286,28 @@
       "id": "gemini-2.5-flash",
       "object": "model",
       "created": 1779765034,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 2.5 Flash",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "Gemini 2.5 Flash is a fast, high-throughput model that balances reasoning, coding, multimodal understanding, and low latency, suitable for real-time dialogue, batch processing, and lightweight agent tasks."
+            "feature_tags": [
+              "Multimodal",
+              "Reasoning"
+            ],
+            "short_summary": "Gemini 2.5 Flash is a fast, high-throughput model that balances reasoning, coding, multimodal understanding, and low latency, suitable for real-time dialogue, batch processing, and lightweight agent tasks.",
+            "description_long": "Gemini 2.5 Flash is a fast, high-throughput model that balances reasoning, coding, multimodal understanding, and low latency, suitable for real-time dialogue, batch processing, and lightweight agent tasks. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "Gemini 2.5 Flash 是高速高吞吐模型，兼顾推理、代码、多模态理解和低延迟，适合实时对话、批量处理与轻量 Agent 任务。"
+            "feature_tags": [
+              "多模态",
+              "代码",
+              "推理"
+            ],
+            "short_summary": "Gemini 2.5 Flash 是高速高吞吐模型，兼顾推理、代码、多模态理解和低延迟，适合实时对话、批量处理与轻量 Agent 任务。",
+            "description_long": "Gemini 2.5 Flash 是高速高吞吐模型，兼顾推理、代码、多模态理解和低延迟，适合实时对话、批量处理与轻量 Agent 任务。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1000000,
@@ -197,11 +320,27 @@
       "id": "gemini-2.5-flash-lite",
       "object": "model",
       "created": 1782298995,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 2.5 Flash Lite",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Google Gemini 2.5 Flash Lite text model.",
+            "description_long": "Google Gemini 2.5 Flash Lite text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Gemini 2.5 Flash Lite text 模型。",
+            "description_long": "Google Gemini 2.5 Flash Lite text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 64000,
         "user_input_price_per_million_usd": 0.1,
@@ -212,11 +351,27 @@
       "id": "gemini-2.5-flash-lite-preview",
       "object": "model",
       "created": 1782298995,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 2.5 Flash Lite Preview",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Google Gemini 2.5 Flash Lite Preview text model.",
+            "description_long": "Google Gemini 2.5 Flash Lite Preview text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Gemini 2.5 Flash Lite Preview text 模型。",
+            "description_long": "Google Gemini 2.5 Flash Lite Preview text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 64000,
         "user_input_price_per_million_usd": 0.1,
@@ -227,17 +382,30 @@
       "id": "gemini-2.5-pro",
       "object": "model",
       "created": 1779765034,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 2.5 Pro",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "Gemini 2.5 Pro is a high-capability multimodal model that excels at advanced reasoning, coding, mathematics, scientific problems, and long-context understanding, suitable for complex analysis and comprehensive tasks."
+            "feature_tags": [
+              "Multimodal",
+              "Reasoning",
+              "Long context"
+            ],
+            "short_summary": "Gemini 2.5 Pro is a high-capability multimodal model that excels at advanced reasoning, coding, mathematics, scientific problems, and long-context understanding, suitable for complex analysis and comprehensive tasks.",
+            "description_long": "Gemini 2.5 Pro is a high-capability multimodal model that excels at advanced reasoning, coding, mathematics, scientific problems, and long-context understanding, suitable for complex analysis and comprehensive tasks. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "Gemini 2.5 Pro 是高能力多模态模型，擅长高级推理、代码、数学、科学问题和长上下文理解，适合复杂分析与综合任务。"
+            "feature_tags": [
+              "多模态",
+              "代码",
+              "推理",
+              "长上下文"
+            ],
+            "short_summary": "Gemini 2.5 Pro 是高能力多模态模型，擅长高级推理、代码、数学、科学问题和长上下文理解，适合复杂分析与综合任务。",
+            "description_long": "Gemini 2.5 Pro 是高能力多模态模型，擅长高级推理、代码、数学、科学问题和长上下文理解，适合复杂分析与综合任务。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1000000,
@@ -250,11 +418,27 @@
       "id": "gemini-3-flash-preview",
       "object": "model",
       "created": 1781258148,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 3 Flash Preview",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Google Gemini 3 Flash Preview text model.",
+            "description_long": "Google Gemini 3 Flash Preview text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Gemini 3 Flash Preview text 模型。",
+            "description_long": "Google Gemini 3 Flash Preview text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 64000,
         "user_input_price_per_million_usd": 0.5,
@@ -265,11 +449,27 @@
       "id": "gemini-3.1-flash-lite",
       "object": "model",
       "created": 1781307059,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 3.1 Flash Lite",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Google Gemini 3.1 Flash Lite text model.",
+            "description_long": "Google Gemini 3.1 Flash Lite text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Gemini 3.1 Flash Lite text 模型。",
+            "description_long": "Google Gemini 3.1 Flash Lite text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 64000,
         "user_input_price_per_million_usd": 0.25,
@@ -280,17 +480,25 @@
       "id": "gemini-3.1-flash-lite-preview",
       "object": "model",
       "created": 1779765034,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 3.1 Flash Lite Preview",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage."
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage.",
+            "description_long": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。"
+            "feature_tags": [
+              "高性价比"
+            ],
+            "short_summary": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。",
+            "description_long": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1000000,
@@ -303,10 +511,10 @@
       "id": "gemini-3.1-pro-preview",
       "object": "model",
       "created": 1779765034,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 3.1 Pro Preview",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
@@ -322,7 +530,8 @@
               "极低成本",
               "简单对话"
             ],
-            "short_summary": "Gemini 3.1 Pro Preview 是 Google 的前沿推理模型，可显著提升软件工程性能、增强代理可靠性，并在复杂的工作流程中实现更高效的令牌使用。它基于 Gemini 3 系列的多模态基础，结合了对文本、图像、视频、音频和代码的高精度推理，并拥有 100 万个令牌的上下文窗口。Gemini 3.1 Pro Preview 专为高级开发和智能体系统而设计，在提升令牌效率的同时，增强了长期稳定性、工具编排能力。它引入了一种新的中间思维模式，以更好地平衡成本、速度和性能。该模型在智能体编码、结构化规划、多模态分析和工作流自动化方面表现出色，因此非常适合自主智能体、金融建模、电子表格自动化和高上下文企业任务。"
+            "short_summary": "Gemini 3.1 Pro Preview 是 Google 的前沿推理模型，可显著提升软件工程性能、增强代理可靠性，并在复杂的工作流程中实现更高效的令牌使用。它基于 Gemini 3 系列的多模态基础，结合了对文本、图像、视频、音频和代码的高精度推理，并拥有 100 万个令牌的上下文窗口。Gemini 3.1 Pro Preview 专为高级开发和智能体系统而设计，在提升令牌效率的同时，增强了长期稳定性、工具编排能力。它引入了一种新的中间思维模式，以更好地平衡成本、速度和性能。该模型在智能体编码、结构化规划、多模态分析和工作流自动化方面表现出色，因此非常适合自主智能体、金融建模、电子表格自动化和高上下文企业任务。",
+            "description_long": "Gemini 3.1 Pro Preview 是 Google 的前沿推理模型，可显著提升软件工程性能、增强代理可靠性，并在复杂的工作流程中实现更高效的令牌使用。它基于 Gemini 3 系列的多模态基础，结合了对文本、图像、视频、音频和代码的高精度推理，并拥有 100 万个令牌的上下文窗口。Gemini 3.1 Pro Preview 专为高级开发和智能体系统而设计，在提升令牌效率的同时，增强了长期稳定性、工具编排能力。它引入了一种新的中间思维模式，以更好地平衡成本、速度和性能。该模型在智能体编码、结构化规划、多模态分析和工作流自动化方面表现出色，因此非常适合自主智能体、金融建模、电子表格自动化和高上下文企业任务。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1000000,
@@ -335,11 +544,27 @@
       "id": "gemini-3.5-flash",
       "object": "model",
       "created": 1781307063,
-      "owned_by": "google",
+      "owned_by": "google deepMind",
       "metadata": {
         "display_name": "Gemini 3.5 Flash",
-        "origin_vendor_name": "Google",
+        "origin_vendor_name": "Google DeepMind",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Google Gemini 3.5 Flash text model.",
+            "description_long": "Google Gemini 3.5 Flash text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Gemini 3.5 Flash text 模型。",
+            "description_long": "Google Gemini 3.5 Flash text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 64000,
         "user_input_price_per_million_usd": 1.5,
@@ -355,10 +580,26 @@
         "display_name": "GLM 5",
         "origin_vendor_name": "Zhipu",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM 5 text model.",
+            "description_long": "Zhipu AI GLM 5 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM 5 text 模型。",
+            "description_long": "智谱AI GLM 5 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 128000,
         "user_input_price_per_million_usd": 0.615385,
-        "user_output_price_per_million_usd": 2.769231
+        "user_output_price_per_million_usd": 3.384615
       }
     },
     {
@@ -370,10 +611,26 @@
         "display_name": "GLM 5 Turbo",
         "origin_vendor_name": "Zhipu",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM 5 Turbo text model.",
+            "description_long": "Zhipu AI GLM 5 Turbo text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM 5 Turbo text 模型。",
+            "description_long": "智谱AI GLM 5 Turbo text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 128000,
-        "user_input_price_per_million_usd": 0.769231,
-        "user_output_price_per_million_usd": 3.384615
+        "user_input_price_per_million_usd": 1.076923,
+        "user_output_price_per_million_usd": 4
       }
     },
     {
@@ -385,10 +642,26 @@
         "display_name": "GLM-5.1",
         "origin_vendor_name": "Zhipu",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM-5.1 text model.",
+            "description_long": "Zhipu AI GLM-5.1 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM-5.1 text 模型。",
+            "description_long": "智谱AI GLM-5.1 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 128000,
-        "user_input_price_per_million_usd": 0.923077,
-        "user_output_price_per_million_usd": 3.692308
+        "user_input_price_per_million_usd": 1.230769,
+        "user_output_price_per_million_usd": 4.307692
       }
     },
     {
@@ -400,6 +673,22 @@
         "display_name": "GLM-5.2",
         "origin_vendor_name": "Zhipu",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM-5.2 text model.",
+            "description_long": "Zhipu AI GLM-5.2 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM-5.2 text 模型。",
+            "description_long": "智谱AI GLM-5.2 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1000000,
         "max_token": 128000,
         "user_input_price_per_million_usd": 1.230769,
@@ -415,10 +704,26 @@
         "display_name": "GLM-5V Turbo",
         "origin_vendor_name": "Zhipu",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM-5V Turbo text model.",
+            "description_long": "Zhipu AI GLM-5V Turbo text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM-5V Turbo text 模型。",
+            "description_long": "智谱AI GLM-5V Turbo text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 200000,
         "max_token": 128000,
-        "user_input_price_per_million_usd": 1.076923,
-        "user_output_price_per_million_usd": 3.384615
+        "user_input_price_per_million_usd": 0.769231,
+        "user_output_price_per_million_usd": 4
       }
     },
     {
@@ -427,9 +732,25 @@
       "created": 1782264411,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-4.1",
+        "display_name": "GPT-4.1",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "OpenAI gpt-4.1 text model.",
+            "description_long": "OpenAI gpt-4.1 text model. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "OpenAI gpt-4.1 text 模型。",
+            "description_long": "OpenAI gpt-4.1 text 模型。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 2,
@@ -442,15 +763,27 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-4o",
+        "display_name": "GPT-4o",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks."
+            "feature_tags": [
+              "Multimodal",
+              "Reasoning",
+              "Image gen"
+            ],
+            "short_summary": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks.",
+            "description_long": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。"
+            "feature_tags": [
+              "多模态",
+              "代码",
+              "推理"
+            ],
+            "short_summary": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。",
+            "description_long": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 128000,
@@ -465,9 +798,25 @@
       "created": 1782264476,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5",
+        "display_name": "GPT-5",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "OpenAI gpt-5 text model.",
+            "description_long": "OpenAI gpt-5 text model. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "OpenAI gpt-5 text 模型。",
+            "description_long": "OpenAI gpt-5 text 模型。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 400000,
         "max_token": 128000,
         "user_input_price_per_million_usd": 1.25,
@@ -480,15 +829,23 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5-nano",
+        "display_name": "GPT-5 Nano",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5 Nano is a lightweight, low-cost model focused on fast responses and high concurrency, suitable for simple Q&A, classification, summarization, information extraction, and batch automation tasks."
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "GPT-5 Nano is a lightweight, low-cost model focused on fast responses and high concurrency, suitable for simple Q&A, classification, summarization, information extraction, and batch automation tasks.",
+            "description_long": "GPT-5 Nano is a lightweight, low-cost model focused on fast responses and high concurrency, suitable for simple Q&A, classification, summarization, information extraction, and batch automation tasks. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5 Nano 是轻量低成本模型，强调快速响应和高并发，适合简单问答、分类、摘要、信息抽取和批量自动化任务。"
+            "feature_tags": [
+              "高性价比"
+            ],
+            "short_summary": "GPT-5 Nano 是轻量低成本模型，强调快速响应和高并发，适合简单问答、分类、摘要、信息抽取和批量自动化任务。",
+            "description_long": "GPT-5 Nano 是轻量低成本模型，强调快速响应和高并发，适合简单问答、分类、摘要、信息抽取和批量自动化任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 400000,
@@ -503,15 +860,24 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.1",
+        "display_name": "GPT-5.1",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.1 is a high-capability general-purpose model that excels at complex reasoning, coding, long-document understanding, and multi-step task execution, suitable for professional analysis and agent workflows."
+            "feature_tags": [
+              "Reasoning"
+            ],
+            "short_summary": "GPT-5.1 is a high-capability general-purpose model that excels at complex reasoning, coding, long-document understanding, and multi-step task execution, suitable for professional analysis and agent workflows.",
+            "description_long": "GPT-5.1 is a high-capability general-purpose model that excels at complex reasoning, coding, long-document understanding, and multi-step task execution, suitable for professional analysis and agent workflows. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.1 是高能力通用模型，擅长复杂推理、代码、长文档理解和多步骤任务执行，适合专业分析与 Agent 工作流。"
+            "feature_tags": [
+              "代码",
+              "推理"
+            ],
+            "short_summary": "GPT-5.1 是高能力通用模型，擅长复杂推理、代码、长文档理解和多步骤任务执行，适合专业分析与 Agent 工作流。",
+            "description_long": "GPT-5.1 是高能力通用模型，擅长复杂推理、代码、长文档理解和多步骤任务执行，适合专业分析与 Agent 工作流。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 400000,
@@ -526,15 +892,23 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.1-chat",
+        "display_name": "GPT-5.1 Chat",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios."
+            "feature_tags": [
+              "Long context"
+            ],
+            "short_summary": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios.",
+            "description_long": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。"
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。",
+            "description_long": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 128000,
@@ -549,15 +923,26 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.2",
+        "display_name": "GPT-5.2",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.2 is an enhanced general-purpose model with stable performance in reasoning, coding, complex planning, and long-context tasks, suitable for high-quality content generation and automated execution."
+            "feature_tags": [
+              "Reasoning",
+              "Long context"
+            ],
+            "short_summary": "GPT-5.2 is an enhanced general-purpose model with stable performance in reasoning, coding, complex planning, and long-context tasks, suitable for high-quality content generation and automated execution.",
+            "description_long": "GPT-5.2 is an enhanced general-purpose model with stable performance in reasoning, coding, complex planning, and long-context tasks, suitable for high-quality content generation and automated execution. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.2 是增强型通用模型，在推理、代码、复杂规划和长上下文任务中表现稳定，适合高质量内容生成与自动化执行。"
+            "feature_tags": [
+              "代码",
+              "推理",
+              "长上下文"
+            ],
+            "short_summary": "GPT-5.2 是增强型通用模型，在推理、代码、复杂规划和长上下文任务中表现稳定，适合高质量内容生成与自动化执行。",
+            "description_long": "GPT-5.2 是增强型通用模型，在推理、代码、复杂规划和长上下文任务中表现稳定，适合高质量内容生成与自动化执行。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 400000,
@@ -572,15 +957,23 @@
       "created": 1782896923,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.3-codex",
+        "display_name": "GPT-5.3 Codex",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation."
+            "feature_tags": [
+              "Coding"
+            ],
+            "short_summary": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation.",
+            "description_long": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。"
+            "feature_tags": [
+              "代码"
+            ],
+            "short_summary": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。",
+            "description_long": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 400000,
@@ -595,7 +988,7 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.4",
+        "display_name": "GPT-5.4",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
@@ -612,7 +1005,8 @@
               "极低成本",
               "简单对话"
             ],
-            "short_summary": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。"
+            "short_summary": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。",
+            "description_long": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
@@ -627,15 +1021,23 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.4-mini",
+        "display_name": "GPT-5.4 Mini",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance."
+            "feature_tags": [
+              "Reasoning"
+            ],
+            "short_summary": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance.",
+            "description_long": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。"
+            "feature_tags": [
+              "推理"
+            ],
+            "short_summary": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。",
+            "description_long": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 400000,
@@ -650,15 +1052,25 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.4-pro",
+        "display_name": "GPT-5.4 Pro",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
           "en": {
-            "short_summary": "GPT-5.4 Pro is a high-capability professional model designed for complex reasoning, deep analysis, code generation, and multi-step agent tasks, suitable for demanding production scenarios."
+            "feature_tags": [
+              "Coding",
+              "Reasoning"
+            ],
+            "short_summary": "GPT-5.4 Pro is a high-capability professional model designed for complex reasoning, deep analysis, code generation, and multi-step agent tasks, suitable for demanding production scenarios.",
+            "description_long": "GPT-5.4 Pro is a high-capability professional model designed for complex reasoning, deep analysis, code generation, and multi-step agent tasks, suitable for demanding production scenarios. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
           },
           "zh": {
-            "short_summary": "GPT-5.4 Pro 是高能力专业模型，面向复杂推理、深度分析、代码生成和多步骤 Agent 任务，适合高要求生产场景。"
+            "feature_tags": [
+              "代码",
+              "推理"
+            ],
+            "short_summary": "GPT-5.4 Pro 是高能力专业模型，面向复杂推理、深度分析、代码生成和多步骤 Agent 任务，适合高要求生产场景。",
+            "description_long": "GPT-5.4 Pro 是高能力专业模型，面向复杂推理、深度分析、代码生成和多步骤 Agent 任务，适合高要求生产场景。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
@@ -673,7 +1085,7 @@
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
-        "display_name": "gpt-5.5",
+        "display_name": "GPT-5.5",
         "origin_vendor_name": "OpenAI",
         "modality_type": "text",
         "copy_i18n": {
@@ -690,7 +1102,8 @@
               "极低成本",
               "简单对话"
             ],
-            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。"
+            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。",
+            "description_long": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
@@ -708,6 +1121,22 @@
         "display_name": "Hy-Role Latest",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-Role Latest text model.",
+            "description_long": "Tencent Hy-Role Latest text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-Role Latest text 模型。",
+            "description_long": "腾讯 Hy-Role Latest text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.369231,
@@ -723,6 +1152,22 @@
         "display_name": "Hy-MT2 Lite",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-MT2 Lite text model.",
+            "description_long": "Tencent Hy-MT2 Lite text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-MT2 Lite text 模型。",
+            "description_long": "腾讯 Hy-MT2 Lite text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.046154,
@@ -738,6 +1183,22 @@
         "display_name": "Hy-MT2 Plus",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-MT2 Plus text model.",
+            "description_long": "Tencent Hy-MT2 Plus text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-MT2 Plus text 模型。",
+            "description_long": "腾讯 Hy-MT2 Plus text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.076923,
@@ -753,6 +1214,22 @@
         "display_name": "Hy-MT2 Pro",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-MT2 Pro text model.",
+            "description_long": "Tencent Hy-MT2 Pro text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-MT2 Pro text 模型。",
+            "description_long": "腾讯 Hy-MT2 Pro text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.076923,
@@ -768,6 +1245,22 @@
         "display_name": "Hy-Role",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-Role text model.",
+            "description_long": "Tencent Hy-Role text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-Role text 模型。",
+            "description_long": "腾讯 Hy-Role text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.369231,
@@ -783,10 +1276,26 @@
         "display_name": "Hy-Vision 2.0 Instruct",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy-Vision 2.0 Instruct text model.",
+            "description_long": "Tencent Hy-Vision 2.0 Instruct text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy-Vision 2.0 Instruct text 模型。",
+            "description_long": "腾讯 Hy-Vision 2.0 Instruct text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
-        "user_input_price_per_million_usd": 1.034483,
-        "user_output_price_per_million_usd": 2.413793
+        "user_input_price_per_million_usd": 1.153846,
+        "user_output_price_per_million_usd": 2.692308
       }
     },
     {
@@ -798,6 +1307,22 @@
         "display_name": "Hy3 Preview",
         "origin_vendor_name": "Tencent",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Tencent Hy3 Preview text model.",
+            "description_long": "Tencent Hy3 Preview text model. Developed by Tencent; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "腾讯 Hy3 Preview text 模型。",
+            "description_long": "腾讯 Hy3 Preview text 模型。 由腾讯研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.246154,
@@ -808,11 +1333,27 @@
       "id": "kimi-k2.5",
       "object": "model",
       "created": 1782120365,
-      "owned_by": "tongyi",
+      "owned_by": "moonshot",
       "metadata": {
         "display_name": "Kimi K2.5",
-        "origin_vendor_name": "Tongyi",
+        "origin_vendor_name": "Moonshot AI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Moonshot AI Kimi K2.5 text model.",
+            "description_long": "Moonshot AI Kimi K2.5 text model. Developed by Moonshot AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "月之暗面 Kimi K2.5 text 模型。",
+            "description_long": "月之暗面 Kimi K2.5 text 模型。 由月之暗面研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.615385,
         "user_output_price_per_million_usd": 3.230769
@@ -822,11 +1363,27 @@
       "id": "kimi-k2.6",
       "object": "model",
       "created": 1782120363,
-      "owned_by": "tongyi",
+      "owned_by": "moonshot",
       "metadata": {
         "display_name": "Kimi K2.6",
-        "origin_vendor_name": "Tongyi",
+        "origin_vendor_name": "Moonshot AI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Moonshot AI Kimi K2.6 text model.",
+            "description_long": "Moonshot AI Kimi K2.6 text model. Developed by Moonshot AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "月之暗面 Kimi K2.6 text 模型。",
+            "description_long": "月之暗面 Kimi K2.6 text 模型。 由月之暗面研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 1,
         "user_output_price_per_million_usd": 4.153846
@@ -836,11 +1393,27 @@
       "id": "kimi-k2.7-code",
       "object": "model",
       "created": 1782120362,
-      "owned_by": "tongyi",
+      "owned_by": "moonshot",
       "metadata": {
         "display_name": "Kimi K2.7 Code",
-        "origin_vendor_name": "Tongyi",
+        "origin_vendor_name": "Moonshot AI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Coding"
+            ],
+            "short_summary": "Moonshot AI Kimi K2.7 Code text model.",
+            "description_long": "Moonshot AI Kimi K2.7 Code text model. Developed by Moonshot AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "月之暗面 Kimi K2.7 Code text 模型。",
+            "description_long": "月之暗面 Kimi K2.7 Code text 模型。 由月之暗面研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 1,
         "user_output_price_per_million_usd": 4.153846
@@ -855,6 +1428,22 @@
         "display_name": "Kimi K2.7 Code HighSpeed",
         "origin_vendor_name": "Moonshot AI",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Coding"
+            ],
+            "short_summary": "Moonshot AI Kimi K2.7 Code HighSpeed text model.",
+            "description_long": "Moonshot AI Kimi K2.7 Code HighSpeed text model. Developed by Moonshot AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "月之暗面 Kimi K2.7 Code HighSpeed text 模型。",
+            "description_long": "月之暗面 Kimi K2.7 Code HighSpeed text 模型。 由月之暗面研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "max_token": 16000,
         "user_input_price_per_million_usd": 2,
@@ -870,6 +1459,22 @@
         "display_name": "MiniMax M2.5",
         "origin_vendor_name": "MiniMax",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "MiniMax MiniMax M2.5 text model.",
+            "description_long": "MiniMax MiniMax M2.5 text model. Developed by MiniMax; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "MiniMax MiniMax M2.5 text 模型。",
+            "description_long": "MiniMax MiniMax M2.5 text 模型。 由MiniMax研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.323077,
@@ -885,6 +1490,22 @@
         "display_name": "MiniMax M2.7",
         "origin_vendor_name": "MiniMax",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "MiniMax MiniMax M2.7 text model.",
+            "description_long": "MiniMax MiniMax M2.7 text model. Developed by MiniMax; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "MiniMax MiniMax M2.7 text 模型。",
+            "description_long": "MiniMax MiniMax M2.7 text 模型。 由MiniMax研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.323077,
@@ -900,6 +1521,22 @@
         "display_name": "MiniMax M3",
         "origin_vendor_name": "MiniMax",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "MiniMax MiniMax M3 text model.",
+            "description_long": "MiniMax MiniMax M3 text model. Developed by MiniMax; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "MiniMax MiniMax M3 text 模型。",
+            "description_long": "MiniMax MiniMax M3 text 模型。 由MiniMax研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 1200000,
         "max_token": 65565,
         "user_input_price_per_million_usd": 0.323077,
@@ -915,6 +1552,22 @@
         "display_name": "Qwen Flash",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen Flash text model.",
+            "description_long": "Alibaba Cloud Qwen Flash text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen Flash text 模型。",
+            "description_long": "阿里云通义 Qwen Flash text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.023077,
         "user_output_price_per_million_usd": 0.230769
@@ -929,6 +1582,22 @@
         "display_name": "Qwen Max",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen Max text model.",
+            "description_long": "Alibaba Cloud Qwen Max text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen Max text 模型。",
+            "description_long": "阿里云通义 Qwen Max text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.369231,
         "user_output_price_per_million_usd": 1.476923
@@ -943,6 +1612,22 @@
         "display_name": "Qwen Plus",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen Plus text model.",
+            "description_long": "Alibaba Cloud Qwen Plus text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen Plus text 模型。",
+            "description_long": "阿里云通义 Qwen Plus text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.123077,
         "user_output_price_per_million_usd": 0.307692
@@ -957,6 +1642,22 @@
         "display_name": "Qwen Turbo",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen Turbo text model.",
+            "description_long": "Alibaba Cloud Qwen Turbo text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen Turbo text 模型。",
+            "description_long": "阿里云通义 Qwen Turbo text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.046154,
         "user_output_price_per_million_usd": 0.092308
@@ -971,6 +1672,22 @@
         "display_name": "Qwen3.5 Flash",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.5 Flash text model.",
+            "description_long": "Alibaba Cloud Qwen3.5 Flash text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.5 Flash text 模型。",
+            "description_long": "阿里云通义 Qwen3.5 Flash text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.030769,
         "user_output_price_per_million_usd": 0.307692
@@ -985,6 +1702,22 @@
         "display_name": "Qwen3.5 Plus",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.5 Plus text model.",
+            "description_long": "Alibaba Cloud Qwen3.5 Plus text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.5 Plus text 模型。",
+            "description_long": "阿里云通义 Qwen3.5 Plus text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.123077,
         "user_output_price_per_million_usd": 0.738462
@@ -999,6 +1732,22 @@
         "display_name": "Qwen3.6 Flash",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.6 Flash text model.",
+            "description_long": "Alibaba Cloud Qwen3.6 Flash text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.6 Flash text 模型。",
+            "description_long": "阿里云通义 Qwen3.6 Flash text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.184615,
         "user_output_price_per_million_usd": 1.107692
@@ -1013,6 +1762,22 @@
         "display_name": "Qwen3.6 Plus",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.6 Plus text model.",
+            "description_long": "Alibaba Cloud Qwen3.6 Plus text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.6 Plus text 模型。",
+            "description_long": "阿里云通义 Qwen3.6 Plus text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.307692,
         "user_output_price_per_million_usd": 1.846154
@@ -1027,6 +1792,22 @@
         "display_name": "Qwen3.7 Max",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.7 Max text model.",
+            "description_long": "Alibaba Cloud Qwen3.7 Max text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.7 Max text 模型。",
+            "description_long": "阿里云通义 Qwen3.7 Max text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 1.846154,
         "user_output_price_per_million_usd": 5.538462
@@ -1041,6 +1822,22 @@
         "display_name": "Qwen3.7 Plus",
         "origin_vendor_name": "Tongyi",
         "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Alibaba Cloud Qwen3.7 Plus text model.",
+            "description_long": "Alibaba Cloud Qwen3.7 Plus text model. Developed by Alibaba Cloud; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "阿里云通义 Qwen3.7 Plus text 模型。",
+            "description_long": "阿里云通义 Qwen3.7 Plus text 模型。 由阿里云通义研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
         "context_length": 128000,
         "user_input_price_per_million_usd": 0.307692,
         "user_output_price_per_million_usd": 1.230769

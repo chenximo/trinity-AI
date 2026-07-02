@@ -16,7 +16,8 @@ import {
   renderAnnotationFooterMd,
   ISSUE_FLAG_COLUMN,
 } from "../../config/pricing-annotations.mjs";
-import { OUT_DIR, SUPPLIERS_DIR, PRICES_API_FILE } from "./paths.mjs";
+import { OUT_DIR, SUPPLIERS_DIR } from "./paths.mjs";
+import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
 
 export const FX_ONLINE_DOMESTIC = Number(process.env.FX_ONLINE_DOMESTIC || "6.5");
 export const FX_CNY_PER_USD = Number(process.env.FX_CNY_PER_USD || "7.25");
@@ -209,23 +210,25 @@ function expandAlignedRows({
 
 /**
  * @param {string[]} filterIds
+ * @param {{ preloaded?: Awaited<ReturnType<typeof refreshOnlinePricesForCompare>> }} [opts]
  */
-export async function buildOpenRouterCompareRows(filterIds = []) {
-  const [mapRaw, orRaw, pricesRaw, officialMapRaw, officialRaw] =
-    await Promise.all([
-      readFile(OR_MAP, "utf8"),
-      readFile(OR_FILE, "utf8").catch(() => "{}"),
-      readFile(PRICES_API_FILE, "utf8").catch(() => "{}"),
-      readFile(OFFICIAL_MAP, "utf8").catch(() => "{}"),
-      readFile(
-        path.join(SUPPLIERS_DIR, "official/output/text/vendor-pricing.json"),
-        "utf8",
-      ).catch(() => "{}"),
-    ]);
+export async function buildOpenRouterCompareRows(filterIds = [], opts = {}) {
+  const online =
+    opts.preloaded ?? (await refreshOnlinePricesForCompare("text"));
+  const prices = online.raw;
+
+  const [mapRaw, orRaw, officialMapRaw, officialRaw] = await Promise.all([
+    readFile(OR_MAP, "utf8"),
+    readFile(OR_FILE, "utf8").catch(() => "{}"),
+    readFile(OFFICIAL_MAP, "utf8").catch(() => "{}"),
+    readFile(
+      path.join(SUPPLIERS_DIR, "official/output/text/vendor-pricing.json"),
+      "utf8",
+    ).catch(() => "{}"),
+  ]);
 
   const orMap = JSON.parse(mapRaw);
   const orData = JSON.parse(orRaw);
-  const prices = JSON.parse(pricesRaw);
   const officialMap = JSON.parse(officialMapRaw);
   const official = JSON.parse(officialRaw);
 

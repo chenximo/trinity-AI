@@ -9,9 +9,9 @@ import {
   buildOpenRouterExcelRows,
 } from "./compare-openrouter-lib.mjs";
 
-/** @param {string[]} [filterIds] */
-export async function buildOpenRouterTextSheet(filterIds = []) {
-  const report = await buildOpenRouterCompareRows(filterIds);
+/** @param {string[]} [filterIds] @param {{ preloaded?: object }} [opts] */
+export async function buildOpenRouterTextSheet(filterIds = [], opts = {}) {
+  const report = await buildOpenRouterCompareRows(filterIds, opts);
   return {
     report,
     name: OPENROUTER_MASTER_SHEET,

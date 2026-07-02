@@ -59,7 +59,8 @@ function resolveOfficialTier(officialTiers, label, index, total) {
     const hit = findTierByKey(officialTiers, key);
     if (hit) return hit;
   }
-  return officialTiers[index] ?? officialTiers[0] ?? null;
+  if (index < officialTiers.length) return officialTiers[index] ?? null;
+  return null;
 }
 
 function legacyGroupLabel(group) {

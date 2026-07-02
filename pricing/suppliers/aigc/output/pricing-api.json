@@ -2,8 +2,11 @@
   "source": "tencent_aigc_pricing_sheet",
   "dataDate": "2026-06",
   "note": "国内站 元/M token（=元/百万tokens）；国际站 美元/M token。由内部价目表录入。",
-  "generatedAt": "2026-07-02T03:50:15.935Z",
-  "modelCount": 124,
+  "generatedAt": "2026-07-02T09:12:13.833Z",
+  "modelCount": 144,
+  "domesticCount": 67,
+  "internationalCount": 77,
+  "trinityMappedCount": 39,
   "models": [
     {
       "modelId": "hy3-preview",
@@ -32,10 +35,10 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入长度(0,16k]",
+          "tierName": "输入长度（0, 16k）",
           "input": "1.2",
-          "output": "4.8",
-          "cache": "0.6",
+          "output": "4",
+          "cache": "0.4",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
@@ -48,23 +51,23 @@
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.6",
+              "price": "0.4",
               "unit": "元/百万tokens"
             },
             {
               "name": "Output",
               "displayName": "输出",
-              "price": "4.8",
+              "price": "4",
               "unit": "元/百万tokens"
             }
           ]
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入长度(16k,32k]",
+          "tierName": "输入长度 [16k, 32k）",
           "input": "1.6",
           "output": "6.4",
-          "cache": "0.8",
+          "cache": "0.6",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
@@ -77,7 +80,7 @@
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.8",
+              "price": "0.6",
               "unit": "元/百万tokens"
             },
             {
@@ -90,10 +93,10 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入长度(32k,-]",
+          "tierName": "输入长度 [32k+）",
           "input": "2",
           "output": "8",
-          "cache": "1",
+          "cache": "0.8",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
@@ -106,7 +109,7 @@
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "1",
+              "price": "0.8",
               "unit": "元/百万tokens"
             },
             {
@@ -944,11 +947,11 @@
     {
       "modelId": "gpt-4o",
       "trinityId": "gpt-4o",
-      "upstreamModelId": "gpt-4o",
+      "upstreamModelId": "4o",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
-      "modelName": "gpt-4o",
-      "displayName": "OpenAI gpt-4o",
+      "modelName": "4o",
+      "displayName": "OpenAI 4o",
       "brand": "OpenAI",
       "modelType": "Text",
       "site": "domestic",
@@ -1000,11 +1003,11 @@
     {
       "modelId": "gpt-4o",
       "trinityId": "gpt-4o",
-      "upstreamModelId": "gpt-4o",
+      "upstreamModelId": "4o",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
-      "modelName": "gpt-4o",
-      "displayName": "OpenAI gpt-4o",
+      "modelName": "4o",
+      "displayName": "OpenAI 4o",
       "brand": "OpenAI",
       "modelType": "Text",
       "site": "international",
@@ -1392,11 +1395,11 @@
     {
       "modelId": "gpt-4.1",
       "trinityId": "gpt-4.1",
-      "upstreamModelId": "gpt-4.1 (new)",
+      "upstreamModelId": "4.1（new）",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
-      "modelName": "gpt-4.1 (new)",
-      "displayName": "OpenAI gpt-4.1 (new)",
+      "modelName": "4.1（new）",
+      "displayName": "OpenAI 4.1（new）",
       "brand": "OpenAI",
       "modelType": "Text",
       "site": "domestic",
@@ -1448,11 +1451,11 @@
     {
       "modelId": "gpt-4.1",
       "trinityId": "gpt-4.1",
-      "upstreamModelId": "gpt-4.1 (new)",
+      "upstreamModelId": "4.1（new）",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
-      "modelName": "gpt-4.1 (new)",
-      "displayName": "OpenAI gpt-4.1 (new)",
+      "modelName": "4.1（new）",
+      "displayName": "OpenAI 4.1（new）",
       "brand": "OpenAI",
       "modelType": "Text",
       "site": "international",
@@ -1502,8 +1505,8 @@
       ]
     },
     {
-      "modelId": "gpt-5",
-      "trinityId": "gpt-5",
+      "modelId": "aigc-oo-5-chat-latest-domestic",
+      "trinityId": null,
       "upstreamModelId": "5-chat-latest",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
@@ -1529,22 +1532,22 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "9.375",
+          "input": "9.37",
           "output": "75",
-          "cache": "0.9375",
+          "cache": "0.93",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "9.375",
+              "price": "9.37",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.9375",
+              "price": "0.93",
               "unit": "元/百万tokens"
             },
             {
@@ -1558,8 +1561,8 @@
       ]
     },
     {
-      "modelId": "gpt-5",
-      "trinityId": "gpt-5",
+      "modelId": "aigc-oo-5-chat-latest-international",
+      "trinityId": null,
       "upstreamModelId": "5-chat-latest",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
@@ -1641,22 +1644,22 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "0.375",
+          "input": "0.37",
           "output": "3",
-          "cache": "0.0375",
+          "cache": "0.03",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "0.375",
+              "price": "0.37",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.0375",
+              "price": "0.03",
               "unit": "元/百万tokens"
             },
             {
@@ -1753,28 +1756,28 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "9.375",
-          "output": "75",
-          "cache": "0.9375",
+          "input": "8.75",
+          "output": "70",
+          "cache": "0.87",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "9.375",
+              "price": "8.75",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.9375",
+              "price": "0.87",
               "unit": "元/百万tokens"
             },
             {
               "name": "Output",
               "displayName": "输出",
-              "price": "75",
+              "price": "70",
               "unit": "元/百万tokens"
             }
           ]
@@ -1838,8 +1841,8 @@
       ]
     },
     {
-      "modelId": "gpt-5.1-chat",
-      "trinityId": "gpt-5.1-chat",
+      "modelId": "aigc-oo-5-1-chat-domestic",
+      "trinityId": null,
       "upstreamModelId": "5.1-chat",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
@@ -1865,28 +1868,28 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "9.375",
-          "output": "75",
-          "cache": "0.9375",
+          "input": "8.75",
+          "output": "70",
+          "cache": "0.87",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "9.375",
+              "price": "8.75",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.9375",
+              "price": "0.87",
               "unit": "元/百万tokens"
             },
             {
               "name": "Output",
               "displayName": "输出",
-              "price": "75",
+              "price": "70",
               "unit": "元/百万tokens"
             }
           ]
@@ -1894,8 +1897,8 @@
       ]
     },
     {
-      "modelId": "gpt-5.1-chat",
-      "trinityId": "gpt-5.1-chat",
+      "modelId": "aigc-oo-5-1-chat-international",
+      "trinityId": null,
       "upstreamModelId": "5.1-chat",
       "vendorCode": "OO",
       "vendorName": "OpenAI",
@@ -1977,28 +1980,28 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "13.125",
-          "output": "105",
-          "cache": "1.3125",
+          "input": "12.25",
+          "output": "98",
+          "cache": "1.22",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "13.125",
+              "price": "12.25",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "1.3125",
+              "price": "1.22",
               "unit": "元/百万tokens"
             },
             {
               "name": "Output",
               "displayName": "输出",
-              "price": "105",
+              "price": "98",
               "unit": "元/百万tokens"
             }
           ]
@@ -2062,6 +2065,176 @@
       ]
     },
     {
+      "modelId": "gpt-5.5",
+      "trinityId": "gpt-5.5",
+      "upstreamModelId": "5.5（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.5（new）",
+      "displayName": "OpenAI 5.5（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": "37.5",
+          "output": "225",
+          "cache": "3.75",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "37.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "3.75",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "225",
+              "unit": "元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": "75",
+          "output": "337.5",
+          "cache": "7.5",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "75",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "7.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "337.5",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.5",
+      "trinityId": "gpt-5.5",
+      "upstreamModelId": "5.5（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.5（new）",
+      "displayName": "OpenAI 5.5（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": "5",
+          "output": "30",
+          "cache": "0.5",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "5",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.5",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "30",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": "10",
+          "output": "45",
+          "cache": "1",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "10",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "45",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "modelId": "gpt-5.4",
       "trinityId": "gpt-5.4",
       "upstreamModelId": "5.4",
@@ -2091,7 +2264,7 @@
           "tierName": "输入<=272K context",
           "input": "18.75",
           "output": "112.5",
-          "cache": "1.875",
+          "cache": "1.88",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
@@ -2104,7 +2277,7 @@
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "1.875",
+              "price": "1.88",
               "unit": "元/百万tokens"
             },
             {
@@ -2259,22 +2432,22 @@
         {
           "tierType": "Uniform",
           "tierName": "统一价",
-          "input": "5.625",
+          "input": "5.63",
           "output": "33.75",
-          "cache": "0.5625",
+          "cache": "0.56",
           "unit": "百万tokens",
           "chargeUnit": "TOKEN",
           "items": [
             {
               "name": "Input",
               "displayName": "输入",
-              "price": "5.625",
+              "price": "5.63",
               "unit": "元/百万tokens"
             },
             {
               "name": "Cache",
               "displayName": "缓存命中",
-              "price": "0.5625",
+              "price": "0.56",
               "unit": "元/百万tokens"
             },
             {
@@ -2483,6 +2656,1014 @@
               "name": "Output",
               "displayName": "输出",
               "price": "270",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-codex",
+      "trinityId": "gpt-5.3-codex",
+      "upstreamModelId": "5.3-codex",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.3-codex",
+      "displayName": "OpenAI 5.3-codex",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "13.13",
+          "output": "105",
+          "cache": "1.35",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "13.13",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.35",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "105",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-codex",
+      "trinityId": "gpt-5.3-codex",
+      "upstreamModelId": "5.3-codex",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.3-codex",
+      "displayName": "OpenAI 5.3-codex",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.75",
+          "output": "14",
+          "cache": "0.18",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.75",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.18",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "14",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "chat-latest",
+      "trinityId": "chat-latest",
+      "upstreamModelId": "chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "chat-latest",
+      "displayName": "OpenAI chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "37.5",
+          "output": "225",
+          "cache": "3.75",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "37.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "3.75",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "225",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "chat-latest",
+      "trinityId": "chat-latest",
+      "upstreamModelId": "chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "chat-latest",
+      "displayName": "OpenAI chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "5",
+          "output": "30",
+          "cache": "0.5",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "5",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.5",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "30",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-3-chat-latest-domestic",
+      "trinityId": null,
+      "upstreamModelId": "5.3-chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.3-chat-latest",
+      "displayName": "OpenAI 5.3-chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "13.13",
+          "output": "105",
+          "cache": "1.35",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "13.13",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.35",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "105",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-3-chat-latest-international",
+      "trinityId": null,
+      "upstreamModelId": "5.3-chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.3-chat-latest",
+      "displayName": "OpenAI 5.3-chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.75",
+          "output": "14",
+          "cache": "0.18",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.75",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.18",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "14",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-2-chat-latest-domestic",
+      "trinityId": null,
+      "upstreamModelId": "5.2-chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.2-chat-latest",
+      "displayName": "OpenAI 5.2-chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "13.13",
+          "output": "105",
+          "cache": "1.35",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "13.13",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "1.35",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "105",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-2-chat-latest-international",
+      "trinityId": null,
+      "upstreamModelId": "5.2-chat-latest",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.2-chat-latest",
+      "displayName": "OpenAI 5.2-chat-latest",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.75",
+          "output": "14",
+          "cache": "0.18",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.75",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.18",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "14",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1-chat",
+      "trinityId": "gpt-5.1-chat",
+      "upstreamModelId": "5.1-chat-latest（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.1-chat-latest（new）",
+      "displayName": "OpenAI 5.1-chat-latest（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "9.37",
+          "output": "75",
+          "cache": "0.93",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "9.37",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.93",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "75",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1-chat",
+      "trinityId": "gpt-5.1-chat",
+      "upstreamModelId": "5.1-chat-latest（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.1-chat-latest（new）",
+      "displayName": "OpenAI 5.1-chat-latest（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.25",
+          "output": "10",
+          "cache": "0.125",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.25",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.125",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "10",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-1-chat-new-domestic",
+      "trinityId": null,
+      "upstreamModelId": "5.1-chat（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.1-chat（new）",
+      "displayName": "OpenAI 5.1-chat（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "9.37",
+          "output": "75",
+          "cache": "0.93",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "9.37",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.93",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "75",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-oo-5-1-chat-new-international",
+      "trinityId": null,
+      "upstreamModelId": "5.1-chat（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.1-chat（new）",
+      "displayName": "OpenAI 5.1-chat（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.25",
+          "output": "10",
+          "cache": "0.125",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.25",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.125",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "10",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-nano",
+      "trinityId": "gpt-5.4-nano",
+      "upstreamModelId": "5.4-nano",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.4-nano",
+      "displayName": "OpenAI 5.4-nano",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.5",
+          "output": "9.375",
+          "cache": "0.15",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.5",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.15",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "9.375",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-nano",
+      "trinityId": "gpt-5.4-nano",
+      "upstreamModelId": "5.4-nano",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5.4-nano",
+      "displayName": "OpenAI 5.4-nano",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.2",
+          "output": "1.25",
+          "cache": "0.02",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.02",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.25",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-mini",
+      "trinityId": "gpt-5-mini",
+      "upstreamModelId": "5-mini（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5-mini（new）",
+      "displayName": "OpenAI 5-mini（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.875",
+          "output": "15",
+          "cache": "0.1875",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.875",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.1875",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-mini",
+      "trinityId": "gpt-5-mini",
+      "upstreamModelId": "5-mini（new）",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5-mini（new）",
+      "displayName": "OpenAI 5-mini（new）",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.25",
+          "output": "2",
+          "cache": "0.025",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.25",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.025",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2",
+              "unit": "美元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5",
+      "trinityId": "gpt-5",
+      "upstreamModelId": "5",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5",
+      "displayName": "OpenAI 5",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "table": "main",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "9.37",
+          "output": "75",
+          "cache": "0.93",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "9.37",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.93",
+              "unit": "元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "75",
+              "unit": "元/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5",
+      "trinityId": "gpt-5",
+      "upstreamModelId": "5",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "5",
+      "displayName": "OpenAI 5",
+      "brand": "OpenAI",
+      "modelType": "Text",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "table": "main",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.25",
+          "output": "10",
+          "cache": "0.125",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.25",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中",
+              "price": "0.125",
+              "unit": "美元/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "10",
               "unit": "美元/百万tokens"
             }
           ]
@@ -3164,11 +4345,11 @@
     {
       "modelId": "gemini-3.5-flash",
       "trinityId": "gemini-3.5-flash",
-      "upstreamModelId": "3.5-flash (new)",
+      "upstreamModelId": "3.5-flash（new）",
       "vendorCode": "GG",
       "vendorName": "Google",
-      "modelName": "3.5-flash (new)",
-      "displayName": "Google 3.5-flash (new)",
+      "modelName": "3.5-flash（new）",
+      "displayName": "Google 3.5-flash（new）",
       "brand": "Google",
       "modelType": "Text",
       "site": "domestic",
@@ -3188,7 +4369,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "11.25",
           "output": "67.5",
           "cache": "1.125",
@@ -3217,7 +4398,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "11.25",
           "output": "67.5",
           "cache": "1.125",
@@ -3249,11 +4430,11 @@
     {
       "modelId": "gemini-3.5-flash",
       "trinityId": "gemini-3.5-flash",
-      "upstreamModelId": "3.5-flash (new)",
+      "upstreamModelId": "3.5-flash（new）",
       "vendorCode": "GG",
       "vendorName": "Google",
-      "modelName": "3.5-flash (new)",
-      "displayName": "Google 3.5-flash (new)",
+      "modelName": "3.5-flash（new）",
+      "displayName": "Google 3.5-flash（new）",
       "brand": "Google",
       "modelType": "Text",
       "site": "international",
@@ -3273,7 +4454,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "1.5",
           "output": "9",
           "cache": "0.15",
@@ -3302,7 +4483,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "1.5",
           "output": "9",
           "cache": "0.15",
@@ -3358,7 +4539,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=20万个token",
+          "tierName": "输入≤20万个token",
           "input": "15",
           "output": "90",
           "cache": "1.5",
@@ -3443,7 +4624,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=20万个token",
+          "tierName": "输入≤20万个token",
           "input": "2",
           "output": "12",
           "cache": "0.2",
@@ -3504,11 +4685,11 @@
     {
       "modelId": "gemini-3.1-flash-lite",
       "trinityId": "gemini-3.1-flash-lite",
-      "upstreamModelId": "3.1-flash-lite (new)",
+      "upstreamModelId": "3.1-flash-lite（new）",
       "vendorCode": "GG",
       "vendorName": "Google",
-      "modelName": "3.1-flash-lite (new)",
-      "displayName": "Google 3.1-flash-lite (new)",
+      "modelName": "3.1-flash-lite（new）",
+      "displayName": "Google 3.1-flash-lite（new）",
       "brand": "Google",
       "modelType": "Text",
       "site": "domestic",
@@ -3528,7 +4709,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "1.87",
           "output": "11.25",
           "cache": "0.18",
@@ -3557,7 +4738,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "3.75",
           "output": "11.25",
           "cache": "0.37",
@@ -3589,11 +4770,11 @@
     {
       "modelId": "gemini-3.1-flash-lite",
       "trinityId": "gemini-3.1-flash-lite",
-      "upstreamModelId": "3.1-flash-lite (new)",
+      "upstreamModelId": "3.1-flash-lite（new）",
       "vendorCode": "GG",
       "vendorName": "Google",
-      "modelName": "3.1-flash-lite (new)",
-      "displayName": "Google 3.1-flash-lite (new)",
+      "modelName": "3.1-flash-lite（new）",
+      "displayName": "Google 3.1-flash-lite（new）",
       "brand": "Google",
       "modelType": "Text",
       "site": "international",
@@ -3613,7 +4794,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "0.25",
           "output": "1.5",
           "cache": "0.025",
@@ -3642,7 +4823,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "0.5",
           "output": "1.5",
           "cache": "0.05",
@@ -3698,7 +4879,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "1.87",
           "output": "11.25",
           "cache": "0.18",
@@ -3727,7 +4908,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "3.75",
           "output": "11.25",
           "cache": "0.37",
@@ -3783,7 +4964,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "0.25",
           "output": "1.5",
           "cache": "0.025",
@@ -3812,7 +4993,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "0.5",
           "output": "1.5",
           "cache": "0.05",
@@ -3868,7 +5049,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "3.5",
           "output": "21",
           "cache": "0.35",
@@ -3897,7 +5078,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "7",
           "output": "21",
           "cache": "0.7",
@@ -3953,7 +5134,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "0.5",
           "output": "3",
           "cache": "0.05",
@@ -3982,7 +5163,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "1",
           "output": "3",
           "cache": "0.1",
@@ -4038,7 +5219,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=20万个token",
+          "tierName": "输入≤20万个token",
           "input": "9.37",
           "output": "75",
           "cache": "0.93",
@@ -4123,7 +5304,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=20万个token",
+          "tierName": "输入≤20万个token",
           "input": "1.25",
           "output": "10",
           "cache": "0.125",
@@ -4208,7 +5389,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "2.25",
           "output": "18.75",
           "cache": "0.22",
@@ -4237,7 +5418,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "7.5",
           "output": "18.75",
           "cache": "0.75",
@@ -4293,7 +5474,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入:文本/图片/视频",
+          "tierName": "输入：文本、图片、视频",
           "input": "0.3",
           "output": "2.5",
           "cache": "0.03",
@@ -4322,7 +5503,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入:音频",
+          "tierName": "输入：音频",
           "input": "1",
           "output": "2.5",
           "cache": "0.1",
@@ -6530,7 +7711,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K, 输出<=0.2K",
+          "tierName": "输入：≤32K token，输出≤0.2K token",
           "input": "2",
           "output": "8",
           "cache": "0.4",
@@ -6559,7 +7740,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K, 输出>0.2K",
+          "tierName": "输入：≤32K token，输出＞0.2K token",
           "input": "3",
           "output": "14",
           "cache": "0.6",
@@ -6588,7 +7769,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "4",
           "output": "16",
           "cache": "0.8",
@@ -6644,7 +7825,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K, 输出<=0.2K",
+          "tierName": "输入：≤32K token，输出≤0.2K token",
           "input": "0.308",
           "output": "1.232",
           "cache": "0.062",
@@ -6673,7 +7854,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K, 输出>0.2K",
+          "tierName": "输入：≤32K token，输出＞0.2K token",
           "input": "0.462",
           "output": "2.156",
           "cache": "0.092",
@@ -6702,7 +7883,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "0.616",
           "output": "2.464",
           "cache": "0.123",
@@ -6734,11 +7915,11 @@
     {
       "modelId": "glm-5.1",
       "trinityId": "glm-5.1",
-      "upstreamModelId": "5.1 (new)",
+      "upstreamModelId": "5.1（new）",
       "vendorCode": "Zhipu",
       "vendorName": "智谱",
-      "modelName": "5.1 (new)",
-      "displayName": "智谱 5.1 (new)",
+      "modelName": "5.1（new）",
+      "displayName": "智谱 5.1（new）",
       "brand": "智谱",
       "modelType": "Text",
       "site": "domestic",
@@ -6758,7 +7939,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "6",
           "output": "24",
           "cache": "1.3",
@@ -6787,7 +7968,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "8",
           "output": "28",
           "cache": "2",
@@ -6819,11 +8000,11 @@
     {
       "modelId": "glm-5.1",
       "trinityId": "glm-5.1",
-      "upstreamModelId": "5.1 (new)",
+      "upstreamModelId": "5.1（new）",
       "vendorCode": "Zhipu",
       "vendorName": "智谱",
-      "modelName": "5.1 (new)",
-      "displayName": "智谱 5.1 (new)",
+      "modelName": "5.1（new）",
+      "displayName": "智谱 5.1（new）",
       "brand": "智谱",
       "modelType": "Text",
       "site": "international",
@@ -6843,7 +8024,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "0.924",
           "output": "3.696",
           "cache": "0.2",
@@ -6872,7 +8053,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "1.232",
           "output": "4.312",
           "cache": "0.308",
@@ -6928,7 +8109,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "5",
           "output": "22",
           "cache": "1.2",
@@ -6957,7 +8138,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "7",
           "output": "26",
           "cache": "1.8",
@@ -7013,7 +8194,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "0.77",
           "output": "3.388",
           "cache": "0.185",
@@ -7042,7 +8223,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "1.078",
           "output": "4.004",
           "cache": "0.277",
@@ -7098,7 +8279,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "4",
           "output": "18",
           "cache": "1",
@@ -7127,7 +8308,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "6",
           "output": "22",
           "cache": "1.5",
@@ -7183,7 +8364,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入<=32K tokens",
+          "tierName": "输入：≤32K token",
           "input": "0.616",
           "output": "2.772",
           "cache": "0.154",
@@ -7212,7 +8393,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32K tokens",
+          "tierName": "输入：＞32K token",
           "input": "0.924",
           "output": "3.388",
           "cache": "0.231",
@@ -7242,8 +8423,8 @@
       ]
     },
     {
-      "modelId": "kimi-k2.5",
-      "trinityId": "kimi-k2.5",
+      "modelId": "aigc-kim-k1-5-domestic",
+      "trinityId": null,
       "upstreamModelId": "k1.5 (智能搜索)",
       "vendorCode": "Kim",
       "vendorName": "Kimi",
@@ -7298,8 +8479,8 @@
       ]
     },
     {
-      "modelId": "kimi-k2.5",
-      "trinityId": "kimi-k2.5",
+      "modelId": "aigc-kim-k1-5-international",
+      "trinityId": null,
       "upstreamModelId": "k1.5 (智能搜索)",
       "vendorCode": "Kim",
       "vendorName": "Kimi",
@@ -8640,7 +9821,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "<=200K tokens",
+          "tierName": "≤200K token",
           "input": "3",
           "output": "15",
           "cache": "0.3",
@@ -8681,7 +9862,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": ">200K tokens",
+          "tierName": "＞200K token",
           "input": "6",
           "output": "22.5",
           "cache": "0.6",

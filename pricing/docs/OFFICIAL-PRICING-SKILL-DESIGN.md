@@ -49,21 +49,22 @@ suppliers/official/
 | `pricing:supplier:official:video` | 生视频官方价（CNY / 积分·次，分档） |
 | `pricing:supplier:official:all` | 三种模态一次拉取 |
 
-### 2.2 需求满足度
+### 2.2 需求满足度（2026-07-02 更新）
 
 | 需求 | 满足度 | 说明 |
 |------|--------|------|
-| 补充 xxx 官方价（含链接、价目） | **约 80%** | 数据结构与脚本已有；缺标准化「加模型」编排与脚手架 |
-| 官方 vs 上游 vs 线上对比 | **约 40%** | `pricing:upstream` / `validate` 仅覆盖线上 ↔ 三上游；**未接入 `official`** |
+| 补充 xxx 官方价（含链接、价目） | **约 95%** | catalog/seed/map + `scaffold-official-model.mjs` + Skill workflow |
+| 官方 vs 上游 vs 线上对比 | **约 90%** | `pricing:compare:official` 按模态产出；对比前自动刷新 `prices-api.json` |
 | 生文/生图/生视频独立表 | **100%** | 各模态独立 `output/{modality}/vendor-pricing-table.md` |
-| 可重复的 Agent 流程 | **0%** | 尚无 Skill |
+| 可重复的 Agent 流程 | **约 90%** | `.cursor/skills/trinity-official-pricing/` + `pricing-gate` workflow |
+| L0–L4 治理与门禁 | **约 85%** | `PRICING-GOVERNANCE-WORKFLOW.md` · L1/L3 validate · `pricing:gate` |
 
-### 2.3 主要缺口
+### 2.3 主要缺口（更新）
 
-1. **`official` 未接入 `pipeline` 汇总**：`upstream-pricing.json` 不含原厂价列。
-2. **`trinity-map.json` 不完整**：目前 mainly 生文国际模型；生图/生视频映射待扩展。
-3. **无「加模型」标准作业**：catalog / seed / map / fetch 四步靠人工记忆。
-4. **对比命令缺失**：无 `pricing:compare:official` 一类单模型或按模态全表对照。
+1. **`pricing:validate:compare`** 尚未纳入 `pricing:gate`（需 upstream + 线上 fetch）。
+2. **`trinity-map.json`** 生图/生视频映射仍偏少；部分国际模型 AIGC map 未齐。
+3. **L1 仍有已知 fail**：cache 舍入、minimax FX、部分 Claude/GPT 档 — 需逐模型修种子或登记例外。
+4. **告警 webhook**：`PRICING_ALERT_WEBHOOK_URL` 待配置；`pricing:alert` 默认可 dry-run。
 
 ---
 
@@ -85,9 +86,9 @@ suppliers/official/
 └─────────────────┬───────────────────────┘
                   │
 ┌─────────────────▼───────────────────────┐
-│  Layer C：对比层（待小扩展）             │
-│  pricing/pipeline/compare-official.mjs   │
-│  官方 + 上游 + 线上 → 按模态 Markdown    │
+│  Layer C：对比与门禁（已实现）           │
+│  compare-official · validate L1/L3      │
+│  pricing:gate · pricing-alerts          │
 └─────────────────────────────────────────┘
 ```
 
@@ -358,7 +359,8 @@ Skill 维护规则：**每新增 catalog 条目且 Trinity 已上架，必须同
 | **P1** | `pricing:compare:official` pipeline | ✅ | `output/official-vs-upstream-*.md` |
 | **P2** | 扩展 `trinity-map`（含 image/video） | ✅ | `modality` 字段 + 15 条媒体映射 |
 | **P3** | 脚手架 `scaffold-official-model.mjs` | ✅ | 输出 catalog/seed/map 片段 |
-| **P4** | `upstream` 可选接入官方列 / Excel Sheet | 低优 | 待做 |
+| **P4** | L1/L3 门禁 + 告警 + 治理文档 | ✅ | `PRICING-GOVERNANCE-WORKFLOW.md` · `pricing:gate` |
+| **P5** | `upstream` 可选接入官方列 / Excel Sheet | 低优 | 待做 |
 
 ---
 
@@ -366,11 +368,11 @@ Skill 维护规则：**每新增 catalog 条目且 Trinity 已上架，必须同
 
 | 问题 | 结论 |
 |------|------|
-| 现有 `official/` 方案能否满足？ | **目标 1、3 基本满足；目标 2 需 pipeline 小扩展；目标 4 需 Skill** |
-| 改造为 Skill 是否方便？ | **方便**——数据层已按模态拆分，Skill 只做编排与模板 |
-| 是否需要独立工作流系统？ | **不需要**——Skill checklist + npm 命令即可 |
+| 现有 `official/` 方案能否满足？ | **目标 1–4 基本满足；治理门禁已落地；L4 刊例对比在 compare 命令** |
+| 改造为 Skill 是否方便？ | **已完成**——Skill + workflows + gate |
+| 是否需要独立工作流系统？ | **不需要**——Skill checklist + `pricing:gate` 即可 |
 
-**推荐路径**：先落 Skill（立刻改善「补充 xxx 官方价」体验），再实现 `pricing:compare:official`（完成三方对比闭环）。
+**当前路径**：维护官方价 → `pricing:gate` 锁 L1 → 对比/刊例用 `pricing:compare:official`。
 
 ---
 
@@ -379,7 +381,8 @@ Skill 维护规则：**每新增 catalog 条目且 Trinity 已上架，必须同
 | 文档 | 说明 |
 |------|------|
 | [STRUCTURE.md](../STRUCTURE.md) | `pricing/` 完整目录树 |
+| [PRICING-GOVERNANCE-WORKFLOW.md](./PRICING-GOVERNANCE-WORKFLOW.md) | **L0–L4 治理与门禁** |
 | [suppliers/official/README.md](../suppliers/official/README.md) | 原厂价目命令与维护 |
 | [suppliers/SOURCES.md](../suppliers/SOURCES.md) | 各供应商 JSON 真源 |
 | [README.md](../README.md) | 价目六步流程 |
-| 本文 | Skill + 对比层设计稿 |
+| 本文 | Skill + 对比层设计稿（历史） |

@@ -11,7 +11,7 @@ npm run pricing:supplier:official:image   # 按需
 npm run pricing:supplier:official:video   # 按需
 
 # 2. 线上刊例
-npm run pricing:fetch
+npm run pricing:fetch   # 对比命令也会自动 GET /v1/prices
 
 # 3. 上游（对比 TokenHub/百炼/AIGC 时需要）
 npm run pricing:supplier:tokenhub:console  # 按需
@@ -61,10 +61,14 @@ join 键：`official/trinity-map.json` 的 Trinity `modelId`。
 - 线上刊例相对上游是否已加价
 - `officialStatus` 为 `未收录` 时提示补 catalog/map
 
-## 与 pricing:validate 区别
+## 与 validate / gate 区别
 
-| | `pricing:compare:official` | `pricing:validate` |
-|--|---------------------------|-------------------|
-| 含官方价 | ✅ | ❌ |
-| 默认范围 | trinity-map 已映射模型 | 默认 3 个代表模型 |
-| 依赖 upstream-pricing.json | ❌ | ✅ |
+| | `pricing:compare:official` | `pricing:validate:official-aigc` | `pricing:gate` |
+|--|---------------------------|----------------------------------|----------------|
+| 含官方价 | ✅ | ✅（种子） | ✅ |
+| 含 L4 线上刊例 | ✅ | ❌ | ❌ |
+| 含 L1 AIGC/TokenHub 交叉 | 人读表 | ✅ 阻断 | ✅ |
+| 含 L3 百炼交叉 | 人读表 | ❌ | ✅ |
+| 自动刷新线上价 | ✅ | ❌ | ❌ |
+
+门禁详情：[`pricing-gate.md`](./pricing-gate.md) · 治理文档：`pricing/docs/PRICING-GOVERNANCE-WORKFLOW.md`
