@@ -1,5 +1,5 @@
 /**
- * 供应商挂牌 vs 厂商官方价 · 汇总统计（生文 Excel 末 Sheet）
+ * 供应商挂牌 vs 厂商官方价 · 汇总统计（生文 Excel 第 2 Sheet）
  */
 
 import { upstreamUnit, USD_PER_M } from "./units.mjs";

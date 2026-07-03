@@ -71,4 +71,31 @@ export const VIDEO_SEED = {
   "yt-video-fx": {
     tiers: [{ tierLabel: "统一价", price: "1.5-8", unit: "积分/次" }],
   },
+  "doubao-seedance-2.0": {
+    tiers: [
+      { tierLabel: "480p·16:9·5s·不含视频输入", price: "2.31", unit: "元/个" },
+      { tierLabel: "480p·16:9·5s·含视频输入", price: "2.53~5.62", unit: "元/个" },
+    ],
+    note: "Seedance 2.0 · 火山方舟按个计价",
+  },
+  "doubao-seedance-2.0-fast": {
+    tiers: [
+      { tierLabel: "480p·16:9·5s·不含视频输入", price: "1.86", unit: "元/个" },
+    ],
+    note: "Seedance 2.0 Fast",
+  },
+  "doubao-seedance-2.0-mini": {
+    tiers: [
+      { tierLabel: "480p·16:9·5s·不含视频输入", price: "1.16", unit: "元/个" },
+    ],
+    note: "Seedance 2.0 Mini",
+  },
+  "doubao-seedance-1.5-pro": {
+    tiers: [
+      { tierLabel: "480p·16:9·5s·有声", price: 0.8, unit: "元/个" },
+      { tierLabel: "480p·16:9·5s·无声", price: 0.4, unit: "元/个" },
+      { tierLabel: "720p·16:9·5s·有声", price: 1.73, unit: "元/个" },
+    ],
+    note: "Seedance 1.5 Pro",
+  },
 };

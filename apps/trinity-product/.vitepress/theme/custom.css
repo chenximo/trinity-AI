@@ -272,6 +272,12 @@ html[data-theme="dark"] .vp-doc .custom-block.caution .custom-block-title {
   line-height: 1.55 !important;
 }
 
+/* 价目全流程 · 阶段表：复用 cap-wrap 换行规则，末列仍为正文色 */
+.vp-doc .pricing-workflow-stages-wrap table th:nth-child(4),
+.vp-doc .pricing-workflow-stages-wrap table td:nth-child(4) {
+  color: var(--vp-c-text-1);
+}
+
 .VPContent .vp-doc {
   box-sizing: border-box;
 }

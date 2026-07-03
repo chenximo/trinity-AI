@@ -11,8 +11,10 @@
   "priceUnit": "美元/百万tokens",
   "region": "原厂直连",
   "sourceNote": "筛选自 suppliers/official/output/text/vendor-pricing.json",
-  "generatedAt": "2026-07-02T12:38:43.366Z",
-  "officialFetchedAt": "2026-07-02T12:33:32.313Z",
+  "mixedCurrency": false,
+  "mapComment": "Trinity modelId → 云门户 upstreamModelId（build 时由 official 筛选生成）",
+  "generatedAt": "2026-07-03T03:32:35.548Z",
+  "officialFetchedAt": "2026-07-03T02:34:14.584Z",
   "modelCount": 28,
   "trinityMappedCount": 22,
   "models": [

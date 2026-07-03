@@ -52,7 +52,7 @@ flowchart LR
 | 主数据 | `/models/master` | 展示名、模态、文档锚点 |
 | 供应线路 | `/models/lines` | API₁/API₂、Profile |
 | 路由绑定 | `/models/bindings` | 模型与平台密钥 |
-| 刊例与成本 | `/models/pricing` | 刊例、采购成本 |
+| 刊例与成本 | `/models/pricing` | 刊例、采购成本（**工程真源**见 [模型价格真源](../pricing-sources/) · `pricing/`） |
 
 ### 模型上架要点
 
@@ -76,6 +76,7 @@ flowchart LR
 |------|------|
 | [模型广场 · 列表](../user/models/list) | 上架后在架可见 |
 | [平台侧 · 路由](../platform/routing-fallback) | 线路与网关 |
+| [模型价格真源](../pricing-sources/) | 采购价 Excel、`pricing:refresh` / `pricing:gate` |
 
 ### 工程待办（摘）
 
@@ -93,3 +94,4 @@ flowchart LR
 | 2026-06-02 | 子能力迁入 `roadmap.yml`；本页只嵌 `<ProductRoadmap />` |
 | 2026-06-02 | 明确运营后台归属与上架子菜单 |
 | 2026-05-26 | 首版 |
+| 2026-07-03 | 刊例与成本链至「模型价格真源」目录 |

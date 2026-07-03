@@ -1,8 +1,8 @@
 # 官方价 vs 上游 vs 线上刊例（生图）
 
-> 生成 2026-07-02T02:36:08Z · 模型 2 个 · 行 2（生文按全档位展开）
-> 官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-01T04:03:46Z）
-> 线上刊例：`output/online/prices-api.json`（2026-06-30T13:38:49Z）
+> 生成 2026-07-03T03:35:15Z · 模型 2 个 · 行 2（生文按全档位展开）
+> 官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-03T03:32:28Z）
+> 线上刊例：`output/online/prices-api.json`（2026-07-03T03:35:15Z）
 > TokenHub：2026-06-30T03:32:07Z
 > 国内 CNY→USD（平台线上一致）：÷6.5 · 粗算参考：÷7.25
 

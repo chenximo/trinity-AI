@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生视频）
 
-> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-01T04:03:47Z · live 0 · seed 13 / 13
+> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-03T03:32:29Z · live 0 · seed 17 / 17 · **29 档**
 > 单位：**CNY per video generation (tiered)**
 
 | # | 厂商 | 原厂模型 ID | 状态 | 抓取 | 档位 | 价格 | 单位 | 价目来源 | 文档 |
@@ -27,10 +27,18 @@
 | 11 | 优图 | yt-video-2.0 | active | seed | 统一价 | 2-10 | 积分/次 | [来源](https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1729/105545) |
 | 12 | 优图 | yt-video-humanactor | active | seed | 统一价 | 3-15 | 积分/次 | [来源](https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1729/105545) |
 | 13 | 优图 | yt-video-fx | active | seed | 统一价 | 1.5-8 | 积分/次 | [来源](https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1729/105545) |
+| 14 | 豆包 | doubao-seedance-2.0 | active | seed | 480p·16:9·5s·不含视频输入 | 2.31 | 元/个 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  | 480p·16:9·5s·含视频输入 | 2.53~5.62 | 元/个 |  |  |
+| 15 | 豆包 | doubao-seedance-2.0-fast | active | seed | 480p·16:9·5s·不含视频输入 | 1.86 | 元/个 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| 16 | 豆包 | doubao-seedance-2.0-mini | active | seed | 480p·16:9·5s·不含视频输入 | 1.16 | 元/个 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| 17 | 豆包 | doubao-seedance-1.5-pro | active | seed | 480p·16:9·5s·有声 | 0.8 | 元/个 | [来源](https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)) | [链接](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+|  |  |  |  |  | 480p·16:9·5s·无声 | 0.4 | 元/个 |  |  |
+|  |  |  |  |  | 720p·16:9·5s·有声 | 1.73 | 元/个 |  |  |
 
 ## 说明
 
 - **目录真源**：`data/catalog/video.mjs`
 - **价目真源**：`output/video/vendor-pricing.json`
 - **种子备用**：`data/seeds/video.mjs`（`fetchStatus: seed`）
+- **上线真源**：`vendor-pricing.json` 内 `models[].tiers[]` 为完整阶梯价（单档模型也占 1 档）
 - `fetchStatus: ok` = 官网 live 解析成功；`seed` = 对照官网维护的种子价

@@ -1,6 +1,7 @@
 # 价目治理工作流设计
 
 > 状态：设计定稿 · 2026-07-02  
+> **产品手册**：[价目全流程](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/workflow.md)  
 > 关联：[PRICING-DISCREPANCY-RULES.md](./PRICING-DISCREPANCY-RULES.md) · [OFFICIAL-PRICING-SKILL-DESIGN.md](./OFFICIAL-PRICING-SKILL-DESIGN.md) · [STRUCTURE.md](../STRUCTURE.md)
 
 ---

@@ -31,16 +31,17 @@ export const VIDEO_PRICING_XLSX = path.join(OUT_DIR, "trinity-pricing-video.xlsx
 /** @deprecated 已拆分为 text/image/video；等同 TEXT_PRICING_XLSX */
 export const MASTER_PRICING_XLSX = TEXT_PRICING_XLSX;
 
-/** 生文册 Sheet 顺序 */
+/** 生文册 Sheet 顺序（汇总在第 2 位，紧跟刊例校验） */
 export const TEXT_SHEET_ORDER = [
   "刊例对比校验-生文",
+  "汇总-供应商vs官方",
   "TokenHub广州",
   "百炼北京",
   "AIGC国内站",
   "AIGC国际站",
   "火山方舟",
   "网聚云联云门户",
-  "汇总-供应商vs官方",
+  "中转站-cust",
 ];
 
 export const IMAGE_SHEET_ORDER = ["官方-生图"];
@@ -211,6 +212,14 @@ export const WANGJU_CLOUDPORTAL_FILE = path.join(
 export const WANGJU_CLOUDPORTAL_MAP_FILE = path.join(
   SUPPLIERS_DIR,
   "wangju-cloudportal/trinity-map.json",
+);
+export const RELAY_CUST_FILE = path.join(
+  SUPPLIERS_DIR,
+  "relay-cust/output/pricing-api.json",
+);
+export const RELAY_CUST_MAP_FILE = path.join(
+  SUPPLIERS_DIR,
+  "relay-cust/trinity-map.json",
 );
 
 export const OFFICIAL_MAP_FILE = path.join(

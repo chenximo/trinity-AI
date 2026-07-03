@@ -6,11 +6,11 @@
   "currency": "USD",
   "unit": "USD per 1M tokens",
   "chargeUnit": "token",
-  "fetchedAt": "2026-07-02T12:40:25.962Z",
-  "seedVerifiedAt": "2026-06-29",
+  "fetchedAt": "2026-07-03T03:35:16.577Z",
+  "seedVerifiedAt": "2026-06-28",
   "catalogCount": 79,
   "modelCount": 79,
-  "pricingTierCount": 115,
+  "pricingTierCount": 116,
   "pricedCount": 79,
   "liveCount": 2,
   "seedCount": 77,
@@ -33,7 +33,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -57,7 +57,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": "alias → 最新 Instant，同 gpt-5.5 档",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -94,7 +94,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -118,7 +118,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -155,7 +155,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-pro (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-pro (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -179,7 +179,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -216,7 +216,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -240,7 +240,7 @@
         "cache": 0.25,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -277,7 +277,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -294,7 +294,7 @@
         "cache": 0.02,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -324,7 +324,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-mini (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-mini (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -341,7 +341,7 @@
         "cache": 0.075,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -371,7 +371,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-codex (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-codex (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -388,7 +388,7 @@
         "cache": 0.175,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -418,7 +418,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-chat-latest (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -435,7 +435,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -465,7 +465,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -482,7 +482,7 @@
         "cache": 0.175,
         "source": "official_price_seed",
         "seedNote": "Instant 档",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -512,7 +512,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -529,7 +529,7 @@
         "cache": 0.175,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -559,7 +559,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -576,7 +576,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -606,7 +606,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1-chat-latest (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -623,7 +623,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -653,7 +653,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -670,7 +670,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -700,7 +700,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-mini (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-mini (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -717,7 +717,7 @@
         "cache": 0.025,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -747,7 +747,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-chat-latest (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -764,7 +764,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -794,7 +794,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-nano (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-nano (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -811,7 +811,7 @@
         "cache": 0.005,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -841,7 +841,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-4.1 (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-4.1 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -858,7 +858,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -888,7 +888,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "HTTP 403",
-      "priceSource": "https://developers.openai.com/api/docs/models/gpt-4o (seed 2026-06-29)",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-4o (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -905,7 +905,7 @@
         "cache": 1.25,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -935,7 +935,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -959,7 +959,7 @@
         "cache": 0.15,
         "source": "official_price_seed",
         "seedNote": "Gemini API pricing · Gemini 3.5 Flash Standard",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -996,7 +996,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1020,7 +1020,7 @@
         "cache": 0.025,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1057,7 +1057,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1081,7 +1081,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1118,7 +1118,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1142,7 +1142,7 @@
         "cache": 0.025,
         "source": "official_price_seed",
         "seedNote": "同 gemini-3.1-flash-lite",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1179,7 +1179,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1196,7 +1196,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1226,7 +1226,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1250,7 +1250,7 @@
         "cache": 0.05,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1287,7 +1287,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro (seed 2026-06-29)",
+      "priceSource": "https://cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-pro (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1311,7 +1311,7 @@
         "cache": 0.125,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1348,7 +1348,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1372,7 +1372,7 @@
         "cache": 0.03,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1409,7 +1409,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-29)",
+      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1426,7 +1426,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": "已退役→grok-4.3",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1456,7 +1456,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-29)",
+      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1473,7 +1473,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": "已退役→grok-4.3",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1503,7 +1503,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.x.ai/developers/models/grok-4.20-0309-non-reasoning (seed 2026-06-29)",
+      "priceSource": "https://docs.x.ai/developers/models/grok-4.20-0309-non-reasoning (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1520,7 +1520,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1550,7 +1550,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.x.ai/developers/models/grok-4.20-0309-reasoning (seed 2026-06-29)",
+      "priceSource": "https://docs.x.ai/developers/models/grok-4.20-0309-reasoning (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1567,7 +1567,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1597,7 +1597,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-29)",
+      "priceSource": "https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1614,7 +1614,7 @@
         "cache": 0.2,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1644,7 +1644,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "overview 未找到该模型价目，且无种子",
-      "priceSource": "https://platform.claude.com/docs/zh-CN/about-claude/models/overview (seed 2026-06-29)",
+      "priceSource": "https://platform.claude.com/docs/zh-CN/about-claude/models/overview (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1661,7 +1661,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": "Claude Platform · Opus 4.8",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1691,7 +1691,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "overview 未找到该模型价目，且无种子",
-      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)",
+      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1708,7 +1708,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": "Claude Platform 定价 · Opus 4.7",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1738,7 +1738,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "overview 未找到该模型价目，且无种子",
-      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)",
+      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1755,7 +1755,7 @@
         "cache": 0.5,
         "source": "official_price_seed",
         "seedNote": "Claude Platform 定价 · Opus 4.6",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1785,7 +1785,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "overview 未找到该模型价目，且无种子",
-      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)",
+      "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1802,7 +1802,7 @@
         "cache": 0.3,
         "source": "official_price_seed",
         "seedNote": "Claude Platform 定价 · Sonnet 4.6",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1832,7 +1832,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1849,7 +1849,7 @@
         "cache": 0.01,
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1879,7 +1879,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "fetch failed",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite?hl=zh-cn (seed 2026-06-29)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite?hl=zh-cn (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -1896,7 +1896,7 @@
         "cache": 0.01,
         "source": "official_price_seed",
         "seedNote": "同 gemini-2.5-flash-lite",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -1926,7 +1926,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1957,7 +1957,7 @@
         "cache": 0.4,
         "source": "official_price_seed",
         "seedNote": "腾讯云 TokenHub 模型价格 · Hy3 preview",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2001,7 +2001,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2018,7 +2018,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · Hy-MT2-Lite",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2048,7 +2048,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2065,7 +2065,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · Hy-MT2-Plus",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2095,7 +2095,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2112,7 +2112,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · Hy-MT2-Pro",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2142,7 +2142,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2159,7 +2159,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · Hy-Role",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2189,7 +2189,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2206,7 +2206,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · Hy-Role-Latest",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2236,7 +2236,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)",
+      "priceSource": "https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2253,7 +2253,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "腾讯云模型价格 · HY-Vision-2.0-Instruct",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2283,7 +2283,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2300,7 +2300,7 @@
         "cache": 0.4,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2420,7 +2420,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2451,7 +2451,7 @@
         "cache": 0.03,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2495,7 +2495,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2512,7 +2512,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2542,7 +2542,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2573,7 +2573,7 @@
         "cache": 0.16,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2617,7 +2617,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2634,7 +2634,7 @@
         "cache": null,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2664,7 +2664,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2688,7 +2688,7 @@
         "cache": 0.24,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2725,7 +2725,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2749,7 +2749,7 @@
         "cache": 0.4,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2786,7 +2786,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2803,7 +2803,7 @@
         "cache": 2.4,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2833,7 +2833,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2857,7 +2857,7 @@
         "cache": 0.4,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2894,7 +2894,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -2925,7 +2925,7 @@
         "cache": 0.08,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2969,7 +2969,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3000,7 +3000,7 @@
         "cache": 0.02,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · 中国内地",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3044,7 +3044,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3075,7 +3075,7 @@
         "cache": 0.4,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-4.7（输入长度 + ≤32k 内输出长度三档，与 AIGC 商务一致）",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3119,7 +3119,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-29)",
+      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3143,7 +3143,7 @@
         "cache": 1,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-5",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3180,7 +3180,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://platform.kimi.com/docs/pricing/chat (seed 2026-06-29)",
+      "priceSource": "https://platform.kimi.com/docs/pricing/chat (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3197,7 +3197,7 @@
         "cache": 0.7,
         "source": "official_price_seed",
         "seedNote": "月之暗面 Kimi 开放平台 · K2.5",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3227,7 +3227,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-29)",
+      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3251,7 +3251,7 @@
         "cache": 1.3,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-5.1",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3288,7 +3288,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-29)",
+      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3305,7 +3305,7 @@
         "cache": 2,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-5.2",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3335,7 +3335,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-29)",
+      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3359,7 +3359,7 @@
         "cache": 1.2,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-5-Turbo",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3396,7 +3396,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-29)",
+      "priceSource": "https://bigmodel.cn/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3420,7 +3420,7 @@
         "cache": 1.2,
         "source": "official_price_seed",
         "seedNote": "智谱开放平台定价 · GLM-5V-Turbo",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3457,7 +3457,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3474,7 +3474,7 @@
         "cache": 1.1,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · Kimi K2.6",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3504,7 +3504,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3521,7 +3521,7 @@
         "cache": 1.3,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · Kimi K2.7 Code",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3551,7 +3551,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3568,7 +3568,7 @@
         "cache": 2.6,
         "source": "official_price_seed",
         "seedNote": "百炼模型定价 · Kimi K2.7 Code HighSpeed",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3598,7 +3598,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-29)",
+      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3615,7 +3615,7 @@
         "cache": 0.21,
         "source": "official_price_seed",
         "seedNote": "MiniMax 按量计费 · M2.5 缓存读取",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3645,7 +3645,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-29)",
+      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3662,7 +3662,7 @@
         "cache": 0.42,
         "source": "official_price_seed",
         "seedNote": "MiniMax 按量计费 · M2.7 缓存读取",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3692,7 +3692,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-29)",
+      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-paygo (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3716,7 +3716,7 @@
         "cache": 0.42,
         "source": "official_price_seed",
         "seedNote": "MiniMax 按量计费 · M3",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3753,7 +3753,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3770,7 +3770,7 @@
         "cache": 1.2,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-2.1-Pro",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3800,7 +3800,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3817,7 +3817,7 @@
         "cache": 0.6,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-2.1-Turbo",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3844,10 +3844,10 @@
       "currency": "CNY",
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
-      "tierCount": 2,
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3859,10 +3859,17 @@
             "parseSource": "official_price_seed"
           },
           {
-            "tierLabel": "输入>32k",
-            "input": 6.4,
-            "output": 32,
-            "cache": 1.28,
+            "tierLabel": "输入(32k,128k]",
+            "input": 4.8,
+            "output": 24,
+            "cache": 0.96,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入(128k,256k]",
+            "input": 9.6,
+            "output": 48,
+            "cache": 1.92,
             "parseSource": "official_price_seed"
           }
         ],
@@ -3870,8 +3877,8 @@
         "output": 16,
         "cache": 0.64,
         "source": "official_price_seed",
-        "seedNote": "Doubao-Seed-2.0-Pro",
-        "seedVerifiedAt": "2026-06-29"
+        "seedNote": "Doubao-Seed-2.0-Pro · 在线推理（常规）",
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3882,10 +3889,17 @@
           "parseSource": "official_price_seed"
         },
         {
-          "tierLabel": "输入>32k",
-          "input": 6.4,
-          "output": 32,
-          "cache": 1.28,
+          "tierLabel": "输入(32k,128k]",
+          "input": 4.8,
+          "output": 24,
+          "cache": 0.96,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入(128k,256k]",
+          "input": 9.6,
+          "output": 48,
+          "cache": 1.92,
           "parseSource": "official_price_seed"
         }
       ]
@@ -3908,7 +3922,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3932,7 +3946,7 @@
         "cache": 0.12,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-2.0-Lite",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -3969,7 +3983,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -3993,7 +4007,7 @@
         "cache": 0.04,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-2.0-Mini",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -4030,7 +4044,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -4054,7 +4068,7 @@
         "cache": 0.16,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-1.8",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -4091,7 +4105,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -4115,7 +4129,7 @@
         "cache": 0.16,
         "source": "official_price_seed",
         "seedNote": "Doubao-Seed-1.6",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -4152,7 +4166,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -4169,7 +4183,7 @@
         "cache": 0.16,
         "source": "official_price_seed",
         "seedNote": "Doubao-Pro-32k",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -4199,7 +4213,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生文以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-29)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -4216,7 +4230,7 @@
         "cache": 0.06,
         "source": "official_price_seed",
         "seedNote": "Doubao-Lite-32k",
-        "seedVerifiedAt": "2026-06-29"
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {

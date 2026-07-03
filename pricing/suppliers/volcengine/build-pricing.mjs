@@ -1,44 +1,57 @@
 #!/usr/bin/env node
 /**
- * 火山方舟官方价目 → pricing-api.json（与 official/seeds 同源）
+ * 火山方舟官方价目 → pricing-api.json（从 raw 归一化）
+ *
+ *   node build-pricing.mjs
+ *   node build-pricing.mjs --modality=text|image|video|all
  */
 
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { PRICING_SHEET, SHEET_META } from "./data/pricing-sheet.mjs";
-import { normalizeVolcenginePricing } from "./lib/pricing-api.mjs";
+import { PRICING_RAW_OUT } from "./lib/constants.mjs";
+import { buildFromRawFile } from "./lib/build-from-raw.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT_DIR = path.join(__dirname, "output");
-const MAP_FILE = path.join(__dirname, "trinity-map.json");
+const RAW_FILE = path.join(__dirname, "output", PRICING_RAW_OUT);
+
+/** @param {string[]} argv */
+function parseArgs(argv) {
+  let modality = "all";
+  for (const arg of argv) {
+    if (arg.startsWith("--modality=")) {
+      modality = arg.slice("--modality=".length);
+    } else if (arg === "--modality") {
+      modality = argv[argv.indexOf(arg) + 1] ?? "all";
+    }
+  }
+  return { modality };
+}
 
 async function main() {
-  let trinityMap = {};
+  const { modality } = parseArgs(process.argv.slice(2));
+  let rawExists = true;
   try {
-    trinityMap = JSON.parse(await readFile(MAP_FILE, "utf8"));
-    delete trinityMap._comment;
+    await readFile(RAW_FILE, "utf8");
   } catch {
-    /* optional */
+    rawExists = false;
   }
 
-  const models = normalizeVolcenginePricing(PRICING_SHEET, trinityMap);
-  const mapped = models.filter((m) => m.trinityId);
+  if (!rawExists) {
+    console.error(
+      `缺少 ${RAW_FILE}\n请先运行：npm run pricing:supplier:volcengine:doc`,
+    );
+    process.exit(1);
+  }
 
-  const out = {
-    ...SHEET_META,
-    generatedAt: new Date().toISOString(),
-    modelCount: models.length,
-    trinityMappedCount: new Set(mapped.map((m) => m.trinityId)).size,
-    models,
-  };
+  const result = await buildFromRawFile(RAW_FILE, /** @type {'all'|import('./lib/constants.mjs').MODALITIES[number]} */ (modality));
 
-  await mkdir(OUT_DIR, { recursive: true });
-  const outFile = path.join(OUT_DIR, "pricing-api.json");
-  await writeFile(outFile, JSON.stringify(out, null, 2), "utf8");
-
-  console.log(`Volcengine models: ${models.length} · Trinity mapped: ${out.trinityMappedCount}`);
-  console.log(`Wrote ${outFile}`);
+  for (const [m, info] of Object.entries(result)) {
+    console.log(
+      `Volcengine ${m}: ${info.modelCount} models · Trinity mapped: ${info.trinityMappedCount}`,
+    );
+    console.log(`Wrote ${info.outFile}`);
+  }
 }
 
 main().catch((e) => {

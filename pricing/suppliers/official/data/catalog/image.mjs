@@ -5,7 +5,7 @@
 import { VENDOR_PRICING_URLS } from "../pricing-urls.mjs";
 
 /**
- * @typedef {"tencent_hunyuan"} ImageVendorKey
+ * @typedef {"tencent_hunyuan"|"volcengine"} ImageVendorKey
  * @typedef {"active"|"deprecated"|"retired"} CatalogStatus
  *
  * @typedef {{
@@ -41,6 +41,34 @@ export const IMAGE_CATALOG = [
     docUrl: "https://cloud.tencent.com/document/product/1729/105545",
     pricingUrl: VENDOR_PRICING_URLS.tencent_hunyuan.image,
     trinityNote: "TokenHub hy-image-lite",
+    region: "domestic",
+    status: "active",
+  },
+  // ── 火山方舟 · Seedream ───────────────────────────────────────
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedream-5.0-lite",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.image,
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedream-4.5",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.image,
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedream-4.0",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.image,
     region: "domestic",
     status: "active",
   },

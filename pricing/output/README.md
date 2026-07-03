@@ -1,26 +1,27 @@
 # Trinity 价目导出索引
 
-> 更新 2026-07-02T12:38:43Z · 生文模型 **61** 款
+> 更新 2026-07-03T03:32:36Z · 生文模型 **59** 款
 > TokenHub/百炼：2026-06-30 · AIGC 价目表：2026-06
 
 ## 对外 Excel（按模态分册）
 
 | 文件 | 模态 | 说明 |
 |------|------|------|
-| [trinity-pricing-text.xlsx](./trinity-pricing-text.xlsx) | 生文 | 刊例校验 · 供应商分表 · **汇总-供应商vs官方** |
+| [trinity-pricing-text.xlsx](./trinity-pricing-text.xlsx) | 生文 | 刊例校验 · **汇总-供应商vs官方**（第 2 Sheet）· 各供应商分表 |
 | [trinity-pricing-image.xlsx](./trinity-pricing-image.xlsx) | 生图 | 官方价对比 |
 | [trinity-pricing-video.xlsx](./trinity-pricing-video.xlsx) | 生视频 | 官方价对比 |
 
 生文册 Sheet：
 
 - 刊例对比校验-生文
+- 汇总-供应商vs官方
 - TokenHub广州
 - 百炼北京
 - AIGC国内站
 - AIGC国际站
 - 火山方舟
 - 网聚云联云门户
-- 汇总-供应商vs官方
+- 中转站-cust
 
 ## 目录结构
 

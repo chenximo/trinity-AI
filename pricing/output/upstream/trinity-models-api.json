@@ -189,38 +189,6 @@
     {
       "id": "deepseek-v4-flash",
       "object": "model",
-      "created": 1777001697,
-      "owned_by": "deepseek",
-      "metadata": {
-        "display_name": "DeepSeek V4 Flash",
-        "origin_vendor_name": "DeepSeek",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Low latency",
-              "Great value"
-            ],
-            "short_summary": "Low-latency gateway id mapped to DeepSeek Chat.",
-            "description_long": "Low-latency SKU; upstream deepseek-chat; confirm pricing on DeepSeek."
-          },
-          "zh": {
-            "feature_tags": [
-              "低延迟",
-              "高性价比"
-            ],
-            "short_summary": "高速线网关名，映射官方 Chat。",
-            "description_long": "面向低延迟场景；上游为 deepseek-chat；价目以官方为准。"
-          }
-        },
-        "context_length": 64000,
-        "user_input_price_per_million_usd": 0.153846,
-        "user_output_price_per_million_usd": 0.307692
-      }
-    },
-    {
-      "id": "deepseek-v4-flash-202605",
-      "object": "model",
       "created": 1782722690,
       "owned_by": "deepseek",
       "metadata": {
@@ -251,38 +219,6 @@
     },
     {
       "id": "deepseek-v4-pro",
-      "object": "model",
-      "created": 1777001697,
-      "owned_by": "deepseek",
-      "metadata": {
-        "display_name": "DeepSeek V4 Pro",
-        "origin_vendor_name": "DeepSeek",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "High quality",
-              "Reasoning"
-            ],
-            "short_summary": "Quality gateway id mapped to DeepSeek Reasoner.",
-            "description_long": "Quality SKU; upstream deepseek-reasoner; confirm pricing on DeepSeek."
-          },
-          "zh": {
-            "feature_tags": [
-              "高质量输出",
-              "推理"
-            ],
-            "short_summary": "高质量线网关名，映射官方 Reasoner。",
-            "description_long": "面向高质量输出；上游为 deepseek-reasoner；价目以官方为准。"
-          }
-        },
-        "context_length": 64000,
-        "user_input_price_per_million_usd": 1.846154,
-        "user_output_price_per_million_usd": 3.692308
-      }
-    },
-    {
-      "id": "deepseek-v4-pro-202606",
       "object": "model",
       "created": 1782722695,
       "owned_by": "deepseek",

@@ -24,7 +24,7 @@ title: 友商产品调研
 | 信息架构 | 顶栏、文档 / API / Cookbook 分工 | `trinity-docs` 三轨；维护规范 `docs/04-工程与迁移/Trinity对外文档站-基本规范.md` |
 | 模型发现 | 列表、筛选、排行、详情 | [模型广场 · 列表](../user/models/list) · [模型排名](../user/models/rankings) · [模型详情](../user/models/model-detail-requirements) |
 | 统一 API | 路径、鉴权、流式、多模态 | [统一 API 基座](../platform/unified-api) · [多模态 API](../platform/multimodal-api) |
-| 计费展示 | 刊例、按 token / 张 / 秒 | [计量与计费](../platform/metering-billing) · 上游成本见 [上游资料索引](../upstream-references) |
+| 计费展示 | 刊例、按 token / 张 / 秒 | [计量与计费](../platform/metering-billing) · 采购成本见 [模型价格真源](../pricing-sources/) |
 | 工具接入 | Cursor、CLI、SDK 叙事 | [开发者文档](../user/developer-docs) · 对外 Cookbook · [newapi Skill 落地方案](./new-api-skill) |
 | 运营能力 | 上架、路由、供应商 | [运营后台总览](../operations/)（B2B 自建，友商多为 SaaS 无对等后台） |
 
@@ -32,7 +32,7 @@ title: 友商产品调研
 
 | 主题 | 入口 |
 |------|------|
-| 上游厂商文档与采购价 | [上游资料索引](../upstream-references) |
+| 上游厂商文档与采购价 | [模型价格真源](../pricing-sources/) · [上游资料索引](../upstream-references) |
 | 对客户能力说明 | 对外 [trinity-docs](http://127.0.0.1:5205/docs/quickstart) |
 | 模块进度与节点 | [产品总览 · 周计划](../#周计划与验收看板) |
 

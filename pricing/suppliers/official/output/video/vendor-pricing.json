@@ -6,13 +6,14 @@
   "currency": "CNY",
   "unit": "CNY per video generation (tiered)",
   "chargeUnit": "video",
-  "fetchedAt": "2026-07-01T04:03:47.116Z",
+  "fetchedAt": "2026-07-03T03:32:29.862Z",
   "seedVerifiedAt": "2026-06-28",
-  "catalogCount": 13,
-  "modelCount": 13,
-  "pricedCount": 13,
+  "catalogCount": 17,
+  "modelCount": 17,
+  "pricingTierCount": 29,
+  "pricedCount": 17,
   "liveCount": 0,
-  "seedCount": 13,
+  "seedCount": 17,
   "models": [
     {
       "modality": "video",
@@ -29,6 +30,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
@@ -85,6 +87,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
@@ -127,6 +130,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
@@ -169,6 +173,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
@@ -211,6 +216,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
@@ -253,6 +259,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
@@ -295,6 +302,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
@@ -365,6 +373,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
@@ -435,6 +444,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
@@ -505,6 +515,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
@@ -575,6 +586,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
@@ -617,6 +629,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
@@ -659,6 +672,7 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
@@ -681,6 +695,220 @@
           "tierLabel": "统一价",
           "price": "1.5-8",
           "unit": "积分/次",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-2.0",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "480p·16:9·5s·不含视频输入",
+            "price": "2.31",
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "480p·16:9·5s·含视频输入",
+            "price": "2.53~5.62",
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 2.0 · 火山方舟按个计价",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "480p·16:9·5s·不含视频输入",
+          "price": "2.31",
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "480p·16:9·5s·含视频输入",
+          "price": "2.53~5.62",
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-2.0-fast",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "480p·16:9·5s·不含视频输入",
+            "price": "1.86",
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 2.0 Fast",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "480p·16:9·5s·不含视频输入",
+          "price": "1.86",
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-2.0-mini",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "480p·16:9·5s·不含视频输入",
+            "price": "1.16",
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 2.0 Mini",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "480p·16:9·5s·不含视频输入",
+          "price": "1.16",
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-1.5-pro",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "480p·16:9·5s·有声",
+            "price": 0.8,
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "480p·16:9·5s·无声",
+            "price": 0.4,
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "720p·16:9·5s·有声",
+            "price": 1.73,
+            "unit": "元/个",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 1.5 Pro",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "480p·16:9·5s·有声",
+          "price": 0.8,
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "480p·16:9·5s·无声",
+          "price": 0.4,
+          "unit": "元/个",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "720p·16:9·5s·有声",
+          "price": 1.73,
+          "unit": "元/个",
           "note": null,
           "parseSource": "official_price_seed"
         }

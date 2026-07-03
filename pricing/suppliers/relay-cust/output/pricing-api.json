@@ -1,0 +1,2319 @@
+{
+  "supplierId": "relay-cust",
+  "brand": "中转站-cust",
+  "label": "中转站 · cust",
+  "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文",
+  "portalUrl": "https://www.aiupnode.com/pricing",
+  "vendors": null,
+  "currency": "MIXED",
+  "priceUnit": "按 official 币种/百万tokens",
+  "region": "原厂直连",
+  "sourceNote": "复制自 suppliers/official/output/text/vendor-pricing.json",
+  "mixedCurrency": true,
+  "mapComment": "Trinity modelId → 中转站-cust upstreamModelId（build 时由 official 复制）",
+  "generatedAt": "2026-07-03T03:32:35.549Z",
+  "officialFetchedAt": "2026-07-03T02:34:14.584Z",
+  "modelCount": 79,
+  "trinityMappedCount": 60,
+  "models": [
+    {
+      "modelId": "claude-opus-4-6",
+      "trinityId": "claude-opus-4-6",
+      "upstreamModelId": "claude-opus-4-6",
+      "vendor": "anthropic",
+      "vendorLabel": "CD",
+      "modelName": "claude-opus-4-6",
+      "displayName": "CD claude-opus-4-6",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 5,
+          "output": 25,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "claude-opus-4-7",
+      "trinityId": "claude-opus-4-7",
+      "upstreamModelId": "claude-opus-4-7",
+      "vendor": "anthropic",
+      "vendorLabel": "CD",
+      "modelName": "claude-opus-4-7",
+      "displayName": "CD claude-opus-4-7",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 5,
+          "output": 25,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "claude-opus-4-8",
+      "trinityId": "claude-opus-4-8",
+      "upstreamModelId": "claude-opus-4-8",
+      "vendor": "anthropic",
+      "vendorLabel": "CD",
+      "modelName": "claude-opus-4-8",
+      "displayName": "CD claude-opus-4-8",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 5,
+          "output": 25,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "claude-sonnet-4-6",
+      "trinityId": "claude-sonnet-4-6",
+      "upstreamModelId": "claude-sonnet-4-6",
+      "vendor": "anthropic",
+      "vendorLabel": "CD",
+      "modelName": "claude-sonnet-4-6",
+      "displayName": "CD claude-sonnet-4-6",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 3,
+          "output": 15,
+          "cache": 0.3,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-flash",
+      "trinityId": "qwen-flash",
+      "upstreamModelId": "qwen-flash",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen-flash",
+      "displayName": "通义 qwen-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤128k",
+          "input": 0.15,
+          "output": 1.5,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入≤256k",
+          "input": 0.6,
+          "output": 6,
+          "cache": 0.12,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 1.2,
+          "output": 12,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-max",
+      "trinityId": "qwen-max",
+      "upstreamModelId": "qwen-max",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen-max",
+      "displayName": "通义 qwen-max",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.4,
+          "output": 9.6,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus",
+      "trinityId": "qwen-plus",
+      "upstreamModelId": "qwen-plus",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen-plus",
+      "displayName": "通义 qwen-plus",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤128k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入≤256k",
+          "input": 2.4,
+          "output": 20,
+          "cache": 0.48,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 4.8,
+          "output": 48,
+          "cache": 0.96,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-turbo",
+      "trinityId": "qwen-turbo",
+      "upstreamModelId": "qwen-turbo",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen-turbo",
+      "displayName": "通义 qwen-turbo",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.3,
+          "output": 0.6,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-flash",
+      "trinityId": "qwen3.5-flash",
+      "upstreamModelId": "qwen3.5-flash",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.5-flash",
+      "displayName": "通义 qwen3.5-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤128k",
+          "input": 0.2,
+          "output": 2,
+          "cache": 0.02,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入≤256k",
+          "input": 0.8,
+          "output": 8,
+          "cache": 0.08,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 1.2,
+          "output": 12,
+          "cache": 0.12,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus",
+      "trinityId": "qwen3.5-plus",
+      "upstreamModelId": "qwen3.5-plus",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.5-plus",
+      "displayName": "通义 qwen3.5-plus",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤128k",
+          "input": 0.8,
+          "output": 4.8,
+          "cache": 0.08,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128k<输入≤256k",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 4,
+          "output": 24,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-flash",
+      "trinityId": "qwen3.6-flash",
+      "upstreamModelId": "qwen3.6-flash",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.6-flash",
+      "displayName": "通义 qwen3.6-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤256k",
+          "input": 1.2,
+          "output": 7.2,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 4.8,
+          "output": 28.8,
+          "cache": 0.96,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-plus",
+      "trinityId": "qwen3.6-plus",
+      "upstreamModelId": "qwen3.6-plus",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.6-plus",
+      "displayName": "通义 qwen3.6-plus",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤256k",
+          "input": 2,
+          "output": 12,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 8,
+          "output": 48,
+          "cache": 1.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-max",
+      "trinityId": "qwen3.7-max",
+      "upstreamModelId": "qwen3.7-max",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.7-max",
+      "displayName": "通义 qwen3.7-max",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 12,
+          "output": 36,
+          "cache": 2.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-plus",
+      "trinityId": "qwen3.7-plus",
+      "upstreamModelId": "qwen3.7-plus",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "modelName": "qwen3.7-plus",
+      "displayName": "通义 qwen3.7-plus",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤256k",
+          "input": 2,
+          "output": 8,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "256k<输入≤1M",
+          "input": 6,
+          "output": 24,
+          "cache": 1.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v3.2",
+      "trinityId": "deepseek-v3.2",
+      "upstreamModelId": "deepseek-v3.2",
+      "vendor": "deepseek",
+      "vendorLabel": "DeepSeek",
+      "modelName": "deepseek-v3.2",
+      "displayName": "DeepSeek deepseek-v3.2",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 3,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-flash",
+      "trinityId": "deepseek-v4-flash",
+      "upstreamModelId": "deepseek-v4-flash",
+      "vendor": "deepseek",
+      "vendorLabel": "DeepSeek",
+      "modelName": "deepseek-v4-flash",
+      "displayName": "DeepSeek deepseek-v4-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1,
+          "output": 2,
+          "cache": 0.02,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-pro",
+      "trinityId": "deepseek-v4-pro",
+      "upstreamModelId": "deepseek-v4-pro",
+      "vendor": "deepseek",
+      "vendorLabel": "DeepSeek",
+      "modelName": "deepseek-v4-pro",
+      "displayName": "DeepSeek deepseek-v4-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 3,
+          "output": 6,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash",
+      "trinityId": "gemini-2.5-flash",
+      "upstreamModelId": "gemini-2.5-flash",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash",
+      "displayName": "Gemini gemini-2.5-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.3,
+          "output": 2.5,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1,
+          "output": 2.5,
+          "cache": 0.1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite",
+      "trinityId": "gemini-2.5-flash-lite",
+      "upstreamModelId": "gemini-2.5-flash-lite",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash-lite",
+      "displayName": "Gemini gemini-2.5-flash-lite",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.1,
+          "output": 0.4,
+          "cache": 0.01,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite-preview",
+      "trinityId": "gemini-2.5-flash-lite-preview",
+      "upstreamModelId": "gemini-2.5-flash-lite-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash-lite-preview",
+      "displayName": "Gemini gemini-2.5-flash-lite-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.1,
+          "output": 0.4,
+          "cache": 0.01,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-pro",
+      "trinityId": "gemini-2.5-pro",
+      "upstreamModelId": "gemini-2.5-pro",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-pro",
+      "displayName": "Gemini gemini-2.5-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=20万个token",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>20万个token",
+          "input": 2.5,
+          "output": 15,
+          "cache": 0.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-flash-preview",
+      "trinityId": "gemini-3-flash-preview",
+      "upstreamModelId": "gemini-3-flash-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3-flash-preview",
+      "displayName": "Gemini gemini-3-flash-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.5,
+          "output": 3,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1,
+          "output": 3,
+          "cache": 0.1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-pro-preview",
+      "trinityId": null,
+      "upstreamModelId": "gemini-3-pro-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3-pro-preview",
+      "displayName": "Gemini gemini-3-pro-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite",
+      "trinityId": "gemini-3.1-flash-lite",
+      "upstreamModelId": "gemini-3.1-flash-lite",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-flash-lite",
+      "displayName": "Gemini gemini-3.1-flash-lite",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.25,
+          "output": 1.5,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 0.5,
+          "output": 1.5,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite-preview",
+      "trinityId": null,
+      "upstreamModelId": "gemini-3.1-flash-lite-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-flash-lite-preview",
+      "displayName": "Gemini gemini-3.1-flash-lite-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.25,
+          "output": 1.5,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 0.5,
+          "output": 1.5,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-pro-preview",
+      "trinityId": "gemini-3.1-pro-preview",
+      "upstreamModelId": "gemini-3.1-pro-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-pro-preview",
+      "displayName": "Gemini gemini-3.1-pro-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=20万个token",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>20万个token",
+          "input": 4,
+          "output": 18,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash",
+      "trinityId": "gemini-3.5-flash",
+      "upstreamModelId": "gemini-3.5-flash",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.5-flash",
+      "displayName": "Gemini gemini-3.5-flash",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 1.5,
+          "output": 9,
+          "cache": 0.15,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1.5,
+          "output": 9,
+          "cache": 0.15,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.5",
+      "trinityId": "kimi-k2.5",
+      "upstreamModelId": "kimi-k2.5",
+      "vendor": "kimi",
+      "vendorLabel": "Kimi",
+      "modelName": "kimi-k2.5",
+      "displayName": "Kimi kimi-k2.5",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 4,
+          "output": 21,
+          "cache": 0.7,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.6",
+      "trinityId": "kimi-k2.6",
+      "upstreamModelId": "kimi-k2.6",
+      "vendor": "kimi",
+      "vendorLabel": "Kimi",
+      "modelName": "kimi-k2.6",
+      "displayName": "Kimi kimi-k2.6",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 6.5,
+          "output": 27,
+          "cache": 1.1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.7-code",
+      "trinityId": "kimi-k2.7-code",
+      "upstreamModelId": "kimi-k2.7-code",
+      "vendor": "kimi",
+      "vendorLabel": "Kimi",
+      "modelName": "kimi-k2.7-code",
+      "displayName": "Kimi kimi-k2.7-code",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 6.5,
+          "output": 27,
+          "cache": 1.3,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.7-code-highspeed",
+      "trinityId": "kimi-k2.7-code-highspeed",
+      "upstreamModelId": "kimi-k2.7-code-highspeed",
+      "vendor": "kimi",
+      "vendorLabel": "Kimi",
+      "modelName": "kimi-k2.7-code-highspeed",
+      "displayName": "Kimi kimi-k2.7-code-highspeed",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 13,
+          "output": 54,
+          "cache": 2.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m2.5",
+      "trinityId": "minimax-m2.5",
+      "upstreamModelId": "minimax-m2.5",
+      "vendor": "minimax",
+      "vendorLabel": "MiniMax",
+      "modelName": "minimax-m2.5",
+      "displayName": "MiniMax minimax-m2.5",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.1,
+          "output": 8.4,
+          "cache": 0.21,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m2.7",
+      "trinityId": "minimax-m2.7",
+      "upstreamModelId": "minimax-m2.7",
+      "vendor": "minimax",
+      "vendorLabel": "MiniMax",
+      "modelName": "minimax-m2.7",
+      "displayName": "MiniMax minimax-m2.7",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.1,
+          "output": 8.4,
+          "cache": 0.42,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "minimax-m3",
+      "trinityId": "minimax-m3",
+      "upstreamModelId": "minimax-m3",
+      "vendor": "minimax",
+      "vendorLabel": "MiniMax",
+      "modelName": "minimax-m3",
+      "displayName": "MiniMax minimax-m3",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤512k",
+          "input": 2.1,
+          "output": 8.4,
+          "cache": 0.42,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>512k",
+          "input": 4.2,
+          "output": 16.8,
+          "cache": 0.84,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "chat-latest",
+      "displayName": "GPT chat-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-4.1",
+      "trinityId": "gpt-4.1",
+      "upstreamModelId": "gpt-4.1",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-4.1",
+      "displayName": "GPT gpt-4.1",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 8,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-4o",
+      "trinityId": "gpt-4o",
+      "upstreamModelId": "gpt-4o",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-4o",
+      "displayName": "GPT gpt-4o",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.5,
+          "output": 10,
+          "cache": 1.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5",
+      "trinityId": "gpt-5",
+      "upstreamModelId": "gpt-5",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5",
+      "displayName": "GPT gpt-5",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-chat-latest",
+      "displayName": "GPT gpt-5-chat-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-mini",
+      "trinityId": "gpt-5-mini",
+      "upstreamModelId": "gpt-5-mini",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-mini",
+      "displayName": "GPT gpt-5-mini",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.25,
+          "output": 2,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-nano",
+      "trinityId": "gpt-5-nano",
+      "upstreamModelId": "gpt-5-nano",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-nano",
+      "displayName": "GPT gpt-5-nano",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.05,
+          "output": 0.4,
+          "cache": 0.005,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1",
+      "trinityId": "gpt-5.1",
+      "upstreamModelId": "gpt-5.1",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.1",
+      "displayName": "GPT gpt-5.1",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1-chat-latest",
+      "trinityId": "gpt-5.1-chat",
+      "upstreamModelId": "gpt-5.1-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.1-chat-latest",
+      "displayName": "GPT gpt-5.1-chat-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.2",
+      "trinityId": "gpt-5.2",
+      "upstreamModelId": "gpt-5.2",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.2",
+      "displayName": "GPT gpt-5.2",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.2-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5.2-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.2-chat-latest",
+      "displayName": "GPT gpt-5.2-chat-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5.3-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.3-chat-latest",
+      "displayName": "GPT gpt-5.3-chat-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-codex",
+      "trinityId": "gpt-5.3-codex",
+      "upstreamModelId": "gpt-5.3-codex",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.3-codex",
+      "displayName": "GPT gpt-5.3-codex",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4",
+      "trinityId": "gpt-5.4",
+      "upstreamModelId": "gpt-5.4",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4",
+      "displayName": "GPT gpt-5.4",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 2.5,
+          "output": 15,
+          "cache": 0.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 5,
+          "output": 22.5,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-mini",
+      "trinityId": "gpt-5.4-mini",
+      "upstreamModelId": "gpt-5.4-mini",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-mini",
+      "displayName": "GPT gpt-5.4-mini",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.75,
+          "output": 4.5,
+          "cache": 0.075,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-nano",
+      "trinityId": "gpt-5.4-nano",
+      "upstreamModelId": "gpt-5.4-nano",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-nano",
+      "displayName": "GPT gpt-5.4-nano",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.2,
+          "output": 1.25,
+          "cache": 0.02,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-pro",
+      "trinityId": "gpt-5.4-pro",
+      "upstreamModelId": "gpt-5.4-pro",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-pro",
+      "displayName": "GPT gpt-5.4-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 30,
+          "output": 180,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 60,
+          "output": 270,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.5",
+      "trinityId": "gpt-5.5",
+      "upstreamModelId": "gpt-5.5",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.5",
+      "displayName": "GPT gpt-5.5",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hunyuan-role-latest",
+      "trinityId": "hunyuan-role-latest",
+      "upstreamModelId": "hunyuan-role-latest",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hunyuan-role-latest",
+      "displayName": "混元 hunyuan-role-latest",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.4,
+          "output": 9.6,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-lite",
+      "trinityId": "hy-mt2-lite",
+      "upstreamModelId": "hy-mt2-lite",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy-mt2-lite",
+      "displayName": "混元 hy-mt2-lite",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.3,
+          "output": 1.2,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-plus",
+      "trinityId": "hy-mt2-plus",
+      "upstreamModelId": "hy-mt2-plus",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy-mt2-plus",
+      "displayName": "混元 hy-mt2-plus",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.5,
+          "output": 2,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy-mt2-pro",
+      "trinityId": "hy-mt2-pro",
+      "upstreamModelId": "hy-mt2-pro",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy-mt2-pro",
+      "displayName": "混元 hy-mt2-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.5,
+          "output": 2,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy-role",
+      "trinityId": "hy-role",
+      "upstreamModelId": "hy-role",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy-role",
+      "displayName": "混元 hy-role",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.4,
+          "output": 9.6,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy-vision-2.0-instruct",
+      "trinityId": "hy-vision-2.0-instruct",
+      "upstreamModelId": "hy-vision-2.0-instruct",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy-vision-2.0-instruct",
+      "displayName": "混元 hy-vision-2.0-instruct",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 7.5,
+          "output": 17.5,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "hy3-preview",
+      "trinityId": "hy3-preview",
+      "upstreamModelId": "hy3-preview",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "modelName": "hy3-preview",
+      "displayName": "混元 hy3-preview",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<16k",
+          "input": 1.2,
+          "output": 4,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "16k≤输入<32k",
+          "input": 1.6,
+          "output": 6.4,
+          "cache": 0.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≥32k",
+          "input": 2,
+          "output": 8,
+          "cache": 0.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-lite-32k",
+      "trinityId": null,
+      "upstreamModelId": "doubao-lite-32k",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-lite-32k",
+      "displayName": "豆包 doubao-lite-32k",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.3,
+          "output": 0.6,
+          "cache": 0.06,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-pro-32k",
+      "trinityId": null,
+      "upstreamModelId": "doubao-pro-32k",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-pro-32k",
+      "displayName": "豆包 doubao-pro-32k",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-1-6",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1-6",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-1-6",
+      "displayName": "豆包 doubao-seed-1-6",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 1.6,
+          "output": 4,
+          "cache": 0.32,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-1-8",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1-8",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-1-8",
+      "displayName": "豆包 doubao-seed-1-8",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 1.6,
+          "output": 4,
+          "cache": 0.32,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-2-0-lite",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2-0-lite",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-2-0-lite",
+      "displayName": "豆包 doubao-seed-2-0-lite",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.6,
+          "output": 3.6,
+          "cache": 0.12,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 1.2,
+          "output": 7.2,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-2-0-mini",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2-0-mini",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-2-0-mini",
+      "displayName": "豆包 doubao-seed-2-0-mini",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.2,
+          "output": 2,
+          "cache": 0.04,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 0.4,
+          "output": 4,
+          "cache": 0.08,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-2-0-pro",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2-0-pro",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-2-0-pro",
+      "displayName": "豆包 doubao-seed-2-0-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 3.2,
+          "output": 16,
+          "cache": 0.64,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 6.4,
+          "output": 32,
+          "cache": 1.28,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-2-1-pro",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2-1-pro",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-2-1-pro",
+      "displayName": "豆包 doubao-seed-2-1-pro",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 6,
+          "output": 30,
+          "cache": 1.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "doubao-seed-2-1-turbo",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2-1-turbo",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "modelName": "doubao-seed-2-1-turbo",
+      "displayName": "豆包 doubao-seed-2-1-turbo",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 3,
+          "output": 15,
+          "cache": 0.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "grok-4-1-fast-non-reasoning",
+      "trinityId": null,
+      "upstreamModelId": "grok-4-1-fast-non-reasoning",
+      "vendor": "xai",
+      "vendorLabel": "GK",
+      "modelName": "grok-4-1-fast-non-reasoning",
+      "displayName": "GK grok-4-1-fast-non-reasoning",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 2.5,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "grok-4-1-fast-reasoning",
+      "trinityId": null,
+      "upstreamModelId": "grok-4-1-fast-reasoning",
+      "vendor": "xai",
+      "vendorLabel": "GK",
+      "modelName": "grok-4-1-fast-reasoning",
+      "displayName": "GK grok-4-1-fast-reasoning",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 2.5,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "grok-4.20-0309-non-reasoning",
+      "trinityId": null,
+      "upstreamModelId": "grok-4.20-0309-non-reasoning",
+      "vendor": "xai",
+      "vendorLabel": "GK",
+      "modelName": "grok-4.20-0309-non-reasoning",
+      "displayName": "GK grok-4.20-0309-non-reasoning",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 2.5,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "grok-4.20-0309-reasoning",
+      "trinityId": null,
+      "upstreamModelId": "grok-4.20-0309-reasoning",
+      "vendor": "xai",
+      "vendorLabel": "GK",
+      "modelName": "grok-4.20-0309-reasoning",
+      "displayName": "GK grok-4.20-0309-reasoning",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 2.5,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "grok-4.3",
+      "trinityId": "grok-4.3",
+      "upstreamModelId": "grok-4.3",
+      "vendor": "xai",
+      "vendorLabel": "GK",
+      "modelName": "grok-4.3",
+      "displayName": "GK grok-4.3",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 2.5,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-4.7",
+      "trinityId": "glm-4-7-251222",
+      "upstreamModelId": "glm-4.7",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-4.7",
+      "displayName": "智谱 glm-4.7",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k，输出≤0.2k",
+          "input": 2,
+          "output": 8,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k，输出>0.2k",
+          "input": 3,
+          "output": 14,
+          "cache": 0.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>32k",
+          "input": 4,
+          "output": 16,
+          "cache": 0.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5",
+      "trinityId": "glm-5",
+      "upstreamModelId": "glm-5",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-5",
+      "displayName": "智谱 glm-5",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<32k",
+          "input": 4,
+          "output": 18,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≥32k",
+          "input": 6,
+          "output": 22,
+          "cache": 1.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5-turbo",
+      "trinityId": "glm-5-turbo",
+      "upstreamModelId": "glm-5-turbo",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-5-turbo",
+      "displayName": "智谱 glm-5-turbo",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<32k",
+          "input": 5,
+          "output": 22,
+          "cache": 1.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≥32k",
+          "input": 7,
+          "output": 26,
+          "cache": 1.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.1",
+      "trinityId": "glm-5.1",
+      "upstreamModelId": "glm-5.1",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-5.1",
+      "displayName": "智谱 glm-5.1",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<32k",
+          "input": 6,
+          "output": 24,
+          "cache": 1.3,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≥32k",
+          "input": 8,
+          "output": 28,
+          "cache": 2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.2",
+      "trinityId": "glm-5.2",
+      "upstreamModelId": "glm-5.2",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-5.2",
+      "displayName": "智谱 glm-5.2",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 8,
+          "output": 28,
+          "cache": 2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5v-turbo",
+      "trinityId": "glm-5v-turbo",
+      "upstreamModelId": "glm-5v-turbo",
+      "vendor": "zhipu",
+      "vendorLabel": "智谱",
+      "modelName": "glm-5v-turbo",
+      "displayName": "智谱 glm-5v-turbo",
+      "brand": "中转站-cust",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<32k",
+          "input": 5,
+          "output": 22,
+          "cache": 1.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≥32k",
+          "input": 7,
+          "output": 26,
+          "cache": 1.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    }
+  ]
+}

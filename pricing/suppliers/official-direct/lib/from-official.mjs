@@ -1,8 +1,6 @@
 /**
- * 网聚云联 · 云门户 — 从 official 生文价目筛选 GPT / Gemini
+ * 原厂直连渠道 — 从 official 生文价目筛选/复制（共享逻辑）
  */
-
-import { SUPPLIER_META } from "../data/config.mjs";
 
 function tierFromOfficial(tier) {
   const input = tier.input ?? null;
@@ -34,21 +32,29 @@ export function buildTrinityVendorIndex(officialTrinityMap) {
 }
 
 /**
- * @param {object[]} officialModels vendor-pricing.json models[]
+ * @param {object[]} officialModels
  * @param {Record<string, object>} officialTrinityMap
+ * @param {import('../channels/types.mjs').OfficialDirectMeta} meta
  */
-export function normalizeWangjuFromOfficial(officialModels, officialTrinityMap) {
+export function normalizeFromOfficial(officialModels, officialTrinityMap, meta) {
   const vendorIndex = buildTrinityVendorIndex(officialTrinityMap);
-  const allow = new Set(SUPPLIER_META.vendors);
+  const allow = meta.vendors;
+  const allowSet = Array.isArray(allow) && allow.length ? new Set(allow) : null;
   const models = [];
 
   for (const m of officialModels ?? []) {
-    if (!allow.has(m.vendor)) continue;
+    if (allowSet && !allowSet.has(m.vendor)) continue;
     const vid = m.vendorModelId?.toLowerCase();
     if (!vid) continue;
 
     const tiers = (m.tiers ?? []).map(tierFromOfficial).filter(Boolean);
     if (!tiers.length) continue;
+
+    const currency = meta.mixedCurrency
+      ? (m.currency ?? "USD")
+      : (m.currency ?? (meta.currency === "MIXED" ? "USD" : meta.currency) ?? "USD");
+    const priceUnit =
+      currency === "CNY" ? "元/百万tokens" : "美元/百万tokens";
 
     models.push({
       modelId: m.vendorModelId,
@@ -58,23 +64,24 @@ export function normalizeWangjuFromOfficial(officialModels, officialTrinityMap) 
       vendorLabel: m.vendorLabel,
       modelName: m.vendorModelId,
       displayName: `${m.vendorLabel ?? m.vendor} ${m.vendorModelId}`,
-      brand: SUPPLIER_META.brand,
+      brand: meta.brand,
       modelType: "Text",
-      currency: m.currency ?? SUPPLIER_META.currency,
-      priceUnit: SUPPLIER_META.priceUnit,
-      region: SUPPLIER_META.region,
+      currency,
+      priceUnit,
+      region: meta.region ?? "原厂直连",
       tiers,
     });
   }
 
-  return models.sort((a, b) =>
-    String(a.vendor).localeCompare(String(b.vendor)) ||
-    String(a.modelId).localeCompare(String(b.modelId)),
+  return models.sort(
+    (a, b) =>
+      String(a.vendor).localeCompare(String(b.vendor)) ||
+      String(a.modelId).localeCompare(String(b.modelId)),
   );
 }
 
-/** @param {ReturnType<typeof normalizeWangjuFromOfficial>} models */
-export function indexWangjuByTrinity(models) {
+/** @param {ReturnType<typeof normalizeFromOfficial>} models */
+export function indexByTrinity(models) {
   const byTrinity = new Map();
   for (const m of models) {
     if (!m.trinityId) continue;

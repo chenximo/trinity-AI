@@ -1,1440 +1,556 @@
 {
-  "fetchedAt": "2026-07-02T09:00:29.420Z",
-  "modality": "text",
+  "fetchedAt": "2026-07-03T03:35:16.099Z",
+  "modality": "video",
   "fxCnyPerUsd": 7.25,
-  "modelCount": 59,
+  "modelCount": 25,
   "models": {
-    "claude-opus-4-6": {
-      "model": "claude-opus-4-6",
-      "displayName": "Claude Opus 4.6",
-      "modality": "text",
-      "updatedAt": "2026-06-30T02:49:45.166641Z",
-      "tierLabel": "标准计价",
-      "input": 5,
-      "output": 25,
-      "cache": 0.5,
-      "cacheCreation": 6.25,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 5,
-          "output": 25,
-          "cache": 0.5,
-          "cacheCreation": 6.25,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "claude-opus-4-7": {
-      "model": "claude-opus-4-7",
-      "displayName": "Claude Opus 4.7",
-      "modality": "text",
-      "updatedAt": "2026-06-30T02:49:45.166641Z",
-      "tierLabel": "标准计价",
-      "input": 5,
-      "output": 25,
-      "cache": 0.5,
-      "cacheCreation": 6.25,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 5,
-          "output": 25,
-          "cache": 0.5,
-          "cacheCreation": 6.25,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "claude-opus-4-8": {
-      "model": "claude-opus-4-8",
-      "displayName": "Claude Opus 4.8",
-      "modality": "text",
-      "updatedAt": "2026-06-30T02:49:45.166641Z",
-      "tierLabel": "标准计价",
-      "input": 5,
-      "output": 25,
-      "cache": 0.5,
-      "cacheCreation": 6.25,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 5,
-          "output": 25,
-          "cache": 0.5,
-          "cacheCreation": 6.25,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "claude-sonnet-4-6": {
-      "model": "claude-sonnet-4-6",
-      "displayName": "Claude Sonnet 4.6",
-      "modality": "text",
-      "updatedAt": "2026-06-30T02:49:45.166641Z",
-      "tierLabel": "标准计价",
-      "input": 3,
-      "output": 15,
-      "cache": 0.3,
-      "cacheCreation": 3.75,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 3,
-          "output": 15,
-          "cache": 0.3,
-          "cacheCreation": 3.75,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "deepseek-v3.2": {
-      "model": "deepseek-v3.2",
-      "displayName": "DeepSeek V3.2",
-      "modality": "text",
-      "updatedAt": "2026-06-07T16:00:00Z",
-      "tierLabel": "标准计价",
-      "input": 0.307692,
-      "output": 0.461538,
-      "cache": 0.061538,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.307692,
-          "output": 0.461538,
-          "cache": 0.061538,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "deepseek-v4-flash": {
-      "model": "deepseek-v4-flash",
-      "displayName": "DeepSeek V4 Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-07T16:00:00Z",
-      "tierLabel": "标准计价",
-      "input": 0.153846,
-      "output": 0.307692,
-      "cache": 0.030769,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.153846,
-          "output": 0.307692,
-          "cache": 0.030769,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "deepseek-v4-flash-202605": {
-      "model": "deepseek-v4-flash-202605",
-      "displayName": "DeepSeek V4 Flash Direct",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:14:38.393163Z",
-      "tierLabel": "标准计价",
-      "input": 0.153846,
-      "output": 0.307692,
-      "cache": 0.003077,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.153846,
-          "output": 0.307692,
-          "cache": 0.003077,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "deepseek-v4-pro": {
-      "model": "deepseek-v4-pro",
-      "displayName": "DeepSeek V4 Pro",
-      "modality": "text",
-      "updatedAt": "2026-06-07T16:00:00Z",
-      "tierLabel": "标准计价",
-      "input": 1.846154,
-      "output": 3.692308,
-      "cache": 0.153846,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.846154,
-          "output": 3.692308,
-          "cache": 0.153846,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "deepseek-v4-pro-202606": {
-      "model": "deepseek-v4-pro-202606",
-      "displayName": "DeepSeek V4 Pro Direct",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:15:45.387188Z",
-      "tierLabel": "标准计价",
-      "input": 0.461538,
-      "output": 0.923077,
-      "cache": 0.003846,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.461538,
-          "output": 0.923077,
-          "cache": 0.003846,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-2.5-flash": {
-      "model": "gemini-2.5-flash",
-      "displayName": "Gemini 2.5 Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:01:47.956986Z",
-      "tierLabel": "标准计价",
-      "input": 0.3,
-      "output": 2.5,
-      "cache": 0.03,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.3,
-          "output": 2.5,
-          "cache": 0.03,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        },
-        {
-          "tierLabel": "输入:音频",
-          "input": 0.3,
-          "output": 2.5,
-          "cache": 0.03,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-2.5-flash-lite": {
-      "model": "gemini-2.5-flash-lite",
-      "displayName": "Gemini 2.5 Flash Lite",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:02:21.006245Z",
-      "tierLabel": "标准计价",
-      "input": 0.1,
-      "output": 0.4,
-      "cache": 0.01,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.1,
-          "output": 0.4,
-          "cache": 0.01,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-2.5-flash-lite-preview": {
-      "model": "gemini-2.5-flash-lite-preview",
-      "displayName": "Gemini 2.5 Flash Lite Preview",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:02:51.006592Z",
-      "tierLabel": "标准计价",
-      "input": 0.1,
-      "output": 0.4,
-      "cache": 0.01,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.1,
-          "output": 0.4,
-          "cache": 0.01,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-2.5-pro": {
-      "model": "gemini-2.5-pro",
-      "displayName": "Gemini 2.5 Pro",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:04:06.943460Z",
-      "tierLabel": "≤ 200K",
-      "input": 1.25,
-      "output": 10,
-      "cache": 0.125,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 200K",
-          "input": 1.25,
-          "output": 10,
-          "cache": 0.125,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 200K",
-          "input": 2.5,
-          "output": 15,
-          "cache": 0.25,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "gemini-3-flash-preview": {
-      "model": "gemini-3-flash-preview",
-      "displayName": "Gemini 3 Flash Preview",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:06:33.435323Z",
-      "tierLabel": "标准计价",
-      "input": 0.5,
-      "output": 3,
-      "cache": 0.05,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.5,
-          "output": 3,
-          "cache": 0.05,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        },
-        {
-          "tierLabel": "输入:音频",
-          "input": 0.5,
-          "output": 3,
-          "cache": 0.05,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-3.1-flash-lite": {
-      "model": "gemini-3.1-flash-lite",
-      "displayName": "Gemini 3.1 Flash Lite",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:04:35.177766Z",
-      "tierLabel": "标准计价",
-      "input": 0.25,
-      "output": 1.5,
-      "cache": 0.025,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.25,
-          "output": 1.5,
-          "cache": 0.025,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        },
-        {
-          "tierLabel": "输入:音频",
-          "input": 0.25,
-          "output": 1.5,
-          "cache": 0.025,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-3.1-flash-lite-preview": {
-      "model": "gemini-3.1-flash-lite-preview",
-      "displayName": "Gemini 3.1 Flash Lite Preview",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:05:07.137831Z",
-      "tierLabel": "标准计价",
-      "input": 0.25,
-      "output": 1.5,
-      "cache": 0.025,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.25,
-          "output": 1.5,
-          "cache": 0.025,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        },
-        {
-          "tierLabel": "输入:音频",
-          "input": 0.25,
-          "output": 1.5,
-          "cache": 0.025,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gemini-3.1-pro-preview": {
-      "model": "gemini-3.1-pro-preview",
-      "displayName": "Gemini 3.1 Pro Preview",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:05:35.433950Z",
-      "tierLabel": "≤ 200K",
-      "input": 2,
-      "output": 12,
-      "cache": 0.2,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 200K",
-          "input": 2,
-          "output": 12,
-          "cache": 0.2,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 200K",
-          "input": 4,
-          "output": 18,
-          "cache": 0.4,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "gemini-3.5-flash": {
-      "model": "gemini-3.5-flash",
-      "displayName": "Gemini 3.5 Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-24T12:06:05.379684Z",
-      "tierLabel": "标准计价",
-      "input": 1.5,
-      "output": 9,
-      "cache": 0.15,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.5,
-          "output": 9,
-          "cache": 0.15,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        },
-        {
-          "tierLabel": "输入:音频",
-          "input": 1.5,
-          "output": 9,
-          "cache": 0.15,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "glm-5": {
-      "model": "glm-5",
-      "displayName": "GLM 5",
-      "modality": "text",
-      "updatedAt": "2026-06-12T08:53:43.996754Z",
-      "tierLabel": "≤ 32.77K",
-      "input": 0.615385,
-      "output": 2.769231,
-      "cache": 0.153846,
-      "cacheCreation": null,
-      "pricingMode": "usage_token_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 32.77K",
-          "input": 0.615385,
-          "output": 2.769231,
-          "cache": 0.153846,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        },
-        {
-          "tierLabel": "> 32.77K",
-          "input": 0.923077,
-          "output": 3.384615,
-          "cache": 0.230769,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        }
-      ]
-    },
-    "glm-5-turbo": {
-      "model": "glm-5-turbo",
-      "displayName": "GLM 5 Turbo",
-      "modality": "text",
-      "updatedAt": "2026-06-12T08:48:58.774116Z",
-      "tierLabel": "≤ 32.77K",
-      "input": 0.769231,
-      "output": 3.384615,
-      "cache": 0.184615,
-      "cacheCreation": null,
-      "pricingMode": "usage_token_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 32.77K",
-          "input": 0.769231,
-          "output": 3.384615,
-          "cache": 0.184615,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        },
-        {
-          "tierLabel": "> 32.77K",
-          "input": 1.076923,
-          "output": 4,
-          "cache": 0.276923,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        }
-      ]
-    },
-    "glm-5.1": {
-      "model": "glm-5.1",
-      "displayName": "GLM-5.1",
-      "modality": "text",
-      "updatedAt": "2026-06-12T08:13:54.925843Z",
-      "tierLabel": "≤ 32.77K",
-      "input": 0.923077,
-      "output": 3.692308,
-      "cache": 0.2,
-      "cacheCreation": null,
-      "pricingMode": "usage_token_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 32.77K",
-          "input": 0.923077,
-          "output": 3.692308,
-          "cache": 0.2,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        },
-        {
-          "tierLabel": "> 32.77K",
-          "input": 1.230769,
-          "output": 4.307692,
-          "cache": 0.307692,
-          "cacheCreation": null,
-          "pricingMode": "usage_token_range"
-        }
-      ]
-    },
-    "glm-5.2": {
-      "model": "glm-5.2",
-      "displayName": "GLM-5.2",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:26:02.043688Z",
-      "tierLabel": "标准计价",
-      "input": 1.230769,
-      "output": 4.307692,
-      "cache": 0.307692,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.230769,
-          "output": 4.307692,
-          "cache": 0.307692,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "glm-5v-turbo": {
-      "model": "glm-5v-turbo",
-      "displayName": "GLM-5V Turbo",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:19:07.077199Z",
-      "tierLabel": "≤ 32.77K",
-      "input": 0.769231,
-      "output": 3.384615,
-      "cache": 0.184615,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 32.77K",
-          "input": 0.769231,
-          "output": 3.384615,
-          "cache": 0.184615,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 32.77K",
-          "input": 1.076923,
-          "output": 4,
-          "cache": 0.276923,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "gpt-4.1": {
-      "model": "gpt-4.1",
-      "displayName": "GPT-4.1",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:27:42.085190Z",
-      "tierLabel": "标准计价",
-      "input": 2,
-      "output": 8,
-      "cache": 0.5,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 2,
-          "output": 8,
-          "cache": 0.5,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-4o": {
-      "model": "gpt-4o",
-      "displayName": "GPT-4o",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:27:53.026386Z",
-      "tierLabel": "标准计价",
-      "input": 2.5,
-      "output": 10,
-      "cache": 1.25,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 2.5,
-          "output": 10,
-          "cache": 1.25,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5": {
-      "model": "gpt-5",
-      "displayName": "GPT-5",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:28:08.288870Z",
-      "tierLabel": "标准计价",
-      "input": 1.25,
-      "output": 10,
-      "cache": 0.125,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.25,
-          "output": 10,
-          "cache": 0.125,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5-nano": {
-      "model": "gpt-5-nano",
-      "displayName": "GPT-5 Nano",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:28:20.568340Z",
-      "tierLabel": "标准计价",
-      "input": 0.05,
-      "output": 0.4,
-      "cache": 0.005,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.05,
-          "output": 0.4,
-          "cache": 0.005,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.1": {
-      "model": "gpt-5.1",
-      "displayName": "GPT-5.1",
-      "modality": "text",
-      "updatedAt": "2026-06-05T07:29:07.719598Z",
-      "tierLabel": "标准计价",
-      "input": 1.25,
-      "output": 10,
-      "cache": 0.125,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.25,
-          "output": 10,
-          "cache": 0.125,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.1-chat": {
-      "model": "gpt-5.1-chat",
-      "displayName": "GPT-5.1 Chat",
-      "modality": "text",
-      "updatedAt": "2026-06-05T07:29:40.076058Z",
-      "tierLabel": "标准计价",
-      "input": 1.25,
-      "output": 10,
-      "cache": 0.125,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.25,
-          "output": 10,
-          "cache": 0.125,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.2": {
-      "model": "gpt-5.2",
-      "displayName": "GPT-5.2",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:28:35.059418Z",
-      "tierLabel": "标准计价",
-      "input": 1.75,
-      "output": 14,
-      "cache": 0.175,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.75,
-          "output": 14,
-          "cache": 0.175,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.3-codex": {
-      "model": "gpt-5.3-codex",
-      "displayName": "GPT-5.3 Codex",
-      "modality": "text",
-      "updatedAt": "2026-07-01T09:09:00.433394Z",
-      "tierLabel": "标准计价",
-      "input": 1.75,
-      "output": 14,
-      "cache": 0.175,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.75,
-          "output": 14,
-          "cache": 0.175,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.4": {
-      "model": "gpt-5.4",
-      "displayName": "GPT-5.4",
-      "modality": "text",
-      "updatedAt": "2026-06-24T01:28:46.893317Z",
-      "tierLabel": "≤ 272K",
-      "input": 2.5,
-      "output": 15,
-      "cache": 0.25,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 272K",
-          "input": 2.5,
-          "output": 15,
-          "cache": 0.25,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 272K",
-          "input": 5,
-          "output": 22.5,
-          "cache": 0.5,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "gpt-5.4-mini": {
-      "model": "gpt-5.4-mini",
-      "displayName": "GPT-5.4 Mini",
-      "modality": "text",
-      "updatedAt": "2026-06-05T07:23:27.994093Z",
-      "tierLabel": "标准计价",
-      "input": 0.75,
-      "output": 4.5,
-      "cache": 0.075,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.75,
-          "output": 4.5,
-          "cache": 0.075,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "gpt-5.4-pro": {
-      "model": "gpt-5.4-pro",
-      "displayName": "GPT-5.4 Pro",
-      "modality": "text",
-      "updatedAt": "2026-06-05T07:25:13.023288Z",
-      "tierLabel": "≤ 272K",
-      "input": 30,
-      "output": 180,
+    "gv-3.1": {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "context_length_range",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "≤ 272K",
-          "input": 30,
-          "output": 180,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 272K",
-          "input": 60,
-          "output": 270,
-          "cache": null,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "gpt-5.5": {
-      "model": "gpt-5.5",
-      "displayName": "GPT-5.5",
-      "modality": "text",
-      "updatedAt": "2026-06-05T07:22:08.196614Z",
-      "tierLabel": "≤ 272K",
-      "input": 5,
-      "output": 30,
-      "cache": 0.5,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 272K",
-          "input": 5,
-          "output": 30,
-          "cache": 0.5,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 272K",
-          "input": 10,
-          "output": 45,
-          "cache": 1,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "hunyuan-role-latest": {
-      "model": "hunyuan-role-latest",
-      "displayName": "Hy-Role Latest",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:19:57.283546Z",
-      "tierLabel": "标准计价",
-      "input": 0.369231,
-      "output": 1.476923,
+    "gv-3.1-fast": {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.369231,
-          "output": 1.476923,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy-mt2-lite": {
-      "model": "hy-mt2-lite",
-      "displayName": "Hy-MT2 Lite",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:21:50.539882Z",
-      "tierLabel": "标准计价",
-      "input": 0.046154,
-      "output": 0.184615,
+    "gv-3.1-litenew": {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.046154,
-          "output": 0.184615,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy-mt2-plus": {
-      "model": "hy-mt2-plus",
-      "displayName": "Hy-MT2 Plus",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:22:24.224837Z",
-      "tierLabel": "标准计价",
-      "input": 0.076923,
-      "output": 0.307692,
+    "h2new-1": {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.076923,
-          "output": 0.307692,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy-mt2-pro": {
-      "model": "hy-mt2-pro",
-      "displayName": "Hy-MT2 Pro",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:22:54.202173Z",
-      "tierLabel": "标准计价",
-      "input": 0.076923,
-      "output": 0.307692,
+    "hailuo-2.3": {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.076923,
-          "output": 0.307692,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy-role": {
-      "model": "hy-role",
-      "displayName": "Hy-Role",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:23:31.149669Z",
-      "tierLabel": "标准计价",
-      "input": 0.369231,
-      "output": 1.476923,
+    "hailuo-2.3-fast": {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.369231,
-          "output": 1.476923,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy-vision-2.0-instruct": {
-      "model": "hy-vision-2.0-instruct",
-      "displayName": "Hy-Vision 2.0 Instruct",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:24:41.908115Z",
-      "tierLabel": "标准计价",
-      "input": 1.153846,
-      "output": 2.692308,
+    "jv-3.0-pro": {
+      "model": "jv-3.0-pro",
+      "displayName": "Jimeng-3.0-Pro",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.153846,
-          "output": 2.692308,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "hy3-preview": {
-      "model": "hy3-preview",
-      "displayName": "Hy3 Preview",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:20:53.239407Z",
-      "tierLabel": "≤ 16.38K",
-      "input": 0.184615,
-      "output": 0.615385,
-      "cache": 0.061538,
-      "cacheCreation": null,
-      "pricingMode": "context_length_range",
-      "tiers": [
-        {
-          "tierLabel": "≤ 16.38K",
-          "input": 0.184615,
-          "output": 0.615385,
-          "cache": 0.061538,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "16.39K – 32.77K",
-          "input": 0.246154,
-          "output": 0.984615,
-          "cache": 0.092308,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 32.77K",
-          "input": 0.307692,
-          "output": 1.230769,
-          "cache": 0.123077,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        }
-      ]
-    },
-    "kimi-k2.5": {
-      "model": "kimi-k2.5",
-      "displayName": "Kimi K2.5",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:26:05.999459Z",
-      "tierLabel": "标准计价",
-      "input": 0.615385,
-      "output": 3.230769,
-      "cache": 0.107692,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.615385,
-          "output": 3.230769,
-          "cache": 0.107692,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "kimi-k2.6": {
-      "model": "kimi-k2.6",
-      "displayName": "Kimi K2.6",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:26:04.686777Z",
-      "tierLabel": "标准计价",
-      "input": 1,
-      "output": 4.153846,
-      "cache": 0.169231,
-      "cacheCreation": null,
-      "pricingMode": "legacy",
-      "tiers": [
-        {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1,
-          "output": 4.153846,
-          "cache": 0.169231,
-          "cacheCreation": null,
-          "pricingMode": "legacy"
-        }
-      ]
-    },
-    "kimi-k2.7-code": {
-      "model": "kimi-k2.7-code",
-      "displayName": "Kimi K2.7 Code",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:26:03.394868Z",
-      "tierLabel": "标准计价",
-      "input": 1,
-      "output": 4.153846,
+    "kling-2.5-turbo": {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
       "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1,
-          "output": 4.153846,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
           "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "kimi-k2.7-code-highspeed": {
-      "model": "kimi-k2.7-code-highspeed",
-      "displayName": "Kimi K2.7 Code HighSpeed",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:27:07.911195Z",
-      "tierLabel": "标准计价",
-      "input": 2,
-      "output": 8.307692,
-      "cache": 0.4,
+    "kling-2.6": {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 2,
-          "output": 8.307692,
-          "cache": 0.4,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "minimax-m2.5": {
-      "model": "minimax-m2.5",
-      "displayName": "MiniMax M2.5",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:27:48.126867Z",
-      "tierLabel": "标准计价",
-      "input": 0.323077,
-      "output": 1.292308,
-      "cache": 0.032308,
+    "kling-3": {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.323077,
-          "output": 1.292308,
-          "cache": 0.032308,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "minimax-m2.7": {
-      "model": "minimax-m2.7",
-      "displayName": "MiniMax M2.7",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:28:25.368569Z",
-      "tierLabel": "标准计价",
-      "input": 0.323077,
-      "output": 1.292308,
-      "cache": 0.064615,
+    "kling-3.0-omni": {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.323077,
-          "output": 1.292308,
-          "cache": 0.064615,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "minimax-m3": {
-      "model": "minimax-m3",
-      "displayName": "MiniMax M3",
-      "modality": "text",
-      "updatedAt": "2026-06-29T10:29:16.155619Z",
-      "tierLabel": "≤ 524.29K",
-      "input": 0.323077,
-      "output": 1.292308,
-      "cache": 0.064615,
+    "kling-o1": {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "context_length_range",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "≤ 524.29K",
-          "input": 0.323077,
-          "output": 1.292308,
-          "cache": 0.064615,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "context_length_range"
-        },
-        {
-          "tierLabel": "> 524.29K",
-          "input": 0.646154,
-          "output": 2.584615,
-          "cache": 0.129231,
-          "cacheCreation": null,
-          "pricingMode": "context_length_range"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen-flash": {
-      "model": "qwen-flash",
-      "displayName": "Qwen Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:23.681846Z",
-      "tierLabel": "标准计价",
-      "input": 0.023077,
-      "output": 0.230769,
-      "cache": 0.004615,
+    "os-2": {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.023077,
-          "output": 0.230769,
-          "cache": 0.004615,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen-max": {
-      "model": "qwen-max",
-      "displayName": "Qwen Max",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:53.177643Z",
-      "tierLabel": "标准计价",
-      "input": 0.369231,
-      "output": 1.476923,
-      "cache": 0.082759,
+    "pixversenew-c1": {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.369231,
-          "output": 1.476923,
-          "cache": 0.082759,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen-plus": {
-      "model": "qwen-plus",
-      "displayName": "Qwen Plus",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:22.397789Z",
-      "tierLabel": "标准计价",
-      "input": 0.123077,
-      "output": 0.307692,
-      "cache": 0.024615,
+    "pixversenew-v5.6": {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.123077,
-          "output": 0.307692,
-          "cache": 0.024615,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen-turbo": {
-      "model": "qwen-turbo",
-      "displayName": "Qwen Turbo",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:54.538924Z",
-      "tierLabel": "标准计价",
-      "input": 0.046154,
-      "output": 0.092308,
-      "cache": 0.010345,
+    "pixversenew-v6.0": {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.046154,
-          "output": 0.092308,
-          "cache": 0.010345,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen3.5-flash": {
-      "model": "qwen3.5-flash",
-      "displayName": "Qwen3.5 Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:21.077170Z",
-      "tierLabel": "标准计价",
-      "input": 0.030769,
-      "output": 0.307692,
-      "cache": 0.003077,
+    "seedance-1.0-pro": {
+      "model": "seedance-1.0-pro",
+      "displayName": "Seedance 1.0 Pro",
+      "modality": "video",
+      "updatedAt": "2026-06-09T16:00:00Z",
+      "tierLabel": "flat",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "flat",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.030769,
-          "output": 0.307692,
-          "cache": 0.003077,
+          "tierLabel": "flat",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "flat"
         }
       ]
     },
-    "qwen3.5-plus": {
-      "model": "qwen3.5-plus",
-      "displayName": "Qwen3.5 Plus",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:19.754189Z",
-      "tierLabel": "标准计价",
-      "input": 0.123077,
-      "output": 0.738462,
-      "cache": 0.012308,
+    "seedance-1.0-pro-fast": {
+      "model": "seedance-1.0-pro-fast",
+      "displayName": "Seedance 1.0 Pro Fast",
+      "modality": "video",
+      "updatedAt": "2026-06-09T16:00:00Z",
+      "tierLabel": "flat",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "flat",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.123077,
-          "output": 0.738462,
-          "cache": 0.012308,
+          "tierLabel": "flat",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "flat"
         }
       ]
     },
-    "qwen3.6-flash": {
-      "model": "qwen3.6-flash",
-      "displayName": "Qwen3.6 Flash",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:18.486113Z",
-      "tierLabel": "标准计价",
-      "input": 0.184615,
-      "output": 1.107692,
-      "cache": 0.036923,
+    "seedance-1.5-pro": {
+      "model": "seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "modality": "video",
+      "updatedAt": "2026-06-09T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.184615,
-          "output": 1.107692,
-          "cache": 0.036923,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen3.6-plus": {
-      "model": "qwen3.6-plus",
-      "displayName": "Qwen3.6 Plus",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:17.192336Z",
-      "tierLabel": "标准计价",
-      "input": 0.307692,
-      "output": 1.846154,
-      "cache": 0.061538,
+    "vidu-q2": {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.307692,
-          "output": 1.846154,
-          "cache": 0.061538,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen3.7-max": {
-      "model": "qwen3.7-max",
-      "displayName": "Qwen3.7 Max",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:20:43.477905Z",
-      "tierLabel": "标准计价",
-      "input": 1.846154,
-      "output": 5.538462,
-      "cache": 0.369231,
+    "vidu-q2-pro": {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 1.846154,
-          "output": 5.538462,
-          "cache": 0.369231,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
         }
       ]
     },
-    "qwen3.7-plus": {
-      "model": "qwen3.7-plus",
-      "displayName": "Qwen3.7 Plus",
-      "modality": "text",
-      "updatedAt": "2026-06-22T09:22:15.891175Z",
-      "tierLabel": "标准计价",
-      "input": 0.307692,
-      "output": 1.230769,
-      "cache": 0.061538,
+    "vidu-q2-turbo": {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
       "cacheCreation": null,
-      "pricingMode": "legacy",
+      "pricingMode": "video_tiered",
       "tiers": [
         {
-          "tierLabel": "输入:文本/图片/视频",
-          "input": 0.307692,
-          "output": 1.230769,
-          "cache": 0.061538,
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
           "cacheCreation": null,
-          "pricingMode": "legacy"
+          "pricingMode": "video_tiered"
+        }
+      ]
+    },
+    "vidu-q3": {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
+      "cacheCreation": null,
+      "pricingMode": "video_tiered",
+      "tiers": [
+        {
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "cacheCreation": null,
+          "pricingMode": "video_tiered"
+        }
+      ]
+    },
+    "vidu-q3-pro": {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
+      "cacheCreation": null,
+      "pricingMode": "video_tiered",
+      "tiers": [
+        {
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "cacheCreation": null,
+          "pricingMode": "video_tiered"
+        }
+      ]
+    },
+    "vidu-q3-turbo": {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "modality": "video",
+      "updatedAt": "2026-05-20T16:00:00Z",
+      "tierLabel": "video_tiered",
+      "input": null,
+      "output": null,
+      "cache": null,
+      "cacheCreation": null,
+      "pricingMode": "video_tiered",
+      "tiers": [
+        {
+          "tierLabel": "video_tiered",
+          "input": null,
+          "output": null,
+          "cache": null,
+          "cacheCreation": null,
+          "pricingMode": "video_tiered"
         }
       ]
     }

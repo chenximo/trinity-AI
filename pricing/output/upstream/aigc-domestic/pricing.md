@@ -2,7 +2,7 @@
 
 > 供应商：**aigc-domestic** · 区域：**国内站** · 数据日期：2026-06
 > 供应商挂牌/成本单位：**元/百万 tokens**（每百万 tokens，单元格内 入/出/缓）
-> **范围**：Trinity 生文模型（61 款）中本供应商有挂牌价的行
+> **范围**：Trinity 生文模型（59 款）中本供应商有挂牌价的行
 > **厂商官方价**：模型厂商官网挂牌（`suppliers/official`），同档对照
 > 折扣配置：`supplier-discounts.json` → suppliers.aigc-domestic
 > 数据源：`pricing/suppliers/aigc/data/pricing-sheet.mjs`
@@ -10,8 +10,8 @@
 | 序号 | Trinity ID | 显示名 | 厂商 | 价格档位 | 上游模型ID | 厂商官方价 | 供应商挂牌(元/百万tokens) | 供应商vs官方 | 折扣 | 成本(元/百万tokens) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | deepseek-v3.2 | DeepSeek V3.2 | DeepSeek | 统一价 | v3.2 | 入 ¥2 · 出 ¥3 · 缓 ¥0.4 | 入 ¥2 · 出 ¥3 · 缓 ¥0.4 | ✅ 一致 | 待填 | 待填 |
-| 2 | deepseek-v4-flash | DeepSeek V4 Flash | DeepSeek | 统一价 | v4-flash (new) | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | ✅ 一致 | 待填 | 待填 |
-| 3 | deepseek-v4-pro | DeepSeek V4 Pro | DeepSeek | 统一价 | v4-pro (new) | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | ✅ 一致 | 待填 | 待填 |
+| 2 | deepseek-v4-flash | DeepSeek V4 Flash Direct | DeepSeek | 统一价 | v4-flash (new) | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | ✅ 一致 | 待填 | 待填 |
+| 3 | deepseek-v4-pro | DeepSeek V4 Pro Direct | DeepSeek | 统一价 | v4-pro (new) | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | ✅ 一致 | 待填 | 待填 |
 | 4 | gemini-2.5-flash | Gemini 2.5 Flash | Google DeepMind | 输入：文本、图片、视频 | 2.5-flash | 入 $0.3 · 出 $2.5 · 缓 $0.03 | 入 ¥2.25 · 出 ¥18.75 · 缓 ¥0.22 | ⚠ 缓-2.2% | 待填 | 待填 |
 | 5 |  |  |  | 输入：音频 | 2.5-flash | 入 $1 · 出 $2.5 · 缓 $0.1 | 入 ¥7.5 · 出 ¥18.75 · 缓 ¥0.75 | ✅ 一致(÷7.5) | 待填 | 待填 |
 | 6 | gemini-2.5-flash-lite | Gemini 2.5 Flash Lite | Google DeepMind | 统一价 | 2.5-flash-lite | 入 $0.1 · 出 $0.4 · 缓 $0.01 | 入 ¥0.75 · 出 ¥3 · 缓 ¥0.075 | ✅ 一致(÷7.5) | 待填 | 待填 |

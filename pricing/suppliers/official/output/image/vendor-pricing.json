@@ -6,13 +6,14 @@
   "currency": "CNY",
   "unit": "CNY per image (or per request)",
   "chargeUnit": "image",
-  "fetchedAt": "2026-07-01T04:03:46.408Z",
+  "fetchedAt": "2026-07-03T03:32:28.236Z",
   "seedVerifiedAt": "2026-06-28",
-  "catalogCount": 2,
-  "modelCount": 2,
-  "pricedCount": 2,
+  "catalogCount": 5,
+  "modelCount": 5,
+  "pricingTierCount": 5,
+  "pricedCount": 5,
   "liveCount": 0,
-  "seedCount": 2,
+  "seedCount": 5,
   "models": [
     {
       "modality": "image",
@@ -29,6 +30,7 @@
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
@@ -71,6 +73,7 @@
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
+      "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
       "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
@@ -92,6 +95,135 @@
         {
           "tierLabel": "输出",
           "price": 0.099,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedream-5.0-lite",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "火山方舟 Seedream 5.0 Lite",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedream-4.5",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.25,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "火山方舟 Seedream 4.5",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.25,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedream-4.0",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "prices": {
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "火山方舟 Seedream 4.0",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.2,
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"

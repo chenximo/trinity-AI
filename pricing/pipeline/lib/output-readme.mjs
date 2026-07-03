@@ -20,7 +20,7 @@ export function renderOutputReadme({ generatedAt, modelCount, scrapedAt, aigcDat
     "",
     "| 文件 | 模态 | 说明 |",
     "|------|------|------|",
-    `| [${base(TEXT_PRICING_XLSX)}](./${base(TEXT_PRICING_XLSX)}) | 生文 | 刊例校验 · 供应商分表 · **汇总-供应商vs官方** |`,
+    `| [${base(TEXT_PRICING_XLSX)}](./${base(TEXT_PRICING_XLSX)}) | 生文 | 刊例校验 · **汇总-供应商vs官方**（第 2 Sheet）· 各供应商分表 |`,
     `| [${base(IMAGE_PRICING_XLSX)}](./${base(IMAGE_PRICING_XLSX)}) | 生图 | 官方价对比 |`,
     `| [${base(VIDEO_PRICING_XLSX)}](./${base(VIDEO_PRICING_XLSX)}) | 生视频 | 官方价对比 |`,
     "",

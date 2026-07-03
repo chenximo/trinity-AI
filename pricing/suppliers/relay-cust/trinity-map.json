@@ -1,0 +1,303 @@
+{
+  "_comment": "Trinity modelId → 中转站-cust upstreamModelId（build 时由 official 复制）",
+  "claude-opus-4-6": {
+    "vendorModelId": "claude-opus-4-6",
+    "vendor": "anthropic",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "claude-opus-4-7": {
+    "vendorModelId": "claude-opus-4-7",
+    "vendor": "anthropic",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "claude-opus-4-8": {
+    "vendorModelId": "claude-opus-4-8",
+    "vendor": "anthropic",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "claude-sonnet-4-6": {
+    "vendorModelId": "claude-sonnet-4-6",
+    "vendor": "anthropic",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen-flash": {
+    "vendorModelId": "qwen-flash",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen-max": {
+    "vendorModelId": "qwen-max",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen-plus": {
+    "vendorModelId": "qwen-plus",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen-turbo": {
+    "vendorModelId": "qwen-turbo",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.5-flash": {
+    "vendorModelId": "qwen3.5-flash",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.5-plus": {
+    "vendorModelId": "qwen3.5-plus",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.6-flash": {
+    "vendorModelId": "qwen3.6-flash",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.6-plus": {
+    "vendorModelId": "qwen3.6-plus",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.7-max": {
+    "vendorModelId": "qwen3.7-max",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "qwen3.7-plus": {
+    "vendorModelId": "qwen3.7-plus",
+    "vendor": "bailian",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "deepseek-v3.2": {
+    "vendorModelId": "deepseek-v3.2",
+    "vendor": "deepseek",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "deepseek-v4-flash": {
+    "vendorModelId": "deepseek-v4-flash",
+    "vendor": "deepseek",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "deepseek-v4-pro": {
+    "vendorModelId": "deepseek-v4-pro",
+    "vendor": "deepseek",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-2.5-flash": {
+    "vendorModelId": "gemini-2.5-flash",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-2.5-flash-lite": {
+    "vendorModelId": "gemini-2.5-flash-lite",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-2.5-flash-lite-preview": {
+    "vendorModelId": "gemini-2.5-flash-lite-preview",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-2.5-pro": {
+    "vendorModelId": "gemini-2.5-pro",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-3-flash-preview": {
+    "vendorModelId": "gemini-3-flash-preview",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-3.1-flash-lite": {
+    "vendorModelId": "gemini-3.1-flash-lite",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-3.1-pro-preview": {
+    "vendorModelId": "gemini-3.1-pro-preview",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gemini-3.5-flash": {
+    "vendorModelId": "gemini-3.5-flash",
+    "vendor": "google",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "kimi-k2.5": {
+    "vendorModelId": "kimi-k2.5",
+    "vendor": "kimi",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "kimi-k2.6": {
+    "vendorModelId": "kimi-k2.6",
+    "vendor": "kimi",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "kimi-k2.7-code": {
+    "vendorModelId": "kimi-k2.7-code",
+    "vendor": "kimi",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "kimi-k2.7-code-highspeed": {
+    "vendorModelId": "kimi-k2.7-code-highspeed",
+    "vendor": "kimi",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "minimax-m2.5": {
+    "vendorModelId": "minimax-m2.5",
+    "vendor": "minimax",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "minimax-m2.7": {
+    "vendorModelId": "minimax-m2.7",
+    "vendor": "minimax",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "minimax-m3": {
+    "vendorModelId": "minimax-m3",
+    "vendor": "minimax",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-4.1": {
+    "vendorModelId": "gpt-4.1",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-4o": {
+    "vendorModelId": "gpt-4o",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5": {
+    "vendorModelId": "gpt-5",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5-mini": {
+    "vendorModelId": "gpt-5-mini",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5-nano": {
+    "vendorModelId": "gpt-5-nano",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.1": {
+    "vendorModelId": "gpt-5.1",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.1-chat": {
+    "vendorModelId": "gpt-5.1-chat-latest",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.2": {
+    "vendorModelId": "gpt-5.2",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.3-codex": {
+    "vendorModelId": "gpt-5.3-codex",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.4": {
+    "vendorModelId": "gpt-5.4",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.4-mini": {
+    "vendorModelId": "gpt-5.4-mini",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.4-nano": {
+    "vendorModelId": "gpt-5.4-nano",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.4-pro": {
+    "vendorModelId": "gpt-5.4-pro",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.5": {
+    "vendorModelId": "gpt-5.5",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hunyuan-role-latest": {
+    "vendorModelId": "hunyuan-role-latest",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy-mt2-lite": {
+    "vendorModelId": "hy-mt2-lite",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy-mt2-plus": {
+    "vendorModelId": "hy-mt2-plus",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy-mt2-pro": {
+    "vendorModelId": "hy-mt2-pro",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy-role": {
+    "vendorModelId": "hy-role",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy-vision-2.0-instruct": {
+    "vendorModelId": "hy-vision-2.0-instruct",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "hy3-preview": {
+    "vendorModelId": "hy3-preview",
+    "vendor": "tencent_hunyuan",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "grok-4.3": {
+    "vendorModelId": "grok-4.3",
+    "vendor": "xai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-4-7-251222": {
+    "vendorModelId": "glm-4.7",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-5": {
+    "vendorModelId": "glm-5",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-5-turbo": {
+    "vendorModelId": "glm-5-turbo",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-5.1": {
+    "vendorModelId": "glm-5.1",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-5.2": {
+    "vendorModelId": "glm-5.2",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "glm-5v-turbo": {
+    "vendorModelId": "glm-5v-turbo",
+    "vendor": "zhipu",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  }
+}

@@ -51,6 +51,18 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
       {
+        text: "模型价格真源",
+        collapsed: false,
+        items: [
+          { text: "总览", link: "/ai-api-platform/pricing-sources/" },
+          { text: "价目全流程", link: "/ai-api-platform/pricing-sources/workflow" },
+          { text: "采购渠道真源", link: "/ai-api-platform/pricing-sources/suppliers" },
+          { text: "原厂定价页链接", link: "/ai-api-platform/pricing-sources/official-pricing-urls" },
+          { text: "日常操作（refresh / gate）", link: "/ai-api-platform/pricing-sources/operations" },
+          { text: "厂商外链索引", link: "/ai-api-platform/pricing-sources/vendor-links" },
+        ],
+      },
+      {
         text: "商用计费与充值",
         collapsed: false,
         items: [

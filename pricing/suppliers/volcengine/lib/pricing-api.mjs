@@ -2,7 +2,10 @@
  * 火山方舟价目表 → TokenHub 对齐扁平结构
  */
 
-import { PRICING_SHEET } from "../data/pricing-sheet.mjs";
+import {
+  buildTextApiModels,
+  normalizeTextFromRaw,
+} from "./normalize-text.mjs";
 
 function tierFromRow(attribute, row) {
   if (!row) return null;
@@ -20,44 +23,19 @@ function tierFromRow(attribute, row) {
 }
 
 /**
- * @param {typeof PRICING_SHEET} sheet
- * @param {Record<string, { vendorModelId: string }>} trinityMap
+ * @param {Array<{ vendorModelId: string, modelName: string, tiers: Array<{ attribute: string, input?: number|null, output?: number|null, cache?: number|null }> }>} sheet
+ * @param {Record<string, { vendorModelId: string, trinityId?: string }>} trinityMap
  */
 export function normalizeVolcenginePricing(sheet, trinityMap = {}) {
-  const models = [];
+  return buildTextApiModels(sheet, trinityMap);
+}
 
-  for (const entry of sheet) {
-    const trinityId =
-      entry.trinityId ??
-      trinityMap[entry.vendorModelId]?.trinityId ??
-      trinityMap[entry.vendorModelId.toLowerCase()]?.trinityId ??
-      null;
-
-    const tiers = [];
-    for (const row of entry.tiers) {
-      const tier = tierFromRow(row.attribute, row);
-      if (tier) tiers.push(tier);
-    }
-    if (!tiers.length) continue;
-
-    models.push({
-      modelId: entry.vendorModelId,
-      trinityId,
-      upstreamModelId: entry.vendorModelId,
-      vendorCode: "Doubao",
-      vendorName: "豆包",
-      modelName: entry.modelName,
-      displayName: `豆包 ${entry.modelName}`,
-      brand: "火山方舟",
-      modelType: "Text",
-      currency: "CNY",
-      priceUnit: "元/百万tokens",
-      region: "中国内地",
-      tiers,
-    });
-  }
-
-  return models;
+/**
+ * @param {import('./build-from-raw.mjs').buildModalitiesFromRaw extends (raw: infer R, ...args: unknown[]) => unknown ? R : never} raw
+ * @param {Record<string, { trinityId?: string }>} trinityMap
+ */
+export function normalizeVolcengineFromRaw(raw, trinityMap = {}) {
+  return normalizeTextFromRaw(raw);
 }
 
 /** @param {ReturnType<typeof normalizeVolcenginePricing>} models */
@@ -71,5 +49,7 @@ export function indexVolcengineByTrinity(models) {
 }
 
 export function pickVolcengineModels(models) {
-  return models.filter((m) => m.modelType === "Text");
+  return models.filter((m) => (m.modality ?? "text") === "text");
 }
+
+export { tierFromRow };

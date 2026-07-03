@@ -2,7 +2,7 @@
 
 > 供应商：**aigc-international** · 区域：**国际站** · 数据日期：2026-06
 > 供应商挂牌/成本单位：**美元/百万 tokens**（每百万 tokens，单元格内 入/出/缓）
-> **范围**：Trinity 生文模型（61 款）中本供应商有挂牌价的行
+> **范围**：Trinity 生文模型（59 款）中本供应商有挂牌价的行
 > **厂商官方价**：模型厂商官网挂牌（`suppliers/official`），同档对照
 > 折扣配置：`supplier-discounts.json` → suppliers.aigc-international
 > 数据源：`pricing/suppliers/aigc/data/pricing-sheet.mjs`
@@ -14,8 +14,8 @@
 | 3 | claude-opus-4-8 | Claude Opus 4.8 | Anthropic | 统一价 | Opus 4.5 | 入 $5 · 出 $25 · 缓 $0.5 | 入 $5 · 出 $25 · 缓 $0.5 | ✅ 一致 | 待填 | 待填 |
 | 4 | claude-sonnet-4-6 | Claude Sonnet 4.6 | Anthropic | 统一价 | Sonnet 4.0 | 入 $3 · 出 $15 · 缓 $0.3 | 入 $3 · 出 $15 · 缓 $0.3 | ✅ 一致 | 待填 | 待填 |
 | 5 | deepseek-v3.2 | DeepSeek V3.2 | DeepSeek | 统一价 | v3.2 | 入 ¥2 · 出 ¥3 · 缓 ¥0.4 | 入 $0.308 · 出 $0.462 · 缓 $0.062 | ⚠ 缓+0.7% | 待填 | 待填 |
-| 6 | deepseek-v4-flash | DeepSeek V4 Flash | DeepSeek | 统一价 | v4-flash (new) | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 $0.154 · 出 $0.308 · 缓 $0.003 | ⚠ 缓-2.5% | 待填 | 待填 |
-| 7 | deepseek-v4-pro | DeepSeek V4 Pro | DeepSeek | 统一价 | v4-pro (new) | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 $0.462 · 出 $0.923 · 缓 $0.004 | ⚠ 缓+4% | 待填 | 待填 |
+| 6 | deepseek-v4-flash | DeepSeek V4 Flash Direct | DeepSeek | 统一价 | v4-flash (new) | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 $0.154 · 出 $0.308 · 缓 $0.003 | ⚠ 缓-2.5% | 待填 | 待填 |
+| 7 | deepseek-v4-pro | DeepSeek V4 Pro Direct | DeepSeek | 统一价 | v4-pro (new) | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 $0.462 · 出 $0.923 · 缓 $0.004 | ⚠ 缓+4% | 待填 | 待填 |
 | 8 | gemini-2.5-flash | Gemini 2.5 Flash | Google DeepMind | 输入：文本、图片、视频 | 2.5-flash | 入 $0.3 · 出 $2.5 · 缓 $0.03 | 入 $0.3 · 出 $2.5 · 缓 $0.03 | ✅ 一致 | 待填 | 待填 |
 | 9 |  |  |  | 输入：音频 | 2.5-flash | 入 $1 · 出 $2.5 · 缓 $0.1 | 入 $1 · 出 $2.5 · 缓 $0.1 | ✅ 一致 | 待填 | 待填 |
 | 10 | gemini-2.5-flash-lite | Gemini 2.5 Flash Lite | Google DeepMind | 统一价 | 2.5-flash-lite | 入 $0.1 · 出 $0.4 · 缓 $0.01 | 入 $0.1 · 出 $0.4 · 缓 $0.01 | ✅ 一致 | 待填 | 待填 |

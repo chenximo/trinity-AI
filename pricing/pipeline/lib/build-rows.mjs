@@ -203,16 +203,33 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
   return [header, ...rows];
 }
 
-/** 网聚云联 · 云门户（GPT/Gemini 原厂直连 = official 筛选） */
-export function buildWangjuCatalogRows(wangjuModels, officialCtx = {}) {
-  const sup = { catalog: "wangju-cloudportal" };
-  const header = buildSupplierTableHeader(sup);
-  const currency = "USD";
+/** 原厂直连渠道 Excel 行（价 = official 筛选/复制） */
+export function buildOfficialDirectCatalogRows(
+  channelModels,
+  officialCtx = {},
+  { catalog, brandDefault, mixedCurrency = false },
+) {
+  const header = mixedCurrency
+    ? [
+        "序号",
+        "Trinity ID",
+        "显示名",
+        "厂商",
+        "价格档位",
+        "上游模型ID",
+        "厂商官方价",
+        "供应商挂牌(元或USD/百万tokens)",
+        "供应商vs官方",
+        "折扣",
+        "成本(元或USD/百万tokens)",
+      ]
+    : buildSupplierTableHeader({ catalog });
 
   const rows = [];
   let rowNum = 0;
 
-  for (const m of wangjuModels) {
+  for (const m of channelModels) {
+    const currency = mixedCurrency ? (m.currency ?? "USD") : "USD";
     const displayName = m.displayName || `${m.vendorLabel} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
       const t = m.tiers[i];
@@ -237,7 +254,7 @@ export function buildWangjuCatalogRows(wangjuModels, officialCtx = {}) {
         rowNum,
         show ? (m.trinityId ?? "") : "",
         show ? displayName : "",
-        show ? (m.brand ?? "网聚云联-云门户") : "",
+        show ? (m.brand ?? brandDefault) : "",
         t.tierName,
         m.modelId,
         vendorOfficial,
@@ -250,6 +267,24 @@ export function buildWangjuCatalogRows(wangjuModels, officialCtx = {}) {
   }
 
   return [header, ...rows];
+}
+
+/** @deprecated 使用 buildOfficialDirectCatalogRows */
+export function buildWangjuCatalogRows(wangjuModels, officialCtx = {}) {
+  return buildOfficialDirectCatalogRows(wangjuModels, officialCtx, {
+    catalog: "wangju-cloudportal",
+    brandDefault: "网聚云联-云门户",
+    mixedCurrency: false,
+  });
+}
+
+/** @deprecated 使用 buildOfficialDirectCatalogRows */
+export function buildRelayCustCatalogRows(relayModels, officialCtx = {}) {
+  return buildOfficialDirectCatalogRows(relayModels, officialCtx, {
+    catalog: "relay-cust",
+    brandDefault: "中转站-cust",
+    mixedCurrency: true,
+  });
 }
 
 export function buildSupplierRows(sup, models, officialCtx = {}) {

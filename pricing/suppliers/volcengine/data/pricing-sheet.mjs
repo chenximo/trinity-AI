@@ -1,7 +1,6 @@
 /**
- * 火山方舟 · 模型价格（按量付费）
- * 真源：https://www.volcengine.com/docs/82379/1544106?lang=zh
- * 单位：元/百万 tokens（生文）
+ * @deprecated 已由 scrape-pricing.mjs + output/text/pricing-api.json 替代。
+ * 保留仅供历史对照；勿再手工维护。
  */
 
 export const SHEET_META = {

@@ -1,7 +1,8 @@
 # 模型官方价目 Skill 设计方案
 
 > 状态：已实现 · 2026-06-28  
-> Skill：`.cursor/skills/trinity-official-pricing/`
+> Skill：`.cursor/skills/trinity-official-pricing/`  
+> **产品手册**：[价目全流程](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/workflow.md)  
 > 关联目录：`pricing/suppliers/official/` · [STRUCTURE.md](../STRUCTURE.md) · [official/README.md](../suppliers/official/README.md)
 
 ---

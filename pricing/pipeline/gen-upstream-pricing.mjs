@@ -25,7 +25,7 @@ import { cell, joinLines } from "./lib/render-markdown.mjs";
 import {
   buildSupplierRows,
   buildVolcengineCatalogRows,
-  buildWangjuCatalogRows,
+  buildOfficialDirectCatalogRows,
 } from "./lib/build-rows.mjs";
 import {
   CNY_PER_M,
@@ -41,22 +41,15 @@ import {
 } from "./lib/supplier-official-summary.mjs";
 import { PRICING_SHEET, SHEET_META } from "../suppliers/aigc/data/pricing-sheet.mjs";
 import {
-  PRICING_SHEET as VOLC_PRICING_SHEET,
-  SHEET_META as VOLC_SHEET_META,
-} from "../suppliers/volcengine/data/pricing-sheet.mjs";
-import {
   normalizeAigcPricing,
   indexAigcByTrinity,
 } from "../suppliers/aigc/lib/pricing-api.mjs";
+import { indexVolcengineByTrinity } from "../suppliers/volcengine/lib/pricing-api.mjs";
+import { DOC_URL as VOLC_DOC_URL } from "../suppliers/volcengine/lib/constants.mjs";
 import {
-  normalizeVolcenginePricing,
-  indexVolcengineByTrinity,
-} from "../suppliers/volcengine/lib/pricing-api.mjs";
-import {
-  normalizeWangjuFromOfficial,
-  indexWangjuByTrinity,
-} from "../suppliers/wangju-cloudportal/lib/pricing-api.mjs";
-import { SUPPLIER_META as WANGJU_META } from "../suppliers/wangju-cloudportal/data/config.mjs";
+  indexByTrinity,
+} from "../suppliers/official-direct/lib/from-official.mjs";
+import { buildOfficialDirectChannel } from "../suppliers/official-direct/lib/build-channel.mjs";
 import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 import { renderOutputReadme } from "./lib/output-readme.mjs";
 import {
@@ -85,9 +78,6 @@ import {
   AIGC_SHEET_PATH,
   VOLCENGINE_FILE,
   VOLCENGINE_MAP_FILE,
-  WANGJU_CLOUDPORTAL_FILE,
-  officialPricingFile,
-  OFFICIAL_MAP_FILE,
 } from "./lib/paths.mjs";
 
 const TRINITY_MODELS_CACHE = TRINITY_MODELS_CACHE_FILE;
@@ -191,6 +181,22 @@ const SUPPLIERS = [
     costKey: "wjCost",
     officialPrefix: "WJYL",
   },
+  {
+    key: "relay-cust",
+    outFile: "pricing",
+    title: "中转站-cust（AIUPNode · 原厂直连）",
+    region: "原厂直连",
+    excelSheet: "中转站-cust",
+    priceUnit: "按 official 币种/百万 tokens",
+    catalog: "relay-cust",
+    idKey: "rcId",
+    inKey: "rcIn",
+    outKey: "rcOut",
+    cacheKey: "rcCache",
+    discountKey: "rcDiscount",
+    costKey: "rcCost",
+    officialPrefix: "RC",
+  },
 ];
 
 async function loadDiscounts() {
@@ -217,6 +223,7 @@ function enrichTierCosts(tier, modelId, discounts) {
   const aigcIntlDiscount = resolveDiscount(discounts, modelId, "aigc-international");
   const volDiscount = resolveDiscount(discounts, modelId, "volcengine");
   const wjDiscount = resolveDiscount(discounts, modelId, "wangju-cloudportal");
+  const rcDiscount = resolveDiscount(discounts, modelId, "relay-cust");
   return {
     ...tier,
     thDiscount,
@@ -225,9 +232,14 @@ function enrichTierCosts(tier, modelId, discounts) {
     aigcIntlDiscount,
     volDiscount,
     wjDiscount,
+    rcDiscount,
     wjCost:
       wjDiscount != null
         ? calcCostTriple(tier.wjIn, tier.wjOut, tier.wjCache, wjDiscount)
+        : null,
+    rcCost:
+      rcDiscount != null
+        ? calcCostTriple(tier.rcIn, tier.rcOut, tier.rcCache, rcDiscount)
         : null,
     thCost: calcCostTriple(tier.thIn, tier.thOut, tier.thCache, thDiscount),
     blCost: calcCostTriple(tier.blIn, tier.blOut, tier.blCache, blDiscount),
@@ -280,69 +292,33 @@ async function loadAigcPricing() {
 }
 
 async function loadVolcenginePricing() {
-  let trinityMap = {};
+  let payload;
   try {
-    trinityMap = JSON.parse(await readFile(VOLCENGINE_MAP_FILE, "utf8"));
-    delete trinityMap._comment;
-    delete trinityMap._doc;
+    payload = JSON.parse(await readFile(VOLCENGINE_FILE, "utf8"));
   } catch {
-    /* optional */
+    throw new Error(
+      `缺少火山方舟价目 ${VOLCENGINE_FILE}；请先运行 npm run pricing:supplier:volcengine`,
+    );
   }
-  const models = normalizeVolcenginePricing(VOLC_PRICING_SHEET, trinityMap);
-  await mkdir(path.dirname(VOLCENGINE_FILE), { recursive: true });
-  await writeFile(
-    VOLCENGINE_FILE,
-    JSON.stringify(
-      {
-        ...VOLC_SHEET_META,
-        generatedAt: new Date().toISOString(),
-        modelCount: models.length,
-        trinityMappedCount: new Set(
-          models.filter((m) => m.trinityId).map((m) => m.trinityId),
-        ).size,
-        models,
-      },
-      null,
-      2,
-    ),
-    "utf8",
-  );
-  return { models, byTrinity: indexVolcengineByTrinity(models) };
+  const models = payload.models ?? [];
+  return {
+    models,
+    byTrinity: indexVolcengineByTrinity(models),
+    dataDate: payload.dataDate ?? payload.scrapedAt?.slice(0, 7) ?? null,
+  };
+}
+
+async function loadOfficialDirectPricing(supplierId) {
+  const { models } = await buildOfficialDirectChannel(supplierId);
+  return { models, byTrinity: indexByTrinity(models) };
 }
 
 async function loadWangjuCloudportalPricing() {
-  const [officialRaw, mapRaw] = await Promise.all([
-    readFile(officialPricingFile("text"), "utf8"),
-    readFile(OFFICIAL_MAP_FILE, "utf8"),
-  ]);
-  const official = JSON.parse(officialRaw);
-  const officialTrinityMap = JSON.parse(mapRaw);
-  delete officialTrinityMap._comment;
+  return loadOfficialDirectPricing("wangju-cloudportal");
+}
 
-  const models = normalizeWangjuFromOfficial(
-    official.models ?? [],
-    officialTrinityMap,
-  );
-  await mkdir(path.dirname(WANGJU_CLOUDPORTAL_FILE), { recursive: true });
-  await writeFile(
-    WANGJU_CLOUDPORTAL_FILE,
-    JSON.stringify(
-      {
-        ...WANGJU_META,
-        generatedAt: new Date().toISOString(),
-        officialFetchedAt: official.fetchedAt ?? null,
-        modelCount: models.length,
-        trinityMappedCount: new Set(
-          models.filter((m) => m.trinityId).map((m) => m.trinityId),
-        ).size,
-        models,
-      },
-      null,
-      2,
-    ),
-    "utf8",
-  );
-  return { models, byTrinity: indexWangjuByTrinity(models) };
+async function loadRelayCustPricing() {
+  return loadOfficialDirectPricing("relay-cust");
 }
 
 async function loadTrinityTextModels() {
@@ -400,7 +376,7 @@ function applyOnlinePrices(trinityList, priceMap) {
   });
 }
 
-function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, volcMap, wangjuMap) {
+function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, volcMap, wangjuMap, relayCustMap) {
   const thById = new Map(thModels.map((m) => [m.modelId.toLowerCase(), m]));
   const list = trinityList ?? thModels.map((m) => ({
     id: m.modelId,
@@ -428,6 +404,7 @@ function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, vol
       aigcInternational: aigcIntlMap.get(id) ?? null,
       volcengine: volcMap.get(id) ?? null,
       wangjuCloudportal: wangjuMap.get(id) ?? null,
+      relayCust: relayCustMap.get(id) ?? null,
     };
   });
 }
@@ -451,6 +428,9 @@ function buildTierRows(entry) {
   const wjMap = entry.wangjuCloudportal
     ? buildTierMap(entry.wangjuCloudportal.tiers ?? [])
     : new Map();
+  const rcMap = entry.relayCust
+    ? buildTierMap(entry.relayCust.tiers ?? [])
+    : new Map();
 
   const keys = new Set([
     ...thMap.keys(),
@@ -459,6 +439,7 @@ function buildTierRows(entry) {
     ...aiMap.keys(),
     ...volMap.keys(),
     ...wjMap.keys(),
+    ...rcMap.keys(),
   ]);
   if (!keys.size) keys.add("uniform");
 
@@ -471,6 +452,7 @@ function buildTierRows(entry) {
       const ai = aiMap.get(key);
       const vol = volMap.get(key);
       const wj = wjMap.get(key);
+      const rc = rcMap.get(key);
       const tierLabel =
         th?.tierName ||
         bl?.tierName ||
@@ -478,6 +460,7 @@ function buildTierRows(entry) {
         ai?.tierName ||
         vol?.tierName ||
         wj?.tierName ||
+        rc?.tierName ||
         (key === "uniform" ? "统一价" : key);
       const cmpIn = compareField(th?.input, bl?.input);
       const cmpOut = compareField(th?.output, bl?.output);
@@ -509,6 +492,10 @@ function buildTierRows(entry) {
         wjIn: wj?.input ?? null,
         wjOut: wj?.output ?? null,
         wjCache: wj?.cache ?? null,
+        rcId: entry.relayCust?.upstreamModelId ?? null,
+        rcIn: rc?.input ?? null,
+        rcOut: rc?.output ?? null,
+        rcCache: rc?.cache ?? null,
         cmpIn: cmpIn.text,
         cmpOut: cmpOut.text,
         cmpCache: cmpCache.text,
@@ -519,30 +506,44 @@ function buildTierRows(entry) {
           (ad?.input != null || ad?.output != null ? 1 : 0) +
           (ai?.input != null || ai?.output != null ? 1 : 0) +
           (vol?.input != null || vol?.output != null ? 1 : 0) +
-          (wj?.input != null || wj?.output != null ? 1 : 0),
+          (wj?.input != null || wj?.output != null ? 1 : 0) +
+          (rc?.input != null || rc?.output != null ? 1 : 0),
       };
     });
 }
 
-function supplierRows(sup, models, officialCtx, volcModels = [], wangjuModels = []) {
+function supplierRows(sup, models, officialCtx, volcModels = [], wangjuModels = [], relayCustModels = []) {
   if (sup.catalog === "volcengine") {
     return buildVolcengineCatalogRows(volcModels, officialCtx);
   }
   if (sup.catalog === "wangju-cloudportal") {
-    return buildWangjuCatalogRows(wangjuModels, officialCtx);
+    return buildOfficialDirectCatalogRows(wangjuModels, officialCtx, {
+      catalog: "wangju-cloudportal",
+      brandDefault: "网聚云联-云门户",
+      mixedCurrency: false,
+    });
+  }
+  if (sup.catalog === "relay-cust") {
+    return buildOfficialDirectCatalogRows(relayCustModels, officialCtx, {
+      catalog: "relay-cust",
+      brandDefault: "中转站-cust",
+      mixedCurrency: true,
+    });
   }
   return buildSupplierRows(sup, models, officialCtx);
 }
 
-function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcModels = [], wangjuModels = []) {
+function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcModels = [], wangjuModels = [], relayCustModels = []) {
   const date =
     sup.catalog === "aigc"
       ? aigcDate
       : sup.catalog === "volcengine"
-        ? VOLC_SHEET_META.dataDate
+        ? (officialCtx?.volcengineDataDate ?? scrapedAt?.slice(0, 7) ?? "—")
         : sup.catalog === "wangju-cloudportal"
           ? (officialCtx?.officialFetchedAt?.slice?.(0, 10) ?? "—")
-          : scrapedAt;
+          : sup.catalog === "relay-cust"
+            ? (officialCtx?.officialFetchedAt?.slice?.(0, 10) ?? "—")
+            : scrapedAt;
   const unit = sup.priceUnit ?? CNY_PER_M;
   const headerCols = buildSupplierTableHeader(sup);
   const lines = [
@@ -555,7 +556,9 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
         ? `火山方舟生文模型全目录（${volcModels.length} 款）`
         : sup.catalog === "wangju-cloudportal"
           ? `云门户 GPT/Gemini 原厂直连（${wangjuModels.length} 款，对齐 official）`
-          : `Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`
+          : sup.catalog === "relay-cust"
+            ? `中转站-cust 原厂直连（${relayCustModels.length} 款，全量对齐 official）`
+            : `Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`
     }`,
     `> **厂商官方价**：模型厂商官网挂牌（\`suppliers/official\`），同档对照`,
     `> 折扣配置：\`supplier-discounts.json\` → suppliers.${sup.key}`,
@@ -564,8 +567,8 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
       : []),
     ...(sup.catalog === "volcengine"
       ? [
-          `> 数据源：[模型价格 · 火山方舟](${VOLC_SHEET_META.docUrl})`,
-          `> 录入：\`suppliers/volcengine/data/pricing-sheet.mjs\``,
+          `> 数据源：[模型价格 · 火山方舟](${VOLC_DOC_URL})`,
+          `> 抓取：\`suppliers/volcengine/scrape-pricing.mjs\` → \`output/text/pricing-api.json\``,
         ]
       : []),
     ...(sup.catalog === "wangju-cloudportal"
@@ -574,12 +577,19 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
           `> 生成：\`npm run pricing:supplier:wangju-cloudportal\``,
         ]
       : []),
+    ...(sup.catalog === "relay-cust"
+      ? [
+          `> 门户：[AIUPNode 模型广场](https://www.aiupnode.com/pricing)`,
+          `> 数据源：\`suppliers/official/output/text/vendor-pricing.json\`（全量复制）`,
+          `> 生成：\`npm run pricing:supplier:relay-cust\``,
+        ]
+      : []),
     "",
     `| ${headerCols.join(" | ")} |`,
     `| ${headerCols.map(() => "---").join(" | ")} |`,
   ];
 
-  const [, ...bodyRows] = supplierRows(sup, models, officialCtx, volcModels, wangjuModels);
+  const [, ...bodyRows] = supplierRows(sup, models, officialCtx, volcModels, wangjuModels, relayCustModels);
   let modelCount = 0;
   let seen = false;
 
@@ -623,9 +633,12 @@ async function main() {
   const discounts = await loadDiscounts();
   const { models: aigcModels, domestic: aigcDomMap, international: aigcIntlMap } =
     await loadAigcPricing();
-  const { models: volcModels, byTrinity: volcMap } = await loadVolcenginePricing();
+  const { models: volcModels, byTrinity: volcMap, dataDate: volcDataDate } =
+    await loadVolcenginePricing();
   const { models: wangjuModels, byTrinity: wangjuMap } =
     await loadWangjuCloudportalPricing();
+  const { models: relayCustModels, byTrinity: relayCustMap } =
+    await loadRelayCustPricing();
 
   const trinityListRaw = await loadTrinityTextModels();
   if (!trinityListRaw?.length) {
@@ -647,6 +660,7 @@ async function main() {
     aigcIntlMap,
     volcMap,
     wangjuMap,
+    relayCustMap,
   );
 
   const models = catalog.map((entry) => ({
@@ -689,9 +703,11 @@ async function main() {
       aigcInternational: "upstream/aigc-international/pricing.md",
       volcengine: "upstream/volcengine/pricing.md",
       wangjuCloudportal: "upstream/wangju-cloudportal/pricing.md",
+      relayCust: "upstream/relay-cust/pricing.md",
       aigcJson: "suppliers/aigc/output/pricing-api.json",
       volcengineJson: "suppliers/volcengine/output/pricing-api.json",
       wangjuCloudportalJson: "suppliers/wangju-cloudportal/output/pricing-api.json",
+      relayCustJson: "suppliers/relay-cust/output/pricing-api.json",
       onlinePrices: "online/prices-api.json",
       openrouter: "openrouter/text.md",
     },
@@ -710,7 +726,10 @@ async function main() {
     })),
   };
 
-  const hubCtx = await loadTextCompareHubContext({ preloaded: onlinePrices });
+  const hubCtx = {
+    ...(await loadTextCompareHubContext({ preloaded: onlinePrices })),
+    volcengineDataDate: volcDataDate,
+  };
 
   const compareReport = buildTextCompareHubFromModels(models, {
     ...hubCtx,
@@ -727,7 +746,7 @@ async function main() {
     await mkdir(out.dir, { recursive: true });
     await writeFile(
       out.md,
-        renderSupplierMd(sup, models, scrapedAt, aigcDate, hubCtx, volcModels, wangjuModels),
+        renderSupplierMd(sup, models, scrapedAt, aigcDate, hubCtx, volcModels, wangjuModels, relayCustModels),
       "utf8",
     );
   }
@@ -772,15 +791,15 @@ async function main() {
 
   const excelSheets = [
     { name: TEXT_COMPARE_SHEET, rows: compareExcelRows, merge: MERGE_COMPARE_TEXT },
-    ...SUPPLIERS.map((sup) => ({
-      name: sup.excelSheet,
-      rows: supplierRows(sup, models, hubCtx, volcModels, wangjuModels),
-      merge: MERGE_SUPPLIER,
-    })),
     {
       name: SUPPLIER_SUMMARY_SHEET,
       rows: summaryExcelRows,
     },
+    ...SUPPLIERS.map((sup) => ({
+      name: sup.excelSheet,
+      rows: supplierRows(sup, models, hubCtx, volcModels, wangjuModels, relayCustModels),
+      merge: MERGE_SUPPLIER,
+    })),
   ];
   const textXlsx = mergeModalityWorkbook("text", excelSheets);
 
@@ -795,7 +814,7 @@ async function main() {
     const out = upstreamSupplierPaths(sup.key, sup.outFile);
     await writeCsv(
       out.csv,
-      supplierRows(sup, models, hubCtx, volcModels, wangjuModels),
+      supplierRows(sup, models, hubCtx, volcModels, wangjuModels, relayCustModels),
       writeFile,
     );
   }
@@ -811,16 +830,18 @@ async function main() {
   ).length;
   const volcMapped = models.filter((m) => m.volcengine).length;
   const wangjuMapped = models.filter((m) => m.wangjuCloudportal).length;
+  const relayCustMapped = models.filter((m) => m.relayCust).length;
 
   console.log(`Trinity models: ${models.length}`);
   console.log(
-    `TokenHub priced: ${thModelsOnSup} · Bailian priced: ${blModelsOnSup} · AIGC mapped: ${aigcMapped} · Volcengine mapped: ${volcMapped} · Wangju mapped: ${wangjuMapped}`,
+    `TokenHub priced: ${thModelsOnSup} · Bailian priced: ${blModelsOnSup} · AIGC mapped: ${aigcMapped} · Volcengine mapped: ${volcMapped} · Wangju mapped: ${wangjuMapped} · Relay-cust mapped: ${relayCustMapped}`,
   );
   console.log(
     `AIGC catalog: ${aigcModels.length} entries (国内 ${aigcModels.filter((m) => m.site === "domestic").length} · 国际 ${aigcModels.filter((m) => m.site === "international").length})`,
   );
   console.log(`Volcengine catalog: ${volcModels.length} entries`);
   console.log(`Wangju cloudportal catalog: ${wangjuModels.length} entries`);
+  console.log(`Relay-cust catalog: ${relayCustModels.length} entries`);
   console.log(`Wrote ${comparePaths.summaryMd}`);
   console.log(`Wrote ${comparePaths.summaryCsv}`);
   console.log(`Wrote ${comparePaths.officialMd}`);

@@ -16,7 +16,7 @@
  * },
  */
 
-export const TEXT_SEED_VERIFIED_AT = "2026-06-29";
+export const TEXT_SEED_VERIFIED_AT = "2026-06-28";
 
 /**
  * @typedef {{
@@ -410,9 +410,10 @@ export const TEXT_SEED = {
     currency: "CNY",
     tiers: [
       { tierLabel: "输入≤32k", input: 3.2, output: 16, cache: 0.64 },
-      { tierLabel: "输入>32k", input: 6.4, output: 32, cache: 1.28 },
+      { tierLabel: "输入(32k,128k]", input: 4.8, output: 24, cache: 0.96 },
+      { tierLabel: "输入(128k,256k]", input: 9.6, output: 48, cache: 1.92 },
     ],
-    note: "Doubao-Seed-2.0-Pro",
+    note: "Doubao-Seed-2.0-Pro · 在线推理（常规）",
   },
   "doubao-seed-2-0-lite": {
     currency: "CNY",

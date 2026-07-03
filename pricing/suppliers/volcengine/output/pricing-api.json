@@ -1,30 +1,24 @@
 {
-  "source": "volcengine_ark_pricing_doc",
-  "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
-  "dataDate": "2026-06",
-  "priceUnit": "元/百万tokens",
-  "note": "按量付费刊例；Coding/Agent Plan 套餐价不在此表",
-  "generatedAt": "2026-07-02T12:38:43.360Z",
-  "modelCount": 9,
-  "trinityMappedCount": 0,
   "models": [
     {
-      "modelId": "doubao-seed-2-1-pro",
+      "modality": "text",
+      "modelId": "doubao-seed-evolving",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-2-1-pro",
+      "upstreamModelId": "doubao-seed-evolving",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-2.1-Pro",
-      "displayName": "豆包 Doubao-Seed-2.1-Pro",
+      "modelName": "Doubao-seed-evolving",
+      "displayName": "豆包 Doubao-seed-evolving",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Uniform",
-          "tierName": "标准价",
+          "tierName": "输入≤256k",
           "input": 6,
           "output": 30,
           "cache": 1.2,
@@ -34,22 +28,51 @@
       ]
     },
     {
-      "modelId": "doubao-seed-2-1-turbo",
+      "modality": "text",
+      "modelId": "doubao-seed-2.1-pro",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-2-1-turbo",
+      "upstreamModelId": "doubao-seed-2.1-pro",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-2.1-Turbo",
-      "displayName": "豆包 Doubao-Seed-2.1-Turbo",
+      "modelName": "Doubao-seed-2.1-pro",
+      "displayName": "豆包 Doubao-seed-2.1-pro",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Uniform",
-          "tierName": "标准价",
+          "tierName": "输入≤256k",
+          "input": 6,
+          "output": 30,
+          "cache": 1.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-2.1-turbo",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-2.1-turbo",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-2.1-turbo",
+      "displayName": "豆包 Doubao-seed-2.1-turbo",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "输入≤256k",
           "input": 3,
           "output": 15,
           "cache": 0.6,
@@ -59,18 +82,20 @@
       ]
     },
     {
-      "modelId": "doubao-seed-2-0-pro",
+      "modality": "text",
+      "modelId": "doubao-seed-2.0-pro",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-2-0-pro",
+      "upstreamModelId": "doubao-seed-2.0-pro",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-2.0-Pro",
-      "displayName": "豆包 Doubao-Seed-2.0-Pro",
+      "modelName": "Doubao-seed-2.0-pro",
+      "displayName": "豆包 Doubao-seed-2.0-pro",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Tiered",
@@ -83,28 +108,39 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32k",
-          "input": 6.4,
-          "output": 32,
-          "cache": 1.28,
+          "tierName": "输入(32k,128k]",
+          "input": 4.8,
+          "output": 24,
+          "cache": 0.96,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 9.6,
+          "output": 48,
+          "cache": 1.92,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }
       ]
     },
     {
-      "modelId": "doubao-seed-2-0-lite",
+      "modality": "text",
+      "modelId": "doubao-seed-2.0-lite",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-2-0-lite",
+      "upstreamModelId": "doubao-seed-2.0-lite",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-2.0-Lite",
-      "displayName": "豆包 Doubao-Seed-2.0-Lite",
+      "modelName": "Doubao-seed-2.0-lite",
+      "displayName": "豆包 Doubao-seed-2.0-lite",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Tiered",
@@ -117,28 +153,39 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32k",
-          "input": 1.2,
-          "output": 7.2,
-          "cache": 0.24,
+          "tierName": "输入(32k,128k]",
+          "input": 0.9,
+          "output": 5.4,
+          "cache": 0.18,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 1.8,
+          "output": 10.8,
+          "cache": 0.36,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }
       ]
     },
     {
-      "modelId": "doubao-seed-2-0-mini",
+      "modality": "text",
+      "modelId": "doubao-seed-2.0-mini",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-2-0-mini",
+      "upstreamModelId": "doubao-seed-2.0-mini",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-2.0-Mini",
-      "displayName": "豆包 Doubao-Seed-2.0-Mini",
+      "modelName": "Doubao-seed-2.0-mini",
+      "displayName": "豆包 Doubao-seed-2.0-mini",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Tiered",
@@ -151,28 +198,84 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32k",
+          "tierName": "输入(32k,128k]",
           "input": 0.4,
           "output": 4,
           "cache": 0.08,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 0.8,
+          "output": 8,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
         }
       ]
     },
     {
-      "modelId": "doubao-seed-1-8",
+      "modality": "text",
+      "modelId": "doubao-seed-2.0-code",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-1-8",
+      "upstreamModelId": "doubao-seed-2.0-code",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-1.8",
-      "displayName": "豆包 Doubao-Seed-1.8",
+      "modelName": "Doubao-seed-2.0-code",
+      "displayName": "豆包 Doubao-seed-2.0-code",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 3.2,
+          "output": 16,
+          "cache": 0.64,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 4.8,
+          "output": 24,
+          "cache": 0.96,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 9.6,
+          "output": 48,
+          "cache": 1.92,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-1.8",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1.8",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-1.8",
+      "displayName": "豆包 Doubao-seed-1.8",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Tiered",
@@ -185,28 +288,48 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32k",
-          "input": 1.6,
-          "output": 4,
-          "cache": 0.32,
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 8,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 1.2,
+          "output": 16,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 2.4,
+          "output": 24,
+          "cache": 0.16,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }
       ]
     },
     {
-      "modelId": "doubao-seed-1-6",
+      "modality": "text",
+      "modelId": "doubao-seed-character",
       "trinityId": null,
-      "upstreamModelId": "doubao-seed-1-6",
+      "upstreamModelId": "doubao-seed-character",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Seed-1.6",
-      "displayName": "豆包 Doubao-Seed-1.6",
+      "modelName": "Doubao-seed-character",
+      "displayName": "豆包 Doubao-seed-character",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Tiered",
@@ -219,28 +342,300 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入>32k",
-          "input": 1.6,
-          "output": 4,
-          "cache": 0.32,
+          "tierName": "输入(32k,128k]",
+          "input": 1.2,
+          "output": 6,
+          "cache": 0.16,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }
       ]
     },
     {
-      "modelId": "doubao-pro-32k",
+      "modality": "text",
+      "modelId": "doubao-seed-code",
       "trinityId": null,
-      "upstreamModelId": "doubao-pro-32k",
+      "upstreamModelId": "doubao-seed-code",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Pro-32k",
-      "displayName": "豆包 Doubao-Pro-32k",
+      "modelName": "Doubao-seed-code",
+      "displayName": "豆包 Doubao-seed-code",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 1.2,
+          "output": 8,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 1.4,
+          "output": 12,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 2.8,
+          "output": 16,
+          "cache": 0.24,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-1.6",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1.6",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-1.6",
+      "displayName": "豆包 Doubao-seed-1.6",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 2,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 8,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 1.2,
+          "output": 16,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 2.4,
+          "output": 24,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-1.6-lite",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1.6-lite",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-1.6-lite",
+      "displayName": "豆包 Doubao-seed-1.6-lite",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.3,
+          "output": 0.6,
+          "cache": 0.06,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.3,
+          "output": 2.4,
+          "cache": 0.06,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 0.6,
+          "output": 4,
+          "cache": 0.06,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 1.2,
+          "output": 12,
+          "cache": 0.06,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-1.6-flash",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1.6-flash",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-1.6-flash",
+      "displayName": "豆包 Doubao-seed-1.6-flash",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.15,
+          "output": 1.5,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 0.3,
+          "output": 3,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 0.6,
+          "output": 6,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-1.6-vision",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-1.6-vision",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-1.6-vision",
+      "displayName": "豆包 Doubao-seed-1.6-vision",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 0.8,
+          "output": 8,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 1.2,
+          "output": 16,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(128k,256k]",
+          "input": 2.4,
+          "output": 24,
+          "cache": 0.16,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-seed-translation",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seed-translation",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seed-translation",
+      "displayName": "豆包 Doubao-seed-translation",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.2,
+          "output": 3.6,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-1.5-pro-32k",
+      "trinityId": null,
+      "upstreamModelId": "doubao-1.5-pro-32k",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-1.5-pro-32k",
+      "displayName": "豆包 Doubao-1.5-pro-32k",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Uniform",
@@ -254,18 +649,20 @@
       ]
     },
     {
-      "modelId": "doubao-lite-32k",
+      "modality": "text",
+      "modelId": "doubao-1.5-lite-32k",
       "trinityId": null,
-      "upstreamModelId": "doubao-lite-32k",
+      "upstreamModelId": "doubao-1.5-lite-32k",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
-      "modelName": "Doubao-Lite-32k",
-      "displayName": "豆包 Doubao-Lite-32k",
+      "modelName": "Doubao-1.5-lite-32k",
+      "displayName": "豆包 Doubao-1.5-lite-32k",
       "brand": "火山方舟",
       "modelType": "Text",
       "currency": "CNY",
       "priceUnit": "元/百万tokens",
       "region": "中国内地",
+      "billingMode": "在线推理（常规）",
       "tiers": [
         {
           "tierType": "Uniform",
@@ -277,6 +674,141 @@
           "chargeUnit": "TOKEN"
         }
       ]
+    },
+    {
+      "modality": "text",
+      "modelId": "doubao-1.5-vision-pro",
+      "trinityId": null,
+      "upstreamModelId": "doubao-1.5-vision-pro",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-1.5-vision-pro",
+      "displayName": "豆包 Doubao-1.5-vision-pro",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 3,
+          "output": 9,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 8,
+          "output": 28,
+          "cache": 2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 2,
+          "output": 8,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 3,
+          "output": 14,
+          "cache": 0.6,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入长度 (32, 200]",
+          "input": 4,
+          "output": 16,
+          "cache": 0.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 12,
+          "output": 24,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 1,
+          "output": 2,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入≤32k",
+          "input": 2,
+          "output": 3,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入(32k,128k]",
+          "input": 4,
+          "output": 6,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 4,
+          "output": 12,
+          "cache": 0.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 8,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "标准价",
+          "input": 4,
+          "output": 16,
+          "cache": 0.8,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
     }
-  ]
+  ],
+  "sheetCount": 18,
+  "source": "volcengine_ark_pricing_doc",
+  "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+  "modality": "text",
+  "dataDate": "2026-07",
+  "generatedAt": "2026-07-03T03:32:35.309Z",
+  "scrapedAt": "2026-07-03T03:32:16.967Z",
+  "modelCount": 18,
+  "trinityMappedCount": 0
 }

@@ -1,10 +1,10 @@
 {
   "modality": "image",
-  "generatedAt": "2026-07-02T02:36:08.915Z",
+  "generatedAt": "2026-07-03T03:35:15.947Z",
   "fxOnlineDomestic": 6.5,
   "fxCnyPerUsd": 7.25,
-  "officialFetchedAt": "2026-07-01T04:03:46.408Z",
-  "pricesFetchedAt": "2026-06-30T13:38:49.183Z",
+  "officialFetchedAt": "2026-07-03T03:32:28.236Z",
+  "pricesFetchedAt": "2026-07-03T03:35:15.499Z",
   "tokenhubScrapedAt": "2026-06-30T03:32:07.256Z",
   "modelCount": 2,
   "rowCount": 2,

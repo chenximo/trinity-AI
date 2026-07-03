@@ -2,15 +2,14 @@
 /**
  * 价目产出刷新：官方 + 衍生供应商 JSON → 上游汇总 → Excel
  *
- * 新增/改价/改映射后跑本命令，保证 trinity-pricing-text.xlsx 与 JSON 真源一致。
- *
  *   npm run pricing:refresh
- *   npm run pricing:refresh -- --skip-official-fetch   # 仅重算 upstream（official 已是最新）
+ *   npm run pricing:refresh -- --skip-official-fetch
  */
 
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { OFFICIAL_DIRECT_CHANNELS } from "../suppliers/official-direct/channels/index.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "../..");
@@ -22,10 +21,24 @@ const skipOfficial = args.has("--skip-official-fetch");
 const steps = [
   ...(skipOfficial
     ? []
-    : [["official:text", "npm", ["run", "pricing:supplier:official:text"]]]),
+    : [
+        ["official:text", "npm", ["run", "pricing:supplier:official:text"]],
+        ["official:image", "npm", ["run", "pricing:supplier:official:image"]],
+        ["official:video", "npm", ["run", "pricing:supplier:official:video"]],
+      ]),
   ["aigc", "npm", ["run", "pricing:supplier:aigc"]],
   ["volcengine", "npm", ["run", "pricing:supplier:volcengine"]],
-  ["wangju-cloudportal", "npm", ["run", "pricing:supplier:wangju-cloudportal"]],
+  ...OFFICIAL_DIRECT_CHANNELS.map(
+    (c) =>
+      /** @type {[string, string, string[]]} */ ([
+        c.supplierId,
+        "node",
+        [
+          "pricing/suppliers/official-direct/build-pricing.mjs",
+          `--channel=${c.supplierId}`,
+        ],
+      ]),
+  ),
   ["upstream", "npm", ["run", "pricing:upstream"]],
 ];
 

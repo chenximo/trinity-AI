@@ -5,7 +5,7 @@
 import { VENDOR_PRICING_URLS } from "../pricing-urls.mjs";
 
 /**
- * @typedef {"tencent_hunyuan"|"kling"|"vidu"|"tencent_youtu"} VideoVendorKey
+ * @typedef {"tencent_hunyuan"|"kling"|"vidu"|"tencent_youtu"|"volcengine"} VideoVendorKey
  * @typedef {"active"|"deprecated"|"retired"} CatalogStatus
  *
  * @typedef {{
@@ -155,6 +155,43 @@ export const VIDEO_CATALOG = [
     docUrl: "https://cloud.tencent.com/document/product/1729/105545",
     pricingUrl: VENDOR_PRICING_URLS.tencent_hunyuan.video,
     trinityNote: "TokenHub yt-video-fx",
+    region: "domestic",
+    status: "active",
+  },
+  // ── 火山方舟 · Seedance ───────────────────────────────────────
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedance-2.0",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.video,
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedance-2.0-fast",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.video,
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedance-2.0-mini",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.video,
+    region: "domestic",
+    status: "active",
+  },
+  {
+    vendor: "volcengine",
+    vendorLabel: "豆包",
+    vendorModelId: "doubao-seedance-1.5-pro",
+    docUrl: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    pricingUrl: VENDOR_PRICING_URLS.volcengine.video,
     region: "domestic",
     status: "active",
   },

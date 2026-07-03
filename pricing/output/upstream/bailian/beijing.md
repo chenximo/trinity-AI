@@ -2,15 +2,15 @@
 
 > 供应商：**bailian** · 区域：**华北2 北京** · 数据日期：2026-06-30
 > 供应商挂牌/成本单位：**元/百万 tokens**（每百万 tokens，单元格内 入/出/缓）
-> **范围**：Trinity 生文模型（61 款）中本供应商有挂牌价的行
+> **范围**：Trinity 生文模型（59 款）中本供应商有挂牌价的行
 > **厂商官方价**：模型厂商官网挂牌（`suppliers/official`），同档对照
 > 折扣配置：`supplier-discounts.json` → suppliers.bailian
 
 | 序号 | Trinity ID | 显示名 | 厂商 | 价格档位 | 上游模型ID | 厂商官方价 | 供应商挂牌(元/百万tokens) | 供应商vs官方 | 折扣 | 成本(元/百万tokens) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | deepseek-v3.2 | DeepSeek V3.2 | DeepSeek | 统一价 | deepseek-v3.2 | 入 ¥2 · 出 ¥3 · 缓 ¥0.4 | 入 ¥2 · 出 ¥3 · 缓 ¥0.4 | ✅ 一致 | 待填 | 待填 |
-| 2 | deepseek-v4-flash | DeepSeek V4 Flash | DeepSeek | 统一价 | deepseek-v4-flash | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 ¥1 · 出 ¥2 · 缓 ¥0.2 | ⚠ 缓+900% | 待填 | 待填 |
-| 3 | deepseek-v4-pro | DeepSeek V4 Pro | DeepSeek | 统一价 | deepseek-v4-pro | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 ¥12 · 出 ¥24 · 缓 ¥2.4 | ⚠ 入+300% 出+300% 缓+9500% | 待填 | 待填 |
+| 2 | deepseek-v4-flash | DeepSeek V4 Flash Direct | DeepSeek | 统一价 | deepseek-v4-flash | 入 ¥1 · 出 ¥2 · 缓 ¥0.02 | 入 ¥1 · 出 ¥2 · 缓 ¥0.2 | ⚠ 缓+900% | 待填 | 待填 |
+| 3 | deepseek-v4-pro | DeepSeek V4 Pro Direct | DeepSeek | 统一价 | deepseek-v4-pro | 入 ¥3 · 出 ¥6 · 缓 ¥0.025 | 入 ¥12 · 出 ¥24 · 缓 ¥2.4 | ⚠ 入+300% 出+300% 缓+9500% | 待填 | 待填 |
 | 4 | glm-5 | GLM 5 | Zhipu | 0<=输入<32k | glm-5 | 入 ¥4 · 出 ¥18 · 缓 ¥1 | 入 ¥4 · 出 ¥18 | ✅ 一致 | 待填 | 待填 |
 | 5 |  |  |  | 32k<=输入 | glm-5 | 入 ¥6 · 出 ¥22 · 缓 ¥1.5 | 入 ¥6 · 出 ¥22 | ✅ 一致 | 待填 | 待填 |
 | 6 | glm-5.1 | GLM-5.1 | Zhipu | 0<=输入<32k | glm-5.1 | 入 ¥6 · 出 ¥24 · 缓 ¥1.3 | 入 ¥6 · 出 ¥24 | ✅ 一致 | 待填 | 待填 |

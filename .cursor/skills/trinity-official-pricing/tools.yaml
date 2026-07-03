@@ -170,6 +170,15 @@ tools:
     git: false
     tags: [supplier, volcengine, pricing-L2]
 
+  - id: pricing.supplier.official-direct.all
+    title: 构建全部原厂直连渠道
+    summary: 从 official 复制/筛选，一次构建 wangju-cloudportal、relay-cust 等
+    command: npm run pricing:supplier:official-direct:all
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, official-direct, pricing-L2]
+
   - id: pricing.supplier.wangju-cloudportal
     title: 构建网聚云联·云门户价目
     summary: 从 official 筛选 GPT/Gemini 生成 pricing-api.json
@@ -181,6 +190,18 @@ tools:
     network: false
     git: false
     tags: [supplier, wangju, pricing-L2]
+
+  - id: pricing.supplier.relay-cust
+    title: 构建中转站-cust 价目
+    summary: 从 official 全量复制生文价目（AIUPNode 原厂直连）
+    command: npm run pricing:supplier:relay-cust
+    writes:
+      - pricing/suppliers/relay-cust/output/pricing-api.json
+      - pricing/suppliers/relay-cust/trinity-map.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, relay-cust, pricing-L2]
 
   - id: pricing.refresh
     title: 刷新价目产出（含 Excel）

@@ -1,0 +1,354 @@
+{
+  "source": "volcengine_ark_pricing_doc",
+  "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+  "modality": "video",
+  "dataDate": "2026-07",
+  "generatedAt": "2026-07-03T03:32:35.309Z",
+  "scrapedAt": "2026-07-03T03:32:16.967Z",
+  "modelCount": 6,
+  "trinityMappedCount": 0,
+  "models": [
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-2.0",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-2.0",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-2.0",
+      "displayName": "豆包 Doubao-seedance-2.0",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "输出视频分辨率为 480p，720p输入不含视频：46.00输入包含视频：28.00输出视频分辨率为 1080p输入不含视频：51.00输入包含视频：31.00输出视频分辨率为 4k输入不含视频：26.00输入包含视频：16.00",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·480p·16:9·5s",
+          "price": "2.31元/个 · 0.46元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·720p·16:9·5s",
+          "price": "4.97元/个 · 0.99元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·1080p·16:9·5s",
+          "price": "12.39元/个 · 2.48元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·4k·16:9·5s",
+          "price": "25.27元/个 · 5.05元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·480p·16:9·2~15s",
+          "price": "2.53~5.62最低价对应输入2~4秒最高价对应输入15秒元/个 · 1.99~4.42最低价对应输入2~4秒最高价对应输入15秒元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·720p·16:9·2~15s",
+          "price": "5.44~12.10最低价对应输入2~4秒最高价对应输入15秒元/个 · 4.28~9.50最低价对应输入2~4秒最高价对应输入15秒元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·1080p·16:9·2～15s",
+          "price": "13.56~30.13最低价对应输入2~4秒最高价对应输入15秒元/个",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·4k·16:9·2～15s",
+          "price": "27.99~62.21最低价对应输入2~4秒最高价对应输入15秒元/个",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-2.0-fast",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-2.0-fast",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-2.0-fast",
+      "displayName": "豆包 Doubao-seedance-2.0-fast",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "输入不含视频：37.00输入包含视频：22.00",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·480p·16:9·5s",
+          "price": "1.86元/个 · 0.37元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·720p·16:9·5s",
+          "price": "4.00元/个 · 0.80元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·480p·16:9·2~15s",
+          "price": "1.99~4.42最低价对应输入2~4秒最高价对应输入15秒元/个 · 1.27~2.81最低价对应输入2~4秒最高价对应输入15秒元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·720p·16:9·2~15s",
+          "price": "4.28~9.50最低价对应输入2~4秒最高价对应输入15秒元/个 · 2.72~6.05最低价对应输入2~4秒最高价对应输入15秒元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-2.0-mini",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-2.0-mini",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-2.0-mini",
+      "displayName": "豆包 Doubao-seedance-2.0-mini",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "输入不含视频：23.00输入包含视频：14.00",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·480p·16:9·5s",
+          "price": "1.16元/个 · 0.23元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入不含视频·720p·16:9·5s",
+          "price": "2.48元/个 · 0.50元/s",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·480p·16:9·2~15s",
+          "price": "1.27~2.81最低价对应输入2~4秒最高价对应输入15秒元/个",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入包含视频·720p·16:9·2~15s",
+          "price": "2.72~6.05最低价对应输入2~4秒最高价对应输入15秒元/个",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-1.5-pro",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-1.5-pro",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-1.5-pro",
+      "displayName": "豆包 Doubao-seedance-1.5-pro",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "有声视频：16.00无声视频：8.00",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "480p·16:9·5s·有声视频",
+          "price": "0.80",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "480p·16:9·5s·Draft有声",
+          "price": "0.48",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "480p·16:9·5s·无声视频",
+          "price": "0.40",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "480p·16:9·5s·Draft无声",
+          "price": "0.28",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720p·16:9·5s·有声视频",
+          "price": "1.73",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "720p·16:9·5s·无声视频",
+          "price": "0.86",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080p·16:9·5s·有声视频",
+          "price": "3.89",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "1080p·16:9·5s·无声视频",
+          "price": "1.94",
+          "unit": "元/个",
+          "chargeUnit": "VIDEO",
+          "note": null
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-1.0-pro",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-1.0-pro",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-1.0-pro",
+      "displayName": "豆包 Doubao-seedance-1.0-pro",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "15.00",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "modelId": "doubao-seedance-1.0-pro-fast",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedance-1.0-pro-fast",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedance-1.0-pro-fast",
+      "displayName": "豆包 Doubao-seedance-1.0-pro-fast",
+      "brand": "火山方舟",
+      "modelType": "Video",
+      "currency": "CNY",
+      "priceUnit": "元/个",
+      "region": "中国内地",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "在线推理·按token",
+          "price": "4.20",
+          "unit": "元/百万tokens",
+          "chargeUnit": "VIDEO",
+          "note": "分辨率/是否含视频输入分档，见官网表"
+        }
+      ]
+    }
+  ]
+}

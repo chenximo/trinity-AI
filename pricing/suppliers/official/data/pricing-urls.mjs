@@ -42,6 +42,8 @@ export const VENDOR_PRICING_URLS = {
   },
   volcengine: {
     text: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    image: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+    video: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
   },
   kling: {
     video: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",

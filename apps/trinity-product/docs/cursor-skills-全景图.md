@@ -57,11 +57,13 @@ title: Cursor Skills 全景图
 
   trinity-official-pricing/
     SKILL.md
-      # 模型原厂官方价、三方对比、价目 gate
+      # 原厂价、转售渠道、Excel、pricing:gate
     DOMAIN.md
     tools.yaml
-      # L2：official fetch、validate、compare、gate
+      # L2：supplier fetch、validate、pricing.refresh、pricing.gate
     workflows/
+      add-official-model.md    # 加原厂模型（末步 pricing:refresh）
+      add-supplier-channel.md  # 加转售/云门户类渠道
     confirmation.md
     references/
 
@@ -164,7 +166,7 @@ title: Cursor Skills 全景图
 | AI 云 / ToB 营销页 | `trinity-tob-marketing-site` | `trinity-user-console` |
 | 用户控制台 `account/console` | `trinity-user-console` | `trinity-admin-ruoyi-list` |
 | 运营后台若依式列表 | `trinity-admin-ruoyi-list` | `trinity-user-console` |
-| 价目、官方价、pricing gate | `trinity-official-pricing` | api-acceptance、handbook |
+| 价目、官方价、`pricing:refresh` / `pricing:gate` | `trinity-official-pricing` | api-acceptance、handbook |
 | 新建 / 评审 `.cursor/skills/` | `trinity-skill-authoring` | — |
 
 歧义时见总机 `.cursor/skills/SKILL.md` **§歧义消解表**（例如「加模型」：验收台 vs 手册能力描述）。

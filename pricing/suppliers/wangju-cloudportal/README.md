@@ -17,7 +17,8 @@ npm run pricing:supplier:official:text
 npm run pricing:supplier:wangju-cloudportal
 ```
 
-筛选规则见 `data/config.mjs`：`vendors: ["openai", "google"]`。
+筛选规则见 `official-direct/channels/wangju-cloudportal.mjs`（`vendors: openai, google`）。  
+构建：`npm run pricing:supplier:wangju-cloudportal`（共用 `official-direct` 构建器）。
 
 ## 与 official 的关系
 

@@ -1,0 +1,87 @@
+{
+  "source": "volcengine_ark_pricing_doc",
+  "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+  "modality": "image",
+  "dataDate": "2026-07",
+  "generatedAt": "2026-07-03T03:32:35.309Z",
+  "scrapedAt": "2026-07-03T03:32:16.967Z",
+  "modelCount": 3,
+  "trinityMappedCount": 0,
+  "models": [
+    {
+      "modality": "image",
+      "modelId": "doubao-seedream-5.0-lite",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedream-5.0-lite",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedream-5.0-lite",
+      "displayName": "豆包 Doubao-seedream-5.0-lite",
+      "brand": "火山方舟",
+      "modelType": "Image",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "region": "中国内地",
+      "billingMode": "图片生成模型",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "输出",
+          "price": 0.22,
+          "unit": "元/张",
+          "chargeUnit": "IMAGE"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "modelId": "doubao-seedream-4.5",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedream-4.5",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedream-4.5",
+      "displayName": "豆包 Doubao-seedream-4.5",
+      "brand": "火山方舟",
+      "modelType": "Image",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "region": "中国内地",
+      "billingMode": "图片生成模型",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "输出",
+          "price": 0.25,
+          "unit": "元/张",
+          "chargeUnit": "IMAGE"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "modelId": "doubao-seedream-4.0",
+      "trinityId": null,
+      "upstreamModelId": "doubao-seedream-4.0",
+      "vendorCode": "Doubao",
+      "vendorName": "豆包",
+      "modelName": "Doubao-seedream-4.0",
+      "displayName": "豆包 Doubao-seedream-4.0",
+      "brand": "火山方舟",
+      "modelType": "Image",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "region": "中国内地",
+      "billingMode": "图片生成模型",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "输出",
+          "price": 0.2,
+          "unit": "元/张",
+          "chargeUnit": "IMAGE"
+        }
+      ]
+    }
+  ]
+}
