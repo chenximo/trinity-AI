@@ -159,6 +159,46 @@ tools:
     git: false
     tags: [supplier, bailian, pricing-L3]
 
+  - id: pricing.supplier.volcengine
+    title: 构建火山方舟价目
+    summary: 从 pricing-sheet 生成 volcengine pricing-api.json
+    command: npm run pricing:supplier:volcengine
+    writes:
+      - pricing/suppliers/volcengine/output/pricing-api.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, volcengine, pricing-L2]
+
+  - id: pricing.supplier.wangju-cloudportal
+    title: 构建网聚云联·云门户价目
+    summary: 从 official 筛选 GPT/Gemini 生成 pricing-api.json
+    command: npm run pricing:supplier:wangju-cloudportal
+    writes:
+      - pricing/suppliers/wangju-cloudportal/output/pricing-api.json
+      - pricing/suppliers/wangju-cloudportal/trinity-map.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, wangju, pricing-L2]
+
+  - id: pricing.refresh
+    title: 刷新价目产出（含 Excel）
+    summary: official:text → 衍生供应商 → upstream；新增/改价后必跑，保证 xlsx 最新
+    command: npm run pricing:refresh
+    writes:
+      - pricing/output/trinity-pricing-text.xlsx
+      - pricing/output/upstream/upstream-pricing.json
+      - pricing/output/upstream/summary.md
+      - pricing/output/official/text.md
+      - pricing/output/official/text.json
+    confirm: none
+    network: true
+    git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
+    tags: [upstream, excel, publish]
+
   # ── 校验与门禁 ──────────────────────────────────────────────
   - id: pricing.validate.aigc-excel
     title: AIGC Excel ↔ sheet 校验
@@ -266,7 +306,7 @@ tools:
 
   - id: pricing.upstream
     title: 生成上游汇总
-    summary: upstream-pricing.json + summary.md；含自动线上价刷新
+    summary: upstream-pricing.json + summary.md + Excel；通常用 pricing.refresh 代替
     command: npm run pricing:upstream
     writes:
       - pricing/output/upstream/upstream-pricing.json

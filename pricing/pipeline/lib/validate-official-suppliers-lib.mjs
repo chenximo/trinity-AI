@@ -6,9 +6,12 @@ import {
   compareTierLists,
   normalizeAttrLabel,
   tierKeysFromTiers,
+  tokenhubTierPrices,
+  parseNum,
 } from "./pricing-validate-lib.mjs";
-import { pickBailianModels } from "./pricing-compare.mjs";
+import { pickBailianModels, fixBailianTiers, priceFromTier } from "./pricing-compare.mjs";
 import { annotationsForModel } from "../../config/pricing-annotations.mjs";
+import { resolveTokenhubModel } from "../../config/tokenhub-trinity-alias.mjs";
 
 export const SUPPLIER_CHANNELS = [
   {
@@ -37,13 +40,30 @@ function officialTiersCny(off) {
   }));
 }
 
-function supplierTiersFromModel(model) {
-  return (model?.tiers ?? []).map((t) => ({
-    tierLabel: normalizeAttrLabel(t.tierName ?? t.tierLabel ?? ""),
-    input: t.input,
-    output: t.output,
-    cache: t.cache,
-  }));
+function supplierTiersFromModel(model, channel) {
+  let tiers = model?.tiers ?? [];
+  const modelId = model?.modelId?.toLowerCase() ?? "";
+  if (channel === "bailian") {
+    tiers = fixBailianTiers(modelId, tiers);
+  }
+
+  return tiers.map((t) => {
+    if (channel === "tokenhub") {
+      const p = tokenhubTierPrices(t);
+      return {
+        tierLabel: normalizeAttrLabel(p.tierLabel || "标准价"),
+        input: p.input,
+        output: p.output,
+        cache: p.cache,
+      };
+    }
+    return {
+      tierLabel: normalizeAttrLabel(t.tierName ?? t.tierLabel ?? ""),
+      input: parseNum(priceFromTier(t, "Input")),
+      output: parseNum(priceFromTier(t, "Output")),
+      cache: parseNum(priceFromTier(t, "Cache")),
+    };
+  });
 }
 
 function indexTokenhub(models) {
@@ -74,7 +94,7 @@ function resolveSupplierModel(channel, tid, vendorId, indexes) {
     return hit?.model ?? null;
   }
   if (channel === "tokenhub") {
-    return indexes.tokenhub.get(t) ?? indexes.tokenhub.get(v) ?? null;
+    return resolveTokenhubModel(indexes.tokenhub, tid, vendorId);
   }
   if (channel === "aigc-domestic") {
     return indexes.aigcDomestic.get(t) ?? null;
@@ -225,9 +245,10 @@ export function buildOfficialVsSuppliersReport(opts) {
         continue;
       }
 
-      const supTiers = supplierTiersFromModel(model);
+      const supTiers = supplierTiersFromModel(model, ch.key);
       const issues = compareTierLists(offTiers, supTiers, {
         fields: ["input", "output", "cache"],
+        skipMissingSupplierCache: true,
       });
 
       const rowAlerts = issuesToAlerts(

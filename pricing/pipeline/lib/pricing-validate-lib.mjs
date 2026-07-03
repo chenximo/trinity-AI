@@ -3,7 +3,13 @@
  */
 
 import { tierToKey, findTierByKey } from "./tier-key.mjs";
-import { FIELD_MATCH_PCT, pctIsMaterial } from "./pricing-tolerance.mjs";
+import {
+  FIELD_MATCH_PCT,
+  CACHE_L1_MATCH_PCT,
+  roundForCompare,
+  DEFAULT_CNY_TO_USD_FX,
+  pctIsMaterial,
+} from "./pricing-tolerance.mjs";
 
 export function parseNum(v) {
   if (v == null || v === "" || v === "—") return null;
@@ -20,12 +26,15 @@ export function normalizeAttrLabel(s) {
     .replace(/\s+/g, " ");
 }
 
+/** tierKey 用原始档位名，勿 normalizeAttrLabel（会破坏 输入<16k 等 pattern） */
+function tierRawLabel(tier) {
+  return String(tier?.tierLabel ?? tier?.tierName ?? "").trim();
+}
+
 /** @param {Array<{ tierLabel?: string, tierName?: string }>} tiers */
 export function tierKeysFromTiers(tiers) {
   const total = tiers?.length ?? 0;
-  return (tiers ?? []).map((t, i) =>
-    tierToKey(t.tierLabel ?? t.tierName ?? "", i, total),
-  );
+  return (tiers ?? []).map((t, i) => tierToKey(tierRawLabel(t), i, total));
 }
 
 /**
@@ -38,17 +47,24 @@ export function comparePriceTriple(a, b, opts = {}) {
   const deltas = {};
   let ok = true;
   for (const f of fields) {
-    const av = parseNum(a?.[f]);
-    const bv = parseNum(b?.[f]);
+    const av = roundForCompare(a?.[f]);
+    const bv = roundForCompare(b?.[f]);
     if (av == null && bv == null) continue;
     if (av == null || bv == null) {
+      if (f === "cache" && opts.skipMissingSupplierCache && av != null && bv == null)
+        continue;
       deltas[f] = { status: "missing", a: av, b: bv };
       ok = false;
       continue;
     }
+    const tol =
+      f === "cache" ? (opts.cacheTolerancePct ?? CACHE_L1_MATCH_PCT) : FIELD_MATCH_PCT;
     const pct =
       bv === 0 ? (av === 0 ? 0 : null) : Math.round(((av - bv) / bv) * 1000) / 10;
-    const match = Math.abs(av - bv) < 0.0001 || !pctIsMaterial(pct, FIELD_MATCH_PCT);
+    const match =
+      Math.abs(av - bv) < 0.0001 ||
+      !pctIsMaterial(pct, tol) ||
+      (f === "cache" && Math.abs(av - bv) <= 0.01);
     deltas[f] = { status: match ? "ok" : "mismatch", a: av, b: bv, pct };
     if (!match) ok = false;
   }
@@ -123,12 +139,40 @@ export function compareTierLists(left, right, opts = {}) {
   return issues;
 }
 
-/** AIGC 国际 USD 应等于 official USD（CNY 官方 ÷6.5 换 USD） */
-export function officialTierToCompare(tier, currency = "USD") {
-  const fx = currency === "CNY" ? 6.5 : 1;
+/** AIGC 国内/国际价块 → 可比 cache（含 cacheHit / cacheWrite5m） */
+export function aigcBlockCache(block) {
+  if (!block) return null;
+  return parseNum(block.cache ?? block.cacheHit ?? block.cacheWrite5m);
+}
+
+/** 从 AIGC 一行推断 CNY→USD（dom.input / intl.input） */
+export function impliedFxFromAigcRow(domestic, international) {
+  const di = parseNum(domestic?.input);
+  const ii = parseNum(international?.input);
+  if (di == null || ii == null || ii === 0) return DEFAULT_CNY_TO_USD_FX;
+  const fx = di / ii;
+  return fx >= 6 && fx <= 8 ? fx : DEFAULT_CNY_TO_USD_FX;
+}
+
+/** TokenHub tier：补全 items[] 价 */
+export function tokenhubTierPrices(tier) {
+  const items = tier?.items ?? [];
+  const pick = (name) =>
+    parseNum(items.find((i) => i.name === name)?.price ?? items.find((i) => i.displayName === name)?.price);
+  return {
+    tierLabel: tier?.tierName ?? tier?.tierLabel ?? "",
+    input: parseNum(tier?.input) ?? pick("Input"),
+    output: parseNum(tier?.output) ?? pick("Output"),
+    cache: parseNum(tier?.cache) ?? pick("Cache"),
+  };
+}
+
+/** AIGC 国际 USD 应等于 official USD（CNY 官方按 fx 换 USD） */
+export function officialTierToCompare(tier, currency = "USD", fx = DEFAULT_CNY_TO_USD_FX) {
+  const fxRate = currency === "CNY" ? fx : 1;
   const scale = (v) => {
     const n = parseNum(v);
-    return n != null ? n / fx : null;
+    return n != null ? roundForCompare(n / fxRate) : null;
   };
   return {
     tierLabel: tier.tierLabel ?? tier.tierName,

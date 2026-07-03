@@ -11,13 +11,18 @@
 export const PRICING_ANNOTATIONS = [
   {
     id: "deepseek-v4-pro-reseller",
-    trinityIds: ["deepseek-v4-pro"],
+    trinityIds: [
+      "deepseek-v4-pro",
+      "deepseek-v4-pro-202606",
+      "deepseek-v4-flash",
+      "deepseek-v4-flash-202605",
+    ],
     severity: "warn",
     flag: "转售加价",
-    scopes: ["compare-hub", "supplier-compare"],
-    title: "deepseek-v4-pro：TokenHub/百炼转售加价",
+    scopes: ["compare-hub", "supplier-compare", "official-suppliers"],
+    title: "DeepSeek V4：百炼/TokenHub 转售或隐式缓存口径",
     detail:
-      "厂商官方 ¥3/¥6；TokenHub·百炼挂牌 ¥12/¥24 为已知转售口径。AIGC 国内 ¥3 与官方一致。",
+      "厂商官方 ¥3/¥6（Pro）、¥1/¥2（Flash）；百炼第三方区挂牌可高于官方。Flash 缓存百炼按 input×20% 隐式计价（0.2），官方 cache hit 0.02。",
   },
   {
     id: "glm-5-tier-axis",
@@ -50,12 +55,33 @@ export const PRICING_ANNOTATIONS = [
   },
   {
     id: "qwen-bailian-cache",
-    trinityIds: ["qwen3.5-flash", "qwen3.5-plus"],
+    trinityIds: ["qwen3.5-flash", "qwen3.5-plus", "qwen-plus"],
     severity: "info",
     flag: "百炼缓存贵",
-    scopes: ["compare-hub", "supplier-compare"],
-    title: "千问 3.5：百炼缓存读取高于官方",
-    detail: "百炼挂牌缓存价高于厂商官方种子，属供应商口径差异，入/出一致。",
+    scopes: ["compare-hub", "supplier-compare", "official-suppliers"],
+    title: "千问：百炼缓存读取高于官方",
+    detail:
+      "百炼挂牌 cache 多为 input×20% 隐式价；官方种子为厂商文档 explicit cache hit。入/出一致时不视为渠道错误。",
+  },
+  {
+    id: "glm-4-7-bailian-tier-axis",
+    trinityIds: ["glm-4-7-251222"],
+    severity: "info",
+    flag: "档位轴不同",
+    scopes: ["official-suppliers", "supplier-compare"],
+    title: "GLM-4.7：百炼仅按输入长度分档",
+    detail:
+      "官方/AIGC 在 ≤32k 内再按输出长度分两档；百炼 scrape 仅 0–32k / >32k 两档。按 tierKey 硬比会产生假阳性。",
+  },
+  {
+    id: "minimax-cache-write5m",
+    trinityIds: ["minimax-m2.5", "minimax-m2.7"],
+    severity: "info",
+    flag: "缓存写入价",
+    scopes: ["official-suppliers", "supplier-compare"],
+    title: "MiniMax：官方 cache 对齐 AIGC 5m 缓存写入",
+    detail:
+      "官方 cache 字段对应 AIGC「5m缓存写入」价（非 cache hit）。百炼未单独列出 cache 字段时不 fail。",
   },
 ];
 
@@ -66,6 +92,13 @@ const SCOPE_ALIASES = {
   "compare-hub": "compare-hub",
   "supplier-compare": "supplier-compare",
   "official-suppliers": "official-suppliers",
+};
+
+const SCOPE_GROUPS = {
+  "openrouter-compare": ["openrouter-compare"],
+  "compare-hub": ["compare-hub"],
+  "supplier-compare": ["supplier-compare", "official-suppliers"],
+  "official-suppliers": ["official-suppliers", "supplier-compare"],
 };
 
 const DELTA_CLOSE_PCT = 8;
@@ -141,10 +174,11 @@ export function annotationsForModel(trinityId, scope = "openrouter-compare") {
   if (!trinityId) return [];
   const key = trinityId.toLowerCase();
   const scopeKey = SCOPE_ALIASES[scope] ?? scope;
+  const accepted = new Set(SCOPE_GROUPS[scopeKey] ?? [scopeKey]);
   return PRICING_ANNOTATIONS.filter(
     (a) =>
       a.trinityIds.some((id) => id.toLowerCase() === key) &&
-      a.scopes.includes(scopeKey),
+      a.scopes.some((s) => accepted.has(SCOPE_ALIASES[s] ?? s)),
   );
 }
 

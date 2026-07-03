@@ -123,7 +123,7 @@ export const TEXT_SEED = {
   "grok-4.20-0309-reasoning": { input: 1.25, cache: 0.2, output: 2.5 },
   "grok-4.3": { input: 1.25, cache: 0.2, output: 2.5 },
 
-  "claude-opus-4-8": { input: 5, output: 25 },
+  "claude-opus-4-8": { input: 5, output: 25, cache: 0.5, note: "Claude Platform · Opus 4.8" },
   "claude-opus-4-7": { input: 5, output: 25, cache: 0.5, note: "Claude Platform 定价 · Opus 4.7" },
   "claude-opus-4-6": { input: 5, output: 25, cache: 0.5, note: "Claude Platform 定价 · Opus 4.6" },
   "claude-sonnet-4-6": { input: 3, output: 15, cache: 0.3, note: "Claude Platform 定价 · Sonnet 4.6" },

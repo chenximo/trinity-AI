@@ -10,7 +10,17 @@ export function priceFromTier(t, name) {
   const top = { Input: t.input, Output: t.output, Cache: t.cache }[name];
   if (top != null && top !== "") return String(top);
   const item = (t.items ?? []).find((i) => i.name === name);
-  return item?.price != null ? String(item.price) : null;
+  if (item?.price != null) return String(item.price);
+  const aliases = {
+    Cache: ["CacheHit", "CacheWrite5m"],
+    Input: [],
+    Output: [],
+  };
+  for (const alt of aliases[name] ?? []) {
+    const hit = (t.items ?? []).find((i) => i.name === alt);
+    if (hit?.price != null) return String(hit.price);
+  }
+  return null;
 }
 
 export function parseNum(v) {
@@ -21,10 +31,28 @@ export function parseNum(v) {
 
 /** 百炼 HTML 续行错位修复（已知模型） */
 const BAILIAN_TIER_FIXES = {
+  "qwen-plus": [
+    { tierName: "0<Token≤128K", input: "0.8", output: "2", cache: "0.16" },
+    { tierName: "128K<Token≤256K", input: "2.4", output: "20", cache: "0.48" },
+    { tierName: "256K<Token≤1M", input: "4.8", output: "48", cache: "0.96" },
+  ],
   "qwen3.5-plus": [
     { tierName: "0<Token≤128K", input: "0.8", output: "4.8", cache: "0.16" },
     { tierName: "128K<Token≤256K", input: "2", output: "12", cache: "0.4" },
     { tierName: "256K<Token≤1M", input: "4", output: "24", cache: "0.8" },
+  ],
+  "qwen3.5-flash": [
+    { tierName: "0<Token≤128K", input: "0.2", output: "2", cache: "0.04" },
+    { tierName: "128K<Token≤256K", input: "0.8", output: "8", cache: "0.16" },
+    { tierName: "256K<Token≤1M", input: "1.2", output: "12", cache: "0.24" },
+  ],
+  "qwen3.6-plus": [
+    { tierName: "0<Token≤256K", input: "2", output: "12", cache: "0.4" },
+    { tierName: "256K<Token≤1M", input: "8", output: "48", cache: "1.6" },
+  ],
+  "qwen3.7-plus": [
+    { tierName: "0<Token≤256K", input: "2", output: "8", cache: "0.4" },
+    { tierName: "256K<Token≤1M", input: "6", output: "24", cache: "1.2" },
   ],
 };
 

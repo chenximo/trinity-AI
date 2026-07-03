@@ -7,7 +7,7 @@
 
 | tool id | 操作 | 说明 |
 |---------|------|------|
-| `pricing.seed.edit` | 改 `seeds/*.mjs` | 影响 L1 官方锚点；改后须 `pricing.gate` |
+| `pricing.seed.edit` | 改 `seeds/*.mjs` | 影响 L1 官方锚点；改后须 **`pricing.refresh`** + `pricing.gate` |
 | `pricing.catalog.edit` | 改 `catalog/*.mjs` | 新增/下线模型目录 |
 | `pricing.map.edit` | 改 `trinity-map.json` | 影响对比 join 键 |
 | `pricing.aigc.sheet.edit` | 改 AIGC `pricing-sheet` | 影响 L1 交叉与刊例对比 |
@@ -22,7 +22,7 @@
 ## 不需要确认（`confirm: none`）
 
 - 只读校验：`pricing.gate`、`pricing.validate.*`
-- 拉取/对比：`pricing.supplier.*`、`pricing.compare.official`、`pricing.fetch`、`pricing.upstream`
+- 拉取/对比/刷新：`pricing.supplier.*`、`pricing.refresh`、`pricing.compare.official`、`pricing.fetch`、`pricing.upstream`
 - 脚手架：`pricing.scaffold.model`（仅输出片段，不写盘除非用户要求粘贴）
 - 本地跳过线上拉取：`PRICING_SKIP_ONLINE_FETCH=1`
 
@@ -42,7 +42,7 @@
 
 ```text
 将修改官方种子 pricing/suppliers/official/data/seeds/<file>.mjs（影响 L1 锚点），
-改完后会跑 pricing:gate。是否继续？
+改完后会跑 pricing:refresh（含 Excel）与 pricing:gate。是否继续？
 ```
 
 ```text

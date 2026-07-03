@@ -27,9 +27,13 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
     if (/输出.*[>＞]0\.2k/i.test(n)) return "t:in32k-out-gt0.2k";
   }
 
-  if (/输入<16k|输入≤16k|输入长度\(0,16k|0,16k\)|输入长度\(0,16k\)/i.test(n))
+  if (/输入[<≤=]16k|输入<=16k|输入长度\(0,\s*16k|0,\s*16k\)/i.test(n))
     return "t:0-16k";
-  if (/16k.*32k|16k<=输入<32k|输入长度\(16k,32k|输入长度\[16k,32k/i.test(n))
+  if (
+    /16k.*32k|16k<=输入<32k|16k≤输入|输入长度\[16k,\s*32k\)|输入长度\(16k,\s*32k/i.test(
+      n,
+    )
+  )
     return "t:16k-32k";
 
   // 智谱 GLM：仅按输入长度（≤32k / >32k），排除混元 16k–32k 区间
@@ -38,7 +42,7 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
   if (/输入[:：]?[>＞≥]=?32k/i.test(n) && !/166k/.test(n)) return "t:32k+";
 
   if (
-    /输入>=32k|输入≥32k|32k\+|32k<=输入|32k<=|输入长度\(32k|输入长度\[32k|输入>32k/i.test(
+    /输入>=32k|输入≥32k|32k\+|32k<=输入|32k<=|输入长度\(32k|输入长度\[32k|输入长度\[32k\+\)|输入>32k/i.test(
       n,
     )
   )
@@ -48,9 +52,13 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
     /0<token≤128k|0<token<128k|输入<=128k|输入≤128k|0<输入<=128k/i.test(n)
   )
     return "t:0-128k";
-  if (/128k.*256k|128k<输入<=256k|128k<token<=256k/i.test(n))
+  if (/128k<token≤256k|128k<token<256k|128k.*256k|128k<输入<=256k/i.test(n))
     return "t:128k-256k";
-  if (/256k.*1m|256k<输入<=1m|256k<token<=1m/i.test(n)) return "t:256k-1m";
+  if (/256k<token≤1m|256k<token<1m|256k.*1m|256k<输入<=1m/i.test(n))
+    return "t:256k-1m";
+
+  if (/0<token≤256k|0<token<256k|输入<=256k|输入≤256k/i.test(n) && !/128k/i.test(n))
+    return "t:0-256k";
 
   if (/输入<=512k|输入≤512k|0<输入<=512k|\(0,512k/i.test(n)) return "t:0-512k";
   if (/512k<|512k\+|输入>512k/i.test(n)) return "t:512k+";
@@ -96,6 +104,7 @@ export const TIER_KEY_ORDER = [
   "ctx:1.28m+",
   "t:0-128k",
   "t:128k-256k",
+  "t:0-256k",
   "t:256k-1m",
   "t:0-512k",
   "t:512k+",

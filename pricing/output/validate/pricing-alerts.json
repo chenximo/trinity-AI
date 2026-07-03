@@ -1,228 +1,12 @@
 {
   "schema": "trinity.pricing.alert-bundle/v1",
-  "generatedAt": "2026-07-02T09:54:32.029Z",
-  "alertCount": 37,
-  "blockingCount": 37,
+  "generatedAt": "2026-07-02T12:43:03.244Z",
+  "alertCount": 7,
+  "blockingCount": 0,
   "alerts": [
     {
       "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "gpt-5.3-codex",
-      "vendorModelId": "gpt-5.3-codex",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "OO::5.3-codex · 标准价: cache -2.8%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "claude-opus-4-8",
-      "vendorModelId": "claude-opus-4-8",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "CD::Opus 4.5 · 标准价: cache missing%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "deepseek-v3.2",
-      "vendorModelId": "deepseek-v3.2",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "Deepseek::v3.2 · 标准价: cache -0.7%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "deepseek-v4-pro",
-      "vendorModelId": "deepseek-v4-pro",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "Deepseek::v4-pro (new) · 标准价: cache -3.8%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "glm-4-7-251222",
-      "vendorModelId": "glm-4.7",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "Zhipu::4.7 · 输入≤32k，输出≤0.2k: cache -0.7%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "minimax-m2.5",
-      "vendorModelId": "minimax-m2.5",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "Minimax::M2.5 · 标准价: input 7.7%, output 7.7%, cache 7.7%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "phase": "L1_vs_L2",
-      "trinityId": "minimax-m2.7",
-      "vendorModelId": "minimax-m2.7",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "aigc": "suppliers/aigc/data/pricing-sheet.mjs"
-      },
-      "severity": "warn",
-      "type": "peer_price_mismatch",
-      "title": "官方↔AIGC 价格不一致",
-      "detail": "Minimax::M2.7 · 标准价: input 7.7%, output 7.7%, cache 7.7%",
-      "suggestedAction": "查种子或 AIGC 商务价；无误后确认商务",
-      "blocking": true,
-      "source": "official-aigc-cross.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
-      "type": "supplier_tier_gap",
-      "trinityId": "hy3-preview",
-      "vendorModelId": "hy3-preview",
-      "phase": "L1_vs_L3",
-      "supplier": "aigc-domestic",
-      "title": "AIGC国内缺少官方档位 t:idx-0",
-      "detail": "官方有档 t:idx-0，AIGC国内 无同档",
-      "missingTierKeys": [
-        "t:idx-0"
-      ],
-      "suggestedAction": "查 scrape；无误后联系 AIGC国内 商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/aigc/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "hy-mt2-lite",
-      "vendorModelId": "hy-mt2-lite",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=0.3 TokenHub=null; output: 官方=1.2 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "hy-mt2-plus",
-      "vendorModelId": "hy-mt2-plus",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=0.5 TokenHub=null; output: 官方=2 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "hy-mt2-pro",
-      "vendorModelId": "hy-mt2-pro",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=0.5 TokenHub=null; output: 官方=2 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "hy-role",
-      "vendorModelId": "hy-role",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=2.4 TokenHub=null; output: 官方=9.6 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "deepseek-v4-flash",
       "vendorModelId": "deepseek-v4-flash",
@@ -236,31 +20,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ],
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "deepseek-v4-flash",
-      "vendorModelId": "deepseek-v4-flash",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.02 TokenHub=0.2 (-90%)",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "deepseek-v4-flash-202605",
       "vendorModelId": "deepseek-v4-flash",
@@ -274,12 +42,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ],
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "deepseek-v4-pro",
       "vendorModelId": "deepseek-v4-pro",
@@ -293,31 +64,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ],
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "deepseek-v4-pro",
-      "vendorModelId": "deepseek-v4-pro",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 TokenHub=12 (-75%); output: 官方=6 TokenHub=24 (-75%); cache: 官方=0.025 TokenHub=1 (-97.5%)",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "deepseek-v4-pro-202606",
       "vendorModelId": "deepseek-v4-pro",
@@ -331,12 +86,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ],
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "qwen3.5-plus",
       "vendorModelId": "qwen3.5-plus",
@@ -350,33 +108,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
-      "type": "supplier_tier_gap",
-      "trinityId": "qwen3.5-plus",
-      "vendorModelId": "qwen3.5-plus",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼缺少官方档位 t:128k-256k",
-      "detail": "官方有档 t:128k-256k，百炼 无同档",
-      "missingTierKeys": [
-        "t:128k-256k"
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
       ],
-      "suggestedAction": "查 scrape；无误后联系 百炼 商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
+      "severity": "info",
       "type": "supplier_price_gap",
       "trinityId": "qwen3.5-flash",
       "vendorModelId": "qwen3.5-flash",
@@ -390,75 +130,15 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
-      "type": "supplier_tier_gap",
-      "trinityId": "qwen-plus",
-      "vendorModelId": "qwen-plus",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼缺少官方档位 t:128k-256k",
-      "detail": "官方有档 t:128k-256k，百炼 无同档",
-      "missingTierKeys": [
-        "t:128k-256k"
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
       ],
-      "suggestedAction": "查 scrape；无误后联系 百炼 商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
       "source": "official-vs-suppliers-alerts.json"
     },
     {
       "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
-      "type": "supplier_tier_gap",
-      "trinityId": "qwen3.6-plus",
-      "vendorModelId": "qwen3.6-plus",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼缺少官方档位 t:256k-1m",
-      "detail": "官方有档 t:256k-1m，百炼 无同档",
-      "missingTierKeys": [
-        "t:256k-1m"
-      ],
-      "suggestedAction": "查 scrape；无误后联系 百炼 商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
-      "type": "supplier_tier_gap",
-      "trinityId": "qwen3.7-plus",
-      "vendorModelId": "qwen3.7-plus",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼缺少官方档位 t:256k-1m",
-      "detail": "官方有档 t:256k-1m，百炼 无同档",
-      "missingTierKeys": [
-        "t:256k-1m"
-      ],
-      "suggestedAction": "查 scrape；无误后联系 百炼 商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "error",
+      "severity": "info",
       "type": "supplier_tier_gap",
       "trinityId": "glm-4-7-251222",
       "vendorModelId": "glm-4.7",
@@ -477,235 +157,10 @@
         "official": "suppliers/official/output/text/vendor-pricing.json",
         "supplier": "suppliers/bailian/output/pricing-api.json"
       },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "glm-4-7-251222",
-      "vendorModelId": "glm-4.7",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "输入>32k: cache: 官方=0.8 百炼=null",
-      "tierKey": "t:32k+",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "glm-5",
-      "vendorModelId": "glm-5",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "输入<=32k: cache: 官方=1 百炼=null",
-      "tierKey": "t:0-32k",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "glm-5.1",
-      "vendorModelId": "glm-5.1",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "输入<=32k: cache: 官方=1.3 百炼=null",
-      "tierKey": "t:0-32k",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "glm-5.2",
-      "vendorModelId": "glm-5.2",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=2 百炼=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "glm-5.2",
-      "vendorModelId": "glm-5.2",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=8 TokenHub=null; output: 官方=28 TokenHub=null; cache: 官方=2 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "kimi-k2.5",
-      "vendorModelId": "kimi-k2.5",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.7 百炼=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "kimi-k2.6",
-      "vendorModelId": "kimi-k2.6",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=1.1 百炼=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "kimi-k2.7-code",
-      "vendorModelId": "kimi-k2.7-code",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=1.3 百炼=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "kimi-k2.7-code",
-      "vendorModelId": "kimi-k2.7-code",
-      "phase": "L1_vs_L3",
-      "supplier": "tokenhub",
-      "title": "TokenHub同档价格与官方不一致",
-      "detail": "标准价: input: 官方=6.5 TokenHub=null; output: 官方=27 TokenHub=null; cache: 官方=1.3 TokenHub=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "minimax-m2.5",
-      "vendorModelId": "minimax-m2.5",
-      "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.21 百炼=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "minimax-m2.5",
-      "vendorModelId": "minimax-m2.5",
-      "phase": "L1_vs_L3",
-      "supplier": "aigc-domestic",
-      "title": "AIGC国内同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.21 AIGC国内=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 AIGC国内 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/aigc/output/pricing-api.json"
-      },
-      "blocking": true,
-      "source": "official-vs-suppliers-alerts.json"
-    },
-    {
-      "schema": "trinity.pricing.alert/v1",
-      "severity": "warn",
-      "type": "supplier_price_gap",
-      "trinityId": "minimax-m2.7",
-      "vendorModelId": "minimax-m2.7",
-      "phase": "L1_vs_L3",
-      "supplier": "aigc-domestic",
-      "title": "AIGC国内同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.42 AIGC国内=null",
-      "tierKey": "uniform",
-      "suggestedAction": "查 AIGC国内 抓取与 normalize；无误后联系商务",
-      "refs": {
-        "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/aigc/output/pricing-api.json"
-      },
-      "blocking": true,
+      "blocking": false,
+      "suppressedBy": [
+        "glm-4-7-bailian-tier-axis"
+      ],
       "source": "official-vs-suppliers-alerts.json"
     }
   ]

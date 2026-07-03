@@ -203,6 +203,55 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
   return [header, ...rows];
 }
 
+/** 网聚云联 · 云门户（GPT/Gemini 原厂直连 = official 筛选） */
+export function buildWangjuCatalogRows(wangjuModels, officialCtx = {}) {
+  const sup = { catalog: "wangju-cloudportal" };
+  const header = buildSupplierTableHeader(sup);
+  const currency = "USD";
+
+  const rows = [];
+  let rowNum = 0;
+
+  for (const m of wangjuModels) {
+    const displayName = m.displayName || `${m.vendorLabel} ${m.modelName}`.trim();
+    for (let i = 0; i < m.tiers.length; i++) {
+      const t = m.tiers[i];
+      rowNum++;
+      const show = i === 0;
+      const supplierPrices = {
+        input: t.input,
+        output: t.output,
+        cache: t.cache,
+      };
+      const { vendorOfficial, supplierListed, supplierVsOfficial } =
+        officialCellsForTrinityTier(
+          m.trinityId ?? m.modelId,
+          { tierLabel: t.tierName, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          { tierIndex: i, tierTotal: m.tiers.length },
+        );
+
+      rows.push([
+        rowNum,
+        show ? (m.trinityId ?? "") : "",
+        show ? displayName : "",
+        show ? (m.brand ?? "网聚云联-云门户") : "",
+        t.tierName,
+        m.modelId,
+        vendorOfficial,
+        supplierListed,
+        supplierVsOfficial,
+        "—",
+        "—",
+      ]);
+    }
+  }
+
+  return [header, ...rows];
+}
+
 export function buildSupplierRows(sup, models, officialCtx = {}) {
   const header = buildSupplierTableHeader(sup);
   const currency = upstreamUnit(sup) === USD_PER_M ? "USD" : "CNY";

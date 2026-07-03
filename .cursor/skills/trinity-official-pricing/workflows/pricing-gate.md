@@ -11,6 +11,7 @@
 | 0（按需） | `pricing.supplier.aigc` | 刷新 AIGC 价目 |
 | 0（按需） | `pricing.supplier.tokenhub.console` | TokenHub CNY 交叉 |
 | 0（按需） | `pricing.supplier.bailian.doc` | L3 百炼交叉 |
+| **0.5（必跑）** | **`pricing.refresh`** | 官方 + 衍生供应商 + **Excel** |
 | **1** | `pricing.gate` | 一条龙门禁 |
 | 分项 | `pricing.validate.official-aigc` | 仅 L1 |
 | 分项 | `pricing.validate.official-suppliers` | 仅 L3 |
@@ -24,12 +25,16 @@
 
 ## 执行
 
-在 `trinity-AI` 目录执行主能力 **`pricing.gate`**（等价于 gate 内依次：official:text → aigc-excel → L1 → L3 → alert dry-run）。
+1. 改价/新增后先跑 **`pricing.refresh`**（保证 `trinity-pricing-text.xlsx` 最新）  
+2. 再跑 **`pricing.gate`**（official:text → aigc-excel → L1 → L3 → alert dry-run）
+
+也可只跑 gate（内含 official 重拉，但**不含** Excel 重算）。
 
 ## 产出
 
 | 文件 | 说明 |
 |------|------|
+| `output/trinity-pricing-text.xlsx` | **`pricing.refresh` 写入** |
 | `output/validate/official-aigc-cross.{json,md}` | L1 交叉报告 |
 | `output/validate/official-vs-suppliers.{json,md}` | L3 交叉报告 |
 | `output/validate/official-vs-suppliers-alerts.json` | L3 结构化告警 |

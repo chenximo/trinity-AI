@@ -7,7 +7,10 @@ export const USD_PER_M = "USD/百万tokens";
 export const TRINITY_LIST_LABEL = "Trinity刊例";
 
 export function isUsdUpstream(sup) {
-  return sup?.catalog === "aigc" && sup?.site === "international";
+  return (
+    (sup?.catalog === "aigc" && sup?.site === "international") ||
+    sup?.catalog === "wangju-cloudportal"
+  );
 }
 
 export function upstreamUnit(supOrSite) {

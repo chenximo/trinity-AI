@@ -13,7 +13,8 @@
 - [ ] Step 4: 改 catalog + seeds + trinity-map（须确认）
 - [ ] Step 5: pricing.supplier.official.{modality} 验证 JSON
 - [ ] Step 6: 展示 vendor-pricing-table.md
-- [ ] Step 7: （可选）pricing.gate 或 pricing.compare.official
+- [ ] Step 7: pricing.refresh → Excel 与汇总最新
+- [ ] Step 8: （可选）pricing.gate 或 pricing.compare.official
 ```
 
 ## 能力引用
@@ -23,8 +24,9 @@
 | 4 快捷片段 | `pricing.scaffold.model` |
 | 4 编辑 | `pricing.catalog.edit` · `pricing.seed.edit` · `pricing.map.edit` |
 | 5 验证 | `pricing.supplier.official.text` / `.image` / `.video` |
-| 7 门禁 | `pricing.gate` |
-| 7 对比 | `pricing.compare.official` |
+| 7 刷新 Excel | **`pricing.refresh`**（必跑） |
+| 8 门禁 | `pricing.gate` |
+| 8 对比 | `pricing.compare.official` |
 
 ## Step 1 — 模态
 
@@ -101,7 +103,23 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
 
 读取 `output/{modality}/vendor-pricing-table.md`，向用户说明：价、档位、抓取状态、docUrl。
 
-## Step 7 — 可选
+## Step 7 — 刷新产出（必跑）
+
+执行 **`pricing.refresh`**，顺序：
+
+1. 重拉 official 生文价目  
+2. 重建 AIGC / 火山方舟 / 网聚云联·云门户 等衍生 JSON  
+3. 跑 `pricing:upstream` → 写入 **`output/trinity-pricing-text.xlsx`**
+
+仅 official 已是最新、只想重算 Excel 时：
+
+```bash
+npm run pricing:refresh -- --skip-official-fetch
+```
+
+**规则**：凡说「新增 xxx / 改价 / 改映射」，交付前必须跑过本步，Excel 才算最新。
+
+## Step 8 — 可选
 
 - 门禁：[`pricing-gate.md`](./pricing-gate.md) → `pricing.gate`
 - 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.compare.official`

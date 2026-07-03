@@ -2,6 +2,21 @@
   "object": "list",
   "data": [
     {
+      "id": "claude-fable-5",
+      "object": "model",
+      "created": 1782985034,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Fable 5",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 10,
+        "user_output_price_per_million_usd": 50
+      }
+    },
+    {
       "id": "claude-opus-4-6",
       "object": "model",
       "created": 1782787785,
@@ -123,6 +138,21 @@
         "max_token": 16000,
         "user_input_price_per_million_usd": 3,
         "user_output_price_per_million_usd": 15
+      }
+    },
+    {
+      "id": "claude-sonnet-5",
+      "object": "model",
+      "created": 1782985034,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Sonnet 5",
+        "origin_vendor_name": "Anthropic",
+        "modality_type": "text",
+        "context_length": 200000,
+        "max_token": 16000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 10
       }
     },
     {

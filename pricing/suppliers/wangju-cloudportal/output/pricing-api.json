@@ -1,0 +1,819 @@
+{
+  "supplierId": "wangju-cloudportal",
+  "brand": "网聚云联-云门户",
+  "label": "网聚云联 · 云门户",
+  "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子",
+  "vendors": [
+    "openai",
+    "google"
+  ],
+  "currency": "USD",
+  "priceUnit": "美元/百万tokens",
+  "region": "原厂直连",
+  "sourceNote": "筛选自 suppliers/official/output/text/vendor-pricing.json",
+  "generatedAt": "2026-07-02T12:38:43.366Z",
+  "officialFetchedAt": "2026-07-02T12:33:32.313Z",
+  "modelCount": 28,
+  "trinityMappedCount": 22,
+  "models": [
+    {
+      "modelId": "gemini-2.5-flash",
+      "trinityId": "gemini-2.5-flash",
+      "upstreamModelId": "gemini-2.5-flash",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash",
+      "displayName": "Gemini gemini-2.5-flash",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.3,
+          "output": 2.5,
+          "cache": 0.03,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1,
+          "output": 2.5,
+          "cache": 0.1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite",
+      "trinityId": "gemini-2.5-flash-lite",
+      "upstreamModelId": "gemini-2.5-flash-lite",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash-lite",
+      "displayName": "Gemini gemini-2.5-flash-lite",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.1,
+          "output": 0.4,
+          "cache": 0.01,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-flash-lite-preview",
+      "trinityId": "gemini-2.5-flash-lite-preview",
+      "upstreamModelId": "gemini-2.5-flash-lite-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-flash-lite-preview",
+      "displayName": "Gemini gemini-2.5-flash-lite-preview",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.1,
+          "output": 0.4,
+          "cache": 0.01,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-2.5-pro",
+      "trinityId": "gemini-2.5-pro",
+      "upstreamModelId": "gemini-2.5-pro",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-2.5-pro",
+      "displayName": "Gemini gemini-2.5-pro",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=20万个token",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>20万个token",
+          "input": 2.5,
+          "output": 15,
+          "cache": 0.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-flash-preview",
+      "trinityId": "gemini-3-flash-preview",
+      "upstreamModelId": "gemini-3-flash-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3-flash-preview",
+      "displayName": "Gemini gemini-3-flash-preview",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.5,
+          "output": 3,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1,
+          "output": 3,
+          "cache": 0.1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3-pro-preview",
+      "trinityId": null,
+      "upstreamModelId": "gemini-3-pro-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3-pro-preview",
+      "displayName": "Gemini gemini-3-pro-preview",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite",
+      "trinityId": "gemini-3.1-flash-lite",
+      "upstreamModelId": "gemini-3.1-flash-lite",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-flash-lite",
+      "displayName": "Gemini gemini-3.1-flash-lite",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.25,
+          "output": 1.5,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 0.5,
+          "output": 1.5,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-flash-lite-preview",
+      "trinityId": null,
+      "upstreamModelId": "gemini-3.1-flash-lite-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-flash-lite-preview",
+      "displayName": "Gemini gemini-3.1-flash-lite-preview",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 0.25,
+          "output": 1.5,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 0.5,
+          "output": 1.5,
+          "cache": 0.05,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.1-pro-preview",
+      "trinityId": "gemini-3.1-pro-preview",
+      "upstreamModelId": "gemini-3.1-pro-preview",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.1-pro-preview",
+      "displayName": "Gemini gemini-3.1-pro-preview",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=20万个token",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>20万个token",
+          "input": 4,
+          "output": 18,
+          "cache": 0.4,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gemini-3.5-flash",
+      "trinityId": "gemini-3.5-flash",
+      "upstreamModelId": "gemini-3.5-flash",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "modelName": "gemini-3.5-flash",
+      "displayName": "Gemini gemini-3.5-flash",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:文本/图片/视频",
+          "input": 1.5,
+          "output": 9,
+          "cache": 0.15,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入:音频",
+          "input": 1.5,
+          "output": 9,
+          "cache": 0.15,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "chat-latest",
+      "displayName": "GPT chat-latest",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-4.1",
+      "trinityId": "gpt-4.1",
+      "upstreamModelId": "gpt-4.1",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-4.1",
+      "displayName": "GPT gpt-4.1",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2,
+          "output": 8,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-4o",
+      "trinityId": "gpt-4o",
+      "upstreamModelId": "gpt-4o",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-4o",
+      "displayName": "GPT gpt-4o",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 2.5,
+          "output": 10,
+          "cache": 1.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5",
+      "trinityId": "gpt-5",
+      "upstreamModelId": "gpt-5",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5",
+      "displayName": "GPT gpt-5",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-chat-latest",
+      "displayName": "GPT gpt-5-chat-latest",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-mini",
+      "trinityId": "gpt-5-mini",
+      "upstreamModelId": "gpt-5-mini",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-mini",
+      "displayName": "GPT gpt-5-mini",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.25,
+          "output": 2,
+          "cache": 0.025,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5-nano",
+      "trinityId": "gpt-5-nano",
+      "upstreamModelId": "gpt-5-nano",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5-nano",
+      "displayName": "GPT gpt-5-nano",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.05,
+          "output": 0.4,
+          "cache": 0.005,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1",
+      "trinityId": "gpt-5.1",
+      "upstreamModelId": "gpt-5.1",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.1",
+      "displayName": "GPT gpt-5.1",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.1-chat-latest",
+      "trinityId": "gpt-5.1-chat",
+      "upstreamModelId": "gpt-5.1-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.1-chat-latest",
+      "displayName": "GPT gpt-5.1-chat-latest",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.2",
+      "trinityId": "gpt-5.2",
+      "upstreamModelId": "gpt-5.2",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.2",
+      "displayName": "GPT gpt-5.2",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.2-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5.2-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.2-chat-latest",
+      "displayName": "GPT gpt-5.2-chat-latest",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-chat-latest",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5.3-chat-latest",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.3-chat-latest",
+      "displayName": "GPT gpt-5.3-chat-latest",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.3-codex",
+      "trinityId": "gpt-5.3-codex",
+      "upstreamModelId": "gpt-5.3-codex",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.3-codex",
+      "displayName": "GPT gpt-5.3-codex",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.75,
+          "output": 14,
+          "cache": 0.175,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4",
+      "trinityId": "gpt-5.4",
+      "upstreamModelId": "gpt-5.4",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4",
+      "displayName": "GPT gpt-5.4",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 2.5,
+          "output": 15,
+          "cache": 0.25,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 5,
+          "output": 22.5,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-mini",
+      "trinityId": "gpt-5.4-mini",
+      "upstreamModelId": "gpt-5.4-mini",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-mini",
+      "displayName": "GPT gpt-5.4-mini",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.75,
+          "output": 4.5,
+          "cache": 0.075,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-nano",
+      "trinityId": "gpt-5.4-nano",
+      "upstreamModelId": "gpt-5.4-nano",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-nano",
+      "displayName": "GPT gpt-5.4-nano",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 0.2,
+          "output": 1.25,
+          "cache": 0.02,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.4-pro",
+      "trinityId": "gpt-5.4-pro",
+      "upstreamModelId": "gpt-5.4-pro",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.4-pro",
+      "displayName": "GPT gpt-5.4-pro",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 30,
+          "output": 180,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 60,
+          "output": 270,
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.5",
+      "trinityId": "gpt-5.5",
+      "upstreamModelId": "gpt-5.5",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.5",
+      "displayName": "GPT gpt-5.5",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    }
+  ]
+}

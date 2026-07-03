@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生文）
 
-> 真源：`output/text/vendor-pricing.json` · 抓取 2026-07-02T09:26:25Z · live 0 · seed 79 / 79 · **115 档**
+> 真源：`output/text/vendor-pricing.json` · 抓取 2026-07-02T12:40:25Z · live 2 · seed 77 / 79 · **115 档**
 > 单位：**USD per 1M tokens**
 
 | # | 厂商 | 原厂模型 ID | 币种 | 状态 | 抓取 | 档位 | 输入价 | 输出价 | 缓存价 | 价目来源 | 文档 |
@@ -47,7 +47,7 @@
 | 29 | GK | grok-4.20-0309-non-reasoning | USD | active | seed | 标准价 | 1.25 | 2.5 | 0.2 | [来源](https://docs.x.ai/developers/models/grok-4.20-0309-non-reasoning (seed 2026-06-29)) | [链接](https://docs.x.ai/developers/models/grok-4.20-0309-non-reasoning) |
 | 30 | GK | grok-4.20-0309-reasoning | USD | active | seed | 标准价 | 1.25 | 2.5 | 0.2 | [来源](https://docs.x.ai/developers/models/grok-4.20-0309-reasoning (seed 2026-06-29)) | [链接](https://docs.x.ai/developers/models/grok-4.20-0309-reasoning) |
 | 31 | GK | grok-4.3 | USD | active | seed | 标准价 | 1.25 | 2.5 | 0.2 | [来源](https://docs.x.ai/developers/models/grok-4.3 (seed 2026-06-29)) | [链接](https://docs.x.ai/developers/models/grok-4.3) |
-| 32 | CD | claude-opus-4-8 | USD | active | seed | 标准价 | 5 | 25 | — | [来源](https://platform.claude.com/docs/zh-CN/about-claude/models/overview (seed 2026-06-29)) | [链接](https://platform.claude.com/docs/zh-CN/about-claude/models/overview) |
+| 32 | CD | claude-opus-4-8 | USD | active | seed | 标准价 | 5 | 25 | 0.5 | [来源](https://platform.claude.com/docs/zh-CN/about-claude/models/overview (seed 2026-06-29)) | [链接](https://platform.claude.com/docs/zh-CN/about-claude/models/overview) |
 | 33 | CD | claude-opus-4-7 | USD | active | seed | 标准价 | 5 | 25 | 0.5 | [来源](https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)) | [链接](https://platform.claude.com/docs/en/about-claude/pricing) |
 | 34 | CD | claude-opus-4-6 | USD | active | seed | 标准价 | 5 | 25 | 0.5 | [来源](https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)) | [链接](https://platform.claude.com/docs/en/about-claude/pricing) |
 | 35 | CD | claude-sonnet-4-6 | USD | active | seed | 标准价 | 3 | 15 | 0.3 | [来源](https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-29)) | [链接](https://platform.claude.com/docs/en/about-claude/pricing) |
@@ -63,8 +63,8 @@
 | 43 | 混元 | hunyuan-role-latest | CNY | active | seed | 标准价 | 2.4 | 9.6 | — | [来源](https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)) | [链接](https://cloud.tencent.com/document/product/1823/130055) |
 | 44 | 混元 | hy-vision-2.0-instruct | CNY | active | seed | 标准价 | 7.5 | 17.5 | — | [来源](https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-29)) | [链接](https://cloud.tencent.com/document/product/1823/130055) |
 | 45 | DeepSeek | deepseek-v3.2 | CNY | active | seed | 标准价 | 2 | 3 | 0.4 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
-| 46 | DeepSeek | deepseek-v4-flash | CNY | active | seed | 标准价 | 1 | 2 | 0.02 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-29)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
-| 47 | DeepSeek | deepseek-v4-pro | CNY | active | seed | 标准价 | 3 | 6 | 0.025 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-29)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
+| 46 | DeepSeek | deepseek-v4-flash | CNY | active | ok | 标准价 | 1 | 2 | 0.02 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
+| 47 | DeepSeek | deepseek-v4-pro | CNY | active | ok | 标准价 | 3 | 6 | 0.025 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
 | 48 | 通义 | qwen-flash | CNY | active | seed | 输入≤128k | 0.15 | 1.5 | 0.03 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-29)) | [链接](https://help.aliyun.com/zh/model-studio/model-pricing) |
 |  |  |  |  |  |  | 128k<输入≤256k | 0.6 | 6 | 0.12 |  |  |
 |  |  |  |  |  |  | 256k<输入≤1M | 1.2 | 12 | 0.24 |  |  |

@@ -17,7 +17,12 @@ import {
   compareTierLists,
   officialTierToCompare,
   normalizeAttrLabel,
+  impliedFxFromAigcRow,
+  aigcBlockCache,
+  tokenhubTierPrices,
+  parseNum,
 } from "./lib/pricing-validate-lib.mjs";
+import { resolveTokenhubModel } from "../config/tokenhub-trinity-alias.mjs";
 import {
   OFFICIAL_MAP_FILE,
   AIGC_MAP_FILE,
@@ -33,9 +38,9 @@ function aigcDomTiersFromSheet(entry) {
       if (!dom || (dom.input == null && dom.output == null)) return null;
       return {
         tierLabel: normalizeAttrLabel(row.attribute),
-        input: dom.input,
-        output: dom.output,
-        cache: dom.cache,
+        input: parseNum(dom.input),
+        output: parseNum(dom.output),
+        cache: aigcBlockCache(dom),
       };
     })
     .filter(Boolean);
@@ -50,11 +55,6 @@ function officialTierForAigcDomestic(tier) {
   };
 }
 
-function aigcIntlCache(intl) {
-  if (!intl) return null;
-  return intl.cache ?? intl.cacheHit ?? null;
-}
-
 function aigcIntlTiersFromSheet(entry) {
   return (entry?.tiers ?? [])
     .map((row) => {
@@ -62,9 +62,9 @@ function aigcIntlTiersFromSheet(entry) {
       if (!intl || (intl.input == null && intl.output == null)) return null;
       return {
         tierLabel: normalizeAttrLabel(row.attribute),
-        input: intl.input,
-        output: intl.output,
-        cache: aigcIntlCache(intl),
+        input: parseNum(intl.input),
+        output: parseNum(intl.output),
+        cache: aigcBlockCache(intl),
       };
     })
     .filter(Boolean);
@@ -77,21 +77,31 @@ function aigcIntlTiersFromExcel(entry) {
       if (!intl || (intl.input == null && intl.output == null)) return null;
       return {
         tierLabel: normalizeAttrLabel(row.attribute),
-        input: intl.input,
-        output: intl.output,
-        cache: aigcIntlCache(intl),
+        input: parseNum(intl.input),
+        output: parseNum(intl.output),
+        cache: aigcBlockCache(intl),
       };
     })
     .filter(Boolean);
 }
 
+function impliedFxFromSheetEntry(entry) {
+  const row = (entry?.tiers ?? []).find(
+    (r) => r.domestic?.input != null && r.international?.input != null,
+  );
+  return impliedFxFromAigcRow(row?.domestic, row?.international);
+}
+
 function tokenhubTiersFromModel(model) {
-  return (model?.tiers ?? []).map((t) => ({
-    tierLabel: normalizeAttrLabel(t.tierName ?? t.tierLabel ?? ""),
-    input: t.input,
-    output: t.output,
-    cache: t.cache,
-  }));
+  return (model?.tiers ?? []).map((t) => {
+    const p = tokenhubTierPrices(t);
+    return {
+      tierLabel: normalizeAttrLabel(p.tierLabel || "标准价"),
+      input: p.input,
+      output: p.output,
+      cache: p.cache,
+    };
+  });
 }
 
 function indexTokenhubText(models) {
@@ -170,9 +180,6 @@ async function main() {
     if (!off) continue;
 
     const offCurrency = off.currency ?? "USD";
-    const offTiersIntl = (off.tiers ?? []).map((t) =>
-      officialTierToCompare(t, offCurrency),
-    );
     const offTiersCny = (off.tiers ?? []).map(officialTierForAigcDomestic);
 
     const aigcRef = aigcTrinityMap[tid];
@@ -180,6 +187,10 @@ async function main() {
       const aigcKey = `${aigcRef.vendorCode}::${aigcRef.modelName}`;
       const sheetEntry = sheetMap.get(aigcKey);
       const excelEntry = excelMap.get(aigcKey);
+      const sheetFx = sheetEntry ? impliedFxFromSheetEntry(sheetEntry) : undefined;
+      const offTiersIntl = (off.tiers ?? []).map((t) =>
+        officialTierToCompare(t, offCurrency, sheetFx),
+      );
 
       if (sheetEntry) {
         const aigcIntlTiers = aigcIntlTiersFromSheet(sheetEntry);
@@ -249,9 +260,7 @@ async function main() {
     }
 
     if (offCurrency === "CNY") {
-      const thModel =
-        tokenhubIndex.get(tid.toLowerCase()) ??
-        tokenhubIndex.get(vendorId);
+      const thModel = resolveTokenhubModel(tokenhubIndex, tid, vendorId);
       if (thModel) {
         const thTiers = tokenhubTiersFromModel(thModel);
         const thIssues = compareTierLists(offTiersCny, thTiers, {

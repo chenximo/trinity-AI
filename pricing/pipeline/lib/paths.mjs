@@ -39,6 +39,7 @@ export const TEXT_SHEET_ORDER = [
   "AIGC国内站",
   "AIGC国际站",
   "火山方舟",
+  "网聚云联云门户",
   "汇总-供应商vs官方",
 ];
 
@@ -202,6 +203,14 @@ export const VOLCENGINE_FILE = path.join(
 export const VOLCENGINE_MAP_FILE = path.join(
   SUPPLIERS_DIR,
   "volcengine/trinity-map.json",
+);
+export const WANGJU_CLOUDPORTAL_FILE = path.join(
+  SUPPLIERS_DIR,
+  "wangju-cloudportal/output/pricing-api.json",
+);
+export const WANGJU_CLOUDPORTAL_MAP_FILE = path.join(
+  SUPPLIERS_DIR,
+  "wangju-cloudportal/trinity-map.json",
 );
 
 export const OFFICIAL_MAP_FILE = path.join(

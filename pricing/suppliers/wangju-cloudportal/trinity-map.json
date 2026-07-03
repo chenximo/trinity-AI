@@ -1,0 +1,113 @@
+{
+  "_comment": "Trinity modelId → 云门户 upstreamModelId（build 时由 official 筛选生成）",
+  "gemini-2.5-flash": {
+    "vendorModelId": "gemini-2.5-flash",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-2.5-flash-lite": {
+    "vendorModelId": "gemini-2.5-flash-lite",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-2.5-flash-lite-preview": {
+    "vendorModelId": "gemini-2.5-flash-lite-preview",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-2.5-pro": {
+    "vendorModelId": "gemini-2.5-pro",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-3-flash-preview": {
+    "vendorModelId": "gemini-3-flash-preview",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-3.1-flash-lite": {
+    "vendorModelId": "gemini-3.1-flash-lite",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-3.1-pro-preview": {
+    "vendorModelId": "gemini-3.1-pro-preview",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gemini-3.5-flash": {
+    "vendorModelId": "gemini-3.5-flash",
+    "vendor": "google",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-4.1": {
+    "vendorModelId": "gpt-4.1",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-4o": {
+    "vendorModelId": "gpt-4o",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5": {
+    "vendorModelId": "gpt-5",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5-mini": {
+    "vendorModelId": "gpt-5-mini",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5-nano": {
+    "vendorModelId": "gpt-5-nano",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.1": {
+    "vendorModelId": "gpt-5.1",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.1-chat": {
+    "vendorModelId": "gpt-5.1-chat-latest",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.2": {
+    "vendorModelId": "gpt-5.2",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.3-codex": {
+    "vendorModelId": "gpt-5.3-codex",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.4": {
+    "vendorModelId": "gpt-5.4",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.4-mini": {
+    "vendorModelId": "gpt-5.4-mini",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.4-nano": {
+    "vendorModelId": "gpt-5.4-nano",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.4-pro": {
+    "vendorModelId": "gpt-5.4-pro",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  },
+  "gpt-5.5": {
+    "vendorModelId": "gpt-5.5",
+    "vendor": "openai",
+    "note": "原厂直连 · OpenAI GPT / Google Gemini，价目对齐 official 种子"
+  }
+}

@@ -1,0 +1,43 @@
+# 价目发布门禁：官方种子 ↔ AIGC / TokenHub / 百炼 交叉校验
+# 本地等价：npm run pricing:gate
+name: Pricing gate
+
+on:
+  pull_request:
+    paths:
+      - "pricing/**"
+      - "package.json"
+      - "package-lock.json"
+  push:
+    branches:
+      - main
+    paths:
+      - "pricing/**"
+      - "package.json"
+      - "package-lock.json"
+
+concurrency:
+  group: pricing-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: pricing:gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run pricing gate
+        run: npm run pricing:gate

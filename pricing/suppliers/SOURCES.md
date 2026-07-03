@@ -12,6 +12,7 @@
 | **TokenHub** | `tokenhub/output/pricing-console-api.json` | `npm run pricing:supplier:tokenhub:console` | 元/百万 tokens |
 | **百炼** | `bailian/output/pricing-api.json` | `npm run pricing:supplier:bailian:doc` | 元/百万 tokens |
 | **AIGC** | `aigc/data/pricing-sheet.mjs` | 人工维护 → `npm run pricing:supplier:aigc` 生成 JSON | 国内元 / 国际美元 |
+| **网聚云联·云门户** | `wangju-cloudportal/output/pricing-api.json` | `npm run pricing:supplier:wangju-cloudportal`（从 official 筛选 GPT/Gemini） | 美元/百万 tokens |
 
 ## `official/` 与转售上游的区别
 
