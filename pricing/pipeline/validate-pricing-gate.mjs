@@ -21,7 +21,13 @@ const steps = [
     "node",
     ["pricing/pipeline/validate-official-vs-suppliers.mjs"],
   ],
-  ["alerts-dry-run", "node", ["pricing/pipeline/emit-pricing-alerts.mjs", "--dry-run"]],
+  [
+    "alerts-dry-run",
+    "node",
+    process.env.PRICING_ALERT_WEBHOOK_URL
+      ? ["pricing/pipeline/emit-pricing-alerts.mjs"]
+      : ["pricing/pipeline/emit-pricing-alerts.mjs", "--dry-run"],
+  ],
 ];
 
 let failed = false;

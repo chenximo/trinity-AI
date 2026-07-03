@@ -240,11 +240,14 @@ flowchart LR
 }
 ```
 
-### 7.3 推送方式（待接入）
+### 7.3 推送方式
 
-- 环境变量：`PRICING_ALERT_WEBHOOK_URL`（企业微信 / 飞书 / Slack）  
+- 环境变量：`PRICING_ALERT_WEBHOOK_URL`（**钉钉** / 企业微信 / 飞书）  
+- 钉钉：使用机器人 Webhook 完整 URL（`https://oapi.dingtalk.com/robot/send?access_token=...`）  
+- 钉钉自定义关键词：`PRICING_ALERT_DINGTALK_KEYWORD`（须与群机器人安全设置一致，消息会自动带上）  
 - 脚本：`pricing/pipeline/emit-pricing-alerts.mjs`（读取 `output/validate/*.json` 合并推送）  
-- **Gate 失败不替代告警**：gate 阻断 CI；告警用于需人工找商务的项  
+- 本地门禁：`npm run pricing:gate`（可选自检，无 GitHub CI）  
+- **Gate 失败不替代告警**：gate 用于本地阻断；告警用于需人工找商务的项  
 
 ---
 

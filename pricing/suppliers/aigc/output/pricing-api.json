@@ -2,7 +2,7 @@
   "source": "tencent_aigc_pricing_sheet",
   "dataDate": "2026-06",
   "note": "国内站 元/M token（=元/百万tokens）；国际站 美元/M token。由内部价目表录入。",
-  "generatedAt": "2026-07-03T07:14:54.407Z",
+  "generatedAt": "2026-07-03T07:41:46.899Z",
   "modelCount": 144,
   "models": [
     {

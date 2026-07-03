@@ -1,6 +1,6 @@
 {
   "source": "trinity_upstream_pricing",
-  "generatedAt": "2026-07-03T07:14:54.952Z",
+  "generatedAt": "2026-07-03T07:41:47.636Z",
   "trinityModelCount": 59,
   "trinityApiUrl": "https://api.trinitydesk.ai/v1/models?modality=text",
   "scrapedAt": "2026-06-30",

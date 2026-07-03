@@ -217,6 +217,46 @@ export function alertsToMarkdown(alerts) {
 }
 
 /**
+ * 钉钉自定义关键词机器人：正文须含关键词（见 PRICING_ALERT_DINGTALK_KEYWORD）
+ * @param {string} markdown
+ * @param {string} [keyword]
+ */
+export function applyDingTalkKeyword(markdown, keyword) {
+  const kw = keyword?.trim();
+  if (!kw || markdown.includes(kw)) return markdown;
+  return `${kw}\n\n${markdown}`;
+}
+
+/**
+ * @param {string} webhookUrl
+ * @param {string} markdown
+ * @param {{ title?: string, alerts?: object[] }} [opts]
+ */
+export function buildWebhookPayload(webhookUrl, markdown, opts = {}) {
+  const { title = "价目告警", alerts = [] } = opts;
+  if (/oapi\.dingtalk\.com/i.test(webhookUrl)) {
+    const text = applyDingTalkKeyword(
+      markdown,
+      process.env.PRICING_ALERT_DINGTALK_KEYWORD,
+    );
+    return {
+      msgtype: "markdown",
+      markdown: {
+        title: applyDingTalkKeyword(title, process.env.PRICING_ALERT_DINGTALK_KEYWORD),
+        text,
+      },
+    };
+  }
+  return {
+    msgtype: "markdown",
+    markdown: { content: markdown },
+    trinity_pricing_alerts: alerts,
+    alertCount: alerts.length,
+    blockingCount: alerts.filter((a) => a.blocking !== false).length,
+  };
+}
+
+/**
  * @param {string} webhookUrl
  * @param {object} payload
  */
@@ -230,17 +270,30 @@ export async function postPricingAlertWebhook(webhookUrl, payload) {
     const text = await res.text().catch(() => "");
     throw new Error(`Webhook HTTP ${res.status}: ${text.slice(0, 300)}`);
   }
-  return res;
+  const body = await res.json().catch(() => ({}));
+  if (body.errcode != null && body.errcode !== 0) {
+    throw new Error(
+      `Webhook errcode ${body.errcode}: ${body.errmsg ?? "unknown"}`,
+    );
+  }
+  return body;
 }
 
-/** 企业微信 / 飞书兼容：markdown 文本包 */
+/** 企业微信 / 飞书 / 钉钉 */
 export function webhookPayloadForAlerts(alerts, markdown) {
-  return {
-    msgtype: "markdown",
-    markdown: { content: markdown },
-    // 通用字段供自定义机器人解析
-    trinity_pricing_alerts: alerts,
-    alertCount: alerts.length,
-    blockingCount: alerts.filter((a) => a.blocking !== false).length,
-  };
+  const url = process.env.PRICING_ALERT_WEBHOOK_URL ?? "";
+  return buildWebhookPayload(url, markdown, {
+    title: "价目告警",
+    alerts,
+  });
+}
+
+/**
+ * @param {string} webhookUrl
+ * @param {string} title
+ * @param {string} markdown
+ */
+export async function postPricingWebhookMarkdown(webhookUrl, title, markdown) {
+  const payload = buildWebhookPayload(webhookUrl, markdown, { title });
+  return postPricingAlertWebhook(webhookUrl, payload);
 }
