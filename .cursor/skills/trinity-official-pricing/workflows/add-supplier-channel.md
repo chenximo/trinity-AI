@@ -9,8 +9,8 @@
 | 类型 | 维护方式 | 示例 |
 |------|----------|------|
 | **official 直连** | `official-direct/channels/*.mjs` + 登记 `index.mjs` | 网聚云联·云门户、中转站-cust |
-| **手工 sheet** | `data/pricing-sheet.mjs` | 火山方舟、AIGC |
-| **爬虫** | scrape + normalize | TokenHub、百炼 |
+| **爬虫** | scrape + normalize → `output/*/pricing-api.json` | TokenHub、百炼、**火山方舟** |
+| **手工 sheet** | `data/pricing-sheet.mjs` | **仅 AIGC**（商家给表，无公开定价页） |
 
 ### official 直连（价 = official，不用每个写脚本）
 

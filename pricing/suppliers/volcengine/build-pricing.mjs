@@ -11,6 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRICING_RAW_OUT } from "./lib/constants.mjs";
 import { buildFromRawFile } from "./lib/build-from-raw.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const RAW_FILE = path.join(__dirname, "output", PRICING_RAW_OUT);
@@ -52,6 +53,7 @@ async function main() {
     );
     console.log(`Wrote ${info.outFile}`);
   }
+  syncPricingExcel({ label: "volcengine" });
 }
 
 main().catch((e) => {

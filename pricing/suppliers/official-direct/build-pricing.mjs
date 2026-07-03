@@ -8,6 +8,7 @@
 
 import { buildOfficialDirectChannel } from "./lib/build-channel.mjs";
 import { OFFICIAL_DIRECT_CHANNELS } from "./channels/index.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 function parseArgs(argv) {
   const all = argv.includes("--all");
@@ -24,6 +25,7 @@ async function main() {
       const result = await buildOfficialDirectChannel(meta.supplierId);
       console.log(JSON.stringify({ supplierId: meta.supplierId, ...result }, null, 2));
     }
+    syncPricingExcel({ label: "official-direct" });
     return;
   }
 
@@ -53,6 +55,7 @@ async function main() {
     }
   }
   console.log(JSON.stringify(summary, null, 2));
+  syncPricingExcel({ label: channel });
 }
 
 main().catch((e) => {

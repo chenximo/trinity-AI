@@ -8,6 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRICING_SHEET, SHEET_META } from "./data/pricing-sheet.mjs";
 import { normalizeAigcPricing } from "./lib/pricing-api.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = path.join(__dirname, "output");
@@ -44,6 +45,7 @@ async function main() {
   console.log(`AIGC models: ${models.length} (国内 ${domestic.length} · 国际 ${international.length})`);
   console.log(`Trinity mapped: ${out.trinityMappedCount}`);
   console.log(`Wrote ${outFile}`);
+  syncPricingExcel({ label: "aigc" });
 }
 
 main().catch((e) => {

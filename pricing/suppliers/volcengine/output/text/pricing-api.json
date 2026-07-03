@@ -3,10 +3,10 @@
   "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
   "modality": "text",
   "dataDate": "2026-07",
-  "generatedAt": "2026-07-03T03:32:35.309Z",
+  "generatedAt": "2026-07-03T06:42:39.999Z",
   "scrapedAt": "2026-07-03T03:32:16.967Z",
-  "modelCount": 18,
-  "trinityMappedCount": 0,
+  "modelCount": 26,
+  "trinityMappedCount": 5,
   "models": [
     {
       "modality": "text",
@@ -287,7 +287,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.8,
           "output": 2,
           "cache": 0.16,
@@ -296,7 +296,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.8,
           "output": 8,
           "cache": 0.16,
@@ -422,7 +422,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.8,
           "output": 2,
           "cache": 0.16,
@@ -431,7 +431,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.8,
           "output": 8,
           "cache": 0.16,
@@ -476,7 +476,7 @@
       "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.3,
           "output": 0.6,
           "cache": 0.06,
@@ -485,7 +485,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 0.3,
           "output": 2.4,
           "cache": 0.06,
@@ -700,26 +700,62 @@
       "billingMode": "在线推理（常规）",
       "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 3,
           "output": 9,
           "cache": null,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "glm-5.2",
+      "trinityId": "glm-5.2",
+      "upstreamModelId": "glm-5.2",
+      "vendorCode": "Zhipu",
+      "vendorName": "智谱",
+      "modelName": "GLM-5.2",
+      "displayName": "智谱 GLM-5.2",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 8,
           "output": 28,
           "cache": 2,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "glm-4.7",
+      "trinityId": "glm-4-7-251222",
+      "upstreamModelId": "glm-4.7",
+      "vendorCode": "Zhipu",
+      "vendorName": "智谱",
+      "modelName": "GLM-4.7",
+      "displayName": "智谱 GLM-4.7",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 2,
           "output": 8,
           "cache": 0.4,
@@ -728,7 +764,7 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入≤32k",
+          "tierName": "输入≤32k·输出≤0.2k",
           "input": 3,
           "output": 14,
           "cache": 0.6,
@@ -737,31 +773,85 @@
         },
         {
           "tierType": "Tiered",
-          "tierName": "输入长度 (32, 200]",
+          "tierName": "输入(32k,200k]",
           "input": 4,
           "output": 16,
           "cache": 0.8,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-v4-pro",
+      "trinityId": "deepseek-v4-pro",
+      "upstreamModelId": "deepseek-v4-pro",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-v4-pro",
+      "displayName": "DeepSeek deepseek-v4-pro",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 12,
           "output": 24,
           "cache": 1,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-v4-flash",
+      "trinityId": "deepseek-v4-flash",
+      "upstreamModelId": "deepseek-v4-flash",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-v4-flash",
+      "displayName": "DeepSeek deepseek-v4-flash",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 1,
           "output": 2,
           "cache": 0.2,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-v3.2",
+      "trinityId": "deepseek-v3.2",
+      "upstreamModelId": "deepseek-v3.2",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-v3.2",
+      "displayName": "DeepSeek deepseek-v3.2",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
           "tierType": "Tiered",
           "tierName": "输入≤32k",
@@ -779,27 +869,81 @@
           "cache": 0.4,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-v3.1",
+      "trinityId": null,
+      "upstreamModelId": "deepseek-v3.1",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-v3.1",
+      "displayName": "DeepSeek deepseek-v3.1",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 4,
           "output": 12,
           "cache": 0.8,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-v3",
+      "trinityId": null,
+      "upstreamModelId": "deepseek-v3",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-v3",
+      "displayName": "DeepSeek deepseek-v3",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 2,
           "output": 8,
           "cache": 0.4,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
-        },
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "modelId": "deepseek-r1",
+      "trinityId": null,
+      "upstreamModelId": "deepseek-r1",
+      "vendorCode": "Deepseek",
+      "vendorName": "DeepSeek",
+      "modelName": "deepseek-r1",
+      "displayName": "DeepSeek deepseek-r1",
+      "brand": "火山方舟",
+      "modelType": "Text",
+      "currency": "CNY",
+      "priceUnit": "元/百万tokens",
+      "region": "中国内地",
+      "billingMode": "在线推理（常规）",
+      "tiers": [
         {
-          "tierType": "Tiered",
+          "tierType": "Uniform",
           "tierName": "标准价",
           "input": 4,
           "output": 16,

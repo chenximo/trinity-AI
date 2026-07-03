@@ -34,7 +34,7 @@ flowchart TD
   L -->|入出实质偏差或缺档| M[产品/定价决策或修刊例]
 ```
 
-改价后 **`pricing:refresh`** → `trinity-pricing-text.xlsx` · `upstream/*/pricing.md`；**`pricing:gate`** 通过后方可发刊例（见下表「汇总」行）。
+改价后 **`pricing:gate`** 通过后方可发刊例。各渠道 `build` / `scrape` 写完 JSON 后会**自动跑 `pricing:upstream` 同步 Excel**；`pricing:refresh` 仍用于全量重建（子步骤跳过重复 sync，最后统一 upstream 一次）。
 
 ---
 
@@ -49,7 +49,7 @@ flowchart TD
 | **C→G** | 第一层全绿（或已登记例外）→ **官方真源锁定** | 不得进入下游对比 | **命令**<br>`pricing:gate`（含上两步）<br><br>**产出**<br>`official/.../vendor-pricing.json`（`fetchedAt` 即版本） |
 | **G→H** | 官方 + 百炼 / 火山等 → 供应商覆盖/价差报告 | 修 scrape → 重跑；或告警商务 | **命令**<br>`pricing:validate:official-suppliers`<br><br>**产出**<br>`output/validate/official-vs-suppliers.*` |
 | **G→L** | 官方 + 线上 API → 刊例对比校验表 | 修刊例或登记产品例外 | **命令**<br>`pricing:compare:official` · `pricing:fetch`<br><br>**产出**<br>`output/official/{modality}.*`<br>Excel「刊例对比校验-生文」 |
-| **汇总** | 各渠道 JSON 已更新 → 商务 Excel + 渠道分表 | refresh 失败看日志 | **命令**<br>`pricing:refresh`<br><br>**产出**<br>`output/trinity-pricing-text.xlsx`<br>`output/upstream/*/pricing.md` |
+| **汇总** | 各渠道 JSON 已更新 → 商务 Excel + 渠道分表 | refresh 失败看日志 | **自动**：各渠道 build/scrape 末尾 `pricing:upstream`<br>全量：`pricing:refresh` | `output/trinity-pricing-text.xlsx` · `output/upstream/*/pricing.md` |
 
 </div>
 

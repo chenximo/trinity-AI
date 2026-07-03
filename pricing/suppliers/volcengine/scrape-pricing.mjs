@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { PRICING_RAW_OUT } from "./lib/constants.mjs";
 import { scrapeVolcengineDoc } from "./lib/scrape-doc.mjs";
 import { buildAllModalitiesFromRaw } from "./lib/build-from-raw.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = path.join(__dirname, "output");
@@ -58,6 +59,7 @@ async function main() {
       ),
     );
     console.error(`\n已写入 ${RAW_FILE}`);
+    syncPricingExcel({ label: "volcengine:doc" });
   } finally {
     await browser.close();
   }

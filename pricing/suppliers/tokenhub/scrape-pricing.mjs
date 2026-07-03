@@ -22,6 +22,7 @@ import {
   CONSOLE_API_OUT,
   buildConsoleApiResult,
 } from "./lib/pricing-api.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = path.join(__dirname, "output");
@@ -180,6 +181,7 @@ async function main() {
       ),
     );
     console.error(`\n已写入 ${OUT_FILE}`);
+    syncPricingExcel({ label: "tokenhub" });
   } finally {
     await close();
   }

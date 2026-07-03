@@ -1,10 +1,10 @@
 # 官网价 vs OpenRouter vs Trinity 线上（生文）
 
-> 生成 2026-07-03T03:32:36Z
+> 生成 2026-07-03T07:14:54Z
 > **主对比**：官网价（国内 CNY÷6.5）vs OpenRouter
 > OpenRouter：`suppliers/openrouter/output/models-api.json`（2026-07-01T07:54:13Z）
-> 官方价：`suppliers/official/output/text/vendor-pricing.json`（2026-07-03T02:34:14Z）
-> Trinity 线上（参考）：`output/online/prices-api.json`（2026-07-03T03:32:35Z）
+> 官方价：`suppliers/official/output/text/vendor-pricing.json`（2026-07-03T03:35:16Z）
+> Trinity 线上（参考）：`output/online/prices-api.json`（2026-07-03T07:14:54Z）
 
 | Trinity ID | OpenRouter | 档位 | 官方价 | 官方÷6.5 | OpenRouter | Δ官入vsOR | Δ官出vsOR | 官网vsOR | Trinity线上 | Δ线入vsOR | Δ线出vsOR | 备注 |
 |------------|------------|------|--------|----------|------------|-----------|-----------|----------|-------------|-------------|-------------|------|

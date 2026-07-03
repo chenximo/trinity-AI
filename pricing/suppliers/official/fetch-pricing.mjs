@@ -25,6 +25,7 @@ import {
   normalizeTextTiers,
   countPricedTiers,
 } from "./lib/text-tiers.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_ROOT = path.join(__dirname, "output");
@@ -159,6 +160,7 @@ async function main() {
       results.push(await fetchModality(m, entries));
     }
     console.log(JSON.stringify({ modalities: results }, null, 2));
+    syncPricingExcel({ label: "official:all" });
     return;
   }
 
@@ -175,6 +177,7 @@ async function main() {
 
   const result = await fetchModality(modality, entries);
   console.log(JSON.stringify(result, null, 2));
+  syncPricingExcel({ label: `official:${modality}` });
 }
 
 main().catch((e) => {

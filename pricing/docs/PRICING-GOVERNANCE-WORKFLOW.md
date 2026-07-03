@@ -119,7 +119,7 @@ flowchart TD
 | 渠道 | 角色 | 与官方关系 |
 |------|------|------------|
 | **百炼** | 阿里云转售 | 档位数可 **≤** 官方；价格应为官方子集或等价，不能静默缺档 |
-| **火山方舟** | 豆包直连 | 挂牌价 = 官方种子同源（`volcengine` sheet + official seeds） |
+| **火山方舟** | 转售/托管（豆包 + GLM/DeepSeek 等） | 爬 [模型价格页](https://www.volcengine.com/docs/82379/1544106?lang=zh) → `volcengine/output/`；与 official 比 L3↔L1 |
 | **OpenRouter** | 国际聚合参考 | 刊例对比辅助列，非国内进货真源 |
 
 ### 4.2 检查项（待实现 `validate-official-vs-suppliers`）

@@ -79,6 +79,7 @@ async function main() {
       row.listingMaterialInOut &&
       !listing.startsWith("ℹ") &&
       !listing.startsWith("—") &&
+      row.trinityId !== "—" &&
       !annotationsForModel(tid, "compare-hub").length
     ) {
       issues.push({

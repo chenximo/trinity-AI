@@ -69,10 +69,10 @@ export function applyVerticalMerges(ws, rows, merge) {
   }
 }
 
-/** 刊例对比校验-生文 Sheet：模型级列合并 */
+/** 刊例对比校验-生文 Sheet：模型级列合并（原厂 modelId · Trinity · 显示名 · 厂商） */
 export const MERGE_COMPARE_TEXT = {
   groupCol: 0,
-  columns: [0, 1, 2],
+  columns: [0, 1, 2, 3],
 };
 
 /** @deprecated 使用 MERGE_COMPARE_TEXT */

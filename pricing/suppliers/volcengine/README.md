@@ -32,7 +32,7 @@ npm run pricing:upstream   # 生文 Excel「火山方舟」分表
 
 ## 维护
 
-1. `npm run pricing:supplier:volcengine:all` 更新 raw 与 JSON
-2. 对照 `official/data/seeds/{text,image,video}.mjs` 更新 Trinity 已上架模型种子
-3. 已上架模型补充 `trinity-map.json`
-4. `npm run pricing:refresh`
+1. `npm run pricing:supplier:volcengine:all` 更新 raw 与 JSON（**无** `pricing-sheet.mjs`，勿手填）
+2. Trinity 已上架模型补充 `trinity-map.json`（`vendorModelId` 与官网表格一致）
+3. Excel 随 build/scrape **自动同步**（`pricing:upstream`）；全量重建用 `pricing:refresh`
+4. `npm run pricing:gate`（L3 与 official 交叉）

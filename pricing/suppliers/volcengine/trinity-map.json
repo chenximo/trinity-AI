@@ -1,4 +1,9 @@
 {
-  "_comment": "Trinity 已上架模型 ↔ 火山方舟 vendorModelId；未映射项仍出现在「火山方舟」分表",
-  "_doc": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
+  "_comment": "火山 vendorModelId → Trinity modelId（与官网表格 model 名称一致）",
+  "_doc": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+  "glm-4.7": { "trinityId": "glm-4-7-251222" },
+  "glm-5.2": { "trinityId": "glm-5.2" },
+  "deepseek-v3.2": { "trinityId": "deepseek-v3.2" },
+  "deepseek-v4-flash": { "trinityId": "deepseek-v4-flash" },
+  "deepseek-v4-pro": { "trinityId": "deepseek-v4-pro" }
 }

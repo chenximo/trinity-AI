@@ -7,7 +7,7 @@ title: 采购渠道真源
 > **关联**：[模型价格真源 · 总览](./) · [原厂定价页链接](./official-pricing-urls) · 工程 `pricing/suppliers/SOURCES.md`  
 > **维护**：链接与工程脚本保持一致；**不抄具体价格数字**。
 
-各渠道**只认下列目录下的 JSON**（或 `pricing-sheet.mjs`）为价目真源；流水线、校验、Excel 都从这里读。
+各渠道**只认下列目录下的 JSON** 为价目真源（**仅 AIGC** 仍用手工 `pricing-sheet.mjs`）；流水线、校验、Excel 都从这里读。
 
 ## 工程真源与命令
 

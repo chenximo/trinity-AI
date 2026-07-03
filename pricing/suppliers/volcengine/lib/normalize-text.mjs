@@ -1,8 +1,53 @@
 import { cleanCell } from "./scrape-doc.mjs";
 import { TEXT_BILLING_CONTEXT } from "./constants.mjs";
 
-const MODEL_ID_RE = /^doubao-[a-z0-9][a-z0-9.-]*/i;
+/** 火山「在线推理（常规）」主表常见 model id 前缀 */
+const MODEL_ID_RE =
+  /^(?:doubao|glm|deepseek|kimi|minimax)-[a-z0-9][a-z0-9.-]*/i;
 const SKIP_MODEL_RE = /seedream|seedance|embedding|seed3d/i;
+
+/** @param {string} vendorModelId */
+function vendorMeta(vendorModelId) {
+  const id = vendorModelId.toLowerCase();
+  if (id.startsWith("glm-")) {
+    return {
+      vendorCode: "Zhipu",
+      vendorName: "智谱",
+      modelName: vendorModelId.replace(/^glm-/i, "GLM-"),
+      displayPrefix: "智谱",
+    };
+  }
+  if (id.startsWith("deepseek-")) {
+    return {
+      vendorCode: "Deepseek",
+      vendorName: "DeepSeek",
+      modelName: vendorModelId,
+      displayPrefix: "DeepSeek",
+    };
+  }
+  if (id.startsWith("kimi-")) {
+    return {
+      vendorCode: "Kimi",
+      vendorName: "Kimi",
+      modelName: vendorModelId,
+      displayPrefix: "Kimi",
+    };
+  }
+  if (id.startsWith("minimax-")) {
+    return {
+      vendorCode: "Minimax",
+      vendorName: "MiniMax",
+      modelName: vendorModelId,
+      displayPrefix: "MiniMax",
+    };
+  }
+  return {
+    vendorCode: "Doubao",
+    vendorName: "豆包",
+    modelName: vendorModelId.replace(/^doubao-/i, "Doubao-"),
+    displayPrefix: "豆包",
+  };
+}
 
 /**
  * @param {string[]} headers
@@ -28,9 +73,13 @@ function parseNum(raw) {
 function tierLabelFromCondition(condition) {
   const c = cleanCell(condition);
   if (!c || c === "-") return "标准价";
+  if (/\[0,\s*32\]/.test(c) && !/\(32/.test(c) && /输出长度/.test(c)) {
+    return "输入≤32k·输出≤0.2k";
+  }
   if (/\[0,\s*32\]/.test(c) && !/\(32/.test(c)) return "输入≤32k";
   if (/\(32,\s*128\]/.test(c)) return "输入(32k,128k]";
   if (/\(128,\s*256\]/.test(c) || /\(128/.test(c)) return "输入(128k,256k]";
+  if (/\(32,\s*200\]/.test(c)) return "输入(32k,200k]";
   if (/\[0,\s*256\]/.test(c)) return "输入≤256k";
   if (/\[33/.test(c) || />\s*32/.test(c)) return "输入>32k";
   return c.length > 40 ? `${c.slice(0, 37)}…` : c;
@@ -64,8 +113,10 @@ export function normalizeTextFromRaw(raw) {
       const idFromCell = extractModelId(modelCell);
       if (idFromCell) {
         currentId = idFromCell;
+      } else if (!currentId) {
+        continue;
       }
-      if (!currentId || SKIP_MODEL_RE.test(currentId)) continue;
+      if (SKIP_MODEL_RE.test(currentId)) continue;
 
       const input = parseNum(row[2]);
       const output = parseNum(row[7] ?? row[6]);
@@ -76,9 +127,10 @@ export function normalizeTextFromRaw(raw) {
         idFromCell ? condition : condition || modelCell,
       );
       if (!byModel.has(currentId)) {
+        const meta = vendorMeta(currentId);
         byModel.set(currentId, {
           vendorModelId: currentId,
-          modelName: currentId.replace(/^doubao-/, "Doubao-").replace(/-/g, "-"),
+          modelName: meta.modelName,
           tiers: [],
         });
       }
@@ -101,6 +153,7 @@ export function buildTextApiModels(sheet, trinityMap = {}) {
       trinityMap[entry.vendorModelId.toLowerCase()]?.trinityId ??
       null;
 
+    const meta = vendorMeta(entry.vendorModelId);
     const tiers = entry.tiers.map((row) => ({
       tierType: entry.tiers.length === 1 ? "Uniform" : "Tiered",
       tierName: row.attribute,
@@ -116,10 +169,10 @@ export function buildTextApiModels(sheet, trinityMap = {}) {
       modelId: entry.vendorModelId,
       trinityId,
       upstreamModelId: entry.vendorModelId,
-      vendorCode: "Doubao",
-      vendorName: "豆包",
+      vendorCode: meta.vendorCode,
+      vendorName: meta.vendorName,
       modelName: entry.modelName,
-      displayName: `豆包 ${entry.modelName}`,
+      displayName: `${meta.displayPrefix} ${entry.modelName}`,
       brand: "火山方舟",
       modelType: "Text",
       currency: "CNY",

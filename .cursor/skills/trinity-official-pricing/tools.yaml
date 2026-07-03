@@ -159,16 +159,41 @@ tools:
     git: false
     tags: [supplier, bailian, pricing-L3]
 
-  - id: pricing.supplier.volcengine
-    title: 构建火山方舟价目
-    summary: 从 pricing-sheet 生成 volcengine pricing-api.json
-    command: npm run pricing:supplier:volcengine
+  - id: pricing.supplier.volcengine.doc
+    title: 抓取火山方舟价目页
+    summary: Playwright 抓取模型价格页 → volcengine-pricing-raw.json
+    command: npm run pricing:supplier:volcengine:doc
     writes:
+      - pricing/suppliers/volcengine/output/volcengine-pricing-raw.json
+    confirm: none
+    network: true
+    git: false
+    tags: [supplier, volcengine, scrape, pricing-L3]
+
+  - id: pricing.supplier.volcengine
+    title: 归一化火山方舟价目
+    summary: 从 raw 生成 text/image/video pricing-api.json
+    command: npm run pricing:supplier:volcengine
+    reads:
+      - pricing/suppliers/volcengine/output/volcengine-pricing-raw.json
+    writes:
+      - pricing/suppliers/volcengine/output/text/pricing-api.json
+      - pricing/suppliers/volcengine/output/image/pricing-api.json
+      - pricing/suppliers/volcengine/output/video/pricing-api.json
       - pricing/suppliers/volcengine/output/pricing-api.json
     confirm: none
     network: false
     git: false
-    tags: [supplier, volcengine, pricing-L2]
+    tags: [supplier, volcengine, pricing-L3]
+
+  - id: pricing.supplier.volcengine.all
+    title: 抓取并归一化火山方舟价目
+    summary: scrape + normalize 三模态；新增/调价后跑
+    command: npm run pricing:supplier:volcengine:all
+    confirm: none
+    network: true
+    git: false
+    tags: [supplier, volcengine, scrape, pricing-L3]
 
   - id: pricing.supplier.official-direct.all
     title: 构建全部原厂直连渠道

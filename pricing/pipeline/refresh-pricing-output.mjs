@@ -43,9 +43,10 @@ const steps = [
 ];
 
 let failed = false;
+const childEnv = { ...process.env, PRICING_SKIP_EXCEL_SYNC: "1" };
 for (const [name, cmd, cmdArgs] of steps) {
   console.log(`\n── pricing:refresh · ${name} ──`);
-  const r = spawnSync(cmd, cmdArgs, { cwd: root, stdio: "inherit" });
+  const r = spawnSync(cmd, cmdArgs, { cwd: root, stdio: "inherit", env: childEnv });
   if (r.status !== 0) {
     console.error(`pricing:refresh FAILED at step: ${name}`);
     failed = true;

@@ -277,12 +277,178 @@ function resolveOrTier(orModel, refUsd) {
   return orModel.tiers[0];
 }
 
+/** @param {Record<string, { vendorModelId?: string }>} vendorMap Trinity → official */
+function buildReverseTrinityByVendor(vendorMap) {
+  /** @type {Map<string, string>} */
+  const byVendor = new Map();
+  for (const [trinityId, meta] of Object.entries(vendorMap)) {
+    const vendorModelId = meta?.vendorModelId;
+    if (!vendorModelId) continue;
+    const key = vendorModelId.toLowerCase();
+    if (!byVendor.has(key)) byVendor.set(key, trinityId);
+  }
+  return byVendor;
+}
+
+/** @param {object[]} models */
+function buildUpstreamByTrinity(models) {
+  /** @type {Map<string, object>} */
+  const map = new Map();
+  for (const m of models) {
+    if (m?.trinityId) map.set(m.trinityId.toLowerCase(), m);
+  }
+  return map;
+}
+
+/** @param {object} off */
+function officialTextTiers(off) {
+  const tiers = off.tiers ?? off.prices?.tiers ?? [];
+  if (tiers.length) return tiers;
+  const p = off.prices;
+  if (p && (p.input != null || p.output != null || p.cache != null)) {
+    return [
+      {
+        tierLabel: "标准价",
+        input: p.input,
+        output: p.output,
+        cache: p.cache,
+      },
+    ];
+  }
+  return [{ tierLabel: "—" }];
+}
+
+/** @param {object|null} upstream @param {object} offTier @param {number} tierIndex */
+function matchUpstreamTier(upstream, offTier, tierIndex) {
+  if (!upstream) {
+    return { tierLabel: offTier.tierLabel ?? "—", tierKey: offTier.tierKey };
+  }
+  const priced = summaryTiersForModel(upstream);
+  if (offTier.tierKey) {
+    const byKey = priced.find((t) => t.tierKey === offTier.tierKey);
+    if (byKey) return byKey;
+  }
+  if (offTier.tierLabel) {
+    const byLabel = priced.find((t) => t.tierLabel === offTier.tierLabel);
+    if (byLabel) return byLabel;
+  }
+  return priced[tierIndex] ?? priced[0] ?? { tierLabel: offTier.tierLabel ?? "—" };
+}
+
+function formatCompareBrand(off) {
+  return off.vendorLabel ?? off.vendor ?? "—";
+}
+
+/** @param {object} off @param {Map<string, string>} reverseTrinity */
+function isOfficialModelLinked(off, reverseTrinity) {
+  const id = off.vendorModelId?.toLowerCase();
+  return Boolean(id && reverseTrinity.has(id));
+}
+
+/** @param {object[]} officialModels @param {Map<string, string>} reverseTrinity */
+function buildVendorsWithTrinityLink(officialModels, reverseTrinity) {
+  /** @type {Set<string>} */
+  const linked = new Set();
+  for (const off of officialModels) {
+    if (isOfficialModelLinked(off, reverseTrinity)) {
+      linked.add(formatCompareBrand(off));
+    }
+  }
+  return linked;
+}
+
+/**
+ * 1. 有已接入模型的厂商在前，整系列未接入（如豆包）沉底
+ * 2. 同厂商内：已接入在前，未接入在后
+ * 3. vendorModelId 字母序
+ */
+function compareOfficialModels(a, b, reverseTrinity, vendorsWithLink) {
+  const la = formatCompareBrand(a);
+  const lb = formatCompareBrand(b);
+
+  const vendorLinkedA = vendorsWithLink.has(la) ? 0 : 1;
+  const vendorLinkedB = vendorsWithLink.has(lb) ? 0 : 1;
+  if (vendorLinkedA !== vendorLinkedB) return vendorLinkedA - vendorLinkedB;
+
+  if (la !== lb) return la.localeCompare(lb);
+
+  const linkedA = isOfficialModelLinked(a, reverseTrinity) ? 0 : 1;
+  const linkedB = isOfficialModelLinked(b, reverseTrinity) ? 0 : 1;
+  if (linkedA !== linkedB) return linkedA - linkedB;
+
+  return (a.vendorModelId ?? "").localeCompare(b.vendorModelId ?? "");
+}
+
+/** @param {object} off @param {object} offTier @param {string} vendorModelId */
+function buildUnmappedOfficialRow(off, offTier, vendorModelId) {
+  const sym = off.currency === "CNY" ? "¥" : "$";
+  return {
+    trinityId: "—",
+    displayName: formatCompareBrand(off),
+    brand: formatCompareBrand(off),
+    vendorModelId,
+    tierLabel: offTier.tierLabel ?? "—",
+    official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
+    aigcIntl: "—",
+    tokenhub: "—",
+    openRouter: "—",
+    openRouterId: "",
+    online: "—",
+    deltaOnlineVsOfficialIn: "—",
+    deltaOnlineVsOfficialOut: "—",
+    deltaOnlineVsOfficialCache: "—",
+    aigcVsOfficial: "—",
+    thVsOfficial: "—",
+    orVsOfficial: "—",
+    listingConclusion: "— 未接入",
+    listingMaterialInOut: false,
+    note: off.trinityNote ?? "",
+    officialStatus: off.fetchStatus ?? "",
+  };
+}
+
+/** map 有 Trinity，但线上 models 列表尚无（未上架刊例） */
+function buildMappedNoListingRow(off, offTier, vendorModelId, trinityId) {
+  const sym = off.currency === "CNY" ? "¥" : "$";
+  return {
+    trinityId,
+    displayName: formatCompareBrand(off),
+    brand: formatCompareBrand(off),
+    vendorModelId,
+    tierLabel: offTier.tierLabel ?? "—",
+    official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
+    aigcIntl: "—",
+    tokenhub: "—",
+    openRouter: "—",
+    openRouterId: "",
+    online: "—",
+    deltaOnlineVsOfficialIn: "—",
+    deltaOnlineVsOfficialOut: "—",
+    deltaOnlineVsOfficialCache: "—",
+    aigcVsOfficial: "—",
+    thVsOfficial: "—",
+    orVsOfficial: "—",
+    listingConclusion: "— 未上架",
+    listingMaterialInOut: false,
+    note: off.trinityNote ?? "",
+    officialStatus: off.fetchStatus ?? "",
+  };
+}
+
 function buildTierRow(model, tier, ctx) {
-  const { off, offCurrency, onlineTiers, aigcIntl, orModel, orMapEntry, note } =
-    ctx;
+  const {
+    off,
+    offCurrency,
+    onlineTiers,
+    aigcIntl,
+    orModel,
+    orMapEntry,
+    note,
+    fixedOffTier,
+  } = ctx;
 
   const refUsd = refInputUsdFromTier(tier);
-  const offTier = pickOfficialTierForRow(off, tier, refUsd);
+  const offTier = fixedOffTier ?? pickOfficialTierForRow(off, tier, refUsd);
   const onlineTier = pickOnlineTierForRow(onlineTiers, tier, refUsd);
 
   const sym = offCurrency === "CNY" ? "¥" : "$";
@@ -382,7 +548,11 @@ function buildTierRow(model, tier, ctx) {
     displayName: model.displayName,
     brand: model.brand,
     vendorModelId: ctx.vendorModelId ?? model.trinityId,
-    tierLabel: tier.tierLabel ?? tierLabelOf(onlineTier, offTier) ?? "—",
+    tierLabel:
+      fixedOffTier?.tierLabel ??
+      tier.tierLabel ??
+      tierLabelOf(onlineTier, offTier) ??
+      "—",
     official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
     aigcIntl: formatTokenTextTier(
       tier.aigcIntlIn != null
@@ -419,7 +589,8 @@ function buildTierRow(model, tier, ctx) {
 }
 
 /**
- * @param {object[]} models upstream 汇总 models（含 tiers）
+ * 刊例对比：以 official vendor-pricing 为行轴；Trinity 经 map 挂接，未接入显示 —。
+ * @param {object[]} models upstream 汇总（Trinity 已上架，供进货/刊例列）
  * @param {object} [opts]
  */
 export function buildTextCompareHubFromModels(models, opts = {}) {
@@ -435,28 +606,61 @@ export function buildTextCompareHubFromModels(models, opts = {}) {
     openRouterFetchedAt = null,
   } = opts;
 
+  const reverseTrinity = buildReverseTrinityByVendor(vendorMap);
+  const upstreamByTrinity = buildUpstreamByTrinity(models);
+
+  const officialModelsActive = [...officialByVendorId.values()].filter(
+    (m) => (m.status ?? "active") === "active",
+  );
+  const vendorsWithLink = buildVendorsWithTrinityLink(
+    officialModelsActive,
+    reverseTrinity,
+  );
+  const officialModels = officialModelsActive.sort((a, b) =>
+    compareOfficialModels(a, b, reverseTrinity, vendorsWithLink),
+  );
+
   const rows = [];
-  for (const model of models) {
-    const tid = model.trinityId.toLowerCase();
-    const mapEntry = vendorMap[tid] ?? null;
-    const vendorModelId = mapEntry?.vendorModelId ?? model.trinityId;
-    const off =
-      officialByVendorId.get(vendorModelId.toLowerCase()) ?? null;
-    const offCurrency = off?.currency ?? "USD";
-    const online = onlineByModel.get(tid) ?? null;
-    const onlineTiers = online ? parseOnlinePricesTiers(online) : [];
-    const aigcIntl = model.aigcInternational ?? null;
+  let trinityLinkedCount = 0;
 
-    const orEntry = orTrinityMap[tid] ?? null;
-    const orModel =
-      orEntry?.openRouterId != null
-        ? (orById.get(orEntry.openRouterId.toLowerCase()) ?? null)
-        : null;
+  for (const off of officialModels) {
+    const vendorModelId = off.vendorModelId;
+    const trinityId =
+      reverseTrinity.get(vendorModelId.toLowerCase()) ?? null;
+    const offCurrency = off.currency ?? "USD";
+    const tiers = officialTextTiers(off);
 
-    const tierRows = summaryTiersForModel(model);
-    for (const tier of tierRows) {
+    if (trinityId) trinityLinkedCount++;
+
+    for (let i = 0; i < tiers.length; i++) {
+      const offTier = tiers[i];
+
+      if (!trinityId) {
+        rows.push(buildUnmappedOfficialRow(off, offTier, vendorModelId));
+        continue;
+      }
+
+      const upstream = upstreamByTrinity.get(trinityId.toLowerCase());
+      if (!upstream) {
+        rows.push(
+          buildMappedNoListingRow(off, offTier, vendorModelId, trinityId),
+        );
+        continue;
+      }
+
+      const tid = trinityId.toLowerCase();
+      const online = onlineByModel.get(tid) ?? null;
+      const onlineTiers = online ? parseOnlinePricesTiers(online) : [];
+      const aigcIntl = upstream.aigcInternational ?? null;
+      const orEntry = orTrinityMap[tid] ?? null;
+      const orModel =
+        orEntry?.openRouterId != null
+          ? (orById.get(orEntry.openRouterId.toLowerCase()) ?? null)
+          : null;
+      const upstreamTier = matchUpstreamTier(upstream, offTier, i);
+
       rows.push(
-        buildTierRow(model, tier, {
+        buildTierRow(upstream, upstreamTier, {
           off,
           offCurrency,
           onlineTiers,
@@ -464,8 +668,9 @@ export function buildTextCompareHubFromModels(models, opts = {}) {
           orModel,
           orMapEntry: orEntry,
           vendorModelId,
-          officialStatus: off?.fetchStatus ?? "未映射",
-          note: off?.trinityNote ?? mapEntry?.note ?? null,
+          fixedOffTier: offTier,
+          officialStatus: off.fetchStatus ?? "",
+          note: off.trinityNote ?? vendorMap[tid]?.note ?? null,
         }),
       );
     }
@@ -477,7 +682,9 @@ export function buildTextCompareHubFromModels(models, opts = {}) {
     officialFetchedAt,
     pricesFetchedAt,
     openRouterFetchedAt,
-    modelCount: models.length,
+    modelCount: officialModels.length,
+    trinityLinkedCount,
+    trinityOnlineCount: models.length,
     rowCount: rows.length,
     fxOnlineDomestic: FX_ONLINE_DOMESTIC,
     rows,
@@ -540,6 +747,7 @@ export async function loadTextCompareHubContext(opts = {}) {
 
 export function buildTextCompareExcelRows(report) {
   const header = [
+    "原厂 modelId",
     "Trinity ID",
     "显示名",
     "厂商",
@@ -560,11 +768,13 @@ export function buildTextCompareExcelRows(report) {
   ];
 
   const rows = [];
-  let lastId = "";
+  let lastVendorId = "";
   for (const r of report.rows) {
-    const show = r.trinityId !== lastId;
-    lastId = r.trinityId ?? "";
+    const vendorId = r.vendorModelId ?? "";
+    const show = vendorId !== lastVendorId;
+    lastVendorId = vendorId;
     rows.push([
+      show ? vendorId : "",
       show ? (r.trinityId ?? "") : "",
       show ? (r.displayName ?? "") : "",
       show ? (r.brand ?? "") : "",
@@ -628,8 +838,12 @@ export function renderTextCompareHubMarkdown(report) {
   const lines = [
     "# 生文刊例对比校验（与 Excel「刊例对比校验-生文」同源）",
     "",
-    `> 生成 ${report.generatedAt.slice(0, 19)}Z · 模型 ${report.modelCount} 个 · 行 ${report.rowCount}`,
-    `> **目的**：校验 Trinity 线上刊例是否应对齐厂商官方价；AIGC 国际 / TokenHub / OpenRouter 互补对照官方种子`,
+    `> 生成 ${report.generatedAt.slice(0, 19)}Z · 官方模型 ${report.modelCount} 个 · 行 ${report.rowCount}` +
+      (report.trinityLinkedCount != null
+        ? ` · Trinity 已映射 ${report.trinityLinkedCount} · 线上 ${report.trinityOnlineCount ?? "—"}`
+        : ""),
+    `> **行轴**：\`suppliers/official/output/text/vendor-pricing.json\` 全量；Trinity 未接入 → Trinity ID / 刊例为 —`,
+    `> **目的**：官方价锚点 + Trinity 覆盖与刊例校验；AIGC 国际 / TokenHub / OpenRouter 互补对照`,
     `> 厂商官方价：\`suppliers/official/output/text/vendor-pricing.json\`（${report.officialFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> AIGC 国际：\`suppliers/aigc\` · TokenHub：\`suppliers/tokenhub\` · OpenRouter：\`suppliers/openrouter\`（${report.openRouterFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 线上刊例：\`output/online/prices-api.json\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
@@ -648,6 +862,9 @@ export function renderTextCompareHubMarkdown(report) {
     "",
     "## 说明",
     "",
+    "- **原厂 modelId**：`vendor-pricing.json` 锚点，与渠道价 join 键一致",
+    "- **Trinity ID**：`—` = 官方已收录、产品未接入；刊例结论 `— 未接入` / `— 未上架` 不进 gate",
+    "- **排序**：有已接入模型的厂商在前；**整系列未接入**（如豆包）沉表尾；同系列内已接入在前、单模型未接入在后",
     "- **厂商官方价**：刊例应对齐的锚（国内 CNY 展示，对比时 ÷6.5 换 USD）",
     "- **AIGCvs官方 / TokenHub vs官方 / ORvs官方**：单列展示入/出/缓；一致 `✅`，偏差 `⚠±X%`",
     "- **刊例vs官方_*%**：线上刊例相对厂商官方价；正数表示刊例高于官方",

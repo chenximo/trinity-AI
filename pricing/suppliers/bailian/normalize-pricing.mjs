@@ -8,6 +8,7 @@ import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PRICING_API_OUT, PRICING_RAW_OUT, buildPricingApiResult } from "./lib/pricing-api.mjs";
+import { syncPricingExcel } from "../../pipeline/lib/sync-pricing-excel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const inFile = process.argv[2] ?? path.join(__dirname, "output", PRICING_RAW_OUT);
@@ -34,3 +35,4 @@ console.log(
     2,
   ),
 );
+syncPricingExcel({ label: "bailian" });
