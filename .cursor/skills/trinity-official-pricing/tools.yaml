@@ -57,11 +57,12 @@ tools:
 
   - id: pricing.aigc.sheet.edit
     title: 修改 AIGC pricing-sheet
-    summary: 编辑 suppliers/aigc/data/pricing-sheet.mjs；影响 L1 交叉
+    summary: 编辑 suppliers/aigc/data/pricing-sheet{,-image}.mjs；影响 L1 交叉
     command: null
     action: edit
     paths:
       - pricing/suppliers/aigc/data/pricing-sheet.mjs
+      - pricing/suppliers/aigc/data/pricing-sheet-image.mjs
     confirm: required
     network: false
     git: true
@@ -127,15 +128,26 @@ tools:
 
   # ── 上游进货（L2 参照）──────────────────────────────────────
   - id: pricing.supplier.aigc
-    title: 构建 AIGC 价目
-    summary: 从 pricing-sheet 生成 aigc pricing-api.json
+    title: 构建 AIGC 价目（生文）
+    summary: 从 pricing-sheet.mjs 生成 aigc pricing-api.json
     command: npm run pricing:supplier:aigc
     writes:
       - pricing/suppliers/aigc/output/pricing-api.json
     confirm: none
     network: false
     git: false
-    tags: [supplier, aigc, pricing-L2]
+    tags: [supplier, aigc, pricing-L2, text]
+
+  - id: pricing.supplier.aigc.image
+    title: 构建 AIGC 价目（生图）
+    summary: 从 pricing-sheet-image.mjs 生成 pricing-api-image.json
+    command: npm run pricing:supplier:aigc:image
+    writes:
+      - pricing/suppliers/aigc/output/pricing-api-image.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, aigc, pricing-L2, image]
 
   - id: pricing.supplier.tokenhub.console
     title: 抓取 TokenHub 控制台价
@@ -229,8 +241,8 @@ tools:
     tags: [supplier, relay-cust, pricing-L2]
 
   - id: pricing.refresh
-    title: 刷新价目产出（含 Excel）
-    summary: official:text → 衍生供应商 → upstream；新增/改价后必跑，保证 xlsx 最新
+    title: 刷新价目产出（含生文 Excel）
+    summary: official 三模态 + 衍生供应商 → upstream 生文与生图 Excel
     command: npm run pricing:refresh
     writes:
       - pricing/output/trinity-pricing-text.xlsx
@@ -238,12 +250,13 @@ tools:
       - pricing/output/upstream/summary.md
       - pricing/output/official/text.md
       - pricing/output/official/text.json
+      - pricing/suppliers/official/output/image/vendor-pricing.json
     confirm: none
     network: true
     git: false
     env:
       - PRICING_SKIP_ONLINE_FETCH
-    tags: [upstream, excel, publish]
+    tags: [upstream, excel, publish, text]
 
   # ── 校验与门禁 ──────────────────────────────────────────────
   - id: pricing.validate.aigc-excel
@@ -259,8 +272,8 @@ tools:
     tags: [validate, aigc]
 
   - id: pricing.validate.official-aigc
-    title: L1 官方 ↔ AIGC/TokenHub
-    summary: 交叉校验官方种子与进货参照价
+    title: L1 官方 ↔ AIGC/TokenHub（生文）
+    summary: 交叉校验官方种子与进货参照价 · text 模态
     command: npm run pricing:validate:official-aigc
     reads:
       - pricing/suppliers/official/output/text/vendor-pricing.json
@@ -272,11 +285,27 @@ tools:
     confirm: none
     network: false
     git: false
-    tags: [validate, pricing-L1]
+    tags: [validate, pricing-L1, text]
+
+  - id: pricing.validate.official-aigc.image
+    title: L1 官方 ↔ AIGC/TokenHub（生图）
+    summary: 交叉校验官方种子与进货参照价 · image 模态（元/张）
+    command: npm run pricing:validate:official-aigc-image
+    reads:
+      - pricing/suppliers/official/output/image/vendor-pricing.json
+      - pricing/suppliers/aigc/data/pricing-sheet-image.mjs
+      - pricing/suppliers/tokenhub/output/pricing-console-api.json
+    writes:
+      - pricing/output/validate/official-aigc-cross-image.json
+      - pricing/output/validate/official-aigc-cross-image.md
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, pricing-L1, image]
 
   - id: pricing.validate.official-suppliers
-    title: L3 官方 ↔ 转售渠道
-    summary: 官方 vs 百炼等转售档位数与价格
+    title: L3 官方 ↔ 转售渠道（生文）
+    summary: 官方 vs 百炼等转售档位数与价格 · text 模态
     command: npm run pricing:validate:official-suppliers
     writes:
       - pricing/output/validate/official-vs-suppliers.json
@@ -285,23 +314,39 @@ tools:
     confirm: none
     network: false
     git: false
-    tags: [validate, pricing-L3]
+    tags: [validate, pricing-L3, text]
+
+  - id: pricing.validate.official-suppliers.image
+    title: L3 官方 ↔ 转售渠道（生图）
+    summary: 官方 vs AIGC/TokenHub/火山方舟 · image 模态
+    command: npm run pricing:validate:official-suppliers-image
+    writes:
+      - pricing/output/validate/official-vs-suppliers-image.json
+      - pricing/output/validate/official-vs-suppliers-image.md
+    confirm: none
+    network: false
+    git: false
+    tags: [validate, pricing-L3, image]
 
   - id: pricing.gate
-    title: 价目门禁 L1→L3
-    summary: official:text + aigc-excel + L1 + L3 + alert dry-run
+    title: 价目门禁 L1→L3（全模态）
+    summary: official text+image → aigc-excel → L1 text+image → L3 text+image → alert dry-run
     command: npm run pricing:gate
     reads:
       - pricing/suppliers/official/output/text/vendor-pricing.json
+      - pricing/suppliers/official/output/image/vendor-pricing.json
       - pricing/suppliers/aigc/data/pricing-sheet.mjs
+      - pricing/suppliers/aigc/data/pricing-sheet-image.mjs
     writes:
       - pricing/output/validate/official-aigc-cross.json
+      - pricing/output/validate/official-aigc-cross-image.json
       - pricing/output/validate/official-vs-suppliers.json
+      - pricing/output/validate/official-vs-suppliers-image.json
       - pricing/output/validate/pricing-alerts.json
     confirm: none
     network: false
     git: false
-    tags: [validate, gate, pricing-L1, pricing-L3]
+    tags: [validate, gate, pricing-L1, pricing-L3, text, image]
 
   - id: pricing.alert
     title: 推送价目告警
@@ -333,8 +378,8 @@ tools:
     tags: [online, pricing-L4]
 
   - id: pricing.compare.official
-    title: 三方价对比表
-    summary: 官方 vs 上游 vs 线上；自动刷新线上刊例
+    title: 三方价对比表（生文为主）
+    summary: 官方 vs 上游 vs 线上；自动刷新线上刊例；生图刊例对比见 pricing.upstream.image
     command: npm run pricing:compare:official
     reads:
       - pricing/suppliers/official/output/*/vendor-pricing.json
@@ -348,18 +393,43 @@ tools:
     git: false
     env:
       - PRICING_SKIP_ONLINE_FETCH
-    tags: [compare]
+    tags: [compare, text]
 
   - id: pricing.upstream
-    title: 生成上游汇总
-    summary: upstream-pricing.json + summary.md + Excel；通常用 pricing.refresh 代替
+    title: 生成上游汇总（生文）
+    summary: 刊例对比校验-生文 + 汇总-供应商vs官方 + 渠道分表 → trinity-pricing-text.xlsx
     command: npm run pricing:upstream
     writes:
       - pricing/output/upstream/upstream-pricing.json
       - pricing/output/upstream/summary.md
+      - pricing/output/official/text.md
+      - pricing/output/trinity-pricing-text.xlsx
     confirm: none
     network: true
     git: false
     env:
       - PRICING_SKIP_ONLINE_FETCH
-    tags: [upstream, compare]
+    tags: [upstream, compare, text, pricing-L4]
+
+  - id: pricing.upstream.image
+    title: 生成上游汇总（生图）
+    summary: 刊例对比校验-生图 + 汇总-供应商vs官方-生图 + 渠道分表（含 vs 官方）→ trinity-pricing-image.xlsx
+    command: npm run pricing:upstream:image
+    reads:
+      - pricing/suppliers/official/output/image/vendor-pricing.json
+      - pricing/suppliers/aigc/output/pricing-api-image.json
+      - pricing/suppliers/volcengine/output/image/pricing-api.json
+      - pricing/output/online/prices-api.json
+    writes:
+      - pricing/output/official/image.md
+      - pricing/output/official/image.json
+      - pricing/output/upstream/image-summary.md
+      - pricing/output/upstream/image-summary.csv
+      - pricing/output/trinity-pricing-image.xlsx
+      - pricing/suppliers/aigc/output/pricing-api-image.json
+    confirm: none
+    network: true
+    git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
+    tags: [upstream, compare, image, pricing-L4]

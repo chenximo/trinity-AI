@@ -4,6 +4,7 @@
 export const VENDOR_PRICING_URLS = {
   openai: {
     all: "https://developers.openai.com/api/docs/pricing",
+    image: "https://developers.openai.com/api/docs/pricing",
   },
   google: {
     text: "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
@@ -26,8 +27,14 @@ export const VENDOR_PRICING_URLS = {
   },
   tencent_hunyuan: {
     text: "https://cloud.tencent.com/document/product/1823/130055",
-    image: "https://cloud.tencent.com/document/product/1729/97732",
+    /** 混元生图产品（3.0 / 极速版 hy-image-lite） */
+    image: "https://cloud.tencent.com/document/product/1668/90896",
+    /** 混元大模型生图（旧版混元生图 0.5元/张） */
+    image_legacy: "https://cloud.tencent.com/document/product/1729/105925",
     video: "https://cloud.tencent.com/document/product/1729/97731",
+  },
+  midjourney: {
+    image: "https://docs.midjourney.com/docs/plans",
   },
   zhipu: {
     text: "https://bigmodel.cn/pricing",
@@ -46,9 +53,12 @@ export const VENDOR_PRICING_URLS = {
     video: "https://www.volcengine.com/docs/82379/1544106?lang=zh",
   },
   kling: {
+    image: "https://klingai.com/global/dev/pricing",
+    image_api: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
     video: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
   },
   vidu: {
+    image: "https://platform.vidu.cn/docs/pricing",
     video: "https://platform.vidu.cn/docs/pricing",
   },
 };

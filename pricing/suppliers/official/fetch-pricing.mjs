@@ -66,6 +66,14 @@ function resolveTextCurrency(entry, prices) {
   return "USD";
 }
 
+/** @param {import("./data/catalog/image.mjs").CatalogEntry} entry */
+function resolveImageCurrency(entry, prices) {
+  if (prices?.currency) return prices.currency;
+  if (entry.region === "international_only") return "USD";
+  if (entry.region === "domestic") return "CNY";
+  return "CNY";
+}
+
 /**
  * @param {import("./lib/modality.mjs").Modality} modality
  * @param {ReturnType<typeof loadCatalog>} entries
@@ -73,7 +81,7 @@ function resolveTextCurrency(entry, prices) {
 async function fetchModality(modality, entries) {
   const meta = buildCatalogMeta(modality);
   const seedMap = getSeedMap(modality);
-  const seedVerifiedAt = getSeedVerifiedAt();
+  const seedVerifiedAt = getSeedVerifiedAt(modality);
   const fetchedAt = new Date().toISOString();
   const cache = {};
   const models = [];
@@ -103,7 +111,7 @@ async function fetchModality(modality, entries) {
       currency:
         modality === "text"
           ? resolveTextCurrency(entry, result.prices)
-          : meta.currency,
+          : resolveImageCurrency(entry, result.prices),
       unit: meta.unit,
       chargeUnit: meta.chargeUnit,
       tierCount: tiers.length,
@@ -160,7 +168,7 @@ async function main() {
       results.push(await fetchModality(m, entries));
     }
     console.log(JSON.stringify({ modalities: results }, null, 2));
-    syncPricingExcel({ label: "official:all" });
+    syncPricingExcel({ label: "official:all", modality: "text" });
     return;
   }
 
@@ -177,7 +185,7 @@ async function main() {
 
   const result = await fetchModality(modality, entries);
   console.log(JSON.stringify(result, null, 2));
-  syncPricingExcel({ label: `official:${modality}` });
+  syncPricingExcel({ label: `official:${modality}`, modality });
 }
 
 main().catch((e) => {

@@ -1,0 +1,779 @@
+{
+  "generatedAt": "2026-07-03T09:37:17.699Z",
+  "modality": "image",
+  "phase": "L1_vs_L3_image",
+  "ok": true,
+  "summary": {
+    "modelChannels": 45,
+    "ok": 15,
+    "issues": 0,
+    "noCoverage": 18,
+    "aigcOnlySkipped": 5,
+    "blockingAlertCount": 0
+  },
+  "aigcOnlySkipped": [
+    {
+      "trinityId": "MJ-v7",
+      "vendorModelId": "midjourney-v7",
+      "reason": "aigc_only_seed",
+      "note": "no_public_api — MJ 为订阅制，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    }
+  ],
+  "comparisons": [
+    {
+      "trinityId": "hy-image-v3.0",
+      "vendorModelId": "hy-image-v3.0",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "hy-image-v3.0",
+      "vendorModelId": "hy-image-v3.0",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "hy-image-v3.0",
+      "vendorModelId": "hy-image-v3.0",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "ok",
+      "officialTierCount": 1,
+      "supplierTierCount": 1,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "hy-image-v3.0",
+      "vendorModelId": "hy-image-v3.0",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "hy-image-lite",
+      "vendorModelId": "hy-image-lite",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "hy-image-lite",
+      "vendorModelId": "hy-image-lite",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "hy-image-lite",
+      "vendorModelId": "hy-image-lite",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "ok",
+      "officialTierCount": 1,
+      "supplierTierCount": 1,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": false
+    },
+    {
+      "trinityId": "hy-image-lite",
+      "vendorModelId": "hy-image-lite",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Hunyuan-3.0",
+      "vendorModelId": "hunyuan-image-3",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 1,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.2
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Hunyuan-3.0",
+      "vendorModelId": "hunyuan-image-3",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Hunyuan-3.0",
+      "vendorModelId": "hunyuan-image-3",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Hunyuan-3.0",
+      "vendorModelId": "hunyuan-image-3",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "SI-5.0-lite",
+      "vendorModelId": "doubao-seedream-5.0-lite",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-5.0-lite",
+      "vendorModelId": "doubao-seedream-5.0-lite",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-5.0-lite",
+      "vendorModelId": "doubao-seedream-5.0-lite",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "SI-5.0-lite",
+      "vendorModelId": "doubao-seedream-5.0-lite",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 1,
+      "issueCount": 4,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:1k",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "res:1k",
+            "price": 0.22
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:2k",
+          "left": {
+            "tierLabel": "2K",
+            "tierKey": "res:2k",
+            "price": 0.22
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:4k",
+          "left": {
+            "tierLabel": "4K",
+            "tierKey": "res:4k",
+            "price": 0.22
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 1
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.5",
+      "vendorModelId": "doubao-seedream-4.5",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.5",
+      "vendorModelId": "doubao-seedream-4.5",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.5",
+      "vendorModelId": "doubao-seedream-4.5",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "SI-4.5",
+      "vendorModelId": "doubao-seedream-4.5",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 1,
+      "issueCount": 4,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:1k",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "res:1k",
+            "price": 0.25
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:2k",
+          "left": {
+            "tierLabel": "2K",
+            "tierKey": "res:2k",
+            "price": 0.25
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:4k",
+          "left": {
+            "tierLabel": "4K",
+            "tierKey": "res:4k",
+            "price": 0.25
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 1
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.0",
+      "vendorModelId": "doubao-seedream-4.0",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.0",
+      "vendorModelId": "doubao-seedream-4.0",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "SI-4.0",
+      "vendorModelId": "doubao-seedream-4.0",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "SI-4.0",
+      "vendorModelId": "doubao-seedream-4.0",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 1,
+      "issueCount": 4,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:1k",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "res:1k",
+            "price": 0.2
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:2k",
+          "left": {
+            "tierLabel": "2K",
+            "tierKey": "res:2k",
+            "price": 0.2
+          },
+          "right": null
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:4k",
+          "left": {
+            "tierLabel": "4K",
+            "tierKey": "res:4k",
+            "price": 0.2
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 1
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Jimeng-4.0",
+      "vendorModelId": "jimeng-4.0",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": false
+    },
+    {
+      "trinityId": "Jimeng-4.0",
+      "vendorModelId": "jimeng-4.0",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": false
+    },
+    {
+      "trinityId": "Jimeng-4.0",
+      "vendorModelId": "jimeng-4.0",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Jimeng-4.0",
+      "vendorModelId": "jimeng-4.0",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 1,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.25
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 1,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.0385
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "OG-image2-low",
+      "vendorModelId": "openai-image2-low",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "OG-image2-medium",
+      "vendorModelId": "openai-image2-medium",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "OG-image2-high",
+      "vendorModelId": "openai-image2-high",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-2.5",
+      "vendorModelId": "gemini-2.5-flash-image",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 1,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "uniform",
+            "price": 0.039
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-2.5",
+      "vendorModelId": "gemini-2.5-flash-image",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 1,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "uniform",
+            "price": 0.039
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.0",
+      "vendorModelId": "gemini-3-image",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.134,
+          "right": 1,
+          "pct": -86.6
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.134,
+          "right": 1,
+          "pct": -86.6
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.24,
+          "right": 1.8,
+          "pct": -86.7
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.0",
+      "vendorModelId": "gemini-3-image",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.1",
+      "vendorModelId": "gemini-3.1-image",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 4,
+      "supplierTierCount": 4,
+      "issueCount": 4,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:sub-1k",
+          "left": 0.045,
+          "right": 0.333,
+          "pct": -86.5
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.067,
+          "right": 0.5,
+          "pct": -86.6
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.101,
+          "right": 0.75,
+          "pct": -86.5
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.151,
+          "right": 1.12,
+          "pct": -86.5
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.1",
+      "vendorModelId": "gemini-3.1-image",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "ok",
+      "officialTierCount": 4,
+      "supplierTierCount": 4,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 1,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.039,
+          "right": 0.038,
+          "pct": 2.6
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    }
+  ],
+  "alerts": []
+}

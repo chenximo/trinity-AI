@@ -8,10 +8,65 @@ export function num(v) {
   return Number.isFinite(n) ? n : null;
 }
 
+/** image_tiered / flat 生图：取首档 unit 价 */
+function parseOnlineImagePrimary(entry) {
+  const groups = entry.price_groups ?? [];
+  const resG = groups.find((g) => g.type === "resolution_tier");
+  if (resG?.prices?.unit) {
+    return {
+      tierLabel:
+        resG.conditions_summary ?? resG.label ?? resG.conditions?.resolution_tier ?? "标准价",
+      price: num(resG.prices.unit.amount),
+      pricingMode: entry.pricing_mode,
+    };
+  }
+  const flatG =
+    groups.find((g) => g.type === "dimension_set") ??
+    groups.find((g) => g.type === "default");
+  if (flatG?.prices?.unit) {
+    return {
+      tierLabel: flatG.label ?? "标准价",
+      price: num(flatG.prices.unit.amount),
+      pricingMode: entry.pricing_mode,
+    };
+  }
+  return { tierLabel: "—", price: null, pricingMode: entry.pricing_mode };
+}
+
+/** 生图按分辨率分档 */
+export function parseOnlineImageTiers(entry) {
+  const mode = entry.pricing_mode;
+  const groups = entry.price_groups ?? [];
+
+  if (mode === "image_tiered" || entry.modality_type === "image") {
+    const tiers = groups
+      .filter((g) => g.type === "resolution_tier" && g.prices?.unit)
+      .map((g) => ({
+        tierLabel:
+          g.conditions_summary ??
+          g.label ??
+          String(g.conditions?.resolution_tier ?? "").toUpperCase(),
+        tierKey: g.conditions?.resolution_tier
+          ? `res:${String(g.conditions.resolution_tier).toLowerCase()}`
+          : undefined,
+        price: num(g.prices.unit.amount),
+        pricingMode: mode,
+      }));
+    if (tiers.length) return tiers;
+    return [parseOnlineImagePrimary(entry)];
+  }
+
+  return [parseOnlineImagePrimary(entry)];
+}
+
 /** legacy：default 组；阶梯：各 token_kind 取 ranges[0] 作为主档摘要价 */
 export function parseOnlinePricesPrimary(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
+
+  if (mode === "image_tiered" || entry.modality_type === "image") {
+    return parseOnlineImagePrimary(entry);
+  }
 
   if (mode === "legacy") {
     const p = groups.find((g) => g.type === "default")?.prices ?? {};
@@ -55,6 +110,10 @@ export function parseOnlinePricesPrimary(entry) {
 export function parseOnlinePricesTiers(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
+
+  if (mode === "image_tiered" || entry.modality_type === "image") {
+    return parseOnlineImageTiers(entry);
+  }
 
   if (mode === "legacy") {
     const defaultG = groups.find((g) => g.type === "default");
@@ -143,6 +202,8 @@ export function indexOnlinePrices(data) {
 export function flattenPricesList(data) {
   return (data ?? []).map((entry) => {
     const primary = parseOnlinePricesPrimary(entry);
+    const isImage =
+      entry.pricing_mode === "image_tiered" || entry.modality_type === "image";
     return {
       model: entry.model,
       displayName: entry.display_name,
@@ -152,10 +213,11 @@ export function flattenPricesList(data) {
       priceUnit: entry.price_unit,
       updatedAt: entry.updated_at,
       tierLabel: primary.tierLabel,
-      inputUsd: primary.input,
-      outputUsd: primary.output,
-      cacheUsd: primary.cache,
-      cacheCreationUsd: primary.cacheCreation,
+      inputUsd: isImage ? null : primary.input,
+      outputUsd: isImage ? null : primary.output,
+      cacheUsd: isImage ? null : primary.cache,
+      cacheCreationUsd: isImage ? null : primary.cacheCreation,
+      priceUsd: isImage ? primary.price : null,
       tierCount: parseOnlinePricesTiers(entry).length,
     };
   });

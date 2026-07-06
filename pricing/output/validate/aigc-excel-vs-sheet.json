@@ -1,289 +1,308 @@
 {
-  "generatedAt": "2026-07-03T07:35:49.823Z",
-  "excelModelCount": 32,
-  "sheetModelCount": 78,
-  "missingInSheetCount": 0,
-  "missingInExcelCount": 46,
-  "mismatchCount": 0,
+  "generatedAt": "2026-07-03T09:37:17.416Z",
+  "modality": "all",
   "ok": true,
-  "missingInSheet": [],
-  "missingInExcel": [
+  "reports": [
     {
-      "key": "OO::o1 (new)",
-      "vendorCode": "OO",
-      "modelName": "o1 (new)",
-      "trinityId": null
+      "modality": "text",
+      "excelModelCount": 32,
+      "sheetModelCount": 78,
+      "missingInSheetCount": 0,
+      "missingInExcelCount": 46,
+      "mismatchCount": 0,
+      "ok": true,
+      "missingInSheet": [],
+      "missingInExcel": [
+        {
+          "key": "OO::o1 (new)",
+          "vendorCode": "OO",
+          "modelName": "o1 (new)",
+          "trinityId": null
+        },
+        {
+          "key": "OO::o1-preview",
+          "vendorCode": "OO",
+          "modelName": "o1-preview",
+          "trinityId": null
+        },
+        {
+          "key": "OO::o1-mini",
+          "vendorCode": "OO",
+          "modelName": "o1-mini",
+          "trinityId": null
+        },
+        {
+          "key": "OO::o3-mini",
+          "vendorCode": "OO",
+          "modelName": "o3-mini",
+          "trinityId": null
+        },
+        {
+          "key": "OO::o2",
+          "vendorCode": "OO",
+          "modelName": "o2",
+          "trinityId": null
+        },
+        {
+          "key": "OO::o1",
+          "vendorCode": "OO",
+          "modelName": "o1",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4o-2024-08-06",
+          "vendorCode": "OO",
+          "modelName": "gpt-4o-2024-08-06",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4o-2024-05-13",
+          "vendorCode": "OO",
+          "modelName": "gpt-4o-2024-05-13",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4o-mini (new)",
+          "vendorCode": "OO",
+          "modelName": "gpt-4o-mini (new)",
+          "trinityId": null
+        },
+        {
+          "key": "OO::5.1-chat",
+          "vendorCode": "OO",
+          "modelName": "5.1-chat",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4-turbo",
+          "vendorCode": "OO",
+          "modelName": "gpt-4-turbo",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4-0613",
+          "vendorCode": "OO",
+          "modelName": "gpt-4-0613",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-4-32k",
+          "vendorCode": "OO",
+          "modelName": "gpt-4-32k",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-3.5-turbo (new)",
+          "vendorCode": "OO",
+          "modelName": "gpt-3.5-turbo (new)",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-3.5-turbo-latest",
+          "vendorCode": "OO",
+          "modelName": "gpt-3.5-turbo-latest",
+          "trinityId": null
+        },
+        {
+          "key": "OO::gpt-3.5-turbo",
+          "vendorCode": "OO",
+          "modelName": "gpt-3.5-turbo",
+          "trinityId": null
+        },
+        {
+          "key": "GG::2.5-flash-lite",
+          "vendorCode": "GG",
+          "modelName": "2.5-flash-lite",
+          "trinityId": "gemini-2.5-flash-lite"
+        },
+        {
+          "key": "GG::2.5-flash-lite-preview",
+          "vendorCode": "GG",
+          "modelName": "2.5-flash-lite-preview",
+          "trinityId": "gemini-2.5-flash-lite-preview"
+        },
+        {
+          "key": "GG::1.5 flash (new)",
+          "vendorCode": "GG",
+          "modelName": "1.5 flash (new)",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.5 pro",
+          "vendorCode": "GG",
+          "modelName": "1.5 pro",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.5 flash-lite (new)",
+          "vendorCode": "GG",
+          "modelName": "1.5 flash-lite (new)",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.5-flash-8b-preview",
+          "vendorCode": "GG",
+          "modelName": "1.5-flash-8b-preview",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.0-flash",
+          "vendorCode": "GG",
+          "modelName": "1.0-flash",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.5-pro",
+          "vendorCode": "GG",
+          "modelName": "1.5-pro",
+          "trinityId": null
+        },
+        {
+          "key": "GG::1.5-flash",
+          "vendorCode": "GG",
+          "modelName": "1.5-flash",
+          "trinityId": null
+        },
+        {
+          "key": "CLM::3.5 (new)",
+          "vendorCode": "CLM",
+          "modelName": "3.5 (new)",
+          "trinityId": null
+        },
+        {
+          "key": "CLM::3-Turbo",
+          "vendorCode": "CLM",
+          "modelName": "3-Turbo",
+          "trinityId": null
+        },
+        {
+          "key": "CLM::3",
+          "vendorCode": "CLM",
+          "modelName": "3",
+          "trinityId": null
+        },
+        {
+          "key": "CLM::3.7",
+          "vendorCode": "CLM",
+          "modelName": "3.7",
+          "trinityId": null
+        },
+        {
+          "key": "Kim::k1.5 (智能搜索)",
+          "vendorCode": "Kim",
+          "modelName": "k1.5 (智能搜索)",
+          "trinityId": null
+        },
+        {
+          "key": "Kim::k1.5 (普通搜索)",
+          "vendorCode": "Kim",
+          "modelName": "k1.5 (普通搜索)",
+          "trinityId": "kimi-k2.5"
+        },
+        {
+          "key": "GK::4.0",
+          "vendorCode": "GK",
+          "modelName": "4.0",
+          "trinityId": null
+        },
+        {
+          "key": "GK::4.0-0309-reasoning",
+          "vendorCode": "GK",
+          "modelName": "4.0-0309-reasoning",
+          "trinityId": null
+        },
+        {
+          "key": "GK::4.0-0309-non-reasoning",
+          "vendorCode": "GK",
+          "modelName": "4.0-0309-non-reasoning",
+          "trinityId": null
+        },
+        {
+          "key": "GK::4-1-fast-reasoning",
+          "vendorCode": "GK",
+          "modelName": "4-1-fast-reasoning",
+          "trinityId": null
+        },
+        {
+          "key": "Deepseek::v3.2",
+          "vendorCode": "Deepseek",
+          "modelName": "v3.2",
+          "trinityId": "deepseek-v3.2"
+        },
+        {
+          "key": "Deepseek::v4-pro (new)",
+          "vendorCode": "Deepseek",
+          "modelName": "v4-pro (new)",
+          "trinityId": "deepseek-v4-pro"
+        },
+        {
+          "key": "Deepseek::v4-flash (new)",
+          "vendorCode": "Deepseek",
+          "modelName": "v4-flash (new)",
+          "trinityId": "deepseek-v4-flash"
+        },
+        {
+          "key": "Minimax::M2.7",
+          "vendorCode": "Minimax",
+          "modelName": "M2.7",
+          "trinityId": "minimax-m2.7"
+        },
+        {
+          "key": "Minimax::M2.5",
+          "vendorCode": "Minimax",
+          "modelName": "M2.5",
+          "trinityId": "minimax-m2.5"
+        },
+        {
+          "key": "CD::Opus 4.0 (new)",
+          "vendorCode": "CD",
+          "modelName": "Opus 4.0 (new)",
+          "trinityId": null
+        },
+        {
+          "key": "CD::Opus 4.7",
+          "vendorCode": "CD",
+          "modelName": "Opus 4.7",
+          "trinityId": "claude-opus-4-7"
+        },
+        {
+          "key": "CD::Opus 4.6",
+          "vendorCode": "CD",
+          "modelName": "Opus 4.6",
+          "trinityId": "claude-opus-4-6"
+        },
+        {
+          "key": "CD::Opus 4.5",
+          "vendorCode": "CD",
+          "modelName": "Opus 4.5",
+          "trinityId": "claude-opus-4-8"
+        },
+        {
+          "key": "CD::Sonnet 4.0",
+          "vendorCode": "CD",
+          "modelName": "Sonnet 4.0",
+          "trinityId": "claude-sonnet-4-6"
+        },
+        {
+          "key": "CD::Haiku 4.0",
+          "vendorCode": "CD",
+          "modelName": "Haiku 4.0",
+          "trinityId": null
+        }
+      ],
+      "mismatches": []
     },
     {
-      "key": "OO::o1-preview",
-      "vendorCode": "OO",
-      "modelName": "o1-preview",
-      "trinityId": null
-    },
-    {
-      "key": "OO::o1-mini",
-      "vendorCode": "OO",
-      "modelName": "o1-mini",
-      "trinityId": null
-    },
-    {
-      "key": "OO::o3-mini",
-      "vendorCode": "OO",
-      "modelName": "o3-mini",
-      "trinityId": null
-    },
-    {
-      "key": "OO::o2",
-      "vendorCode": "OO",
-      "modelName": "o2",
-      "trinityId": null
-    },
-    {
-      "key": "OO::o1",
-      "vendorCode": "OO",
-      "modelName": "o1",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4o-2024-08-06",
-      "vendorCode": "OO",
-      "modelName": "gpt-4o-2024-08-06",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4o-2024-05-13",
-      "vendorCode": "OO",
-      "modelName": "gpt-4o-2024-05-13",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4o-mini (new)",
-      "vendorCode": "OO",
-      "modelName": "gpt-4o-mini (new)",
-      "trinityId": null
-    },
-    {
-      "key": "OO::5.1-chat",
-      "vendorCode": "OO",
-      "modelName": "5.1-chat",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4-turbo",
-      "vendorCode": "OO",
-      "modelName": "gpt-4-turbo",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4-0613",
-      "vendorCode": "OO",
-      "modelName": "gpt-4-0613",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-4-32k",
-      "vendorCode": "OO",
-      "modelName": "gpt-4-32k",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-3.5-turbo (new)",
-      "vendorCode": "OO",
-      "modelName": "gpt-3.5-turbo (new)",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-3.5-turbo-latest",
-      "vendorCode": "OO",
-      "modelName": "gpt-3.5-turbo-latest",
-      "trinityId": null
-    },
-    {
-      "key": "OO::gpt-3.5-turbo",
-      "vendorCode": "OO",
-      "modelName": "gpt-3.5-turbo",
-      "trinityId": null
-    },
-    {
-      "key": "GG::2.5-flash-lite",
-      "vendorCode": "GG",
-      "modelName": "2.5-flash-lite",
-      "trinityId": "gemini-2.5-flash-lite"
-    },
-    {
-      "key": "GG::2.5-flash-lite-preview",
-      "vendorCode": "GG",
-      "modelName": "2.5-flash-lite-preview",
-      "trinityId": "gemini-2.5-flash-lite-preview"
-    },
-    {
-      "key": "GG::1.5 flash (new)",
-      "vendorCode": "GG",
-      "modelName": "1.5 flash (new)",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.5 pro",
-      "vendorCode": "GG",
-      "modelName": "1.5 pro",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.5 flash-lite (new)",
-      "vendorCode": "GG",
-      "modelName": "1.5 flash-lite (new)",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.5-flash-8b-preview",
-      "vendorCode": "GG",
-      "modelName": "1.5-flash-8b-preview",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.0-flash",
-      "vendorCode": "GG",
-      "modelName": "1.0-flash",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.5-pro",
-      "vendorCode": "GG",
-      "modelName": "1.5-pro",
-      "trinityId": null
-    },
-    {
-      "key": "GG::1.5-flash",
-      "vendorCode": "GG",
-      "modelName": "1.5-flash",
-      "trinityId": null
-    },
-    {
-      "key": "CLM::3.5 (new)",
-      "vendorCode": "CLM",
-      "modelName": "3.5 (new)",
-      "trinityId": null
-    },
-    {
-      "key": "CLM::3-Turbo",
-      "vendorCode": "CLM",
-      "modelName": "3-Turbo",
-      "trinityId": null
-    },
-    {
-      "key": "CLM::3",
-      "vendorCode": "CLM",
-      "modelName": "3",
-      "trinityId": null
-    },
-    {
-      "key": "CLM::3.7",
-      "vendorCode": "CLM",
-      "modelName": "3.7",
-      "trinityId": null
-    },
-    {
-      "key": "Kim::k1.5 (智能搜索)",
-      "vendorCode": "Kim",
-      "modelName": "k1.5 (智能搜索)",
-      "trinityId": null
-    },
-    {
-      "key": "Kim::k1.5 (普通搜索)",
-      "vendorCode": "Kim",
-      "modelName": "k1.5 (普通搜索)",
-      "trinityId": "kimi-k2.5"
-    },
-    {
-      "key": "GK::4.0",
-      "vendorCode": "GK",
-      "modelName": "4.0",
-      "trinityId": null
-    },
-    {
-      "key": "GK::4.0-0309-reasoning",
-      "vendorCode": "GK",
-      "modelName": "4.0-0309-reasoning",
-      "trinityId": null
-    },
-    {
-      "key": "GK::4.0-0309-non-reasoning",
-      "vendorCode": "GK",
-      "modelName": "4.0-0309-non-reasoning",
-      "trinityId": null
-    },
-    {
-      "key": "GK::4-1-fast-reasoning",
-      "vendorCode": "GK",
-      "modelName": "4-1-fast-reasoning",
-      "trinityId": null
-    },
-    {
-      "key": "Deepseek::v3.2",
-      "vendorCode": "Deepseek",
-      "modelName": "v3.2",
-      "trinityId": "deepseek-v3.2"
-    },
-    {
-      "key": "Deepseek::v4-pro (new)",
-      "vendorCode": "Deepseek",
-      "modelName": "v4-pro (new)",
-      "trinityId": "deepseek-v4-pro"
-    },
-    {
-      "key": "Deepseek::v4-flash (new)",
-      "vendorCode": "Deepseek",
-      "modelName": "v4-flash (new)",
-      "trinityId": "deepseek-v4-flash"
-    },
-    {
-      "key": "Minimax::M2.7",
-      "vendorCode": "Minimax",
-      "modelName": "M2.7",
-      "trinityId": "minimax-m2.7"
-    },
-    {
-      "key": "Minimax::M2.5",
-      "vendorCode": "Minimax",
-      "modelName": "M2.5",
-      "trinityId": "minimax-m2.5"
-    },
-    {
-      "key": "CD::Opus 4.0 (new)",
-      "vendorCode": "CD",
-      "modelName": "Opus 4.0 (new)",
-      "trinityId": null
-    },
-    {
-      "key": "CD::Opus 4.7",
-      "vendorCode": "CD",
-      "modelName": "Opus 4.7",
-      "trinityId": "claude-opus-4-7"
-    },
-    {
-      "key": "CD::Opus 4.6",
-      "vendorCode": "CD",
-      "modelName": "Opus 4.6",
-      "trinityId": "claude-opus-4-6"
-    },
-    {
-      "key": "CD::Opus 4.5",
-      "vendorCode": "CD",
-      "modelName": "Opus 4.5",
-      "trinityId": "claude-opus-4-8"
-    },
-    {
-      "key": "CD::Sonnet 4.0",
-      "vendorCode": "CD",
-      "modelName": "Sonnet 4.0",
-      "trinityId": "claude-sonnet-4-6"
-    },
-    {
-      "key": "CD::Haiku 4.0",
-      "vendorCode": "CD",
-      "modelName": "Haiku 4.0",
-      "trinityId": null
+      "modality": "image",
+      "excelModelCount": 17,
+      "sheetModelCount": 17,
+      "missingInSheetCount": 0,
+      "missingInExcelCount": 0,
+      "mismatchCount": 0,
+      "ok": true,
+      "missingInSheet": [],
+      "missingInExcel": [],
+      "mismatches": []
     }
-  ],
-  "mismatches": []
+  ]
 }

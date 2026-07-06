@@ -2,7 +2,7 @@ import { TEXT_CATALOG } from "../data/catalog/text.mjs";
 import { IMAGE_CATALOG } from "../data/catalog/image.mjs";
 import { VIDEO_CATALOG } from "../data/catalog/video.mjs";
 import { TEXT_SEED, TEXT_SEED_VERIFIED_AT } from "../data/seeds/text.mjs";
-import { IMAGE_SEED } from "../data/seeds/image.mjs";
+import { IMAGE_SEED, IMAGE_SEED_VERIFIED_AT } from "../data/seeds/image.mjs";
 import { VIDEO_SEED } from "../data/seeds/video.mjs";
 import { MODALITIES, MODALITY_META } from "./modality.mjs";
 
@@ -48,7 +48,9 @@ export function getSeedMap(modality) {
   return SEEDS[modality];
 }
 
-export function getSeedVerifiedAt() {
+/** @param {import("./modality.mjs").Modality} [modality] */
+export function getSeedVerifiedAt(modality = "text") {
+  if (modality === "image") return IMAGE_SEED_VERIFIED_AT;
   return TEXT_SEED_VERIFIED_AT;
 }
 

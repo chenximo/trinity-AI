@@ -9,6 +9,10 @@ import {
   resolveOfficialModel,
   pickOfficialTierForSupplier,
 } from "./supplier-official-compare.mjs";
+import {
+  isPricingVerifyAnnotated,
+  VERIFY_DEVIATION_PCT,
+} from "./pricing-verify.mjs";
 
 export const SUPPLIER_SUMMARY_SHEET = "汇总-供应商vs官方";
 
@@ -89,7 +93,7 @@ export function collectSupplierOfficialTierStats(sup, models, officialCtx = {}) 
  * @param {object} sup
  * @param {ReturnType<typeof collectSupplierOfficialTierStats>} tierStats
  */
-function aggregateSupplierStats(sup, tierStats) {
+export function aggregateSupplierStats(sup, tierStats) {
   const byModel = new Map();
   for (const t of tierStats) {
     const id = t.trinityId.toLowerCase();
@@ -118,6 +122,7 @@ function aggregateSupplierStats(sup, tierStats) {
     .filter((v) => v != null);
 
   const over10Models = [];
+  const over50VerifyModels = [];
 
   for (const m of models) {
     const statuses = m.tiers.map((t) => t.status);
@@ -130,20 +135,38 @@ function aggregateSupplierStats(sup, tierStats) {
     if (allUncomp) uncomparableModels++;
     else if (hasMismatch) {
       mismatchModels++;
-      const tierMaxUps = m.tiers
-        .filter((t) => t.status === "mismatch")
+      const mismatchTierRows = m.tiers.filter((t) => t.status === "mismatch");
+      const tierMaxUps = mismatchTierRows
         .map((t) => {
           const v = t.maxUpPct ?? t.maxAbsPct;
           return v != null && v > 0 ? v : null;
         })
         .filter((v) => v != null);
       const maxUp = tierMaxUps.length ? Math.max(...tierMaxUps) : 0;
+      const maxAbs = mismatchTierRows
+        .map((t) => t.maxAbsPct)
+        .filter((v) => v != null);
+      const peakAbs = maxAbs.length ? Math.max(...maxAbs) : maxUp;
+
       if (maxUp > HIGH_DEVIATION_PCT) {
         over10Models.push({
           trinityId: m.trinityId,
           displayName: m.displayName,
           maxUpPct: maxUp,
-          tiers: m.tiers.filter((t) => t.status === "mismatch"),
+          tiers: mismatchTierRows,
+        });
+      }
+      if (
+        peakAbs >= VERIFY_DEVIATION_PCT &&
+        !isPricingVerifyAnnotated(m.trinityId)
+      ) {
+        over50VerifyModels.push({
+          trinityId: m.trinityId,
+          displayName: m.displayName,
+          maxAbsPct: peakAbs,
+          tiers: mismatchTierRows.filter(
+            (t) => (t.maxAbsPct ?? 0) >= VERIFY_DEVIATION_PCT,
+          ),
         });
       }
     } else if (allMatch) matchModels++;
@@ -169,6 +192,8 @@ function aggregateSupplierStats(sup, tierStats) {
     upPctMax: allUpPcts.length ? Math.max(...allUpPcts) : null,
     over10Count: over10Models.length,
     over10Models,
+    over50VerifyCount: over50VerifyModels.length,
+    over50VerifyModels,
     mismatchTiers,
   };
 }
@@ -256,9 +281,36 @@ export function buildSupplierOfficialSummaryExcelRows(report) {
   }
 
   rows.push([]);
+  rows.push([`—— 偏差≥${VERIFY_DEVIATION_PCT}% · 待核验（未登记例外）——`]);
+  rows.push([
+    "供应商",
+    "Trinity ID",
+    "显示名",
+    "档位",
+    "偏差%",
+    "供应商vs官方",
+  ]);
+
+  for (const s of report.bySupplier) {
+    for (const m of s.over50VerifyModels ?? []) {
+      for (let i = 0; i < m.tiers.length; i++) {
+        const t = m.tiers[i];
+        rows.push([
+          i === 0 ? s.supplierLabel : "",
+          i === 0 ? m.trinityId : "",
+          i === 0 ? m.displayName : "",
+          t.tierLabel,
+          fmtPct(t.maxAbsPct ?? t.maxUpPct),
+          t.summaryText,
+        ]);
+      }
+    }
+  }
+
+  rows.push([]);
   rows.push([`生成时间：${report.generatedAt.slice(0, 19)}Z`]);
   rows.push([
-    "说明：一致=与厂商官方价偏差<0.5%（含 FX 7.5/7.25/6.5 最佳匹配）；不一致上浮=供应商高于官方的偏差%；模型级不一致=任一档位不一致",
+    "说明：一致=与厂商官方价偏差<0.5%；≥50%且未登记例外标「待核验」须人工复核；模型级不一致=任一档位不一致",
   ]);
 
   return rows;

@@ -289,8 +289,17 @@ function seedPrices(vendorModelId, seedMap, seedVerifiedAt, modality) {
     };
   }
 
-  const s = /** @type {{ tiers: Array<{ tierLabel: string, price: number|string, unit: string, note?: string }>, note?: string }} */ (seed);
+  const s = /** @type {{
+    currency?: string,
+    tiers: Array<{ tierLabel: string, price: number|string, unit: string, note?: string }>,
+    note?: string,
+    locked?: boolean,
+    aigcOnly?: boolean,
+    sourceUrl?: string,
+  }} */ (seed);
+  const note = s.note ?? "";
   return {
+    currency: s.currency ?? "CNY",
     tiers: s.tiers.map((t) => ({
       tierLabel: t.tierLabel,
       price: t.price,
@@ -299,8 +308,12 @@ function seedPrices(vendorModelId, seedMap, seedVerifiedAt, modality) {
       parseSource: "official_price_seed",
     })),
     source: "official_price_seed",
-    seedNote: s.note ?? null,
+    seedNote: note || null,
     seedVerifiedAt,
+    seedLocked: s.locked ?? false,
+    seedAigcOnly:
+      s.aigcOnly ?? /aigc_only|no_public_api/i.test(note),
+    seedSourceUrl: s.sourceUrl ?? null,
   };
 }
 

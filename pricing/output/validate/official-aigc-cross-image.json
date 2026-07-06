@@ -1,0 +1,392 @@
+{
+  "generatedAt": "2026-07-03T09:37:17.595Z",
+  "modality": "image",
+  "aigcMissing": [],
+  "aigcIntlSkipped": [
+    {
+      "trinityId": "OG-image2-low",
+      "aigcKey": "OO::image-2",
+      "reason": "intl_only_skip_domestic",
+      "note": "国际站官方价，跳过 AIGC 国内 vs 官方"
+    },
+    {
+      "trinityId": "OG-image2-medium",
+      "aigcKey": "OO::image-2",
+      "reason": "intl_only_skip_domestic",
+      "note": "国际站官方价，跳过 AIGC 国内 vs 官方"
+    },
+    {
+      "trinityId": "OG-image2-high",
+      "aigcKey": "OO::image-2",
+      "reason": "intl_only_skip_domestic",
+      "note": "国际站官方价，跳过 AIGC 国内 vs 官方"
+    }
+  ],
+  "aigcOnlySkipped": [
+    {
+      "trinityId": "MJ-v7",
+      "vendorModelId": "midjourney-v7",
+      "reason": "aigc_only_seed",
+      "note": "no_public_api — MJ 为订阅制，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
+      "reason": "aigc_only_seed",
+      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
+    }
+  ],
+  "annotatedSkipped": [
+    {
+      "trinityId": "Hunyuan-3.0",
+      "vendorModelId": "hunyuan-image-3",
+      "aigcKey": "Hunyuan::3",
+      "channel": "aigc-domestic",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.2
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "aigcKey": "Qwen::0925",
+      "channel": "aigc-domestic",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.25
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "aigcKey": "Qwen::0925",
+      "channel": "aigc-international",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.0385
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "qwen-0925",
+      "vendorModelId": "qwen-image-0925",
+      "aigcKey": "Qwen::0925",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "输出",
+            "tierKey": "uniform",
+            "price": 0.0385
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "OG-image2-low",
+      "vendorModelId": "openai-image2-low",
+      "aigcKey": "OO::image-2",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.006,
+          "right": 0.04,
+          "pct": -85
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.012,
+          "right": 0.045,
+          "pct": -73.3
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.02,
+          "right": 0.053,
+          "pct": -62.3
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 6
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "OG-image2-medium",
+      "vendorModelId": "openai-image2-medium",
+      "aigcKey": "OO::image-2",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.053,
+          "right": 0.085,
+          "pct": -37.6
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.107,
+          "right": 0.14,
+          "pct": -23.6
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.178,
+          "right": 0.211,
+          "pct": -15.6
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 6
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "OG-image2-high",
+      "vendorModelId": "openai-image2-high",
+      "aigcKey": "OO::image-2",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.211,
+          "right": 0.245,
+          "pct": -13.9
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.428,
+          "right": 0.46,
+          "pct": -7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.712,
+          "right": 0.745,
+          "pct": -4.4
+        },
+        {
+          "kind": "tier_count",
+          "left": 3,
+          "right": 6
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-2.5",
+      "vendorModelId": "gemini-2.5-flash-image",
+      "aigcKey": "GG::2.5（超分暂时按1K收）",
+      "channel": "aigc-international",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "uniform",
+            "price": 0.039
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-2.5",
+      "vendorModelId": "gemini-2.5-flash-image",
+      "aigcKey": "GG::2.5（超分暂时按1K收）",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "missing_tier",
+          "tierKey": "uniform",
+          "left": {
+            "tierLabel": "1K",
+            "tierKey": "uniform",
+            "price": 0.039
+          },
+          "right": null
+        },
+        {
+          "kind": "tier_count",
+          "left": 1,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.0",
+      "vendorModelId": "gemini-3-image",
+      "aigcKey": "GG::3",
+      "channel": "aigc-international",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "GG-3.0",
+      "vendorModelId": "gemini-3-image",
+      "aigcKey": "GG::3",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.134,
+          "right": 0.135,
+          "pct": -0.7
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "aigcKey": "Vidu::q2",
+      "channel": "aigc-international",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.039,
+          "right": 0.038,
+          "pct": 2.6
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Vidu-q2",
+      "vendorModelId": "vidu-q2",
+      "aigcKey": "Vidu::q2",
+      "channel": "aigc-excel",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.039,
+          "right": 0.038,
+          "pct": 2.6
+        }
+      ],
+      "annotated": true
+    }
+  ],
+  "officialVsAigcDomestic": [],
+  "officialVsAigcIntl": [],
+  "officialVsAigcExcel": [],
+  "officialVsTokenhub": [],
+  "tokenhubNoCoverage": [],
+  "ok": true
+}

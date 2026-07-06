@@ -33,7 +33,7 @@ npm run bailian:pricing:sample
 | 项目 | 规则 |
 |------|------|
 | 输入/输出 | 来自官网价目表，单位 **元/百万 tokens** |
-| 隐式缓存命中 | 输入单价 × **20%**（[Context Cache 文档](https://help.aliyun.com/zh/model-studio/context-cache)） |
+| 隐式缓存命中 | 按模型比例（默认 input×**20%**；Kimi/万擎/GLM/MiniMax 等见 `lib/cache-policy.mjs`） |
 | 支持缓存 | 价目表标注「上下文缓存享有折扣」的模型 |
 | Batch 半价 | 仅标记 `supportsBatch`，价目用标准推理价（与缓存互斥） |
 | 多阶梯 | 自动修复 HTML 表格续行错位 |

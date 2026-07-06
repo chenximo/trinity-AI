@@ -11,8 +11,8 @@
   "sourceNote": "复制自 suppliers/official/output/text/vendor-pricing.json",
   "mixedCurrency": true,
   "mapComment": "Trinity modelId → 中转站-cust upstreamModelId（build 时由 official 复制）",
-  "generatedAt": "2026-07-03T07:41:46.908Z",
-  "officialFetchedAt": "2026-07-03T07:39:14.130Z",
+  "generatedAt": "2026-07-03T10:38:39.712Z",
+  "officialFetchedAt": "2026-07-03T09:34:37.930Z",
   "modelCount": 79,
   "trinityMappedCount": 60,
   "models": [

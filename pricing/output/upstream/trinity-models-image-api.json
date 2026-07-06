@@ -1,0 +1,540 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "GG-2.5",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Nano-2.5",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Google Imagen Nano 2.5 image generation model, supporting high-quality text-to-image generation with excellent text rendering, realism, and prompt adherence, suitable for general image creation scenarios.",
+            "description_long": "Google Imagen Nano 2.5 image generation model, supporting high-quality text-to-image generation with excellent text rendering, realism, and prompt adherence, suitable for general image creation scenarios. Developed by Google; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生图"
+            ],
+            "short_summary": "Google Imagen Nano 2.5 图像生成模型，支持高质量文生图，在文字渲染、真实感和指令遵循方面表现出色，适合通用图像创作场景。",
+            "description_long": "Google Imagen Nano 2.5 图像生成模型，支持高质量文生图，在文字渲染、真实感和指令遵循方面表现出色，适合通用图像创作场景。 由Google研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0414,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "GG-3.0",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Nano-3.0",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Google Imagen Nano 3.0 image generation model, upgraded from 2.5 with enhanced image quality and detail, supporting more complex scene composition and more accurate text prompt understanding.",
+            "description_long": "Google Imagen Nano 3.0 image generation model, upgraded from 2.5 with enhanced image quality and detail, supporting more complex scene composition and more accurate text prompt understanding. Developed by Google; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Imagen Nano 3.0 图像生成模型，在 2.5 基础上升级画质与细节表现，支持更复杂场景构图和更精准的文本提示理解。",
+            "description_long": "Google Imagen Nano 3.0 图像生成模型，在 2.5 基础上升级画质与细节表现，支持更复杂场景构图和更精准的文本提示理解。 由Google研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.13793103,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "GG-3.1",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Nano-3.1",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Google Imagen Nano 3.1 next-generation image generation model (Nano Banana 2), featuring Pro-level image quality with Flash-level speed, supporting image generation and editing for efficient creative workflows.",
+            "description_long": "Google Imagen Nano 3.1 next-generation image generation model (Nano Banana 2), featuring Pro-level image quality with Flash-level speed, supporting image generation and editing for efficient creative workflows. Developed by Google; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Imagen Nano 3.1 新一代图像生成模型（Nano Banana 2），具备 Pro 级图像质量与 Flash 级速度，支持图像生成与编辑，适合高效创作工作流。",
+            "description_long": "Google Imagen Nano 3.1 新一代图像生成模型（Nano Banana 2），具备 Pro 级图像质量与 Flash 级速度，支持图像生成与编辑，适合高效创作工作流。 由Google研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0513,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Hunyuan-3.0",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "Hunyuan-3.0",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Chinese"
+            ],
+            "short_summary": "Tencent Hunyuan 3.0 image generation model, built on the Hunyuan large model architecture, supporting high-quality text-to-image generation with excellent Chinese comprehension and multi-style image creation capabilities, suitable for advertising and design.",
+            "description_long": "Tencent Hunyuan 3.0 image generation model, built on the Hunyuan large model architecture, supporting high-quality text-to-image generation with excellent Chinese comprehension and multi-style image creation capabilities, suitable for advertising and design. Developed by Tencent; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生图",
+              "中文理解"
+            ],
+            "short_summary": "腾讯混元 3.0 图像生成模型，基于混元大模型架构，支持高质量文生图，具备出色的中文理解能力和多风格图像创作能力，适合广告创意、设计辅助等场景。",
+            "description_long": "腾讯混元 3.0 图像生成模型，基于混元大模型架构，支持高质量文生图，具备出色的中文理解能力和多风格图像创作能力，适合广告创意、设计辅助等场景。 由腾讯研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0308,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Jimeng-4.0",
+      "object": "model",
+      "created": 1779244254,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Jimeng-4.0",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "ByteDance Jimeng 4.0 AI image generation model, supporting text-to-image and image-to-image generation with excellent composition, color expression, and multi-style capabilities, suitable for creative design and content creation.",
+            "description_long": "ByteDance Jimeng 4.0 AI image generation model, supporting text-to-image and image-to-image generation with excellent composition, color expression, and multi-style capabilities, suitable for creative design and content creation. Developed by ByteDance; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生图"
+            ],
+            "short_summary": "字节跳动即梦 4.0 AI 图像生成模型，支持文生图和图生图，具备优秀的画面构图、色彩表现和多风格生成能力，适合创意设计和内容创作。",
+            "description_long": "字节跳动即梦 4.0 AI 图像生成模型，支持文生图和图生图，具备优秀的画面构图、色彩表现和多风格生成能力，适合创意设计和内容创作。 由字节跳动研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0339,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Kling-2.1",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-2.1",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Kuaishou Kling 2.1 image generation model, supporting high-quality text-to-image and image-to-image generation with excellent visual quality and style diversity, suitable for creative design and visual effects.",
+            "description_long": "Kuaishou Kling 2.1 image generation model, supporting high-quality text-to-image and image-to-image generation with excellent visual quality and style diversity, suitable for creative design and visual effects. Developed by Kuaishou; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生图"
+            ],
+            "short_summary": "快手可灵 Kling 2.1 图像生成模型，支持高质量文生图和图生图，具备出色的画面质感和风格多样性，适合创意设计和视觉效果创作。",
+            "description_long": "快手可灵 Kling 2.1 图像生成模型，支持高质量文生图和图生图，具备出色的画面质感和风格多样性，适合创意设计和视觉效果创作。 由快手研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0137931,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Kling-3.0",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-3.0",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Kuaishou Kling 3.0 image generation model, significantly improved in detail quality, composition, and style performance, supporting more complex creative image generation.",
+            "description_long": "Kuaishou Kling 3.0 image generation model, significantly improved in detail quality, composition, and style performance, supporting more complex creative image generation. Developed by Kuaishou; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "快手可灵 Kling 3.0 图像生成模型，在画质细节、构图能力和风格表现上显著提升，支持更复杂的创意图像生成。",
+            "description_long": "快手可灵 Kling 3.0 图像生成模型，在画质细节、构图能力和风格表现上显著提升，支持更复杂的创意图像生成。 由快手研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0308,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Kling-3.0-omni",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-3.0-Omni",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Multimodal",
+              "Image gen"
+            ],
+            "short_summary": "Kuaishou Kling 3.0 Omni multimodal image generation model, integrating image generation, understanding, and editing capabilities with multimodal I/O support for one-stop image creation.",
+            "description_long": "Kuaishou Kling 3.0 Omni multimodal image generation model, integrating image generation, understanding, and editing capabilities with multimodal I/O support for one-stop image creation. Developed by Kuaishou; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "多模态"
+            ],
+            "short_summary": "快手可灵 Kling 3.0 Omni 全模态图像生成模型，集成图像生成、理解和编辑能力，支持多模态输入输出，实现一站式图像创作。",
+            "description_long": "快手可灵 Kling 3.0 Omni 全模态图像生成模型，集成图像生成、理解和编辑能力，支持多模态输入输出，实现一站式图像创作。 由快手研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0308,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Kling-O1",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-O1",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Reasoning",
+              "Image gen"
+            ],
+            "short_summary": "Kuaishou O1 reasoning-enhanced image generation model, introducing deep reasoning mechanisms for superior complex scene understanding, visual creativity, and detail expression.",
+            "description_long": "Kuaishou O1 reasoning-enhanced image generation model, introducing deep reasoning mechanisms for superior complex scene understanding, visual creativity, and detail expression. Developed by Kuaishou; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "推理"
+            ],
+            "short_summary": "快手可灵 O1 推理增强图像生成模型，引入深度思考机制，在复杂场景理解、视觉创意和细节表达方面表现更优。",
+            "description_long": "快手可灵 O1 推理增强图像生成模型，引入深度思考机制，在复杂场景理解、视觉创意和细节表达方面表现更优。 由快手研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0308,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "MJ-v7",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "midjourney",
+      "metadata": {
+        "display_name": "Midjourney-v7",
+        "origin_vendor_name": "Midjourney",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Flagship"
+            ],
+            "short_summary": "Midjourney v7 flagship image generation model, reaching new heights in artistic style, visual texture, and creative expression, supporting more precise prompt understanding and personalized style customization for professional art and commercial design.",
+            "description_long": "Midjourney v7 flagship image generation model, reaching new heights in artistic style, visual texture, and creative expression, supporting more precise prompt understanding and personalized style customization for professional art and commercial design. Developed by Midjourney; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰"
+            ],
+            "short_summary": "Midjourney v7 旗舰图像生成模型，在艺术风格、画面质感和创意表达方面达到新高度，支持更精准的提示词理解和个性化风格定制，适合专业艺术创作和商业设计。",
+            "description_long": "Midjourney v7 旗舰图像生成模型，在艺术风格、画面质感和创意表达方面达到新高度，支持更精准的提示词理解和个性化风格定制，适合专业艺术创作和商业设计。 由Midjourney研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0462,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "OG-image2-high",
+      "object": "model",
+      "created": 1781074611,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "Image-2.0 High",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Multimodal",
+              "Image gen"
+            ],
+            "short_summary": "OpenAI GPT Image 2 High high-quality image generation model, built on the GPT multimodal architecture, supporting high-quality text-to-image and image editing with fine detail, suitable for professional creation and commercial use.",
+            "description_long": "OpenAI GPT Image 2 High high-quality image generation model, built on the GPT multimodal architecture, supporting high-quality text-to-image and image editing with fine detail, suitable for professional creation and commercial use. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "多模态",
+              "生图"
+            ],
+            "short_summary": "OpenAI GPT Image 2 High 高画质图像生成模型，基于 GPT 多模态架构，支持高质量文生图和图像编辑，画质精细，适合专业创作和商业应用。",
+            "description_long": "OpenAI GPT Image 2 High 高画质图像生成模型，基于 GPT 多模态架构，支持高质量文生图和图像编辑，画质精细，适合专业创作和商业应用。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "OG-image2-low",
+      "object": "model",
+      "created": 1781074611,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "Image-2.0 Low",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "OpenAI GPT Image 2 Low lightweight image generation model, delivering faster generation speed and lower cost while maintaining quality, suitable for high-volume image production.",
+            "description_long": "OpenAI GPT Image 2 Low lightweight image generation model, delivering faster generation speed and lower cost while maintaining quality, suitable for high-volume image production. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "高性价比"
+            ],
+            "short_summary": "OpenAI GPT Image 2 Low 轻量图像生成模型，在保持画质的同时提供更快生成速度和更低成本，适合大批量图像生产。",
+            "description_long": "OpenAI GPT Image 2 Low 轻量图像生成模型，在保持画质的同时提供更快生成速度和更低成本，适合大批量图像生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.045,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "OG-image2-medium",
+      "object": "model",
+      "created": 1781074611,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "Image-2.0 Medium",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "OpenAI GPT Image 2 Medium balanced image generation model, striking a good balance between quality and speed, suitable for general image creation and content production.",
+            "description_long": "OpenAI GPT Image 2 Medium balanced image generation model, striking a good balance between quality and speed, suitable for general image creation and content production. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "OpenAI GPT Image 2 Medium 均衡图像生成模型，在画质和速度之间取得良好平衡，适合通用图像创作和内容生产。",
+            "description_long": "OpenAI GPT Image 2 Medium 均衡图像生成模型，在画质和速度之间取得良好平衡，适合通用图像创作和内容生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "SI-4.0",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedream-4.0",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Reasoning",
+              "Image gen"
+            ],
+            "short_summary": "ByteDance Jimeng Seedream 4.0 image generation model, integrating generation and editing into a unified architecture, supporting knowledge-based generation, complex reasoning, and reference image consistency for professional visual creation.",
+            "description_long": "ByteDance Jimeng Seedream 4.0 image generation model, integrating generation and editing into a unified architecture, supporting knowledge-based generation, complex reasoning, and reference image consistency for professional visual creation. Developed by ByteDance; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "推理",
+              "生图"
+            ],
+            "short_summary": "字节跳动即梦 Seedream 4.0 图像生成模型，将图像生成与编辑能力整合至统一架构，支持知识生图、复杂推理和参考图一致性，适合专业视觉创作。",
+            "description_long": "字节跳动即梦 Seedream 4.0 图像生成模型，将图像生成与编辑能力整合至统一架构，支持知识生图、复杂推理和参考图一致性，适合专业视觉创作。 由字节跳动研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0308,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "SI-4.5",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedream-4.5",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "ByteDance Jimeng Seedream 4.5 image generation model, enhanced from 4.0 with better detail quality and prompt understanding accuracy, supporting more flexible generation and editing workflows.",
+            "description_long": "ByteDance Jimeng Seedream 4.5 image generation model, enhanced from 4.0 with better detail quality and prompt understanding accuracy, supporting more flexible generation and editing workflows. Developed by ByteDance; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "字节跳动即梦 Seedream 4.5 图像生成模型，在 4.0 基础上增强画质细节和提示词理解精度，支持更灵活的生成与编辑工作流。",
+            "description_long": "字节跳动即梦 Seedream 4.5 图像生成模型，在 4.0 基础上增强画质细节和提示词理解精度，支持更灵活的生成与编辑工作流。 由字节跳动研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0385,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "SI-5.0-lite",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedream-5.0-lite",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "ByteDance Jimeng Seedream 5.0 Lite lightweight image generation model, integrating real-time web information with stronger intelligent understanding, precisely responding to complex instructions while balancing quality and speed.",
+            "description_long": "ByteDance Jimeng Seedream 5.0 Lite lightweight image generation model, integrating real-time web information with stronger intelligent understanding, precisely responding to complex instructions while balancing quality and speed. Developed by ByteDance; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "字节跳动即梦 Seedream 5.0 Lite 轻量图像生成模型，融合实时网络信息与更强智能理解能力，精准响应复杂指令，兼顾质量与速度。",
+            "description_long": "字节跳动即梦 Seedream 5.0 Lite 轻量图像生成模型，融合实时网络信息与更强智能理解能力，精准响应复杂指令，兼顾质量与速度。 由字节跳动研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0339,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "Vidu-q2",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q2",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q2 image generation model, part of China's first fully self-developed AI generation model series, supporting text-to-image and high-quality visual content generation with excellent quality and style.",
+            "description_long": "Shengshu Technology Vidu Q2 image generation model, part of China's first fully self-developed AI generation model series, supporting text-to-image and high-quality visual content generation with excellent quality and style. Developed by Shengshu Technology; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生图"
+            ],
+            "short_summary": "生数科技 Vidu Q2 图像生成模型，国内首个纯自研 AI 生成模型系列，支持文生图和高质量视觉内容生成，在画质和风格表现方面表现优秀。",
+            "description_long": "生数科技 Vidu Q2 图像生成模型，国内首个纯自研 AI 生成模型系列，支持文生图和高质量视觉内容生成，在画质和风格表现方面表现优秀。 由生数科技研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.02593103,
+        "metered_charge_unit": "image_count"
+      }
+    },
+    {
+      "id": "qwen-0925",
+      "object": "model",
+      "created": 1779243912,
+      "owned_by": "tongyi",
+      "metadata": {
+        "display_name": "Qwen-0925",
+        "origin_vendor_name": "Tongyi",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Multimodal",
+              "Image gen",
+              "Chinese"
+            ],
+            "short_summary": "Alibaba Tongyi Qianwen Qwen Image generation model, leveraging the multimodal capabilities of the Tongyi large model, supporting high-quality text-to-image with excellent Chinese comprehension and Eastern aesthetic style.",
+            "description_long": "Alibaba Tongyi Qianwen Qwen Image generation model, leveraging the multimodal capabilities of the Tongyi large model, supporting high-quality text-to-image with excellent Chinese comprehension and Eastern aesthetic style. Developed by Alibaba Cloud; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "多模态",
+              "生图",
+              "中文理解"
+            ],
+            "short_summary": "阿里通义千问 Qwen Image 图像生成模型，基于通义大模型的多模态能力，支持高质量文生图，在中文理解和东方美学风格方面表现出色。",
+            "description_long": "阿里通义千问 Qwen Image 图像生成模型，基于通义大模型的多模态能力，支持高质量文生图，在中文理解和东方美学风格方面表现出色。 由阿里云通义研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0462,
+        "metered_charge_unit": "image_count"
+      }
+    }
+  ]
+}

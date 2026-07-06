@@ -1,13 +1,21 @@
 /**
  * 百炼官方价目 → 与 TokenHub 对齐的扁平结构
- * 隐式缓存：命中部分按输入单价 × 20%（见 context-cache 文档）
+ * Context Cache：按模型 resolved ratio（见 cache-policy.mjs）
  */
+
+import {
+  BAILIAN_DEFAULT_CACHE_RATIO,
+  BAILIAN_CACHE_DOC_URL,
+  bailianCachePolicySummary,
+  calcBailianCachePrice,
+  resolveBailianCachePolicy,
+} from "./cache-policy.mjs";
 
 export const PRICING_API_OUT = "pricing-api.json";
 export const PRICING_RAW_OUT = "bailian-pricing.json";
 
-/** 隐式缓存命中：输入 Token 单价的 20% */
-export const IMPLICIT_CACHE_HIT_RATIO = 0.2;
+/** @deprecated 使用 BAILIAN_DEFAULT_CACHE_RATIO */
+export const IMPLICIT_CACHE_HIT_RATIO = BAILIAN_DEFAULT_CACHE_RATIO;
 
 const MODEL_ID_RE = /^([a-zA-Z][a-zA-Z0-9._-]*)/;
 const TIER_RE = /Token\s*[≤<≥>]|[≤<≥>]\s*\d|[\d.]+[KkMm]?\s*<\s*Token/i;
@@ -28,10 +36,24 @@ export function parseYuanAmount(text) {
 }
 
 export function extractModelId(cell) {
-  if (!cell || isTierLabel(cell)) return null;
-  const first = String(cell).trim().split(/\s+/)[0];
+  return parseBailianModelRef(cell).modelId;
+}
+
+/** @param {string|null|undefined} cell */
+export function parseBailianModelRef(cell) {
+  if (!cell || isTierLabel(cell)) return { modelId: null, vendorPrefix: null };
+  let first = String(cell).trim().split(/\s+/)[0];
+  let vendorPrefix = null;
+  if (first.includes("/")) {
+    const parts = first.split("/");
+    vendorPrefix = parts[0]?.toLowerCase() ?? null;
+    first = parts.pop() ?? first;
+  }
   const m = first.match(MODEL_ID_RE);
-  return m?.[1] ?? null;
+  return {
+    modelId: m?.[1]?.toLowerCase() ?? null,
+    vendorPrefix,
+  };
 }
 
 export function extractModelNotes(cell) {
@@ -70,12 +92,8 @@ export function inferSectionMeta(section) {
   return { family: s.split("-")[0] || "其他", modelType: "Text" };
 }
 
-export function calcImplicitCachePrice(inputPrice) {
-  if (inputPrice == null || inputPrice === "") return null;
-  const n = Number(inputPrice);
-  if (!Number.isFinite(n)) return null;
-  const v = n * IMPLICIT_CACHE_HIT_RATIO;
-  return String(v.toFixed(6)).replace(/\.?0+$/, "") || "0";
+export function calcImplicitCachePrice(inputPrice, ratio = BAILIAN_DEFAULT_CACHE_RATIO) {
+  return calcBailianCachePrice(inputPrice, ratio);
 }
 
 export function buildTierItems({ input, output, cache, inputUnit, outputUnit, cacheUnit }) {
@@ -120,6 +138,7 @@ function parsePricingRow(row, ctx) {
   let outputParsed = parseYuanAmount(outputCell);
   let tierName = tierCell || "统一价";
   let modelId = extractModelId(modelCell);
+  let vendorPrefix = parseBailianModelRef(modelCell).vendorPrefix;
   let region = regionCell;
   let mode = modeCell;
   let notes = extractModelNotes(modelCell);
@@ -141,6 +160,7 @@ function parsePricingRow(row, ctx) {
     ctx.supportsCache = notes.supportsCache || ctx.supportsCache;
     ctx.supportsBatch = notes.supportsBatch || ctx.supportsBatch;
     ctx.equivalenceNote = notes.equivalenceNote || ctx.equivalenceNote;
+    ctx.vendorPrefix = vendorPrefix || ctx.vendorPrefix;
     ctx.modelCell = modelCell;
   }
 
@@ -162,8 +182,18 @@ function parsePricingRow(row, ctx) {
     ? (outputCell.match(/元\/\S+/)?.[0] ?? "元/张")
     : "元/百万tokens";
 
-  const supportsCache = ctx.supportsCache && !isPerImage;
-  const cache = supportsCache && input != null ? calcImplicitCachePrice(input) : null;
+  const supportsCacheFromDoc = ctx.supportsCache && !isPerImage;
+  const cachePolicy = resolveBailianCachePolicy(ctx.modelId, {
+    supportsCacheFromDoc,
+    section: ctx.section,
+    vendorPrefix: ctx.vendorPrefix,
+  });
+  const supportsCache =
+    cachePolicy.mode === "implicit" || cachePolicy.mode === "console";
+  const cache =
+    cachePolicy.mode === "implicit" && input != null
+      ? calcBailianCachePrice(input, cachePolicy.ratio)
+      : null;
 
   return {
     modelId: ctx.modelId,
@@ -179,6 +209,9 @@ function parsePricingRow(row, ctx) {
     supportsCache,
     supportsBatch: ctx.supportsBatch,
     equivalenceNote: ctx.equivalenceNote,
+    cachePolicyMode: cachePolicy.mode,
+    cacheRatio: cachePolicy.ratio,
+    cacheRatioLabel: cachePolicy.ratioLabel,
     chargeUnit: isPerImage ? "IMAGE" : "TOKEN",
     unit: isPerImage ? outputUnit : tokenUnit,
     items: buildTierItems({
@@ -209,9 +242,11 @@ export function parsePricingTables(tables) {
       modelId: null,
       region: null,
       mode: null,
+      section,
       supportsCache: false,
       supportsBatch: false,
       equivalenceNote: null,
+      vendorPrefix: null,
       modelCell: null,
     };
 
@@ -250,7 +285,9 @@ export function groupTierRows(tierRows) {
         section: row.section,
         supportsCache: row.supportsCache,
         supportsBatch: row.supportsBatch,
-        cachePolicy: row.supportsCache ? "implicit" : null,
+        cachePolicy: row.cachePolicyMode === "implicit" ? "implicit" : row.cachePolicyMode === "console" ? "console" : null,
+        cacheRatio: row.cacheRatio ?? null,
+        cacheRatioLabel: row.cacheRatioLabel ?? null,
         equivalenceNote: row.equivalenceNote ?? null,
         freeQuota: row.freeQuota ?? null,
         tags: [],
@@ -264,7 +301,13 @@ export function groupTierRows(tierRows) {
     const m = models.get(key);
     m.supportsCache = m.supportsCache || row.supportsCache;
     m.supportsBatch = m.supportsBatch || row.supportsBatch;
-    if (row.supportsCache) m.cachePolicy = "implicit";
+    if (row.cachePolicyMode === "implicit") {
+      m.cachePolicy = "implicit";
+      m.cacheRatio = row.cacheRatio ?? m.cacheRatio;
+      m.cacheRatioLabel = row.cacheRatioLabel ?? m.cacheRatioLabel;
+    } else if (row.cachePolicyMode === "console" && !m.cachePolicy) {
+      m.cachePolicy = "console";
+    }
     if (row.freeQuota) m.freeQuota = row.freeQuota;
     if (row.equivalenceNote) m.equivalenceNote = row.equivalenceNote;
 
@@ -278,7 +321,12 @@ export function groupTierRows(tierRows) {
       chargeUnit: row.chargeUnit,
       inputRaw: row.inputRaw,
       outputRaw: row.outputRaw,
-      cacheSource: row.supportsCache ? "implicit_20pct" : null,
+      cacheSource:
+        row.cachePolicyMode === "implicit" && row.cacheRatioLabel
+          ? `implicit_${row.cacheRatioLabel}`
+          : row.cachePolicyMode === "console"
+            ? "console"
+            : null,
       items: row.items,
     });
   }
@@ -295,10 +343,8 @@ export function buildPricingApiResult(raw) {
     source: "alibaba_bailian_doc",
     docUrl: raw.docUrl ?? "https://help.aliyun.com/zh/model-studio/model-pricing",
     cachePolicy: {
-      mode: "implicit",
-      hitRatio: IMPLICIT_CACHE_HIT_RATIO,
-      docUrl: "https://help.aliyun.com/zh/model-studio/context-cache",
-      note: "命中缓存的输入 Token 按输入单价×20% 计费；与 Batch 半价互斥，本汇总使用标准推理价。",
+      mode: "per_model",
+      ...bailianCachePolicySummary(),
     },
     scrapedAt: raw.scrapedAt ?? new Date().toISOString(),
     modelCount: models.length,

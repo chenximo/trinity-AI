@@ -105,21 +105,19 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
 
 ## Step 7 — 刷新产出（必跑）
 
-执行 **`pricing.refresh`**，顺序：
+按模态：
 
-1. 重拉 official 生文价目  
-2. 重建 AIGC / 火山方舟 / 网聚云联·云门户 等衍生 JSON  
-3. 跑 `pricing:upstream` → 写入 **`output/trinity-pricing-text.xlsx`**
+| 模态 | 命令 | Excel |
+|------|------|-------|
+| 生文 | `pricing.refresh`（或 `--skip-official-fetch`） | `trinity-pricing-text.xlsx` |
+| 生图 | `pricing.supplier.official.image` → `pricing.upstream.image` | `trinity-pricing-image.xlsx` |
+| 生视频 | `pricing.supplier.official.video` | （video upstream 待补） |
 
-仅 official 已是最新、只想重算 Excel 时：
+`pricing.refresh` 会拉 official 三模态 + 生文 upstream，**不含**生图 Excel。
 
-```bash
-npm run pricing:refresh -- --skip-official-fetch
-```
-
-**规则**：凡说「新增 xxx / 改价 / 改映射」，交付前必须跑过本步，Excel 才算最新。
+**规则**：凡说「新增 / 改价 / 改映射」，交付前须跑对应 upstream，Excel 才算最新。
 
 ## Step 8 — 可选
 
 - 门禁：[`pricing-gate.md`](./pricing-gate.md) → `pricing.gate`
-- 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.compare.official`
+- 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.upstream` / `pricing.upstream.image`

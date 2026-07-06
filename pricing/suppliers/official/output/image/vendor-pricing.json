@@ -6,14 +6,14 @@
   "currency": "CNY",
   "unit": "CNY per image (or per request)",
   "chargeUnit": "image",
-  "fetchedAt": "2026-07-03T03:32:28.236Z",
-  "seedVerifiedAt": "2026-06-28",
-  "catalogCount": 5,
-  "modelCount": 5,
-  "pricingTierCount": 5,
-  "pricedCount": 5,
+  "fetchedAt": "2026-07-03T09:37:10.594Z",
+  "seedVerifiedAt": "2026-07-03",
+  "catalogCount": 20,
+  "modelCount": 20,
+  "pricingTierCount": 49,
+  "pricedCount": 20,
   "liveCount": 0,
-  "seedCount": 5,
+  "seedCount": 20,
   "models": [
     {
       "modality": "image",
@@ -21,10 +21,10 @@
       "vendorLabel": "混元",
       "vendorModelId": "hy-image-v3.0",
       "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
-      "pricingUrl": "https://cloud.tencent.com/document/product/1729/97732",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1668/90896",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub hy-image-v3.0",
+      "trinityNote": "TokenHub hy-image-v3.0 · API 混元生图 3.0",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -33,8 +33,9 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
       "prices": {
+        "currency": "CNY",
         "tiers": [
           {
             "tierLabel": "输出",
@@ -46,7 +47,10 @@
         ],
         "source": "official_price_seed",
         "seedNote": "腾讯云混元生图 3.0 统一价",
-        "seedVerifiedAt": "2026-06-28"
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
       },
       "tiers": [
         {
@@ -64,10 +68,10 @@
       "vendorLabel": "混元",
       "vendorModelId": "hy-image-lite",
       "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
-      "pricingUrl": "https://cloud.tencent.com/document/product/1729/97732",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1668/90896",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub hy-image-lite",
+      "trinityNote": "TokenHub hy-image-lite · 混元生图极速版",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -76,8 +80,9 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97732 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
       "prices": {
+        "currency": "CNY",
         "tiers": [
           {
             "tierLabel": "输出",
@@ -88,13 +93,63 @@
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "腾讯云混元生图 Lite 统一价",
-        "seedVerifiedAt": "2026-06-28"
+        "seedNote": "腾讯云混元生图极速版统一价",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
       },
       "tiers": [
         {
           "tierLabel": "输出",
           "price": 0.099,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "vendorModelId": "hunyuan-image-3",
+      "docUrl": "https://cloud.tencent.com/document/product/1729/105545",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1668/90896",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "Trinity Hunyuan-3.0 · 官方与 hy-image-v3.0 同价 0.2元/张",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "混元生图 3.0 统一价（与 hy-image-v3.0 同档，无分辨率分档）",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输出",
+          "price": 0.2,
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"
@@ -116,14 +171,29 @@
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 1,
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
       "prices": {
+        "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "输出",
+            "tierLabel": "1K",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
             "price": 0.22,
             "unit": "元/张",
             "note": null,
@@ -132,11 +202,28 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 5.0 Lite",
-        "seedVerifiedAt": "2026-06-28"
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
       },
       "tiers": [
         {
-          "tierLabel": "输出",
+          "tierLabel": "1K",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
           "price": 0.22,
           "unit": "元/张",
           "note": null,
@@ -159,14 +246,29 @@
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 1,
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
       "prices": {
+        "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "输出",
+            "tierLabel": "1K",
+            "price": 0.25,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.25,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
             "price": 0.25,
             "unit": "元/张",
             "note": null,
@@ -175,11 +277,28 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 4.5",
-        "seedVerifiedAt": "2026-06-28"
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
       },
       "tiers": [
         {
-          "tierLabel": "输出",
+          "tierLabel": "1K",
+          "price": 0.25,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.25,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
           "price": 0.25,
           "unit": "元/张",
           "note": null,
@@ -202,14 +321,29 @@
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 1,
+      "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
       "prices": {
+        "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "输出",
+            "tierLabel": "1K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
             "price": 0.2,
             "unit": "元/张",
             "note": null,
@@ -218,12 +352,1009 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 4.0",
-        "seedVerifiedAt": "2026-06-28"
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "volcengine",
+      "vendorLabel": "即梦",
+      "vendorModelId": "jimeng-4.0",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.22,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "即梦 4.0",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.22,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "bailian",
+      "vendorLabel": "通义",
+      "vendorModelId": "qwen-image-0925",
+      "docUrl": "https://help.aliyun.com/zh/model-studio/text-to-image",
+      "pricingUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "Trinity qwen-0925 · 百炼 API qwen-image（统一 ¥0.25/张）",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "输出",
+            "price": 0.25,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "百炼 Model ID qwen-image · 官方统一价；Trinity qwen-0925 · AIGC 分档为转售口径",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing"
       },
       "tiers": [
         {
           "tierLabel": "输出",
+          "price": 0.25,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "midjourney",
+      "vendorLabel": "Midjourney",
+      "vendorModelId": "midjourney-v7",
+      "docUrl": "https://docs.midjourney.com/",
+      "pricingUrl": "https://docs.midjourney.com/docs/plans",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "订阅制，无公开 API 按张价目",
+      "region": "international_only",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://docs.midjourney.com/docs/plans (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.039,
+            "unit": "美元/张",
+            "note": "AIGC 商务价，非 MJ 订阅/API 官方价",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "no_public_api — MJ 为订阅制，无公开按张 API 价目",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://docs.midjourney.com/docs/plans"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.039,
+          "unit": "美元/张",
+          "note": "AIGC 商务价，非 MJ 订阅/API 官方价",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "openai",
+      "vendorLabel": "OpenAI",
+      "vendorModelId": "openai-image2-low",
+      "docUrl": "https://developers.openai.com/api/docs/pricing",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "international_only",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.006,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.012,
+            "unit": "美元/张",
+            "note": "AIGC 映射档，OpenAI 官方为 1024×1536 等尺寸",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.02,
+            "unit": "美元/张",
+            "note": "AIGC 映射档，非 OpenAI 官方尺寸命名",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gpt-image-2 low · 1K=1024² 官方计算器",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.006,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.012,
+          "unit": "美元/张",
+          "note": "AIGC 映射档，OpenAI 官方为 1024×1536 等尺寸",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.02,
+          "unit": "美元/张",
+          "note": "AIGC 映射档，非 OpenAI 官方尺寸命名",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "openai",
+      "vendorLabel": "OpenAI",
+      "vendorModelId": "openai-image2-medium",
+      "docUrl": "https://developers.openai.com/api/docs/pricing",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "international_only",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.053,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.107,
+            "unit": "美元/张",
+            "note": "AIGC 映射档",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.178,
+            "unit": "美元/张",
+            "note": "AIGC 映射档",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gpt-image-2 medium · 1K=1024² 官方计算器",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.053,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.107,
+          "unit": "美元/张",
+          "note": "AIGC 映射档",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.178,
+          "unit": "美元/张",
+          "note": "AIGC 映射档",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "openai",
+      "vendorLabel": "OpenAI",
+      "vendorModelId": "openai-image2-high",
+      "docUrl": "https://developers.openai.com/api/docs/pricing",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "international_only",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.211,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.428,
+            "unit": "美元/张",
+            "note": "AIGC 映射档",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.712,
+            "unit": "美元/张",
+            "note": "AIGC 映射档",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gpt-image-2 high · 1K=1024² 官方计算器",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.211,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.428,
+          "unit": "美元/张",
+          "note": "AIGC 映射档",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.712,
+          "unit": "美元/张",
+          "note": "AIGC 映射档",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "gemini-2.5-flash-image",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image?hl=zh-cn",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "API ID gemini-2.5-flash-image · Nano Banana",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.039,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gemini-2.5-flash-image Standard · ≤1024²",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.039,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "gemini-3-image",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image?hl=zh-cn",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "API ID gemini-3-pro-image · Nano Banana Pro",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.134,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.134,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.24,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gemini-3-pro-image Standard",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.134,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.134,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.24,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "gemini-3.1-image",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image?hl=zh-cn",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "API ID gemini-3.1-flash-image · Nano Banana 2",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 4,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "1K以下",
+            "price": 0.045,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1K",
+            "price": 0.067,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.101,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.151,
+            "unit": "美元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "gemini-3.1-flash-image Standard",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K以下",
+          "price": 0.045,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1K",
+          "price": 0.067,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.101,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.151,
+          "unit": "美元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "vidu",
+      "vendorLabel": "Vidu",
+      "vendorModelId": "vidu-q2",
+      "docUrl": "https://platform.vidu.cn/docs/pricing",
+      "pricingUrl": "https://platform.vidu.cn/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "viduq2 文生图 · 积分计价",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.1875,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.25,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.3125,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "viduq2 文生图 · 6/8/10 积分 × ¥0.03125",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://platform.vidu.cn/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.1875,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.25,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.3125,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kling-2.1",
+      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.1,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.1,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.26,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.1,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.1,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.26,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kling-3",
+      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.4,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
           "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.4,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kling-3.0-omni",
+      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.4,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.4,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "image",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kling-o1",
+      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per image (or per request)",
+      "chargeUnit": "image",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 0.2,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.4,
+            "unit": "元/张",
+            "note": null,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+        "seedVerifiedAt": "2026-07-03",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 0.2,
+          "unit": "元/张",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.4,
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"

@@ -3,15 +3,15 @@
   "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
   "modality": "image",
   "dataDate": "2026-07",
-  "generatedAt": "2026-07-03T06:42:39.999Z",
+  "generatedAt": "2026-07-03T08:17:56.489Z",
   "scrapedAt": "2026-07-03T03:32:16.967Z",
   "modelCount": 3,
-  "trinityMappedCount": 0,
+  "trinityMappedCount": 3,
   "models": [
     {
       "modality": "image",
       "modelId": "doubao-seedream-5.0-lite",
-      "trinityId": null,
+      "trinityId": "SI-5.0-lite",
       "upstreamModelId": "doubao-seedream-5.0-lite",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -36,7 +36,7 @@
     {
       "modality": "image",
       "modelId": "doubao-seedream-4.5",
-      "trinityId": null,
+      "trinityId": "SI-4.5",
       "upstreamModelId": "doubao-seedream-4.5",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -61,7 +61,7 @@
     {
       "modality": "image",
       "modelId": "doubao-seedream-4.0",
-      "trinityId": null,
+      "trinityId": "SI-4.0",
       "upstreamModelId": "doubao-seedream-4.0",
       "vendorCode": "Doubao",
       "vendorName": "豆包",

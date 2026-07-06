@@ -21,6 +21,13 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
     return "mod:text";
   }
 
+  // 生图分辨率档
+  if (/1k以下|512|sub.?1k|1k以下/i.test(n)) return "res:sub-1k";
+  if (/^4k$/i.test(n) || /4k分辨率/.test(n)) return "res:4k";
+  if (/^2k$/i.test(n) || /2k分辨率/.test(n)) return "res:2k";
+  if (/^1k$/i.test(n) || /1k分辨率/.test(n)) return "res:1k";
+  if (/^输出$|per.?image|元\/张|美元\/张/i.test(n) && totalTiers === 1) return "uniform";
+
   // GLM-4.7：≤32k 内按输出 token 分档（须先于通用 ≤32k）
   if (/≤32k|<=32k|<32k/i.test(n) && /输出/.test(n)) {
     if (/输出.*[≤<]=?0\.2k/i.test(n)) return "t:in32k-out-le0.2k";
@@ -87,6 +94,10 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
 
 export const TIER_KEY_ORDER = [
   "uniform",
+  "res:sub-1k",
+  "res:1k",
+  "res:2k",
+  "res:4k",
   "mod:text",
   "mod:audio",
   "t:0-16k",

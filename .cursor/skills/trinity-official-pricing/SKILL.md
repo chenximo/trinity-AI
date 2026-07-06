@@ -64,8 +64,8 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 2. **按模态分文件**：`text` / `image` / `video` 各自 catalog、seed、output；禁止把生视频价写入生文 seed。
 3. **官网链接必填**：每条 catalog 须有可公开引用的 `docUrl`；Gemini 等补 `pricingUrl`（见 `data/pricing-urls.mjs`）。
 4. **Trinity 已上架必写 map**：`trinity-map.json` 含 `modality` + `vendor` + `vendorModelId`。
-5. **改完必验证**：`pricing.supplier.official.{modality}` + 生文改种子后 `pricing.gate`。
-6. **对比自动拉线上价**：`pricing.compare.official` / `pricing.upstream`；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
+5. **改完必验证**：`pricing.supplier.official.{modality}`；全模态门禁 `pricing.gate`（含 text + image L1/L3）。
+6. **对比自动拉线上价**：`pricing.upstream` / `pricing.upstream.image`；`pricing:refresh` 含二者；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
 7. **编辑真源须确认**：`pricing.seed.edit` 等见 `confirmation.md`。
 
 ---
@@ -74,12 +74,29 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 
 | tool id | 用途 |
 |---------|------|
-| `pricing.gate` | L1→L3 门禁 |
-| `pricing.compare.official` | 三方对比表 |
-| `pricing.supplier.official.text` | 拉取/验证生文官方价 |
+| `pricing.gate` | L1→L3 门禁（text + image） |
+| `pricing.upstream` | 生文刊例对比 + Excel |
+| `pricing.upstream.image` | 生图刊例对比 + Excel |
+| `pricing.validate.official-aigc.image` | 生图 L1↔L2 交叉 |
+| `pricing.supplier.official.text` / `.image` | 拉取官方价 |
 | `pricing.scaffold.model` | 新增模型脚手架 |
 
 完整列表：[`./tools.yaml`](./tools.yaml)
+
+---
+
+## 模态流程（同一拓扑）
+
+```text
+L1 seeds → L2 validate-official-aigc[*] → gate → L3 validate-official-suppliers[*] → L4 upstream[*] → Excel
+```
+
+| 模态 | L2 | L3 | L4 + Excel |
+|------|----|----|------------|
+| 生文 | `validate.official-aigc` | `validate.official-suppliers` | `pricing.upstream` / `refresh` |
+| 生图 | `validate.official-aigc.image` | `validate.official-suppliers.image` | **`pricing.upstream.image`** |
+
+生图 **当前接入渠道仅 AIGC 国内/国际**（Excel 汇总+分表）；TokenHub/火山等作价目参照或 gate 校验，接入后在 `channels-image.mjs` 开启 `connected`。
 
 ---
 
@@ -88,6 +105,8 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 - [ ] 模态判定正确（text / image / video）
 - [ ] `catalog` + `seeds` + `trinity-map` 三处一致
 - [ ] `output/{modality}/vendor-pricing.json` 已更新
-- [ ] 生文：`pricing.gate` 或 `pricing.validate.official-aigc` 已跑
+- [ ] L2：`pricing.validate.official-aigc`（生文）或 `.image`（生图）已跑
+- [ ] 生图 Excel：`pricing.upstream.image` 或全量 `pricing.refresh`
+- [ ] 全模态：`pricing.gate` 或分项 validate 已跑
 - [ ] 已向用户展示 `vendor-pricing-table.md` 或对比表摘要
 - [ ] 未误改 TokenHub/百炼/AIGC 真源（除非用户明确要求刷新上游）

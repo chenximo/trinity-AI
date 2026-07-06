@@ -5,6 +5,7 @@ import {
   pricingXlsxForModality,
   sheetOrderForModality,
 } from "./paths.mjs";
+import { IMAGE_PENDING_SUPPLIERS } from "../../config/channels-image.mjs";
 
 function cellKey(v) {
   return v == null ? "" : String(v).trim();
@@ -147,8 +148,17 @@ export function writeExcelWorkbook(filePath, sheets) {
   XLSX.writeFile(wb, filePath);
 }
 
+function removeSheetsByName(wb, names) {
+  for (const name of names) {
+    const idx = wb.SheetNames.indexOf(name);
+    if (idx >= 0) {
+      wb.SheetNames.splice(idx, 1);
+      delete wb.Sheets[name];
+    }
+  }
+}
+
 /**
- * 增量更新工作簿：按 Sheet 名替换或追加，保留同册其他 Sheet
  * @param {string} filePath
  * @param {{ name: string, rows: unknown[][], merge?: { groupCol?: number, columns: number[] } }[]} sheets
  * @param {{ sheetOrder?: string[] }} [opts]
@@ -170,6 +180,7 @@ export function mergeSheetsIntoWorkbook(filePath, sheets, opts = {}) {
   }
 
   const sheetOrder = opts.sheetOrder ?? TEXT_SHEET_ORDER;
+  removeSheetsByName(wb, opts.removeSheets ?? []);
   reorderWorkbookSheets(wb, sheetOrder);
   removeDeprecatedSheets(wb);
   XLSX.writeFile(wb, filePath);
@@ -182,8 +193,13 @@ export function mergeSheetsIntoWorkbook(filePath, sheets, opts = {}) {
  */
 export function mergeModalityWorkbook(modality, sheets) {
   const filePath = pricingXlsxForModality(modality);
+  const removeSheets =
+    modality === "image"
+      ? IMAGE_PENDING_SUPPLIERS.map((s) => s.excelSheet)
+      : [];
   mergeSheetsIntoWorkbook(filePath, sheets, {
     sheetOrder: sheetOrderForModality(modality),
+    removeSheets,
   });
   return filePath;
 }

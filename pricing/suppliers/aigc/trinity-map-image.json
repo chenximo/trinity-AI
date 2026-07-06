@@ -1,0 +1,21 @@
+{
+  "_comment": "Trinity 生图模型 ID → AIGC 价目表 vendorCode + modelName + attribute",
+  "Hunyuan-3.0": { "vendorCode": "Hunyuan", "modelName": "3", "attribute": "标准价" },
+  "SI-5.0-lite": { "vendorCode": "SI", "modelName": "5.0-lite", "attribute": "标准价" },
+  "SI-4.5": { "vendorCode": "SI", "modelName": "4.5", "attribute": "标准价" },
+  "SI-4.0": { "vendorCode": "SI", "modelName": "4.0", "attribute": "标准价" },
+  "Jimeng-4.0": { "vendorCode": "JI", "modelName": "4.0", "attribute": "标准价" },
+  "qwen-0925": { "vendorCode": "Qwen", "modelName": "0925", "attribute": "标准价" },
+  "MJ-v7": { "vendorCode": "MJ", "modelName": "v7", "attribute": "标准价" },
+  "OG-image2-low": { "vendorCode": "OO", "modelName": "image-2", "attribute": "low" },
+  "OG-image2-medium": { "vendorCode": "OO", "modelName": "image-2", "attribute": "medium" },
+  "OG-image2-high": { "vendorCode": "OO", "modelName": "image-2", "attribute": "high" },
+  "GG-2.5": { "vendorCode": "GG", "modelName": "2.5（超分暂时按1K收）", "attribute": "是" },
+  "GG-3.0": { "vendorCode": "GG", "modelName": "3", "attribute": "标准价" },
+  "GG-3.1": { "vendorCode": "GG", "modelName": "3.1", "attribute": "标准价" },
+  "Vidu-q2": { "vendorCode": "Vidu", "modelName": "q2", "attribute": "文生图" },
+  "Kling-3.0": { "vendorCode": "Kling", "modelName": "3", "attribute": "标准价" },
+  "Kling-3.0-omni": { "vendorCode": "Kling", "modelName": "3.0-omni", "attribute": "标准价" },
+  "Kling-O1": { "vendorCode": "Kling", "modelName": "O1", "attribute": "标准价" },
+  "Kling-2.1": { "vendorCode": "Kling", "modelName": "2.1", "attribute": "文生图" }
+}

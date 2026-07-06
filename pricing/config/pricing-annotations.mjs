@@ -22,7 +22,7 @@ export const PRICING_ANNOTATIONS = [
     scopes: ["compare-hub", "supplier-compare", "official-suppliers"],
     title: "DeepSeek V4：百炼/TokenHub 转售或隐式缓存口径",
     detail:
-      "厂商官方 ¥3/¥6（Pro）、¥1/¥2（Flash）；百炼第三方区挂牌可高于官方。Flash 缓存百炼按 input×20% 隐式计价（0.2），官方 cache hit 0.02。",
+      "厂商官方 ¥3/¥6（Pro）、¥1/¥2（Flash）。百炼 deepseek-v4-pro 缓存价非 input×20%，须查控制台；Flash 等百炼自部署按各模型 cache 比例（见 bailian/lib/cache-policy.mjs）。",
   },
   {
     id: "glm-5-tier-axis",
@@ -61,7 +61,7 @@ export const PRICING_ANNOTATIONS = [
     scopes: ["compare-hub", "supplier-compare", "official-suppliers"],
     title: "千问：百炼缓存读取高于官方",
     detail:
-      "百炼挂牌 cache 多为 input×20% 隐式价；官方种子为厂商文档 explicit cache hit。入/出一致时不视为渠道错误。",
+      "百炼 cache 按 Context Cache 文档分模型比例（默认 input×20%；Kimi/万擎 DeepSeek/GLM/MiniMax 等见 cache-policy.mjs）。官方种子为厂商 explicit cache hit，口径不同。",
   },
   {
     id: "glm-4-7-bailian-tier-axis",
@@ -83,6 +83,92 @@ export const PRICING_ANNOTATIONS = [
     detail:
       "官方 cache 字段对应 AIGC「5m缓存写入」价（非 cache hit）。百炼未单独列出 cache 字段时不 fail。",
   },
+  {
+    id: "image-hunyuan-3-flat-official",
+    trinityIds: ["Hunyuan-3.0", "hy-image-v3.0"],
+    severity: "info",
+    flag: "官方统一价",
+    scopes: ["compare-hub", "supplier-compare", "official-aigc-image"],
+    title: "混元生图 3.0：官网无分辨率分档",
+    detail:
+      "腾讯云混元生图 3.0 后付费统一 ¥0.2/张（90896）。AIGC 商务表按 1K/2K/4K 分档为转售口径，勿反向改官方种子。",
+  },
+  {
+    id: "image-openai-gpt-image2-resale",
+    trinityIds: ["OG-image2-low", "OG-image2-medium", "OG-image2-high"],
+    severity: "info",
+    flag: "转售口径",
+    scopes: ["compare-hub", "supplier-compare", "official-aigc-image"],
+    title: "GPT Image 2：官方计算器价 vs AIGC 国际转售价",
+    detail:
+      "OpenAI 按 token 计费，1024² 估算 low $0.006 / medium $0.053 / high $0.211。AIGC 国际列为 Trinity 转售价，与原厂不等价属预期。",
+  },
+  {
+    id: "image-qwen-flat-official",
+    trinityIds: ["qwen-0925"],
+    severity: "info",
+    flag: "官方统一价",
+    scopes: ["compare-hub", "supplier-compare", "official-aigc-image"],
+    title: "通义 qwen-image：百炼无分辨率分档",
+    detail:
+      "百炼 qwen-image 官方 ¥0.25/张（与分辨率无关）。AIGC「0925」按 1K/2K/4K 分档为 Trinity 转售价，勿反向改官方种子。",
+  },
+  {
+    id: "image-vidu-fx-rounding",
+    trinityIds: ["Vidu-q2"],
+    severity: "info",
+    flag: "汇率取整",
+    scopes: ["official-aigc-image", "official-suppliers"],
+    title: "Vidu q2：国际对比 CNY÷6.5 取整",
+    detail:
+      "官方 CNY 价 ÷6.5 与 AIGC 国际列可能有 ~2% 取整差（如 2K ¥0.25→$0.0385 vs $0.038），国内 CNY 档应对齐。",
+  },
+  {
+    id: "image-gemini-usd-official",
+    trinityIds: ["GG-2.5", "GG-3.0", "GG-3.1"],
+    severity: "info",
+    flag: "USD官方",
+    scopes: ["compare-hub", "official-aigc-image", "official-suppliers"],
+    title: "Gemini 生图：官方 USD vs AIGC 国内 CNY",
+    detail:
+      "Gemini 生图价来自 ai.google.dev 定价页（USD/张）。AIGC 国内列为人民币转售价；L2 国内 vs 官方不可比（币种不同），以国际 USD vs 官方为准。",
+  },
+  {
+    id: "image-gg-2.5-tier-axis",
+    trinityIds: ["GG-2.5"],
+    severity: "info",
+    flag: "档位轴不同",
+    scopes: ["official-aigc-image", "compare-hub"],
+    title: "Gemini 2.5 Flash Image：官方单档 vs AIGC 三档",
+    detail:
+      "Google 官方仅 ≤1024² 单档 $0.039/张；AIGC 商务表按 1K/2K/4K 分档为 Trinity 转售口径。",
+  },
+  {
+    id: "image-volc-seedream-tier-axis",
+    trinityIds: ["SI-4.0", "SI-4.5", "SI-5.0-lite"],
+    severity: "info",
+    flag: "火山单档",
+    scopes: ["official-suppliers", "compare-hub"],
+    title: "即梦/Seedream：火山方舟无分辨率分档",
+    detail:
+      "官方种子与 AIGC 按 1K/2K/4K 三档；火山方舟 scrape 为统一价单档。按 tierKey 硬比会产生假阳性。",
+  },
+  {
+    id: "image-mj-kling-aigc-only",
+    trinityIds: [
+      "MJ-v7",
+      "Kling-2.1",
+      "Kling-3.0",
+      "Kling-3.0-omni",
+      "Kling-O1",
+    ],
+    severity: "info",
+    flag: "AIGC参照",
+    scopes: ["official-aigc-image", "official-suppliers", "compare-hub"],
+    title: "MJ/可灵生图：无公开按张 API 价",
+    detail:
+      "种子价来自 AIGC 商务参照（aigc_only），非厂商公开 API 按张价目；L2/L3 与官方种子对比仅作映射检查，不视为 blocking 差异。",
+  },
 ];
 
 export const ISSUE_FLAG_COLUMN = "官网vsOR";
@@ -92,6 +178,7 @@ const SCOPE_ALIASES = {
   "compare-hub": "compare-hub",
   "supplier-compare": "supplier-compare",
   "official-suppliers": "official-suppliers",
+  "official-aigc-image": "official-aigc-image",
 };
 
 const SCOPE_GROUPS = {
@@ -99,6 +186,7 @@ const SCOPE_GROUPS = {
   "compare-hub": ["compare-hub"],
   "supplier-compare": ["supplier-compare", "official-suppliers"],
   "official-suppliers": ["official-suppliers", "supplier-compare"],
+  "official-aigc-image": ["official-aigc-image"],
 };
 
 const DELTA_CLOSE_PCT = 8;

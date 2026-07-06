@@ -114,7 +114,7 @@ lines.push(
   "## 说明",
   "",
   "- 价格单位：**元 / 百万 tokens**（图像/语音等见 JSON `chargeUnit`）",
-  "- **缓存价**按隐式缓存命中计算（输入单价 × 20%），见 [Context Cache 文档](https://help.aliyun.com/zh/model-studio/context-cache)",
+  `- **缓存价**按百炼 Context Cache 分模型比例（默认 input×20%，见 \`lib/cache-policy.mjs\`）`,
   "- 阶梯计价：单次请求输入 Token 总量决定整单适用档位",
   "- 分段模型按档位分行；同一模型后续行留空模型信息列",
   `- 完整 ${data.modelCount} 条目见 \`${PRICING_API_OUT}\``,

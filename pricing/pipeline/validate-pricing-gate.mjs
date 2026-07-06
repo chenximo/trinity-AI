@@ -14,12 +14,19 @@ const root = path.join(__dirname, "../..");
 
 const steps = [
   ["official:text", "npm", ["run", "pricing:supplier:official:text"]],
+  ["official:image", "npm", ["run", "pricing:supplier:official:image"]],
   ["aigc-excel", "node", ["pricing/pipeline/validate-aigc-excel.mjs"]],
   ["official-aigc", "node", ["pricing/pipeline/validate-official-aigc.mjs"]],
+  ["official-aigc-image", "node", ["pricing/pipeline/validate-official-aigc-image.mjs"]],
   [
     "official-suppliers",
     "node",
     ["pricing/pipeline/validate-official-vs-suppliers.mjs"],
+  ],
+  [
+    "official-suppliers-image",
+    "node",
+    ["pricing/pipeline/validate-official-vs-suppliers-image.mjs"],
   ],
   [
     "alerts-dry-run",

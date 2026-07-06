@@ -2,31 +2,43 @@
 
 import {
   TEXT_SHEET_ORDER,
+  IMAGE_SHEET_ORDER,
   TEXT_PRICING_XLSX,
   IMAGE_PRICING_XLSX,
   VIDEO_PRICING_XLSX,
 } from "./paths.mjs";
 import path from "node:path";
 
-export function renderOutputReadme({ generatedAt, modelCount, scrapedAt, aigcDate }) {
+export function renderOutputReadme({
+  generatedAt,
+  modelCount,
+  scrapedAt,
+  aigcDate,
+  imageModelCount,
+}) {
   const base = path.basename;
+  const imageNote = imageModelCount != null ? ` · 生图官方目录 **${imageModelCount}** 款` : "";
   return [
     "# Trinity 价目导出索引",
     "",
-    `> 更新 ${generatedAt} · 生文模型 **${modelCount}** 款`,
+    `> 更新 ${generatedAt} · 生文模型 **${modelCount}** 款${imageNote}`,
     `> TokenHub/百炼：${scrapedAt} · AIGC 价目表：${aigcDate}`,
     "",
     "## 对外 Excel（按模态分册）",
     "",
     "| 文件 | 模态 | 说明 |",
     "|------|------|------|",
-    `| [${base(TEXT_PRICING_XLSX)}](./${base(TEXT_PRICING_XLSX)}) | 生文 | 刊例校验 · **汇总-供应商vs官方**（第 2 Sheet）· 各供应商分表 |`,
-    `| [${base(IMAGE_PRICING_XLSX)}](./${base(IMAGE_PRICING_XLSX)}) | 生图 | 官方价对比 |`,
+    `| [${base(TEXT_PRICING_XLSX)}](./${base(TEXT_PRICING_XLSX)}) | 生文 | 刊例校验 · **汇总-供应商vs官方**（第 2 Sheet）· 各供应商分表（含 vs 官方） |`,
+    `| [${base(IMAGE_PRICING_XLSX)}](./${base(IMAGE_PRICING_XLSX)}) | 生图 | 刊例校验 · **汇总-供应商vs官方-生图** · **AIGC 国内/国际**分表（当前唯一接入渠道） |`,
     `| [${base(VIDEO_PRICING_XLSX)}](./${base(VIDEO_PRICING_XLSX)}) | 生视频 | 官方价对比 |`,
     "",
     "生文册 Sheet：",
     "",
     TEXT_SHEET_ORDER.map((s) => `- ${s}`).join("\n"),
+    "",
+    "生图册 Sheet：",
+    "",
+    IMAGE_SHEET_ORDER.map((s) => `- ${s}`).join("\n"),
     "",
     "## 目录结构",
     "",
@@ -50,9 +62,10 @@ export function renderOutputReadme({ generatedAt, modelCount, scrapedAt, aigcDat
     "|------|------|------|",
     "| [online/prices-api.json](./online/prices-api.json) | `pricing:fetch` | 平台线上刊例真源 |",
     "| [upstream/summary.md](./upstream/summary.md) | `pricing:upstream` | 生文刊例对比（与 Excel 同源） |",
-    "| [official/text.json](./official/text.json) | `pricing:upstream` | 同上 · JSON（与 Excel 同步） |",
-    "| [official/text.md](./official/text.md) | `pricing:upstream` | 同上 · Markdown |",
-    "| [official/image.md](./official/image.md) | `pricing:compare:official -- --modality=image` | 生图官方价 |",
+    "| [upstream/image-summary.md](./upstream/image-summary.md) | `pricing:upstream:image` | 生图刊例对比（与 Excel 同源） |",
+    "| [official/text.json](./official/text.json) | `pricing:upstream` | 生文 · JSON（与 Excel 同步） |",
+    "| [official/text.md](./official/text.md) | `pricing:upstream` | 生文 · Markdown |",
+    "| [official/image.md](./official/image.md) | `pricing:upstream:image` | 生图刊例对比 · Markdown |",
     "| [official/video.md](./official/video.md) | `pricing:compare:official -- --modality=video` | 生视频官方价 |",
     "| [openrouter/text.md](./openrouter/text.md) | `pricing:compare:openrouter` | 官网 vs OpenRouter |",
     "| [draft/0.65_prices-api.json](./draft/0.65_prices-api.json) | `pricing:gen-65` | 建议刊例草案 |",

@@ -44,7 +44,12 @@ export const TEXT_SHEET_ORDER = [
   "中转站-cust",
 ];
 
-export const IMAGE_SHEET_ORDER = ["官方-生图"];
+export const IMAGE_SHEET_ORDER = [
+  "刊例对比校验-生图",
+  "汇总-供应商vs官方-生图",
+  "AIGC国内站-生图",
+  "AIGC国际站-生图",
+];
 export const VIDEO_SHEET_ORDER = ["官方-生视频"];
 
 /** @deprecated 使用 TEXT_SHEET_ORDER */
@@ -72,8 +77,13 @@ export function sheetOrderForModality(modality) {
   );
 }
 
+export const IMAGE_COMPARE_SHEET = "刊例对比校验-生图";
+
 /** 生文对比总表（合并原摘要 + 官方-生文） */
 export const TEXT_COMPARE_MASTER_SHEET = "刊例对比校验-生文";
+
+/** 生图对比总表 */
+export const IMAGE_COMPARE_MASTER_SHEET = IMAGE_COMPARE_SHEET;
 
 // —— 线上刊例（pricing:fetch）——
 export const PRICES_API_FILE = path.join(OUT_ONLINE_DIR, "prices-api.json");

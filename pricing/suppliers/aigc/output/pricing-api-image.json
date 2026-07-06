@@ -1,0 +1,2503 @@
+{
+  "source": "AIGC价格指南（商务版报价文档）.xlsx",
+  "sheet": "AIGC生图片",
+  "dataDate": "2026-06",
+  "modality": "image",
+  "generatedAt": "2026-07-03T10:15:33.550Z",
+  "modelCount": 33,
+  "trinityMappedCount": 16,
+  "models": [
+    {
+      "modelId": "Hunyuan-3.0",
+      "trinityId": "Hunyuan-3.0",
+      "upstreamModelId": "3",
+      "vendorCode": "Hunyuan",
+      "vendorName": "混元",
+      "modelName": "3",
+      "displayName": "混元 3",
+      "brand": "混元",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.28",
+            "4K": "0.36"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.28",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.36",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-5.0-lite",
+      "trinityId": "SI-5.0-lite",
+      "upstreamModelId": "5.0-lite",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "5.0-lite",
+      "displayName": "Seedream 5.0-lite",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.22",
+            "2K": "0.22",
+            "4K": "0.22"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.22",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.22",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.22",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-5.0-lite",
+      "trinityId": "SI-5.0-lite",
+      "upstreamModelId": "5.0-lite",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "5.0-lite",
+      "displayName": "Seedream 5.0-lite",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.0339",
+            "2K": "0.0339",
+            "4K": "0.0339"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-4.5",
+      "trinityId": "SI-4.5",
+      "upstreamModelId": "4.5",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "4.5",
+      "displayName": "Seedream 4.5",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.25",
+            "2K": "0.25",
+            "4K": "0.25"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.25",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.25",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.25",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-4.5",
+      "trinityId": "SI-4.5",
+      "upstreamModelId": "4.5",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "4.5",
+      "displayName": "Seedream 4.5",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.0385",
+            "2K": "0.0385",
+            "4K": "0.0385"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0385",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0385",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0385",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-4.0",
+      "trinityId": "SI-4.0",
+      "upstreamModelId": "4.0",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "4.0",
+      "displayName": "Seedream 4.0",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.2",
+            "4K": "0.2"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.2",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "SI-4.0",
+      "trinityId": "SI-4.0",
+      "upstreamModelId": "4.0",
+      "vendorCode": "SI",
+      "vendorName": "Seedream",
+      "modelName": "4.0",
+      "displayName": "Seedream 4.0",
+      "brand": "Seedream",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.0308",
+            "2K": "0.0308",
+            "4K": "0.0308"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0308",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0308",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0308",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "MJ-v7",
+      "trinityId": "MJ-v7",
+      "upstreamModelId": "v7",
+      "vendorCode": "MJ",
+      "vendorName": "Midjourney",
+      "modelName": "v7",
+      "displayName": "Midjourney v7",
+      "brand": "Midjourney",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.3",
+            "2K": "0.38",
+            "4K": "0.46"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.3",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.38",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.46",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "MJ-v7",
+      "trinityId": "MJ-v7",
+      "upstreamModelId": "v7",
+      "vendorCode": "MJ",
+      "vendorName": "Midjourney",
+      "modelName": "v7",
+      "displayName": "Midjourney v7",
+      "brand": "Midjourney",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.039",
+            "2K": "0.051",
+            "4K": "0.063"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.039",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.051",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.063",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Jimeng-4.0",
+      "trinityId": "Jimeng-4.0",
+      "upstreamModelId": "4.0",
+      "vendorCode": "JI",
+      "vendorName": "即梦",
+      "modelName": "4.0",
+      "displayName": "即梦 4.0",
+      "brand": "即梦",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.22",
+            "2K": "0.22",
+            "4K": "0.22"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.22",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.22",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.22",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Jimeng-4.0",
+      "trinityId": "Jimeng-4.0",
+      "upstreamModelId": "4.0",
+      "vendorCode": "JI",
+      "vendorName": "即梦",
+      "modelName": "4.0",
+      "displayName": "即梦 4.0",
+      "brand": "即梦",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.0339",
+            "2K": "0.0339",
+            "4K": "0.0339"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0339",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-0925",
+      "trinityId": "qwen-0925",
+      "upstreamModelId": "0925",
+      "vendorCode": "Qwen",
+      "vendorName": "通义",
+      "modelName": "0925",
+      "displayName": "通义 0925",
+      "brand": "通义",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.3",
+            "2K": "0.38",
+            "4K": "0.46"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.3",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.38",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.46",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-0925",
+      "trinityId": "qwen-0925",
+      "upstreamModelId": "0925",
+      "vendorCode": "Qwen",
+      "vendorName": "通义",
+      "modelName": "0925",
+      "displayName": "通义 0925",
+      "brand": "通义",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.0461538461538462",
+            "2K": "0.0584615384615385",
+            "4K": "0.0707692307692308"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0461538461538462",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0584615384615385",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0707692307692308",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "OG-image2-low",
+      "trinityId": "OG-image2-low",
+      "upstreamModelId": "image-2",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "image-2",
+      "displayName": "OpenAI image-2",
+      "brand": "OpenAI",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入图片/张",
+          "resolutions": {
+            "1K以下": "0.1"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.1",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "low",
+          "resolutions": {
+            "1K": "0.045",
+            "2K": "0.09",
+            "4K": "0.15"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.045",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.09",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.15",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "medium",
+          "resolutions": {
+            "1K": "0.398",
+            "2K": "0.803",
+            "4K": "1.335"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.398",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.803",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.335",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "high",
+          "resolutions": {
+            "1K": "1.583",
+            "2K": "3.21",
+            "4K": "5.34"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "1.583",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "3.21",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "5.34",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "low",
+          "resolutions": {
+            "1K": "0.3",
+            "2K": "0.338",
+            "4K": "0.398"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.3",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.338",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.398",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "medium",
+          "resolutions": {
+            "1K": "0.638",
+            "2K": "1.05",
+            "4K": "1.583"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.638",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.05",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.583",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "high",
+          "resolutions": {
+            "1K": "1.838",
+            "2K": "3.45",
+            "4K": "5.588"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "1.838",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "3.45",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "5.588",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "OG-image2-low",
+      "trinityId": "OG-image2-low",
+      "upstreamModelId": "image-2",
+      "vendorCode": "OO",
+      "vendorName": "OpenAI",
+      "modelName": "image-2",
+      "displayName": "OpenAI image-2",
+      "brand": "OpenAI",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入图片/张",
+          "resolutions": {
+            "1K以下": "0.0154"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.0154",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "low",
+          "resolutions": {
+            "1K": "0.006",
+            "2K": "0.012",
+            "4K": "0.02"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.006",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.012",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.02",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "medium",
+          "resolutions": {
+            "1K": "0.053",
+            "2K": "0.107",
+            "4K": "0.178"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.053",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.107",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.178",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "high",
+          "resolutions": {
+            "1K": "0.211",
+            "2K": "0.428",
+            "4K": "0.712"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.211",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.428",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.712",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "low",
+          "resolutions": {
+            "1K": "0.04",
+            "2K": "0.045",
+            "4K": "0.053"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.04",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.045",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.053",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "medium",
+          "resolutions": {
+            "1K": "0.085",
+            "2K": "0.14",
+            "4K": "0.211"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.085",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.14",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.211",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "high",
+          "resolutions": {
+            "1K": "0.245",
+            "2K": "0.46",
+            "4K": "0.745"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.245",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.46",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.745",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-3.1",
+      "trinityId": "GG-3.1",
+      "upstreamModelId": "3.1",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "3.1",
+      "displayName": "Gemini 3.1",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K以下": "0.333",
+            "1K": "0.5",
+            "2K": "0.75",
+            "4K": "1.12"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.333",
+              "unit": "元/张"
+            },
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.5",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.75",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.12",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-3.1",
+      "trinityId": "GG-3.1",
+      "upstreamModelId": "3.1",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "3.1",
+      "displayName": "Gemini 3.1",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K以下": "0.045",
+            "1K": "0.067",
+            "2K": "0.101",
+            "4K": "0.151"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.045",
+              "unit": "美元/张"
+            },
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.067",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.101",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.151",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-3.0",
+      "trinityId": "GG-3.0",
+      "upstreamModelId": "3",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "3",
+      "displayName": "Gemini 3",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "1",
+            "2K": "1",
+            "4K": "1.8"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "1",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.8",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-3.0",
+      "trinityId": "GG-3.0",
+      "upstreamModelId": "3",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "3",
+      "displayName": "Gemini 3",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.135",
+            "2K": "0.135",
+            "4K": "0.24"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.135",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.135",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.24",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-2.5",
+      "trinityId": "GG-2.5",
+      "upstreamModelId": "2.5（超分暂时按1K收）",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "2.5（超分暂时按1K收）",
+      "displayName": "Gemini 2.5（超分暂时按1K收）",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "是",
+          "resolutions": {
+            "1K": "0.3",
+            "2K": "0.38",
+            "4K": "0.46"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.3",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.38",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.46",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "GG-2.5",
+      "trinityId": "GG-2.5",
+      "upstreamModelId": "2.5（超分暂时按1K收）",
+      "vendorCode": "GG",
+      "vendorName": "Gemini",
+      "modelName": "2.5（超分暂时按1K收）",
+      "displayName": "Gemini 2.5（超分暂时按1K收）",
+      "brand": "Gemini",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "是",
+          "resolutions": {
+            "1K": "0.039",
+            "2K": "0.051",
+            "4K": "0.063"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.039",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.051",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.063",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Vidu-q2",
+      "trinityId": "Vidu-q2",
+      "upstreamModelId": "q2",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2",
+      "displayName": "Vidu q2",
+      "brand": "Vidu",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生图",
+          "resolutions": {
+            "1K": "0.1875",
+            "2K": "0.25",
+            "4K": "0.3125"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.1875",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.25",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.3125",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生图1-3张",
+          "resolutions": {
+            "1K": "0.25",
+            "2K": "0.375",
+            "4K": "0.5"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.25",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.375",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.5",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生图4-7张",
+          "resolutions": {
+            "1K": "0.3125",
+            "2K": "0.625",
+            "4K": "0.9375"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.3125",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.625",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.9375",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Vidu-q2",
+      "trinityId": "Vidu-q2",
+      "upstreamModelId": "q2",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2",
+      "displayName": "Vidu q2",
+      "brand": "Vidu",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生图",
+          "resolutions": {
+            "1K": "0.0288461538461539",
+            "2K": "0.0384615384615385",
+            "4K": "0.0480769230769231"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0288461538461539",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0384615384615385",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0480769230769231",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生图1-3张",
+          "resolutions": {
+            "1K": "0.0384615384615385",
+            "2K": "0.0576923076923077",
+            "4K": "0.0769230769230769"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0384615384615385",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0576923076923077",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0769230769230769",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生图4-7张",
+          "resolutions": {
+            "1K": "0.0480769230769231",
+            "2K": "0.0961538461538462",
+            "4K": "0.144230769230769"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.0480769230769231",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0961538461538462",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.144230769230769",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-3.0",
+      "trinityId": "Kling-3.0",
+      "upstreamModelId": "3",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3",
+      "displayName": "可灵 3",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.2",
+            "4K": "0.4"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-3.0",
+      "trinityId": "Kling-3.0",
+      "upstreamModelId": "3",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3",
+      "displayName": "可灵 3",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.028",
+            "2K": "0.028",
+            "4K": "0.056"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.056",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-3.0-omni",
+      "trinityId": "Kling-3.0-omni",
+      "upstreamModelId": "3.0-omni",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-omni",
+      "displayName": "可灵 3.0-omni",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.2",
+            "4K": "0.4"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-3.0-omni",
+      "trinityId": "Kling-3.0-omni",
+      "upstreamModelId": "3.0-omni",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-omni",
+      "displayName": "可灵 3.0-omni",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.028",
+            "2K": "0.028",
+            "4K": "0.056"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.056",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-O1",
+      "trinityId": "Kling-O1",
+      "upstreamModelId": "O1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "O1",
+      "displayName": "可灵 O1",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.2",
+            "4K": "0.4"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-O1",
+      "trinityId": "Kling-O1",
+      "upstreamModelId": "O1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "O1",
+      "displayName": "可灵 O1",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1K": "0.028",
+            "2K": "0.028",
+            "4K": "0.056"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.056",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-2.1",
+      "trinityId": "Kling-2.1",
+      "upstreamModelId": "2.1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.1",
+      "displayName": "可灵 2.1",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生图",
+          "resolutions": {
+            "1K": "0.1",
+            "2K": "0.1",
+            "4K": "0.26"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.1",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.1",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.26",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "单图生图",
+          "resolutions": {
+            "1K": "0.2",
+            "2K": "0.2",
+            "4K": "0.4"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4",
+              "unit": "元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "多图参考生图",
+          "resolutions": {
+            "1K": "0.4",
+            "2K": "0.48",
+            "4K": "0.56"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.4",
+              "unit": "元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.48",
+              "unit": "元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.56",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "Kling-2.1",
+      "trinityId": "Kling-2.1",
+      "upstreamModelId": "2.1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.1",
+      "displayName": "可灵 2.1",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生图",
+          "resolutions": {
+            "1K": "0.014",
+            "2K": "0.014",
+            "4K": "0.037"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.014",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.014",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.037",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "单图生图",
+          "resolutions": {
+            "1K": "0.028",
+            "2K": "0.028",
+            "4K": "0.056"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.028",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.056",
+              "unit": "美元/张"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "多图参考生图",
+          "resolutions": {
+            "1K": "0.056",
+            "2K": "0.068",
+            "4K": "0.079"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K",
+              "displayName": "1K",
+              "price": "0.056",
+              "unit": "美元/张"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.068",
+              "unit": "美元/张"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.079",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-expand-new-domestic",
+      "trinityId": null,
+      "upstreamModelId": "expand（new）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "expand（new）",
+      "displayName": "可灵 expand（new）",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/张",
+      "modality": "image",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "扩图",
+          "resolutions": {
+            "1K以下": "0.2"
+          },
+          "unit": "元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.2",
+              "unit": "元/张"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-expand-new-international",
+      "trinityId": null,
+      "upstreamModelId": "expand（new）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "expand（new）",
+      "displayName": "可灵 expand（new）",
+      "brand": "可灵",
+      "modelType": "Image",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/张",
+      "modality": "image",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "扩图",
+          "resolutions": {
+            "1K以下": "0.028"
+          },
+          "unit": "美元/张",
+          "chargeUnit": "IMAGE",
+          "items": [
+            {
+              "name": "1K以下",
+              "displayName": "1K以下",
+              "price": "0.028",
+              "unit": "美元/张"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
