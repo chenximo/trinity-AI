@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T09:37:17.627Z",
+  "generatedAt": "2026-07-06T10:02:58.398Z",
   "phase": "L1_vs_L3",
   "comparisons": [
     {
@@ -919,12 +919,6 @@
               "a": 6,
               "b": 24,
               "pct": -75
-            },
-            "cache": {
-              "status": "mismatch",
-              "a": 0.025,
-              "b": 2.4,
-              "pct": -99
             }
           }
         }
@@ -979,12 +973,6 @@
               "a": 6,
               "b": 24,
               "pct": -75
-            },
-            "cache": {
-              "status": "mismatch",
-              "a": 0.025,
-              "b": 2.4,
-              "pct": -99
             }
           }
         }
@@ -1491,11 +1479,64 @@
       "trinityId": "glm-5",
       "vendorModelId": "glm-5",
       "supplier": "bailian",
-      "status": "ok",
+      "status": "issues",
       "officialTierCount": 2,
       "supplierTierCount": 2,
-      "issueCount": 0,
-      "issues": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:0-32k",
+          "tierLabel": "输入<=32k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 4,
+              "b": 4,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 18,
+              "b": 18,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 1,
+              "b": 0.8,
+              "pct": 25
+            }
+          }
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:32k+",
+          "tierLabel": "输入≥32k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 6,
+              "b": 6,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 22,
+              "b": 22,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 1.5,
+              "b": 1.2,
+              "pct": 25
+            }
+          }
+        }
+      ],
       "annotated": false
     },
     {
@@ -1524,11 +1565,64 @@
       "trinityId": "glm-5.1",
       "vendorModelId": "glm-5.1",
       "supplier": "bailian",
-      "status": "ok",
+      "status": "issues",
       "officialTierCount": 2,
       "supplierTierCount": 2,
-      "issueCount": 0,
-      "issues": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:0-32k",
+          "tierLabel": "输入<=32k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 6,
+              "b": 6,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 24,
+              "b": 24,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 1.3,
+              "b": 1.2,
+              "pct": 8.3
+            }
+          }
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "t:32k+",
+          "tierLabel": "输入≥32k",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "ok",
+              "a": 8,
+              "b": 8,
+              "pct": 0
+            },
+            "output": {
+              "status": "ok",
+              "a": 28,
+              "b": 28,
+              "pct": 0
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 2,
+              "b": 1.6,
+              "pct": 25
+            }
+          }
+        }
+      ],
       "annotated": false
     },
     {
@@ -1731,8 +1825,12 @@
       "trinityId": "kimi-k2.7-code-highspeed",
       "vendorModelId": "kimi-k2.7-code-highspeed",
       "supplier": "bailian",
-      "status": "no_coverage",
-      "officialTierCount": 1
+      "status": "ok",
+      "officialTierCount": 1,
+      "supplierTierCount": 1,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": false
     },
     {
       "trinityId": "kimi-k2.7-code-highspeed",
@@ -1789,8 +1887,12 @@
       "trinityId": "minimax-m2.7",
       "vendorModelId": "minimax-m2.7",
       "supplier": "bailian",
-      "status": "no_coverage",
-      "officialTierCount": 1
+      "status": "ok",
+      "officialTierCount": 1,
+      "supplierTierCount": 1,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
     },
     {
       "trinityId": "minimax-m2.7",
@@ -1818,8 +1920,43 @@
       "trinityId": "minimax-m3",
       "vendorModelId": "minimax-m3",
       "supplier": "bailian",
-      "status": "no_coverage",
-      "officialTierCount": 2
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 1,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "tier_count",
+          "leftCount": 2,
+          "rightCount": 1,
+          "leftKeys": [
+            "res:sub-1k",
+            "res:sub-1k"
+          ],
+          "rightKeys": [
+            "uniform"
+          ]
+        },
+        {
+          "kind": "missing_tier",
+          "tierKey": "res:sub-1k",
+          "left": true,
+          "right": false
+        },
+        {
+          "kind": "tier_count",
+          "leftCount": 2,
+          "rightCount": 1,
+          "leftKeys": [
+            "res:sub-1k",
+            "res:sub-1k"
+          ],
+          "rightKeys": [
+            "uniform"
+          ]
+        }
+      ],
+      "annotated": false
     },
     {
       "trinityId": "minimax-m3",
@@ -1892,7 +2029,7 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%); cache: 官方=0.025 百炼=2.4 (-99%)",
+      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -1913,7 +2050,7 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%); cache: 官方=0.025 百炼=2.4 (-99%)",
+      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -2076,17 +2213,111 @@
       "suppressedBy": [
         "glm-4-7-bailian-tier-axis"
       ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5",
+      "vendorModelId": "glm-5",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入<=32k: cache: 官方=1 百炼=0.8 (25%)",
+      "tierKey": "t:0-32k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5",
+      "vendorModelId": "glm-5",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入≥32k: cache: 官方=1.5 百炼=1.2 (25%)",
+      "tierKey": "t:32k+",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5.1",
+      "vendorModelId": "glm-5.1",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入<=32k: cache: 官方=1.3 百炼=1.2 (8.3%)",
+      "tierKey": "t:0-32k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5.1",
+      "vendorModelId": "glm-5.1",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入≥32k: cache: 官方=2 百炼=1.6 (25%)",
+      "tierKey": "t:32k+",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "error",
+      "type": "supplier_tier_gap",
+      "trinityId": "minimax-m3",
+      "vendorModelId": "minimax-m3",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼档位数少于官方",
+      "detail": "官方 2 档 · 百炼 1 档。官方 keys: res:sub-1k, res:sub-1k；供应商 keys: uniform",
+      "officialTierCount": 2,
+      "supplierTierCount": 1,
+      "missingTierKeys": [
+        "res:sub-1k"
+      ],
+      "suggestedAction": "确认 百炼 scrape 完整后，联系商务确认渠道价目",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true
     }
   ],
   "summary": {
     "modelChannels": 186,
     "ok": 52,
-    "issues": 0,
-    "noCoverage": 46,
+    "issues": 3,
+    "noCoverage": 43,
     "skippedUsd": 81,
-    "alertCount": 11,
-    "blockingAlertCount": 0,
-    "blockingComparisons": 0
+    "alertCount": 16,
+    "blockingAlertCount": 5,
+    "blockingComparisons": 3
   },
-  "ok": true
+  "ok": false
 }

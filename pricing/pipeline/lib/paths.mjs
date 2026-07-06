@@ -191,6 +191,28 @@ export const DRAFT_065_DIFF_CSV = path.join(
   "0.65_prices-api-diff.csv",
 );
 
+/** 生图官方价 → prices-api 同构草案 */
+export const OFFICIAL_PRICES_API_IMAGE = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-image.json",
+);
+export const OFFICIAL_PRICES_API_IMAGE_META = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-image.meta.json",
+);
+export const OFFICIAL_PRICES_API_IMAGE_DIFF_MD = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-image-diff.md",
+);
+export const OFFICIAL_PRICES_API_IMAGE_DIFF_JSON = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-image-diff.json",
+);
+export const OFFICIAL_PRICES_API_IMAGE_DIFF_CSV = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-image-diff.csv",
+);
+
 // —— 抽样校验 ——
 export const VALIDATE_SAMPLE_MD = path.join(OUT_VALIDATE_DIR, "sample.md");
 export const VALIDATE_SAMPLE_JSON = path.join(OUT_VALIDATE_DIR, "sample.json");

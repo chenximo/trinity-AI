@@ -45,6 +45,8 @@ import {
   TRINITY_MODELS_CACHE_FILE,
   SUPPLIERS_DIR,
 } from "./lib/paths.mjs";
+import { findMissingOnlineListingSlugs } from "./lib/compare-online-coverage-lib.mjs";
+import { renderOnlineCoverageFromContext } from "./lib/render-online-coverage-md.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TRINITY_BASE = "https://api.trinitydesk.ai/v1";
@@ -231,12 +233,48 @@ async function main() {
     "utf8",
   );
 
+  const imageCoverageSlugs = [
+    ...new Set(
+      compareReport.rows
+        .map((r) => r.trinityId)
+        .filter(Boolean)
+        .map((s) => String(s).toLowerCase()),
+    ),
+  ];
+  const imageP6 = findMissingOnlineListingSlugs(
+    hubCtx.onlineByModel,
+    imageCoverageSlugs,
+    { modality: "image", label: "刊例对比校验-生图" },
+  );
+  if (imageP6.missing.length) {
+    console.warn(
+      `[image P6 预警] 对比表缺 ${imageP6.missing.length}/${imageP6.onlineCount} 个线上模型：${imageP6.missing.join(", ")}`,
+    );
+  }
+  if (compareReport.tierCoverage && !compareReport.tierCoverage.ok) {
+    const ids = compareReport.tierCoverage.violations.map((v) => v.modelId).join(", ");
+    throw new Error(
+      `[image P7] 刊例对比档位被削减（${compareReport.tierCoverage.violations.length} 个模型）：${ids}`,
+    );
+  }
+
+  const coverageMd = renderOnlineCoverageFromContext({
+    modality: "image",
+    label: "刊例对比校验-生图",
+    onlineByModel: hubCtx.onlineByModel,
+    coveredSlugs: imageCoverageSlugs,
+    compareReport,
+  });
+  const coveragePath = path.join(OUT_UPSTREAM_DIR, "coverage-image.md");
+  await writeFile(coveragePath, coverageMd, "utf8");
+
   console.log(`Trinity image models: ${trinityList.length}`);
   console.log(
-    `Official catalog rows: ${compareReport.modelCount} · compare rows: ${compareReport.rowCount}`,
+    `Official catalog rows: ${compareReport.modelCount} · compare rows: ${compareReport.rowCount} · P6 线上 ${imageP6.onlineCount} → 覆盖 ${imageP6.coveredCount}${imageP6.missing.length ? " ⚠" : " ✅"} · P7 档位 ${compareReport.tierCoverage?.ok !== false ? "✅" : "❌"}`,
   );
   console.log(`AIGC image entries: ${aigcModels.length}`);
   console.log(`Wrote ${comparePaths.officialMd}`);
+  console.log(`Wrote ${coveragePath}`);
   console.log(`Wrote ${imageXlsx}`);
   console.log(`Wrote ${aigcOut}`);
 }

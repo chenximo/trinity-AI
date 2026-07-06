@@ -1,8 +1,8 @@
 {
   "modality": "video",
-  "generatedAt": "2026-07-06T09:08:06.853Z",
+  "generatedAt": "2026-07-06T10:01:05.378Z",
   "officialFetchedAt": "2026-07-06T07:40:48.332Z",
-  "pricesFetchedAt": "2026-07-06T09:08:06.729Z",
+  "pricesFetchedAt": "2026-07-06T10:01:05.272Z",
   "modelCount": 17,
   "compareUnitCount": 35,
   "trinityLinkedCount": 13,
@@ -1699,7 +1699,7 @@
       "aigcDomVsIntl": "—",
       "aigcDomVsImpliedOfficial": "—",
       "listingConclusion": "—",
-      "note": "线上 slug seedance-* · AIGC 厂商 SV",
+      "note": "线上 seedance-* · 官方补行见 doubao-seedance-*（火山 L3 参照）",
       "officialStatus": "—"
     },
     {
@@ -1721,7 +1721,7 @@
       "aigcDomVsIntl": "—",
       "aigcDomVsImpliedOfficial": "—",
       "listingConclusion": "—",
-      "note": "",
+      "note": "线上 slug · 非 doubao-seedance-1.0-pro-fast 同键",
       "officialStatus": "—"
     },
     {
@@ -1743,7 +1743,7 @@
       "aigcDomVsIntl": "—",
       "aigcDomVsImpliedOfficial": "—",
       "listingConclusion": "—",
-      "note": "",
+      "note": "线上 slug · 官方 doubao-seedance-1.5-pro 为按个计价，分行对比",
       "officialStatus": "—"
     },
     {
@@ -2159,7 +2159,7 @@
       "volcengine": "—",
       "online": "$0.05/秒",
       "aigcDomVsIntl": "⚠-3.7% · 隐含汇率6.26(基准6.5)",
-      "aigcDomVsImpliedOfficial": "🔍待核验 ✅ 落在原厂折算区间",
+      "aigcDomVsImpliedOfficial": "✅ 落在原厂折算区间",
       "listingConclusion": "✅",
       "note": "TokenHub vd-video-q3-pro",
       "officialStatus": "seed"
@@ -2181,7 +2181,7 @@
       "volcengine": "—",
       "online": "$0.0625/秒",
       "aigcDomVsIntl": "⚠-3.8% · 隐含汇率6.26(基准6.5)",
-      "aigcDomVsImpliedOfficial": "🔍待核验 ✅ 落在原厂折算区间",
+      "aigcDomVsImpliedOfficial": "✅ 落在原厂折算区间",
       "listingConclusion": "🔍待核验 ⚠-50%",
       "note": "TokenHub vd-video-q3-pro",
       "officialStatus": "seed"
@@ -2203,7 +2203,7 @@
       "volcengine": "—",
       "online": "$0.075/秒",
       "aigcDomVsIntl": "⚠-3.8% · 隐含汇率6.25(基准6.5)",
-      "aigcDomVsImpliedOfficial": "🔍待核验 ✅ 落在原厂折算区间",
+      "aigcDomVsImpliedOfficial": "✅ 落在原厂折算区间",
       "listingConclusion": "🔍待核验 ⚠-50%",
       "note": "TokenHub vd-video-q3-pro",
       "officialStatus": "seed"

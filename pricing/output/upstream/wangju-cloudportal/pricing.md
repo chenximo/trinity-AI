@@ -1,6 +1,6 @@
 # 网聚云联 · 云门户（GPT / Gemini 原厂直连）
 
-> 供应商：**wangju-cloudportal** · 区域：**原厂直连** · 数据日期：2026-07-03
+> 供应商：**wangju-cloudportal** · 区域：**原厂直连** · 数据日期：2026-07-06
 > 供应商挂牌/成本单位：**美元/百万 tokens**（每百万 tokens，单元格内 入/出/缓）
 > **范围**：云门户 GPT/Gemini 原厂直连（28 款，对齐 official）
 > **厂商官方价**：模型厂商官网挂牌（`suppliers/official`），同档对照

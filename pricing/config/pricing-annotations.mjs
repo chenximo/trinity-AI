@@ -154,6 +154,51 @@ export const PRICING_ANNOTATIONS = [
       "官方种子与 AIGC 按 1K/2K/4K 三档；火山方舟 scrape 为统一价单档。按 tierKey 硬比会产生假阳性。",
   },
   {
+    id: "video-kling-v26-listing-audio",
+    trinityIds: ["kl-video-v2-6"],
+    severity: "info",
+    flag: "刊例口径",
+    scopes: ["compare-hub", "official-aigc-video"],
+    title: "可灵 2.6：AIGC 无声 vs 线上 1080p/2k 刊例",
+    detail:
+      "AIGC 映射 attribute「无声」；线上 1080p($0.14/s)、2k($0.21/s) 约为 AIGC 国际同档 2 倍，720p/4k 对齐。刊例结论 ⚠+100% 为产品 SKU 差异，非 tierKey 错配。",
+  },
+  {
+    id: "video-vidu-q3pro-listing-tier",
+    trinityIds: ["vd-video-q3-pro"],
+    severity: "info",
+    flag: "刊例口径",
+    scopes: ["compare-hub", "official-aigc-video"],
+    title: "Vidu Q3-Pro：线上刊例低于 AIGC 国际同档",
+    detail:
+      "540p 对齐；720p/1080p 线上刊例约为 AIGC 国际半价（如 $0.0625 vs $0.125/s）。档位匹配正确，差异来自 Trinity 刊例定价策略，非 compare 错行。",
+  },
+  {
+    id: "video-seedance-slug-alias",
+    trinityIds: [],
+    severity: "info",
+    flag: "slug别名",
+    scopes: ["compare-hub"],
+    title: "Seedance：线上 seedance-* vs 官方 doubao-seedance-*",
+    detail:
+      "Trinity 线上 slug 为 seedance-1.0-pro 等（AIGC 厂商 SV）；火山/豆包官方种子为 doubao-seedance-*，分开展行，勿强行合并 tierKey。",
+  },
+  {
+    id: "video-volcengine-reference",
+    trinityIds: [
+      "doubao-seedance-1.5-pro",
+      "doubao-seedance-2.0",
+      "doubao-seedance-2.0-fast",
+      "doubao-seedance-2.0-mini",
+    ],
+    severity: "info",
+    flag: "参照列",
+    scopes: ["compare-hub", "official-suppliers"],
+    title: "火山方舟生视频：L3 参照列未接入进货",
+    detail:
+      "channels-video.mjs 中 volcengine connected:false；对比表保留火山列作 Seedance 价目参照，L2 blocking 校验不含此列。",
+  },
+  {
     id: "image-mj-kling-aigc-only",
     trinityIds: [
       "MJ-v7",
@@ -179,6 +224,7 @@ const SCOPE_ALIASES = {
   "supplier-compare": "supplier-compare",
   "official-suppliers": "official-suppliers",
   "official-aigc-image": "official-aigc-image",
+  "official-aigc-video": "official-aigc-video",
 };
 
 const SCOPE_GROUPS = {
@@ -187,6 +233,7 @@ const SCOPE_GROUPS = {
   "supplier-compare": ["supplier-compare", "official-suppliers"],
   "official-suppliers": ["official-suppliers", "supplier-compare"],
   "official-aigc-image": ["official-aigc-image"],
+  "official-aigc-video": ["official-aigc-video"],
 };
 
 const DELTA_CLOSE_PCT = 8;

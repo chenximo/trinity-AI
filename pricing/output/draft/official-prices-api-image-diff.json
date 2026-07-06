@@ -1,0 +1,1243 @@
+{
+  "summary": {
+    "modelCount": 18,
+    "tierCount": 53,
+    "unchangedModels": 4,
+    "changedModels": 14,
+    "tierUnchanged": 21,
+    "tierDown": 28,
+    "tierUp": 4,
+    "tierMissing": 0
+  },
+  "rows": [
+    {
+      "model": "GG-2.5",
+      "displayName": "Nano-2.5",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0414,
+          "draftPrice": 0.039,
+          "delta": -0.0024,
+          "deltaPct": -5.8,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0586,
+          "draftPrice": 0.051,
+          "delta": -0.0076,
+          "deltaPct": -13,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0635,
+          "draftPrice": 0.063,
+          "delta": -0.0005,
+          "deltaPct": -0.8,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "GG-3.0",
+      "displayName": "Nano-3.0",
+      "tierCount": 2,
+      "changedTierCount": 2,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.137931,
+          "draftPrice": 0.134,
+          "delta": -0.003931,
+          "deltaPct": -2.8,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.248276,
+          "draftPrice": 0.134,
+          "delta": -0.114276,
+          "deltaPct": -46,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "tierCount": 4,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.077,
+          "draftPrice": 0.067,
+          "delta": -0.01,
+          "deltaPct": -13,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.1154,
+          "draftPrice": 0.101,
+          "delta": -0.0144,
+          "deltaPct": -12.5,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.154483,
+          "draftPrice": 0.151,
+          "delta": -0.003483,
+          "deltaPct": -2.3,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:lt_1k",
+          "tierLabel": "lt_1k",
+          "onlinePrice": 0.0513,
+          "draftPrice": 0.0513,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "Hunyuan-3.0",
+      "displayName": "Hunyuan-3.0",
+      "tierCount": 3,
+      "changedTierCount": 2,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0431,
+          "draftPrice": 0.030769,
+          "delta": -0.012331,
+          "deltaPct": -28.6,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.049655,
+          "draftPrice": 0.030769,
+          "delta": -0.018886,
+          "deltaPct": -38,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "Jimeng-4.0",
+      "displayName": "Jimeng-4.0",
+      "tierCount": 3,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "Kling-2.1",
+      "displayName": "Kling-2.1",
+      "tierCount": 2,
+      "changedTierCount": 2,
+      "modelVerdict": "混合",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.013793,
+          "draftPrice": 0.015385,
+          "delta": 0.001592,
+          "deltaPct": 11.5,
+          "verdict": "涨价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.077241,
+          "draftPrice": 0.015385,
+          "delta": -0.061856,
+          "deltaPct": -80.1,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "Kling-3.0",
+      "displayName": "Kling-3.0",
+      "tierCount": 3,
+      "changedTierCount": 1,
+      "modelVerdict": "全涨",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.055172,
+          "draftPrice": 0.061538,
+          "delta": 0.006366,
+          "deltaPct": 11.5,
+          "verdict": "涨价"
+        }
+      ]
+    },
+    {
+      "model": "Kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierCount": 3,
+      "changedTierCount": 1,
+      "modelVerdict": "全涨",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.055172,
+          "draftPrice": 0.061538,
+          "delta": 0.006366,
+          "deltaPct": 11.5,
+          "verdict": "涨价"
+        }
+      ]
+    },
+    {
+      "model": "Kling-O1",
+      "displayName": "Kling-O1",
+      "tierCount": 3,
+      "changedTierCount": 1,
+      "modelVerdict": "全涨",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.055172,
+          "draftPrice": 0.061538,
+          "delta": 0.006366,
+          "deltaPct": 11.5,
+          "verdict": "涨价"
+        }
+      ]
+    },
+    {
+      "model": "MJ-v7",
+      "displayName": "Midjourney-v7",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0462,
+          "draftPrice": 0.039,
+          "delta": -0.0072,
+          "deltaPct": -15.6,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.052414,
+          "draftPrice": 0.051,
+          "delta": -0.001414,
+          "deltaPct": -2.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.063448,
+          "draftPrice": 0.063,
+          "delta": -0.000448,
+          "deltaPct": -0.7,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "OG-image2-high",
+      "displayName": "Image-2.0 High",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 1.583,
+          "draftPrice": 0.211,
+          "delta": -1.372,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 3.21,
+          "draftPrice": 0.428,
+          "delta": -2.782,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 5.34,
+          "draftPrice": 0.712,
+          "delta": -4.628,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "OG-image2-low",
+      "displayName": "Image-2.0 Low",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.045,
+          "draftPrice": 0.006,
+          "delta": -0.039,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.09,
+          "draftPrice": 0.012,
+          "delta": -0.078,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.02,
+          "delta": -0.13,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "OG-image2-medium",
+      "displayName": "Image-2.0 Medium",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.398,
+          "draftPrice": 0.053,
+          "delta": -0.345,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.803,
+          "draftPrice": 0.107,
+          "delta": -0.696,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 1.335,
+          "draftPrice": 0.178,
+          "delta": -1.157,
+          "deltaPct": -86.7,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "qwen-0925",
+      "displayName": "Qwen-0925",
+      "tierCount": 3,
+      "changedTierCount": 3,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0462,
+          "draftPrice": 0.038462,
+          "delta": -0.007738,
+          "deltaPct": -16.7,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.052414,
+          "draftPrice": 0.038462,
+          "delta": -0.013952,
+          "deltaPct": -26.6,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.063448,
+          "draftPrice": 0.038462,
+          "delta": -0.024986,
+          "deltaPct": -39.4,
+          "verdict": "降价"
+        }
+      ]
+    },
+    {
+      "model": "SI-4.0",
+      "displayName": "Seedream-4.0",
+      "tierCount": 3,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0308,
+          "draftPrice": 0.030769,
+          "delta": -0.000031,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "SI-4.5",
+      "displayName": "Seedream-4.5",
+      "tierCount": 3,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0385,
+          "draftPrice": 0.038462,
+          "delta": -0.000038,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0385,
+          "draftPrice": 0.038462,
+          "delta": -0.000038,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0385,
+          "draftPrice": 0.038462,
+          "delta": -0.000038,
+          "deltaPct": -0.1,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "SI-5.0-lite",
+      "displayName": "Seedream-5.0-lite",
+      "tierCount": 3,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0339,
+          "draftPrice": 0.033846,
+          "delta": -0.000054,
+          "deltaPct": -0.2,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "Vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierCount": 3,
+      "changedTierCount": 2,
+      "modelVerdict": "全降",
+      "tiers": [
+        {
+          "tierKey": "res:1k",
+          "tierLabel": "1k",
+          "onlinePrice": 0.0577,
+          "draftPrice": 0.028846,
+          "delta": -0.028854,
+          "deltaPct": -50,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.077,
+          "draftPrice": 0.038462,
+          "delta": -0.038538,
+          "deltaPct": -50,
+          "verdict": "降价"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.0482,
+          "draftPrice": 0.048077,
+          "delta": -0.000123,
+          "deltaPct": -0.3,
+          "verdict": "一致"
+        }
+      ]
+    }
+  ],
+  "tierRows": [
+    {
+      "model": "GG-2.5",
+      "displayName": "Nano-2.5",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0414,
+      "draftPrice": 0.039,
+      "delta": -0.0024,
+      "deltaPct": -5.8,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-2.5",
+      "displayName": "Nano-2.5",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0586,
+      "draftPrice": 0.051,
+      "delta": -0.0076,
+      "deltaPct": -13,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-2.5",
+      "displayName": "Nano-2.5",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0635,
+      "draftPrice": 0.063,
+      "delta": -0.0005,
+      "deltaPct": -0.8,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.0",
+      "displayName": "Nano-3.0",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.137931,
+      "draftPrice": 0.134,
+      "delta": -0.003931,
+      "deltaPct": -2.8,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.0",
+      "displayName": "Nano-3.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.248276,
+      "draftPrice": 0.134,
+      "delta": -0.114276,
+      "deltaPct": -46,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.077,
+      "draftPrice": 0.067,
+      "delta": -0.01,
+      "deltaPct": -13,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.1154,
+      "draftPrice": 0.101,
+      "delta": -0.0144,
+      "deltaPct": -12.5,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.154483,
+      "draftPrice": 0.151,
+      "delta": -0.003483,
+      "deltaPct": -2.3,
+      "verdict": "降价"
+    },
+    {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "tierKey": "res:lt_1k",
+      "tierLabel": "lt_1k",
+      "onlinePrice": 0.0513,
+      "draftPrice": 0.0513,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "Hunyuan-3.0",
+      "displayName": "Hunyuan-3.0",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Hunyuan-3.0",
+      "displayName": "Hunyuan-3.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0431,
+      "draftPrice": 0.030769,
+      "delta": -0.012331,
+      "deltaPct": -28.6,
+      "verdict": "降价"
+    },
+    {
+      "model": "Hunyuan-3.0",
+      "displayName": "Hunyuan-3.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.049655,
+      "draftPrice": 0.030769,
+      "delta": -0.018886,
+      "deltaPct": -38,
+      "verdict": "降价"
+    },
+    {
+      "model": "Jimeng-4.0",
+      "displayName": "Jimeng-4.0",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "Jimeng-4.0",
+      "displayName": "Jimeng-4.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "Jimeng-4.0",
+      "displayName": "Jimeng-4.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-2.1",
+      "displayName": "Kling-2.1",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.013793,
+      "draftPrice": 0.015385,
+      "delta": 0.001592,
+      "deltaPct": 11.5,
+      "verdict": "涨价"
+    },
+    {
+      "model": "Kling-2.1",
+      "displayName": "Kling-2.1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.077241,
+      "draftPrice": 0.015385,
+      "delta": -0.061856,
+      "deltaPct": -80.1,
+      "verdict": "降价"
+    },
+    {
+      "model": "Kling-3.0",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-3.0",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-3.0",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.055172,
+      "draftPrice": 0.061538,
+      "delta": 0.006366,
+      "deltaPct": 11.5,
+      "verdict": "涨价"
+    },
+    {
+      "model": "Kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.055172,
+      "draftPrice": 0.061538,
+      "delta": 0.006366,
+      "deltaPct": 11.5,
+      "verdict": "涨价"
+    },
+    {
+      "model": "Kling-O1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-O1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "Kling-O1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.055172,
+      "draftPrice": 0.061538,
+      "delta": 0.006366,
+      "deltaPct": 11.5,
+      "verdict": "涨价"
+    },
+    {
+      "model": "MJ-v7",
+      "displayName": "Midjourney-v7",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0462,
+      "draftPrice": 0.039,
+      "delta": -0.0072,
+      "deltaPct": -15.6,
+      "verdict": "降价"
+    },
+    {
+      "model": "MJ-v7",
+      "displayName": "Midjourney-v7",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.052414,
+      "draftPrice": 0.051,
+      "delta": -0.001414,
+      "deltaPct": -2.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "MJ-v7",
+      "displayName": "Midjourney-v7",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.063448,
+      "draftPrice": 0.063,
+      "delta": -0.000448,
+      "deltaPct": -0.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-high",
+      "displayName": "Image-2.0 High",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 1.583,
+      "draftPrice": 0.211,
+      "delta": -1.372,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-high",
+      "displayName": "Image-2.0 High",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 3.21,
+      "draftPrice": 0.428,
+      "delta": -2.782,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-high",
+      "displayName": "Image-2.0 High",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 5.34,
+      "draftPrice": 0.712,
+      "delta": -4.628,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-low",
+      "displayName": "Image-2.0 Low",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.045,
+      "draftPrice": 0.006,
+      "delta": -0.039,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-low",
+      "displayName": "Image-2.0 Low",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.09,
+      "draftPrice": 0.012,
+      "delta": -0.078,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-low",
+      "displayName": "Image-2.0 Low",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.02,
+      "delta": -0.13,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-medium",
+      "displayName": "Image-2.0 Medium",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.398,
+      "draftPrice": 0.053,
+      "delta": -0.345,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-medium",
+      "displayName": "Image-2.0 Medium",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.803,
+      "draftPrice": 0.107,
+      "delta": -0.696,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "OG-image2-medium",
+      "displayName": "Image-2.0 Medium",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 1.335,
+      "draftPrice": 0.178,
+      "delta": -1.157,
+      "deltaPct": -86.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "qwen-0925",
+      "displayName": "Qwen-0925",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0462,
+      "draftPrice": 0.038462,
+      "delta": -0.007738,
+      "deltaPct": -16.7,
+      "verdict": "降价"
+    },
+    {
+      "model": "qwen-0925",
+      "displayName": "Qwen-0925",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.052414,
+      "draftPrice": 0.038462,
+      "delta": -0.013952,
+      "deltaPct": -26.6,
+      "verdict": "降价"
+    },
+    {
+      "model": "qwen-0925",
+      "displayName": "Qwen-0925",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.063448,
+      "draftPrice": 0.038462,
+      "delta": -0.024986,
+      "deltaPct": -39.4,
+      "verdict": "降价"
+    },
+    {
+      "model": "SI-4.0",
+      "displayName": "Seedream-4.0",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-4.0",
+      "displayName": "Seedream-4.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-4.0",
+      "displayName": "Seedream-4.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0308,
+      "draftPrice": 0.030769,
+      "delta": -0.000031,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-4.5",
+      "displayName": "Seedream-4.5",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0385,
+      "draftPrice": 0.038462,
+      "delta": -0.000038,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-4.5",
+      "displayName": "Seedream-4.5",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0385,
+      "draftPrice": 0.038462,
+      "delta": -0.000038,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-4.5",
+      "displayName": "Seedream-4.5",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0385,
+      "draftPrice": 0.038462,
+      "delta": -0.000038,
+      "deltaPct": -0.1,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-5.0-lite",
+      "displayName": "Seedream-5.0-lite",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-5.0-lite",
+      "displayName": "Seedream-5.0-lite",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "SI-5.0-lite",
+      "displayName": "Seedream-5.0-lite",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0339,
+      "draftPrice": 0.033846,
+      "delta": -0.000054,
+      "deltaPct": -0.2,
+      "verdict": "一致"
+    },
+    {
+      "model": "Vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:1k",
+      "tierLabel": "1k",
+      "onlinePrice": 0.0577,
+      "draftPrice": 0.028846,
+      "delta": -0.028854,
+      "deltaPct": -50,
+      "verdict": "降价"
+    },
+    {
+      "model": "Vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.077,
+      "draftPrice": 0.038462,
+      "delta": -0.038538,
+      "deltaPct": -50,
+      "verdict": "降价"
+    },
+    {
+      "model": "Vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.0482,
+      "draftPrice": 0.048077,
+      "delta": -0.000123,
+      "deltaPct": -0.3,
+      "verdict": "一致"
+    }
+  ],
+  "onlineFetchedAt": "2026-07-06T10:39:21.245Z",
+  "draftGeneratedAt": "2026-07-06T10:39:21.539Z",
+  "onlineFx": 7.25,
+  "draftFx": 6.5,
+  "draftPolicy": "官方价优先；官方无档 → AIGC 国际 USD（无则国内 CNY÷6.5）；CNY 官方 ÷ 6.5"
+}

@@ -24,6 +24,8 @@ Trinity 价目体系需要 **可维护、可交叉验证、可告警** 的分层
 | P4 | **先自查、再告警** | 任何不一致：先查种子 / 映射 / scrape；确认我方无误后再推告警 |
 | P5 | **不静默简化** | 供应商档位数少于官方时，必须显式记录（warn/error），不得当作一致 |
 | P6 | **刊例对比 ⊇ 线上** | `刊例对比校验` 表内模型 **不得少于** `GET /v1/prices` 同模态返回量；可多加官方补行，**不能少** |
+| P7 | **刊例对比 ⊇ 各源档位** | 同一模型对比行 **不得少于** 官方 ∪ 线上 ∪ AIGC ∪ TokenHub 的 `tierKey` 并集；官方缺档可留空，**不能删行** |
+| P8 | **生图 L2 补齐** | 官方 seed 缺档时：**刊例对比**展示 AIGC/TokenHub 列；**可上线 JSON** 按 cascade 补价（见 §5.1.2） |
 
 ### 1.2 四类价格（层级）
 
@@ -107,6 +109,8 @@ prices-api 全量线上 slug（底线，当前 ~25）
 
 - **不得**假设 `official/catalog` ⊇ 线上模型（与生图不同；生视频平台 SKU 扩张更快）
 - **P6 铁律**：对比表 **⊇** 线上 `prices-api` 全量 slug，只能多官方补行，不能少线上模型
+- **P7 铁律**：同一模型对比行 **⊇** 官方∪线上∪AIGC∪TokenHub 的 `tierKey` 并集，官方缺档可留空，不能删行
+- **P8 生图 L2 补齐**：官方档不足时，AIGC / TokenHub 有则用之（对比表展示 + 刊例 JSON cascade 补价）
 - 映射真源：`config/video-model-registry.mjs`（线上 slug · Trinity · 官方 vendor · AIGC · 火山）
 - **治理档位**：`完整`（官方+线上）· `仅刊例`（线上+AIGC，无官方 seed）· `仅官方`（未挂线上刊例）
 
@@ -170,6 +174,7 @@ prices-api 全量线上 slug（底线，当前 ~25）
 - ❌ 因百炼只有 2 档，将官方 seed 改为 2 档  
 - ❌ 不报档位数差异，仅对比「能对上的那一档」并标一致  
 - ❌ 用转售价覆盖 official seeds  
+- ❌ 刊例对比只按官方 seed 出表，静默丢掉线上/AIGC 多出来的分辨率档  
 
 ---
 
@@ -182,24 +187,41 @@ prices-api 全量线上 slug（底线，当前 ~25）
 - Excel / MD：`刊例对比校验-生文`（官方 · AIGC国际 · TokenHub · OR · 线上刊例 · vs 列）  
 - 仅保留进货参照列：官方、AIGC 国际、TokenHub、OpenRouter（不含百炼/火山方舟列）
 
-### 5.1.1 刊例对比覆盖铁律（P6）
+### 5.1.1 刊例对比覆盖铁律（P6 · P7）
 
-**对比表模型集合 ⊇ 线上 `prices-api` 同模态全量 slug**：
+**P6 — 模型集合**：对比表 **⊇** 线上 `prices-api` 同模态全量 slug：
 
 | 允许 | 禁止 |
 |------|------|
 | 对比表 = 线上全量 + 官方 catalog 补行（仅官方、未挂线上） | 线上有刊例、对比表无对应行 |
 | 对比表行数 > 线上模型数（多分辨率档、多官方补行） | 用「Phase / 已映射子集」截断线上 SKU |
 
+**P7 — 档位并集**：同一模型对比行 **⊇** `tierKey` 并集（官方 ∪ 线上 ∪ AIGC ∪ TokenHub）：
+
+| 允许 | 禁止 |
+|------|------|
+| 官方无档、L2/线上有档 → 仍出对比行，官方列留空 | 官方只有 1K、线上有 1K/2K/4K，对比表只出 1 行 |
+| 结论列标 `ℹ 官方无档` + AIGC/线上对照 | 为「对齐官方」而删掉 L2/线上独有档 |
+
+**P8 — 生图 L2 补齐（可上线 JSON）**：`npm run pricing:gen-official:image` · `build-official-prices-api.mjs`
+
+| 优先级 | 来源 | 换算 |
+|--------|------|------|
+| 1 | 官方 seed 同 `tierKey` | CNY ÷ 6.5 · USD 直用 |
+| 2 | AIGC 国际 | USD 直用 |
+| 3 | AIGC 国内 | CNY ÷ 6.5 |
+| 4 | TokenHub | CNY ÷ 6.5 |
+| 5 | 均无 | 保持线上 skeleton 原价 |
+
 **按模态行主键**（实现可不同，铁律相同）：
 
 | 模态 | 行主键策略 | 代码校验 |
 |------|------------|----------|
 | **生视频** | `prices-api` 全量 ∪ 官方补行 | `compare-online-coverage-lib` · `upstream:video` 失败即阻断 |
-| **生图** | 官方 catalog 驱动（现状；官方 ≥ 线上） | 待补：线上新增时做 gap 检查 |
-| **生文** | 官方 catalog 驱动（线上 ⊆ 已映射 Trinity） | 待补：同上 |
+| **生图** | 官方 catalog 模型 × **档位并集**（官方∪线上∪AIGC∪TokenHub） | `unionImageCompareTiers` + P7 |
+| **生文** | 官方 catalog 驱动（线上 ⊆ 已映射 Trinity） | 待补：档位并集 + P7 |
 
-新增模态或改版 compare-hub 时：**先满足 P6，再谈治理档位与 gate**。
+新增模态或改版 compare-hub 时：**先满足 P6–P8，再谈治理档位与 gate**。
 
 ### 5.2 与第二层区别
 
@@ -354,25 +376,31 @@ npm run pricing:alert -- --dry-run            # 仅写 output/validate/pricing-a
 
 ## 9. Gate 与发布清单
 
-### 9.1 当前 `pricing:gate`
+### 9.1 `pricing:gate` 步骤（当前）
 
-```
-1. pricing:supplier:official:text
-2. validate-aigc-excel.mjs
-3. validate-official-aigc.mjs
-```
-
-### 9.2 当前 `pricing:gate`
-
-```
-1. pricing:supplier:official:text
-2. validate-aigc-excel.mjs
-3. validate-official-aigc.mjs
-4. validate-official-vs-suppliers.mjs
-5. emit-pricing-alerts.mjs --dry-run（写告警汇总，不推 webhook）
-```
+| # | 步骤 | 说明 |
+|---|------|------|
+| 0 | `npm run skill:lint:tools` | tools.yaml ↔ package.json 同步，防 Skill 漂移 |
+| 1 | `pricing:supplier:official:text` | 刷新生文官方种子 |
+| 2 | `pricing:supplier:official:image` | 刷新生图官方种子 |
+| 3 | `validate-aigc-excel.mjs` | AIGC Excel 结构 |
+| 4 | `validate-official-aigc.mjs` | 生文 L1↔L2 |
+| 5 | `validate-official-aigc-image.mjs` | 生图 L1↔L2 |
+| 6 | `validate-official-aigc-video.mjs` | 生视频 L1↔L2 |
+| 7–8 | `validate-official-vs-suppliers*` | L1↔L3 转售渠道 |
+| 9 | `emit-pricing-alerts.mjs --dry-run` | 告警汇总（无 webhook 时仅写文件） |
 
 推送机器人：`npm run pricing:alert`（需 `PRICING_ALERT_WEBHOOK_URL`）
+
+### 9.2 上游产出与 P6 覆盖报告
+
+| 命令 | 覆盖报告 |
+|------|----------|
+| `npm run pricing:upstream:video` | `output/upstream/coverage-video.md`（P6 hard fail） |
+| `npm run pricing:upstream:image` | `output/upstream/coverage-image.md`（P6 warn · **P7 hard fail**） |
+
+生视频：`compare-hub-video-lib` 在构建时 **assert** 线上 slug 全覆盖。  
+生图：`unionImageCompareTiers`（官方∪线上∪AIGC∪TokenHub）+ P7；可上线 JSON 走 P8 cascade（`pricing:gen-official:image`）。
 
 ### 9.3 发刊例前人工 Checklist
 

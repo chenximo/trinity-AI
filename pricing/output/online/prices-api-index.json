@@ -1,1114 +1,558 @@
 {
-  "fetchedAt": "2026-07-06T09:08:06.729Z",
-  "modality": "video",
+  "fetchedAt": "2026-07-06T10:45:38.636Z",
+  "modality": "image",
   "fxCnyPerUsd": 7.25,
-  "modelCount": 25,
+  "modelCount": 18,
   "models": {
-    "gv-3.1": {
-      "model": "gv-3.1",
-      "displayName": "GV-3.1",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.2,
-      "pricingMode": "video_tiered",
+    "gg-2.5": {
+      "model": "GG-2.5",
+      "displayName": "Nano-2.5",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "2k",
+      "price": 0.0586,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.2,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.0586,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.2,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.2,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0414,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.4,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0635,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "gg-3.0": {
+      "model": "GG-3.0",
+      "displayName": "Nano-3.0",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.137931,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.137931,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.3,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.248276,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "gv-3.1-fast": {
-      "model": "gv-3.1-fast",
-      "displayName": "GV-3.1-Fast",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.15,
-      "pricingMode": "video_tiered",
+    "gg-3.1": {
+      "model": "GG-3.1",
+      "displayName": "Nano-3.1",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "2k",
+      "price": 0.1154,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.15,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.1154,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "lt_1k",
+          "tierKey": "res:lt_1k",
+          "price": 0.0513,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.15,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.077,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.35,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.2,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.154483,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "gv-3.1-litenew": {
-      "model": "gv-3.1-litenew",
-      "displayName": "GV-3.1-Lite",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.05,
-      "pricingMode": "video_tiered",
+    "hunyuan-3.0": {
+      "model": "Hunyuan-3.0",
+      "displayName": "Hunyuan-3.0",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "2k",
+      "price": 0.0431,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.05,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.0431,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.05,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.05,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.12,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.049655,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "h2new-1": {
-      "model": "h2new-1",
-      "displayName": "h2new-1",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.1385,
-      "pricingMode": "video_tiered",
+    "jimeng-4.0": {
+      "model": "Jimeng-4.0",
+      "displayName": "Jimeng-4.0",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0339,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.1385,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.2462,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.1385,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.2954,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.3954,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "hailuo-2.3": {
-      "model": "hailuo-2.3",
-      "displayName": "Hailuo-2.3",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.050769,
-      "pricingMode": "video_tiered",
+    "kling-2.1": {
+      "model": "Kling-2.1",
+      "displayName": "Kling-2.1",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "2k",
+      "price": 0.077241,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.050769,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.077241,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.089231,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.013793,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.050769,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.229231,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.066207,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.143077,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.035862,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "hailuo-2.3-fast": {
-      "model": "hailuo-2.3-fast",
-      "displayName": "Hailuo-2.3-Fast",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.034615,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.034615,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.059231,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.034615,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.133846,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.089231,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "jv-3.0-pro": {
-      "model": "jv-3.0-pro",
-      "displayName": "Jimeng-3.0-Pro",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "1080p",
-      "price": 0.153846,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.153846,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.346154,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.230769,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "kling-2.5-turbo": {
-      "model": "kling-2.5-turbo",
-      "displayName": "Kling-2.5-Turbo",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.042,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.042,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.07,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.042,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.157,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.105,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "kling-2.6": {
-      "model": "kling-2.6",
-      "displayName": "Kling-2.6",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.042,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.042,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.14,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.042,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.1568,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.21,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "kling-3": {
-      "model": "kling-3",
+    "kling-3.0": {
+      "model": "Kling-3.0",
       "displayName": "Kling-3.0",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.126,
-      "pricingMode": "video_tiered",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0308,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.126,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.112,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.126,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.336,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.14,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.055172,
+          "pricingMode": "image_tiered"
         }
       ]
     },
     "kling-3.0-omni": {
-      "model": "kling-3.0-omni",
+      "model": "Kling-3.0-omni",
       "displayName": "Kling-3.0-Omni",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.154,
-      "pricingMode": "video_tiered",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0308,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.154,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.168,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.154,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.336,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.055172,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.21,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
         }
       ]
     },
     "kling-o1": {
-      "model": "kling-o1",
+      "model": "Kling-O1",
       "displayName": "Kling-O1",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.084,
-      "pricingMode": "video_tiered",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0308,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.084,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.168,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.084,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.252,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.252,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.055172,
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "os-2": {
-      "model": "os-2",
-      "displayName": "OS-2.0",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.1,
-      "pricingMode": "video_tiered",
+    "mj-v7": {
+      "model": "MJ-v7",
+      "displayName": "Midjourney-v7",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0462,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0462,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.063448,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.052414,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "og-image2-high": {
+      "model": "OG-image2-high",
+      "displayName": "Image-2.0 High",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 1.583,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 1.583,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 5.34,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 3.21,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "og-image2-low": {
+      "model": "OG-image2-low",
+      "displayName": "Image-2.0 Low",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.045,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.045,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
           "price": 0.15,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.34,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.225,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "pixversenew-c1": {
-      "model": "pixversenew-c1",
-      "displayName": "PixVerse-c1",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "768p",
-      "price": 0.0444,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.0444,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.1216,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.1013,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.0444,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.0444,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.1067,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "pixversenew-v5.6": {
-      "model": "pixversenew-v5.6",
-      "displayName": "PixVerse-v5.6",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.0504,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.0504,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.084,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.0504,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.1646,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.1176,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.0392,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "pixversenew-v6.0": {
-      "model": "pixversenew-v6.0",
-      "displayName": "PixVerse-v6.0",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.0595,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.0595,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.0595,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.08,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.1472,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.096,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.0311,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "seedance-1.0-pro": {
-      "model": "seedance-1.0-pro",
-      "displayName": "Seedance 1.0 Pro",
-      "modality": "video",
-      "updatedAt": "2026-06-09T16:00:00Z",
-      "tierLabel": "条件计价",
-      "price": 2.068966,
-      "pricingMode": "flat",
-      "tiers": [
-        {
-          "tierLabel": "条件计价",
-          "tierKey": "uniform",
-          "price": 2.068966,
-          "currency": "USD",
-          "pricingMode": "flat"
-        }
-      ]
-    },
-    "seedance-1.0-pro-fast": {
-      "model": "seedance-1.0-pro-fast",
-      "displayName": "Seedance 1.0 Pro Fast",
-      "modality": "video",
-      "updatedAt": "2026-06-09T16:00:00Z",
-      "tierLabel": "条件计价",
-      "price": 0.57931,
-      "pricingMode": "flat",
-      "tiers": [
-        {
-          "tierLabel": "条件计价",
-          "tierKey": "uniform",
-          "price": 0.57931,
-          "currency": "USD",
-          "pricingMode": "flat"
-        }
-      ]
-    },
-    "seedance-1.5-pro": {
-      "model": "seedance-1.5-pro",
-      "displayName": "Seedance 1.5 Pro",
-      "modality": "video",
-      "updatedAt": "2026-06-09T16:00:00Z",
-      "tierLabel": "含音频",
-      "price": 2.206897,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "含音频",
-          "tierKey": "uniform",
-          "price": 2.206897,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "vidu-q2": {
-      "model": "vidu-q2",
-      "displayName": "Vidu Q2",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.024615,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.024615,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.072308,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.024615,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.141923,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.107692,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.036923,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "vidu-q2-pro": {
-      "model": "vidu-q2-pro",
-      "displayName": "Vidu Q2-Pro",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.026923,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.026923,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.138462,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.026923,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.155769,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.076923,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.041538,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "vidu-q2-turbo": {
-      "model": "vidu-q2-turbo",
-      "displayName": "Vidu Q2-Turbo",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.038462,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.038462,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.036154,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.038462,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.161538,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.107692,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "vidu-q3": {
-      "model": "vidu-q3",
-      "displayName": "Vidu Q3",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.1,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.125,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.1,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.18,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "2k",
-          "tierKey": "res:2k",
-          "price": 0.15,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.025,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "vidu-q3-pro": {
-      "model": "vidu-q3-pro",
-      "displayName": "Vidu Q3-Pro",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.0625,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.0625,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.075,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.0625,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 0.108,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
           "price": 0.09,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.05,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "pricingMode": "image_tiered"
         }
       ]
     },
-    "vidu-q3-turbo": {
-      "model": "vidu-q3-turbo",
-      "displayName": "Vidu Q3-Turbo",
-      "modality": "video",
-      "updatedAt": "2026-05-20T16:00:00Z",
-      "tierLabel": "720p",
-      "price": 0.06,
-      "pricingMode": "video_tiered",
+    "og-image2-medium": {
+      "model": "OG-image2-medium",
+      "displayName": "Image-2.0 Medium",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.398,
+      "pricingMode": "image_tiered",
       "tiers": [
         {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 0.06,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 0.035,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "768p",
-          "tierKey": "res:720p",
-          "price": 0.06,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.398,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "4k",
           "tierKey": "res:4k",
-          "price": 0.1008,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 1.335,
+          "pricingMode": "image_tiered"
         },
         {
           "tierLabel": "2k",
           "tierKey": "res:2k",
-          "price": 0.042,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "price": 0.803,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "qwen-0925": {
+      "model": "qwen-0925",
+      "displayName": "Qwen-0925",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0462,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0462,
+          "pricingMode": "image_tiered"
         },
         {
-          "tierLabel": "480p540p",
-          "tierKey": "res:540p",
-          "price": 0.02,
-          "currency": "USD",
-          "pricingMode": "video_tiered"
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.063448,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.052414,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "si-4.0": {
+      "model": "SI-4.0",
+      "displayName": "Seedream-4.0",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0308,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.0308,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "si-4.5": {
+      "model": "SI-4.5",
+      "displayName": "Seedream-4.5",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0385,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0385,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.0385,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.0385,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "si-5.0-lite": {
+      "model": "SI-5.0-lite",
+      "displayName": "Seedream-5.0-lite",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0339,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.0339,
+          "pricingMode": "image_tiered"
+        }
+      ]
+    },
+    "vidu-q2": {
+      "model": "Vidu-q2",
+      "displayName": "Vidu Q2",
+      "modality": "image",
+      "updatedAt": "2026-06-08T16:00:00Z",
+      "tierLabel": "1k",
+      "price": 0.0577,
+      "pricingMode": "image_tiered",
+      "tiers": [
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.0577,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.077,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "4k",
+          "tierKey": "res:4k",
+          "price": 0.0482,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.025931,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.129379,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "2k",
+          "tierKey": "res:2k",
+          "price": 0.034483,
+          "pricingMode": "image_tiered"
+        },
+        {
+          "tierLabel": "1k",
+          "tierKey": "res:1k",
+          "price": 0.086207,
+          "pricingMode": "image_tiered"
         }
       ]
     }

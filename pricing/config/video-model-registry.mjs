@@ -146,19 +146,21 @@ export const VIDEO_MODEL_REGISTRY = [
     aigc: { vendorCode: "SV", modelName: "1.0-pro", attribute: "标准价" },
     brand: "Seedance",
     displayName: "Seedance 1.0 Pro",
-    note: "线上 slug seedance-* · AIGC 厂商 SV",
+    note: "线上 seedance-* · 官方补行见 doubao-seedance-*（火山 L3 参照）",
   },
   {
     onlineSlug: "seedance-1.0-pro-fast",
     aigc: { vendorCode: "SV", modelName: "1.0-pro-fast", attribute: "标准价" },
     brand: "Seedance",
     displayName: "Seedance 1.0 Pro Fast",
+    note: "线上 slug · 非 doubao-seedance-1.0-pro-fast 同键",
   },
   {
     onlineSlug: "seedance-1.5-pro",
     aigc: { vendorCode: "SV", modelName: "1.5-pro", attribute: "标准价" },
     brand: "Seedance",
     displayName: "Seedance 1.5 Pro",
+    note: "线上 slug · 官方 doubao-seedance-1.5-pro 为按个计价，分行对比",
   },
   {
     onlineSlug: "vidu-q2-pro",
@@ -213,6 +215,7 @@ export const VIDEO_MODEL_REGISTRY = [
     volcengineId: "doubao-seedance-2.0",
     brand: "豆包",
     displayName: "Doubao-seedance-2.0",
+    note: "仅官方 · 线上无同 slug（见 seedance-* 刊例行）",
   },
   {
     vendorModelId: "doubao-seedance-2.0-fast",
@@ -220,6 +223,7 @@ export const VIDEO_MODEL_REGISTRY = [
     volcengineId: "doubao-seedance-2.0-fast",
     brand: "豆包",
     displayName: "Doubao-seedance-2.0-fast",
+    note: "仅官方 · volcengine connected:false 参照列",
   },
   {
     vendorModelId: "doubao-seedance-2.0-mini",
@@ -227,6 +231,7 @@ export const VIDEO_MODEL_REGISTRY = [
     volcengineId: "doubao-seedance-2.0-mini",
     brand: "豆包",
     displayName: "Doubao-seedance-2.0-mini",
+    note: "仅官方 · volcengine connected:false 参照列",
   },
   {
     vendorModelId: "doubao-seedance-1.5-pro",
@@ -234,6 +239,7 @@ export const VIDEO_MODEL_REGISTRY = [
     volcengineId: "doubao-seedance-1.5-pro",
     brand: "豆包",
     displayName: "Doubao-seedance-1.5-pro",
+    note: "仅官方 · 与 seedance-1.5-pro 刊例为不同计价轴",
   },
 ];
 

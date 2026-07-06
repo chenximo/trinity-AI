@@ -20,7 +20,7 @@ import {
   FX_ONLINE_DOMESTIC,
 } from "./compare-official-lib.mjs";
 import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
-import { findTierByKey } from "./tier-key.mjs";
+import { findTierByKey, tierSortKey } from "./tier-key.mjs";
 import {
   imageTierPrice,
   imageTierWithKey,
@@ -33,6 +33,9 @@ import {
   evaluateImagePriceVsOfficial,
   findCompareTierByKey,
 } from "./image-pricing-validate-lib.mjs";
+import {
+  findCompareTierReductions,
+} from "./compare-online-coverage-lib.mjs";
 import {
   OFFICIAL_MAP_FILE,
   officialComparePaths,
@@ -88,10 +91,71 @@ function normalizeResLabel(label) {
   const t = String(label ?? "").trim();
   if (!t) return t;
   const low = t.toLowerCase();
+  if (low === "lt_1k" || low === "sub-1k" || /1k以下/.test(t)) return "1K以下";
   if (low === "1k" || low === "1k ") return "1K";
   if (low === "2k") return "2K";
   if (low === "4k") return "4K";
   return t;
+}
+
+function compareTierKey(tier, index = 0, total = 1) {
+  if (tier?.tierKey && tier.tierKey !== "uniform") return tier.tierKey;
+  const label = normalizeResLabel(tier?.tierLabel ?? tier?.tierName ?? "");
+  const low = label.toLowerCase();
+  if (low === "1k") return "res:1k";
+  if (low === "2k") return "res:2k";
+  if (low === "4k") return "res:4k";
+  if (low === "1k以下") return "res:sub-1k";
+  return imageTierWithKey({ tierLabel: label, price: tier?.price }, index, total).tierKey;
+}
+
+/**
+ * 刊例对比行档位 = 官方 ∪ 线上 ∪ AIGC ∪ TokenHub（同 tierKey 去重；官方价优先）
+ */
+function unionImageCompareTiers({
+  officialTiers,
+  onlineTiers,
+  aigcDom,
+  aigcIntl,
+  aigcMapRef,
+  thModel,
+}) {
+  const byKey = new Map();
+  const offList = officialTiers ?? [];
+  const offTotal = offList.length || 1;
+
+  const upsert = (tier, { preferPrice = false, index = 0, total = 1 } = {}) => {
+    const tierKey = compareTierKey(tier, index, total);
+    if (!tierKey) return;
+    const tierLabel = normalizeResLabel(tier.tierLabel ?? tier.tierName ?? "—");
+    const tierPrice = preferPrice ? imageTierPrice(tier) : null;
+    const existing = byKey.get(tierKey);
+    if (!existing) {
+      byKey.set(tierKey, { tierLabel, tierKey, price: tierPrice });
+      return;
+    }
+    if (preferPrice && tierPrice != null) {
+      existing.price = tierPrice;
+      existing.tierLabel = tierLabel;
+    }
+  };
+
+  offList.forEach((t, i) => upsert(t, { preferPrice: true, index: i, total: offTotal }));
+  (onlineTiers ?? []).forEach((t, i) =>
+    upsert(t, { index: i, total: onlineTiers.length || 1 }),
+  );
+  const intlTiers = aigcImageTiersForCompare(aigcIntl, aigcMapRef);
+  const domTiers = aigcImageTiersForCompare(aigcDom, aigcMapRef);
+  intlTiers.forEach((t, i) => upsert(t, { index: i, total: intlTiers.length || 1 }));
+  domTiers.forEach((t, i) => upsert(t, { index: i, total: domTiers.length || 1 }));
+  const thTiers = tokenhubImageTiersForCompare(thModel);
+  thTiers.forEach((t, i) => upsert(t, { index: i, total: thTiers.length || 1 }));
+
+  return [...byKey.values()].sort(
+    (a, b) =>
+      tierSortKey(a.tierKey) - tierSortKey(b.tierKey) ||
+      String(a.tierLabel).localeCompare(String(b.tierLabel)),
+  );
 }
 
 function pickOnlineTier(onlineTiers, offTier) {
@@ -180,11 +244,12 @@ function compareOfficialModels(a, b, reverseTrinity, vendorsWithLink) {
 }
 
 function tierSort(a, b) {
+  const sa = tierSortKey(a.tierKey ?? compareTierKey(a));
+  const sb = tierSortKey(b.tierKey ?? compareTierKey(b));
+  if (sa !== sb) return sa - sb;
   const ia = RES_ORDER.indexOf(normalizeResLabel(a.tierLabel));
   const ib = RES_ORDER.indexOf(normalizeResLabel(b.tierLabel));
-  const sa = ia === -1 ? 99 : ia;
-  const sb = ib === -1 ? 99 : ib;
-  if (sa !== sb) return sa - sb;
+  if (ia !== -1 && ib !== -1 && ia !== ib) return ia - ib;
   return String(a.tierLabel).localeCompare(String(b.tierLabel));
 }
 
@@ -299,7 +364,20 @@ function buildImageTierRow(ctx) {
       base,
       ["official-listing"],
     );
-  } else if (trinityId && trinityId !== "—") {
+  } else if (onlineTier && offPrice == null && intlPrice != null) {
+    const aigcVsOnline = evaluateImagePriceVsOfficial(
+      intlPrice,
+      onlinePrice,
+      "USD",
+      "USD",
+    );
+    if (aigcVsOnline.comparable) {
+      const base = formatFieldVsOfficial("价", aigcVsOnline.pct, true) ?? "—";
+      listingConclusion = `ℹ 官方无档 · ${base}`;
+    } else {
+      listingConclusion = "ℹ 官方无此分辨率档";
+    }
+  } else if (trinityId && trinityId !== "—" && !onlineTier) {
     listingConclusion = "ℹ 线上无同档刊例";
   }
 
@@ -361,6 +439,7 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
   );
   const trinityLinkedCount = reverseTrinity.size;
   const rows = [];
+  const tierUnionSpecs = [];
 
   const sorted = [...officialModels].sort((a, b) =>
     compareOfficialModels(a, b, reverseTrinity, vendorsWithLink),
@@ -369,10 +448,10 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
   for (const off of sorted) {
     const vendorModelId = off.vendorModelId ?? "—";
     const trinityId = reverseTrinity.get(vendorModelId.toLowerCase()) ?? null;
-    const tiers = [...officialImageTiers(off)].sort(tierSort);
+    const officialTiers = [...officialImageTiers(off)].sort(tierSort);
 
     if (!trinityId) {
-      for (const offTier of tiers) {
+      for (const offTier of officialTiers) {
         rows.push(buildUnmappedRow(off, offTier, vendorModelId));
       }
       continue;
@@ -384,7 +463,7 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
     const listed = upstreamByTrinity.has(tid);
 
     if (!listed && !online) {
-      for (const offTier of tiers) {
+      for (const offTier of officialTiers) {
         rows.push(buildMappedNoListingRow(off, offTier, vendorModelId, trinityId));
       }
       continue;
@@ -401,7 +480,36 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
     const thModel = thById.get(tid) ?? thById.get(vendorModelId.toLowerCase()) ?? null;
     const volModel = volByTrinity.get(tid) ?? null;
 
-    for (const offTier of tiers) {
+    const compareTiers = unionImageCompareTiers({
+      officialTiers,
+      onlineTiers,
+      aigcDom,
+      aigcIntl,
+      aigcMapRef: aigcRef,
+      thModel,
+    });
+
+    const tierKeysFrom = (tiers) =>
+      (tiers ?? []).map((t, i) =>
+        compareTierKey(t, i, tiers.length || 1),
+      );
+    const aigcDomTierList = aigcImageTiersForCompare(aigcDom, aigcRef);
+    const aigcIntlTierList = aigcImageTiersForCompare(aigcIntl, aigcRef);
+    const thTierList = tokenhubImageTiersForCompare(thModel);
+
+    tierUnionSpecs.push({
+      modelId: trinityId,
+      compareTierKeys: compareTiers.map((t) => t.tierKey),
+      sourceTierKeys: {
+        official: tierKeysFrom(officialTiers),
+        online: tierKeysFrom(onlineTiers),
+        aigcDom: tierKeysFrom(aigcDomTierList),
+        aigcIntl: tierKeysFrom(aigcIntlTierList),
+        tokenhub: tierKeysFrom(thTierList),
+      },
+    });
+
+    for (const offTier of compareTiers) {
       rows.push(
         buildImageTierRow({
           off,
@@ -420,6 +528,14 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
     }
   }
 
+  const tierCoverage = findCompareTierReductions(tierUnionSpecs);
+  if (!tierCoverage.ok) {
+    const detail = tierCoverage.violations
+      .map((v) => `${v.modelId} 缺 [${v.missing.join(", ")}]`)
+      .join("; ");
+    throw new Error(`[image P7] 刊例对比档位被削减：${detail}`);
+  }
+
   return {
     modality: "image",
     generatedAt,
@@ -430,6 +546,7 @@ export function buildImageCompareHubFromModels(trinityOnlineModels, hubCtx) {
     trinityOnlineCount: trinityOnlineModels?.length ?? 0,
     rowCount: rows.length,
     fxOnlineDomestic: FX_ONLINE_DOMESTIC,
+    tierCoverage,
     rows,
   };
 }

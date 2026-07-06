@@ -33,6 +33,7 @@ import {
   VIDEO_PRICING_XLSX,
   SUPPLIERS_DIR,
 } from "./lib/paths.mjs";
+import { renderOnlineCoverageFromContext } from "./lib/render-online-coverage-md.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TRINITY_BASE = "https://api.trinitydesk.ai/v1";
@@ -195,12 +196,29 @@ async function main() {
     "utf8",
   );
 
+  const coverageMd = renderOnlineCoverageFromContext({
+    modality: "video",
+    label: "刊例对比校验-生视频",
+    onlineByModel: hubCtx.onlineByModel,
+    coveredSlugs: compareReport.rows
+      .map((r) => r.onlineSlug)
+      .filter((s) => s && s !== "—"),
+    compareReport,
+  });
+  const coveragePath = path.join(OUT_UPSTREAM_DIR, "coverage-video.md");
+  await mkdir(OUT_UPSTREAM_DIR, { recursive: true });
+  await writeFile(coveragePath, coverageMd, "utf8");
+
   console.log(`Trinity video models: ${trinityList.length}`);
   console.log(
-    `Official catalog rows: ${compareReport.modelCount} · compare rows: ${compareReport.rowCount}`,
+    `Compare units: ${compareReport.compareUnitCount} · rows: ${compareReport.rowCount} · P6 线上 ${compareReport.onlineCoverage.onlineCount} → 覆盖 ${compareReport.onlineCoverage.coveredCount} ✅`,
+  );
+  console.log(
+    `Official catalog rows: ${compareReport.modelCount} · 完整治理: ${compareReport.fullGovernanceCount}`,
   );
   console.log(`AIGC video entries: ${aigcModels.length}`);
   console.log(`Wrote ${comparePaths.officialMd}`);
+  console.log(`Wrote ${coveragePath}`);
   console.log(`Wrote ${videoXlsx}`);
   console.log(`Wrote ${aigcOut}`);
 }

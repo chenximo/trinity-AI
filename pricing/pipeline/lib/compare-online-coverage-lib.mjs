@@ -54,3 +54,58 @@ export function assertOnlineListingCovered(
   }
   return report;
 }
+
+/** @param {Iterable<string | null | undefined>[]} lists */
+export function unionTierKeySets(...lists) {
+  const keys = new Set();
+  for (const list of lists) {
+    if (!list) continue;
+    for (const k of list) {
+      if (k && k !== "—") keys.add(String(k));
+    }
+  }
+  return keys;
+}
+
+/**
+ * 单模型：刊例对比档位是否 ⊇ 各源 tierKey 并集（P7）
+ * @param {{
+ *   modelId: string,
+ *   compareTierKeys?: string[],
+ *   sourceTierKeys?: Record<string, string[]>,
+ * }} spec
+ */
+export function findCompareTierReduction(spec) {
+  const sources = Object.values(spec.sourceTierKeys ?? {});
+  const expected = unionTierKeySets(...sources);
+  const compare = unionTierKeySets(spec.compareTierKeys ?? []);
+  const missing = [...expected].filter((k) => !compare.has(k));
+  return {
+    modelId: spec.modelId,
+    expectedCount: expected.size,
+    compareCount: compare.size,
+    missing,
+    ok: missing.length === 0,
+  };
+}
+
+/**
+ * @param {Parameters<typeof findCompareTierReduction>[0][]} specs
+ */
+export function findCompareTierReductions(specs) {
+  const violations = specs.map(findCompareTierReduction).filter((r) => !r.ok);
+  return { violations, ok: violations.length === 0 };
+}
+
+/**
+ * @param {Parameters<typeof findCompareTierReduction>[0] & { modality?: string }} spec
+ */
+export function assertCompareTierUnion(spec) {
+  const report = findCompareTierReduction(spec);
+  if (!report.ok) {
+    throw new Error(
+      `[${spec.modality ?? "compare"}] ${report.modelId} 档位被削减：缺少 tierKey [${report.missing.join(", ")}]（表内 ${report.compareCount} 档 · 并集至少 ${report.expectedCount} 档）`,
+    );
+  }
+  return report;
+}

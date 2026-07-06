@@ -13,6 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "../..");
 
 const steps = [
+  ["skill:lint:tools", "npm", ["run", "skill:lint:tools"]],
   ["official:text", "npm", ["run", "pricing:supplier:official:text"]],
   ["official:image", "npm", ["run", "pricing:supplier:official:image"]],
   ["aigc-excel", "node", ["pricing/pipeline/validate-aigc-excel.mjs"]],

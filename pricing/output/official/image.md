@@ -1,23 +1,28 @@
 # 生图刊例对比校验（与 Excel「刊例对比校验-生图」同源）
 
-> 生成 2026-07-03T10:15:33Z · 官方模型 20 个 · 行 49 · Trinity 已映射 20 · 线上 18
+> 生成 2026-07-06T10:45:38Z · 官方模型 20 个 · 行 60 · Trinity 已映射 20 · 线上 18
 > **行轴**：`suppliers/official/output/image/vendor-pricing.json` 全量
-> 厂商官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-03T09:37:10Z）
+> 厂商官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-06T10:02:50Z）
 > AIGC：`suppliers/aigc` · TokenHub · 火山方舟
-> 线上刊例：`output/online/prices-api.json`（2026-07-03T10:15:33Z）
+> 线上刊例：`output/online/prices-api.json`（2026-07-06T10:45:38Z）
 > 国内官方 CNY→USD：÷6.5
 
 | 原厂 modelId | Trinity ID | 显示名 | 厂商 | 分辨率档 | 厂商官方 | AIGC国内 | AIGC国际 | TokenHub | 火山方舟 | 线上刊例 | AIGC国内vs官方 | AIGC国际vs官方 | TokenHub vs官方 | 火山vs官方 | 刊例结论 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| gemini-2.5-flash-image | gg-2.5 | Gemini | Gemini | 1K | $0.039/张 | — | — | — | — | $0.0414/张 | — | — | — | — | 价⚠+6.2% | API ID gemini-2.5-flash-image · Nano Banana |
+| gemini-2.5-flash-image | gg-2.5 | Gemini | Gemini | 1K | $0.039/张 | ¥0.3/张 | $0.039/张 | — | — | $0.0414/张 | — | ✅ | — | — | 价⚠+6.2% | API ID gemini-2.5-flash-image · Nano Banana |
+|  |  |  |  | 2K | — | ¥0.38/张 | $0.051/张 | — | — | $0.0586/张 | — | — | — | — | ℹ 官方无档 · 价⚠+14.9% | API ID gemini-2.5-flash-image · Nano Banana |
+|  |  |  |  | 4K | — | ¥0.46/张 | $0.063/张 | — | — | $0.0635/张 | — | — | — | — | ℹ 官方无档 · 价⚠+0.8% | API ID gemini-2.5-flash-image · Nano Banana |
 | gemini-3-image | gg-3.0 | Gemini | Gemini | 1K | $0.134/张 | ¥1/张 | $0.135/张 | — | — | $0.137931/张 | — | ⚠+0.7% | — | — | 价⚠+2.9% | API ID gemini-3-pro-image · Nano Banana Pro |
 |  |  |  |  | 2K | $0.134/张 | ¥1/张 | $0.135/张 | — | — | $0.248276/张 | — | ⚠+0.7% | — | — | 🔍待核验 价⚠+85.3% | API ID gemini-3-pro-image · Nano Banana Pro |
 |  |  |  |  | 4K | $0.24/张 | ¥1.8/张 | $0.24/张 | — | — | — | — | ✅ | — | — | ℹ 线上无同档刊例 | API ID gemini-3-pro-image · Nano Banana Pro |
-| gemini-3.1-image | gg-3.1 | Gemini | Gemini | 1K以下 | $0.045/张 | ¥0.333/张 | $0.045/张 | — | — | — | — | ✅ | — | — | ℹ 线上无同档刊例 | API ID gemini-3.1-flash-image · Nano Banana 2 |
+| gemini-3.1-image | gg-3.1 | Gemini | Gemini | 1K以下 | $0.045/张 | ¥0.333/张 | $0.045/张 | — | — | $0.0513/张 | — | ✅ | — | — | 价⚠+14% | API ID gemini-3.1-flash-image · Nano Banana 2 |
 |  |  |  |  | 1K | $0.067/张 | ¥0.5/张 | $0.067/张 | — | — | $0.077/张 | — | ✅ | — | — | 价⚠+14.9% | API ID gemini-3.1-flash-image · Nano Banana 2 |
 |  |  |  |  | 2K | $0.101/张 | ¥0.75/张 | $0.101/张 | — | — | $0.1154/张 | — | ✅ | — | — | 价⚠+14.3% | API ID gemini-3.1-flash-image · Nano Banana 2 |
 |  |  |  |  | 4K | $0.151/张 | ¥1.12/张 | $0.151/张 | — | — | $0.154483/张 | — | ✅ | — | — | 价⚠+2.3% | API ID gemini-3.1-flash-image · Nano Banana 2 |
-| midjourney-v7 | mj-v7 | Midjourney | Midjourney | 1K | $0.039/张 | — | — | — | — | $0.0462/张 | — | — | — | — | 价⚠+18.5% | 订阅制，无公开 API 按张价目 |
+|  |  |  |  | 1K以下 | — | — | — | — | — | $0.0513/张 | — | — | — | — | — | API ID gemini-3.1-flash-image · Nano Banana 2 |
+| midjourney-v7 | mj-v7 | Midjourney | Midjourney | 1K | $0.039/张 | ¥0.3/张 | $0.039/张 | — | — | $0.0462/张 | — | ✅ | — | — | 价⚠+18.5% | 订阅制，无公开 API 按张价目 |
+|  |  |  |  | 2K | — | ¥0.38/张 | $0.051/张 | — | — | $0.052414/张 | — | — | — | — | ℹ 官方无档 · 价⚠+2.8% | 订阅制，无公开 API 按张价目 |
+|  |  |  |  | 4K | — | ¥0.46/张 | $0.063/张 | — | — | $0.063448/张 | — | — | — | — | ℹ 官方无档 · 价⚠+0.7% | 订阅制，无公开 API 按张价目 |
 | openai-image2-high | og-image2-high | OpenAI | OpenAI | 1K | $0.211/张 | ¥1.583/张 | $0.211/张 | — | — | $1.583/张 | — | ✅ | — | — | 🔍待核验 价⚠+650.2% |  |
 |  |  |  |  | 2K | $0.428/张 | ¥3.21/张 | $0.428/张 | — | — | $3.21/张 | — | ✅ | — | — | 🔍待核验 价⚠+650% |  |
 |  |  |  |  | 4K | $0.712/张 | ¥5.34/张 | $0.712/张 | — | — | $5.34/张 | — | ✅ | — | — | 🔍待核验 价⚠+650% |  |
@@ -46,6 +51,9 @@
 |  |  |  |  | 2K | ¥0.2/张 | ¥0.2/张 | $0.028/张 | — | — | $0.0308/张 | ✅ | ⚠-9% | — | — | 价✅ | 灵感值/Credits 计价，无公开按张 API 价目 |
 |  |  |  |  | 4K | ¥0.4/张 | ¥0.4/张 | $0.056/张 | — | — | $0.055172/张 | ✅ | ⚠-9% | — | — | 价⚠-10.3% | 灵感值/Credits 计价，无公开按张 API 价目 |
 | hunyuan-image-3 | hunyuan-3.0 | 混元 | 混元 | 输出 | ¥0.2/张 | — | — | — | — | — | — | — | — | — | ℹ 线上无同档刊例 | Trinity Hunyuan-3.0 · 官方与 hy-image-v3.0 同价 0.2元/张 |
+|  |  |  |  | 1K | — | ¥0.2/张 | — | — | — | $0.0308/张 | — | — | — | — | — | Trinity Hunyuan-3.0 · 官方与 hy-image-v3.0 同价 0.2元/张 |
+|  |  |  |  | 2K | — | ¥0.28/张 | — | — | — | $0.0431/张 | — | — | — | — | — | Trinity Hunyuan-3.0 · 官方与 hy-image-v3.0 同价 0.2元/张 |
+|  |  |  |  | 4K | — | ¥0.36/张 | — | — | — | $0.049655/张 | — | — | — | — | — | Trinity Hunyuan-3.0 · 官方与 hy-image-v3.0 同价 0.2元/张 |
 | hy-image-lite | hy-image-lite | 混元 | 混元 | 输出 | ¥0.099/张 | — | — | — | — | — | — | — | — | — | — 未上架 | TokenHub hy-image-lite · 混元生图极速版 |
 | hy-image-v3.0 | hy-image-v3.0 | 混元 | 混元 | 输出 | ¥0.2/张 | — | — | — | — | — | — | — | — | — | — 未上架 | TokenHub hy-image-v3.0 · API 混元生图 3.0 |
 | doubao-seedream-4.0 | si-4.0 | 豆包 | 豆包 | 1K | ¥0.2/张 | ¥0.2/张 | $0.0308/张 | — | ¥0.2/张 | $0.0308/张 | ✅ | ✅ | — | ✅ | 价✅ |  |
@@ -58,3 +66,6 @@
 |  |  |  |  | 2K | ¥0.22/张 | ¥0.22/张 | $0.0339/张 | — | ¥0.22/张 | $0.0339/张 | ✅ | ✅ | — | ✅ | 价✅ |  |
 |  |  |  |  | 4K | ¥0.22/张 | ¥0.22/张 | $0.0339/张 | — | ¥0.22/张 | $0.0339/张 | ✅ | ✅ | — | ✅ | 价✅ |  |
 | qwen-image-0925 | qwen-0925 | 通义 | 通义 | 输出 | ¥0.25/张 | — | — | — | — | — | — | — | — | — | ℹ 线上无同档刊例 | Trinity qwen-0925 · 百炼 API qwen-image（统一 ¥0.25/张） |
+|  |  |  |  | 1K | — | ¥0.3/张 | $0.0461538461538462/张 | — | — | $0.0462/张 | — | — | — | — | ℹ 官方无档 · 价✅ | Trinity qwen-0925 · 百炼 API qwen-image（统一 ¥0.25/张） |
+|  |  |  |  | 2K | — | ¥0.38/张 | $0.0584615384615385/张 | — | — | $0.052414/张 | — | — | — | — | ℹ 官方无档 · 价⚠-10.3% | Trinity qwen-0925 · 百炼 API qwen-image（统一 ¥0.25/张） |
+|  |  |  |  | 4K | — | ¥0.46/张 | $0.0707692307692308/张 | — | — | $0.063448/张 | — | — | — | — | ℹ 官方无档 · 价⚠-10.3% | Trinity qwen-0925 · 百炼 API qwen-image（统一 ¥0.25/张） |
