@@ -18,6 +18,7 @@ const steps = [
   ["aigc-excel", "node", ["pricing/pipeline/validate-aigc-excel.mjs"]],
   ["official-aigc", "node", ["pricing/pipeline/validate-official-aigc.mjs"]],
   ["official-aigc-image", "node", ["pricing/pipeline/validate-official-aigc-image.mjs"]],
+  ["official-aigc-video", "node", ["pricing/pipeline/validate-official-aigc-video.mjs"]],
   [
     "official-suppliers",
     "node",
@@ -27,6 +28,11 @@ const steps = [
     "official-suppliers-image",
     "node",
     ["pricing/pipeline/validate-official-vs-suppliers-image.mjs"],
+  ],
+  [
+    "official-suppliers-video",
+    "node",
+    ["pricing/pipeline/validate-official-vs-suppliers-video.mjs"],
   ],
   [
     "alerts-dry-run",

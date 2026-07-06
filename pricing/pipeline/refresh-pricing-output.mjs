@@ -41,6 +41,7 @@ const steps = [
   ),
   ["upstream", "npm", ["run", "pricing:upstream"]],
   ["upstream:image", "npm", ["run", "pricing:upstream:image"]],
+  ["upstream:video", "npm", ["run", "pricing:upstream:video"]],
 ];
 
 let failed = false;
@@ -59,6 +60,7 @@ if (!failed) {
   console.log("\n✅ pricing:refresh 完成");
   console.log("   Excel: pricing/output/trinity-pricing-text.xlsx");
   console.log("         pricing/output/trinity-pricing-image.xlsx");
+  console.log("         pricing/output/trinity-pricing-video.xlsx");
   console.log("   建议再跑: npm run pricing:gate");
 }
 

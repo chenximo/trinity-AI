@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-07-06T07:02:22.469Z",
+  "bySupplier": [
+    {
+      "key": "aigc-domestic",
+      "tierCount": 42,
+      "mismatchCount": 0,
+      "unitMismatchCount": 42
+    },
+    {
+      "key": "aigc-international",
+      "tierCount": 38,
+      "mismatchCount": 0,
+      "unitMismatchCount": 38
+    }
+  ],
+  "mismatchCount": 0,
+  "mismatches": [],
+  "note": "官方积分/次 vs AIGC元/秒 → unit_mismatch 为预期"
+}

@@ -19,7 +19,7 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "../../..")
 const UPSTREAM_SCRIPT = {
   text: "pricing/pipeline/gen-upstream-pricing.mjs",
   image: "pricing/pipeline/gen-upstream-image-pricing.mjs",
-  video: "pricing/pipeline/gen-upstream-pricing.mjs",
+  video: "pricing/pipeline/gen-upstream-video-pricing.mjs",
 };
 
 const UPSTREAM_XLSX = {

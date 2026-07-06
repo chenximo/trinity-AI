@@ -21,6 +21,11 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
     return "mod:text";
   }
 
+  // 生视频分辨率档
+  if (/480p|540p/i.test(n)) return "res:540p";
+  if (/720p|768p/i.test(n)) return "res:720p";
+  if (/1080p/i.test(n)) return "res:1080p";
+
   // 生图分辨率档
   if (/1k以下|512|sub.?1k|1k以下/i.test(n)) return "res:sub-1k";
   if (/^4k$/i.test(n) || /4k分辨率/.test(n)) return "res:4k";
@@ -94,6 +99,9 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
 
 export const TIER_KEY_ORDER = [
   "uniform",
+  "res:540p",
+  "res:720p",
+  "res:1080p",
   "res:sub-1k",
   "res:1k",
   "res:2k",

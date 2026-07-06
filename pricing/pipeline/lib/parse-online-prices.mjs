@@ -59,10 +59,69 @@ export function parseOnlineImageTiers(entry) {
   return [parseOnlineImagePrimary(entry)];
 }
 
+/** 生视频按分辨率分档 · USD/秒 */
+export function parseOnlineVideoTiers(entry) {
+  const mode = entry.pricing_mode;
+  const groups = entry.price_groups ?? [];
+
+  if (mode === "video_tiered" || entry.modality_type === "video") {
+    const tiers = groups
+      .filter((g) => g.type === "resolution_tier" && g.prices?.unit)
+      .map((g) => {
+        const res =
+          g.conditions?.resolution ??
+          g.conditions_summary ??
+          g.label ??
+          "标准价";
+        const label = String(res).trim();
+        const low = label.toLowerCase();
+        let tierKey;
+        if (/540p|480p/.test(low)) tierKey = "res:540p";
+        else if (/768p|720p/.test(low)) tierKey = "res:720p";
+        else if (/1080p/.test(low)) tierKey = "res:1080p";
+        else if (/^2k/.test(low)) tierKey = "res:2k";
+        else if (/^4k/.test(low)) tierKey = "res:4k";
+        else tierKey = `res:${low}`;
+        return {
+          tierLabel: label,
+          tierKey,
+          price: num(g.prices.unit.amount),
+          currency: g.prices.unit.currency ?? entry.currency ?? "USD",
+          pricingMode: mode,
+        };
+      });
+    if (tiers.length) return tiers;
+  }
+
+  const flat = groups.find((g) => g.prices?.unit);
+  if (flat?.prices?.unit) {
+    return [
+      {
+        tierLabel: flat.label ?? "标准价",
+        tierKey: "uniform",
+        price: num(flat.prices.unit.amount),
+        currency: flat.prices.unit.currency ?? entry.currency ?? "USD",
+        pricingMode: mode,
+      },
+    ];
+  }
+  return [];
+}
+
 /** legacy：default 组；阶梯：各 token_kind 取 ranges[0] 作为主档摘要价 */
 export function parseOnlinePricesPrimary(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
+
+  if (mode === "video_tiered" || entry.modality_type === "video") {
+    const tiers = parseOnlineVideoTiers(entry);
+    const first = tiers[0];
+    return {
+      tierLabel: first?.tierLabel ?? "—",
+      price: first?.price ?? null,
+      pricingMode: mode,
+    };
+  }
 
   if (mode === "image_tiered" || entry.modality_type === "image") {
     return parseOnlineImagePrimary(entry);
@@ -110,6 +169,10 @@ export function parseOnlinePricesPrimary(entry) {
 export function parseOnlinePricesTiers(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
+
+  if (mode === "video_tiered" || entry.modality_type === "video") {
+    return parseOnlineVideoTiers(entry);
+  }
 
   if (mode === "image_tiered" || entry.modality_type === "image") {
     return parseOnlineImageTiers(entry);
@@ -204,6 +267,8 @@ export function flattenPricesList(data) {
     const primary = parseOnlinePricesPrimary(entry);
     const isImage =
       entry.pricing_mode === "image_tiered" || entry.modality_type === "image";
+    const isVideo =
+      entry.pricing_mode === "video_tiered" || entry.modality_type === "video";
     return {
       model: entry.model,
       displayName: entry.display_name,
@@ -213,11 +278,11 @@ export function flattenPricesList(data) {
       priceUnit: entry.price_unit,
       updatedAt: entry.updated_at,
       tierLabel: primary.tierLabel,
-      inputUsd: isImage ? null : primary.input,
-      outputUsd: isImage ? null : primary.output,
-      cacheUsd: isImage ? null : primary.cache,
-      cacheCreationUsd: isImage ? null : primary.cacheCreation,
-      priceUsd: isImage ? primary.price : null,
+      inputUsd: isImage || isVideo ? null : primary.input,
+      outputUsd: isImage || isVideo ? null : primary.output,
+      cacheUsd: isImage || isVideo ? null : primary.cache,
+      cacheCreationUsd: isImage || isVideo ? null : primary.cacheCreation,
+      priceUsd: isImage || isVideo ? primary.price : null,
       tierCount: parseOnlinePricesTiers(entry).length,
     };
   });

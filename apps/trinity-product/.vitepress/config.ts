@@ -24,6 +24,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
       { text: "更新规范", link: "/产品手册更新规范" },
       { text: "产品线产品设计分析模板", link: "/产品线产品设计分析-模板" },
       { text: "产品经理工作手册", link: "/产品经理工作手册" },
+      { text: "产品经理必备技能", link: "/产品经理必备技能" },
       { text: "子页 PRD 规范", link: "/geo/sub-page-prd-standard" },
       { text: "Cursor Skills 全景图", link: "/cursor-skills-全景图" },
     ],

@@ -1,12 +1,25 @@
 /**
  * 生视频官网核实价目（种子）
- * 来源：各厂商官网定价页；积分价对照 TokenHub 挂牌
+ * 来源：各厂商官网定价页
+ *
+ * **可灵**：官网按秒 · 积分/秒 = 元/秒（1积分=¥1）→ 与 AIGC 元/秒 直接对照
+ * **混元/Vidu 等**：官网按次扣积分/次 → 对照表用参考秒数折算元/秒(估)
  */
 
 /**
  * @typedef {{ tierLabel: string, price: number | string, unit: string, note?: string }} TierSeed
  * @typedef {{ tiers: TierSeed[], note?: string }} MediaSeedEntry
  */
+
+/** @param {Record<string, number>} byRes @param {string} [note] */
+function klingPerSecTiers(byRes, note = "按秒 · 1积分=¥1/秒") {
+  return Object.entries(byRes).map(([tierLabel, price]) => ({
+    tierLabel,
+    price,
+    unit: "积分/秒",
+    note,
+  }));
+}
 
 /** @type {Record<string, MediaSeedEntry>} */
 export const VIDEO_SEED = {
@@ -15,23 +28,67 @@ export const VIDEO_SEED = {
       { tierLabel: "720p", price: 1.5, unit: "积分/次" },
       { tierLabel: "1080p", price: 3, unit: "积分/次" },
     ],
-    note: "腾讯云混元视频 1.5",
+    note: "腾讯云混元视频 1.5 · 按次扣积分",
   },
   "kl-video-v3": {
-    tiers: [{ tierLabel: "统一价", price: "2.5-25", unit: "积分/次" }],
-    note: "可灵 v3 按时长/分辨率分档",
+    tiers: klingPerSecTiers(
+      {
+        "720P/768P": 0.8,
+        "1080P": 1.0,
+        "2K": 1.2,
+        "4K": 1.44,
+      },
+      "3.0 Turbo 有声",
+    ),
+    note: "可灵 3.0 Turbo · 按秒收费",
   },
   "kl-video-v2-6": {
-    tiers: [{ tierLabel: "统一价", price: "2.5-12", unit: "积分/次" }],
+    tiers: klingPerSecTiers(
+      {
+        "720P/768P": 0.3,
+        "1080P": 0.5,
+        "2K": 0.75,
+        "4K": 1.12,
+      },
+      "2.6 无声",
+    ),
+    note: "可灵 2.6 · 按秒",
   },
   "kl-video-v2-5-turbo": {
-    tiers: [{ tierLabel: "统一价", price: "1.5-8", unit: "积分/次" }],
+    tiers: klingPerSecTiers(
+      {
+        "720P/768P": 0.3,
+        "1080P": 0.5,
+        "2K": 0.75,
+        "4K": 1.12,
+      },
+      "2.5-turbo",
+    ),
+    note: "可灵 2.5-turbo · 按秒",
   },
   "kl-video-v2-1": {
-    tiers: [{ tierLabel: "统一价", price: "1-6", unit: "积分/次" }],
+    tiers: klingPerSecTiers(
+      {
+        "720P/768P": 0.4,
+        "1080P": 0.7,
+        "2K": 1,
+        "4K": 1.5,
+      },
+      "1.6/2.0/2.1",
+    ),
+    note: "可灵 1.6/2.0/2.1 · 按秒",
   },
   "kl-video-v1": {
-    tiers: [{ tierLabel: "统一价", price: "0.5-4", unit: "积分/次" }],
+    tiers: klingPerSecTiers(
+      {
+        "720P/768P": 0.4,
+        "1080P": 0.7,
+        "2K": 1,
+        "4K": 1.5,
+      },
+      "1.6/2.0/2.1",
+    ),
+    note: "可灵 v1 · 对齐 1.6/2.0/2.1 档",
   },
   "vd-video-q3-pro": {
     tiers: [

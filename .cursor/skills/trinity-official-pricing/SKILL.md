@@ -65,8 +65,9 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 3. **官网链接必填**：每条 catalog 须有可公开引用的 `docUrl`；Gemini 等补 `pricingUrl`（见 `data/pricing-urls.mjs`）。
 4. **Trinity 已上架必写 map**：`trinity-map.json` 含 `modality` + `vendor` + `vendorModelId`。
 5. **改完必验证**：`pricing.supplier.official.{modality}`；全模态门禁 `pricing.gate`（含 text + image L1/L3）。
-6. **对比自动拉线上价**：`pricing.upstream` / `pricing.upstream.image`；`pricing:refresh` 含二者；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
-7. **编辑真源须确认**：`pricing.seed.edit` 等见 `confirmation.md`。
+6. **对比自动拉线上价**：`pricing.upstream` / `pricing.upstream.image` / **`pricing.upstream.video`**；`pricing:refresh` 含生文+生图；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
+7. **刊例对比 ⊇ 线上（P6）**：`刊例对比校验` 不得少于同模态 `prices-api` 模型数；生视频在 `upstream:video` 硬校验。
+8. **编辑真源须确认**：`pricing.seed.edit` 等见 `confirmation.md`。
 
 ---
 
@@ -95,8 +96,9 @@ L1 seeds → L2 validate-official-aigc[*] → gate → L3 validate-official-supp
 |------|----|----|------------|
 | 生文 | `validate.official-aigc` | `validate.official-suppliers` | `pricing.upstream` / `refresh` |
 | 生图 | `validate.official-aigc.image` | `validate.official-suppliers.image` | **`pricing.upstream.image`** |
+| 生视频 | `validate.official-aigc.video` | `validate.official-suppliers.video` | **`pricing.upstream.video`** |
 
-生图 **当前接入渠道仅 AIGC 国内/国际**（Excel 汇总+分表）；TokenHub/火山等作价目参照或 gate 校验，接入后在 `channels-image.mjs` 开启 `connected`。
+生视频 **刊例对比** 行主键 = `prices-api` 全量线上 slug ∪ 官方 catalog 补行；映射真源 `pricing/config/video-model-registry.mjs`（**不得**假设 official ⊇ 线上，与生图不同）。
 
 ---
 

@@ -23,6 +23,7 @@ Trinity 价目体系需要 **可维护、可交叉验证、可告警** 的分层
 | P3 | **同档对齐** | 比较必须经 `tier-key.mjs` 按 `tierKey` 对齐，禁止仅按「input 价最近」凑档 |
 | P4 | **先自查、再告警** | 任何不一致：先查种子 / 映射 / scrape；确认我方无误后再推告警 |
 | P5 | **不静默简化** | 供应商档位数少于官方时，必须显式记录（warn/error），不得当作一致 |
+| P6 | **刊例对比 ⊇ 线上** | `刊例对比校验` 表内模型 **不得少于** `GET /v1/prices` 同模态返回量；可多加官方补行，**不能少** |
 
 ### 1.2 四类价格（层级）
 
@@ -86,6 +87,30 @@ flowchart TD
 2. **档位数**：同族规则 `config/model-family-tiers.mjs`（如 GLM-4.7 ≥3 档）  
 3. **tierKey**：`pipeline/lib/tier-key.mjs` 双方档位可归一化到同一 key  
 4. **价格**：同 tierKey 下入/出/缓，偏差 ≥0.5% 为实质不一致（见 [PRICING-DISCREPANCY-RULES.md](./PRICING-DISCREPANCY-RULES.md)）
+
+### 3.2 生视频（Trinity 无积分）
+
+进货与刊例均为 **元/秒 · 美元/秒**（AIGC 商务 Excel `AIGC生视频`），不以积分为对外单位。
+
+| 原厂口径 | 示例 | 与 AIGC 对照 |
+|----------|------|----------------|
+| **积分/秒 = 元/秒** | 可灵 3.0 Turbo：`0.8积分(¥0.8)/秒` | 同分辨率 **直接比** `AIGC国内` |
+| **积分/次** | 混元、Vidu | `元/秒(估)=积分/次÷参考秒数`（配置见 `video-reference-conversion.mjs`） |
+| **主 gate** | — | **AIGC 国内 vs 国际**（隐含汇率，基准 ÷6.5） |
+
+**刊例对比校验-生视频** 行主键（2026-07-06 起）：
+
+```text
+prices-api 全量线上 slug（底线，当前 ~25）
+  ∪ 官方 catalog 有、但线上无同 vendor 行的补行（如 hy-video-1.5、豆包 seedance）
+```
+
+- **不得**假设 `official/catalog` ⊇ 线上模型（与生图不同；生视频平台 SKU 扩张更快）
+- **P6 铁律**：对比表 **⊇** 线上 `prices-api` 全量 slug，只能多官方补行，不能少线上模型
+- 映射真源：`config/video-model-registry.mjs`（线上 slug · Trinity · 官方 vendor · AIGC · 火山）
+- **治理档位**：`完整`（官方+线上）· `仅刊例`（线上+AIGC，无官方 seed）· `仅官方`（未挂线上刊例）
+
+产出：`npm run pricing:upstream:video` → `trinity-pricing-video.xlsx` · Sheet `刊例对比校验-生视频`
 
 ### 3.3 不一致分流（D / F）
 
@@ -156,6 +181,25 @@ flowchart TD
 
 - Excel / MD：`刊例对比校验-生文`（官方 · AIGC国际 · TokenHub · OR · 线上刊例 · vs 列）  
 - 仅保留进货参照列：官方、AIGC 国际、TokenHub、OpenRouter（不含百炼/火山方舟列）
+
+### 5.1.1 刊例对比覆盖铁律（P6）
+
+**对比表模型集合 ⊇ 线上 `prices-api` 同模态全量 slug**：
+
+| 允许 | 禁止 |
+|------|------|
+| 对比表 = 线上全量 + 官方 catalog 补行（仅官方、未挂线上） | 线上有刊例、对比表无对应行 |
+| 对比表行数 > 线上模型数（多分辨率档、多官方补行） | 用「Phase / 已映射子集」截断线上 SKU |
+
+**按模态行主键**（实现可不同，铁律相同）：
+
+| 模态 | 行主键策略 | 代码校验 |
+|------|------------|----------|
+| **生视频** | `prices-api` 全量 ∪ 官方补行 | `compare-online-coverage-lib` · `upstream:video` 失败即阻断 |
+| **生图** | 官方 catalog 驱动（现状；官方 ≥ 线上） | 待补：线上新增时做 gap 检查 |
+| **生文** | 官方 catalog 驱动（线上 ⊆ 已映射 Trinity） | 待补：同上 |
+
+新增模态或改版 compare-hub 时：**先满足 P6，再谈治理档位与 gate**。
 
 ### 5.2 与第二层区别
 
@@ -368,5 +412,6 @@ npm run pricing:alert -- --dry-run            # 仅写 output/validate/pricing-a
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-06 | 生视频对照：可灵积分/秒直接对 AIGC；混元/Vidu 积分/次折算；`trinity-pricing-video` |
 | 2026-07-02 | 初版：分层真源、主流程图、GLM-4.7 案例、告警草案、Gate 路线图 |
 | 2026-07-02 | 实现 `validate-official-vs-suppliers`、`emit-pricing-alerts`、Gate 扩展 |

@@ -1,0 +1,179 @@
+{
+  "generatedAt": "2026-07-06T07:40:57.209Z",
+  "mappedCount": 10,
+  "unitMismatchCount": 5,
+  "missingAigcCount": 3,
+  "tierIssueCount": 0,
+  "unitMismatch": [
+    {
+      "trinityId": "hy-video-1.5",
+      "vendorModelId": "hy-video-1.5",
+      "officialUnit": "积分/次",
+      "note": "积分/次 vs 元/秒 · 仅结构校验"
+    },
+    {
+      "trinityId": "vd-video-q3-pro",
+      "vendorModelId": "vd-video-q3-pro",
+      "officialUnit": "积分/次",
+      "note": "积分/次 vs 元/秒 · 仅结构校验"
+    },
+    {
+      "trinityId": "vd-video-q3-turbo",
+      "vendorModelId": "vd-video-q3-turbo",
+      "officialUnit": "积分/次",
+      "note": "积分/次 vs 元/秒 · 仅结构校验"
+    },
+    {
+      "trinityId": "vd-video-q2",
+      "vendorModelId": "vd-video-q2",
+      "officialUnit": "积分/次",
+      "note": "积分/次 vs 元/秒 · 仅结构校验"
+    },
+    {
+      "trinityId": "vd-video-q2-turbo",
+      "vendorModelId": "vd-video-q2-turbo",
+      "officialUnit": "积分/次",
+      "note": "积分/次 vs 元/秒 · 仅结构校验"
+    }
+  ],
+  "missingAigc": [
+    {
+      "trinityId": "yt-video-2.0",
+      "vendorModelId": "yt-video-2.0",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "yt-video-humanactor",
+      "vendorModelId": "yt-video-humanactor",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "yt-video-fx",
+      "vendorModelId": "yt-video-fx",
+      "reason": "no_aigc_map"
+    }
+  ],
+  "tierIssues": [],
+  "results": [
+    {
+      "trinityId": "hy-video-1.5",
+      "vendorModelId": "hy-video-1.5",
+      "aigcMap": {
+        "vendorCode": "Hunyuan",
+        "modelName": "1.5",
+        "attribute": "标准价"
+      },
+      "officialTierCount": 2,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 0
+    },
+    {
+      "trinityId": "kl-video-v3",
+      "vendorModelId": "kl-video-v3",
+      "aigcMap": {
+        "vendorCode": "Kling",
+        "modelName": "3.0-turbo（new）",
+        "attribute": "标准价"
+      },
+      "officialTierCount": 4,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "kl-video-v2-6",
+      "vendorModelId": "kl-video-v2-6",
+      "aigcMap": {
+        "vendorCode": "Kling",
+        "modelName": "2.6",
+        "attribute": "无声"
+      },
+      "officialTierCount": 4,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "kl-video-v2-5-turbo",
+      "vendorModelId": "kl-video-v2-5-turbo",
+      "aigcMap": {
+        "vendorCode": "Kling",
+        "modelName": "2.5-turbo",
+        "attribute": "标准价"
+      },
+      "officialTierCount": 4,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "kl-video-v2-1",
+      "vendorModelId": "kl-video-v2-1",
+      "aigcMap": {
+        "vendorCode": "Kling",
+        "modelName": "1.6、2.0、2.1",
+        "attribute": "标准价"
+      },
+      "officialTierCount": 4,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "kl-video-v1",
+      "vendorModelId": "kl-video-v1",
+      "aigcMap": {
+        "vendorCode": "Kling",
+        "modelName": "1.6、2.0、2.1",
+        "attribute": "标准价"
+      },
+      "officialTierCount": 4,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "vd-video-q3-pro",
+      "vendorModelId": "vd-video-q3-pro",
+      "aigcMap": {
+        "vendorCode": "Vidu",
+        "modelName": "q3-pro",
+        "attribute": "图生、文生、首尾帧生"
+      },
+      "officialTierCount": 3,
+      "aigcDomTierCount": 5,
+      "aigcIntlTierCount": 5
+    },
+    {
+      "trinityId": "vd-video-q3-turbo",
+      "vendorModelId": "vd-video-q3-turbo",
+      "aigcMap": {
+        "vendorCode": "Vidu",
+        "modelName": "q3-turbo",
+        "attribute": "图生、文生、首尾帧生"
+      },
+      "officialTierCount": 3,
+      "aigcDomTierCount": 5,
+      "aigcIntlTierCount": 5
+    },
+    {
+      "trinityId": "vd-video-q2",
+      "vendorModelId": "vd-video-q2",
+      "aigcMap": {
+        "vendorCode": "Vidu",
+        "modelName": "q2",
+        "attribute": "文生"
+      },
+      "officialTierCount": 3,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    },
+    {
+      "trinityId": "vd-video-q2-turbo",
+      "vendorModelId": "vd-video-q2-turbo",
+      "aigcMap": {
+        "vendorCode": "Vidu",
+        "modelName": "q2-turbo",
+        "attribute": "图生、首尾帧生"
+      },
+      "officialTierCount": 3,
+      "aigcDomTierCount": 4,
+      "aigcIntlTierCount": 4
+    }
+  ]
+}

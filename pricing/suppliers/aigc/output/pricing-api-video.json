@@ -1,0 +1,6570 @@
+{
+  "source": "AIGC价格指南（商务版报价文档）.xlsx",
+  "sheet": "AIGC生视频",
+  "dataDate": "2026-06",
+  "modality": "video",
+  "generatedAt": "2026-07-06T09:08:06.305Z",
+  "modelCount": 71,
+  "trinityMappedCount": 9,
+  "models": [
+    {
+      "modelId": "hy-video-1.5",
+      "trinityId": "hy-video-1.5",
+      "upstreamModelId": "1.5",
+      "vendorCode": "Hunyuan",
+      "vendorName": "混元",
+      "modelName": "1.5",
+      "displayName": "混元 1.5",
+      "brand": "混元",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.3",
+            "1080P": "0.5",
+            "2K": "0.75",
+            "4K": "1.12"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.12",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-drama-new-domestic",
+      "trinityId": null,
+      "upstreamModelId": "q3-drama（new）",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-drama（new）",
+      "displayName": "Vidu q3-drama（new）",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "1080P": "0.875",
+            "2K": "1.05",
+            "4K": "1.26"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.875",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.05",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.26",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-drama-new-international",
+      "trinityId": null,
+      "upstreamModelId": "q3-drama（new）",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-drama（new）",
+      "displayName": "Vidu q3-drama（new）",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "1080P": "0.14",
+            "2K": "0.168",
+            "4K": "0.2015"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.2015",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-mix-domestic",
+      "trinityId": null,
+      "upstreamModelId": "q3-mix",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-mix",
+      "displayName": "Vidu q3-mix",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "720P/768P": "0.782",
+            "1080P": "0.938",
+            "2K": "1.126",
+            "4K": "1.352"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.782",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.938",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.126",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.352",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-mix-international",
+      "trinityId": null,
+      "upstreamModelId": "q3-mix",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-mix",
+      "displayName": "Vidu q3-mix",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "720P/768P": "0.125",
+            "1080P": "0.15",
+            "2K": "0.18",
+            "4K": "0.216"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.125",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.18",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.216",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-domestic",
+      "trinityId": null,
+      "upstreamModelId": "q3",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3",
+      "displayName": "Vidu q3",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.3125",
+            "720P/768P": "0.625",
+            "1080P": "0.782",
+            "2K": "0.939",
+            "4K": "1.127"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.3125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.625",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.782",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.939",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.127",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.157",
+            "720P/768P": "0.313",
+            "1080P": "0.391",
+            "2K": "0.47",
+            "4K": "0.564"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.157",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.313",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.391",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.47",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.564",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q3-international",
+      "trinityId": null,
+      "upstreamModelId": "q3",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3",
+      "displayName": "Vidu q3",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.05",
+            "720P/768P": "0.1",
+            "1080P": "0.125",
+            "2K": "0.15",
+            "4K": "0.18"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.05",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.1",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.125",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.18",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.025",
+            "720P/768P": "0.05",
+            "1080P": "0.063",
+            "2K": "0.075",
+            "4K": "0.09"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.025",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.05",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.063",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.075",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.09",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-pro",
+      "trinityId": "vd-video-q3-pro",
+      "upstreamModelId": "q3-pro",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-pro",
+      "displayName": "Vidu q3-pro",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生",
+          "resolutions": {
+            "480P/540P": "0.313",
+            "720P/768P": "0.782",
+            "1080P": "0.938",
+            "2K": "1.1256",
+            "4K": "1.35072"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.313",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.782",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.938",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.1256",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.35072",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生+错峰模型",
+          "resolutions": {
+            "480P/540P": "0.157",
+            "720P/768P": "0.391",
+            "1080P": "0.469",
+            "2K": "0.563",
+            "4K": "0.676"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.157",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.391",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.469",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.563",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.676",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-pro",
+      "trinityId": "vd-video-q3-pro",
+      "upstreamModelId": "q3-pro",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-pro",
+      "displayName": "Vidu q3-pro",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生",
+          "resolutions": {
+            "480P/540P": "0.05",
+            "720P/768P": "0.125",
+            "1080P": "0.15",
+            "2K": "0.18",
+            "4K": "0.216"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.05",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.125",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.18",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.216",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生+错峰模型",
+          "resolutions": {
+            "480P/540P": "0.025",
+            "720P/768P": "0.0625",
+            "1080P": "0.075",
+            "2K": "0.09",
+            "4K": "0.108"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.025",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0625",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.075",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.09",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.108",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-turbo",
+      "trinityId": "vd-video-q3-turbo",
+      "upstreamModelId": "q3-turbo",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-turbo",
+      "displayName": "Vidu q3-turbo",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生",
+          "resolutions": {
+            "480P/540P": "0.25",
+            "720P/768P": "0.375",
+            "1080P": "0.438",
+            "2K": "0.5256",
+            "4K": "0.63072"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.25",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.375",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.438",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.5256",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.63072",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.125",
+            "720P/768P": "0.188",
+            "1080P": "0.219",
+            "2K": "0.263",
+            "4K": "0.316"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.188",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.219",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.263",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.316",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q3-turbo",
+      "trinityId": "vd-video-q3-turbo",
+      "upstreamModelId": "q3-turbo",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q3-turbo",
+      "displayName": "Vidu q3-turbo",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生",
+          "resolutions": {
+            "480P/540P": "0.04",
+            "720P/768P": "0.06",
+            "1080P": "0.07",
+            "2K": "0.084",
+            "4K": "0.1008"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.04",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.06",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.07",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.084",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1008",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、文生、首尾帧生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.02",
+            "720P/768P": "0.03",
+            "1080P": "0.035",
+            "2K": "0.042",
+            "4K": "0.0504"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.02",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.03",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.035",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.042",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0504",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2",
+      "trinityId": "vd-video-q2",
+      "upstreamModelId": "q2",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2",
+      "displayName": "Vidu q2",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生",
+          "resolutions": {
+            "720P/768P": "0.32",
+            "1080P": "0.47",
+            "2K": "0.7",
+            "4K": "1.05"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.32",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.47",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.7",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.05",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "文生+错峰",
+          "resolutions": {
+            "720P/768P": "0.16",
+            "1080P": "0.235",
+            "2K": "0.35",
+            "4K": "0.525"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.16",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.235",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.525",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.24",
+            "720P/768P": "0.32",
+            "1080P": "0.82",
+            "2K": "1.23",
+            "4K": "1.845"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.24",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.32",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.82",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.23",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.845",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰",
+          "resolutions": {
+            "480P/540P": "0.12",
+            "720P/768P": "0.16",
+            "1080P": "0.41",
+            "2K": "0.615",
+            "4K": "0.9225"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.12",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.16",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.41",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.615",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.9225",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2",
+      "trinityId": "vd-video-q2",
+      "upstreamModelId": "q2",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2",
+      "displayName": "Vidu q2",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "文生",
+          "resolutions": {
+            "720P/768P": "0.0492307692307692",
+            "1080P": "0.0723076923076923",
+            "2K": "0.107692307692308",
+            "4K": "0.161538461538462"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0492307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0723076923076923",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.107692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.161538461538462",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "文生+错峰",
+          "resolutions": {
+            "720P/768P": "0.0246153846153846",
+            "1080P": "0.0361538461538462",
+            "2K": "0.0538461538461539",
+            "4K": "0.0807692307692308"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0246153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0361538461538462",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0538461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0807692307692308",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.0369230769230769",
+            "720P/768P": "0.0492307692307692",
+            "1080P": "0.126153846153846",
+            "2K": "0.189230769230769",
+            "4K": "0.283846153846154"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0369230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0492307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.126153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.189230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.283846153846154",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰",
+          "resolutions": {
+            "480P/540P": "0.0184615384615385",
+            "720P/768P": "0.0246153846153846",
+            "1080P": "0.0630769230769231",
+            "2K": "0.0946153846153846",
+            "4K": "0.141923076923077"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0184615384615385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0246153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0630769230769231",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0946153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.141923076923077",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q2-pro-domestic",
+      "trinityId": null,
+      "upstreamModelId": "q2-pro",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2-pro",
+      "displayName": "Vidu q2-pro",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生",
+          "resolutions": {
+            "720P/768P": "0.35",
+            "1080P": "0.7",
+            "2K": "1",
+            "4K": "1.5"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.7",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.5",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生+错峰模式",
+          "resolutions": {
+            "720P/768P": "0.175",
+            "1080P": "0.35",
+            "2K": "0.5",
+            "4K": "0.75"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.175",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.75",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.27",
+            "720P/768P": "0.35",
+            "1080P": "0.9",
+            "2K": "1.35",
+            "4K": "2.025"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.27",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.025",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.135",
+            "720P/768P": "0.175",
+            "1080P": "0.45",
+            "2K": "0.675",
+            "4K": "1.0125"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.135",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.175",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.45",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.675",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.0125",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-vidu-q2-pro-international",
+      "trinityId": null,
+      "upstreamModelId": "q2-pro",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2-pro",
+      "displayName": "Vidu q2-pro",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生",
+          "resolutions": {
+            "720P/768P": "0.0538461538461539",
+            "1080P": "0.107692307692308",
+            "2K": "0.153846153846154",
+            "4K": "0.230769230769231"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0538461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.107692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.153846153846154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.230769230769231",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生+错峰模式",
+          "resolutions": {
+            "720P/768P": "0.0269230769230769",
+            "1080P": "0.0538461538461539",
+            "2K": "0.0769230769230769",
+            "4K": "0.115384615384615"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0269230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0538461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0769230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.115384615384615",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生",
+          "resolutions": {
+            "480P/540P": "0.0415384615384615",
+            "720P/768P": "0.0538461538461539",
+            "1080P": "0.138461538461539",
+            "2K": "0.207692307692308",
+            "4K": "0.311538461538462"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0415384615384615",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0538461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.138461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.207692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.311538461538462",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "参考生+错峰模式",
+          "resolutions": {
+            "480P/540P": "0.0207692307692308",
+            "720P/768P": "0.0269230769230769",
+            "1080P": "0.0692307692307693",
+            "2K": "0.103846153846154",
+            "4K": "0.155769230769231"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0207692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0269230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0692307692307693",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.103846153846154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.155769230769231",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2-turbo",
+      "trinityId": "vd-video-q2-turbo",
+      "upstreamModelId": "q2-turbo",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2-turbo",
+      "displayName": "Vidu q2-turbo",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生",
+          "resolutions": {
+            "720P/768P": "0.25",
+            "1080P": "0.47",
+            "2K": "0.7",
+            "4K": "1.05"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.25",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.47",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.7",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.05",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生+错峰模式",
+          "resolutions": {
+            "720P/768P": "0.125",
+            "1080P": "0.235",
+            "2K": "0.35",
+            "4K": "0.525"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.235",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.35",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.525",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "vd-video-q2-turbo",
+      "trinityId": "vd-video-q2-turbo",
+      "upstreamModelId": "q2-turbo",
+      "vendorCode": "Vidu",
+      "vendorName": "Vidu",
+      "modelName": "q2-turbo",
+      "displayName": "Vidu q2-turbo",
+      "brand": "Vidu",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生",
+          "resolutions": {
+            "720P/768P": "0.0384615384615385",
+            "1080P": "0.0723076923076923",
+            "2K": "0.107692307692308",
+            "4K": "0.161538461538462"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0384615384615385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0723076923076923",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.107692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.161538461538462",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "图生、首尾帧生+错峰模式",
+          "resolutions": {
+            "720P/768P": "0.0192307692307692",
+            "1080P": "0.0361538461538462",
+            "2K": "0.0538461538461539",
+            "4K": "0.0807692307692308"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0192307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0361538461538462",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0538461538461539",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0807692307692308",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v3",
+      "trinityId": "kl-video-v3",
+      "upstreamModelId": "3.0-turbo（new）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-turbo（new）",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.8",
+            "1080P": "1",
+            "2K": "1.2",
+            "4K": "1.44"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.44",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v3",
+      "trinityId": "kl-video-v3",
+      "upstreamModelId": "3.0-turbo（new）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-turbo（new）",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.112",
+            "1080P": "0.14",
+            "2K": "0.168",
+            "4K": "0.2016"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.2016",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-0-omni-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.0-Omni",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-Omni",
+      "displayName": "可灵 3.0-Omni",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频+无声",
+          "resolutions": {
+            "720P/768P": "0.6",
+            "1080P": "0.8",
+            "2K": "1",
+            "4K": "3"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频+有声",
+          "resolutions": {
+            "720P/768P": "0.8",
+            "1080P": "1",
+            "2K": "1.2",
+            "4K": "3"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频+无声",
+          "resolutions": {
+            "720P/768P": "0.9",
+            "1080P": "1.2",
+            "2K": "1.5",
+            "4K": "2"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频+有声（当前已不支持）",
+          "resolutions": {
+            "720P/768P": "1.1",
+            "1080P": "1.4",
+            "2K": "1.8",
+            "4K": "2.4"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "1.1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.4",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.4",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-0-omni-international",
+      "trinityId": null,
+      "upstreamModelId": "3.0-Omni",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-Omni",
+      "displayName": "可灵 3.0-Omni",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频+无声",
+          "resolutions": {
+            "720P/768P": "0.084",
+            "1080P": "0.112",
+            "2K": "0.14",
+            "4K": "0.42"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.084",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.42",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频+有声",
+          "resolutions": {
+            "720P/768P": "0.112",
+            "1080P": "0.14",
+            "2K": "0.168",
+            "4K": "0.42"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.42",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频+无声",
+          "resolutions": {
+            "720P/768P": "0.126",
+            "1080P": "0.168",
+            "2K": "0.21",
+            "4K": "0.28"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.126",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.21",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.28",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频+有声（当前已不支持）",
+          "resolutions": {
+            "720P/768P": "0.154",
+            "1080P": "0.196",
+            "2K": "0.252",
+            "4K": "0.336"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.196",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.336",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3",
+      "displayName": "可灵 3",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.6",
+            "1080P": "0.8",
+            "2K": "1",
+            "4K": "3"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声+无音色",
+          "resolutions": {
+            "720P/768P": "0.9",
+            "1080P": "1.2",
+            "2K": "1.5",
+            "4K": "3"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声+有音色（当前已不支持）",
+          "resolutions": {
+            "720P/768P": "1.1",
+            "1080P": "1.4",
+            "2K": "1.8",
+            "4K": "2.4"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "1.1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.4",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.4",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-international",
+      "trinityId": null,
+      "upstreamModelId": "3",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3",
+      "displayName": "可灵 3",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.084",
+            "1080P": "0.112",
+            "2K": "0.14",
+            "4K": "0.42"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.084",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.42",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声+无音色",
+          "resolutions": {
+            "720P/768P": "0.126",
+            "1080P": "0.168",
+            "2K": "0.21",
+            "4K": "0.42"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.126",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.21",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.42",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声+有音色（当前已不支持）",
+          "resolutions": {
+            "720P/768P": "0.154",
+            "1080P": "0.196",
+            "2K": "0.252",
+            "4K": "0.336"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.196",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.336",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-0-montion-control-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.0-montion-control",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-montion-control",
+      "displayName": "可灵 3.0-montion-control",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "3.0动作控制",
+          "resolutions": {
+            "720P/768P": "0.9",
+            "1080P": "1.2",
+            "2K": "1.8",
+            "4K": "2.7"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.7",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-3-0-montion-control-international",
+      "trinityId": null,
+      "upstreamModelId": "3.0-montion-control",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "3.0-montion-control",
+      "displayName": "可灵 3.0-montion-control",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "3.0动作控制",
+          "resolutions": {
+            "720P/768P": "0.126",
+            "1080P": "0.168",
+            "2K": "0.252",
+            "4K": "0.378"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.126",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.378",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-o1-domestic",
+      "trinityId": null,
+      "upstreamModelId": "O1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "O1",
+      "displayName": "可灵 O1",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频",
+          "resolutions": {
+            "720P/768P": "0.6",
+            "1080P": "0.8",
+            "2K": "1.2",
+            "4K": "1.8"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.8",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频",
+          "resolutions": {
+            "720P/768P": "0.9",
+            "1080P": "1.2",
+            "2K": "1.8",
+            "4K": "2.7"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.7",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-o1-international",
+      "trinityId": null,
+      "upstreamModelId": "O1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "O1",
+      "displayName": "可灵 O1",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无参考视频",
+          "resolutions": {
+            "720P/768P": "0.084",
+            "1080P": "0.112",
+            "2K": "0.168",
+            "4K": "0.252"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.084",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有参考视频",
+          "resolutions": {
+            "720P/768P": "0.126",
+            "1080P": "0.168",
+            "2K": "0.252",
+            "4K": "0.378"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.126",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.378",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-6",
+      "trinityId": "kl-video-v2-6",
+      "upstreamModelId": "2.6",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.3",
+            "1080P": "0.5",
+            "2K": "0.75",
+            "4K": "1.12"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.12",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "1080P": "1",
+            "2K": "1.5",
+            "4K": "2.25"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.25",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-6",
+      "trinityId": "kl-video-v2-6",
+      "upstreamModelId": "2.6",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.042",
+            "1080P": "0.07",
+            "2K": "0.105",
+            "4K": "0.1568"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.042",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.07",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.105",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1568",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "1080P": "0.14",
+            "2K": "0.21",
+            "4K": "0.315"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.21",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.315",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-2-6-montion-control-domestic",
+      "trinityId": null,
+      "upstreamModelId": "2.6-montion-control",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.6-montion-control",
+      "displayName": "可灵 2.6-montion-control",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "2.6动作控制",
+          "resolutions": {
+            "720P/768P": "0.5",
+            "1080P": "0.8",
+            "2K": "1.2",
+            "4K": "1.8"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.8",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-2-6-montion-control-international",
+      "trinityId": null,
+      "upstreamModelId": "2.6-montion-control",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.6-montion-control",
+      "displayName": "可灵 2.6-montion-control",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "2.6动作控制",
+          "resolutions": {
+            "720P/768P": "0.07",
+            "1080P": "0.112",
+            "2K": "0.168",
+            "4K": "0.252"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.07",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-5-turbo",
+      "trinityId": "kl-video-v2-5-turbo",
+      "upstreamModelId": "2.5-turbo",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.3",
+            "1080P": "0.5",
+            "2K": "0.75",
+            "4K": "1.12"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.12",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v2-5-turbo",
+      "trinityId": "kl-video-v2-5-turbo",
+      "upstreamModelId": "2.5-turbo",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "2.5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.042",
+            "1080P": "0.07",
+            "2K": "0.105",
+            "4K": "0.157"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.042",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.07",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.105",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.157",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v1",
+      "trinityId": "kl-video-v1",
+      "upstreamModelId": "1.6、2.0、2.1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "1.6、2.0、2.1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.4",
+            "1080P": "0.7",
+            "2K": "1",
+            "4K": "1.5"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.4",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.7",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.5",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kl-video-v1",
+      "trinityId": "kl-video-v1",
+      "upstreamModelId": "1.6、2.0、2.1",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "1.6、2.0、2.1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.056",
+            "1080P": "0.098",
+            "2K": "0.14",
+            "4K": "0.21"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.056",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.098",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.14",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.21",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-avater-domestic",
+      "trinityId": null,
+      "upstreamModelId": "avater（数智人）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "avater（数智人）",
+      "displayName": "可灵 avater（数智人）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.4",
+            "1080P": "0.8",
+            "2K": "1.2",
+            "4K": "1.8"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.4",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.8",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.2",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.8",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-avater-international",
+      "trinityId": null,
+      "upstreamModelId": "avater（数智人）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "avater（数智人）",
+      "displayName": "可灵 avater（数智人）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.056",
+            "1080P": "0.112",
+            "2K": "0.168",
+            "4K": "0.252"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.056",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.168",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.252",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-identifyface-domestic",
+      "trinityId": null,
+      "upstreamModelId": "Identifyface（对口型）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "Identifyface（对口型）",
+      "displayName": "可灵 Identifyface（对口型）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "每不足5秒按照5秒计费",
+          "resolutions": {
+            "720P/768P": "0.1"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.1",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-kling-identifyface-international",
+      "trinityId": null,
+      "upstreamModelId": "Identifyface（对口型）",
+      "vendorCode": "Kling",
+      "vendorName": "可灵",
+      "modelName": "Identifyface（对口型）",
+      "displayName": "可灵 Identifyface（对口型）",
+      "brand": "可灵",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "每不足5秒按照5秒计费",
+          "resolutions": {
+            "480P/540P": "0.014"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.014",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-h2-1-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1",
+      "vendorCode": "H2",
+      "vendorName": "H2",
+      "modelName": "1",
+      "displayName": "H2 1",
+      "brand": "H2",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.9",
+            "1080P": "1.6",
+            "2K": "1.92",
+            "4K": "2.304"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.92",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.304",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-h2-1-international",
+      "trinityId": null,
+      "upstreamModelId": "1",
+      "vendorCode": "H2",
+      "vendorName": "H2",
+      "modelName": "1",
+      "displayName": "H2 1",
+      "brand": "H2",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.1385",
+            "1080P": "0.2462",
+            "2K": "0.2954",
+            "4K": "0.3545"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.1385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.2462",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2954",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.3545",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-5-pro-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1.5-pro",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.5-pro",
+      "displayName": "SV 1.5-pro",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.08",
+            "720P/768P": "0.172",
+            "1080P": "0.388",
+            "2K": "0.691",
+            "4K": "1.552"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.08",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.172",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.388",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.691",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.552",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.16",
+            "720P/768P": "0.346",
+            "1080P": "0.778",
+            "2K": "1.382",
+            "4K": "3.11"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.16",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.346",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.778",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.382",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3.11",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-5-pro-international",
+      "trinityId": null,
+      "upstreamModelId": "1.5-pro",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.5-pro",
+      "displayName": "SV 1.5-pro",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.0123076923076923",
+            "720P/768P": "0.0264615384615385",
+            "1080P": "0.0596923076923077",
+            "2K": "0.106307692307692",
+            "4K": "0.238769230769231"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0123076923076923",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0264615384615385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0596923076923077",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.106307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.238769230769231",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.0246153846153846",
+            "720P/768P": "0.0532307692307692",
+            "1080P": "0.119692307692308",
+            "2K": "0.212615384615385",
+            "4K": "0.478461538461539"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0246153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0532307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.119692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.212615384615385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.478461538461539",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-pro-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1.0-pro",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-pro",
+      "displayName": "SV 1.0-pro",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.146",
+            "720P/768P": "0.308",
+            "1080P": "0.734",
+            "2K": "1.101",
+            "4K": "1.6515"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.146",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.308",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.734",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.101",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.6515",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-pro-international",
+      "trinityId": null,
+      "upstreamModelId": "1.0-pro",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-pro",
+      "displayName": "SV 1.0-pro",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.0224615384615385",
+            "720P/768P": "0.0473846153846154",
+            "1080P": "0.112923076923077",
+            "2K": "0.169384615384615",
+            "4K": "0.254076923076923"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0224615384615385",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0473846153846154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.112923076923077",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.169384615384615",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.254076923076923",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-pro-fast-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1.0-pro-fast",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-pro-fast",
+      "displayName": "SV 1.0-pro-fast",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.04",
+            "720P/768P": "0.086",
+            "1080P": "0.206",
+            "2K": "0.309",
+            "4K": "0.4635"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.04",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.086",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.206",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.309",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4635",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-pro-fast-international",
+      "trinityId": null,
+      "upstreamModelId": "1.0-pro-fast",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-pro-fast",
+      "displayName": "SV 1.0-pro-fast",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.00615384615384616",
+            "720P/768P": "0.0132307692307692",
+            "1080P": "0.0316923076923077",
+            "2K": "0.0475384615384615",
+            "4K": "0.0713076923076923"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.00615384615384616",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0132307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0316923076923077",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0475384615384615",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.0713076923076923",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-lite-i2v-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1.0-lite-i2v",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-lite-i2v",
+      "displayName": "SV 1.0-lite-i2v",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.098",
+            "720P/768P": "0.206",
+            "1080P": "0.49",
+            "2K": "0.735",
+            "4K": "1.1025"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.098",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.206",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.49",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.735",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.1025",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-sv-1-0-lite-i2v-international",
+      "trinityId": null,
+      "upstreamModelId": "1.0-lite-i2v",
+      "vendorCode": "SV",
+      "vendorName": "SV",
+      "modelName": "1.0-lite-i2v",
+      "displayName": "SV 1.0-lite-i2v",
+      "brand": "SV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "480P/540P": "0.0150769230769231",
+            "720P/768P": "0.0316923076923077",
+            "1080P": "0.0753846153846154",
+            "2K": "0.113076923076923",
+            "4K": "0.169615384615385"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0150769230769231",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0316923076923077",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0753846153846154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.113076923076923",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.169615384615385",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-jv-3-0-pro-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.0-pro",
+      "vendorCode": "JV",
+      "vendorName": "JV",
+      "modelName": "3.0-pro",
+      "displayName": "JV 3.0-pro",
+      "brand": "JV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1080P": "1",
+            "2K": "1.5",
+            "4K": "2.25"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.25",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-jv-3-0-pro-international",
+      "trinityId": null,
+      "upstreamModelId": "3.0-pro",
+      "vendorCode": "JV",
+      "vendorName": "JV",
+      "modelName": "3.0-pro",
+      "displayName": "JV 3.0-pro",
+      "brand": "JV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "1080P": "0.153846153846154",
+            "2K": "0.230769230769231",
+            "4K": "0.346153846153846"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.153846153846154",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.230769230769231",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.346153846153846",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-v5-6-domestic",
+      "trinityId": null,
+      "upstreamModelId": "V5.6",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "V5.6",
+      "displayName": "PixVerse V5.6",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.245",
+            "720P/768P": "0.315",
+            "1080P": "0.525",
+            "2K": "0.735",
+            "4K": "1.029"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.245",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.315",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.525",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.735",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.029",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-v5-6-international",
+      "trinityId": null,
+      "upstreamModelId": "V5.6",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "V5.6",
+      "displayName": "PixVerse V5.6",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.0392",
+            "720P/768P": "0.0504",
+            "1080P": "0.084",
+            "2K": "0.1176",
+            "4K": "0.1646"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0392",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0504",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.084",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.1176",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1646",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-v6-0-domestic",
+      "trinityId": null,
+      "upstreamModelId": "V6.0",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "V6.0",
+      "displayName": "PixVerse V6.0",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.2053",
+            "720P/768P": "0.264",
+            "1080P": "0.5279",
+            "2K": "0.6335",
+            "4K": "0.7602"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.2053",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.264",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5279",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.6335",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.7602",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.264",
+            "720P/768P": "0.352",
+            "1080P": "0.6746",
+            "2K": "0.8095",
+            "4K": "0.9714"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.264",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.352",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.6746",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.8095",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.9714",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-v6-0-international",
+      "trinityId": null,
+      "upstreamModelId": "V6.0",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "V6.0",
+      "displayName": "PixVerse V6.0",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.0311",
+            "720P/768P": "0.04",
+            "1080P": "0.08",
+            "2K": "0.096",
+            "4K": "0.1152"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0311",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.04",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.08",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.096",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1152",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.04",
+            "720P/768P": "0.0533",
+            "1080P": "0.1022",
+            "2K": "0.1227",
+            "4K": "0.1472"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.04",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0533",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.1022",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.1227",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1472",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-c1-domestic",
+      "trinityId": null,
+      "upstreamModelId": "C1",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "C1",
+      "displayName": "PixVerse C1",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.2346",
+            "720P/768P": "0.2933",
+            "1080P": "0.5573",
+            "2K": "0.6687",
+            "4K": "0.8025"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.2346",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.2933",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5573",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.6687",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.8025",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.2933",
+            "720P/768P": "0.3813",
+            "1080P": "0.7039",
+            "2K": "0.8447",
+            "4K": "1.0136"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.2933",
+              "unit": "元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.3813",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.7039",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.8447",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.0136",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-pixverse-c1-international",
+      "trinityId": null,
+      "upstreamModelId": "C1",
+      "vendorCode": "PixVerse",
+      "vendorName": "PixVerse",
+      "modelName": "C1",
+      "displayName": "PixVerse C1",
+      "brand": "PixVerse",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "480P/540P": "0.0356",
+            "720P/768P": "0.0444",
+            "1080P": "0.0844",
+            "2K": "0.1013",
+            "4K": "0.1216"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0356",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0444",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0844",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.1013",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1216",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "480P/540P": "0.0444",
+            "720P/768P": "0.0578",
+            "1080P": "0.1067",
+            "2K": "0.128",
+            "4K": "0.1536"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "480P/540P",
+              "displayName": "480P/540P",
+              "price": "0.0444",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0578",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.1067",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.128",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1536",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-hailuo-02-2-3-domestic",
+      "trinityId": null,
+      "upstreamModelId": "02、2.3",
+      "vendorCode": "Hailuo",
+      "vendorName": "Hailuo",
+      "modelName": "02、2.3",
+      "displayName": "Hailuo 02、2.3",
+      "brand": "Hailuo",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.33",
+            "1080P": "0.58",
+            "2K": "0.93",
+            "4K": "1.49"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.33",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.58",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.93",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.49",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-hailuo-02-2-3-international",
+      "trinityId": null,
+      "upstreamModelId": "02、2.3",
+      "vendorCode": "Hailuo",
+      "vendorName": "Hailuo",
+      "modelName": "02、2.3",
+      "displayName": "Hailuo 02、2.3",
+      "brand": "Hailuo",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.0507692307692308",
+            "1080P": "0.0892307692307692",
+            "2K": "0.143076923076923",
+            "4K": "0.229230769230769"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0507692307692308",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0892307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.143076923076923",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.229230769230769",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-hailuo-2-3-fast-domestic",
+      "trinityId": null,
+      "upstreamModelId": "2.3-fast",
+      "vendorCode": "Hailuo",
+      "vendorName": "Hailuo",
+      "modelName": "2.3-fast",
+      "displayName": "Hailuo 2.3-fast",
+      "brand": "Hailuo",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.225",
+            "1080P": "0.385",
+            "2K": "0.58",
+            "4K": "0.87"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.225",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.385",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.58",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.87",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-hailuo-2-3-fast-international",
+      "trinityId": null,
+      "upstreamModelId": "2.3-fast",
+      "vendorCode": "Hailuo",
+      "vendorName": "Hailuo",
+      "modelName": "2.3-fast",
+      "displayName": "Hailuo 2.3-fast",
+      "brand": "Hailuo",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.0346153846153846",
+            "1080P": "0.0592307692307692",
+            "2K": "0.0892307692307692",
+            "4K": "0.133846153846154"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0346153846153846",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0592307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.0892307692307692",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.133846153846154",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.1",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1",
+      "displayName": "GV 3.1",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "3",
+            "1080P": "3",
+            "2K": "3.75",
+            "4K": "4.5"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "3.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "4.5",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "1.5",
+            "1080P": "1.5",
+            "2K": "2.25",
+            "4K": "3"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "2.25",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "3",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-international",
+      "trinityId": null,
+      "upstreamModelId": "3.1",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1",
+      "displayName": "GV 3.1",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "0.4",
+            "1080P": "0.4",
+            "2K": "0.5",
+            "4K": "0.6"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.4",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.4",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.5",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.6",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.2",
+            "1080P": "0.2",
+            "2K": "0.3",
+            "4K": "0.4"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.2",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.2",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.3",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.4",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-fast-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.1-fast",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1-fast",
+      "displayName": "GV 3.1-fast",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "1.125",
+            "1080P": "1.125",
+            "2K": "1.875",
+            "4K": "2.625"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "1.125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.875",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.625",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.75",
+            "1080P": "0.75",
+            "2K": "1.5",
+            "4K": "2.25"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.25",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-fast-international",
+      "trinityId": null,
+      "upstreamModelId": "3.1-fast",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1-fast",
+      "displayName": "GV 3.1-fast",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "0.15",
+            "1080P": "0.15",
+            "2K": "0.25",
+            "4K": "0.35"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.25",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.35",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.1",
+            "1080P": "0.1",
+            "2K": "0.2",
+            "4K": "0.3"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.1",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.1",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.2",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.3",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-lite-domestic",
+      "trinityId": null,
+      "upstreamModelId": "3.1-lite",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1-lite",
+      "displayName": "GV 3.1-lite",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "0.375",
+            "1080P": "0.6",
+            "2K": "0.9",
+            "4K": "1.125"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.375",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.9",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.125",
+              "unit": "元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.225",
+            "1080P": "0.375",
+            "2K": "0.6",
+            "4K": "0.75"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.225",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.375",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.6",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.75",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-gv-3-1-lite-international",
+      "trinityId": null,
+      "upstreamModelId": "3.1-lite",
+      "vendorCode": "GV",
+      "vendorName": "GV",
+      "modelName": "3.1-lite",
+      "displayName": "GV 3.1-lite",
+      "brand": "GV",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "有声",
+          "resolutions": {
+            "720P/768P": "0.05",
+            "1080P": "0.08",
+            "2K": "0.12",
+            "4K": "0.15"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.05",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.08",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.12",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.15",
+              "unit": "美元/秒"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "无声",
+          "resolutions": {
+            "720P/768P": "0.03",
+            "1080P": "0.05",
+            "2K": "0.08",
+            "4K": "0.1"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.03",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.05",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.08",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.1",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-os-2-domestic",
+      "trinityId": null,
+      "upstreamModelId": "2",
+      "vendorCode": "OS",
+      "vendorName": "OS",
+      "modelName": "2",
+      "displayName": "OS 2",
+      "brand": "OS",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.75",
+            "1080P": "1.125",
+            "2K": "1.688",
+            "4K": "2.531"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "1.125",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "1.688",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "2.531",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-os-2-international",
+      "trinityId": null,
+      "upstreamModelId": "2",
+      "vendorCode": "OS",
+      "vendorName": "OS",
+      "modelName": "2",
+      "displayName": "OS 2",
+      "brand": "OS",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.1",
+            "1080P": "0.15",
+            "2K": "0.225",
+            "4K": "0.34"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.1",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.15",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.225",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.34",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-mingmou-1-domestic",
+      "trinityId": null,
+      "upstreamModelId": "1",
+      "vendorCode": "Mingmou",
+      "vendorName": "Mingmou",
+      "modelName": "1",
+      "displayName": "Mingmou 1",
+      "brand": "Mingmou",
+      "modelType": "Video",
+      "site": "domestic",
+      "siteLabel": "国内站",
+      "currency": "CNY",
+      "priceUnit": "元/秒",
+      "modality": "video",
+      "region": "中国内地",
+      "regions": [
+        {
+          "Site": "domestic",
+          "Regions": [
+            "中国内地"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.3",
+            "1080P": "0.5",
+            "2K": "0.75",
+            "4K": "1.12"
+          },
+          "unit": "元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.3",
+              "unit": "元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.5",
+              "unit": "元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.75",
+              "unit": "元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "1.12",
+              "unit": "元/秒"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "aigc-mingmou-1-international",
+      "trinityId": null,
+      "upstreamModelId": "1",
+      "vendorCode": "Mingmou",
+      "vendorName": "Mingmou",
+      "modelName": "1",
+      "displayName": "Mingmou 1",
+      "brand": "Mingmou",
+      "modelType": "Video",
+      "site": "international",
+      "siteLabel": "国际站",
+      "currency": "USD",
+      "priceUnit": "美元/秒",
+      "modality": "video",
+      "region": "国际",
+      "regions": [
+        {
+          "Site": "international",
+          "Regions": [
+            "国际"
+          ]
+        }
+      ],
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "resolutions": {
+            "720P/768P": "0.0461538461538462",
+            "1080P": "0.0769230769230769",
+            "2K": "0.115384615384615",
+            "4K": "0.172307692307692"
+          },
+          "unit": "美元/秒",
+          "chargeUnit": "VIDEO",
+          "items": [
+            {
+              "name": "720P/768P",
+              "displayName": "720P/768P",
+              "price": "0.0461538461538462",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "1080P",
+              "displayName": "1080P",
+              "price": "0.0769230769230769",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "2K",
+              "displayName": "2K",
+              "price": "0.115384615384615",
+              "unit": "美元/秒"
+            },
+            {
+              "name": "4K",
+              "displayName": "4K",
+              "price": "0.172307692307692",
+              "unit": "美元/秒"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

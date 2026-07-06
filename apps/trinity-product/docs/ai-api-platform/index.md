@@ -57,7 +57,7 @@ OpenRouter 官网主要是 **Models + Docs + Account**（≈ 用户侧）+ **统
 ## 产品待办池
 
 ::: tip 维护规则 · 待办池归属
-**模块**：本页 **AI API 聚合产品 · 产品总览**（非叶子、非子总览）。真源 `ai-api-platform/product-backlog.yml`。跨用户/平台/运营事项放这里；每条 **`module`** + 可选 **`leaf`** 标归属模块。不写状态/负责人；**要排期时迁入上方周计划**。字段见 [更新规范 §四 · 待办池](../产品手册更新规范.md)。
+**模块**：本页 **AI API 聚合产品 · 产品总览**（非叶子、非子总览）。真源 `ai-api-platform/product-backlog.yml`。跨用户/平台/运营事项放这里；每条 **`module`** + 可选 **`leaf`** 标归属模块。不写状态/负责人；**要排期时迁入上方周计划**。字段见 [更新规范 §四 · 待办池](../产品手册更新规范.md)；流程见 [工作手册 §1.2](../产品经理工作手册#12-产品待办池多渠道需求池)。
 :::
 
 <ProductBacklog rel="ai-api-platform/product-backlog.yml" />

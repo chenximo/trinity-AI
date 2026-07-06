@@ -1,0 +1,13 @@
+{
+  "_comment": "Trinity 生视频模型 ID → AIGC 价目表 vendorCode + modelName + attribute（Scheme A：每模型默认一档）",
+  "hy-video-1.5": { "vendorCode": "Hunyuan", "modelName": "1.5", "attribute": "标准价" },
+  "kl-video-v3": { "vendorCode": "Kling", "modelName": "3.0-turbo（new）", "attribute": "标准价" },
+  "kl-video-v2-6": { "vendorCode": "Kling", "modelName": "2.6", "attribute": "无声" },
+  "kl-video-v2-5-turbo": { "vendorCode": "Kling", "modelName": "2.5-turbo", "attribute": "标准价" },
+  "kl-video-v2-1": { "vendorCode": "Kling", "modelName": "1.6、2.0、2.1", "attribute": "标准价" },
+  "kl-video-v1": { "vendorCode": "Kling", "modelName": "1.6、2.0、2.1", "attribute": "标准价" },
+  "vd-video-q3-pro": { "vendorCode": "Vidu", "modelName": "q3-pro", "attribute": "图生、文生、首尾帧生" },
+  "vd-video-q3-turbo": { "vendorCode": "Vidu", "modelName": "q3-turbo", "attribute": "图生、文生、首尾帧生" },
+  "vd-video-q2": { "vendorCode": "Vidu", "modelName": "q2", "attribute": "文生" },
+  "vd-video-q2-turbo": { "vendorCode": "Vidu", "modelName": "q2-turbo", "attribute": "图生、首尾帧生" }
+}

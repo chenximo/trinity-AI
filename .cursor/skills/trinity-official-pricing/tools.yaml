@@ -433,3 +433,26 @@ tools:
     env:
       - PRICING_SKIP_ONLINE_FETCH
     tags: [upstream, compare, image, pricing-L4]
+
+  - id: pricing.upstream.video
+    title: 生成上游汇总（生视频）
+    summary: 刊例对比校验-生视频（线上全量∪官方补行）+ 汇总 + AIGC 分表 → trinity-pricing-video.xlsx
+    command: npm run pricing:upstream:video
+    reads:
+      - pricing/config/video-model-registry.mjs
+      - pricing/suppliers/official/output/video/vendor-pricing.json
+      - pricing/suppliers/aigc/output/pricing-api-video.json
+      - pricing/output/online/prices-api.json
+    writes:
+      - pricing/output/official/video.md
+      - pricing/output/official/video.json
+      - pricing/output/upstream/video-summary.md
+      - pricing/output/upstream/video-summary.csv
+      - pricing/output/trinity-pricing-video.xlsx
+      - pricing/suppliers/aigc/output/pricing-api-video.json
+    confirm: none
+    network: true
+    git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
+    tags: [upstream, compare, video, pricing-L4]

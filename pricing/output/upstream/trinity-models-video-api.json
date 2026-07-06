@@ -1,0 +1,742 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "gv-3.1",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "GV-3.1",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen",
+              "Flagship"
+            ],
+            "short_summary": "Google Veo 3.1 flagship video generation model, supporting text-to-video and image-to-video generation with native audio-visual synchronization, capable of generating high-quality videos up to 1080p and 148 seconds, with outstanding physics simulation and narrative control.",
+            "description_long": "Google Veo 3.1 flagship video generation model, supporting text-to-video and image-to-video generation with native audio-visual synchronization, capable of generating high-quality videos up to 1080p and 148 seconds, with outstanding physics simulation and narrative control. Developed by Google; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "旗舰"
+            ],
+            "short_summary": "Google Veo 3.1 旗舰视频生成模型，支持文生视频和图生视频，具备原生音画同步能力，可生成最高 1080p、最长 148 秒的高质量视频，物理模拟和叙事控制能力突出。",
+            "description_long": "Google Veo 3.1 旗舰视频生成模型，支持文生视频和图生视频，具备原生音画同步能力，可生成最高 1080p、最长 148 秒的高质量视频，物理模拟和叙事控制能力突出。 由Google研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.2,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "gv-3.1-fast",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "GV-3.1-Fast",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Google Veo 3.1 Fast rapid video generation model, optimizing generation speed while maintaining Veo 3.1 quality, suitable for rapid iteration and batch video production.",
+            "description_long": "Google Veo 3.1 Fast rapid video generation model, optimizing generation speed while maintaining Veo 3.1 quality, suitable for rapid iteration and batch video production. Developed by Google; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Google Veo 3.1 Fast 快速视频生成模型，在保持 Veo 3.1 画质的基础上优化生成速度，适合快速迭代和批量视频生产场景。",
+            "description_long": "Google Veo 3.1 Fast 快速视频生成模型，在保持 Veo 3.1 画质的基础上优化生成速度，适合快速迭代和批量视频生产场景。 由Google研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "gv-3.1-litenew",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "GV-3.1-Lite",
+        "origin_vendor_name": "Google DeepMind",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Google Veo 3.1 Lite lightweight video generation model, balancing generation quality and inference efficiency, suitable for lightweight video creation and high-throughput scenarios.",
+            "description_long": "Google Veo 3.1 Lite lightweight video generation model, balancing generation quality and inference efficiency, suitable for lightweight video creation and high-throughput scenarios. Developed by Google; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "推理"
+            ],
+            "short_summary": "Google Veo 3.1 Lite 轻量视频生成模型，兼顾生成质量与推理效率，适合轻量级视频创作和高吞吐场景。",
+            "description_long": "Google Veo 3.1 Lite 轻量视频生成模型，兼顾生成质量与推理效率，适合轻量级视频创作和高吞吐场景。 由Google研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.05,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "h2new-1",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "tencent",
+      "metadata": {
+        "display_name": "h2new-1",
+        "origin_vendor_name": "Tencent",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "Tencent Hunyuan video generation model latest version, based on HunyuanVideo architecture, supporting text-to-video and image-to-video generation with high quality, strong consistency, and physical plausibility, suitable for short video and advertising.",
+            "description_long": "Tencent Hunyuan video generation model latest version, based on HunyuanVideo architecture, supporting text-to-video and image-to-video generation with high quality, strong consistency, and physical plausibility, suitable for short video and advertising. Developed by Tencent; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "腾讯混元视频生成模型最新版，基于 HunyuanVideo 架构，支持文生视频和图生视频，具备高画质、强一致性和物理合理性，适合短视频创作和广告制作。",
+            "description_long": "腾讯混元视频生成模型最新版，基于 HunyuanVideo 架构，支持文生视频和图生视频，具备高画质、强一致性和物理合理性，适合短视频创作和广告制作。 由腾讯研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1385,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "hailuo-2.3",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "Hailuo-2.3",
+        "origin_vendor_name": "MiniMax",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "MiniMax Hailuo AI 2.3 video generation model, supporting text-to-video and image-to-video generation with excellent emotional expression and physical motion restoration, suitable for creative video and social media content.",
+            "description_long": "MiniMax Hailuo AI 2.3 video generation model, supporting text-to-video and image-to-video generation with excellent emotional expression and physical motion restoration, suitable for creative video and social media content. Developed by MiniMax; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "MiniMax 海螺 AI Hailuo 2.3 视频生成模型，支持文生视频和图生视频，拥有出色的情感表达和物理动作还原能力，适合创意视频和社交媒体内容生产。",
+            "description_long": "MiniMax 海螺 AI Hailuo 2.3 视频生成模型，支持文生视频和图生视频，拥有出色的情感表达和物理动作还原能力，适合创意视频和社交媒体内容生产。 由MiniMax研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.05076923,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "hailuo-2.3-fast",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "Hailuo-2.3-Fast",
+        "origin_vendor_name": "MiniMax",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "MiniMax Hailuo AI 2.3 Fast rapid video generation model, optimizing generation speed while preserving quality and expressiveness, suitable for quick preview and batch production.",
+            "description_long": "MiniMax Hailuo AI 2.3 Fast rapid video generation model, optimizing generation speed while preserving quality and expressiveness, suitable for quick preview and batch production. Developed by MiniMax; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "MiniMax 海螺 AI Hailuo 2.3 Fast 快速视频生成模型，在保持画质和表现力的同时优化生成速度，适合快速预览和批量生产。",
+            "description_long": "MiniMax 海螺 AI Hailuo 2.3 Fast 快速视频生成模型，在保持画质和表现力的同时优化生成速度，适合快速预览和批量生产。 由MiniMax研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.03461538,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "jv-3.0-pro",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Jimeng-3.0-Pro",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "ByteDance Jimeng 3.0 Pro video generation model, supporting text-to-video and image-to-video generation with excellent camera control, motion smoothness, and frame consistency, suitable for professional video creation.",
+            "description_long": "ByteDance Jimeng 3.0 Pro video generation model, supporting text-to-video and image-to-video generation with excellent camera control, motion smoothness, and frame consistency, suitable for professional video creation. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "字节跳动即梦 Jimeng 3.0 Pro 视频生成模型，支持文生视频和图生视频，在镜头控制、动作流畅度和画面一致性方面表现优秀，适合专业视频创作。",
+            "description_long": "字节跳动即梦 Jimeng 3.0 Pro 视频生成模型，支持文生视频和图生视频，在镜头控制、动作流畅度和画面一致性方面表现优秀，适合专业视频创作。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.15384615,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "kling-2.5-turbo",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-2.5-Turbo",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Kuaishou Kling 2.5 Turbo fast video generation model, balancing quality and speed with high-definition rapid output, suitable for batch production and real-time preview.",
+            "description_long": "Kuaishou Kling 2.5 Turbo fast video generation model, balancing quality and speed with high-definition rapid output, suitable for batch production and real-time preview. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "快手可灵 Kling 2.5 Turbo 快速视频生成模型，在画质和速度之间取得平衡，支持高清视频快速输出，适合批量生产和实时预览。",
+            "description_long": "快手可灵 Kling 2.5 Turbo 快速视频生成模型，在画质和速度之间取得平衡，支持高清视频快速输出，适合批量生产和实时预览。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.042,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "kling-2.6",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-2.6",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Kuaishou Kling 2.6 video generation model, enhancing detail, lighting effects, and motion smoothness, supporting various cinematography styles and artistic expressions.",
+            "description_long": "Kuaishou Kling 2.6 video generation model, enhancing detail, lighting effects, and motion smoothness, supporting various cinematography styles and artistic expressions. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "快手可灵 Kling 2.6 视频生成模型，增强画面细节、光影效果和运动平滑度，支持多种镜头语言和艺术风格。",
+            "description_long": "快手可灵 Kling 2.6 视频生成模型，增强画面细节、光影效果和运动平滑度，支持多种镜头语言和艺术风格。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.042,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "kling-3",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-3.0",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Flagship"
+            ],
+            "short_summary": "Kuaishou Kling 3 flagship video generation model, built on Kuaishou's proprietary large model architecture, reaching industry-leading levels in quality, physical consistency, cinematography, and creative expression.",
+            "description_long": "Kuaishou Kling 3 flagship video generation model, built on Kuaishou's proprietary large model architecture, reaching industry-leading levels in quality, physical consistency, cinematography, and creative expression. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰"
+            ],
+            "short_summary": "快手可灵 Kling 3 旗舰视频生成模型，依托快手自研大模型架构，在画质、物理一致性、镜头语言和创意表达方面达到行业领先水平。",
+            "description_long": "快手可灵 Kling 3 旗舰视频生成模型，依托快手自研大模型架构，在画质、物理一致性、镜头语言和创意表达方面达到行业领先水平。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.112,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "kling-3.0-omni",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-3.0-Omni",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Kuaishou Kling-3.0-Omni video model.",
+            "description_long": "Kuaishou Kling-3.0-Omni video model. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "快手 Kling-3.0-Omni video 模型。",
+            "description_long": "快手 Kling-3.0-Omni video 模型。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.154,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "kling-o1",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "kuaishou",
+      "metadata": {
+        "display_name": "Kling-O1",
+        "origin_vendor_name": "Kuaishou",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Kuaishou Kling-O1 video model.",
+            "description_long": "Kuaishou Kling-O1 video model. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "快手 Kling-O1 video 模型。",
+            "description_long": "快手 Kling-O1 video 模型。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.084,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "os-2",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "OS-2.0",
+        "origin_vendor_name": "OpenAI",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "OpenAI Sora 2 video generation model, supporting text-to-video and image-to-video generation with excellent physical world simulation and video narrative capabilities, producing high-quality dynamic video content.",
+            "description_long": "OpenAI Sora 2 video generation model, supporting text-to-video and image-to-video generation with excellent physical world simulation and video narrative capabilities, producing high-quality dynamic video content. Developed by OpenAI; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "OpenAI Sora 2 视频生成模型，支持文生视频和图生视频，具备出色的物理世界模拟能力和视频叙事表达，可生成高质量动态视频内容。",
+            "description_long": "OpenAI Sora 2 视频生成模型，支持文生视频和图生视频，具备出色的物理世界模拟能力和视频叙事表达，可生成高质量动态视频内容。 由OpenAI研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "pixversenew-c1",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "pixVerse",
+      "metadata": {
+        "display_name": "PixVerse-c1",
+        "origin_vendor_name": "PixVerse",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "PixVerse C1 cinematic AI video generation model, designed for physically-aware motion, layered effects, and multi-shot storyboarding, supporting precise camera control and character performance for professional film production.",
+            "description_long": "PixVerse C1 cinematic AI video generation model, designed for physically-aware motion, layered effects, and multi-shot storyboarding, supporting precise camera control and character performance for professional film production. Developed by PixVerse; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "PixVerse C1 电影级 AI 视频生成模型，专为物理感知动作、分层特效和多镜头分镜打造，支持精准的摄像机控制和角色表演，适合专业影视创作。",
+            "description_long": "PixVerse C1 电影级 AI 视频生成模型，专为物理感知动作、分层特效和多镜头分镜打造，支持精准的摄像机控制和角色表演，适合专业影视创作。 由PixVerse研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0444,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "pixversenew-v5.6",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "pixVerse",
+      "metadata": {
+        "display_name": "PixVerse-v5.6",
+        "origin_vendor_name": "PixVerse",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "PixVerse V5.6 video generation model, supporting high-quality text-to-video and image-to-video generation with excellent visual realism and motion consistency, suitable for content creation and advertising.",
+            "description_long": "PixVerse V5.6 video generation model, supporting high-quality text-to-video and image-to-video generation with excellent visual realism and motion consistency, suitable for content creation and advertising. Developed by PixVerse; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "PixVerse V5.6 视频生成模型，支持高质量文生视频和图生视频，在画面真实感和运动一致性方面表现优秀，适合内容创作和广告制作。",
+            "description_long": "PixVerse V5.6 视频生成模型，支持高质量文生视频和图生视频，在画面真实感和运动一致性方面表现优秀，适合内容创作和广告制作。 由PixVerse研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0392,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "pixversenew-v6.0",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "pixVerse",
+      "metadata": {
+        "display_name": "PixVerse-v6.0",
+        "origin_vendor_name": "PixVerse",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Flagship"
+            ],
+            "short_summary": "PixVerse V6 flagship video generation model, capable of generating 15-second 1080p videos in a single pass, with enhanced camera control, cross-frame facial expression consistency, and multi-shot audio generation for premium video creation.",
+            "description_long": "PixVerse V6 flagship video generation model, capable of generating 15-second 1080p videos in a single pass, with enhanced camera control, cross-frame facial expression consistency, and multi-shot audio generation for premium video creation. Developed by PixVerse; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰"
+            ],
+            "short_summary": "PixVerse V6 旗舰视频生成模型，单次可生成 15 秒 1080p 视频，增强运镜控制、跨帧面部表情一致性和多镜头音频生成，适合高品质视频创作。",
+            "description_long": "PixVerse V6 旗舰视频生成模型，单次可生成 15 秒 1080p 视频，增强运镜控制、跨帧面部表情一致性和多镜头音频生成，适合高品质视频创作。 由PixVerse研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0311,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "seedance-1.0-pro",
+      "object": "model",
+      "created": 1781077252,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 1.0 Pro",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Image gen",
+              "Video gen"
+            ],
+            "short_summary": "ByteDance Seedance 1.0 Pro video generation model, supporting text-to-video and image-to-video generation with cinematic quality and motion performance, suitable for premium video content creation.",
+            "description_long": "ByteDance Seedance 1.0 Pro video generation model, supporting text-to-video and image-to-video generation with cinematic quality and motion performance, suitable for premium video content creation. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频"
+            ],
+            "short_summary": "字节跳动 Seedance 1.0 Pro 视频生成模型，支持文生视频和图生视频，具备电影级画面质量和运动表现，适合高品质视频内容创作。",
+            "description_long": "字节跳动 Seedance 1.0 Pro 视频生成模型，支持文生视频和图生视频，具备电影级画面质量和运动表现，适合高品质视频内容创作。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 2.06896552,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "seedance-1.0-pro-fast",
+      "object": "model",
+      "created": 1781077252,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 1.0 Pro Fast",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "ByteDance Seedance 1.0 Pro Fast rapid video generation model, significantly shortening generation time while preserving quality, suitable for quick preview and iterative creation.",
+            "description_long": "ByteDance Seedance 1.0 Pro Fast rapid video generation model, significantly shortening generation time while preserving quality, suitable for quick preview and iterative creation. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "字节跳动 Seedance 1.0 Pro Fast 快速视频生成模型，在保持画质的同时大幅缩短生成时间，适合快速预览和迭代创作。",
+            "description_long": "字节跳动 Seedance 1.0 Pro Fast 快速视频生成模型，在保持画质的同时大幅缩短生成时间，适合快速预览和迭代创作。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.57931034,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "seedance-1.5-pro",
+      "object": "model",
+      "created": 1781077252,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 1.5 Pro",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "ByteDance Seedance 1.5 Pro video generation model, upgraded from 1.0 with enhanced quality, motion continuity, and physics simulation, supporting more refined cinematography and motion control.",
+            "description_long": "ByteDance Seedance 1.5 Pro video generation model, upgraded from 1.0 with enhanced quality, motion continuity, and physics simulation, supporting more refined cinematography and motion control. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "字节跳动 Seedance 1.5 Pro 视频生成模型，在 1.0 基础上升级画质、运动连贯性和物理模拟，支持更细腻的镜头语言和动作控制。",
+            "description_long": "字节跳动 Seedance 1.5 Pro 视频生成模型，在 1.0 基础上升级画质、运动连贯性和物理模拟，支持更细腻的镜头语言和动作控制。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 1.10344828,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q2",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q2",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu-q2 video model.",
+            "description_long": "Shengshu Technology Vidu-q2 video model. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "生数科技 Vidu-q2 video 模型。",
+            "description_long": "生数科技 Vidu-q2 video 模型。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.02461538,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q2-pro",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q2-Pro",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q2 Pro professional video generation model, enhanced in quality, detail, and motion control, supporting more complex scenes and cinematographic expression.",
+            "description_long": "Shengshu Technology Vidu Q2 Pro professional video generation model, enhanced in quality, detail, and motion control, supporting more complex scenes and cinematographic expression. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "生数科技 Vidu Q2 Pro 专业视频生成模型，在画质、细节和运动控制方面增强，支持更复杂的场景和镜头表达。",
+            "description_long": "生数科技 Vidu Q2 Pro 专业视频生成模型，在画质、细节和运动控制方面增强，支持更复杂的场景和镜头表达。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.02692308,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q2-turbo",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q2-Turbo",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q2 Turbo fast video generation model, optimizing inference speed while balancing quality and efficiency, suitable for rapid creation and batch production.",
+            "description_long": "Shengshu Technology Vidu Q2 Turbo fast video generation model, optimizing inference speed while balancing quality and efficiency, suitable for rapid creation and batch production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "推理"
+            ],
+            "short_summary": "生数科技 Vidu Q2 Turbo 快速视频生成模型，优化推理速度，兼顾画质和生成效率，适合快速创作和批量生产。",
+            "description_long": "生数科技 Vidu Q2 Turbo 快速视频生成模型，优化推理速度，兼顾画质和生成效率，适合快速创作和批量生产。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.03615385,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q3",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q3",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q3 next-generation video generation model, capable of generating 16-second 1080P videos with audio, reaching world-class levels in quality, consistency, and professional film production.",
+            "description_long": "Shengshu Technology Vidu Q3 next-generation video generation model, capable of generating 16-second 1080P videos with audio, reaching world-class levels in quality, consistency, and professional film production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "生数科技 Vidu Q3 新一代视频生成模型，可生成长达 16 秒 1080P 带音频视频，在画质、一致性和专业级影视制作方面达到国际顶尖水平。",
+            "description_long": "生数科技 Vidu Q3 新一代视频生成模型，可生成长达 16 秒 1080P 带音频视频，在画质、一致性和专业级影视制作方面达到国际顶尖水平。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.025,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q3-pro",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q3-Pro",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Flagship"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q3 Pro flagship professional video generation model, optimized for professional film production with industry-leading quality, cinematography, and creative controllability.",
+            "description_long": "Shengshu Technology Vidu Q3 Pro flagship professional video generation model, optimized for professional film production with industry-leading quality, cinematography, and creative controllability. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰"
+            ],
+            "short_summary": "生数科技 Vidu Q3 Pro 旗舰专业视频生成模型，面向专业影视制作优化，在画质、镜头语言和创作可控性方面达到行业领先水平。",
+            "description_long": "生数科技 Vidu Q3 Pro 旗舰专业视频生成模型，面向专业影视制作优化，在画质、镜头语言和创作可控性方面达到行业领先水平。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.05,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "vidu-q3-turbo",
+      "object": "model",
+      "created": 1779421570,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q3-Turbo",
+        "origin_vendor_name": "Shengshu Technology",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q3 Turbo fast video generation model, significantly boosting generation speed while preserving Q3 core quality, suitable for high-efficiency video production.",
+            "description_long": "Shengshu Technology Vidu Q3 Turbo fast video generation model, significantly boosting generation speed while preserving Q3 core quality, suitable for high-efficiency video production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "生数科技 Vidu Q3 Turbo 快速视频生成模型，在保持 Q3 核心画质的同时大幅提升生成速度，适合高效率视频生产。",
+            "description_long": "生数科技 Vidu Q3 Turbo 快速视频生成模型，在保持 Q3 核心画质的同时大幅提升生成速度，适合高效率视频生产。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "min_user_unit_price_usd": 0.02,
+        "metered_charge_unit": "video_second"
+      }
+    }
+  ]
+}

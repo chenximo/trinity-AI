@@ -1,17 +1,32 @@
 # 模型原厂权威价目（生视频）
 
-> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-03T03:32:29Z · live 0 · seed 17 / 17 · **29 档**
+> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-06T07:40:48Z · live 0 · seed 17 / 17 · **44 档**
 > 单位：**CNY per video generation (tiered)**
 
 | # | 厂商 | 原厂模型 ID | 状态 | 抓取 | 档位 | 价格 | 单位 | 价目来源 | 文档 |
 |---|------|-------------|------|------|------|------|------|----------|------|
 | 1 | 混元 | hy-video-1.5 | active | seed | 720p | 1.5 | 积分/次 | [来源](https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1729/105545) |
 |  |  |  |  |  | 1080p | 3 | 积分/次 |  |  |
-| 2 | 可灵 | kl-video-v3 | active | seed | 统一价 | 2.5-25 | 积分/次 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
-| 3 | 可灵 | kl-video-v2-6 | active | seed | 统一价 | 2.5-12 | 积分/次 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
-| 4 | 可灵 | kl-video-v2-5-turbo | active | seed | 统一价 | 1.5-8 | 积分/次 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
-| 5 | 可灵 | kl-video-v2-1 | active | seed | 统一价 | 1-6 | 积分/次 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
-| 6 | 可灵 | kl-video-v1 | active | seed | 统一价 | 0.5-4 | 积分/次 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+| 2 | 可灵 | kl-video-v3 | active | seed | 720P/768P | 0.8 | 积分/秒 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+|  |  |  |  |  | 1080P | 1 | 积分/秒 |  |  |
+|  |  |  |  |  | 2K | 1.2 | 积分/秒 |  |  |
+|  |  |  |  |  | 4K | 1.44 | 积分/秒 |  |  |
+| 3 | 可灵 | kl-video-v2-6 | active | seed | 720P/768P | 0.3 | 积分/秒 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+|  |  |  |  |  | 1080P | 0.5 | 积分/秒 |  |  |
+|  |  |  |  |  | 2K | 0.75 | 积分/秒 |  |  |
+|  |  |  |  |  | 4K | 1.12 | 积分/秒 |  |  |
+| 4 | 可灵 | kl-video-v2-5-turbo | active | seed | 720P/768P | 0.3 | 积分/秒 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+|  |  |  |  |  | 1080P | 0.5 | 积分/秒 |  |  |
+|  |  |  |  |  | 2K | 0.75 | 积分/秒 |  |  |
+|  |  |  |  |  | 4K | 1.12 | 积分/秒 |  |  |
+| 5 | 可灵 | kl-video-v2-1 | active | seed | 720P/768P | 0.4 | 积分/秒 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+|  |  |  |  |  | 1080P | 0.7 | 积分/秒 |  |  |
+|  |  |  |  |  | 2K | 1 | 积分/秒 |  |  |
+|  |  |  |  |  | 4K | 1.5 | 积分/秒 |  |  |
+| 6 | 可灵 | kl-video-v1 | active | seed | 720P/768P | 0.4 | 积分/秒 | [来源](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)) | [链接](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+|  |  |  |  |  | 1080P | 0.7 | 积分/秒 |  |  |
+|  |  |  |  |  | 2K | 1 | 积分/秒 |  |  |
+|  |  |  |  |  | 4K | 1.5 | 积分/秒 |  |  |
 | 7 | Vidu | vd-video-q3-pro | active | seed | 540P | 1-16 | 积分/次 | [来源](https://platform.vidu.cn/docs/pricing (seed 2026-06-28)) | [链接](https://platform.vidu.cn/docs/pricing) |
 |  |  |  |  |  | 720P | 1.5-24 | 积分/次 |  |  |
 |  |  |  |  |  | 1080P | 2-32 | 积分/次 |  |  |

@@ -6,6 +6,7 @@ import {
   sheetOrderForModality,
 } from "./paths.mjs";
 import { IMAGE_PENDING_SUPPLIERS } from "../../config/channels-image.mjs";
+import { VIDEO_PENDING_SUPPLIERS } from "../../config/channels-video.mjs";
 
 function cellKey(v) {
   return v == null ? "" : String(v).trim();
@@ -196,7 +197,9 @@ export function mergeModalityWorkbook(modality, sheets) {
   const removeSheets =
     modality === "image"
       ? IMAGE_PENDING_SUPPLIERS.map((s) => s.excelSheet)
-      : [];
+      : modality === "video"
+        ? VIDEO_PENDING_SUPPLIERS.map((s) => s.excelSheet)
+        : [];
   mergeSheetsIntoWorkbook(filePath, sheets, {
     sheetOrder: sheetOrderForModality(modality),
     removeSheets,

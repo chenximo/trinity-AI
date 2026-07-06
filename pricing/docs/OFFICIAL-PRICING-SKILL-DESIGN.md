@@ -47,7 +47,7 @@ suppliers/official/
 |----------|------|
 | `pricing:supplier:official:text` | 生文官方价（USD / 百万 tokens） |
 | `pricing:supplier:official:image` | 生图官方价（CNY / 张） |
-| `pricing:supplier:official:video` | 生视频官方价（CNY / 积分·次，分档） |
+| `pricing:supplier:official:video` | 生视频官方价（可灵：积分/秒；混元/Vidu：积分/次） |
 | `pricing:supplier:official:all` | 三种模态一次拉取 |
 
 ### 2.2 需求满足度（2026-07-02 更新）
@@ -202,7 +202,7 @@ Task Progress:
 | 文件 | 种子格式 |
 |------|----------|
 | `data/catalog/video.mjs` | 厂商：`tencent_hunyuan` / `kling` / `vidu` / `tencent_youtu` |
-| `data/seeds/video.mjs` | 多档 `tiers`（分辨率 / 时长 → `积分/次`） |
+| `data/seeds/video.mjs` | 多档 `tiers`：可灵 `积分/秒`；混元/Vidu `积分/次` |
 
 详细字段模板见计划中的 `add-model.md`（Skill 附属文件）。
 

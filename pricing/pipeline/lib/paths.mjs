@@ -50,7 +50,14 @@ export const IMAGE_SHEET_ORDER = [
   "AIGC国内站-生图",
   "AIGC国际站-生图",
 ];
-export const VIDEO_SHEET_ORDER = ["官方-生视频"];
+export const VIDEO_SHEET_ORDER = [
+  "刊例对比校验-生视频",
+  "汇总-供应商vs官方-生视频",
+  "AIGC国内站-生视频",
+  "AIGC国际站-生视频",
+];
+
+export const VIDEO_COMPARE_SHEET = "刊例对比校验-生视频";
 
 /** @deprecated 使用 TEXT_SHEET_ORDER */
 export const MASTER_SHEET_ORDER = TEXT_SHEET_ORDER;

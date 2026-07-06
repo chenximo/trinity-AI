@@ -16,7 +16,7 @@ title: 总览
 > 1. **规划**：产品地图（业务线 → 产品总览 → 子总览）定模块；叶子 **`roadmap.yml`** 定子清单。  
 > 2. **节点**：5.30 / 6.30 列定本阶段验收范围（锁节点见 [更新规范](./产品手册更新规范)）。  
 > 3. **实施**：子能力对应 PRD + 原型 + 工程路径（附录链出，不写进正文）。  
-> 4. **待排期（池）**：仅 **[AI API 聚合产品 · 总览](./ai-api-platform/)** 维护 **`product-backlog.yml`**（跨用户/平台/运营；每条用 `module` + 可选 `leaf` 标归属模块，**不写状态/负责人**）。  
+> 4. **待排期（池）**：仅 **[AI API 聚合产品 · 总览](./ai-api-platform/)** 维护 **`product-backlog.yml`**（跨用户/平台/运营；每条用 `module` + 可选 `leaf` 标归属模块，**不写状态/负责人**；流程见 [工作手册 §1.2](./产品经理工作手册#12-产品待办池多渠道需求池)）。  
 > 5. **进度**：子清单看 `roadmap`；模块汇总看子总览 / 产品总览；**本周**只看同一总览 **`week-progress-index.yml` + 当月 `week-progress-N.yml`**（不逐条改子能力）。  
 > 6. **验收**：节点列 ✅ + 叶子附录链飞书表；走查与 Bug 在 [5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)，手册不抄表。  
 > **周会**：`product-backlog.yml`（可选迁入）→ 当月 `week-progress-N.yml` → 有交付再改 `roadmap.yml` → 子总览对齐（[更新规范 §七](./产品手册更新规范)）。
