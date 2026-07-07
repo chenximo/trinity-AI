@@ -93,12 +93,35 @@ export const TEXT_COMPARE_MASTER_SHEET = "刊例对比校验-生文";
 /** 生图对比总表 */
 export const IMAGE_COMPARE_MASTER_SHEET = IMAGE_COMPARE_SHEET;
 
-// —— 线上刊例（pricing:fetch）——
+// —— 线上刊例（pricing:fetch / publish-official:*）——
+/** @deprecated 历史路径；新写入请用 pricesApiPaths(modality).json */
 export const PRICES_API_FILE = path.join(OUT_ONLINE_DIR, "prices-api.json");
 export const PRICES_API_OLD_FILE = path.join(OUT_ONLINE_DIR, "prices-api.old.json");
 export const PRICES_API_FLAT_FILE = path.join(OUT_ONLINE_DIR, "prices-api-flat.json");
 export const PRICES_API_INDEX_FILE = path.join(OUT_ONLINE_DIR, "prices-api-index.json");
 export const PRICES_API_CSV_FILE = path.join(OUT_ONLINE_DIR, "prices-api.csv");
+
+/**
+ * 按模态隔离的 L4 刊例缓存（P1-1）
+ * @param {PricingModality|"all"} modality
+ */
+export function pricesApiPaths(modality = "text") {
+  const m = modality === "all" ? "text" : modality;
+  const base = path.join(OUT_ONLINE_DIR, `prices-api-${m}`);
+  return {
+    json: `${base}.json`,
+    flat: `${base}-flat.json`,
+    index: `${base}-index.json`,
+    csv: `${base}.csv`,
+    old: `${base}.old.json`,
+    publishLog: path.join(OUT_ONLINE_DIR, `prices-api-${m}-publish.log.json`),
+  };
+}
+
+/** @param {PricingModality} modality */
+export function officialPricesApiDraft(modality) {
+  return path.join(OUT_DRAFT_DIR, `official-prices-api-${modality}.json`);
+}
 
 // —— 上游汇总（pricing:upstream）——
 export const UPSTREAM_PRICING_FILE = path.join(

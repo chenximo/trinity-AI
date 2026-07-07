@@ -48,7 +48,8 @@ flowchart TD
 | **B→C** | 官方 + AIGC + TokenHub → 交叉校验报告 | 修录入 → 重跑；或告警商务 | **命令**<br>`pricing:validate:official-aigc`<br>`pricing:validate:aigc-excel`<br><br>**产出**<br>`output/validate/official-aigc-cross.*`<br>`aigc-excel-vs-sheet.*` |
 | **C→G** | 第一层全绿（或已登记例外）→ **官方真源锁定** | 不得进入下游对比 | **命令**<br>`pricing:gate`（含上两步）<br><br>**产出**<br>`official/.../vendor-pricing.json`（`fetchedAt` 即版本） |
 | **G→H** | 官方 + 百炼 / 火山等 → 供应商覆盖/价差报告 | 修 scrape → 重跑；或告警商务 | **命令**<br>`pricing:validate:official-suppliers`<br><br>**产出**<br>`output/validate/official-vs-suppliers.*` |
-| **G→L** | 官方 + 线上 API → 刊例对比校验表 | 修刊例或登记产品例外 | **命令**<br>`pricing:compare:official` · `pricing:fetch`<br><br>**产出**<br>`output/official/{modality}.*`<br>Excel「刊例对比校验-生文」 |
+| **G→L** | 官方 + 线上 API → 刊例对比校验表 | 修刊例或登记产品例外 | **命令**<br>`pricing:upstream` / `:image` / `:video` · `pricing:fetch`<br><br>**产出**<br>`output/official/{modality}.*`<br>Excel「刊例对比校验-{生文,生图,生视频}」 |
+| **L→发布** | 官方 cascade 草案 → 本地/生产刊例 | diff 确认后 publish | **命令**<br>`pricing:gen-official:{image,video}` · `pricing:diff:official-*` · `pricing:publish-official:video`<br><br>**产出**<br>`draft/official-prices-api-*.json` → `online/prices-api.json` |
 | **汇总** | 各渠道 JSON 已更新 → 商务 Excel + 渠道分表 | refresh 失败看日志 | **自动**：各渠道 build/scrape 末尾 `pricing:upstream`<br>全量：`pricing:refresh` | `output/trinity-pricing-text.xlsx` · `output/upstream/*/pricing.md` |
 
 </div>
@@ -83,16 +84,24 @@ flowchart TD
 
 ## Gate（`pricing:gate`）
 
+与 `pricing/pipeline/validate-pricing-gate.mjs` 同步（**全模态 L2/L3**，不含 L4 publish）：
+
 ```
+0. skill:lint:tools
 1. pricing:supplier:official:text
-2. validate-aigc-excel          ← B→C（商务表 ↔ sheet）
-3. validate-official-aigc       ← B→C（官方 ↔ AIGC/TH）
-4. validate-official-suppliers  ← G→H
-5. emit-pricing-alerts --dry-run
+2. pricing:supplier:official:image
+3. validate-aigc-excel              ← B→C（商务表 ↔ sheet）
+4. validate-official-aigc           ← 生文 L1↔L2
+5. validate-official-aigc-image     ← 生图 L1↔L2
+6. validate-official-aigc-video       ← 生视频 L1↔L2
+7. validate-official-suppliers      ← 生文 L1↔L3
+8. validate-official-suppliers-image
+9. validate-official-suppliers-video
+10. emit-pricing-alerts --dry-run
 ```
 
-发刊例前另确认 L（G→L）：`compare:official` + 刊例对比表无未登记 `listing_*` 告警。  
-命令说明 → [日常操作](./operations)。
+发刊例前另确认 L（G→L）：`upstream:{text,image,video}` + 刊例对比表无未登记 `listing_*` 告警；生图/生视频另跑 `gen-official:*` → `diff:official-*` → 人工确认。  
+命令说明 → [日常操作](./operations) · 按模态 → [三模态索引](./modality-index) · 生视频发布 → [video-rollout](./video-rollout)。
 
 ---
 
@@ -107,4 +116,5 @@ flowchart TD
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-07 | Gate 对齐全模态；补 L4 gen/diff/publish 阶段 |
 | 2026-07-03 | 合并原 engineering / governance / skill-design 为一页 |

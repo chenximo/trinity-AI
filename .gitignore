@@ -39,7 +39,12 @@ scripts/sync-reports/
 pricing/suppliers/tokenhub/.profile/
 scripts/bailian/.profile/
 pricing/output/online/prices-api.old.json
+pricing/output/online/prices-api-*.old.json
 pricing/output/online/*-publish.log.json
+pricing/output/online/prices-api-*-flat.json
+pricing/output/online/prices-api-*-index.json
+pricing/output/online/prices-api-flat.json
+pricing/output/online/prices-api-index.json
 pricing/.tmp-*
 *.sync-backup-*
 

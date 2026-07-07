@@ -13,23 +13,22 @@ import {
   imagePricesDiffCsvRows,
 } from "./lib/diff-image-prices-api.mjs";
 import { writeCsv } from "./lib/export-excel.mjs";
+import { readOnlinePricesCache } from "./lib/fetch-online-prices-lib.mjs";
 import {
   OFFICIAL_PRICES_API_IMAGE,
   OFFICIAL_PRICES_API_IMAGE_DIFF_MD,
   OFFICIAL_PRICES_API_IMAGE_DIFF_JSON,
   OFFICIAL_PRICES_API_IMAGE_DIFF_CSV,
-  PRICES_API_FILE,
 } from "./lib/paths.mjs";
 
 async function main() {
   await mkdir(path.dirname(OFFICIAL_PRICES_API_IMAGE_DIFF_MD), { recursive: true });
 
-  const [onlineRaw, draftRaw] = await Promise.all([
-    readFile(PRICES_API_FILE, "utf8"),
+  const [{ raw: onlineDoc }, draftRaw] = await Promise.all([
+    readOnlinePricesCache("image"),
     readFile(OFFICIAL_PRICES_API_IMAGE, "utf8"),
   ]);
 
-  const onlineDoc = JSON.parse(onlineRaw);
   const draftDoc = JSON.parse(draftRaw);
   const doc = compareImagePricesDocuments(onlineDoc, draftDoc);
 

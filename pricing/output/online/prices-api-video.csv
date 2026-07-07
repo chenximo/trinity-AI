@@ -1,0 +1,26 @@
+﻿model,displayName,pricingMode,tierLabel,inputUsd,outputUsd,cacheUsd,cacheCreationUsd,updatedAt
+gv-3.1,GV-3.1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+gv-3.1-fast,GV-3.1-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+gv-3.1-litenew,GV-3.1-Lite,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+h2new-1,h2new-1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+hailuo-2.3,Hailuo-2.3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+hailuo-2.3-fast,Hailuo-2.3-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+jv-3.0-pro,Jimeng-3.0-Pro,video_tiered,1080p,,,,,2026-05-20T16:00:00Z
+kling-2.5-turbo,Kling-2.5-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-2.6,Kling-2.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-3,Kling-3.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-3.0-omni,Kling-3.0-Omni,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-o1,Kling-O1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+os-2,OS-2.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+pixversenew-c1,PixVerse-c1,video_tiered,768p,,,,,2026-05-20T16:00:00Z
+pixversenew-v5.6,PixVerse-v5.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+pixversenew-v6.0,PixVerse-v6.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+seedance-1.0-pro,Seedance 1.0 Pro,flat,条件计价,,,,,2026-06-09T16:00:00Z
+seedance-1.0-pro-fast,Seedance 1.0 Pro Fast,flat,条件计价,,,,,2026-06-09T16:00:00Z
+seedance-1.5-pro,Seedance 1.5 Pro,video_tiered,含音频,,,,,2026-06-09T16:00:00Z
+vidu-q2,Vidu Q2,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q2-pro,Vidu Q2-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q2-turbo,Vidu Q2-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3,Vidu Q3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3-pro,Vidu Q3-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3-turbo,Vidu Q3-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z

@@ -6,8 +6,8 @@
  *
  * - 骨架：线上 prices-api（modality=image）模型列表与 price_groups 结构
  * - 价格：official tiers[] 按 tierKey 对齐
- * - **官方无档** → AIGC 国际 USD → AIGC 国内 CNY÷6.5 → TokenHub CNY÷6.5
- * - CNY 官方 ÷ 6.5 → USD；官方 / AIGC 国际 USD 直用
+ * - **官方无档** → AIGC 国际 USD → AIGC 国内 CNY÷FX_LISTING → TokenHub CNY÷FX_LISTING
+ * - CNY 官方 ÷ FX_LISTING → USD；官方 / AIGC 国际 USD 直用
  */
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
@@ -25,7 +25,7 @@ import {
   TOKENHUB_FILE,
 } from "./lib/paths.mjs";
 
-const FX = 6.5;
+import { FX_LISTING } from "../../config/fx.mjs";
 const TAG = "official_prices_api_image";
 const AIGC_IMAGE_FILE = path.join(
   SUPPLIERS_DIR,
@@ -78,7 +78,7 @@ async function main() {
     templateData,
     officialData,
     vendorMap,
-    fxCnyPerUsd: FX,
+    fxCnyPerUsd: FX_LISTING,
     tag: TAG,
     pricingPolicy: "official_vendor_image+l2_fallback",
     preserveByModel: new Map(),
@@ -102,7 +102,7 @@ async function main() {
   console.log(
     `Built ${path.basename(OFFICIAL_PRICES_API_IMAGE)}: ${buildStats.pricedModelCount}/${document.modelCount} models · tiers official ${buildStats.tierFromOfficial} · aigc ${buildStats.tierFromAigc} · tokenhub ${buildStats.tierFromTokenhub} · unchanged ${buildStats.tierUnchanged}`,
   );
-  console.log(`FX: 1 USD = ${FX} CNY · policy: ${buildStats.pricingPolicy}`);
+  console.log(`FX: 1 USD = ${FX_LISTING} CNY · policy: ${buildStats.pricingPolicy}`);
   console.log(`Fallback: ${buildStats.fallbackPolicy}`);
   console.log(`Wrote ${OFFICIAL_PRICES_API_IMAGE}`);
   console.log(`Wrote ${OFFICIAL_PRICES_API_IMAGE_META}`);

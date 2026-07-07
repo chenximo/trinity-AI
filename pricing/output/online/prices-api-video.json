@@ -4,7 +4,7 @@
   "modality": "video",
   "fxCnyPerUsd": 7.25,
   "fxNote": "官方价优先（listingAttribute 对齐）；官方无档 → AIGC 国际 USD → AIGC 国内 CNY÷7.25 → TokenHub → 火山；CNY 官方 ÷ 7.25",
-  "fetchedAt": "2026-07-07T10:06:42.111Z",
+  "fetchedAt": "2026-07-07T11:40:11.275Z",
   "modelCount": 25,
   "object": "list",
   "data": [
@@ -2247,6 +2247,6 @@
     }
   ],
   "publishedFrom": "official-prices-api-video.json",
-  "publishedAt": "2026-07-07T10:06:42.111Z",
+  "publishedAt": "2026-07-07T11:40:11.275Z",
   "pricingPolicy": "official_vendor_video+l2_fallback"
 }

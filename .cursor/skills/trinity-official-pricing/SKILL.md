@@ -50,8 +50,10 @@ DOMAIN.md、confirmation.md：边界争议或 confirm:required 时再 READ
 | 用户意图 | Workflow |
 |----------|----------|
 | 新增或更新某模型官方价 | [`./workflows/add-official-model.md`](./workflows/add-official-model.md) |
+| 新增生视频模型（registry 等） | [`./workflows/add-official-model-video.md`](./workflows/add-official-model-video.md) |
 | 对比官方 / 上游 / 线上 | [`./workflows/compare-pricing.md`](./workflows/compare-pricing.md) |
 | 价目门禁 L1→L3→告警 | [`./workflows/pricing-gate.md`](./workflows/pricing-gate.md) |
+| **刊例发布 gen→diff→publish** | [`./workflows/rollout-listing-price.md`](./workflows/rollout-listing-price.md) |
 | 刷新某模态全量官方价 | [`./workflows/refresh-official.md`](./workflows/refresh-official.md) |
 
 CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.yaml)，勿在 workflow 重复维护命令表。
@@ -75,11 +77,17 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 
 | tool id | 用途 |
 |---------|------|
-| `pricing.gate` | L1→L3 门禁（text + image） |
+| `pricing.gate` | L1→L3 门禁（text + image + video） |
 | `pricing.upstream` | 生文刊例对比 + Excel |
 | `pricing.upstream.image` | 生图刊例对比 + Excel |
+| `pricing.upstream.video` | 生视频刊例对比 + Excel |
+| `pricing.gen-official.video` | 生视频 cascade 草案 |
+| `pricing.diff.official.video` | 草案 vs 线上 diff |
+| `pricing.publish.official.video` | 发布本地 L4 缓存 |
+| `pricing.publish.official.image` | 发布生图 L4 缓存 |
+| `pricing.rollout.video` | gen → diff →（可选）publish |
 | `pricing.validate.official-aigc.image` | 生图 L1↔L2 交叉 |
-| `pricing.supplier.official.text` / `.image` | 拉取官方价 |
+| `pricing.supplier.official.text` / `.image` / `.video` | 拉取官方价 |
 | `pricing.scaffold.model` | 新增模型脚手架 |
 
 完整列表：[`./tools.yaml`](./tools.yaml)

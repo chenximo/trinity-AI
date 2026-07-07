@@ -15,7 +15,7 @@ Trinity 价目体系需要区分三类价格，且**模型原厂官网公开价*
 |----------|------|----------|
 | **官方价（原厂）** | 各模型厂商官网文档/API 说明页的权威挂牌价 | `suppliers/official/output/{modality}/` |
 | **上游价（转售）** | TokenHub / 百炼 / AIGC 等转售渠道挂牌价 | `suppliers/{tokenhub,bailian,aigc}/` |
-| **线上刊例** | Trinity 平台对用户实际扣费价 | `output/prices-api.json` |
+| **线上刊例** | Trinity 平台对用户实际扣费价 | `output/online/prices-api.json` |
 
 ### 设计目标
 

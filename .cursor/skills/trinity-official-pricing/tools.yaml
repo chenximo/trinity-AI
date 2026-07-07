@@ -149,6 +149,17 @@ tools:
     git: false
     tags: [supplier, aigc, pricing-L2, image]
 
+  - id: pricing.supplier.aigc.video
+    title: 构建 AIGC 价目（生视频）
+    summary: 从 pricing-sheet-video.mjs 生成 pricing-api-video.json
+    command: npm run pricing:supplier:aigc:video
+    writes:
+      - pricing/suppliers/aigc/output/pricing-api-video.json
+    confirm: none
+    network: false
+    git: false
+    tags: [supplier, aigc, pricing-L2, video]
+
   - id: pricing.supplier.tokenhub.console
     title: 抓取 TokenHub 控制台价
     summary: scrape + gen-sample；L1 CNY 交叉需要
@@ -330,7 +341,7 @@ tools:
 
   - id: pricing.gate
     title: 价目门禁 L1→L3（全模态）
-    summary: official text+image → aigc-excel → L1 text+image → L3 text+image → alert dry-run
+    summary: official text+image → aigc-excel → L2 text+image+video → L3 text+image+video → alert dry-run
     command: npm run pricing:gate
     reads:
       - pricing/suppliers/official/output/text/vendor-pricing.json
@@ -456,3 +467,95 @@ tools:
     env:
       - PRICING_SKIP_ONLINE_FETCH
     tags: [upstream, compare, video, pricing-L4]
+
+  # ── 官方 cascade 刊例草案（L4）────────────────────────────────
+  - id: pricing.gen-official.image
+    title: 生成生图官方 cascade 刊例草案
+    summary: official + AIGC cascade → official-prices-api-image.json
+    command: npm run pricing:gen-official:image
+    writes:
+      - pricing/output/draft/official-prices-api-image.json
+      - pricing/output/draft/official-prices-api-image.meta.json
+    confirm: none
+    network: false
+    git: false
+    tags: [draft, listing, image, pricing-L4]
+
+  - id: pricing.gen-official.video
+    title: 生成生视频官方 cascade 刊例草案
+    summary: official + AIGC cascade → official-prices-api-video.json
+    command: npm run pricing:gen-official:video
+    writes:
+      - pricing/output/draft/official-prices-api-video.json
+      - pricing/output/draft/official-prices-api-video.meta.json
+    confirm: none
+    network: false
+    git: false
+    tags: [draft, listing, video, pricing-L4]
+
+  - id: pricing.diff.official.image
+    title: diff 生图草案 vs 线上刊例
+    summary: official-prices-api-image vs prices-api-image.json
+    command: npm run pricing:diff:official-image
+    writes:
+      - pricing/output/draft/official-prices-api-image-diff.json
+      - pricing/output/draft/official-prices-api-image-diff.md
+      - pricing/output/draft/official-prices-api-image-diff.csv
+    confirm: none
+    network: false
+    git: false
+    tags: [diff, listing, image, pricing-L4]
+
+  - id: pricing.diff.official.video
+    title: diff 生视频草案 vs 线上刊例
+    summary: official-prices-api-video vs prices-api-video.json
+    command: npm run pricing:diff:official-video
+    writes:
+      - pricing/output/draft/official-prices-api-video-diff.json
+      - pricing/output/draft/official-prices-api-video-diff.md
+      - pricing/output/draft/official-prices-api-video-diff.csv
+    confirm: none
+    network: false
+    git: false
+    tags: [diff, listing, video, pricing-L4]
+
+  - id: pricing.publish.official.video
+    title: 发布生视频刊例到本地 L4 缓存
+    summary: official-prices-api-video → prices-api-video.json (+ flat/index/csv)
+    command: npm run pricing:publish-official:video
+    reads:
+      - pricing/output/draft/official-prices-api-video.json
+    writes:
+      - pricing/output/online/prices-api-video.json
+      - pricing/output/online/prices-api-video-flat.json
+      - pricing/output/online/prices-api-video-index.json
+      - pricing/output/online/prices-api-video.csv
+    confirm: required
+    network: false
+    git: true
+    tags: [publish, listing, video, pricing-L4]
+
+  - id: pricing.publish.official.image
+    title: 发布生图刊例到本地 L4 缓存
+    summary: official-prices-api-image → prices-api-image.json (+ flat/index/csv)
+    command: npm run pricing:publish-official:image
+    reads:
+      - pricing/output/draft/official-prices-api-image.json
+    writes:
+      - pricing/output/online/prices-api-image.json
+      - pricing/output/online/prices-api-image-flat.json
+      - pricing/output/online/prices-api-image-index.json
+      - pricing/output/online/prices-api-image.csv
+    confirm: required
+    network: false
+    git: true
+    tags: [publish, listing, image, pricing-L4]
+
+  - id: pricing.rollout.video
+    title: 生视频刊例一键编排
+    summary: gen-official:video → diff:official-video →（可选 --publish）
+    command: npm run pricing:rollout:video
+    confirm: optional
+    network: false
+    git: false
+    tags: [rollout, listing, video, pricing-L4]

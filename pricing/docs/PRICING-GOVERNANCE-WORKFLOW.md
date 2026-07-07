@@ -417,6 +417,7 @@ npm run pricing:alert -- --dry-run            # 仅写 output/validate/pricing-a
 |------|------|
 | [PRICING-DISCREPANCY-RULES.md](./PRICING-DISCREPANCY-RULES.md) | 偏差判定细则（0.5%、tierKey、FX） |
 | [OFFICIAL-PRICING-SKILL-DESIGN.md](./OFFICIAL-PRICING-SKILL-DESIGN.md) | Skill / 加模型脚手架 |
+| [PRICING-OPTIMIZATION-BACKLOG.md](./PRICING-OPTIMIZATION-BACKLOG.md) | 优化清单与落地进度 |
 | 本文 | **总工作流、分层真源、告警、Gate 路线图** |
 
 ---

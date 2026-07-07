@@ -10,7 +10,7 @@ import {
   pctIsMaterial,
   roundForCompare,
 } from "./pricing-tolerance.mjs";
-import { FX_ONLINE_DOMESTIC } from "./compare-official-lib.mjs";
+import { FX_LISTING } from "../../config/fx.mjs";
 import { parseNum, normalizeAttrLabel } from "./pricing-validate-lib.mjs";
 
 export { parseNum, normalizeAttrLabel };
@@ -349,9 +349,9 @@ export function evaluateVideoPriceVsOfficial(
   let sup = supplierPrice;
 
   if (officialCurrency === "CNY" && supplierCurrency === "USD") {
-    off = officialPrice / FX_ONLINE_DOMESTIC;
+    off = officialPrice / FX_LISTING;
   } else if (officialCurrency === "USD" && supplierCurrency === "CNY") {
-    sup = supplierPrice / FX_ONLINE_DOMESTIC;
+    sup = supplierPrice / FX_LISTING;
   } else if (officialCurrency !== supplierCurrency) {
     return { pct: null, text: "—", comparable: false };
   }
@@ -410,7 +410,7 @@ export function evaluateVideoIntlVsOfficial(
   if (supPriceUsd == null || offPrice == null) {
     return { pct: null, text: "—", comparable: false };
   }
-  const offUsd = offCurrency === "CNY" ? offPrice / FX_ONLINE_DOMESTIC : offPrice;
+  const offUsd = offCurrency === "CNY" ? offPrice / FX_LISTING : offPrice;
   const pct =
     offUsd === 0
       ? supPriceUsd === 0
@@ -474,7 +474,7 @@ export function compareVideoTierLists(left, right) {
   return issues;
 }
 
-export const VIDEO_FX_DOMESTIC = FX_ONLINE_DOMESTIC;
+export const VIDEO_FX_DOMESTIC = FX_LISTING;
 export const VIDEO_FX_DEFAULT = DEFAULT_CNY_TO_USD_FX;
 
 function pctDelta(base, value) {
@@ -490,7 +490,7 @@ function formatDeltaPct(pct) {
 }
 
 /** AIGC 国内元/秒 vs 国际美元/秒：隐含汇率 + 偏差 */
-export function evaluateAigcVideoDomVsIntl(domPriceCny, intlPriceUsd, fx = FX_ONLINE_DOMESTIC) {
+export function evaluateAigcVideoDomVsIntl(domPriceCny, intlPriceUsd, fx = FX_LISTING) {
   if (domPriceCny == null || intlPriceUsd == null || intlPriceUsd === 0) {
     return { pct: null, text: "—", comparable: false, impliedFx: null };
   }
@@ -536,7 +536,7 @@ export function evaluateListingVsAigcIntl(aigcIntlUsd, listingUsd) {
 export function evaluateListingVsOfficialToken(
   officialCnyPerM,
   listingUsdPerM,
-  fx = FX_ONLINE_DOMESTIC,
+  fx = FX_LISTING,
 ) {
   if (officialCnyPerM == null || listingUsdPerM == null || fx <= 0) {
     return { pct: null, text: "—", comparable: false };

@@ -13,23 +13,22 @@ import {
   videoPricesDiffCsvRows,
 } from "./lib/diff-video-prices-api.mjs";
 import { writeCsv } from "./lib/export-excel.mjs";
+import { readOnlinePricesCache } from "./lib/fetch-online-prices-lib.mjs";
 import {
   OFFICIAL_PRICES_API_VIDEO,
   OFFICIAL_PRICES_API_VIDEO_DIFF_MD,
   OFFICIAL_PRICES_API_VIDEO_DIFF_JSON,
   OFFICIAL_PRICES_API_VIDEO_DIFF_CSV,
-  PRICES_API_FILE,
 } from "./lib/paths.mjs";
 
 async function main() {
   await mkdir(path.dirname(OFFICIAL_PRICES_API_VIDEO_DIFF_MD), { recursive: true });
 
-  const [onlineRaw, draftRaw] = await Promise.all([
-    readFile(PRICES_API_FILE, "utf8"),
+  const [{ raw: onlineDoc }, draftRaw] = await Promise.all([
+    readOnlinePricesCache("video"),
     readFile(OFFICIAL_PRICES_API_VIDEO, "utf8"),
   ]);
 
-  const onlineDoc = JSON.parse(onlineRaw);
   const draftDoc = JSON.parse(draftRaw);
   const doc = compareVideoPricesDocuments(onlineDoc, draftDoc);
 

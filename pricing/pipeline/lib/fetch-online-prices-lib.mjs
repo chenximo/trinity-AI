@@ -1,19 +1,18 @@
 /**
- * 拉取 GET /v1/prices 并写入 output/online/prices-api.json（对比前始终用最新 API）
+ * 拉取 GET /v1/prices 并写入 output/online/prices-api-{modality}.json
  */
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import {
   flattenPricesList,
   indexOnlinePrices,
 } from "./parse-online-prices.mjs";
 import { writeCsv } from "./export-excel.mjs";
+import { FX_LISTING, FX_LISTING_NOTE } from "../../config/fx.mjs";
 import {
   OUT_ONLINE_DIR,
   PRICES_API_FILE,
-  PRICES_API_FLAT_FILE,
-  PRICES_API_INDEX_FILE,
-  PRICES_API_CSV_FILE,
+  pricesApiPaths,
 } from "./paths.mjs";
 
 export const DEFAULT_TRINITY_PRICES_BASE = "https://api.trinitydesk.ai/v1";
@@ -44,28 +43,31 @@ export async function fetchPricesFromApi(base, modality) {
 
 /**
  * @param {object} raw prices-api 文档
- * @param {{ writeCsvFile?: boolean }} [opts]
+ * @param {{ writeCsvFile?: boolean, modality?: string }} [opts]
  */
 export async function writeOnlinePricesCache(raw, opts = {}) {
   const writeCsvFile = opts.writeCsvFile ?? false;
   const data = raw.data ?? [];
-  const modality = raw.modality ?? "text";
+  const modality = opts.modality ?? raw.modality ?? "text";
   const fetchedAt = raw.fetchedAt ?? new Date().toISOString();
-  const fxCnyPerUsd = raw.fxCnyPerUsd ?? 7.25;
+  const fxCnyPerUsd = raw.fxCnyPerUsd ?? FX_LISTING;
+
+  const paths =
+    modality === "all" ? pricesApiPaths("text") : pricesApiPaths(modality);
 
   const flat = flattenPricesList(data);
   const priceIndex = indexOnlinePrices(data);
   const index = Object.fromEntries([...priceIndex.entries()]);
 
   await mkdir(OUT_ONLINE_DIR, { recursive: true });
-  await writeFile(PRICES_API_FILE, JSON.stringify(raw, null, 2), "utf8");
+  await writeFile(paths.json, JSON.stringify({ ...raw, modality, fxCnyPerUsd }, null, 2), "utf8");
   await writeFile(
-    PRICES_API_FLAT_FILE,
+    paths.flat,
     JSON.stringify({ fetchedAt, modality, fxCnyPerUsd, models: flat }, null, 2),
     "utf8",
   );
   await writeFile(
-    PRICES_API_INDEX_FILE,
+    paths.index,
     JSON.stringify(
       {
         fetchedAt,
@@ -110,10 +112,10 @@ export async function writeOnlinePricesCache(raw, opts = {}) {
         }),
       ),
     ];
-    await writeCsv(PRICES_API_CSV_FILE, csvRows, writeFile);
+    await writeCsv(paths.csv, csvRows, writeFile);
   }
 
-  return { raw, map: priceIndex, fetchedAt, modelCount: data.length };
+  return { raw, map: priceIndex, fetchedAt, modelCount: data.length, paths };
 }
 
 /**
@@ -138,21 +140,21 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
     source: "trinity_prices_api",
     apiUrl: `${base}/prices${modality && modality !== "all" ? `?modality=${modality}` : ""}`,
     modality,
-    fxCnyPerUsd: 7.25,
-    fxNote: "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = 7.25 CNY",
+    fxCnyPerUsd: FX_LISTING,
+    fxNote: FX_LISTING_NOTE,
     fetchedAt,
     modelCount: data.length,
     object: body.object,
     data,
   };
 
-  const result = await writeOnlinePricesCache(raw, { writeCsvFile });
+  const result = await writeOnlinePricesCache(raw, { writeCsvFile, modality });
 
   if (!quiet) {
     console.log(
       `Fetched online prices: ${data.length} models (${modality}) at ${fetchedAt}`,
     );
-    console.log(`Wrote ${PRICES_API_FILE}`);
+    console.log(`Wrote ${result.paths.json}`);
   }
 
   return {
@@ -161,29 +163,45 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
   };
 }
 
-/** 对比流水线入口：默认每次打 API；失败时回退已有 prices-api.json；PRICING_SKIP_ONLINE_FETCH=1 仅读缓存 */
-export async function refreshOnlinePricesForCompare(modality = "text", opts = {}) {
-  const { readFile } = await import("node:fs/promises");
+/**
+ * 读取模态刊例缓存；优先 prices-api-{modality}.json，回退 legacy prices-api.json
+ * @param {string} modality
+ */
+export async function readOnlinePricesCache(modality = "text") {
+  const paths = pricesApiPaths(modality);
+  const candidates = [paths.json, PRICES_API_FILE];
 
+  for (const file of candidates) {
+    try {
+      const raw = JSON.parse(await readFile(file, "utf8"));
+      const cachedModality = raw.modality ?? "text";
+      if (
+        modality !== "all" &&
+        cachedModality !== "all" &&
+        cachedModality !== modality
+      ) {
+        continue;
+      }
+      const map = indexOnlinePrices(raw.data ?? []);
+      if (!map.size) continue;
+      return { raw, map, file };
+    } catch {
+      /* try next */
+    }
+  }
+
+  throw new Error(
+    `No online prices cache for modality=${modality} (tried ${candidates.join(", ")})`,
+  );
+}
+
+/** 对比流水线入口：默认每次打 API；失败时回退缓存；PRICING_SKIP_ONLINE_FETCH=1 仅读缓存 */
+export async function refreshOnlinePricesForCompare(modality = "text", opts = {}) {
   async function loadCachedPrices(reason) {
-    const raw = JSON.parse(await readFile(PRICES_API_FILE, "utf8"));
-    const cachedModality = raw.modality ?? "text";
-    if (
-      modality !== "all" &&
-      cachedModality !== "all" &&
-      cachedModality !== modality
-    ) {
-      throw new Error(
-        `cached prices-api.json modality=${cachedModality}, need ${modality}`,
-      );
-    }
-    const map = indexOnlinePrices(raw.data ?? []);
-    if (!map.size) {
-      throw new Error("cached prices-api.json is empty");
-    }
+    const { raw, map, file } = await readOnlinePricesCache(modality);
     if (!opts.quiet) {
       console.warn(
-        `${reason}; using ${PRICES_API_FILE} (${raw.fetchedAt ?? "—"}, ${map.size} models)`,
+        `${reason}; using ${file} (${raw.fetchedAt ?? "—"}, ${map.size} models)`,
       );
     }
     return {

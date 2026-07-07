@@ -12,6 +12,8 @@
 | `pricing.map.edit` | 改 `trinity-map.json` | 影响对比 join 键 |
 | `pricing.aigc.sheet.edit` | 改 AIGC `pricing-sheet` | 影响 L1 交叉与刊例对比 |
 | `pricing.alert` | `npm run pricing:alert` | 配置 `PRICING_ALERT_WEBHOOK_URL` 时会 POST 商务 |
+| `pricing.publish.official.video` | `npm run pricing:publish-official:video` | 覆盖 `output/online/prices-api-video.json`（L4 本地缓存） |
+| `pricing.publish.official.image` | `npm run pricing:publish-official:image` | 覆盖 `output/online/prices-api-image.json` |
 
 ## 建议确认（`confirm: optional`）
 
@@ -46,5 +48,5 @@
 ```
 
 ```text
-将执行 pricing:alert 并可能向商务 webhook 推送告警，是否继续？
+将执行 pricing:publish-official:video，把 draft 写入 output/online/prices-api.json（当前为单模态共享路径）。是否继续？
 ```

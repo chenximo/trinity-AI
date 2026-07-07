@@ -111,13 +111,14 @@ node pricing/suppliers/official/scaffold-official-model.mjs \
 |------|------|-------|
 | 生文 | `pricing.refresh`（或 `--skip-official-fetch`） | `trinity-pricing-text.xlsx` |
 | 生图 | `pricing.supplier.official.image` → `pricing.upstream.image` | `trinity-pricing-image.xlsx` |
-| 生视频 | `pricing.supplier.official.video` | （video upstream 待补） |
+| 生视频 | `pricing.supplier.official.video` → `pricing.upstream.video` | `trinity-pricing-video.xlsx` |
 
-`pricing.refresh` 会拉 official 三模态 + 生文 upstream，**不含**生图 Excel。
+生图/生视频 **不含**于 `pricing.refresh` 的 Excel 步骤；须分别跑 `upstream:image` / `upstream:video`。
 
 **规则**：凡说「新增 / 改价 / 改映射」，交付前须跑对应 upstream，Excel 才算最新。
 
 ## Step 8 — 可选
 
 - 门禁：[`pricing-gate.md`](./pricing-gate.md) → `pricing.gate`
-- 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.upstream` / `pricing.upstream.image`
+- 对比：[`compare-pricing.md`](./compare-pricing.md) → `pricing.upstream` / `.image` / `.video`
+- 发刊例（生图/生视频）：[`rollout-listing-price.md`](./rollout-listing-price.md) → `gen-official:*` → `diff` → `publish`

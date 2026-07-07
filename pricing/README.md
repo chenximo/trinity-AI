@@ -214,6 +214,20 @@ npm run pricing:diff:065
 
 旧别名 `compare:*`、`tokenhub:pricing:*`、`aigc:pricing` 仍可用。
 
+### 按模态：官方 cascade 刊例（生图 / 生视频）
+
+| 命令 | 作用 |
+|------|------|
+| `pricing:upstream:image` / `:video` | 刊例对比 Excel |
+| `pricing:gen-official:image` / `:video` | 官方优先 cascade → `draft/official-prices-api-*.json` |
+| `pricing:diff:official-image` / `:video` | 草案 vs 线上 `prices-api.json` |
+| `pricing:publish-official:video` | 草案 → 本地 L4 缓存（生图 publish 待补） |
+
+产品 SOP：`apps/trinity-product/docs/ai-api-platform/pricing-sources/modality-index.md` · `video-rollout.md`  
+优化跟踪：`pricing/docs/PRICING-OPTIMIZATION-BACKLOG.md`
+
+生文仍主要用 `gen-65` / `diff:065`（legacy 上游换算）；长期与 official cascade 收敛。
+
 ---
 
 ## 产出目录（`output/`）
@@ -237,7 +251,9 @@ npm run pricing:diff:065
 ## 文档索引
 
 - **[STRUCTURE.md](./STRUCTURE.md)** — 完整目录树（含 `official` 模态拆分）
-- **[docs/OFFICIAL-PRICING-SKILL-DESIGN.md](./docs/OFFICIAL-PRICING-SKILL-DESIGN.md)** — 官方价 Skill 与三方对比设计稿
+- **[docs/PRICING-GOVERNANCE-WORKFLOW.md](./docs/PRICING-GOVERNANCE-WORKFLOW.md)** — 治理总工作流
+- **[docs/PRICING-OPTIMIZATION-BACKLOG.md](./docs/PRICING-OPTIMIZATION-BACKLOG.md)** — 优化清单与进度
+- **[docs/OFFICIAL-PRICING-SKILL-DESIGN.md](./docs/OFFICIAL-PRICING-SKILL-DESIGN.md)** — 官方价 Skill 设计稿
 - [suppliers/SOURCES.md](./suppliers/SOURCES.md) — 各上游 JSON 真源
 - [pipeline/README.md](./pipeline/README.md) — 流水线脚本说明
 - [suppliers/official/README.md](./suppliers/official/README.md) — 原厂价目（生文/生图/生视频）
