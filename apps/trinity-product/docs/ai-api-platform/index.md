@@ -36,9 +36,16 @@ flowchart LR
 
 | 分层 | 包含什么 | 手册入口 | 整体 |
 |------|----------|----------|:----:|
-| **用户侧模块** | 官网、登录、广场、Chat、文档、控制台 | [进入](./user/) | 🟡 |
+| **用户侧模块** | 官网、登录、广场、Chat、文档、组织与控制台 | [进入](./user/) · [身份与组织](./user/identity-org/) · [模型域](./user/models/) | 🟡 |
 | **平台侧模块** | 统一 API、鉴权、路由、计量（给系统调用） | [进入](./platform/) | ⬜ |
 | **运营后台管理平台** | 上架、供应商、密钥、计费、监控、审计 | [进入](./operations/) | 🟡 |
+
+::: tip 先读业务（再查进度表）
+**整个产品商业怎么转** → **[业务全景](./business-overview)**（角色 · 对象 · 五条主流程 · 价值链）。  
+**ToB 能力全景** → **[能力地图](./capability-map)** · **身份与组织** → [user/identity-org/](./user/identity-org/)  
+**技术/runtime** → [产品核心与架构](./product-core) · **模型域** → [user/models/](./user/models/)  
+本页下方周计划 / 待办管 **进度**，不替代业务说明。
+:::
 
 日常查厂商文档等外链，见 **[上游资料索引](./upstream-references)**；**采购价 / 渠道价 / Excel** 见 **[模型价格真源](./pricing-sources/)**。竞品调研见 **[友商产品调研](./competitor-research/)**。**商用计费与充值** → **[总览](./commercial-billing/)** · **[全球化美金支付与 KYC](./commercial-billing/global-payment)**。**二期 · Agent（规划期）** 见 **[Agent · 总览](./agent/)**（[战略 L0](./agent/positioning-and-architecture) · [SDK P0](./agent/agent-sdk-product-design) · [预研](./agent/agent-landing-report)）。每周发布见 **[产品迭代版本](./release-notes)**。
 
@@ -111,4 +118,7 @@ W27 商用底座（支付 · 测试 · 企业文档）→ W28–W29 Agent SDK P0
 
 ## 相关链接
 
+- **[能力地图](./capability-map)**（ToB 能力域 · 三面落点 · 状态）
+- **[业务全景](./business-overview)**（角色 · 对象 · 主流程 · 价值链）
+- [产品核心与架构](./product-core)（工程映射 · API 时序）
 - 产品全景 PRD：`docs/05-产品与PRD/AI-API聚合平台-产品全景与介绍.md`

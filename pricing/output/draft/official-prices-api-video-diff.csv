@@ -1,0 +1,100 @@
+﻿model,display_name,tier,tier_key,online_usd,draft_usd,delta_usd,delta_pct,verdict
+gv-3.1,GV-3.1,1080p,res:1080p,0.2,0.2,0,0,一致
+gv-3.1,GV-3.1,2k,res:2k,0.3,0.3,0,0,一致
+gv-3.1,GV-3.1,4k,res:4k,0.4,0.4,0,0,一致
+gv-3.1,GV-3.1,720p,res:720p,0.2,0.2,0,0,一致
+gv-3.1-fast,GV-3.1-Fast,1080p,res:1080p,0.1,0.1,0,0,一致
+gv-3.1-fast,GV-3.1-Fast,2k,res:2k,0.2,0.2,0,0,一致
+gv-3.1-fast,GV-3.1-Fast,4k,res:4k,0.35,0.35,0,0,一致
+gv-3.1-fast,GV-3.1-Fast,720p,res:720p,0.15,0.15,0,0,一致
+gv-3.1-litenew,GV-3.1-Lite,1080p,res:1080p,0.05,0.05,0,0,一致
+gv-3.1-litenew,GV-3.1-Lite,2k,res:2k,0.12,0.12,0,0,一致
+gv-3.1-litenew,GV-3.1-Lite,4k,res:4k,0.1,0.1,0,0,一致
+gv-3.1-litenew,GV-3.1-Lite,720p,res:720p,0.05,0.05,0,0,一致
+h2new-1,h2new-1,1080p,res:1080p,0.2462,0.2462,0,0,一致
+h2new-1,h2new-1,2k,res:2k,0.2954,0.2954,0,0,一致
+h2new-1,h2new-1,4k,res:4k,0.3954,0.3954,0,0,一致
+h2new-1,h2new-1,720p,res:720p,0.1385,0.1385,0,0,一致
+hailuo-2.3,Hailuo-2.3,1080p,res:1080p,0.081667,0.081667,0,0,一致
+hailuo-2.3,Hailuo-2.3,2k,res:2k,0.143077,0.143077,0,0,一致
+hailuo-2.3,Hailuo-2.3,4k,res:4k,0.229231,0.229231,0,0,一致
+hailuo-2.3,Hailuo-2.3,720p,res:720p,0.046667,0.046667,0,0,一致
+hailuo-2.3-fast,Hailuo-2.3-Fast,1080p,res:1080p,0.055,0.055,0,0,一致
+hailuo-2.3-fast,Hailuo-2.3-Fast,2k,res:2k,0.089231,0.089231,0,0,一致
+hailuo-2.3-fast,Hailuo-2.3-Fast,4k,res:4k,0.133846,0.133846,0,0,一致
+hailuo-2.3-fast,Hailuo-2.3-Fast,720p,res:720p,0.031667,0.031667,0,0,一致
+jv-3.0-pro,Jimeng-3.0-Pro,1080p,res:1080p,0.137931,0.137931,0,0,一致
+jv-3.0-pro,Jimeng-3.0-Pro,2k,res:2k,0.230769,0.230769,0,0,一致
+jv-3.0-pro,Jimeng-3.0-Pro,4k,res:4k,0.346154,0.346154,0,0,一致
+kling-2.5-turbo,Kling-2.5-Turbo,1080p,res:1080p,0.068966,0.068966,0,0,一致
+kling-2.5-turbo,Kling-2.5-Turbo,2k,res:2k,0.103448,0.103448,0,0,一致
+kling-2.5-turbo,Kling-2.5-Turbo,4k,res:4k,0.154483,0.154483,0,0,一致
+kling-2.5-turbo,Kling-2.5-Turbo,720p,res:720p,0.041379,0.041379,0,0,一致
+kling-2.6,Kling-2.6,1080p,res:1080p,0.068966,0.068966,0,0,一致
+kling-2.6,Kling-2.6,2k,res:2k,0.103448,0.103448,0,0,一致
+kling-2.6,Kling-2.6,4k,res:4k,0.154483,0.154483,0,0,一致
+kling-2.6,Kling-2.6,720p,res:720p,0.041379,0.041379,0,0,一致
+kling-3,Kling-3.0,1080p,res:1080p,0.137931,0.137931,0,0,一致
+kling-3,Kling-3.0,2k,res:2k,0.165517,0.165517,0,0,一致
+kling-3,Kling-3.0,4k,res:4k,0.198621,0.198621,0,0,一致
+kling-3,Kling-3.0,720p,res:720p,0.110345,0.110345,0,0,一致
+kling-3.0-omni,Kling-3.0-Omni,1080p,res:1080p,0.110345,0.110345,0,0,一致
+kling-3.0-omni,Kling-3.0-Omni,2k,res:2k,0.137931,0.137931,0,0,一致
+kling-3.0-omni,Kling-3.0-Omni,4k,res:4k,0.413793,0.413793,0,0,一致
+kling-3.0-omni,Kling-3.0-Omni,720p,res:720p,0.082759,0.082759,0,0,一致
+kling-o1,Kling-O1,1080p,res:1080p,0.110345,0.110345,0,0,一致
+kling-o1,Kling-O1,2k,res:2k,0.165517,0.165517,0,0,一致
+kling-o1,Kling-O1,4k,res:4k,0.248276,0.248276,0,0,一致
+kling-o1,Kling-O1,720p,res:720p,0.082759,0.082759,0,0,一致
+os-2,OS-2.0,1080p,res:1080p,0.15,0.15,0,0,一致
+os-2,OS-2.0,2k,res:2k,0.225,0.225,0,0,一致
+os-2,OS-2.0,4k,res:4k,0.34,0.34,0,0,一致
+os-2,OS-2.0,720p,res:720p,0.1,0.1,0,0,一致
+pixversenew-c1,PixVerse-c1,1080p,res:1080p,0.19,0.19,0,0,一致
+pixversenew-c1,PixVerse-c1,2k,res:2k,0.1013,0.1013,0,0,一致
+pixversenew-c1,PixVerse-c1,4k,res:4k,0.1216,0.1216,0,0,一致
+pixversenew-c1,PixVerse-c1,480p540p,res:540p,0.0444,0.0444,0,0,一致
+pixversenew-c1,PixVerse-c1,768p,res:720p,0.1,0.1,0,0,一致
+pixversenew-v5.6,PixVerse-v5.6,1080p,res:1080p,0.15,0.15,0,0,一致
+pixversenew-v5.6,PixVerse-v5.6,2k,res:2k,0.1176,0.1176,0,0,一致
+pixversenew-v5.6,PixVerse-v5.6,4k,res:4k,0.1646,0.1646,0,0,一致
+pixversenew-v5.6,PixVerse-v5.6,480p540p,res:540p,0.0392,0.0392,0,0,一致
+pixversenew-v5.6,PixVerse-v5.6,720p,res:720p,0.09,0.09,0,0,一致
+pixversenew-v6.0,PixVerse-v6.0,1080p,res:1080p,0.18,0.18,0,0,一致
+pixversenew-v6.0,PixVerse-v6.0,2k,res:2k,0.096,0.096,0,0,一致
+pixversenew-v6.0,PixVerse-v6.0,4k,res:4k,0.1472,0.1472,0,0,一致
+pixversenew-v6.0,PixVerse-v6.0,480p540p,res:540p,0.07,0.07,0,0,一致
+pixversenew-v6.0,PixVerse-v6.0,720p,res:720p,0.09,0.09,0,0,一致
+seedance-1.0-pro,Seedance 1.0 Pro,条件计价,uniform,2.068966,2.068966,0,0,一致
+seedance-1.0-pro-fast,Seedance 1.0 Pro Fast,条件计价,uniform,0.57931,0.57931,0,0,一致
+seedance-1.5-pro,Seedance 1.5 Pro,无声,audio:disabled,1.103448,1.103448,0,0,一致
+seedance-1.5-pro,Seedance 1.5 Pro,含音频,audio:enabled,2.206897,2.206897,0,0,一致
+vidu-q2,Vidu Q2,1080p,res:1080p,0.072308,0.072308,0,0,一致
+vidu-q2,Vidu Q2,2k,res:2k,0.107692,0.107692,0,0,一致
+vidu-q2,Vidu Q2,4k,res:4k,0.161538,0.161538,0,0,一致
+vidu-q2,Vidu Q2,480p540p,res:540p,0.049231,0.049231,0,0,一致
+vidu-q2,Vidu Q2,720p,res:720p,0.049231,0.049231,0,0,一致
+vidu-q2-pro,Vidu Q2-Pro,1080p,res:1080p,0.043103,0.043103,0,0,一致
+vidu-q2-pro,Vidu Q2-Pro,2k,res:2k,0.076923,0.076923,0,0,一致
+vidu-q2-pro,Vidu Q2-Pro,4k,res:4k,0.155769,0.155769,0,0,一致
+vidu-q2-pro,Vidu Q2-Pro,480p540p,res:540p,0.021552,0.021552,0,0,一致
+vidu-q2-pro,Vidu Q2-Pro,720p,res:720p,0.021552,0.021552,0,0,一致
+vidu-q2-turbo,Vidu Q2-Turbo,1080p,res:1080p,0.072308,0.072308,0,0,一致
+vidu-q2-turbo,Vidu Q2-Turbo,2k,res:2k,0.107692,0.107692,0,0,一致
+vidu-q2-turbo,Vidu Q2-Turbo,4k,res:4k,0.161538,0.161538,0,0,一致
+vidu-q2-turbo,Vidu Q2-Turbo,720p,res:720p,0.038462,0.038462,0,0,一致
+vidu-q3,Vidu Q3,1080p,res:1080p,0.064655,0.064655,0,0,一致
+vidu-q3,Vidu Q3,2k,res:2k,0.15,0.15,0,0,一致
+vidu-q3,Vidu Q3,4k,res:4k,0.18,0.18,0,0,一致
+vidu-q3,Vidu Q3,480p540p,res:540p,0.030172,0.030172,0,0,一致
+vidu-q3,Vidu Q3,720p,res:720p,0.051724,0.051724,0,0,一致
+vidu-q3-pro,Vidu Q3-Pro,1080p,res:1080p,0.15,0.15,0,0,一致
+vidu-q3-pro,Vidu Q3-Pro,2k,res:2k,0.18,0.18,0,0,一致
+vidu-q3-pro,Vidu Q3-Pro,4k,res:4k,0.216,0.216,0,0,一致
+vidu-q3-pro,Vidu Q3-Pro,480p540p,res:540p,0.05,0.05,0,0,一致
+vidu-q3-pro,Vidu Q3-Pro,720p,res:720p,0.125,0.125,0,0,一致
+vidu-q3-turbo,Vidu Q3-Turbo,1080p,res:1080p,0.07,0.07,0,0,一致
+vidu-q3-turbo,Vidu Q3-Turbo,2k,res:2k,0.084,0.084,0,0,一致
+vidu-q3-turbo,Vidu Q3-Turbo,4k,res:4k,0.1008,0.1008,0,0,一致
+vidu-q3-turbo,Vidu Q3-Turbo,480p540p,res:540p,0.04,0.04,0,0,一致
+vidu-q3-turbo,Vidu Q3-Turbo,720p,res:720p,0.06,0.06,0,0,一致

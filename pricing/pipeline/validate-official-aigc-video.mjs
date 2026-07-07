@@ -85,7 +85,9 @@ async function main() {
       });
     }
 
-    if (domTiers.length && offTiers.some((t) => isVideoOfficialUnitComparable(t))) {
+    const seedAigcOnly = off.prices?.seedAigcOnly === true;
+
+    if (domTiers.length && offTiers.some((t) => isVideoOfficialUnitComparable(t)) && !seedAigcOnly) {
       const issues = compareVideoTierLists(domTiers, offTiers);
       if (issues.length) {
         tierIssues.push({ trinityId: tid, site: "domestic", issues });

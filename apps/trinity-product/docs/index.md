@@ -9,7 +9,7 @@ title: 总览
 本手册是 Trinity **唯一的产品导航与阶段真相入口**（与对外开发者文档 `trinity-docs`、客户 API 文档分离）。产品经理、研发、测试与对内宣讲，优先从这里对齐 **有什么、本阶段验什么、做到哪了、去哪看原型与 PRD**。
 
 ::: tip 一条主线（阅读）
-看清产品地图 → 锁定阶段（Roadmap）→ 拆到可验收（子能力）→ 一键跳到 PRD 与原型（交付包）→ 走查与 Bug 去飞书。
+**AI API 聚合**：先 [业务全景](./ai-api-platform/business-overview) → 再产品总览 / 子模块。其他线：产品地图 → 阶段节点 → PRD 与原型 → 飞书走查。
 :::
 
 > **管理闭环（维护时按序）**  
@@ -62,5 +62,5 @@ title: 总览
 | 业务 | 说明 | 入口 |
 |------|------|------|
 | **AI 云** | 多云营销站 + 企业用户控制台 | [产品总览](./ai-cloud/) |
-| **AI API 聚合产品** | 对标 OpenRouter 的统一 API + 运营后台（B2B） | [产品总览](./ai-api-platform/) |
+| **AI API 聚合产品** | 对标 OpenRouter 的统一 API + 运营后台（B2B） | [能力地图](./ai-api-platform/capability-map) · [业务全景](./ai-api-platform/business-overview) · [产品总览](./ai-api-platform/) |
 | **GEO 产品** | 生成式引擎优化（GEO）SaaS：AI 可见性监测、SOA、竞品对比；[行业 Playbook](./geo/vertical-industry-playbooks) 引导 onboarding | [产品总览](./geo/) |

@@ -43,34 +43,15 @@ export async function fetchPricesFromApi(base, modality) {
 }
 
 /**
- * @param {object} opts
- * @param {string} [opts.modality]
- * @param {boolean} [opts.writeCsvFile]
- * @param {boolean} [opts.quiet]
+ * @param {object} raw prices-api 文档
+ * @param {{ writeCsvFile?: boolean }} [opts]
  */
-export async function fetchAndPersistOnlinePrices(opts = {}) {
-  const modality = opts.modality ?? "text";
+export async function writeOnlinePricesCache(raw, opts = {}) {
   const writeCsvFile = opts.writeCsvFile ?? false;
-  const quiet = opts.quiet ?? false;
-  const base = (
-    process.env.TRINITY_BASE_URL ?? DEFAULT_TRINITY_PRICES_BASE
-  ).replace(/\/$/, "");
-  const fetchedAt = new Date().toISOString();
-
-  const body = await fetchPricesFromApi(base, modality);
-  const data = body.data ?? [];
-
-  const raw = {
-    source: "trinity_prices_api",
-    apiUrl: `${base}/prices${modality && modality !== "all" ? `?modality=${modality}` : ""}`,
-    modality,
-    fxCnyPerUsd: 7.25,
-    fxNote: "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = 7.25 CNY",
-    fetchedAt,
-    modelCount: data.length,
-    object: body.object,
-    data,
-  };
+  const data = raw.data ?? [];
+  const modality = raw.modality ?? "text";
+  const fetchedAt = raw.fetchedAt ?? new Date().toISOString();
+  const fxCnyPerUsd = raw.fxCnyPerUsd ?? 7.25;
 
   const flat = flattenPricesList(data);
   const priceIndex = indexOnlinePrices(data);
@@ -80,11 +61,7 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
   await writeFile(PRICES_API_FILE, JSON.stringify(raw, null, 2), "utf8");
   await writeFile(
     PRICES_API_FLAT_FILE,
-    JSON.stringify(
-      { fetchedAt, modality, fxCnyPerUsd: 7.25, models: flat },
-      null,
-      2,
-    ),
+    JSON.stringify({ fetchedAt, modality, fxCnyPerUsd, models: flat }, null, 2),
     "utf8",
   );
   await writeFile(
@@ -93,7 +70,7 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
       {
         fetchedAt,
         modality,
-        fxCnyPerUsd: 7.25,
+        fxCnyPerUsd,
         modelCount: priceIndex.size,
         models: index,
       },
@@ -136,6 +113,41 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
     await writeCsv(PRICES_API_CSV_FILE, csvRows, writeFile);
   }
 
+  return { raw, map: priceIndex, fetchedAt, modelCount: data.length };
+}
+
+/**
+ * @param {object} opts
+ * @param {string} [opts.modality]
+ * @param {boolean} [opts.writeCsvFile]
+ * @param {boolean} [opts.quiet]
+ */
+export async function fetchAndPersistOnlinePrices(opts = {}) {
+  const modality = opts.modality ?? "text";
+  const writeCsvFile = opts.writeCsvFile ?? false;
+  const quiet = opts.quiet ?? false;
+  const base = (
+    process.env.TRINITY_BASE_URL ?? DEFAULT_TRINITY_PRICES_BASE
+  ).replace(/\/$/, "");
+  const fetchedAt = new Date().toISOString();
+
+  const body = await fetchPricesFromApi(base, modality);
+  const data = body.data ?? [];
+
+  const raw = {
+    source: "trinity_prices_api",
+    apiUrl: `${base}/prices${modality && modality !== "all" ? `?modality=${modality}` : ""}`,
+    modality,
+    fxCnyPerUsd: 7.25,
+    fxNote: "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = 7.25 CNY",
+    fetchedAt,
+    modelCount: data.length,
+    object: body.object,
+    data,
+  };
+
+  const result = await writeOnlinePricesCache(raw, { writeCsvFile });
+
   if (!quiet) {
     console.log(
       `Fetched online prices: ${data.length} models (${modality}) at ${fetchedAt}`,
@@ -144,37 +156,61 @@ export async function fetchAndPersistOnlinePrices(opts = {}) {
   }
 
   return {
-    raw,
-    map: priceIndex,
-    fetchedAt,
-    modelCount: data.length,
+    ...result,
     apiUrl: raw.apiUrl,
   };
 }
 
-/** 对比流水线入口：默认每次打 API；设 PRICING_SKIP_ONLINE_FETCH=1 可读已有文件（仅本地调试） */
+/** 对比流水线入口：默认每次打 API；失败时回退已有 prices-api.json；PRICING_SKIP_ONLINE_FETCH=1 仅读缓存 */
 export async function refreshOnlinePricesForCompare(modality = "text", opts = {}) {
-  if (process.env.PRICING_SKIP_ONLINE_FETCH === "1") {
-    const { readFile } = await import("node:fs/promises");
+  const { readFile } = await import("node:fs/promises");
+
+  async function loadCachedPrices(reason) {
     const raw = JSON.parse(await readFile(PRICES_API_FILE, "utf8"));
+    const cachedModality = raw.modality ?? "text";
+    if (
+      modality !== "all" &&
+      cachedModality !== "all" &&
+      cachedModality !== modality
+    ) {
+      throw new Error(
+        `cached prices-api.json modality=${cachedModality}, need ${modality}`,
+      );
+    }
     const map = indexOnlinePrices(raw.data ?? []);
+    if (!map.size) {
+      throw new Error("cached prices-api.json is empty");
+    }
     if (!opts.quiet) {
       console.warn(
-        `PRICING_SKIP_ONLINE_FETCH=1 · using existing prices-api.json (${raw.fetchedAt ?? "—"})`,
+        `${reason}; using ${PRICES_API_FILE} (${raw.fetchedAt ?? "—"}, ${map.size} models)`,
       );
     }
     return {
       raw,
       map,
       fetchedAt: raw.fetchedAt ?? null,
-      modelCount: raw.modelCount ?? raw.data?.length ?? 0,
+      modelCount: raw.modelCount ?? raw.data?.length ?? map.size,
       apiUrl: raw.apiUrl,
       skippedFetch: true,
     };
   }
-  return fetchAndPersistOnlinePrices({
-    modality,
-    writeCsvFile: false,
-    quiet: opts.quiet ?? false,
-  });
+
+  if (process.env.PRICING_SKIP_ONLINE_FETCH === "1") {
+    return loadCachedPrices("PRICING_SKIP_ONLINE_FETCH=1");
+  }
+
+  try {
+    return await fetchAndPersistOnlinePrices({
+      modality,
+      writeCsvFile: false,
+      quiet: opts.quiet ?? false,
+    });
+  } catch (e) {
+    try {
+      return await loadCachedPrices(`Online prices fetch failed (${e.message})`);
+    } catch {
+      throw e;
+    }
+  }
 }

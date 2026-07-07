@@ -14,16 +14,24 @@ import { withVerifyFlag } from "./pricing-verify.mjs";
 import { FX_ONLINE_DOMESTIC } from "./compare-official-lib.mjs";
 import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
 import { parseOnlineVideoTiers } from "./parse-online-prices.mjs";
-import { findTierByKey } from "./tier-key.mjs";
+import { findTierByKey, tierToKey } from "./tier-key.mjs";
 import {
   officialVideoTiersForCompare,
   aigcVideoTiersForCompare,
+  aigcVideoAttributeNamesForCompare,
+  aigcVideoResolutionsForAttribute,
+  aigcVideoPriceForAttribute,
   tokenhubVideoTiersForCompare,
   volcengineVideoTiersForCompare,
+  volcengineVideoPriceAtCompare,
+  isVideoTokenOfficialUnit,
+  isVideoTokenOnlineUnit,
+  formatVideoTokenPrice,
   findCompareTierByKey,
   evaluateAigcVideoDomVsIntl,
   evaluateAigcVsImpliedOfficial,
   evaluateListingVsAigcIntl,
+  evaluateListingVsOfficialToken,
 } from "./video-pricing-validate-lib.mjs";
 import {
   VIDEO_REFERENCE_CONVERSION,
@@ -36,6 +44,13 @@ import {
   buildVideoCompareUnits,
   videoGovernanceTier,
 } from "../../config/video-model-registry.mjs";
+import {
+  aigcAttributeMatchesOfficialFeature,
+  compareAigcAttributeSort,
+  inferOfficialFeatureFromText,
+  rowAttributeMatchesListing,
+  tokenTierLabelToAigcAttribute,
+} from "../../config/video-aigc-attributes.mjs";
 import { lookupAigcVideoByRef } from "../../suppliers/aigc/lib/pricing-api-video.mjs";
 import { assertOnlineListingCovered } from "./compare-online-coverage-lib.mjs";
 import {
@@ -59,19 +74,32 @@ function formatVideoPrice(price, currency, unitSuffix = "秒") {
   return `${symForCurrency(currency)}${price}/${unitSuffix}`;
 }
 
+function formatOnlineVideoListing(onlineTier) {
+  if (!onlineTier || onlineTier.price == null) return "—";
+  const currency = onlineTier.currency ?? "USD";
+  if (isVideoTokenOnlineUnit(onlineTier)) {
+    return formatVideoTokenPrice(onlineTier.price, currency);
+  }
+  return formatVideoPrice(onlineTier.price, currency);
+}
+
 function formatOfficialVideoPrice(offTier, currency) {
   return formatOfficialDocPrice(offTier, currency);
 }
 
 function expandOfficialVideoTiers(off, aigcDom, aigcIntl, aigcRef) {
+  const markOfficial = (list) => list.map((t) => ({ ...t, isOfficial: true }));
   const tiers = [...officialVideoTiers(off)].sort(tierSort);
-  if (!aigcRef) return tiers;
+  if (tiers.some((t) => isVideoTokenOfficialUnit(t))) {
+    return markOfficial(tiers);
+  }
+  if (!aigcRef) return markOfficial(tiers);
   const isUniform =
     tiers.length === 1 &&
     (tiers[0].tierKey === "uniform" || /统一/.test(tiers[0].tierLabel ?? ""));
-  if (!isUniform) return tiers;
+  if (!isUniform) return markOfficial(tiers);
   const aigcTiers = aigcVideoTiersForCompare(aigcDom ?? aigcIntl, aigcRef);
-  if (!aigcTiers.length) return tiers;
+  if (!aigcTiers.length) return markOfficial(tiers);
   const uniform = tiers[0];
   return aigcTiers.map((at) => ({
     tierLabel: at.tierLabel,
@@ -80,6 +108,7 @@ function expandOfficialVideoTiers(off, aigcDom, aigcIntl, aigcRef) {
     price: uniform.price,
     unit: uniform.unit,
     officialUniform: uniform,
+    isOfficial: true,
   }));
 }
 
@@ -149,13 +178,57 @@ function tierSort(a, b) {
   return String(a.tierLabel).localeCompare(String(b.tierLabel));
 }
 
-function aigcPriceAtSite(aigcModel, mapRef, offTier) {
-  const tiers = aigcVideoTiersForCompare(aigcModel, mapRef);
-  const hit = findCompareTierByKey(tiers, offTier.tierKey);
-  return hit?.price ?? null;
+function attributeThenTierSort(a, b) {
+  const aa = compareAigcAttributeSort(a.aigcAttribute ?? "", b.aigcAttribute ?? "");
+  if (aa !== 0) return aa;
+  return tierSort(a, b);
 }
 
-function pickOnlineVideoTier(onlineTiers, offTier) {
+function aigcPriceAtSite(aigcModel, aigcAttribute, offTier) {
+  if (!aigcModel || !aigcAttribute) return null;
+  return aigcVideoPriceForAttribute(
+    aigcModel,
+    aigcAttribute,
+    offTier.tierKey,
+  );
+}
+
+function pickOnlineVideoTier(onlineTiers, offTier, ctx = {}) {
+  const { listingAttribute, aigcAttribute } = ctx;
+  if (!onlineTiers?.length) return null;
+
+  const audioTiers = onlineTiers.filter((t) =>
+    /^audio:/.test(t.tierKey ?? ""),
+  );
+  if (audioTiers.length) {
+    const wantAudio =
+      /有声|含音频/.test(aigcAttribute ?? "") ||
+      /有声|含音频/.test(offTier.tierLabel ?? "");
+    const wantSilent =
+      /无声/.test(aigcAttribute ?? "") ||
+      /无声/.test(offTier.tierLabel ?? "");
+    if (wantAudio) {
+      const hit =
+        audioTiers.find((t) => t.tierKey === "audio:enabled") ??
+        audioTiers.find((t) => /有声|含音频/i.test(t.tierLabel ?? ""));
+      if (hit) return hit;
+    }
+    if (wantSilent) {
+      const hit =
+        audioTiers.find((t) => t.tierKey === "audio:disabled") ??
+        audioTiers.find((t) => /无声/i.test(t.tierLabel ?? ""));
+      if (hit) return hit;
+    }
+  }
+
+  if (
+    listingAttribute &&
+    aigcAttribute &&
+    !rowAttributeMatchesListing(aigcAttribute, listingAttribute)
+  ) {
+    return null;
+  }
+
   if (!onlineTiers?.length) return null;
   const wantKey = offTier.tierKey;
   if (wantKey) {
@@ -163,6 +236,19 @@ function pickOnlineVideoTier(onlineTiers, offTier) {
     if (hit) return hit;
     const byKey = findTierByKey(onlineTiers, wantKey);
     if (byKey) return byKey;
+  }
+  const wantLabel = String(offTier.tierLabel ?? "").toLowerCase();
+  if (/有声|含音频/.test(wantLabel)) {
+    const hit =
+      onlineTiers.find((t) => t.tierKey === "audio:enabled") ??
+      onlineTiers.find((t) => /含音频|有声/i.test(t.tierLabel ?? ""));
+    if (hit) return hit;
+  }
+  if (/无声/.test(wantLabel)) {
+    const hit =
+      onlineTiers.find((t) => t.tierKey === "audio:disabled") ??
+      onlineTiers.find((t) => /无声/i.test(t.tierLabel ?? ""));
+    if (hit) return hit;
   }
   const want = normalizeResLabel(offTier.tierLabel).toLowerCase();
   const hit = onlineTiers.find(
@@ -179,17 +265,58 @@ function pickOnlineVideoTier(onlineTiers, offTier) {
   return null;
 }
 
-function buildListingConclusion(unit, trinityId, intlPrice, onlineTier, onlinePrice) {
+function buildListingConclusion(
+  unit,
+  trinityId,
+  intlPrice,
+  onlineTier,
+  onlinePrice,
+  offTier,
+  officialPriceCny,
+  listingFx,
+  listingAttribute,
+  aigcAttribute,
+) {
   const onlineSlug = unit?.onlineSlug ?? null;
   const hasOnlineListing =
     Boolean(onlineSlug) || Boolean(resolveVideoOnlineModelId(trinityId));
   if (!hasOnlineListing) {
     return "ℹ 线上无此模型刊例";
   }
+  if (
+    listingAttribute &&
+    aigcAttribute &&
+    !rowAttributeMatchesListing(aigcAttribute, listingAttribute)
+  ) {
+    return "ℹ 线上无同属性刊例";
+  }
   if (!onlineTier || onlinePrice == null) {
     if (intlPrice == null) return "—";
     return "ℹ 线上无同档刊例";
   }
+
+  const onlineIsToken = isVideoTokenOnlineUnit(onlineTier);
+  const officialIsToken = isVideoTokenOfficialUnit(offTier);
+
+  if (onlineIsToken && officialIsToken) {
+    const offPrice =
+      officialPriceCny ?? offTier?.price ?? offTier?.rawPrice ?? null;
+    if (offPrice == null) return "ℹ 官方 token 档缺价";
+    const cmp = evaluateListingVsOfficialToken(offPrice, onlinePrice, listingFx);
+    if (!cmp.comparable) return cmp.text;
+    const base = cmp.text;
+    const verifyId = trinityId ?? onlineSlug ?? "—";
+    if (cmp.pct != null && pctIsMaterial(cmp.pct, FIELD_MATCH_PCT)) {
+      return withVerifyFlag(verifyId, Math.abs(cmp.pct), base, ["official-listing"]);
+    }
+    return base;
+  }
+
+  if (onlineIsToken) {
+    return "ℹ 线上 token 刊例 · AIGC 为按秒";
+  }
+
+  if (intlPrice == null) return "—";
   const cmp = evaluateListingVsAigcIntl(intlPrice, onlinePrice);
   if (!cmp.comparable) return cmp.text;
   const base = cmp.text;
@@ -228,22 +355,120 @@ function resolveAigcForUnit(unit, tid, aigcDomByTrinity, aigcIntlByTrinity, aigc
   return { aigcDom, aigcIntl, aigcRef: mapRef };
 }
 
-/** @returns {object[]} tier-like rows for compare */
-function tiersForCompareUnit(off, aigcDom, aigcIntl, aigcRef, onlineTiers) {
-  if (off?.vendorModelId && officialVideoTiers(off).length) {
-    let tiers = [...officialVideoTiers(off)].sort(tierSort);
-    return expandOfficialVideoTiers(off, aigcDom, aigcIntl, aigcRef).sort(tierSort);
+function matchOfficialTierForAttribute(off, aigcAttribute, resTier) {
+  if (!off) return null;
+  const tiers = [...officialVideoTiers(off)];
+  if (!tiers.length) return null;
+
+  if (tiers.some((t) => isVideoTokenOfficialUnit(t))) {
+    const attr = tokenTierLabelToAigcAttribute(resTier.tierLabel);
+    const hit = tiers.find(
+      (t) => tokenTierLabelToAigcAttribute(t.tierLabel) === attr,
+    );
+    return hit ? { ...hit, isOfficial: true } : null;
   }
+
+  const expanded = expandOfficialVideoTiers(off, null, null, null);
+  const hit = expanded.find((t) => {
+    if (normalizeResLabel(t.tierLabel) !== normalizeResLabel(resTier.tierLabel)) {
+      return false;
+    }
+    const feature = inferOfficialFeatureFromText(t.note ?? t.tierLabel ?? "");
+    return aigcAttributeMatchesOfficialFeature(aigcAttribute, feature);
+  });
+  return hit ? { ...hit, isOfficial: true } : null;
+}
+
+/** @returns {object[]} compare rows: { aigcAttribute, tierLabel, tierKey, ...offTier fields } */
+function tiersForCompareUnit(off, aigcDom, aigcIntl, aigcRef, onlineTiers) {
+  const offRaw = officialVideoTiers(off);
+  if (offRaw.some((t) => isVideoTokenOfficialUnit(t))) {
+    return offRaw
+      .map((t) => ({
+        ...t,
+        aigcAttribute: tokenTierLabelToAigcAttribute(t.tierLabel),
+        tierLabel: "—",
+        isOfficial: true,
+      }))
+      .sort(attributeThenTierSort);
+  }
+
+  const attributes = aigcVideoAttributeNamesForCompare(
+    aigcDom ?? aigcIntl,
+    aigcRef,
+  );
+  /** @type {Map<string, { tierLabel: string, tierKey: string }>} */
+  const resByAttr = new Map();
+
+  for (const attr of attributes) {
+    const keyPrefix = `${attr}::`;
+    const fromAigc = aigcVideoResolutionsForAttribute(
+      aigcDom ?? aigcIntl,
+      attr,
+    );
+    for (const r of fromAigc) {
+      resByAttr.set(`${keyPrefix}${r.tierKey}`, {
+        aigcAttribute: attr,
+        tierLabel: r.tierLabel,
+        tierKey: r.tierKey,
+      });
+    }
+
+    if (off?.vendorModelId && officialVideoTiers(off).length) {
+      for (const ot of expandOfficialVideoTiers(off, aigcDom, aigcIntl, {
+        attribute: attr,
+      })) {
+        const feature = inferOfficialFeatureFromText(ot.note ?? ot.tierLabel ?? "");
+        if (!aigcAttributeMatchesOfficialFeature(attr, feature)) continue;
+        resByAttr.set(`${keyPrefix}${ot.tierKey}`, {
+          aigcAttribute: attr,
+          tierLabel: ot.tierLabel,
+          tierKey: ot.tierKey,
+        });
+      }
+    }
+
+    if (onlineTiers?.length) {
+      for (const ot of onlineTiers) {
+        if (/^audio:/.test(ot.tierKey ?? "")) continue;
+        resByAttr.set(`${keyPrefix}${ot.tierKey ?? ot.tierLabel}`, {
+          aigcAttribute: attr,
+          tierLabel: ot.tierLabel,
+          tierKey: ot.tierKey ?? tierToKey(ot.tierLabel, 0, 1),
+        });
+      }
+    }
+
+    if (!fromAigc.length && !resByAttr.has(`${keyPrefix}uniform`)) {
+      resByAttr.set(`${keyPrefix}uniform`, {
+        aigcAttribute: attr,
+        tierLabel: "统一价",
+        tierKey: "uniform",
+      });
+    }
+  }
+
+  const rows = [...resByAttr.values()];
+  if (rows.length) return rows.sort(attributeThenTierSort);
+
   if (onlineTiers?.length) {
     return onlineTiers.map((t) => ({
+      aigcAttribute: "标准价",
       tierLabel: t.tierLabel,
       tierKey: t.tierKey,
       onlineTier: t,
+      isOfficial: false,
     }));
   }
-  const aigcTiers = aigcVideoTiersForCompare(aigcDom ?? aigcIntl, aigcRef);
-  if (aigcTiers.length) return aigcTiers.sort(tierSort);
-  return [{ tierLabel: "统一价", tierKey: "uniform" }];
+
+  return [
+    {
+      aigcAttribute: "标准价",
+      tierLabel: "统一价",
+      tierKey: "uniform",
+      isOfficial: false,
+    },
+  ];
 }
 
 function compareUnitSort(a, b) {
@@ -262,6 +487,8 @@ function tokenhubVideoPriceAt(thModel, offTier) {
 }
 
 function volcengineVideoPriceAt(volModel, offTier) {
+  const direct = volcengineVideoPriceAtCompare(volModel, offTier);
+  if (direct != null) return direct;
   const tiers = volcengineVideoTiersForCompare(volModel);
   const hit = findCompareTierByKey(tiers, offTier.tierKey);
   return hit?.price ?? null;
@@ -325,29 +552,57 @@ function buildVideoTierRow(ctx) {
     onlineTiers,
     aigcDom,
     aigcIntl,
-    aigcMapRef,
     thModel,
     volModel,
     note,
+    onlineListingFx,
+    listingAttribute,
   } = ctx;
 
+  const aigcAttribute = offTier.aigcAttribute ?? "标准价";
   const offModel = off ?? syntheticOfficialFromUnit(unit, null);
   const currency = offModel.currency ?? "CNY";
-  const tierLabel = offTier.tierLabel ?? "—";
-  const hasOfficialTier = offTier.rawPrice != null || offTier.price != null || offTier.unit;
 
-  const domPrice = aigcPriceAtSite(aigcDom, aigcMapRef, offTier);
-  const intlPrice = aigcPriceAtSite(aigcIntl, aigcMapRef, offTier);
-  const thPrice = tokenhubVideoPriceAt(thModel, offTier);
-  const volPrice = volcengineVideoPriceAt(volModel, offTier);
+  let effectiveOffTier = offTier;
+  if (!offTier.isOfficial && off) {
+    const matched = matchOfficialTierForAttribute(off, aigcAttribute, offTier);
+    if (matched) effectiveOffTier = { ...offTier, ...matched, isOfficial: true };
+  }
+
+  const tierLabel = effectiveOffTier.tierLabel ?? offTier.tierLabel ?? "—";
+  const hasOfficialTier =
+    effectiveOffTier.isOfficial === true &&
+    (effectiveOffTier.rawPrice != null ||
+      effectiveOffTier.price != null ||
+      effectiveOffTier.unit);
+
+  const domPrice = aigcPriceAtSite(aigcDom, aigcAttribute, offTier);
+  const intlPrice = aigcPriceAtSite(aigcIntl, aigcAttribute, offTier);
+  const thPrice = tokenhubVideoPriceAt(thModel, effectiveOffTier);
+  const volPrice = volcengineVideoPriceAt(volModel, effectiveOffTier);
 
   const onlineTier =
-    offTier.onlineTier ?? pickOnlineVideoTier(onlineTiers, offTier);
+    offTier.onlineTier ??
+    pickOnlineVideoTier(onlineTiers, offTier, {
+      listingAttribute,
+      aigcAttribute,
+    });
   const onlinePrice = onlineTier?.price ?? null;
 
+  const seedAigcOnly = off?.prices?.seedAigcOnly === true;
+  const useAigcAsOfficial = seedAigcOnly && domPrice != null;
+
   const implied = hasOfficialTier
-    ? impliedCnyPerSecondFromOfficialPoints(offTier, offModel.vendor)
-    : null;
+    ? impliedCnyPerSecondFromOfficialPoints(effectiveOffTier, offModel.vendor)
+    : useAigcAsOfficial
+      ? {
+          mid: domPrice,
+          min: domPrice,
+          max: domPrice,
+          mode: "per_second",
+          pointCny: 1,
+        }
+      : null;
 
   const domIntlCmp = evaluateAigcVideoDomVsIntl(domPrice, intlPrice, FX_ONLINE_DOMESTIC);
   const domImpliedCmp = evaluateAigcVsImpliedOfficial(domPrice, implied);
@@ -362,8 +617,9 @@ function buildVideoTierRow(ctx) {
       ? wrapVerify(domIntlCmp.text, domIntlCmp.pct)
       : domIntlCmp.text;
 
-  const aigcDomVsImpliedOfficial =
-    domImpliedCmp.comparable && domImpliedCmp.pct != null
+  const aigcDomVsImpliedOfficial = seedAigcOnly
+    ? "✅ 同源(AIGC)"
+    : domImpliedCmp.comparable && domImpliedCmp.pct != null
       ? wrapVerify(domImpliedCmp.text, domImpliedCmp.pct)
       : domImpliedCmp.text;
 
@@ -373,6 +629,13 @@ function buildVideoTierRow(ctx) {
     intlPrice,
     onlineTier,
     onlinePrice,
+    effectiveOffTier,
+    hasOfficialTier
+      ? (effectiveOffTier.price ?? effectiveOffTier.rawPrice)
+      : null,
+    onlineListingFx,
+    listingAttribute,
+    aigcAttribute,
   );
 
   return {
@@ -382,17 +645,25 @@ function buildVideoTierRow(ctx) {
     displayName: unit?.displayName ?? formatCompareBrand(offModel),
     brand: unit?.brand ?? formatCompareBrand(offModel),
     vendorModelId: vendorModelId ?? "—",
+    aigcAttribute,
     tierLabel,
-    tierKey: offTier.tierKey ?? "—",
+    tierKey: offTier.tierKey ?? effectiveOffTier.tierKey ?? "—",
     officialDoc: hasOfficialTier
-      ? formatOfficialVideoPrice(offTier, currency)
-      : "—",
+      ? formatOfficialVideoPrice(effectiveOffTier, currency)
+      : useAigcAsOfficial
+        ? `${formatVideoPrice(domPrice, "CNY")} (AIGC参照)`
+        : "—",
     impliedOfficialCny: implied ? formatImpliedCnyPerSecond(implied) : "—",
     aigcDom: domPrice != null ? formatVideoPrice(domPrice, "CNY") : "—",
     aigcIntl: intlPrice != null ? formatVideoPrice(intlPrice, "USD") : "—",
     tokenhub: thPrice != null ? formatVideoPrice(thPrice, "CNY") : "—",
-    volcengine: volPrice != null ? formatVideoPrice(volPrice, "CNY") : "—",
-    online: onlinePrice != null ? formatVideoPrice(onlinePrice, "USD") : "—",
+    volcengine:
+      volPrice != null
+        ? isVideoTokenOfficialUnit(offTier)
+          ? formatVideoTokenPrice(volPrice, currency)
+          : formatVideoPrice(volPrice, "CNY")
+        : "—",
+    online: formatOnlineVideoListing(onlineTier),
     aigcDomVsIntl,
     aigcDomVsImpliedOfficial,
     listingConclusion,
@@ -419,6 +690,7 @@ export function buildVideoCompareHubFromModels(trinityOnlineModels, hubCtx) {
     volByTrinity,
     volByModelId,
     onlineByModel,
+    onlineListingFx,
     officialFetchedAt,
     pricesFetchedAt,
     generatedAt,
@@ -501,9 +773,10 @@ export function buildVideoCompareHubFromModels(trinityOnlineModels, hubCtx) {
           onlineTiers,
           aigcDom,
           aigcIntl,
-          aigcMapRef: aigcRef,
           thModel,
           volModel,
+          onlineListingFx,
+          listingAttribute: unit.listingAttribute ?? null,
           note:
             unit.note ??
             off?.trinityNote ??
@@ -542,6 +815,7 @@ export function buildVideoCompareHubFromModels(trinityOnlineModels, hubCtx) {
     fullGovernanceCount,
     rowCount: rows.length,
     fxOnlineDomestic: FX_ONLINE_DOMESTIC,
+    onlineListingFx,
     referenceConversion: VIDEO_REFERENCE_CONVERSION,
     rows,
   };
@@ -621,6 +895,8 @@ export async function loadVideoCompareHubContext(opts = {}) {
     if (id) onlineByModel.set(id, entry);
   }
 
+  const onlineListingFx = Number(online.raw?.fxCnyPerUsd) || 7.25;
+
   return {
     officialModels,
     officialByVendorId,
@@ -628,6 +904,7 @@ export async function loadVideoCompareHubContext(opts = {}) {
     reverseTrinity,
     vendorsWithLink,
     onlineByModel,
+    onlineListingFx,
     aigcDomByTrinity: opts.aigcDomByTrinity ?? new Map(),
     aigcIntlByTrinity: opts.aigcIntlByTrinity ?? new Map(),
     aigcTrinityMap,
@@ -642,12 +919,13 @@ export async function loadVideoCompareHubContext(opts = {}) {
 
 export function buildVideoCompareExcelRows(report) {
   const header = [
-    "线上 slug",
-    "治理档位",
     "原厂 modelId",
+    "治理档位",
+    "线上 slug",
     "Trinity ID",
     "显示名",
     "厂商",
+    "AIGC属性",
     "分辨率档",
     "原厂文档(积分/次)",
     "原厂折算元/秒(估)",
@@ -669,12 +947,13 @@ export function buildVideoCompareExcelRows(report) {
     const show = group !== lastGroup;
     lastGroup = group;
     rows.push([
-      show ? (r.onlineSlug ?? "") : "",
-      show ? (r.governanceTier ?? "") : "",
       show ? (r.vendorModelId ?? "") : "",
+      show ? (r.governanceTier ?? "") : "",
+      show ? (r.onlineSlug ?? "") : "",
       show ? (r.trinityId ?? "") : "",
       show ? (r.displayName ?? "") : "",
       show ? (r.brand ?? "") : "",
+      r.aigcAttribute ?? "—",
       r.tierLabel ?? "",
       r.officialDoc ?? r.official ?? "",
       r.impliedOfficialCny ?? "—",
@@ -741,15 +1020,16 @@ export function renderVideoCompareHubMarkdown(report) {
       (report.onlineListingCount != null
         ? ` · 线上刊例 ${report.onlineListingCount} · 官方 catalog ${report.modelCount} · 完整治理 ${report.fullGovernanceCount ?? "—"}`
         : ""),
-    `> **行主键**：\`prices-api\` 全量线上 slug ∪ 官方 catalog 补行（取并集，见 \`config/video-model-registry.mjs\`）`,
+    `> **行主键**：\`prices-api\` 全量线上 slug ∪ 官方 catalog 补行 · 每模型按 **AIGC属性 × 分辨率** 展开（错峰档默认排除）`,
     `> **治理档位**：完整 = 官方+线上 · 仅刊例 = 线上有/AIGC对照 · 仅官方 = 未挂线上刊例`,
     `> **Trinity 无积分**；主对比：**AIGC 国内 vs 国际**（元/秒 · 美元/秒）`,
     `> **AIGC 来源**：\`AIGC价格指南（商务版报价文档）.xlsx\` · AIGC生视频 · 按**生成视频秒数**计费`,
     `> **原厂按秒（可灵等）**：积分/秒 = 元/秒（1积分=¥1）· 直接对照 AIGC`,
     `> **原厂按次（混元/Vidu 等）**：积分/次 ÷ ${ref.referenceSeconds}s/次 → 元/秒(估)`,
-    `> **线上刊例**：\`GET /v1/prices?modality=video\` · USD/秒 · 刊例结论 = 线上 vs AIGC国际`,
+    `> **线上刊例**：\`GET /v1/prices?modality=video\` · 默认 USD/秒 · Seedance 等为 USD/百万 video tokens`,
+    `> **刊例结论**：同属性行内 · 按秒 = 线上 vs AIGC国际 · token = 线上 vs 官方 token`,
     `> 模型映射：\`config/video-model-registry.mjs\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
-    `> 刊例基准汇率：${report.fxOnlineDomestic}（国内 CNY ÷ 国际 USD）`,
+    `> 刊例基准汇率：${report.fxOnlineDomestic}（AIGC 国内÷国际）· 线上 token 折算：${report.onlineListingFx ?? 7.25}`,
     `> ${ref.footnote ?? ""}`,
   ];
   lines.push("", `| ${header.join(" | ")} |`, `| ${header.map(() => "---").join(" | ")} |`);

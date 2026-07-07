@@ -7,7 +7,9 @@
 | 手册首页 | 站点总览 | `references/template-site-index.md` |
 | 业务线全景 | 产品总览 | `references/template-product-overview.md` |
 | 用户/平台/运营模块表 | 子总览 | `references/template-sub-overview.md` |
-| 单模块说明 | 标准叶子 | `references/template-leaf.md` + 真源 `user/models/list.md` |
+| 单模块说明 | 标准叶子 / L2 | `references/template-leaf.md` + 真源 `user/models/list.md` 或 `user/identity-org/*.md` |
+
+**AI API 聚合**：先 READ `capability-map.md` 确认能力域，再编辑。
 
 ## 2. READ
 
@@ -21,5 +23,5 @@
 
 ## 4. 收尾
 
-- 新建模块 → 同步 [`add-sidebar.md`](./add-sidebar.md) + 子总览表一行
+- 新建模块 → 同步 [`add-sidebar.md`](./add-sidebar.md) + 子总览表一行（含 **能力域**）+ `capability-map.md` §2 链
 - 自检文档规范 §五检查清单

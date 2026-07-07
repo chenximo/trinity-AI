@@ -39,6 +39,8 @@ scripts/sync-reports/
 pricing/suppliers/tokenhub/.profile/
 scripts/bailian/.profile/
 pricing/output/online/prices-api.old.json
+pricing/output/online/*-publish.log.json
+pricing/.tmp-*
 *.sync-backup-*
 
 # Local tooling scratch (e.g. pip --target installs)

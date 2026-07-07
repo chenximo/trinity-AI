@@ -4,7 +4,8 @@ title: 运营后台管理平台
 
 # 运营后台管理平台 · 总览
 
-> **工程**：`apps/trinity-ai-admin`
+> **工程**：`apps/trinity-ai-admin`  
+> **先读**：[产品核心与架构 · 三层分工](../product-core#三层分工-工程映射)
 
 > **地址**：见 [AI API 聚合产品 · 总览](http://43.159.57.43/trinityai-admin/models/list)（运营后台体验基址见该页）
 

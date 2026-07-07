@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-06T10:02:58.361Z",
+  "generatedAt": "2026-07-07T09:53:58.292Z",
   "mappedCount": 10,
   "unitMismatchCount": 5,
-  "missingAigcCount": 3,
+  "missingAigcCount": 27,
   "tierIssueCount": 0,
   "unitMismatch": [
     {
@@ -50,6 +50,126 @@
     {
       "trinityId": "yt-video-fx",
       "vendorModelId": "yt-video-fx",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-2.0",
+      "vendorModelId": "doubao-seedance-2.0",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-2.0-fast",
+      "vendorModelId": "doubao-seedance-2.0-fast",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-2.0-mini",
+      "vendorModelId": "doubao-seedance-2.0-mini",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-1.5-pro",
+      "vendorModelId": "doubao-seedance-1.5-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "gv-3.1",
+      "vendorModelId": "veo-3.1-generate-preview",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "gv-3.1-fast",
+      "vendorModelId": "veo-3.1-fast-generate-preview",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "gv-3.1-litenew",
+      "vendorModelId": "veo-3.1-lite-generate-preview",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "hailuo-2.3",
+      "vendorModelId": "hailuo-2.3",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "hailuo-2.3-fast",
+      "vendorModelId": "hailuo-2.3-fast",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "h2new-1",
+      "vendorModelId": "hy-video-h2new",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "jv-3.0-pro",
+      "vendorModelId": "jimeng-jv-3.0-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "kling-3.0-omni",
+      "vendorModelId": "kl-video-v3-omni",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "kling-o1",
+      "vendorModelId": "kl-video-o1",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "os-2",
+      "vendorModelId": "sora-2",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "pixversenew-c1",
+      "vendorModelId": "pixverse-c1",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "pixversenew-v5.6",
+      "vendorModelId": "pixverse-v5.6",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "pixversenew-v6.0",
+      "vendorModelId": "pixverse-v6",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "seedance-1.0-pro",
+      "vendorModelId": "doubao-seedance-1.0-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "seedance-1.0-pro-fast",
+      "vendorModelId": "doubao-seedance-1.0-pro-fast",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "seedance-1.5-pro",
+      "vendorModelId": "doubao-seedance-1.5-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "vidu-q2-pro",
+      "vendorModelId": "vd-video-q2-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "vidu-q3",
+      "vendorModelId": "vd-video-q3",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-1.0-pro",
+      "vendorModelId": "doubao-seedance-1.0-pro",
+      "reason": "no_aigc_map"
+    },
+    {
+      "trinityId": "doubao-seedance-1.0-pro-fast",
+      "vendorModelId": "doubao-seedance-1.0-pro-fast",
       "reason": "no_aigc_map"
     }
   ],

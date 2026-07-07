@@ -19,13 +19,16 @@ import {
   VIDEO_COMPARE_SHEET,
   MERGE_COMPARE_VIDEO,
 } from "./lib/compare-hub-video-lib.mjs";
-import { buildAigcVideoCatalogRows } from "./lib/build-video-rows.mjs";
+import {
+  buildAigcVideoCatalogRows,
+  buildVolcengineVideoCatalogRows,
+} from "./lib/build-video-rows.mjs";
 import {
   buildVideoSupplierOfficialSummaryReport,
   buildVideoSupplierOfficialSummaryExcelRows,
   VIDEO_SUPPLIER_SUMMARY_SHEET,
 } from "./lib/supplier-official-summary-video.mjs";
-import { VIDEO_CONNECTED_SUPPLIERS } from "../config/channels-video.mjs";
+import { VIDEO_L3_SHEET_SUPPLIERS } from "../config/channels-video.mjs";
 import { mergeModalityWorkbook, MERGE_SUPPLIER } from "./lib/export-excel.mjs";
 import {
   OUT_DIR,
@@ -38,6 +41,10 @@ import { renderOnlineCoverageFromContext } from "./lib/render-online-coverage-md
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_TRINITY_BASE = "https://api.trinitydesk.ai/v1";
 const AIGC_VIDEO_MAP = path.join(SUPPLIERS_DIR, "aigc/trinity-map-video.json");
+const VOLC_VIDEO_FILE = path.join(
+  SUPPLIERS_DIR,
+  "volcengine/output/video/pricing-api.json",
+);
 const VIDEO_MODELS_CACHE = path.join(OUT_UPSTREAM_DIR, "trinity-models-video-api.json");
 
 const SHEET_META = {
@@ -99,7 +106,7 @@ function parseTrinityVideoModels(body) {
 }
 
 function videoSupplierRows(sup, ctx) {
-  const { aigcModels, officialCtx } = ctx;
+  const { aigcModels, volcModels, officialCtx } = ctx;
   if (sup.catalog === "aigc") {
     return buildAigcVideoCatalogRows(
       aigcModels,
@@ -107,6 +114,9 @@ function videoSupplierRows(sup, ctx) {
       officialCtx,
       ctx.aigcTrinityMap ?? {},
     );
+  }
+  if (sup.catalog === "volcengine") {
+    return buildVolcengineVideoCatalogRows(volcModels, officialCtx);
   }
   return [["—"]];
 }
@@ -120,13 +130,17 @@ async function main() {
     international: aigcIntlMap,
   } = await loadAigcVideoPricing();
 
-  const trinityList = await loadTrinityVideoModels();
-  let onlinePrices = { raw: { data: [] }, fetchedAt: null };
+  let volcData = { models: [] };
   try {
-    onlinePrices = await refreshOnlinePricesForCompare("video", { quiet: true });
-  } catch (e) {
-    console.warn("Online video prices fetch skipped:", e.message);
+    volcData = JSON.parse(await readFile(VOLC_VIDEO_FILE, "utf8"));
+  } catch {
+    console.warn(`缺少 ${VOLC_VIDEO_FILE}，火山方舟生视频列将为空`);
   }
+
+  const trinityList = await loadTrinityVideoModels();
+  const onlinePrices = await refreshOnlinePricesForCompare("video", {
+    quiet: true,
+  });
 
   const hubCtx = {
     ...(await loadVideoCompareHubContext({ preloaded: onlinePrices })),
@@ -143,6 +157,7 @@ async function main() {
   const sheetCtx = {
     aigcModels,
     aigcTrinityMap: trinityMap,
+    volcModels: volcData.models ?? [],
     officialCtx,
   };
 
@@ -166,7 +181,7 @@ async function main() {
       name: VIDEO_SUPPLIER_SUMMARY_SHEET,
       rows: summaryExcelRows,
     },
-    ...VIDEO_CONNECTED_SUPPLIERS.map((sup) => ({
+    ...VIDEO_L3_SHEET_SUPPLIERS.map((sup) => ({
       name: sup.excelSheet,
       rows: videoSupplierRows(sup, sheetCtx),
       merge: MERGE_SUPPLIER,
@@ -217,6 +232,9 @@ async function main() {
     `Official catalog rows: ${compareReport.modelCount} · 完整治理: ${compareReport.fullGovernanceCount}`,
   );
   console.log(`AIGC video entries: ${aigcModels.length}`);
+  console.log(
+    `Volcengine video mapped: ${new Set((volcData.models ?? []).filter((m) => m.trinityId).map((m) => m.trinityId)).size}`,
+  );
   console.log(`Wrote ${comparePaths.officialMd}`);
   console.log(`Wrote ${coveragePath}`);
   console.log(`Wrote ${videoXlsx}`);

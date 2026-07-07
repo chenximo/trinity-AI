@@ -12,6 +12,7 @@
 | **TokenHub** | `tokenhub/output/pricing-console-api.json` | `npm run pricing:supplier:tokenhub:console` | 元/百万 tokens |
 | **百炼** | `bailian/output/pricing-api.json` | `npm run pricing:supplier:bailian:doc` | 元/百万 tokens |
 | **AIGC** | `aigc/data/pricing-sheet.mjs` | 人工维护 → `npm run pricing:supplier:aigc` 生成 JSON | 国内元 / 国际美元 |
+| **火山方舟** | `volcengine/output/{text,image,video}/pricing-api.json` | `npm run pricing:supplier:volcengine:all` | 生文/生视频元/M tokens · 生图元/张 |
 | **原厂直连（通用）** | `official-direct/` | `npm run pricing:supplier:official-direct:all` | 渠道配置在 `channels/*.mjs` |
 | **网聚云联·云门户** | `wangju-cloudportal/output/` | `npm run pricing:supplier:wangju-cloudportal` | 筛选 GPT/Gemini |
 | **中转站-cust** | `relay-cust/output/` | `npm run pricing:supplier:relay-cust` | official 全量复制 |

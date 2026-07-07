@@ -94,14 +94,59 @@ Trinity **原厂权威价**从各模型厂商官网文档获取（无统一 REST
 
 ### 生视频 `video`
 
-| 厂商 | 链接 |
-|------|------|
-| **Google Gemini** | [ai.google.dev/gemini-api/docs/pricing?hl=zh-cn](https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn) |
-| **阿里云百炼** | [help.aliyun.com/zh/model-studio/model-pricing](https://help.aliyun.com/zh/model-studio/model-pricing) |
-| **腾讯混元** | [cloud.tencent.com/document/product/1729/97731](https://cloud.tencent.com/document/product/1729/97731) |
-| **MiniMax** | [platform.minimaxi.com/docs/guides/pricing-video](https://platform.minimaxi.com/docs/guides/pricing-video) |
-| **可灵 Kling** | [app.klingai.com/.../skillsMap](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
-| **Vidu** | [platform.vidu.cn/docs/pricing](https://platform.vidu.cn/docs/pricing) |
+| 厂商 | 定价 / 文档 | 链接 |
+|------|-------------|------|
+| **Google (Veo / Gemini API)** | Veo 3.1 章节 | [ai.google.dev/.../pricing#veo-3.1](https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1) |
+| **OpenAI (Sora)** | API 价目总览 · Video generation | [developers.openai.com/api/docs/pricing](https://developers.openai.com/api/docs/pricing) |
+| **阿里云百炼** | 模型定价 · 视频生成章节 | [help.aliyun.com/zh/model-studio/model-pricing](https://help.aliyun.com/zh/model-studio/model-pricing) |
+| **腾讯混元 / TokenHub** | 混元视频（HY-Video 等） | [cloud.tencent.com/document/product/1823/130055](https://cloud.tencent.com/document/product/1823/130055) |
+| **腾讯混元（旧文档）** | 混元大模型视频计费 | [cloud.tencent.com/document/product/1729/97731](https://cloud.tencent.com/document/product/1729/97731) |
+| **MiniMax (海螺)** | 视频按量付费 | [platform.minimaxi.com/docs/guides/pricing-video](https://platform.minimaxi.com/docs/guides/pricing-video) |
+| **可灵 Kling** | 开发者定价 | [klingai.com/global/dev/pricing](https://klingai.com/global/dev/pricing) |
+| **可灵 Kling** | 开放平台 API · skillsMap | [app.klingai.com/.../skillsMap](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+| **Vidu** | 产品定价（含参考生 / 积分） | [platform.vidu.cn/docs/pricing](https://platform.vidu.cn/docs/pricing) |
+| **火山引擎（Seedance / 方舟）** | 方舟模型计费 | [volcengine.com/docs/82379/1544106](https://www.volcengine.com/docs/82379/1544106?lang=zh) |
+| **即梦（Jimeng 视频）** | 即梦 AI 计费说明 | [volcengine.com/docs/85621/1544715](https://www.volcengine.com/docs/85621/1544715?lang=zh) |
+| **PixVerse** | Model pricing | [docs.platform.pixverse.ai/model-pricing-796039m0](https://docs.platform.pixverse.ai/model-pricing-796039m0) |
+
+#### 生视频模型逐条核对（catalog + Trinity 映射 · 线上 25 款）
+
+> 核实状态：`verified` = 已与官网/种子对照；`partial` = 部分档位或计价轴待对齐；`manual` = 官方价未入库，对比表为 —；`aigc_only` = 无公开 API 价，仅 AIGC 参照。
+
+| Trinity 线上 slug | 原厂 vendorModelId | 官方价（核实） | 核实 | 定价页 | 文档 |
+|-------------------|-------------------|---------------|------|--------|------|
+| `kling-3` | kl-video-v3 | 积分/秒（720P–4K） | verified | [skillsMap](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) | 同上 |
+| `kling-2.6` | kl-video-v2-6 | 积分/秒 | verified | 同上 | 同上 |
+| `kling-2.5-turbo` | kl-video-v2-5-turbo | 积分/秒 | verified | 同上 | 同上 |
+| `kling-3.0-omni` | kl-video-v3-omni | —（skillsMap SPA 未抓取） | manual | [dev/pricing](https://klingai.com/global/dev/pricing) | [skillsMap](https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap) |
+| `kling-o1` | kl-video-o1 | — | manual | 同上 | 同上 |
+| `vidu-q3-pro` | vd-video-q3-pro | 积分/次 | verified | [pricing](https://platform.vidu.cn/docs/pricing) | 同上 |
+| `vidu-q3-turbo` | vd-video-q3-turbo | 积分/次 | verified | 同上 | 同上 |
+| `vidu-q2` | vd-video-q2 | 积分/次 | verified | 同上 | 同上 |
+| `vidu-q2-turbo` | vd-video-q2-turbo | 积分/次 | verified | 同上 | 同上 |
+| `vidu-q3` | vd-video-q3 | ¥/秒（参考生） | verified | 同上 | 同上 |
+| `vidu-q2-pro` | vd-video-q2-pro | ¥/秒（参考生） | verified | 同上 | 同上 |
+| `gv-3.1` | veo-3.1-generate-preview | $0.4/s（720P–1080P） | verified | [Veo 3.1](https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1) | 同上 |
+| `gv-3.1-fast` | veo-3.1-fast-generate-preview | $0.1/s 起 | verified | 同上 | 同上 |
+| `gv-3.1-litenew` | veo-3.1-lite-generate-preview | $0.05/s 起 | verified | 同上 | 同上 |
+| `hailuo-2.3` | hailuo-2.3 | $/秒 | verified | [pricing-video](https://platform.minimaxi.com/docs/guides/pricing-video) | 同上 |
+| `hailuo-2.3-fast` | hailuo-2.3-fast | $/秒 | verified | 同上 | 同上 |
+| `h2new-1` | hy-video-h2new | —（TokenHub 无独立 SKU） | manual | [130055](https://cloud.tencent.com/document/product/1823/130055) | [97731](https://cloud.tencent.com/document/product/1729/97731) |
+| `jv-3.0-pro` | jimeng-jv-3.0-pro | ¥1/s（1080P 初值） | partial | [1544715](https://www.volcengine.com/docs/85621/1544715?lang=zh) | 同上 |
+| `os-2` | sora-2 | $0.10/s（720P） | verified | [pricing](https://developers.openai.com/api/docs/pricing) | 同上 |
+| `pixversenew-v6.0` | pixverse-v6 | $/秒 | verified | [model-pricing](https://docs.platform.pixverse.ai/model-pricing-796039m0) | 同上 |
+| `pixversenew-v5.6` | pixverse-v5.6 | $/秒 | verified | 同上 | 同上 |
+| `pixversenew-c1` | pixverse-c1 | $/秒 | verified | 同上 | 同上 |
+| `seedance-1.5-pro` | doubao-seedance-1.5-pro | ¥/个（480p–720p） | verified | [1544106](https://www.volcengine.com/docs/82379/1544106?lang=zh) | 同上 |
+| `seedance-1.0-pro` | doubao-seedance-1.0-pro | ¥/百万 tokens | partial | 同上 | 同上 |
+| `seedance-1.0-pro-fast` | doubao-seedance-1.0-pro-fast | ¥/百万 tokens | partial | 同上 | 同上 |
+
+**说明**
+
+- **计价轴**：Seedance 1.0 火山为 token 价，Trinity 线上为按秒刊例，对比时标注「计价轴不同」。
+- **可灵 Omni/O1、h2new-1**：catalog 已挂链，种子为空；compare-hub 官方列为 —，需人工补价。
+- **Vidu Q3/Q2-Pro**：参考生 ¥/秒来自 [platform.vidu.cn](https://platform.vidu.cn/docs/pricing)，与 TokenHub 积分口径可能不同。
+- **全量 catalog（含未上线）**：34 模型见 `pricing/suppliers/official/output/video/vendor-pricing-table.md`。
 
 ## 单模型链接规则
 
@@ -140,5 +185,6 @@ Trinity **原厂权威价**从各模型厂商官网文档获取（无统一 REST
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-07 | 生视频：补 OpenAI/PixVerse/火山 Seedance/即梦；TokenHub 130055；线上 25 款逐条核对表 |
 | 2026-07-03 | 生图：补全 10 家厂商定价链接 + 20 模型逐条核对表；修正混元计费 URL；Gemini/OpenAI 官方价 |
 | 2026-07-03 | 首版：汇总 `pricing-urls.mjs` 与 official README |

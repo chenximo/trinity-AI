@@ -198,7 +198,9 @@ export function mergeModalityWorkbook(modality, sheets) {
     modality === "image"
       ? IMAGE_PENDING_SUPPLIERS.map((s) => s.excelSheet)
       : modality === "video"
-        ? VIDEO_PENDING_SUPPLIERS.map((s) => s.excelSheet)
+        ? VIDEO_PENDING_SUPPLIERS.filter((s) => s.key !== "volcengine").map(
+            (s) => s.excelSheet,
+          )
         : [];
   mergeSheetsIntoWorkbook(filePath, sheets, {
     sheetOrder: sheetOrderForModality(modality),

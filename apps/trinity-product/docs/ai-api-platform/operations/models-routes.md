@@ -74,7 +74,7 @@ flowchart LR
 
 | 模块 | 关系 |
 |------|------|
-| [模型广场 · 列表](../user/models/list) | 上架后在架可见 |
+| [模型广场 · 列表](../user/models/list) | 上架后在架可见 · [模型域总览](../user/models/) |
 | [平台侧 · 路由](../platform/routing-fallback) | 线路与网关 |
 | [模型价格真源](../pricing-sources/) | 采购价 Excel、`pricing:refresh` / `pricing:gate` |
 

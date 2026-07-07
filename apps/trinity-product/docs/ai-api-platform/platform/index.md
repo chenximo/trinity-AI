@@ -4,7 +4,8 @@ title: 平台侧模块
 
 # 平台侧模块 · 总览
 
-> **工程**：网关服务（见 `trinity-docs` API 章）· `apps/trinity-docs`
+> **工程**：`TrinityAI-backend/trinityai-gateway`（入口）· `trinityai-chat-service`（OpenAI 兼容 API 核心）· `trinityai-finance-service` / `trinityai-usage-service`（计费计量）· 对外 API 文档 `apps/trinity-docs`  
+> **先读**：[产品核心与架构 · 运行时主链](../product-core#运行时主链一次-api-调用)
 
 > **地址**：见 [AI API 聚合产品 · 总览](../)（对外文档；API 说明在文档站内）
 
@@ -25,7 +26,7 @@ title: 平台侧模块
 
 | 用户侧 | 依赖的平台侧 |
 |--------|----------------|
-| [模型广场 · 列表](../user/models/list) | 模型目录 API + 运营上架 |
+| [模型广场 · 列表](../user/models/list) | 模型目录 API + 运营上架 · [模型域总览](../user/models/) |
 | [Chat](../user/chat-experience) | 生文 API + 鉴权 |
 | [开发者文档](../user/developer-docs) | 生文 API + 标准错误 |
 | [用户控制台](../user/account-console) | 计量与计费 |

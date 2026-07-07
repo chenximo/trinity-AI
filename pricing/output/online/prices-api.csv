@@ -1,59 +1,26 @@
 ﻿model,displayName,pricingMode,tierLabel,inputUsd,outputUsd,cacheUsd,cacheCreationUsd,updatedAt
-claude-opus-4-6,claude-opus-4-6,legacy,标准计价,5,25,0.5,6.25,2026-06-30T02:49:45.166641Z
-claude-opus-4-7,claude-opus-4-7,legacy,标准计价,5,25,0.5,6.25,2026-06-30T02:49:45.166641Z
-claude-opus-4-8,claude-opus-4-8,legacy,标准计价,5,25,0.5,6.25,2026-06-30T02:49:45.166641Z
-claude-sonnet-4-6,claude-sonnet-4-6,legacy,标准计价,3,15,0.3,3.75,2026-06-30T02:49:45.166641Z
-deepseek-v3.2,DeepSeek V3.2,legacy,标准计价,0.275862,0.413793,0.027586,,2026-06-07T16:00:00Z
-deepseek-v4-flash,DeepSeek V4 Flash,legacy,标准计价,0.137931,0.275862,0.002759,,2026-06-07T16:00:00Z
-deepseek-v4-flash-202605,DeepSeek V4 Flash Direct,legacy,标准计价,0.137931,0.275862,0.002759,,2026-06-29T10:14:38.393163Z
-deepseek-v4-pro,DeepSeek V4 Pro,legacy,标准计价,1.655172,3.310345,0.033103,,2026-06-07T16:00:00Z
-deepseek-v4-pro-202606,DeepSeek V4 Pro Direct,legacy,标准计价,0.413793,0.827586,0.003448,,2026-06-29T10:15:45.387188Z
-gemini-2.5-flash,Gemini 2.5 Flash,legacy,标准计价,0.3,2.5,0.03,,2026-06-24T12:01:47.956986Z
-gemini-2.5-flash-lite,Gemini 2.5 Flash Lite,legacy,标准计价,0.1,0.4,0.01,,2026-06-24T12:02:21.006245Z
-gemini-2.5-flash-lite-preview,Gemini 2.5 Flash Lite Preview,legacy,标准计价,0.1,0.4,0.01,,2026-06-24T12:02:51.006592Z
-gemini-2.5-pro,Gemini 2.5 Pro,context_length_range,≤ 200K,1.25,10,0.125,,2026-06-24T12:04:06.943460Z
-gemini-3-flash-preview,Gemini 3 Flash Preview,legacy,标准计价,0.5,3,0.05,,2026-06-24T12:06:33.435323Z
-gemini-3.1-flash-lite,Gemini 3.1 Flash Lite,legacy,标准计价,0.25,1.5,0.025,,2026-06-24T12:04:35.177766Z
-gemini-3.1-flash-lite-preview,Gemini 3.1 Flash Lite Preview,legacy,标准计价,0.25,1.5,0.025,,2026-06-24T12:05:07.137831Z
-gemini-3.1-pro-preview,Gemini 3.1 Pro Preview,context_length_range,≤ 200K,2,12,0.2,,2026-06-24T12:05:35.433950Z
-gemini-3.5-flash,Gemini 3.5 Flash,legacy,标准计价,1.5,9,0.15,,2026-06-24T12:06:05.379684Z
-glm-4-7-251222,GLM 4.7,legacy,标准计价,3,14,0.6,,2026-06-12T03:04:17.692275Z
-glm-5,GLM 5,usage_token_range,≤ 32.77K,0.616,2.772,0.154,,2026-06-12T08:53:43.996754Z
-glm-5-turbo,GLM 5 Turbo,usage_token_range,≤ 32.77K,0.77,3.388,0.185,,2026-06-12T08:48:58.774116Z
-glm-5.1,GLM-5.1,usage_token_range,≤ 32.77K,0.924,3.6961,0.2,,2026-06-12T08:13:54.925843Z
-glm-5.2,GLM-5.2,legacy,标准计价,1.1036,3.8621,0.2759,,2026-06-22T09:26:02.043688Z
-glm-5v-turbo,GLM-5V Turbo,context_length_range,≤ 32.77K,0.689655,3.034483,0.165517,,2026-06-29T10:19:07.077199Z
-gpt-4.1,gpt-4.1,legacy,标准计价,2,8,0.5,,2026-06-24T01:27:42.085190Z
-gpt-4o,gpt-4o,legacy,标准计价,2.5,10,1.25,,2026-06-24T01:27:53.026386Z
-gpt-5,gpt-5,legacy,标准计价,1.25,10,0.13,,2026-06-24T01:28:08.288870Z
-gpt-5-nano,gpt-5-nano,legacy,标准计价,0.05,0.4,0.01,,2026-06-24T01:28:20.568340Z
-gpt-5.1,gpt-5.1,legacy,标准计价,1.25,10,0.125,,2026-06-05T07:29:07.719598Z
-gpt-5.1-chat,gpt-5.1-chat,legacy,标准计价,1.25,10,0.125,,2026-06-05T07:29:40.076058Z
-gpt-5.2,gpt-5.2,legacy,标准计价,1.75,14,0.18,,2026-06-24T01:28:35.059418Z
-gpt-5.4,gpt-5.4,context_length_range,≤ 272K,2.5,15,0.25,,2026-06-24T01:28:46.893317Z
-gpt-5.4-mini,gpt-5.4-mini,legacy,标准计价,0.75,4.5,0.075,,2026-06-05T07:23:27.994093Z
-gpt-5.4-pro,gpt-5.4-pro,context_length_range,≤ 272K,30,180,,,2026-06-05T07:25:13.023288Z
-hunyuan-role-latest,Hy-Role Latest,legacy,标准计价,0.331034,1.324138,,,2026-06-29T10:19:57.283546Z
-hy-mt2-lite,Hy-MT2 Lite,legacy,标准计价,0.041379,0.165517,,,2026-06-29T10:21:50.539882Z
-hy-mt2-plus,Hy-MT2 Plus,legacy,标准计价,0.068966,0.275862,,,2026-06-29T10:22:24.224837Z
-hy-mt2-pro,Hy-MT2 Pro,legacy,标准计价,0.068966,0.275862,,,2026-06-29T10:22:54.202173Z
-hy-role,Hy-Role,legacy,标准计价,0.331034,1.324138,,,2026-06-29T10:23:31.149669Z
-hy-vision-2.0-instruct,Hy-Vision 2.0 Instruct,legacy,标准计价,1.034483,2.413793,,,2026-06-29T10:24:41.908115Z
-hy3-preview,Hy3 Preview,context_length_range,≤ 16.38K,0.165517,0.551724,0.055172,,2026-06-29T10:20:53.239407Z
-kimi-k2.5,Kimi K2.5,legacy,标准计价,0.551724,2.896552,0.137931,,2026-06-22T09:26:05.999459Z
-kimi-k2.6,Kimi K2.6,legacy,标准计价,0.8966,3.7242,0.1518,,2026-06-22T09:26:04.686777Z
-kimi-k2.7-code,Kimi K2.7 Code,legacy,标准计价,0.896552,3.724138,,,2026-06-22T09:26:03.394868Z
-kimi-k2.7-code-highspeed,Kimi K2.7 Code HighSpeed,legacy,标准计价,1.793103,7.448276,0.358621,,2026-06-29T10:27:07.911195Z
-minimax-m2.5,MiniMax M2.5,legacy,标准计价,0.289655,1.158621,0.028966,,2026-06-29T10:27:48.126867Z
-minimax-m2.7,MiniMax M2.7,legacy,标准计价,0.289655,1.158621,0.057931,,2026-06-29T10:28:25.368569Z
-minimax-m3,MiniMax M3,context_length_range,≤ 524.29K,0.289655,1.158621,0.057931,,2026-06-29T10:29:16.155619Z
-qwen-flash,Qwen Flash,legacy,标准计价,0.02069,0.082759,0.005172,,2026-06-22T09:22:23.681846Z
-qwen-max,Qwen Max,legacy,标准计价,0.331034,1.324138,0.082759,,2026-06-22T09:22:53.177643Z
-qwen-plus,Qwen Plus,legacy,标准计价,0.110345,0.275862,0.027586,,2026-06-22T09:22:22.397789Z
-qwen-turbo,Qwen Turbo,legacy,标准计价,0.041379,0.082759,0.010345,,2026-06-22T09:22:54.538924Z
-qwen3.5-flash,Qwen3.5 Flash,legacy,标准计价,0.027586,0.275862,0.006897,,2026-06-22T09:22:21.077170Z
-qwen3.5-plus,Qwen3.5 Plus,legacy,标准计价,0.110345,0.662069,0.027586,,2026-06-22T09:22:19.754189Z
-qwen3.6-flash,Qwen3.6 Flash,legacy,标准计价,0.165517,0.993103,0.041379,,2026-06-22T09:22:18.486113Z
-qwen3.6-plus,Qwen3.6 Plus,legacy,标准计价,0.275862,1.655172,0.068966,,2026-06-22T09:22:17.192336Z
-qwen3.7-max,Qwen3.7 Max,legacy,标准计价,1.655172,4.965517,0.413793,,2026-06-22T09:20:43.477905Z
-qwen3.7-plus,Qwen3.7 Plus,legacy,标准计价,0.275862,1.103448,0.068966,,2026-06-22T09:22:15.891175Z
+gv-3.1,GV-3.1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+gv-3.1-fast,GV-3.1-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+gv-3.1-litenew,GV-3.1-Lite,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+h2new-1,h2new-1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+hailuo-2.3,Hailuo-2.3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+hailuo-2.3-fast,Hailuo-2.3-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+jv-3.0-pro,Jimeng-3.0-Pro,video_tiered,1080p,,,,,2026-05-20T16:00:00Z
+kling-2.5-turbo,Kling-2.5-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-2.6,Kling-2.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-3,Kling-3.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-3.0-omni,Kling-3.0-Omni,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+kling-o1,Kling-O1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+os-2,OS-2.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+pixversenew-c1,PixVerse-c1,video_tiered,768p,,,,,2026-05-20T16:00:00Z
+pixversenew-v5.6,PixVerse-v5.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+pixversenew-v6.0,PixVerse-v6.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+seedance-1.0-pro,Seedance 1.0 Pro,flat,条件计价,,,,,2026-06-09T16:00:00Z
+seedance-1.0-pro-fast,Seedance 1.0 Pro Fast,flat,条件计价,,,,,2026-06-09T16:00:00Z
+seedance-1.5-pro,Seedance 1.5 Pro,video_tiered,含音频,,,,,2026-06-09T16:00:00Z
+vidu-q2,Vidu Q2,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q2-pro,Vidu Q2-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q2-turbo,Vidu Q2-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3,Vidu Q3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3-pro,Vidu Q3-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+vidu-q3-turbo,Vidu Q3-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z

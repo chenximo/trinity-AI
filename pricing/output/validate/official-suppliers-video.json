@@ -1,20 +1,241 @@
 {
-  "generatedAt": "2026-07-06T07:02:22.469Z",
+  "generatedAt": "2026-07-07T09:53:58.298Z",
   "bySupplier": [
     {
       "key": "aigc-domestic",
       "tierCount": 42,
       "mismatchCount": 0,
-      "unitMismatchCount": 42
+      "unitMismatchCount": 22
     },
     {
       "key": "aigc-international",
       "tierCount": 38,
-      "mismatchCount": 0,
-      "unitMismatchCount": 38
+      "mismatchCount": 20,
+      "unitMismatchCount": 18
     }
   ],
-  "mismatchCount": 0,
-  "mismatches": [],
+  "mismatchCount": 20,
+  "mismatches": [
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v3",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "tierLabel": "标准价·720P/768P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v3",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "tierLabel": "标准价·1080P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v3",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "tierLabel": "标准价·2K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v3",
+      "displayName": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "tierLabel": "标准价·4K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "tierLabel": "无声·720P/768P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "tierLabel": "无声·1080P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "tierLabel": "无声·2K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-6",
+      "displayName": "可灵 2.6",
+      "brand": "可灵",
+      "tierLabel": "无声·4K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "tierLabel": "标准价·720P/768P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "tierLabel": "标准价·1080P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "tierLabel": "标准价·2K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-5-turbo",
+      "displayName": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "tierLabel": "标准价·4K",
+      "status": "mismatch",
+      "summaryText": "⚠-8.9%",
+      "maxAbsPct": 8.9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·720P/768P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·1080P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·2K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v2-1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·4K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·720P/768P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·1080P",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·2K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    },
+    {
+      "supplier": "aigc-international",
+      "trinityId": "kl-video-v1",
+      "displayName": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "tierLabel": "标准价·4K",
+      "status": "mismatch",
+      "summaryText": "⚠-9%",
+      "maxAbsPct": 9,
+      "maxUpPct": null
+    }
+  ],
   "note": "官方积分/次 vs AIGC元/秒 → unit_mismatch 为预期"
 }

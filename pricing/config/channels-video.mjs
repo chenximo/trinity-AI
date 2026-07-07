@@ -78,4 +78,8 @@ export const VIDEO_PENDING_SUPPLIERS = VIDEO_SUPPLIERS.filter((c) => !c.connecte
 export const VIDEO_L2_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l2);
 export const VIDEO_L3_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l3);
 export const VIDEO_L4_COMPARE_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l4 !== false);
+/** Excel 供应商分表（已接入 + 火山方舟参照） */
+export const VIDEO_L3_SHEET_SUPPLIERS = VIDEO_SUPPLIERS.filter(
+  (c) => c.connected || c.key === "volcengine",
+);
 export const VIDEO_L4_SHEET_SUPPLIERS = VIDEO_CONNECTED_SUPPLIERS;

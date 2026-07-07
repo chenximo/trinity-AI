@@ -19,7 +19,9 @@ title: 采购渠道真源
 | **TokenHub** | `pricing/suppliers/tokenhub/output/` | `npm run pricing:supplier:tokenhub:console` |
 | **百炼** | `pricing/suppliers/bailian/output/` | `npm run pricing:supplier:bailian:doc` |
 | **AIGC** | `pricing/suppliers/aigc/data/pricing-sheet.mjs` | `npm run pricing:supplier:aigc` |
-| **火山方舟** | `pricing/suppliers/volcengine/output/text/pricing-api.json` | `npm run pricing:supplier:volcengine` |
+| **火山方舟（生文）** | `pricing/suppliers/volcengine/output/text/pricing-api.json` | `npm run pricing:supplier:volcengine` |
+| **火山方舟（生图）** | `pricing/suppliers/volcengine/output/image/pricing-api.json` | 同上 · `--modality=image` |
+| **火山方舟（生视频）** | `pricing/suppliers/volcengine/output/video/pricing-api.json` | 同上 · `--modality=video` · 映射见 `volcengine/trinity-map.json` |
 | **网聚云联·云门户** | `pricing/suppliers/wangju-cloudportal/output/` | `npm run pricing:supplier:wangju-cloudportal` |
 | **中转站-cust** | `pricing/suppliers/relay-cust/output/` | `npm run pricing:supplier:relay-cust` |
 
@@ -60,4 +62,5 @@ title: 采购渠道真源
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-07 | 火山方舟：补生图/生视频真源路径；生视频 trinity-map + Excel「火山方舟-生视频」分表 |
 | 2026-07-03 | 补充各渠道定价来源链接表 |

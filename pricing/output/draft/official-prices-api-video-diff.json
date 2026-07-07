@@ -1,0 +1,2226 @@
+{
+  "summary": {
+    "modelCount": 25,
+    "tierCount": 99,
+    "unchangedModels": 25,
+    "changedModels": 0,
+    "tierUnchanged": 99,
+    "tierDown": 0,
+    "tierUp": 0,
+    "tierMissing": 0
+  },
+  "rows": [
+    {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.2,
+          "draftPrice": 0.2,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.3,
+          "draftPrice": 0.3,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.4,
+          "draftPrice": 0.4,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.2,
+          "draftPrice": 0.2,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.1,
+          "draftPrice": 0.1,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.2,
+          "draftPrice": 0.2,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.35,
+          "draftPrice": 0.35,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.15,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.05,
+          "draftPrice": 0.05,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.12,
+          "draftPrice": 0.12,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.1,
+          "draftPrice": 0.1,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.05,
+          "draftPrice": 0.05,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.2462,
+          "draftPrice": 0.2462,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.2954,
+          "draftPrice": 0.2954,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.3954,
+          "draftPrice": 0.3954,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.1385,
+          "draftPrice": 0.1385,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.081667,
+          "draftPrice": 0.081667,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.143077,
+          "draftPrice": 0.143077,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.229231,
+          "draftPrice": 0.229231,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.046667,
+          "draftPrice": 0.046667,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.055,
+          "draftPrice": 0.055,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.089231,
+          "draftPrice": 0.089231,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.133846,
+          "draftPrice": 0.133846,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.031667,
+          "draftPrice": 0.031667,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "jv-3.0-pro",
+      "displayName": "Jimeng-3.0-Pro",
+      "tierCount": 3,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.137931,
+          "draftPrice": 0.137931,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.230769,
+          "draftPrice": 0.230769,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.346154,
+          "draftPrice": 0.346154,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.068966,
+          "draftPrice": 0.068966,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.103448,
+          "draftPrice": 0.103448,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.154483,
+          "draftPrice": 0.154483,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.041379,
+          "draftPrice": 0.041379,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.068966,
+          "draftPrice": 0.068966,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.103448,
+          "draftPrice": 0.103448,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.154483,
+          "draftPrice": 0.154483,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.041379,
+          "draftPrice": 0.041379,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.137931,
+          "draftPrice": 0.137931,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.165517,
+          "draftPrice": 0.165517,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.198621,
+          "draftPrice": 0.198621,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.110345,
+          "draftPrice": 0.110345,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.110345,
+          "draftPrice": 0.110345,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.137931,
+          "draftPrice": 0.137931,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.413793,
+          "draftPrice": 0.413793,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.082759,
+          "draftPrice": 0.082759,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.110345,
+          "draftPrice": 0.110345,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.165517,
+          "draftPrice": 0.165517,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.248276,
+          "draftPrice": 0.248276,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.082759,
+          "draftPrice": 0.082759,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.15,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.225,
+          "draftPrice": 0.225,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.34,
+          "draftPrice": 0.34,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.1,
+          "draftPrice": 0.1,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.19,
+          "draftPrice": 0.19,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.1013,
+          "draftPrice": 0.1013,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.1216,
+          "draftPrice": 0.1216,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.0444,
+          "draftPrice": 0.0444,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "768p",
+          "onlinePrice": 0.1,
+          "draftPrice": 0.1,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.15,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.1176,
+          "draftPrice": 0.1176,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.1646,
+          "draftPrice": 0.1646,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.0392,
+          "draftPrice": 0.0392,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.09,
+          "draftPrice": 0.09,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.18,
+          "draftPrice": 0.18,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.096,
+          "draftPrice": 0.096,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.1472,
+          "draftPrice": 0.1472,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.07,
+          "draftPrice": 0.07,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.09,
+          "draftPrice": 0.09,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "seedance-1.0-pro",
+      "displayName": "Seedance 1.0 Pro",
+      "tierCount": 1,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "条件计价",
+          "onlinePrice": 2.068966,
+          "draftPrice": 2.068966,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "seedance-1.0-pro-fast",
+      "displayName": "Seedance 1.0 Pro Fast",
+      "tierCount": 1,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "条件计价",
+          "onlinePrice": 0.57931,
+          "draftPrice": 0.57931,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "tierCount": 2,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "audio:disabled",
+          "tierLabel": "无声",
+          "onlinePrice": 1.103448,
+          "draftPrice": 1.103448,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "audio:enabled",
+          "tierLabel": "含音频",
+          "onlinePrice": 2.206897,
+          "draftPrice": 2.206897,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.072308,
+          "draftPrice": 0.072308,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.107692,
+          "draftPrice": 0.107692,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.161538,
+          "draftPrice": 0.161538,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.049231,
+          "draftPrice": 0.049231,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.049231,
+          "draftPrice": 0.049231,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.043103,
+          "draftPrice": 0.043103,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.076923,
+          "draftPrice": 0.076923,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.155769,
+          "draftPrice": 0.155769,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.021552,
+          "draftPrice": 0.021552,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.021552,
+          "draftPrice": 0.021552,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "tierCount": 4,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.072308,
+          "draftPrice": 0.072308,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.107692,
+          "draftPrice": 0.107692,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.161538,
+          "draftPrice": 0.161538,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.038462,
+          "draftPrice": 0.038462,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.064655,
+          "draftPrice": 0.064655,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.15,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.18,
+          "draftPrice": 0.18,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.030172,
+          "draftPrice": 0.030172,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.051724,
+          "draftPrice": 0.051724,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.15,
+          "draftPrice": 0.15,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.18,
+          "draftPrice": 0.18,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.216,
+          "draftPrice": 0.216,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.05,
+          "draftPrice": 0.05,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.125,
+          "draftPrice": 0.125,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierCount": 5,
+      "changedTierCount": 0,
+      "modelVerdict": "一致",
+      "tiers": [
+        {
+          "tierKey": "res:1080p",
+          "tierLabel": "1080p",
+          "onlinePrice": 0.07,
+          "draftPrice": 0.07,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:2k",
+          "tierLabel": "2k",
+          "onlinePrice": 0.084,
+          "draftPrice": 0.084,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:4k",
+          "tierLabel": "4k",
+          "onlinePrice": 0.1008,
+          "draftPrice": 0.1008,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:540p",
+          "tierLabel": "480p540p",
+          "onlinePrice": 0.04,
+          "draftPrice": 0.04,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        },
+        {
+          "tierKey": "res:720p",
+          "tierLabel": "720p",
+          "onlinePrice": 0.06,
+          "draftPrice": 0.06,
+          "delta": 0,
+          "deltaPct": 0,
+          "verdict": "一致"
+        }
+      ]
+    }
+  ],
+  "tierRows": [
+    {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.2,
+      "draftPrice": 0.2,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.3,
+      "draftPrice": 0.3,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.4,
+      "draftPrice": 0.4,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1",
+      "displayName": "GV-3.1",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.2,
+      "draftPrice": 0.2,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.1,
+      "draftPrice": 0.1,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.2,
+      "draftPrice": 0.2,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.35,
+      "draftPrice": 0.35,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-fast",
+      "displayName": "GV-3.1-Fast",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.15,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.05,
+      "draftPrice": 0.05,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.12,
+      "draftPrice": 0.12,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.1,
+      "draftPrice": 0.1,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "gv-3.1-litenew",
+      "displayName": "GV-3.1-Lite",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.05,
+      "draftPrice": 0.05,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.2462,
+      "draftPrice": 0.2462,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.2954,
+      "draftPrice": 0.2954,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.3954,
+      "draftPrice": 0.3954,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "h2new-1",
+      "displayName": "h2new-1",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.1385,
+      "draftPrice": 0.1385,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.081667,
+      "draftPrice": 0.081667,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.143077,
+      "draftPrice": 0.143077,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.229231,
+      "draftPrice": 0.229231,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3",
+      "displayName": "Hailuo-2.3",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.046667,
+      "draftPrice": 0.046667,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.055,
+      "draftPrice": 0.055,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.089231,
+      "draftPrice": 0.089231,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.133846,
+      "draftPrice": 0.133846,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "hailuo-2.3-fast",
+      "displayName": "Hailuo-2.3-Fast",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.031667,
+      "draftPrice": 0.031667,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "jv-3.0-pro",
+      "displayName": "Jimeng-3.0-Pro",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.137931,
+      "draftPrice": 0.137931,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "jv-3.0-pro",
+      "displayName": "Jimeng-3.0-Pro",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.230769,
+      "draftPrice": 0.230769,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "jv-3.0-pro",
+      "displayName": "Jimeng-3.0-Pro",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.346154,
+      "draftPrice": 0.346154,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.068966,
+      "draftPrice": 0.068966,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.103448,
+      "draftPrice": 0.103448,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.154483,
+      "draftPrice": 0.154483,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.5-turbo",
+      "displayName": "Kling-2.5-Turbo",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.041379,
+      "draftPrice": 0.041379,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.068966,
+      "draftPrice": 0.068966,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.103448,
+      "draftPrice": 0.103448,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.154483,
+      "draftPrice": 0.154483,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-2.6",
+      "displayName": "Kling-2.6",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.041379,
+      "draftPrice": 0.041379,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.137931,
+      "draftPrice": 0.137931,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.165517,
+      "draftPrice": 0.165517,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.198621,
+      "draftPrice": 0.198621,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3",
+      "displayName": "Kling-3.0",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.110345,
+      "draftPrice": 0.110345,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.110345,
+      "draftPrice": 0.110345,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.137931,
+      "draftPrice": 0.137931,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.413793,
+      "draftPrice": 0.413793,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-3.0-omni",
+      "displayName": "Kling-3.0-Omni",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.082759,
+      "draftPrice": 0.082759,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.110345,
+      "draftPrice": 0.110345,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.165517,
+      "draftPrice": 0.165517,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.248276,
+      "draftPrice": 0.248276,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "kling-o1",
+      "displayName": "Kling-O1",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.082759,
+      "draftPrice": 0.082759,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.15,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.225,
+      "draftPrice": 0.225,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.34,
+      "draftPrice": 0.34,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "os-2",
+      "displayName": "OS-2.0",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.1,
+      "draftPrice": 0.1,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.19,
+      "draftPrice": 0.19,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.1013,
+      "draftPrice": 0.1013,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.1216,
+      "draftPrice": 0.1216,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.0444,
+      "draftPrice": 0.0444,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-c1",
+      "displayName": "PixVerse-c1",
+      "tierKey": "res:720p",
+      "tierLabel": "768p",
+      "onlinePrice": 0.1,
+      "draftPrice": 0.1,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.15,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.1176,
+      "draftPrice": 0.1176,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.1646,
+      "draftPrice": 0.1646,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.0392,
+      "draftPrice": 0.0392,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v5.6",
+      "displayName": "PixVerse-v5.6",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.09,
+      "draftPrice": 0.09,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.18,
+      "draftPrice": 0.18,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.096,
+      "draftPrice": 0.096,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.1472,
+      "draftPrice": 0.1472,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.07,
+      "draftPrice": 0.07,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "pixversenew-v6.0",
+      "displayName": "PixVerse-v6.0",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.09,
+      "draftPrice": 0.09,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "seedance-1.0-pro",
+      "displayName": "Seedance 1.0 Pro",
+      "tierKey": "uniform",
+      "tierLabel": "条件计价",
+      "onlinePrice": 2.068966,
+      "draftPrice": 2.068966,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "seedance-1.0-pro-fast",
+      "displayName": "Seedance 1.0 Pro Fast",
+      "tierKey": "uniform",
+      "tierLabel": "条件计价",
+      "onlinePrice": 0.57931,
+      "draftPrice": 0.57931,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "tierKey": "audio:disabled",
+      "tierLabel": "无声",
+      "onlinePrice": 1.103448,
+      "draftPrice": 1.103448,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "seedance-1.5-pro",
+      "displayName": "Seedance 1.5 Pro",
+      "tierKey": "audio:enabled",
+      "tierLabel": "含音频",
+      "onlinePrice": 2.206897,
+      "draftPrice": 2.206897,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.072308,
+      "draftPrice": 0.072308,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.107692,
+      "draftPrice": 0.107692,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.161538,
+      "draftPrice": 0.161538,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.049231,
+      "draftPrice": 0.049231,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2",
+      "displayName": "Vidu Q2",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.049231,
+      "draftPrice": 0.049231,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.043103,
+      "draftPrice": 0.043103,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.076923,
+      "draftPrice": 0.076923,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.155769,
+      "draftPrice": 0.155769,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.021552,
+      "draftPrice": 0.021552,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-pro",
+      "displayName": "Vidu Q2-Pro",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.021552,
+      "draftPrice": 0.021552,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.072308,
+      "draftPrice": 0.072308,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.107692,
+      "draftPrice": 0.107692,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.161538,
+      "draftPrice": 0.161538,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q2-turbo",
+      "displayName": "Vidu Q2-Turbo",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.038462,
+      "draftPrice": 0.038462,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.064655,
+      "draftPrice": 0.064655,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.15,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.18,
+      "draftPrice": 0.18,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.030172,
+      "draftPrice": 0.030172,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3",
+      "displayName": "Vidu Q3",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.051724,
+      "draftPrice": 0.051724,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.15,
+      "draftPrice": 0.15,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.18,
+      "draftPrice": 0.18,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.216,
+      "draftPrice": 0.216,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.05,
+      "draftPrice": 0.05,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-pro",
+      "displayName": "Vidu Q3-Pro",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.125,
+      "draftPrice": 0.125,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierKey": "res:1080p",
+      "tierLabel": "1080p",
+      "onlinePrice": 0.07,
+      "draftPrice": 0.07,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierKey": "res:2k",
+      "tierLabel": "2k",
+      "onlinePrice": 0.084,
+      "draftPrice": 0.084,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierKey": "res:4k",
+      "tierLabel": "4k",
+      "onlinePrice": 0.1008,
+      "draftPrice": 0.1008,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierKey": "res:540p",
+      "tierLabel": "480p540p",
+      "onlinePrice": 0.04,
+      "draftPrice": 0.04,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    },
+    {
+      "model": "vidu-q3-turbo",
+      "displayName": "Vidu Q3-Turbo",
+      "tierKey": "res:720p",
+      "tierLabel": "720p",
+      "onlinePrice": 0.06,
+      "draftPrice": 0.06,
+      "delta": 0,
+      "deltaPct": 0,
+      "verdict": "一致"
+    }
+  ],
+  "onlineFetchedAt": "2026-07-07T10:06:42.111Z",
+  "draftGeneratedAt": "2026-07-07T10:06:41.939Z",
+  "onlineFx": 7.25,
+  "draftFx": 7.25,
+  "draftPolicy": "官方价优先（listingAttribute 对齐）；官方无档 → AIGC 国际 USD → AIGC 国内 CNY÷7.25 → TokenHub → 火山；CNY 官方 ÷ 7.25"
+}

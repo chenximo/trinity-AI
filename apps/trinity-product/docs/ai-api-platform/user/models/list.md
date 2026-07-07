@@ -4,34 +4,134 @@ title: 列表
 
 # 模型广场 · 列表
 
-> **说明**：客户浏览平台可用模型：搜索、筛选、排序与卡片列表；列表须与运营「模型上架」及网关 `model` id **同一套数据**（不再用页面内写死的演示数据）。子能力进度见同目录 **`roadmap.yml`**（模型广场子目录一张表）。
+> **说明**：客户浏览**在架模型**的主入口：搜索、筛选、排序与卡片列表。数据须与运营上架及 `GET /v1/models` **同一套 model id**（禁止长期依赖页面内写死 mock）。  
+> **工程**：`apps/trinity-ai/src/views/models/`（`ModelsPage.vue` · `models.css` · `modelsInteractions.ts` · `mock.ts` · `README.md`）· 路由 `/models`  
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../../)（用户面 `/models`）· 域地图 [模型域总览](./index)
 
-> **工程**：`apps/trinity-ai/src/views/models/`（五件套：`ModelsPage.vue` · `models.css` · `modelsInteractions.ts` · `mock.ts` · `README.md`）· 路由 `/models`
+---
 
-> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../../)（用户面 `/models`）
+## 1. 用户问题与边界
 
-## 子能力清单
+**问题**：开发者/采购需要在不读文档的情况下，快速找到「平台现在有哪些模型、什么价、什么模态、上下文多大」。
 
-<ProductRoadmap />
+**本页是什么**：可发现的 **模型目录**（对标 OpenRouter Models 列表）。
+
+**不是什么**：
+
+- 不是运营上架后台（→ [models-routes](../../operations/models-routes)）
+- 不是 API 参考全文（→ [开发者文档](../developer-docs)）
+- 不是用量排名（→ [排名](./rankings) P1）
+
+---
+
+## 2. 用户故事
+
+作为 **已注册开发者**，我希望在模型广场按模态和提供商筛选模型，以便选出适合业务的 model id 并进入详情或试玩。
+
+---
+
+## 3. 功能范围
+
+| 做（P0） | 不做（后期） |
+|----------|--------------|
+| 主栏搜索、侧栏筛选（提供商 / 模态 / 上下文档） | 高级筛选：系列标签、多选组合保存 |
+| 排序：名称、最新、上下文、输入价 | 个性化推荐 |
+| 模型卡片列表 + 结果数 / 空态 | 页内对比（→ P2） |
+| 跳转详情（6.30） / Chat / 文档（方式待定） | Providers 全量 Tab |
+| 接 live catalog API | 长期独立 mock 目录 |
+
+---
+
+## 4. 数据与字段
+
+列表卡片与 **catalog 模型对象** 对齐（接 API 后替换 `mock.ts` 字段源）：
+
+| 展示 | 字段 / 来源 | 备注 |
+|------|-------------|------|
+| 标题 | `display_name` 或 `title` | 与运营主数据一致 |
+| slug / id | `model`（网关 id） | 详情路由、API 调用用 |
+| 提供商 | `provider` / `org` | 筛选 pill |
+| 模态 | `modalities` / `categories` | 文本 · 图像 · 视频… |
+| 上下文 | `context_length` → 展示为 K | 筛选滑档 |
+| 输入价摘要 | `prices` 或列表聚合价 | 与 `GET /v1/prices` 一致 |
+| 趋势（可选） | 运营或统计 | 原型有占位，商用可隐藏 |
+| 描述 | `description` | 一两行摘要 |
+
+**口径**：仅展示 `status=在架` 的模型；下架后列表不可见（规则以产品拍板为准）。
+
+---
+
+## 5. 页面模块
+
+| 区域 | 职责 |
+|------|------|
+| 顶栏搜索 | 主关键词过滤 |
+| 侧栏筛选 | 提供商 · 模态快捷 · 上下文档位 ·（后期）高级筛选 |
+| 工具条 | 排序、结果数、窄屏筛选抽屉 |
+| 卡片列表 | 单模型摘要 + 操作入口 |
+| 页脚 | 与壳层一致 |
+
+---
+
+## 6. 交互路径
+
+```text
+进入 /models → 可选筛选/排序 → 点击卡片
+  → /models/:id（详情 · 6.30）
+  → /chat?model=…（试玩 · 交互待定）
+  → /docs/…（API 文档 · 链出）
+```
+
+窄屏：侧栏收入抽屉（`modelsInteractions.ts` 同步 `body` 类名）。
+
+---
+
+## 7. 异常与空态
+
+| 场景 | 期望 |
+|------|------|
+| 无匹配结果 | 空态文案 + 重置筛选 |
+| API 失败 | 错误提示 + 重试（商用前补） |
+| 零在架模型 | 运营未上架；用户面不应出现「假数据满屏」 |
+
+---
+
+## 8. 验收（GWT 摘要）
+
+- **Given** 运营已上架模型 M 且在架，**When** 打开 `/models`，**Then** 卡片列表含 M，且 slug 与 `GET /v1/models` 一致。  
+- **Given** 选择模态「图像」，**When** 应用筛选，**Then** 仅显示支持图像的模型。  
+- **Given** 点击卡片，**When** 6.30 详情就绪，**Then** 进入 `/models/{id}` 且 id 与网关一致。
+
+走查明细：[5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（筛 **模型广场 · 列表**）。
+
+---
 
 ## 附录
-
-### 验收（5.30 / 6.30）
-
-走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **模型广场 · 列表** / 用户面）。子能力进度与节点列以 **`roadmap.yml`** 为准，手册不抄验收 checklist。
 
 ### 关联
 
 | 模块 | 关系 |
 |------|------|
-| [模型排名](./rankings) | `/rankings` · 用量排行 · `rankings.roadmap.yml` |
-| [模型详情页](./model-detail-requirements) | `/models/:id` · 6.30 轻量详情 · `detail-roadmap.yml` |
+| [模型域总览](./index) | L1 地图 |
+| [模型详情](./model-detail-requirements) | 卡片下游 |
+| [模型排名](./rankings) | 同级入口 |
+| [运营 · 上架](../../operations/models-routes) | 数据真源 |
+
+### L3 · 子能力进度（可选 · 非评审主文档）
+
+<details>
+<summary>展开 · 历史 roadmap 表（维护优先级低）</summary>
+
+<ProductRoadmap />
+
+与 [周计划](../../#周计划与验收看板) 重复时 **以周计划为准**。
+
+</details>
 
 ### 修订
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-02 | 工程行补五件套；PRD 仅附录关联；验收链飞书 |
-| 2026-06-01 | 子能力迁入 `models/roadmap.yml`；本页只嵌组件 |
-| 2026-06-01 | 迁入 `user/models/list` |
-| 2026-05-26 | 首版 `model-catalog` |
+| 2026-07-06 | PM 重规划：L2 产品规格为主；roadmap 降为附录 |
+| 2026-06-02 | 工程五件套；验收链飞书 |
+| 2026-05-26 | 首版 |

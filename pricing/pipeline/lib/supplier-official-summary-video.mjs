@@ -2,7 +2,7 @@
  * 生视频 · 供应商挂牌 vs 厂商官方价 · 汇总
  */
 
-import { VIDEO_CONNECTED_SUPPLIERS } from "../../config/channels-video.mjs";
+import { VIDEO_L3_SHEET_SUPPLIERS } from "../../config/channels-video.mjs";
 import { collectVideoSupplierTierStats } from "./build-video-rows.mjs";
 import {
   aggregateSupplierStats,
@@ -23,10 +23,11 @@ export function buildVideoSupplierOfficialSummaryReport(ctx = {}) {
   const generatedAt = ctx.generatedAt ?? new Date().toISOString();
   const payload = {
     aigcModels: ctx.aigcModels ?? [],
+    volcModels: ctx.volcModels ?? [],
     aigcTrinityMap: ctx.aigcTrinityMap ?? {},
   };
 
-  const bySupplier = VIDEO_CONNECTED_SUPPLIERS.map((sup) => {
+  const bySupplier = VIDEO_L3_SHEET_SUPPLIERS.map((sup) => {
     const tierStats = collectVideoSupplierTierStats(
       sup,
       payload,

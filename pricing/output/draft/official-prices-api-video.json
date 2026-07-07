@@ -1,0 +1,2249 @@
+{
+  "source": "trinity_prices_api",
+  "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=video",
+  "modality": "video",
+  "fxCnyPerUsd": 7.25,
+  "fxNote": "官方价优先（listingAttribute 对齐）；官方无档 → AIGC 国际 USD → AIGC 国内 CNY÷7.25 → TokenHub → 火山；CNY 官方 ÷ 7.25",
+  "fetchedAt": "2026-07-07T10:06:41.939Z",
+  "modelCount": 25,
+  "object": "list",
+  "data": [
+    {
+      "object": "model_prices",
+      "model": "gv-3.1",
+      "display_name": "GV-3.1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.20 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.20 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.20 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.40 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.30 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gv-3.1-fast",
+      "display_name": "GV-3.1-Fast",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.35",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.35 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.20 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gv-3.1-litenew",
+      "display_name": "GV-3.1-Lite",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.12",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.12 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "h2new-1",
+      "display_name": "h2new-1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1385",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2462",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.25 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1385",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.2954",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.30 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.3954",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.40 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "hailuo-2.3",
+      "display_name": "Hailuo-2.3",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.046667",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.081667",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.046667",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.229231",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.23 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.143077",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "hailuo-2.3-fast",
+      "display_name": "Hailuo-2.3-Fast",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.031667",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.03 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.055",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.06 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.031667",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.03 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.133846",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.13 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.089231",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.09 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "jv-3.0-pro",
+      "display_name": "Jimeng-3.0-Pro",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.137931",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.346154",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.35 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.230769",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.23 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "kling-2.5-turbo",
+      "display_name": "Kling-2.5-Turbo",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.041379",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.068966",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.041379",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.154483",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.103448",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "kling-2.6",
+      "display_name": "Kling-2.6",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.041379",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.068966",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.041379",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.154483",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.103448",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "kling-3",
+      "display_name": "Kling-3.0",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.110345",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.137931",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.110345",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.198621",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.20 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.165517",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.17 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "kling-3.0-omni",
+      "display_name": "Kling-3.0-Omni",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.082759",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.110345",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.082759",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.413793",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.41 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.137931",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "kling-o1",
+      "display_name": "Kling-O1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.082759",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.110345",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.082759",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.248276",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.25 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.165517",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.17 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "os-2",
+      "display_name": "OS-2.0",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.34",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.34 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.225",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.23 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "pixversenew-c1",
+      "display_name": "PixVerse-c1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1216",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.12 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1013",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0444",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.19",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.19 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "pixversenew-v5.6",
+      "display_name": "PixVerse-v5.6",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.09",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.09 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.09",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.09 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1646",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.16 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1176",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.12 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0392",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "pixversenew-v6.0",
+      "display_name": "PixVerse-v6.0",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.09",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.09 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.09",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.09 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.18",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.18 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1472",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.096",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-1.0-pro",
+      "display_name": "Seedance 1.0 Pro",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "flat",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "dimension_set",
+          "label": "条件计价",
+          "prices": {
+            "unit": {
+              "amount": "2.068966",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$2.07 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-1.0-pro-fast",
+      "display_name": "Seedance 1.0 Pro Fast",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "flat",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "dimension_set",
+          "label": "条件计价",
+          "prices": {
+            "unit": {
+              "amount": "0.57931",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$0.58 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-1.5-pro",
+      "display_name": "Seedance 1.5 Pro",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "has_audio",
+          "label": "含音频",
+          "conditions_summary": "有声",
+          "conditions": {
+            "audio_generation": "enabled"
+          },
+          "prices": {
+            "unit": {
+              "amount": "2.206897",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$2.21 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "has_audio",
+          "label": "无声",
+          "conditions_summary": "无声",
+          "conditions": {
+            "audio_generation": "disabled"
+          },
+          "prices": {
+            "unit": {
+              "amount": "1.103448",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$1.10 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q2",
+      "display_name": "Vidu Q2",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.049231",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.072308",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.049231",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.161538",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.16 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.107692",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.049231",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q2-pro",
+      "display_name": "Vidu Q2-Pro",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.021552",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.02 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.043103",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.021552",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.02 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.155769",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.16 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.076923",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.021552",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.02 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q2-turbo",
+      "display_name": "Vidu Q2-Turbo",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.038462",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.072308",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.038462",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.161538",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.16 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.107692",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.11 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q3",
+      "display_name": "Vidu Q3",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.051724",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.064655",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.06 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.051724",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.18",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.18 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.030172",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.03 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q3-pro",
+      "display_name": "Vidu Q3-Pro",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.125",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.13 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.125",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.13 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.216",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.22 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.18",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.18 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "vidu-q3-turbo",
+      "display_name": "Vidu Q3-Turbo",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.06",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.06 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "768p",
+          "conditions_summary": "768p",
+          "conditions": {
+            "resolution": "768p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.06",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.06 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1008",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.10 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "resolution": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.084",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p540p",
+          "conditions_summary": "480p540p",
+          "conditions": {
+            "resolution": "480p540p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.04 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-05-20T16:00:00Z"
+    }
+  ]
+}

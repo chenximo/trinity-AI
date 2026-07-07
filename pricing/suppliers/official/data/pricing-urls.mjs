@@ -5,6 +5,7 @@ export const VENDOR_PRICING_URLS = {
   openai: {
     all: "https://developers.openai.com/api/docs/pricing",
     image: "https://developers.openai.com/api/docs/pricing",
+    video: "https://developers.openai.com/api/docs/pricing",
   },
   google: {
     text: "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
@@ -55,10 +56,16 @@ export const VENDOR_PRICING_URLS = {
   kling: {
     image: "https://klingai.com/global/dev/pricing",
     image_api: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-    video: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+    video: "https://kling.ai/document-api/pricing/base/video",
   },
   vidu: {
     image: "https://platform.vidu.cn/docs/pricing",
     video: "https://platform.vidu.cn/docs/pricing",
+  },
+  pixverse: {
+    video: "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+  },
+  jimeng: {
+    video: "https://www.volcengine.com/docs/85621/1544715?lang=zh",
   },
 };

@@ -6,14 +6,14 @@
   "currency": "CNY",
   "unit": "CNY per video generation (tiered)",
   "chargeUnit": "video",
-  "fetchedAt": "2026-07-06T07:40:48.332Z",
-  "seedVerifiedAt": "2026-06-28",
-  "catalogCount": 17,
-  "modelCount": 17,
-  "pricingTierCount": 44,
-  "pricedCount": 17,
+  "fetchedAt": "2026-07-07T07:49:45.400Z",
+  "seedVerifiedAt": "2026-07-07",
+  "catalogCount": 34,
+  "modelCount": 34,
+  "pricingTierCount": 87,
+  "pricedCount": 34,
   "liveCount": 0,
-  "seedCount": 17,
+  "seedCount": 34,
   "models": [
     {
       "modality": "video",
@@ -33,7 +33,7 @@
       "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -54,7 +54,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "腾讯云混元视频 1.5 · 按次扣积分",
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -81,11 +81,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kl-video-v3",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub kl-video-v3",
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -94,7 +94,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -102,65 +102,65 @@
             "tierLabel": "720P/768P",
             "price": 0.8,
             "unit": "积分/秒",
-            "note": "3.0 Turbo 有声",
+            "note": "With Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "1080P",
             "price": 1,
             "unit": "积分/秒",
-            "note": "3.0 Turbo 有声",
+            "note": "With Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "2K",
             "price": 1.2,
             "unit": "积分/秒",
-            "note": "3.0 Turbo 有声",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "4K",
             "price": 1.44,
             "unit": "积分/秒",
-            "note": "3.0 Turbo 有声",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "可灵 3.0 Turbo · 按秒收费",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "可灵 3.0 Turbo · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
-        "seedSourceUrl": null
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
       },
       "tiers": [
         {
           "tierLabel": "720P/768P",
           "price": 0.8,
           "unit": "积分/秒",
-          "note": "3.0 Turbo 有声",
+          "note": "With Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "1080P",
           "price": 1,
           "unit": "积分/秒",
-          "note": "3.0 Turbo 有声",
+          "note": "With Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "2K",
           "price": 1.2,
           "unit": "积分/秒",
-          "note": "3.0 Turbo 有声",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "4K",
           "price": 1.44,
           "unit": "积分/秒",
-          "note": "3.0 Turbo 有声",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         }
       ]
@@ -170,11 +170,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kl-video-v2-6",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub kl-video-v2-6",
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -183,7 +183,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -191,65 +191,65 @@
             "tierLabel": "720P/768P",
             "price": 0.3,
             "unit": "积分/秒",
-            "note": "2.6 无声",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "1080P",
             "price": 0.5,
             "unit": "积分/秒",
-            "note": "2.6 无声",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "2K",
             "price": 0.75,
             "unit": "积分/秒",
-            "note": "2.6 无声",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "4K",
             "price": 1.12,
             "unit": "积分/秒",
-            "note": "2.6 无声",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "可灵 2.6 · 按秒",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "可灵 2.6 · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
-        "seedSourceUrl": null
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
       },
       "tiers": [
         {
           "tierLabel": "720P/768P",
           "price": 0.3,
           "unit": "积分/秒",
-          "note": "2.6 无声",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "1080P",
           "price": 0.5,
           "unit": "积分/秒",
-          "note": "2.6 无声",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "2K",
           "price": 0.75,
           "unit": "积分/秒",
-          "note": "2.6 无声",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "4K",
           "price": 1.12,
           "unit": "积分/秒",
-          "note": "2.6 无声",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         }
       ]
@@ -259,11 +259,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kl-video-v2-5-turbo",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub kl-video-v2-5-turbo",
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -272,7 +272,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -280,65 +280,65 @@
             "tierLabel": "720P/768P",
             "price": 0.3,
             "unit": "积分/秒",
-            "note": "2.5-turbo",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "1080P",
             "price": 0.5,
             "unit": "积分/秒",
-            "note": "2.5-turbo",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "2K",
             "price": 0.75,
             "unit": "积分/秒",
-            "note": "2.5-turbo",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "4K",
             "price": 1.12,
             "unit": "积分/秒",
-            "note": "2.5-turbo",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "可灵 2.5-turbo · 按秒",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "可灵 2.5 Turbo · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
-        "seedSourceUrl": null
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
       },
       "tiers": [
         {
           "tierLabel": "720P/768P",
           "price": 0.3,
           "unit": "积分/秒",
-          "note": "2.5-turbo",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "1080P",
           "price": 0.5,
           "unit": "积分/秒",
-          "note": "2.5-turbo",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "2K",
           "price": 0.75,
           "unit": "积分/秒",
-          "note": "2.5-turbo",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "4K",
           "price": 1.12,
           "unit": "积分/秒",
-          "note": "2.5-turbo",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         }
       ]
@@ -348,11 +348,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kl-video-v2-1",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub kl-video-v2-1",
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -361,7 +361,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -369,65 +369,65 @@
             "tierLabel": "720P/768P",
             "price": 0.4,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "1080P",
             "price": 0.7,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "2K",
             "price": 1,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "4K",
             "price": 1.5,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "可灵 1.6/2.0/2.1 · 按秒",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "可灵 2.1 · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
-        "seedSourceUrl": null
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
       },
       "tiers": [
         {
           "tierLabel": "720P/768P",
           "price": 0.4,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "1080P",
           "price": 0.7,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "2K",
           "price": 1,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "4K",
           "price": 1.5,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         }
       ]
@@ -437,11 +437,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kl-video-v1",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "TokenHub kl-video-v1",
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -450,7 +450,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap (seed 2026-06-28)",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -458,65 +458,65 @@
             "tierLabel": "720P/768P",
             "price": 0.4,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "1080P",
             "price": 0.7,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "No Native Audio · 1 Unit=¥1/秒",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "2K",
             "price": 1,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           },
           {
             "tierLabel": "4K",
             "price": 1.5,
             "unit": "积分/秒",
-            "note": "1.6/2.0/2.1",
+            "note": "官网未列 · AIGC对齐",
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "可灵 v1 · 对齐 1.6/2.0/2.1 档",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "可灵 1.6/2.0/2.1 · 种子按 1.6 无声档",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
-        "seedSourceUrl": null
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
       },
       "tiers": [
         {
           "tierLabel": "720P/768P",
           "price": 0.4,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "1080P",
           "price": 0.7,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "No Native Audio · 1 Unit=¥1/秒",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "2K",
           "price": 1,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         },
         {
           "tierLabel": "4K",
           "price": 1.5,
           "unit": "积分/秒",
-          "note": "1.6/2.0/2.1",
+          "note": "官网未列 · AIGC对齐",
           "parseSource": "official_price_seed"
         }
       ]
@@ -539,7 +539,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -567,7 +567,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -614,7 +614,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -642,7 +642,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -689,7 +689,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -717,7 +717,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -764,7 +764,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-06-28)",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -792,7 +792,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -823,6 +823,156 @@
     },
     {
       "modality": "video",
+      "vendor": "vidu",
+      "vendorLabel": "Vidu",
+      "vendorModelId": "vd-video-q3",
+      "docUrl": "https://platform.vidu.cn/docs/pricing",
+      "pricingUrl": "https://platform.vidu.cn/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 vidu-q3 · viduq3 参考生",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "540P",
+            "price": 0.21875,
+            "unit": "元/秒",
+            "note": "7×0.03125",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "720P",
+            "price": 0.375,
+            "unit": "元/秒",
+            "note": "12×0.03125",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.46875,
+            "unit": "元/秒",
+            "note": "15×0.03125",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Vidu Q3 参考生 · platform.vidu.cn 积分/s→元/s",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://platform.vidu.cn/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "540P",
+          "price": 0.21875,
+          "unit": "元/秒",
+          "note": "7×0.03125",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "720P",
+          "price": 0.375,
+          "unit": "元/秒",
+          "note": "12×0.03125",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.46875,
+          "unit": "元/秒",
+          "note": "15×0.03125",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "vidu",
+      "vendorLabel": "Vidu",
+      "vendorModelId": "vd-video-q2-pro",
+      "docUrl": "https://platform.vidu.cn/docs/pricing",
+      "pricingUrl": "https://platform.vidu.cn/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 vidu-q2-pro · Q2-Pro 参考生",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "540P",
+            "price": 0.15625,
+            "unit": "元/秒",
+            "note": "Q2-Pro 参考·稳态+5积分/s",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "720P",
+            "price": 0.15625,
+            "unit": "元/秒",
+            "note": "Q2-Pro 参考·稳态+5积分/s",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.3125,
+            "unit": "元/秒",
+            "note": "Q2-Pro 参考·稳态+10积分/s",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Vidu Q2-Pro 参考生阶梯价；首秒更高，列为稳态",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://platform.vidu.cn/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "540P",
+          "price": 0.15625,
+          "unit": "元/秒",
+          "note": "Q2-Pro 参考·稳态+5积分/s",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "720P",
+          "price": 0.15625,
+          "unit": "元/秒",
+          "note": "Q2-Pro 参考·稳态+5积分/s",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.3125,
+          "unit": "元/秒",
+          "note": "Q2-Pro 参考·稳态+10积分/s",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
       "vendor": "tencent_youtu",
       "vendorLabel": "优图",
       "vendorModelId": "yt-video-2.0",
@@ -839,7 +989,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -853,7 +1003,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "优图视频 2.0",
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -886,7 +1036,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -900,7 +1050,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -933,7 +1083,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-06-28)",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -947,7 +1097,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": null,
-        "seedVerifiedAt": "2026-06-28",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
@@ -977,47 +1127,103 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
-      "tierCount": 2,
+      "tierCount": 6,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "480p·16:9·5s·不含视频输入",
-            "price": "2.31",
-            "unit": "元/个",
+            "tierLabel": "480p/720p·不含视频输入",
+            "price": 46,
+            "unit": "元/百万tokens",
+            "note": "火山在线推理 · 官方刊例",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "480p/720p·含视频输入",
+            "price": 28,
+            "unit": "元/百万tokens",
             "note": null,
             "parseSource": "official_price_seed"
           },
           {
-            "tierLabel": "480p·16:9·5s·含视频输入",
-            "price": "2.53~5.62",
-            "unit": "元/个",
+            "tierLabel": "1080p·不含视频输入",
+            "price": 51,
+            "unit": "元/百万tokens",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080p·含视频输入",
+            "price": 31,
+            "unit": "元/百万tokens",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4k·不含视频输入",
+            "price": 26,
+            "unit": "元/百万tokens",
+            "note": null,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4k·含视频输入",
+            "price": 16,
+            "unit": "元/百万tokens",
             "note": null,
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "Seedance 2.0 · 火山方舟按个计价",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "Seedance 2.0 · 火山按 token 计费；按个表为 16:9·5s 场景示例",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
       },
       "tiers": [
         {
-          "tierLabel": "480p·16:9·5s·不含视频输入",
-          "price": "2.31",
-          "unit": "元/个",
+          "tierLabel": "480p/720p·不含视频输入",
+          "price": 46,
+          "unit": "元/百万tokens",
+          "note": "火山在线推理 · 官方刊例",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "480p/720p·含视频输入",
+          "price": 28,
+          "unit": "元/百万tokens",
           "note": null,
           "parseSource": "official_price_seed"
         },
         {
-          "tierLabel": "480p·16:9·5s·含视频输入",
-          "price": "2.53~5.62",
-          "unit": "元/个",
+          "tierLabel": "1080p·不含视频输入",
+          "price": 51,
+          "unit": "元/百万tokens",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080p·含视频输入",
+          "price": 31,
+          "unit": "元/百万tokens",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4k·不含视频输入",
+          "price": 26,
+          "unit": "元/百万tokens",
+          "note": null,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4k·含视频输入",
+          "price": 16,
+          "unit": "元/百万tokens",
           "note": null,
           "parseSource": "official_price_seed"
         }
@@ -1038,33 +1244,47 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
-      "tierCount": 1,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "480p·16:9·5s·不含视频输入",
-            "price": "1.86",
-            "unit": "元/个",
+            "tierLabel": "不含视频输入",
+            "price": 37,
+            "unit": "元/百万tokens",
+            "note": "不支持 1080p 输出",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "含视频输入",
+            "price": 22,
+            "unit": "元/百万tokens",
             "note": null,
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "Seedance 2.0 Fast",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "Seedance 2.0 Fast · token 刊例",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
       },
       "tiers": [
         {
-          "tierLabel": "480p·16:9·5s·不含视频输入",
-          "price": "1.86",
-          "unit": "元/个",
+          "tierLabel": "不含视频输入",
+          "price": 37,
+          "unit": "元/百万tokens",
+          "note": "不支持 1080p 输出",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "含视频输入",
+          "price": 22,
+          "unit": "元/百万tokens",
           "note": null,
           "parseSource": "official_price_seed"
         }
@@ -1085,33 +1305,47 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
-      "tierCount": 1,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "480p·16:9·5s·不含视频输入",
-            "price": "1.16",
-            "unit": "元/个",
+            "tierLabel": "不含视频输入",
+            "price": 23,
+            "unit": "元/百万tokens",
+            "note": "不支持 1080p 输出",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "含视频输入",
+            "price": 14,
+            "unit": "元/百万tokens",
             "note": null,
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "Seedance 2.0 Mini",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "Seedance 2.0 Mini · token 刊例",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
       },
       "tiers": [
         {
-          "tierLabel": "480p·16:9·5s·不含视频输入",
-          "price": "1.16",
-          "unit": "元/个",
+          "tierLabel": "不含视频输入",
+          "price": 23,
+          "unit": "元/百万tokens",
+          "note": "不支持 1080p 输出",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "含视频输入",
+          "price": 14,
+          "unit": "元/百万tokens",
           "note": null,
           "parseSource": "official_price_seed"
         }
@@ -1132,65 +1366,992 @@
       "currency": "CNY",
       "unit": "CNY per video generation (tiered)",
       "chargeUnit": "video",
-      "tierCount": 3,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-06-28)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
       "prices": {
         "currency": "CNY",
         "tiers": [
           {
-            "tierLabel": "480p·16:9·5s·有声",
-            "price": 0.8,
-            "unit": "元/个",
-            "note": null,
+            "tierLabel": "有声视频",
+            "price": 16,
+            "unit": "元/百万tokens",
+            "note": "火山在线推理 · 官方刊例",
             "parseSource": "official_price_seed"
           },
           {
-            "tierLabel": "480p·16:9·5s·无声",
-            "price": 0.4,
-            "unit": "元/个",
-            "note": null,
-            "parseSource": "official_price_seed"
-          },
-          {
-            "tierLabel": "720p·16:9·5s·有声",
-            "price": 1.73,
-            "unit": "元/个",
+            "tierLabel": "无声视频",
+            "price": 8,
+            "unit": "元/百万tokens",
             "note": null,
             "parseSource": "official_price_seed"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "Seedance 1.5 Pro",
-        "seedVerifiedAt": "2026-06-28",
+        "seedNote": "Seedance 1.5 Pro · token 刊例；按个表为 480p·16:9·5s 示例",
+        "seedVerifiedAt": "2026-07-07",
         "seedLocked": false,
         "seedAigcOnly": false,
         "seedSourceUrl": null
       },
       "tiers": [
         {
-          "tierLabel": "480p·16:9·5s·有声",
-          "price": 0.8,
-          "unit": "元/个",
-          "note": null,
+          "tierLabel": "有声视频",
+          "price": 16,
+          "unit": "元/百万tokens",
+          "note": "火山在线推理 · 官方刊例",
           "parseSource": "official_price_seed"
         },
         {
-          "tierLabel": "480p·16:9·5s·无声",
-          "price": 0.4,
-          "unit": "元/个",
-          "note": null,
-          "parseSource": "official_price_seed"
-        },
-        {
-          "tierLabel": "720p·16:9·5s·有声",
-          "price": 1.73,
-          "unit": "元/个",
+          "tierLabel": "无声视频",
+          "price": 8,
+          "unit": "元/百万tokens",
           "note": null,
           "parseSource": "official_price_seed"
         }
       ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-1.0-pro",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 seedance-1.0-pro · 火山按 token 计价",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "在线推理",
+            "price": 15,
+            "unit": "元/百万tokens",
+            "note": "火山官方刊例",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 1.0 Pro · token 刊例 · 官方/线上同轴",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
+      },
+      "tiers": [
+        {
+          "tierLabel": "在线推理",
+          "price": 15,
+          "unit": "元/百万tokens",
+          "note": "火山官方刊例",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "volcengine",
+      "vendorLabel": "豆包",
+      "vendorModelId": "doubao-seedance-1.0-pro-fast",
+      "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 seedance-1.0-pro-fast",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "在线推理",
+            "price": 4.2,
+            "unit": "元/百万tokens",
+            "note": "火山官方刊例",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Seedance 1.0 Pro Fast · token 刊例",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
+      },
+      "tiers": [
+        {
+          "tierLabel": "在线推理",
+          "price": 4.2,
+          "unit": "元/百万tokens",
+          "note": "火山官方刊例",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "veo-3.1-generate-preview",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 gv-3.1 · Veo 3.1 Standard",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "720P/768P",
+            "price": 0.4,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.4,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.6,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Veo 3.1 Standard · Gemini API",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P/768P",
+          "price": 0.4,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.4,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.6,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "veo-3.1-fast-generate-preview",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 gv-3.1-fast · Veo 3.1 Fast",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 3,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "720P/768P",
+            "price": 0.1,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.12,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 0.3,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Veo 3.1 Fast · Gemini API",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P/768P",
+          "price": 0.1,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.12,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 0.3,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "google",
+      "vendorLabel": "Gemini",
+      "vendorModelId": "veo-3.1-lite-generate-preview",
+      "docUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1",
+      "pricingUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 gv-3.1-litenew · Veo 3.1 Lite",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "720P/768P",
+            "price": 0.05,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.08,
+            "unit": "美元/秒",
+            "note": "含音频",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Veo 3.1 Lite · 4K 不支持",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn#veo-3.1"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P/768P",
+          "price": 0.05,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.08,
+          "unit": "美元/秒",
+          "note": "含音频",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "minimax",
+      "vendorLabel": "MiniMax",
+      "vendorModelId": "hailuo-2.3",
+      "docUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "pricingUrl": "https://platform.minimaxi.com/docs/guides/pricing-video",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 hailuo-2.3 · MiniMax-Hailuo-2.3",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-video (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "768P",
+            "price": 0.0466667,
+            "unit": "美元/秒",
+            "note": "官网 $0.28/6s·768P",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.0816667,
+            "unit": "美元/秒",
+            "note": "官网 $0.49/6s·1080P",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "MiniMax-Hailuo-2.3 · PayGo 按条→秒(6s)",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo"
+      },
+      "tiers": [
+        {
+          "tierLabel": "768P",
+          "price": 0.0466667,
+          "unit": "美元/秒",
+          "note": "官网 $0.28/6s·768P",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.0816667,
+          "unit": "美元/秒",
+          "note": "官网 $0.49/6s·1080P",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "minimax",
+      "vendorLabel": "MiniMax",
+      "vendorModelId": "hailuo-2.3-fast",
+      "docUrl": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "pricingUrl": "https://platform.minimaxi.com/docs/guides/pricing-video",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 hailuo-2.3-fast · MiniMax-Hailuo-2.3-Fast",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://platform.minimaxi.com/docs/guides/pricing-video (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "768P",
+            "price": 0.0316667,
+            "unit": "美元/秒",
+            "note": "官网 $0.19/6s·768P",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.055,
+            "unit": "美元/秒",
+            "note": "官网 $0.33/6s·1080P",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "MiniMax-Hailuo-2.3-Fast · PayGo 按条→秒(6s)",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://platform.minimax.io/docs/guides/pricing-paygo"
+      },
+      "tiers": [
+        {
+          "tierLabel": "768P",
+          "price": 0.0316667,
+          "unit": "美元/秒",
+          "note": "官网 $0.19/6s·768P",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.055,
+          "unit": "美元/秒",
+          "note": "官网 $0.33/6s·1080P",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "openai",
+      "vendorLabel": "OpenAI",
+      "vendorModelId": "sora-2",
+      "docUrl": "https://developers.openai.com/api/docs/pricing",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": "2026-09-24",
+      "sunsetNote": "OpenAI Videos API 计划于 2026-09-24 下线",
+      "trinityNote": "线上 os-2 · Videos API sora-2（2026-09 下线）",
+      "region": "global",
+      "status": "deprecated",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "720P",
+            "price": 0.1,
+            "unit": "美元/秒",
+            "note": "1280×720 / 720×1280",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "Sora 2 Standard · Videos API（2026-09-24 计划下线）",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P",
+          "price": 0.1,
+          "unit": "美元/秒",
+          "note": "1280×720 / 720×1280",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "pixverse",
+      "vendorLabel": "PixVerse",
+      "vendorModelId": "pixverse-v6",
+      "docUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "pricingUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 pixversenew-v6.0",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 4,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://docs.platform.pixverse.ai/model-pricing-796039m0 (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "360P",
+            "price": 0.05,
+            "unit": "美元/秒",
+            "note": "5 credits/s·无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "540P",
+            "price": 0.07,
+            "unit": "美元/秒",
+            "note": "7 credits/s·无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "720P",
+            "price": 0.09,
+            "unit": "美元/秒",
+            "note": "9 credits/s·无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.18,
+            "unit": "美元/秒",
+            "note": "18 credits/s·无声",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "PixVerse V6 · platform docs credits/s × $0.01",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0"
+      },
+      "tiers": [
+        {
+          "tierLabel": "360P",
+          "price": 0.05,
+          "unit": "美元/秒",
+          "note": "5 credits/s·无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "540P",
+          "price": 0.07,
+          "unit": "美元/秒",
+          "note": "7 credits/s·无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "720P",
+          "price": 0.09,
+          "unit": "美元/秒",
+          "note": "9 credits/s·无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.18,
+          "unit": "美元/秒",
+          "note": "18 credits/s·无声",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "pixverse",
+      "vendorLabel": "PixVerse",
+      "vendorModelId": "pixverse-v5.6",
+      "docUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "pricingUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 pixversenew-v5.6",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://docs.platform.pixverse.ai/model-pricing-796039m0 (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "720P",
+            "price": 0.09,
+            "unit": "美元/秒",
+            "note": "45 credits/5s 单片段·无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.15,
+            "unit": "美元/秒",
+            "note": "75 credits/5s 单片段·无声",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "PixVerse V5.6 按条计价→折算 credits/s",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P",
+          "price": 0.09,
+          "unit": "美元/秒",
+          "note": "45 credits/5s 单片段·无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.15,
+          "unit": "美元/秒",
+          "note": "75 credits/5s 单片段·无声",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "pixverse",
+      "vendorLabel": "PixVerse",
+      "vendorModelId": "pixverse-c1",
+      "docUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "pricingUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 pixversenew-c1",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://docs.platform.pixverse.ai/model-pricing-796039m0 (seed 2026-07-07)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "768P",
+            "price": 0.1,
+            "unit": "美元/秒",
+            "note": "720p档 10 credits/s·无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.19,
+            "unit": "美元/秒",
+            "note": "19 credits/s·无声",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "PixVerse C1 · credits/s × $0.01",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://docs.platform.pixverse.ai/model-pricing-796039m0"
+      },
+      "tiers": [
+        {
+          "tierLabel": "768P",
+          "price": 0.1,
+          "unit": "美元/秒",
+          "note": "720p档 10 credits/s·无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.19,
+          "unit": "美元/秒",
+          "note": "19 credits/s·无声",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "jimeng",
+      "vendorLabel": "即梦",
+      "vendorModelId": "jimeng-jv-3.0-pro",
+      "docUrl": "https://www.volcengine.com/docs/85621/1544715?lang=zh",
+      "pricingUrl": "https://www.volcengine.com/docs/85621/1544715?lang=zh",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 jv-3.0-pro · 即梦视频 3.0 Pro",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://www.volcengine.com/docs/85621/1544715?lang=zh (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "1080P",
+            "price": 1,
+            "unit": "元/秒",
+            "note": "即梦3.0 Pro · 1080P 档",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "⚠需人工核验 · volcengine/85621/1544715 分辨率分档",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://www.volcengine.com/docs/85621/1544715?lang=zh"
+      },
+      "tiers": [
+        {
+          "tierLabel": "1080P",
+          "price": 1,
+          "unit": "元/秒",
+          "note": "即梦3.0 Pro · 1080P 档",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kl-video-v3-omni",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 4,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "720P/768P",
+            "price": 0.6,
+            "unit": "积分/秒",
+            "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.8,
+            "unit": "积分/秒",
+            "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 1,
+            "unit": "积分/秒",
+            "note": "官网未列 · AIGC对齐",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 3,
+            "unit": "积分/秒",
+            "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "可灵 3.0 Omni · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P/768P",
+          "price": 0.6,
+          "unit": "积分/秒",
+          "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.8,
+          "unit": "积分/秒",
+          "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 1,
+          "unit": "积分/秒",
+          "note": "官网未列 · AIGC对齐",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 3,
+          "unit": "积分/秒",
+          "note": "With Video Input · 对照 AIGC 无参考视频+无声",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "kling",
+      "vendorLabel": "可灵",
+      "vendorModelId": "kl-video-o1",
+      "docUrl": "https://kling.ai/document-api/pricing/base/video",
+      "pricingUrl": "https://kling.ai/document-api/pricing/base/video",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "可灵 pricing/base/video 官网快照 · 2K/4K 未列档 AIGC对齐",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 4,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://kling.ai/document-api/pricing/base/video (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [
+          {
+            "tierLabel": "720P/768P",
+            "price": 0.6,
+            "unit": "积分/秒",
+            "note": "No Video Input · 对照 AIGC 无参考视频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "1080P",
+            "price": 0.8,
+            "unit": "积分/秒",
+            "note": "No Video Input · 对照 AIGC 无参考视频",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "2K",
+            "price": 1.2,
+            "unit": "积分/秒",
+            "note": "官网未列 · AIGC对齐",
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "4K",
+            "price": 1.8,
+            "unit": "积分/秒",
+            "note": "官网未列 · AIGC对齐",
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "source": "official_price_seed",
+        "seedNote": "可灵 O1 · pricing/base/video 快照",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://kling.ai/document-api/pricing/base/video"
+      },
+      "tiers": [
+        {
+          "tierLabel": "720P/768P",
+          "price": 0.6,
+          "unit": "积分/秒",
+          "note": "No Video Input · 对照 AIGC 无参考视频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "1080P",
+          "price": 0.8,
+          "unit": "积分/秒",
+          "note": "No Video Input · 对照 AIGC 无参考视频",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "2K",
+          "price": 1.2,
+          "unit": "积分/秒",
+          "note": "官网未列 · AIGC对齐",
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "4K",
+          "price": 1.8,
+          "unit": "积分/秒",
+          "note": "官网未列 · AIGC对齐",
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "video",
+      "vendor": "tencent_hunyuan",
+      "vendorLabel": "混元",
+      "vendorModelId": "hy-video-h2new",
+      "docUrl": "https://cloud.tencent.com/document/product/1823/130055",
+      "pricingUrl": "https://cloud.tencent.com/document/product/1729/97731",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 h2new-1 · TokenHub 未列独立 SKU",
+      "region": "domestic",
+      "status": "active",
+      "currency": "CNY",
+      "unit": "CNY per video generation (tiered)",
+      "chargeUnit": "video",
+      "tierCount": 0,
+      "fetchStatus": "seed",
+      "fetchError": "国内生图/生视频暂以官网核实种子为准",
+      "priceSource": "https://cloud.tencent.com/document/product/1729/97731 (seed 2026-07-07)",
+      "prices": {
+        "currency": "CNY",
+        "tiers": [],
+        "source": "official_price_seed",
+        "seedNote": "⚠需人工核验 · h2new-1 未上 TokenHub 130055 价目表",
+        "seedVerifiedAt": "2026-07-07",
+        "seedLocked": false,
+        "seedAigcOnly": true,
+        "seedSourceUrl": "https://cloud.tencent.com/document/product/1823/130055"
+      },
+      "tiers": []
     }
   ]
 }

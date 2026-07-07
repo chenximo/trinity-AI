@@ -3,15 +3,15 @@
   "docUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh",
   "modality": "video",
   "dataDate": "2026-07",
-  "generatedAt": "2026-07-03T08:17:56.489Z",
+  "generatedAt": "2026-07-07T06:18:37.664Z",
   "scrapedAt": "2026-07-03T03:32:16.967Z",
   "modelCount": 6,
-  "trinityMappedCount": 0,
+  "trinityMappedCount": 6,
   "models": [
     {
       "modality": "video",
       "modelId": "doubao-seedance-2.0",
-      "trinityId": null,
+      "trinityId": "doubao-seedance-2.0",
       "upstreamModelId": "doubao-seedance-2.0",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -100,7 +100,7 @@
     {
       "modality": "video",
       "modelId": "doubao-seedance-2.0-fast",
-      "trinityId": null,
+      "trinityId": "doubao-seedance-2.0-fast",
       "upstreamModelId": "doubao-seedance-2.0-fast",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -157,7 +157,7 @@
     {
       "modality": "video",
       "modelId": "doubao-seedance-2.0-mini",
-      "trinityId": null,
+      "trinityId": "doubao-seedance-2.0-mini",
       "upstreamModelId": "doubao-seedance-2.0-mini",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -214,7 +214,7 @@
     {
       "modality": "video",
       "modelId": "doubao-seedance-1.5-pro",
-      "trinityId": null,
+      "trinityId": "seedance-1.5-pro",
       "upstreamModelId": "doubao-seedance-1.5-pro",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -303,7 +303,7 @@
     {
       "modality": "video",
       "modelId": "doubao-seedance-1.0-pro",
-      "trinityId": null,
+      "trinityId": "seedance-1.0-pro",
       "upstreamModelId": "doubao-seedance-1.0-pro",
       "vendorCode": "Doubao",
       "vendorName": "豆包",
@@ -328,7 +328,7 @@
     {
       "modality": "video",
       "modelId": "doubao-seedance-1.0-pro-fast",
-      "trinityId": null,
+      "trinityId": "seedance-1.0-pro-fast",
       "upstreamModelId": "doubao-seedance-1.0-pro-fast",
       "vendorCode": "Doubao",
       "vendorName": "豆包",

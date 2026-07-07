@@ -10,6 +10,8 @@ import {
   evaluateVideoDomesticVsOfficial,
   evaluateVideoIntlVsOfficial,
   videoTierPrice,
+  isVideoTokenOfficialUnit,
+  formatVideoTokenPrice,
   UNIT_MISMATCH_TEXT,
 } from "./video-pricing-validate-lib.mjs";
 import { formatOfficialDocPrice } from "../../config/video-reference-conversion.mjs";
@@ -24,8 +26,11 @@ function formatVideoOfficialPrice(tier, currency) {
   return formatOfficialDocPrice(tier, currency);
 }
 
-function formatVideoSupplierPrice(price, currency) {
+function formatVideoSupplierPrice(price, currency, officialTier = null) {
   if (price == null || price === "") return "—";
+  if (officialTier && isVideoTokenOfficialUnit(officialTier)) {
+    return formatVideoTokenPrice(price, currency);
+  }
   return `${symForCurrency(currency)}${price}/秒`;
 }
 
@@ -79,7 +84,11 @@ export function buildVideoOfficialSupplierCells(
   supplierCurrency,
   channelKind = "domestic",
 ) {
-  const supplierListed = formatVideoSupplierPrice(supplierPrice, supplierCurrency);
+  const supplierListed = formatVideoSupplierPrice(
+    supplierPrice,
+    supplierCurrency,
+    officialTier,
+  );
 
   if (!officialTier) {
     const hasOfficial = (officialModel?.tiers ?? officialModel?.prices?.tiers ?? []).length > 0;

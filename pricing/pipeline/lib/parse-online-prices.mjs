@@ -59,13 +59,33 @@ export function parseOnlineImageTiers(entry) {
   return [parseOnlineImagePrimary(entry)];
 }
 
-/** 生视频按分辨率分档 · USD/秒 */
+function onlineVideoUnitMeta(entry, unitBlock) {
+  return {
+    unit: unitBlock?.unit ?? entry.price_unit ?? entry.charge_unit ?? null,
+    currency: unitBlock?.currency ?? entry.currency ?? "USD",
+  };
+}
+
+function mapOnlineVideoUnitTier(group, entry, mode, { tierLabel, tierKey }) {
+  const unitBlock = group.prices?.unit;
+  const meta = onlineVideoUnitMeta(entry, unitBlock);
+  return {
+    tierLabel,
+    tierKey,
+    price: num(unitBlock?.amount),
+    currency: meta.currency,
+    unit: meta.unit,
+    pricingMode: mode,
+  };
+}
+
+/** 生视频：分辨率分档 USD/秒 · 或 video_token USD/百万 tokens（Seedance 等） */
 export function parseOnlineVideoTiers(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
 
   if (mode === "video_tiered" || entry.modality_type === "video") {
-    const tiers = groups
+    const resTiers = groups
       .filter((g) => g.type === "resolution_tier" && g.prices?.unit)
       .map((g) => {
         const res =
@@ -82,27 +102,29 @@ export function parseOnlineVideoTiers(entry) {
         else if (/^2k/.test(low)) tierKey = "res:2k";
         else if (/^4k/.test(low)) tierKey = "res:4k";
         else tierKey = `res:${low}`;
-        return {
-          tierLabel: label,
-          tierKey,
-          price: num(g.prices.unit.amount),
-          currency: g.prices.unit.currency ?? entry.currency ?? "USD",
-          pricingMode: mode,
-        };
+        return mapOnlineVideoUnitTier(g, entry, mode, { tierLabel: label, tierKey });
       });
-    if (tiers.length) return tiers;
+    if (resTiers.length) return resTiers;
+
+    const audioTiers = groups
+      .filter((g) => g.type === "has_audio" && g.prices?.unit)
+      .map((g) => {
+        const enabled = g.conditions?.audio_generation === "enabled";
+        const tierLabel =
+          g.label ?? g.conditions_summary ?? (enabled ? "含音频" : "无声");
+        const tierKey = enabled ? "audio:enabled" : "audio:disabled";
+        return mapOnlineVideoUnitTier(g, entry, mode, { tierLabel, tierKey });
+      });
+    if (audioTiers.length) return audioTiers;
   }
 
   const flat = groups.find((g) => g.prices?.unit);
   if (flat?.prices?.unit) {
     return [
-      {
+      mapOnlineVideoUnitTier(flat, entry, mode, {
         tierLabel: flat.label ?? "标准价",
         tierKey: "uniform",
-        price: num(flat.prices.unit.amount),
-        currency: flat.prices.unit.currency ?? entry.currency ?? "USD",
-        pricingMode: mode,
-      },
+      }),
     ];
   }
   return [];

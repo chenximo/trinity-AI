@@ -51,6 +51,9 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: "产品总览", link: "/ai-api-platform/" },
+      { text: "业务全景", link: "/ai-api-platform/business-overview" },
+      { text: "能力地图", link: "/ai-api-platform/capability-map" },
+      { text: "产品核心与架构", link: "/ai-api-platform/product-core" },
       {
         text: "模型价格真源",
         collapsed: false,
@@ -123,14 +126,34 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
             text: "模型广场",
             collapsed: false,
             items: [
+              { text: "模型域总览", link: "/ai-api-platform/user/models/" },
               { text: "列表", link: "/ai-api-platform/user/models/list" },
-              { text: "模型排名", link: "/ai-api-platform/user/models/rankings" },
               { text: "模型详情", link: "/ai-api-platform/user/models/model-detail-requirements" },
+              { text: "模型排名", link: "/ai-api-platform/user/models/rankings" },
+            ],
+          },
+          {
+            text: "身份与组织",
+            collapsed: false,
+            items: [
+              { text: "总览", link: "/ai-api-platform/user/identity-org/" },
+              { text: "工作区", link: "/ai-api-platform/user/identity-org/workspace" },
+              { text: "成员", link: "/ai-api-platform/user/identity-org/members" },
+              { text: "API 密钥", link: "/ai-api-platform/user/identity-org/api-keys" },
+              { text: "配额与余额", link: "/ai-api-platform/user/identity-org/quota" },
+              { text: "用量与活动", link: "/ai-api-platform/user/identity-org/usage-logs" },
             ],
           },
           { text: "Chat 在线体验", link: "/ai-api-platform/user/chat-experience" },
-          { text: "开发者文档", link: "/ai-api-platform/user/developer-docs" },
-          { text: "用户控制台", link: "/ai-api-platform/user/account-console" },
+          {
+            text: "文档与支持",
+            collapsed: false,
+            items: [
+              { text: "总览", link: "/ai-api-platform/user/docs/" },
+              { text: "对外文档站", link: "/ai-api-platform/user/developer-docs" },
+            ],
+          },
+          { text: "用户控制台（归档）", link: "/ai-api-platform/user/account-console" },
         ],
       },
       {

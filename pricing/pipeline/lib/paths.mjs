@@ -55,6 +55,7 @@ export const VIDEO_SHEET_ORDER = [
   "汇总-供应商vs官方-生视频",
   "AIGC国内站-生视频",
   "AIGC国际站-生视频",
+  "火山方舟-生视频",
 ];
 
 export const VIDEO_COMPARE_SHEET = "刊例对比校验-生视频";
@@ -211,6 +212,28 @@ export const OFFICIAL_PRICES_API_IMAGE_DIFF_JSON = path.join(
 export const OFFICIAL_PRICES_API_IMAGE_DIFF_CSV = path.join(
   OUT_DRAFT_DIR,
   "official-prices-api-image-diff.csv",
+);
+
+/** 生视频官方价 → prices-api 同构草案 */
+export const OFFICIAL_PRICES_API_VIDEO = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-video.json",
+);
+export const OFFICIAL_PRICES_API_VIDEO_META = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-video.meta.json",
+);
+export const OFFICIAL_PRICES_API_VIDEO_DIFF_MD = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-video-diff.md",
+);
+export const OFFICIAL_PRICES_API_VIDEO_DIFF_JSON = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-video-diff.json",
+);
+export const OFFICIAL_PRICES_API_VIDEO_DIFF_CSV = path.join(
+  OUT_DRAFT_DIR,
+  "official-prices-api-video-diff.csv",
 );
 
 // —— 抽样校验 ——

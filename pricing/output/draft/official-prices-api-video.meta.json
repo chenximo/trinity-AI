@@ -1,0 +1,24 @@
+{
+  "tag": "official_prices_api_video",
+  "pricingPolicy": "official_vendor_video+l2_fallback",
+  "modality": "video",
+  "derivedFrom": {
+    "template": "online/prices-api.json (video)",
+    "official": "suppliers/official/output/video/vendor-pricing.json",
+    "aigc": "suppliers/aigc/output/pricing-api-video.json",
+    "tokenhub": "suppliers/tokenhub/output/pricing-console-api.json",
+    "volcengine": "suppliers/volcengine/output/video/pricing-api.json",
+    "registry": "config/video-model-registry.mjs",
+    "officialFetchedAt": "2026-07-07T07:49:45.400Z",
+    "templateFetchedAt": "2026-07-07T06:31:38.336Z"
+  },
+  "generatedAt": "2026-07-07T10:06:41.939Z",
+  "pricedModelCount": 19,
+  "noOfficialModelCount": 6,
+  "tierFromOfficial": 53,
+  "tierFromAigc": 23,
+  "tierFromTokenhub": 0,
+  "tierFromVolcengine": 0,
+  "tierUnchanged": 42,
+  "fallbackPolicy": "official_then_aigc_intl_then_aigc_dom_then_tokenhub_then_volcengine"
+}

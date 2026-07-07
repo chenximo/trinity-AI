@@ -1,42 +1,51 @@
 ---
-title: 用户控制台
+title: 用户控制台（归档入口）
 ---
 
-# 用户控制台
+# 用户控制台 · 归档入口
 
-> **说明**：企业租户自助单页多面板（`#keys` · `#preset` · `#credits` · `#activity` · `#logs`）。子能力清单按 **壳层 / 密钥 / 角色 / 额度** 四块维护；**活动**、**用量** 等细项需要时再在 `account-console.roadmap.yml` 拆行。5.30 重点：创建 Key 并调通 API。UI 规范样例：`/user-console-spec`。
+> **说明**：原 **单页 hash 控制台**（`/account/console#keys` · `#credits` …）的产品说明已迁移至 **[身份与组织 · 总览](./identity-org/)**。  
+> **现行工程**：`TrinityAI-web/apps/web` · 路由 `/account/workspace/:link/*`  
+> **旧版原型**：`apps/trinity-ai/src/views/account/ConsolePage.vue`（hash 面板，仅供对照）
 
-> **工程**：`apps/trinity-ai/src/views/account/`（五件套：`ConsolePage.vue` · `account.css` · `accountInteractions.ts` · `mock.ts` · `README.md`）· 路由 `/account/console`
+---
 
-> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../)（用户面 `/account/console`）
+## 现行结构
 
-## 子能力清单
+| 原 hash 面板 | 现行入口 |
+|--------------|----------|
+| API 密钥 | [API 密钥](./identity-org/api-keys) · `…/keys` |
+| 角色管理 | 合并进 Key entitlement / [guardrails](../../platform/auth-rate-quota)（演进中） |
+| 额度 | [配额与余额](./identity-org/quota) · `…/balance` |
+| 活动 | [用量与活动](./identity-org/usage-logs) · `…/activity` |
+| 用量 | [用量与活动](./identity-org/usage-logs) · `…/usage` |
+
+组织、成员、子工作区见 [工作区](./identity-org/workspace) · [成员](./identity-org/members)。
+
+---
+
+## 子能力进度（可选）
+
+<details>
+<summary>展开 · 历史 roadmap 表</summary>
 
 <ProductRoadmap rel="ai-api-platform/user/account-console.roadmap.yml" />
 
+与 [周计划](../../#周计划与验收看板) 重复时 **以周计划为准**。
+
+</details>
+
+---
+
 ## 附录
 
-### 验收（5.30 / 6.30）
+### 验收
 
-走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **用户控制台** / 用户面）。子能力进度与节点列以 **`account-console.roadmap.yml`** 为准，手册不抄验收 checklist。
-
-### 关联
-<img src="https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-product-ling/images/8caa01c7-95d6-4232-ac6e-292858976e64.png" alt="image" width="619" />
-
-
-
-| 模块 | 关系 |
-|------|------|
-| [开发者文档](./developer-docs) | Quickstart 用 Key 调 API |
-| [Chat 在线体验](./chat-experience) | Preset「在对话中测试」 |
-| 平台侧 · 生文 API | 调用产生用量与日志 |
-| 运营后台 · 模型上架 | 日志中的 `model` id 与上架一致 |
+走查真源：[5.30 产品测试体验 / Bug 表](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（筛 **用户控制台 / 身份与组织**）。
 
 ### 修订
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-02 | 对齐标准叶子五件套 |
-| 2026-06-03 | 子能力收敛为壳层/密钥/角色/额度四行（单页维度） |
-| 2026-06-02 | 子能力迁入 `account-console.roadmap.yml` |
-| 2026-05-26 | 按 `ConsolePage.vue` 五面板补全子能力清单 |
+| 2026-07-06 | 迁移至 identity-org 域；本页为归档入口 |
+| 2026-05-26 | 首版 hash 控制台 |

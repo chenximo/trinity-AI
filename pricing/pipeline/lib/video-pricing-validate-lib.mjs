@@ -19,10 +19,36 @@ function tierRawLabel(tier) {
   return String(tier?.tierLabel ?? tier?.tierName ?? "").trim();
 }
 
-/** 官方档是否可与 AIGC 元/秒 做数值对比（积分/秒=元/秒 可；积分/次 不可） */
+/** 官方档是否为 token 刊例（元/百万 tokens） */
+export function isVideoTokenOfficialUnit(unitOrTier) {
+  const unit = String(
+    typeof unitOrTier === "object" ? unitOrTier?.unit : unitOrTier ?? "",
+  ).trim();
+  return /百万tokens|百万 tokens|\/m tokens/i.test(unit);
+}
+
+/** 线上 prices-api 档是否为 video token 刊例（per_million_video_tokens） */
+export function isVideoTokenOnlineUnit(unitOrTier) {
+  const unit = String(
+    typeof unitOrTier === "object"
+      ? unitOrTier?.unit ?? unitOrTier?.priceUnit ?? ""
+      : unitOrTier ?? "",
+  ).trim();
+  return /per_million_video_tokens|video_token|million.*video.*token/i.test(unit);
+}
+
+/** @param {number|string|null} price @param {"CNY"|"USD"} [currency] */
+export function formatVideoTokenPrice(price, currency = "CNY") {
+  if (price == null || price === "") return "—";
+  const sym = currency === "CNY" ? "¥" : "$";
+  return `${sym}${price}/百万tokens`;
+}
+
+/** 官方档是否可与 AIGC 元/秒 做数值对比（积分/秒=元/秒 可；积分/次、token 不可） */
 export function isVideoOfficialUnitComparable(offTier) {
   const unit = String(offTier?.unit ?? "").trim();
-  if (/积分\/秒|元\/秒|usd\/s|cny\/s/i.test(unit)) return true;
+  if (isVideoTokenOfficialUnit(unit)) return false;
+  if (/积分\/秒|元\/秒|美元\/秒|usd\/s|cny\/s/i.test(unit)) return true;
   if (/积分\/次|积分·次/.test(unit)) return false;
   return false;
 }
@@ -49,6 +75,7 @@ export function videoTierWithKey(tier, index = 0, total = 1) {
     price: videoTierPrice(tier),
     rawPrice,
     unit: tier.unit ?? null,
+    note: tier.note ?? null,
   };
 }
 
@@ -66,21 +93,71 @@ export function officialVideoTiersForCompare(off) {
   return raw.map((t, i) => videoTierWithKey(t, i, total));
 }
 
-/** @param {object|null} aigcModel @param {object|null} mapRef */
-export function aigcVideoTiersForCompare(aigcModel, mapRef) {
-  if (!aigcModel?.tiers?.length) return [];
-  const attr = mapRef?.attribute ?? "标准价";
-  const tierRow =
-    aigcModel.tiers.find((t) => t.tierName === attr) ??
-    aigcModel.tiers.find((t) => t.tierName === "标准价") ??
-    aigcModel.tiers[0];
+import {
+  normalizeAigcAttributeLabel,
+  shouldIncludeAigcAttributeInCompare,
+} from "../../config/video-aigc-attributes.mjs";
+
+/** @param {object|null} aigcModel @param {string} attributeName */
+export function findAigcVideoTierRow(aigcModel, attributeName) {
+  if (!aigcModel?.tiers?.length) return null;
+  const want = normalizeAigcAttributeLabel(attributeName);
+  return (
+    aigcModel.tiers.find(
+      (t) => normalizeAigcAttributeLabel(t.tierName) === want,
+    ) ??
+    (want === "标准价" ? aigcModel.tiers[0] : null)
+  );
+}
+
+/** @param {object|null} aigcModel @param {object|null} [mapRef] */
+export function aigcVideoAttributeNamesForCompare(aigcModel, mapRef) {
+  if (!aigcModel?.tiers?.length) {
+    const fallback = mapRef?.attribute
+      ? normalizeAigcAttributeLabel(mapRef.attribute)
+      : "标准价";
+    return [fallback];
+  }
+  const names = aigcModel.tiers
+    .map((t) => normalizeAigcAttributeLabel(t.tierName))
+    .filter((name) => shouldIncludeAigcAttributeInCompare(name));
+  const unique = [...new Set(names)];
+  if (unique.length) return unique;
+  return [normalizeAigcAttributeLabel(mapRef?.attribute ?? "标准价")];
+}
+
+/** @param {object|null} aigcModel @param {string} attributeName */
+export function aigcVideoResolutionsForAttribute(aigcModel, attributeName) {
+  const tierRow = findAigcVideoTierRow(aigcModel, attributeName);
   const res = tierRow?.resolutions ?? {};
   const entries = Object.entries(res);
   if (!entries.length) return [];
   const total = entries.length;
   return entries.map(([label, price], i) =>
-    videoTierWithKey({ tierLabel: label, price, unit: aigcModel.priceUnit }, i, total),
+    videoTierWithKey(
+      { tierLabel: label, price, unit: aigcModel?.priceUnit },
+      i,
+      total,
+    ),
   );
+}
+
+/** @param {object|null} aigcModel @param {string} attributeName @param {string} [tierKey] */
+export function aigcVideoPriceForAttribute(aigcModel, attributeName, tierKey) {
+  const tiers = aigcVideoResolutionsForAttribute(aigcModel, attributeName);
+  if (!tiers.length) return null;
+  if (tierKey) {
+    const hit = findCompareTierByKey(tiers, tierKey);
+    if (hit?.price != null) return hit.price;
+  }
+  return tiers[0]?.price ?? null;
+}
+
+/** @param {object|null} aigcModel @param {object|null} mapRef */
+export function aigcVideoTiersForCompare(aigcModel, mapRef) {
+  if (!aigcModel?.tiers?.length) return [];
+  const attr = mapRef?.attribute ?? "标准价";
+  return aigcVideoResolutionsForAttribute(aigcModel, attr);
 }
 
 /** @param {object|null} thModel */
@@ -97,13 +174,152 @@ export function tokenhubVideoTiersForCompare(thModel) {
 /** @param {object|null} volModel */
 export function volcengineVideoTiersForCompare(volModel) {
   if (!volModel?.tiers?.length) return [];
-  return volModel.tiers.map((t, i, arr) =>
-    videoTierWithKey(
-      { tierLabel: t.tierName ?? t.tierLabel ?? "输出", price: t.price, unit: t.unit },
+  const tokenTiers = volModel.tiers.filter((t) => isVideoTokenOfficialUnit(t.unit));
+  const source = tokenTiers.length ? tokenTiers : [];
+  return source.map((t, i, arr) => {
+    const price = parseVolcengineVideoTokenPrice(t);
+    return videoTierWithKey(
+      {
+        tierLabel: volcengineTokenTierLabel(t),
+        price,
+        unit: t.unit,
+      },
       i,
       arr.length,
-    ),
-  );
+    );
+  });
+}
+
+/** @param {{ tierName?: string, price?: string|number }} volTier */
+function volcengineTokenTierLabel(volTier) {
+  const name = String(volTier.tierName ?? volTier.tierLabel ?? "").trim();
+  if (/有声/.test(name) && !/draft/i.test(name)) return "有声视频";
+  if (/无声/.test(name) && !/draft/i.test(name)) return "无声视频";
+  if (/不含视频/.test(name)) return "不含视频输入";
+  if (/含视频/.test(name)) return "含视频输入";
+  if (/480p.*720p|720p.*480p/.test(name.replace(/\s/g, ""))) {
+    if (/不含/.test(name)) return "480p/720p·不含视频输入";
+    if (/含/.test(name)) return "480p/720p·含视频输入";
+  }
+  if (/1080p/.test(name)) {
+    if (/不含/.test(name)) return "1080p·不含视频输入";
+    if (/含/.test(name)) return "1080p·含视频输入";
+  }
+  if (/4k/i.test(name)) {
+    if (/不含/.test(name)) return "4k·不含视频输入";
+    if (/含/.test(name)) return "4k·含视频输入";
+  }
+  if (/在线推理/.test(name)) return "在线推理";
+  return name || "在线推理";
+}
+
+/** @param {{ price?: string|number, unit?: string, tierName?: string }} volTier @param {string} [offTierLabel] */
+export function parseVolcengineVideoTokenPrice(volTier, offTierLabel = "") {
+  if (!volTier || !isVideoTokenOfficialUnit(volTier.unit)) return null;
+  const raw = String(volTier.price ?? "");
+  const label = String(offTierLabel ?? volTier.tierName ?? "");
+
+  if (/1080p/.test(label) && /不含/.test(label)) {
+    const m = raw.match(/1080p输入不含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/1080p/.test(label) && /含/.test(label) && !/不含/.test(label)) {
+    const m = raw.match(/1080p输入包含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/4k/i.test(label) && /不含/.test(label)) {
+    const m = raw.match(/4k输入不含视频：([\d.]+)/i);
+    if (m) return parseNum(m[1]);
+  }
+  if (/4k/i.test(label) && /含/.test(label) && !/不含/.test(label)) {
+    const m = raw.match(/4k输入包含视频：([\d.]+)/i);
+    if (m) return parseNum(m[1]);
+  }
+  if (/480p|720p/.test(label) && /不含/.test(label)) {
+    const m = raw.match(/480p，720p输入不含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/480p|720p/.test(label) && /含/.test(label) && !/不含/.test(label)) {
+    const m = raw.match(/480p，720p输入包含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/不含视频输入/.test(label)) {
+    const m = raw.match(/输入不含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/含视频输入/.test(label)) {
+    const m = raw.match(/输入包含视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/有声/.test(label)) {
+    const m = raw.match(/有声视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+  if (/无声/.test(label)) {
+    const m = raw.match(/无声视频：([\d.]+)/);
+    if (m) return parseNum(m[1]);
+  }
+
+  const labeled = raw.match(/(?:有声视频|无声视频|不含视频输入|含视频输入)[：:]\s*([\d.]+)/);
+  if (labeled) return parseNum(labeled[1]);
+  const firstNum = raw.match(/([\d.]+)/);
+  return firstNum ? parseNum(firstNum[1]) : parseNum(volTier.price);
+}
+
+function normalizeVolcVideoTierLabel(label) {
+  return String(label ?? "")
+    .toLowerCase()
+    .replace(/视频/g, "")
+    .replace(/\s+/g, "")
+    .trim();
+}
+
+/** @param {object|null} volModel @param {{ tierLabel?: string }} offTier */
+export function pickVolcengineVideoTierForOfficial(volModel, offTier) {
+  if (!volModel?.tiers?.length || !offTier?.tierLabel) return null;
+  const tokenTiers = volModel.tiers.filter((t) => isVideoTokenOfficialUnit(t.unit));
+  if (!tokenTiers.length) return null;
+
+  const target = normalizeVolcVideoTierLabel(offTier.tierLabel);
+  if (!target) return tokenTiers.length === 1 ? tokenTiers[0] : null;
+
+  const scored = tokenTiers
+    .map((t) => {
+      const label = volcengineTokenTierLabel(t);
+      const norm = normalizeVolcVideoTierLabel(label);
+      if (norm === target) return { t, score: 100 };
+      if (norm.includes(target) || target.includes(norm)) return { t, score: 80 };
+      let score = 0;
+      if (/有声/.test(target) && /有声/.test(norm)) score += 40;
+      if (/无声/.test(target) && /无声/.test(norm)) score += 40;
+      if (/不含/.test(target) && /不含/.test(norm)) score += 30;
+      if (/含视频/.test(target) && /含视频/.test(norm)) score += 30;
+      if (/1080p/.test(target) && /1080p/.test(norm)) score += 20;
+      if (/4k/.test(target) && /4k/.test(norm)) score += 20;
+      if (/480p|720p/.test(target) && /480p|720p/.test(norm)) score += 20;
+      if (/在线推理/.test(target) && /在线推理/.test(norm)) score += 50;
+      return { t, score };
+    })
+    .filter((x) => x.score >= 0)
+    .sort((a, b) => b.score - a.score);
+
+  const best = scored[0];
+  if (best && best.score >= 20) return best.t;
+  return tokenTiers.length === 1 ? tokenTiers[0] : null;
+}
+
+/** @param {{ price?: string|number, unit?: string, tierName?: string }} volTier @deprecated 按个示例档，已不作为刊例对比 */
+export function parseVolcengineVideoComparePrice(volTier) {
+  return parseVolcengineVideoTokenPrice(volTier);
+}
+
+/** @param {object|null} volModel @param {{ tierLabel?: string, unit?: string, price?: number }} offTier */
+export function volcengineVideoPriceAtCompare(volModel, offTier) {
+  if (isVideoTokenOfficialUnit(offTier)) {
+    return parseNum(offTier.price ?? offTier.rawPrice);
+  }
+  const volTier = pickVolcengineVideoTierForOfficial(volModel, offTier);
+  return parseVolcengineVideoTokenPrice(volTier, offTier?.tierLabel);
 }
 
 export const UNIT_MISMATCH_TEXT = "ℹ口径不同";
@@ -314,6 +530,19 @@ export function evaluateListingVsAigcIntl(aigcIntlUsd, listingUsd) {
         ? `⚠${pct > 0 ? "+" : ""}${pct}%`
         : "✅";
   return { pct, text, comparable: pct != null };
+}
+
+/** 线上 token 刊例 USD/百万 vs 官方 CNY/百万（同轴可比） */
+export function evaluateListingVsOfficialToken(
+  officialCnyPerM,
+  listingUsdPerM,
+  fx = FX_ONLINE_DOMESTIC,
+) {
+  if (officialCnyPerM == null || listingUsdPerM == null || fx <= 0) {
+    return { pct: null, text: "—", comparable: false };
+  }
+  const officialUsd = officialCnyPerM / fx;
+  return evaluateListingVsAigcIntl(officialUsd, listingUsdPerM);
 }
 
 /** AIGC 国内元/秒 vs 原厂折算元/秒(估) */

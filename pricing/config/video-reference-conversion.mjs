@@ -58,8 +58,14 @@ export function parsePointsPerGeneration(raw) {
  * @param {object|null} offTier
  * @param {string} [vendor]
  * @param {typeof VIDEO_REFERENCE_CONVERSION} [cfg]
+ * @param {number} [usdToCnyFx]
  */
-export function impliedCnyPerSecondFromOfficialPoints(offTier, vendor, cfg = VIDEO_REFERENCE_CONVERSION) {
+export function impliedCnyPerSecondFromOfficialPoints(
+  offTier,
+  vendor,
+  cfg = VIDEO_REFERENCE_CONVERSION,
+  usdToCnyFx = 6.5,
+) {
   if (!offTier) return null;
   const unit = String(offTier.unit ?? "");
   const points = parsePointsPerGeneration(
@@ -69,6 +75,19 @@ export function impliedCnyPerSecondFromOfficialPoints(offTier, vendor, cfg = VID
 
   const pointCny =
     cfg.pointCnyByVendor[vendor ?? ""] ?? cfg.pointCnyByVendor.default ?? 1;
+
+  if (isOfficialPerSecondUnit(unit) && /美元|usd/i.test(unit)) {
+    const toCny = (p) => Math.round(p * usdToCnyFx * 10000) / 10000;
+    return {
+      min: toCny(points.min),
+      max: toCny(points.max),
+      mid: toCny(points.mid),
+      mode: "usd_per_second",
+      usdToCnyFx,
+      points,
+      unit,
+    };
+  }
 
   // 可灵等：官网已写 0.8积分(¥0.8)/秒 — 1积分=1元/秒，无需 ÷参考秒数
   if (isOfficialPerSecondUnit(unit)) {
@@ -107,6 +126,11 @@ export function impliedCnyPerSecondFromOfficialPoints(offTier, vendor, cfg = VID
 export function formatImpliedCnyPerSecond(implied) {
   if (!implied) return "—";
   const { min, max, mid, mode, pointCny } = implied;
+  if (mode === "usd_per_second") {
+    const tag = `(官网·美元/秒×${implied.usdToCnyFx ?? 6.5})`;
+    if (min === max) return `¥${mid}/秒${tag}`;
+    return `¥${min}~${max}/秒${tag}`;
+  }
   if (mode === "per_second") {
     const tag = `(官网·按秒·1积分=¥${pointCny})`;
     if (min === max) return `¥${mid}/秒${tag}`;
@@ -130,7 +154,18 @@ export function formatOfficialDocPrice(offTier, currency = "CNY") {
     if (p.min === p.max) return `${p.mid}积分(¥${p.mid})/秒`;
     return `${p.min}~${p.max}积分/秒`;
   }
-  if (/积分/.test(unit)) return `${raw}积分/次`;
+  if (/积分/.test(unit) && !/积分\/秒/.test(unit)) return `${raw}积分/次`;
+  if (/美元\/秒|usd\/s/i.test(unit)) {
+    const p = parsePointsPerGeneration(raw);
+    if (!p) return `$${raw}/秒`;
+    if (p.min === p.max) return `$${p.mid}/秒`;
+    return `$${p.min}~${p.max}/秒`;
+  }
   if (/元\/秒/.test(unit)) return `¥${raw}/秒`;
+  if (/百万tokens|token/i.test(unit)) {
+    const p = typeof raw === "number" ? raw : Number(String(raw).match(/[\d.]+/)?.[0]);
+    if (Number.isFinite(p)) return `¥${p}/百万tokens`;
+    return `${raw}元/百万tokens`;
+  }
   return String(raw);
 }

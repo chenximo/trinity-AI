@@ -3,7 +3,14 @@
  */
 
 import { tierToKey } from "./tier-key.mjs";
-import { officialVideoTiersForCompare } from "./video-pricing-validate-lib.mjs";
+import {
+  officialVideoTiersForCompare,
+  volcengineVideoPriceAtCompare,
+  volcengineVideoTiersForCompare,
+  isVideoTokenOfficialUnit,
+  formatVideoTokenPrice,
+  videoTierPrice,
+} from "./video-pricing-validate-lib.mjs";
 import {
   officialCellsForVideoResolution,
   pickOfficialVideoTierForSupplier,
@@ -147,12 +154,81 @@ export function buildAigcVideoCatalogRows(
   return [header, ...rows];
 }
 
+/** 火山方舟生视频 — 官方 token 刊例档 */
+export function buildVolcengineVideoCatalogRows(volcModels, officialCtx = {}) {
+  const header = buildVideoSupplierTableHeader({ currency: "CNY" });
+  const rows = [];
+  let rowNum = 0;
+
+  for (const m of volcModels) {
+    const trinityId = m.trinityId ?? null;
+    if (!trinityId) continue;
+
+    const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
+    const officialModel = resolveOfficialVideoModel(trinityId, officialCtx);
+    const offTiers = officialVideoTiersForCompare(officialModel).filter((t) =>
+      isVideoTokenOfficialUnit(t),
+    );
+    const volTiers = volcengineVideoTiersForCompare(m);
+    const expansions =
+      offTiers.length > 0
+        ? offTiers.map((t, i) => ({
+            resolutionLabel: t.tierLabel,
+            tierKey: t.tierKey ?? tierToKey(t.tierLabel, i, offTiers.length),
+            tierName: t.tierLabel,
+            offTier: t,
+          }))
+        : volTiers.map((t, i) => ({
+            resolutionLabel: t.tierLabel,
+            tierKey: t.tierKey ?? tierToKey(t.tierLabel, i, volTiers.length),
+            tierName: t.tierLabel,
+            offTier: t,
+          }));
+
+    for (let i = 0; i < expansions.length; i++) {
+      const e = expansions[i];
+      const volPrice = volcengineVideoPriceAtCompare(m, e.offTier);
+      if (volPrice == null && !e.offTier) continue;
+
+      rowNum++;
+      const show = i === 0;
+      const listed = volPrice != null ? volPrice : videoTierPrice(e.offTier);
+      const { vendorOfficial, supplierListed, supplierVsOfficial } =
+        officialCellsForVideoResolution(
+          trinityId,
+          e.resolutionLabel,
+          listed,
+          "CNY",
+          officialCtx,
+          { tierKey: e.tierKey, tierIndex: i, tierTotal: expansions.length },
+          "volcengine",
+        );
+
+      pushVideoRow(rows, rowNum, show, {
+        trinityId,
+        displayName,
+        brand: m.brand ?? "火山方舟",
+        tierName: e.tierName,
+        resolutionLabel: e.resolutionLabel,
+        upstreamId: m.modelId,
+        vendorOfficial,
+        supplierListed: isVideoTokenOfficialUnit(e.offTier)
+          ? formatVideoTokenPrice(listed, "CNY")
+          : supplierListed,
+        supplierVsOfficial,
+      });
+    }
+  }
+
+  return rows.length > 1 ? [header, ...rows] : [header];
+}
+
 /**
  * @param {import("../../config/channels-video.mjs").VideoSupplierChannel} sup
  */
 export function collectVideoSupplierTierStats(
   sup,
-  { aigcModels = [], aigcTrinityMap = {} },
+  { aigcModels = [], volcModels = [], aigcTrinityMap = {} },
   officialCtx = {},
 ) {
   const tiers = [];
@@ -191,6 +267,57 @@ export function collectVideoSupplierTierStats(
           displayName: `${m.vendorName} ${m.modelName}`.trim(),
           brand: m.vendorName,
           tierLabel: `${e.tierName}·${e.resolutionLabel}`,
+          ...evalResult,
+          summaryText: formatVsWithVerify(trinityId, evalResult),
+        });
+      }
+    }
+  }
+
+  if (sup.catalog === "volcengine") {
+    for (const m of volcModels) {
+      const trinityId = m.trinityId ?? null;
+      if (!trinityId) continue;
+      const officialModel = resolveOfficialVideoModel(trinityId, officialCtx);
+      const offTiers = officialVideoTiersForCompare(officialModel).filter((t) =>
+        isVideoTokenOfficialUnit(t),
+      );
+      const expansions =
+        offTiers.length > 0
+          ? offTiers.map((t, i) => ({
+              resolutionLabel: t.tierLabel,
+              tierKey: t.tierKey ?? tierToKey(t.tierLabel, i, offTiers.length),
+              offTier: t,
+            }))
+          : volcengineVideoTiersForCompare(m).map((t, i, arr) => ({
+              resolutionLabel: t.tierLabel,
+              tierKey: t.tierKey ?? tierToKey(t.tierLabel, i, arr.length),
+              offTier: t,
+            }));
+
+      for (let i = 0; i < expansions.length; i++) {
+        const e = expansions[i];
+        const volPrice = volcengineVideoPriceAtCompare(m, e.offTier);
+        if (volPrice == null) continue;
+        const officialTier = pickOfficialVideoTierForSupplier(
+          officialModel,
+          e.resolutionLabel,
+          e.tierKey,
+          i,
+          expansions.length,
+        );
+        const evalResult = evaluateVideoSupplierVsOfficial(
+          officialModel,
+          officialTier,
+          volPrice,
+          "CNY",
+          "volcengine",
+        );
+        tiers.push({
+          trinityId,
+          displayName: m.displayName,
+          brand: m.brand ?? "火山方舟",
+          tierLabel: e.resolutionLabel,
           ...evalResult,
           summaryText: formatVsWithVerify(trinityId, evalResult),
         });

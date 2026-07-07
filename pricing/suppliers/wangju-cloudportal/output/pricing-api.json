@@ -13,7 +13,7 @@
   "sourceNote": "筛选自 suppliers/official/output/text/vendor-pricing.json",
   "mixedCurrency": false,
   "mapComment": "Trinity modelId → 云门户 upstreamModelId（build 时由 official 筛选生成）",
-  "generatedAt": "2026-07-06T10:02:50.150Z",
+  "generatedAt": "2026-07-07T06:18:37.784Z",
   "officialFetchedAt": "2026-07-06T10:01:16.637Z",
   "modelCount": 28,
   "trinityMappedCount": 22,

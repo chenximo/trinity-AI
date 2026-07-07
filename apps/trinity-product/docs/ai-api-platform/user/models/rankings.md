@@ -4,33 +4,100 @@ title: 模型排名
 
 # 模型广场 · 模型排名
 
-> **说明**：对标 OpenRouter **Rankings**：按用量、Token、趋势等维度展示模型排行，引导用户从 [列表](./list) 进入详情或 Chat。数据口径与平台计量、运营在架目录一致；**6.30** 以原型与五件套为主（见周计划）。
+> **说明**：对标 OpenRouter **Rankings**：按用量、Token 等维度展示模型排行，引导用户回到 [列表](./list) 或 [详情](./model-detail-requirements)。**P1** — 不阻塞 6.30 列表/详情闭环。  
+> **工程**：规划 `apps/trinity-ai/src/views/rankings/`（五件套 · 路由 `/rankings`）  
+> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../../) · [模型域总览](./index)
 
-> **工程**：`apps/trinity-ai/src/views/rankings/`（规划五件套 · 路由 `/rankings`，待建）
+---
 
-> **体验 / 在线**：见 [AI API 聚合产品 · 总览](../../)（用户面 `/rankings`）
+## 1. 用户问题与边界
 
-## 子能力清单
+**问题**：用户想知道「平台上哪些模型最常被使用」，辅助选型与运营叙事。
 
-<ProductRoadmap rel="ai-api-platform/user/models/rankings.roadmap.yml" />
+**本页是什么**：**只读排行榜**（统计展示）。
+
+**不是什么**：不是计费账单页（→ [控制台](../account-console)）；不是运营报表（→ [报表中心](../../operations/reports)）。
+
+---
+
+## 2. 用户故事
+
+作为 **开发者**，我希望看到按用量排序的模型列表，以便参考社区热度选型。
+
+---
+
+## 3. 功能范围
+
+| 优先级 | 能力 |
+|:------:|------|
+| **P1** | 排行列表（模型名 + 核心指标列） |
+| **P1** | 时间维度：日 / 周 / 月（择一先做） |
+| **P2** | 排序维度切换、筛选提供商 |
+| **P2** | 行点击 → 详情 / Chat |
+
+**依赖**：[平台 · 计量](../../platform/metering-billing) 聚合 API + 在架 catalog 同一 `model id`。
+
+---
+
+## 4. 数据口径（拍板前草案）
+
+| 指标 | 口径草案 | 备注 |
+|------|----------|------|
+| 调用次数 | 平台侧 usage 聚合 | 按租户全站 or 全平台需产品定 |
+| Token 量 | 生文模型 sum tokens | 多模态另议 |
+| 趋势 | 环比 | 可选 |
+
+**原则**：排行中的 model id **必须**能在 [列表](./list) 打开；未上架模型不出现在榜中。
+
+---
+
+## 5. 页面模块（规划）
+
+| 区域 | 职责 |
+|------|------|
+| 导航 | 与广场/Chat 一致顶栏 |
+| 维度切换 | 时间范围 · 排序字段 |
+| 表格/列表 | 排名 · 模型 · 指标 · 趋势 |
+| 空态 | 数据未就绪 / 无权限 |
+
+---
+
+## 6. 交互路径
+
+```text
+/rankings → 点击行 → /models/:id 或 /models 筛选该模型
+```
+
+---
+
+## 7. 验收（P1 启用时）
+
+- 排行 API 与控制台用量 **同一聚合源**（避免两套数）。  
+- 榜单 model id 与 catalog 一致。
+
+---
 
 ## 附录
-
-### 验收（5.30 / 6.30）
-
-走查、体验测试与 Bug 真源：[**5.30 产品测试体验 / Bug 表**](https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne)（在飞书按 **时间**、**产品/模块** 筛选；本页对应 **模型排名** / 用户面）。子能力进度与节点列以 **`rankings.roadmap.yml`** 为准。
 
 ### 关联
 
 | 模块 | 关系 |
 |------|------|
-| [模型广场 · 列表](./list) | 同一 `model id`；排行项可进列表/详情 |
-| [模型详情页](./model-detail-requirements) | 排行行 → `/models/:id` |
-| [Chat 在线体验](../chat-experience) | 排行 → 带 model 试用 |
-| 平台侧 · 计量与计费 | 排行数据源（用量聚合） |
+| [列表](./list) | 同 catalog |
+| [metering-billing](../../platform/metering-billing) | 数据源 |
+
+### L3 · 子能力进度（可选）
+
+<details>
+<summary>展开 · 历史 roadmap 表</summary>
+
+<ProductRoadmap rel="ai-api-platform/user/models/rankings.roadmap.yml" />
+
+</details>
 
 ### 修订
 
 | 日期 | 说明 |
 |------|------|
-| 2026-06-02 | 用户侧「模型广场」子菜单新增本页；roadmap 占位 |
+| 2026-07-06 | L2 规格；明确 P1 与依赖 |
+| 2026-06-02 | 首版占位 |
