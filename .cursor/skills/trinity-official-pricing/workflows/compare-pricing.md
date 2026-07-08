@@ -37,19 +37,33 @@
 
 ### Excel Sheet 结构
 
+**三模态 L4 主表列约定一致**（`pricing/pipeline/lib/compare-l4-columns.mjs`）：
+
+- 锚点：**厂商官方价**
+- 进货参照：**AIGC国内 · AIGC国际 · TokenHub · OpenRouter**（生图/生视频 OR 暂无则 `—`）
+- 被校验：**线上刊例**
+- 对比：各渠道 `*vs官方` + **刊例结论** + **备注**
+- **不进主表**：百炼、火山方舟等 L3（见分表 · `汇总-供应商vs官方`）
+
 **生文** `trinity-pricing-text.xlsx`：
 
-1. `刊例对比校验-生文` — L4 主表（官方 · AIGC国际 · TH · 线上 · vs 列）
+1. `刊例对比校验-生文` — L4 主表（另含 token 三维 `刊例vs官方_入/出/缓`）
 2. `汇总-供应商vs官方` — L3 渠道 vs 官方专表
 3. TokenHub / 百炼 / AIGC / 火山… 分表
 
-**生图** `trinity-pricing-image.xlsx`（与生文同范式，单位为元/张）：
+**生图** `trinity-pricing-image.xlsx`（单位为元/张）：
 
-1. `刊例对比校验-生图` — L4 主表（官方 · AIGC国内/国际 · TH · **火山** · 线上 · `*vs官方` 列）
-2. `汇总-供应商vs官方-生图` — L3 汇总（与生文汇总列结构一致）
+1. `刊例对比校验-生图` — L4 主表（档位轴：分辨率档）
+2. `汇总-供应商vs官方-生图` — L3 汇总
 3. `AIGC国内站-生图` / `AIGC国际站-生图` — 分表含 **厂商官方价 · 挂牌 · vs官方**
 
-**当前已接入进货渠道：仅 AIGC 国内/国际。** TokenHub、火山方舟等仅有价目参照或 L2/L3 校验，**未接入前不出分表**；接入后在 `pricing/config/channels-image.mjs` 设 `connected: true` 并补 Sheet 名。
+**生视频** `trinity-pricing-video.xlsx`：
+
+1. `刊例对比校验-生视频` — L4 主表（档位轴：AIGC属性 × 分辨率；末列 `线上刊例 slug`）
+2. `汇总-供应商vs官方-生视频`
+3. `AIGC国内站-生视频` / `AIGC国际站-生视频` / `火山方舟-生视频`（火山仅 L3 分表）
+
+**当前已接入进货渠道：生图/生视频仅 AIGC 国内/国际出汇总分表。** TokenHub、火山方舟等仅有价目参照或 L2/L3 校验；接入后在 `channels-{image,video}.mjs` 设 `connected: true`。
 
 生图无百炼 / 网聚 / 中转（生文专属 SKU）；未来接入时在同一文件新增条目。
 
@@ -57,18 +71,18 @@
 
 `pricing:refresh` 会同时刷新生文与生图 Excel；单改生图官方价后也可只跑 `pricing.upstream.image`。
 
-## 表头含义
+## 表头含义（刊例对比主表）
 
-| 列 | 来源 |
-|----|------|
-| 官方价 | `official/output/{modality}/vendor-pricing.json` |
-| TokenHub | `tokenhub/output/pricing-console-api.json`（生图筛 hy-image*） |
-| 百炼 | `bailian/output/pricing-api.json`（生文为主） |
-| 火山方舟 | `volcengine/output/{modality}/pricing-api.json` |
-| AIGC国内/国际 | `aigc/output/pricing-api.json` 或 `pricing-api-image.json` |
-| 线上刊例 | `output/online/prices-api.json` |
+| 列族 | 来源 / 说明 |
+|------|-------------|
+| 厂商官方价 | `official/output/{modality}/vendor-pricing.json`（L1 锚点） |
+| AIGC国内 / AIGC国际 | `aigc/output/pricing-api*.json`（L2） |
+| TokenHub | `tokenhub/output/pricing-console-api.json`（L2） |
+| OpenRouter | `openrouter/`（生文有数据；生图/生视频列预留，暂无则 `—`） |
+| 线上刊例 | `output/online/prices-api-{modality}.json`（L4） |
+| 百炼 / 火山方舟 | **仅 L3 分表**，不进刊例对比主表 |
 
-join 键：`official/trinity-map.json` 的 Trinity `modelId`。
+join 键：`official/trinity-map.json` 的 Trinity `modelId`（生视频另见 `video-model-registry.mjs` · `线上刊例 slug`）。
 
 ## 推荐执行顺序（生图）
 

@@ -476,65 +476,6 @@
       }
     },
     {
-      "id": "seedance-1.0-pro",
-      "object": "model",
-      "created": 1781077252,
-      "owned_by": "bytedance",
-      "metadata": {
-        "display_name": "Seedance 1.0 Pro",
-        "origin_vendor_name": "ByteDance",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Image gen",
-              "Video gen"
-            ],
-            "short_summary": "ByteDance Seedance 1.0 Pro video generation model, supporting text-to-video and image-to-video generation with cinematic quality and motion performance, suitable for premium video content creation.",
-            "description_long": "ByteDance Seedance 1.0 Pro video generation model, supporting text-to-video and image-to-video generation with cinematic quality and motion performance, suitable for premium video content creation. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "生视频"
-            ],
-            "short_summary": "字节跳动 Seedance 1.0 Pro 视频生成模型，支持文生视频和图生视频，具备电影级画面质量和运动表现，适合高品质视频内容创作。",
-            "description_long": "字节跳动 Seedance 1.0 Pro 视频生成模型，支持文生视频和图生视频，具备电影级画面质量和运动表现，适合高品质视频内容创作。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 2.06896552,
-        "metered_charge_unit": "video_second"
-      }
-    },
-    {
-      "id": "seedance-1.0-pro-fast",
-      "object": "model",
-      "created": 1781077252,
-      "owned_by": "bytedance",
-      "metadata": {
-        "display_name": "Seedance 1.0 Pro Fast",
-        "origin_vendor_name": "ByteDance",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen"
-            ],
-            "short_summary": "ByteDance Seedance 1.0 Pro Fast rapid video generation model, significantly shortening generation time while preserving quality, suitable for quick preview and iterative creation.",
-            "description_long": "ByteDance Seedance 1.0 Pro Fast rapid video generation model, significantly shortening generation time while preserving quality, suitable for quick preview and iterative creation. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "字节跳动 Seedance 1.0 Pro Fast 快速视频生成模型，在保持画质的同时大幅缩短生成时间，适合快速预览和迭代创作。",
-            "description_long": "字节跳动 Seedance 1.0 Pro Fast 快速视频生成模型，在保持画质的同时大幅缩短生成时间，适合快速预览和迭代创作。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.57931034,
-        "metered_charge_unit": "video_second"
-      }
-    },
-    {
       "id": "seedance-1.5-pro",
       "object": "model",
       "created": 1781077252,
@@ -560,6 +501,32 @@
           }
         },
         "min_user_unit_price_usd": 1.10344828,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "seedance-2.0",
+      "object": "model",
+      "created": 1783407211,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 2.0",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "min_user_unit_price_usd": 3.86206897,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "seedance-2.0-fast",
+      "object": "model",
+      "created": 1783420857,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 2.0 Fast",
+        "origin_vendor_name": "ByteDance",
+        "modality_type": "video",
+        "min_user_unit_price_usd": 3.3847,
         "metered_charge_unit": "video_second"
       }
     },

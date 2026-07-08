@@ -1,10 +1,16 @@
 /**
- * 生视频刊例校验总表：厂商官方价（锚）· AIGC 国内/国际 · TokenHub · 火山 · 线上刊例
+ * 生视频刊例校验总表：厂商官方价（锚）· AIGC 国内/国际 · TokenHub · OpenRouter · 线上刊例
  */
 
 import { readFile } from "node:fs/promises";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import {
+  L4_COMPARE_IDENTITY_HEADERS,
+  L4_COMPARE_REF_PRICE_HEADERS,
+  L4_COMPARE_VS_OFFICIAL_HEADERS,
+  MERGE_COMPARE_IDENTITY,
+} from "./compare-l4-columns.mjs";
 import { writeCsv } from "./export-excel.mjs";
 import {
   FIELD_MATCH_PCT,
@@ -23,15 +29,17 @@ import {
   aigcVideoPriceForAttribute,
   tokenhubVideoTiersForCompare,
   volcengineVideoTiersForCompare,
-  volcengineVideoPriceAtCompare,
   isVideoTokenOfficialUnit,
   isVideoTokenOnlineUnit,
   formatVideoTokenPrice,
   findCompareTierByKey,
   evaluateAigcVideoDomVsIntl,
   evaluateAigcVsImpliedOfficial,
+  evaluateVideoDomesticVsOfficial,
+  evaluateVideoIntlVsOfficial,
   evaluateListingVsAigcIntl,
   evaluateListingVsOfficialToken,
+  videoTierPrice,
 } from "./video-pricing-validate-lib.mjs";
 import {
   VIDEO_REFERENCE_CONVERSION,
@@ -486,12 +494,16 @@ function tokenhubVideoPriceAt(thModel, offTier) {
   return hit?.price ?? tiers[0]?.price ?? null;
 }
 
-function volcengineVideoPriceAt(volModel, offTier) {
-  const direct = volcengineVideoPriceAtCompare(volModel, offTier);
-  if (direct != null) return direct;
-  const tiers = volcengineVideoTiersForCompare(volModel);
-  const hit = findCompareTierByKey(tiers, offTier.tierKey);
-  return hit?.price ?? null;
+function enrichVideoCompareNote(base, { domIntlCmp, domImpliedCmp, seedAigcOnly }) {
+  const parts = [base].filter((p) => p && p !== "—");
+  if (domIntlCmp?.comparable && domIntlCmp.text && domIntlCmp.text !== "—") {
+    parts.push(domIntlCmp.text);
+  }
+  if (seedAigcOnly) parts.push("✅ 同源(AIGC)");
+  else if (domImpliedCmp?.text && domImpliedCmp.text !== "—") {
+    parts.push(domImpliedCmp.text);
+  }
+  return parts.join(" · ") || "—";
 }
 
 function buildUnmappedRow(off, offTier, vendorModelId) {
@@ -507,10 +519,12 @@ function buildUnmappedRow(off, offTier, vendorModelId) {
     aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
-    volcengine: "—",
+    openRouter: "—",
     online: "—",
-    aigcDomVsIntl: "—",
-    aigcDomVsImpliedOfficial: "—",
+    aigcDomVsOfficial: "—",
+    aigcIntlVsOfficial: "—",
+    thVsOfficial: "—",
+    orVsOfficial: "—",
     listingConclusion: "— 未接入",
     note: off.trinityNote ?? "",
     officialStatus: off.fetchStatus ?? "",
@@ -530,10 +544,12 @@ function buildMappedNoListingRow(off, offTier, vendorModelId, trinityId) {
     aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
-    volcengine: "—",
+    openRouter: "—",
     online: "—",
-    aigcDomVsIntl: "—",
-    aigcDomVsImpliedOfficial: "—",
+    aigcDomVsOfficial: "—",
+    aigcIntlVsOfficial: "—",
+    thVsOfficial: "—",
+    orVsOfficial: "—",
     listingConclusion: "— 未上架",
     note: off.trinityNote ?? "",
     officialStatus: off.fetchStatus ?? "",
@@ -579,7 +595,7 @@ function buildVideoTierRow(ctx) {
   const domPrice = aigcPriceAtSite(aigcDom, aigcAttribute, offTier);
   const intlPrice = aigcPriceAtSite(aigcIntl, aigcAttribute, offTier);
   const thPrice = tokenhubVideoPriceAt(thModel, effectiveOffTier);
-  const volPrice = volcengineVideoPriceAt(volModel, effectiveOffTier);
+  void volModel;
 
   const onlineTier =
     offTier.onlineTier ??
@@ -612,16 +628,46 @@ function buildVideoTierRow(ctx) {
     return withVerifyFlag(trinityId ?? onlineSlug ?? "—", Math.abs(pct), text);
   };
 
-  const aigcDomVsIntl =
-    domIntlCmp.comparable && domIntlCmp.pct != null
-      ? wrapVerify(domIntlCmp.text, domIntlCmp.pct)
-      : domIntlCmp.text;
+  const offComparePrice =
+    implied?.mid ??
+    (hasOfficialTier ? videoTierPrice(effectiveOffTier) : null);
 
-  const aigcDomVsImpliedOfficial = seedAigcOnly
+  const aigcDomCmp = evaluateVideoDomesticVsOfficial(
+    offComparePrice,
+    domPrice,
+    currency,
+    effectiveOffTier,
+  );
+  const aigcIntlCmp = evaluateVideoIntlVsOfficial(
+    offComparePrice,
+    intlPrice,
+    currency,
+    effectiveOffTier,
+  );
+  const thCmp = evaluateVideoDomesticVsOfficial(
+    offComparePrice,
+    thPrice,
+    currency,
+    effectiveOffTier,
+  );
+
+  const aigcDomVsOfficial = seedAigcOnly
     ? "✅ 同源(AIGC)"
-    : domImpliedCmp.comparable && domImpliedCmp.pct != null
-      ? wrapVerify(domImpliedCmp.text, domImpliedCmp.pct)
-      : domImpliedCmp.text;
+    : aigcDomCmp.comparable && aigcDomCmp.pct != null
+      ? wrapVerify(aigcDomCmp.text, aigcDomCmp.pct)
+      : domImpliedCmp.comparable && domImpliedCmp.pct != null
+        ? wrapVerify(domImpliedCmp.text, domImpliedCmp.pct)
+        : aigcDomCmp.text;
+
+  const aigcIntlVsOfficial =
+    aigcIntlCmp.comparable && aigcIntlCmp.pct != null
+      ? wrapVerify(aigcIntlCmp.text, aigcIntlCmp.pct)
+      : aigcIntlCmp.text;
+
+  const thVsOfficial =
+    thCmp.comparable && thCmp.pct != null
+      ? wrapVerify(thCmp.text, thCmp.pct)
+      : thCmp.text;
 
   const listingConclusion = buildListingConclusion(
     unit,
@@ -657,17 +703,14 @@ function buildVideoTierRow(ctx) {
     aigcDom: domPrice != null ? formatVideoPrice(domPrice, "CNY") : "—",
     aigcIntl: intlPrice != null ? formatVideoPrice(intlPrice, "USD") : "—",
     tokenhub: thPrice != null ? formatVideoPrice(thPrice, "CNY") : "—",
-    volcengine:
-      volPrice != null
-        ? isVideoTokenOfficialUnit(offTier)
-          ? formatVideoTokenPrice(volPrice, currency)
-          : formatVideoPrice(volPrice, "CNY")
-        : "—",
+    openRouter: "—",
     online: formatOnlineVideoListing(onlineTier),
-    aigcDomVsIntl,
-    aigcDomVsImpliedOfficial,
+    aigcDomVsOfficial,
+    aigcIntlVsOfficial,
+    thVsOfficial,
+    orVsOfficial: "—",
     listingConclusion,
-    note: note ?? "",
+    note: enrichVideoCompareNote(note, { domIntlCmp, domImpliedCmp, seedAigcOnly }),
     officialStatus: offModel.fetchStatus ?? "",
   };
 }
@@ -919,25 +962,17 @@ export async function loadVideoCompareHubContext(opts = {}) {
 
 export function buildVideoCompareExcelRows(report) {
   const header = [
-    "原厂 modelId",
-    "治理档位",
-    "线上 slug",
-    "Trinity ID",
-    "显示名",
-    "厂商",
+    ...L4_COMPARE_IDENTITY_HEADERS,
     "AIGC属性",
     "分辨率档",
-    "原厂文档(积分/次)",
-    "原厂折算元/秒(估)",
-    "AIGC国内",
-    "AIGC国际",
-    "TokenHub",
-    "火山方舟",
+    "厂商官方价(积分/次)",
+    "厂商官方价(折算¥/秒)",
+    ...L4_COMPARE_REF_PRICE_HEADERS,
     "线上刊例",
-    "AIGC国内vs国际",
-    "AIGC国内vs原厂折算",
+    ...L4_COMPARE_VS_OFFICIAL_HEADERS,
     "刊例结论",
     "备注",
+    "线上刊例 slug",
   ];
 
   const rows = [];
@@ -948,8 +983,6 @@ export function buildVideoCompareExcelRows(report) {
     lastGroup = group;
     rows.push([
       show ? (r.vendorModelId ?? "") : "",
-      show ? (r.governanceTier ?? "") : "",
-      show ? (r.onlineSlug ?? "") : "",
       show ? (r.trinityId ?? "") : "",
       show ? (r.displayName ?? "") : "",
       show ? (r.brand ?? "") : "",
@@ -960,12 +993,15 @@ export function buildVideoCompareExcelRows(report) {
       r.aigcDom ?? "",
       r.aigcIntl ?? "",
       r.tokenhub ?? "",
-      r.volcengine ?? "",
+      r.openRouter ?? "—",
       r.online ?? "",
-      r.aigcDomVsIntl ?? "",
-      r.aigcDomVsImpliedOfficial ?? "",
+      r.aigcDomVsOfficial ?? "",
+      r.aigcIntlVsOfficial ?? "",
+      r.thVsOfficial ?? "",
+      r.orVsOfficial ?? "—",
       r.listingConclusion ?? "",
       r.note ?? "",
+      show ? (r.onlineSlug ?? "") : "",
     ]);
   }
   return [header, ...rows];
@@ -1020,9 +1056,9 @@ export function renderVideoCompareHubMarkdown(report) {
       (report.onlineListingCount != null
         ? ` · 线上刊例 ${report.onlineListingCount} · 官方 catalog ${report.modelCount} · 完整治理 ${report.fullGovernanceCount ?? "—"}`
         : ""),
-    `> **行主键**：\`prices-api\` 全量线上 slug ∪ 官方 catalog 补行 · 每模型按 **AIGC属性 × 分辨率** 展开（错峰档默认排除）`,
-    `> **治理档位**：完整 = 官方+线上 · 仅刊例 = 线上有/AIGC对照 · 仅官方 = 未挂线上刊例`,
-    `> **Trinity 无积分**；主对比：**AIGC 国内 vs 国际**（元/秒 · 美元/秒）`,
+    `> **行主键**：\`prices-api\` 全量线上 slug ∪ 官方 catalog 补行 · 每模型按 **AIGC属性 × 分辨率** 展开`,
+    `> **进货参照（刊例对比主表）**：AIGC国内 · AIGC国际 · TokenHub · OpenRouter（不含火山等 L3）`,
+    `> **AIGC 国内 vs 国际 / 积分折算**：写入备注，不占主表列`,
     `> **AIGC 来源**：\`AIGC价格指南（商务版报价文档）.xlsx\` · AIGC生视频 · 按**生成视频秒数**计费`,
     `> **原厂按秒（可灵等）**：积分/秒 = 元/秒（1积分=¥1）· 直接对照 AIGC`,
     `> **原厂按次（混元/Vidu 等）**：积分/次 ÷ ${ref.referenceSeconds}s/次 → 元/秒(估)`,
@@ -1039,7 +1075,4 @@ export function renderVideoCompareHubMarkdown(report) {
   return lines.join("\n");
 }
 
-export const MERGE_COMPARE_VIDEO = {
-  cols: [1, 2, 3, 4, 5, 6],
-  rows: true,
-};
+export const MERGE_COMPARE_VIDEO = MERGE_COMPARE_IDENTITY;

@@ -100,7 +100,7 @@ flowchart TD
 10. emit-pricing-alerts --dry-run
 ```
 
-发刊例前另确认 L（G→L）：`upstream:{text,image,video}` + 刊例对比表无未登记 `listing_*` 告警；生图/生视频另跑 `gen-official:*` → `diff:official-*` → 人工确认。  
+发刊例前另确认 L（G→L）：`upstream:{text,image,video}` + 刊例对比表无未登记 `listing_*` 告警；**主表进货列**统一为 AIGC国内/国际 · TokenHub · OpenRouter（L3 百炼/火山见分表）；生图/生视频另跑 `gen-official:*` → `diff:official-*` → 人工确认。  
 命令说明 → [日常操作](./operations) · 按模态 → [三模态索引](./modality-index) · 生视频发布 → [video-rollout](./video-rollout)。
 
 ---

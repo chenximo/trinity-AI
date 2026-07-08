@@ -25,7 +25,7 @@ trinity-AI/pricing/
 │           ├── text/      # vendor-pricing.json（生文）
 │           ├── image/     # vendor-pricing.json（生图）
 │           └── video/     # vendor-pricing.json（生视频）
-├── config/                # supplier-discounts.json
+├── config/                # channels-*.mjs 等
 └── output/                # 流水线产出（刊例、汇总、校验、草案）
 ```
 
@@ -119,7 +119,7 @@ npm run pricing:upstream
 | `upstream/upstream-pricing.json` | 机器可读全量（**校验脚本依赖**） |
 | `upstream/{tokenhub,bailian,aigc-*}/` | 分供应商 md / csv |
 
-折扣：改 `config/supplier-discounts.json` 后重跑本步。
+折扣与毛利：**商务原底**见 `supplier-cost-discounts.md`；**生效折扣与毛利测算**在后台管理系统。价目 Excel 供应商分表**不含**折扣/成本列。
 
 ### 步骤 3 — 校验（线上 vs 上游真源）★
 

@@ -1,11 +1,17 @@
 /**
- * 生文刊例校验总表：厂商官方价（锚）· AIGC 国际 / TokenHub / OpenRouter · 线上刊例
+ * 生文刊例校验总表：厂商官方价（锚）· AIGC 国内/国际 · TokenHub · OpenRouter · 线上刊例
  */
 
 import { readFile } from "node:fs/promises";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
-import { MERGE_COMPARE_TEXT, writeCsv } from "./export-excel.mjs";
+import {
+  L4_COMPARE_IDENTITY_HEADERS,
+  L4_COMPARE_REF_PRICE_HEADERS,
+  L4_COMPARE_VS_OFFICIAL_HEADERS,
+  MERGE_COMPARE_IDENTITY,
+} from "./compare-l4-columns.mjs";
+import { writeCsv } from "./export-excel.mjs";
 import { summaryTiersForModel } from "./build-rows.mjs";
 import { parseNum } from "./pricing-compare.mjs";
 import { parseOnlinePricesTiers } from "./parse-online-prices.mjs";
@@ -32,7 +38,9 @@ import {
   SUPPLIERS_DIR,
 } from "./paths.mjs";
 
-export { MERGE_COMPARE_TEXT };
+/** @deprecated 使用 MERGE_COMPARE_IDENTITY */
+export const MERGE_COMPARE_TEXT = MERGE_COMPARE_IDENTITY;
+export { MERGE_COMPARE_IDENTITY };
 
 export const TEXT_COMPARE_SHEET = "刊例对比校验-生文";
 
@@ -389,6 +397,7 @@ function buildUnmappedOfficialRow(off, offTier, vendorModelId) {
     vendorModelId,
     tierLabel: offTier.tierLabel ?? "—",
     official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
+    aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
     openRouter: "—",
@@ -397,7 +406,8 @@ function buildUnmappedOfficialRow(off, offTier, vendorModelId) {
     deltaOnlineVsOfficialIn: "—",
     deltaOnlineVsOfficialOut: "—",
     deltaOnlineVsOfficialCache: "—",
-    aigcVsOfficial: "—",
+    aigcDomVsOfficial: "—",
+    aigcIntlVsOfficial: "—",
     thVsOfficial: "—",
     orVsOfficial: "—",
     listingConclusion: "— 未接入",
@@ -417,6 +427,7 @@ function buildMappedNoListingRow(off, offTier, vendorModelId, trinityId) {
     vendorModelId,
     tierLabel: offTier.tierLabel ?? "—",
     official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
+    aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
     openRouter: "—",
@@ -425,7 +436,8 @@ function buildMappedNoListingRow(off, offTier, vendorModelId, trinityId) {
     deltaOnlineVsOfficialIn: "—",
     deltaOnlineVsOfficialOut: "—",
     deltaOnlineVsOfficialCache: "—",
-    aigcVsOfficial: "—",
+    aigcDomVsOfficial: "—",
+    aigcIntlVsOfficial: "—",
     thVsOfficial: "—",
     orVsOfficial: "—",
     listingConclusion: "— 未上架",
@@ -461,8 +473,20 @@ function buildTierRow(model, tier, ctx) {
           cache: parseNum(tier.aigcIntlCache),
         }
       : null;
-  const hasAigc = aigcUsd?.input != null || aigcUsd?.output != null;
-  const aigcCmp = compareUsdRefToOfficial(aigcUsd, offTier, offCurrency);
+  const hasAigcIntl = aigcUsd?.input != null || aigcUsd?.output != null;
+  const aigcIntlCmp = compareUsdRefToOfficial(aigcUsd, offTier, offCurrency);
+
+  const aigcDomCny =
+    tier.aigcDomIn != null || tier.aigcDomOut != null || tier.aigcDomCache != null
+      ? {
+          input: tier.aigcDomIn,
+          output: tier.aigcDomOut,
+          cache: tier.aigcDomCache,
+        }
+      : null;
+  const aigcDomUsd = cnyTierToUsd(aigcDomCny);
+  const hasAigcDom = aigcDomUsd?.input != null || aigcDomUsd?.output != null;
+  const aigcDomCmp = compareUsdRefToOfficial(aigcDomUsd, offTier, offCurrency);
 
   const thCny =
     tier.thIn != null || tier.thOut != null || tier.thCache != null
@@ -521,8 +545,15 @@ function buildTierRow(model, tier, ctx) {
     offHasCache,
   );
 
-  const aigcVsOfficial = formatSupplierVsOfficial(aigcCmp, {
-    active: hasAigc,
+  const aigcDomVsOfficial = formatSupplierVsOfficial(aigcDomCmp, {
+    active: hasAigcDom,
+    refHasIn: aigcDomUsd?.input != null,
+    refHasOut: aigcDomUsd?.output != null,
+    refHasCache: aigcDomUsd?.cache != null,
+    offHasCache,
+  });
+  const aigcIntlVsOfficial = formatSupplierVsOfficial(aigcIntlCmp, {
+    active: hasAigcIntl,
     refHasIn: aigcUsd?.input != null,
     refHasOut: aigcUsd?.output != null,
     refHasCache: aigcUsd?.cache != null,
@@ -554,6 +585,7 @@ function buildTierRow(model, tier, ctx) {
       tierLabelOf(onlineTier, offTier) ??
       "—",
     official: offTier ? formatOfficialSingleTier(offTier, sym) : "—",
+    aigcDom: formatTokenTextTier(aigcDomCny, "CNY"),
     aigcIntl: formatTokenTextTier(
       tier.aigcIntlIn != null
         ? {
@@ -575,7 +607,8 @@ function buildTierRow(model, tier, ctx) {
     deltaOnlineVsOfficialIn: offVsOnline.deltaIn,
     deltaOnlineVsOfficialOut: offVsOnline.deltaOut,
     deltaOnlineVsOfficialCache: offVsOnline.deltaCache,
-    aigcVsOfficial,
+    aigcDomVsOfficial,
+    aigcIntlVsOfficial,
     thVsOfficial,
     orVsOfficial,
     listingConclusion,
@@ -747,22 +780,15 @@ export async function loadTextCompareHubContext(opts = {}) {
 
 export function buildTextCompareExcelRows(report) {
   const header = [
-    "原厂 modelId",
-    "Trinity ID",
-    "显示名",
-    "厂商",
-    "档位",
+    ...L4_COMPARE_IDENTITY_HEADERS,
+    "价格档位",
     "厂商官方价",
-    "AIGC国际",
-    "TokenHub",
-    "OpenRouter",
+    ...L4_COMPARE_REF_PRICE_HEADERS,
     "线上刊例",
     "刊例vs官方_入",
     "刊例vs官方_出",
     "刊例vs官方_缓",
-    "AIGCvs官方",
-    "TokenHub vs官方",
-    "ORvs官方",
+    ...L4_COMPARE_VS_OFFICIAL_HEADERS,
     "刊例结论",
     "备注",
   ];
@@ -780,6 +806,7 @@ export function buildTextCompareExcelRows(report) {
       show ? (r.brand ?? "") : "",
       r.tierLabel ?? "",
       r.official ?? "",
+      r.aigcDom ?? "",
       r.aigcIntl ?? "",
       r.tokenhub ?? "",
       r.openRouter ?? "",
@@ -787,7 +814,8 @@ export function buildTextCompareExcelRows(report) {
       r.deltaOnlineVsOfficialIn ?? "",
       r.deltaOnlineVsOfficialOut ?? "",
       r.deltaOnlineVsOfficialCache ?? "",
-      r.aigcVsOfficial ?? "",
+      r.aigcDomVsOfficial ?? "",
+      r.aigcIntlVsOfficial ?? "",
       r.thVsOfficial ?? "",
       r.orVsOfficial ?? "",
       r.listingConclusion ?? "",
@@ -843,9 +871,9 @@ export function renderTextCompareHubMarkdown(report) {
         ? ` · Trinity 已映射 ${report.trinityLinkedCount} · 线上 ${report.trinityOnlineCount ?? "—"}`
         : ""),
     `> **行轴**：\`suppliers/official/output/text/vendor-pricing.json\` 全量；Trinity 未接入 → Trinity ID / 刊例为 —`,
-    `> **目的**：官方价锚点 + Trinity 覆盖与刊例校验；AIGC 国际 / TokenHub / OpenRouter 互补对照`,
+    `> **目的**：官方价锚点 + Trinity 覆盖与刊例校验；进货参照仅 AIGC国内/国际 · TokenHub · OpenRouter（不含百炼/火山）`,
     `> 厂商官方价：\`suppliers/official/output/text/vendor-pricing.json\`（${report.officialFetchedAt?.slice(0, 19) ?? "—"}Z）`,
-    `> AIGC 国际：\`suppliers/aigc\` · TokenHub：\`suppliers/tokenhub\` · OpenRouter：\`suppliers/openrouter\`（${report.openRouterFetchedAt?.slice(0, 19) ?? "—"}Z）`,
+    `> AIGC：\`suppliers/aigc\` · TokenHub：\`suppliers/tokenhub\` · OpenRouter：\`suppliers/openrouter\`（${report.openRouterFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 线上刊例：\`output/online/prices-api.json\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 国内官方 CNY→USD（与线上一致）：÷${report.fxOnlineDomestic}`,
     `> 同步导出：\`upstream/summary.*\` · \`official/text.*\` · \`trinity-pricing-text.xlsx\``,
@@ -866,11 +894,11 @@ export function renderTextCompareHubMarkdown(report) {
     "- **Trinity ID**：`—` = 官方已收录、产品未接入；刊例结论 `— 未接入` / `— 未上架` 不进 gate",
     "- **排序**：有已接入模型的厂商在前；**整系列未接入**（如豆包）沉表尾；同系列内已接入在前、单模型未接入在后",
     "- **厂商官方价**：刊例应对齐的锚（国内 CNY 展示，对比时 ÷6.5 换 USD）",
-    "- **AIGCvs官方 / TokenHub vs官方 / ORvs官方**：单列展示入/出/缓；一致 `✅`，偏差 `⚠±X%`",
+    "- **AIGC国内vs官方 / AIGC国际vs官方 / TokenHub vs官方 / OpenRouter vs官方**：单列展示入/出/缓；一致 `✅`，偏差 `⚠±X%`",
     "- **刊例vs官方_*%**：线上刊例相对厂商官方价；正数表示刊例高于官方",
     "- **刊例结论**：线上刊例相对官方，格式同 vs 列（`入✅ 出✅ 缓⚠+15.4%`）",
-    "- TokenHub 挂牌为 CNY/百万 tokens，对比官方时 ÷6.5 换 USD",
-    "- 百炼 / AIGC 国内等进货价见分表与「汇总-供应商vs官方」",
+    "- TokenHub / AIGC 国内挂牌为 CNY/百万 tokens，对比官方时 ÷6.5 换 USD",
+    "- 百炼 / 火山方舟等 L3 转售价见供应商分表与「汇总-供应商vs官方」",
     "",
   );
 

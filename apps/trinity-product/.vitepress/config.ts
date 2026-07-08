@@ -55,10 +55,11 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
       { text: "能力地图", link: "/ai-api-platform/capability-map" },
       { text: "产品核心与架构", link: "/ai-api-platform/product-core" },
       {
-        text: "模型价格真源",
+        text: "模型价目与刊例治理",
         collapsed: false,
         items: [
           { text: "总览", link: "/ai-api-platform/pricing-sources/" },
+          { text: "模型原价折扣", link: "/ai-api-platform/pricing-sources/supplier-cost-discounts" },
           { text: "价目全流程", link: "/ai-api-platform/pricing-sources/workflow" },
           { text: "采购渠道真源", link: "/ai-api-platform/pricing-sources/suppliers" },
           { text: "原厂定价页链接", link: "/ai-api-platform/pricing-sources/official-pricing-urls" },

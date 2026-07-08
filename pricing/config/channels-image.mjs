@@ -83,7 +83,7 @@ export const IMAGE_PENDING_SUPPLIERS = IMAGE_SUPPLIERS.filter((c) => !c.connecte
 
 export const IMAGE_L2_CHANNELS = IMAGE_SUPPLIERS.filter((c) => c.l2);
 export const IMAGE_L3_CHANNELS = IMAGE_SUPPLIERS.filter((c) => c.l3);
-/** 刊例对比主表可展示的参照列（含未接入但有 scrape 的渠道） */
-export const IMAGE_L4_COMPARE_CHANNELS = IMAGE_SUPPLIERS.filter((c) => c.l4 !== false);
+/** 刊例对比主表可展示的进货参照列（L2 + OpenRouter；不含 L3 火山/百炼） */
+export const IMAGE_L4_COMPARE_CHANNELS = IMAGE_SUPPLIERS.filter((c) => c.l4 === true);
 /** Excel 供应商分表（仅 connected） */
 export const IMAGE_L4_SHEET_SUPPLIERS = IMAGE_CONNECTED_SUPPLIERS;

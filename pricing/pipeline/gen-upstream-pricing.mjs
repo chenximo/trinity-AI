@@ -14,9 +14,6 @@ import {
   buildTierMap,
   compareField,
   summarizeRow,
-  fmtDiscount,
-  fmtCostCell,
-  calcCostTriple,
   pickBailianModels,
   pickTokenhubModels,
   tierSortKey,
@@ -70,7 +67,6 @@ import {
   TRINITY_MODELS_CACHE_FILE,
   TEXT_PRICING_XLSX,
   upstreamSupplierPaths,
-  DISCOUNTS_FILE,
   TOKENHUB_FILE,
   BAILIAN_FILE,
   AIGC_MAP_FILE,
@@ -96,8 +92,6 @@ const SUPPLIERS = [
     inKey: "thIn",
     outKey: "thOut",
     cacheKey: "thCache",
-    discountKey: "thDiscount",
-    costKey: "thCost",
     officialPrefix: "TH",
   },
   {
@@ -111,8 +105,6 @@ const SUPPLIERS = [
     inKey: "blIn",
     outKey: "blOut",
     cacheKey: "blCache",
-    discountKey: "blDiscount",
-    costKey: "blCost",
     officialPrefix: "BL",
   },
   {
@@ -128,8 +120,6 @@ const SUPPLIERS = [
     inKey: "aigcDomIn",
     outKey: "aigcDomOut",
     cacheKey: "aigcDomCache",
-    discountKey: "aigcDomDiscount",
-    costKey: "aigcDomCost",
     officialPrefix: "AIGC-CN",
   },
   {
@@ -145,8 +135,6 @@ const SUPPLIERS = [
     inKey: "aigcIntlIn",
     outKey: "aigcIntlOut",
     cacheKey: "aigcIntlCache",
-    discountKey: "aigcIntlDiscount",
-    costKey: "aigcIntlCost",
     officialPrefix: "AIGC-INTL",
   },
   {
@@ -161,8 +149,6 @@ const SUPPLIERS = [
     inKey: "volIn",
     outKey: "volOut",
     cacheKey: "volCache",
-    discountKey: "volDiscount",
-    costKey: "volCost",
     officialPrefix: "VOL",
   },
   {
@@ -177,8 +163,6 @@ const SUPPLIERS = [
     inKey: "wjIn",
     outKey: "wjOut",
     cacheKey: "wjCache",
-    discountKey: "wjDiscount",
-    costKey: "wjCost",
     officialPrefix: "WJYL",
   },
   {
@@ -193,76 +177,9 @@ const SUPPLIERS = [
     inKey: "rcIn",
     outKey: "rcOut",
     cacheKey: "rcCache",
-    discountKey: "rcDiscount",
-    costKey: "rcCost",
     officialPrefix: "RC",
   },
 ];
-
-async function loadDiscounts() {
-  try {
-    return JSON.parse(await readFile(DISCOUNTS_FILE, "utf8"));
-  } catch {
-    return { suppliers: {}, modelOverrides: {} };
-  }
-}
-
-function resolveDiscount(discounts, modelId, supplier) {
-  const overrides = discounts.modelOverrides ?? {};
-  const key = modelId.toLowerCase();
-  const model = overrides[key];
-  const fromModel = model?.[supplier]?.discount;
-  if (fromModel != null) return fromModel;
-  return discounts.suppliers?.[supplier]?.defaultDiscount ?? null;
-}
-
-function enrichTierCosts(tier, modelId, discounts) {
-  const thDiscount = resolveDiscount(discounts, modelId, "tokenhub");
-  const blDiscount = resolveDiscount(discounts, modelId, "bailian");
-  const aigcDomDiscount = resolveDiscount(discounts, modelId, "aigc-domestic");
-  const aigcIntlDiscount = resolveDiscount(discounts, modelId, "aigc-international");
-  const volDiscount = resolveDiscount(discounts, modelId, "volcengine");
-  const wjDiscount = resolveDiscount(discounts, modelId, "wangju-cloudportal");
-  const rcDiscount = resolveDiscount(discounts, modelId, "relay-cust");
-  return {
-    ...tier,
-    thDiscount,
-    blDiscount,
-    aigcDomDiscount,
-    aigcIntlDiscount,
-    volDiscount,
-    wjDiscount,
-    rcDiscount,
-    wjCost:
-      wjDiscount != null
-        ? calcCostTriple(tier.wjIn, tier.wjOut, tier.wjCache, wjDiscount)
-        : null,
-    rcCost:
-      rcDiscount != null
-        ? calcCostTriple(tier.rcIn, tier.rcOut, tier.rcCache, rcDiscount)
-        : null,
-    thCost: calcCostTriple(tier.thIn, tier.thOut, tier.thCache, thDiscount),
-    blCost: calcCostTriple(tier.blIn, tier.blOut, tier.blCache, blDiscount),
-    aigcDomCost: calcCostTriple(
-      tier.aigcDomIn,
-      tier.aigcDomOut,
-      tier.aigcDomCache,
-      aigcDomDiscount,
-    ),
-    aigcIntlCost: calcCostTriple(
-      tier.aigcIntlIn,
-      tier.aigcIntlOut,
-      tier.aigcIntlCache,
-      aigcIntlDiscount,
-    ),
-    volCost: calcCostTriple(
-      tier.volIn,
-      tier.volOut,
-      tier.volCache,
-      volDiscount,
-    ),
-  };
-}
 
 async function loadAigcPricing() {
   let trinityMap = {};
@@ -550,7 +467,7 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
     `# ${sup.title}`,
     "",
     `> 供应商：**${sup.key}** · 区域：**${sup.region}** · 数据日期：${date}`,
-    `> 供应商挂牌/成本单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）`,
+    `> 供应商挂牌单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）`,
     `> **范围**：${
       sup.catalog === "volcengine"
         ? `火山方舟生文模型全目录（${volcModels.length} 款）`
@@ -561,7 +478,6 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
             : `Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`
     }`,
     `> **厂商官方价**：模型厂商官网挂牌（\`suppliers/official\`），同档对照`,
-    `> 折扣配置：\`supplier-discounts.json\` → suppliers.${sup.key}`,
     ...(sup.catalog === "aigc"
       ? [`> 数据源：\`${AIGC_SHEET_PATH}\``]
       : []),
@@ -617,9 +533,8 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
     "| 列 | 来源 |",
     "|----|------|",
     "| 厂商官方价 | `suppliers/official/output/text/vendor-pricing.json` |",
-    `| 供应商挂牌 / 成本 | 上游供应商挂牌与协议成本（**${unit}**） |`,
+    `| 供应商挂牌 | 上游供应商挂牌价（**${unit}**） |`,
     "| 供应商vs官方 | 同档入/出/缓相对厂商官方的偏差 |",
-    "| 折扣 | `supplier-discounts.json`，0.85 = 85 折 |",
     `| 生文刊例校验 | \`upstream/summary.md\` 与 Excel \`${TEXT_COMPARE_SHEET}\` |`,
     "",
   );
@@ -630,7 +545,6 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
 async function main() {
   const thData = JSON.parse(await readFile(TOKENHUB_FILE, "utf8"));
   const blData = JSON.parse(await readFile(BAILIAN_FILE, "utf8"));
-  const discounts = await loadDiscounts();
   const { models: aigcModels, domestic: aigcDomMap, international: aigcIntlMap } =
     await loadAigcPricing();
   const { models: volcModels, byTrinity: volcMap, dataDate: volcDataDate } =
@@ -665,9 +579,7 @@ async function main() {
 
   const models = catalog.map((entry) => ({
     ...entry,
-    tiers: buildTierRows(entry).map((t) =>
-      enrichTierCosts(t, entry.trinityId, discounts),
-    ),
+    tiers: buildTierRows(entry),
   }));
 
   const scrapedAt =

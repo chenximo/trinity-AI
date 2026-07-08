@@ -34,14 +34,6 @@ export function colSupplierListCompact(unit) {
   return `供应商挂牌(${unit})`;
 }
 
-export function colCostCompact(unit) {
-  return `成本(${unit})`;
-}
-
-export function colCost(field, unit) {
-  return `成本_${field}(${unit})`;
-}
-
 export function colTrinityList(field) {
   return `${TRINITY_LIST_LABEL}_${field}(${USD_PER_M})`;
 }
@@ -58,7 +50,5 @@ export function buildSupplierTableHeader(sup) {
     "厂商官方价",
     colSupplierListCompact(unit),
     "供应商vs官方",
-    "折扣",
-    colCostCompact(unit),
   ];
 }

@@ -22,6 +22,8 @@ title: 三模态价目索引
 | **对比表行主键** | 官方 catalog 驱动 | 官方 × **档位并集**（P7） | **线上 slug 全量** ∪ 官方补行（P6） |
 | **Excel** | `trinity-pricing-text.xlsx` | `trinity-pricing-image.xlsx` | `trinity-pricing-video.xlsx` |
 | **刊例对比 Sheet** | 刊例对比校验-生文 | 刊例对比校验-生图 | 刊例对比校验-生视频 |
+| **刊例对比进货列** | AIGC国内/国际 · TH · OR | 同左（OR 暂无则 —） | 同左 + 末列 `线上刊例 slug` |
+| **不进刊例对比主表** | 百炼 · 火山方舟（L3，见分表） | 同左 | 同左 |
 | **L4 草案路径** | `draft/0.65_prices-api.json`（legacy） | `draft/official-prices-api-image.json` | `draft/official-prices-api-video.json` |
 | **L4 生成命令** | `pricing:gen-65` / `gen-65-official` | `pricing:gen-official:image` | `pricing:gen-official:video` |
 | **L4 发布** | 人工 / 运营后台 | `publish-official:image` ✅ | `publish-official:video` ✅ |

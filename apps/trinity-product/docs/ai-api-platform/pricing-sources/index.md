@@ -25,6 +25,7 @@ title: 模型价格真源
 | 页 | 用途 |
 |----|------|
 | [采购渠道真源](./suppliers) | 各渠道 JSON 路径、定价来源链接 |
+| [模型原价折扣](./supplier-cost-discounts) | **供应商成本折扣商务原底**（生效折扣在后台维护） |
 | [原厂定价页链接](./official-pricing-urls) | 厂商官网 URL |
 | [日常操作](./operations) | `refresh` / `gate` 命令 |
 | [三模态索引](./modality-index) | 生文/生图/生视频命令与差异对照 |
@@ -42,5 +43,7 @@ title: 模型价格真源
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-08 | [模型原价折扣](./supplier-cost-discounts)：商务原底仅手册；生效见后台 |
+| 2026-07-08 | 增 [模型原价折扣](./supplier-cost-discounts) 商务台账 |
 | 2026-07-07 | 增 modality-index · video-rollout · listing-deploy |
 | 2026-07-03 | 独立目录；主内容合并为 [价目全流程](./workflow) |

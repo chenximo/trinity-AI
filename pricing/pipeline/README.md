@@ -43,7 +43,6 @@ npm run pricing:upstream
 - `../suppliers/bailian/output/pricing-api.json`
 - `../suppliers/aigc/data/pricing-sheet.mjs` + `trinity-map.json`
 - `../output/online/prices-api.json`（刊例 USD）
-- `../config/supplier-discounts.json`
 
 ---
 

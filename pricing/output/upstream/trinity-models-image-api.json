@@ -26,7 +26,7 @@
             "description_long": "Google Imagen Nano 2.5 图像生成模型，支持高质量文生图，在文字渲染、真实感和指令遵循方面表现出色，适合通用图像创作场景。 由Google研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.0414,
+        "min_user_unit_price_usd": 0.039,
         "metered_charge_unit": "image_count"
       }
     },
@@ -55,7 +55,7 @@
             "description_long": "Google Imagen Nano 3.0 图像生成模型，在 2.5 基础上升级画质与细节表现，支持更复杂场景构图和更精准的文本提示理解。 由Google研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.13793103,
+        "min_user_unit_price_usd": 0.134,
         "metered_charge_unit": "image_count"
       }
     },
@@ -173,7 +173,7 @@
             "description_long": "快手可灵 Kling 2.1 图像生成模型，支持高质量文生图和图生图，具备出色的画面质感和风格多样性，适合创意设计和视觉效果创作。 由快手研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.0137931,
+        "min_user_unit_price_usd": 0.0154,
         "metered_charge_unit": "image_count"
       }
     },
@@ -292,7 +292,7 @@
             "description_long": "Midjourney v7 旗舰图像生成模型，在艺术风格、画面质感和创意表达方面达到新高度，支持更精准的提示词理解和个性化风格定制，适合专业艺术创作和商业设计。 由Midjourney研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.0462,
+        "min_user_unit_price_usd": 0.039,
         "metered_charge_unit": "image_count"
       }
     },
@@ -352,7 +352,7 @@
             "description_long": "OpenAI GPT Image 2 Low 轻量图像生成模型，在保持画质的同时提供更快生成速度和更低成本，适合大批量图像生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.045,
+        "min_user_unit_price_usd": 0.006,
         "metered_charge_unit": "image_count"
       }
     },
@@ -381,7 +381,7 @@
             "description_long": "OpenAI GPT Image 2 Medium 均衡图像生成模型，在画质和速度之间取得良好平衡，适合通用图像创作和内容生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.1,
+        "min_user_unit_price_usd": 0.053,
         "metered_charge_unit": "image_count"
       }
     },
@@ -499,7 +499,7 @@
             "description_long": "生数科技 Vidu Q2 图像生成模型，国内首个纯自研 AI 生成模型系列，支持文生图和高质量视觉内容生成，在画质和风格表现方面表现优秀。 由生数科技研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.02593103,
+        "min_user_unit_price_usd": 0.0289,
         "metered_charge_unit": "image_count"
       }
     },
@@ -532,7 +532,7 @@
             "description_long": "阿里通义千问 Qwen Image 图像生成模型，基于通义大模型的多模态能力，支持高质量文生图，在中文理解和东方美学风格方面表现出色。 由阿里云通义研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
-        "min_user_unit_price_usd": 0.0462,
+        "min_user_unit_price_usd": 0.0385,
         "metered_charge_unit": "image_count"
       }
     }

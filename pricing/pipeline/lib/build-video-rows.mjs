@@ -77,8 +77,6 @@ export function buildVideoSupplierTableHeader(sup = {}) {
     "厂商官方价",
     `供应商挂牌(${unit})`,
     "供应商vs官方",
-    "折扣",
-    `成本(${unit})`,
   ];
 }
 
@@ -94,8 +92,6 @@ function pushVideoRow(rows, rowNum, show, fields) {
     fields.vendorOfficial ?? "—",
     fields.supplierListed ?? "—",
     fields.supplierVsOfficial ?? "—",
-    "待填",
-    "待填",
   ]);
 }
 

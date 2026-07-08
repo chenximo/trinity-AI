@@ -1,10 +1,16 @@
 /**
- * 生图刊例校验总表：厂商官方价（锚）· AIGC 国内/国际 · TokenHub · 火山 · 线上刊例
+ * 生图刊例校验总表：厂商官方价（锚）· AIGC 国内/国际 · TokenHub · OpenRouter · 线上刊例
  */
 
 import { readFile } from "node:fs/promises";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
+import {
+  L4_COMPARE_IDENTITY_HEADERS,
+  L4_COMPARE_REF_PRICE_HEADERS,
+  L4_COMPARE_VS_OFFICIAL_HEADERS,
+  MERGE_COMPARE_IDENTITY,
+} from "./compare-l4-columns.mjs";
 import { writeCsv } from "./export-excel.mjs";
 import { parseNum } from "./pricing-compare.mjs";
 import {
@@ -184,12 +190,6 @@ function tokenhubImagePriceAt(thModel, offTier) {
   return hit?.price ?? tiers[0]?.price ?? null;
 }
 
-function volcengineImagePriceAt(volModel, offTier) {
-  const tiers = volcengineImageTiersForCompare(volModel);
-  const hit = findCompareTierByKey(tiers, offTier.tierKey);
-  return hit?.price ?? tiers[0]?.price ?? null;
-}
-
 function aigcPriceAtSite(aigcModel, mapRef, offTier) {
   const tiers = aigcImageTiersForCompare(aigcModel, mapRef);
   const hit = findCompareTierByKey(tiers, offTier.tierKey);
@@ -265,12 +265,12 @@ function buildUnmappedRow(off, offTier, vendorModelId) {
     aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
-    volcengine: "—",
+    openRouter: "—",
     online: "—",
     aigcDomVsOfficial: "—",
     aigcIntlVsOfficial: "—",
     thVsOfficial: "—",
-    volVsOfficial: "—",
+    orVsOfficial: "—",
     listingConclusion: "— 未接入",
     note: off.trinityNote ?? "",
     officialStatus: off.fetchStatus ?? "",
@@ -289,12 +289,12 @@ function buildMappedNoListingRow(off, offTier, vendorModelId, trinityId) {
     aigcDom: "—",
     aigcIntl: "—",
     tokenhub: "—",
-    volcengine: "—",
+    openRouter: "—",
     online: "—",
     aigcDomVsOfficial: "—",
     aigcIntlVsOfficial: "—",
     thVsOfficial: "—",
-    volVsOfficial: "—",
+    orVsOfficial: "—",
     listingConclusion: "— 未上架",
     note: off.trinityNote ?? "",
     officialStatus: off.fetchStatus ?? "",
@@ -325,7 +325,6 @@ function buildImageTierRow(ctx) {
   const domPrice = aigcPriceAtSite(aigcDom, aigcMapRef, offTier);
   const intlPrice = aigcPriceAtSite(aigcIntl, aigcMapRef, offTier);
   const thPrice = tokenhubImagePriceAt(thModel, offTier);
-  const volPrice = volcengineImagePriceAt(volModel, offTier);
 
   const onlineTier = pickOnlineTier(onlineTiers, offTier);
   const onlinePrice = onlineTier?.price ?? null;
@@ -341,11 +340,6 @@ function buildImageTierRow(ctx) {
     currency === "CNY"
       ? evaluateImageDomesticVsOfficial(offPrice, thPrice, currency)
       : evaluateImageIntlVsOfficial(offPrice, thPrice, currency);
-
-  const volCmp =
-    currency === "CNY"
-      ? evaluateImageDomesticVsOfficial(offPrice, volPrice, currency)
-      : evaluateImageIntlVsOfficial(offPrice, volPrice, currency);
 
   const onlineCmp = evaluateImagePriceVsOfficial(
     offPrice,
@@ -401,12 +395,12 @@ function buildImageTierRow(ctx) {
     aigcDom: domPrice != null ? formatImagePrice(domPrice, "CNY") : "—",
     aigcIntl: intlPrice != null ? formatImagePrice(intlPrice, "USD") : "—",
     tokenhub: thPrice != null ? formatImagePrice(thPrice, "CNY") : "—",
-    volcengine: volPrice != null ? formatImagePrice(volPrice, "CNY") : "—",
+    openRouter: "—",
     online: onlinePrice != null ? formatImagePrice(onlinePrice, "USD") : "—",
     aigcDomVsOfficial,
     aigcIntlVsOfficial,
     thVsOfficial: thCmp.text,
-    volVsOfficial: volCmp.text,
+    orVsOfficial: "—",
     listingConclusion,
     note: note ?? "",
     officialStatus: off.fetchStatus ?? "",
@@ -642,21 +636,12 @@ export async function loadImageCompareHubContext(opts = {}) {
 
 export function buildImageCompareExcelRows(report) {
   const header = [
-    "原厂 modelId",
-    "Trinity ID",
-    "显示名",
-    "厂商",
+    ...L4_COMPARE_IDENTITY_HEADERS,
     "分辨率档",
-    "厂商官方",
-    "AIGC国内",
-    "AIGC国际",
-    "TokenHub",
-    "火山方舟",
+    "厂商官方价",
+    ...L4_COMPARE_REF_PRICE_HEADERS,
     "线上刊例",
-    "AIGC国内vs官方",
-    "AIGC国际vs官方",
-    "TokenHub vs官方",
-    "火山vs官方",
+    ...L4_COMPARE_VS_OFFICIAL_HEADERS,
     "刊例结论",
     "备注",
   ];
@@ -677,12 +662,12 @@ export function buildImageCompareExcelRows(report) {
       r.aigcDom ?? "",
       r.aigcIntl ?? "",
       r.tokenhub ?? "",
-      r.volcengine ?? "",
+      r.openRouter ?? "",
       r.online ?? "",
       r.aigcDomVsOfficial ?? "",
       r.aigcIntlVsOfficial ?? "",
       r.thVsOfficial ?? "",
-      r.volVsOfficial ?? "",
+      r.orVsOfficial ?? "",
       r.listingConclusion ?? "",
       r.note ?? "",
     ]);
@@ -740,7 +725,8 @@ export function renderImageCompareHubMarkdown(report) {
         : ""),
     `> **行轴**：\`suppliers/official/output/image/vendor-pricing.json\` 全量`,
     `> 厂商官方价：\`suppliers/official/output/image/vendor-pricing.json\`（${report.officialFetchedAt?.slice(0, 19) ?? "—"}Z）`,
-    `> AIGC：\`suppliers/aigc\` · TokenHub · 火山方舟`,
+    `> AIGC：\`suppliers/aigc\` · TokenHub · OpenRouter（生图 OR 暂无价目时填 —）`,
+    `> 火山方舟等 L3 转售见供应商分表，不进刊例对比主表`,
     `> 线上刊例：\`output/online/prices-api.json\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 国内官方 CNY→USD：÷${report.fxOnlineDomestic}`,
   ];
@@ -751,7 +737,4 @@ export function renderImageCompareHubMarkdown(report) {
   return lines.join("\n");
 }
 
-export const MERGE_COMPARE_IMAGE = {
-  cols: [1, 2, 3, 4],
-  rows: true,
-};
+export const MERGE_COMPARE_IMAGE = MERGE_COMPARE_IDENTITY;

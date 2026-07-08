@@ -267,7 +267,6 @@ export const VALIDATE_SAMPLE_JSON = path.join(OUT_VALIDATE_DIR, "sample.json");
 export const CONFIG_DIR = path.join(PRICING_ROOT, "config");
 export const SUPPLIERS_DIR = path.join(PRICING_ROOT, "suppliers");
 
-export const DISCOUNTS_FILE = path.join(CONFIG_DIR, "supplier-discounts.json");
 export const TOKENHUB_FILE = path.join(
   SUPPLIERS_DIR,
   "tokenhub/output/pricing-console-api.json",

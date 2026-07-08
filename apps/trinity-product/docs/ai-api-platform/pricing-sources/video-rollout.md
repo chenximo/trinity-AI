@@ -92,6 +92,7 @@ npm run pricing:upstream:video   # 自动拉最新线上价对比
 ```
 
 产出：`trinity-pricing-video.xlsx` · Sheet「刊例对比校验-生视频」  
+主表进货列与生文/生图一致：**AIGC国内 · AIGC国际 · TokenHub · OpenRouter**（火山方舟仅 L3 分表）  
 覆盖检查：`output/upstream/coverage-video.md`（P6 线上 slug 不可少）
 
 ---

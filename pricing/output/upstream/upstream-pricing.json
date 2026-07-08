@@ -1,6 +1,6 @@
 {
   "source": "trinity_upstream_pricing",
-  "generatedAt": "2026-07-06T10:02:50.667Z",
+  "generatedAt": "2026-07-08T06:32:44.304Z",
   "trinityModelCount": 59,
   "trinityApiUrl": "https://api.trinitydesk.ai/v1/models?modality=text",
   "scrapedAt": "2026-06-30",
@@ -80,21 +80,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 0,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 0
         }
       ]
     },
@@ -145,21 +131,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -210,21 +182,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -275,21 +233,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -340,21 +284,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -405,21 +335,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 0,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 0
         }
       ]
     },
@@ -470,21 +386,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         },
         {
           "tierKey": "t:0-32k",
@@ -521,21 +423,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 1,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 1
         },
         {
           "tierKey": "t:idx-1",
@@ -572,21 +460,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 1,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 1
         }
       ]
     },
@@ -637,21 +511,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 6,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 6
         }
       ]
     },
@@ -702,21 +562,7 @@
           "cmpOut": "一致",
           "cmpCache": "仅TokenHub",
           "summary": "—",
-          "supplierCount": 6,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 6
         }
       ]
     },
@@ -767,21 +613,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "mod:audio",
@@ -818,21 +650,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -883,21 +701,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -948,21 +752,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1013,21 +803,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "ctx:200k+",
@@ -1064,21 +840,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1129,21 +891,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "mod:audio",
@@ -1180,21 +928,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1245,21 +979,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "mod:audio",
@@ -1296,21 +1016,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1361,21 +1067,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "mod:audio",
@@ -1412,21 +1104,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -1477,21 +1155,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "ctx:200k+",
@@ -1528,21 +1192,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1593,21 +1243,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "mod:audio",
@@ -1644,21 +1280,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1709,21 +1331,7 @@
           "cmpOut": "一致",
           "cmpCache": "TokenHub 0.19999999999999996 (-20%) ↓",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         },
         {
           "tierKey": "t:32k+",
@@ -1760,21 +1368,7 @@
           "cmpOut": "一致",
           "cmpCache": "TokenHub 0.30000000000000004 (-20%) ↓",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         }
       ]
     },
@@ -1825,21 +1419,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "t:32k+",
@@ -1876,21 +1456,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -1941,21 +1507,7 @@
           "cmpOut": "一致",
           "cmpCache": "TokenHub 0.10000000000000009 (-7.7%) ↓",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         },
         {
           "tierKey": "t:32k+",
@@ -1992,21 +1544,7 @@
           "cmpOut": "一致",
           "cmpCache": "TokenHub 0.3999999999999999 (-20%) ↓",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         }
       ]
     },
@@ -2057,21 +1595,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2122,21 +1646,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:32k+",
@@ -2173,21 +1683,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -2238,21 +1734,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2303,21 +1785,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2368,21 +1836,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2433,21 +1887,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2498,21 +1938,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2563,21 +1989,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2628,21 +2040,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2693,21 +2091,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2758,21 +2142,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "ctx:272k+",
@@ -2809,21 +2179,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2874,21 +2230,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -2939,21 +2281,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "ctx:272k+",
@@ -2990,21 +2318,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -3055,21 +2369,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         },
         {
           "tierKey": "ctx:272k+",
@@ -3106,21 +2406,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 4,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 4
         }
       ]
     },
@@ -3171,21 +2457,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "—",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -3236,21 +2508,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "—",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -3301,21 +2559,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "—",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -3366,21 +2610,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "—",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -3431,21 +2661,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "—",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -3496,21 +2712,7 @@
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 1,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 1
         }
       ]
     },
@@ -3561,21 +2763,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:16k-32k",
@@ -3612,21 +2800,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:32k+",
@@ -3663,21 +2837,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -3728,21 +2888,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         }
       ]
     },
@@ -3793,21 +2939,7 @@
           "cmpOut": "一致",
           "cmpCache": "TokenHub 0.0015000000000000568 (-0.1%) ↓",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -3858,21 +2990,7 @@
           "cmpOut": "一致",
           "cmpCache": "仅TokenHub",
           "summary": "—",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -3923,21 +3041,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -3988,21 +3092,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         }
       ]
     },
@@ -4053,21 +3143,7 @@
           "cmpOut": "一致",
           "cmpCache": "一致",
           "summary": "✅ 全一致",
-          "supplierCount": 5,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 5
         }
       ]
     },
@@ -4118,21 +3194,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 1,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 1
         },
         {
           "tierKey": "res:sub-1k",
@@ -4169,21 +3231,7 @@
           "cmpOut": "仅TokenHub",
           "cmpCache": "仅TokenHub",
           "summary": "仅 TokenHub",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -4234,21 +3282,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:128k-256k",
@@ -4285,21 +3319,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:256k-1m",
@@ -4336,21 +3356,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -4401,21 +3407,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "—",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -4466,21 +3458,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:128k-256k",
@@ -4517,21 +3495,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:256k-1m",
@@ -4568,21 +3532,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -4633,21 +3583,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "—",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -4698,21 +3634,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.02 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:128k-256k",
@@ -4749,21 +3671,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.08 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:256k-1m",
@@ -4800,21 +3708,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.12 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -4865,21 +3759,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.08 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:128k-256k",
@@ -4916,21 +3796,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.2 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         },
         {
           "tierKey": "t:256k-1m",
@@ -4967,21 +3833,7 @@
           "cmpOut": "一致",
           "cmpCache": "百炼 +0.4 (+100%) ↑",
           "summary": "⚠️ 仅缓存百炼贵",
-          "supplierCount": 3,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 3
         }
       ]
     },
@@ -5032,21 +3884,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:256k-1m",
@@ -5083,21 +3921,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -5148,21 +3972,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:256k-1m",
@@ -5199,21 +4009,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -5264,21 +4060,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     },
@@ -5329,21 +4111,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         },
         {
           "tierKey": "t:256k-1m",
@@ -5380,21 +4148,7 @@
           "cmpOut": "仅百炼",
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
-          "supplierCount": 2,
-          "thDiscount": null,
-          "blDiscount": null,
-          "aigcDomDiscount": null,
-          "aigcIntlDiscount": null,
-          "volDiscount": null,
-          "wjDiscount": null,
-          "rcDiscount": null,
-          "wjCost": null,
-          "rcCost": null,
-          "thCost": null,
-          "blCost": null,
-          "aigcDomCost": null,
-          "aigcIntlCost": null,
-          "volCost": null
+          "supplierCount": 2
         }
       ]
     }

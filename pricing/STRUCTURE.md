@@ -225,7 +225,9 @@ node pricing/suppliers/official/gen-table.mjs --modality=image
 
 ```
 config/
-└── supplier-discounts.json     # 上游折扣；改后重跑 pricing:upstream
+├── channels-image.mjs
+├── channels-video.mjs
+└── …                         # 渠道配置；成本折扣见产品手册 supplier-cost-discounts.md
 ```
 
 ---

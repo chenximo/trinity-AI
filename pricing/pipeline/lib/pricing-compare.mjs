@@ -179,34 +179,3 @@ export function fmtPriceTriple(input, output, cache) {
   return `${f(input)} / ${f(output)} / ${f(cache)}`;
 }
 
-export function applyDiscount(price, discount) {
-  const p = parseNum(price);
-  if (p == null || discount == null) return null;
-  const d = Number(discount);
-  if (!Number.isFinite(d)) return null;
-  return String(Math.round(p * d * 10000) / 10000);
-}
-
-export function calcCostTriple(input, output, cache, discount) {
-  if (discount == null) return null;
-  return {
-    input: applyDiscount(input, discount),
-    output: applyDiscount(output, discount),
-    cache: applyDiscount(cache, discount),
-  };
-}
-
-export function fmtDiscount(discount) {
-  if (discount == null) return "待填";
-  const d = Number(discount);
-  if (!Number.isFinite(d)) return "待填";
-  if (d === 1) return "100%（无折扣）";
-  return `${Math.round(d * 1000) / 10}%`;
-}
-
-export function fmtCostCell(discount, input, output, cache) {
-  if (discount == null) return "待填";
-  const cost = calcCostTriple(input, output, cache, discount);
-  if (!cost) return "待填";
-  return fmtPriceTriple(cost.input, cost.output, cost.cache);
-}

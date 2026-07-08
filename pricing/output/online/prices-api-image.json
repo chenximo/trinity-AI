@@ -1,0 +1,1356 @@
+{
+  "source": "trinity_prices_api",
+  "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=image",
+  "modality": "image",
+  "fxCnyPerUsd": 7.25,
+  "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
+  "fetchedAt": "2026-07-08T06:32:49.751Z",
+  "modelCount": 18,
+  "object": "list",
+  "data": [
+    {
+      "object": "model_prices",
+      "model": "GG-2.5",
+      "display_name": "Nano-2.5",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.051",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.039",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.063",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "GG-3.0",
+      "display_name": "Nano-3.0",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.134",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.13 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.134",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.13 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "GG-3.1",
+      "display_name": "Nano-3.1",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "lt_1k",
+          "conditions_summary": "lt_1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "lt_1k",
+            "resolution_tier": "lt_1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0513",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.101",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.10 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.067",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.07 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.151",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.15 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Hunyuan-3.0",
+      "display_name": "Hunyuan-3.0",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Jimeng-4.0",
+      "display_name": "Jimeng-4.0",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Kling-2.1",
+      "display_name": "Kling-2.1",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "text_to_image",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0154",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.02 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "multi_reference_image",
+            "pricing_tier": "2k_image2-max",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0154",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.02 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "text_to_image",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0154",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.02 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "multi_reference_image",
+            "pricing_tier": "1k_image2-max",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0154",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.02 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Kling-3.0",
+      "display_name": "Kling-3.0",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0616",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Kling-3.0-omni",
+      "display_name": "Kling-3.0-Omni",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0616",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Kling-O1",
+      "display_name": "Kling-O1",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0616",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "MJ-v7",
+      "display_name": "Midjourney-v7",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.039",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.063",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.051",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "OG-image2-high",
+      "display_name": "Image-2.0 High",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.211",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.21 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.712",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.71 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.428",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.43 / 张"
+            }
+          }
+        },
+        {
+          "type": "dimension_set",
+          "label": "条件计价",
+          "conditions": {
+            "variant": "input_image_per_image",
+            "pricing_tier": "input_per_image"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.10 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "OG-image2-low",
+      "display_name": "Image-2.0 Low",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.006",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.01 / 张"
+            }
+          }
+        },
+        {
+          "type": "dimension_set",
+          "label": "条件计价",
+          "conditions": {
+            "variant": "input_image_per_image",
+            "pricing_tier": "input_per_image"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.10 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.02",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.02 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.012",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.01 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "OG-image2-medium",
+      "display_name": "Image-2.0 Medium",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "dimension_set",
+          "label": "条件计价",
+          "conditions": {
+            "variant": "input_image_per_image",
+            "pricing_tier": "input_per_image"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.10 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.053",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.178",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.18 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.107",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.11 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "qwen-0925",
+      "display_name": "Qwen-0925",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "SI-4.0",
+      "display_name": "Seedream-4.0",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0308",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "SI-4.5",
+      "display_name": "Seedream-4.5",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "SI-5.0-lite",
+      "display_name": "Seedream-5.0-lite",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "Vidu-q2",
+      "display_name": "Vidu Q2",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "text_to_image",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0481",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "reference_1_3",
+            "pricing_tier": "1k_image1-3",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0289",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "reference_1_3",
+            "pricing_tier": "2k_image1-3",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "text_to_image",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0289",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "reference_4_7",
+            "pricing_tier": "2k_image4-7",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "text_to_image",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0385",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "reference_4_7",
+            "pricing_tier": "1k_image4-7",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0289",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-08T16:00:00Z"
+    }
+  ]
+}

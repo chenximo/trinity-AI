@@ -77,7 +77,8 @@ export const VIDEO_CONNECTED_SUPPLIERS = VIDEO_SUPPLIERS.filter((c) => c.connect
 export const VIDEO_PENDING_SUPPLIERS = VIDEO_SUPPLIERS.filter((c) => !c.connected);
 export const VIDEO_L2_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l2);
 export const VIDEO_L3_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l3);
-export const VIDEO_L4_COMPARE_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l4 !== false);
+/** 刊例对比主表可展示的进货参照列（L2 + OpenRouter；不含 L3 火山/TokenHub 参照） */
+export const VIDEO_L4_COMPARE_CHANNELS = VIDEO_SUPPLIERS.filter((c) => c.l4 === true);
 /** Excel 供应商分表（已接入 + 火山方舟参照） */
 export const VIDEO_L3_SHEET_SUPPLIERS = VIDEO_SUPPLIERS.filter(
   (c) => c.connected || c.key === "volcengine",

@@ -63,6 +63,7 @@
 |---|-----|------|------|
 | P3-1 | Annotation 登记中心 | ⬜ | 口径不同 / 渠道少档统一登记 |
 | P3-2 | Modality plugin 抽象 | ⬜ | compare-hub / build-official adapter |
+| P3-6 | 刊例对比主表列统一 | ✅ | `compare-l4-columns.mjs` · 三模态 L2+OR · 去 L3 列 |
 | P3-3 | 轻量 CI | ⬜ | PR 改 pricing 跑 gate --skip-official-fetch |
 | P3-4 | `trinity-product-handbook` 联动规则 | ⬜ | pricing 命令变更 → 同步 pricing-sources |
 | P3-5 | JSON 产物瘦身 | ✅ | `pricing:clean` · gitignore 衍生文件 · 默认不写 publish log |

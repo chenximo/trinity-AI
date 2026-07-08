@@ -1,4 +1,3 @@
-import { fmtDiscount, fmtCostCell } from "./pricing-compare.mjs";
 import {
   CNY_PER_M,
   USD_PER_M,
@@ -145,8 +144,6 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-        "待填",
-        "待填",
       ]);
     }
   }
@@ -194,8 +191,6 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-        "—",
-        "—",
       ]);
     }
   }
@@ -220,8 +215,6 @@ export function buildOfficialDirectCatalogRows(
         "厂商官方价",
         "供应商挂牌(元或USD/百万tokens)",
         "供应商vs官方",
-        "折扣",
-        "成本(元或USD/百万tokens)",
       ]
     : buildSupplierTableHeader({ catalog });
 
@@ -260,8 +253,6 @@ export function buildOfficialDirectCatalogRows(
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-        "—",
-        "—",
       ]);
     }
   }
@@ -304,10 +295,6 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
       const t = tierRows[i];
       rowNum++;
       const show = i === 0;
-      const discount = t[sup.discountKey];
-      const cost = t[sup.costKey];
-      const hasSupplier = t[sup.inKey] != null || t[sup.outKey] != null;
-      const discStr = discount != null ? fmtDiscount(discount) : "待填";
 
       const supplierPrices = {
         input: t[sup.inKey],
@@ -324,16 +311,6 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
           { tierIndex: i, tierTotal: tierRows.length },
         );
 
-      const costStr =
-        !hasSupplier || discount == null
-          ? "待填"
-          : fmtCostCell(
-              discount,
-              t[sup.inKey],
-              t[sup.outKey],
-              t[sup.cacheKey],
-            );
-
       rows.push([
         rowNum,
         show ? m.trinityId : "",
@@ -344,8 +321,6 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-        discStr,
-        costStr,
       ]);
     }
   }
