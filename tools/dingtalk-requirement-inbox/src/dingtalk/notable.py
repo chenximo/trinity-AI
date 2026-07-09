@@ -19,9 +19,62 @@ TZ_CN = ZoneInfo("Asia/Shanghai")
 TYPE_LABELS = {
     "bug": "Bug",
     "feature": "需求",
-    "doc": "文档",
-    "question": "咨询",
+    "optimization": "优化",
 }
+
+DEFAULT_PRIORITY = {
+    "bug": "P0",
+    "feature": "P1",
+    "optimization": "P2",
+}
+
+TEAM_REPORTER_NAMES = ("崔宇光", "李玲", "任晓雷")
+
+
+DEFAULT_OWNER_NAMES = {
+    "bug": "崔宇光",
+    "feature": "李玲",
+    "optimization": "崔宇光",
+}
+
+
+def team_union_ids(settings: Settings) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    if settings.notable_owner_default_union_id.strip():
+        mapping["崔宇光"] = settings.notable_owner_default_union_id.strip()
+    if settings.notable_owner_product_union_id.strip():
+        mapping["李玲"] = settings.notable_owner_product_union_id.strip()
+    if settings.notable_team_renxiaolei_union_id.strip():
+        mapping["任晓雷"] = settings.notable_team_renxiaolei_union_id.strip()
+    return mapping
+
+
+def resolve_owner_name(item_type: str) -> str:
+    return DEFAULT_OWNER_NAMES.get(item_type, "崔宇光")
+
+
+def format_rich_text(value: str) -> list[dict[str, str]]:
+    text = (value or "").strip()
+    if not text:
+        return []
+    return [{"type": "text", "text": text}]
+
+
+def format_user_field(union_id: str) -> list[dict[str, str]]:
+    uid = union_id.strip()
+    if not uid:
+        return []
+    return [{"unionId": uid}]
+
+
+def normalize_reporter(name: str) -> str:
+    text = (name or "").strip()
+    if not text:
+        return ""
+    for known in TEAM_REPORTER_NAMES:
+        if known in text or text in known:
+            return known
+    return text
 
 
 def attachment_target_indices(candidates: list[dict[str, Any]], attachment_count: int) -> set[int]:
@@ -38,12 +91,36 @@ def attachment_target_indices(candidates: list[dict[str, Any]], attachment_count
     return set()
 
 
-def _format_problem_description(candidate: dict[str, Any]) -> str:
-    title = (candidate.get("title") or "").strip()
-    summary = (candidate.get("summary") or "").strip()
-    if title and summary:
-        return f"{title}\n\n{summary}"
-    return title or summary
+def build_notable_fields(
+    *,
+    batch_id: str,
+    session_summary: str,
+    candidate: dict[str, Any],
+    attachments: list[dict[str, Any]],
+    screenshot_field: str,
+    settings: Settings,
+) -> dict[str, Any]:
+    """Map one candidate to DingTalk Notable column names (must match sheet headers)."""
+    item_type = candidate.get("type", "")
+    reporter = normalize_reporter(candidate.get("reporter", ""))
+    fields: dict[str, Any] = {
+        "类型": TYPE_LABELS.get(item_type, "需求"),
+        "标题": (candidate.get("title") or "").strip(),
+        "问题描述": format_rich_text(candidate.get("summary") or ""),
+        "所属模块": candidate.get("module_suggestion", ""),
+        "优先级": DEFAULT_PRIORITY.get(item_type, "P1"),
+        "处理进度": "待确认",
+        "负责人": resolve_owner_name(item_type),
+        "会话摘要": session_summary,
+    }
+    reporter_union_id = team_union_ids(settings).get(reporter)
+    if reporter_union_id:
+        fields["发现者"] = format_user_field(reporter_union_id)
+    elif reporter:
+        logger.warning("reporter_union_id_missing name=%s", reporter)
+    if attachments:
+        fields[screenshot_field] = attachments
+    return fields
 
 
 class NotableWriter:
@@ -56,8 +133,6 @@ class NotableWriter:
         batch_id: str,
         session_summary: str,
         candidates: list[dict[str, Any]],
-        conversation_id: str,
-        trigger_message_id: str,
         trigger_images: list[DownloadedImage] | None = None,
     ) -> int:
         if not self.settings.notable_write_enabled:
@@ -78,8 +153,6 @@ class NotableWriter:
                 batch_id=batch_id,
                 session_summary=session_summary,
                 candidate=candidate,
-                conversation_id=conversation_id,
-                trigger_message_id=trigger_message_id,
                 attachments=attachments,
             )
             created += 1
@@ -173,8 +246,6 @@ class NotableWriter:
         batch_id: str,
         session_summary: str,
         candidate: dict[str, Any],
-        conversation_id: str,
-        trigger_message_id: str,
         attachments: list[dict[str, Any]],
     ) -> None:
         base_id = self.settings.notable_base_id
@@ -185,21 +256,15 @@ class NotableWriter:
                 "NOTABLE_BASE_ID / NOTABLE_SHEET_ID(or NAME) / NOTABLE_OPERATOR_UNION_ID required"
             )
 
-        fields: dict[str, Any] = {
-            "批次 ID": batch_id,
-            "类型": TYPE_LABELS.get(candidate.get("type", ""), "咨询"),
-            "问题描述": _format_problem_description(candidate),
-            "所属模块": candidate.get("module_suggestion", ""),
-            "发现者": candidate.get("reporter", ""),
-            "处理进度": "待确认",
-            "原消息链接": candidate.get("message_link", ""),
-            "会话摘要": session_summary,
-            "群 ID": conversation_id,
-            "触发消息 ID": trigger_message_id,
-        }
-        screenshot_field = self.settings.notable_screenshot_field.strip() or "截图"
-        if attachments:
-            fields[screenshot_field] = attachments
+        screenshot_field = self.settings.notable_screenshot_field.strip() or "图片和附件"
+        fields = build_notable_fields(
+            batch_id=batch_id,
+            session_summary=session_summary,
+            candidate=candidate,
+            attachments=attachments,
+            screenshot_field=screenshot_field,
+            settings=self.settings,
+        )
 
         path = (
             f"https://api.dingtalk.com/v1.0/notable/bases/{base_id}"

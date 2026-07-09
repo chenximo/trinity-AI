@@ -1,0 +1,17 @@
+[Unit]
+Description=Trinity DingTalk Requirement Inbox (Stream)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=trinity
+Group=trinity
+WorkingDirectory=/opt/trinity-AI/tools/dingtalk-requirement-inbox
+EnvironmentFile=/opt/trinity-AI/tools/dingtalk-requirement-inbox/.env
+ExecStart=/opt/trinity-AI/tools/dingtalk-requirement-inbox/.venv/bin/python -m src.main stream
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

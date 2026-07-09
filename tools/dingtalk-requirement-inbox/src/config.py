@@ -25,9 +25,12 @@ class Settings(BaseSettings):
     notable_sheet_name: str = ""
     notable_sheet_id: str = ""
     notable_operator_union_id: str = ""
+    notable_owner_default_union_id: str = ""
+    notable_owner_product_union_id: str = ""
+    notable_team_renxiaolei_union_id: str = ""
     notable_doc_url: str = ""
     notable_attach_images_enabled: bool = True
-    notable_screenshot_field: str = "截图"
+    notable_screenshot_field: str = "图片和附件"
 
     trinity_base_url: str = "https://api.trinitydesk.ai/v1"
     trinity_api_key: str = ""

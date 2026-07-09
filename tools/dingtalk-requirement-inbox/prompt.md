@@ -8,21 +8,27 @@
 
 ## 类型（type）
 
-- `bug`：可复现缺陷、报错、功能不可用
-- `feature`：新能力、体验改进
-- `doc`：文档、配置、最佳实践缺口
-- `question`：已当场解答的咨询（一般 PM 会忽略）
-- `noise`：闲聊、致谢、表情 — **不要放进 candidates**
+- `bug`：可复现缺陷、报错、功能不可用、结果错误
+- `feature`：新能力、新场景——当前产品做不到、需要新建能力
+- `optimization`：现有功能能用，但体验差、慢、流程别扭、文案不清、文档缺口等改进项
+- `noise`：闲聊、致谢、表情、已当场解答的纯咨询 — **不要放进 candidates**
+
+### 类型边界
+
+- 坏了 / 错了 → `bug`
+- 现在没有、要做新能力 → `feature`
+- 有但不够好（含文档、配置体验） → `optimization`
+- 拿不准时：偏现象损坏用 `bug`，偏体验改进用 `optimization`
 
 ## 必须提取
 
 - 断流、报错、不兼容、无法使用的现象
-- 配置体验差可标 `feature` 或 `doc`
 - 消息 `has_image` 为 true 时，相关 candidate 标 `has_screenshot: true`
 
 ## 必须忽略
 
 - 纯致谢、表情、无产品结论的闲聊（除非引出明确产品问题）
+- 已当场解答、无需跟进的咨询
 
 ## module_suggestion
 
@@ -34,13 +40,18 @@
 - 文档站
 - 内部工具
 
+## reporter（发现者）
+
+- **必须**从输入消息的 `sender_name` 里取，写对话里真实出现过的姓名
+- 团队成员：崔宇光、李玲、任晓雷（用全名，与群昵称一致时取最接近的）
+- 不要把未在对话中出现的人写成发现者
+
 ## 字段要求
 
-- `title`：一句话标题
-- `summary`：现象 + 环境 + 当前结论（不含 API Key、密码、客户隐私）
-- `reporter`：提出人姓名（从 sender_name 推断）
+- `title`：一句话标题，列表可扫读
+- `summary`：现象 + 环境 + 当前结论（不含 API Key、密码、客户隐私）；不要重复 title 全文
+- `reporter`：发现者姓名（见上节）
 - `has_screenshot`：若相关消息 `has_image` 为 true 则为 true
-- `message_link`：使用输入中相关消息的 `message_link`（可为空字符串）
 - `confidence`：`high` / `medium` / `low`
 
 ## 禁止

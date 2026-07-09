@@ -86,8 +86,6 @@ async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str
             batch_id=batch_id,
             session_summary=extraction.get("session_summary", ""),
             candidates=writable,
-            conversation_id=conversation_id,
-            trigger_message_id=trigger_message["message_id"],
             trigger_images=trigger_images,
         )
         reply = (

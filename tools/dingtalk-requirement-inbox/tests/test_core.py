@@ -7,7 +7,12 @@ from pathlib import Path
 from src.config import Settings
 from src.dingtalk.incoming import extract_download_codes
 from src.dingtalk.messages import fetch_conversation_messages
-from src.dingtalk.notable import attachment_target_indices
+from src.dingtalk.notable import (
+    attachment_target_indices,
+    build_notable_fields,
+    normalize_reporter,
+    resolve_owner_name,
+)
 from src.dingtalk.reply import build_quoted_message, has_quoted_reply
 from src.dingtalk.robot_files import guess_image_type
 from src.pipeline import build_trigger_message, is_trigger
@@ -155,6 +160,80 @@ def test_guess_image_type_png():
     media_type, ext = guess_image_type(b"\x89PNG\r\n\x1a\n" + b"rest")
     assert media_type == "image/png"
     assert ext == ".png"
+
+
+def test_build_notable_fields_pm_columns():
+    settings = Settings(
+        notable_owner_default_union_id="cui-uid",
+        notable_owner_product_union_id="li-uid",
+        notable_team_renxiaolei_union_id="ren-uid",
+    )
+    fields = build_notable_fields(
+        batch_id="20260709-1630-abcd",
+        session_summary="讨论断流问题",
+        candidate={
+            "type": "optimization",
+            "title": "CC Switch 断流",
+            "summary": "切换后流中断，复现于 Safari",
+            "module_suggestion": "用户侧",
+            "reporter": "任晓雷",
+        },
+        attachments=[],
+        screenshot_field="图片和附件",
+        settings=settings,
+    )
+    assert fields["类型"] == "优化"
+    assert fields["标题"] == "CC Switch 断流"
+    assert fields["问题描述"] == [{"type": "text", "text": "切换后流中断，复现于 Safari"}]
+    assert fields["处理进度"] == "待确认"
+    assert fields["优先级"] == "P2"
+    assert fields["负责人"] == "崔宇光"
+    assert fields["发现者"] == [{"unionId": "ren-uid"}]
+    assert "群 ID" not in fields
+
+
+def test_build_notable_fields_type_labels():
+    settings = Settings()
+    for raw, label, priority in [
+        ("bug", "Bug", "P0"),
+        ("feature", "需求", "P1"),
+        ("optimization", "优化", "P2"),
+    ]:
+        fields = build_notable_fields(
+            batch_id="b1",
+            session_summary="s",
+            candidate={"type": raw, "title": "t", "summary": "d"},
+            attachments=[],
+            screenshot_field="图片和附件",
+            settings=settings,
+        )
+        assert fields["类型"] == label
+        assert fields["优先级"] == priority
+
+
+def test_normalize_reporter_known_names():
+    assert normalize_reporter("李玲") == "李玲"
+    assert normalize_reporter("PM李玲") == "李玲"
+
+
+def test_resolve_owner_name():
+    assert resolve_owner_name("bug") == "崔宇光"
+    assert resolve_owner_name("feature") == "李玲"
+    assert resolve_owner_name("optimization") == "崔宇光"
+
+
+def test_build_notable_fields_owner():
+    settings = Settings(notable_owner_product_union_id="product-uid")
+    fields = build_notable_fields(
+        batch_id="b1",
+        session_summary="s",
+        candidate={"type": "feature", "title": "t", "summary": "d", "reporter": "李玲"},
+        attachments=[],
+        screenshot_field="图片和附件",
+        settings=settings,
+    )
+    assert fields["负责人"] == "李玲"
+    assert fields["发现者"] == [{"unionId": "product-uid"}]
 
 
 def test_codex_fixture():

@@ -19,20 +19,18 @@
           "module_suggestion",
           "reporter",
           "has_screenshot",
-          "message_link",
           "confidence"
         ],
         "properties": {
           "type": {
             "type": "string",
-            "enum": ["bug", "feature", "doc", "question", "noise"]
+            "enum": ["bug", "feature", "optimization", "noise"]
           },
           "title": { "type": "string", "minLength": 1 },
           "summary": { "type": "string", "minLength": 1 },
           "module_suggestion": { "type": "string" },
           "reporter": { "type": "string" },
           "has_screenshot": { "type": "boolean" },
-          "message_link": { "type": "string" },
           "confidence": {
             "type": "string",
             "enum": ["high", "medium", "low"]
