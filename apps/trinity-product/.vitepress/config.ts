@@ -30,6 +30,23 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "智能助手工具",
+    collapsed: false,
+    items: [
+      { text: "总览", link: "/assistant-tools/" },
+      {
+        text: "需求分析助手",
+        collapsed: false,
+        items: [
+          { text: "工具简介", link: "/assistant-tools/requirement-inbox/" },
+          { text: "待办清单", link: "/assistant-tools/requirement-inbox/todo" },
+          { text: "产品需求分析", link: "/assistant-tools/requirement-inbox/prd" },
+          { text: "路线 A 落地文档", link: "/assistant-tools/requirement-inbox/route-a" },
+        ],
+      },
+    ],
+  },
+  {
     text: "法律与合规（草案）",
     collapsed: true,
     items: [
@@ -292,6 +309,7 @@ export default withMermaid(
     siteTitle: "Trinity 产品手册",
     nav: [
       { text: "开发者文档", link: "http://127.0.0.1:5205/docs/", target: "_blank" },
+      { text: "智能助手", link: "/assistant-tools/" },
       { text: "AI 云", link: "/ai-cloud/" },
       { text: "API 聚合产品", link: "/ai-api-platform/" },
       { text: "GEO 产品", link: "/geo/" },

@@ -62,5 +62,6 @@ title: 总览
 | 业务 | 说明 | 入口 |
 |------|------|------|
 | **AI 云** | 多云营销站 + 企业用户控制台 | [产品总览](./ai-cloud/) |
+| **智能助手工具** | 内部效能助手（飞书整理、进线收件箱等） | [总览](./assistant-tools/) |
 | **AI API 聚合产品** | 对标 OpenRouter 的统一 API + 运营后台（B2B） | [能力地图](./ai-api-platform/capability-map) · [业务全景](./ai-api-platform/business-overview) · [产品总览](./ai-api-platform/) |
 | **GEO 产品** | 生成式引擎优化（GEO）SaaS：AI 可见性监测、SOA、竞品对比；[行业 Playbook](./geo/vertical-industry-playbooks) 引导 onboarding | [产品总览](./geo/) |

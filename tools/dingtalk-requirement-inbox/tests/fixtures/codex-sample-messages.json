@@ -1,0 +1,44 @@
+{
+  "messages": [
+    {
+      "message_id": "om_sample_001",
+      "sender_name": "吕超群",
+      "create_time": "2026-07-08T14:00:00+08:00",
+      "text": "我用 Codex 接 Trinity，开了 CC Switch 路由到 Opus，输出一段就断流了",
+      "has_image": false,
+      "message_link": "https://applink.feishu.cn/client/message/link/open?message_id=om_sample_001"
+    },
+    {
+      "message_id": "om_sample_002",
+      "sender_name": "张三",
+      "create_time": "2026-07-08T14:05:00+08:00",
+      "text": "日志里看到 Trinity API 拒绝了 thinking 参数",
+      "has_image": true,
+      "message_link": "https://applink.feishu.cn/client/message/link/open?message_id=om_sample_002"
+    },
+    {
+      "message_id": "om_sample_003",
+      "sender_name": "吕超群",
+      "create_time": "2026-07-08T14:12:00+08:00",
+      "text": "CC Switch 一开路由就拉不到模型列表了",
+      "has_image": false,
+      "message_link": "https://applink.feishu.cn/client/message/link/open?message_id=om_sample_003"
+    },
+    {
+      "message_id": "om_sample_004",
+      "sender_name": "李四",
+      "create_time": "2026-07-08T14:20:00+08:00",
+      "text": "Codex 直连 Trinity 的配置太绕了，有没有最佳实践文档？",
+      "has_image": false,
+      "message_link": "https://applink.feishu.cn/client/message/link/open?message_id=om_sample_004"
+    },
+    {
+      "message_id": "om_sample_005",
+      "sender_name": "王五",
+      "create_time": "2026-07-08T14:25:00+08:00",
+      "text": "好的谢谢各位",
+      "has_image": false,
+      "message_link": "https://applink.feishu.cn/client/message/link/open?message_id=om_sample_005"
+    }
+  ]
+}
