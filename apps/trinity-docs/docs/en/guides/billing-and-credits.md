@@ -151,7 +151,7 @@ If you miss an alert, check spam and confirm your registration email is delivera
 2. **Transaction ID** from Payment History (or Stripe Payment Intent ID) and **purchase time**  
 3. Reason (optional)
 
-Send to: **starsea@trinitydesk.com**
+Send to: **TrinityAIInc@outlook.com**
 
 Full legal text: [Terms of Service](https://trinitydesk.ai/legal/terms).
 
@@ -181,7 +181,7 @@ Use **Contact Sales** in the console (company name, work email, estimated monthl
 
 ### How long until balance updates after payment?
 
-Usually **within minutes** after Stripe confirms payment. If balance is unchanged after **1 hour**, email **starsea@trinitydesk.com** with your transaction ID.
+Usually **within minutes** after Stripe confirms payment. If balance is unchanged after **1 hour**, email **TrinityAIInc@outlook.com** with your transaction ID.
 
 ### Are Chat and API prices the same?
 

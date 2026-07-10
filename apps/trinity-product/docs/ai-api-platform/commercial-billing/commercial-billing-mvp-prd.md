@@ -224,7 +224,7 @@ Plan B：若 Stripe 某渠道未开通，再评估独立 ACQP/聚合商（费率
 - Payment History 中的 **交易 ID / Stripe Payment Intent / 充值时间**  
 - 退款原因（可选）  
 
-售后邮箱：**starsea@trinitydesk.com**（与 Terms / Privacy 一致）
+售后邮箱：**TrinityAIInc@outlook.com**（与官网 Contact 一致）
 
 ### 6.4 运营 SOP（摘要）
 
@@ -402,7 +402,7 @@ global-payment.md                 ← 二期 KYC/Wire
 | 2026-06-08 | 退款：规则对齐 OR（24h·未使用·24h 后不退）；**邮件售后**，MVP 无自助 Refund 按钮 |
 | 2026-06-08 | **充值费方案 A**：吸收 Stripe 通道费；充 $N 到账 $N；无 Processing fee 行 |
 | 2026-06-08 | P0 充值弹窗不含 **Use one-time payment methods**（P0.5 与绑卡/Auto top-up 同批） |
-| 2026-06-08 | **发票 / 收据 / 支付中心** 单列 §3.5 **待拍板**；公开文档占位 **待补充** |
+| 2026-07-10 | 对外 Support 邮箱以官网 Contact 为准（TrinityAIInc@outlook.com）；Refund Policy 写入 Terms §5 |
 
 ---
 

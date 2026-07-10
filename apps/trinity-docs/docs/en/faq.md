@@ -35,7 +35,7 @@ Trinity is an **AI API aggregation gateway** for developers: you call OpenAI-com
 
 <FaqItem question="How do I get support?">
 
-Email **starsea@trinitydesk.com** with:
+Email **TrinityAIInc@outlook.com** with:
 
 - Registered account email
 - Time of the issue (UTC or local)
@@ -100,7 +100,7 @@ Usually **within minutes**. If balance is unchanged after **1 hour**:
 
 1. Check your **Stripe receipt email** to confirm charge.
 2. If **not charged**, the card may have been declined — retry with another method.
-3. If **charged** but Credits missing, email **starsea@trinitydesk.com** with transaction ID and time.
+3. If **charged** but Credits missing, email **TrinityAIInc@outlook.com** with transaction ID and time.
 
 </FaqItem>
 
@@ -108,7 +108,7 @@ Usually **within minutes**. If balance is unchanged after **1 hour**:
 
 - **Window**: **24 hours** after the transaction
 - **Eligible**: **Unused** portion of that top-up — **full amount paid**
-- **How**: Email **starsea@trinitydesk.com** (account email, transaction ID from Payment History, purchase time)
+- **How**: Email **TrinityAIInc@outlook.com** (account email, transaction ID from Payment History, purchase time)
 - **Notes**: No self-serve **Refund** button; no withdrawals; consumed Credits are not refundable
 
 See [Billing & Credits · Refunds](./guides/billing-and-credits.md#refunds) and [Terms of Service](https://trinitydesk.ai/legal/terms).
@@ -285,7 +285,7 @@ Storage and logging of inputs/outputs on Trinity’s side are governed by the [P
 
 <FaqItem question="Delete account?">
 
-Email **starsea@trinitydesk.com**. Treatment of unused Credits follows [Terms of Service](https://trinitydesk.ai/legal/terms).
+Email **TrinityAIInc@outlook.com**. Treatment of unused Credits follows [Terms of Service](https://trinitydesk.ai/legal/terms).
 
 </FaqItem>
 
@@ -321,7 +321,7 @@ See [How long until balance updates after payment?](#faq-topup-delay).
 
 <FaqItem question="Docs vs live behavior">
 
-**Gateway responses are authoritative.** Report discrepancies to **starsea@trinitydesk.com** with `X-Request-Id` and steps to reproduce.
+**Gateway responses are authoritative.** Report discrepancies to **TrinityAIInc@outlook.com** with `X-Request-Id` and steps to reproduce.
 
 </FaqItem>
 

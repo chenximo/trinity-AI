@@ -153,7 +153,7 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 2. Payment History 中的 **交易 ID**（或 Stripe Payment Intent ID）与 **充值时间**
 3. 退款原因（可选）
 
-请发送至：**starsea@trinitydesk.com**
+请发送至：**TrinityAIInc@outlook.com**
 
 完整法律表述见 [服务条款](https://trinitydesk.ai/legal/terms)。
 
@@ -183,7 +183,7 @@ Trinity 对成功完成的调用 **按量扣费（Pay-as-you-go）**：
 
 ### 充值后余额多久更新？
 
-支付成功后，余额通常在 **数分钟内** 更新（取决于 Stripe webhook 与网络）。若超过 **1 小时** 仍未到账，请邮件 **starsea@trinitydesk.com** 并附上交易 ID。
+支付成功后，余额通常在 **数分钟内** 更新（取决于 Stripe webhook 与网络）。若超过 **1 小时** 仍未到账，请邮件 **TrinityAIInc@outlook.com** 并附上交易 ID。
 
 ### Chat 和 API 价格一样吗？
 
