@@ -7,6 +7,22 @@ export const TOKENHUB_TRINITY_ALIASES = {
   "deepseek-v4-pro": "deepseek-v4-pro-202606",
 };
 
+/**
+ * 供应商 modelId → Trinity ID（刊例对比主表用）
+ * @param {Iterable<string>} trinityIds
+ */
+export function buildSupplierTrinityLookup(trinityIds) {
+  const lookup = new Map();
+  for (const tid of trinityIds) {
+    if (!tid) continue;
+    lookup.set(tid.toLowerCase(), tid);
+  }
+  for (const [tid, alias] of Object.entries(TOKENHUB_TRINITY_ALIASES)) {
+    lookup.set(alias.toLowerCase(), tid);
+  }
+  return (modelId) => lookup.get(modelId?.toLowerCase()) ?? "";
+}
+
 /** @param {Map<string, object>} index @param {string} tid @param {string} [vendorId] */
 export function resolveTokenhubModel(index, tid, vendorId) {
   const t = tid?.toLowerCase();

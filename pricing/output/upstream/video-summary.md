@@ -1,6 +1,6 @@
 # 生视频刊例对比校验（与 Excel「刊例对比校验-生视频」同源）
 
-> 生成 2026-07-08T06:32:50Z · 对比单元 36 个 · 行 181 · 线上刊例 25 · 官方 catalog 34 · 完整治理 23
+> 生成 2026-07-10T07:42:56Z · 对比单元 36 个 · 行 181 · 线上刊例 25 · 官方 catalog 34 · 完整治理 23
 > **行主键**：`prices-api` 全量线上 slug ∪ 官方 catalog 补行 · 每模型按 **AIGC属性 × 分辨率** 展开
 > **进货参照（刊例对比主表）**：AIGC国内 · AIGC国际 · TokenHub · OpenRouter（不含火山等 L3）
 > **AIGC 国内 vs 国际 / 积分折算**：写入备注，不占主表列
@@ -9,7 +9,7 @@
 > **原厂按次（混元/Vidu 等）**：积分/次 ÷ 5s/次 → 元/秒(估)
 > **线上刊例**：`GET /v1/prices?modality=video` · 默认 USD/秒 · Seedance 等为 USD/百万 video tokens
 > **刊例结论**：同属性行内 · 按秒 = 线上 vs AIGC国际 · token = 线上 vs 官方 token
-> 模型映射：`config/video-model-registry.mjs`（2026-07-08T06:32:50Z）
+> 模型映射：`config/video-model-registry.mjs`（2026-07-10T07:42:56Z）
 > 刊例基准汇率：6.5（AIGC 国内÷国际）· 线上 token 折算：7.25
 > Trinity 不计积分；可灵等「积分/秒=元/秒」直接对照；「积分/次」才用参考秒数折算
 

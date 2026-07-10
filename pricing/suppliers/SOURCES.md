@@ -34,7 +34,7 @@
 | **JSON 真源** | 上表路径（百炼 scrape 会覆盖 `pricing-api.json`；中间 `bailian-pricing.json` 可本地重归一化，非对外真源） |
 | `output/pricing-table.md` | 人读全量价目表（表头以 TokenHub 为准） |
 | `output/*-sample-10.md` | 可选打样（`--count=10`） |
-| Excel | **不在供应商目录**；对外总册见 `pricing/output/trinity-pricing.xlsx`（`npm run pricing:upstream` 等增量更新 Sheet） |
+| Excel | **对外唯一真源**；`pricing/output/trinity-pricing-*.xlsx`（`npm run pricing:upstream` 等增量更新 Sheet）。供应商分表（TokenHub广州、百炼北京等）须与抓取 JSON **全量一致**，不按 Trinity 裁剪 |
 
 ## 不纳入真源
 

@@ -1,8 +1,8 @@
 {
   "schema": "trinity.pricing.alert-bundle/v1",
-  "generatedAt": "2026-07-03T09:37:17.725Z",
-  "alertCount": 7,
-  "blockingCount": 0,
+  "generatedAt": "2026-07-10T07:42:59.280Z",
+  "alertCount": 16,
+  "blockingCount": 9,
   "alerts": [
     {
       "schema": "trinity.pricing.alert/v1",
@@ -57,7 +57,7 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%); cache: 官方=0.025 百炼=2.4 (-99%)",
+      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -79,7 +79,7 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%); cache: 官方=0.025 百炼=2.4 (-99%)",
+      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -162,6 +162,175 @@
         "glm-4-7-bailian-tier-axis"
       ],
       "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5",
+      "vendorModelId": "glm-5",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入<=32k: cache: 官方=1 百炼=0.8 (25%)",
+      "tierKey": "t:0-32k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true,
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5.1",
+      "vendorModelId": "glm-5.1",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入<=32k: cache: 官方=1.3 百炼=1.2 (8.3%)",
+      "tierKey": "t:0-32k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true,
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "error",
+      "type": "supplier_tier_gap",
+      "trinityId": "minimax-m3",
+      "vendorModelId": "minimax-m3",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼档位数少于官方",
+      "detail": "官方 2 档 · 百炼 1 档。官方 keys: res:sub-1k, res:sub-1k；供应商 keys: uniform",
+      "officialTierCount": 2,
+      "supplierTierCount": 1,
+      "missingTierKeys": [
+        "res:sub-1k"
+      ],
+      "suggestedAction": "确认 百炼 scrape 完整后，联系商务确认渠道价目",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true,
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "deepseek-v3.2",
+      "title": "生文线上档位在官方锚中缺失",
+      "detail": "输入≤32k · t:0-32k",
+      "tierKey": "t:0-32k",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "4k · 线上 $0.141923 vs 草案 $0.161538 (13.8%) · 涨价",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.138462 vs 草案 $0.043103 (-68.9%) · 降价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.036154 vs 草案 $0.072308 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.075 vs 草案 $0.15 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.035 vs 草案 $0.07 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
     }
   ]
 }

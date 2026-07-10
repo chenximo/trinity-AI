@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-08T06:32:44.316Z",
+  "generatedAt": "2026-07-10T09:01:46.914Z",
   "fxOnlineDomestic": 6.5,
   "fxCnyPerUsd": 7.25,
   "openRouterFetchedAt": "2026-07-01T07:54:13.821Z",
-  "pricesFetchedAt": "2026-07-08T06:32:44.191Z",
-  "officialFetchedAt": "2026-07-06T10:01:16.637Z",
+  "pricesFetchedAt": "2026-07-10T09:01:46.591Z",
+  "officialFetchedAt": "2026-07-10T07:40:08.287Z",
   "modelCount": 49,
   "rowCount": 80,
   "rows": [

@@ -9,16 +9,16 @@
     "tokenhub": "suppliers/tokenhub/output/pricing-console-api.json",
     "volcengine": "suppliers/volcengine/output/video/pricing-api.json",
     "registry": "config/video-model-registry.mjs",
-    "officialFetchedAt": "2026-07-07T07:49:45.400Z",
-    "templateFetchedAt": "2026-07-07T06:31:38.336Z"
+    "officialFetchedAt": "2026-07-10T07:42:44.342Z",
+    "templateFetchedAt": "2026-07-10T07:42:57.095Z"
   },
-  "generatedAt": "2026-07-07T10:06:41.939Z",
+  "generatedAt": "2026-07-10T07:42:57.356Z",
   "pricedModelCount": 19,
   "noOfficialModelCount": 6,
   "tierFromOfficial": 53,
   "tierFromAigc": 23,
   "tierFromTokenhub": 0,
   "tierFromVolcengine": 0,
-  "tierUnchanged": 42,
+  "tierUnchanged": 52,
   "fallbackPolicy": "official_then_aigc_intl_then_aigc_dom_then_tokenhub_then_volcengine"
 }

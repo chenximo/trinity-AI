@@ -14,6 +14,7 @@ import {
   FX_CNY_PER_USD,
   formatOfficialSingleTier,
 } from "./compare-official-lib.mjs";
+import { parseOnlinePricesTiers } from "./parse-online-prices.mjs";
 
 /** AIGC 国内站常用 USD→CNY 挂牌系数（如 gpt-4o $2.5 → ¥18.75） */
 const FX_AIGC_DOMESTIC = 7.5;
@@ -390,6 +391,121 @@ export function officialCellsForTrinityTier(
     supplierPrices,
     supplierCurrency,
   );
+}
+
+/** 线上刊例档位对齐（同 compare-hub pickOnlineTierForRow 口径） */
+export function pickOnlineTierForSupplier(
+  onlineTiers,
+  supplierIn,
+  supplierCurrency,
+  tierLabel,
+  tierIndex = 0,
+  tierTotal = 1,
+  tierKey = null,
+) {
+  const tiers = onlineTiers ?? [];
+  if (!tiers.length) return null;
+
+  const wantKey =
+    tierKey && tierKey !== "uniform"
+      ? tierKey
+      : tierToKey(tierLabel, tierIndex, tierTotal);
+
+  if (wantKey && wantKey !== "uniform") {
+    const byKey = findTierByKey(tiers, wantKey);
+    if (byKey) return byKey;
+  }
+
+  if (tierLabel && tiers.length > 1) {
+    const want = tierToKey(tierLabel, tierIndex, tierTotal);
+    for (let i = 0; i < tiers.length; i++) {
+      const t = tiers[i];
+      const key = tierToKey(t.tierLabel ?? t.tierName, i, tiers.length);
+      if (key === want) return t;
+    }
+  }
+
+  const supIn = parseNum(supplierIn);
+  if (supIn != null) {
+    const refUsd =
+      supplierCurrency === "USD" ? supIn : supIn / FX_ONLINE_DOMESTIC;
+    const hit = pickTierClosestToRef(tiers, refUsd, {
+      currency: "USD",
+      fx: 1,
+    });
+    if (hit) return hit;
+  }
+
+  if (tiers.length === 1) return tiers[0];
+  if (tierIndex < tiers.length) return tiers[tierIndex];
+  return tiers[0] ?? null;
+}
+
+/**
+ * 供应商分表：线上刊例 vs 供应商挂牌（仅已接入 Trinity 模型有数）
+ * @param {{ onlineByModel?: Map }} officialCtx
+ */
+export function listingCellsForTrinityTier(
+  trinityId,
+  tier,
+  supplierPrices,
+  supplierCurrency,
+  officialCtx = {},
+  tierMeta = {},
+) {
+  const tid = trinityId?.trim();
+  if (!tid) {
+    return { onlineListing: "—", listingVsSupplier: "—" };
+  }
+
+  const onlineRaw = officialCtx.onlineByModel?.get(tid.toLowerCase());
+  if (!onlineRaw) {
+    return { onlineListing: "—", listingVsSupplier: "—" };
+  }
+
+  const onlineTiers =
+    onlineRaw.tiers?.length > 0
+      ? onlineRaw.tiers
+      : parseOnlinePricesTiers(onlineRaw);
+  if (!onlineTiers.length) {
+    return { onlineListing: "—", listingVsSupplier: "—" };
+  }
+
+  const onlineTier = pickOnlineTierForSupplier(
+    onlineTiers,
+    supplierPrices.input,
+    supplierCurrency,
+    tier?.tierLabel ?? tier?.tierName,
+    tierMeta.tierIndex ?? 0,
+    tierMeta.tierTotal ?? 1,
+    tier?.tierKey ?? tierMeta.tierKey ?? null,
+  );
+  if (!onlineTier) {
+    return { onlineListing: "—", listingVsSupplier: "—" };
+  }
+
+  const onlineListing = formatCompactTriple(
+    onlineTier.input,
+    onlineTier.output,
+    onlineTier.cache,
+    "USD",
+  );
+
+  let listingVsSupplier;
+  if (supplierCurrency === "USD") {
+    listingVsSupplier = summarizeFlags(
+      compareSameCurrency(onlineTier, supplierPrices),
+      null,
+    );
+  } else {
+    const { flags, fxLabel } = compareUsdOfficialToCnySupplier(
+      onlineTier,
+      supplierPrices,
+    );
+    listingVsSupplier = summarizeFlags(flags, fxLabel);
+  }
+
+  return { onlineListing, listingVsSupplier };
 }
 
 export { formatCompactTriple };

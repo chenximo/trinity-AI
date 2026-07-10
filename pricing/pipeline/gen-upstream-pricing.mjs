@@ -16,13 +16,17 @@ import {
   summarizeRow,
   pickBailianModels,
   pickTokenhubModels,
+  listBailianMainlandTextModels,
   tierSortKey,
 } from "./lib/pricing-compare.mjs";
+import { buildSupplierTrinityLookup } from "../config/tokenhub-trinity-alias.mjs";
 import { cell, joinLines } from "./lib/render-markdown.mjs";
 import {
   buildSupplierRows,
   buildVolcengineCatalogRows,
   buildOfficialDirectCatalogRows,
+  buildTokenhubTextCatalogRows,
+  buildBailianTextCatalogRows,
 } from "./lib/build-rows.mjs";
 import {
   CNY_PER_M,
@@ -429,7 +433,21 @@ function buildTierRows(entry) {
     });
 }
 
-function supplierRows(sup, models, officialCtx, volcModels = [], wangjuModels = [], relayCustModels = []) {
+function supplierRows(
+  sup,
+  models,
+  officialCtx,
+  volcModels = [],
+  wangjuModels = [],
+  relayCustModels = [],
+  { thModels = [], blModels = [], resolveTrinityId = () => "" } = {},
+) {
+  if (sup.key === "tokenhub") {
+    return buildTokenhubTextCatalogRows(thModels, officialCtx, resolveTrinityId);
+  }
+  if (sup.key === "bailian") {
+    return buildBailianTextCatalogRows(blModels, officialCtx, resolveTrinityId);
+  }
   if (sup.catalog === "volcengine") {
     return buildVolcengineCatalogRows(volcModels, officialCtx);
   }
@@ -450,7 +468,18 @@ function supplierRows(sup, models, officialCtx, volcModels = [], wangjuModels = 
   return buildSupplierRows(sup, models, officialCtx);
 }
 
-function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcModels = [], wangjuModels = [], relayCustModels = []) {
+function renderSupplierMd(
+  sup,
+  models,
+  scrapedAt,
+  aigcDate,
+  officialCtx,
+  volcModels = [],
+  wangjuModels = [],
+  relayCustModels = [],
+  supplierCatalogCtx = {},
+) {
+  const { thModels = [], blModels = [] } = supplierCatalogCtx;
   const date =
     sup.catalog === "aigc"
       ? aigcDate
@@ -469,7 +498,11 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
     `> 供应商：**${sup.key}** · 区域：**${sup.region}** · 数据日期：${date}`,
     `> 供应商挂牌单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）`,
     `> **范围**：${
-      sup.catalog === "volcengine"
+      sup.key === "tokenhub"
+        ? `TokenHub 控制台生文模型全目录（${thModels.length} 款）；按厂商 + 模型 ID 排序，同系列相邻`
+        : sup.key === "bailian"
+          ? `百炼华北2 中国内地生文（${blModels.length} 款，按 modelId 去重；同 ID 多文档分区暂不拆分）`
+          : sup.catalog === "volcengine"
         ? `火山方舟生文模型全目录（${volcModels.length} 款）`
         : sup.catalog === "wangju-cloudportal"
           ? `云门户 GPT/Gemini 原厂直连（${wangjuModels.length} 款，对齐 official）`
@@ -478,6 +511,18 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
             : `Trinity 生文模型（${models.length} 款）中本供应商有挂牌价的行`
     }`,
     `> **厂商官方价**：模型厂商官网挂牌（\`suppliers/official\`），同档对照`,
+    ...(sup.key === "tokenhub"
+      ? [
+          `> 数据源：\`suppliers/tokenhub/output/pricing-console-api.json\``,
+          `> 抓取：\`npm run pricing:supplier:tokenhub:console\``,
+        ]
+      : []),
+    ...(sup.key === "bailian"
+      ? [
+          `> 数据源：\`suppliers/bailian/output/pricing-api.json\``,
+          `> 抓取：\`npm run pricing:supplier:bailian:doc\``,
+        ]
+      : []),
     ...(sup.catalog === "aigc"
       ? [`> 数据源：\`${AIGC_SHEET_PATH}\``]
       : []),
@@ -505,7 +550,15 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
     `| ${headerCols.map(() => "---").join(" | ")} |`,
   ];
 
-  const [, ...bodyRows] = supplierRows(sup, models, officialCtx, volcModels, wangjuModels, relayCustModels);
+  const [, ...bodyRows] = supplierRows(
+    sup,
+    models,
+    officialCtx,
+    volcModels,
+    wangjuModels,
+    relayCustModels,
+    { thModels, blModels, resolveTrinityId: supplierCatalogCtx.resolveTrinityId },
+  );
   let modelCount = 0;
   let seen = false;
 
@@ -535,6 +588,8 @@ function renderSupplierMd(sup, models, scrapedAt, aigcDate, officialCtx, volcMod
     "| 厂商官方价 | `suppliers/official/output/text/vendor-pricing.json` |",
     `| 供应商挂牌 | 上游供应商挂牌价（**${unit}**） |`,
     "| 供应商vs官方 | 同档入/出/缓相对厂商官方的偏差 |",
+    "| 线上刊例 | `GET /v1/prices` 当前挂牌（USD/百万 tokens）；未接入为 — |",
+    "| 刊例vs供应商 | 线上刊例 vs 本行供应商挂牌（CNY 挂牌按 ÷6.5 换 USD 对比） |",
     `| 生文刊例校验 | \`upstream/summary.md\` 与 Excel \`${TEXT_COMPARE_SHEET}\` |`,
     "",
   );
@@ -565,6 +620,13 @@ async function main() {
   const trinityList = applyOnlinePrices(trinityListRaw, priceMap);
 
   const thModels = pickTokenhubModels(thData.models ?? []);
+  const blCatalogModels = listBailianMainlandTextModels(blData.models ?? []);
+  const resolveTrinityId = buildSupplierTrinityLookup(trinityList.map((t) => t.id));
+  const supplierCatalogCtx = {
+    thModels,
+    blModels: blCatalogModels,
+    resolveTrinityId,
+  };
   const blMap = pickBailianModels(blData.models ?? []);
   const catalog = mergeCatalog(
     trinityList,
@@ -658,7 +720,17 @@ async function main() {
     await mkdir(out.dir, { recursive: true });
     await writeFile(
       out.md,
-        renderSupplierMd(sup, models, scrapedAt, aigcDate, hubCtx, volcModels, wangjuModels, relayCustModels),
+        renderSupplierMd(
+          sup,
+          models,
+          scrapedAt,
+          aigcDate,
+          hubCtx,
+          volcModels,
+          wangjuModels,
+          relayCustModels,
+          supplierCatalogCtx,
+        ),
       "utf8",
     );
   }
@@ -709,7 +781,15 @@ async function main() {
     },
     ...SUPPLIERS.map((sup) => ({
       name: sup.excelSheet,
-      rows: supplierRows(sup, models, hubCtx, volcModels, wangjuModels, relayCustModels),
+      rows: supplierRows(
+        sup,
+        models,
+        hubCtx,
+        volcModels,
+        wangjuModels,
+        relayCustModels,
+        supplierCatalogCtx,
+      ),
       merge: MERGE_SUPPLIER,
     })),
   ];
@@ -726,7 +806,15 @@ async function main() {
     const out = upstreamSupplierPaths(sup.key, sup.outFile);
     await writeCsv(
       out.csv,
-      supplierRows(sup, models, hubCtx, volcModels, wangjuModels, relayCustModels),
+      supplierRows(
+        sup,
+        models,
+        hubCtx,
+        volcModels,
+        wangjuModels,
+        relayCustModels,
+        supplierCatalogCtx,
+      ),
       writeFile,
     );
   }
@@ -745,8 +833,10 @@ async function main() {
   const relayCustMapped = models.filter((m) => m.relayCust).length;
 
   console.log(`Trinity models: ${models.length}`);
+  console.log(`TokenHub catalog: ${thModels.length} text models (Excel 全量)`);
+  console.log(`Bailian catalog: ${blCatalogModels.length} mainland text models (按 modelId 去重)`);
   console.log(
-    `TokenHub priced: ${thModelsOnSup} · Bailian priced: ${blModelsOnSup} · AIGC mapped: ${aigcMapped} · Volcengine mapped: ${volcMapped} · Wangju mapped: ${wangjuMapped} · Relay-cust mapped: ${relayCustMapped}`,
+    `TokenHub Trinity-mapped (刊例对比): ${thModelsOnSup} · Bailian Trinity-mapped: ${blModelsOnSup} · AIGC mapped: ${aigcMapped} · Volcengine mapped: ${volcMapped} · Wangju mapped: ${wangjuMapped} · Relay-cust mapped: ${relayCustMapped}`,
   );
   console.log(
     `AIGC catalog: ${aigcModels.length} entries (国内 ${aigcModels.filter((m) => m.site === "domestic").length} · 国际 ${aigcModels.filter((m) => m.site === "international").length})`,

@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生视频）
 
-> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-07T07:49:45Z · live 0 · seed 34 / 34 · **87 档**
+> 真源：`output/video/vendor-pricing.json` · 抓取 2026-07-10T07:42:44Z · live 0 · seed 34 / 34 · **87 档**
 > 单位：**CNY per video generation (tiered)**
 
 | # | 厂商 | 原厂模型 ID | 状态 | 抓取 | 档位 | 价格 | 单位 | 价目来源 | 文档 |

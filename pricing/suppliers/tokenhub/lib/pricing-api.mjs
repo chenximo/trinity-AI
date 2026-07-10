@@ -100,20 +100,27 @@ export function inferInputOutputTypes(model) {
 }
 
 export function flattenModel(model) {
-  const tiers = (model.ModelChargingInfo ?? []).map((tier) => ({
-    tierType: tier.Type,
-    tierName: tier.Name,
-    input: tier.InputPrice ?? null,
-    output: tier.OutputPrice ?? null,
-    cache: tier.CachePrice ?? null,
-    unit: tier.InputOutputUnit ?? tier.ChargeUnit ?? null,
-    items: (tier.ChargingItems ?? []).map((c) => ({
+  const tiers = (model.ModelChargingInfo ?? []).map((tier) => {
+    const items = (tier.ChargingItems ?? []).map((c) => ({
       name: c.PriceName,
       displayName: c.DisplayName,
       price: c.Price,
       unit: c.PriceUnit,
-    })),
-  }));
+    }));
+    const pick = (name) =>
+      items.find((i) => i.name === name)?.price ??
+      items.find((i) => i.displayName === name)?.price ??
+      null;
+    return {
+      tierType: tier.Type,
+      tierName: tier.Name,
+      input: tier.InputPrice ?? pick("Input"),
+      output: tier.OutputPrice ?? pick("Output"),
+      cache: tier.CachePrice ?? pick("Cache"),
+      unit: tier.InputOutputUnit ?? tier.ChargeUnit ?? null,
+      items,
+    };
+  });
 
   return {
     modelId: model.ModelId,

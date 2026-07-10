@@ -4,8 +4,8 @@
   "modality": "text",
   "fxCnyPerUsd": 7.25,
   "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
-  "fetchedAt": "2026-07-08T06:32:44.191Z",
-  "modelCount": 59,
+  "fetchedAt": "2026-07-10T09:01:46.591Z",
+  "modelCount": 62,
   "object": "list",
   "data": [
     {
@@ -301,6 +301,86 @@
           }
         }
       ],
+      "price_variants": [
+        {
+          "variant": "default",
+          "label": "平峰",
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.307692",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.31 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.061538",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.06 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "0.461538",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.46 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "variant": "scheduled",
+          "label": "高峰",
+          "schedule": {
+            "code": "deepseek_peak_cn",
+            "timezone": "Asia/Shanghai",
+            "windows": [
+              {
+                "start": "09:00",
+                "end": "12:00",
+                "display": "每天 09:00–12:00"
+              },
+              {
+                "start": "14:00",
+                "end": "18:00",
+                "display": "每天 14:00–18:00"
+              }
+            ]
+          },
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.615384",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.62 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.123076",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.12 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "0.923076",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.92 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "effective_variant": "default",
+      "effective_variant_label": "当前适用：平峰价",
       "updated_at": "2026-06-07T16:00:00Z"
     },
     {
@@ -338,6 +418,86 @@
           }
         }
       ],
+      "price_variants": [
+        {
+          "variant": "default",
+          "label": "平峰",
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.153846",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.15 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.003077",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.00 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "0.307692",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.31 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "variant": "scheduled",
+          "label": "高峰",
+          "schedule": {
+            "code": "deepseek_peak_cn",
+            "timezone": "Asia/Shanghai",
+            "windows": [
+              {
+                "start": "09:00",
+                "end": "12:00",
+                "display": "每天 09:00–12:00"
+              },
+              {
+                "start": "14:00",
+                "end": "18:00",
+                "display": "每天 14:00–18:00"
+              }
+            ]
+          },
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.307692",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.31 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.006154",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.01 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "0.615384",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.62 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "effective_variant": "default",
+      "effective_variant_label": "当前适用：平峰价",
       "updated_at": "2026-06-29T10:14:38.393163Z"
     },
     {
@@ -375,6 +535,86 @@
           }
         }
       ],
+      "price_variants": [
+        {
+          "variant": "default",
+          "label": "平峰",
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.461538",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.46 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.003846",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.00 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "0.923077",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.92 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "variant": "scheduled",
+          "label": "高峰",
+          "schedule": {
+            "code": "deepseek_peak_cn",
+            "timezone": "Asia/Shanghai",
+            "windows": [
+              {
+                "start": "09:00",
+                "end": "12:00",
+                "display": "每天 09:00–12:00"
+              },
+              {
+                "start": "14:00",
+                "end": "18:00",
+                "display": "每天 14:00–18:00"
+              }
+            ]
+          },
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "0.923076",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.92 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.007692",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$0.01 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "1.846154",
+                  "currency": "USD",
+                  "unit": "per_million_tokens",
+                  "display": "$1.85 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "effective_variant": "default",
+      "effective_variant_label": "当前适用：平峰价",
       "updated_at": "2026-06-29T10:15:45.387188Z"
     },
     {
@@ -2146,6 +2386,135 @@
         }
       ],
       "updated_at": "2026-06-05T07:22:08.196614Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-5.6-luna",
+      "display_name": "GPT-5.6 Luna",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "1",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.00 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.10 / 百万 cached input tokens"
+            },
+            "cache_creation": {
+              "amount": "1.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.25 / 百万 cache creation tokens"
+            },
+            "output": {
+              "amount": "6",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$6.00 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-07-10T06:33:20.359987Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-5.6-sol",
+      "display_name": "GPT-5.6 Sol",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5.00 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.50 / 百万 cached input tokens"
+            },
+            "cache_creation": {
+              "amount": "6.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$6.25 / 百万 cache creation tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30.00 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-07-10T06:31:04.429941Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-5.6-terra",
+      "display_name": "GPT-5.6 Terra",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "2.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$2.50 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.25 / 百万 cached input tokens"
+            },
+            "cache_creation": {
+              "amount": "3.125",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$3.13 / 百万 cache creation tokens"
+            },
+            "output": {
+              "amount": "15",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$15.00 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-07-10T06:32:08.790487Z"
     },
     {
       "object": "model_prices",

@@ -1,6 +1,6 @@
 # AIGC 商务 Excel ↔ pricing-sheet 校验
 
-> 生成 2026-07-06T10:02:58Z · modality=all
+> 生成 2026-07-10T07:42:58Z · modality=all
 
 ## ✅ 通过
 

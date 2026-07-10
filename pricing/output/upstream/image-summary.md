@@ -1,11 +1,11 @@
 # 生图刊例对比校验（与 Excel「刊例对比校验-生图」同源）
 
-> 生成 2026-07-08T06:32:49Z · 官方模型 20 个 · 行 60 · Trinity 已映射 20 · 线上 18
+> 生成 2026-07-10T07:42:56Z · 官方模型 20 个 · 行 60 · Trinity 已映射 20 · 线上 18
 > **行轴**：`suppliers/official/output/image/vendor-pricing.json` 全量
-> 厂商官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-06T10:02:50Z）
+> 厂商官方价：`suppliers/official/output/image/vendor-pricing.json`（2026-07-10T07:42:38Z）
 > AIGC：`suppliers/aigc` · TokenHub · OpenRouter（生图 OR 暂无价目时填 —）
 > 火山方舟等 L3 转售见供应商分表，不进刊例对比主表
-> 线上刊例：`output/online/prices-api.json`（2026-07-08T06:32:49Z）
+> 线上刊例：`output/online/prices-api.json`（2026-07-10T07:42:56Z）
 > 国内官方 CNY→USD：÷6.5
 
 | 原厂 modelId | Trinity ID | 显示名 | 厂商 | 分辨率档 | 厂商官方价 | AIGC国内 | AIGC国际 | TokenHub | OpenRouter | 线上刊例 | AIGC国内vs官方 | AIGC国际vs官方 | TokenHub vs官方 | OpenRouter vs官方 | 刊例结论 | 备注 |

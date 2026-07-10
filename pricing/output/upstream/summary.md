@@ -1,11 +1,11 @@
 # 生文刊例对比校验（与 Excel「刊例对比校验-生文」同源）
 
-> 生成 2026-07-08T06:32:44Z · 官方模型 73 个 · 行 109 · Trinity 已映射 59 · 线上 59
+> 生成 2026-07-10T09:01:46Z · 官方模型 73 个 · 行 109 · Trinity 已映射 59 · 线上 62
 > **行轴**：`suppliers/official/output/text/vendor-pricing.json` 全量；Trinity 未接入 → Trinity ID / 刊例为 —
 > **目的**：官方价锚点 + Trinity 覆盖与刊例校验；进货参照仅 AIGC国内/国际 · TokenHub · OpenRouter（不含百炼/火山）
-> 厂商官方价：`suppliers/official/output/text/vendor-pricing.json`（2026-07-06T10:01:16Z）
+> 厂商官方价：`suppliers/official/output/text/vendor-pricing.json`（2026-07-10T07:40:08Z）
 > AIGC：`suppliers/aigc` · TokenHub：`suppliers/tokenhub` · OpenRouter：`suppliers/openrouter`（2026-07-01T07:54:13Z）
-> 线上刊例：`output/online/prices-api.json`（2026-07-08T06:32:44Z）
+> 线上刊例：`output/online/prices-api.json`（2026-07-10T09:01:46Z）
 > 国内官方 CNY→USD（与线上一致）：÷6.5
 > 同步导出：`upstream/summary.*` · `official/text.*` · `trinity-pricing-text.xlsx`
 

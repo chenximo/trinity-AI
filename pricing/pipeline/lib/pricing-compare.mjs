@@ -23,6 +23,15 @@ export function priceFromTier(t, name) {
   return null;
 }
 
+/** 从 tier 顶层或 items[] 取入/出/缓（TokenHub 新模型常仅 items 有价） */
+export function tierPricesFromItems(t) {
+  return {
+    input: priceFromTier(t, "Input"),
+    output: priceFromTier(t, "Output"),
+    cache: priceFromTier(t, "Cache"),
+  };
+}
+
 export function parseNum(v) {
   if (v == null || v === "" || v === "—") return null;
   const n = Number(v);
@@ -171,7 +180,43 @@ export function pickBailianModels(models) {
 }
 
 export function pickTokenhubModels(models) {
-  return models.filter((m) => m.modelType === "Text");
+  return models
+    .filter((m) => m.modelType === "Text")
+    .map((m) => ({
+      ...m,
+      tiers: (m.tiers ?? []).map((t) => ({
+        ...t,
+        ...tierPricesFromItems(t),
+      })),
+    }));
+}
+
+/**
+ * 百炼华北2：中国内地生文目录（Excel 供应商分表）
+ * 按 modelId 去重——同 ID 在文档多分区（如 Kimi / GLM）只保留一条，暂无法区分实际进货线路。
+ */
+export function listBailianMainlandTextModels(models) {
+  return [...pickBailianModels(models).values()].map(({ model, tiers }) => ({
+    ...model,
+    tiers,
+  }));
+}
+
+/** 供应商分表：厂商 → 模型 ID（自然排序，同系列相邻） */
+export function sortSupplierCatalogModels(
+  models,
+  { brandKey = "brand", idKey = "modelId" } = {},
+) {
+  const brandOf = (m) => String(m[brandKey] ?? m.vendorName ?? m.brand ?? "");
+  const idOf = (m) => String(m[idKey] ?? m.modelName ?? m.modelId ?? "");
+  return [...models].sort((a, b) => {
+    const br = brandOf(a).localeCompare(brandOf(b), "zh");
+    if (br !== 0) return br;
+    return idOf(a).localeCompare(idOf(b), "en", {
+      numeric: true,
+      sensitivity: "base",
+    });
+  });
 }
 
 export function fmtPriceTriple(input, output, cache) {

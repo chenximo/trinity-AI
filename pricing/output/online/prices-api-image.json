@@ -4,7 +4,7 @@
   "modality": "image",
   "fxCnyPerUsd": 7.25,
   "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
-  "fetchedAt": "2026-07-08T06:32:49.751Z",
+  "fetchedAt": "2026-07-10T07:42:56.120Z",
   "modelCount": 18,
   "object": "list",
   "data": [

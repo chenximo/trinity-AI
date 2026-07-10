@@ -4,7 +4,7 @@
   "modality": "video",
   "fxCnyPerUsd": 7.25,
   "fxNote": "官方价优先（listingAttribute 对齐）；官方无档 → AIGC 国际 USD → AIGC 国内 CNY÷7.25 → TokenHub → 火山；CNY 官方 ÷ 7.25",
-  "fetchedAt": "2026-07-07T10:06:41.939Z",
+  "fetchedAt": "2026-07-10T07:42:57.356Z",
   "modelCount": 25,
   "object": "list",
   "data": [
@@ -1514,56 +1514,6 @@
     },
     {
       "object": "model_prices",
-      "model": "seedance-1.0-pro",
-      "display_name": "Seedance 1.0 Pro",
-      "modality_type": "video",
-      "charge_unit": "video_token",
-      "pricing_mode": "flat",
-      "currency": "USD",
-      "price_unit": "per_million_video_tokens",
-      "price_groups": [
-        {
-          "type": "dimension_set",
-          "label": "条件计价",
-          "prices": {
-            "unit": {
-              "amount": "2.068966",
-              "currency": "USD",
-              "unit": "per_million_video_tokens",
-              "display": "$2.07 / 百万 video tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-09T16:00:00Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "seedance-1.0-pro-fast",
-      "display_name": "Seedance 1.0 Pro Fast",
-      "modality_type": "video",
-      "charge_unit": "video_token",
-      "pricing_mode": "flat",
-      "currency": "USD",
-      "price_unit": "per_million_video_tokens",
-      "price_groups": [
-        {
-          "type": "dimension_set",
-          "label": "条件计价",
-          "prices": {
-            "unit": {
-              "amount": "0.57931",
-              "currency": "USD",
-              "unit": "per_million_video_tokens",
-              "display": "$0.58 / 百万 video tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-09T16:00:00Z"
-    },
-    {
-      "object": "model_prices",
       "model": "seedance-1.5-pro",
       "display_name": "Seedance 1.5 Pro",
       "modality_type": "video",
@@ -1606,6 +1556,197 @@
         }
       ],
       "updated_at": "2026-06-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0",
+      "display_name": "Seedance 2.0",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.344828",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.34 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.344828",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.34 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7.034483",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7.03 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.862069",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.86 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.862069",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.86 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.275862",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4.28 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-04T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0-fast",
+      "display_name": "Seedance 2.0 Fast",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "5.6924",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$5.69 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "5.6924",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$5.69 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.3847",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.38 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.3847",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.38 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-04T16:00:00Z"
     },
     {
       "object": "model_prices",

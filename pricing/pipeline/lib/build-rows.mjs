@@ -6,8 +6,13 @@ import {
   upstreamUnit,
 } from "./units.mjs";
 import {
+  tierPricesFromItems,
+  sortSupplierCatalogModels,
+} from "./pricing-compare.mjs";
+import {
   formatCompactTriple,
   officialCellsForTrinityTier,
+  listingCellsForTrinityTier,
 } from "./supplier-official-compare.mjs";
 
 export function fmtUsd(v) {
@@ -109,7 +114,10 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
   const header = buildSupplierTableHeader(sup);
   const currency = upstreamUnit(sup) === USD_PER_M ? "USD" : "CNY";
 
-  const list = aigcModels.filter((m) => m.site === site);
+  const list = sortSupplierCatalogModels(
+    aigcModels.filter((m) => m.site === site),
+    { brandKey: "vendorName", idKey: "trinityId" },
+  );
   const rows = [];
   let rowNum = 0;
 
@@ -124,14 +132,15 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
         output: t.output,
         cache: t.cache,
       };
+      const tierMeta = { tierIndex: i, tierTotal: m.tiers.length };
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForTrinityTier(
-          m.trinityId,
-          t,
+          m.trinityId ?? m.modelId,
+          { tierLabel: t.tierName, tierKey: t.tierKey },
           supplierPrices,
           currency,
           officialCtx,
-          { tierIndex: i, tierTotal: m.tiers.length },
+          tierMeta,
         );
 
       rows.push([
@@ -144,11 +153,144 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
+        ...listingRowCells(
+          m.trinityId ?? "",
+          { tierLabel: t.tierName, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        ),
       ]);
     }
   }
 
   return [header, ...rows];
+}
+
+function tierLabelFromSupplierTier(t) {
+  const name = t?.tierName?.trim();
+  if (name) return name;
+  if (t?.tierType === "Uniform") return "统一价";
+  return t?.tierType ?? "统一价";
+}
+
+function listingRowCells(trinityId, tier, supplierPrices, currency, officialCtx, tierMeta) {
+  const { onlineListing, listingVsSupplier } = listingCellsForTrinityTier(
+    trinityId,
+    tier,
+    supplierPrices,
+    currency,
+    officialCtx,
+    tierMeta,
+  );
+  return [onlineListing, listingVsSupplier];
+}
+
+/**
+ * TokenHub / 百炼生文：供应商控制台全量目录（Excel 对外真源）
+ * @param {object[]} supplierModels
+ * @param {object} officialCtx
+ * @param {{ resolveTrinityId?: (modelId: string) => string, formatDisplayName?: (m: object) => string, brandDefault?: string }} [opts]
+ */
+export function buildSupplierTextCatalogRows(
+  supplierModels,
+  officialCtx = {},
+  opts = {},
+) {
+  const {
+    resolveTrinityId = () => "",
+    formatDisplayName = (m) =>
+      m.displayName || m.modelName || m.modelId || "—",
+    brandDefault = "—",
+  } = opts;
+  const header = buildSupplierTableHeader({});
+  const currency = "CNY";
+
+  const rows = [];
+  let rowNum = 0;
+
+  for (const m of sortSupplierCatalogModels(supplierModels)) {
+    const tierList = m.tiers?.length ? m.tiers : [];
+    if (!tierList.length) continue;
+
+    const trinityId = resolveTrinityId(m.modelId);
+    const displayName = formatDisplayName(m);
+    const pricedTiers = tierList.filter((t) => {
+      const p = tierPricesFromItems(t);
+      return p.input != null || p.output != null || p.cache != null;
+    });
+    const tiers = pricedTiers.length ? pricedTiers : tierList;
+
+    for (let i = 0; i < tiers.length; i++) {
+      const t = tiers[i];
+      rowNum++;
+      const show = i === 0;
+      const supplierPrices = tierPricesFromItems(t);
+      const tierMeta = { tierIndex: i, tierTotal: tiers.length };
+      const { vendorOfficial, supplierListed, supplierVsOfficial } =
+        officialCellsForTrinityTier(
+          trinityId || m.modelId,
+          {
+            tierLabel: tierLabelFromSupplierTier(t),
+            tierKey: t.tierKey,
+          },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        );
+
+      rows.push([
+        rowNum,
+        show ? trinityId : "",
+        show ? displayName : "",
+        show ? (m.brand ?? brandDefault) : "",
+        tierLabelFromSupplierTier(t),
+        m.modelId,
+        vendorOfficial,
+        supplierListed,
+        supplierVsOfficial,
+        ...listingRowCells(
+          trinityId,
+          {
+            tierLabel: tierLabelFromSupplierTier(t),
+            tierKey: t.tierKey,
+          },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        ),
+      ]);
+    }
+  }
+
+  return [header, ...rows];
+}
+
+/** TokenHub 生文全量（控制台有几条就几条） */
+export function buildTokenhubTextCatalogRows(
+  thModels,
+  officialCtx = {},
+  resolveTrinityId = () => "",
+) {
+  return buildSupplierTextCatalogRows(thModels, officialCtx, {
+    resolveTrinityId,
+    brandDefault: "—",
+  });
+}
+
+/** 百炼华北2 生文全量 */
+export function buildBailianTextCatalogRows(
+  blModels,
+  officialCtx = {},
+  resolveTrinityId = () => "",
+) {
+  return buildSupplierTextCatalogRows(blModels, officialCtx, {
+    resolveTrinityId,
+    brandDefault: "百炼",
+  });
 }
 
 /** 火山方舟全量目录（直连厂商价 = 官方种子） */
@@ -160,7 +302,7 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
   const rows = [];
   let rowNum = 0;
 
-  for (const m of volcModels) {
+  for (const m of sortSupplierCatalogModels(volcModels)) {
     const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
       const t = m.tiers[i];
@@ -171,6 +313,7 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
         output: t.output,
         cache: t.cache,
       };
+      const tierMeta = { tierIndex: i, tierTotal: m.tiers.length };
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForTrinityTier(
           m.trinityId ?? m.modelId,
@@ -178,7 +321,7 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
           supplierPrices,
           currency,
           officialCtx,
-          { tierIndex: i, tierTotal: m.tiers.length },
+          tierMeta,
         );
 
       rows.push([
@@ -191,6 +334,14 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
+        ...listingRowCells(
+          m.trinityId ?? "",
+          { tierLabel: t.tierName, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        ),
       ]);
     }
   }
@@ -215,13 +366,15 @@ export function buildOfficialDirectCatalogRows(
         "厂商官方价",
         "供应商挂牌(元或USD/百万tokens)",
         "供应商vs官方",
+        `线上刊例(${USD_PER_M})`,
+        "刊例vs供应商",
       ]
     : buildSupplierTableHeader({ catalog });
 
   const rows = [];
   let rowNum = 0;
 
-  for (const m of channelModels) {
+  for (const m of sortSupplierCatalogModels(channelModels, { idKey: "modelId" })) {
     const currency = mixedCurrency ? (m.currency ?? "USD") : "USD";
     const displayName = m.displayName || `${m.vendorLabel} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
@@ -233,6 +386,7 @@ export function buildOfficialDirectCatalogRows(
         output: t.output,
         cache: t.cache,
       };
+      const tierMeta = { tierIndex: i, tierTotal: m.tiers.length };
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForTrinityTier(
           m.trinityId ?? m.modelId,
@@ -240,7 +394,7 @@ export function buildOfficialDirectCatalogRows(
           supplierPrices,
           currency,
           officialCtx,
-          { tierIndex: i, tierTotal: m.tiers.length },
+          tierMeta,
         );
 
       rows.push([
@@ -253,6 +407,14 @@ export function buildOfficialDirectCatalogRows(
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
+        ...listingRowCells(
+          m.trinityId ?? "",
+          { tierLabel: t.tierName, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        ),
       ]);
     }
   }
@@ -301,6 +463,7 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
         output: t[sup.outKey],
         cache: t[sup.cacheKey],
       };
+      const tierMeta = { tierIndex: i, tierTotal: tierRows.length };
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForTrinityTier(
           m.trinityId,
@@ -308,7 +471,7 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
           supplierPrices,
           currency,
           officialCtx,
-          { tierIndex: i, tierTotal: tierRows.length },
+          tierMeta,
         );
 
       rows.push([
@@ -321,6 +484,14 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
+        ...listingRowCells(
+          m.trinityId,
+          { tierLabel: t.tierLabel, tierKey: t.tierKey },
+          supplierPrices,
+          currency,
+          officialCtx,
+          tierMeta,
+        ),
       ]);
     }
   }

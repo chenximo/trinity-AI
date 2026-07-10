@@ -61,7 +61,7 @@ if (!failed) {
   console.log("   Excel: pricing/output/trinity-pricing-text.xlsx");
   console.log("         pricing/output/trinity-pricing-image.xlsx");
   console.log("         pricing/output/trinity-pricing-video.xlsx");
-  console.log("   建议再跑: npm run pricing:gate");
+  console.log("   建议再跑: npm run pricing:inspect");
 }
 
 process.exit(failed ? 1 : 0);

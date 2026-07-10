@@ -38,9 +38,9 @@ export function colTrinityList(field) {
   return `${TRINITY_LIST_LABEL}_${field}(${USD_PER_M})`;
 }
 
-export function buildSupplierTableHeader(sup) {
+export function buildSupplierTableHeader(sup, opts = {}) {
   const unit = upstreamUnit(sup);
-  return [
+  const cols = [
     "序号",
     "Trinity ID",
     "显示名",
@@ -51,4 +51,8 @@ export function buildSupplierTableHeader(sup) {
     colSupplierListCompact(unit),
     "供应商vs官方",
   ];
+  if (opts.withListing !== false) {
+    cols.push(`线上刊例(${USD_PER_M})`, "刊例vs供应商");
+  }
+  return cols;
 }

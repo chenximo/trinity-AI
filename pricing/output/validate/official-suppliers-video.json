@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T09:53:58.298Z",
+  "generatedAt": "2026-07-10T07:42:58.630Z",
   "bySupplier": [
     {
       "key": "aigc-domestic",
@@ -23,9 +23,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·720P/768P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -34,9 +34,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·1080P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -45,9 +45,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·2K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -56,9 +56,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·4K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -67,9 +67,9 @@
       "brand": "可灵",
       "tierLabel": "无声·720P/768P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -78,9 +78,9 @@
       "brand": "可灵",
       "tierLabel": "无声·1080P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -89,9 +89,9 @@
       "brand": "可灵",
       "tierLabel": "无声·2K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -100,9 +100,9 @@
       "brand": "可灵",
       "tierLabel": "无声·4K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -111,9 +111,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·720P/768P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -122,9 +122,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·1080P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -133,9 +133,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·2K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -144,9 +144,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·4K",
       "status": "mismatch",
-      "summaryText": "⚠-8.9%",
-      "maxAbsPct": 8.9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.6%",
+      "maxAbsPct": 1.6,
+      "maxUpPct": 1.6
     },
     {
       "supplier": "aigc-international",
@@ -155,9 +155,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·720P/768P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -166,9 +166,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·1080P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -177,9 +177,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·2K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -188,9 +188,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·4K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -199,9 +199,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·720P/768P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -210,9 +210,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·1080P",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -221,9 +221,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·2K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     },
     {
       "supplier": "aigc-international",
@@ -232,9 +232,9 @@
       "brand": "可灵",
       "tierLabel": "标准价·4K",
       "status": "mismatch",
-      "summaryText": "⚠-9%",
-      "maxAbsPct": 9,
-      "maxUpPct": null
+      "summaryText": "⚠+1.5%",
+      "maxAbsPct": 1.5,
+      "maxUpPct": 1.5
     }
   ],
   "note": "官方积分/次 vs AIGC元/秒 → unit_mismatch 为预期"

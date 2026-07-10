@@ -27,7 +27,7 @@ title: 模型价格真源
 | [采购渠道真源](./suppliers) | 各渠道 JSON 路径、定价来源链接 |
 | [模型原价折扣](./supplier-cost-discounts) | **供应商成本折扣商务原底**（生效折扣在后台维护） |
 | [原厂定价页链接](./official-pricing-urls) | 厂商官网 URL |
-| [日常操作](./operations) | `refresh` / `gate` 命令 |
+| [日常操作](./operations) | 每周巡检 `inspect` · `refresh` / `gate` / 钉钉告警 |
 | [三模态索引](./modality-index) | 生文/生图/生视频命令与差异对照 |
 | [生视频刊例发布 SOP](./video-rollout) | gen → diff → publish |
 | [新增模型 SOP](./add-model-sop) | 加 SKU · 按模态 |

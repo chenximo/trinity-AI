@@ -49,6 +49,7 @@
     "pricing:compare:official": "node pricing/pipeline/compare-official-pricing.mjs",
     "pricing:compare:openrouter": "node pricing/pipeline/compare-openrouter-pricing.mjs",
     "pricing:validate:compare": "node pricing/pipeline/validate-pricing-compare.mjs",
+    "pricing:inspect": "node pricing/pipeline/weekly-pricing-inspect.mjs",
     "pricing:validate:aigc-excel": "node pricing/pipeline/validate-aigc-excel.mjs",
     "pricing:validate:official-aigc": "node pricing/pipeline/validate-official-aigc.mjs",
     "pricing:validate:official-aigc-image": "node pricing/pipeline/validate-official-aigc-image.mjs",

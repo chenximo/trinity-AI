@@ -1,0 +1,575 @@
+{
+  "schema": "trinity.pricing.listing-compare/v1",
+  "generatedAt": "2026-07-10T07:42:58.991Z",
+  "validateDir": "/Users/linda/Documents/Trinity_AICoding/trinity-AI/pricing/output/validate",
+  "summary": {
+    "text": {
+      "rowCount": 109,
+      "unannotatedWarnings": 0,
+      "missingOfficialTier": 2,
+      "falsePositives": 0
+    },
+    "image": {
+      "modelCount": 18,
+      "tierCount": 53,
+      "unchangedModels": 18,
+      "changedModels": 0,
+      "tierUnchanged": 53,
+      "tierDown": 0,
+      "tierUp": 0,
+      "tierMissing": 0
+    },
+    "video": {
+      "modelCount": 25,
+      "tierCount": 102,
+      "unchangedModels": 8,
+      "changedModels": 17,
+      "tierUnchanged": 53,
+      "tierDown": 27,
+      "tierUp": 22,
+      "tierMissing": 0
+    },
+    "alertCount": 15,
+    "ok": false
+  },
+  "text": {
+    "falsePositives": [],
+    "missingOfficialTier": [
+      {
+        "trinityId": "deepseek-v3.2",
+        "tierLabel": "输入≤32k",
+        "tierKey": "t:0-32k"
+      },
+      {
+        "trinityId": "deepseek-v3.2",
+        "tierLabel": "输入(32k,128k]",
+        "tierKey": "t:idx-1"
+      }
+    ],
+    "unannotatedWarnings": []
+  },
+  "image": {
+    "status": "ok",
+    "summary": {
+      "modelCount": 18,
+      "tierCount": 53,
+      "unchangedModels": 18,
+      "changedModels": 0,
+      "tierUnchanged": 53,
+      "tierDown": 0,
+      "tierUp": 0,
+      "tierMissing": 0
+    },
+    "alerts": []
+  },
+  "video": {
+    "status": "ok",
+    "summary": {
+      "modelCount": 25,
+      "tierCount": 102,
+      "unchangedModels": 8,
+      "changedModels": 17,
+      "tierUnchanged": 53,
+      "tierDown": 27,
+      "tierUp": 22,
+      "tierMissing": 0
+    },
+    "alerts": [
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "4k · 线上 $0.141923 vs 草案 $0.161538 (13.8%) · 涨价",
+        "tierKey": "res:4k",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "480p540p · 线上 $0.036923 vs 草案 $0.049231 (33.3%) · 涨价",
+        "tierKey": "res:540p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "720p · 线上 $0.024615 vs 草案 $0.049231 (100%) · 涨价",
+        "tierKey": "res:720p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "1080p · 线上 $0.138462 vs 草案 $0.043103 (-68.9%) · 降价",
+        "tierKey": "res:1080p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "480p540p · 线上 $0.041538 vs 草案 $0.021552 (-48.1%) · 降价",
+        "tierKey": "res:540p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "720p · 线上 $0.026923 vs 草案 $0.021552 (-19.9%) · 降价",
+        "tierKey": "res:720p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q2-turbo",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "1080p · 线上 $0.036154 vs 草案 $0.072308 (100%) · 涨价",
+        "tierKey": "res:1080p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "1080p · 线上 $0.075 vs 草案 $0.15 (100%) · 涨价",
+        "tierKey": "res:1080p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "2k · 线上 $0.09 vs 草案 $0.18 (100%) · 涨价",
+        "tierKey": "res:2k",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "4k · 线上 $0.108 vs 草案 $0.216 (100%) · 涨价",
+        "tierKey": "res:4k",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-pro",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "720p · 线上 $0.0625 vs 草案 $0.125 (100%) · 涨价",
+        "tierKey": "res:720p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-turbo",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "1080p · 线上 $0.035 vs 草案 $0.07 (100%) · 涨价",
+        "tierKey": "res:1080p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-turbo",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "2k · 线上 $0.042 vs 草案 $0.084 (100%) · 涨价",
+        "tierKey": "res:2k",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      },
+      {
+        "schema": "trinity.pricing.alert/v1",
+        "severity": "warn",
+        "blocking": true,
+        "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+        "type": "listing_price_gap",
+        "phase": "L1_vs_L4",
+        "modality": "video",
+        "trinityId": "vidu-q3-turbo",
+        "title": "生视频刊例与官方草案不一致",
+        "detail": "480p540p · 线上 $0.02 vs 草案 $0.04 (100%) · 涨价",
+        "tierKey": "res:540p",
+        "refs": {
+          "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+          "excel": "pricing/output/trinity-pricing-video.xlsx"
+        }
+      }
+    ]
+  },
+  "alerts": [
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "deepseek-v3.2",
+      "title": "生文线上档位在官方锚中缺失",
+      "detail": "输入≤32k · t:0-32k",
+      "tierKey": "t:0-32k",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "4k · 线上 $0.141923 vs 草案 $0.161538 (13.8%) · 涨价",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "480p540p · 线上 $0.036923 vs 草案 $0.049231 (33.3%) · 涨价",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "720p · 线上 $0.024615 vs 草案 $0.049231 (100%) · 涨价",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.138462 vs 草案 $0.043103 (-68.9%) · 降价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "480p540p · 线上 $0.041538 vs 草案 $0.021552 (-48.1%) · 降价",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "720p · 线上 $0.026923 vs 草案 $0.021552 (-19.9%) · 降价",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q2-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.036154 vs 草案 $0.072308 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.075 vs 草案 $0.15 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "2k · 线上 $0.09 vs 草案 $0.18 (100%) · 涨价",
+      "tierKey": "res:2k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "4k · 线上 $0.108 vs 草案 $0.216 (100%) · 涨价",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-pro",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "720p · 线上 $0.0625 vs 草案 $0.125 (100%) · 涨价",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "1080p · 线上 $0.035 vs 草案 $0.07 (100%) · 涨价",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "2k · 线上 $0.042 vs 草案 $0.084 (100%) · 涨价",
+      "tierKey": "res:2k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "vidu-q3-turbo",
+      "title": "生视频刊例与官方草案不一致",
+      "detail": "480p540p · 线上 $0.02 vs 草案 $0.04 (100%) · 涨价",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      }
+    }
+  ]
+}

@@ -1,37 +1,275 @@
-﻿序号,Trinity ID,显示名,厂商,价格档位,上游模型ID,厂商官方价,供应商挂牌(元/百万tokens),供应商vs官方
-1,deepseek-v3.2,DeepSeek V3.2,DeepSeek,统一价,deepseek-v3.2,入 ¥2 · 出 ¥3 · 缓 ¥0.4,入 ¥2 · 出 ¥3 · 缓 ¥0.4,✅ 一致
-2,deepseek-v4-flash,DeepSeek V4 Flash Direct,DeepSeek,统一价,deepseek-v4-flash,入 ¥1 · 出 ¥2 · 缓 ¥0.02,入 ¥1 · 出 ¥2 · 缓 ¥0.2,⚠ 缓+900%
-3,deepseek-v4-pro,DeepSeek V4 Pro Direct,DeepSeek,统一价,deepseek-v4-pro,入 ¥3 · 出 ¥6 · 缓 ¥0.025,入 ¥12 · 出 ¥24,⚠ 入+300% 出+300%
-4,glm-5,GLM 5,Zhipu,0<=输入<32k,glm-5,入 ¥4 · 出 ¥18 · 缓 ¥1,入 ¥4 · 出 ¥18 · 缓 ¥0.8,⚠ 缓-20%
-5,,,,32k<=输入,glm-5,入 ¥6 · 出 ¥22 · 缓 ¥1.5,入 ¥6 · 出 ¥22 · 缓 ¥1.2,⚠ 缓-20%
-6,glm-5.1,GLM-5.1,Zhipu,0<=输入<32k,glm-5.1,入 ¥6 · 出 ¥24 · 缓 ¥1.3,入 ¥6 · 出 ¥24 · 缓 ¥1.2,⚠ 缓-7.7%
-7,,,,32k<=输入,glm-5.1,入 ¥8 · 出 ¥28 · 缓 ¥2,入 ¥8 · 出 ¥28 · 缓 ¥1.6,⚠ 缓-20%
-8,glm-5.2,GLM-5.2,Zhipu,统一价,glm-5.2,入 ¥8 · 出 ¥28 · 缓 ¥2,入 ¥8 · 出 ¥28 · 缓 ¥2,✅ 一致
-9,kimi-k2.5,Kimi K2.5,Moonshot AI,统一价,kimi-k2.5,入 ¥4 · 出 ¥21 · 缓 ¥0.7,入 ¥4 · 出 ¥21 · 缓 ¥0.7,✅ 一致
-10,kimi-k2.6,Kimi K2.6,Moonshot AI,统一价,kimi-k2.6,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,入 ¥6.5 · 出 ¥27 · 缓 ¥1.0985,✅ 一致
-11,kimi-k2.7-code,Kimi K2.7 Code,Moonshot AI,统一价,kimi-k2.7-code,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,入 ¥6.5 · 出 ¥27,✅ 一致
-12,kimi-k2.7-code-highspeed,Kimi K2.7 Code HighSpeed,Moonshot AI,统一价,kimi-k2.7-code-highspeed,入 ¥13 · 出 ¥54 · 缓 ¥2.6,入 ¥13 · 出 ¥54 · 缓 ¥2.6,✅ 一致
-13,minimax-m2.5,MiniMax M2.5,MiniMax,统一价,minimax-m2.5,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,✅ 一致
-14,minimax-m2.7,MiniMax M2.7,MiniMax,统一价,minimax-m2.7,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,✅ 一致
-15,minimax-m3,MiniMax M3,MiniMax,统一价,minimax-m3,入 ¥4.2 · 出 ¥16.8 · 缓 ¥0.84,入 ¥4.2 · 出 ¥16.8 · 缓 ¥0.84,✅ 一致
-16,qwen-flash,Qwen Flash,Tongyi,0<Token≤128K,qwen-flash,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,✅ 一致
-17,,,,128K<Token≤256K,qwen-flash,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,✅ 一致
-18,,,,256K<Token≤1M,qwen-flash,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,✅ 一致
-19,qwen-max,Qwen Max,Tongyi,无阶梯计价,qwen-max,入 ¥2.4 · 出 ¥9.6,入 ¥2.4 · 出 ¥9.6,✅ 一致
-20,qwen-plus,Qwen Plus,Tongyi,0<Token≤128K,qwen-plus,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,✅ 一致
-21,,,,128K<Token≤256K,qwen-plus,入 ¥2.4 · 出 ¥20 · 缓 ¥0.48,入 ¥2.4 · 出 ¥20 · 缓 ¥0.48,✅ 一致
-22,,,,256K<Token≤1M,qwen-plus,入 ¥4.8 · 出 ¥48 · 缓 ¥0.96,入 ¥4.8 · 出 ¥48 · 缓 ¥0.96,✅ 一致
-23,qwen-turbo,Qwen Turbo,Tongyi,统一价,qwen-turbo,入 ¥0.3 · 出 ¥0.6,入 ¥0.3 · 出 ¥0.6,✅ 一致
-24,qwen3.5-flash,Qwen3.5 Flash,Tongyi,0<输入<=128k,qwen3.5-flash,入 ¥0.2 · 出 ¥2 · 缓 ¥0.02,入 ¥0.2 · 出 ¥2 · 缓 ¥0.04,⚠ 缓+100%
-25,,,,128k<输入<=256k,qwen3.5-flash,入 ¥0.8 · 出 ¥8 · 缓 ¥0.08,入 ¥0.8 · 出 ¥8 · 缓 ¥0.16,⚠ 缓+100%
-26,,,,256k<输入<=1M,qwen3.5-flash,入 ¥1.2 · 出 ¥12 · 缓 ¥0.12,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,⚠ 缓+100%
-27,qwen3.5-plus,Qwen3.5 Plus,Tongyi,输入<=128k,qwen3.5-plus,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.08,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.16,⚠ 缓+100%
-28,,,,128k<输入<=256k,qwen3.5-plus,入 ¥2 · 出 ¥12 · 缓 ¥0.2,入 ¥2 · 出 ¥12 · 缓 ¥0.4,⚠ 缓+100%
-29,,,,256k<输入<=1M,qwen3.5-plus,入 ¥4 · 出 ¥24 · 缓 ¥0.4,入 ¥4 · 出 ¥24 · 缓 ¥0.8,⚠ 缓+100%
-30,qwen3.6-flash,Qwen3.6 Flash,Tongyi,0<Token≤256K,qwen3.6-flash,入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24,入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24,✅ 一致
-31,,,,256K<Token≤1M,qwen3.6-flash,入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96,入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96,✅ 一致
-32,qwen3.6-plus,Qwen3.6 Plus,Tongyi,0<Token≤256K,qwen3.6-plus,入 ¥2 · 出 ¥12 · 缓 ¥0.4,入 ¥2 · 出 ¥12 · 缓 ¥0.4,✅ 一致
-33,,,,256K<Token≤1M,qwen3.6-plus,入 ¥8 · 出 ¥48 · 缓 ¥1.6,入 ¥8 · 出 ¥48 · 缓 ¥1.6,✅ 一致
-34,qwen3.7-max,Qwen3.7 Max,Tongyi,0<Token≤1M,qwen3.7-max,入 ¥12 · 出 ¥36 · 缓 ¥2.4,入 ¥12 · 出 ¥36 · 缓 ¥2.4,✅ 一致
-35,qwen3.7-plus,Qwen3.7 Plus,Tongyi,0<Token≤256K,qwen3.7-plus,入 ¥2 · 出 ¥8 · 缓 ¥0.4,入 ¥2 · 出 ¥8 · 缓 ¥0.4,✅ 一致
-36,,,,256K<Token≤1M,qwen3.7-plus,入 ¥6 · 出 ¥24 · 缓 ¥1.2,入 ¥6 · 出 ¥24 · 缓 ¥1.2,✅ 一致
+﻿序号,Trinity ID,显示名,厂商,价格档位,上游模型ID,厂商官方价,供应商挂牌(元/百万tokens),供应商vs官方,线上刊例(USD/百万tokens),刊例vs供应商
+1,,text-embedding-async-v1,3D模型生成,统一价,text-embedding-async-v1,—,入 ¥0.7,—,—,—
+2,,text-embedding-async-v2,3D模型生成,统一价,text-embedding-async-v2,—,入 ¥0.7,—,—,—
+3,,text-embedding-v1,3D模型生成,统一价,text-embedding-v1,—,入 ¥0.7,—,—,—
+4,,text-embedding-v2,3D模型生成,统一价,text-embedding-v2,—,入 ¥0.7,—,—,—
+5,,text-embedding-v3,3D模型生成,统一价,text-embedding-v3,—,入 ¥0.5,—,—,—
+6,,text-embedding-v4,3D模型生成,统一价,text-embedding-v4,—,入 ¥0.5,—,—,—
+7,,tripo-h3.1,3D模型生成,统一价,tripo-h3.1,—,出 ¥0.7,—,—,—
+8,,tripo-p1.0,3D模型生成,统一价,tripo-p1.0,—,出 ¥2.1,—,—,—
+9,,videoretalk,表情包Emoji,统一价,videoretalk,—,出 ¥0.08,—,—,—
+10,,qwen-coder-plus,更多模型,无阶梯计价,qwen-coder-plus,—,入 ¥3.5 · 出 ¥7,—,—,—
+11,,qwen-coder-turbo,更多模型,无阶梯计价,qwen-coder-turbo,—,入 ¥2 · 出 ¥6,—,—,—
+12,qwen-max,qwen-max,更多模型,无阶梯计价,qwen-max,入 ¥2.4 · 出 ¥9.6,入 ¥2.4 · 出 ¥9.6,✅ 一致,入 $0.369231 · 出 $1.476923 · 缓 $0.082759,✅ 一致
+13,,qwen-omni-turbo,更多模型,统一价,qwen-omni-turbo,—,入 ¥0.4 · 出 ¥25,—,—,—
+14,,qwen-omni-turbo-2025-01-19,更多模型,统一价,qwen-omni-turbo-2025-01-19,—,入 ¥0.4 · 出 ¥25,—,—,—
+15,,qwen-omni-turbo-2025-03-26,更多模型,统一价,qwen-omni-turbo-2025-03-26,—,入 ¥0.4 · 出 ¥25,—,—,—
+16,,qwen-omni-turbo-latest,更多模型,统一价,qwen-omni-turbo-latest,—,入 ¥0.4 · 出 ¥25,—,—,—
+17,,qwen-omni-turbo-realtime,更多模型,统一价,qwen-omni-turbo-realtime,—,入 ¥1.6 · 出 ¥25,—,—,—
+18,,qwen-omni-turbo-realtime-2025-05-08,更多模型,统一价,qwen-omni-turbo-realtime-2025-05-08,—,入 ¥1.6 · 出 ¥25,—,—,—
+19,,qwen-omni-turbo-realtime-latest,更多模型,统一价,qwen-omni-turbo-realtime-latest,—,入 ¥1.6 · 出 ¥25,—,—,—
+20,,qwen-plus-2024-12-20,更多模型,无阶梯计价,qwen-plus-2024-12-20,—,入 ¥0.8 · 出 ¥2,—,—,—
+21,,qwen-plus-2025-01-12,更多模型,无阶梯计价,qwen-plus-2025-01-12,—,入 ¥0.8 · 出 ¥2,—,—,—
+22,,qwen-plus-2025-01-25,更多模型,无阶梯计价,qwen-plus-2025-01-25,—,入 ¥0.8 · 出 ¥2,—,—,—
+23,,qwen-vl-max,更多模型,无阶梯计价,qwen-vl-max,—,入 ¥1.6 · 出 ¥4 · 缓 ¥0.32,—,—,—
+24,,qwen-vl-plus,更多模型,无阶梯计价,qwen-vl-plus,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+25,,qwen3-omni-flash,更多模型,统一价,qwen3-omni-flash,—,入 ¥1.8 · 出 ¥15.8,—,—,—
+26,,qwen3-omni-flash-2025-09-15,更多模型,统一价,qwen3-omni-flash-2025-09-15,—,入 ¥1.8 · 出 ¥15.8,—,—,—
+27,,qwen3-omni-flash-2025-12-01,更多模型,统一价,qwen3-omni-flash-2025-12-01,—,入 ¥1.8 · 出 ¥15.8,—,—,—
+28,,qwen3-omni-flash-realtime,更多模型,统一价,qwen3-omni-flash-realtime,—,入 ¥2.2 · 出 ¥18.9,—,—,—
+29,,qwen3-omni-flash-realtime-2025-09-15,更多模型,统一价,qwen3-omni-flash-realtime-2025-09-15,—,入 ¥2.2 · 出 ¥18.9,—,—,—
+30,,qwen3-omni-flash-realtime-2025-12-01,更多模型,统一价,qwen3-omni-flash-realtime-2025-12-01,—,入 ¥2.2 · 出 ¥18.9,—,—,—
+31,,fun-asr-flash-8k-realtime,录音文件识别,统一价,fun-asr-flash-8k-realtime,—,入 ¥0.00022,—,—,—
+32,,fun-asr-realtime,录音文件识别,统一价,fun-asr-realtime,—,入 ¥0.00033,—,—,—
+33,,paraformer-realtime-v2,录音文件识别,统一价,paraformer-realtime-v2,—,入 ¥0.00024,—,—,—
+34,,cosyvoice-v1,千问,统一价,cosyvoice-v1,—,入 ¥2,—,—,—
+35,,cosyvoice-v2,千问,统一价,cosyvoice-v2,—,入 ¥2,—,—,—
+36,,cosyvoice-v3-flash,千问,统一价,cosyvoice-v3-flash,—,入 ¥1,—,—,—
+37,,cosyvoice-v3-plus,千问,统一价,cosyvoice-v3-plus,—,入 ¥2,—,—,—
+38,,cosyvoice-v3.5-flash,千问,统一价,cosyvoice-v3.5-flash,—,入 ¥0.8,—,—,—
+39,,cosyvoice-v3.5-plus,千问,统一价,cosyvoice-v3.5-plus,—,入 ¥1.5,—,—,—
+40,,deepseek-r1,千问,统一价,deepseek-r1,—,入 ¥4 · 出 ¥16 · 缓 ¥1.6,—,—,—
+41,,deepseek-r1-0528,千问,统一价,deepseek-r1-0528,—,入 ¥4 · 出 ¥16 · 缓 ¥1.6,—,—,—
+42,,deepseek-r1-distill-qwen-7b,千问,统一价,deepseek-r1-distill-qwen-7b,—,入 ¥0.5 · 出 ¥1 · 缓 ¥0.1,—,—,—
+43,,deepseek-r1-distill-qwen-14b,千问,统一价,deepseek-r1-distill-qwen-14b,—,入 ¥1 · 出 ¥3 · 缓 ¥0.2,—,—,—
+44,,deepseek-r1-distill-qwen-32b,千问,统一价,deepseek-r1-distill-qwen-32b,—,入 ¥2 · 出 ¥6 · 缓 ¥0.4,—,—,—
+45,,deepseek-v3,千问,统一价,deepseek-v3,—,入 ¥2 · 出 ¥8 · 缓 ¥0.8,—,—,—
+46,,deepseek-v3.1,千问,统一价,deepseek-v3.1,—,入 ¥4 · 出 ¥12 · 缓 ¥1.6,—,—,—
+47,deepseek-v3.2,deepseek-v3.2,千问,统一价,deepseek-v3.2,入 ¥2 · 出 ¥3 · 缓 ¥0.4,入 ¥2 · 出 ¥3 · 缓 ¥0.4,✅ 一致,入 $0.307692 · 出 $0.461538 · 缓 $0.061538,✅ 一致
+48,,deepseek-v3.2-exp,千问,统一价,deepseek-v3.2-exp,—,入 ¥2 · 出 ¥3 · 缓 ¥0.4,—,—,—
+49,deepseek-v4-flash,deepseek-v4-flash,千问,统一价,deepseek-v4-flash,入 ¥1 · 出 ¥2 · 缓 ¥0.02,入 ¥1 · 出 ¥2 · 缓 ¥0.2,⚠ 缓+900%,入 $0.153846 · 出 $0.307692 · 缓 $0.003077,⚠ 入-13.3% 出-13.3% 缓+766.6%
+50,deepseek-v4-pro,deepseek-v4-pro,千问,统一价,deepseek-v4-pro,入 ¥3 · 出 ¥6 · 缓 ¥0.025,入 ¥12 · 出 ¥24,⚠ 入+300% 出+300%,入 $0.461538 · 出 $0.923077 · 缓 $0.003846,✅ 一致(÷隐含)
+51,,qvq-max,千问,统一价,qvq-max,—,入 ¥8 · 出 ¥32,—,—,—
+52,,qvq-plus,千问,统一价,qvq-plus,—,入 ¥2 · 出 ¥5,—,—,—
+53,,qwen-deep-research,千问,统一价,qwen-deep-research,—,入 ¥54 · 出 ¥163,—,—,—
+54,,qwen-deep-research-2025-12-15,千问,统一价,qwen-deep-research-2025-12-15,—,入 ¥79 · 出 ¥236,—,—,—
+55,,qwen-doc-turbo,千问,统一价,qwen-doc-turbo,—,入 ¥0.6 · 出 ¥1,—,—,—
+56,qwen-flash,qwen-flash,千问,0<Token≤128K,qwen-flash,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,✅ 一致,入 $0.023077 · 出 $0.230769 · 缓 $0.004615,✅ 一致
+57,,,,128K<Token≤256K,qwen-flash,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,✅ 一致,入 $0.023077 · 出 $0.230769 · 缓 $0.004615,✅ 一致(÷隐含)
+58,,,,256K<Token≤1M,qwen-flash,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,✅ 一致,入 $0.023077 · 出 $0.230769 · 缓 $0.004615,✅ 一致(÷隐含)
+59,,qwen-flash-2025-07-28,千问,0<Token≤128K,qwen-flash-2025-07-28,—,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,—,—,—
+60,,,,128K<Token≤256K,qwen-flash-2025-07-28,—,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,—,—,—
+61,,,,256K<Token≤1M,qwen-flash-2025-07-28,—,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,—,—,—
+62,,qwen-long,千问,统一价,qwen-long,—,入 ¥0.5 · 出 ¥2,—,—,—
+63,,qwen-long-2025-01-25,千问,统一价,qwen-long-2025-01-25,—,入 ¥0.5 · 出 ¥2,—,—,—
+64,,qwen-long-latest,千问,统一价,qwen-long-latest,—,入 ¥0.5 · 出 ¥2,—,—,—
+65,,qwen-math-plus,千问,统一价,qwen-math-plus,—,入 ¥4 · 出 ¥12,—,—,—
+66,,qwen-math-turbo,千问,统一价,qwen-math-turbo,—,入 ¥2 · 出 ¥6,—,—,—
+67,,qwen-mt-flash,千问,统一价,qwen-mt-flash,—,入 ¥0.7 · 出 ¥1.95,—,—,—
+68,,qwen-mt-lite,千问,统一价,qwen-mt-lite,—,入 ¥0.6 · 出 ¥1.6,—,—,—
+69,,qwen-mt-plus,千问,统一价,qwen-mt-plus,—,入 ¥1.8 · 出 ¥5.4,—,—,—
+70,,qwen-mt-turbo,千问,统一价,qwen-mt-turbo,—,入 ¥0.7 · 出 ¥1.95,—,—,—
+71,qwen-plus,qwen-plus,千问,0<Token≤128K,qwen-plus,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,✅ 一致,入 $0.123077 · 出 $0.307692 · 缓 $0.024615,✅ 一致
+72,,,,128K<Token≤256K,qwen-plus,入 ¥2.4 · 出 ¥20 · 缓 ¥0.48,入 ¥2.4 · 出 ¥20 · 缓 ¥0.48,✅ 一致,入 $0.123077 · 出 $0.307692 · 缓 $0.024615,⚠ 出+233.3%
+73,,,,256K<Token≤1M,qwen-plus,入 ¥4.8 · 出 ¥48 · 缓 ¥0.96,入 ¥4.8 · 出 ¥48 · 缓 ¥0.96,✅ 一致,入 $0.123077 · 出 $0.307692 · 缓 $0.024615,⚠ 出+300%
+74,,qwen-plus-2025-04-28,千问,无阶梯计价,qwen-plus-2025-04-28,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+75,,qwen-plus-2025-07-14,千问,无阶梯计价,qwen-plus-2025-07-14,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+76,,qwen-plus-2025-07-28,千问,0<Token≤128K,qwen-plus-2025-07-28,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+77,,qwen-plus-2025-09-11,千问,0<Token≤128K,qwen-plus-2025-09-11,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+78,,qwen-plus-2025-12-01,千问,0<Token≤128K,qwen-plus-2025-12-01,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+79,,qwen-plus-latest,千问,0<Token≤128K,qwen-plus-latest,—,入 ¥0.8 · 出 ¥2 · 缓 ¥0.16,—,—,—
+80,,qwen-tts-realtime,千问,统一价,qwen-tts-realtime,—,入 ¥2.4 · 出 ¥12,—,—,—
+81,,qwen-tts-realtime-2025-07-15,千问,统一价,qwen-tts-realtime-2025-07-15,—,入 ¥2.4 · 出 ¥12,—,—,—
+82,,qwen-tts-realtime-latest,千问,统一价,qwen-tts-realtime-latest,—,入 ¥2.4 · 出 ¥12,—,—,—
+83,qwen-turbo,qwen-turbo,千问,统一价,qwen-turbo,入 ¥0.3 · 出 ¥0.6,入 ¥0.3 · 出 ¥0.6,✅ 一致,入 $0.046154 · 出 $0.092308 · 缓 $0.010345,✅ 一致
+84,,qwen-vl-ocr,千问,统一价,qwen-vl-ocr,—,入 ¥0.3 · 出 ¥0.5,—,—,—
+85,,qwen-vl-ocr-2024-10-28,千问,统一价,qwen-vl-ocr-2024-10-28,—,入 ¥5 · 出 ¥5,—,—,—
+86,,qwen-vl-ocr-2025-04-13,千问,统一价,qwen-vl-ocr-2025-04-13,—,入 ¥5 · 出 ¥5,—,—,—
+87,,qwen-vl-ocr-2025-08-28,千问,统一价,qwen-vl-ocr-2025-08-28,—,入 ¥5 · 出 ¥5,—,—,—
+88,,qwen-vl-ocr-2025-11-20,千问,统一价,qwen-vl-ocr-2025-11-20,—,入 ¥0.3 · 出 ¥0.5,—,—,—
+89,,qwen-vl-ocr-latest,千问,统一价,qwen-vl-ocr-latest,—,入 ¥0.3 · 出 ¥0.5,—,—,—
+90,,qwen2.5-omni-7b,千问,统一价,qwen2.5-omni-7b,—,入 ¥0.6 · 出 ¥38,—,—,—
+91,,qwen3-8b,千问,统一价,qwen3-8b,—,入 ¥0.5 · 出 ¥2,—,—,—
+92,,qwen3-14b,千问,统一价,qwen3-14b,—,入 ¥1 · 出 ¥4,—,—,—
+93,,qwen3-30b-a3b,千问,统一价,qwen3-30b-a3b,—,入 ¥0.75 · 出 ¥3,—,—,—
+94,,qwen3-30b-a3b-instruct-2507,千问,统一价,qwen3-30b-a3b-instruct-2507,—,入 ¥0.75 · 出 ¥3,—,—,—
+95,,qwen3-30b-a3b-thinking-2507,千问,统一价,qwen3-30b-a3b-thinking-2507,—,入 ¥0.75,—,—,—
+96,,qwen3-32b,千问,统一价,qwen3-32b,—,入 ¥2 · 出 ¥8,—,—,—
+97,,qwen3-235b-a22b,千问,统一价,qwen3-235b-a22b,—,入 ¥2 · 出 ¥8,—,—,—
+98,,qwen3-235b-a22b-instruct-2507,千问,统一价,qwen3-235b-a22b-instruct-2507,—,入 ¥2 · 出 ¥8,—,—,—
+99,,qwen3-235b-a22b-thinking-2507,千问,统一价,qwen3-235b-a22b-thinking-2507,—,入 ¥2,—,—,—
+100,,qwen3-asr-flash-filetrans,千问,统一价,qwen3-asr-flash-filetrans,—,入 ¥0.00022,—,—,—
+101,,qwen3-asr-flash-realtime,千问,统一价,qwen3-asr-flash-realtime,—,入 ¥0.00033,—,—,—
+102,,qwen3-coder-30b-a3b-instruct,千问,0<Token≤32K,qwen3-coder-30b-a3b-instruct,—,入 ¥1.5 · 出 ¥6,—,—,—
+103,,,,32K<Token≤128K,qwen3-coder-30b-a3b-instruct,—,入 ¥2.25,—,—,—
+104,,,,128K<Token≤200K,qwen3-coder-30b-a3b-instruct,—,入 ¥3.75,—,—,—
+105,,qwen3-coder-480b-a35b-instruct,千问,0<Token≤32K,qwen3-coder-480b-a35b-instruct,—,入 ¥6 · 出 ¥24,—,—,—
+106,,,,32K<Token≤128K,qwen3-coder-480b-a35b-instruct,—,入 ¥9,—,—,—
+107,,,,128K<Token≤200K,qwen3-coder-480b-a35b-instruct,—,入 ¥15,—,—,—
+108,,qwen3-coder-flash,千问,0<Token≤32K,qwen3-coder-flash,—,入 ¥1 · 出 ¥4 · 缓 ¥0.2,—,—,—
+109,,,,32K<Token≤128K,qwen3-coder-flash,—,入 ¥1.5 · 缓 ¥0.3,—,—,—
+110,,,,128K<Token≤256K,qwen3-coder-flash,—,入 ¥2.5 · 缓 ¥0.5,—,—,—
+111,,,,256K<Token≤1M,qwen3-coder-flash,—,入 ¥5 · 缓 ¥1,—,—,—
+112,,qwen3-coder-flash-2025-07-28,千问,0<Token≤32K,qwen3-coder-flash-2025-07-28,—,入 ¥1 · 出 ¥4 · 缓 ¥0.2,—,—,—
+113,,,,32K<Token≤128K,qwen3-coder-flash-2025-07-28,—,入 ¥1.5 · 缓 ¥0.3,—,—,—
+114,,,,128K<Token≤256K,qwen3-coder-flash-2025-07-28,—,入 ¥2.5 · 缓 ¥0.5,—,—,—
+115,,,,256K<Token≤1M,qwen3-coder-flash-2025-07-28,—,入 ¥5 · 缓 ¥1,—,—,—
+116,,qwen3-coder-next,千问,0<Token≤32K,qwen3-coder-next,—,入 ¥1 · 出 ¥4,—,—,—
+117,,,,32K<Token≤128K,qwen3-coder-next,—,入 ¥1.5,—,—,—
+118,,,,128K<Token≤256K,qwen3-coder-next,—,入 ¥2.5,—,—,—
+119,,qwen3-coder-plus,千问,0<Token≤32K,qwen3-coder-plus,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+120,,,,32K<Token≤128K,qwen3-coder-plus,—,入 ¥6 · 缓 ¥1.2,—,—,—
+121,,,,128K<Token≤256K,qwen3-coder-plus,—,入 ¥10 · 缓 ¥2,—,—,—
+122,,,,256K<Token≤1M,qwen3-coder-plus,—,入 ¥20 · 缓 ¥4,—,—,—
+123,,qwen3-coder-plus-2025-07-22,千问,0<Token≤32K,qwen3-coder-plus-2025-07-22,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+124,,,,32K<Token≤128K,qwen3-coder-plus-2025-07-22,—,入 ¥6 · 缓 ¥1.2,—,—,—
+125,,,,128K<Token≤256K,qwen3-coder-plus-2025-07-22,—,入 ¥10 · 缓 ¥2,—,—,—
+126,,,,256K<Token≤1M,qwen3-coder-plus-2025-07-22,—,入 ¥20 · 缓 ¥4,—,—,—
+127,,qwen3-coder-plus-2025-09-23,千问,0<Token≤32K,qwen3-coder-plus-2025-09-23,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+128,,,,32K<Token≤128K,qwen3-coder-plus-2025-09-23,—,入 ¥6 · 缓 ¥1.2,—,—,—
+129,,,,128K<Token≤256K,qwen3-coder-plus-2025-09-23,—,入 ¥10 · 缓 ¥2,—,—,—
+130,,,,256K<Token≤1M,qwen3-coder-plus-2025-09-23,—,入 ¥20 · 缓 ¥4,—,—,—
+131,,qwen3-livetranslate-flash,千问,统一价,qwen3-livetranslate-flash,—,入 ¥10 · 出 ¥4,—,—,—
+132,,qwen3-livetranslate-flash-2025-12-01,千问,统一价,qwen3-livetranslate-flash-2025-12-01,—,入 ¥10 · 出 ¥4,—,—,—
+133,,qwen3-max,千问,0<Token≤32K,qwen3-max,—,入 ¥2.5 · 出 ¥10 · 缓 ¥0.5,—,—,—
+134,,,,32K<Token≤128K,qwen3-max,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+135,,,,128K<Token≤256K,qwen3-max,—,入 ¥7 · 出 ¥28 · 缓 ¥1.4,—,—,—
+136,,qwen3-max-2025-09-23,千问,0<Token≤32K,qwen3-max-2025-09-23,—,入 ¥6 · 出 ¥24 · 缓 ¥1.2,—,—,—
+137,,,,32K<Token≤128K,qwen3-max-2025-09-23,—,入 ¥10 · 出 ¥40 · 缓 ¥2,—,—,—
+138,,,,128K<Token≤256K,qwen3-max-2025-09-23,—,入 ¥15 · 出 ¥60 · 缓 ¥3,—,—,—
+139,,qwen3-max-2026-01-23,千问,0<Token≤32K,qwen3-max-2026-01-23,—,入 ¥2.5 · 出 ¥10 · 缓 ¥0.5,—,—,—
+140,,,,32K<Token≤128K,qwen3-max-2026-01-23,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+141,,,,128K<Token≤256K,qwen3-max-2026-01-23,—,入 ¥7 · 出 ¥28 · 缓 ¥1.4,—,—,—
+142,,qwen3-max-preview,千问,0<Token≤32K,qwen3-max-preview,—,入 ¥6 · 出 ¥24 · 缓 ¥1.2,—,—,—
+143,,,,32K<Token≤128K,qwen3-max-preview,—,入 ¥10 · 出 ¥40 · 缓 ¥2,—,—,—
+144,,,,128K<Token≤256K,qwen3-max-preview,—,入 ¥15 · 出 ¥60 · 缓 ¥3,—,—,—
+145,,qwen3-next-80b-a3b-instruct,千问,统一价,qwen3-next-80b-a3b-instruct,—,入 ¥1 · 出 ¥4,—,—,—
+146,,qwen3-next-80b-a3b-thinking,千问,统一价,qwen3-next-80b-a3b-thinking,—,入 ¥1,—,—,—
+147,,qwen3-omni-30b-a3b-captioner,千问,统一价,qwen3-omni-30b-a3b-captioner,—,入 ¥15.8 · 出 ¥12.7,—,—,—
+148,,qwen3-tts-flash-realtime,千问,统一价,qwen3-tts-flash-realtime,—,入 ¥1,—,—,—
+149,,qwen3-tts-flash-realtime-2025-09-18,千问,统一价,qwen3-tts-flash-realtime-2025-09-18,—,入 ¥1,—,—,—
+150,,qwen3-tts-flash-realtime-2025-11-27,千问,统一价,qwen3-tts-flash-realtime-2025-11-27,—,入 ¥1,—,—,—
+151,,qwen3-tts-instruct-flash-realtime,千问,统一价,qwen3-tts-instruct-flash-realtime,—,入 ¥1,—,—,—
+152,,qwen3-tts-instruct-flash-realtime-2026-01-22,千问,统一价,qwen3-tts-instruct-flash-realtime-2026-01-22,—,入 ¥1,—,—,—
+153,,qwen3-tts-vc-realtime-2026-01-15,千问,统一价,qwen3-tts-vc-realtime-2026-01-15,—,入 ¥1,—,—,—
+154,,qwen3-tts-vd-realtime-2025-12-16,千问,统一价,qwen3-tts-vd-realtime-2025-12-16,—,入 ¥1,—,—,—
+155,,qwen3-tts-vd-realtime-2026-01-15,千问,统一价,qwen3-tts-vd-realtime-2026-01-15,—,入 ¥1,—,—,—
+156,,qwen3-vl-8b-instruct,千问,统一价,qwen3-vl-8b-instruct,—,入 ¥0.5 · 出 ¥2,—,—,—
+157,,qwen3-vl-8b-thinking,千问,统一价,qwen3-vl-8b-thinking,—,入 ¥0.5 · 出 ¥5,—,—,—
+158,,qwen3-vl-30b-a3b-instruct,千问,统一价,qwen3-vl-30b-a3b-instruct,—,入 ¥0.75 · 出 ¥3,—,—,—
+159,,qwen3-vl-30b-a3b-thinking,千问,统一价,qwen3-vl-30b-a3b-thinking,—,入 ¥0.75 · 出 ¥7.5,—,—,—
+160,,qwen3-vl-32b-instruct,千问,统一价,qwen3-vl-32b-instruct,—,入 ¥2 · 出 ¥8,—,—,—
+161,,qwen3-vl-32b-thinking,千问,统一价,qwen3-vl-32b-thinking,—,入 ¥2 · 出 ¥20,—,—,—
+162,,qwen3-vl-235b-a22b-instruct,千问,统一价,qwen3-vl-235b-a22b-instruct,—,入 ¥2 · 出 ¥8,—,—,—
+163,,qwen3-vl-235b-a22b-thinking,千问,统一价,qwen3-vl-235b-a22b-thinking,—,入 ¥2 · 出 ¥20,—,—,—
+164,,qwen3.5-27b,千问,0<Token≤128K,qwen3.5-27b,—,入 ¥0.6 · 出 ¥4.8,—,—,—
+165,,qwen3.5-35b-a3b,千问,0<Token≤128K,qwen3.5-35b-a3b,—,入 ¥0.4 · 出 ¥3.2,—,—,—
+166,,qwen3.5-122b-a10b,千问,0<Token≤128K,qwen3.5-122b-a10b,—,入 ¥0.8 · 出 ¥6.4,—,—,—
+167,,qwen3.5-397b-a17b,千问,0<Token≤128K,qwen3.5-397b-a17b,—,入 ¥1.2 · 出 ¥7.2,—,—,—
+168,qwen3.5-flash,qwen3.5-flash,千问,0<Token≤128K,qwen3.5-flash,入 ¥0.2 · 出 ¥2 · 缓 ¥0.02,入 ¥0.2 · 出 ¥2 · 缓 ¥0.04,⚠ 缓+100%,入 $0.030769 · 出 $0.307692 · 缓 $0.003077,⚠ 入-13.3% 出-13.3% 缓+73.3%
+169,,,,128K<Token≤256K,qwen3.5-flash,入 ¥0.8 · 出 ¥8 · 缓 ¥0.08,入 ¥0.8 · 出 ¥8 · 缓 ¥0.16,⚠ 缓+100%,入 $0.030769 · 出 $0.307692 · 缓 $0.003077,⚠ 缓+100%
+170,,,,256K<Token≤1M,qwen3.5-flash,入 ¥1.2 · 出 ¥12 · 缓 ¥0.12,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,⚠ 缓+100%,入 $0.030769 · 出 $0.307692 · 缓 $0.003077,⚠ 缓+100%
+171,,qwen3.5-flash-2026-02-23,千问,0<Token≤128K,qwen3.5-flash-2026-02-23,—,入 ¥0.2 · 出 ¥2 · 缓 ¥0.04,—,—,—
+172,,,,128K<Token≤256K,qwen3.5-flash-2026-02-23,—,入 ¥0.8 · 出 ¥8 · 缓 ¥0.16,—,—,—
+173,,,,256K<Token≤1M,qwen3.5-flash-2026-02-23,—,入 ¥1.2 · 出 ¥12 · 缓 ¥0.24,—,—,—
+174,,qwen3.5-ocr,千问,统一价,qwen3.5-ocr,—,入 ¥0.5 · 出 ¥2,—,—,—
+175,,qwen3.5-omni-flash,千问,统一价,qwen3.5-omni-flash,—,入 ¥2.2 · 出 ¥18,—,—,—
+176,,qwen3.5-omni-flash-2026-03-15,千问,统一价,qwen3.5-omni-flash-2026-03-15,—,入 ¥2.2 · 出 ¥18,—,—,—
+177,,qwen3.5-omni-flash-realtime,千问,统一价,qwen3.5-omni-flash-realtime,—,入 ¥3.3 · 出 ¥27,—,—,—
+178,,qwen3.5-omni-flash-realtime-2026-03-15,千问,统一价,qwen3.5-omni-flash-realtime-2026-03-15,—,入 ¥3.3 · 出 ¥27,—,—,—
+179,,qwen3.5-omni-plus,千问,统一价,qwen3.5-omni-plus,—,入 ¥7 · 出 ¥53,—,—,—
+180,,qwen3.5-omni-plus-2026-03-15,千问,统一价,qwen3.5-omni-plus-2026-03-15,—,入 ¥7 · 出 ¥53,—,—,—
+181,,qwen3.5-omni-plus-realtime,千问,统一价,qwen3.5-omni-plus-realtime,—,入 ¥10 · 出 ¥80,—,—,—
+182,,qwen3.5-omni-plus-realtime-2026-03-15,千问,统一价,qwen3.5-omni-plus-realtime-2026-03-15,—,入 ¥10 · 出 ¥80,—,—,—
+183,qwen3.5-plus,qwen3.5-plus,千问,0<Token≤128K,qwen3.5-plus,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.08,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.16,⚠ 缓+100%,入 $0.123077 · 出 $0.738462 · 缓 $0.012308,⚠ 入-13.3% 出-13.3% 缓+73.3%
+184,,,,128K<Token≤256K,qwen3.5-plus,入 ¥2 · 出 ¥12 · 缓 ¥0.2,入 ¥2 · 出 ¥12 · 缓 ¥0.4,⚠ 缓+100%,入 $0.123077 · 出 $0.738462 · 缓 $0.012308,⚠ 缓+100%
+185,,,,256K<Token≤1M,qwen3.5-plus,入 ¥4 · 出 ¥24 · 缓 ¥0.4,入 ¥4 · 出 ¥24 · 缓 ¥0.8,⚠ 缓+100%,入 $0.123077 · 出 $0.738462 · 缓 $0.012308,⚠ 缓+100%
+186,,qwen3.5-plus-2026-02-15,千问,0<Token≤128K,qwen3.5-plus-2026-02-15,—,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.16,—,—,—
+187,,qwen3.5-plus-2026-04-20,千问,0<Token≤128K,qwen3.5-plus-2026-04-20,—,入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.16,—,—,—
+188,,qwen3.6-27b,千问,0<Token≤256K,qwen3.6-27b,—,入 ¥3 · 出 ¥18,—,—,—
+189,,qwen3.6-35b-a3b,千问,0<Token≤256K,qwen3.6-35b-a3b,—,入 ¥1.8 · 出 ¥10.8,—,—,—
+190,qwen3.6-flash,qwen3.6-flash,千问,0<Token≤256K,qwen3.6-flash,入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24,入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24,✅ 一致,入 $0.184615 · 出 $1.107692 · 缓 $0.036923,✅ 一致
+191,,,,256K<Token≤1M,qwen3.6-flash,入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96,入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96,✅ 一致,入 $0.184615 · 出 $1.107692 · 缓 $0.036923,✅ 一致(÷隐含)
+192,,qwen3.6-flash-2026-04-16,千问,0<Token≤256K,qwen3.6-flash-2026-04-16,—,入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24,—,—,—
+193,,,,256K<Token≤1M,qwen3.6-flash-2026-04-16,—,入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96,—,—,—
+194,,qwen3.6-max-preview,千问,0<Token≤128K,qwen3.6-max-preview,—,入 ¥9 · 出 ¥54 · 缓 ¥1.8,—,—,—
+195,,,,128K<Token≤256K,qwen3.6-max-preview,—,入 ¥15 · 出 ¥90 · 缓 ¥3,—,—,—
+196,qwen3.6-plus,qwen3.6-plus,千问,0<Token≤256K,qwen3.6-plus,入 ¥2 · 出 ¥12 · 缓 ¥0.4,入 ¥2 · 出 ¥12 · 缓 ¥0.4,✅ 一致,入 $0.307692 · 出 $1.846154 · 缓 $0.061538,✅ 一致
+197,,,,256K<Token≤1M,qwen3.6-plus,入 ¥8 · 出 ¥48 · 缓 ¥1.6,入 ¥8 · 出 ¥48 · 缓 ¥1.6,✅ 一致,入 $0.307692 · 出 $1.846154 · 缓 $0.061538,✅ 一致(÷隐含)
+198,,qwen3.6-plus-2026-04-02,千问,0<Token≤256K,qwen3.6-plus-2026-04-02,—,入 ¥2 · 出 ¥12 · 缓 ¥0.4,—,—,—
+199,qwen3.7-max,qwen3.7-max,千问,0<Token≤1M,qwen3.7-max,入 ¥12 · 出 ¥36 · 缓 ¥2.4,入 ¥12 · 出 ¥36 · 缓 ¥2.4,✅ 一致,入 $1.846154 · 出 $5.538462 · 缓 $0.369231,✅ 一致
+200,,qwen3.7-max-2026-05-17,千问,0<Token≤1M,qwen3.7-max-2026-05-17,—,入 ¥12 · 出 ¥36 · 缓 ¥2.4,—,—,—
+201,,qwen3.7-max-2026-05-20,千问,0<Token≤1M,qwen3.7-max-2026-05-20,—,入 ¥12 · 出 ¥36 · 缓 ¥2.4,—,—,—
+202,,qwen3.7-max-2026-06-08,千问,0<Token≤1M,qwen3.7-max-2026-06-08,—,入 ¥12 · 出 ¥36 · 缓 ¥2.4,—,—,—
+203,,qwen3.7-max-preview,千问,0<Token≤1M,qwen3.7-max-preview,—,入 ¥12 · 出 ¥36 · 缓 ¥2.4,—,—,—
+204,qwen3.7-plus,qwen3.7-plus,千问,0<Token≤256K,qwen3.7-plus,入 ¥2 · 出 ¥8 · 缓 ¥0.4,入 ¥2 · 出 ¥8 · 缓 ¥0.4,✅ 一致,入 $0.307692 · 出 $1.230769 · 缓 $0.061538,✅ 一致
+205,,,,256K<Token≤1M,qwen3.7-plus,入 ¥6 · 出 ¥24 · 缓 ¥1.2,入 ¥6 · 出 ¥24 · 缓 ¥1.2,✅ 一致,入 $0.307692 · 出 $1.230769 · 缓 $0.061538,✅ 一致(÷隐含)
+206,,qwen3.7-plus-2026-05-26,千问,0<Token≤256K,qwen3.7-plus-2026-05-26,—,入 ¥2 · 出 ¥8 · 缓 ¥0.4,—,—,—
+207,,qwq-plus,千问,统一价,qwq-plus,—,入 ¥1.6 · 出 ¥4,—,—,—
+208,,tongyi-xiaomi-analysis-flash,千问,统一价,tongyi-xiaomi-analysis-flash,—,入 ¥0.2 · 出 ¥0.4,—,—,—
+209,,tongyi-xiaomi-analysis-pro,千问,统一价,tongyi-xiaomi-analysis-pro,—,入 ¥1.0 · 出 ¥2.7,—,—,—
+210,,video-style-transform,声动人像VideoRetalk,统一价,video-style-transform,—,出 ¥0.2,—,—,—
+211,,tongyi-intent-detect-v3,通义法睿,统一价,tongyi-intent-detect-v3,—,入 ¥0.4 · 出 ¥1,—,—,—
+212,,gte-rerank-v2,文本排序,统一价,gte-rerank-v2,—,入 ¥0.8,—,—,—
+213,,qwen3-rerank,文本排序,统一价,qwen3-rerank,—,入 ¥0.5,—,—,—
+214,,qwen3-vl-rerank,文本排序,统一价,qwen3-vl-rerank,—,入 ¥0.7,—,—,—
+215,,multimodal-embedding-v1,文本向量,统一价,multimodal-embedding-v1,—,入 ¥0.7,—,—,—
+216,,qwen3-vl-embedding,文本向量,统一价,qwen3-vl-embedding,—,入 ¥0.7,—,—,—
+217,,tongyi-embedding-vision-flash,文本向量,统一价,tongyi-embedding-vision-flash,—,入 ¥0.15,—,—,—
+218,,tongyi-embedding-vision-plus,文本向量,统一价,tongyi-embedding-vision-plus,—,入 ¥0.5,—,—,—
+219,,farui-plus,行业模型,统一价,farui-plus,—,入 ¥20 · 出 ¥20,—,—,—
+220,,gui-plus,意图理解,统一价,gui-plus,—,入 ¥1.5 · 出 ¥4.5,—,—,—
+221,,qwen-flash-character,意图理解,统一价,qwen-flash-character,—,入 ¥0.25 · 出 ¥1.5,—,—,—
+222,,qwen-flash-character-2026-02-26,意图理解,统一价,qwen-flash-character-2026-02-26,—,入 ¥0.18 · 出 ¥1.5,—,—,—
+223,,qwen-plus-character,意图理解,统一价,qwen-plus-character,—,入 ¥0.8 · 出 ¥2,—,—,—
+224,,minimax-m2.1,智谱,统一价,minimax-m2.1,—,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,—,—,—
+225,minimax-m2.5,minimax-m2.5,智谱,统一价,minimax-m2.5,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21,✅ 一致,入 $0.323077 · 出 $1.292308 · 缓 $0.032308,✅ 一致
+226,,deepseek-ocr,DeepSeek,统一价,deepseek-ocr,—,入 ¥0.216 · 出 ¥0.216 · 缓 ¥0.0432,—,—,—
+227,,deepseek-v3-0324,DeepSeek,统一价,deepseek-v3-0324,—,入 ¥2 · 出 ¥8,—,—,—
+228,,deepseek-v3.1-terminus,DeepSeek,统一价,deepseek-v3.1-terminus,—,入 ¥4 · 出 ¥12 · 缓 ¥1.6,—,—,—
+229,,deepseek-v3.2-think,DeepSeek,统一价,deepseek-v3.2-think,—,入 ¥2 · 出 ¥3 · 缓 ¥0.2,—,—,—
+230,,kimi-k2-thinking,DeepSeek,统一价,kimi-k2-thinking,—,入 ¥4 · 出 ¥16,—,—,—
+231,kimi-k2.5,kimi-k2.5,DeepSeek,统一价,kimi-k2.5,入 ¥4 · 出 ¥21 · 缓 ¥0.7,入 ¥4 · 出 ¥21 · 缓 ¥0.7,✅ 一致,入 $0.615385 · 出 $3.230769 · 缓 $0.107692,✅ 一致
+232,kimi-k2.6,kimi-k2.6,DeepSeek,统一价,kimi-k2.6,入 ¥6.5 · 出 ¥27 · 缓 ¥1.1,入 ¥6.5 · 出 ¥27 · 缓 ¥1.0985,✅ 一致,入 $1 · 出 $4.153846 · 缓 $0.169231,✅ 一致
+233,kimi-k2.7-code,kimi-k2.7-code,DeepSeek,统一价,kimi-k2.7-code,入 ¥6.5 · 出 ¥27 · 缓 ¥1.3,入 ¥6.5 · 出 ¥27,✅ 一致,入 $1 · 出 $4.153846,✅ 一致
+234,,moonshot-kimi-k2-instruct,DeepSeek,统一价,moonshot-kimi-k2-instruct,—,入 ¥4 · 出 ¥16,—,—,—
+235,,fun-asr,Fun,统一价,fun-asr,—,入 ¥0.00022,—,—,—
+236,,fun-asr-flash-2026-06-15,Fun,统一价,fun-asr-flash-2026-06-15,—,入 ¥0.00022,—,—,—
+237,,glm-4.5,Kimi,0<Token≤32K,glm-4.5,—,入 ¥3 · 出 ¥14 · 缓 ¥0.6,—,—,—
+238,,,,32K<Token≤96K,glm-4.5,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+239,,glm-4.5-air,Kimi,0<Token≤32K,glm-4.5-air,—,入 ¥0.8 · 出 ¥6 · 缓 ¥0.16,—,—,—
+240,,,,32K<Token≤96K,glm-4.5-air,—,入 ¥1.2 · 出 ¥8 · 缓 ¥0.24,—,—,—
+241,,glm-4.6,Kimi,0<Token≤32K,glm-4.6,—,入 ¥3 · 出 ¥14 · 缓 ¥0.6,—,—,—
+242,,,,32K<Token≤166K,glm-4.6,—,入 ¥4 · 出 ¥16 · 缓 ¥0.8,—,—,—
+243,,glm-4.7,Kimi,0<Token≤32K,glm-4.7,入 ¥3 · 出 ¥14 · 缓 ¥0.6,入 ¥3 · 出 ¥14 · 缓 ¥0.6,✅ 一致,—,—
+244,,,,32K<Token≤166K,glm-4.7,入 ¥4 · 出 ¥16 · 缓 ¥0.8,入 ¥4 · 出 ¥16 · 缓 ¥0.8,✅ 一致,—,—
+245,glm-5,glm-5,Kimi,0<Token≤32K,glm-5,入 ¥4 · 出 ¥18 · 缓 ¥1,入 ¥4 · 出 ¥18 · 缓 ¥0.8,⚠ 缓-20%,入 $0.615385 · 出 $2.769231 · 缓 $0.153846,⚠ 缓-20%
+246,,,,32K<Token≤198K,glm-5,入 ¥6 · 出 ¥22 · 缓 ¥1.5,入 ¥6 · 出 ¥22 · 缓 ¥1.2,⚠ 缓-20%,入 $0.923077 · 出 $3.384615 · 缓 $0.230769,⚠ 缓-20%
+247,glm-5.1,glm-5.1,Kimi,0<Token≤32K,glm-5.1,入 ¥6 · 出 ¥24 · 缓 ¥1.3,入 ¥6 · 出 ¥24 · 缓 ¥1.2,⚠ 缓-7.7%,入 $0.923077 · 出 $3.692308 · 缓 $0.2,⚠ 缓-7.7%
+248,,,,32K<Token≤200K,glm-5.1,入 ¥8 · 出 ¥28 · 缓 ¥2,入 ¥8 · 出 ¥28 · 缓 ¥1.6,⚠ 缓-20%,入 $1.230769 · 出 $4.307692 · 缓 $0.307692,⚠ 缓-20%
+249,glm-5.2,glm-5.2,Kimi,不区分阶梯,glm-5.2,入 ¥8 · 出 ¥28 · 缓 ¥2,入 ¥8 · 出 ¥28 · 缓 ¥2,✅ 一致,入 $1.230769 · 出 $4.307692 · 缓 $0.307692,✅ 一致
+250,kimi-k2.7-code-highspeed,kimi-k2.7-code-highspeed,Kimi,统一价,kimi-k2.7-code-highspeed,入 ¥13 · 出 ¥54 · 缓 ¥2.6,入 ¥13 · 出 ¥54 · 缓 ¥2.6,✅ 一致,入 $2 · 出 $8.307692 · 缓 $0.4,✅ 一致
+251,,mimo-v2.5-pro,MiniMax,0<Token≤256K,mimo-v2.5-pro,—,入 ¥7 · 出 ¥21,—,—,—
+252,,,,256K<Token≤1M,mimo-v2.5-pro,—,入 ¥14,—,—,—
+253,minimax-m2.7,minimax-m2.7,MiniMax,统一价,minimax-m2.7,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42,✅ 一致,入 $0.323077 · 出 $1.292308 · 缓 $0.064615,✅ 一致
+254,minimax-m3,minimax-m3,MiniMax,统一价,minimax-m3,入 ¥4.2 · 出 ¥16.8 · 缓 ¥0.84,入 ¥4.2 · 出 ¥16.8 · 缓 ¥0.84,✅ 一致,入 $0.646154 · 出 $2.584615 · 缓 $0.129231,✅ 一致
+255,,paraformer-v2,Paraformer,统一价,paraformer-v2,—,入 ¥0.00008,—,—,—
+256,,qwen3-vl-flash,QVQ,0<Token≤32K,qwen3-vl-flash,—,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,—,—,—
+257,,,,32K<Token≤128K,qwen3-vl-flash,—,入 ¥0.3 · 出 ¥3 · 缓 ¥0.06,—,—,—
+258,,,,128K<Token≤256K,qwen3-vl-flash,—,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,—,—,—
+259,,qwen3-vl-flash-2025-10-15,QVQ,0<Token≤32K,qwen3-vl-flash-2025-10-15,—,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,—,—,—
+260,,,,32K<Token≤128K,qwen3-vl-flash-2025-10-15,—,入 ¥0.3 · 出 ¥3 · 缓 ¥0.06,—,—,—
+261,,,,128K<Token≤256K,qwen3-vl-flash-2025-10-15,—,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,—,—,—
+262,,qwen3-vl-flash-2026-01-22,QVQ,0<Token≤32K,qwen3-vl-flash-2026-01-22,—,入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03,—,—,—
+263,,,,32K<Token≤128K,qwen3-vl-flash-2026-01-22,—,入 ¥0.3 · 出 ¥3 · 缓 ¥0.06,—,—,—
+264,,,,128K<Token≤256K,qwen3-vl-flash-2026-01-22,—,入 ¥0.6 · 出 ¥6 · 缓 ¥0.12,—,—,—
+265,,qwen3-vl-plus,QVQ,0<Token≤32K,qwen3-vl-plus,—,入 ¥1 · 出 ¥10 · 缓 ¥0.2,—,—,—
+266,,,,32K<Token≤128K,qwen3-vl-plus,—,入 ¥1.5 · 出 ¥15 · 缓 ¥0.3,—,—,—
+267,,,,128K<Token≤256K,qwen3-vl-plus,—,入 ¥3 · 出 ¥30 · 缓 ¥0.6,—,—,—
+268,,qwen3-vl-plus-2025-09-23,QVQ,0<Token≤32K,qwen3-vl-plus-2025-09-23,—,入 ¥1 · 出 ¥10 · 缓 ¥0.2,—,—,—
+269,,,,32K<Token≤128K,qwen3-vl-plus-2025-09-23,—,入 ¥1.5 · 出 ¥15 · 缓 ¥0.3,—,—,—
+270,,,,128K<Token≤256K,qwen3-vl-plus-2025-09-23,—,入 ¥3 · 出 ¥30 · 缓 ¥0.6,—,—,—
+271,,qwen3-vl-plus-2025-12-19,QVQ,0<Token≤32K,qwen3-vl-plus-2025-12-19,—,入 ¥1 · 出 ¥10 · 缓 ¥0.2,—,—,—
+272,,,,32K<Token≤128K,qwen3-vl-plus-2025-12-19,—,入 ¥1.5 · 出 ¥15 · 缓 ¥0.3,—,—,—
+273,,,,128K<Token≤256K,qwen3-vl-plus-2025-12-19,—,入 ¥3 · 出 ¥30 · 缓 ¥0.6,—,—,—
+274,,step-3.7-flash,Stepfun,统一价,step-3.7-flash,—,入 ¥1.35 · 出 ¥8.1,—,—,—
