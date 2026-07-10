@@ -340,11 +340,18 @@ curl -s -X POST http://127.0.0.1:8788/internal/dry-run \
 
 ### 11.2 生产（推荐顺序）
 
-| 方式 | 适用 |
-|------|------|
-| **腾讯云 SCF + API 网关** | 低流量、免运维 |
-| **VPS + systemd + nginx** | 已有内网机 |
-| **Docker 单容器** | 与现有运维统一 |
+| 方式 | 适用 | 文档 |
+|------|------|------|
+| **VPS + systemd** | 内网机 / 云主机常驻 Stream | `tools/dingtalk-requirement-inbox/deploy/README.md` |
+| **Docker Compose** | 与现有容器运维统一 | 同目录 `docker-compose.yml` |
+| **腾讯云 SCF + API 网关** | 低流量、免运维 | 未实现脚本 |
+
+一键从本机同步并安装：
+
+```bash
+cd tools/dingtalk-requirement-inbox
+SERVER=user@host COPY_ENV=1 bash deploy/sync-to-server.sh
+```
 
 ### 11.3 健康检查与日志
 

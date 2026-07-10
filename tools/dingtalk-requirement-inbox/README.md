@@ -90,3 +90,25 @@ pytest tests/ -q
 3. 若 Notable 已开通 → 收件箱有「待确认」行  
 
 详见 [待办清单](../../apps/trinity-product/docs/assistant-tools/requirement-inbox/todo.md)。
+
+---
+
+## 服务器部署
+
+钉钉 Stream **只需出站网络**，不必暴露公网回调。
+
+| 方式 | 文档 |
+|------|------|
+| **systemd（推荐）** | [deploy/README.md](./deploy/README.md) |
+| 本机一键同步 | `SERVER=user@host COPY_ENV=1 bash deploy/sync-to-server.sh` |
+| Docker | `docker compose up -d --build` |
+
+```bash
+# 服务器上（首次）
+git clone git@github.com:chenximo/trinity-AI.git /opt/trinity-AI
+scp .env user@host:/opt/trinity-AI/tools/dingtalk-requirement-inbox/.env
+sudo bash deploy/install-systemd.sh
+
+# 日志
+sudo journalctl -u trinity-requirement-inbox -f
+```

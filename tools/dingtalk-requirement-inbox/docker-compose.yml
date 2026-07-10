@@ -1,0 +1,10 @@
+services:
+  requirement-inbox:
+    build: .
+    container_name: trinity-requirement-inbox
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    # Stream bot only; no inbound ports required for DingTalk callbacks.

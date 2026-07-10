@@ -8,10 +8,13 @@ Type=simple
 User=trinity
 Group=trinity
 WorkingDirectory=/opt/trinity-AI/tools/dingtalk-requirement-inbox
+Environment=PYTHONUNBUFFERED=1
 EnvironmentFile=/opt/trinity-AI/tools/dingtalk-requirement-inbox/.env
 ExecStart=/opt/trinity-AI/tools/dingtalk-requirement-inbox/.venv/bin/python -m src.main stream
 Restart=always
 RestartSec=10
+# Dedup SQLite under data/
+ReadWritePaths=/opt/trinity-AI/tools/dingtalk-requirement-inbox/data
 
 [Install]
 WantedBy=multi-user.target

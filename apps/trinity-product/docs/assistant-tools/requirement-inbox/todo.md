@@ -96,7 +96,8 @@ python -m src.main all   # Stream + dry-run API 同时运行
 - [ ] 截图附件同步到多维表
 - [ ] 同标题去重建议
 - [ ] 失败告警 Webhook
-- [ ] 生产部署（VPS / Docker / 内网机常驻 Stream）
+- [x] 生产部署脚本（systemd / Docker / `sync-to-server.sh`）→ [deploy/README.md](../../../../tools/dingtalk-requirement-inbox/deploy/README.md)
+- [ ] 生产环境实际上线（填 `SERVER`，同步 `.env`，验收 Stream）
 
 ---
 
