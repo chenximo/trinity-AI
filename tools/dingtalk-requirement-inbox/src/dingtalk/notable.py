@@ -91,6 +91,10 @@ def attachment_target_indices(candidates: list[dict[str, Any]], attachment_count
     return set()
 
 
+def format_created_time() -> str:
+    return datetime.now(TZ_CN).strftime("%Y-%m-%d %H:%M")
+
+
 def build_notable_fields(
     *,
     batch_id: str,
@@ -104,6 +108,7 @@ def build_notable_fields(
     item_type = candidate.get("type", "")
     reporter = normalize_reporter(candidate.get("reporter", ""))
     fields: dict[str, Any] = {
+        "创建时间": format_created_time(),
         "类型": TYPE_LABELS.get(item_type, "需求"),
         "标题": (candidate.get("title") or "").strip(),
         "问题描述": format_rich_text(candidate.get("summary") or ""),

@@ -189,6 +189,7 @@ def test_build_notable_fields_pm_columns():
     assert fields["优先级"] == "P2"
     assert fields["负责人"] == "崔宇光"
     assert fields["发现者"] == [{"unionId": "ren-uid"}]
+    assert fields["创建时间"]
     assert "群 ID" not in fields
 
 
