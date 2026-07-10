@@ -25,7 +25,7 @@ title: 文档与支持
 | 主题 | 手册 L2 | 对外正文真源 |
 |------|---------|--------------|
 | **对外文档站（产品规格）** | [developer-docs.md](../developer-docs) | `apps/trinity-docs/docs/` |
-| 法务 / FAQ 口径 | 链 [legal](../../../legal/) · docs `/faq` | 同上 |
+| 法务 / FAQ 口径 | 链 [legal](../../../legal/) · docs `/faq` | [页面清单](../../../legal/pages-and-content) |
 
 ---
 

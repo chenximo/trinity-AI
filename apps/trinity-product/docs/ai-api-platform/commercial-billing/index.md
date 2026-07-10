@@ -230,7 +230,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 控制台用量/余额可见 | `#credits` · `#activity` |
 | 运营上架 ≥1 模型 + 对账可查 | 运营侧 |
 | 对外 Quickstart + 核心 docs | trinity-docs |
-| Privacy / Terms 可访问 | [legal](../../legal/) |
+| Privacy / Terms 可访问 | [legal](../../legal/) · [页面清单](../../legal/pages-and-content) |
 
 ### 7.2 建议不纳入 6.30（明确写「不卖」）
 

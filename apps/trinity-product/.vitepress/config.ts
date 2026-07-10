@@ -47,11 +47,13 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: "法律与合规（草案）",
-    collapsed: true,
+    text: "法律与合规",
+    collapsed: false,
     items: [
-      { text: "说明", link: "/legal/" },
-      { text: "隐私政策", link: "/legal/privacy-policy" },
+      { text: "总览", link: "/legal/" },
+      { text: "页面清单与内容规范", link: "/legal/pages-and-content" },
+      { text: "挂网维护与工程映射", link: "/legal/engineering-map" },
+      { text: "隐私政策（旧草案 · 仅供参考）", link: "/legal/privacy-policy" },
     ],
   },
   {
@@ -98,6 +100,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "MVP 支付 UI 详规", link: "/ai-api-platform/commercial-billing/mvp-openrouter-payment" },
           { text: "行业报告（计费/支付/退款）", link: "/ai-api-platform/commercial-billing/industry-billing-payment-report" },
           { text: "OpenRouter 支付调研与佐证", link: "/ai-api-platform/commercial-billing/openrouter-payment-evidence" },
+          { text: "Antom 审核补充材料", link: "/ai-api-platform/commercial-billing/antom-merchant-supplementary-materials" },
           { text: "全球化美金支付与 KYC（二期）", link: "/ai-api-platform/commercial-billing/global-payment" },
         ],
       },
