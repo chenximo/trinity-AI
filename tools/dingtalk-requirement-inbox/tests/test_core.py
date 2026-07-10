@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from src.config import Settings
+from src.dedup import ProcessedMessageStore, dedupe_candidates_by_title
 from src.dingtalk.incoming import extract_download_codes
 from src.dingtalk.messages import fetch_conversation_messages
 from src.dingtalk.notable import (
@@ -240,3 +241,23 @@ def test_build_notable_fields_owner():
 def test_codex_fixture():
     data = json.loads((FIXTURES / "codex-sample-messages.json").read_text(encoding="utf-8"))
     assert len(data["messages"]) >= 4
+
+
+def test_dedupe_candidates_by_title():
+    candidates = [
+        {"title": "登录失败", "type": "bug"},
+        {"title": "登录失败", "type": "bug"},
+        {"title": "页面慢", "type": "optimization"},
+    ]
+    kept, skipped = dedupe_candidates_by_title(candidates)
+    assert len(kept) == 2
+    assert skipped == ["登录失败"]
+
+
+def test_processed_message_store(tmp_path):
+    db_path = tmp_path / "processed.db"
+    store = ProcessedMessageStore(db_path, retention_days=30)
+    assert not store.is_processed("msg-1")
+    store.mark_processed("msg-1", "batch-a")
+    assert store.is_processed("msg-1")
+    assert not store.is_processed("msg-2")

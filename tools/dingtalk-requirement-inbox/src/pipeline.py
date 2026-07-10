@@ -8,6 +8,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from src.config import Settings
+from src.dedup import ProcessedMessageStore, dedupe_candidates_by_title
 from src.dingtalk.client import reply_text
 from src.dingtalk.messages import fetch_conversation_messages
 from src.dingtalk.incoming import extract_download_codes, extract_incoming_body, incoming_trigger_text
@@ -44,14 +45,34 @@ def is_trigger(incoming: dict[str, Any]) -> bool:
     return "整理" in incoming_trigger_text(incoming)
 
 
+def _append_skipped_titles(reply: str, skipped_titles: list[str]) -> str:
+    if not skipped_titles:
+        return reply
+    shown = "、".join(f"「{title}」" for title in skipped_titles[:3])
+    if len(skipped_titles) > 3:
+        shown += f" 等 {len(skipped_titles)} 条"
+    return f"{reply}\n跳过 {len(skipped_titles)} 条重复标题：{shown}"
+
+
 async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str, Any]:
     session_webhook = incoming.get("sessionWebhook") or ""
     conversation_id = incoming.get("conversationId") or ""
+    msg_id = (incoming.get("msgId") or "").strip()
 
     allowed = settings.allowed_conversation_id_set()
     if allowed and conversation_id not in allowed:
         await reply_text(session_webhook, "此群未开通需求整理助手。")
         return {"ok": False, "error": "conversation_not_allowed"}
+
+    if settings.dedup_msg_id_enabled and msg_id:
+        store = ProcessedMessageStore(
+            settings.resolved_dedup_db_path(),
+            retention_days=settings.dedup_retention_days,
+        )
+        if store.is_processed(msg_id):
+            logger.info("organize_skipped_duplicate_msg_id msg_id=%s", msg_id)
+            await reply_text(session_webhook, "该消息已整理过，跳过重复写入。")
+            return {"ok": True, "skipped": True, "reason": "duplicate_msg_id"}
 
     trigger_message = build_trigger_message(incoming)
     quoted = has_quoted_reply(incoming)
@@ -66,6 +87,7 @@ async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str
     extraction = await extractor.extract(messages)
     batch_id = make_batch_id()
     writable = [c for c in extraction.get("candidates", []) if c.get("type") != "noise"]
+    writable, skipped_titles = dedupe_candidates_by_title(writable)
     trigger_images = []
     if settings.notable_write_enabled and settings.notable_attach_images_enabled:
         robot_code = resolve_robot_code(incoming)
@@ -109,8 +131,16 @@ async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str
 
     if quoted:
         reply += "\n（已包含引用/回复消息）"
+    reply = _append_skipped_titles(reply, skipped_titles)
 
     await reply_text(session_webhook, reply)
+
+    if settings.dedup_msg_id_enabled and msg_id:
+        ProcessedMessageStore(
+            settings.resolved_dedup_db_path(),
+            retention_days=settings.dedup_retention_days,
+        ).mark_processed(msg_id, batch_id)
+
     return {"ok": True, "batch_id": batch_id, "count": count}
 
 

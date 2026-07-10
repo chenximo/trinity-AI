@@ -47,6 +47,10 @@ class Settings(BaseSettings):
     notable_write_enabled: bool = False
     chat_message_read_enabled: bool = False
 
+    dedup_msg_id_enabled: bool = True
+    dedup_db_path: str = ""
+    dedup_retention_days: int = 30
+
     @property
     def prompt_path(self) -> Path:
         return ROOT_DIR / "prompt.md"
@@ -63,6 +67,11 @@ class Settings(BaseSettings):
             for item in self.dingtalk_allowed_conversation_ids.split(",")
             if item.strip()
         }
+
+    def resolved_dedup_db_path(self) -> Path:
+        if self.dedup_db_path.strip():
+            return Path(self.dedup_db_path.strip())
+        return ROOT_DIR / "data" / "processed.db"
 
     def resolved_notable_doc_url(self) -> str:
         if self.notable_doc_url.strip():
