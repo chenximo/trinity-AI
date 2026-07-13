@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from typing import Any, Optional
 from zoneinfo import ZoneInfo
 
-from src.dingtalk.incoming import extract_body_from_content
+from src.dingtalk.incoming import extract_body_from_content, extract_download_codes_from_content
 
 TZ_CN = ZoneInfo("Asia/Shanghai")
 
@@ -39,11 +39,27 @@ def _format_time(create_ms: int) -> str:
 
 
 def extract_replied_content(replied: dict[str, Any]) -> tuple[str, bool]:
-    msg_type = str(replied.get("msgType") or replied.get("msgtype") or "text").lower()
     content = replied.get("content") or {}
     if not isinstance(content, dict):
         return "", False
+    msg_type = str(replied.get("msgType") or replied.get("msgtype") or "text").lower()
+    if content.get("richText"):
+        msg_type = "richtext"
     return extract_body_from_content(content, msg_type=msg_type)
+
+
+def extract_replied_download_codes(incoming: dict[str, Any]) -> list[str]:
+    """Download codes from quoted/replied message (reply-then-整理 flow)."""
+    replied = get_replied_msg_blob(incoming)
+    if not replied:
+        return []
+    content = replied.get("content") or {}
+    if not isinstance(content, dict):
+        return []
+    if content.get("richText"):
+        return extract_download_codes_from_content(content, msg_type="richtext")
+    msg_type = str(replied.get("msgType") or replied.get("msgtype") or "text").lower()
+    return extract_download_codes_from_content(content, msg_type=msg_type)
 
 
 def build_quoted_message(incoming: dict[str, Any]) -> Optional[dict[str, Any]]:

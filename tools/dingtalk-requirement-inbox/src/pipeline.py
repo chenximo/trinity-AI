@@ -12,7 +12,7 @@ from src.dedup import ProcessedMessageStore, dedupe_candidates_by_title
 from src.dingtalk.client import reply_text
 from src.dingtalk.messages import fetch_conversation_messages
 from src.dingtalk.incoming import extract_download_codes, extract_incoming_body, incoming_trigger_text
-from src.dingtalk.reply import has_quoted_reply
+from src.dingtalk.reply import extract_replied_download_codes, has_quoted_reply
 from src.dingtalk.notable import NotableWriter, make_batch_id
 from src.dingtalk.robot_files import download_robot_images, resolve_robot_code
 from src.llm.extract import LlmExtractor
@@ -88,10 +88,26 @@ async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str
     batch_id = make_batch_id()
     writable = [c for c in extraction.get("candidates", []) if c.get("type") != "noise"]
     writable, skipped_titles = dedupe_candidates_by_title(writable)
+    logger.info(
+        "organize_extracted batch_id=%s message_count=%s candidate_count=%s writable=%s",
+        batch_id,
+        len(messages),
+        len(extraction.get("candidates", [])),
+        len(writable),
+    )
     trigger_images = []
     if settings.notable_write_enabled and settings.notable_attach_images_enabled:
-        robot_code = resolve_robot_code(incoming)
-        download_codes = extract_download_codes(incoming)
+        robot_code = resolve_robot_code(incoming, fallback=settings.dingtalk_client_id)
+        download_codes = list(
+            dict.fromkeys(
+                extract_download_codes(incoming) + extract_replied_download_codes(incoming)
+            )
+        )
+        logger.info(
+            "screenshot_download_prepare codes=%s robot_code=%s",
+            len(download_codes),
+            bool(robot_code),
+        )
         if download_codes and robot_code:
             trigger_images = await download_robot_images(
                 settings,

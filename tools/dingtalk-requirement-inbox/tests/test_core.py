@@ -14,7 +14,7 @@ from src.dingtalk.notable import (
     normalize_reporter,
     resolve_owner_name,
 )
-from src.dingtalk.reply import build_quoted_message, has_quoted_reply
+from src.dingtalk.reply import build_quoted_message, extract_replied_download_codes, has_quoted_reply
 from src.dingtalk.robot_files import guess_image_type
 from src.pipeline import build_trigger_message, is_trigger
 
@@ -102,6 +102,43 @@ def test_build_quoted_message_from_reply():
     assert quoted["sender_name"] == "张三"
 
 
+def test_build_quoted_message_from_reply_richtext():
+    """DingTalk repliedMsg may use content.richText with msgType (not type)."""
+    incoming = {
+        "text": {
+            "content": "整理",
+            "repliedMsg": {
+                "msgId": "quoted-rt",
+                "senderNick": "测试",
+                "createdAt": 1700000000000,
+                "content": {
+                    "richText": [
+                        {"msgType": "picture", "downloadCode": "pic-code-1"},
+                        {"msgType": "text", "content": "已经通过的用户没有地方能到官网登录"},
+                    ]
+                },
+            },
+        }
+    }
+    quoted = build_quoted_message(incoming)
+    assert quoted is not None
+    assert "官网登录" in quoted["text"]
+    assert quoted["has_image"] is True
+
+    async def _run():
+        trigger = build_trigger_message({"msgId": "t1", "senderNick": "PM", "text": {"content": "整理"}})
+        return await fetch_conversation_messages(
+            Settings(),
+            conversation_id="cid",
+            trigger_message=trigger,
+            incoming=incoming,
+        )
+
+    msgs = asyncio.run(_run())
+    assert len(msgs) == 2
+    assert "官网登录" in msgs[0]["text"]
+
+
 def test_fetch_conversation_messages_includes_quote():
     incoming = {
         "text": {
@@ -129,6 +166,24 @@ def test_fetch_conversation_messages_includes_quote():
     assert len(messages) == 2
     assert messages[0]["text"] == "CC Switch 断流"
     assert messages[1]["message_id"] == "t1"
+
+
+def test_extract_replied_download_codes_richtext():
+    incoming = {
+        "text": {
+            "content": "整理",
+            "repliedMsg": {
+                "content": {
+                    "richText": [
+                        {"msgType": "picture", "downloadCode": "code-from-reply"},
+                        {"msgType": "text", "content": "有图"},
+                    ]
+                }
+            },
+        }
+    }
+    assert extract_replied_download_codes(incoming) == ["code-from-reply"]
+    assert extract_download_codes(incoming) == []
 
 
 def test_extract_download_codes_richtext():

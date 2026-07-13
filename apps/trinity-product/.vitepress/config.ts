@@ -100,7 +100,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "MVP 支付 UI 详规", link: "/ai-api-platform/commercial-billing/mvp-openrouter-payment" },
           { text: "行业报告（计费/支付/退款）", link: "/ai-api-platform/commercial-billing/industry-billing-payment-report" },
           { text: "OpenRouter 支付调研与佐证", link: "/ai-api-platform/commercial-billing/openrouter-payment-evidence" },
-          { text: "Antom 审核补充材料", link: "/ai-api-platform/commercial-billing/antom-merchant-supplementary-materials" },
+          { text: "Antom 审核补充材料", link: "/ai-api-platform/commercial-billing/Antom商户审核补充材料" },
           { text: "全球化美金支付与 KYC（二期）", link: "/ai-api-platform/commercial-billing/global-payment" },
         ],
       },

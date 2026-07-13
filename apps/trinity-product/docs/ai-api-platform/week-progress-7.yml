@@ -52,7 +52,7 @@ weeks:
       顺延自 W27：支付主体 / 合规文档定稿待外部确认
       并行：腾讯云海外站点模型接入 @待对接
       模块：operations/models-routes
-    weeklyReport: —
+    weeklyReport: 见 docs/周记/2026-W28.md 简版（上交）
   - id: W29
     period: 07-13～07-19
     focus: 生文 API + 流式、Chat 在线体验、用户控制台、标准错误与可观测

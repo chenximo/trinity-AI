@@ -92,7 +92,7 @@ pnpm --filter web build
 2. 若新增页面：补 `routes.ts`、`types.ts`、`Trinity*Page.vue`、`renderStaticLegalPage.ts`、`legalStaticHtmlPlugin.ts`、页脚链
 3. `pnpm --filter web build`
 4. 部署生产
-5. 更新 [Antom 补充材料](../ai-api-platform/commercial-billing/antom-merchant-supplementary-materials) 中的 URL（如有变）
+5. 更新 [Antom 补充材料](../ai-api-platform/commercial-billing/Antom商户审核补充材料) 中的 URL（如有变）
 
 ---
 

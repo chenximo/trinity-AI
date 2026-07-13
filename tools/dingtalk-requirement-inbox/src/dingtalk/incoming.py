@@ -5,6 +5,10 @@ from __future__ import annotations
 from typing import Any
 
 
+def _rich_item_kind(item: dict[str, Any]) -> str:
+    return str(item.get("type") or item.get("msgType") or "").lower()
+
+
 def _rich_text_parts(content: dict[str, Any]) -> tuple[str, bool, list[str]]:
     parts: list[str] = []
     has_image = False
@@ -12,13 +16,13 @@ def _rich_text_parts(content: dict[str, Any]) -> tuple[str, bool, list[str]]:
     for item in content.get("richText") or []:
         if not isinstance(item, dict):
             continue
-        if item.get("type") == "picture":
+        if _rich_item_kind(item) == "picture":
             has_image = True
             code = str(item.get("downloadCode") or "").strip()
             if code:
                 download_codes.append(code)
             continue
-        text = str(item.get("text") or "").strip()
+        text = str(item.get("text") or item.get("content") or "").strip()
         if text:
             parts.append(text)
     return "\n".join(parts), has_image, download_codes
@@ -58,6 +62,12 @@ def extract_download_codes(incoming: dict[str, Any]) -> list[str]:
 def extract_body_from_content(content: dict[str, Any], *, msg_type: str = "text") -> tuple[str, bool]:
     """Extract visible text and image flag from a content blob."""
     msg_type = msg_type.lower()
+
+    if content.get("richText"):
+        text, has_image, _ = _rich_text_parts(content)
+        if text:
+            return text, has_image
+        return ("[图片消息]" if has_image else ""), has_image
 
     if msg_type == "picture":
         text = str(content.get("text") or "").strip()

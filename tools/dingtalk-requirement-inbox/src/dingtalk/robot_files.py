@@ -94,9 +94,9 @@ async def download_robot_images(
     return images
 
 
-def resolve_robot_code(incoming: dict[str, Any]) -> str:
+def resolve_robot_code(incoming: dict[str, Any], *, fallback: str = "") -> str:
     for key in ("robotCode", "chatbotUserId"):
         value = incoming.get(key)
         if isinstance(value, str) and value.strip():
             return value.strip()
-    return ""
+    return fallback.strip()
