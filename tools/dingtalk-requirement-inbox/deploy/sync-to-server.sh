@@ -8,16 +8,15 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
-REPO_ROOT="$(cd "${APP_DIR}/../.." && pwd)"
 
 SERVER="${SERVER:?Set SERVER=user@host}"
-REMOTE_DIR="${REMOTE_DIR:-/opt/trinity-AI}"
-REMOTE_APP="${REMOTE_DIR}/tools/dingtalk-requirement-inbox"
+REMOTE_DIR="${REMOTE_DIR:-/opt/trinity-tool}"
+REMOTE_APP="${REMOTE_DIR}/dingtalk-requirement-inbox"
 SERVICE_USER="${SERVICE_USER:-trinity}"
 COPY_ENV="${COPY_ENV:-0}"
 
-echo "→ Sync repo to ${SERVER}:${REMOTE_DIR}"
-ssh "${SERVER}" "mkdir -p '${REMOTE_DIR}/tools'"
+echo "→ Sync app to ${SERVER}:${REMOTE_APP}"
+ssh "${SERVER}" "sudo mkdir -p '${REMOTE_DIR}' && sudo chown \"\$(whoami):\$(whoami)\" '${REMOTE_DIR}'"
 
 rsync -az --delete \
   --exclude '.venv/' \
@@ -25,7 +24,7 @@ rsync -az --delete \
   --exclude '.pytest_cache/' \
   --exclude 'data/' \
   --exclude '.env' \
-  "${REPO_ROOT}/" "${SERVER}:${REMOTE_DIR}/"
+  "${APP_DIR}/" "${SERVER}:${REMOTE_APP}/"
 
 if [[ "${COPY_ENV}" == "1" ]]; then
   if [[ ! -f "${APP_DIR}/.env" ]]; then

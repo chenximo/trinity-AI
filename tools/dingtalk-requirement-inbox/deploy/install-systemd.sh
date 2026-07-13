@@ -2,7 +2,7 @@
 # Run on the target Linux server (as root or with sudo).
 set -euo pipefail
 
-APP_DIR="${APP_DIR:-/opt/trinity-AI/tools/dingtalk-requirement-inbox}"
+APP_DIR="${APP_DIR:-/opt/trinity-tool/dingtalk-requirement-inbox}"
 SERVICE_NAME="trinity-requirement-inbox"
 SERVICE_USER="${SERVICE_USER:-trinity}"
 
@@ -36,7 +36,7 @@ chown -R "${SERVICE_USER}:${SERVICE_USER}" "${APP_DIR}/.venv"
 UNIT_SRC="${APP_DIR}/deploy/${SERVICE_NAME}.service"
 UNIT_DST="/etc/systemd/system/${SERVICE_NAME}.service"
 sed \
-  -e "s|/opt/trinity-AI/tools/dingtalk-requirement-inbox|${APP_DIR}|g" \
+  -e "s|/opt/trinity-tool/dingtalk-requirement-inbox|${APP_DIR}|g" \
   -e "s|User=trinity|User=${SERVICE_USER}|g" \
   -e "s|Group=trinity|Group=${SERVICE_USER}|g" \
   "${UNIT_SRC}" > "${UNIT_DST}"

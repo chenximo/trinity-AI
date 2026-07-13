@@ -15,27 +15,30 @@
 
 ## 方式 A：systemd（推荐）
 
-### 1. 在服务器上克隆代码
+### 1. 在服务器上准备目录
+
+默认路径：`/opt/trinity-tool/dingtalk-requirement-inbox`（可用 `REMOTE_DIR` 覆盖）。
+
+**推荐：本机一键同步**（见方式 B），会自动创建 `trinity-tool` 目录。
+
+或手动：
 
 ```bash
-sudo mkdir -p /opt/trinity-AI
-sudo chown "$USER":"$USER" /opt/trinity-AI
-git clone git@github.com:chenximo/trinity-AI.git /opt/trinity-AI
-cd /opt/trinity-AI
-git pull   # 后续更新
+sudo mkdir -p /opt/trinity-tool
+sudo chown "$USER":"$USER" /opt/trinity-tool
 ```
 
 ### 2. 复制 `.env`（在本机 Mac 执行）
 
 ```bash
-scp /Users/linda/Documents/Trinity_AICoding/trinity-AI/tools/dingtalk-requirement-inbox/.env \
-  YOUR_USER@YOUR_HOST:/opt/trinity-AI/tools/dingtalk-requirement-inbox/.env
+scp tools/dingtalk-requirement-inbox/.env \
+  YOUR_USER@YOUR_HOST:/opt/trinity-tool/dingtalk-requirement-inbox/.env
 ```
 
 ### 3. 安装并启动服务（在服务器上）
 
 ```bash
-cd /opt/trinity-AI/tools/dingtalk-requirement-inbox
+cd /opt/trinity-tool/dingtalk-requirement-inbox
 sudo bash deploy/install-systemd.sh
 ```
 
@@ -56,13 +59,24 @@ sudo journalctl -u trinity-requirement-inbox -f
 
 ```bash
 cd trinity-AI/tools/dingtalk-requirement-inbox
-SERVER=ubuntu@YOUR_HOST REMOTE_DIR=/opt/trinity-AI COPY_ENV=1 bash deploy/sync-to-server.sh
+SERVER=ubuntu@YOUR_HOST COPY_ENV=1 bash deploy/sync-to-server.sh
+```
+
+同步后服务器目录结构：
+
+```
+/opt/trinity-tool/
+└── dingtalk-requirement-inbox/
+    ├── src/
+    ├── deploy/
+    ├── .env
+    └── data/
 ```
 
 | 变量 | 默认 | 说明 |
 |------|------|------|
 | `SERVER` | （必填） | `user@host` |
-| `REMOTE_DIR` | `/opt/trinity-AI` | 服务器上的仓库根目录 |
+| `REMOTE_DIR` | `/opt/trinity-tool` | 服务器工具根目录；应用在 `dingtalk-requirement-inbox/` 下 |
 | `COPY_ENV` | `0` | 设为 `1` 时用 scp 同步本机 `.env` |
 | `SERVICE_USER` | `trinity` | systemd 运行用户 |
 
@@ -95,16 +109,15 @@ docker compose logs -f
 
 ## 更新部署
 
-**git 方式：**
+**git 方式：** 在本机改代码后重跑 `deploy/sync-to-server.sh`。
+
+**服务器上手动更新：**
 
 ```bash
-cd /opt/trinity-AI && git pull
-cd tools/dingtalk-requirement-inbox
+cd /opt/trinity-tool/dingtalk-requirement-inbox
 sudo -u trinity .venv/bin/pip install -r requirements.txt -q
 sudo systemctl restart trinity-requirement-inbox
 ```
-
-**sync 脚本方式：** 在本机重跑 `deploy/sync-to-server.sh`。
 
 ---
 

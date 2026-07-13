@@ -104,11 +104,10 @@ pytest tests/ -q
 | Docker | `docker compose up -d --build` |
 
 ```bash
-# 服务器上（首次）
-git clone git@github.com:chenximo/trinity-AI.git /opt/trinity-AI
-scp .env user@host:/opt/trinity-AI/tools/dingtalk-requirement-inbox/.env
-sudo bash deploy/install-systemd.sh
+# 本机一键（推荐）
+cd tools/dingtalk-requirement-inbox
+SERVER=user@host COPY_ENV=1 bash deploy/sync-to-server.sh
 
 # 日志
-sudo journalctl -u trinity-requirement-inbox -f
+ssh user@host 'sudo journalctl -u trinity-requirement-inbox -f'
 ```
