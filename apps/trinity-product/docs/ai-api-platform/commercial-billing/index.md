@@ -6,7 +6,7 @@ title: 商用计费与充值
 
 > **文档类型**：**AI API 聚合产品** 商业化真源——**主体与接入合规前提**、**计费模式**、**付款/充值方式**、**6.30 商用范围** 与 **三处口径对齐**。  
 > **读者**：产品、运营、商务、研发（计量/控制台/运营 billing）、法务（复核合规节）。  
-> **关联**：[商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
+> **关联**：[商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [定价场景方案卡（自助·点名包）](./pricing-scenarios-scheme) · [折扣差价与阶梯定价](./discount-spread-tier-pricing) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
 > **状态**：**草案 · 待拍板**（合规节为产品理解稿，**非法律意见**；价格与通道以法务/财务/支付服务商为准）  
 > **日期**：2026-06-08
 
@@ -14,13 +14,18 @@ title: 商用计费与充值
 
 ```
 commercial-billing/
-├── index.md                           ← 本页（ICP · 计量 · 6.30 商用范围）
+├── index.md                             ← 本页（ICP · 计量 · 6.30 商用范围）
 ├── commercial-billing-mvp-prd.md        ← 6.30 MVP PRD 真源（规则 · 落地步骤 · 已/待办）
-├── mvp-openrouter-payment.md          ← 支付 UI / Stripe 弹窗详规
-├── industry-billing-payment-report.md ← 全球化计费/支付/退款 · 行业报告
-├── openrouter-payment-evidence.md     ← OpenRouter 实勘 · 佐证
-├── Antom商户审核补充材料.md           ← Antom 商户审核 · 可直贴材料
-└── global-payment.md                  ← 二期 KYC / Wire / OFAC
+├── mvp-openrouter-payment.md            ← 支付 UI / Stripe 弹窗详规
+├── pricing-scenarios-scheme.md          ← 定价场景方案卡（自助 · 点名包）
+├── pricing-validation-v1.md             ← Step2 样本验证表 v1
+├── pricing-tier-threshold-card-v1.md    ← 企业户用量门槛费率卡 v1（门槛Q测算）
+├── pricing-strategy-evidence-chain.md   ← 定价底层逻辑·策略与证据链（商务骨架真源）
+├── discount-spread-tier-pricing.md      ← 折扣差价 · 阶梯定价 · 量价总利润（草案）
+├── industry-billing-payment-report.md   ← 全球化计费/支付/退款 · 行业报告
+├── openrouter-payment-evidence.md       ← OpenRouter 实勘 · 佐证
+├── Antom商户审核补充材料.md             ← Antom 商户审核 · 可直贴材料
+└── global-payment.md                    ← 二期 KYC / Wire / OFAC
 ```
 
 ---
@@ -200,12 +205,15 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 ## 6. COGS 与定价（粗算占位）
 
-> 商用前须用 **真实上游价目 + 实际 markup** 替换下表；季度复核。
+> 商用前须用 **真实上游价目 + 实际 markup** 替换下表；季度复核。  
+> **折扣差价、企业阶梯、量价总利润** → 专文 **[折扣差价与阶梯定价](./discount-spread-tier-pricing)**。
 
 | 项 | 说明 | 状态 |
 |----|------|:----:|
-| 上游成本 | 各供应商/model 进价 | 运营 [models-routes](../operations/models-routes) |
+| 上游成本 | 各供应商/model 进价（成本折见 [商务原底](../pricing-sources/supplier-cost-discounts)） | 运营 [models-routes](../operations/models-routes) |
 | 展示价 | 价目表 × markup | **【待拍板：如 cost × 1.2】** |
+| 折扣差价 / 阶梯 | 销售折 − 成本折；档位与 GM≥20% 底线 | **[专文](./discount-spread-tier-pricing)** · 场景与落地步骤见 [方案卡 §0.1](./pricing-scenarios-scheme#01-通往可营销阶梯的步骤--文档) |
+| 定价场景 / 营销阶梯 | 自助×点名包；ToB 感知与作战 | **[方案卡](./pricing-scenarios-scheme)** · **当前 Step 2 样本验证** |
 | 支付通道费 | Stripe 等 % | 财务填 |
 | 单用户获客试用成本 | 试用额度 × 滥用率 | PM + 运营 |
 
@@ -213,6 +221,13 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 
 ```text
 单次调用毛利 ≈ 用户扣费（展示价）− 上游成本 − 分摊支付手续费
+```
+
+折扣维度（与专文一致）：
+
+```text
+单位毛利 m = L × (d_sell − d_cost)
+总毛利   Π = m × Q（Q 随折扣加深可能上升 → 存在量价平衡点）
 ```
 
 ---
@@ -251,6 +266,11 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 |------|------|
 | 6.30 MVP 规则 · 落地步骤 | [商用计费 MVP PRD](./commercial-billing-mvp-prd) |
 | 充值 UI · Stripe 弹窗 | [MVP 支付 UI 详规](./mvp-openrouter-payment) |
+| 定价场景 · 自助 / 点名包方案卡 | [定价场景方案卡](./pricing-scenarios-scheme) |
+| Step2 样本验证 | [定价验证表 v1](./pricing-validation-v1) |
+| 企业户门槛 ↔ 折 · 单户月利测算 | [用量门槛费率卡 v1](./pricing-tier-threshold-card-v1) |
+| **定价底层逻辑 · 策略与证据链** | **[定价策略与证据链](./pricing-strategy-evidence-chain)** |
+| 折扣差价 · 阶梯定价 · 量价最优 | [折扣差价与阶梯定价](./discount-spread-tier-pricing) |
 | 行业计费/支付/退款 · 竞品对照 | [全球化计费与退款行业报告](./industry-billing-payment-report) |
 | OpenRouter 实勘 · 佐证 · invoice | [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) |
 | 分层 KYC · 对公 Wire · 前置 OFAC（二期） | [全球化美金支付与 KYC](./global-payment) |
@@ -307,6 +327,8 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 4 | 生图/生视频是否 6.30 可付费调用 | PM |
 | 5 | 企业工作区与个人账户钱包是否分离 | PM |
 | 6 | 退款/争议政策对外文案 | 法务 |
+| 7 | 折扣差价阶梯门槛与各成本折族销售折（见 [专文](./discount-spread-tier-pricing) · [方案卡](./pricing-scenarios-scheme)） | PM + 商务 + 财务 |
+| 8 | 样本验证回填矩阵与销售算账表（方案卡 Step 2） | PM + 运营 |
 
 ---
 
@@ -318,6 +340,8 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 2026-06-08 | 链入全球化美金支付专文；§4.2 按分层重排 |
 | 2026-06-08 | **战略调整**：6.30 MVP 对齐 OpenRouter → `mvp-openrouter-payment.md`；§4 重写 |
 | 2026-06-08 | 新增 `commercial-billing-mvp-prd.md`：一页纸拍板 · 0 平台费 · 后端完成/前端待办 |
+| 2026-07-14 | 新增 `discount-spread-tier-pricing.md`：折扣差价口径 · 阶梯 · 量价总利润；§6/§8/§10 挂链 |
+| 2026-07-14 | 新增 `pricing-scenarios-scheme.md`：自助 × 系数档 · 点名包分行报价方案卡 |
 
 ---
 
