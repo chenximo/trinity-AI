@@ -4,7 +4,7 @@ title: 模型原价折扣
 
 # 模型原价折扣
 
-> **关联**：[模型价格真源 · 总览](./) · [采购渠道真源](./suppliers) · [价目全流程](./workflow) · [折扣差价与阶梯定价（对客销售折）](../commercial-billing/discount-spread-tier-pricing)  
+> **关联**：[模型价格真源 · 总览](./) · [采购渠道真源](./suppliers) · [价目全流程](./workflow) · [折扣差价与阶梯定价（对客销售折）](../commercial-billing/discount-spread-tier-pricing) · [新人体验方案（白名单依本页成本折）](../commercial-billing/new-user-trial-scheme)  
 > **读者**：商务、运营、产品  
 > **维护约定**：**本页为供应商成本折扣的唯一商务原底**；合同变更只改 §商务原底。生效折扣在**后台管理系统**手动维护，不同步价目 pipeline。对客阶梯与毛利核算见商用计费专文，勿与本页成本折混读。
 

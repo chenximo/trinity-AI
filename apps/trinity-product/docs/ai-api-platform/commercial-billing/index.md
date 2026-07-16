@@ -6,7 +6,7 @@ title: 商用计费与充值
 
 > **文档类型**：**AI API 聚合产品** 商业化真源——**主体与接入合规前提**、**计费模式**、**付款/充值方式**、**6.30 商用范围** 与 **三处口径对齐**。  
 > **读者**：产品、运营、商务、研发（计量/控制台/运营 billing）、法务（复核合规节）。  
-> **关联**：[商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [定价场景方案卡（自助·点名包）](./pricing-scenarios-scheme) · [折扣差价与阶梯定价](./discount-spread-tier-pricing) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
+> **关联**：[商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [定价场景方案卡（自助·点名包）](./pricing-scenarios-scheme) · [定价策略与证据链](./pricing-strategy-evidence-chain) · [折扣与梯度总表](./discount-tier-matrix) · [缓存计费盈利（δ 测评）](./cache-billing-profit) · [新人体验方案](./new-user-trial-scheme) · [折扣差价与阶梯定价](./discount-spread-tier-pricing) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
 > **状态**：**草案 · 待拍板**（合规节为产品理解稿，**非法律意见**；价格与通道以法务/财务/支付服务商为准）  
 > **日期**：2026-06-08
 
@@ -21,6 +21,12 @@ commercial-billing/
 ├── pricing-validation-v1.md             ← Step2 样本验证表 v1
 ├── pricing-tier-threshold-card-v1.md    ← 企业户用量门槛费率卡 v1（门槛Q测算）
 ├── pricing-strategy-evidence-chain.md   ← 定价底层逻辑·策略与证据链（商务骨架真源）
+├── discount-tier-matrix.md              ← 商务洽谈折扣总表（成本族 · 梯度 · 模型）
+├── discount-tier-workbook-sop.md        ← 总表 Excel 回灌流程（新增成本折按此走）
+├── scripts/rebuild_discount_tier_workbook.py ← 一键重生成 Excel
+├── 商务洽谈折扣总表.xlsx                  ← 同上 · 销售/内部 Excel 导出
+├── cache-billing-profit.md              ← 缓存计费盈利（命中少报 δ · 测评与推算）
+├── new-user-trial-scheme.md           ← 新人体验方案（业界对照 · Trial Credits 草案）
 ├── discount-spread-tier-pricing.md      ← 折扣差价 · 阶梯定价 · 量价总利润（草案）
 ├── industry-billing-payment-report.md   ← 全球化计费/支付/退款 · 行业报告
 ├── openrouter-payment-evidence.md       ← OpenRouter 实勘 · 佐证
@@ -159,12 +165,16 @@ AI API 聚合的 **可变成本 = 上游模型调用**（token / 张 / 秒）。
 
 ### 4.4 试用与免费档（待拍板）
 
+> **方案真源**：[新人体验方案（业界对照 · Trial Credits）](./new-user-trial-scheme)
+
 | 项 | 建议选项 | 状态 |
 |----|----------|:----:|
 | 是否绑卡才送试用 | 6.30 建议 **不绑卡** + 低额度 | 待拍板 |
-| 试用额度 | 固定 $X 或固定 token 上限 | 待拍板 |
+| 试用额度 | 草案 **$3**（备选 $2/$5）；见专文 | 待拍板 |
+| 有效期 | 草案 **30 天** | 待拍板 |
 | 用尽后 | 停止调用（402）+ 引导充值 | 建议默认 |
-| 多模态（生图/视频） | 6.30 是否纳入试用 | 待拍板 |
+| 多模态（生图/视频） | 6.30 **不纳入试用** | 草案 |
+| 模型范围 | 上游厚利白名单（≤6.5 折族） | 见专文 |
 
 ---
 
@@ -270,6 +280,9 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | Step2 样本验证 | [定价验证表 v1](./pricing-validation-v1) |
 | 企业户门槛 ↔ 折 · 单户月利测算 | [用量门槛费率卡 v1](./pricing-tier-threshold-card-v1) |
 | **定价底层逻辑 · 策略与证据链** | **[定价策略与证据链](./pricing-strategy-evidence-chain)** |
+| **商务洽谈折扣总表 · 模型清单** | **[商务洽谈折扣总表](./discount-tier-matrix)** · [Excel](./商务洽谈折扣总表.xlsx) · [回灌 SOP](./discount-tier-workbook-sop) |
+| **缓存计费盈利 · δ 测评** | **[缓存计费盈利](./cache-billing-profit)** |
+| **新人体验 · 业界对照与 Trial 草案** | **[新人体验方案](./new-user-trial-scheme)** |
 | 折扣差价 · 阶梯定价 · 量价最优 | [折扣差价与阶梯定价](./discount-spread-tier-pricing) |
 | 行业计费/支付/退款 · 竞品对照 | [全球化计费与退款行业报告](./industry-billing-payment-report) |
 | OpenRouter 实勘 · 佐证 · invoice | [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) |
@@ -342,6 +355,16 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 2026-06-08 | 新增 `commercial-billing-mvp-prd.md`：一页纸拍板 · 0 平台费 · 后端完成/前端待办 |
 | 2026-07-14 | 新增 `discount-spread-tier-pricing.md`：折扣差价口径 · 阶梯 · 量价总利润；§6/§8/§10 挂链 |
 | 2026-07-14 | 新增 `pricing-scenarios-scheme.md`：自助 × 系数档 · 点名包分行报价方案卡 |
+| 2026-07-15 | 新增 `cache-billing-profit.md`：缓存命中少报 δ · 单日样本测评 · 按模型反推 |
+| 2026-07-16 | 新增 `new-user-trial-scheme.md`：百炼/TokenHub/OpenRouter 业界整理 + Trial Credits 草案 |
+| 2026-07-16 | 新增 `discount-tier-matrix.md`：共用梯度 + 商务主折矩阵 + 公开折/模型清单占位 |
+| 2026-07-16 | 商务洽谈总表 v0.2：去掉公开折；导入 0.65 共 22 模型；生成 `discount-tier-commercial.xlsx` |
+| 2026-07-16 | 总表 v0.3：定稿列序（一行一成本折；模型格 `；`+换行）；Excel 仅 `00_readme` / `01_summary` / `src_065` |
+| 2026-07-16 | 总表 v0.4：档位格内嵌 GM；口径改表头；`src_065`=原「线路管理」整表拷贝 |
+| 2026-07-16 | Excel 更名 `商务洽谈折扣总表.xlsx`：去掉顶栏；说明挪表末；无筛选 |
+| 2026-07-16 | 导入 0.70（7折）19 模型 + `src_070`（源文件 (3).xlsx） |
+| 2026-07-16 | 档名已拍：Standard→Plus→Mid→Growth→Scale→Enterprise；证据链新增 §3.0 中英对照与业界参考 |
+| 2026-07-16 | 新增折扣总表回灌 SOP + `scripts/rebuild_discount_tier_workbook.py`（后续新成本折按此走） |
 
 ---
 
