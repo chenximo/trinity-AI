@@ -6,10 +6,12 @@ title: 定价底层逻辑 · 策略与证据链（6.5 族）
 
 > **文档类型**：商用计费 · **策略真源（讨论收敛）**——公式、达档口径、商务骨架、证据链、测评方法；含《定价制胜》适用性与业界对照。  
 > **读者**：产品、商务、财务、销售。  
-> **关联**：[定价场景方案卡](./pricing-scenarios-scheme) · [定价验证表 v1](./pricing-validation-v1) · [用量门槛费率卡 v1（细档测算底稿）](./pricing-tier-threshold-card-v1) · [折扣与梯度总表](./discount-tier-matrix) · [折扣差价专文](./discount-spread-tier-pricing) · [缓存计费盈利（δ 测评）](./cache-billing-profit) · [供应商成本折 · 商务原底](../pricing-sources/supplier-cost-discounts)  
+> **关联**：[定价场景方案卡](./pricing-scenarios-scheme) · [定价验证表 v1](./pricing-validation-v1) · [用量门槛费率卡 v1（细档测算底稿）](./pricing-tier-threshold-card-v1) · [折扣与梯度总表](./discount-tier-matrix) · [折扣差价专文](./discount-spread-tier-pricing) · [缓存计费盈利（δ 测评）](./cache-billing-profit) · [供应商成本折 · 商务原底](../pricing-sources/supplier-cost-discounts) · **[计费策略目录树](./billing-strategy-map)**（选型 · 导航）  
 > **状态**：**草案 · 档位已拍：含 ≥$5k·8.5；Scale 对外主写 7.6**；成本族 **0.60～0.78 ✅**；薄利族 **0.80 / 0.85 / 0.90 浅阶梯 ✅**（≥0.95 不设阶梯）；后续导出 Excel  
 > **日期**：2026-07-15  
 > **范围**：进货成本 **6.5 折**且刊例≈挂牌的可折模型。其它成本族另卡，不得照搬折数。
+
+> **导航**：业界几类 / 我们走哪种 / 文档目录树 → **[billing-strategy-map](./billing-strategy-map)**。本文只做 **定价数字真源**（门槛 · 折 · GM）。
 
 ---
 
@@ -556,6 +558,7 @@ GM = 1 - 0.65/0.72 ≈ 9.7% ≈ 10%
 | 日期 | 说明 |
 |------|------|
 | 2026-07-16 | **档名已拍**：[§3.0](#tier-naming) **Standard → Plus → Mid → Growth → Scale → Enterprise**（Boost→Mid；Scale+→Enterprise）；补中英对照与业界参考 |
+| 2026-07-16 | 链入 [计费策略目录树](./billing-strategy-map)（选型导航；在网时长折暂不做） |
 | 2026-07-14 | 初稿：汇总[门槛 Q / 两把尺子](#gm-to-discount-65)、[8.1↔20%](#gm-to-discount-65)、[峰值结论](#peak-summary-65)、[商务骨架](#commercial-tiers-locked)、[证据链](#evidence-chain)、[测算表](#commercial-table-65)；[细表外链](#legacy-fine-grid)保留 |
 | 2026-07-15 | 增补 [§8 定价制胜适用性与业界对照](#book-and-industry) |
 | 2026-07-15 | 增补 [§2.1.1 各成本折刊例 GM 总表](#cost-family-list-gm)（含 **0.80** 切线；深算/简算/不深算） |

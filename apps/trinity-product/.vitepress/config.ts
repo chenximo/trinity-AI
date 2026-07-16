@@ -96,6 +96,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
         collapsed: false,
         items: [
           { text: "总览", link: "/ai-api-platform/commercial-billing/" },
+          { text: "计费策略目录树（选型·流程）", link: "/ai-api-platform/commercial-billing/billing-strategy-map" },
           { text: "MVP PRD（6.30 商用计费）", link: "/ai-api-platform/commercial-billing/commercial-billing-mvp-prd" },
           { text: "MVP 支付 UI 详规", link: "/ai-api-platform/commercial-billing/mvp-openrouter-payment" },
           { text: "定价场景方案卡（自助·点名包）", link: "/ai-api-platform/commercial-billing/pricing-scenarios-scheme" },
@@ -104,6 +105,7 @@ const sidebarProduct: DefaultTheme.SidebarItem[] = [
           { text: "定价策略与证据链", link: "/ai-api-platform/commercial-billing/pricing-strategy-evidence-chain" },
           { text: "商务洽谈折扣总表", link: "/ai-api-platform/commercial-billing/discount-tier-matrix" },
           { text: "折扣总表回灌流程（SOP）", link: "/ai-api-platform/commercial-billing/discount-tier-workbook-sop" },
+          { text: "对外营销·场景 Playlist", link: "/ai-api-platform/commercial-billing/marketing-scene-playlist" },
           { text: "缓存计费盈利（δ 测评）", link: "/ai-api-platform/commercial-billing/cache-billing-profit" },
           { text: "新人体验方案", link: "/ai-api-platform/commercial-billing/new-user-trial-scheme" },
           { text: "折扣差价与阶梯定价", link: "/ai-api-platform/commercial-billing/discount-spread-tier-pricing" },

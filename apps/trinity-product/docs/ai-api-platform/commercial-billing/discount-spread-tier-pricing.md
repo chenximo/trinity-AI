@@ -6,10 +6,15 @@ title: 折扣差价与阶梯定价
 
 > **文档类型**：商用计费子文档——**进货成本折 vs 对客销售折** 的核算口径、阶梯折扣设想、总利润最优价思路。  
 > **读者**：产品、商务、运营、财务。  
-> **关联**：[商用计费与充值 · 总览](./) · [定价场景方案卡（自助·点名包）](./pricing-scenarios-scheme) · [MVP PRD](./commercial-billing-mvp-prd) · [模型原价折扣（商务原底）](../pricing-sources/supplier-cost-discounts) · [价目全流程](../pricing-sources/workflow) · [模型上架与供应线路](../operations/models-routes) · [产品总览 · 毛利](../business-overview)  
-> **状态**：**草案 · 待模型测算验证**（具体档位折数以测算表拍板为准）  
+> **关联**：[商用计费与充值 · 总览](./) · [计费策略目录树](./billing-strategy-map) · [定价策略与证据链（数字真源）](./pricing-strategy-evidence-chain) · [定价场景方案卡（自助·点名包）](./pricing-scenarios-scheme) · [MVP PRD](./commercial-billing-mvp-prd) · [模型原价折扣（商务原底）](../pricing-sources/supplier-cost-discounts) · [价目全流程](../pricing-sources/workflow) · [模型上架与供应线路](../operations/models-routes) · [产品总览 · 毛利](../business-overview)  
+> **状态**：**草案 · 方法论**（**门槛与折数以 [证据链](./pricing-strategy-evidence-chain) 为准**；本文部分示意数字可能过时）  
 > **日期**：2026-07-14  
 > **范围说明**：本文谈**折扣差价**（成本折 ↔ 销售折），并纳入**同模型多线路**（不同 \(d_{cost}\)）如何定对客价/是否打折；缓存命中、倍率微调、试用包等另文。
+
+::: warning 读前须知
+**拍板数字（门槛 Q、对客折、操作带）以 [pricing-strategy-evidence-chain](./pricing-strategy-evidence-chain) 为准。**  
+本文保留量价/多线路方法论；若与证据链冲突，改证据链并回灌 Excel，勿只改本文示意表。
+:::
 
 ---
 
