@@ -143,6 +143,7 @@ commercial-billing/                          ← 产品线商用计费根
 │   └── scripts/rebuild_…py                 ← 一键重生成
 │
 ├── 04 包装与获客（Packaging）
+│   ├── pricing-marketing-strategy.md        ← 【营销总册】Pricing IA · 爆款 · 新老客
 │   ├── marketing-scene-playlist.md          ← 场景精选 + 浅公开价原则
 │   ├── new-user-trial-scheme.md             ← 试用 / Trial Credits
 │   └── （缺口）年框/承诺合同话术卡            ← 见 §5
@@ -165,7 +166,7 @@ commercial-billing/                          ← 产品线商用计费根
 | **01 结算** | 充值、扣费、402、支付通道、退款 | 商务六档折数 |
 | **02 策略** | 门槛、折、GM、为什么这样拍 | Stripe 集成细节 |
 | **03 商务卡** | 成本族 × 档位 × 模型清单 | 对外营销话术长文 |
-| **04 包装** | 浅公开、试用、场景推荐 | 进货成本测算过程 |
+| **04 包装** | 营销页 IA、浅公开、试用、场景、爆款 | 进货成本测算过程；商务深折表 |
 | **05 副杆** | 缓存/路由等独立盈利杆 | 替代主阶梯 |
 | **06 对外** | 用户可见价与文案 | 内部 GM / 最深合同价 |
 
@@ -176,6 +177,7 @@ commercial-billing/                          ← 产品线商用计费根
 | 文件 | 角色 | 数字是否真源 |
 |------|------|:------------:|
 | [billing-strategy-map.md](./billing-strategy-map)（本文） | 导航 · 选型 · 流程 | — |
+| [pricing-marketing-strategy.md](./pricing-marketing-strategy) | **官网营销总册** · IA · 爆款 | 浅折/文案；深折否 |
 | [index.md](./) | 总览 · 合规 · 结算 · 6.30 | 结算已拍；定价链出 |
 | [pricing-strategy-evidence-chain.md](./pricing-strategy-evidence-chain) | **定价数字真源** | ✅ |
 | [discount-tier-matrix.md](./discount-tier-matrix) + Excel | **商务操作真源** | ✅（从证据链回灌） |
@@ -200,7 +202,8 @@ commercial-billing/                          ← 产品线商用计费根
 | G1 | **本文（导航收敛）** | 目录树 + 选型 + 流程 | P0 | ✅ 本文 |
 | G2 | **明确排除 B5 在网时长折** | 写入选型表（已含） | P0 | ✅ 2026-07-16 |
 | G3 | **年框 / 承诺合同一页卡** | 承诺量、回溯、与用量档关系、话术 | P1 | ⬜ 待补 |
-| G4 | **对外浅阶梯数字卡** | 与官网 Pricing 对齐的 9.9/9.8/9.7 定稿表 | P1 | ⬜（原则在 Playlist；数字跟官网） |
+| G4 | **对外浅阶梯数字卡** | 与官网 Pricing 对齐的 9.9/9.8/9.7 定稿表 | P1 | ✅ 见 [营销总册 §2.5](./pricing-marketing-strategy#page-ia) |
+| G4b | **官网 Pricing 营销总册** | IA · 爆款三席 · 新老客 | P0 | ✅ [pricing-marketing-strategy](./pricing-marketing-strategy) |
 | G5 | **discount-spread 文首加「以证据链为准」横幅** | 防旧门槛误用 | P1 | ✅ 2026-07-16 |
 | G6 | **销售 GTM 最小包** | 谁买单、试用标准、何时转年框 | P2 | ⬜（手册已标待补充） |
 | G7 | **控制台档位展示 PRD** | 用户可见档名/进度 | P2 | ⬜ |
@@ -224,6 +227,7 @@ commercial-billing/                          ← 产品线商用计费根
 | 日期 | 说明 |
 |------|------|
 | 2026-07-16 | 初稿：通用流程 · 目录树 · 业界选型（含暂不做在网时长折）· 文档映射 · 缺口清单 |
+| 2026-07-16 | 挂入 [官网 Pricing 营销总册](./pricing-marketing-strategy)（爆款三席 · 页面 IA） |
 
 ---
 

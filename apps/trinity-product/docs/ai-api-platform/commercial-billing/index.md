@@ -6,12 +6,13 @@ title: 商用计费与充值
 
 > **文档类型**：**AI API 聚合产品** 商业化真源——**主体与接入合规前提**、**计费模式**、**付款/充值方式**、**6.30 商用范围** 与 **三处口径对齐**。  
 > **读者**：产品、运营、商务、研发（计量/控制台/运营 billing）、法务（复核合规节）。  
-> **关联**：**[计费与定价策略 · 目录树与通用流程](./billing-strategy-map)**（**先读**） · [商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [定价场景方案卡](./pricing-scenarios-scheme) · [定价策略与证据链](./pricing-strategy-evidence-chain) · [折扣与梯度总表](./discount-tier-matrix) · [缓存计费盈利（δ 测评）](./cache-billing-profit) · [新人体验方案](./new-user-trial-scheme) · [折扣差价与阶梯定价](./discount-spread-tier-pricing) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
+> **关联**：**[计费与定价策略 · 目录树与通用流程](./billing-strategy-map)**（**先读**） · [官网 Pricing 营销总册](./pricing-marketing-strategy) · [商用计费 MVP PRD（6.30）](./commercial-billing-mvp-prd) · [MVP 支付 UI 详规](./mvp-openrouter-payment) · [定价场景方案卡](./pricing-scenarios-scheme) · [定价策略与证据链](./pricing-strategy-evidence-chain) · [折扣与梯度总表](./discount-tier-matrix) · [缓存计费盈利（δ 测评）](./cache-billing-profit) · [新人体验方案](./new-user-trial-scheme) · [折扣差价与阶梯定价](./discount-spread-tier-pricing) · [Antom 商户审核补充材料](./Antom商户审核补充材料) · [全球化计费与退款行业报告](./industry-billing-payment-report) · [OpenRouter 支付调研与佐证](./openrouter-payment-evidence) · [全球化美金支付与 KYC（二期）](./global-payment) · [产品总览](../) · [计量与计费](../platform/metering-billing) · [运营 · 用量与计费](../operations/billing) · [用户控制台](../user/account-console) · [OpenRouter 对标](../competitor-research/openrouter) · [产品经理工作手册 · §1.1 商业化](../../产品经理工作手册#11-商业化与计费pm-必备模块) · [隐私政策](../../legal/privacy-policy)  
 > **状态**：**草案 · 待拍板**（合规节为产品理解稿，**非法律意见**；价格与通道以法务/财务/支付服务商为准）  
 > **日期**：2026-06-08
 
 ::: tip 从哪读起
 - **选型 / 目录树 / 通用流程** → **[billing-strategy-map](./billing-strategy-map)**（业界几类、我们走哪种、缺什么）  
+- **官网 Pricing 营销** → **[pricing-marketing-strategy](./pricing-marketing-strategy)**（页面 IA · 爆款三席 · 新老客）  
 - **本页** → 合规前提 · 结算主路径 · 计量口径 · 6.30 卖什么  
 - **定价数字** → [证据链](./pricing-strategy-evidence-chain)（改折只改那里）
 :::
@@ -47,6 +48,7 @@ commercial-billing/
 ├── 商务洽谈折扣总表.xlsx
 │
 ├── # 04 包装与获客
+├── pricing-marketing-strategy.md        ← 【营销总册】Pricing IA · 爆款 · 新老客
 ├── marketing-scene-playlist.md          ← 场景 Playlist + 浅公开价
 ├── new-user-trial-scheme.md             ← 新人试用
 │
@@ -306,6 +308,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 企业户门槛 ↔ 折 · 单户月利测算 | [用量门槛费率卡 v1](./pricing-tier-threshold-card-v1) |
 | **定价底层逻辑 · 策略与证据链** | **[定价策略与证据链](./pricing-strategy-evidence-chain)** |
 | **商务洽谈折扣总表 · 模型清单** | **[商务洽谈折扣总表](./discount-tier-matrix)** · [Excel](./商务洽谈折扣总表.xlsx) · [回灌 SOP](./discount-tier-workbook-sop) |
+| **官网 Pricing · 营销总册** | **[pricing-marketing-strategy](./pricing-marketing-strategy)** |
 | **对外营销 · 场景 Playlist + 浅公开价** | **[场景 Playlist 草案](./marketing-scene-playlist)** |
 | **缓存计费盈利 · δ 测评** | **[缓存计费盈利](./cache-billing-profit)** |
 | **新人体验 · 业界对照与 Trial 草案** | **[新人体验方案](./new-user-trial-scheme)** |
@@ -393,6 +396,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | 2026-07-16 | 新增折扣总表回灌 SOP + `scripts/rebuild_discount_tier_workbook.py`（后续新成本折按此走） |
 | 2026-07-16 | 新增 `marketing-scene-playlist.md`：场景 Playlist + 浅公开价；折扣仅对内选模 |
 | 2026-07-16 | 新增 `billing-strategy-map.md`：计费策略目录树 · 通用流程 · 业界选型一页 · 缺口；本页文档树改挂导航 |
+| 2026-07-16 | 新增 `pricing-marketing-strategy.md`：官网 Pricing 营销 IA · 爆款三席 · 新老客；策略/洽谈表不改 |
 
 ---
 
