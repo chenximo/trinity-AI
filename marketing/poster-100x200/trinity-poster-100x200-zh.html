@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trinity 站台海报 100×200</title>
+<style>
+  :root {
+    --teal: #00a881;
+    --teal-bright: #00c399;
+    --teal-soft: #e8f5f1;
+    --teal-line: #a8d9cd;
+    --cyan: #00c2f7;
+    --cyan-soft: #e6f8fe;
+    --cyan-line: #9adcf3;
+    --bg: #f4f8f7;
+    --ink: #1a2320;
+    --ink-2: #3c4945;
+    --white: #ffffff;
+    --page-w: 1000mm;
+    --page-h: 2000mm;
+    --col: 740mm;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    color: var(--ink);
+    background: #b7c4c2;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 30;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    padding: 12px 18px;
+    background: rgba(255,255,255,.97);
+    border-bottom: 1px solid #d7e3e0;
+    font-size: 13px; color: #4b5c58;
+  }
+  .toolbar strong { color: var(--ink); }
+  .toolbar button {
+    border: 0; border-radius: 999px; padding: 9px 16px;
+    background: var(--cyan); color: #fff; font-weight: 700; cursor: pointer;
+  }
+
+  .stage { padding: 20px 12px 40px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .hint {
+    width: min(520px, 94vw); font-size: 12px; color: #4b5c58; line-height: 1.5;
+    background: #fff; padding: 10px 14px; border-radius: 10px;
+  }
+
+  .frame {
+    width: min(460px, 94vw);
+    aspect-ratio: 1 / 2;
+    box-shadow: 0 16px 48px rgba(26, 35, 32, .22);
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .scale {
+    width: var(--page-w);
+    height: var(--page-h);
+    transform-origin: top left;
+    transform: scale(calc(min(460px, 94vw) / 1000mm));
+  }
+
+  /*
+    站台海报节奏（正常做法）：
+    上：品牌+主标题 → 中：两大卖点卡 → 下：信任条+CTA+联系方式
+    底边留约 4–6% 安全空白（展架底座/视觉透气），不是大片空洞。
+  */
+  .poster {
+    width: var(--page-w);
+    height: var(--page-h);
+    padding: 32mm 0 50px; /* 开头收紧，底部保留 50px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.55), transparent 28%),
+      repeating-linear-gradient(0deg, transparent 0 16mm, rgba(0,168,129,.045) 16mm 16.2mm),
+      repeating-linear-gradient(90deg, transparent 0 16mm, rgba(0,194,247,.035) 16mm 16.2mm),
+      var(--bg);
+  }
+
+  .col {
+    width: var(--col);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30mm;
+  }
+
+  .brand { flex-shrink: 0; margin-bottom: -2mm; }
+  .brand img { height: 44mm; width: auto; display: block; }
+
+  .hero { text-align: center; flex-shrink: 0; }
+  .badge {
+    display: inline-block;
+    padding: 4.5mm 16mm;
+    border: 2.2px solid var(--cyan);
+    border-radius: 999px;
+    color: var(--cyan);
+    font-size: 15mm;
+    font-weight: 700;
+    letter-spacing: .06em;
+    background: rgba(255,255,255,.92);
+    margin-bottom: 8mm;
+  }
+  .hero h1 {
+    font-size: 42mm;
+    line-height: 1.18;
+    font-weight: 800;
+  }
+  .hero h1 .x { color: var(--cyan); }
+  .hero h1 .em { color: var(--teal-bright); }
+  .hero .sub {
+    margin-top: 7mm;
+    font-size: 16mm;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  /* 卡片：云集采按内容收敛；AI 区吃掉多余留白 */
+  .card {
+    position: relative;
+    background: var(--white);
+    border-radius: 12mm;
+    padding: 16mm 20mm 14mm;
+    box-shadow: 0 2mm 10mm rgba(26, 35, 32, .055);
+    border: 1px solid rgba(0,168,129,.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .card.cloud {
+    flex: 0 0 auto;
+    gap: 80px;
+    justify-content: flex-start;
+    padding-top: calc(16mm + 20px);
+    padding-bottom: calc(14mm + 20px);
+  }
+  .card.ai {
+    flex: 0 0 auto;
+    gap: 80px;
+    justify-content: flex-start;
+  }
+  .card::before {
+    content: "";
+    position: absolute; left: 14mm; right: 14mm; top: 0;
+    height: 3mm;
+    border-radius: 0 0 3mm 3mm;
+  }
+  .card.cloud::before { background: var(--teal); }
+  .card.ai::before { background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 8mm;
+    height: 200px;
+  }
+  .ico {
+    width: 22mm; height: 22mm; border-radius: 5mm;
+    display: grid; place-items: center;
+    font-size: 10mm; font-weight: 800;
+    flex-shrink: 0;
+  }
+  .card.cloud .ico { background: var(--teal-soft); color: var(--teal); }
+  .card.ai .ico { background: var(--cyan-soft); color: var(--cyan); }
+  .card-head h2 { font-size: 22mm; font-weight: 800; line-height: 1.15; }
+  .card-head .en {
+    margin-top: 2.5mm;
+    font-size: 9mm;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .card.cloud .en { color: var(--teal); }
+  .card.ai .en { color: var(--cyan); }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8mm;
+  }
+  .metric {
+    text-align: center;
+    border-radius: 6mm;
+    padding: 10mm 3mm 9mm;
+  }
+  .card.cloud .metric { background: var(--teal-soft); }
+  .card.ai .metric { background: var(--cyan-soft); }
+  .metric .v {
+    font-size: 24mm;
+    font-weight: 800;
+    line-height: 1.05;
+  }
+  .card.cloud .metric .v { color: var(--teal-bright); }
+  .card.ai .metric .v { color: var(--cyan); }
+  .metric .l {
+    margin-top: 3.5mm;
+    font-size: 12.5mm;
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .card.cloud .metric { padding: 8mm 3mm 7mm; }
+
+  .bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8mm;
+  }
+  .card.cloud .bullets { gap: 6mm; }
+  .bullets li {
+    position: relative;
+    padding-left: 12mm;
+    font-size: 15.5mm;
+    line-height: 2;
+    color: var(--ink-2);
+  }
+  .bullets li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 0;
+    font-weight: 800;
+  }
+  .card.cloud .bullets li::before { color: var(--teal); }
+  .card.ai .bullets li::before { color: var(--cyan); }
+  .bullets strong { color: var(--ink); font-weight: 800; }
+
+  .divider {
+    border: 0;
+    border-top: 1.5px dashed var(--teal-line);
+  }
+  .card.ai .divider { border-color: var(--cyan-line); }
+
+  .chips {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 5mm 6mm;
+  }
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 4.5mm 12mm;
+    border-radius: 999px;
+    font-size: 13mm;
+    font-weight: 700;
+  }
+  .card.cloud .chip { background: var(--teal-soft); color: var(--ink-2); }
+  .card.ai .chip {
+    background: var(--white);
+    border: 1.6px solid var(--cyan);
+    color: var(--cyan);
+  }
+
+  .value {
+    background: linear-gradient(135deg, var(--teal-soft), var(--cyan-soft));
+    border-radius: 8mm;
+    padding: 12mm 16mm;
+    border-left: 4.5mm solid var(--cyan);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12mm;
+  }
+  .value > h3 {
+    font-size: 17mm;
+    font-weight: 800;
+    margin-bottom: 0;
+    color: var(--cyan);
+  }
+  .value-list {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    gap: 80px;
+  }
+  .value-item h4 {
+    font-size: 15mm;
+    font-weight: 800;
+    line-height: 1.28;
+    margin-bottom: 2.5mm;
+  }
+  .value-item p {
+    font-size: 13.5mm;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+
+  .closer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12mm;
+    flex-shrink: 0;
+  }
+
+  .trust {
+    text-align: center;
+    padding: 7mm 16mm;
+    border-radius: 999px;
+    background: #edf9f6;
+    border: 2px solid var(--teal);
+    color: var(--teal);
+    font-size: 15mm;
+    font-weight: 800;
+  }
+  .trust .sep { margin: 0 8mm; opacity: .5; font-weight: 500; }
+
+  .cta {
+    text-align: center;
+    font-size: 19mm;
+    font-weight: 800;
+  }
+  .cta .hl { color: var(--cyan); }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16mm;
+    padding: 12mm 14mm;
+    background: rgba(255, 255, 255, .78);
+    border-radius: 10mm;
+    border: 1px solid rgba(0, 194, 247, .15);
+    margin-bottom: 260px;
+  }
+  .contact { display: flex; flex-direction: column; gap: 5.5mm; }
+  .contact .row {
+    display: flex; align-items: center; gap: 5mm;
+    font-size: 14.5mm; font-weight: 700; color: #1a1a1a;
+  }
+  .contact .ico {
+    width: 14mm; height: 14mm; border-radius: 3.5mm; flex-shrink: 0;
+    display: grid; place-items: center;
+    background: rgba(0, 168, 129, .10);
+    border: 1px solid rgba(0, 168, 129, .22);
+  }
+  .contact .ico svg {
+    width: 8.2mm; height: 8.2mm; display: block;
+  }
+  .contact .ico.web {
+    background: rgba(0, 194, 247, .10);
+    border-color: rgba(0, 194, 247, .28);
+  }
+  .contact a { color: var(--cyan); text-decoration: none; }
+  .qr {
+    width: 72mm; height: 72mm;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 3mm;
+    border: 1px solid #e3ece9;
+  }
+
+  @media print {
+    .toolbar,
+    .hint { display: none !important; }
+
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #fff !important;
+      width: 1000mm;
+      height: 2000mm;
+      overflow: hidden;
+    }
+
+    /* 之前误把 .stage 隐藏，海报整页被藏掉 → 导出空白 */
+    .stage {
+      display: block !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 1000mm !important;
+      height: 2000mm !important;
+    }
+
+    .frame {
+      width: 1000mm !important;
+      height: 2000mm !important;
+      max-width: none !important;
+      aspect-ratio: auto !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+      margin: 0 !important;
+    }
+
+    .scale {
+      width: 1000mm !important;
+      height: 2000mm !important;
+      transform: none !important;
+      transform-origin: top left !important;
+    }
+
+    .poster {
+      width: 1000mm !important;
+      height: 2000mm !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @page {
+      size: 1000mm 2000mm;
+      margin: 0;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <strong>站台海报 100×200</strong>
+    <span>导出时请勾选「背景图形」；纸张选自定义 1000×2000mm（或边到边）</span>
+    <button type="button" onclick="exportPdf()">打印 / 导出 PDF</button>
+  </div>
+
+  <div class="stage">
+    <p class="hint">
+      上一版误把卡片改成「自然高度 + 页脚贴底」，空白落在中间，看起来像缩了一半。
+      已改回：两大卡片纵向撑满，页脚跟在后面；AI 四条要点也加回来了。请强制刷新（⌘⇧R）。
+    </p>
+    <div class="frame">
+      <div class="scale">
+        <article class="poster">
+          <div class="col">
+            <header class="brand">
+              <img src="./assets/trinity-wordmark.png" alt="TRINITY" />
+            </header>
+
+            <section class="hero">
+              <div class="badge">企业级数字化双引擎</div>
+              <h1>
+                AI 云集采 <span class="x">×</span> AI API 聚合<br />
+                <span class="em">产品能力</span>赋能企业
+              </h1>
+              <p class="sub">
+                一站对接主流公有云 · 统一 API 接入全球顶尖模型<br />
+                透明交付 · 企业管控 · 专属技术保障
+              </p>
+            </section>
+
+            <section class="card cloud">
+              <div class="card-head">
+                <div class="ico">☁</div>
+                <div>
+                  <h2>Trinity AI 云 · 多云集采</h2>
+                  <div class="en">Multi-Cloud Procurement</div>
+                </div>
+              </div>
+              <div class="metrics">
+                <div class="metric"><div class="v">六大公有云</div><div class="l">一站对接</div></div>
+                <div class="metric"><div class="v">1–3 天</div><div class="l">快速开通</div></div>
+                <div class="metric"><div class="v">7×24</div><div class="l">专属保障</div></div>
+              </div>
+              <ul class="bullets">
+                <li><strong>零门槛 · 零保底 · 零承诺</strong>，无年框无锁定，按实际用量弹性使用</li>
+                <li><strong>透明计费</strong>：消耗计费 + 固定服务费，不赚差价、无隐性捆绑</li>
+                <li><strong>渠道体量 + VIP 通道</strong>，问题优先响应，减少自建运维负担</li>
+                <li><strong>上云全托管</strong>：咨询 · 架构设计 · 成本优化 · 控制台管账号费用发票</li>
+              </ul>
+              <hr class="divider" />
+              <div class="chips">
+                <span class="chip">阿里云</span>
+                <span class="chip">腾讯云</span>
+                <span class="chip">华为云</span>
+                <span class="chip">AWS</span>
+                <span class="chip">Azure</span>
+                <span class="chip">Google Cloud</span>
+              </div>
+            </section>
+
+            <section class="card ai">
+              <div class="card-head">
+                <div class="ico">AI</div>
+                <div>
+                  <h2>Trinity AI · AI API 聚合</h2>
+                  <div class="en">AI API Aggregation Platform</div>
+                </div>
+              </div>
+              <div class="metrics">
+                <div class="metric"><div class="v">1 个 API</div><div class="l">接入全球模型</div></div>
+                <div class="metric"><div class="v">100+</div><div class="l">主流模型可选</div></div>
+                <div class="metric"><div class="v">99.9%</div><div class="l">可用性 SLA</div></div>
+              </div>
+              <ul class="bullets">
+                <li><strong>统一 API 入口</strong>，兼容 OpenAI / Anthropic 格式，现有代码几乎零改造</li>
+                <li><strong>全模态覆盖</strong>：对话 · AI Coding · 文生图 · 文生视频，一套 Key 调通</li>
+                <li><strong>纯转发 · 零存储 · 保隐私</strong>，不落盘请求与响应，满足企业合规</li>
+                <li><strong>全球加速 + 企业管控</strong>：低延迟网络 · 分区 / 成员 / API Key 批量下发</li>
+              </ul>
+
+              <div class="value">
+                <h3>平台核心能力</h3>
+                <div class="value-list">
+                  <div class="value-item">
+                    <h4>一个 API，覆盖多类模型能力</h4>
+                    <p>文本对话、AI Coding、图文与视频等多模态统一调用；按场景给出推荐，选型更直接。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>auto 智能路由 + Trinity Memory</h4>
+                    <p>按题路由到更合适、更省的模型；Memory 本地建图谱，降低重复上下文成本。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>企业级团队管控：分区、成员与 API Key</h4>
+                    <p>业务分区、成员权限、批量创建并一键下发 API Key，适配团队规模化使用。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>AI Coding 一键接入：常用 IDE 快速配置</h4>
+                    <p>安装后写入配置即可开写，覆盖 Claude Code / Codex / OpenCode 等。</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="divider" />
+              <div class="chips">
+                <span class="chip">Claude</span>
+                <span class="chip">GPT</span>
+                <span class="chip">Gemini</span>
+                <span class="chip">GLM</span>
+                <span class="chip">DeepSeek</span>
+                <span class="chip">Qwen</span>
+                <span class="chip">Hailuo</span>
+                <span class="chip">Kling</span>
+                <span class="chip">MiniMax</span>
+                <span class="chip">Seedance</span>
+                <span class="chip">100+ 款模型</span>
+              </div>
+            </section>
+
+            <div class="closer">
+              <div class="trust">
+                无隐性消费<span class="sep">|</span>无产品捆绑<span class="sep">|</span>数据自主可控
+              </div>
+              <p class="cta">立即开启 <span class="hl">降本增效</span> 之旅</p>
+              <footer class="footer">
+                <div class="contact">
+                  <div class="row">
+                    <span class="ico" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.14 0-7.5 2.1-7.5 4.69V21h15v-2.06c0-2.59-3.36-4.69-7.5-4.69Z"/></svg>
+                    </span>
+                    <span>任晓雷</span>
+                  </div>
+                  <div class="row">
+                    <span class="ico" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.25 1.02l-2.2 2.19Z"/></svg>
+                    </span>
+                    <span>173 1698 2366</span>
+                  </div>
+                  <div class="row">
+                    <span class="ico" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="#1a1a1a"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"/></svg>
+                    </span>
+                    <span>starsea@trinitydesk.com</span>
+                  </div>
+                  <div class="row">
+                    <span class="ico web" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#00c2f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+                    </span>
+                    <a href="https://www.trinitydesk.ai">www.trinitydesk.ai</a>
+                  </div>
+                </div>
+                <img class="qr" src="./assets/poster-qr.png" alt="二维码" />
+              </footer>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <script>
+    function exportPdf() {
+      document.body.classList.add("is-printing");
+      window.print();
+      setTimeout(function () {
+        document.body.classList.remove("is-printing");
+      }, 500);
+    }
+  </script>
+</body>
+</html>
