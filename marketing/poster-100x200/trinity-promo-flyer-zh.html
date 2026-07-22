@@ -414,7 +414,7 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
 }
 .sheet.front .value-item .v-hook {
   margin: 0.2mm 0 0;
-  font-size: 11.5pt;
+  font-size: 9.5pt;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -.02em;
@@ -950,11 +950,23 @@ h2 { font-size: var(--fs-lg); }
 
 
 
-/* 背面：AI 云卡片视觉对齐正面 AI 卡（青绿主题）+ 轻压缩防裁切 */
+/* 背面：淡青绿洗底（与正面青蓝对仗）+ AI 云卡片青绿主题 + 轻压缩防裁切 */
 .sheet.back {
   gap: 2.8mm;
   padding-top: 7.5mm;
   padding-bottom: calc(6mm + 16px);
+  background:
+    radial-gradient(ellipse 88% 52% at 108% -6%, rgba(0,168,129,.20) 0%, transparent 58%),
+    radial-gradient(ellipse 62% 42% at -10% 108%, rgba(13,148,136,.10) 0%, transparent 55%),
+    linear-gradient(168deg, #e8f7f2 0%, #f3fbf8 40%, #ffffff 70%, #eef8f4 100%);
+}
+.sheet.back::before {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 41%, rgba(0,168,129,.14) 42%, rgba(13,148,136,.07) 57%, transparent 58%),
+    radial-gradient(circle at 60% 40%, rgba(110,231,183,.20) 0%, transparent 46%);
+}
+.sheet.back::after {
+  background: radial-gradient(circle at 50% 50%, rgba(0,168,129,.14) 0%, rgba(20,184,166,.06) 42%, transparent 70%);
 }
 .sheet.back .about-box {
   padding: 2.4mm 24mm 2.2mm 3mm; /* 右侧给绝对定位二维码留空 */
@@ -1423,7 +1435,7 @@ h2 { font-size: var(--fs-lg); }
     <span>AI 云 · 多云集采</span>
     <span class="on"><i></i>AI API · 模型聚合</span>
   </div>
-  <p class="hero-line">企业数字化双引擎：<strong>多云资源集采</strong> + <strong>全球模型统一 API</strong> · 一套入口调通全球模型</p>
+  <p class="hero-line">企业数字化双引擎：<strong>多云资源集采</strong> + <strong>全球模型统一 API</strong></p>
 
   <article class="ai-card">
     <div class="card-head">
@@ -1470,7 +1482,7 @@ h2 { font-size: var(--fs-lg); }
         <article class="value-item featured">
           <div class="v-body">
             <span class="v-tag">成本优化</span>
-            <p class="v-hook">约省 <em>60%</em></p>
+            <p class="v-hook">约省 <em>50%+</em></p>
             <h4>auto 智能路由 + Trinity Memory</h4>
             <p>按任务自动路由更合适、更省的模型；Memory 本地图谱，减少重复上下文传输。</p>
           </div>
@@ -1557,7 +1569,7 @@ h2 { font-size: var(--fs-lg); }
         </div>
         <h3>性价比对话</h3>
         <p class="desc">日常问答、批处理、客服辅助，成本友好、上手快。</p>
-        <p class="models">deepseek · qwen-flash · glm · kimi</p>
+        <p class="models">DeepSeek · Qwen Flash · GLM · Kimi</p>
       </article>
       <article class="scene">
         <div class="scene-top">
@@ -1571,7 +1583,7 @@ h2 { font-size: var(--fs-lg); }
         </div>
         <h3>AI Coding</h3>
         <p class="desc">写代码、改项目、对接编程工具与 Agent 工作流。</p>
-        <p class="models">gpt-codex · kimi-code · qwen-plus · Claude</p>
+        <p class="models">GPT Codex · Kimi Code · Qwen Plus · Claude</p>
       </article>
       <article class="scene">
         <div class="scene-top">
@@ -1586,7 +1598,7 @@ h2 { font-size: var(--fs-lg); }
         </div>
         <h3>多模态生成</h3>
         <p class="desc">图文理解、生图与生视频，营销与内容生产线一站调用。</p>
-        <p class="models">gpt-4o · gemini · seedance · kling</p>
+        <p class="models">GPT-4o · Gemini · Seedance · Kling</p>
       </article>
     </div>
   </div>
@@ -1637,7 +1649,7 @@ h2 { font-size: var(--fs-lg); }
   </div>
 
   <section class="about-box" aria-label="品牌介绍">
-    <h2 class="about-title">Trinity —— 企业数字化双引擎</h2>
+    <h2 class="about-title">云资源 + 模型 API，同一品牌交付</h2>
     <p class="about-desc">Trinity 面向企业提供<strong>多云资源集采</strong>与<strong>全球模型统一 API</strong>：一站对接主流公有云，一套入口调用全球顶尖模型，透明交付、企业管控、专属技术保障。</p>
     <p class="about-link">更多详情：<a href="https://trinitydesk.com/">trinitydesk.com</a> · <a href="https://trinitydesk.ai/">trinitydesk.ai</a></p>
     <div class="prod-pills" aria-label="产品线">
@@ -1702,7 +1714,7 @@ h2 { font-size: var(--fs-lg); }
       <div class="how">
         <div><span class="n">1</span><span><strong>免费试用</strong> — 商务开通额度，用一个 API 验证对话 / Coding / 多模态</span></div>
         <div><span class="n">2</span><span><strong>按量计费</strong> — 按实际用量扣减，价格以刊例 / 商务折扣为准</span></div>
-        <div><span class="n">3</span><span><strong>充值越高越优惠</strong> — 企业档可谈 SLA / 账期（见下方档位）</span></div>
+        <div><span class="n">3</span><span><strong>充值越高越优惠</strong> — 企业版可谈 SLA / 账期（见下方档位）</span></div>
       </div>
     </div>
     <div class="aside">
@@ -1739,12 +1751,12 @@ h2 { font-size: var(--fs-lg); }
         <p class="sv">最高约省 28%</p>
       </div>
     </div>
-    <p class="note">相对刊例示意上限，仅限 AI API 聚合；合同折扣、账期与 SLA 面议。AI 云不计此档。</p>
+    <p class="note">相对刊例的最高可省上限，仅限 AI API 聚合；合同折扣、账期与 SLA 面议。AI 云不计此档。</p>
   </div>
 
   <div class="closer">
     <div class="trust">无隐性消费<span class="sep">|</span>无产品捆绑<span class="sep">|</span>数据自主可控</div>
-    <p class="cta-line">立即开启 <span class="hl">降本增效</span> 之旅</p>
+    <p class="cta-line">联系商务 · 开启 <span class="hl">降本增效</span></p>
     
       <footer class="biz-card">
               <div class="contact">
