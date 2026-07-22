@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" role="img" aria-label="API 密钥管控">
+  <rect width="560" height="300" rx="14" fill="#f0f9ff"/>
+  <rect x="14" y="14" width="532" height="272" rx="14" fill="#fff" stroke="#bae6fd" stroke-width="2"/>
+
+  <!-- title -->
+  <circle cx="52" cy="52" r="20" fill="#00c2f7"/>
+  <path d="M44 52h10a6 6 0 1 0 0-4H48v-6h-4v10zm18 2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="#fff"/>
+  <text x="84" y="48" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="30" font-weight="800" fill="#0f172a">API 密钥</text>
+  <text x="84" y="74" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="600" fill="#64748b">创建 · 批量下发 · 额度</text>
+
+  <!-- action pills -->
+  <rect x="360" y="34" width="72" height="36" rx="10" fill="#00c2f7"/>
+  <text x="396" y="58" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="18" font-weight="800" fill="#fff">创建</text>
+  <rect x="444" y="34" width="84" height="36" rx="10" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="486" y="58" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="16" font-weight="800" fill="#0369a1">批量</text>
+
+  <!-- row 1 -->
+  <rect x="28" y="96" width="504" height="52" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="56" cy="122" r="14" fill="#e0f2fe"/>
+  <path d="M50 122h7a4 4 0 1 0 0-3h-3v-4h-4v7zm12 1.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="#0284c7"/>
+  <text x="82" y="118" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="800" fill="#0f172a">team-prod</text>
+  <text x="82" y="140" font-family="Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#64748b">xh-••••••••aK2m</text>
+  <rect x="330" y="108" width="70" height="28" rx="8" fill="#dcfce7"/>
+  <text x="365" y="127" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="800" fill="#15803d">不限</text>
+  <rect x="412" y="108" width="104" height="28" rx="8" fill="#e0f2fe"/>
+  <text x="464" y="127" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="14" font-weight="700" fill="#0369a1">顶级工作区</text>
+
+  <!-- row 2 -->
+  <rect x="28" y="160" width="504" height="52" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="56" cy="186" r="14" fill="#e0f2fe"/>
+  <path d="M50 186h7a4 4 0 1 0 0-3h-3v-4h-4v7zm12 1.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="#0284c7"/>
+  <text x="82" y="182" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="800" fill="#0f172a">frontend</text>
+  <text x="82" y="204" font-family="Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#64748b">xh-••••••••CxB7</text>
+  <rect x="330" y="172" width="70" height="28" rx="8" fill="#dcfce7"/>
+  <text x="365" y="191" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="15" font-weight="800" fill="#15803d">不限</text>
+  <rect x="412" y="172" width="104" height="28" rx="8" fill="#e0f2fe"/>
+  <text x="464" y="191" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="14" font-weight="700" fill="#0369a1">前端工作区</text>
+
+  <!-- row 3 + quota bar -->
+  <rect x="28" y="224" width="504" height="48" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="56" cy="248" r="14" fill="#e0f2fe"/>
+  <path d="M50 248h7a4 4 0 1 0 0-3h-3v-4h-4v7zm12 1.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" fill="#0284c7"/>
+  <text x="82" y="244" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="20" font-weight="800" fill="#0f172a">linda-test</text>
+  <text x="82" y="264" font-family="Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#64748b">xh-••••••••FHnz</text>
+  <text x="330" y="242" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="14" font-weight="700" fill="#0369a1">额度 $1</text>
+  <rect x="330" y="250" width="90" height="10" rx="5" fill="#e2e8f0"/>
+  <rect x="330" y="250" width="28" height="10" rx="5" fill="#00c2f7"/>
+  <rect x="436" y="236" width="80" height="28" rx="8" fill="#e0f2fe"/>
+  <text x="476" y="255" text-anchor="middle" font-family="PingFang SC,Noto Sans SC,Microsoft YaHei,sans-serif" font-size="14" font-weight="700" fill="#0369a1">工作区</text>
+</svg>

@@ -9,7 +9,8 @@
 | `trinity-poster-100x200-zh.html` | 站台海报可编辑源（浏览器预览） |
 | `trinity-promo-flyer-zh.html` | A4 双面宣传单（正面 AI API · 背面 AI 云；价格弱化为商务咨询条） |
 | `trinity-pricing-flyer-zh.html` | 旧文件名跳转 → 上项 |
-| `export_poster_pdf.sh` | 导出 100×200 PDF（需 Playwright） |
+| `export_poster_pdf.sh` | 导出 100×200 站台海报 PDF（需 Playwright） |
+| `export_flyer_pdf.sh` | 导出 A4 双面宣传单 PDF（需 Playwright） |
 | `build_poster_100x200.py` | 备用：PyMuPDF 生成（旧路径） |
 | `assets/` | wordmark、二维码 |
 | `output/` | 导出的 PDF 成品 |
@@ -23,8 +24,20 @@ open marketing/poster-100x200/trinity-promo-flyer-zh.html
 
 ## 导出 PDF
 
+**A4 宣传单**（推荐，尺寸准确）：
+
 ```bash
 cd marketing/poster-100x200
+./export_flyer_pdf.sh
+# 或指定输出路径
+./export_flyer_pdf.sh ./output/Trinity-A4宣传单.pdf
+```
+
+也可在浏览器打开 `trinity-promo-flyer-zh.html`，点顶栏「打印 / 导出 PDF」，纸张选 **A4**、边距无、勾选背景图形；双面印刷选「长边翻转」。
+
+**100×200 站台海报**：
+
+```bash
 ./export_poster_pdf.sh
 # 或指定输出路径
 ./export_poster_pdf.sh ./output/Trinity-100x200推广素材-V1.3.pdf
