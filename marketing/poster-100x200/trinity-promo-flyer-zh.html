@@ -27,9 +27,38 @@ body { margin:0; font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans
 .toolbar button { border:0; border-radius:999px; padding:10px 18px; font-weight:700; color:#fff; background:var(--cyan); cursor:pointer; }
 .stage { padding:20px 12px 40px; display:flex; flex-direction:column; align-items:center; gap:20px; }
 .sheet {
-  width:210mm; height:297mm; background:#fff; overflow:hidden;
+  width:210mm; height:297mm; overflow:hidden;
+  position:relative; isolation:isolate;
+  /* 清程风：淡青底洗 + 角落光晕，内容卡浮在白底上 */
+  background:
+    radial-gradient(ellipse 88% 52% at 108% -6%, rgba(56,189,248,.26) 0%, transparent 58%),
+    radial-gradient(ellipse 62% 42% at -10% 108%, rgba(37,99,235,.11) 0%, transparent 55%),
+    linear-gradient(168deg, #e6f5ff 0%, #f4fbff 40%, #ffffff 70%, #eef8ff 100%);
   box-shadow:0 12px 40px rgba(15,23,42,.14);
   padding:9mm 10mm 8mm; display:flex; flex-direction:column; gap:4mm;
+}
+.sheet::before {
+  content:"";
+  position:absolute; z-index:0; pointer-events:none;
+  top:-14mm; right:-30mm;
+  width:120mm; height:120mm; border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 41%, rgba(14,165,233,.15) 42%, rgba(37,99,235,.08) 57%, transparent 58%),
+    radial-gradient(circle at 60% 40%, rgba(125,211,252,.22) 0%, transparent 46%);
+  transform:rotate(-14deg);
+}
+.sheet::after {
+  content:"";
+  position:absolute; z-index:0; pointer-events:none;
+  bottom:-22mm; left:-24mm;
+  width:98mm; height:98mm; border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, rgba(0,194,247,.16) 0%, rgba(37,99,235,.07) 42%, transparent 70%);
+}
+.sheet > * { position:relative; z-index:1; }
+/* 顶栏含绝对定位二维码，需高于后续白卡片，避免被 about-box 盖住 */
+.sheet > .row:has(.brand-qr),
+.sheet > .brand-row {
+  z-index: 6;
 }
 .logo { height:20px; width:auto; display:block; }
 .row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
@@ -186,7 +215,11 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
   .toolbar { display:none !important; }
   body { background:#fff; }
   .stage { padding:0; gap:0; }
-  .sheet { box-shadow:none; page-break-after:always; break-after:page; }
+  .sheet {
+    box-shadow:none;
+    page-break-after:always; break-after:page;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
   .sheet.back { page-break-after:auto; break-after:auto; }
   @page { size:A4; margin:0; }
 }
@@ -197,6 +230,8 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
 }
 .sheet.front {
   gap: 3mm;
+  /* 底部上提约 10px，避免「平台核心能力」被挤贴底 */
+  padding-bottom: calc(8mm + 20px);
 }
 .sheet.front .brand-row {
   margin-bottom: 1mm;
@@ -210,8 +245,8 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
   padding: 5mm 5.5mm 4.5mm;
   border-radius: 3.5mm;
   border: 1px solid #d7eef7;
-  background: #fff;
-  box-shadow: 0 1px 0 rgba(0,194,247,.06);
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 4px 18px rgba(15,23,42,.055), 0 1px 0 rgba(0,194,247,.06);
   position: relative;
 }
 .sheet.front .ai-card::before {
@@ -373,7 +408,7 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
   line-height: 1.3;
 }
 .sheet.front .value-item.featured .v-tag {
-  color: #0e7490;
+  color: #fff;
   background: #cffafe;
   border-color: #67e8f9;
 }
@@ -500,6 +535,7 @@ h2 { margin:0 0 1.5mm; font-size:10pt; font-weight:800; }
   box-shadow: 0 2px 8px rgba(37, 99, 235, .08);
 }
 .sheet.front .value-item.featured .v-tag {
+  color: #fff;
   background: var(--grad-hot);
 }
 .sheet.front .value-item .v-ico {
@@ -851,8 +887,9 @@ h2 { font-size: var(--fs-lg); }
   margin: 0;
   padding: 3mm 3.5mm 2.8mm;
   border-radius: 3mm;
-  background: linear-gradient(180deg, #f4f8fc 0%, #f8fafc 100%);
-  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, rgba(255,255,255,.94) 0%, rgba(248,250,252,.92) 100%);
+  border: 1px solid rgba(226,232,240,.95);
+  box-shadow: 0 2px 12px rgba(15,23,42,.04);
 }
 .about-title {
   margin: 0 0 1.5mm;
@@ -920,7 +957,7 @@ h2 { font-size: var(--fs-lg); }
   padding-bottom: calc(6mm + 16px);
 }
 .sheet.back .about-box {
-  padding: 2.4mm 3mm 2.2mm;
+  padding: 2.4mm 24mm 2.2mm 3mm; /* 右侧给绝对定位二维码留空 */
 }
 .sheet.back .about-title { font-size: 10pt; margin-bottom: 1mm; }
 .sheet.back .about-desc { font-size: 7pt; line-height: 1.45; }
@@ -941,8 +978,8 @@ h2 { font-size: var(--fs-lg); }
   padding: 4.5mm 5mm 4mm;
   border-radius: 3.5mm;
   border: 1px solid #cfe8e0;
-  background: #fff;
-  box-shadow: 0 1px 0 rgba(0,168,129,.06);
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 4px 18px rgba(15,23,42,.055), 0 1px 0 rgba(0,168,129,.06);
 }
 .sheet.back .cloud-card::before {
   content: "";
@@ -1090,7 +1127,8 @@ h2 { font-size: var(--fs-lg); }
   padding: 2.8mm 3.2mm;
   border-radius: 2.5mm;
   border: 1px solid var(--line);
-  background: var(--soft);
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 2px 10px rgba(15,23,42,.035);
   flex-shrink: 0;
 }
 .sheet.back .soft-biz h3,
@@ -1314,6 +1352,7 @@ h2 { font-size: var(--fs-lg); }
 .brand-right {
   position: relative;
   flex-shrink: 0;
+  z-index: 5;
 }
 .brand-qr {
   position: absolute;
@@ -1326,7 +1365,8 @@ h2 { font-size: var(--fs-lg); }
   border-radius: 1.5mm;
   border: 1px solid var(--line);
   background: #fff;
-  z-index: 3;
+  z-index: 5;
+  box-shadow: 0 1px 4px rgba(15,23,42,.06);
 }
 /* 背面：产品能力 + 二维码整体略上移，远离云卡顶线 */
 .sheet.back .brand-right {
@@ -1401,9 +1441,9 @@ h2 { font-size: var(--fs-lg); }
     </div>
 
     <ul class="bullets">
-      <li><strong>统一 API 入口</strong>，兼容 OpenAI / Anthropic 格式，现有代码几乎零改造</li>
+      <li><strong>统一 API 入口</strong>，兼容 OpenAI / Anthropic 格式，存量系统可平滑接入</li>
       <li><strong>全模态覆盖</strong>：对话 · AI Coding · 文生图 · 文生视频，一套 Key 调通</li>
-      <li><strong>纯转发 · 零存储 · 保隐私</strong>，不落盘请求与响应，满足企业合规诉求</li>
+      <li><strong>纯转发 · 零存储 · 数据不落盘</strong>，请求与响应均不持久化，满足企业合规要求</li>
       <li><strong>全球加速 + 企业管控</strong>：低延迟网络 · 分区 / 成员 / API Key 批量下发</li>
     </ul>
 
@@ -1415,7 +1455,7 @@ h2 { font-size: var(--fs-lg); }
             <span class="v-tag">一站接入</span>
             <p class="v-hook">1 API · 100+</p>
             <h4>一个 API，覆盖多类模型</h4>
-            <p>文本 / Coding / 图文视频统一调用，按场景推荐选型。</p>
+            <p>文本 / Coding / 图像 / 视频统一调用，按场景推荐选型。</p>
           </div>
           <div class="v-ico" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <circle cx="32" cy="32" r="10" fill="#00c2f7"/>
@@ -1429,10 +1469,10 @@ h2 { font-size: var(--fs-lg); }
         </article>
         <article class="value-item featured">
           <div class="v-body">
-            <span class="v-tag">为节约成本而生</span>
+            <span class="v-tag">成本优化</span>
             <p class="v-hook">约省 <em>60%</em></p>
             <h4>auto 智能路由 + Trinity Memory</h4>
-            <p>按题路由更合适、更省的模型；Memory 本地图谱，少传重复上下文。</p>
+            <p>按任务自动路由更合适、更省的模型；Memory 本地图谱，减少重复上下文传输。</p>
           </div>
           <div class="v-ico" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M14 40c0-12 8-22 18-22s18 10 18 22" stroke="#67e8f9" stroke-width="3" stroke-linecap="round"/>
@@ -1448,7 +1488,7 @@ h2 { font-size: var(--fs-lg); }
             <span class="v-tag">企业管控</span>
             <p class="v-hook">批量下发 Key</p>
             <h4>团队与密钥治理</h4>
-            <p>业务分区、成员权限、一键下发，适配团队规模化使用。</p>
+            <p>分区管理、成员权限、API Key 批量下发，适配团队规模化使用。</p>
           </div>
           <div class="v-ico" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="10" y="14" width="28" height="36" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
@@ -1465,7 +1505,7 @@ h2 { font-size: var(--fs-lg); }
             <span class="v-tag">开发加速</span>
             <p class="v-hook">开箱即用</p>
             <h4>AI Coding 一键接入 IDE</h4>
-            <p>Claude Code / Codex / OpenCode，写入配置即可开写。</p>
+            <p>Claude Code / Codex / OpenCode，一键配置即可在 IDE 中使用。</p>
           </div>
           <div class="v-ico" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="8" y="12" width="48" height="40" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
@@ -1498,7 +1538,7 @@ h2 { font-size: var(--fs-lg); }
 
   <div class="scenes-block">
     <p class="sec">场景精选</p>
-    <h2>按用途选模，一套 API 覆盖对话 / Coding / 多模态</h2>
+    <h2>按场景选型，一套 API 覆盖对话 / Coding / 多模态</h2>
     <div class="scenes">
       <article class="scene">
         <div class="scene-top">
@@ -1618,34 +1658,34 @@ h2 { font-size: var(--fs-lg); }
     <div class="metrics">
       <div class="metric"><div class="v">六大公有云</div><div class="l">一站对接</div></div>
       <div class="metric"><div class="v">1–3 天</div><div class="l">快速开通</div></div>
-      <div class="metric"><div class="v">7×24</div><div class="l">专属技术保障</div></div>
+      <div class="metric"><div class="v">7×24</div><div class="l">专属保障</div></div>
     </div>
 
     <ul class="bullets">
       <li><strong>零门槛 · 零保底 · 零承诺</strong>，无年框无锁定，按实际用量弹性使用</li>
-      <li><strong>透明计费</strong>：按消耗计费 + 固定服务费，不赚差价、无隐性捆绑</li>
-      <li><strong>渠道体量撬动厂商资源</strong>，企业享受集采级支持与优先响应通道</li>
-      <li><strong>上云全托管增值</strong>：咨询 · 架构设计 · 成本优化，减少自建运维负担</li>
+      <li><strong>透明计费</strong>：消耗计费 + 固定服务费，不赚差价、无隐性捆绑</li>
+      <li><strong>渠道体量 + VIP 通道</strong>，集采级支持、问题优先响应</li>
+      <li><strong>上云全托管</strong>：咨询 · 架构设计 · 成本优化 · 控制台管账号费用发票</li>
     </ul>
 
     <div class="value">
-      <h3>AI 云能帮你做什么</h3>
+      <h3>核心能力</h3>
       <div class="value-list">
         <div class="value-item">
-          <h4>多云一张入口</h4>
-          <p>阿里云 / 腾讯云 / 华为云 / AWS / Azure / Google Cloud，统一咨询与开通路径。</p>
+          <h4>一站式多云采购</h4>
+          <p>覆盖六大公有云，统一咨询与开通管理。</p>
         </div>
         <div class="value-item">
-          <h4>企业控制台自助</h4>
-          <p>账号、费用、发票与联系顾问集中管理，业务与财务口径对齐。</p>
+          <h4>统一账单与开票</h4>
+          <p>统一账单、灵活开票或多抬头，开户续费对账专人跟进。</p>
         </div>
         <div class="value-item">
-          <h4>场景化云能力讲解</h4>
-          <p>按厂商讲清计算、存储、网络与 AI 相关能力，选型不再靠猜。</p>
+          <h4>免费上云咨询与架构设计</h4>
+          <p>配置推荐、架构设计与多云成本统一管控。</p>
         </div>
         <div class="value-item">
-          <h4>与 AI API 可组合</h4>
-          <p>底层云资源 + 上层模型调用，同一品牌交付，降低多供应商对接成本。</p>
+          <h4>零门槛享大客户折扣</h4>
+          <p>无需年框与保底，灵活按需采购。</p>
         </div>
       </div>
     </div>
@@ -1661,7 +1701,7 @@ h2 { font-size: var(--fs-lg); }
       <h3>AI API 聚合 · 怎么开始</h3>
       <div class="how">
         <div><span class="n">1</span><span><strong>免费试用</strong> — 商务开通额度，用一个 API 验证对话 / Coding / 多模态</span></div>
-        <div><span class="n">2</span><span><strong>按量计费</strong> — 预付费 Credits，按实际调用扣减</span></div>
+        <div><span class="n">2</span><span><strong>按量计费</strong> — 按实际用量扣减，价格以刊例 / 商务折扣为准</span></div>
         <div><span class="n">3</span><span><strong>充值越高越优惠</strong> — 企业档可谈 SLA / 账期（见下方档位）</span></div>
       </div>
     </div>
