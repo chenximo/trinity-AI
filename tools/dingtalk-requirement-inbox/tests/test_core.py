@@ -255,7 +255,7 @@ def test_build_notable_fields_pm_columns():
         settings=settings,
     )
     assert fields["类型"] == "优化"
-    assert fields["标题"] == ""
+    assert fields["标题"] == "CC Switch 断流"
     assert fields["问题描述"] == [
         {"type": "text", "text": "CC Switch 断流\n\n切换后流中断，复现于 Safari"}
     ]

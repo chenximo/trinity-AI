@@ -121,15 +121,18 @@ def build_notable_fields(
     """Map one candidate to DingTalk Notable column names (must match sheet headers)."""
     item_type = candidate.get("type", "")
     reporter = normalize_reporter(candidate.get("reporter", ""))
-    # 多维表「标题」列列表视图易截断；完整内容写入「问题描述」（标题+正文）。
-    # 标题列置空，避免与描述重复且被截断误读。
+    # 「标题」需有值（多维表主键/必填；写空会导致文本字段整行不落库）。
+    # 完整内容写入「问题描述」= 标题 + 正文，避免列表截断后看不到详情。
     title = (candidate.get("title") or "").strip()
     summary = (candidate.get("summary") or "").strip()
+    description = format_problem_description(title, summary)
+    if not title and description:
+        title = description.split("\n", 1)[0][:80]
     fields: dict[str, Any] = {
         "创建时间": format_created_time(),
         "类型": TYPE_LABELS.get(item_type, "需求"),
-        "标题": "",
-        "问题描述": format_rich_text(format_problem_description(title, summary)),
+        "标题": title,
+        "问题描述": format_rich_text(description),
         "所属模块": candidate.get("module_suggestion", ""),
         "优先级": DEFAULT_PRIORITY.get(item_type, "P1"),
         "处理进度": "待确认",
@@ -313,10 +316,17 @@ class NotableWriter:
                 )
             resp.raise_for_status()
             data = resp.json()
+        desc_text = ""
+        desc_field = fields.get("问题描述") or []
+        if isinstance(desc_field, list):
+            desc_text = "".join(
+                str(part.get("text") or "") for part in desc_field if isinstance(part, dict)
+            )
         logger.info(
-            "notable_record_created batch_id=%s title=%s attachments=%s",
+            "notable_record_created batch_id=%s title=%s desc_chars=%s attachments=%s",
             batch_id,
-            candidate.get("title"),
+            fields.get("标题"),
+            len(desc_text),
             len(attachments),
         )
         if data.get("success") is False:

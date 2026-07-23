@@ -48,13 +48,13 @@
 
 ## 字段要求
 
-- `title`：一句话短标题（内部去重与群回复用；**不会**作为表里主展示）
+- `title`：一句话短标题（写入多维表「标题」列，便于列表扫读）
 - `summary`：完整问题描述——现象 + 环境 + 当前结论（不含 API Key、密码、客户隐私）。写满细节，不要只写半句；不要与 title 逐字重复整段，但可自洽独立阅读
 - `reporter`：发现者姓名（见上节）
 - `has_screenshot`：若相关消息 `has_image` 为 true 则为 true
 - `confidence`：`high` / `medium` / `low`
 
-写入多维表时，系统会把 `title` 与 `summary` 合并进「问题描述」列；请保证 `summary` 信息完整。
+写入多维表时，「问题描述」= `title` + `summary` 合并；请保证 `summary` 信息完整。
 
 ## 禁止
 
