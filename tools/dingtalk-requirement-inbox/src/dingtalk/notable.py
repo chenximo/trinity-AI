@@ -53,11 +53,12 @@ def resolve_owner_name(item_type: str) -> str:
     return DEFAULT_OWNER_NAMES.get(item_type, "崔宇光")
 
 
-def format_rich_text(value: str) -> list[dict[str, str]]:
+def format_rich_text(value: str) -> dict[str, str] | None:
+    """DingTalk Notable richText fields expect {\"markdown\": \"...\"}, not text arrays."""
     text = (value or "").strip()
     if not text:
-        return []
-    return [{"type": "text", "text": text}]
+        return None
+    return {"markdown": text}
 
 
 def format_problem_description(title: str, summary: str) -> str:
@@ -132,13 +133,15 @@ def build_notable_fields(
         "创建时间": format_created_time(),
         "类型": TYPE_LABELS.get(item_type, "需求"),
         "标题": title,
-        "问题描述": format_rich_text(description),
         "所属模块": candidate.get("module_suggestion", ""),
         "优先级": DEFAULT_PRIORITY.get(item_type, "P1"),
         "处理进度": "待确认",
         "负责人": resolve_owner_name(item_type),
         "会话摘要": session_summary,
     }
+    rich = format_rich_text(description)
+    if rich:
+        fields["问题描述"] = rich
     reporter_union_id = team_union_ids(settings).get(reporter)
     if reporter_union_id:
         fields["发现者"] = format_user_field(reporter_union_id)
@@ -317,8 +320,10 @@ class NotableWriter:
             resp.raise_for_status()
             data = resp.json()
         desc_text = ""
-        desc_field = fields.get("问题描述") or []
-        if isinstance(desc_field, list):
+        desc_field = fields.get("问题描述")
+        if isinstance(desc_field, dict):
+            desc_text = str(desc_field.get("markdown") or "")
+        elif isinstance(desc_field, list):
             desc_text = "".join(
                 str(part.get("text") or "") for part in desc_field if isinstance(part, dict)
             )

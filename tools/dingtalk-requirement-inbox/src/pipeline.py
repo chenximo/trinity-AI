@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from datetime import datetime, timezone
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -42,6 +43,43 @@ def build_trigger_message(incoming: dict[str, Any]) -> dict[str, Any]:
 def is_trigger(incoming: dict[str, Any]) -> bool:
     """直接 @机器人即整理（含「整理」「收集」或不带指令）。"""
     return bool(incoming.get("isInAtList"))
+
+
+def _strip_bot_mention(text: str) -> str:
+    cleaned = re.sub(r"@\S+", "", text or "")
+    return cleaned.replace("\xa0", " ").strip()
+
+
+def source_requirement_text(messages: list[dict[str, Any]]) -> str:
+    """Join message bodies (minus @bot) so long PRD-style pastes are not dropped."""
+    parts: list[str] = []
+    for message in messages:
+        text = _strip_bot_mention(str(message.get("text") or ""))
+        if text:
+            parts.append(text)
+    return "\n\n".join(parts).strip()
+
+
+def enrich_summaries_from_source(
+    candidates: list[dict[str, Any]],
+    messages: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """
+    When the user pastes a long requirement and LLM compresses it into a short summary,
+    keep the original text as summary (single-candidate batches).
+    """
+    source = source_requirement_text(messages)
+    if not source or len(candidates) != 1:
+        return candidates
+    summary = (candidates[0].get("summary") or "").strip()
+    if len(source) > len(summary) + 40:
+        candidates[0] = {**candidates[0], "summary": source}
+        logger.info(
+            "summary_enriched_from_source source_chars=%s llm_chars=%s",
+            len(source),
+            len(summary),
+        )
+    return candidates
 
 
 def _append_skipped_titles(reply: str, skipped_titles: list[str]) -> str:
@@ -87,6 +125,7 @@ async def run_organize(settings: Settings, incoming: dict[str, Any]) -> dict[str
     batch_id = make_batch_id()
     writable = [c for c in extraction.get("candidates", []) if c.get("type") != "noise"]
     writable, skipped_titles = dedupe_candidates_by_title(writable)
+    writable = enrich_summaries_from_source(writable, messages)
     logger.info(
         "organize_extracted batch_id=%s message_count=%s candidate_count=%s writable=%s",
         batch_id,

@@ -43,6 +43,30 @@ def test_format_problem_description():
     assert format_problem_description("仅标题", "") == "仅标题"
 
 
+def test_enrich_summaries_from_source_keeps_long_paste():
+    from src.pipeline import enrich_summaries_from_source
+
+    long_body = "后台管理系统：\n\n1）折扣\n2）缓存\n3）倍率\n" + ("细节" * 40)
+    candidates = [
+        {
+            "type": "feature",
+            "title": "后台计费策略模块：新增筛选",
+            "summary": "新增折扣/缓存/倍率筛选及汇总",
+        }
+    ]
+    messages = [{"text": f"@Trinity需求助手\n{long_body}", "sender_name": "PM"}]
+    out = enrich_summaries_from_source(candidates, messages)
+    assert long_body.strip() in out[0]["summary"]
+    assert "1）折扣" in out[0]["summary"]
+
+
+def test_format_rich_text_markdown():
+    from src.dingtalk.notable import format_rich_text
+
+    assert format_rich_text("hello") == {"markdown": "hello"}
+    assert format_rich_text("  ") is None
+
+
 def test_build_trigger_message_picture():
     msg = build_trigger_message(
         {
@@ -256,9 +280,9 @@ def test_build_notable_fields_pm_columns():
     )
     assert fields["类型"] == "优化"
     assert fields["标题"] == "CC Switch 断流"
-    assert fields["问题描述"] == [
-        {"type": "text", "text": "CC Switch 断流\n\n切换后流中断，复现于 Safari"}
-    ]
+    assert fields["问题描述"] == {
+        "markdown": "CC Switch 断流\n\n切换后流中断，复现于 Safari"
+    }
     assert fields["处理进度"] == "待确认"
     assert fields["优先级"] == "P2"
     assert fields["负责人"] == "崔宇光"
