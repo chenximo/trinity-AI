@@ -14,6 +14,7 @@ from src.config import Settings, get_settings
 from src.dingtalk.incoming import incoming_trigger_text
 from src.dingtalk.reply import get_replied_msg_blob, has_quoted_reply
 from src.pipeline import is_trigger, run_organize
+from src.dingtalk.client import reply_text
 
 logger = logging.getLogger(__name__)
 
@@ -52,8 +53,6 @@ class RequirementInboxBotHandler(dingtalk_stream.ChatbotHandler):
             logger.exception("organize_failed")
             webhook = incoming.get("sessionWebhook") or ""
             if webhook:
-                from src.dingtalk.client import reply_text
-
                 await reply_text(
                     webhook,
                     "整理失败：服务暂时不可用，请稍后重试或手工录入收件箱。",

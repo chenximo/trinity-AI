@@ -60,6 +60,20 @@ def format_rich_text(value: str) -> list[dict[str, str]]:
     return [{"type": "text", "text": text}]
 
 
+def format_problem_description(title: str, summary: str) -> str:
+    """Merge title + body for the 问题描述 column (list UI truncates 标题)."""
+    title = (title or "").strip()
+    summary = (summary or "").strip()
+    if not title:
+        return summary
+    if not summary:
+        return title
+    # Avoid duplicating when model already put the title into summary.
+    if summary.startswith(title) or title in summary.split("\n", 1)[0]:
+        return summary
+    return f"{title}\n\n{summary}"
+
+
 def format_user_field(union_id: str) -> list[dict[str, str]]:
     uid = union_id.strip()
     if not uid:
@@ -107,11 +121,15 @@ def build_notable_fields(
     """Map one candidate to DingTalk Notable column names (must match sheet headers)."""
     item_type = candidate.get("type", "")
     reporter = normalize_reporter(candidate.get("reporter", ""))
+    # 多维表「标题」列列表视图易截断；完整内容写入「问题描述」（标题+正文）。
+    # 标题列置空，避免与描述重复且被截断误读。
+    title = (candidate.get("title") or "").strip()
+    summary = (candidate.get("summary") or "").strip()
     fields: dict[str, Any] = {
         "创建时间": format_created_time(),
         "类型": TYPE_LABELS.get(item_type, "需求"),
-        "标题": (candidate.get("title") or "").strip(),
-        "问题描述": format_rich_text(candidate.get("summary") or ""),
+        "标题": "",
+        "问题描述": format_rich_text(format_problem_description(title, summary)),
         "所属模块": candidate.get("module_suggestion", ""),
         "优先级": DEFAULT_PRIORITY.get(item_type, "P1"),
         "处理进度": "待确认",

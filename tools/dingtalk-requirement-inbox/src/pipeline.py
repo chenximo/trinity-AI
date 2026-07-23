@@ -11,7 +11,7 @@ from src.config import Settings
 from src.dedup import ProcessedMessageStore, dedupe_candidates_by_title
 from src.dingtalk.client import reply_text
 from src.dingtalk.messages import fetch_conversation_messages
-from src.dingtalk.incoming import extract_download_codes, extract_incoming_body, incoming_trigger_text
+from src.dingtalk.incoming import extract_download_codes, extract_incoming_body
 from src.dingtalk.reply import extract_replied_download_codes, has_quoted_reply
 from src.dingtalk.notable import NotableWriter, make_batch_id
 from src.dingtalk.robot_files import download_robot_images, resolve_robot_code
@@ -40,9 +40,8 @@ def build_trigger_message(incoming: dict[str, Any]) -> dict[str, Any]:
 
 
 def is_trigger(incoming: dict[str, Any]) -> bool:
-    if not incoming.get("isInAtList"):
-        return False
-    return "整理" in incoming_trigger_text(incoming)
+    """直接 @机器人即整理（含「整理」「收集」或不带指令）。"""
+    return bool(incoming.get("isInAtList"))
 
 
 def _append_skipped_titles(reply: str, skipped_titles: list[str]) -> str:

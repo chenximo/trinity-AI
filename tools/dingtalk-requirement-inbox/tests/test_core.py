@@ -22,9 +22,25 @@ FIXTURES = Path(__file__).parent / "fixtures"
 
 
 def test_is_trigger():
+    # 直接 @ 即整理（含整理 / 收集 / 无指令）
+    assert is_trigger({"isInAtList": True, "text": {"content": " @机器人"}})
     assert is_trigger({"isInAtList": True, "text": {"content": " @机器人 整理一下"}})
+    assert is_trigger({"isInAtList": True, "text": {"content": "你好"}})
+    assert is_trigger({"isInAtList": True, "text": {"content": "收集"}})
+    assert is_trigger({"isInAtList": True, "text": {"content": "@机器人 收集一下"}})
+    assert is_trigger({"isInAtList": True, "text": {"content": "收集并整理"}})
+    # 未 @ 不整理
     assert not is_trigger({"isInAtList": False, "text": {"content": "整理"}})
-    assert not is_trigger({"isInAtList": True, "text": {"content": "你好"}})
+    assert not is_trigger({"isInAtList": False, "text": {"content": "收集"}})
+
+
+def test_format_problem_description():
+    from src.dingtalk.notable import format_problem_description
+
+    assert format_problem_description("标题A", "正文B") == "标题A\n\n正文B"
+    assert format_problem_description("标题A", "标题A：细节") == "标题A：细节"
+    assert format_problem_description("", "仅正文") == "仅正文"
+    assert format_problem_description("仅标题", "") == "仅标题"
 
 
 def test_build_trigger_message_picture():
@@ -239,8 +255,10 @@ def test_build_notable_fields_pm_columns():
         settings=settings,
     )
     assert fields["类型"] == "优化"
-    assert fields["标题"] == "CC Switch 断流"
-    assert fields["问题描述"] == [{"type": "text", "text": "切换后流中断，复现于 Safari"}]
+    assert fields["标题"] == ""
+    assert fields["问题描述"] == [
+        {"type": "text", "text": "CC Switch 断流\n\n切换后流中断，复现于 Safari"}
+    ]
     assert fields["处理进度"] == "待确认"
     assert fields["优先级"] == "P2"
     assert fields["负责人"] == "崔宇光"

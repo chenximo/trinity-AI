@@ -16,7 +16,7 @@
 | Stream 长连接 | ✅ 本地可连 |
 | LLM dry-run | ✅ Codex 样本 4 条；`LLM_MODEL=gpt-4o` |
 | 配置路径 | `tools/dingtalk-requirement-inbox/.env`（非仓库根） |
-| 群内 `@整理` | ⏳ 等发布 + 进群 |
+| 群内 `@Trinity需求助手`（直接 @ 即整理） | ⏳ 等发布 + 进群 |
 | Notable 写表 | ⏳ 权限审批中 |
 | 群历史 `Chat.Message.Read` | ⏳ 灰度申请 + `messages.py` 待实现 |
 
@@ -86,7 +86,7 @@ pytest tests/ -q
 ## 明日验收（审批通过后）
 
 1. 机器人加入固定需求群  
-2. `@Trinity需求助手 整理` → 群内收到回复  
+2. `@Trinity需求助手`（可带「整理」「收集」或不带指令）→ 群内收到回复  
 3. 若 Notable 已开通 → 收件箱有「待确认」行  
 
 详见 [待办清单](../../apps/trinity-product/docs/assistant-tools/requirement-inbox/todo.md)。
