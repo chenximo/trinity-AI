@@ -146,6 +146,7 @@ commercial-billing/                          ← 产品线商用计费根
 │   ├── pricing-marketing-strategy.md        ← 【营销总册】Pricing IA · 爆款 · 新老客
 │   ├── marketing-scene-playlist.md          ← 场景精选 + 浅公开价原则
 │   ├── new-user-trial-scheme.md             ← 试用 / Trial Credits
+│   ├── sales-kit.md                         ← 【销售套件】七件套 · 缺口 · PM 交付
 │   └── （缺口）年框/承诺合同话术卡            ← 见 §5
 │
 ├── 05 副杆（Secondary levers）
@@ -178,6 +179,7 @@ commercial-billing/                          ← 产品线商用计费根
 |------|------|:------------:|
 | [billing-strategy-map.md](./billing-strategy-map)（本文） | 导航 · 选型 · 流程 | — |
 | [pricing-marketing-strategy.md](./pricing-marketing-strategy) | **官网营销总册** · IA · 爆款 | 浅折/文案；深折否 |
+| [sales-kit.md](./sales-kit) | **销售七件套** · 缺口 · **PM 交什么** | — |
 | [index.md](./) | 总览 · 合规 · 结算 · 6.30 | 结算已拍；定价链出 |
 | [pricing-strategy-evidence-chain.md](./pricing-strategy-evidence-chain) | **定价数字真源** | ✅ |
 | [discount-tier-matrix.md](./discount-tier-matrix) + Excel | **商务操作真源** | ✅（从证据链回灌） |
@@ -205,7 +207,7 @@ commercial-billing/                          ← 产品线商用计费根
 | G4 | **对外浅阶梯数字卡** | 与官网 Pricing 对齐的 9.9/9.8/9.7 定稿表 | P1 | ✅ 见 [营销总册 §2.5](./pricing-marketing-strategy#page-ia) |
 | G4b | **官网 Pricing 营销总册** | IA · 爆款三席 · 新老客 | P0 | ✅ [pricing-marketing-strategy](./pricing-marketing-strategy) |
 | G5 | **discount-spread 文首加「以证据链为准」横幅** | 防旧门槛误用 | P1 | ✅ 2026-07-16 |
-| G6 | **销售 GTM 最小包** | 谁买单、试用标准、何时转年框 | P2 | ⬜（手册已标待补充） |
+| G6 | **销售 GTM / 七件套** | 七件对照 · PM 交付 · 补齐优先级 | P1 | ✅ 规格见 [sales-kit](./sales-kit)；成品物料仍缺 |
 | G7 | **控制台档位展示 PRD** | 用户可见档名/进度 | P2 | ⬜ |
 
 ---
@@ -219,6 +221,7 @@ commercial-billing/                          ← 产品线商用计费根
 | **财务** | 证据链 GM 护栏 → 差价专文口径 → 缓存副杆边界 |
 | **研发** | MVP PRD → 计量 billing → 支付 UI →（档位）达档结算口径 |
 | **运营 / 市场** | Playlist → 试用 → 官网 Pricing；深折不写进投放页 |
+| **销售套件 / PM 物料** | [sales-kit](./sales-kit)（七件 · 缺口 · PM 重点） |
 
 ---
 
@@ -228,6 +231,7 @@ commercial-billing/                          ← 产品线商用计费根
 |------|------|
 | 2026-07-16 | 初稿：通用流程 · 目录树 · 业界选型（含暂不做在网时长折）· 文档映射 · 缺口清单 |
 | 2026-07-16 | 挂入 [官网 Pricing 营销总册](./pricing-marketing-strategy)（爆款三席 · 页面 IA） |
+| 2026-07-27 | 挂入 [销售套件](./sales-kit)（七件套对照 · PM 交付重点）；G6 规格✅、成品仍缺 |
 
 ---
 

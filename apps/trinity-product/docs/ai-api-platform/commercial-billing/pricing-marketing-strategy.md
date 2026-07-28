@@ -6,7 +6,7 @@ title: 官网 Pricing · 营销策略真源
 
 > **文档类型**：商用计费 · **对外营销层**总册（页面 IA、叙事、爆款方法论、新老客、与商务表边界）。  
 > **读者**：产品、运营、增长、市场；商务了解「页上不摊深折」。  
-> **关联**：[计费策略目录树](./billing-strategy-map) · [场景 Playlist](./marketing-scene-playlist) · [新人试用](./new-user-trial-scheme) · [商务洽谈折扣总表](./discount-tier-matrix) · [定价策略与证据链](./pricing-strategy-evidence-chain) · 官网 `TrinityAI-web` `/pricing`  
+> **关联**：[计费策略目录树](./billing-strategy-map) · [场景 Playlist](./marketing-scene-playlist) · [新人试用](./new-user-trial-scheme) · [销售套件（七件套）](./sales-kit) · [商务洽谈折扣总表](./discount-tier-matrix) · [定价策略与证据链](./pricing-strategy-evidence-chain) · 官网 `TrinityAI-web` `/pricing`  
 > **状态**：**讨论收敛 · 可落地文案稿**（试用/老带新部分数字仍标待拍）  
 > **日期**：2026-07-16
 

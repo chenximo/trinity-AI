@@ -73,7 +73,7 @@ weeks:
     blockers: |-
       Agent SDK P0 依赖网关 `tools` / `usage` 字段稳定；计量展示价策略待与计费模块对齐
       模块：platform/metering-billing
-    weeklyReport: —
+    weeklyReport: 见 docs/周记/2026-W29.md 简版（上交）
   - id: W30
     period: 07-20～07-26
     focus: 开发者文档、生文验收台、用户控制台、计量与计费
@@ -89,9 +89,10 @@ weeks:
       模块：user/developer-docs
       ⑤ 7 月总验收：自动化测试覆盖复盘、8 月规划预备 
       模块：api-test/roadmap、api-test/reports/chat-api-test
-    result: ⬜
+    result: ◐
     testLink: "https://qcn81yhei1l2.feishu.cn/sheets/PjnVs7bmphodaKtOkkycpvxmnne"
     blockers: |-
       7 月底需拍板：Agent SDK 是否写入 `trinity-docs`、智能平台 Web MVP 是否纳入 8 月
       模块：agent/agent-sdk-product-design、user/developer-docs
-    weeklyReport: —
+      本周实际主线：展会物料 + Docs Tab 企业路径 + 需求助手修复；原计划 ①②③⑤ 多数顺延
+    weeklyReport: docs/周记/2026-W30.md
