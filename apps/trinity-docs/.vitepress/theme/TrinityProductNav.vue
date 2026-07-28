@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { useRouter, withBase } from "vitepress";
 import VPNavBarSearch from "vitepress/dist/client/theme-default/components/VPNavBarSearch.vue";
+import { TrinityLocaleSwitcher } from "@trinity/ui";
 import { useDocsLocaleToggle } from "./docsLocale";
 import { PRODUCT_HOME, PRODUCT_NAV, type ProductNavItem } from "./productNav";
+import wordmarkUrl from "./assets/brand/trinity-wordmark.png";
 
 const router = useRouter();
-const locale = useDocsLocaleToggle();
+const { isEn, lang, setLang } = useDocsLocaleToggle();
 
 const drawerOpen = ref(false);
-
-const isEn = computed(() => locale.isEn.value);
 
 function navLabel(item: ProductNavItem) {
   return isEn.value ? item.labelEn : item.labelZh;
@@ -63,23 +63,19 @@ onUnmounted(() => {
     <header class="or-inject" data-or-page="docs">
       <div class="header-row">
         <div class="header-brand-cluster">
-          <a :href="PRODUCT_HOME" class="brand-row" :aria-label="isEn ? 'Trinity AI home' : 'Trinity AI 首页'">
-            <span class="brand-mark" aria-hidden="true">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-            Trinity AI
+          <a
+            :href="PRODUCT_HOME"
+            class="brand-row notranslate"
+            :aria-label="isEn ? 'Trinity AI home' : 'Trinity AI 首页'"
+            translate="no"
+          >
+            <img
+              class="brand-wordmark"
+              :src="wordmarkUrl"
+              width="140"
+              height="28"
+              alt="Trinity"
+            />
           </a>
         </div>
 
@@ -101,32 +97,7 @@ onUnmounted(() => {
           </nav>
 
           <div class="or-header-actions">
-            <button
-              type="button"
-              class="or-lang-btn"
-              :title="locale.titleText.value"
-              :aria-label="locale.ariaLabel.value"
-              @click="locale.toggle"
-            >
-              <svg
-                class="or-lang-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m5 8l6 6m-7 0l6-6l2-3M2 5h12M7 2h1m14 20l-5-10l-5 10m2-4h6"
-                />
-              </svg>
-              <span class="or-lang-label">{{ locale.labelText.value }}</span>
-            </button>
+            <TrinityLocaleSwitcher :locale="lang" @update:locale="setLang" />
 
             <button
               type="button"

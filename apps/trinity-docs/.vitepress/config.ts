@@ -13,6 +13,7 @@ const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
  * - 独立子域：base: '/'，由 Nginx 挂到 docs.example.com
  */
 const BASE = process.env.VITEPRESS_BASE ?? "/docs/";
+const asset = (path: string) => `${BASE.replace(/\/?$/, "/")}${path.replace(/^\//, "")}`;
 
 const markdownShared = {
   lineNumbers: true,
@@ -109,6 +110,8 @@ export default defineConfig({
       { id: "force-light-appearance" },
       `(function(){document.documentElement.classList.remove('dark');document.documentElement.removeAttribute('data-theme');try{localStorage.removeItem('vitepress-theme-appearance')}catch(e){}})()`,
     ],
+    ["link", { rel: "icon", href: asset("favicon.svg"), type: "image/svg+xml" }],
+    ["link", { rel: "icon", href: asset("favicon-32.png"), type: "image/png", sizes: "32x32" }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     ["link", { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }],
     [

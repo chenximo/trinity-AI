@@ -149,23 +149,14 @@ onUnmounted(() => {
       <div class="header-row">
         <div class="header-brand-cluster">
           <RouterLink :to="{ name: 'aic-home' }" class="brand-row" aria-label="Trinity AI 云">
-            <span class="brand-mark" aria-hidden="true">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-            Trinity AI 云
-          </RouterLink>
+            <img
+              class="brand-wordmark"
+              src="/brand/trinity-wordmark.png"
+              width="140"
+              height="28"
+              alt="Trinity"
+            />
+</RouterLink>
         </div>
 
         <div class="header-end">

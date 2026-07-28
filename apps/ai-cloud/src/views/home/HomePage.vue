@@ -431,16 +431,14 @@ onUnmounted(() => {
   <div class="header-row">
     <div class="header-brand-cluster">
       <RouterLink :to="{ name: 'aic-home' }" class="brand-row" aria-label="Trinity AI 云首页">
-        <span class="brand-mark" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-              d="M12 2l1.2 4.5L18 8l-4.8 1.5L12 14l-1.2-4.5L6 8l4.8-1.5L12 2zM19 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L19 14zM5 14l.9 2.5 2.6.8-2.1 1.6.1 2.7-2.5-1-2.5 1 .1-2.7-2.1-1.6 2.6-.8L5 14z"
-              fill="currentColor"
+        <img
+              class="brand-wordmark"
+              src="/brand/trinity-wordmark.png"
+              width="140"
+              height="28"
+              alt="Trinity"
             />
-          </svg>
-        </span>
-        Trinity AI 云
-      </RouterLink>
+</RouterLink>
     </div>
 
     <div class="header-end">
@@ -1633,7 +1631,15 @@ onUnmounted(() => {
   <footer class="home-footer">
     <div class="home-footer-top">
       <div class="home-footer-brand">
-        <strong>Trinity AI 云</strong>
+        <strong class="home-footer-brand-title">
+          <img
+            class="brand-wordmark-footer"
+            src="/brand/trinity-wordmark.png"
+            width="120"
+            height="24"
+            alt="Trinity"
+          />
+        </strong>
         <p>多云 AI 算力纳管与企业级交付，专注上云与用算力。</p>
       </div>
       <div class="home-footer-col">
@@ -4714,13 +4720,17 @@ main#main > section#process {
   color: var(--muted);
 }
 
-.home-footer-brand strong {
+.home-footer-brand-title {
   display: block;
-  color: var(--text);
-  font-size: 0.92rem;
-  font-weight: 700;
-  margin-bottom: 0.45rem;
+  margin: 0 0 0.45rem;
 }
+.brand-wordmark-footer {
+  display: block;
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
 
 .home-footer-brand p {
   margin: 0;

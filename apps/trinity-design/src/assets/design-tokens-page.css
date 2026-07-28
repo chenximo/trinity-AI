@@ -688,6 +688,13 @@
         color: var(--pill-text);
       }
 
+      .dt-token-use-brand-mini .brand-mark-img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
       .dt-token-use-brand-mini .brand-mark {
         width: 28px;
         height: 28px;
