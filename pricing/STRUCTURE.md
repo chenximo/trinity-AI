@@ -20,6 +20,8 @@ trinity-AI/pricing/
 │   ├── aigc/              # 腾讯云 AIGC 内部价目表
 │   └── official/          # 模型原厂官网价（按模态拆分）
 ├── config/                # 上游折扣等流水线配置
+├── billing-reconciliation/ # 按上游存放实际账单对账（平台导出 vs 上游账单）
+│   └── tencent-aigc/      # 腾讯云 AIGC · YYYY-MM/
 └── output/                # 流水线产出（线上刊例、汇总、校验、草案、diff）
 ```
 

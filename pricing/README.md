@@ -26,6 +26,8 @@ trinity-AI/pricing/
 │           ├── image/     # vendor-pricing.json（生图）
 │           └── video/     # vendor-pricing.json（生视频）
 ├── config/                # channels-*.mjs 等
+├── billing-reconciliation/ # 按上游存放实际账单对账（≠ 挂牌价）
+│   └── tencent-aigc/      # 腾讯云 AIGC
 └── output/                # 流水线产出（刊例、汇总、校验、草案）
 ```
 
