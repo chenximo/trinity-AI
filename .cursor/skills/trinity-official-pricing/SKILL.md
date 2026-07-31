@@ -70,6 +70,7 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 6. **对比自动拉线上价**：`pricing.upstream` / `pricing.upstream.image` / **`pricing.upstream.video`**；`pricing:refresh` 含生文+生图；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
 7. **刊例对比 ⊇ 线上（P6）**：`刊例对比校验` 不得少于同模态 `prices-api` 模型数；生视频在 `upstream:video` 硬校验。
 8. **编辑真源须确认**：`pricing.seed.edit` 等见 `confirmation.md`。
+9. **禁止推测价**：入/出/缓等金额**只许来自所引价目真源表内明文**；表上没有的字段写 **⚠**（或 `null` + 展示 ⚠），**禁止**用比例推算、官方价换算、他渠对照、「大概是」等方式填数。双真源核对（帮助中心 ↔ 控制台）**仅** `bailian-intl`（百炼国际站）；一致才入真源，不一致进待人工确认清单。
 
 ---
 

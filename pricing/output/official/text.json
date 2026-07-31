@@ -1,19 +1,19 @@
 {
   "modality": "text",
-  "generatedAt": "2026-07-10T09:01:46.890Z",
+  "generatedAt": "2026-07-29T06:37:53.727Z",
   "officialFetchedAt": "2026-07-10T07:40:08.287Z",
-  "pricesFetchedAt": "2026-07-10T09:01:46.591Z",
+  "pricesFetchedAt": "2026-07-29T06:37:53.112Z",
   "openRouterFetchedAt": "2026-07-01T07:54:13.821Z",
   "modelCount": 73,
   "trinityLinkedCount": 59,
-  "trinityOnlineCount": 62,
+  "trinityOnlineCount": 66,
   "rowCount": 109,
   "fxOnlineDomestic": 6.5,
   "rows": [
     {
       "trinityId": "claude-opus-4-6",
       "displayName": "Claude Opus 4.6",
-      "brand": "Anthropic",
+      "brand": "anthropic",
       "vendorModelId": "claude-opus-4-6",
       "tierLabel": "标准价",
       "official": "入 $5 · 出 $25 · 缓 $0.5",
@@ -38,7 +38,7 @@
     {
       "trinityId": "claude-opus-4-7",
       "displayName": "Claude Opus 4.7",
-      "brand": "Anthropic",
+      "brand": "anthropic",
       "vendorModelId": "claude-opus-4-7",
       "tierLabel": "标准价",
       "official": "入 $5 · 出 $25 · 缓 $0.5",
@@ -63,7 +63,7 @@
     {
       "trinityId": "claude-opus-4-8",
       "displayName": "Claude Opus 4.8",
-      "brand": "Anthropic",
+      "brand": "anthropic",
       "vendorModelId": "claude-opus-4-8",
       "tierLabel": "标准价",
       "official": "入 $5 · 出 $25 · 缓 $0.5",
@@ -88,7 +88,7 @@
     {
       "trinityId": "claude-sonnet-4-6",
       "displayName": "Claude Sonnet 4.6",
-      "brand": "Anthropic",
+      "brand": "anthropic",
       "vendorModelId": "claude-sonnet-4-6",
       "tierLabel": "标准价",
       "official": "入 $3 · 出 $15 · 缓 $0.3",
@@ -113,7 +113,7 @@
     {
       "trinityId": "deepseek-v3.2",
       "displayName": "DeepSeek V3.2",
-      "brand": "DeepSeek",
+      "brand": "deepseek",
       "vendorModelId": "deepseek-v3.2",
       "tierLabel": "标准价",
       "official": "入 ¥2 · 出 ¥3 · 缓 ¥0.4",
@@ -138,7 +138,7 @@
     {
       "trinityId": "deepseek-v4-flash",
       "displayName": "DeepSeek V4 Flash Direct",
-      "brand": "DeepSeek",
+      "brand": "deepseek",
       "vendorModelId": "deepseek-v4-flash",
       "tierLabel": "标准价",
       "official": "入 ¥1 · 出 ¥2 · 缓 ¥0.02",
@@ -163,7 +163,7 @@
     {
       "trinityId": "deepseek-v4-pro",
       "displayName": "DeepSeek V4 Pro Direct",
-      "brand": "DeepSeek",
+      "brand": "deepseek",
       "vendorModelId": "deepseek-v4-pro",
       "tierLabel": "标准价",
       "official": "入 ¥3 · 出 ¥6 · 缓 ¥0.025",
@@ -188,7 +188,7 @@
     {
       "trinityId": "gemini-2.5-flash",
       "displayName": "Gemini 2.5 Flash",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-flash",
       "tierLabel": "输入:文本/图片/视频",
       "official": "入 $0.3 · 出 $2.5 · 缓 $0.03",
@@ -213,7 +213,7 @@
     {
       "trinityId": "gemini-2.5-flash",
       "displayName": "Gemini 2.5 Flash",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-flash",
       "tierLabel": "输入:音频",
       "official": "入 $1 · 出 $2.5 · 缓 $0.1",
@@ -238,7 +238,7 @@
     {
       "trinityId": "gemini-2.5-flash-lite",
       "displayName": "Gemini 2.5 Flash Lite",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-flash-lite",
       "tierLabel": "标准价",
       "official": "入 $0.1 · 出 $0.4 · 缓 $0.01",
@@ -263,7 +263,7 @@
     {
       "trinityId": "gemini-2.5-flash-lite-preview",
       "displayName": "Gemini 2.5 Flash Lite Preview",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-flash-lite-preview",
       "tierLabel": "标准价",
       "official": "入 $0.1 · 出 $0.4 · 缓 $0.01",
@@ -288,7 +288,7 @@
     {
       "trinityId": "gemini-2.5-pro",
       "displayName": "Gemini 2.5 Pro",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-pro",
       "tierLabel": "输入<=20万个token",
       "official": "入 $1.25 · 出 $10 · 缓 $0.125",
@@ -313,7 +313,7 @@
     {
       "trinityId": "gemini-2.5-pro",
       "displayName": "Gemini 2.5 Pro",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-2.5-pro",
       "tierLabel": "输入>20万个token",
       "official": "入 $2.5 · 出 $15 · 缓 $0.25",
@@ -338,7 +338,7 @@
     {
       "trinityId": "gemini-3-flash-preview",
       "displayName": "Gemini 3 Flash Preview",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3-flash-preview",
       "tierLabel": "输入:文本/图片/视频",
       "official": "入 $0.5 · 出 $3 · 缓 $0.05",
@@ -363,7 +363,7 @@
     {
       "trinityId": "gemini-3-flash-preview",
       "displayName": "Gemini 3 Flash Preview",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3-flash-preview",
       "tierLabel": "输入:音频",
       "official": "入 $1 · 出 $3 · 缓 $0.1",
@@ -388,7 +388,7 @@
     {
       "trinityId": "gemini-3.1-flash-lite",
       "displayName": "Gemini 3.1 Flash Lite",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.1-flash-lite",
       "tierLabel": "输入:文本/图片/视频",
       "official": "入 $0.25 · 出 $1.5 · 缓 $0.025",
@@ -413,7 +413,7 @@
     {
       "trinityId": "gemini-3.1-flash-lite",
       "displayName": "Gemini 3.1 Flash Lite",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.1-flash-lite",
       "tierLabel": "输入:音频",
       "official": "入 $0.5 · 出 $1.5 · 缓 $0.05",
@@ -438,7 +438,7 @@
     {
       "trinityId": "gemini-3.1-pro-preview",
       "displayName": "Gemini 3.1 Pro Preview",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.1-pro-preview",
       "tierLabel": "输入<=20万个token",
       "official": "入 $2 · 出 $12 · 缓 $0.2",
@@ -463,7 +463,7 @@
     {
       "trinityId": "gemini-3.1-pro-preview",
       "displayName": "Gemini 3.1 Pro Preview",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.1-pro-preview",
       "tierLabel": "输入>20万个token",
       "official": "入 $4 · 出 $18 · 缓 $0.4",
@@ -488,7 +488,7 @@
     {
       "trinityId": "gemini-3.5-flash",
       "displayName": "Gemini 3.5 Flash",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.5-flash",
       "tierLabel": "输入:文本/图片/视频",
       "official": "入 $1.5 · 出 $9 · 缓 $0.15",
@@ -513,7 +513,7 @@
     {
       "trinityId": "gemini-3.5-flash",
       "displayName": "Gemini 3.5 Flash",
-      "brand": "Google DeepMind",
+      "brand": "google deepMind",
       "vendorModelId": "gemini-3.5-flash",
       "tierLabel": "输入:音频",
       "official": "入 $1.5 · 出 $9 · 缓 $0.15",
@@ -613,7 +613,7 @@
     {
       "trinityId": "gpt-4.1",
       "displayName": "GPT-4.1",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-4.1",
       "tierLabel": "标准价",
       "official": "入 $2 · 出 $8 · 缓 $0.5",
@@ -638,7 +638,7 @@
     {
       "trinityId": "gpt-4o",
       "displayName": "GPT-4o",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-4o",
       "tierLabel": "标准价",
       "official": "入 $2.5 · 出 $10 · 缓 $1.25",
@@ -663,7 +663,7 @@
     {
       "trinityId": "gpt-5",
       "displayName": "GPT-5",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5",
       "tierLabel": "标准价",
       "official": "入 $1.25 · 出 $10 · 缓 $0.125",
@@ -713,7 +713,7 @@
     {
       "trinityId": "gpt-5-nano",
       "displayName": "GPT-5 Nano",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5-nano",
       "tierLabel": "标准价",
       "official": "入 $0.05 · 出 $0.4 · 缓 $0.005",
@@ -738,7 +738,7 @@
     {
       "trinityId": "gpt-5.1",
       "displayName": "GPT-5.1",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.1",
       "tierLabel": "标准价",
       "official": "入 $1.25 · 出 $10 · 缓 $0.125",
@@ -763,7 +763,7 @@
     {
       "trinityId": "gpt-5.2",
       "displayName": "GPT-5.2",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.2",
       "tierLabel": "标准价",
       "official": "入 $1.75 · 出 $14 · 缓 $0.175",
@@ -788,7 +788,7 @@
     {
       "trinityId": "gpt-5.3-codex",
       "displayName": "GPT-5.3 Codex",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.3-codex",
       "tierLabel": "标准价",
       "official": "入 $1.75 · 出 $14 · 缓 $0.175",
@@ -813,7 +813,7 @@
     {
       "trinityId": "gpt-5.4",
       "displayName": "GPT-5.4",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4",
       "tierLabel": "输入<=272K context",
       "official": "入 $2.5 · 出 $15 · 缓 $0.25",
@@ -838,7 +838,7 @@
     {
       "trinityId": "gpt-5.4",
       "displayName": "GPT-5.4",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4",
       "tierLabel": "输入>272K context",
       "official": "入 $5 · 出 $22.5 · 缓 $0.5",
@@ -863,7 +863,7 @@
     {
       "trinityId": "gpt-5.4-mini",
       "displayName": "GPT-5.4 Mini",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4-mini",
       "tierLabel": "标准价",
       "official": "入 $0.75 · 出 $4.5 · 缓 $0.075",
@@ -887,25 +887,25 @@
     },
     {
       "trinityId": "gpt-5.4-nano",
-      "displayName": "GPT",
-      "brand": "GPT",
+      "displayName": "GPT-5.4 nano",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4-nano",
       "tierLabel": "标准价",
       "official": "入 $0.2 · 出 $1.25 · 缓 $0.02",
-      "aigcDom": "—",
-      "aigcIntl": "—",
+      "aigcDom": "入 ¥1.5 · 出 ¥9.375 · 缓 ¥0.15",
+      "aigcIntl": "入 $0.2 · 出 $1.25 · 缓 $0.02",
       "tokenhub": "—",
       "openRouter": "—",
       "openRouterId": "",
-      "online": "—",
-      "deltaOnlineVsOfficialIn": "—",
-      "deltaOnlineVsOfficialOut": "—",
-      "deltaOnlineVsOfficialCache": "—",
-      "aigcDomVsOfficial": "—",
-      "aigcIntlVsOfficial": "—",
+      "online": "入 $0.2 · 出 $1.25 · 缓 $0.02",
+      "deltaOnlineVsOfficialIn": "0%",
+      "deltaOnlineVsOfficialOut": "0%",
+      "deltaOnlineVsOfficialCache": "0%",
+      "aigcDomVsOfficial": "入⚠+15.4% 出⚠+15.4% 缓⚠+15.4%",
+      "aigcIntlVsOfficial": "入✅ 出✅ 缓✅",
       "thVsOfficial": "—",
       "orVsOfficial": "—",
-      "listingConclusion": "— 未上架",
+      "listingConclusion": "入✅ 出✅ 缓✅",
       "listingMaterialInOut": false,
       "note": "",
       "officialStatus": "seed"
@@ -913,7 +913,7 @@
     {
       "trinityId": "gpt-5.4-pro",
       "displayName": "GPT-5.4 Pro",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4-pro",
       "tierLabel": "输入<=272K context",
       "official": "入 $30 · 出 $180",
@@ -938,7 +938,7 @@
     {
       "trinityId": "gpt-5.4-pro",
       "displayName": "GPT-5.4 Pro",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.4-pro",
       "tierLabel": "输入>272K context",
       "official": "入 $60 · 出 $270",
@@ -963,7 +963,7 @@
     {
       "trinityId": "gpt-5.5",
       "displayName": "GPT-5.5",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.5",
       "tierLabel": "输入<=272K context",
       "official": "入 $5 · 出 $30 · 缓 $0.5",
@@ -988,7 +988,7 @@
     {
       "trinityId": "gpt-5.5",
       "displayName": "GPT-5.5",
-      "brand": "OpenAI",
+      "brand": "openai",
       "vendorModelId": "gpt-5.5",
       "tierLabel": "输入>272K context",
       "official": "入 $10 · 出 $45 · 缓 $1",
@@ -1113,7 +1113,7 @@
     {
       "trinityId": "kimi-k2.5",
       "displayName": "Kimi K2.5",
-      "brand": "Moonshot AI",
+      "brand": "moonshot",
       "vendorModelId": "kimi-k2.5",
       "tierLabel": "标准价",
       "official": "入 ¥4 · 出 ¥21 · 缓 ¥0.7",
@@ -1138,7 +1138,7 @@
     {
       "trinityId": "kimi-k2.6",
       "displayName": "Kimi K2.6",
-      "brand": "Moonshot AI",
+      "brand": "moonshot",
       "vendorModelId": "kimi-k2.6",
       "tierLabel": "标准价",
       "official": "入 ¥6.5 · 出 ¥27 · 缓 ¥1.1",
@@ -1163,7 +1163,7 @@
     {
       "trinityId": "kimi-k2.7-code",
       "displayName": "Kimi K2.7 Code",
-      "brand": "Moonshot AI",
+      "brand": "moonshot",
       "vendorModelId": "kimi-k2.7-code",
       "tierLabel": "标准价",
       "official": "入 ¥6.5 · 出 ¥27 · 缓 ¥1.3",
@@ -1188,7 +1188,7 @@
     {
       "trinityId": "kimi-k2.7-code-highspeed",
       "displayName": "Kimi K2.7 Code HighSpeed",
-      "brand": "Moonshot AI",
+      "brand": "moonshot",
       "vendorModelId": "kimi-k2.7-code-highspeed",
       "tierLabel": "标准价",
       "official": "入 ¥13 · 出 ¥54 · 缓 ¥2.6",
@@ -1213,7 +1213,7 @@
     {
       "trinityId": "minimax-m2.5",
       "displayName": "MiniMax M2.5",
-      "brand": "MiniMax",
+      "brand": "minimax",
       "vendorModelId": "minimax-m2.5",
       "tierLabel": "标准价",
       "official": "入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.21",
@@ -1238,7 +1238,7 @@
     {
       "trinityId": "minimax-m2.7",
       "displayName": "MiniMax M2.7",
-      "brand": "MiniMax",
+      "brand": "minimax",
       "vendorModelId": "minimax-m2.7",
       "tierLabel": "标准价",
       "official": "入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42",
@@ -1263,7 +1263,7 @@
     {
       "trinityId": "minimax-m3",
       "displayName": "MiniMax M3",
-      "brand": "MiniMax",
+      "brand": "minimax",
       "vendorModelId": "minimax-m3",
       "tierLabel": "输入≤512k",
       "official": "入 ¥2.1 · 出 ¥8.4 · 缓 ¥0.42",
@@ -1288,7 +1288,7 @@
     {
       "trinityId": "minimax-m3",
       "displayName": "MiniMax M3",
-      "brand": "MiniMax",
+      "brand": "minimax",
       "vendorModelId": "minimax-m3",
       "tierLabel": "输入>512k",
       "official": "入 ¥4.2 · 出 ¥16.8 · 缓 ¥0.84",
@@ -1388,7 +1388,7 @@
     {
       "trinityId": "glm-5",
       "displayName": "GLM 5",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5",
       "tierLabel": "输入<32k",
       "official": "入 ¥4 · 出 ¥18 · 缓 ¥1",
@@ -1413,7 +1413,7 @@
     {
       "trinityId": "glm-5",
       "displayName": "GLM 5",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5",
       "tierLabel": "输入≥32k",
       "official": "入 ¥6 · 出 ¥22 · 缓 ¥1.5",
@@ -1438,7 +1438,7 @@
     {
       "trinityId": "glm-5-turbo",
       "displayName": "GLM 5 Turbo",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5-turbo",
       "tierLabel": "输入<32k",
       "official": "入 ¥5 · 出 ¥22 · 缓 ¥1.2",
@@ -1463,7 +1463,7 @@
     {
       "trinityId": "glm-5-turbo",
       "displayName": "GLM 5 Turbo",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5-turbo",
       "tierLabel": "输入≥32k",
       "official": "入 ¥7 · 出 ¥26 · 缓 ¥1.8",
@@ -1488,7 +1488,7 @@
     {
       "trinityId": "glm-5.1",
       "displayName": "GLM-5.1",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5.1",
       "tierLabel": "输入<32k",
       "official": "入 ¥6 · 出 ¥24 · 缓 ¥1.3",
@@ -1513,7 +1513,7 @@
     {
       "trinityId": "glm-5.1",
       "displayName": "GLM-5.1",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5.1",
       "tierLabel": "输入≥32k",
       "official": "入 ¥8 · 出 ¥28 · 缓 ¥2",
@@ -1538,7 +1538,7 @@
     {
       "trinityId": "glm-5.2",
       "displayName": "GLM-5.2",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5.2",
       "tierLabel": "标准价",
       "official": "入 ¥8 · 出 ¥28 · 缓 ¥2",
@@ -1563,7 +1563,7 @@
     {
       "trinityId": "glm-5v-turbo",
       "displayName": "GLM-5V Turbo",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5v-turbo",
       "tierLabel": "输入<32k",
       "official": "入 ¥5 · 出 ¥22 · 缓 ¥1.2",
@@ -1588,7 +1588,7 @@
     {
       "trinityId": "glm-5v-turbo",
       "displayName": "GLM-5V Turbo",
-      "brand": "Zhipu",
+      "brand": "zhipu",
       "vendorModelId": "glm-5v-turbo",
       "tierLabel": "输入≥32k",
       "official": "入 ¥7 · 出 ¥26 · 缓 ¥1.8",
@@ -1613,7 +1613,7 @@
     {
       "trinityId": "hunyuan-role-latest",
       "displayName": "Hy-Role Latest",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hunyuan-role-latest",
       "tierLabel": "标准价",
       "official": "入 ¥2.4 · 出 ¥9.6",
@@ -1638,7 +1638,7 @@
     {
       "trinityId": "hy-mt2-lite",
       "displayName": "Hy-MT2 Lite",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy-mt2-lite",
       "tierLabel": "标准价",
       "official": "入 ¥0.3 · 出 ¥1.2",
@@ -1663,7 +1663,7 @@
     {
       "trinityId": "hy-mt2-plus",
       "displayName": "Hy-MT2 Plus",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy-mt2-plus",
       "tierLabel": "标准价",
       "official": "入 ¥0.5 · 出 ¥2",
@@ -1688,7 +1688,7 @@
     {
       "trinityId": "hy-mt2-pro",
       "displayName": "Hy-MT2 Pro",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy-mt2-pro",
       "tierLabel": "标准价",
       "official": "入 ¥0.5 · 出 ¥2",
@@ -1713,7 +1713,7 @@
     {
       "trinityId": "hy-role",
       "displayName": "Hy-Role",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy-role",
       "tierLabel": "标准价",
       "official": "入 ¥2.4 · 出 ¥9.6",
@@ -1738,7 +1738,7 @@
     {
       "trinityId": "hy-vision-2.0-instruct",
       "displayName": "Hy-Vision 2.0 Instruct",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy-vision-2.0-instruct",
       "tierLabel": "标准价",
       "official": "入 ¥7.5 · 出 ¥17.5",
@@ -1763,7 +1763,7 @@
     {
       "trinityId": "hy3-preview",
       "displayName": "Hy3 Preview",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy3-preview",
       "tierLabel": "输入<16k",
       "official": "入 ¥1.2 · 出 ¥4 · 缓 ¥0.4",
@@ -1788,7 +1788,7 @@
     {
       "trinityId": "hy3-preview",
       "displayName": "Hy3 Preview",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy3-preview",
       "tierLabel": "16k≤输入<32k",
       "official": "入 ¥1.6 · 出 ¥6.4 · 缓 ¥0.6",
@@ -1813,7 +1813,7 @@
     {
       "trinityId": "hy3-preview",
       "displayName": "Hy3 Preview",
-      "brand": "Tencent",
+      "brand": "tencent",
       "vendorModelId": "hy3-preview",
       "tierLabel": "输入≥32k",
       "official": "入 ¥2 · 出 ¥8 · 缓 ¥0.8",
@@ -1838,7 +1838,7 @@
     {
       "trinityId": "qwen-flash",
       "displayName": "Qwen Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-flash",
       "tierLabel": "输入≤128k",
       "official": "入 ¥0.15 · 出 ¥1.5 · 缓 ¥0.03",
@@ -1863,7 +1863,7 @@
     {
       "trinityId": "qwen-flash",
       "displayName": "Qwen Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-flash",
       "tierLabel": "128k<输入≤256k",
       "official": "入 ¥0.6 · 出 ¥6 · 缓 ¥0.12",
@@ -1888,7 +1888,7 @@
     {
       "trinityId": "qwen-flash",
       "displayName": "Qwen Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-flash",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥1.2 · 出 ¥12 · 缓 ¥0.24",
@@ -1913,7 +1913,7 @@
     {
       "trinityId": "qwen-max",
       "displayName": "Qwen Max",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-max",
       "tierLabel": "标准价",
       "official": "入 ¥2.4 · 出 ¥9.6",
@@ -1938,7 +1938,7 @@
     {
       "trinityId": "qwen-plus",
       "displayName": "Qwen Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-plus",
       "tierLabel": "输入≤128k",
       "official": "入 ¥0.8 · 出 ¥2 · 缓 ¥0.16",
@@ -1963,7 +1963,7 @@
     {
       "trinityId": "qwen-plus",
       "displayName": "Qwen Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-plus",
       "tierLabel": "128k<输入≤256k",
       "official": "入 ¥2.4 · 出 ¥20 · 缓 ¥0.48",
@@ -1988,7 +1988,7 @@
     {
       "trinityId": "qwen-plus",
       "displayName": "Qwen Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-plus",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥4.8 · 出 ¥48 · 缓 ¥0.96",
@@ -2013,7 +2013,7 @@
     {
       "trinityId": "qwen-turbo",
       "displayName": "Qwen Turbo",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen-turbo",
       "tierLabel": "标准价",
       "official": "入 ¥0.3 · 出 ¥0.6",
@@ -2038,7 +2038,7 @@
     {
       "trinityId": "qwen3.5-flash",
       "displayName": "Qwen3.5 Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-flash",
       "tierLabel": "输入≤128k",
       "official": "入 ¥0.2 · 出 ¥2 · 缓 ¥0.02",
@@ -2063,7 +2063,7 @@
     {
       "trinityId": "qwen3.5-flash",
       "displayName": "Qwen3.5 Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-flash",
       "tierLabel": "128k<输入≤256k",
       "official": "入 ¥0.8 · 出 ¥8 · 缓 ¥0.08",
@@ -2088,7 +2088,7 @@
     {
       "trinityId": "qwen3.5-flash",
       "displayName": "Qwen3.5 Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-flash",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥1.2 · 出 ¥12 · 缓 ¥0.12",
@@ -2113,7 +2113,7 @@
     {
       "trinityId": "qwen3.5-plus",
       "displayName": "Qwen3.5 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-plus",
       "tierLabel": "输入≤128k",
       "official": "入 ¥0.8 · 出 ¥4.8 · 缓 ¥0.08",
@@ -2138,7 +2138,7 @@
     {
       "trinityId": "qwen3.5-plus",
       "displayName": "Qwen3.5 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-plus",
       "tierLabel": "128k<输入≤256k",
       "official": "入 ¥2 · 出 ¥12 · 缓 ¥0.2",
@@ -2163,7 +2163,7 @@
     {
       "trinityId": "qwen3.5-plus",
       "displayName": "Qwen3.5 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.5-plus",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥4 · 出 ¥24 · 缓 ¥0.4",
@@ -2188,7 +2188,7 @@
     {
       "trinityId": "qwen3.6-flash",
       "displayName": "Qwen3.6 Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.6-flash",
       "tierLabel": "输入≤256k",
       "official": "入 ¥1.2 · 出 ¥7.2 · 缓 ¥0.24",
@@ -2213,7 +2213,7 @@
     {
       "trinityId": "qwen3.6-flash",
       "displayName": "Qwen3.6 Flash",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.6-flash",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥4.8 · 出 ¥28.8 · 缓 ¥0.96",
@@ -2238,7 +2238,7 @@
     {
       "trinityId": "qwen3.6-plus",
       "displayName": "Qwen3.6 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.6-plus",
       "tierLabel": "输入≤256k",
       "official": "入 ¥2 · 出 ¥12 · 缓 ¥0.4",
@@ -2263,7 +2263,7 @@
     {
       "trinityId": "qwen3.6-plus",
       "displayName": "Qwen3.6 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.6-plus",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥8 · 出 ¥48 · 缓 ¥1.6",
@@ -2288,7 +2288,7 @@
     {
       "trinityId": "qwen3.7-max",
       "displayName": "Qwen3.7 Max",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.7-max",
       "tierLabel": "标准价",
       "official": "入 ¥12 · 出 ¥36 · 缓 ¥2.4",
@@ -2313,7 +2313,7 @@
     {
       "trinityId": "qwen3.7-plus",
       "displayName": "Qwen3.7 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.7-plus",
       "tierLabel": "输入≤256k",
       "official": "入 ¥2 · 出 ¥8 · 缓 ¥0.4",
@@ -2338,7 +2338,7 @@
     {
       "trinityId": "qwen3.7-plus",
       "displayName": "Qwen3.7 Plus",
-      "brand": "Tongyi",
+      "brand": "tongyi",
       "vendorModelId": "qwen3.7-plus",
       "tierLabel": "256k<输入≤1M",
       "official": "入 ¥6 · 出 ¥24 · 缓 ¥1.2",
@@ -2347,16 +2347,16 @@
       "tokenhub": "—",
       "openRouter": "入 $0.32 · 出 $1.28 · 缓 $0.064",
       "openRouterId": "qwen/qwen3.7-plus",
-      "online": "—",
-      "deltaOnlineVsOfficialIn": "—",
-      "deltaOnlineVsOfficialOut": "—",
-      "deltaOnlineVsOfficialCache": "—",
+      "online": "入 $0.307692 · 出 $1.230769 · 缓 $0.061538",
+      "deltaOnlineVsOfficialIn": "-66.7%",
+      "deltaOnlineVsOfficialOut": "-66.7%",
+      "deltaOnlineVsOfficialCache": "-66.7%",
       "aigcDomVsOfficial": "—",
       "aigcIntlVsOfficial": "—",
       "thVsOfficial": "—",
       "orVsOfficial": "入⚠-65.3% 出⚠-65.3% 缓⚠-65.3%",
-      "listingConclusion": "ℹ 线上无同档",
-      "listingMaterialInOut": false,
+      "listingConclusion": "入⚠-66.7% 出⚠-66.7% 缓⚠-66.7%",
+      "listingMaterialInOut": true,
       "note": "",
       "officialStatus": "seed"
     },

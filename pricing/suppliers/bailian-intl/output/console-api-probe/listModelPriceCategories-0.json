@@ -1,0 +1,102 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "data": [
+          {
+            "categoryLevel1": "Text-Generation",
+            "count": 228,
+            "name": "Text Generation",
+            "items": [
+              {
+                "categoryLevel2": "Qwen",
+                "count": 221,
+                "name": "Qwen"
+              },
+              {
+                "categoryLevel2": "Other",
+                "count": 7,
+                "name": "Third Party"
+              }
+            ]
+          },
+          {
+            "categoryLevel1": "Image-Generation",
+            "count": 29,
+            "name": "Image Generation",
+            "items": []
+          },
+          {
+            "categoryLevel1": "Video-Generation",
+            "count": 66,
+            "name": "Video Generation",
+            "items": []
+          },
+          {
+            "categoryLevel1": "Audio-Generation",
+            "count": 14,
+            "name": "Audio Generation",
+            "items": []
+          },
+          {
+            "categoryLevel1": "Speech-Recognition",
+            "count": 12,
+            "name": "Speech Recognition",
+            "items": []
+          },
+          {
+            "categoryLevel1": "Multimodal-Token",
+            "count": 13,
+            "name": "Multimodal Token",
+            "items": [
+              {
+                "categoryLevel2": "Translation",
+                "count": 0,
+                "name": "Translation"
+              },
+              {
+                "categoryLevel2": "Omni",
+                "count": 13,
+                "name": "Omni"
+              }
+            ]
+          },
+          {
+            "categoryLevel1": "Embeddings",
+            "count": 5,
+            "name": "Embeddings",
+            "items": [
+              {
+                "categoryLevel2": "Multimodal-Embeddings",
+                "count": 2,
+                "name": "Multimodal Embeddings"
+              },
+              {
+                "categoryLevel2": "Text-Embeddings",
+                "count": 3,
+                "name": "Text Embeddings"
+              }
+            ]
+          }
+        ],
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listModelPriceCategories",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "da12ef7d-e6d8-4fa7-abc0-060267c1119b",
+  "successResponse": true
+}

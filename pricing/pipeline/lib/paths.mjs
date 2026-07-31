@@ -37,6 +37,7 @@ export const TEXT_SHEET_ORDER = [
   "汇总-供应商vs官方",
   "TokenHub广州",
   "百炼北京",
+  "百炼国际",
   "AIGC国内站",
   "AIGC国际站",
   "火山方舟",
@@ -274,6 +275,10 @@ export const TOKENHUB_FILE = path.join(
 export const BAILIAN_FILE = path.join(
   SUPPLIERS_DIR,
   "bailian/output/pricing-api.json",
+);
+export const BAILIAN_INTL_FILE = path.join(
+  SUPPLIERS_DIR,
+  "bailian-intl/output/pricing-api.json",
 );
 export const AIGC_MAP_FILE = path.join(SUPPLIERS_DIR, "aigc/trinity-map.json");
 export const AIGC_OUT_FILE = path.join(

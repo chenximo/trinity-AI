@@ -25,13 +25,18 @@ const FX_USD_TO_CNY = [
   { fx: FX_AIGC_DOMESTIC, label: "7.5" },
 ];
 
+/** 缺字段写 ⚠（禁止推测填数）；见 trinity-official-pricing 硬规则 9 */
 function formatCompactTriple(input, output, cache, currency = "CNY") {
   const sym = currency === "USD" ? "$" : "¥";
-  const parts = [];
-  if (input != null && input !== "") parts.push(`入 ${sym}${input}`);
-  if (output != null && output !== "") parts.push(`出 ${sym}${output}`);
-  if (cache != null && cache !== "") parts.push(`缓 ${sym}${cache}`);
-  return parts.length ? parts.join(" · ") : "—";
+  const fmt = (v) => (v != null && v !== "" ? `${sym}${v}` : "⚠");
+  if (
+    (input == null || input === "") &&
+    (output == null || output === "") &&
+    (cache == null || cache === "")
+  ) {
+    return "—";
+  }
+  return `入 ${fmt(input)} · 出 ${fmt(output)} · 缓 ${fmt(cache)}`;
 }
 
 function fieldPct(officialVal, supplierVal) {

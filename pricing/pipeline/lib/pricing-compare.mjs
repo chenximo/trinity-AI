@@ -76,10 +76,41 @@ export function fixBailianTiers(modelId, tiers) {
       items: [],
     }));
   }
-  return tiers.filter((t) => {
-    if (/^\d+(\.\d+)?元$/.test(String(t.tierName ?? "").trim())) return false;
-    return t.input != null || t.output != null;
-  });
+  return sanitizeBailianTiers(tiers);
+}
+
+/** 仅过滤坏档，不套用国内 HTML 修复价（国际站等须用） */
+export function sanitizeBailianTiers(tiers) {
+  return (tiers ?? [])
+    .filter((t) => {
+      const name = String(t.tierName ?? "").trim();
+      if (/^\d+(\.\d+)?元$/.test(name)) return false;
+      if (/list\s*price|limited-time/i.test(name) && !/Token/i.test(name)) return false;
+      if (/^\$[\d.]+$/.test(name)) {
+        const named = Number(name.slice(1));
+        const inn = t.input != null ? Number(t.input) : NaN;
+        if (
+          !(
+            Number.isFinite(named) &&
+            Number.isFinite(inn) &&
+            Math.abs(named - inn) < 1e-9
+          )
+        ) {
+          return false;
+        }
+      }
+      if (t.input != null && t.output == null && t.chargeUnit !== "IMAGE" && t.chargeUnit !== "SECOND") {
+        return false;
+      }
+      return t.input != null || t.output != null;
+    })
+    .map((t) => {
+      const name = String(t.tierName ?? "").trim();
+      if (/^\$[\d.]+$/.test(name)) {
+        return { ...t, tierName: "统一价", tierType: "Uniform" };
+      }
+      return t;
+    });
 }
 
 export function buildTierMap(tiers, fixModelId = null) {
@@ -197,6 +228,40 @@ export function pickTokenhubModels(models) {
  */
 export function listBailianMainlandTextModels(models) {
   return [...pickBailianModels(models).values()].map(({ model, tiers }) => ({
+    ...model,
+    tiers,
+  }));
+}
+
+/**
+ * 百炼国际站：Deployment scope = International 生文 TOKEN
+ * 按 modelId 去重（同 ID 多分区取档位更完整者）
+ */
+export function pickBailianIntlModels(models) {
+  const byId = new Map();
+  for (const m of models) {
+    if (m.region !== "International") continue;
+    if (m.modelType !== "Text") continue;
+    if (m.tiers?.[0]?.chargeUnit && m.tiers[0].chargeUnit !== "TOKEN") continue;
+
+    const id = m.modelId?.toLowerCase();
+    if (!id) continue;
+
+    const tiers = sanitizeBailianTiers(m.tiers ?? []);
+    const score =
+      tiers.filter((t) => t.input != null && t.output != null).length * 10 +
+      tiers.length;
+
+    const prev = byId.get(id);
+    if (!prev || score > prev.score) {
+      byId.set(id, { model: m, tiers, score });
+    }
+  }
+  return byId;
+}
+
+export function listBailianIntlTextModels(models) {
+  return [...pickBailianIntlModels(models).values()].map(({ model, tiers }) => ({
     ...model,
     tiers,
   }));

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-10T09:01:46.914Z",
+  "generatedAt": "2026-07-29T06:37:53.752Z",
   "fxOnlineDomestic": 6.5,
   "fxCnyPerUsd": 7.25,
   "openRouterFetchedAt": "2026-07-01T07:54:13.821Z",
-  "pricesFetchedAt": "2026-07-10T09:01:46.591Z",
+  "pricesFetchedAt": "2026-07-29T06:37:53.112Z",
   "officialFetchedAt": "2026-07-10T07:40:08.287Z",
   "modelCount": 49,
   "rowCount": 80,
@@ -1573,7 +1573,7 @@
       "openRouterId": "qwen/qwen3.7-plus",
       "openRouterName": "Qwen: Qwen3.7 Plus",
       "tierIndex": 0,
-      "tierLabel": "输入:文本/图片/视频",
+      "tierLabel": "≤ 262.14K",
       "tierMatch": "index",
       "official": "入 ¥2 · 出 ¥8 · 缓 ¥0.4",
       "officialUsd": "入 $0.3077 · 出 $1.2308 · 缓 $0.0615",
@@ -1593,20 +1593,20 @@
       "openRouterId": "qwen/qwen3.7-plus",
       "openRouterName": "Qwen: Qwen3.7 Plus",
       "tierIndex": 1,
-      "tierLabel": "256k<输入≤1M",
-      "tierMatch": "a-only",
+      "tierLabel": "> 262.15K",
+      "tierMatch": "index",
       "official": "入 ¥6 · 出 ¥24 · 缓 ¥1.2",
       "officialUsd": "入 $0.9231 · 出 $3.6923 · 缓 $0.1846",
       "openRouter": "入 $0.32 · 出 $1.28 · 缓 $0.064",
       "deltaOfficialVsOrInput": "+188.5%",
       "deltaOfficialVsOrOutput": "+188.5%",
-      "trinityOnline": "—",
+      "trinityOnline": "入 $0.9231 · 出 $3.6923 · 缓 $0.1846",
       "deltaOnlineVsOrInput": "—",
       "deltaOnlineVsOrOutput": "—",
       "issueFlag": "—",
-      "note": "OR仅单档，此上下文无OR对照",
+      "note": null,
       "orFound": true,
-      "onlineFound": false
+      "onlineFound": true
     }
   ]
 }

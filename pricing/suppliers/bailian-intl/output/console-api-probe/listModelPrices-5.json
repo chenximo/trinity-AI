@@ -1,0 +1,417 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "data": {
+          "total": 200,
+          "pageNo": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-plus",
+              "timeBand": "standard",
+              "rangeName": "Input<=256k",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.4",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.04",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.5",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.08",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.6",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-plus",
+              "timeBand": "standard",
+              "rangeName": "256k<Input<=1m",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.2",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.12",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.5",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.24",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4.8",
+                  "timeBand": "standard",
+                  "discount": 0.8,
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-plus-2026-05-26",
+              "timeBand": "standard",
+              "rangeName": "Input<=256k",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.4",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.04",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.5",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.08",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.6",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-plus-2026-05-26",
+              "timeBand": "standard",
+              "rangeName": "256k<Input<=1m",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.2",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.12",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.5",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.24",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4.8",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-max",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.5",
+                  "timeBand": "standard",
+                  "discount": 0.5,
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.25",
+                  "timeBand": "standard",
+                  "discount": 0.5,
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "3.125",
+                  "timeBand": "standard",
+                  "discount": 0.5,
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.5",
+                  "timeBand": "standard",
+                  "discount": 0.5,
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "7.5",
+                  "timeBand": "standard",
+                  "discount": 0.5,
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-max-2026-06-08",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.5",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.25",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "3.125",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.5",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "7.5",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-max-2026-05-20",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.5",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.25",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "3.125",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "7.5",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-max-2026-05-17",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.5",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "7.5",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-max-preview",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.5",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "7.5",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "qwen3.7-flash",
+              "rangeName": "Input<=32k",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.03",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.003",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.038",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.006",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.13",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            }
+          ]
+        },
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listModelPrices",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "2f750ea1-79fd-4750-b9b3-e891d15e27eb",
+  "successResponse": true
+}

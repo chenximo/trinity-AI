@@ -1,17 +1,20 @@
 # 上游账单核对（Billing Reconciliation）
 
-按**上游供应商**存放平台导出账单与上游官方/控制台账单，用于成本对账。
+按**上游供应商**存放平台导出、上游账单副本与**核对报告**。
 
-> **与价目流水线区分**：`suppliers/` / `pipeline/` 管**挂牌价与刊例**；本目录管**实际账单金额**核对。
+> **Skill**：[`.cursor/skills/trinity-billing-reconciliation/`](../../.cursor/skills/trinity-billing-reconciliation/SKILL.md)  
+> **流程**：平台导出（成本+Token）→ 人拉上游账单 → Skill 出报告 → **人确认后**回填后台实付。  
+> **与价目区分**：`suppliers/` 管挂牌价；本目录管实际账单。
 
 ```
 billing-reconciliation/
-├── README.md                 ← 本文件
-└── tencent-aigc/             ← 腾讯云 AIGC
+├── README.md
+└── <supplier>/                 # tencent-aigc、tokenhub…
     ├── README.md
-    └── YYYY-MM/              ← 账单月
-        ├── trinity-platform-*.csv    # 平台侧导出
-        └── tencent-*.csv             # 腾讯云侧账单
+    └── YYYY-MM/
+        ├── trinity-platform-*.csv      # 平台导出副本
+        ├── <upstream-bill>.*           # 人工拉取的上游账单
+        ├── recon-report.md             # 核对报告（或写入 notes）
+        ├── notes.md
+        └── daily-standard-settlement-* # 差大时
 ```
-
-后续其他上游（如 TokenHub、百炼）可平行加目录：`tokenhub/`、`bailian/` 等。

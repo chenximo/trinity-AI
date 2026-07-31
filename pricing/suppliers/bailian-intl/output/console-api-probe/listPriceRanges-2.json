@@ -1,0 +1,51 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "data": [
+          {
+            "rangeName": "Input<=32k",
+            "rangeNameType": "input_0_32k"
+          },
+          {
+            "rangeName": "Input<=128k",
+            "rangeNameType": "input_0_128k"
+          },
+          {
+            "rangeName": "Input<=256k",
+            "rangeNameType": "input_0_256k"
+          },
+          {
+            "rangeName": "32k<Input<=128k",
+            "rangeNameType": "input_32k_128k"
+          },
+          {
+            "rangeName": "128k<Input<=256k",
+            "rangeNameType": "input_128k_256k"
+          },
+          {
+            "rangeName": "256k<Input<=1m",
+            "rangeNameType": "input_256k_1m"
+          }
+        ],
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listPriceRanges",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "a92bac35-4ff7-4be5-860e-4a4e79f483bb",
+  "successResponse": true
+}

@@ -16,14 +16,17 @@ trinity-AI/pricing/
 ├── suppliers/             # 各上游供应商 + 模型原厂价目
 │   ├── SOURCES.md         # 各供应商 JSON 真源索引
 │   ├── tokenhub/          # 腾讯云 TokenHub 控制台价
-│   ├── bailian/           # 阿里云百炼文档价
+│   ├── bailian/           # 阿里云百炼国内文档价
+│   ├── bailian-intl/      # 阿里云百炼国际站（Model Studio EN）
 │   ├── aigc/              # 腾讯云 AIGC 内部价目表
 │   └── official/          # 模型原厂官网价（按模态拆分）
 ├── config/                # 上游折扣等流水线配置
+├── docs/                  # 治理与运营设计（含 SUPPLY-PRICING-OPS-DESIGN.md）
 ├── billing-reconciliation/ # 按上游存放实际账单对账（平台导出 vs 上游账单）
 │   └── tencent-aigc/      # 腾讯云 AIGC · YYYY-MM/
 └── output/                # 流水线产出（线上刊例、汇总、校验、草案、diff）
 ```
+
 
 ---
 

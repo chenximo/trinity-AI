@@ -81,8 +81,9 @@ export const MERGE_COMPARE_TEXT = {
 export const MERGE_SUMMARY = MERGE_COMPARE_TEXT;
 
 /** 分上游 Sheet */
+/** 供应商分表：按「上游模型ID」合并（未映射 Trinity 时 ID 为空，不能用 Trinity 分组） */
 export const MERGE_SUPPLIER = {
-  groupCol: 1,
+  groupCol: 5,
   columns: [1, 2, 3],
 };
 

@@ -17,6 +17,8 @@ import {
   pickBailianModels,
   pickTokenhubModels,
   listBailianMainlandTextModels,
+  listBailianIntlTextModels,
+  pickBailianIntlModels,
   tierSortKey,
 } from "./lib/pricing-compare.mjs";
 import { buildSupplierTrinityLookup } from "../config/tokenhub-trinity-alias.mjs";
@@ -27,6 +29,7 @@ import {
   buildOfficialDirectCatalogRows,
   buildTokenhubTextCatalogRows,
   buildBailianTextCatalogRows,
+  buildBailianIntlTextCatalogRows,
 } from "./lib/build-rows.mjs";
 import {
   CNY_PER_M,
@@ -73,6 +76,7 @@ import {
   upstreamSupplierPaths,
   TOKENHUB_FILE,
   BAILIAN_FILE,
+  BAILIAN_INTL_FILE,
   AIGC_MAP_FILE,
   AIGC_OUT_FILE,
   AIGC_SHEET_PATH,
@@ -110,6 +114,19 @@ const SUPPLIERS = [
     outKey: "blOut",
     cacheKey: "blCache",
     officialPrefix: "BL",
+  },
+  {
+    key: "bailian-intl",
+    outFile: "international",
+    title: "阿里云百炼 · 国际站（Model Studio International）",
+    region: "International",
+    excelSheet: "百炼国际",
+    priceUnit: "美元/百万 tokens",
+    idKey: "bliId",
+    inKey: "bliIn",
+    outKey: "bliOut",
+    cacheKey: "bliCache",
+    officialPrefix: "BL-INTL",
   },
   {
     key: "aigc-domestic",
@@ -297,7 +314,17 @@ function applyOnlinePrices(trinityList, priceMap) {
   });
 }
 
-function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, volcMap, wangjuMap, relayCustMap) {
+function mergeCatalog(
+  trinityList,
+  thModels,
+  blMap,
+  blIntlMap,
+  aigcDomMap,
+  aigcIntlMap,
+  volcMap,
+  wangjuMap,
+  relayCustMap,
+) {
   const thById = new Map(thModels.map((m) => [m.modelId.toLowerCase(), m]));
   const list = trinityList ?? thModels.map((m) => ({
     id: m.modelId,
@@ -312,15 +339,17 @@ function mergeCatalog(trinityList, thModels, blMap, aigcDomMap, aigcIntlMap, vol
     const id = t.id.toLowerCase();
     const th = thById.get(id) ?? null;
     const bl = blMap.get(id)?.model ?? null;
+    const bli = blIntlMap.get(id)?.model ?? null;
     return {
       trinityId: id,
-      displayName: t.displayName || th?.displayName || bl?.displayName || id,
-      brand: t.brand ?? th?.brand ?? bl?.brand ?? "—",
+      displayName: t.displayName || th?.displayName || bl?.displayName || bli?.displayName || id,
+      brand: t.brand ?? th?.brand ?? bl?.brand ?? bli?.brand ?? "—",
       userInputUsd: t.userInputUsd,
       userOutputUsd: t.userOutputUsd,
       userCacheUsd: t.userCacheUsd ?? null,
       tokenhub: th,
       bailian: bl,
+      bailianIntl: bli,
       aigcDomestic: aigcDomMap.get(id) ?? null,
       aigcInternational: aigcIntlMap.get(id) ?? null,
       volcengine: volcMap.get(id) ?? null,
@@ -336,6 +365,9 @@ function buildTierRows(entry) {
     : new Map();
   const blMap = entry.bailian
     ? buildTierMap(entry.bailian.tiers ?? [], entry.trinityId)
+    : new Map();
+  const bliMap = entry.bailianIntl
+    ? buildTierMap(entry.bailianIntl.tiers ?? [])
     : new Map();
   const adMap = entry.aigcDomestic
     ? buildTierMap(entry.aigcDomestic.tiers ?? [])
@@ -356,6 +388,7 @@ function buildTierRows(entry) {
   const keys = new Set([
     ...thMap.keys(),
     ...blMap.keys(),
+    ...bliMap.keys(),
     ...adMap.keys(),
     ...aiMap.keys(),
     ...volMap.keys(),
@@ -369,6 +402,7 @@ function buildTierRows(entry) {
     .map((key) => {
       const th = thMap.get(key);
       const bl = blMap.get(key);
+      const bli = bliMap.get(key);
       const ad = adMap.get(key);
       const ai = aiMap.get(key);
       const vol = volMap.get(key);
@@ -377,6 +411,7 @@ function buildTierRows(entry) {
       const tierLabel =
         th?.tierName ||
         bl?.tierName ||
+        bli?.tierName ||
         ad?.tierName ||
         ai?.tierName ||
         vol?.tierName ||
@@ -397,6 +432,10 @@ function buildTierRows(entry) {
         blIn: bl?.input ?? null,
         blOut: bl?.output ?? null,
         blCache: bl?.cache ?? null,
+        bliId: entry.bailianIntl?.modelId ?? null,
+        bliIn: bli?.input ?? null,
+        bliOut: bli?.output ?? null,
+        bliCache: bli?.cache ?? null,
         aigcDomId: entry.aigcDomestic?.upstreamModelId ?? null,
         aigcDomIn: ad?.input ?? null,
         aigcDomOut: ad?.output ?? null,
@@ -424,6 +463,7 @@ function buildTierRows(entry) {
         supplierCount:
           (th?.input != null || th?.output != null ? 1 : 0) +
           (bl?.input != null || bl?.output != null ? 1 : 0) +
+          (bli?.input != null || bli?.output != null ? 1 : 0) +
           (ad?.input != null || ad?.output != null ? 1 : 0) +
           (ai?.input != null || ai?.output != null ? 1 : 0) +
           (vol?.input != null || vol?.output != null ? 1 : 0) +
@@ -440,13 +480,16 @@ function supplierRows(
   volcModels = [],
   wangjuModels = [],
   relayCustModels = [],
-  { thModels = [], blModels = [], resolveTrinityId = () => "" } = {},
+  { thModels = [], blModels = [], blIntlModels = [], resolveTrinityId = () => "" } = {},
 ) {
   if (sup.key === "tokenhub") {
     return buildTokenhubTextCatalogRows(thModels, officialCtx, resolveTrinityId);
   }
   if (sup.key === "bailian") {
     return buildBailianTextCatalogRows(blModels, officialCtx, resolveTrinityId);
+  }
+  if (sup.key === "bailian-intl") {
+    return buildBailianIntlTextCatalogRows(blIntlModels, officialCtx, resolveTrinityId);
   }
   if (sup.catalog === "volcengine") {
     return buildVolcengineCatalogRows(volcModels, officialCtx);
@@ -479,7 +522,7 @@ function renderSupplierMd(
   relayCustModels = [],
   supplierCatalogCtx = {},
 ) {
-  const { thModels = [], blModels = [] } = supplierCatalogCtx;
+  const { thModels = [], blModels = [], blIntlModels = [] } = supplierCatalogCtx;
   const date =
     sup.catalog === "aigc"
       ? aigcDate
@@ -502,6 +545,8 @@ function renderSupplierMd(
         ? `TokenHub 控制台生文模型全目录（${thModels.length} 款）；按厂商 + 模型 ID 排序，同系列相邻`
         : sup.key === "bailian"
           ? `百炼华北2 中国内地生文（${blModels.length} 款，按 modelId 去重；同 ID 多文档分区暂不拆分）`
+          : sup.key === "bailian-intl"
+            ? `百炼国际站 International 生文（${blIntlModels.length} 款，USD；按 modelId 去重）`
           : sup.catalog === "volcengine"
         ? `火山方舟生文模型全目录（${volcModels.length} 款）`
         : sup.catalog === "wangju-cloudportal"
@@ -521,6 +566,13 @@ function renderSupplierMd(
       ? [
           `> 数据源：\`suppliers/bailian/output/pricing-api.json\``,
           `> 抓取：\`npm run pricing:supplier:bailian:doc\``,
+        ]
+      : []),
+    ...(sup.key === "bailian-intl"
+      ? [
+          `> 数据源：\`suppliers/bailian-intl/output/pricing-api.json\``,
+          `> 抓取：\`npm run pricing:supplier:bailian-intl:doc\``,
+          `> 文档：[Model Studio model pricing](https://www.alibabacloud.com/help/en/model-studio/model-pricing)`,
         ]
       : []),
     ...(sup.catalog === "aigc"
@@ -557,7 +609,7 @@ function renderSupplierMd(
     volcModels,
     wangjuModels,
     relayCustModels,
-    { thModels, blModels, resolveTrinityId: supplierCatalogCtx.resolveTrinityId },
+    { thModels, blModels, blIntlModels, resolveTrinityId: supplierCatalogCtx.resolveTrinityId },
   );
   let modelCount = 0;
   let seen = false;
@@ -600,6 +652,7 @@ function renderSupplierMd(
 async function main() {
   const thData = JSON.parse(await readFile(TOKENHUB_FILE, "utf8"));
   const blData = JSON.parse(await readFile(BAILIAN_FILE, "utf8"));
+  const blIntlData = JSON.parse(await readFile(BAILIAN_INTL_FILE, "utf8"));
   const { models: aigcModels, domestic: aigcDomMap, international: aigcIntlMap } =
     await loadAigcPricing();
   const { models: volcModels, byTrinity: volcMap, dataDate: volcDataDate } =
@@ -621,17 +674,21 @@ async function main() {
 
   const thModels = pickTokenhubModels(thData.models ?? []);
   const blCatalogModels = listBailianMainlandTextModels(blData.models ?? []);
+  const blIntlCatalogModels = listBailianIntlTextModels(blIntlData.models ?? []);
   const resolveTrinityId = buildSupplierTrinityLookup(trinityList.map((t) => t.id));
   const supplierCatalogCtx = {
     thModels,
     blModels: blCatalogModels,
+    blIntlModels: blIntlCatalogModels,
     resolveTrinityId,
   };
   const blMap = pickBailianModels(blData.models ?? []);
+  const blIntlMap = pickBailianIntlModels(blIntlData.models ?? []);
   const catalog = mergeCatalog(
     trinityList,
     thModels,
     blMap,
+    blIntlMap,
     aigcDomMap,
     aigcIntlMap,
     volcMap,
@@ -673,6 +730,7 @@ async function main() {
       upstreamJson: "upstream/upstream-pricing.json",
       tokenhub: "upstream/tokenhub/guangzhou.md",
       bailian: "upstream/bailian/beijing.md",
+      bailianIntl: "upstream/bailian-intl/international.md",
       aigcDomestic: "upstream/aigc-domestic/pricing.md",
       aigcInternational: "upstream/aigc-international/pricing.md",
       volcengine: "upstream/volcengine/pricing.md",
@@ -696,6 +754,7 @@ async function main() {
       },
       tokenhubModelId: m.tokenhub?.modelId ?? null,
       bailianModelId: m.bailian?.modelId ?? null,
+      bailianIntlModelId: m.bailianIntl?.modelId ?? null,
       tiers: m.tiers,
     })),
   };

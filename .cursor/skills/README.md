@@ -31,6 +31,7 @@
 | 场景 | 子 Skill | 不要混用 |
 |------|----------|----------|
 | 价目、官方价、原厂价、pricing/suppliers/official | [trinity-official-pricing](./trinity-official-pricing/SKILL.md) | api-acceptance 验收、handbook 叙事 |
+| 上游账单核对、月度对账、核对报告、billing-reconciliation | [trinity-billing-reconciliation](./trinity-billing-reconciliation/SKILL.md) | official-pricing 挂牌价；不写后台实付 |
 | 产品手册、roadmap、周计划、汇报 | [trinity-product-handbook](./trinity-product-handbook/SKILL.md) | api-acceptance、trinity-docs、擅自改 apps 代码 |
 | API 验收、生文验收台、Chat API Test | [trinity-api-acceptance](./trinity-api-acceptance/SKILL.md) | handbook 叙事、trinity-docs 对外正文 |
 | 对外开发者文档 `trinity-docs` | [trinity-docs](./trinity-docs/SKILL.md) | 产品手册、验收 JSON、业务 Vue 实现 |
@@ -55,6 +56,7 @@
 | `trinity-vue-prototype-monorepo/` | **大** | 工程方案 · tools.yaml · 五件套 |
 | `trinity-docs/` | 中 | 对外 API 文档站 |
 | `trinity-official-pricing/` | **大** | 模型原厂官方价 · tools.yaml · 三方对比 · gate |
+| `trinity-billing-reconciliation/` | 中 | 上游账单核对 · L0 闸门 · 标准日结 |
 | `trinity-user-console/` | 中 | 控制台规范 |
 | `trinity-tob-marketing-site/` | 中 | 营销页 |
 | `trinity-skill-authoring/` | 大 | 写 Skill 约定 |

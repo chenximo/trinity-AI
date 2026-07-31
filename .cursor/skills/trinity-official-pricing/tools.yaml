@@ -182,6 +182,17 @@ tools:
     git: false
     tags: [supplier, bailian, pricing-L3]
 
+  - id: pricing.supplier.bailian-intl.doc
+    title: 抓取百炼国际站价目
+    summary: Model Studio International 英文帮助中心 → USD pricing-api.json
+    command: npm run pricing:supplier:bailian-intl:doc
+    writes:
+      - pricing/suppliers/bailian-intl/output/pricing-api.json
+    confirm: none
+    network: true
+    git: false
+    tags: [supplier, bailian-intl, pricing-L3]
+
   - id: pricing.supplier.volcengine.doc
     title: 抓取火山方舟价目页
     summary: Playwright 抓取模型价格页 → volcengine-pricing-raw.json

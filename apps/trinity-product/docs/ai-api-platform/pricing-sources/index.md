@@ -12,6 +12,8 @@ title: 模型价格真源
 
 **[价目全流程](./workflow)** — 一张主流程图 + 阶段表（获取、判对、产出、gate）讲完整条链路。
 
+**运营系统（讨论稿）**：工程仓 `pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md` — 刊例治理 · 账单核对 · 销售定价三柱与人机分层。
+
 ## 别和「对客户卖价」混
 
 | 层 | 是什么 | 入口 |
@@ -19,6 +21,7 @@ title: 模型价格真源
 | **采购 / 渠道价** | 上游挂牌、Excel 校验 | 本目录 · [全流程](./workflow) |
 | **对客户刊例** | Credits、加价 | [商用计费与充值](../commercial-billing/) |
 | **运行时扣费** | 网关计量、402 | [计量与计费](../platform/metering-billing) |
+| **供应与定价运营** | 上架价审 · 月度账单 · 与销售衔接 | `pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md` |
 
 ## 查阅
 
@@ -43,6 +46,7 @@ title: 模型价格真源
 
 | 日期 | 说明 |
 |------|------|
+| 2026-07-31 | 链到运营系统设计讨论稿 `pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md` |
 | 2026-07-08 | [模型原价折扣](./supplier-cost-discounts)：商务原底仅手册；生效见后台 |
 | 2026-07-08 | 增 [模型原价折扣](./supplier-cost-discounts) 商务台账 |
 | 2026-07-07 | 增 modality-index · video-rollout · listing-deploy |

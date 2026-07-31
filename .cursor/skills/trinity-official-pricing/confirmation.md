@@ -21,6 +21,11 @@
 |---------|------|------|
 | `pricing.tier-key.edit` | 改 `tier-key.mjs` | 影响多模型档位对齐规则 |
 
+## 价目禁止推测（硬规则）
+
+- 入/出/缓只许来自所引价目表明文；缺省写 **⚠**，禁止比例推算或他渠脑补。
+- **双真源核对仅 `bailian-intl`**：帮助中心 ↔ 控制台一致才入真源；不一致见 `pricing/suppliers/bailian-intl/output/dual-source-diff.*`，须人工确认后再改真源。
+
 ## 不需要确认（`confirm: none`）
 
 - 只读校验：`pricing.gate`、`pricing.validate.*`

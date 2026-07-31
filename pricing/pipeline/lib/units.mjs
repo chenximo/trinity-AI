@@ -9,7 +9,8 @@ export const TRINITY_LIST_LABEL = "Trinity刊例";
 export function isUsdUpstream(sup) {
   return (
     (sup?.catalog === "aigc" && sup?.site === "international") ||
-    sup?.catalog === "wangju-cloudportal"
+    sup?.catalog === "wangju-cloudportal" ||
+    sup?.key === "bailian-intl"
   );
 }
 

@@ -31,7 +31,8 @@ trinity-AI/pricing/
 └── output/                # 流水线产出（刊例、汇总、校验、草案）
 ```
 
-> 各子目录文件说明见 **[STRUCTURE.md](./STRUCTURE.md)**。
+> 各子目录文件说明见 **[STRUCTURE.md](./STRUCTURE.md)**。  
+> **运营系统设计（刊例 / 账单 / 销售三柱）**见 **[docs/SUPPLY-PRICING-OPS-DESIGN.md](./docs/SUPPLY-PRICING-OPS-DESIGN.md)**（讨论稿）。
 
 ---
 

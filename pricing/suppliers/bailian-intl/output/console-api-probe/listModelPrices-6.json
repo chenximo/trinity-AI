@@ -1,0 +1,242 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "data": {
+          "total": 7,
+          "pageNo": 1,
+          "pageSize": 10,
+          "list": [
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "kimi-k2.7-code",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.95",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.19",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "glm-5.2-fast-preview",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.8",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.56",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "8.8",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "glm-5.2",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.4",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.28",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4.4",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "glm-5.1",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.4",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.26",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4.4",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "deepseek-v4-pro",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "2.4",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.2",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "4.8",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "deepseek-v4-flash",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.2",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.04",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.4",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            },
+            {
+              "priceUnit": "Per 1M tokens",
+              "itemCode": "deepseek-v3.2",
+              "timeBand": "standard",
+              "prices": [
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.57",
+                  "timeBand": "standard",
+                  "type": "input_token",
+                  "priceName": "Input"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.057",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_read",
+                  "priceName": "Explicit Cache Read"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.713",
+                  "timeBand": "standard",
+                  "type": "input_token_cache_creation_5m",
+                  "priceName": "Explicit Cache Creation"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "0.114",
+                  "timeBand": "standard",
+                  "type": "input_token_cache",
+                  "priceName": "Input(Implicit Cache)"
+                },
+                {
+                  "priceUnit": "Per 1M tokens",
+                  "price": "1.71",
+                  "timeBand": "standard",
+                  "type": "output_token",
+                  "priceName": "Output"
+                }
+              ]
+            }
+          ]
+        },
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listModelPrices",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "34f7bd9e-2717-4527-ae31-71c3f1053c90",
+  "successResponse": true
+}

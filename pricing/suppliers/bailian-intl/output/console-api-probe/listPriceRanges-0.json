@@ -1,0 +1,25 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listPriceRanges",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "92b4e42f-da62-4ec9-8332-3ab3514120eb",
+  "successResponse": true
+}

@@ -1,0 +1,5995 @@
+[
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "kimi-k2.7-code",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.95",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.19",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "glm-5.2-fast-preview",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.56",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "8.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "glm-5.2",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.28",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "glm-5.1",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.26",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "deepseek-v4-pro",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "deepseek-v4-flash",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "deepseek-v3.2",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.57",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.057",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.713",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.114",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.71",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Other"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.08",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "discount": 0.8,
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-plus-2026-05-26",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.08",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-plus-2026-05-26",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-max",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "discount": 0.5,
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "discount": 0.5,
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.125",
+        "timeBand": "standard",
+        "discount": 0.5,
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "discount": 0.5,
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "discount": 0.5,
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-max-2026-06-08",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.125",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-max-2026-05-20",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.125",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-max-2026-05-17",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-max-preview",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.03",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.003",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.038",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.006",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.13",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash",
+    "rangeName": "32k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.125",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.02",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.02",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash-2026-07-15",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.03",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.003",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.038",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.006",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.13",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash-2026-07-15",
+    "rangeName": "32k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.125",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.02",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.7-flash-2026-07-15",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.02",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-plus-2026-04-02",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-plus-2026-04-02",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus-2026-02-15",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus-2026-02-15",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-flash",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.125",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-flash-2026-02-23",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-397b-a17b",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-35b-a3b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-27b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-122b-a10b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.48",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.75",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-preview",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-preview",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.48",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-preview",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2026-01-23",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2026-01-23",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2026-01-23",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache_read",
+        "priceName": "Explicit Cache Read(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.08",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache",
+        "priceName": "Input(Thinking Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.08",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache_read",
+        "priceName": "Explicit Cache Read(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.24",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache",
+        "priceName": "Input(Thinking Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-latest",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-latest",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "thinking_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-latest",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-latest",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "thinking_context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-09-11",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "context_0-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-09-11",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "thinking_context_0-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-09-11",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "thinking_context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-09-11",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "context_0-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "thinking_context_0-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "thinking_context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-14",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-07-14",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-04-28",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-04-28",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-2025-01-25",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-flash",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.005",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.063",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-flash",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.025",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.313",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "amountTypeDisplay": "context_0-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.18",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.36",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.75",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "60",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "60",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-07-22",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-07-22",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-07-22",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-plus-2025-07-22",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "60",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.03",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.375",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.06",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.08",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.32",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-flash-2025-07-28",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-09-23",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.005",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.0625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.075",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.0075",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.09375",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.015",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.012",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.15",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.024",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.96",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2025-10-15",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2025-10-15",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.075",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2025-10-15",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.96",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-ocr",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.07",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-ocr-2025-11-20",
+    "timeBand": "standard",
+    "amountTypeDisplay": "input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.07",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-mt-flash",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.49",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-mt-plus",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.46",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.37",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-character-ja",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-32b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.64",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-32b-thinking",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.64",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-30b-a3b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-30b-a3b-thinking",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-8b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.18",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-8b-thinking",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.18",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.1",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-235b-a22b-thinking",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-235b-a22b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-next-80b-a3b-thinking",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.15",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-next-80b-a3b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.15",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-30b-a3b-instruct",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.45",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.25",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-30b-a3b-instruct",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.75",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.75",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-30b-a3b-instruct",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-30b-a3b-instruct",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "14.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-30b-a3b-thinking-2507",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-30b-a3b-instruct-2507",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-235b-a22b-thinking-2507",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.23",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.3",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-480b-a35b-instruct",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-480b-a35b-instruct",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.7",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "13.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-480b-a35b-instruct",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "22.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-480b-a35b-instruct",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "amountTypeDisplay": "context_256k-1m_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "9",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "90",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-235b-a22b-instruct-2507",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.23",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.92",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-14b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.35",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.2",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-14b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.35",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-4b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.26",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-4b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.42",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-30b-a3b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-30b-a3b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-8b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.18",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-8b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.18",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.1",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-0.6b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.26",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-0.6b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.42",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-32b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.64",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-32b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.64",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-235b-a22b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-235b-a22b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "8.4",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-1.7b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.42",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-1.7b",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.11",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.26",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qvq-max",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qvq-max-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qvq-max-2025-03-25",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-max",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.32",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-max-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-max-2025-01-25",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwq-plus",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "thinking_input_token_cache",
+        "priceName": "Input(Thinking Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "non-thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo-2025-04-28",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "mode": "thinking",
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo-2025-04-28",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "thinking_input_token",
+        "priceName": "Input(Thinking)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "thinking_output_token",
+        "priceName": "Output(Thinking)"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-turbo-2024-11-01",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-max",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-max-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-max-2025-04-08",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-max-2025-08-13",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.042",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus-latest",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus-2025-08-15",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus-2025-05-07",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus-2025-01-25",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-mt-turbo",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.16",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.49",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-vl-32b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.2",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-7b-instruct-1m",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.368",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.47",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-14b-instruct-1m",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.805",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.22",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-vl-7b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.35",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.05",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-vl-3b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.63",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-vl-72b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "8.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-72b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "5.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-7b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.175",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-14b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.35",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen2.5-32b-instruct",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.7",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-max-preview",
+    "timeBand": "standard",
+    "rangeName": "Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.13",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "7.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-max-preview",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-flash-2026-04-16",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-flash-2026-04-16",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-flash",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.025",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3125",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-flash",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-35b-a3b",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.375",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.25",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.6-27b",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus-2026-04-20",
+    "timeBand": "standard",
+    "rangeName": "Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3.5-plus-2026-04-20",
+    "timeBand": "standard",
+    "rangeName": "256k<Input<=1m",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.625",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-12-19",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-12-19",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus-2025-12-19",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.02",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.25",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.04",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.03",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.375",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.06",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-plus",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.06",
+        "timeBand": "standard",
+        "type": "input_token_cache_read",
+        "priceName": "Explicit Cache Read"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.75",
+        "timeBand": "standard",
+        "type": "input_token_cache_creation_5m",
+        "priceName": "Explicit Cache Creation"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4.8",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2026-01-22",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2026-01-22",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.075",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-vl-flash-2026-01-22",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.12",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.96",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-10-30",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.2",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "6",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-10-30",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.4",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "12",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-max-2025-10-30",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "15",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-next",
+    "timeBand": "standard",
+    "rangeName": "Input<=32k",
+    "amountTypeDisplay": "context_0-32k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.3",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-next",
+    "timeBand": "standard",
+    "rangeName": "32k<Input<=128k",
+    "amountTypeDisplay": "context_32k-128k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "2.5",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen3-coder-next",
+    "timeBand": "standard",
+    "rangeName": "128k<Input<=256k",
+    "amountTypeDisplay": "context_128k-256k_input_token",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.8",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-vl-plus-2025-07-10",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.021",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.21",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-plus-character",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.5",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.1",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "1.4",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  },
+  {
+    "priceUnit": "Per 1M tokens",
+    "itemCode": "qwen-flash-character",
+    "timeBand": "standard",
+    "prices": [
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.05",
+        "timeBand": "standard",
+        "type": "input_token",
+        "priceName": "Input"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.01",
+        "timeBand": "standard",
+        "type": "input_token_cache",
+        "priceName": "Input(Implicit Cache)"
+      },
+      {
+        "priceUnit": "Per 1M tokens",
+        "price": "0.4",
+        "timeBand": "standard",
+        "type": "output_token",
+        "priceName": "Output"
+      }
+    ],
+    "_categoryLevel1": "Text-Generation",
+    "_categoryLevel2": "Qwen"
+  }
+]

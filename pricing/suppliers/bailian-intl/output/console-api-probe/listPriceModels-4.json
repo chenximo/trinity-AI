@@ -1,0 +1,34 @@
+{
+  "code": "200",
+  "data": {
+    "DataV2": {
+      "ret": [
+        "SUCCESS::接口调用成功"
+      ],
+      "data": {
+        "codeEnum": "SUCCESS",
+        "code": "200",
+        "data": [
+          "deepseek-v3.2",
+          "deepseek-v4-flash",
+          "deepseek-v4-pro",
+          "glm-5.1",
+          "glm-5.2",
+          "glm-5.2-fast-preview",
+          "kimi-k2.7-code"
+        ],
+        "success": true,
+        "appName": "dashscope-model",
+        "message": "dashscope-model.SUCCESS"
+      }
+    },
+    "success": true,
+    "httpStatus": 200,
+    "errorCode": "",
+    "api": "zeldaHttp.dashscopeModel./zelda/api/v1/modelCenter/listPriceModels",
+    "errorMsg": ""
+  },
+  "httpStatusCode": "200",
+  "requestId": "e04cd4c5-e567-4f8e-959c-d6c8443d3ca8",
+  "successResponse": true
+}

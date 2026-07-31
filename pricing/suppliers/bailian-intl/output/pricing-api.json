@@ -1,0 +1,5389 @@
+{
+  "source": "alibaba_bailian_intl_dual_consensus",
+  "docUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+  "consoleDocUrl": "https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=doc#/doc/?type=model&url=prices",
+  "currency": "USD",
+  "cachePolicy": {
+    "mode": "table_only",
+    "note": "价目表未列缓存价则 cache=null（展示 ⚠），禁止比例推算"
+  },
+  "dualSource": {
+    "mode": "help_vs_console_api",
+    "helpUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+    "consoleUrl": "https://modelstudio.console.alibabacloud.com/ap-southeast-1?tab=doc#/doc/?type=model&url=prices",
+    "consoleSource": "listModelPrices API",
+    "helpTierRows": 139,
+    "consoleTierRows": 179,
+    "consensusCount": 94,
+    "conflictCount": 0,
+    "helpOnlyCount": 45,
+    "consoleOnlyCount": 85,
+    "conflicts": [],
+    "helpOnlySample": [
+      {
+        "key": "qwen3.7-max\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-max",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-06-08\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-06-08",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-05-20\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-05-20",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-preview\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-max-preview",
+        "region": "International",
+        "mode": "Thinking mode only",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-05-17\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-05-17",
+        "region": "International",
+        "mode": "Thinking mode only",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-plus-2025-12-01\u00000-256000\u0000TOKEN",
+        "modelId": "qwen-plus-2025-12-01",
+        "region": "International",
+        "mode": "qwen-plus-2025-12-01",
+        "tierName": "0<Token≤256K",
+        "help": {
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-flash\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.5-flash",
+        "region": "International",
+        "mode": "qwen3.5-flash Currently equivalent to qwen3.5-flash-2026-02-23 50% batch inference discount context caching discount",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-flash-2026-02-23\u00000-1000000\u0000TOKEN",
+        "modelId": "qwen3.5-flash-2026-02-23",
+        "region": "International",
+        "mode": "qwen3.5-flash-2026-02-23",
+        "tierName": "0<Token≤1M",
+        "help": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-plus\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-plus",
+        "region": "International",
+        "mode": "qwen3.5-omni-plus Currently equivalent to qwen3.5-omni-plus-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "1.4",
+          "output": "11",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-plus-2026-03-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-plus-2026-03-15",
+        "region": "International",
+        "mode": "qwen3.5-omni-plus-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "1.4",
+          "output": "11",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-flash\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-flash",
+        "region": "International",
+        "mode": "qwen3.5-omni-flash Currently equivalent to qwen3.5-omni-flash-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.4",
+          "output": "3",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-flash-2026-03-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-flash-2026-03-15",
+        "region": "International",
+        "mode": "qwen3.5-omni-flash-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.4",
+          "output": "3",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.43",
+          "output": "3.81",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash-2025-12-01\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash-2025-12-01",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.43",
+          "output": "3.81",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash-2025-09-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash-2025-09-15",
+        "region": "International",
+        "mode": "Non-Thinking and Thinking modes",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.43",
+          "output": "3.81",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo",
+        "region": "International",
+        "mode": "Non-Thinking mode",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.07",
+          "output": "4.44",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo-latest\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo-latest",
+        "region": "International",
+        "mode": "Non-Thinking mode",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.07",
+          "output": "4.44",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo-2025-03-26\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo-2025-03-26",
+        "region": "International",
+        "mode": "Non-Thinking mode",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.07",
+          "output": "4.44",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-plus-realtime\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-plus-realtime",
+        "region": "International",
+        "mode": "qwen3.5-omni-plus-realtime Currently equivalent to qwen3.5-omni-plus-realtime-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "2.1",
+          "output": "16.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-plus-realtime-2026-03-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-plus-realtime-2026-03-15",
+        "region": "International",
+        "mode": "qwen3.5-omni-plus-realtime-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "2.1",
+          "output": "16.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-flash-realtime\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-flash-realtime",
+        "region": "International",
+        "mode": "qwen3.5-omni-flash-realtime Currently equivalent to qwen3.5-omni-flash-realtime-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.55",
+          "output": "4.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-omni-flash-realtime-2026-03-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-omni-flash-realtime-2026-03-15",
+        "region": "International",
+        "mode": "qwen3.5-omni-flash-realtime-2026-03-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.55",
+          "output": "4.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash-realtime\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash-realtime",
+        "region": "International",
+        "mode": "qwen3-omni-flash-realtime Currently equivalent to qwen3-omni-flash-realtime-2025-12-01",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.52",
+          "output": "4.57",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash-realtime-2025-12-01\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash-realtime-2025-12-01",
+        "region": "International",
+        "mode": "qwen3-omni-flash-realtime-2025-12-01",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.52",
+          "output": "4.57",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-omni-flash-realtime-2025-09-15\u0000flat\u0000TOKEN",
+        "modelId": "qwen3-omni-flash-realtime-2025-09-15",
+        "region": "International",
+        "mode": "qwen3-omni-flash-realtime-2025-09-15",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.52",
+          "output": "4.57",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo-realtime\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo-realtime",
+        "region": "International",
+        "mode": "qwen-omni-turbo-realtime Currently equivalent to qwen-omni-turbo-realtime-2025-05-08",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.270",
+          "output": "4.440",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo-realtime-latest\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo-realtime-latest",
+        "region": "International",
+        "mode": "qwen-omni-turbo-realtime-latest",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.270",
+          "output": "4.440",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-omni-turbo-realtime-2025-05-08\u0000flat\u0000TOKEN",
+        "modelId": "qwen-omni-turbo-realtime-2025-05-08",
+        "region": "International",
+        "mode": "qwen-omni-turbo-realtime-2025-05-08",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.270",
+          "output": "4.440",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-mt-lite\u0000flat\u0000TOKEN",
+        "modelId": "qwen-mt-lite",
+        "region": "International",
+        "mode": "qwen-mt-lite",
+        "tierName": "统一价",
+        "help": {
+          "input": "0.12",
+          "output": "0.36",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-122b-a10b\u00000-256000\u0000TOKEN",
+        "modelId": "qwen3.5-122b-a10b",
+        "region": "International",
+        "mode": "qwen3.5-122b-a10b",
+        "tierName": "0<Token≤256K",
+        "help": {
+          "input": "0.4",
+          "output": "3.2",
+          "cache": null
+        }
+      }
+    ],
+    "consoleOnlySample": [
+      {
+        "key": "glm-5.1\u0000flat\u0000TOKEN",
+        "modelId": "glm-5.1",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "1.4",
+          "output": "4.4",
+          "cache": "0.26"
+        }
+      },
+      {
+        "key": "qwen3.7-plus\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "4.8",
+          "cache": "0.24"
+        }
+      },
+      {
+        "key": "qwen3.7-plus-2026-05-26\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-plus-2026-05-26",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "4.8",
+          "cache": "0.24"
+        }
+      },
+      {
+        "key": "qwen3.7-max\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.7-max",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": "0.5"
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-06-08\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-06-08",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": "0.5"
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-05-20\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-05-20",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-2026-05-17\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.7-max-2026-05-17",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-max-preview\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.7-max-preview",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "2.5",
+          "output": "7.5",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.7-flash\u000032000-256000\u0000TOKEN",
+        "modelId": "qwen3.7-flash",
+        "region": "International",
+        "mode": "-",
+        "tierName": "32k<Input<=256k",
+        "console": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": "0.02"
+        }
+      },
+      {
+        "key": "qwen3.7-flash\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-flash",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.2",
+          "output": "0.8",
+          "cache": "0.04"
+        }
+      },
+      {
+        "key": "qwen3.7-flash-2026-07-15\u000032000-256000\u0000TOKEN",
+        "modelId": "qwen3.7-flash-2026-07-15",
+        "region": "International",
+        "mode": "-",
+        "tierName": "32k<Input<=256k",
+        "console": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": "0.02"
+        }
+      },
+      {
+        "key": "qwen3.7-flash-2026-07-15\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.7-flash-2026-07-15",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.2",
+          "output": "0.8",
+          "cache": "0.04"
+        }
+      },
+      {
+        "key": "qwen3.6-plus\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.6-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "2",
+          "output": "6",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.6-plus-2026-04-02\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.6-plus-2026-04-02",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "2",
+          "output": "6",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-plus\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.5-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.5",
+          "output": "3",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-plus-2026-02-15\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3.5-plus-2026-02-15",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.5",
+          "output": "3",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-flash\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-flash",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-flash-2026-02-23\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-flash-2026-02-23",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "0.1",
+          "output": "0.4",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-35b-a3b\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-35b-a3b",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "0.25",
+          "output": "2",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-27b\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-27b",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "0.3",
+          "output": "2.4",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3.5-122b-a10b\u0000flat\u0000TOKEN",
+        "modelId": "qwen3.5-122b-a10b",
+        "region": "International",
+        "mode": "-",
+        "tierName": "统一价",
+        "console": {
+          "input": "0.4",
+          "output": "3.2",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-plus\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-plus",
+        "region": "International",
+        "mode": "non-thinking",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "3.6",
+          "cache": "0.24"
+        }
+      },
+      {
+        "key": "qwen-plus-latest\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-plus-latest",
+        "region": "International",
+        "mode": "non-thinking",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "3.6",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-plus-2025-09-11\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-plus-2025-09-11",
+        "region": "International",
+        "mode": "non-thinking",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "3.6",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-plus-2025-07-28\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-plus-2025-07-28",
+        "region": "International",
+        "mode": "non-thinking",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "1.2",
+          "output": "3.6",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen-flash\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-flash",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.25",
+          "output": "2",
+          "cache": "0.05"
+        }
+      },
+      {
+        "key": "qwen-flash-2025-07-28\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen-flash-2025-07-28",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "0.25",
+          "output": "2",
+          "cache": null
+        }
+      },
+      {
+        "key": "qwen3-coder-plus\u000032000-128000\u0000TOKEN",
+        "modelId": "qwen3-coder-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "32k<Input<=128k",
+        "console": {
+          "input": "1.8",
+          "output": "9",
+          "cache": "0.36"
+        }
+      },
+      {
+        "key": "qwen3-coder-plus\u0000128000-256000\u0000TOKEN",
+        "modelId": "qwen3-coder-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "128k<Input<=256k",
+        "console": {
+          "input": "3",
+          "output": "15",
+          "cache": "0.6"
+        }
+      },
+      {
+        "key": "qwen3-coder-plus\u0000256000-1000000\u0000TOKEN",
+        "modelId": "qwen3-coder-plus",
+        "region": "International",
+        "mode": "-",
+        "tierName": "256k<Input<=1m",
+        "console": {
+          "input": "6",
+          "output": "60",
+          "cache": "1.2"
+        }
+      }
+    ],
+    "status": "有差异：待人工确认讨论"
+  },
+  "scrapedAt": "2026-07-29T06:37:52.218Z",
+  "modelCount": 73,
+  "pricingTierCount": 94,
+  "tierRowCount": 94,
+  "tableCount": 0,
+  "models": [
+    {
+      "modelId": "qwen3.6-max-preview",
+      "modelName": "qwen3.6-max-preview",
+      "displayName": "qwen3.6-max-preview",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Text generation - Qwen",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.7-max-2026-05-17",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤128K",
+          "input": "1.3",
+          "output": "7.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.3",
+          "outputRaw": "$7.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "7.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "2",
+          "output": "12",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2",
+          "outputRaw": "$12",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-max",
+      "modelName": "qwen3-max",
+      "displayName": "qwen3-max",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Text generation - Qwen",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-max-2026-01-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1.2",
+          "output": "6",
+          "cache": "0.24",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.2",
+          "outputRaw": "$6",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.24",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "2.4",
+          "output": "12",
+          "cache": "0.48",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.4",
+          "outputRaw": "$12",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.48",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "3",
+          "output": "15",
+          "cache": "0.6",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$3",
+          "outputRaw": "$15",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-max-2026-01-23",
+      "modelName": "qwen3-max-2026-01-23",
+      "displayName": "qwen3-max-2026-01-23",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Text generation - Qwen",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-max-2026-01-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1.2",
+          "output": "6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.2",
+          "outputRaw": "$6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "2.4",
+          "output": "12",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.4",
+          "outputRaw": "$12",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "3",
+          "output": "15",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$3",
+          "outputRaw": "$15",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-max-2025-09-23",
+      "modelName": "qwen3-max-2025-09-23",
+      "displayName": "qwen3-max-2025-09-23",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Text generation - Qwen",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-max-2026-01-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1.2",
+          "output": "6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.2",
+          "outputRaw": "$6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "2.4",
+          "output": "12",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.4",
+          "outputRaw": "$12",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "3",
+          "output": "15",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$3",
+          "outputRaw": "$15",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-max-preview",
+      "modelName": "qwen3-max-preview",
+      "displayName": "qwen3-max-preview",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Text generation - Qwen",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-max-2026-01-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1.2",
+          "output": "6",
+          "cache": "0.24",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.2",
+          "outputRaw": "$6",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.24",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "2.4",
+          "output": "12",
+          "cache": "0.48",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.4",
+          "outputRaw": "$12",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.48",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "12",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "3",
+          "output": "15",
+          "cache": "0.6",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$3",
+          "outputRaw": "$15",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "15",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-max",
+      "modelName": "qwen-max",
+      "displayName": "qwen-max",
+      "brand": "More models",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "More models",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": true,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.6",
+          "output": "6.4",
+          "cache": "0.32",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.6",
+          "outputRaw": "$6.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.32",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "6.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-plus",
+      "modelName": "qwen3.7-plus",
+      "displayName": "qwen3.7-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.7-plus Currently equivalent to qwen3.7-plus-2026-05-26 context caching discount",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.7-plus-2026-05-26",
+      "freeQuota": "List price $1.6 Limited-time 20% off",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.6",
+          "cache": "0.08",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "List price $0.4 Limited-time 20% off",
+          "outputRaw": "List price $1.6 Limited-time 20% off",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.08",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-plus-2026-05-26",
+      "modelName": "qwen3.7-plus-2026-05-26",
+      "displayName": "qwen3.7-plus-2026-05-26",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.7-plus-2026-05-26 context caching discount",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.7-plus-2026-05-26",
+      "freeQuota": "$1.6",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.6",
+          "cache": "0.08",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.6",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.08",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-plus",
+      "modelName": "qwen3.6-plus",
+      "displayName": "qwen3.6-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-plus Currently equivalent to qwen3.6-plus-2026-04-02",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.6-plus-2026-04-02",
+      "freeQuota": "$3",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.5",
+          "output": "3",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.5",
+          "outputRaw": "$3",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-plus-2026-04-02",
+      "modelName": "qwen3.6-plus-2026-04-02",
+      "displayName": "qwen3.6-plus-2026-04-02",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-plus-2026-04-02",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.6-plus-2026-04-02",
+      "freeQuota": "$3",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.5",
+          "output": "3",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.5",
+          "outputRaw": "$3",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus",
+      "modelName": "qwen3.5-plus",
+      "displayName": "qwen3.5-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.5-plus Currently equivalent to qwen3.5-plus-2026-02-15",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.5-plus-2026-02-15",
+      "freeQuota": "$2.4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus-2026-04-20",
+      "modelName": "qwen3.5-plus-2026-04-20",
+      "displayName": "qwen3.5-plus-2026-04-20",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.5-plus-2026-04-20",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.5-plus-2026-02-15",
+      "freeQuota": "$2.4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-plus-2026-02-15",
+      "modelName": "qwen3.5-plus-2026-02-15",
+      "displayName": "qwen3.5-plus-2026-02-15",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.5-plus-2026-02-15",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.5-plus-2026-02-15",
+      "freeQuota": "$2.4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus",
+      "modelName": "qwen-plus",
+      "displayName": "qwen-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus Currently equivalent to qwen-plus-2025-12-01",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": "0.08",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.08",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-latest",
+      "modelName": "qwen-plus-latest",
+      "displayName": "qwen-plus-latest",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-latest",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-2025-09-11",
+      "modelName": "qwen-plus-2025-09-11",
+      "displayName": "qwen-plus-2025-09-11",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-2025-09-11",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-2025-07-28",
+      "modelName": "qwen-plus-2025-07-28",
+      "displayName": "qwen-plus-2025-07-28",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-2025-07-28",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-2025-07-14",
+      "modelName": "qwen-plus-2025-07-14",
+      "displayName": "qwen-plus-2025-07-14",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-2025-07-14",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-2025-04-28",
+      "modelName": "qwen-plus-2025-04-28",
+      "displayName": "qwen-plus-2025-04-28",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-2025-04-28",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "$4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-2025-01-25",
+      "modelName": "qwen-plus-2025-01-25",
+      "displayName": "qwen-plus-2025-01-25",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-2025-01-25",
+      "section": "Qwen-Max",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-plus-2025-12-01",
+      "freeQuota": "-",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.4",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-flash",
+      "modelName": "qwen3.7-flash",
+      "displayName": "qwen3.7-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.7-flash Currently equivalent to qwen3.7-flash-2026-07-15 50% batch inference discount context caching discount",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.7-flash-2026-07-15",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.030",
+          "output": "0.130",
+          "cache": "0.006",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.030",
+          "outputRaw": "$0.130",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.030",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.006",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.130",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.7-flash-2026-07-15",
+      "modelName": "qwen3.7-flash-2026-07-15",
+      "displayName": "qwen3.7-flash-2026-07-15",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.7-flash-2026-07-15",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.7-flash-2026-07-15",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.030",
+          "output": "0.130",
+          "cache": "0.006",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.030",
+          "outputRaw": "$0.130",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.030",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.006",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.130",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-flash",
+      "modelName": "qwen3.6-flash",
+      "displayName": "qwen3.6-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-flash Currently equivalent to qwen3.6-flash-2026-04-16 50% batch inference discount context caching discount",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.6-flash-2026-04-16",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.25",
+          "output": "1.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.25",
+          "outputRaw": "$1.5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.25",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-flash-2026-04-16",
+      "modelName": "qwen3.6-flash-2026-04-16",
+      "displayName": "qwen3.6-flash-2026-04-16",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-flash-2026-04-16",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3.6-flash-2026-04-16",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.25",
+          "output": "1.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.25",
+          "outputRaw": "$1.5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.25",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-flash",
+      "modelName": "qwen-flash",
+      "displayName": "qwen-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-flash Currently equivalent to qwen-flash-2025-07-28 50% batch inference discount context caching discount",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-flash-2025-07-28",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": "0.01",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.01",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-flash-2025-07-28",
+      "modelName": "qwen-flash-2025-07-28",
+      "displayName": "qwen-flash-2025-07-28",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-flash-2025-07-28",
+      "section": "Qwen-Plus",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": true,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-flash-2025-07-28",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-turbo",
+      "modelName": "qwen-turbo",
+      "displayName": "qwen-turbo",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-turbo 50% batch inference discount",
+      "section": "Qwen-Flash",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": true,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$0.5",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.05",
+          "output": "0.2",
+          "cache": "0.01",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.2",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.01",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwq-plus",
+      "modelName": "qwq-plus",
+      "displayName": "qwq-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwq-plus",
+      "section": "Qwen-Turbo",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.8",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.8",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.8",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qvq-max",
+      "modelName": "qvq-max",
+      "displayName": "qvq-max",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qvq-max",
+      "section": "Qwen-Omni-Realtime",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "1.2",
+          "output": "4.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.2",
+          "outputRaw": "$4.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-plus",
+      "modelName": "qwen3-vl-plus",
+      "displayName": "qwen3-vl-plus",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-plus-2025-12-19",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.2",
+          "output": "1.6",
+          "cache": "0.04",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$1.6",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.04",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.3",
+          "output": "2.4",
+          "cache": "0.06",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$2.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.06",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.6",
+          "output": "4.8",
+          "cache": "0.12",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.6",
+          "outputRaw": "$4.8",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.12",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-plus-2025-12-19",
+      "modelName": "qwen3-vl-plus-2025-12-19",
+      "displayName": "qwen3-vl-plus-2025-12-19",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-plus-2025-12-19",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.2",
+          "output": "1.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$1.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.3",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.6",
+          "output": "4.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.6",
+          "outputRaw": "$4.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-plus-2025-09-23",
+      "modelName": "qwen3-vl-plus-2025-09-23",
+      "displayName": "qwen3-vl-plus-2025-09-23",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-plus-2025-12-19",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.2",
+          "output": "1.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$1.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.3",
+          "output": "2.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$2.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.6",
+          "output": "4.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.6",
+          "outputRaw": "$4.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-flash",
+      "modelName": "qwen3-vl-flash",
+      "displayName": "qwen3-vl-flash",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-flash-2026-01-22",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": "0.01",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.01",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.075",
+          "output": "0.6",
+          "cache": "0.015",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.075",
+          "outputRaw": "$0.6",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.075",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.015",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.12",
+          "output": "0.96",
+          "cache": "0.024",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.12",
+          "outputRaw": "$0.96",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.12",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.024",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.96",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-flash-2026-01-22",
+      "modelName": "qwen3-vl-flash-2026-01-22",
+      "displayName": "qwen3-vl-flash-2026-01-22",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-flash-2026-01-22",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.075",
+          "output": "0.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.075",
+          "outputRaw": "$0.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.075",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.12",
+          "output": "0.96",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.12",
+          "outputRaw": "$0.96",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.12",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.96",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-flash-2025-10-15",
+      "modelName": "qwen3-vl-flash-2025-10-15",
+      "displayName": "qwen3-vl-flash-2025-10-15",
+      "brand": "QVQ",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "QVQ",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-vl-flash-2026-01-22",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "32K<Token≤128K",
+          "input": "0.075",
+          "output": "0.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.075",
+          "outputRaw": "$0.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.075",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "128K<Token≤256K",
+          "input": "0.12",
+          "output": "0.96",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.12",
+          "outputRaw": "$0.96",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.12",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.96",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-vl-max",
+      "modelName": "qwen-vl-max",
+      "displayName": "qwen-vl-max",
+      "brand": "More models",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-vl-max context caching discount",
+      "section": "More models",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.8",
+          "output": "3.2",
+          "cache": "0.16",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.8",
+          "outputRaw": "$3.2",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.8",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-vl-plus",
+      "modelName": "qwen-vl-plus",
+      "displayName": "qwen-vl-plus",
+      "brand": "More models",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-vl-plus context caching discount",
+      "section": "More models",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.21",
+          "output": "0.63",
+          "cache": "0.042",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.21",
+          "outputRaw": "$0.63",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.21",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.042",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.63",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-vl-ocr",
+      "modelName": "qwen-vl-ocr",
+      "displayName": "qwen-vl-ocr",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-vl-ocr Currently equivalent to qwen-vl-ocr-2025-11-20",
+      "section": "Qwen-VL",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen-vl-ocr-2025-11-20",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.07",
+          "output": "0.16",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.07",
+          "outputRaw": "$0.16",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.07",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-plus",
+      "modelName": "qwen3-coder-plus",
+      "displayName": "qwen3-coder-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-plus Currently equivalent to qwen3-coder-plus-2025-09-23 context caching discount",
+      "section": "Qwen Math",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-coder-plus-2025-09-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1",
+          "output": "5",
+          "cache": "0.2",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1",
+          "outputRaw": "$5",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-plus-2025-09-23",
+      "modelName": "qwen3-coder-plus-2025-09-23",
+      "displayName": "qwen3-coder-plus-2025-09-23",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-plus-2025-09-23",
+      "section": "Qwen Math",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-coder-plus-2025-09-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1",
+          "output": "5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1",
+          "outputRaw": "$5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-plus-2025-07-22",
+      "modelName": "qwen3-coder-plus-2025-07-22",
+      "displayName": "qwen3-coder-plus-2025-07-22",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-plus-2025-07-22",
+      "section": "Qwen Math",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-coder-plus-2025-09-23",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1",
+          "output": "5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1",
+          "outputRaw": "$5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-flash",
+      "modelName": "qwen3-coder-flash",
+      "displayName": "qwen3-coder-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-flash Currently equivalent to qwen3-coder-flash-2025-07-28",
+      "section": "Qwen Math",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-coder-flash-2025-07-28",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.3",
+          "output": "1.5",
+          "cache": "0.06",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$1.5",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.06",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-flash-2025-07-28",
+      "modelName": "qwen3-coder-flash-2025-07-28",
+      "displayName": "qwen3-coder-flash-2025-07-28",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-flash-2025-07-28",
+      "section": "Qwen Math",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": "qwen3-coder-flash-2025-07-28",
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.3",
+          "output": "1.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$1.5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-mt-plus",
+      "modelName": "qwen-mt-plus",
+      "displayName": "qwen-mt-plus",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-mt-plus",
+      "section": "Qwen-Coder",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "2.46",
+          "output": "7.37",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.46",
+          "outputRaw": "$7.37",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.46",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "7.37",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-mt-flash",
+      "modelName": "qwen-mt-flash",
+      "displayName": "qwen-mt-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-mt-flash",
+      "section": "Qwen-Coder",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.16",
+          "output": "0.49",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.16",
+          "outputRaw": "$0.49",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.49",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-mt-turbo",
+      "modelName": "qwen-mt-turbo",
+      "displayName": "qwen-mt-turbo",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-mt-turbo",
+      "section": "Qwen-Coder",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.16",
+          "output": "0.49",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.16",
+          "outputRaw": "$0.49",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.49",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-35b-a3b",
+      "modelName": "qwen3.6-35b-a3b",
+      "displayName": "qwen3.6-35b-a3b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-35b-a3b",
+      "section": "Text generation - Qwen (open source)",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$2.25",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.375",
+          "output": "2.25",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.375",
+          "outputRaw": "$2.25",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.375",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.25",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.6-27b",
+      "modelName": "qwen3.6-27b",
+      "displayName": "qwen3.6-27b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.6-27b",
+      "section": "Text generation - Qwen (open source)",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$3.6",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.6",
+          "output": "3.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.6",
+          "outputRaw": "$3.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3.5-397b-a17b",
+      "modelName": "qwen3.5-397b-a17b",
+      "displayName": "qwen3.5-397b-a17b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3.5-397b-a17b",
+      "section": "Qwen3.6",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$3.6",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤256K",
+          "input": "0.6",
+          "output": "3.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.6",
+          "outputRaw": "$3.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.6",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "3.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-next-80b-a3b-instruct",
+      "modelName": "qwen3-next-80b-a3b-instruct",
+      "displayName": "qwen3-next-80b-a3b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "-",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.15",
+          "output": "1.2",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.15",
+          "outputRaw": "$1.2",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.15",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.2",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-235b-a22b-instruct-2507",
+      "modelName": "qwen3-235b-a22b-instruct-2507",
+      "displayName": "qwen3-235b-a22b-instruct-2507",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "-",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.23",
+          "output": "0.92",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.23",
+          "outputRaw": "$0.92",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.23",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.92",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-30b-a3b-instruct-2507",
+      "modelName": "qwen3-30b-a3b-instruct-2507",
+      "displayName": "qwen3-30b-a3b-instruct-2507",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "-",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.2",
+          "output": "0.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$0.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-235b-a22b",
+      "modelName": "qwen3-235b-a22b",
+      "displayName": "qwen3-235b-a22b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$8.4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.7",
+          "output": "2.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.7",
+          "outputRaw": "$2.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.7",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-32b",
+      "modelName": "qwen3-32b",
+      "displayName": "qwen3-32b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$0.64",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.16",
+          "output": "0.64",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.16",
+          "outputRaw": "$0.64",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.64",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-30b-a3b",
+      "modelName": "qwen3-30b-a3b",
+      "displayName": "qwen3-30b-a3b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$2.4",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.2",
+          "output": "0.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$0.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-14b",
+      "modelName": "qwen3-14b",
+      "displayName": "qwen3-14b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$4.2",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.35",
+          "output": "1.4",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.35",
+          "outputRaw": "$1.4",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.35",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-8b",
+      "modelName": "qwen3-8b",
+      "displayName": "qwen3-8b",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "Qwen3.5",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "$2.1",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.18",
+          "output": "0.7",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.18",
+          "outputRaw": "$0.7",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.18",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.7",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-235b-a22b-instruct",
+      "modelName": "qwen3-vl-235b-a22b-instruct",
+      "displayName": "qwen3-vl-235b-a22b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3-Omni-Captioner",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.4",
+          "output": "1.6",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.4",
+          "outputRaw": "$1.6",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.6",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-32b-instruct",
+      "modelName": "qwen3-vl-32b-instruct",
+      "displayName": "qwen3-vl-32b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3-Omni-Captioner",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.16",
+          "output": "0.64",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.16",
+          "outputRaw": "$0.64",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.16",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.64",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-30b-a3b-instruct",
+      "modelName": "qwen3-vl-30b-a3b-instruct",
+      "displayName": "qwen3-vl-30b-a3b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3-Omni-Captioner",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.2",
+          "output": "0.8",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.2",
+          "outputRaw": "$0.8",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.8",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-vl-8b-instruct",
+      "modelName": "qwen3-vl-8b-instruct",
+      "displayName": "qwen3-vl-8b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking mode only",
+      "section": "Qwen3-Omni-Captioner",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.18",
+          "output": "0.7",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.18",
+          "outputRaw": "$0.7",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.18",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.7",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-next",
+      "modelName": "qwen3-coder-next",
+      "displayName": "qwen3-coder-next",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-next",
+      "section": "Qwen-VL",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.3",
+          "output": "1.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.3",
+          "outputRaw": "$1.5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.3",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-480b-a35b-instruct",
+      "modelName": "qwen3-coder-480b-a35b-instruct",
+      "displayName": "qwen3-coder-480b-a35b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-480b-a35b-instruct",
+      "section": "Qwen-VL",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "1.5",
+          "output": "7.5",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.5",
+          "outputRaw": "$7.5",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.5",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "7.5",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen3-coder-30b-a3b-instruct",
+      "modelName": "qwen3-coder-30b-a3b-instruct",
+      "displayName": "qwen3-coder-30b-a3b-instruct",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen3-coder-30b-a3b-instruct",
+      "section": "Qwen-VL",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "0<Token≤32K",
+          "input": "0.45",
+          "output": "2.25",
+          "cache": null,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.45",
+          "outputRaw": "$2.25",
+          "cacheSource": "⚠",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.45",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "2.25",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-pro",
+      "modelName": "deepseek-v4-pro",
+      "displayName": "deepseek-v4-pro",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "deepseek-v4-pro context caching discount",
+      "section": "Text generation - third-party models",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "2.400",
+          "output": "4.800",
+          "cache": "0.2",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.400",
+          "outputRaw": "$4.800",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.400",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.2",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.800",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v4-flash",
+      "modelName": "deepseek-v4-flash",
+      "displayName": "deepseek-v4-flash",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "deepseek-v4-flash context caching discount",
+      "section": "Text generation - third-party models",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.200",
+          "output": "0.400",
+          "cache": "0.04",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.200",
+          "outputRaw": "$0.400",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.200",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.04",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.400",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "deepseek-v3.2",
+      "modelName": "deepseek-v3.2",
+      "displayName": "deepseek-v3.2",
+      "brand": "Qwen",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "deepseek-v3.2 context caching discount",
+      "section": "Text generation - third-party models",
+      "currency": "USD",
+      "supportsCache": true,
+      "supportsBatch": false,
+      "cachePolicy": "table_missing",
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.57",
+          "output": "1.71",
+          "cache": "0.114",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.57",
+          "outputRaw": "$1.71",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.57",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.114",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.71",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "kimi-k2.7-code",
+      "modelName": "kimi-k2.7-code",
+      "displayName": "kimi-k2.7-code",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "kimi-k2.7-code",
+      "section": "DeepSeek",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": null,
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.95",
+          "output": "4",
+          "cache": "0.19",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.95",
+          "outputRaw": "$4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.95",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.19",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.2",
+      "modelName": "glm-5.2",
+      "displayName": "glm-5.2",
+      "brand": "MiniMax",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "MiniMax",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "None",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "flat-rate pricing",
+          "input": "1.400",
+          "output": "4.400",
+          "cache": "0.28",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$1.400",
+          "outputRaw": "$4.400",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "1.400",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.28",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "4.400",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "glm-5.2-fast-preview",
+      "modelName": "glm-5.2-fast-preview",
+      "displayName": "glm-5.2-fast-preview",
+      "brand": "MiniMax",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "Non-Thinking and Thinking modes",
+      "section": "MiniMax",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "None",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "flat-rate pricing",
+          "input": "2.800",
+          "output": "8.800",
+          "cache": "0.56",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$2.800",
+          "outputRaw": "$8.800",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "2.800",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.56",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "8.800",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-character",
+      "modelName": "qwen-plus-character",
+      "displayName": "qwen-plus-character",
+      "brand": "Intent understanding",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-character Session Cache discount",
+      "section": "Intent understanding",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.5",
+          "output": "1.4",
+          "cache": "0.1",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.5",
+          "outputRaw": "$1.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.1",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-flash-character",
+      "modelName": "qwen-flash-character",
+      "displayName": "qwen-flash-character",
+      "brand": "Intent understanding",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-flash-character Session Cache discount",
+      "section": "Intent understanding",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.05",
+          "output": "0.4",
+          "cache": "0.01",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.05",
+          "outputRaw": "$0.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.05",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.01",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "0.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelId": "qwen-plus-character-ja",
+      "modelName": "qwen-plus-character-ja",
+      "displayName": "qwen-plus-character-ja",
+      "brand": "Intent understanding",
+      "modelType": "Text",
+      "status": "online",
+      "region": "International",
+      "mode": "qwen-plus-character-ja",
+      "section": "Intent understanding",
+      "currency": "USD",
+      "supportsCache": false,
+      "supportsBatch": false,
+      "cachePolicy": null,
+      "cacheRatio": null,
+      "cacheRatioLabel": null,
+      "equivalenceNote": null,
+      "freeQuota": "1 million tokens",
+      "tags": [],
+      "capability": null,
+      "description": null,
+      "inputOutputTypes": null,
+      "limits": null,
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "统一价",
+          "input": "0.5",
+          "output": "1.4",
+          "cache": "0.1",
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN",
+          "currency": "USD",
+          "inputRaw": "$0.5",
+          "outputRaw": "$1.4",
+          "cacheSource": "table",
+          "items": [
+            {
+              "name": "Input",
+              "displayName": "输入",
+              "price": "0.5",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Cache",
+              "displayName": "缓存命中（隐式）",
+              "price": "0.1",
+              "unit": "USD/百万tokens"
+            },
+            {
+              "name": "Output",
+              "displayName": "输出",
+              "price": "1.4",
+              "unit": "USD/百万tokens"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

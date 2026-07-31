@@ -1,0 +1,109 @@
+﻿结算时间,用户,模型系列,模型,模态,供应商,上游,用户花费(USD),平台成本(USD),毛利(USD),毛利率(%),输入成本(USD),输出成本(USD),缓存成本(USD),缓存写成本(USD),输入Token,输出Token,缓存Token,缓存写Token
+2026-07-29,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,0.3826377,0.450162,-0.0675243,-17.647058823529411765,0.414693,0.035469,0,0,276462,3941,0,0
+2026-07-29,chenchen.chen@hehemobi.com,,og-image2-low,image,腾讯云AIGC,openai,0.712,0.712,0,0,0,0,0,0,7,2,0,0
+2026-07-29,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,0.107,0.107,0,0,0,0,0,0,0,1,0,0
+2026-07-28,chenchen.chen@hehemobi.com,,hunyuan-3.0,image,腾讯云AIGC,tencent,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-28,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.916,1.916,0,0,0,0,0,0,9,10,0,0
+2026-07-28,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,1.64546097,1.92540765,-0.27994668,-17.013267716705550299,1.447689,0.345213,0.13250565,0,965126,38357,883371,0
+2026-07-28,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.02502749,0.02502372,0.00000377,0.015063436245504443,0.024206283486,0.000526768704,0.000290665728,0,157341,1712,94464,0
+2026-07-28,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.08486214,0.10591095,-0.02104881,-24.803534296919686447,0.04129125,0.0445365,0.0200832,0,55055,9897,267776,0
+2026-07-27,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.0408587,0.04023255,0.00062615,1.532476559459796812,0.03504073419,0.003579381036,0.001612446464,0,227765,11633,524032,0
+2026-07-27,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.35386948,0.3481785,0.00569098,1.608214418491247112,0.1559085,0.131598,0.060672,0,207878,29244,808960,0
+2026-07-27,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.877,1.877,0,0,0,0,0,0,7,11,0,0
+2026-07-27,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,0.36340319,0.42372345,-0.06032026,-16.598715052556363085,0.3565335,0.039159,0.02803095,0,237689,4351,186873,0
+2026-07-25,chenchen.chen@hehemobi.com,,hunyuan-3.0,image,腾讯云AIGC,tencent,0.154,0.154,0,0,0,0,0,0,0,5,0,0
+2026-07-25,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.49,1.49,0,0,0,0,0,0,8,12,0,0
+2026-07-25,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.01002548,0.01000455,0.00002093,0.208768058985704425,0.00726825,0.0020835,0.0006528,0,9691,463,8704,0
+2026-07-25,chenchen.chen@hehemobi.com,,si-5.0-lite,image,腾讯云AIGC,bytedance,0.0339,0.0339,0,0,0,0,0,0,0,1,0,0
+2026-07-25,chenchen.chen@hehemobi.com,,og-image2-high,image,腾讯云AIGC,openai,0.428,0.428,0,0,0,0,0,0,0,1,0,0
+2026-07-24,chenchen.chen@hehemobi.com,Gemini,gemini-3.1-pro-preview,text,腾讯云AIGC,google deepMind,0.3719447,0.437582,-0.0656373,-17.647058823529411765,0.427322,0.01026,0,0,213661,855,0,0
+2026-07-24,chenchen.chen@hehemobi.com,,og-image2-high,image,腾讯云AIGC,openai,0.211,0.211,0,0,0,0,0,0,0,1,0,0
+2026-07-24,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,2.998,2.998,0,0,0,0,0,0,15,14,0,0
+2026-07-24,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.01693337,0.01693337,0,0,0.016858290834,0.000075076848,0,0,109579,244,0,0
+2026-07-24,chenchen.chen@hehemobi.com,,gg-3.0,image,腾讯云AIGC,google deepMind,0.402,0.402,0,0,0,0,0,0,0,3,0,0
+2026-07-24,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.17754625,0.17682195,0.0007243,0.407950041186451418,0.10596225,0.0286965,0.0421632,0,141283,6377,562176,0
+2026-07-24,chenchen.chen@hehemobi.com,,og-image2-low,image,腾讯云AIGC,openai,0.51,0.51,0,0,0,0,0,0,0,85,0,0
+2026-07-24,chenximo73@gmail.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.0481755,0.0481755,0,0,0.0456105,0.002565,0,0,60814,570,0,0
+2026-07-24,zhongjunkejigs@qq.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.02380452,0.01586968,-0.01586968,-66.666666666666666667,0.015817061106,0.000052615332,0,0,102811,171,0,0
+2026-07-23,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.4897189,0.4897189,0,0,0.0962769162,0.021736,0.371705989056,0,89400,5434,1342272,0
+2026-07-23,chenchen.chen@hehemobi.com,,kling-2.1,image,腾讯云AIGC,kuaishou,0.0154,0.0154,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,si-5.0-lite,image,腾讯云AIGC,bytedance,0.0339,0.0339,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,Vidu,vidu-q2,image,腾讯云AIGC,shengshu technology,0.183,0.183,0,0,0,0,0,0,0,6,0,0
+2026-07-23,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.00898338,0.00898338,0,0,0.008883375732,0.0000999999,0,0,57742,325,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,si-4.5,image,腾讯云AIGC,bytedance,0.0385,0.0385,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,si-4.0,image,腾讯云AIGC,bytedance,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,Qwen,qwen-0925,image,腾讯云AIGC,tongyi,0.028875,0.0385,-0.009625,-33.333333333333333333,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.576,1.576,0,0,0,0,0,0,3,20,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,gg-2.5,image,腾讯云AIGC,google deepMind,0.051,0.051,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,gg-3.0,image,腾讯云AIGC,google deepMind,0.134,0.134,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,gg-3.1,image,腾讯云AIGC,google deepMind,0.101,0.101,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,og-image2-low,image,腾讯云AIGC,openai,1.834,1.834,0,0,0,0,0,0,16,38,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,og-image2-high,image,腾讯云AIGC,openai,0.428,0.428,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,mj-v7,image,腾讯云AIGC,midjourney,0.204,0.204,0,0,0,0,0,0,0,4,0,0
+2026-07-23,chenchen.chen@hehemobi.com,Kling,kling-o1,image,腾讯云AIGC,kuaishou,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,Kling,kling-3.0-omni,image,腾讯云AIGC,kuaishou,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,kling-3.0,image,腾讯云AIGC,kuaishou,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,jimeng-4.0,image,腾讯云AIGC,bytedance,0.0339,0.0339,0,0,0,0,0,0,0,1,0,0
+2026-07-23,chenchen.chen@hehemobi.com,,hunyuan-3.0,image,腾讯云AIGC,tencent,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-23,zhongjunkejigs@qq.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.03243713,0.02162475,-0.02162475,-66.666656390377323764,0.02157305535,0.000051692256,0,0,140225,168,0,0
+2026-07-22,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.84801202,0.84801202,0,0,0.308898616553,0.15525537809,0.38385801888,0,310067,41424,1476032,0
+2026-07-22,chenchen.chen@hehemobi.com,Gemini,gemini-3.1-pro-preview,text,腾讯云AIGC,google deepMind,0.39479032,0.4633522,-0.06856188,-17.366656811646242998,0.420666,0.0297,0.0129862,0,210333,2475,64931,0
+2026-07-22,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.00835815,0.00824235,0.0001158,1.385474058254518045,0.007994145852,0.000245845908,0.000002363136,0,51962,799,768,0
+2026-07-22,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,6.31079693,7.35622545,-1.04542852,-16.565713199077695565,5.558271,0.819684,0.97827045,0,3705514,91076,6521803,0
+2026-07-22,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.92179519,0.98148345,-0.05968826,-6.475219294646135005,0.71278425,0.071208,0.1974912,0,950379,15824,2633216,0
+2026-07-22,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,0.22244108,0.231453,-0.00901192,-4.051373963837974532,0.214635,0.01509,0.001728,0,42927,503,3456,0
+2026-07-22,chenchen.chen@hehemobi.com,,og-image2-high,image,腾讯云AIGC,openai,1.056,1.056,0,0,0,0,0,0,2,2,0,0
+2026-07-22,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.656,1.656,0,0,0,0,0,0,8,8,0,0
+2026-07-21,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.85213145,0.9838389,-0.13170745,-15.456236241485982004,0.6090525,0.108828,0.2659584,0,812070,24184,3546112,0
+2026-07-21,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,1.44715617,1.6859262,-0.23877003,-16.499257989550637095,0.9433575,0.387846,0.3547227,0,628905,43094,2364818,0
+2026-07-21,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.863,1.863,0,0,0,0,0,0,9,9,0,0
+2026-07-21,chenchen.chen@hehemobi.com,GPT,gpt-5.4,text,腾讯云AIGC,openai,0.668008,0.7846385,-0.1166305,-17.459446593453970611,0.6396075,0.023175,0.121856,0,255843,1545,487424,0
+2026-07-21,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.02829566,0.02773554,0.00056012,1.97952618882189,0.016005060918,0.004787995212,0.006942499712,0,104033,15561,2256256,0
+2026-07-21,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,0.112442,0.11836,-0.005918,-5.263157894736842105,0.11176,0.0066,0,0,22352,220,0,0
+2026-07-20,chenchen.chen@hehemobi.com,,kling-3.0,image,腾讯云AIGC,kuaishou,0.0616,0.0616,0,0,0,0,0,0,0,2,0,0
+2026-07-20,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,1.762,1.762,0,0,0,0,0,0,8,10,0,0
+2026-07-20,chenchen.chen@hehemobi.com,GPT,gpt-5.2,text,腾讯云AIGC,openai,0.87626665,0.8756398,0.00062685,0.071536443843891583,0.728357,0.038038,0.1092448,0,416204,2717,624256,0
+2026-07-18,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.24518906,0.32618565,-0.08099659,-33.034340928587923132,0.26498475,0.0497385,0.0114624,0,353313,11053,152832,0
+2026-07-17,arch.wu@hehemobi.com,OS,os-2,video,腾讯云AIGC,openai,0.4,0.4,0,0,0,0,0,0,0,4,0,0
+2026-07-17,chenchen.chen@hehemobi.com,GPT,gpt-5.4,text,腾讯云AIGC,openai,8.61788784,11.476918,-2.85903016,-33.175532254316273394,10.1344,0.27471,1.067808,0,4053760,18314,4271232,0
+2026-07-17,chenchen.chen@hehemobi.com,GPT,gpt-5.2,text,腾讯云AIGC,openai,0.8699196,0.86893205,0.00098755,0.113521985250131162,0.54680325,0.060116,0.2620128,0,312459,4294,1497216,0
+2026-07-17,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.13648418,0.13625441,0.00022977,0.16834918156814951,0.133410020436,0.002405228364,0.00043914944,0,452916,7179,142720,0
+2026-07-17,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,1.56089357,1.8303405,-0.26944693,-17.262351205662279716,1.446849,0.123993,0.2594985,0,964566,13777,1729990,0
+2026-07-17,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,21.93905095,23.084284,-1.14523305,-5.220066504289694446,21.34003,0.84915,0.895104,0,4268006,28305,1790208,0
+2026-07-17,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,1.86199559,2.47256085,-0.61056526,-32.790907952687471188,1.32984525,0.384354,0.7583616,0,1773127,85412,10111488,0
+2026-07-17,xiaolei.ren@trinitydesk.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,1.219851,1.219851,0,0,0.81231,0.067437,0.340104,0,541540,7493,2267360,0
+2026-07-17,zhongjunkejigs@qq.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.21579671,0.14386447,-0.14386447,-66.666665122003018489,0.141924781152,0.001939690368,0,0,461256,3152,0,0
+2026-07-16,chenchen.chen@hehemobi.com,,og-image2-low,image,腾讯云AIGC,openai,0.012,0.012,0,0,0,0,0,0,0,1,0,0
+2026-07-16,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.07847586,0.10446975,-0.02599389,-33.123421648389708631,0.06885675,0.009117,0.026496,0,91809,2026,353280,0
+2026-07-16,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,16.0296158,16.871898,-0.8422822,-5.254537666461101332,16.4956,0.31185,0.064448,0,2422605,10395,128896,0
+2026-07-16,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,0.688,0.688,0,0,0,0,0,0,1,6,0,0
+2026-07-16,xiaolei.ren@trinitydesk.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,2.338281,2.338281,0,0,1.368762,0.443439,0.52608,0,912508,49271,3507200,0
+2026-07-15,chenchen.chen@hehemobi.com,,og-image2-medium,image,腾讯云AIGC,openai,0.367,0.367,0,0,0,0,0,0,1,3,0,0
+2026-07-15,chenchen.chen@hehemobi.com,GPT,gpt-5.1-chat,text,腾讯云AIGC,openai,0.14233375,0.14233375,0,0,0.11870375,0.02363,0,0,94963,2363,0,0
+2026-07-14,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.04197301,0.04197301,0,0,0.017934620765,0.02241968976,0.00161870432,0,23315,6624,8768,0
+2026-07-14,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,0.55258175,0.581665,-0.02908325,-5.263157894736842105,0.557275,0.02439,0,0,111455,813,0,0
+2026-07-13,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,9.4259152,9.096689,0.3292262,3.492777019678683296,6.4055,0.857205,1.833984,0,945415,21513,1833984,0
+2026-07-10,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.0954131,0.0954131,0,0,0.071882456404,0.00322,0.020310640512,0,66748,805,73344,0
+2026-07-10,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google deepMind,0.20194806,0.23047005,-0.02852199,-14.123428568712172823,0.168633,0.046044,0.01579305,0,112422,5116,105287,0
+2026-07-10,chenchen.chen@hehemobi.com,GLM,glm-5,text,腾讯云AIGC,zhipu,0.04154031,0.04154031,0,0,0.041327080367,0.000213230745,0,0,44771,63,0,0
+2026-07-10,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.06210917,0.06927945,-0.00717028,-11.544639865578625507,0.02151225,0.039348,0.0084192,0,28683,8744,112256,0
+2026-07-10,chenchen.chen@hehemobi.com,GPT,gpt-5.5,text,腾讯云AIGC,openai,0.70407446,0.735137,-0.03106254,-4.411825987836570581,0.690355,0.03147,0.013312,0,138071,1049,26624,0
+2026-07-09,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.45794447,0.45794447,0,0,0.067614456714,0.037942153845,0.352387840576,0,62790,9486,1272512,0
+2026-07-09,chenchen.chen@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.000008,0.000008,0,0,0.000004615386,0.000003384615,0,0,6,1,0,0
+2026-07-08,chenchen.chen@hehemobi.com,,hunyuan-3.0,image,腾讯云AIGC,tencent,0.0308,0.0308,0,0,0,0,0,0,0,1,0,0
+2026-07-08,chenchen.chen@hehemobi.com,,og-image2-low,image,腾讯云AIGC,openai,0.006,0.006,0,0,0,0,0,0,0,1,0,0
+2026-07-08,dong.li@admoboost.com,GPT,gpt-5.2,text,腾讯云AIGC,openai,1.5123941,1.5123941,0,0,0.5054105,0.49371,0.5132736,0,288806,35265,2932992,0
+2026-07-06,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-pro,text,腾讯云AIGC,deepseek,0.13952802,0.13622073,0.00330729,2.370341097078565295,0.134638480746,0.001026461624,0.000555793152,0,291717,1112,144512,0
+2026-07-06,chenchen.chen@hehemobi.com,GPT,gpt-5.4-mini,text,腾讯云AIGC,openai,0.27939327,0.30248835,-0.02309508,-8.266154728780689671,0.20169375,0.042561,0.0582336,0,268925,9458,776448,0
+2026-07-06,trinityai-admin@trinityai.com,GPT,gpt-5-nano,text,腾讯云AIGC,openai,0.0022855,0.0022855,0,0,0.0002423,0.0020432,0,0,4846,5108,0,0
+2026-07-04,dong.li@admoboost.com,GPT,gpt-5.2,text,腾讯云AIGC,openai,1.82308805,1.82308805,0,0,0.24424925,0.498666,1.0801728,0,139571,35619,6172416,0
+2026-07-03,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-pro,text,腾讯云AIGC,deepseek,0.44998346,0.4500425,-0.00005904,-0.013120482250614278,0.438341561658,0.007725231413,0.003975717888,0,949741,8369,1033728,0
+2026-07-03,chenchen.chen@hehemobi.com,GPT,gpt-5.4,text,腾讯云AIGC,openai,0.07233075,0.085095,-0.01276425,-17.647058823529411765,0.062265,0.02283,0,0,24906,1522,0,0
+2026-07-03,chenchen.chen@hehemobi.com,DeepSeek,deepseek-v4-flash,text,腾讯云AIGC,deepseek,0.40635975,0.4007617,0.00559805,1.377609371991197455,0.268076193462,0.0379922697,0.094693222656,0,1742497,123475,30774528,0
+2026-07-03,dong.li@admoboost.com,GPT,gpt-5.2,text,腾讯云AIGC,openai,1.99527055,1.99527055,0,0,0.67860975,0.50484,0.8118208,0,387777,36060,4638976,0
+2026-07-03,trinityai-admin@trinityai.com,,jimeng-4.0,image,腾讯云AIGC,bytedance,0.0339,0.0339,0,0,0,0,0,0,0,1,0,0
+2026-07-02,chenximo73@gmail.com,,mj-v7,image,腾讯云AIGC,midjourney,0.1848,0.1848,0,0,0,0,0,0,0,4,0,0
+2026-07-01,arch.wu@hehemobi.com,GLM,glm-5-turbo,text,腾讯云AIGC,zhipu,0.03616359,0.03616359,0,0,0.009355230101,0.022608,0.004200368064,0,8687,5652,15168,0
+2026-07-01,chenchen.chen@hehemobi.com,Gemini,gemini-3.5-flash,text,腾讯云AIGC,google,0.15697271,0.15697271,0,0,0.1114365,0.029241,0.01629519955,0,74291,3249,94150,0
+2026-07-01,kangkai.xu@hehemobi.com,GPT,gpt-5.4,text,腾讯云AIGC,openai,0.3892925,0.3892925,0,0,0.3840425,0.00525,0,0,153617,350,0,0
+合计（当前筛选全集）,,,,,,,114.67490221,122.38162841,-7.97876456,-6.957700,,,,

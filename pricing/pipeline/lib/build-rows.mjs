@@ -203,9 +203,11 @@ export function buildSupplierTextCatalogRows(
     formatDisplayName = (m) =>
       m.displayName || m.modelName || m.modelId || "—",
     brandDefault = "—",
+    currency = "CNY",
+    headerSup = {},
   } = opts;
-  const header = buildSupplierTableHeader({});
-  const currency = "CNY";
+  const header = buildSupplierTableHeader(headerSup);
+  const cur = currency === "USD" ? "USD" : "CNY";
 
   const rows = [];
   let rowNum = 0;
@@ -236,7 +238,7 @@ export function buildSupplierTextCatalogRows(
             tierKey: t.tierKey,
           },
           supplierPrices,
-          currency,
+          cur,
           officialCtx,
           tierMeta,
         );
@@ -258,7 +260,7 @@ export function buildSupplierTextCatalogRows(
             tierKey: t.tierKey,
           },
           supplierPrices,
-          currency,
+          cur,
           officialCtx,
           tierMeta,
         ),
@@ -290,6 +292,20 @@ export function buildBailianTextCatalogRows(
   return buildSupplierTextCatalogRows(blModels, officialCtx, {
     resolveTrinityId,
     brandDefault: "百炼",
+  });
+}
+
+/** 百炼国际站 International 生文全量（USD） */
+export function buildBailianIntlTextCatalogRows(
+  blIntlModels,
+  officialCtx = {},
+  resolveTrinityId = () => "",
+) {
+  return buildSupplierTextCatalogRows(blIntlModels, officialCtx, {
+    resolveTrinityId,
+    brandDefault: "百炼国际",
+    currency: "USD",
+    headerSup: { key: "bailian-intl" },
   });
 }
 
