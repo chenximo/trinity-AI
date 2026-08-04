@@ -31,6 +31,9 @@ dist/
 # Local image exports (Cursor / design drafts; not repo assets)
 generated-images/
 
+# Markdown → Word/PDF 本地导出产物
+marketing/export/
+
 # Archives (local backups; avoid bloating the repo)
 *.zip
 

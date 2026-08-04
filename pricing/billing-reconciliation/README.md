@@ -4,7 +4,8 @@
 
 > **Skill**：[`.cursor/skills/trinity-billing-reconciliation/`](../../.cursor/skills/trinity-billing-reconciliation/SKILL.md)  
 > **流程**：平台导出（成本+Token）→ 人拉上游账单 → Skill 出报告 → **人确认后**回填后台实付。  
-> **与价目区分**：`suppliers/` 管挂牌价；本目录管实际账单。
+> **与价目区分**：`suppliers/` 管挂牌价；本目录管实际账单。  
+> **全链路总览**：[../docs/账单与定价体系总览.md](../docs/账单与定价体系总览.md)（含 §5.5 后台占比统计与同上游环比风控 TODO）
 
 ```
 billing-reconciliation/

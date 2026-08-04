@@ -6,7 +6,7 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 
 > **文档类型**：商用计费 · **操作流程**（后续每新增一个上游成本折，按本文走）。  
 > **读者**：产品、商务、运营（维护 Excel / 文档站）。  
-> **产出**：[商务洽谈折扣总表.xlsx](./商务洽谈折扣总表.xlsx)  
+> **产出**：[商务洽谈折扣总表.xlsx](../../../../../pricing/output/商务洽谈折扣总表.xlsx)（`pricing/output/`）  
 > **折数真源**：[定价策略与证据链](./pricing-strategy-evidence-chain)（改折先改证据链）  
 > **表结构说明**：[商务洽谈折扣总表（MD）](./discount-tier-matrix)  
 > **脚本**：[`scripts/rebuild_discount_tier_workbook.py`](./scripts/rebuild_discount_tier_workbook.py)  
@@ -89,7 +89,7 @@ cd trinity-AI/apps/trinity-product/docs/ai-api-platform/commercial-billing
 python3 scripts/rebuild_discount_tier_workbook.py
 ```
 
-默认写出同目录 `商务洽谈折扣总表.xlsx`。
+默认写出仓库根下 `pricing/output/商务洽谈折扣总表.xlsx`。
 
 ### Step E · 抽查清单
 

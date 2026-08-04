@@ -7,7 +7,7 @@ title: 商务洽谈折扣总表（成本族 · 梯度 · 模型清单）
 > **文档类型**：商用计费 · **商务洽谈专用**总表（推模型 / 客户点名查折）。  
 > **读者**：销售、商务、产品、财务（内部）；可导出 Excel 给销售。  
 > **关联**：[定价策略与证据链](./pricing-strategy-evidence-chain)（折数测算真源） · [回灌 SOP](./discount-tier-workbook-sop) · [供应商成本折](../pricing-sources/supplier-cost-discounts) · [折扣差价专文](./discount-spread-tier-pricing)  
-> **导出 Excel**：[商务洽谈折扣总表.xlsx](./商务洽谈折扣总表.xlsx)（`01_商务洽谈总表` · `02_交叉模型` · `src_*`）  
+> **导出 Excel**：[商务洽谈折扣总表.xlsx](../../../../../pricing/output/商务洽谈折扣总表.xlsx)（路径：`pricing/output/` · `01_商务洽谈总表` · `02_交叉模型` · `src_*`）  
 > **新增成本折**：一律按 [回灌 SOP](./discount-tier-workbook-sop) + 跑 `scripts/rebuild_discount_tier_workbook.py`  
 > **状态**：**草案 v0.5** — 档名 **Standard → Plus → Mid → Growth → Scale → Enterprise**（见证据链 [§3.0](./pricing-strategy-evidence-chain#tier-naming)）  
 > **日期**：2026-07-16  
@@ -131,7 +131,7 @@ title: 商务洽谈折扣总表（成本族 · 梯度 · 模型清单）
 
 ## 5. Excel 内容说明
 
-文件：[商务洽谈折扣总表.xlsx](./商务洽谈折扣总表.xlsx)
+文件：[商务洽谈折扣总表.xlsx](../../../../../pricing/output/商务洽谈折扣总表.xlsx)（`pricing/output/`）
 
 | Sheet | 内容 |
 |-------|------|

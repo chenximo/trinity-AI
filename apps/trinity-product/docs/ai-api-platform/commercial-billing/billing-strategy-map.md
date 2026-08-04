@@ -139,7 +139,8 @@ commercial-billing/                          ← 产品线商用计费根
 ├── 03 成本族与商务卡（Cost × Sales）
 │   ├── discount-tier-matrix.md              ← 洽谈总表说明
 │   ├── discount-tier-workbook-sop.md        ← Excel 回灌流程
-│   ├── 商务洽谈折扣总表.xlsx                 ← 销售操作真源
+│   ├── （Excel 已迁）pricing/output/商务洽谈折扣总表.xlsx  ← 销售操作真源
+│   ├── discount-tier-matrix.md / discount-tier-workbook-sop.md
 │   └── scripts/rebuild_…py                 ← 一键重生成
 │
 ├── 04 包装与获客（Packaging）

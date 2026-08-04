@@ -7,7 +7,7 @@ title: 对外营销策略 · 场景 Playlist + 浅公开价（草案）
 > **文档类型**：商用计费 · **对外营销层**方案（场景精选 + 浅公开价）。  
 > **读者**：产品、运营、增长、商务（了解与深卡边界）。  
 > **主推荐架构**：**场景 Playlist + 浅公开价 + 深商务卡**。  
-> **关联**：[计费策略目录树](./billing-strategy-map) · [**官网 Pricing 营销总册**](./pricing-marketing-strategy) · [商务洽谈折扣总表](./discount-tier-matrix) · [证据链](./pricing-strategy-evidence-chain) · [交叉模型 Excel `02`](./商务洽谈折扣总表.xlsx) · [新人试用](./new-user-trial-scheme) · [回灌 SOP](./discount-tier-workbook-sop)  
+> **关联**：[计费策略目录树](./billing-strategy-map) · [**官网 Pricing 营销总册**](./pricing-marketing-strategy) · [商务洽谈折扣总表](./discount-tier-matrix) · [证据链](./pricing-strategy-evidence-chain) · [交叉模型 Excel `02`](../../../../../pricing/output/商务洽谈折扣总表.xlsx) · [新人试用](./new-user-trial-scheme) · [回灌 SOP](./discount-tier-workbook-sop)  
 > **状态**：**草案 v0.1 · 先讨论落地形态**  
 > **日期**：2026-07-16
 

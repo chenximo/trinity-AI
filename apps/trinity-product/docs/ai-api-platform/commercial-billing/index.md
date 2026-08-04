@@ -12,6 +12,7 @@ title: 商用计费与充值
 
 ::: tip 从哪读起
 - **选型 / 目录树 / 通用流程** → **[billing-strategy-map](./billing-strategy-map)**（业界几类、我们走哪种、缺什么）  
+- **价·结算·成本·对账全链路** → 工程仓 [`pricing/docs/账单与定价体系总览.md`](../../../../../pricing/docs/账单与定价体系总览.md)  
 - **官网 Pricing 营销** → **[pricing-marketing-strategy](./pricing-marketing-strategy)**（页面 IA · 爆款三席 · 新老客）  
 - **销售对外物料 / PM 交什么** → **[sales-kit](./sales-kit)**（七件套 · 缺口 · PM 重点）  
 - **本页** → 合规前提 · 结算主路径 · 计量口径 · 6.30 卖什么  
@@ -45,8 +46,8 @@ commercial-billing/
 ├── # 03 成本族与商务卡
 ├── discount-tier-matrix.md              ← 洽谈总表说明
 ├── discount-tier-workbook-sop.md        ← Excel 回灌 SOP
-├── scripts/rebuild_discount_tier_workbook.py
-├── 商务洽谈折扣总表.xlsx
+├── scripts/rebuild_discount_tier_workbook.py  → 写出 pricing/output/商务洽谈折扣总表.xlsx
+├── （Excel 已迁至）../../../../../pricing/output/商务洽谈折扣总表.xlsx
 │
 ├── # 04 包装与获客
 ├── pricing-marketing-strategy.md        ← 【营销总册】Pricing IA · 爆款 · 新老客
@@ -309,7 +310,7 @@ usage_event 记录 token/张/秒 + 展示价 + 上游成本（运营可见）
 | Step2 样本验证 | [定价验证表 v1](./pricing-validation-v1) |
 | 企业户门槛 ↔ 折 · 单户月利测算 | [用量门槛费率卡 v1](./pricing-tier-threshold-card-v1) |
 | **定价底层逻辑 · 策略与证据链** | **[定价策略与证据链](./pricing-strategy-evidence-chain)** |
-| **商务洽谈折扣总表 · 模型清单** | **[商务洽谈折扣总表](./discount-tier-matrix)** · [Excel](./商务洽谈折扣总表.xlsx) · [回灌 SOP](./discount-tier-workbook-sop) |
+| **商务洽谈折扣总表 · 模型清单** | **[商务洽谈折扣总表](./discount-tier-matrix)** · [Excel](../../../../../pricing/output/商务洽谈折扣总表.xlsx)（`pricing/output/`） · [回灌 SOP](./discount-tier-workbook-sop) |
 | **官网 Pricing · 营销总册** | **[pricing-marketing-strategy](./pricing-marketing-strategy)** |
 | **销售套件 · 七件套 · PM 交付** | **[sales-kit](./sales-kit)** |
 | **销售宣讲 Deck 大纲** | **[sales-deck-outline](./sales-deck-outline)** |

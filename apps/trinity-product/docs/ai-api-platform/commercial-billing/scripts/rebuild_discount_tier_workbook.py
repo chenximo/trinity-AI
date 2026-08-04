@@ -20,7 +20,13 @@ from openpyxl.utils import get_column_letter
 # ---------------------------------------------------------------------------
 
 DOWNLOADS = Path.home() / "Downloads"
-OUT = Path(__file__).resolve().parent.parent / "商务洽谈折扣总表.xlsx"
+# 产出落在 pricing/output（与对外报价等 Excel 同目录）
+OUT = (
+    Path(__file__).resolve().parents[6]
+    / "pricing"
+    / "output"
+    / "商务洽谈折扣总表.xlsx"
+)
 
 # (export path, 折扣列原文, d_cost key, src sheet name)
 SOURCES: list[tuple[Path, str, str, str]] = [
