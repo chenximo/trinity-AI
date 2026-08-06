@@ -12,6 +12,7 @@ title: 商用计费与充值
 
 ::: tip 从哪读起
 - **选型 / 目录树 / 通用流程** → **[billing-strategy-map](./billing-strategy-map)**（业界几类、我们走哪种、缺什么）  
+- **定价方案 v0（三件套 · 广场 · 对外报表）** → 工程仓 [`pricing/docs/定价方案-v0-三件套与广场.md`](../../../../../pricing/docs/定价方案-v0-三件套与广场.md)  
 - **价·结算·成本·对账全链路** → 工程仓 [`pricing/docs/账单与定价体系总览.md`](../../../../../pricing/docs/账单与定价体系总览.md)  
 - **官网 Pricing 营销** → **[pricing-marketing-strategy](./pricing-marketing-strategy)**（页面 IA · 爆款三席 · 新老客）  
 - **销售对外物料 / PM 交什么** → **[sales-kit](./sales-kit)**（七件套 · 缺口 · PM 重点）  
@@ -38,6 +39,7 @@ commercial-billing/
 │
 ├── # 02 定价策略
 ├── pricing-strategy-evidence-chain.md   ← 【数字真源】门槛·折·GM
+├── （工程仓）pricing/docs/定价方案-v0-三件套与广场.md  ← 三件套·广场分组·L3a 报表
 ├── discount-spread-tier-pricing.md      ← 方法论（差价·量价；数字以证据链为准）
 ├── pricing-scenarios-scheme.md          ← 自助 · 点名包方案卡
 ├── pricing-validation-v1.md             ← Step2 样本验证

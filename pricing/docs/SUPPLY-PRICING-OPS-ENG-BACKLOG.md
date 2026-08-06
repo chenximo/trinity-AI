@@ -24,7 +24,7 @@
 | ① 刊例治理 | **P0 必做**（价审 Job、确认写价、价格校验字段、上架门禁） |
 | ① 刊例治理 | P1：上游链接、抓价 Job、告警；**价目预览 Excel 自动同步（C-01）按预览页需要做** |
 | ② 账单核对 | P1 起（月度平台行 + 报告归档；实付仍人手填） |
-| ③ 销售定价 | P2（商务 Excel 版本管理；策略仍走商用计费） |
+| ③ 销售定价 | P2（商务价格：线路 snapshot → Job 出 L3b/L3a → draft+归档；公开矩阵方案 A；**不写** `/v1/prices`） |
 
 ### 1.2 明确不做
 
@@ -39,7 +39,7 @@
 |------|----------|----------|
 | 价目预览 | Excel 本地上传预览（原型） | **C-01 Skill 产物自动进预览**；C-02 链接；C-03 抓价可选 |
 | 价格校验 | 触发（模态+场景）、确认单、历史删 | 价审 CRUD + Job + 写价 |
-| 商务价格 | 总表/交叉/按模型查 | 版本库（P2） |
+| 商务价格 | 总表/交叉/按模型查（本地 Excel） | **S-01～S-04**：API 生成 + 矩阵钉住 + 归档 |
 
 ---
 
@@ -60,7 +60,10 @@
 | R-05 | **P1 可选** | **价格校验** | `/pricing/review` | 驳回（原因态） | 明确「本次不跟价」；MVP 可用删除代替 | 新 Admin API（可后做） |
 | A-01 | P1 | **价格校验**（告警子区/同导航） | `/pricing/review` 建议同模块 | 告警列表 | 钉钉告警进控制台待办 | 读 API/告警表 |
 | R-06 | P2 | **价格校验**（自动入队） | `/pricing/review` | 半自动入队 | 少漏触发；写价仍要人确认 | 领域事件→入队 |
-| S-01 | P2 | **商务价格** | `/pricing/commercial` | 商务表版本 | 谈价 Excel 版本管理 | 文件版本 |
+| S-01 | P2 | **商务价格** | `/pricing/commercial` | 线路 snapshot | 替代人工导出；供 L3b Job | Admin 读 API |
+| S-02 | P2 | **商务价格** | `/pricing/commercial` | 生成 L3b/L3a draft | 触发 Job；latest draft | API + Worker（调现有 Python） |
+| S-03 | P2 | **商务价格** | `/pricing/commercial` | 公开矩阵 + 快照 | 方案 A：生成钉矩阵；改矩阵确认后重生 | 配置 + API |
+| S-04 | P2 | **商务价格** | `/pricing/commercial` | 人工归档 | draft→归档标签；可查看/对比 | 存储 + API |
 | M-01 | **P0** | **模型管理 · 模型列表**（上架） | 模型列表上架操作 | 价格校验字段 + 上架门禁 | 没审过不准上架 | 模型字段 + 现有上架加条件 |
 | B-01 | P1 | **月度对账** | `/billing/monthly-reconciliation` | 月度平台对账数 | 平台成本/Token | 账单域 API |
 | B-02 | P1 | **月度对账** | `/billing/monthly-reconciliation` | 对账报告归档 | 存报告；实付仍手填 | 存储 + 读接口 |
@@ -95,7 +98,10 @@
 
 | ID | 作用 | 交付物 |
 |----|------|--------|
-| S-01 | 商务折扣表版本管理（P2） | 文件版本 |
+| S-01 | 线路 snapshot（替代人工导出） | Admin 读 API |
+| S-02 | 触发生成 L3b / L3a → latest draft | API + Job（调现有脚本） |
+| S-03 | 公开矩阵生效配置；产物钉住本次快照；改矩阵须确认 | 配置 + API |
+| S-04 | 人工归档（标签 · 日期）；归档只读；可对比 | 存储 + API |
 
 #### D. **模型管理 · 模型列表**（上架）
 
@@ -123,8 +129,8 @@
 | **价目预览链接** | C-02 | **产品已倾向不做后台 CRUD**；公开 URL 写仓库/前端默认；点开跳转即可 |
 | **Job（价目预览可选）** | C-03 | 上游抓价；可后做 |
 | **账单柱** | B-01、B-02 | **月度对账** |
-| **P2** | S-01 | **商务价格** |
-| **已有、不要重造** | pricing CLI、手改计量价、`/v1/prices` | Job 与 R-04 复用 |
+| **P2** | S-01～S-04 | **商务价格** |
+| **已有、不要重造** | pricing CLI、手改计量价、`/v1/prices`、L3b/L3a Python | Job 与 R-04 / S-02 复用 |
 
 ### 2.2 一次价审里各 ID 怎么串起来
 
@@ -139,6 +145,29 @@
        （P1 可选：R-05 驳回并记原因）
 【模型列表】以后点上架 → 读 M-01：未校验则拦截
 ```
+
+### 2.3 一次商务价格生成怎么串起来（产品设计见 DESIGN §6.4）
+
+```text
+【商务价格页】运营点「生成」
+    → S-01 拉线路 snapshot（Worker 内调；页上可不直连）
+    → S-02 Job：rebuild → L3b draft；条件满足再 build_outward → L3a draft
+         + S-03 钉住「本次公开矩阵」快照（折 · GM）展示在页上
+    → 主区 GET latest draft（覆盖写；不自动进归档）
+
+【改矩阵 · 方案 A】
+    → 编辑公开矩阵 → S-03「确认矩阵」写入生效配置
+    → 再点生成 L3a（或确认后自动重生）
+
+【新成本族】
+    → S-02 阻断或标「定折审」→ 人确认对内阶梯（可 AI 参考）写入配置 → 再生成
+
+【归档】
+    → S-04 当前 draft 打标签（v1.0 · 日期）；L3b+L3a+矩阵快照同包
+    → 归档只读；列表可查看 / 对比；主区仍默认 latest draft
+```
+
+**瘦接口建议（P2 MVP）**：`GET supply-routes/snapshot` · `POST commercial/build` · `GET commercial/latest` · `POST commercial/matrix/confirm` · `POST commercial/archive` · `GET commercial/archives`。
 
 ---
 
@@ -411,11 +440,66 @@ Body：`{ "reason": "..." }` → `status=rejected`
 
 ## 5. P2 详细需求
 
+> **产品真源**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](./SUPPLY-PRICING-OPS-DESIGN.md)（商务价格控制台流程已拍）
+
+### S-01 线路 snapshot
+
+**所属页面**：商务价格（Worker 消费；页上可选调试预览）
+
+**作用**：用后台已录入的线路（成本折、启停、模型、优先级/权重等）替代人工「线路管理导出 Excel」。
+
+`GET /api/v1/admin/pricing/supply-routes/snapshot?modality=&enabled=`
+
+字段对齐现导出「线路管理」列，供 `rebuild_discount_tier_workbook.py`（改造为读 JSON / stdin，勿硬编码 Downloads）。
+
+### S-02 生成 L3b / L3a draft
+
+**所属页面**：商务价格
+
+**作用**：一键刷新 **latest draft**；算法复用仓库 Python，Admin 不重写 Excel 逻辑。
+
+| 产物 | 脚本（现有） | 输入 |
+|------|--------------|------|
+| L3b | `.../rebuild_discount_tier_workbook.py` | S-01 + 成本族对内阶梯配置 |
+| L3a | `pricing/scripts/build_outward_quote_standard.py` | L3b draft + L2 刊例（C-01/价审产物）+ 当前公开矩阵 |
+
+`POST …/commercial/build`（`targets: l3b | l3a | both`）→ `GET …/commercial/latest`（含 status）。
+
+- 成本族已在配置：全自动出 L3b。  
+- 公开矩阵齐全：可自动出 L3a。  
+- **无价审确认单、无删历史、不写 `/v1/prices`**。
+
+### S-03 公开矩阵 · 方案 A
+
+**所属页面**：商务价格 · 对外报价区
+
+**作用**：
+
+1. 每次 L3a draft **钉住**本次所用矩阵（成本族/特例 × Plus～Enterprise：**折 · GM**），页上只读展示。  
+2. **当前生效矩阵**可编辑；与「本次」不一致时提示「请重新生成」。  
+3. **改矩阵须「确认矩阵」**写入生效配置后再生成（**不**强制每次生成前确认）。  
+
+配置建议抽离脚本常量为 `pricing/config/public-ladder-matrix.json`（或等价）；与 [定价方案-v0 §6.0](./定价方案-v0-三件套与广场.md) 对齐。
+
+新成本族：对内阶梯缺 → 定折审（可 AI 参考 + 人确认）；是否进对外矩阵为产品策略（可只对内）。
+
+### S-04 人工归档
+
+**所属页面**：商务价格
+
+**作用**：draft 可反复覆盖；**仅**人点归档才保留版本。
+
+- 标签：`v1.0` + 日期 + 可选备注  
+- 同包：L3b + L3a（internal/external）+ 矩阵快照  
+- 归档只读；`GET archives` / `compare`（对比可 P2 后半）  
+- 再生成只更新 draft，不覆盖已归档
+
+### 其它 P2
+
 | ID | **所属页面** | 作用 | 说明 |
 |----|--------------|------|------|
-| S-01 | **商务价格** `/pricing/commercial` | 商务谈价表进系统 | 折扣总表上传/版本；总表+交叉+按模型索引服务端化 |
 | R-06 | **价格校验** | 少漏触发 | 下架+未校验且线路就绪 → 可选自动入队（仍要人确认写回） |
-| — | 跨页 | 刊例↔销售折联动 | 刊例变更触发销售折 GM 检查（另开） |
+| — | 跨页 | 刊例↔销售折联动 | 价审写 L2 后提醒重跑 L3a / GM 检查 |
 
 ---
 
@@ -441,7 +525,8 @@ Body：`{ "reason": "..." }` → `status=rejected`
 | `GET /v1/prices` | 写后投影一致 |
 | `trinity-official-pricing` CLI | **仅** Job Worker 调用；Admin 不直连 npm |
 | 钉钉 webhook | A-01 入库或只读镜像 |
-| 商用计费 / 商务 Excel | 柱③；P0 不堵 |
+| 商用计费 / 商务 Excel | 柱③；运行时扣费仍商用计费域；L3b/L3a 生成走 S-*，**不写** `/v1/prices` |
+| L3b / L3a Python | **仅** S-02 Worker 调用；改造输入为 snapshot/JSON，勿重写算法 |
 
 ---
 
@@ -459,9 +544,15 @@ Sprint B（P0 闭环）
 
 Sprint C（P1）
   C-01/C-02、A-01；R-05 驳回（可选）；B-01 视账单优先级
+
+Sprint D（P2 · 商务价格）
+  S-01 snapshot → S-02 Job 出 L3b/L3a draft
+  S-03 矩阵钉住 + 确认；S-04 归档
+  Admin `/pricing/commercial` 换真 API
 ```
 
-**最小可上线（MVP）**：M-01 + R-01（支持上传包或单模态 Job）+ R-03（含删除）+ R-04 + Admin 换 Mock。**不含** R-05 驳回。
+**最小可上线（MVP）**：M-01 + R-01（支持上传包或单模态 Job）+ R-03（含删除）+ R-04 + Admin 换 Mock。**不含** R-05 驳回。  
+**商务价格最小闭环**：S-01 + S-02（latest only）+ S-03（钉矩阵）+ S-04（归档）；对比可后做。
 
 ---
 
@@ -476,6 +567,8 @@ Sprint C（P1）
 - [ ] 历史可查可删  
 - [ ] Job 失败有可读原因、不写库  
 - [ ] （P1）上游链接手填持久化；Excel 可下载  
+- [ ] （P2）商务：snapshot 生成 L3b；生成 L3a 并展示本次矩阵折·GM  
+- [ ] （P2）改矩阵须确认后重生；归档含 L3b+L3a+矩阵；主区仍为 latest draft  
 
 ---
 
@@ -512,3 +605,4 @@ Sprint C（P1）
 | 2026-07-31 | **C-01 明确为价目预览必做**：Skill xlsx 经接口自动同步，非仅手传 |
 | 2026-07-31 | **C-02 建议不做后台 CRUD**；链接=人点开 / Skill 用仓库配置；AIGC 继续 `suppliers/aigc` |
 | 2026-08-03 | **B-03** 结构占比统计（P1）、**B-04** 同上游环比阈值告警（P2）；对齐总览 §5.5 TODO-STAT-* |
+| 2026-08-05 | **S-01～S-04** 商务价格闭环：snapshot、Job 出 L3b/L3a、方案 A 矩阵、人工归档；对齐 DESIGN §6.4 |

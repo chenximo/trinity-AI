@@ -10,18 +10,25 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 > **折数真源**：[定价策略与证据链](./pricing-strategy-evidence-chain)（改折先改证据链）  
 > **表结构说明**：[商务洽谈折扣总表（MD）](./discount-tier-matrix)  
 > **脚本**：[`scripts/rebuild_discount_tier_workbook.py`](./scripts/rebuild_discount_tier_workbook.py)  
-> **状态**：已拍 · 2026-07-16
+> **状态**：已拍 · 2026-07-16（本地回灌）  
+> **控制台目标流程（已拍 · 2026-08-05）**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](../../../../../pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md) · 工程 [ENG-BACKLOG S-01～S-04](../../../../../pricing/docs/SUPPLY-PRICING-OPS-ENG-BACKLOG.md)  
+> 本文保留 **本地导出 → 脚本** 过渡路径；正式环境以控制台 API snapshot + Job 为准。
 
 ---
 
 ## 0. 一句话流程
 
 ```text
+【过渡 · 本地】
 线路管理导出（按成本折筛选）
   → 登记到脚本 SOURCES
   → 跑 rebuild 脚本
   → 抽查 01 / 02 / src_*
   →（若新成本族折数未在证据链）先补证据链再改脚本 FAMILY_TIERS
+
+【目标 · 控制台】
+后台线路 API → 生成 L3b draft →（L2+公开矩阵）生成 L3a draft（钉矩阵）
+  → 改矩阵须确认再生 → 人归档 v1.0
 ```
 
 ---
@@ -94,6 +101,7 @@ python3 scripts/rebuild_discount_tier_workbook.py
 ### Step E · 抽查清单
 
 - [ ] `01`：新成本折行有模型数、模型格 `ID：线路；`+换行、档位格含 `GM`  
+- [ ] `01`：跨成本折模型在 ID 后带 `※`，「交叉」列有 `※n 见02｜id→折·折` 摘要  
 - [ ] `src_0xx`：原表列齐全  
 - [ ] `02`：若新折与旧折出现同名 ID，宽表自动多出交叉行；线路格为 `线路 · P1/100`  
 - [ ] 推荐成本折仍遵循：**数字越小越优先**（0.65 > 0.70 > …）  
@@ -109,6 +117,7 @@ python3 scripts/rebuild_discount_tier_workbook.py
 | 适用范围 | 商务合同 / 销售带内（公开阶梯另文） |
 | 单位 GM | \(GM=1-d_{cost}/d\)，写在档位格内，如 `9.0（GM 28%）` |
 | ≥0.95（含 0.97） | **不设用量阶梯**；对客原价 |
+| 1.0（原价） | **不设用量阶梯**；进货≈挂牌；源文件可放 `pricing/input/model-supply-routes-YYYYMMDD.xlsx`（折扣列=`1`）；回灌时剔除已进 0.65～0.97 的撞名，成本比≈0.78 的拆到 0.78 族 |
 | 交叉推荐 | 更厚利成本折优先；P/W 仅作默认路由参考，**不是**商务折依据 |
 | 乱码线路名 | 导出若出现 `??????`，脚本替换为 `网聚云联`（已知 (4).xlsx 问题） |
 
@@ -131,3 +140,4 @@ python3 scripts/rebuild_discount_tier_workbook.py
 | 日期 | 说明 |
 |------|------|
 | 2026-07-16 | 初版 SOP + rebuild 脚本；对齐 01/02/src 结构与档名 Enterprise/Mid |
+| 2026-08-05 | 链控制台目标流程 DESIGN §6.4；本文定位为本地过渡回灌 |
