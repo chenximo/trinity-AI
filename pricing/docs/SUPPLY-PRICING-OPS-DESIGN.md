@@ -5,7 +5,7 @@
 > **读者**：产品、运营、研发、商务协作方  
 > **关联**：  
 > - 挂牌治理工程细则：[PRICING-GOVERNANCE-WORKFLOW.md](./PRICING-GOVERNANCE-WORKFLOW.md)  
-> - **给研发的需求清单**：[SUPPLY-PRICING-OPS-ENG-BACKLOG.md](./SUPPLY-PRICING-OPS-ENG-BACKLOG.md)  
+> - **给研发的需求清单**：[模型供应与定价运营-研发需求清单.md](./模型供应与定价运营-研发需求清单.md)  
 > - 差异规则：[PRICING-DISCREPANCY-RULES.md](./PRICING-DISCREPANCY-RULES.md)  
 > - 价目目录：[../STRUCTURE.md](../STRUCTURE.md) · [../README.md](../README.md)  
 > - 产品手册入口：[价目真源总览](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/index.md) · [日常巡检](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/operations.md)  
@@ -332,7 +332,7 @@
 ### 6.4 商务价格控制台流程（已拍 · 2026-08-05）
 
 > **页面**：Admin `/pricing/commercial`（模型刊例和定价 · 商务价格）  
-> **工程清单**：[SUPPLY-PRICING-OPS-ENG-BACKLOG.md](./SUPPLY-PRICING-OPS-ENG-BACKLOG.md) §S-01～S-04  
+> **工程清单**：[模型供应与定价运营-研发需求清单.md](./模型供应与定价运营-研发需求清单.md) §S-01～S-04  
 > **本地回灌 SOP**（过渡期仍可用）：[discount-tier-workbook-sop](../../apps/trinity-product/docs/ai-api-platform/commercial-billing/discount-tier-workbook-sop.md)
 
 #### 6.4.1 两个产物 · 一个定价包
@@ -501,7 +501,7 @@ R=执行 · C=协商 · I=知会
 | 主题 | 路径 |
 |------|------|
 | 本设计 | `pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md` |
-| **研发需求清单** | `pricing/docs/SUPPLY-PRICING-OPS-ENG-BACKLOG.md` |
+| **研发需求清单** | `pricing/docs/模型供应与定价运营-研发需求清单.md` |
 | 挂牌治理 | `pricing/docs/PRICING-GOVERNANCE-WORKFLOW.md` |
 | 每周巡检 | `apps/trinity-product/docs/.../pricing-sources/operations.md` |
 | 新增模型 SOP | `.../pricing-sources/add-model-sop.md` |
@@ -522,5 +522,5 @@ R=执行 · C=协商 · I=知会
 |------|------|
 | 2026-07-31 | 初稿：三柱运营系统、HITL、状态机、分期与开放问题（讨论用） |
 | 2026-07-31 | 拍板：上架/下架 + 价格校验；产品/运营分工；三柱框架完备；刷新开放问题 |
-| 2026-07-31 | 链出研发需求清单 SUPPLY-PRICING-OPS-ENG-BACKLOG.md |
+| 2026-07-31 | 链出研发需求清单（现文件名：模型供应与定价运营-研发需求清单.md） |
 | 2026-08-05 | **§6.4 商务价格控制台流程已拍**：API→L3b/L3a、方案 A 钉矩阵、draft+归档；IA/分期/已拍板同步 |

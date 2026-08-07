@@ -11,7 +11,7 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 > **表结构说明**：[商务洽谈折扣总表（MD）](./discount-tier-matrix)  
 > **脚本**：[`scripts/rebuild_discount_tier_workbook.py`](./scripts/rebuild_discount_tier_workbook.py)  
 > **状态**：已拍 · 2026-07-16（本地回灌）  
-> **控制台目标流程（已拍 · 2026-08-05）**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](../../../../../pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md) · 工程 [ENG-BACKLOG S-01～S-04](../../../../../pricing/docs/SUPPLY-PRICING-OPS-ENG-BACKLOG.md)  
+> **控制台目标流程（已拍 · 2026-08-05）**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](../../../../../pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md) · 工程 [研发需求清单 S-01～S-04](../../../../../pricing/docs/模型供应与定价运营-研发需求清单.md)  
 > 本文保留 **本地导出 → 脚本** 过渡路径；正式环境以控制台 API snapshot + Job 为准。
 
 ---
