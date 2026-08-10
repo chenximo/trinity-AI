@@ -46,6 +46,8 @@
     "pricing:diff": "node pricing/pipeline/compare-online-vs-scraped.mjs",
     "pricing:diff:065": "node pricing/pipeline/compare-online-vs-scraped.mjs --scraped draft/0.65_prices-api.json",
     "pricing:validate": "node pricing/pipeline/validate-online-pricing.mjs",
+    "pricing:listing:v1v2": "node pricing/pipeline/gen-listing-v1v2.mjs",
+    "pricing:upstream:access": "node pricing/pipeline/gen-upstream-access-coverage.mjs",
     "pricing:compare:official": "node pricing/pipeline/compare-official-pricing.mjs",
     "pricing:compare:openrouter": "node pricing/pipeline/compare-openrouter-pricing.mjs",
     "pricing:validate:compare": "node pricing/pipeline/validate-pricing-compare.mjs",
@@ -103,5 +105,8 @@
   "devDependencies": {
     "playwright": "^1.61.1",
     "xlsx": "^0.18.5"
+  },
+  "dependencies": {
+    "xlsx-js-style": "^1.2.0"
   }
 }

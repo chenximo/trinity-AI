@@ -1,0 +1,598 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.358Z",
+  "source": {
+    "key": "bailian-intl",
+    "title": "阿里云百炼 · 国际",
+    "modality": "text",
+    "jsonPath": "suppliers/bailian-intl/output/pricing-api.json"
+  },
+  "total": 73,
+  "accessed": 14,
+  "pending": 59,
+  "rows": [
+    {
+      "id": "kimi-k2.7-code",
+      "name": "kimi-k2.7-code",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-flash-character",
+      "name": "qwen-flash-character",
+      "brand": "Intent understanding",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-character",
+      "name": "qwen-plus-character",
+      "brand": "Intent understanding",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-character-ja",
+      "name": "qwen-plus-character-ja",
+      "brand": "Intent understanding",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-5.2",
+      "name": "glm-5.2",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.2-fast-preview",
+      "name": "glm-5.2-fast-preview",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-max",
+      "name": "qwen-max",
+      "brand": "More models",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-vl-max",
+      "name": "qwen-vl-max",
+      "brand": "More models",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-plus",
+      "name": "qwen-vl-plus",
+      "brand": "More models",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash",
+      "name": "qwen3-vl-flash",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2025-10-15",
+      "name": "qwen3-vl-flash-2025-10-15",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2026-01-22",
+      "name": "qwen3-vl-flash-2026-01-22",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus",
+      "name": "qwen3-vl-plus",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus-2025-09-23",
+      "name": "qwen3-vl-plus-2025-09-23",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus-2025-12-19",
+      "name": "qwen3-vl-plus-2025-12-19",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.2",
+      "name": "deepseek-v3.2",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "deepseek-v4-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "deepseek-v4-pro",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qvq-max",
+      "name": "qvq-max",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash",
+      "name": "qwen-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-flash-2025-07-28",
+      "name": "qwen-flash-2025-07-28",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-flash",
+      "name": "qwen-mt-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-plus",
+      "name": "qwen-mt-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-turbo",
+      "name": "qwen-mt-turbo",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus",
+      "name": "qwen-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-plus-2025-01-25",
+      "name": "qwen-plus-2025-01-25",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-04-28",
+      "name": "qwen-plus-2025-04-28",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-07-14",
+      "name": "qwen-plus-2025-07-14",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-07-28",
+      "name": "qwen-plus-2025-07-28",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-09-11",
+      "name": "qwen-plus-2025-09-11",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-latest",
+      "name": "qwen-plus-latest",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-turbo",
+      "name": "qwen-turbo",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-vl-ocr",
+      "name": "qwen-vl-ocr",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-14b",
+      "name": "qwen3-14b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-235b-a22b",
+      "name": "qwen3-235b-a22b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-235b-a22b-instruct-2507",
+      "name": "qwen3-235b-a22b-instruct-2507",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-30b-a3b",
+      "name": "qwen3-30b-a3b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-30b-a3b-instruct-2507",
+      "name": "qwen3-30b-a3b-instruct-2507",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-32b",
+      "name": "qwen3-32b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-8b",
+      "name": "qwen3-8b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-30b-a3b-instruct",
+      "name": "qwen3-coder-30b-a3b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "name": "qwen3-coder-480b-a35b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-flash",
+      "name": "qwen3-coder-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-flash-2025-07-28",
+      "name": "qwen3-coder-flash-2025-07-28",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-next",
+      "name": "qwen3-coder-next",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus",
+      "name": "qwen3-coder-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus-2025-07-22",
+      "name": "qwen3-coder-plus-2025-07-22",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus-2025-09-23",
+      "name": "qwen3-coder-plus-2025-09-23",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max",
+      "name": "qwen3-max",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-2025-09-23",
+      "name": "qwen3-max-2025-09-23",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-2026-01-23",
+      "name": "qwen3-max-2026-01-23",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-preview",
+      "name": "qwen3-max-preview",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-next-80b-a3b-instruct",
+      "name": "qwen3-next-80b-a3b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "name": "qwen3-vl-235b-a22b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-30b-a3b-instruct",
+      "name": "qwen3-vl-30b-a3b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-32b-instruct",
+      "name": "qwen3-vl-32b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-8b-instruct",
+      "name": "qwen3-vl-8b-instruct",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-397b-a17b",
+      "name": "qwen3.5-397b-a17b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-plus",
+      "name": "qwen3.5-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.5-plus-2026-02-15",
+      "name": "qwen3.5-plus-2026-02-15",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-plus-2026-04-20",
+      "name": "qwen3.5-plus-2026-04-20",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-27b",
+      "name": "qwen3.6-27b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-35b-a3b",
+      "name": "qwen3.6-35b-a3b",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-flash",
+      "name": "qwen3.6-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.6-flash-2026-04-16",
+      "name": "qwen3.6-flash-2026-04-16",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-max-preview",
+      "name": "qwen3.6-max-preview",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-plus",
+      "name": "qwen3.6-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.6-plus-2026-04-02",
+      "name": "qwen3.6-plus-2026-04-02",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-flash",
+      "name": "qwen3.7-flash",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.7-flash-2026-07-15",
+      "name": "qwen3.7-flash-2026-07-15",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-plus",
+      "name": "qwen3.7-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.7-plus-2026-05-26",
+      "name": "qwen3.7-plus-2026-05-26",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwq-plus",
+      "name": "qwq-plus",
+      "brand": "Qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    }
+  ]
+}

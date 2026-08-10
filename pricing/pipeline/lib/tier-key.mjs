@@ -26,19 +26,13 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
   if (/720p|768p/i.test(n)) return "res:720p";
   if (/1080p/i.test(n)) return "res:1080p";
 
-  // 生图分辨率档
-  if (/1k以下|512|sub.?1k|1k以下/i.test(n)) return "res:sub-1k";
-  if (/^4k$/i.test(n) || /4k分辨率/.test(n)) return "res:4k";
-  if (/^2k$/i.test(n) || /2k分辨率/.test(n)) return "res:2k";
-  if (/^1k$/i.test(n) || /1k分辨率/.test(n)) return "res:1k";
-  if (/^输出$|per.?image|元\/张|美元\/张/i.test(n) && totalTiers === 1) return "uniform";
-
   // GLM-4.7：≤32k 内按输出 token 分档（须先于通用 ≤32k）
   if (/≤32k|<=32k|<32k/i.test(n) && /输出/.test(n)) {
     if (/输出.*[≤<]=?0\.2k/i.test(n)) return "t:in32k-out-le0.2k";
     if (/输出.*[>＞]0\.2k/i.test(n)) return "t:in32k-out-gt0.2k";
   }
 
+  // 上下文 token 档（须先于生图分辨率；512k 不可被裸 512 误伤）
   if (/输入[<≤=]16k|输入<=16k|输入长度\(0,\s*16k|0,\s*16k\)/i.test(n))
     return "t:0-16k";
   if (
@@ -72,12 +66,20 @@ export function tierToKey(tierName, tierIndex = 0, totalTiers = 1) {
   if (/0<token≤256k|0<token<256k|输入<=256k|输入≤256k/i.test(n) && !/128k/i.test(n))
     return "t:0-256k";
 
-  if (/输入<=512k|输入≤512k|0<输入<=512k|\(0,512k/i.test(n)) return "t:0-512k";
-  if (/512k<|512k\+|输入>512k/i.test(n)) return "t:512k+";
+  if (/输入<=512k|输入≤512k|0<输入<=512k|\(0,\s*512k|input length \(0,\s*512k/i.test(n))
+    return "t:0-512k";
+  if (/512k<|512k\+|输入>512k|input length 512k\+/i.test(n)) return "t:512k+";
   if (/0<输入<=32k|0,32k\]|0<token≤32k|输入<=32k|输入<32k/i.test(n))
     return "t:0-32k";
   if (/32k<token|32k<输入/i.test(n)) return "t:32k+";
   if (/32k<输入<=128k/i.test(n)) return "t:32k-128k";
+
+  // 生图分辨率档（勿用裸 512，会误伤 512k 上下文）
+  if (/1k以下|sub.?1k|512\s*px|≤\s*512(?!k)/i.test(n)) return "res:sub-1k";
+  if (/^4k$/i.test(n) || /4k分辨率/.test(n)) return "res:4k";
+  if (/^2k$/i.test(n) || /2k分辨率/.test(n)) return "res:2k";
+  if (/^1k$/i.test(n) || /1k分辨率/.test(n)) return "res:1k";
+  if (/^输出$|per.?image|元\/张|美元\/张/i.test(n) && totalTiers === 1) return "uniform";
 
   if (/<=1\.28m|≤1\.28m|0–1\.28m/i.test(n)) return "ctx:0-1.28m";
   if (/>1\.28m|1\.28m\+/i.test(n)) return "ctx:1.28m+";

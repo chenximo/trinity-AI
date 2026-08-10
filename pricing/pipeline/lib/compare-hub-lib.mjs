@@ -37,6 +37,12 @@ import {
   UPSTREAM_SUMMARY_CSV,
   SUPPLIERS_DIR,
 } from "./paths.mjs";
+import { TEXT_SEED } from "../../suppliers/official/data/seeds/text.mjs";
+import { TEXT_INTL_SEED } from "../../suppliers/official/data/seeds/text-intl.mjs";
+import {
+  LISTING_POLICY,
+  enrichCompareRowsWithListingV1V2,
+} from "./listing-v1v2-lib.mjs";
 
 /** @deprecated 使用 MERGE_COMPARE_IDENTITY */
 export const MERGE_COMPARE_TEXT = MERGE_COMPARE_IDENTITY;
@@ -720,7 +726,8 @@ export function buildTextCompareHubFromModels(models, opts = {}) {
     trinityOnlineCount: models.length,
     rowCount: rows.length,
     fxOnlineDomestic: FX_ONLINE_DOMESTIC,
-    rows,
+    listing_policy: LISTING_POLICY,
+    rows: enrichCompareRowsWithListingV1V2(rows, TEXT_SEED, TEXT_INTL_SEED),
   };
 }
 
@@ -784,12 +791,17 @@ export function buildTextCompareExcelRows(report) {
     "价格档位",
     "厂商官方价",
     ...L4_COMPARE_REF_PRICE_HEADERS,
+    "刊例·V1",
+    "刊例·V2",
+    "V2vsV1",
+    "生效刊例",
     "线上刊例",
     "刊例vs官方_入",
     "刊例vs官方_出",
     "刊例vs官方_缓",
     ...L4_COMPARE_VS_OFFICIAL_HEADERS,
     "刊例结论",
+    "V2来源",
     "备注",
   ];
 
@@ -810,6 +822,10 @@ export function buildTextCompareExcelRows(report) {
       r.aigcIntl ?? "",
       r.tokenhub ?? "",
       r.openRouter ?? "",
+      r.listingV1 ?? "—",
+      r.listingV2 ?? "—",
+      r.listingV2vsV1 ?? "—",
+      r.listingEffective ?? "—",
       r.online ?? "",
       r.deltaOnlineVsOfficialIn ?? "",
       r.deltaOnlineVsOfficialOut ?? "",
@@ -819,6 +835,7 @@ export function buildTextCompareExcelRows(report) {
       r.thVsOfficial ?? "",
       r.orVsOfficial ?? "",
       r.listingConclusion ?? "",
+      r.listingV2Source ?? "—",
       r.note ?? "",
     ]);
   }
@@ -876,6 +893,7 @@ export function renderTextCompareHubMarkdown(report) {
     `> AIGC：\`suppliers/aigc\` · TokenHub：\`suppliers/tokenhub\` · OpenRouter：\`suppliers/openrouter\`（${report.openRouterFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 线上刊例：\`output/online/prices-api.json\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 国内官方 CNY→USD（与线上一致）：÷${report.fxOnlineDomestic}`,
+    `> **listing_policy = ${report.listing_policy ?? LISTING_POLICY}（当前生效）** · 刊例·V1/V2 双轨保留；生效刊例跟策略；本表不写生产`,
     `> 同步导出：\`upstream/summary.*\` · \`official/text.*\` · \`trinity-pricing-text.xlsx\``,
     "",
     `| ${header.join(" | ")} |`,
@@ -895,6 +913,8 @@ export function renderTextCompareHubMarkdown(report) {
     "- **排序**：有已接入模型的厂商在前；**整系列未接入**（如豆包）沉表尾；同系列内已接入在前、单模型未接入在后",
     "- **厂商官方价**：刊例应对齐的锚（国内 CNY 展示，对比时 ÷6.5 换 USD）",
     "- **AIGC国内vs官方 / AIGC国际vs官方 / TokenHub vs官方 / OpenRouter vs官方**：单列展示入/出/缓；一致 `✅`，偏差 `⚠±X%`",
+    "- **刊例·V1 / 刊例·V2 / 生效刊例**：双轨派生（国际站优先 = V2）；`listing_policy` 默认 v2；不写生产",
+    "- **V2vsV1 / V2来源**：intl = 已用国际站；fallback-v1 = 无国际锚回退；usd-direct = 本就是 USD",
     "- **刊例vs官方_*%**：线上刊例相对厂商官方价；正数表示刊例高于官方",
     "- **刊例结论**：线上刊例相对官方，格式同 vs 列（`入✅ 出✅ 缓⚠+15.4%`）",
     "- TokenHub / AIGC 国内挂牌为 CNY/百万 tokens，对比官方时 ÷6.5 换 USD",

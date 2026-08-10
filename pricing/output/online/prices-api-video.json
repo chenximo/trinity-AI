@@ -3,11 +3,72 @@
   "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=video",
   "modality": "video",
   "fxCnyPerUsd": 7.25,
-  "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
-  "fetchedAt": "2026-07-10T07:42:57.095Z",
-  "modelCount": 25,
+  "fxNote": "FX_LISTING(默认7.25)用于部分 cascade；国内刊例 V1/V2 回退路径使用 FX_LEGACY_065=6.5，见刊例策略-V1-V2",
+  "fetchedAt": "2026-08-07T09:34:02.039Z",
+  "modelCount": 28,
   "object": "list",
   "data": [
+    {
+      "object": "model_prices",
+      "model": "gemini-omni-flash-preview",
+      "display_name": "Gemini Omni Flash Preview",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "omni_token_triple",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "token_kind",
+          "label": "输入",
+          "conditions_summary": "输入",
+          "conditions": {
+            "token_kind": "input"
+          },
+          "prices": {
+            "input": {
+              "amount": "1.5",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$1.5 / 百万 input tokens"
+            }
+          }
+        },
+        {
+          "type": "token_kind",
+          "label": "文本/思考输出",
+          "conditions_summary": "文本/思考输出",
+          "conditions": {
+            "token_kind": "output_text"
+          },
+          "prices": {
+            "output_text": {
+              "amount": "9",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$9 / 百万 文本/思考 tokens"
+            }
+          }
+        },
+        {
+          "type": "token_kind",
+          "label": "视频输出",
+          "conditions_summary": "视频输出",
+          "conditions": {
+            "token_kind": "output_video"
+          },
+          "prices": {
+            "output_video": {
+              "amount": "17.5",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$17.5 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-04T06:13:22.884017Z"
+    },
     {
       "object": "model_prices",
       "model": "gv-3.1",
@@ -30,7 +91,7 @@
               "amount": "0.2",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.20 / 秒"
+              "display": "$0.2 / 秒"
             }
           }
         },
@@ -46,7 +107,7 @@
               "amount": "0.2",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.20 / 秒"
+              "display": "$0.2 / 秒"
             }
           }
         },
@@ -62,7 +123,7 @@
               "amount": "0.2",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.20 / 秒"
+              "display": "$0.2 / 秒"
             }
           }
         },
@@ -78,7 +139,7 @@
               "amount": "0.4",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.40 / 秒"
+              "display": "$0.4 / 秒"
             }
           }
         },
@@ -94,7 +155,7 @@
               "amount": "0.3",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.30 / 秒"
+              "display": "$0.3 / 秒"
             }
           }
         }
@@ -139,7 +200,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -187,7 +248,7 @@
               "amount": "0.2",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.20 / 秒"
+              "display": "$0.2 / 秒"
             }
           }
         }
@@ -264,7 +325,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -309,7 +370,7 @@
               "amount": "0.1385",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.14 / 秒"
+              "display": "$0.1385 / 秒"
             }
           }
         },
@@ -325,7 +386,7 @@
               "amount": "0.2462",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.25 / 秒"
+              "display": "$0.2462 / 秒"
             }
           }
         },
@@ -341,7 +402,7 @@
               "amount": "0.1385",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.14 / 秒"
+              "display": "$0.1385 / 秒"
             }
           }
         },
@@ -357,7 +418,7 @@
               "amount": "0.2954",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.30 / 秒"
+              "display": "$0.2954 / 秒"
             }
           }
         },
@@ -373,7 +434,7 @@
               "amount": "0.3954",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.40 / 秒"
+              "display": "$0.3954 / 秒"
             }
           }
         }
@@ -402,7 +463,7 @@
               "amount": "0.050769",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.05 / 秒"
+              "display": "$0.050769 / 秒"
             }
           }
         },
@@ -418,7 +479,7 @@
               "amount": "0.089231",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.09 / 秒"
+              "display": "$0.089231 / 秒"
             }
           }
         },
@@ -434,7 +495,7 @@
               "amount": "0.050769",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.05 / 秒"
+              "display": "$0.050769 / 秒"
             }
           }
         },
@@ -450,7 +511,7 @@
               "amount": "0.229231",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.23 / 秒"
+              "display": "$0.229231 / 秒"
             }
           }
         },
@@ -466,7 +527,7 @@
               "amount": "0.143077",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.14 / 秒"
+              "display": "$0.143077 / 秒"
             }
           }
         }
@@ -495,7 +556,7 @@
               "amount": "0.034615",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.034615 / 秒"
             }
           }
         },
@@ -511,7 +572,7 @@
               "amount": "0.059231",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.06 / 秒"
+              "display": "$0.059231 / 秒"
             }
           }
         },
@@ -527,7 +588,7 @@
               "amount": "0.034615",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.034615 / 秒"
             }
           }
         },
@@ -543,7 +604,7 @@
               "amount": "0.133846",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.13 / 秒"
+              "display": "$0.133846 / 秒"
             }
           }
         },
@@ -559,12 +620,134 @@
               "amount": "0.089231",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.09 / 秒"
+              "display": "$0.089231 / 秒"
             }
           }
         }
       ],
       "updated_at": "2026-05-20T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "happyhorse-1.0",
+      "display_name": "HappyHorse 1.0",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.24",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.24 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-06T02:49:18.170072Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "happyhorse-1.1",
+      "display_name": "HappyHorse 1.1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.18",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.18 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-04T16:00:00Z"
     },
     {
       "object": "model_prices",
@@ -588,7 +771,7 @@
               "amount": "0.153846",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.15 / 秒"
+              "display": "$0.153846 / 秒"
             }
           }
         },
@@ -604,7 +787,7 @@
               "amount": "0.346154",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.35 / 秒"
+              "display": "$0.346154 / 秒"
             }
           }
         },
@@ -620,7 +803,7 @@
               "amount": "0.230769",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.23 / 秒"
+              "display": "$0.230769 / 秒"
             }
           }
         }
@@ -649,7 +832,7 @@
               "amount": "0.042",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.042 / 秒"
             }
           }
         },
@@ -681,7 +864,7 @@
               "amount": "0.042",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.042 / 秒"
             }
           }
         },
@@ -697,7 +880,7 @@
               "amount": "0.157",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.16 / 秒"
+              "display": "$0.157 / 秒"
             }
           }
         },
@@ -713,7 +896,7 @@
               "amount": "0.105",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.105 / 秒"
             }
           }
         }
@@ -742,7 +925,7 @@
               "amount": "0.042",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.042 / 秒"
             }
           }
         },
@@ -774,7 +957,7 @@
               "amount": "0.042",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.042 / 秒"
             }
           }
         },
@@ -790,7 +973,7 @@
               "amount": "0.1568",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.16 / 秒"
+              "display": "$0.1568 / 秒"
             }
           }
         },
@@ -835,7 +1018,7 @@
               "amount": "0.126",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.13 / 秒"
+              "display": "$0.126 / 秒"
             }
           }
         },
@@ -851,7 +1034,7 @@
               "amount": "0.112",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.112 / 秒"
             }
           }
         },
@@ -867,7 +1050,7 @@
               "amount": "0.126",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.13 / 秒"
+              "display": "$0.126 / 秒"
             }
           }
         },
@@ -883,7 +1066,7 @@
               "amount": "0.336",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.34 / 秒"
+              "display": "$0.336 / 秒"
             }
           }
         },
@@ -928,7 +1111,7 @@
               "amount": "0.154",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.15 / 秒"
+              "display": "$0.154 / 秒"
             }
           }
         },
@@ -944,7 +1127,7 @@
               "amount": "0.168",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.17 / 秒"
+              "display": "$0.168 / 秒"
             }
           }
         },
@@ -960,7 +1143,7 @@
               "amount": "0.154",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.15 / 秒"
+              "display": "$0.154 / 秒"
             }
           }
         },
@@ -976,7 +1159,7 @@
               "amount": "0.336",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.34 / 秒"
+              "display": "$0.336 / 秒"
             }
           }
         },
@@ -1021,7 +1204,7 @@
               "amount": "0.084",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.08 / 秒"
+              "display": "$0.084 / 秒"
             }
           }
         },
@@ -1037,7 +1220,7 @@
               "amount": "0.168",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.17 / 秒"
+              "display": "$0.168 / 秒"
             }
           }
         },
@@ -1053,7 +1236,7 @@
               "amount": "0.084",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.08 / 秒"
+              "display": "$0.084 / 秒"
             }
           }
         },
@@ -1069,7 +1252,7 @@
               "amount": "0.252",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.25 / 秒"
+              "display": "$0.252 / 秒"
             }
           }
         },
@@ -1085,7 +1268,7 @@
               "amount": "0.252",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.25 / 秒"
+              "display": "$0.252 / 秒"
             }
           }
         }
@@ -1114,7 +1297,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -1146,7 +1329,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -1178,7 +1361,7 @@
               "amount": "0.225",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.23 / 秒"
+              "display": "$0.225 / 秒"
             }
           }
         }
@@ -1207,7 +1390,7 @@
               "amount": "0.0444",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.0444 / 秒"
             }
           }
         },
@@ -1223,7 +1406,7 @@
               "amount": "0.1216",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.12 / 秒"
+              "display": "$0.1216 / 秒"
             }
           }
         },
@@ -1239,7 +1422,7 @@
               "amount": "0.1013",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1013 / 秒"
             }
           }
         },
@@ -1255,7 +1438,7 @@
               "amount": "0.0444",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.0444 / 秒"
             }
           }
         },
@@ -1271,7 +1454,7 @@
               "amount": "0.0444",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.0444 / 秒"
             }
           }
         },
@@ -1287,7 +1470,7 @@
               "amount": "0.1067",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.1067 / 秒"
             }
           }
         }
@@ -1316,7 +1499,7 @@
               "amount": "0.0504",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.05 / 秒"
+              "display": "$0.0504 / 秒"
             }
           }
         },
@@ -1332,7 +1515,7 @@
               "amount": "0.084",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.08 / 秒"
+              "display": "$0.084 / 秒"
             }
           }
         },
@@ -1348,7 +1531,7 @@
               "amount": "0.0504",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.05 / 秒"
+              "display": "$0.0504 / 秒"
             }
           }
         },
@@ -1364,7 +1547,7 @@
               "amount": "0.1646",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.16 / 秒"
+              "display": "$0.1646 / 秒"
             }
           }
         },
@@ -1380,7 +1563,7 @@
               "amount": "0.1176",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.12 / 秒"
+              "display": "$0.1176 / 秒"
             }
           }
         },
@@ -1396,7 +1579,7 @@
               "amount": "0.0392",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.0392 / 秒"
             }
           }
         }
@@ -1425,7 +1608,7 @@
               "amount": "0.0595",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.06 / 秒"
+              "display": "$0.0595 / 秒"
             }
           }
         },
@@ -1441,7 +1624,7 @@
               "amount": "0.0595",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.06 / 秒"
+              "display": "$0.0595 / 秒"
             }
           }
         },
@@ -1473,7 +1656,7 @@
               "amount": "0.1472",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.15 / 秒"
+              "display": "$0.1472 / 秒"
             }
           }
         },
@@ -1489,7 +1672,7 @@
               "amount": "0.096",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.096 / 秒"
             }
           }
         },
@@ -1505,57 +1688,12 @@
               "amount": "0.0311",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.0311 / 秒"
             }
           }
         }
       ],
       "updated_at": "2026-05-20T16:00:00Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "seedance-1.5-pro",
-      "display_name": "Seedance 1.5 Pro",
-      "modality_type": "video",
-      "charge_unit": "video_token",
-      "pricing_mode": "video_tiered",
-      "currency": "USD",
-      "price_unit": "per_million_video_tokens",
-      "price_groups": [
-        {
-          "type": "has_audio",
-          "label": "含音频",
-          "conditions_summary": "有声",
-          "conditions": {
-            "audio_generation": "enabled"
-          },
-          "prices": {
-            "unit": {
-              "amount": "2.206897",
-              "currency": "USD",
-              "unit": "per_million_video_tokens",
-              "display": "$2.21 / 百万 video tokens"
-            }
-          }
-        },
-        {
-          "type": "has_audio",
-          "label": "无声",
-          "conditions_summary": "无声",
-          "conditions": {
-            "audio_generation": "disabled"
-          },
-          "prices": {
-            "unit": {
-              "amount": "1.103448",
-              "currency": "USD",
-              "unit": "per_million_video_tokens",
-              "display": "$1.10 / 百万 video tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-09T16:00:00Z"
     },
     {
       "object": "model_prices",
@@ -1579,7 +1717,7 @@
               "amount": "6.344828",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$6.34 / 百万 video tokens"
+              "display": "$6.344828 / 百万 video tokens"
             }
           }
         },
@@ -1595,7 +1733,7 @@
               "amount": "6.344828",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$6.34 / 百万 video tokens"
+              "display": "$6.344828 / 百万 video tokens"
             }
           }
         },
@@ -1611,7 +1749,7 @@
               "amount": "7.034483",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$7.03 / 百万 video tokens"
+              "display": "$7.034483 / 百万 video tokens"
             }
           }
         },
@@ -1628,7 +1766,7 @@
               "amount": "3.862069",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$3.86 / 百万 video tokens"
+              "display": "$3.862069 / 百万 video tokens"
             }
           }
         },
@@ -1645,7 +1783,7 @@
               "amount": "3.862069",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$3.86 / 百万 video tokens"
+              "display": "$3.862069 / 百万 video tokens"
             }
           }
         },
@@ -1662,7 +1800,7 @@
               "amount": "4.275862",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$4.28 / 百万 video tokens"
+              "display": "$4.275862 / 百万 video tokens"
             }
           }
         }
@@ -1691,7 +1829,7 @@
               "amount": "5.6924",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$5.69 / 百万 video tokens"
+              "display": "$5.6924 / 百万 video tokens"
             }
           }
         },
@@ -1707,7 +1845,7 @@
               "amount": "5.6924",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$5.69 / 百万 video tokens"
+              "display": "$5.6924 / 百万 video tokens"
             }
           }
         },
@@ -1724,7 +1862,7 @@
               "amount": "3.3847",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$3.38 / 百万 video tokens"
+              "display": "$3.3847 / 百万 video tokens"
             }
           }
         },
@@ -1741,7 +1879,119 @@
               "amount": "3.3847",
               "currency": "USD",
               "unit": "per_million_video_tokens",
-              "display": "$3.38 / 百万 video tokens"
+              "display": "$3.3847 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-06-04T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0-overseas",
+      "display_name": "Seedance 2.0 Overseas",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.344828",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.344828 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7.034483",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7.034483 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.862069",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.862069 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "3.862069",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.862069 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.275862",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4.275862 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.344828",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.344828 / 百万 video tokens"
             }
           }
         }
@@ -1770,7 +2020,7 @@
               "amount": "0.024615",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.02 / 秒"
+              "display": "$0.024615 / 秒"
             }
           }
         },
@@ -1786,7 +2036,7 @@
               "amount": "0.072308",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.07 / 秒"
+              "display": "$0.072308 / 秒"
             }
           }
         },
@@ -1802,7 +2052,7 @@
               "amount": "0.024615",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.02 / 秒"
+              "display": "$0.024615 / 秒"
             }
           }
         },
@@ -1818,7 +2068,7 @@
               "amount": "0.141923",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.14 / 秒"
+              "display": "$0.141923 / 秒"
             }
           }
         },
@@ -1834,7 +2084,7 @@
               "amount": "0.107692",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.107692 / 秒"
             }
           }
         },
@@ -1850,7 +2100,7 @@
               "amount": "0.036923",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.036923 / 秒"
             }
           }
         }
@@ -1879,7 +2129,7 @@
               "amount": "0.026923",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.026923 / 秒"
             }
           }
         },
@@ -1895,7 +2145,7 @@
               "amount": "0.138462",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.14 / 秒"
+              "display": "$0.138462 / 秒"
             }
           }
         },
@@ -1911,7 +2161,7 @@
               "amount": "0.026923",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.026923 / 秒"
             }
           }
         },
@@ -1927,7 +2177,7 @@
               "amount": "0.155769",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.16 / 秒"
+              "display": "$0.155769 / 秒"
             }
           }
         },
@@ -1943,7 +2193,7 @@
               "amount": "0.076923",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.08 / 秒"
+              "display": "$0.076923 / 秒"
             }
           }
         },
@@ -1959,7 +2209,7 @@
               "amount": "0.041538",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.041538 / 秒"
             }
           }
         }
@@ -1988,7 +2238,7 @@
               "amount": "0.038462",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.038462 / 秒"
             }
           }
         },
@@ -2004,7 +2254,7 @@
               "amount": "0.036154",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.036154 / 秒"
             }
           }
         },
@@ -2020,7 +2270,7 @@
               "amount": "0.038462",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.038462 / 秒"
             }
           }
         },
@@ -2036,7 +2286,7 @@
               "amount": "0.161538",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.16 / 秒"
+              "display": "$0.161538 / 秒"
             }
           }
         },
@@ -2052,7 +2302,7 @@
               "amount": "0.107692",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.107692 / 秒"
             }
           }
         }
@@ -2081,7 +2331,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -2097,7 +2347,7 @@
               "amount": "0.125",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.13 / 秒"
+              "display": "$0.125 / 秒"
             }
           }
         },
@@ -2113,7 +2363,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1 / 秒"
             }
           }
         },
@@ -2161,7 +2411,7 @@
               "amount": "0.025",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.03 / 秒"
+              "display": "$0.025 / 秒"
             }
           }
         }
@@ -2190,7 +2440,7 @@
               "amount": "0.0625",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.06 / 秒"
+              "display": "$0.0625 / 秒"
             }
           }
         },
@@ -2206,7 +2456,7 @@
               "amount": "0.075",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.08 / 秒"
+              "display": "$0.075 / 秒"
             }
           }
         },
@@ -2222,7 +2472,7 @@
               "amount": "0.0625",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.06 / 秒"
+              "display": "$0.0625 / 秒"
             }
           }
         },
@@ -2238,7 +2488,7 @@
               "amount": "0.108",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.11 / 秒"
+              "display": "$0.108 / 秒"
             }
           }
         },
@@ -2315,7 +2565,7 @@
               "amount": "0.035",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.035 / 秒"
             }
           }
         },
@@ -2347,7 +2597,7 @@
               "amount": "0.1008",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.10 / 秒"
+              "display": "$0.1008 / 秒"
             }
           }
         },
@@ -2363,7 +2613,7 @@
               "amount": "0.042",
               "currency": "USD",
               "unit": "per_second",
-              "display": "$0.04 / 秒"
+              "display": "$0.042 / 秒"
             }
           }
         },

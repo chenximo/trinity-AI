@@ -17,11 +17,14 @@ import {
   resolveOfficialVideoModel,
   evaluateVideoSupplierVsOfficial,
 } from "./supplier-official-compare-video.mjs";
-import {
-  VIDEO_PRICE_UNIT_CNY,
-  VIDEO_PRICE_UNIT_USD,
-} from "../../config/channels-video.mjs";
 import { formatVsWithVerify } from "./pricing-verify.mjs";
+import {
+  buildSupplierTableHeader,
+  mediaTierLabel,
+  trinityIdCell,
+} from "./units.mjs";
+import { parseOnlineVideoTiers, num } from "./parse-online-prices.mjs";
+import { FX_ONLINE_DOMESTIC } from "./compare-official-lib.mjs";
 
 /** @param {Record<string, { vendorCode: string, modelName: string, attribute?: string }>} aigcTrinityMap */
 function findAigcModelForMap(aigcModels, site, mapRef) {
@@ -63,35 +66,109 @@ export function iterAigcTrinityCatalog(aigcModels, site, aigcTrinityMap = {}) {
   return items;
 }
 
-/** @param {{ currency?: "CNY"|"USD" }} sup */
-export function buildVideoSupplierTableHeader(sup = {}) {
-  const unit = sup.currency === "USD" ? VIDEO_PRICE_UNIT_USD : VIDEO_PRICE_UNIT_CNY;
-  return [
-    "序号",
-    "Trinity ID",
-    "显示名",
-    "厂商",
-    "价格档位",
-    "分辨率档",
-    "上游模型ID",
-    "厂商官方价",
-    `供应商挂牌(${unit})`,
-    "供应商vs官方",
-  ];
+/** @param {object|null} aigcModel */
+export function aigcAllResolutionEntries(aigcModel) {
+  if (!aigcModel?.tiers?.length) return [];
+  const out = [];
+  for (const tier of aigcModel.tiers) {
+    const res = tier.resolutions;
+    if (!res || typeof res !== "object") continue;
+    for (const [resolutionLabel, price] of Object.entries(res)) {
+      out.push({
+        tierName: tier.tierName ?? "标准价",
+        resolutionLabel,
+        price: Number(price),
+      });
+    }
+  }
+  return out.filter((e) => Number.isFinite(e.price));
 }
 
-function pushVideoRow(rows, rowNum, show, fields) {
+/** 上游 AIGC 生视频全量行轴（不按 Trinity map 裁剪） */
+export function iterAigcVideoFullCatalog(aigcModels, site, aigcTrinityMap = {}) {
+  const byVendorModel = new Map();
+  for (const [tid, ref] of Object.entries(aigcTrinityMap)) {
+    if (tid.startsWith("_") || !ref?.vendorCode) continue;
+    const k = `${ref.vendorCode}::${ref.modelName}`.toLowerCase();
+    if (!byVendorModel.has(k)) byVendorModel.set(k, tid);
+  }
+  const list = (aigcModels ?? [])
+    .filter((m) => m.site === site)
+    .slice()
+    .sort((a, b) =>
+      `${a.vendorName || ""}::${a.modelName || ""}::${a.modelId || ""}`.localeCompare(
+        `${b.vendorName || ""}::${b.modelName || ""}::${b.modelId || ""}`,
+        "zh",
+      ),
+    );
+  const items = [];
+  for (const m of list) {
+    const entries = aigcAllResolutionEntries(m);
+    if (!entries.length) continue;
+    const mapKey = `${m.vendorCode || ""}::${m.modelName || ""}`.toLowerCase();
+    const trinityId = m.trinityId || byVendorModel.get(mapKey) || "";
+    items.push({ trinityId, model: m, entries });
+  }
+  return items;
+}
+
+/** @param {{ currency?: "CNY"|"USD" }} [_sup] */
+export function buildVideoSupplierTableHeader(_sup = {}) {
+  return buildSupplierTableHeader(_sup);
+}
+
+function listingCellsForVideoRow(
+  trinityId,
+  resolutionLabel,
+  supplierPrice,
+  supplierCurrency,
+  officialCtx = {},
+) {
+  const tid = String(trinityId ?? "").trim();
+  if (!tid) return ["—", "—"];
+  const onlineRaw = officialCtx.onlineByModel?.get(tid.toLowerCase());
+  if (!onlineRaw) return ["—", "—"];
+
+  const tiers = parseOnlineVideoTiers(onlineRaw);
+  const want = String(resolutionLabel ?? "").toLowerCase();
+  let hit =
+    tiers.find((t) => {
+      const lab = String(t.tierLabel ?? "").toLowerCase();
+      return lab && want && (lab === want || lab.includes(want) || want.includes(lab));
+    }) ?? tiers[0];
+
+  const listPrice = hit?.price ?? null;
+  const listing = listPrice != null ? `$${listPrice}` : "—";
+
+  const sup = num(supplierPrice);
+  if (listPrice == null || sup == null) return [listing, "—"];
+  const cmp =
+    supplierCurrency === "CNY" ? listPrice * FX_ONLINE_DOMESTIC : listPrice;
+  if (!cmp) return [listing, "—"];
+  const pct = Math.round(((sup - cmp) / cmp) * 1000) / 10;
+  if (Math.abs(pct) < 0.5) return [listing, "一致"];
+  const sign = pct > 0 ? "+" : "";
+  return [listing, `⚠${sign}${pct}%`];
+}
+
+function pushVideoRow(rows, show, fields, officialCtx = {}) {
+  const [listing, listingVs] = listingCellsForVideoRow(
+    fields.trinityId,
+    fields.resolutionLabel,
+    fields.supplierPrice,
+    fields.supplierCurrency,
+    officialCtx,
+  );
   rows.push([
-    rowNum,
-    show ? (fields.trinityId ?? "") : "",
-    show ? (fields.displayName ?? "") : "",
     show ? (fields.brand ?? "") : "",
-    fields.tierName ?? "—",
-    fields.resolutionLabel ?? "—",
     show ? (fields.upstreamId ?? "") : "",
+    trinityIdCell(fields.trinityId, show),
+    mediaTierLabel(fields.tierName, fields.resolutionLabel),
     fields.vendorOfficial ?? "—",
     fields.supplierListed ?? "—",
+    listing,
     fields.supplierVsOfficial ?? "—",
+    listingVs,
   ]);
 }
 
@@ -105,18 +182,14 @@ export function buildAigcVideoCatalogRows(
   const header = buildVideoSupplierTableHeader({ currency });
   const channelKind = site === "international" ? "international" : "domestic";
   const rows = [];
-  let rowNum = 0;
 
-  for (const { trinityId, model: m, entries } of iterAigcTrinityCatalog(
+  for (const { trinityId, model: m, entries } of iterAigcVideoFullCatalog(
     aigcModels,
     site,
     aigcTrinityMap,
   )) {
-    const displayName = `${m.vendorName} ${m.modelName}`.trim();
-
     for (let i = 0; i < entries.length; i++) {
       const e = entries[i];
-      rowNum++;
       const show = i === 0;
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForVideoResolution(
@@ -133,17 +206,23 @@ export function buildAigcVideoCatalogRows(
           channelKind,
         );
 
-      pushVideoRow(rows, rowNum, show, {
-        trinityId,
-        displayName,
-        brand: m.vendorName,
-        tierName: e.tierName,
-        resolutionLabel: e.resolutionLabel,
-        upstreamId: m.modelId,
-        vendorOfficial,
-        supplierListed,
-        supplierVsOfficial,
-      });
+      pushVideoRow(
+        rows,
+        show,
+        {
+          trinityId,
+          brand: m.vendorName,
+          tierName: e.tierName,
+          resolutionLabel: e.resolutionLabel,
+          upstreamId: m.modelId || m.upstreamModelId || "",
+          vendorOfficial,
+          supplierListed,
+          supplierVsOfficial,
+          supplierPrice: e.price,
+          supplierCurrency: currency,
+        },
+        officialCtx,
+      );
     }
   }
 
@@ -154,14 +233,12 @@ export function buildAigcVideoCatalogRows(
 export function buildVolcengineVideoCatalogRows(volcModels, officialCtx = {}) {
   const header = buildVideoSupplierTableHeader({ currency: "CNY" });
   const rows = [];
-  let rowNum = 0;
 
   for (const m of volcModels) {
-    const trinityId = m.trinityId ?? null;
-    if (!trinityId) continue;
-
-    const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
-    const officialModel = resolveOfficialVideoModel(trinityId, officialCtx);
+    const trinityId = m.trinityId ?? "";
+    const officialModel = trinityId
+      ? resolveOfficialVideoModel(trinityId, officialCtx)
+      : null;
     const offTiers = officialVideoTiersForCompare(officialModel).filter((t) =>
       isVideoTokenOfficialUnit(t),
     );
@@ -186,7 +263,6 @@ export function buildVolcengineVideoCatalogRows(volcModels, officialCtx = {}) {
       const volPrice = volcengineVideoPriceAtCompare(m, e.offTier);
       if (volPrice == null && !e.offTier) continue;
 
-      rowNum++;
       const show = i === 0;
       const listed = volPrice != null ? volPrice : videoTierPrice(e.offTier);
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
@@ -200,9 +276,8 @@ export function buildVolcengineVideoCatalogRows(volcModels, officialCtx = {}) {
           "volcengine",
         );
 
-      pushVideoRow(rows, rowNum, show, {
+      pushVideoRow(rows, show, {
         trinityId,
-        displayName,
         brand: m.brand ?? "火山方舟",
         tierName: e.tierName,
         resolutionLabel: e.resolutionLabel,
@@ -212,11 +287,13 @@ export function buildVolcengineVideoCatalogRows(volcModels, officialCtx = {}) {
           ? formatVideoTokenPrice(listed, "CNY")
           : supplierListed,
         supplierVsOfficial,
-      });
+        supplierPrice: listed,
+        supplierCurrency: "CNY",
+      }, officialCtx);
     }
   }
 
-  return rows.length > 1 ? [header, ...rows] : [header];
+  return rows.length > 0 ? [header, ...rows] : [header];
 }
 
 /**

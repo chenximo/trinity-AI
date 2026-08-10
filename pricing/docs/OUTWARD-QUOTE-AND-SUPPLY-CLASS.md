@@ -6,7 +6,7 @@
 > - 运营总设计：[SUPPLY-PRICING-OPS-DESIGN.md](./SUPPLY-PRICING-OPS-DESIGN.md) §柱③  
 > - 商务洽谈对内表：[../output/商务洽谈折扣总表.xlsx](../output/商务洽谈折扣总表.xlsx)（`pricing/output/`）  
 > - 销售套件缺口：[sales-kit.md](../../apps/trinity-product/docs/ai-api-platform/commercial-billing/sales-kit.md)（#5 报价）  
-> - **对外标准档初版（可评审）**：[../output/trinity-outward-quote-standard.xlsx](../output/trinity-outward-quote-standard.xlsx)（数据宝形态 · 仅目录价 · 不动商务洽谈表）  
+> - **对外标准档**：[../output/Trinity模型报价表.xlsx](../output/Trinity模型报价表.xlsx)（整本可发；仅此一份）  
 > - 字段示意样表（旧）：[../output/trinity-outward-quote-sample.xlsx](../output/trinity-outward-quote-sample.xlsx)  
 > - 形态参考样例：`pricing/数据宝报价单_2026-07-27.xlsx`  
 > - 竞品分组对照：[竞品定价汇总-APIhub-OpenSand-AIUPNode-Nexcor.md](./竞品定价汇总-APIhub-OpenSand-AIUPNode-Nexcor.md)（§1.1 两种贴法；Nexcor≈按上游三类）  
@@ -95,29 +95,41 @@
 | `outwardTier` | ✅ | `standard` \| `ha` |
 | `inputPrice` | ✅ | 目录价绝对价 |
 | `outputPrice` | ✅ | 目录价绝对价（按次计费可空，见 unit） |
-| `volumeTierPrices` | ✅ | Plus→Enterprise：目录价 × 对客折（展示绝对价 + 折数） |
-| `cachePrice` | ✅ | **目录价·原缓存价**（无刊例标「—」）；充值档阶梯列暂仍只含入/出 |
+| `volumeTierPrices` | ✅ | 进阶版→企业版（三档）：**仅展示对客折**（入/出同折；折后价自算） |
+| `cachePrice` | ✅ | **目录价·原缓存价**（无刊例标「—」）；用量档（累积消耗）阶梯列暂仍只含入/出 |
 | `currency` | ✅ | USD / CNY |
 | `unit` | ✅ | per_1M_tokens / per_request / per_second … |
 | `officialRefDiscount` | 选 | 相对官网约 x 折；须可核对，勿编 |
 | `effectiveFrom` | ✅ | 生效日 |
 | `notes` | 选 | 区域、上下文等；禁写供应黑话 |
 
-### 3.3 Sheet 建议（已落地初版）
+### 3.3 Sheet 建议（已落地）
+
+**外发文件** `Trinity模型报价表.xlsx`（整本可发；仅此一份）：
 
 | Sheet | 用途 |
 |-------|------|
-| `00_说明` | 口径、与商务表边界、免责 |
-| `01_标准档报价` | **主外发表**：目录价入/出/**原缓存价** + Plus→Enterprise 阶梯绝对价（入/出，标折数） |
-| `02_高可用档` | 可选；本初版未建 |
-| `99_对内索引_勿外发` | 模型 × 映射成本折；勿外发 |
+| `00_折扣一览` | **仅有折扣**汇总（+模态；表头同 01 刊例三列+对外三档；无成本）；底色分模态 |
+| `01_生文` | 刊例价入/出/缓存 + **对外**三档（≥$5k/$10k/$50k）**仅对客折** |
+| `02_生图` | 同上（按规格分行；刊例=线上 L2） |
+| `03_生视频` | 同上（按分辨率/计费规格分行；刊例=线上 L2；有公开阶梯置顶） |
+
+**对内商务总册** `商务洽谈折扣总表.xlsx`（8 Sheet；勿外发）：
+
+| Sheet | 用途 |
+|-------|------|
+| `00_说明` | 索引、重建命令、线路源路径 |
+| `01_报价解析汇总` | **报价依据**（外发脚本回写；含原价/停用） |
+| `10`/`11` 生文 | 商务总表 + 交叉模型 |
+| `20`/`21` 生图 | 商务总表 + 交叉模型 |
+| `30`/`31` 生视频 | 商务总表 + 交叉模型（`routes-20260809-video/`） |
 
 **与数据宝 / 商务表分工：**
 
 | 物料 | 是否外发 | 内容 |
 |------|:--------:|------|
-| `trinity-outward-quote-standard.xlsx` | ✅ | 目录价 + 商务阶梯折算绝对价（USD） |
-| `商务洽谈折扣总表.xlsx` | ❌ | 成本族 × GM × 线路；算折真源，保持独立不改 |
+| `Trinity模型报价表.xlsx` | ✅ | 仅客户可见价与折（仅此一份） |
+| `商务洽谈折扣总表.xlsx` | ❌ | 一本总册：解析依据 + 分模态商务/交叉 |
 | 缓存命中列 | ✅ | 目录价列展示原缓存价；阶梯列暂不含缓存 |
 
 ### 3.4 数字从哪来
@@ -147,7 +159,7 @@
 | **P2** | Skill/流水线从刊例自动生成对外表草稿（仍人确认） | 工程 |
 
 **标准档初版（2026-08-03）**：  
-[`pricing/output/trinity-outward-quote-standard.xlsx`](../output/trinity-outward-quote-standard.xlsx)  
+[`pricing/output/Trinity模型报价表.xlsx`](../output/Trinity模型报价表.xlsx)  
 — 56 款生文模型 · 线上刊例 USD · 待运营复核后正式外发。  
 字段示意旧样表仍保留：`trinity-outward-quote-sample.xlsx`。
 

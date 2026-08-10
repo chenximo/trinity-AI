@@ -539,7 +539,7 @@ function renderSupplierMd(
     `# ${sup.title}`,
     "",
     `> 供应商：**${sup.key}** · 区域：**${sup.region}** · 数据日期：${date}`,
-    `> 供应商挂牌单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）`,
+    `> 上游价单位：**${unit}**（每百万 tokens，单元格内 入/出/缓）；刊例价为 USD/百万 tokens`,
     `> **范围**：${
       sup.key === "tokenhub"
         ? `TokenHub 控制台生文模型全目录（${thModels.length} 款）；按厂商 + 模型 ID 排序，同系列相邻`
@@ -615,8 +615,8 @@ function renderSupplierMd(
   let seen = false;
 
   for (const row of bodyRows) {
-    const tid = row[1];
-    const display = row[2];
+    const tid = row[2];
+    const display = row[3];
     if (tid || (display && !seen)) modelCount++;
     if (tid || display) seen = !!display;
     if (!tid && !display) seen = false;
@@ -637,11 +637,15 @@ function renderSupplierMd(
     "",
     "| 列 | 来源 |",
     "|----|------|",
-    "| 厂商官方价 | `suppliers/official/output/text/vendor-pricing.json` |",
-    `| 供应商挂牌 | 上游供应商挂牌价（**${unit}**） |`,
-    "| 供应商vs官方 | 同档入/出/缓相对厂商官方的偏差 |",
-    "| 线上刊例 | `GET /v1/prices` 当前挂牌（USD/百万 tokens）；未接入为 — |",
-    "| 刊例vs供应商 | 线上刊例 vs 本行供应商挂牌（CNY 挂牌按 ÷6.5 换 USD 对比） |",
+    "| 厂商 | 系列着色键 |",
+    "| 上游模型 | 该上游目录模型键（全量行轴） |",
+    "| Trinity ID | 已对接填 slug；未对接填 `-`（模型库/映射已接，≠ 上架） |",
+    "| 档位 | 价格档（生文） |",
+    "| 官方价 | `suppliers/official/output/text/vendor-pricing.json` |",
+    `| 上游价 | 上游供应商挂牌价（**${unit}**） |`,
+    "| 上游vs官方 | 同档入/出/缓相对厂商官方的偏差 |",
+    "| 刊例价 | `GET /v1/prices` 当前挂牌（USD）；未上架为 — |",
+    "| 刊例vs上游 | 线上刊例 vs 本行上游挂牌（CNY 挂牌按 ÷6.5 换 USD 对比） |",
     `| 生文刊例校验 | \`upstream/summary.md\` 与 Excel \`${TEXT_COMPARE_SHEET}\` |`,
     "",
   );

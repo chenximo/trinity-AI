@@ -1,11 +1,11 @@
 {
   "modality": "image",
-  "generatedAt": "2026-07-10T07:42:56.253Z",
+  "generatedAt": "2026-08-07T10:56:45.848Z",
   "officialFetchedAt": "2026-07-10T07:42:38.175Z",
-  "pricesFetchedAt": "2026-07-10T07:42:56.120Z",
+  "pricesFetchedAt": "2026-08-07T09:34:01.505Z",
   "modelCount": 20,
   "trinityLinkedCount": 20,
-  "trinityOnlineCount": 18,
+  "trinityOnlineCount": 20,
   "rowCount": 60,
   "fxOnlineDomestic": 6.5,
   "tierCoverage": {

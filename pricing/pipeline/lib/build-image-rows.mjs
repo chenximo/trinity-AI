@@ -12,11 +12,14 @@ import {
   resolveOfficialImageModel,
   evaluateImageSupplierVsOfficial,
 } from "./supplier-official-compare-image.mjs";
-import {
-  IMAGE_PRICE_UNIT_CNY,
-  IMAGE_PRICE_UNIT_USD,
-} from "../../config/channels-image.mjs";
 import { formatVsWithVerify } from "./pricing-verify.mjs";
+import {
+  buildSupplierTableHeader,
+  mediaTierLabel,
+  trinityIdCell,
+} from "./units.mjs";
+import { parseOnlineImageTiers, num } from "./parse-online-prices.mjs";
+import { FX_ONLINE_DOMESTIC } from "./compare-official-lib.mjs";
 
 /** @param {Record<string, { vendorCode: string, modelName: string, attribute?: string }>} aigcTrinityMap */
 function findAigcModelForMap(aigcModels, site, mapRef) {
@@ -58,36 +61,133 @@ export function iterAigcTrinityCatalog(aigcModels, site, aigcTrinityMap = {}) {
   return items;
 }
 
-/** @param {{ currency?: "CNY"|"USD" }} sup */
-export function buildImageSupplierTableHeader(sup = {}) {
-  const unit = sup.currency === "USD" ? IMAGE_PRICE_UNIT_USD : IMAGE_PRICE_UNIT_CNY;
-  return [
-    "序号",
-    "Trinity ID",
-    "显示名",
-    "厂商",
-    "价格档位",
-    "分辨率档",
-    "上游模型ID",
-    "厂商官方价",
-    `供应商挂牌(${unit})`,
-    "供应商vs官方",
-  ];
+/** @param {{ currency?: "CNY"|"USD" }} [sup] */
+export function buildImageSupplierTableHeader(_sup = {}) {
+  return buildSupplierTableHeader(_sup);
 }
 
-function pushImageRow(rows, rowNum, show, fields) {
+function listingCellsForImageRow(
+  trinityId,
+  resolutionLabel,
+  supplierPrice,
+  supplierCurrency,
+  officialCtx = {},
+) {
+  const tid = String(trinityId ?? "").trim();
+  if (!tid) return ["—", "—"];
+  const onlineRaw = officialCtx.onlineByModel?.get(tid.toLowerCase());
+  if (!onlineRaw) return ["—", "—"];
+
+  const tiers = parseOnlineImageTiers(onlineRaw);
+  const want = String(resolutionLabel ?? "").toLowerCase();
+  let hit =
+    tiers.find((t) => {
+      const lab = String(t.tierLabel ?? "").toLowerCase();
+      return lab && want && (lab === want || lab.includes(want) || want.includes(lab));
+    }) ?? tiers[0];
+
+  let listPrice = hit?.price ?? null;
+  let listing = "—";
+  if (listPrice != null) {
+    listing = `$${listPrice}`;
+  } else {
+    const def = (onlineRaw.price_groups ?? []).find((g) => g.type === "default")?.prices;
+    const out = num(def?.output?.amount);
+    const inn = num(def?.input?.amount);
+    if (out != null || inn != null) {
+      listing = `入 ${inn != null ? `$${inn}` : "⚠"} · 出 ${out != null ? `$${out}` : "⚠"}`;
+      listPrice = out;
+    }
+  }
+
+  const sup = num(supplierPrice);
+  if (listPrice == null || sup == null) return [listing, "—"];
+  const listCny =
+    supplierCurrency === "CNY" ? listPrice * FX_ONLINE_DOMESTIC : listPrice;
+  const cmp = supplierCurrency === "CNY" ? listCny : listPrice;
+  if (!cmp) return [listing, "—"];
+  const pct = Math.round(((sup - cmp) / cmp) * 1000) / 10;
+  if (Math.abs(pct) < 0.5) return [listing, "一致"];
+  const sign = pct > 0 ? "+" : "";
+  return [listing, `⚠${sign}${pct}%`];
+}
+
+function pushImageRow(rows, show, fields, officialCtx = {}) {
+  const [listing, listingVs] = listingCellsForImageRow(
+    fields.trinityId,
+    fields.resolutionLabel,
+    fields.supplierPrice,
+    fields.supplierCurrency,
+    officialCtx,
+  );
   rows.push([
-    rowNum,
-    show ? (fields.trinityId ?? "") : "",
-    show ? (fields.displayName ?? "") : "",
     show ? (fields.brand ?? "") : "",
-    fields.tierName ?? "—",
-    fields.resolutionLabel ?? "—",
     show ? (fields.upstreamId ?? "") : "",
+    trinityIdCell(fields.trinityId, show),
+    mediaTierLabel(fields.tierName, fields.resolutionLabel),
     fields.vendorOfficial ?? "—",
     fields.supplierListed ?? "—",
+    listing,
     fields.supplierVsOfficial ?? "—",
+    listingVs,
   ]);
+}
+
+/** @param {object|null} aigcModel */
+export function aigcAllResolutionEntries(aigcModel) {
+  if (!aigcModel?.tiers?.length) return [];
+  const out = [];
+  for (const tier of aigcModel.tiers) {
+    const res = tier.resolutions;
+    if (!res || typeof res !== "object") continue;
+    for (const [resolutionLabel, price] of Object.entries(res)) {
+      out.push({
+        tierName: tier.tierName ?? "标准价",
+        resolutionLabel,
+        price: Number(price),
+      });
+    }
+  }
+  return out.filter((e) => Number.isFinite(e.price));
+}
+
+/**
+ * 上游 AIGC 全量行轴（不按 Trinity map 裁剪）
+ * @param {object[]} aigcModels
+ * @param {"domestic"|"international"} site
+ * @param {Record<string, { vendorCode: string, modelName: string, attribute?: string }>} [aigcTrinityMap]
+ */
+export function iterAigcFullCatalog(aigcModels, site, aigcTrinityMap = {}) {
+  /** @type {Map<string, string>} */
+  const byVendorModel = new Map();
+  for (const [tid, ref] of Object.entries(aigcTrinityMap)) {
+    if (tid.startsWith("_") || !ref?.vendorCode) continue;
+    const k = `${ref.vendorCode}\0${ref.modelName}`.toLowerCase();
+    if (!byVendorModel.has(k)) byVendorModel.set(k, tid);
+  }
+
+  const list = (aigcModels ?? [])
+    .filter((m) => m.site === site)
+    .slice()
+    .sort((a, b) =>
+      `${a.vendorName || ""}\0${a.modelName || ""}\0${a.modelId || ""}`.localeCompare(
+        `${b.vendorName || ""}\0${b.modelName || ""}\0${b.modelId || ""}`,
+        "zh",
+      ),
+    );
+
+  const items = [];
+  for (const m of list) {
+    const entries = aigcAllResolutionEntries(m);
+    if (!entries.length) continue;
+    const mapKey = `${m.vendorCode || ""}\0${m.modelName || ""}`.toLowerCase();
+    const trinityId =
+      m.trinityId ||
+      byVendorModel.get(mapKey) ||
+      "";
+    items.push({ trinityId, model: m, entries });
+  }
+  return items;
 }
 
 /** @param {ReturnType<import("../suppliers/aigc/lib/pricing-api-image.mjs").normalizeAigcImagePricing>} aigcModels */
@@ -101,18 +201,14 @@ export function buildAigcImageCatalogRows(
   const header = buildImageSupplierTableHeader({ currency });
   const channelKind = site === "international" ? "international" : "domestic";
   const rows = [];
-  let rowNum = 0;
 
-  for (const { trinityId, model: m, entries } of iterAigcTrinityCatalog(
+  for (const { trinityId, model: m, entries } of iterAigcFullCatalog(
     aigcModels,
     site,
     aigcTrinityMap,
   )) {
-    const displayName = `${m.vendorName} ${m.modelName}`.trim();
-
     for (let i = 0; i < entries.length; i++) {
       const e = entries[i];
-      rowNum++;
       const show = i === 0;
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForImageResolution(
@@ -129,17 +225,23 @@ export function buildAigcImageCatalogRows(
           channelKind,
         );
 
-      pushImageRow(rows, rowNum, show, {
-        trinityId,
-        displayName,
-        brand: m.vendorName,
-        tierName: e.tierName,
-        resolutionLabel: e.resolutionLabel,
-        upstreamId: m.modelId,
-        vendorOfficial,
-        supplierListed,
-        supplierVsOfficial,
-      });
+      pushImageRow(
+        rows,
+        show,
+        {
+          trinityId,
+          brand: m.vendorName,
+          tierName: e.tierName,
+          resolutionLabel: e.resolutionLabel,
+          upstreamId: m.modelId || m.upstreamModelId || "",
+          vendorOfficial,
+          supplierListed,
+          supplierVsOfficial,
+          supplierPrice: e.price,
+          supplierCurrency: currency,
+        },
+        officialCtx,
+      );
     }
   }
 
@@ -150,12 +252,10 @@ export function buildAigcImageCatalogRows(
 export function buildTokenhubImageCatalogRows(thData, officialCtx = {}) {
   const header = buildImageSupplierTableHeader({ currency: "CNY" });
   const rows = [];
-  let rowNum = 0;
 
   for (const m of thData.models ?? []) {
     if (!/^hy-image/i.test(m.modelId ?? "")) continue;
     const trinityId = m.trinityId ?? m.modelId;
-    const displayName = m.displayName ?? m.modelName ?? m.modelId;
     const tierList = m.tiers?.length ? m.tiers : [{ tierName: "输出", output: m.price }];
 
     for (let i = 0; i < tierList.length; i++) {
@@ -164,7 +264,6 @@ export function buildTokenhubImageCatalogRows(thData, officialCtx = {}) {
       const price = Number(item?.price ?? t.output ?? t.price);
       if (!Number.isFinite(price)) continue;
 
-      rowNum++;
       const show = i === 0;
       const resolutionLabel = t.tierName === "统一价" ? "输出" : (t.tierName ?? "输出");
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
@@ -178,9 +277,8 @@ export function buildTokenhubImageCatalogRows(thData, officialCtx = {}) {
           "tokenhub",
         );
 
-      pushImageRow(rows, rowNum, show, {
+      pushImageRow(rows, show, {
         trinityId,
-        displayName,
         brand: m.brand ?? m.vendorName ?? "混元",
         tierName: t.tierName ?? "输出",
         resolutionLabel,
@@ -188,7 +286,9 @@ export function buildTokenhubImageCatalogRows(thData, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-      });
+        supplierPrice: price,
+        supplierCurrency: "CNY",
+      }, officialCtx);
     }
   }
 
@@ -199,12 +299,10 @@ export function buildTokenhubImageCatalogRows(thData, officialCtx = {}) {
 export function buildVolcengineImageCatalogRows(volcModels, officialCtx = {}) {
   const header = buildImageSupplierTableHeader({ currency: "CNY" });
   const rows = [];
-  let rowNum = 0;
 
   for (const m of volcModels) {
     const trinityId = m.trinityId ?? m.modelId;
     if (!trinityId) continue;
-    const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
     const volPrice = m.tiers?.[0]?.price ?? null;
     if (volPrice == null) continue;
 
@@ -227,7 +325,6 @@ export function buildVolcengineImageCatalogRows(volcModels, officialCtx = {}) {
 
     for (let i = 0; i < expansions.length; i++) {
       const e = expansions[i];
-      rowNum++;
       const show = i === 0;
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForImageResolution(
@@ -240,9 +337,8 @@ export function buildVolcengineImageCatalogRows(volcModels, officialCtx = {}) {
           "volcengine",
         );
 
-      pushImageRow(rows, rowNum, show, {
+      pushImageRow(rows, show, {
         trinityId,
-        displayName,
         brand: m.brand ?? "火山方舟",
         tierName: e.tierName,
         resolutionLabel: e.resolutionLabel,
@@ -250,7 +346,9 @@ export function buildVolcengineImageCatalogRows(volcModels, officialCtx = {}) {
         vendorOfficial,
         supplierListed,
         supplierVsOfficial,
-      });
+        supplierPrice: Number(volPrice),
+        supplierCurrency: "CNY",
+      }, officialCtx);
     }
   }
 

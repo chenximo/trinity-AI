@@ -34,7 +34,7 @@ import {
   IMAGE_SUPPLIER_SUMMARY_SHEET,
 } from "./lib/supplier-official-summary-image.mjs";
 import { IMAGE_CONNECTED_SUPPLIERS } from "../config/channels-image.mjs";
-import { mergeModalityWorkbook, writeCsv, MERGE_SUPPLIER } from "./lib/export-excel.mjs";
+import { mergeModalityWorkbook, writeCsv, MERGE_SUPPLIER_MEDIA } from "./lib/export-excel.mjs";
 import { renderOutputReadme } from "./lib/output-readme.mjs";
 import {
   OUT_DIR,
@@ -161,6 +161,7 @@ async function main() {
   const officialCtx = {
     vendorMap: hubCtx.vendorMap,
     officialByVendorId: hubCtx.officialByVendorId,
+    onlineByModel: hubCtx.onlineByModel,
   };
 
   const sheetCtx = {
@@ -194,7 +195,7 @@ async function main() {
     ...IMAGE_CONNECTED_SUPPLIERS.map((sup) => ({
       name: sup.excelSheet,
       rows: imageSupplierRows(sup, sheetCtx),
-      merge: MERGE_SUPPLIER,
+      merge: MERGE_SUPPLIER_MEDIA,
     })),
   ];
 

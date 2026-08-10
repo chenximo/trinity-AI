@@ -44,3 +44,8 @@
 ## 与线上刊例的关系
 
 真源更新后，按 [../README.md](../README.md) 六步流程：`fetch` → `upstream` → **`validate`** → `gen-65` → `diff:065`。
+
+**刊例如何从原厂锚派生（V1/V2）**：见 [../docs/刊例策略-V1-V2-国际站优先.md](../docs/刊例策略-V1-V2-国际站优先.md)。  
+`bailian-intl` / AIGC 国际等仍是 **进货参照**，不是 V2 刊例真源。
+
+**上游全量 · 接入盘点**（看还能接什么）：落在总册 Excel **上游分表**（全量模型+挂牌价；已接标 `-`）。`npm run pricing:upstream` 重生。口径见 [../docs/SUPPLY-PRICING-OPS-DESIGN.md](../docs/SUPPLY-PRICING-OPS-DESIGN.md) §10。

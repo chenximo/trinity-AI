@@ -1,0 +1,2854 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.355Z",
+  "source": {
+    "key": "bailian",
+    "title": "阿里云百炼 · 中国内地",
+    "modality": "text",
+    "jsonPath": "suppliers/bailian/output/pricing-api.json"
+  },
+  "total": 355,
+  "accessed": 23,
+  "pending": 332,
+  "rows": [
+    {
+      "id": "text-embedding-async-v1",
+      "name": "text-embedding-async-v1",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "text-embedding-async-v2",
+      "name": "text-embedding-async-v2",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "text-embedding-v1",
+      "name": "text-embedding-v1",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "text-embedding-v2",
+      "name": "text-embedding-v2",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "text-embedding-v3",
+      "name": "text-embedding-v3",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "text-embedding-v4",
+      "name": "text-embedding-v4",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tripo-h3.1",
+      "name": "tripo-h3.1",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tripo-p1.0",
+      "name": "tripo-p1.0",
+      "brand": "3D模型生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "videoretalk",
+      "name": "videoretalk",
+      "brand": "表情包Emoji",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-coder-plus",
+      "name": "qwen-coder-plus",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-coder-turbo",
+      "name": "qwen-coder-turbo",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-max",
+      "name": "qwen-max",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-omni-turbo",
+      "name": "qwen-omni-turbo",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-2025-01-19",
+      "name": "qwen-omni-turbo-2025-01-19",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-2025-03-26",
+      "name": "qwen-omni-turbo-2025-03-26",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-latest",
+      "name": "qwen-omni-turbo-latest",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-realtime",
+      "name": "qwen-omni-turbo-realtime",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-realtime-2025-05-08",
+      "name": "qwen-omni-turbo-realtime-2025-05-08",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-omni-turbo-realtime-latest",
+      "name": "qwen-omni-turbo-realtime-latest",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2024-12-20",
+      "name": "qwen-plus-2024-12-20",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-01-12",
+      "name": "qwen-plus-2025-01-12",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-01-25",
+      "name": "qwen-plus-2025-01-25",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-12-01-us",
+      "name": "qwen-plus-2025-12-01-us",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-us",
+      "name": "qwen-plus-us",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-max",
+      "name": "qwen-vl-max",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-plus",
+      "name": "qwen-vl-plus",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash",
+      "name": "qwen3-omni-flash",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash-2025-09-15",
+      "name": "qwen3-omni-flash-2025-09-15",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash-2025-12-01",
+      "name": "qwen3-omni-flash-2025-12-01",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash-realtime",
+      "name": "qwen3-omni-flash-realtime",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash-realtime-2025-09-15",
+      "name": "qwen3-omni-flash-realtime-2025-09-15",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-flash-realtime-2025-12-01",
+      "name": "qwen3-omni-flash-realtime-2025-12-01",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2025-10-15-us",
+      "name": "qwen3-vl-flash-2025-10-15-us",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2026-01-22-us",
+      "name": "qwen3-vl-flash-2026-01-22-us",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-us",
+      "name": "qwen3-vl-flash-us",
+      "brand": "更多模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-asr-flash-8k-realtime",
+      "name": "fun-asr-flash-8k-realtime",
+      "brand": "录音文件识别",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-asr-realtime",
+      "name": "fun-asr-realtime",
+      "brand": "录音文件识别",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "paraformer-realtime-v2",
+      "name": "paraformer-realtime-v2",
+      "brand": "录音文件识别",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v1",
+      "name": "cosyvoice-v1",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v2",
+      "name": "cosyvoice-v2",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v3-flash",
+      "name": "cosyvoice-v3-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v3-plus",
+      "name": "cosyvoice-v3-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v3.5-flash",
+      "name": "cosyvoice-v3.5-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cosyvoice-v3.5-plus",
+      "name": "cosyvoice-v3.5-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-r1",
+      "name": "deepseek-r1",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-r1-0528",
+      "name": "deepseek-r1-0528",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-r1-distill-qwen-14b",
+      "name": "deepseek-r1-distill-qwen-14b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-r1-distill-qwen-32b",
+      "name": "deepseek-r1-distill-qwen-32b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-r1-distill-qwen-7b",
+      "name": "deepseek-r1-distill-qwen-7b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3",
+      "name": "deepseek-v3",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.1",
+      "name": "deepseek-v3.1",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.2",
+      "name": "deepseek-v3.2",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v3.2-exp",
+      "name": "deepseek-v3.2-exp",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "deepseek-v4-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-flash-us",
+      "name": "deepseek-v4-flash-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "deepseek-v4-pro",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-pro-us",
+      "name": "deepseek-v4-pro-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qvq-max",
+      "name": "qvq-max",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qvq-plus",
+      "name": "qvq-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-deep-research",
+      "name": "qwen-deep-research",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-deep-research-2025-12-15",
+      "name": "qwen-deep-research-2025-12-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-doc-turbo",
+      "name": "qwen-doc-turbo",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash",
+      "name": "qwen-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-flash-2025-07-28",
+      "name": "qwen-flash-2025-07-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash-2025-07-28-us",
+      "name": "qwen-flash-2025-07-28-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash-us",
+      "name": "qwen-flash-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image",
+      "name": "qwen-image",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0",
+      "name": "qwen-image-2.0",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0-2026-03-03",
+      "name": "qwen-image-2.0-2026-03-03",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0-pro",
+      "name": "qwen-image-2.0-pro",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0-pro-2026-03-03",
+      "name": "qwen-image-2.0-pro-2026-03-03",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0-pro-2026-04-22",
+      "name": "qwen-image-2.0-pro-2026-04-22",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-2.0-pro-2026-06-22",
+      "name": "qwen-image-2.0-pro-2026-06-22",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit",
+      "name": "qwen-image-edit",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit-max",
+      "name": "qwen-image-edit-max",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit-max-2026-01-16",
+      "name": "qwen-image-edit-max-2026-01-16",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit-plus",
+      "name": "qwen-image-edit-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit-plus-2025-10-30",
+      "name": "qwen-image-edit-plus-2025-10-30",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-edit-plus-2025-12-15",
+      "name": "qwen-image-edit-plus-2025-12-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-max",
+      "name": "qwen-image-max",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-max-2025-12-30",
+      "name": "qwen-image-max-2025-12-30",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-plus",
+      "name": "qwen-image-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-image-plus-2026-01-09",
+      "name": "qwen-image-plus-2026-01-09",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-long",
+      "name": "qwen-long",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-long-2025-01-25",
+      "name": "qwen-long-2025-01-25",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-long-latest",
+      "name": "qwen-long-latest",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-math-plus",
+      "name": "qwen-math-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-math-turbo",
+      "name": "qwen-math-turbo",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-flash",
+      "name": "qwen-mt-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-lite",
+      "name": "qwen-mt-lite",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-lite-us",
+      "name": "qwen-mt-lite-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-plus",
+      "name": "qwen-mt-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-turbo",
+      "name": "qwen-mt-turbo",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus",
+      "name": "qwen-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-plus-2025-04-28",
+      "name": "qwen-plus-2025-04-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-07-14",
+      "name": "qwen-plus-2025-07-14",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-07-28",
+      "name": "qwen-plus-2025-07-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-09-11",
+      "name": "qwen-plus-2025-09-11",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-2025-12-01",
+      "name": "qwen-plus-2025-12-01",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-latest",
+      "name": "qwen-plus-latest",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-realtime",
+      "name": "qwen-tts-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-realtime-2025-07-15",
+      "name": "qwen-tts-realtime-2025-07-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-realtime-latest",
+      "name": "qwen-tts-realtime-latest",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-turbo",
+      "name": "qwen-turbo",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-vl-ocr",
+      "name": "qwen-vl-ocr",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-ocr-2024-10-28",
+      "name": "qwen-vl-ocr-2024-10-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-ocr-2025-04-13",
+      "name": "qwen-vl-ocr-2025-04-13",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-ocr-2025-08-28",
+      "name": "qwen-vl-ocr-2025-08-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-ocr-2025-11-20",
+      "name": "qwen-vl-ocr-2025-11-20",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-vl-ocr-latest",
+      "name": "qwen-vl-ocr-latest",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen2.5-omni-7b",
+      "name": "qwen2.5-omni-7b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-14b",
+      "name": "qwen3-14b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-235b-a22b",
+      "name": "qwen3-235b-a22b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-235b-a22b-instruct-2507",
+      "name": "qwen3-235b-a22b-instruct-2507",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-235b-a22b-thinking-2507",
+      "name": "qwen3-235b-a22b-thinking-2507",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-30b-a3b",
+      "name": "qwen3-30b-a3b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-30b-a3b-instruct-2507",
+      "name": "qwen3-30b-a3b-instruct-2507",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-30b-a3b-thinking-2507",
+      "name": "qwen3-30b-a3b-thinking-2507",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-32b",
+      "name": "qwen3-32b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-8b",
+      "name": "qwen3-8b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash",
+      "name": "qwen3-asr-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-2025-09-08",
+      "name": "qwen3-asr-flash-2025-09-08",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-2025-09-08-us",
+      "name": "qwen3-asr-flash-2025-09-08-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-2026-02-10",
+      "name": "qwen3-asr-flash-2026-02-10",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-filetrans",
+      "name": "qwen3-asr-flash-filetrans",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-filetrans-2025-11-17",
+      "name": "qwen3-asr-flash-filetrans-2025-11-17",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-realtime",
+      "name": "qwen3-asr-flash-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-asr-flash-us",
+      "name": "qwen3-asr-flash-us",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-30b-a3b-instruct",
+      "name": "qwen3-coder-30b-a3b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "name": "qwen3-coder-480b-a35b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-flash",
+      "name": "qwen3-coder-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-flash-2025-07-28",
+      "name": "qwen3-coder-flash-2025-07-28",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-next",
+      "name": "qwen3-coder-next",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus",
+      "name": "qwen3-coder-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus-2025-07-22",
+      "name": "qwen3-coder-plus-2025-07-22",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-coder-plus-2025-09-23",
+      "name": "qwen3-coder-plus-2025-09-23",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-livetranslate-flash",
+      "name": "qwen3-livetranslate-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-livetranslate-flash-2025-12-01",
+      "name": "qwen3-livetranslate-flash-2025-12-01",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max",
+      "name": "qwen3-max",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-2025-09-23",
+      "name": "qwen3-max-2025-09-23",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-2026-01-23",
+      "name": "qwen3-max-2026-01-23",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-max-preview",
+      "name": "qwen3-max-preview",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-next-80b-a3b-instruct",
+      "name": "qwen3-next-80b-a3b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-next-80b-a3b-thinking",
+      "name": "qwen3-next-80b-a3b-thinking",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-omni-30b-a3b-captioner",
+      "name": "qwen3-omni-30b-a3b-captioner",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash-realtime",
+      "name": "qwen3-tts-flash-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash-realtime-2025-09-18",
+      "name": "qwen3-tts-flash-realtime-2025-09-18",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash-realtime-2025-11-27",
+      "name": "qwen3-tts-flash-realtime-2025-11-27",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-instruct-flash-realtime",
+      "name": "qwen3-tts-instruct-flash-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-instruct-flash-realtime-2026-01-22",
+      "name": "qwen3-tts-instruct-flash-realtime-2026-01-22",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-vc-realtime-2026-01-15",
+      "name": "qwen3-tts-vc-realtime-2026-01-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-vd-realtime-2025-12-16",
+      "name": "qwen3-tts-vd-realtime-2025-12-16",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-vd-realtime-2026-01-15",
+      "name": "qwen3-tts-vd-realtime-2026-01-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "name": "qwen3-vl-235b-a22b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-235b-a22b-thinking",
+      "name": "qwen3-vl-235b-a22b-thinking",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-30b-a3b-instruct",
+      "name": "qwen3-vl-30b-a3b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-30b-a3b-thinking",
+      "name": "qwen3-vl-30b-a3b-thinking",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-32b-instruct",
+      "name": "qwen3-vl-32b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-32b-thinking",
+      "name": "qwen3-vl-32b-thinking",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-8b-instruct",
+      "name": "qwen3-vl-8b-instruct",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-8b-thinking",
+      "name": "qwen3-vl-8b-thinking",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-122b-a10b",
+      "name": "qwen3.5-122b-a10b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-27b",
+      "name": "qwen3.5-27b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-35b-a3b",
+      "name": "qwen3.5-35b-a3b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-397b-a17b",
+      "name": "qwen3.5-397b-a17b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-flash",
+      "name": "qwen3.5-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.5-flash-2026-02-23",
+      "name": "qwen3.5-flash-2026-02-23",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-ocr",
+      "name": "qwen3.5-ocr",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-flash",
+      "name": "qwen3.5-omni-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-flash-2026-03-15",
+      "name": "qwen3.5-omni-flash-2026-03-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-flash-realtime",
+      "name": "qwen3.5-omni-flash-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-flash-realtime-2026-03-15",
+      "name": "qwen3.5-omni-flash-realtime-2026-03-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-plus",
+      "name": "qwen3.5-omni-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-plus-2026-03-15",
+      "name": "qwen3.5-omni-plus-2026-03-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-plus-realtime",
+      "name": "qwen3.5-omni-plus-realtime",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-omni-plus-realtime-2026-03-15",
+      "name": "qwen3.5-omni-plus-realtime-2026-03-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-plus",
+      "name": "qwen3.5-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.5-plus-2026-02-15",
+      "name": "qwen3.5-plus-2026-02-15",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-plus-2026-04-20",
+      "name": "qwen3.5-plus-2026-04-20",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-27b",
+      "name": "qwen3.6-27b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-35b-a3b",
+      "name": "qwen3.6-35b-a3b",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-flash",
+      "name": "qwen3.6-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.6-flash-2026-04-16",
+      "name": "qwen3.6-flash-2026-04-16",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-max-preview",
+      "name": "qwen3.6-max-preview",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.6-plus",
+      "name": "qwen3.6-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.6-plus-2026-04-02",
+      "name": "qwen3.6-plus-2026-04-02",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-max",
+      "name": "qwen3.7-max",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.7-max-2026-05-17",
+      "name": "qwen3.7-max-2026-05-17",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-max-2026-05-20",
+      "name": "qwen3.7-max-2026-05-20",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-max-2026-06-08",
+      "name": "qwen3.7-max-2026-06-08",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-max-preview",
+      "name": "qwen3.7-max-preview",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.7-plus",
+      "name": "qwen3.7-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.7-plus-2026-05-26",
+      "name": "qwen3.7-plus-2026-05-26",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwq-plus",
+      "name": "qwq-plus",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tongyi-xiaomi-analysis-flash",
+      "name": "tongyi-xiaomi-analysis-flash",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tongyi-xiaomi-analysis-pro",
+      "name": "tongyi-xiaomi-analysis-pro",
+      "brand": "千问",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wordart-semantic",
+      "name": "wordart-semantic",
+      "brand": "人物写真生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wordart-texture",
+      "name": "wordart-texture",
+      "brand": "人物写真生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx-background-generation-v2",
+      "name": "wanx-background-generation-v2",
+      "brand": "人像风格重绘",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "video-style-transform",
+      "name": "video-style-transform",
+      "brand": "声动人像VideoRetalk",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.0-i2v",
+      "name": "happyhorse-1.0-i2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.0-r2v",
+      "name": "happyhorse-1.0-r2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.0-video-edit",
+      "name": "happyhorse-1.0-video-edit",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.1-i2v",
+      "name": "happyhorse-1.1-i2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.1-r2v",
+      "name": "happyhorse-1.1-r2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kling-v3-omni-video-generation",
+      "name": "kling-v3-omni-video-generation",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kling-v3-video-generation",
+      "name": "kling-v3-video-generation",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-c1-it2v",
+      "name": "pixverse-c1-it2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-c1-kf2v",
+      "name": "pixverse-c1-kf2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-c1-r2v",
+      "name": "pixverse-c1-r2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-c1-t2v",
+      "name": "pixverse-c1-t2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v5.6-it2v",
+      "name": "pixverse-v5.6-it2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v5.6-kf2v",
+      "name": "pixverse-v5.6-kf2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v5.6-r2v",
+      "name": "pixverse-v5.6-r2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v5.6-t2v",
+      "name": "pixverse-v5.6-t2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v6-it2v",
+      "name": "pixverse-v6-it2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v6-kf2v",
+      "name": "pixverse-v6-kf2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "pixverse-v6-t2v",
+      "name": "pixverse-v6-t2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2_reference2video",
+      "name": "viduq2_reference2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2_text2video",
+      "name": "viduq2_text2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-pro_img2video",
+      "name": "viduq2-pro_img2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-pro_reference2video",
+      "name": "viduq2-pro_reference2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-pro_start-end2video",
+      "name": "viduq2-pro_start-end2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-pro-fast_img2video",
+      "name": "viduq2-pro-fast_img2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-turbo_img2video",
+      "name": "viduq2-turbo_img2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq2-turbo_start-end2video",
+      "name": "viduq2-turbo_start-end2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3_reference2video",
+      "name": "viduq3_reference2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-mix_reference2video",
+      "name": "viduq3-mix_reference2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-pro_img2video",
+      "name": "viduq3-pro_img2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-pro_start-end2video",
+      "name": "viduq3-pro_start-end2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-pro_text2video",
+      "name": "viduq3-pro_text2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-turbo_img2video",
+      "name": "viduq3-turbo_img2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-turbo_reference2video",
+      "name": "viduq3-turbo_reference2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-turbo_start-end2video",
+      "name": "viduq3-turbo_start-end2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "viduq3-turbo_text2video",
+      "name": "viduq3-turbo_text2video",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-t2v-plus",
+      "name": "wan2.1-t2v-plus",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-t2v-turbo",
+      "name": "wan2.1-t2v-turbo",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-t2v-plus",
+      "name": "wan2.2-t2v-plus",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.5-t2v-preview",
+      "name": "wan2.5-t2v-preview",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-t2v",
+      "name": "wan2.6-t2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-t2v-us",
+      "name": "wan2.6-t2v-us",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-t2v",
+      "name": "wan2.7-t2v",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-t2v-2026-04-25",
+      "name": "wan2.7-t2v-2026-04-25",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-t2v-plus",
+      "name": "wanx2.1-t2v-plus",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-t2v-turbo",
+      "name": "wanx2.1-t2v-turbo",
+      "brand": "视频生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tongyi-intent-detect-v3",
+      "name": "tongyi-intent-detect-v3",
+      "brand": "通义法睿",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-music-preview",
+      "name": "fun-music-preview",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-music-v1",
+      "name": "fun-music-v1",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "image-out-painting",
+      "name": "image-out-painting",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kling-v3-image-generation",
+      "name": "kling-v3-image-generation",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kling-v3-omni-image-generation",
+      "name": "kling-v3-omni-image-generation",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-mt-image",
+      "name": "qwen-mt-image",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-i2v-plus",
+      "name": "wan2.1-i2v-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-i2v-turbo",
+      "name": "wan2.1-i2v-turbo",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-kf2v-plus",
+      "name": "wan2.1-kf2v-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-vace-plus",
+      "name": "wan2.1-vace-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-animate-mix",
+      "name": "wan2.2-animate-mix",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-animate-move",
+      "name": "wan2.2-animate-move",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-i2v-flash",
+      "name": "wan2.2-i2v-flash",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-i2v-plus",
+      "name": "wan2.2-i2v-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-kf2v-flash",
+      "name": "wan2.2-kf2v-flash",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.5-i2i-preview",
+      "name": "wan2.5-i2i-preview",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.5-i2v-preview",
+      "name": "wan2.5-i2v-preview",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-i2v",
+      "name": "wan2.6-i2v",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-i2v-flash",
+      "name": "wan2.6-i2v-flash",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-i2v-us",
+      "name": "wan2.6-i2v-us",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-image",
+      "name": "wan2.6-image",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-r2v",
+      "name": "wan2.6-r2v",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-r2v-flash",
+      "name": "wan2.6-r2v-flash",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-i2v",
+      "name": "wan2.7-i2v",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-i2v-2026-04-25",
+      "name": "wan2.7-i2v-2026-04-25",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-image",
+      "name": "wan2.7-image",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-image-pro",
+      "name": "wan2.7-image-pro",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-r2v",
+      "name": "wan2.7-r2v",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.7-videoedit",
+      "name": "wan2.7-videoedit",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx-sketch-to-image-lite",
+      "name": "wanx-sketch-to-image-lite",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx-style-repaint-v1",
+      "name": "wanx-style-repaint-v1",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-i2v-plus",
+      "name": "wanx2.1-i2v-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-i2v-turbo",
+      "name": "wanx2.1-i2v-turbo",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-imageedit",
+      "name": "wanx2.1-imageedit",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-kf2v-plus",
+      "name": "wanx2.1-kf2v-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-vace-plus",
+      "name": "wanx2.1-vace-plus",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-image-turbo",
+      "name": "z-image-turbo",
+      "brand": "图像生成",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gte-rerank-v2",
+      "name": "gte-rerank-v2",
+      "brand": "文本排序",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-rerank",
+      "name": "qwen3-rerank",
+      "brand": "文本排序",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-rerank",
+      "name": "qwen3-vl-rerank",
+      "brand": "文本排序",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "multimodal-embedding-v1",
+      "name": "multimodal-embedding-v1",
+      "brand": "文本向量",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-embedding",
+      "name": "qwen3-vl-embedding",
+      "brand": "文本向量",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tongyi-embedding-vision-flash",
+      "name": "tongyi-embedding-vision-flash",
+      "brand": "文本向量",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tongyi-embedding-vision-plus",
+      "name": "tongyi-embedding-vision-plus",
+      "brand": "文本向量",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "farui-plus",
+      "name": "farui-plus",
+      "brand": "行业模型",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gui-plus",
+      "name": "gui-plus",
+      "brand": "意图理解",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash-character",
+      "name": "qwen-flash-character",
+      "brand": "意图理解",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-flash-character-2026-02-26",
+      "name": "qwen-flash-character-2026-02-26",
+      "brand": "意图理解",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-character",
+      "name": "qwen-plus-character",
+      "brand": "意图理解",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-plus-character-ja",
+      "name": "qwen-plus-character-ja",
+      "brand": "意图理解",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.0-t2v",
+      "name": "happyhorse-1.0-t2v",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "happyhorse-1.1-t2v",
+      "name": "happyhorse-1.1-t2v",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-2025-04-10",
+      "name": "qwen-tts-2025-04-10",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-2025-05-22",
+      "name": "qwen-tts-2025-05-22",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-flash",
+      "name": "qwen-tts-flash",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen-tts-latest",
+      "name": "qwen-tts-latest",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-livetranslate-flash-realtime",
+      "name": "qwen3-livetranslate-flash-realtime",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-livetranslate-flash-realtime-2025-09-22",
+      "name": "qwen3-livetranslate-flash-realtime-2025-09-22",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash",
+      "name": "qwen3-tts-flash",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash-2025-09-18",
+      "name": "qwen3-tts-flash-2025-09-18",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-flash-2025-11-27",
+      "name": "qwen3-tts-flash-2025-11-27",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-instruct-flash",
+      "name": "qwen3-tts-instruct-flash",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-instruct-flash-2026-01-26",
+      "name": "qwen3-tts-instruct-flash-2026-01-26",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-vc-2026-01-22",
+      "name": "qwen3-tts-vc-2026-01-22",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-tts-vd-2026-01-26",
+      "name": "qwen3-tts-vd-2026-01-26",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-livetranslate-flash-realtime",
+      "name": "qwen3.5-livetranslate-flash-realtime",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3.5-livetranslate-flash-realtime-2026-05-19",
+      "name": "qwen3.5-livetranslate-flash-realtime-2026-05-19",
+      "brand": "语音",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax-m2.1",
+      "name": "minimax-m2.1",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax-m2.5",
+      "name": "minimax-m2.5",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-ocr",
+      "name": "deepseek-ocr",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3-0324",
+      "name": "deepseek-v3-0324",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.1-terminus",
+      "name": "deepseek-v3.1-terminus",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.2-think",
+      "name": "deepseek-v3.2-think",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kimi-k2-thinking",
+      "name": "kimi-k2-thinking",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kimi-k2.5",
+      "name": "kimi-k2.5",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.6",
+      "name": "kimi-k2.6",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.7-code",
+      "name": "kimi-k2.7-code",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "moonshot-kimi-k2-instruct",
+      "name": "moonshot-kimi-k2-instruct",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-asr",
+      "name": "fun-asr",
+      "brand": "Fun",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "fun-asr-flash-2026-06-15",
+      "name": "fun-asr-flash-2026-06-15",
+      "brand": "Fun",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-4.5",
+      "name": "glm-4.5",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-4.5-air",
+      "name": "glm-4.5-air",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-4.6",
+      "name": "glm-4.6",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-4.7",
+      "name": "glm-4.7",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-5",
+      "name": "glm-5",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.1",
+      "name": "glm-5.1",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.2",
+      "name": "glm-5.2",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.7-code-highspeed",
+      "name": "kimi-k2.7-code-highspeed",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "mimo-v2.5-pro",
+      "name": "mimo-v2.5-pro",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax-m2.7",
+      "name": "minimax-m2.7",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m3",
+      "name": "minimax-m3",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "paraformer-v2",
+      "name": "paraformer-v2",
+      "brand": "Paraformer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash",
+      "name": "qwen3-vl-flash",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2025-10-15",
+      "name": "qwen3-vl-flash-2025-10-15",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-flash-2026-01-22",
+      "name": "qwen3-vl-flash-2026-01-22",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus",
+      "name": "qwen3-vl-plus",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus-2025-09-23",
+      "name": "qwen3-vl-plus-2025-09-23",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen3-vl-plus-2025-12-19",
+      "name": "qwen3-vl-plus-2025-12-19",
+      "brand": "QVQ",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "step-3.7-flash",
+      "name": "step-3.7-flash",
+      "brand": "Stepfun",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-t2i-plus",
+      "name": "wan2.1-t2i-plus",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.1-t2i-turbo",
+      "name": "wan2.1-t2i-turbo",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-t2i-flash",
+      "name": "wan2.2-t2i-flash",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.2-t2i-plus",
+      "name": "wan2.2-t2i-plus",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.5-t2i-preview",
+      "name": "wan2.5-t2i-preview",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wan2.6-t2i",
+      "name": "wan2.6-t2i",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx-v1",
+      "name": "wanx-v1",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.0-t2i-turbo",
+      "name": "wanx2.0-t2i-turbo",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-t2i-plus",
+      "name": "wanx2.1-t2i-plus",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "wanx2.1-t2i-turbo",
+      "name": "wanx2.1-t2i-turbo",
+      "brand": "Z",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    }
+  ]
+}

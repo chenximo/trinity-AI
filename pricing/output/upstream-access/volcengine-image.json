@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.363Z",
+  "source": {
+    "key": "volcengine-image",
+    "title": "火山方舟 · 生图",
+    "modality": "image",
+    "jsonPath": "suppliers/volcengine/output/image/pricing-api.json"
+  },
+  "total": 3,
+  "accessed": 3,
+  "pending": 0,
+  "rows": [
+    {
+      "id": "doubao-seedream-4.0",
+      "name": "豆包 Doubao-seedream-4.0",
+      "brand": "火山方舟",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "doubao-seedream-4.5",
+      "name": "豆包 Doubao-seedream-4.5",
+      "brand": "火山方舟",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "doubao-seedream-5.0-lite",
+      "name": "豆包 Doubao-seedream-5.0-lite",
+      "brand": "火山方舟",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

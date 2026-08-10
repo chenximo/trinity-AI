@@ -4,6 +4,7 @@ import {
   colTrinityList,
   buildSupplierTableHeader,
   upstreamUnit,
+  trinityIdCell,
 } from "./units.mjs";
 import {
   tierPricesFromItems,
@@ -119,13 +120,10 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
     { brandKey: "vendorName", idKey: "trinityId" },
   );
   const rows = [];
-  let rowNum = 0;
 
   for (const m of list) {
-    const displayName = `${m.vendorName} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
       const t = m.tiers[i];
-      rowNum++;
       const show = i === 0;
       const supplierPrices = {
         input: t.input,
@@ -142,25 +140,25 @@ export function buildAigcCatalogRows(aigcModels, site, officialCtx = {}) {
           officialCtx,
           tierMeta,
         );
+      const [listing, listingVs] = listingRowCells(
+        m.trinityId ?? "",
+        { tierLabel: t.tierName, tierKey: t.tierKey },
+        supplierPrices,
+        currency,
+        officialCtx,
+        tierMeta,
+      );
 
       rows.push([
-        rowNum,
-        show ? (m.trinityId ?? "") : "",
-        show ? displayName : "",
         show ? m.vendorName : "",
-        t.tierName,
         show ? m.modelName : "",
+        trinityIdCell(m.trinityId, show),
+        t.tierName,
         vendorOfficial,
         supplierListed,
+        listing,
         supplierVsOfficial,
-        ...listingRowCells(
-          m.trinityId ?? "",
-          { tierLabel: t.tierName, tierKey: t.tierKey },
-          supplierPrices,
-          currency,
-          officialCtx,
-          tierMeta,
-        ),
+        listingVs,
       ]);
     }
   }
@@ -210,14 +208,12 @@ export function buildSupplierTextCatalogRows(
   const cur = currency === "USD" ? "USD" : "CNY";
 
   const rows = [];
-  let rowNum = 0;
 
   for (const m of sortSupplierCatalogModels(supplierModels)) {
     const tierList = m.tiers?.length ? m.tiers : [];
     if (!tierList.length) continue;
 
     const trinityId = resolveTrinityId(m.modelId);
-    const displayName = formatDisplayName(m);
     const pricedTiers = tierList.filter((t) => {
       const p = tierPricesFromItems(t);
       return p.input != null || p.output != null || p.cache != null;
@@ -226,15 +222,15 @@ export function buildSupplierTextCatalogRows(
 
     for (let i = 0; i < tiers.length; i++) {
       const t = tiers[i];
-      rowNum++;
       const show = i === 0;
       const supplierPrices = tierPricesFromItems(t);
       const tierMeta = { tierIndex: i, tierTotal: tiers.length };
+      const tierLabel = tierLabelFromSupplierTier(t);
       const { vendorOfficial, supplierListed, supplierVsOfficial } =
         officialCellsForTrinityTier(
           trinityId || m.modelId,
           {
-            tierLabel: tierLabelFromSupplierTier(t),
+            tierLabel,
             tierKey: t.tierKey,
           },
           supplierPrices,
@@ -242,28 +238,28 @@ export function buildSupplierTextCatalogRows(
           officialCtx,
           tierMeta,
         );
+      const [listing, listingVs] = listingRowCells(
+        trinityId,
+        {
+          tierLabel,
+          tierKey: t.tierKey,
+        },
+        supplierPrices,
+        cur,
+        officialCtx,
+        tierMeta,
+      );
 
       rows.push([
-        rowNum,
-        show ? trinityId : "",
-        show ? displayName : "",
         show ? (m.brand ?? brandDefault) : "",
-        tierLabelFromSupplierTier(t),
-        m.modelId,
+        show ? m.modelId : "",
+        trinityIdCell(trinityId, show),
+        tierLabel,
         vendorOfficial,
         supplierListed,
+        listing,
         supplierVsOfficial,
-        ...listingRowCells(
-          trinityId,
-          {
-            tierLabel: tierLabelFromSupplierTier(t),
-            tierKey: t.tierKey,
-          },
-          supplierPrices,
-          cur,
-          officialCtx,
-          tierMeta,
-        ),
+        listingVs,
       ]);
     }
   }
@@ -316,13 +312,10 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
   const currency = "CNY";
 
   const rows = [];
-  let rowNum = 0;
 
   for (const m of sortSupplierCatalogModels(volcModels)) {
-    const displayName = m.displayName || `${m.vendorName} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
       const t = m.tiers[i];
-      rowNum++;
       const show = i === 0;
       const supplierPrices = {
         input: t.input,
@@ -339,25 +332,25 @@ export function buildVolcengineCatalogRows(volcModels, officialCtx = {}) {
           officialCtx,
           tierMeta,
         );
+      const [listing, listingVs] = listingRowCells(
+        m.trinityId ?? "",
+        { tierLabel: t.tierName, tierKey: t.tierKey },
+        supplierPrices,
+        currency,
+        officialCtx,
+        tierMeta,
+      );
 
       rows.push([
-        rowNum,
-        show ? (m.trinityId ?? "") : "",
-        show ? displayName : "",
         show ? (m.brand ?? "火山方舟") : "",
+        show ? m.modelId : "",
+        trinityIdCell(m.trinityId, show),
         t.tierName,
-        m.modelId,
         vendorOfficial,
         supplierListed,
+        listing,
         supplierVsOfficial,
-        ...listingRowCells(
-          m.trinityId ?? "",
-          { tierLabel: t.tierName, tierKey: t.tierKey },
-          supplierPrices,
-          currency,
-          officialCtx,
-          tierMeta,
-        ),
+        listingVs,
       ]);
     }
   }
@@ -371,31 +364,14 @@ export function buildOfficialDirectCatalogRows(
   officialCtx = {},
   { catalog, brandDefault, mixedCurrency = false },
 ) {
-  const header = mixedCurrency
-    ? [
-        "序号",
-        "Trinity ID",
-        "显示名",
-        "厂商",
-        "价格档位",
-        "上游模型ID",
-        "厂商官方价",
-        "供应商挂牌(元或USD/百万tokens)",
-        "供应商vs官方",
-        `线上刊例(${USD_PER_M})`,
-        "刊例vs供应商",
-      ]
-    : buildSupplierTableHeader({ catalog });
+  const header = buildSupplierTableHeader({ catalog });
 
   const rows = [];
-  let rowNum = 0;
 
   for (const m of sortSupplierCatalogModels(channelModels, { idKey: "modelId" })) {
     const currency = mixedCurrency ? (m.currency ?? "USD") : "USD";
-    const displayName = m.displayName || `${m.vendorLabel} ${m.modelName}`.trim();
     for (let i = 0; i < m.tiers.length; i++) {
       const t = m.tiers[i];
-      rowNum++;
       const show = i === 0;
       const supplierPrices = {
         input: t.input,
@@ -412,25 +388,25 @@ export function buildOfficialDirectCatalogRows(
           officialCtx,
           tierMeta,
         );
+      const [listing, listingVs] = listingRowCells(
+        m.trinityId ?? "",
+        { tierLabel: t.tierName, tierKey: t.tierKey },
+        supplierPrices,
+        currency,
+        officialCtx,
+        tierMeta,
+      );
 
       rows.push([
-        rowNum,
-        show ? (m.trinityId ?? "") : "",
-        show ? displayName : "",
         show ? (m.brand ?? brandDefault) : "",
+        show ? m.modelId : "",
+        trinityIdCell(m.trinityId, show),
         t.tierName,
-        m.modelId,
         vendorOfficial,
         supplierListed,
+        listing,
         supplierVsOfficial,
-        ...listingRowCells(
-          m.trinityId ?? "",
-          { tierLabel: t.tierName, tierKey: t.tierKey },
-          supplierPrices,
-          currency,
-          officialCtx,
-          tierMeta,
-        ),
+        listingVs,
       ]);
     }
   }
@@ -461,7 +437,6 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
   const currency = upstreamUnit(sup) === USD_PER_M ? "USD" : "CNY";
 
   const rows = [];
-  let rowNum = 0;
 
   for (const m of models) {
     const tierRows = m.tiers.filter(
@@ -471,7 +446,6 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
 
     for (let i = 0; i < tierRows.length; i++) {
       const t = tierRows[i];
-      rowNum++;
       const show = i === 0;
 
       const supplierPrices = {
@@ -489,25 +463,25 @@ export function buildSupplierRows(sup, models, officialCtx = {}) {
           officialCtx,
           tierMeta,
         );
+      const [listing, listingVs] = listingRowCells(
+        m.trinityId,
+        { tierLabel: t.tierLabel, tierKey: t.tierKey },
+        supplierPrices,
+        currency,
+        officialCtx,
+        tierMeta,
+      );
 
       rows.push([
-        rowNum,
-        show ? m.trinityId : "",
-        show ? m.displayName : "",
         show ? m.brand : "",
+        show ? (t[sup.idKey] ?? m.trinityId) : "",
+        trinityIdCell(m.trinityId, show),
         t.tierLabel,
-        t[sup.idKey] ?? m.trinityId,
         vendorOfficial,
         supplierListed,
+        listing,
         supplierVsOfficial,
-        ...listingRowCells(
-          m.trinityId,
-          { tierLabel: t.tierLabel, tierKey: t.tierKey },
-          supplierPrices,
-          currency,
-          officialCtx,
-          tierMeta,
-        ),
+        listingVs,
       ]);
     }
   }

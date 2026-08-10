@@ -1,7 +1,7 @@
 {
   "source": "trinity_upstream_pricing",
-  "generatedAt": "2026-07-29T06:37:53.726Z",
-  "trinityModelCount": 66,
+  "generatedAt": "2026-08-09T04:32:45.488Z",
+  "trinityModelCount": 69,
   "trinityApiUrl": "https://api.trinitydesk.ai/v1/models?modality=text",
   "scrapedAt": "2026-06-30",
   "aigcDataDate": "2026-06",
@@ -37,7 +37,7 @@
     {
       "trinityId": "claude-fable-5",
       "displayName": "Claude Fable 5",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 10,
         "output": 50,
@@ -93,7 +93,7 @@
     {
       "trinityId": "claude-opus-4-6",
       "displayName": "Claude Opus 4.6",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 5,
         "output": 25,
@@ -149,7 +149,7 @@
     {
       "trinityId": "claude-opus-4-7",
       "displayName": "Claude Opus 4.7",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 5,
         "output": 25,
@@ -205,7 +205,7 @@
     {
       "trinityId": "claude-opus-4-8",
       "displayName": "Claude Opus 4.8",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 5,
         "output": 25,
@@ -261,7 +261,7 @@
     {
       "trinityId": "claude-sonnet-4-6",
       "displayName": "Claude Sonnet 4.6",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 3,
         "output": 15,
@@ -317,7 +317,7 @@
     {
       "trinityId": "claude-sonnet-5",
       "displayName": "Claude Sonnet 5",
-      "brand": "anthropic",
+      "brand": "Anthropic",
       "userPriceUsd": {
         "input": 2,
         "output": 10,
@@ -373,7 +373,7 @@
     {
       "trinityId": "deepseek-v3.2",
       "displayName": "DeepSeek V3.2",
-      "brand": "deepseek",
+      "brand": "DeepSeek",
       "userPriceUsd": {
         "input": 0.307692,
         "output": 0.461538,
@@ -511,7 +511,7 @@
     {
       "trinityId": "deepseek-v4-flash",
       "displayName": "DeepSeek V4 Flash Direct",
-      "brand": "deepseek",
+      "brand": "DeepSeek",
       "userPriceUsd": {
         "input": 0.153846,
         "output": 0.307692,
@@ -565,9 +565,65 @@
       ]
     },
     {
+      "trinityId": "deepseek-v4-flash-fast",
+      "displayName": "DeepSeek V4 Flash Fast",
+      "brand": "DeepSeek",
+      "userPriceUsd": {
+        "input": 0.2,
+        "output": 0.4,
+        "cache": 0.04
+      },
+      "tokenhubModelId": null,
+      "bailianModelId": null,
+      "bailianIntlModelId": null,
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "统一价",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": null,
+          "wjIn": null,
+          "wjOut": null,
+          "wjCache": null,
+          "rcId": null,
+          "rcIn": null,
+          "rcOut": null,
+          "rcCache": null,
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 0
+        }
+      ]
+    },
+    {
       "trinityId": "deepseek-v4-pro",
       "displayName": "DeepSeek V4 Pro Direct",
-      "brand": "deepseek",
+      "brand": "DeepSeek",
       "userPriceUsd": {
         "input": 0.461538,
         "output": 0.923077,
@@ -623,7 +679,7 @@
     {
       "trinityId": "gemini-2.5-flash",
       "displayName": "Gemini 2.5 Flash",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.3,
         "output": 2.5,
@@ -720,7 +776,7 @@
     {
       "trinityId": "gemini-2.5-flash-lite",
       "displayName": "Gemini 2.5 Flash Lite",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.1,
         "output": 0.4,
@@ -776,7 +832,7 @@
     {
       "trinityId": "gemini-2.5-flash-lite-preview",
       "displayName": "Gemini 2.5 Flash Lite Preview",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.1,
         "output": 0.4,
@@ -832,7 +888,7 @@
     {
       "trinityId": "gemini-2.5-pro",
       "displayName": "Gemini 2.5 Pro",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 1.25,
         "output": 10,
@@ -929,7 +985,7 @@
     {
       "trinityId": "gemini-3-flash-preview",
       "displayName": "Gemini 3 Flash Preview",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.5,
         "output": 3,
@@ -1026,7 +1082,7 @@
     {
       "trinityId": "gemini-3.1-flash-lite",
       "displayName": "Gemini 3.1 Flash Lite",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.25,
         "output": 1.5,
@@ -1123,7 +1179,7 @@
     {
       "trinityId": "gemini-3.1-flash-lite-preview",
       "displayName": "Gemini 3.1 Flash Lite Preview",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 0.25,
         "output": 1.5,
@@ -1220,7 +1276,7 @@
     {
       "trinityId": "gemini-3.1-pro-preview",
       "displayName": "Gemini 3.1 Pro Preview",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 2,
         "output": 12,
@@ -1317,7 +1373,7 @@
     {
       "trinityId": "gemini-3.5-flash",
       "displayName": "Gemini 3.5 Flash",
-      "brand": "google deepMind",
+      "brand": "Google DeepMind",
       "userPriceUsd": {
         "input": 1.5,
         "output": 9,
@@ -1412,9 +1468,121 @@
       ]
     },
     {
+      "trinityId": "gemini-3.5-flash-lite",
+      "displayName": "Gemini 3.5 Flash Lite",
+      "brand": "Google DeepMind",
+      "userPriceUsd": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03
+      },
+      "tokenhubModelId": null,
+      "bailianModelId": null,
+      "bailianIntlModelId": null,
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "统一价",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": null,
+          "wjIn": null,
+          "wjOut": null,
+          "wjCache": null,
+          "rcId": null,
+          "rcIn": null,
+          "rcOut": null,
+          "rcCache": null,
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 0
+        }
+      ]
+    },
+    {
+      "trinityId": "gemini-3.6-flash",
+      "displayName": "Gemini 3.6 Flash",
+      "brand": "Google DeepMind",
+      "userPriceUsd": {
+        "input": 1.5,
+        "output": 7.5,
+        "cache": 0.15
+      },
+      "tokenhubModelId": null,
+      "bailianModelId": null,
+      "bailianIntlModelId": null,
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "统一价",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": null,
+          "wjIn": null,
+          "wjOut": null,
+          "wjCache": null,
+          "rcId": null,
+          "rcIn": null,
+          "rcOut": null,
+          "rcCache": null,
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 0
+        }
+      ]
+    },
+    {
       "trinityId": "glm-5",
       "displayName": "GLM 5",
-      "brand": "zhipu",
+      "brand": "Zhipu",
       "userPriceUsd": {
         "input": 0.615385,
         "output": 2.769231,
@@ -1511,7 +1679,7 @@
     {
       "trinityId": "glm-5-turbo",
       "displayName": "GLM 5 Turbo",
-      "brand": "zhipu",
+      "brand": "Zhipu",
       "userPriceUsd": {
         "input": 0.769231,
         "output": 3.384615,
@@ -1608,7 +1776,7 @@
     {
       "trinityId": "glm-5.1",
       "displayName": "GLM-5.1",
-      "brand": "zhipu",
+      "brand": "Zhipu",
       "userPriceUsd": {
         "input": 0.923077,
         "output": 3.692308,
@@ -1705,7 +1873,7 @@
     {
       "trinityId": "glm-5.2",
       "displayName": "GLM-5.2",
-      "brand": "zhipu",
+      "brand": "Zhipu",
       "userPriceUsd": {
         "input": 1.230769,
         "output": 4.307692,
@@ -1759,65 +1927,9 @@
       ]
     },
     {
-      "trinityId": "glm-5.2-fast-preview",
-      "displayName": "GLM-5.2 Fast Preview",
-      "brand": "zhipu",
-      "userPriceUsd": {
-        "input": 2.461538,
-        "output": 8.615385,
-        "cache": 0.492308
-      },
-      "tokenhubModelId": null,
-      "bailianModelId": null,
-      "bailianIntlModelId": "glm-5.2-fast-preview",
-      "tiers": [
-        {
-          "tierKey": "uniform",
-          "tierLabel": "flat-rate pricing",
-          "thId": null,
-          "thIn": null,
-          "thOut": null,
-          "thCache": null,
-          "blId": null,
-          "blIn": null,
-          "blOut": null,
-          "blCache": null,
-          "bliId": "glm-5.2-fast-preview",
-          "bliIn": "2.800",
-          "bliOut": "8.800",
-          "bliCache": "0.56",
-          "aigcDomId": null,
-          "aigcDomIn": null,
-          "aigcDomOut": null,
-          "aigcDomCache": null,
-          "aigcIntlId": null,
-          "aigcIntlIn": null,
-          "aigcIntlOut": null,
-          "aigcIntlCache": null,
-          "volId": null,
-          "volIn": null,
-          "volOut": null,
-          "volCache": null,
-          "wjId": null,
-          "wjIn": null,
-          "wjOut": null,
-          "wjCache": null,
-          "rcId": null,
-          "rcIn": null,
-          "rcOut": null,
-          "rcCache": null,
-          "cmpIn": "—",
-          "cmpOut": "—",
-          "cmpCache": "—",
-          "summary": "— 待对齐",
-          "supplierCount": 1
-        }
-      ]
-    },
-    {
       "trinityId": "glm-5v-turbo",
       "displayName": "GLM-5V Turbo",
-      "brand": "zhipu",
+      "brand": "Zhipu",
       "userPriceUsd": {
         "input": 0.769231,
         "output": 3.384615,
@@ -1914,7 +2026,7 @@
     {
       "trinityId": "gpt-4.1",
       "displayName": "GPT-4.1",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 2,
         "output": 8,
@@ -1970,7 +2082,7 @@
     {
       "trinityId": "gpt-4o",
       "displayName": "GPT-4o",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 2.5,
         "output": 10,
@@ -2026,7 +2138,7 @@
     {
       "trinityId": "gpt-5",
       "displayName": "GPT-5",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 1.25,
         "output": 10,
@@ -2082,7 +2194,7 @@
     {
       "trinityId": "gpt-5-nano",
       "displayName": "GPT-5 Nano",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 0.05,
         "output": 0.4,
@@ -2138,7 +2250,7 @@
     {
       "trinityId": "gpt-5.1",
       "displayName": "GPT-5.1",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 1.25,
         "output": 10,
@@ -2194,7 +2306,7 @@
     {
       "trinityId": "gpt-5.1-chat",
       "displayName": "GPT-5.1 Chat",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 1.25,
         "output": 10,
@@ -2250,7 +2362,7 @@
     {
       "trinityId": "gpt-5.2",
       "displayName": "GPT-5.2",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 1.75,
         "output": 14,
@@ -2306,7 +2418,7 @@
     {
       "trinityId": "gpt-5.3-codex",
       "displayName": "GPT-5.3 Codex",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 1.75,
         "output": 14,
@@ -2362,7 +2474,7 @@
     {
       "trinityId": "gpt-5.4",
       "displayName": "GPT-5.4",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 2.5,
         "output": 15,
@@ -2459,7 +2571,7 @@
     {
       "trinityId": "gpt-5.4-mini",
       "displayName": "GPT-5.4 Mini",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 0.75,
         "output": 4.5,
@@ -2515,7 +2627,7 @@
     {
       "trinityId": "gpt-5.4-nano",
       "displayName": "GPT-5.4 nano",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 0.2,
         "output": 1.25,
@@ -2571,7 +2683,7 @@
     {
       "trinityId": "gpt-5.4-pro",
       "displayName": "GPT-5.4 Pro",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 30,
         "output": 180,
@@ -2668,7 +2780,7 @@
     {
       "trinityId": "gpt-5.5",
       "displayName": "GPT-5.5",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 5,
         "output": 30,
@@ -2765,19 +2877,19 @@
     {
       "trinityId": "gpt-5.6-luna",
       "displayName": "GPT-5.6 Luna",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
-        "input": 1,
-        "output": 6,
-        "cache": 0.1
+        "input": 0.2,
+        "output": 1.2,
+        "cache": 0.02
       },
       "tokenhubModelId": null,
       "bailianModelId": null,
       "bailianIntlModelId": null,
       "tiers": [
         {
-          "tierKey": "uniform",
-          "tierLabel": "统一价",
+          "tierKey": "ctx:0-272k",
+          "tierLabel": "输入<=272K context",
           "thId": null,
           "thIn": null,
           "thOut": null,
@@ -2802,26 +2914,67 @@
           "volIn": null,
           "volOut": null,
           "volCache": null,
-          "wjId": null,
-          "wjIn": null,
-          "wjOut": null,
-          "wjCache": null,
-          "rcId": null,
-          "rcIn": null,
-          "rcOut": null,
-          "rcCache": null,
+          "wjId": "gpt-5.6-luna",
+          "wjIn": "0.2",
+          "wjOut": "1.2",
+          "wjCache": "0.02",
+          "rcId": "gpt-5.6-luna",
+          "rcIn": "0.2",
+          "rcOut": "1.2",
+          "rcCache": "0.02",
           "cmpIn": "—",
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 0
+          "supplierCount": 2
+        },
+        {
+          "tierKey": "ctx:272k+",
+          "tierLabel": "输入>272K context",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": "gpt-5.6-luna",
+          "wjIn": "0.4",
+          "wjOut": "1.8",
+          "wjCache": "0.04",
+          "rcId": "gpt-5.6-luna",
+          "rcIn": "0.4",
+          "rcOut": "1.8",
+          "rcCache": "0.04",
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 2
         }
       ]
     },
     {
       "trinityId": "gpt-5.6-sol",
       "displayName": "GPT-5.6 Sol",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
         "input": 5,
         "output": 30,
@@ -2832,8 +2985,8 @@
       "bailianIntlModelId": null,
       "tiers": [
         {
-          "tierKey": "uniform",
-          "tierLabel": "统一价",
+          "tierKey": "ctx:0-272k",
+          "tierLabel": "输入<=272K context",
           "thId": null,
           "thIn": null,
           "thOut": null,
@@ -2858,38 +3011,79 @@
           "volIn": null,
           "volOut": null,
           "volCache": null,
-          "wjId": null,
-          "wjIn": null,
-          "wjOut": null,
-          "wjCache": null,
-          "rcId": null,
-          "rcIn": null,
-          "rcOut": null,
-          "rcCache": null,
+          "wjId": "gpt-5.6-sol",
+          "wjIn": "5",
+          "wjOut": "30",
+          "wjCache": "0.5",
+          "rcId": "gpt-5.6-sol",
+          "rcIn": "5",
+          "rcOut": "30",
+          "rcCache": "0.5",
           "cmpIn": "—",
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 0
+          "supplierCount": 2
+        },
+        {
+          "tierKey": "ctx:272k+",
+          "tierLabel": "输入>272K context",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": "gpt-5.6-sol",
+          "wjIn": "10",
+          "wjOut": "45",
+          "wjCache": "1",
+          "rcId": "gpt-5.6-sol",
+          "rcIn": "10",
+          "rcOut": "45",
+          "rcCache": "1",
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 2
         }
       ]
     },
     {
       "trinityId": "gpt-5.6-terra",
       "displayName": "GPT-5.6 Terra",
-      "brand": "openai",
+      "brand": "OpenAI",
       "userPriceUsd": {
-        "input": 2.5,
-        "output": 15,
-        "cache": 0.25
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
       },
       "tokenhubModelId": null,
       "bailianModelId": null,
       "bailianIntlModelId": null,
       "tiers": [
         {
-          "tierKey": "uniform",
-          "tierLabel": "统一价",
+          "tierKey": "ctx:0-272k",
+          "tierLabel": "输入<=272K context",
           "thId": null,
           "thIn": null,
           "thOut": null,
@@ -2914,26 +3108,67 @@
           "volIn": null,
           "volOut": null,
           "volCache": null,
-          "wjId": null,
-          "wjIn": null,
-          "wjOut": null,
-          "wjCache": null,
-          "rcId": null,
-          "rcIn": null,
-          "rcOut": null,
-          "rcCache": null,
+          "wjId": "gpt-5.6-terra",
+          "wjIn": "2",
+          "wjOut": "12",
+          "wjCache": "0.2",
+          "rcId": "gpt-5.6-terra",
+          "rcIn": "2",
+          "rcOut": "12",
+          "rcCache": "0.2",
           "cmpIn": "—",
           "cmpOut": "—",
           "cmpCache": "—",
           "summary": "— 待对齐",
-          "supplierCount": 0
+          "supplierCount": 2
+        },
+        {
+          "tierKey": "ctx:272k+",
+          "tierLabel": "输入>272K context",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": "gpt-5.6-terra",
+          "wjIn": "4",
+          "wjOut": "18",
+          "wjCache": "0.4",
+          "rcId": "gpt-5.6-terra",
+          "rcIn": "4",
+          "rcOut": "18",
+          "rcCache": "0.4",
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 2
         }
       ]
     },
     {
       "trinityId": "hunyuan-role-latest",
       "displayName": "Hy-Role Latest",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.369231,
         "output": 1.476923,
@@ -2989,7 +3224,7 @@
     {
       "trinityId": "hy-mt2-lite",
       "displayName": "Hy-MT2 Lite",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.046154,
         "output": 0.184615,
@@ -3045,7 +3280,7 @@
     {
       "trinityId": "hy-mt2-plus",
       "displayName": "Hy-MT2 Plus",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.076923,
         "output": 0.307692,
@@ -3101,7 +3336,7 @@
     {
       "trinityId": "hy-mt2-pro",
       "displayName": "Hy-MT2 Pro",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.076923,
         "output": 0.307692,
@@ -3157,7 +3392,7 @@
     {
       "trinityId": "hy-role",
       "displayName": "Hy-Role",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.369231,
         "output": 1.476923,
@@ -3213,7 +3448,7 @@
     {
       "trinityId": "hy-vision-2.0-instruct",
       "displayName": "Hy-Vision 2.0 Instruct",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 1.153846,
         "output": 2.692308,
@@ -3269,7 +3504,7 @@
     {
       "trinityId": "hy3-preview",
       "displayName": "Hy3 Preview",
-      "brand": "tencent",
+      "brand": "Tencent",
       "userPriceUsd": {
         "input": 0.184615,
         "output": 0.615385,
@@ -3407,7 +3642,7 @@
     {
       "trinityId": "kimi-k2.5",
       "displayName": "Kimi K2.5",
-      "brand": "moonshot",
+      "brand": "Moonshot AI",
       "userPriceUsd": {
         "input": 0.615385,
         "output": 3.230769,
@@ -3463,7 +3698,7 @@
     {
       "trinityId": "kimi-k2.6",
       "displayName": "Kimi K2.6",
-      "brand": "moonshot",
+      "brand": "Moonshot AI",
       "userPriceUsd": {
         "input": 1,
         "output": 4.153846,
@@ -3519,7 +3754,7 @@
     {
       "trinityId": "kimi-k2.7-code",
       "displayName": "Kimi K2.7 Code",
-      "brand": "moonshot",
+      "brand": "Moonshot AI",
       "userPriceUsd": {
         "input": 1,
         "output": 4.153846,
@@ -3575,7 +3810,7 @@
     {
       "trinityId": "kimi-k2.7-code-highspeed",
       "displayName": "Kimi K2.7 Code HighSpeed",
-      "brand": "moonshot",
+      "brand": "Moonshot AI",
       "userPriceUsd": {
         "input": 2,
         "output": 8.307692,
@@ -3631,7 +3866,7 @@
     {
       "trinityId": "kimi-k3",
       "displayName": "Kimi K3",
-      "brand": "moonshot",
+      "brand": "Moonshot AI",
       "userPriceUsd": {
         "input": 3.076923,
         "output": 15.384615,
@@ -3687,7 +3922,7 @@
     {
       "trinityId": "minimax-m2.5",
       "displayName": "MiniMax M2.5",
-      "brand": "minimax",
+      "brand": "MiniMax",
       "userPriceUsd": {
         "input": 0.323077,
         "output": 1.292308,
@@ -3743,7 +3978,7 @@
     {
       "trinityId": "minimax-m2.7",
       "displayName": "MiniMax M2.7",
-      "brand": "minimax",
+      "brand": "MiniMax",
       "userPriceUsd": {
         "input": 0.323077,
         "output": 1.292308,
@@ -3799,7 +4034,7 @@
     {
       "trinityId": "minimax-m3",
       "displayName": "MiniMax M3",
-      "brand": "minimax",
+      "brand": "MiniMax",
       "userPriceUsd": {
         "input": 0.323077,
         "output": 1.292308,
@@ -3896,11 +4131,11 @@
     {
       "trinityId": "qwen-flash",
       "displayName": "Qwen Flash",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.023077,
-        "output": 0.230769,
-        "cache": 0.004615
+        "input": 0.05,
+        "output": 0.4,
+        "cache": 0.005
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen-flash",
@@ -4075,11 +4310,11 @@
     {
       "trinityId": "qwen-max",
       "displayName": "Qwen Max",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.369231,
-        "output": 1.476923,
-        "cache": 0.082759
+        "input": 1.6,
+        "output": 6.4,
+        "cache": 0.16
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen-max",
@@ -4131,11 +4366,11 @@
     {
       "trinityId": "qwen-plus",
       "displayName": "Qwen Plus",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.123077,
-        "output": 0.307692,
-        "cache": 0.024615
+        "input": 0.4,
+        "output": 1.2,
+        "cache": 0.04
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen-plus",
@@ -4310,11 +4545,11 @@
     {
       "trinityId": "qwen-turbo",
       "displayName": "Qwen Turbo",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.046154,
-        "output": 0.092308,
-        "cache": 0.010345
+        "input": 0.05,
+        "output": 0.2,
+        "cache": 0.005
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen-turbo",
@@ -4366,11 +4601,11 @@
     {
       "trinityId": "qwen3.5-flash",
       "displayName": "Qwen3.5 Flash",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.030769,
-        "output": 0.307692,
-        "cache": 0.003077
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01
       },
       "tokenhubModelId": "qwen3.5-flash",
       "bailianModelId": "qwen3.5-flash",
@@ -4504,11 +4739,11 @@
     {
       "trinityId": "qwen3.5-plus",
       "displayName": "Qwen3.5 Plus",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.123077,
-        "output": 0.738462,
-        "cache": 0.012308
+        "input": 0.4,
+        "output": 2.4,
+        "cache": 0.04
       },
       "tokenhubModelId": "qwen3.5-plus",
       "bailianModelId": "qwen3.5-plus",
@@ -4683,11 +4918,11 @@
     {
       "trinityId": "qwen3.6-flash",
       "displayName": "Qwen3.6 Flash",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.184615,
-        "output": 1.107692,
-        "cache": 0.036923
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen3.6-flash",
@@ -4821,11 +5056,11 @@
     {
       "trinityId": "qwen3.6-plus",
       "displayName": "Qwen3.6 Plus",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.307692,
-        "output": 1.846154,
-        "cache": 0.061538
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen3.6-plus",
@@ -4959,11 +5194,11 @@
     {
       "trinityId": "qwen3.7-flash",
       "displayName": "Qwen3.7 Flash",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.030769,
-        "output": 0.123077,
-        "cache": 0.006154
+        "input": 0.03,
+        "output": 0.13,
+        "cache": 0.003
       },
       "tokenhubModelId": null,
       "bailianModelId": null,
@@ -5015,11 +5250,11 @@
     {
       "trinityId": "qwen3.7-max",
       "displayName": "Qwen3.7 Max",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 1.846154,
-        "output": 5.538462,
-        "cache": 0.369231
+        "input": 2.5,
+        "output": 7.5,
+        "cache": 0.25
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen3.7-max",
@@ -5071,11 +5306,11 @@
     {
       "trinityId": "qwen3.7-plus",
       "displayName": "Qwen3.7 Plus",
-      "brand": "tongyi",
+      "brand": "Tongyi",
       "userPriceUsd": {
-        "input": 0.307692,
-        "output": 1.230769,
-        "cache": 0.061538
+        "input": 0.4,
+        "output": 1.6,
+        "cache": 0.04
       },
       "tokenhubModelId": null,
       "bailianModelId": "qwen3.7-plus",
@@ -5203,6 +5438,62 @@
           "cmpCache": "仅百炼",
           "summary": "仅百炼",
           "supplierCount": 2
+        }
+      ]
+    },
+    {
+      "trinityId": "qwen3.8-max",
+      "displayName": "Qwen3.8 Max",
+      "brand": "Tongyi",
+      "userPriceUsd": {
+        "input": 2,
+        "output": 6,
+        "cache": 0.2
+      },
+      "tokenhubModelId": null,
+      "bailianModelId": null,
+      "bailianIntlModelId": null,
+      "tiers": [
+        {
+          "tierKey": "uniform",
+          "tierLabel": "统一价",
+          "thId": null,
+          "thIn": null,
+          "thOut": null,
+          "thCache": null,
+          "blId": null,
+          "blIn": null,
+          "blOut": null,
+          "blCache": null,
+          "bliId": null,
+          "bliIn": null,
+          "bliOut": null,
+          "bliCache": null,
+          "aigcDomId": null,
+          "aigcDomIn": null,
+          "aigcDomOut": null,
+          "aigcDomCache": null,
+          "aigcIntlId": null,
+          "aigcIntlIn": null,
+          "aigcIntlOut": null,
+          "aigcIntlCache": null,
+          "volId": null,
+          "volIn": null,
+          "volOut": null,
+          "volCache": null,
+          "wjId": null,
+          "wjIn": null,
+          "wjOut": null,
+          "wjCache": null,
+          "rcId": null,
+          "rcIn": null,
+          "rcOut": null,
+          "rcCache": null,
+          "cmpIn": "—",
+          "cmpOut": "—",
+          "cmpCache": "—",
+          "summary": "— 待对齐",
+          "supplierCount": 0
         }
       ]
     }

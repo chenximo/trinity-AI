@@ -1,0 +1,986 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.360Z",
+  "source": {
+    "key": "aigc-text",
+    "title": "腾讯云 AIGC · 生文",
+    "modality": "text",
+    "jsonPath": "suppliers/aigc/output/pricing-api.json"
+  },
+  "total": 108,
+  "accessed": 36,
+  "pending": 72,
+  "rows": [
+    {
+      "id": "hy3-preview",
+      "trinityId": "hy3-preview",
+      "name": "混元 3-preview",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-cd-haiku-4-0-international",
+      "trinityId": null,
+      "name": "微软国际站 Haiku 4.0",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-cd-opus-4-0-new-international",
+      "trinityId": null,
+      "name": "微软国际站 Opus 4.0 (new)",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-cd-sonnet-4-5-international",
+      "trinityId": null,
+      "name": "微软国际站 Sonnet 4.5",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "claude-opus-4-6",
+      "trinityId": "claude-opus-4-6",
+      "name": "微软国际站 Opus 4.6",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "claude-opus-4-7",
+      "trinityId": "claude-opus-4-7",
+      "name": "微软国际站 Opus 4.7",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "claude-opus-4-8",
+      "trinityId": "claude-opus-4-8",
+      "name": "微软国际站 Opus 4.5",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "trinityId": "claude-sonnet-4-6",
+      "name": "微软国际站 Sonnet 4.0",
+      "brand": "微软国际站",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-4-7-251222",
+      "trinityId": "glm-4-7-251222",
+      "name": "智谱 4.7",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "glm-5",
+      "trinityId": "glm-5",
+      "name": "智谱 5",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5-turbo",
+      "trinityId": "glm-5-turbo",
+      "name": "智谱 5-Turbo",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.1",
+      "trinityId": "glm-5.1",
+      "name": "智谱 5.1（new）",
+      "brand": "智谱",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-clm-3-5-new-domestic",
+      "trinityId": null,
+      "name": "Claude 3.5 (new)",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-5-new-international",
+      "trinityId": null,
+      "name": "Claude 3.5 (new)",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-7-domestic",
+      "trinityId": null,
+      "name": "Claude 3.7",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-7-international",
+      "trinityId": null,
+      "name": "Claude 3.7",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-domestic",
+      "trinityId": null,
+      "name": "Claude 3",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-international",
+      "trinityId": null,
+      "name": "Claude 3",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-turbo-domestic",
+      "trinityId": null,
+      "name": "Claude 3-Turbo",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-clm-3-turbo-international",
+      "trinityId": null,
+      "name": "Claude 3-Turbo",
+      "brand": "Claude",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.2",
+      "trinityId": "deepseek-v3.2",
+      "name": "DeepSeek v3.2",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "trinityId": "deepseek-v4-flash",
+      "name": "DeepSeek v4-flash (new)",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "trinityId": "deepseek-v4-pro",
+      "name": "DeepSeek v4-pro (new)",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-gg-1-0-flash-domestic",
+      "trinityId": null,
+      "name": "Google 1.0-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-0-flash-international",
+      "trinityId": null,
+      "name": "Google 1.0-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-8b-preview-domestic",
+      "trinityId": null,
+      "name": "Google 1.5-flash-8b-preview",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-8b-preview-international",
+      "trinityId": null,
+      "name": "Google 1.5-flash-8b-preview",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-domestic",
+      "trinityId": null,
+      "name": "Google 1.5-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-international",
+      "trinityId": null,
+      "name": "Google 1.5-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-lite-new-domestic",
+      "trinityId": null,
+      "name": "Google 1.5 flash-lite (new)",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-lite-new-international",
+      "trinityId": null,
+      "name": "Google 1.5 flash-lite (new)",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-new-domestic",
+      "trinityId": null,
+      "name": "Google 1.5 flash (new)",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-flash-new-international",
+      "trinityId": null,
+      "name": "Google 1.5 flash (new)",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-pro-domestic",
+      "trinityId": null,
+      "name": "Google 1.5 pro",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gg-1-5-pro-international",
+      "trinityId": null,
+      "name": "Google 1.5 pro",
+      "brand": "Google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "trinityId": "gemini-2.5-flash",
+      "name": "Google 2.5-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-2.5-flash-lite",
+      "trinityId": "gemini-2.5-flash-lite",
+      "name": "Google 2.5-flash-lite",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-2.5-flash-lite-preview",
+      "trinityId": "gemini-2.5-flash-lite-preview",
+      "name": "Google 2.5-flash-lite-preview",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-2.5-pro",
+      "trinityId": "gemini-2.5-pro",
+      "name": "Google 2.5-pro",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "trinityId": "gemini-3-flash-preview",
+      "name": "Google 3.0-flash",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "trinityId": "gemini-3.1-flash-lite",
+      "name": "Google 3.1-flash-lite（new）",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-3.1-flash-lite-preview",
+      "trinityId": "gemini-3.1-flash-lite-preview",
+      "name": "Google 3.1-flash-lite-preview",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "trinityId": "gemini-3.1-pro-preview",
+      "name": "Google 3.1-pro",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gemini-3.5-flash",
+      "trinityId": "gemini-3.5-flash",
+      "name": "Google 3.5-flash（new）",
+      "brand": "Google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-gk-4-0-0309-non-reasoning-international",
+      "trinityId": null,
+      "name": "Groq 4.0-0309-non-reasoning",
+      "brand": "Groq",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gk-4-0-0309-reasoning-international",
+      "trinityId": null,
+      "name": "Groq 4.0-0309-reasoning",
+      "brand": "Groq",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gk-4-0-international",
+      "trinityId": null,
+      "name": "Groq 4.0",
+      "brand": "Groq",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gk-4-1-fast-reasoning-international",
+      "trinityId": null,
+      "name": "Groq 4-1-fast-reasoning",
+      "brand": "Groq",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kim-k1-5-domestic",
+      "trinityId": null,
+      "name": "Kimi k1.5 (智能搜索)",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kim-k1-5-international",
+      "trinityId": null,
+      "name": "Kimi k1.5 (智能搜索)",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kimi-k2.5",
+      "trinityId": "kimi-k2.5",
+      "name": "Kimi k1.5 (普通搜索)",
+      "brand": "Kimi",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m2.5",
+      "trinityId": "minimax-m2.5",
+      "name": "Minimax M2.5",
+      "brand": "Minimax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m2.7",
+      "trinityId": "minimax-m2.7",
+      "name": "Minimax M2.7",
+      "brand": "Minimax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-oo-5-1-chat-domestic",
+      "trinityId": null,
+      "name": "OpenAI 5.1-chat",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-1-chat-international",
+      "trinityId": null,
+      "name": "OpenAI 5.1-chat",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-1-chat-new-domestic",
+      "trinityId": null,
+      "name": "OpenAI 5.1-chat（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-1-chat-new-international",
+      "trinityId": null,
+      "name": "OpenAI 5.1-chat（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-2-chat-latest-domestic",
+      "trinityId": null,
+      "name": "OpenAI 5.2-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-2-chat-latest-international",
+      "trinityId": null,
+      "name": "OpenAI 5.2-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-3-chat-latest-domestic",
+      "trinityId": null,
+      "name": "OpenAI 5.3-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-3-chat-latest-international",
+      "trinityId": null,
+      "name": "OpenAI 5.3-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-chat-latest-domestic",
+      "trinityId": null,
+      "name": "OpenAI 5-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-5-chat-latest-international",
+      "trinityId": null,
+      "name": "OpenAI 5-chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-latest-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-latest-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-new-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-3-5-turbo-new-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-3.5-turbo (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-0613-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-0613",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-0613-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-0613",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-32k-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-32k",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-32k-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-32k",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-turbo-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-turbo",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4-turbo-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4-turbo",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-2024-05-13-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-2024-05-13",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-2024-05-13-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-2024-05-13",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-2024-08-06-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-2024-08-06",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-2024-08-06-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-2024-08-06",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-mini-new-domestic",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-mini (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-gpt-4o-mini-new-international",
+      "trinityId": null,
+      "name": "OpenAI gpt-4o-mini (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-domestic",
+      "trinityId": null,
+      "name": "OpenAI o1",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-international",
+      "trinityId": null,
+      "name": "OpenAI o1",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-mini-domestic",
+      "trinityId": null,
+      "name": "OpenAI o1-mini",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-mini-international",
+      "trinityId": null,
+      "name": "OpenAI o1-mini",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-new-domestic",
+      "trinityId": null,
+      "name": "OpenAI o1 (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-new-international",
+      "trinityId": null,
+      "name": "OpenAI o1 (new)",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-preview-domestic",
+      "trinityId": null,
+      "name": "OpenAI o1-preview",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o1-preview-international",
+      "trinityId": null,
+      "name": "OpenAI o1-preview",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o2-domestic",
+      "trinityId": null,
+      "name": "OpenAI o2",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o2-international",
+      "trinityId": null,
+      "name": "OpenAI o2",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o3-mini-domestic",
+      "trinityId": null,
+      "name": "OpenAI o3-mini",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-oo-o3-mini-international",
+      "trinityId": null,
+      "name": "OpenAI o3-mini",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "chat-latest",
+      "trinityId": "chat-latest",
+      "name": "OpenAI chat-latest",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gpt-4.1",
+      "trinityId": "gpt-4.1",
+      "name": "OpenAI 4.1（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-4o",
+      "trinityId": "gpt-4o",
+      "name": "OpenAI 4o",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5",
+      "trinityId": "gpt-5",
+      "name": "OpenAI 5",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5-mini",
+      "trinityId": "gpt-5-mini",
+      "name": "OpenAI 5-mini（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gpt-5-nano",
+      "trinityId": "gpt-5-nano",
+      "name": "OpenAI 5-nano",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.1",
+      "trinityId": "gpt-5.1",
+      "name": "OpenAI 5.1",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.1-chat",
+      "trinityId": "gpt-5.1-chat",
+      "name": "OpenAI 5.1-chat-latest（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.2",
+      "trinityId": "gpt-5.2",
+      "name": "OpenAI 5.2",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "trinityId": "gpt-5.3-codex",
+      "name": "OpenAI 5.3-codex",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.4",
+      "trinityId": "gpt-5.4",
+      "name": "OpenAI 5.4",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "trinityId": "gpt-5.4-mini",
+      "name": "OpenAI 5.4-mini",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.4-nano",
+      "trinityId": "gpt-5.4-nano",
+      "name": "OpenAI 5.4-nano",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.4-pro",
+      "trinityId": "gpt-5.4-pro",
+      "name": "OpenAI 5.4-pro",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "gpt-5.5",
+      "trinityId": "gpt-5.5",
+      "name": "OpenAI 5.5（new）",
+      "brand": "OpenAI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

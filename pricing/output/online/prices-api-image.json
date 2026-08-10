@@ -3,11 +3,42 @@
   "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=image",
   "modality": "image",
   "fxCnyPerUsd": 7.25,
-  "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
-  "fetchedAt": "2026-07-10T07:42:56.120Z",
-  "modelCount": 18,
+  "fxNote": "FX_LISTING(默认7.25)用于部分 cascade；国内刊例 V1/V2 回退路径使用 FX_LEGACY_065=6.5，见刊例策略-V1-V2",
+  "fetchedAt": "2026-08-09T06:03:29.405Z",
+  "modelCount": 20,
   "object": "list",
   "data": [
+    {
+      "object": "model_prices",
+      "model": "gemini-2.5-flash-image",
+      "display_name": "Gemini 2.5 Flash Image",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.3 / 百万 input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T07:08:20.896967Z"
+    },
     {
       "object": "model_prices",
       "model": "GG-2.5",
@@ -32,7 +63,7 @@
               "amount": "0.051",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.05 / 张"
+              "display": "$0.051 / 张"
             }
           }
         },
@@ -50,7 +81,7 @@
               "amount": "0.039",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.039 / 张"
             }
           }
         },
@@ -68,7 +99,7 @@
               "amount": "0.063",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.06 / 张"
+              "display": "$0.063 / 张"
             }
           }
         }
@@ -99,7 +130,7 @@
               "amount": "0.134",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.13 / 张"
+              "display": "$0.134 / 张"
             }
           }
         },
@@ -117,7 +148,7 @@
               "amount": "0.134",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.13 / 张"
+              "display": "$0.134 / 张"
             }
           }
         }
@@ -148,7 +179,7 @@
               "amount": "0.0513",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.05 / 张"
+              "display": "$0.0513 / 张"
             }
           }
         },
@@ -166,7 +197,7 @@
               "amount": "0.101",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.10 / 张"
+              "display": "$0.101 / 张"
             }
           }
         },
@@ -184,7 +215,7 @@
               "amount": "0.067",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.07 / 张"
+              "display": "$0.067 / 张"
             }
           }
         },
@@ -202,12 +233,49 @@
               "amount": "0.151",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.15 / 张"
+              "display": "$0.151 / 张"
             }
           }
         }
       ],
       "updated_at": "2026-06-08T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-image-2",
+      "display_name": "GPT Image 2",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "1.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.25 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T07:08:24.146205Z"
     },
     {
       "object": "model_prices",
@@ -233,7 +301,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -251,7 +319,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -269,7 +337,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         }
@@ -300,7 +368,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         },
@@ -318,7 +386,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         },
@@ -336,7 +404,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         }
@@ -367,7 +435,7 @@
               "amount": "0.0154",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.02 / 张"
+              "display": "$0.0154 / 张"
             }
           }
         },
@@ -385,7 +453,7 @@
               "amount": "0.0154",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.02 / 张"
+              "display": "$0.0154 / 张"
             }
           }
         },
@@ -403,7 +471,7 @@
               "amount": "0.0154",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.02 / 张"
+              "display": "$0.0154 / 张"
             }
           }
         },
@@ -421,7 +489,7 @@
               "amount": "0.0154",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.02 / 张"
+              "display": "$0.0154 / 张"
             }
           }
         }
@@ -452,7 +520,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -470,7 +538,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -488,7 +556,7 @@
               "amount": "0.0616",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.06 / 张"
+              "display": "$0.0616 / 张"
             }
           }
         }
@@ -519,7 +587,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -537,7 +605,7 @@
               "amount": "0.0616",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.06 / 张"
+              "display": "$0.0616 / 张"
             }
           }
         },
@@ -555,7 +623,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         }
@@ -586,7 +654,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -604,7 +672,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -622,7 +690,7 @@
               "amount": "0.0616",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.06 / 张"
+              "display": "$0.0616 / 张"
             }
           }
         }
@@ -653,7 +721,7 @@
               "amount": "0.039",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.039 / 张"
             }
           }
         },
@@ -671,7 +739,7 @@
               "amount": "0.063",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.06 / 张"
+              "display": "$0.063 / 张"
             }
           }
         },
@@ -689,7 +757,7 @@
               "amount": "0.051",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.05 / 张"
+              "display": "$0.051 / 张"
             }
           }
         }
@@ -720,7 +788,7 @@
               "amount": "0.211",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.21 / 张"
+              "display": "$0.211 / 张"
             }
           }
         },
@@ -738,7 +806,7 @@
               "amount": "0.712",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.71 / 张"
+              "display": "$0.712 / 张"
             }
           }
         },
@@ -756,7 +824,7 @@
               "amount": "0.428",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.43 / 张"
+              "display": "$0.428 / 张"
             }
           }
         },
@@ -772,7 +840,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.10 / 张"
+              "display": "$0.1 / 张"
             }
           }
         }
@@ -803,7 +871,7 @@
               "amount": "0.006",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.01 / 张"
+              "display": "$0.006 / 张"
             }
           }
         },
@@ -819,7 +887,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.10 / 张"
+              "display": "$0.1 / 张"
             }
           }
         },
@@ -855,7 +923,7 @@
               "amount": "0.012",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.01 / 张"
+              "display": "$0.012 / 张"
             }
           }
         }
@@ -884,7 +952,7 @@
               "amount": "0.1",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.10 / 张"
+              "display": "$0.1 / 张"
             }
           }
         },
@@ -902,7 +970,7 @@
               "amount": "0.053",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.05 / 张"
+              "display": "$0.053 / 张"
             }
           }
         },
@@ -920,7 +988,7 @@
               "amount": "0.178",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.18 / 张"
+              "display": "$0.178 / 张"
             }
           }
         },
@@ -938,7 +1006,7 @@
               "amount": "0.107",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.11 / 张"
+              "display": "$0.107 / 张"
             }
           }
         }
@@ -969,7 +1037,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -987,7 +1055,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1005,7 +1073,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         }
@@ -1036,7 +1104,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -1054,7 +1122,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         },
@@ -1072,7 +1140,7 @@
               "amount": "0.0308",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0308 / 张"
             }
           }
         }
@@ -1103,7 +1171,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1121,7 +1189,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1139,7 +1207,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         }
@@ -1170,7 +1238,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         },
@@ -1188,7 +1256,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         },
@@ -1206,7 +1274,7 @@
               "amount": "0.0339",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0339 / 张"
             }
           }
         }
@@ -1237,7 +1305,7 @@
               "amount": "0.0481",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.05 / 张"
+              "display": "$0.0481 / 张"
             }
           }
         },
@@ -1255,7 +1323,7 @@
               "amount": "0.0289",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0289 / 张"
             }
           }
         },
@@ -1273,7 +1341,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1291,7 +1359,7 @@
               "amount": "0.0289",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0289 / 张"
             }
           }
         },
@@ -1309,7 +1377,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1327,7 +1395,7 @@
               "amount": "0.0385",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.04 / 张"
+              "display": "$0.0385 / 张"
             }
           }
         },
@@ -1345,7 +1413,7 @@
               "amount": "0.0289",
               "currency": "USD",
               "unit": "per_image",
-              "display": "$0.03 / 张"
+              "display": "$0.0289 / 张"
             }
           }
         }

@@ -44,6 +44,31 @@ export const TEXT_SEED = {
       { tierLabel: "输入>272K context", input: 10, cache: 1, output: 45 },
     ],
   },
+  // OpenAI Pricing · GPT-5.6 family（developers.openai.com/api/docs/pricing · 2026-08）
+  "gpt-5.6-sol": {
+    tiers: [
+      { tierLabel: "输入<=272K context", input: 5, cache: 0.5, output: 30 },
+      { tierLabel: "输入>272K context", input: 10, cache: 1, output: 45 },
+    ],
+  },
+  "gpt-5.6-terra": {
+    tiers: [
+      { tierLabel: "输入<=272K context", input: 2, cache: 0.2, output: 12 },
+      { tierLabel: "输入>272K context", input: 4, cache: 0.4, output: 18 },
+    ],
+  },
+  "gpt-5.6-luna": {
+    tiers: [
+      { tierLabel: "输入<=272K context", input: 0.2, cache: 0.02, output: 1.2 },
+      { tierLabel: "输入>272K context", input: 0.4, cache: 0.04, output: 1.8 },
+    ],
+  },
+  "gpt-5.1-chat": {
+    input: 1.25,
+    cache: 0.125,
+    output: 10,
+    note: "同 gpt-5.1-chat-latest",
+  },
   "gpt-5.4-pro": {
     tiers: [
       { tierLabel: "输入<=272K context", input: 30, output: 180 },

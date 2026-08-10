@@ -6,14 +6,14 @@
   "currency": "USD",
   "unit": "USD per 1M tokens",
   "chargeUnit": "token",
-  "fetchedAt": "2026-07-10T07:40:08.287Z",
+  "fetchedAt": "2026-08-09T04:32:19.830Z",
   "seedVerifiedAt": "2026-06-28",
-  "catalogCount": 79,
-  "modelCount": 79,
-  "pricingTierCount": 116,
-  "pricedCount": 79,
-  "liveCount": 2,
-  "seedCount": 77,
+  "catalogCount": 83,
+  "modelCount": 83,
+  "pricingTierCount": 123,
+  "pricedCount": 83,
+  "liveCount": 0,
+  "seedCount": 83,
   "models": [
     {
       "modality": "text",
@@ -32,7 +32,7 @@
       "chargeUnit": "token",
       "tierCount": 2,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -93,7 +93,7 @@
       "chargeUnit": "token",
       "tierCount": 2,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.5 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -141,6 +141,236 @@
       "modality": "text",
       "vendor": "openai",
       "vendorLabel": "GPT",
+      "vendorModelId": "gpt-5.6-sol",
+      "docUrl": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "fetch failed",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.6-sol (seed 2026-06-28)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "输入<=272K context",
+            "input": 5,
+            "output": 30,
+            "cache": 0.5,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>272K context",
+            "input": 10,
+            "output": 45,
+            "cache": 1,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 5,
+        "output": 30,
+        "cache": 0.5,
+        "source": "official_price_seed",
+        "seedNote": null,
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "vendorModelId": "gpt-5.6-terra",
+      "docUrl": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "fetch failed",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.6-terra (seed 2026-06-28)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "输入<=272K context",
+            "input": 2,
+            "output": 12,
+            "cache": 0.2,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>272K context",
+            "input": 4,
+            "output": 18,
+            "cache": 0.4,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 2,
+        "output": 12,
+        "cache": 0.2,
+        "source": "official_price_seed",
+        "seedNote": null,
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入<=272K context",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>272K context",
+          "input": 4,
+          "output": 18,
+          "cache": 0.4,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "vendorModelId": "gpt-5.6-luna",
+      "docUrl": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "pricingUrl": "https://developers.openai.com/api/docs/pricing",
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": null,
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 2,
+      "fetchStatus": "seed",
+      "fetchError": "fetch failed",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.6-luna (seed 2026-06-28)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "输入<=272K context",
+            "input": 0.2,
+            "output": 1.2,
+            "cache": 0.02,
+            "parseSource": "official_price_seed"
+          },
+          {
+            "tierLabel": "输入>272K context",
+            "input": 0.4,
+            "output": 1.8,
+            "cache": 0.04,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 0.2,
+        "output": 1.2,
+        "cache": 0.02,
+        "source": "official_price_seed",
+        "seedNote": null,
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "输入<=272K context",
+          "input": 0.2,
+          "output": 1.2,
+          "cache": 0.02,
+          "parseSource": "official_price_seed"
+        },
+        {
+          "tierLabel": "输入>272K context",
+          "input": 0.4,
+          "output": 1.8,
+          "cache": 0.04,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "vendorModelId": "gpt-5.1-chat",
+      "docUrl": "https://developers.openai.com/api/docs/models/gpt-5.1",
+      "pricingUrl": null,
+      "sunsetDate": null,
+      "sunsetNote": null,
+      "trinityNote": "线上 slug gpt-5.1-chat；价同 chat-latest",
+      "region": "global",
+      "status": "active",
+      "currency": "USD",
+      "unit": "USD per 1M tokens",
+      "chargeUnit": "token",
+      "tierCount": 1,
+      "fetchStatus": "seed",
+      "fetchError": "fetch failed",
+      "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1 (seed 2026-06-28)",
+      "prices": {
+        "currency": "USD",
+        "tiers": [
+          {
+            "tierLabel": "标准价",
+            "input": 1.25,
+            "output": 10,
+            "cache": 0.125,
+            "parseSource": "official_price_seed"
+          }
+        ],
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125,
+        "source": "official_price_seed",
+        "seedNote": "同 gpt-5.1-chat-latest",
+        "seedVerifiedAt": "2026-06-28"
+      },
+      "tiers": [
+        {
+          "tierLabel": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "parseSource": "official_price_seed"
+        }
+      ]
+    },
+    {
+      "modality": "text",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
       "vendorModelId": "gpt-5.4-pro",
       "docUrl": "https://developers.openai.com/api/docs/models/gpt-5.4-pro",
       "pricingUrl": null,
@@ -154,7 +384,7 @@
       "chargeUnit": "token",
       "tierCount": 2,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-pro (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -215,7 +445,7 @@
       "chargeUnit": "token",
       "tierCount": 2,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -276,7 +506,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-nano (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -323,7 +553,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.4-mini (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -370,7 +600,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-codex (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -417,7 +647,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.3-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -464,7 +694,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -511,7 +741,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.2 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -558,7 +788,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -605,7 +835,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5.1-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -652,7 +882,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -699,7 +929,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-mini (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -746,7 +976,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-chat-latest (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -793,7 +1023,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-5-nano (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -840,7 +1070,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-4.1 (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -887,7 +1117,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "HTTP 403",
+      "fetchError": "fetch failed",
       "priceSource": "https://developers.openai.com/api/docs/models/gpt-4o (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -1643,7 +1873,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "overview 未找到该模型价目，且无种子",
+      "fetchError": "fetch failed",
       "priceSource": "https://platform.claude.com/docs/zh-CN/about-claude/models/overview (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -1690,7 +1920,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "overview 未找到该模型价目，且无种子",
+      "fetchError": "fetch failed",
       "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -1737,7 +1967,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "overview 未找到该模型价目，且无种子",
+      "fetchError": "fetch failed",
       "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -1784,7 +2014,7 @@
       "chargeUnit": "token",
       "tierCount": 1,
       "fetchStatus": "seed",
-      "fetchError": "overview 未找到该模型价目，且无种子",
+      "fetchError": "fetch failed",
       "priceSource": "https://platform.claude.com/docs/en/about-claude/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "USD",
@@ -2328,24 +2558,26 @@
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
       "tierCount": 1,
-      "fetchStatus": "ok",
-      "fetchError": null,
-      "priceSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
-        "input": 1,
-        "output": 2,
-        "cache": 0.02,
-        "source": "deepseek_pricing_page",
         "tiers": [
           {
             "tierLabel": "标准价",
             "input": 1,
             "output": 2,
             "cache": 0.02,
-            "parseSource": "deepseek_pricing_page"
+            "parseSource": "official_price_seed"
           }
-        ]
+        ],
+        "input": 1,
+        "output": 2,
+        "cache": 0.02,
+        "source": "official_price_seed",
+        "seedNote": "DeepSeek API 文档 · deepseek-v4-flash",
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2353,7 +2585,7 @@
           "input": 1,
           "output": 2,
           "cache": 0.02,
-          "parseSource": "deepseek_pricing_page"
+          "parseSource": "official_price_seed"
         }
       ]
     },
@@ -2373,24 +2605,26 @@
       "unit": "USD per 1M tokens",
       "chargeUnit": "token",
       "tierCount": 1,
-      "fetchStatus": "ok",
-      "fetchError": null,
-      "priceSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+      "fetchStatus": "seed",
+      "fetchError": "国内生文以官网核实种子为准",
+      "priceSource": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-28)",
       "prices": {
         "currency": "CNY",
-        "input": 3,
-        "output": 6,
-        "cache": 0.025,
-        "source": "deepseek_pricing_page",
         "tiers": [
           {
             "tierLabel": "标准价",
             "input": 3,
             "output": 6,
             "cache": 0.025,
-            "parseSource": "deepseek_pricing_page"
+            "parseSource": "official_price_seed"
           }
-        ]
+        ],
+        "input": 3,
+        "output": 6,
+        "cache": 0.025,
+        "source": "official_price_seed",
+        "seedNote": "DeepSeek API 文档 · deepseek-v4-pro",
+        "seedVerifiedAt": "2026-06-28"
       },
       "tiers": [
         {
@@ -2398,7 +2632,7 @@
           "input": 3,
           "output": 6,
           "cache": 0.025,
-          "parseSource": "deepseek_pricing_page"
+          "parseSource": "official_price_seed"
         }
       ]
     },

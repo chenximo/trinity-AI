@@ -319,6 +319,8 @@ output/
 | [README.md](./README.md) | 六步流程、命令速查 |
 | [STRUCTURE.md](./STRUCTURE.md) | 本文件：完整目录树 |
 | [docs/OFFICIAL-PRICING-SKILL-DESIGN.md](./docs/OFFICIAL-PRICING-SKILL-DESIGN.md) | 官方价 Skill 与三方对比设计稿 |
+| [docs/刊例策略-V1-V2-国际站优先.md](./docs/刊例策略-V1-V2-国际站优先.md) | 刊例双轨 · 默认 V2 · 官网国际站采集清单 |
+| [docs/账单与定价体系总览.md](./docs/账单与定价体系总览.md) | 价格层 + 对客结算 + 对账全链路 |
 | [suppliers/SOURCES.md](./suppliers/SOURCES.md) | 各供应商 JSON 真源 |
 | [pipeline/README.md](./pipeline/README.md) | 流水线脚本 |
 | [suppliers/official/README.md](./suppliers/official/README.md) | 原厂价目与模态 |

@@ -1,14 +1,12 @@
 # Trinity 价目导出索引
 
-> 更新 2026-07-29T06:37:53Z · 生文模型 **66** 款
+> 更新 2026-08-09T04:32:45Z · 生文模型 **69** 款
 > TokenHub/百炼：2026-06-30 · AIGC 价目表：2026-06
 
 ## 对外 Excel（按模态分册）
 
 | 文件 | 模态 | 说明 |
 |------|------|------|
-| [商务洽谈折扣总表.xlsx](./商务洽谈折扣总表.xlsx) | 对内 · **L3b** | 成本族 × 客户档阶梯（销售算折真源；**不外发**） |
-| [trinity-outward-quote-standard.xlsx](./trinity-outward-quote-standard.xlsx) | 生文 · **L3a 标准档** | 目录价（入/出/**原缓存价**）+ Plus→Enterprise 阶梯绝对价（入/出）；阶梯数字来自上方商务表；方案见 [定价方案 v0](../docs/定价方案-v0-三件套与广场.md) |
 | [trinity-pricing-text.xlsx](./trinity-pricing-text.xlsx) | 生文 | 刊例校验 · **汇总-供应商vs官方**（第 2 Sheet）· 各供应商分表（含 vs 官方） |
 | [trinity-pricing-image.xlsx](./trinity-pricing-image.xlsx) | 生图 | 刊例校验 · **汇总-供应商vs官方-生图** · **AIGC 国内/国际**分表（当前唯一接入渠道） |
 | [trinity-pricing-video.xlsx](./trinity-pricing-video.xlsx) | 生视频 | 官方价对比 |

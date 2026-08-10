@@ -9,6 +9,7 @@
       "metadata": {
         "display_name": "Nano-2.5",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -38,6 +39,7 @@
       "metadata": {
         "display_name": "Nano-3.0",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -67,6 +69,7 @@
       "metadata": {
         "display_name": "Nano-3.1",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -96,6 +99,7 @@
       "metadata": {
         "display_name": "Hunyuan-3.0",
         "origin_vendor_name": "Tencent",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/tencent/02e72ae5ef074ca2911ed4922559ae22.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -127,6 +131,7 @@
       "metadata": {
         "display_name": "Jimeng-4.0",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -156,6 +161,7 @@
       "metadata": {
         "display_name": "Kling-2.1",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -185,6 +191,7 @@
       "metadata": {
         "display_name": "Kling-3.0",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -214,6 +221,7 @@
       "metadata": {
         "display_name": "Kling-3.0-Omni",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -244,6 +252,7 @@
       "metadata": {
         "display_name": "Kling-O1",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -274,6 +283,7 @@
       "metadata": {
         "display_name": "Midjourney-v7",
         "origin_vendor_name": "Midjourney",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/midjourney/9fc93944a8c04644b0f521a6ed7027ed.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -304,6 +314,7 @@
       "metadata": {
         "display_name": "Image-2.0 High",
         "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -335,6 +346,7 @@
       "metadata": {
         "display_name": "Image-2.0 Low",
         "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -364,6 +376,7 @@
       "metadata": {
         "display_name": "Image-2.0 Medium",
         "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -393,6 +406,7 @@
       "metadata": {
         "display_name": "Seedream-4.0",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -424,6 +438,7 @@
       "metadata": {
         "display_name": "Seedream-4.5",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -453,6 +468,7 @@
       "metadata": {
         "display_name": "Seedream-5.0-lite",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -482,6 +498,7 @@
       "metadata": {
         "display_name": "Vidu Q2",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {
@@ -504,6 +521,74 @@
       }
     },
     {
+      "id": "gemini-2.5-flash-image",
+      "object": "model",
+      "created": 1786086499,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 2.5 Flash Image",
+        "origin_vendor_name": "Google",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Fast image gen",
+              "Image editing",
+              "Multi-reference",
+              "Flexible aspect ratios"
+            ],
+            "short_summary": "Gemini 2.5 Flash Image by Google DeepMind: fast native image generation and conversational editing for creative iteration and high throughput.",
+            "description_long": "Gemini 2.5 Flash Image from Google DeepMind targets low-latency text-to-image and image editing. It supports natural-language targeted edits, multi-reference blending, and strong character consistency, with flexible common aspect ratios for marketing creatives, product visuals, and multi-turn ideation. Fast generation and high throughput make it a good fit for rapid iteration and lightweight batch image workflows."
+          },
+          "zh": {
+            "feature_tags": [
+              "高速生图",
+              "图文编辑",
+              "多参考图",
+              "宽高比灵活"
+            ],
+            "short_summary": "Google DeepMind 旗下 Gemini 2.5 Flash Image：高速原生生图与对话式编辑，适合创意迭代与高吞吐出图。",
+            "description_long": "Gemini 2.5 Flash Image 由 Google DeepMind 打造，面向低延迟的文生图与图文编辑场景。支持自然语言定向修改、多参考图融合与角色一致性保持，并提供多种常用宽高比，便于营销素材、产品视觉与多轮创意打磨。生成速度快、吞吐友好，适合需要频繁试错与批量轻量出图的工作流。"
+          }
+        }
+      }
+    },
+    {
+      "id": "gpt-image-2",
+      "object": "model",
+      "created": 1786086504,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT Image 2",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "High-quality gen",
+              "Reference editing",
+              "Flexible size",
+              "Quality tiers"
+            ],
+            "short_summary": "OpenAI GPT Image 2: high-quality text-to-image and reference-based editing with flexible resolution and quality tiers for professional and commercial creatives.",
+            "description_long": "GPT Image 2 from OpenAI is built for professional image generation and editing. It supports text-to-image, reference-based edits, and inpainting, with pixel-level size control and quality tiers (low / medium / high) to balance cost and detail. Strong multilingual prompt understanding and face preservation make it well suited for brand visuals, ecommerce imagery, illustration, and fine-grained retouching."
+          },
+          "zh": {
+            "feature_tags": [
+              "高质量生图",
+              "参考图编辑",
+              "灵活尺寸",
+              "质量分档"
+            ],
+            "short_summary": "OpenAI GPT Image 2：高质量文生图与参考图编辑，支持灵活分辨率与质量分档，适合专业创作与商用素材。",
+            "description_long": "GPT Image 2 由 OpenAI 研发，面向专业级图像生成与编辑。支持文生图、参考图编辑与局部重绘，可按像素自定义输出尺寸，并提供 low / medium / high 等质量档以平衡成本与细节表现。多语言提示理解与人脸保持能力出色，适合品牌视觉、电商主图、插画与精细修图等商用场景。"
+          }
+        }
+      }
+    },
+    {
       "id": "qwen-0925",
       "object": "model",
       "created": 1779243912,
@@ -511,6 +596,7 @@
       "metadata": {
         "display_name": "Qwen-0925",
         "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/tongyi/910ecf656a5446188c92886ed142ffe6.png",
         "modality_type": "image",
         "copy_i18n": {
           "en": {

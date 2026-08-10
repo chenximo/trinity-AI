@@ -1,0 +1,254 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.348Z",
+  "source": {
+    "key": "tokenhub",
+    "title": "腾讯云 TokenHub",
+    "modality": "text",
+    "jsonPath": "suppliers/tokenhub/output/pricing-console-api.json"
+  },
+  "total": 30,
+  "accessed": 25,
+  "pending": 5,
+  "rows": [
+    {
+      "id": "hunyuan-2.0-instruct-20251111",
+      "name": "HY 2.0 Instruct",
+      "brand": "混元",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "hunyuan-2.0-thinking-20251109",
+      "name": "HY 2.0 Think",
+      "brand": "混元",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "hunyuan-role-latest",
+      "name": "Hy-Role-Latest",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "hy-mt2-lite",
+      "name": "Hy-MT2-Lite",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "hy-mt2-plus",
+      "name": "Hy-MT2-Plus",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "hy-mt2-pro",
+      "name": "Hy-MT2-Pro",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "hy-role",
+      "name": "Hy-Role",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "hy3-preview",
+      "name": "Hy3 preview",
+      "brand": "混元",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.5-flash",
+      "name": "Qwen3.5-Flash",
+      "brand": "通义千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen3.5-plus",
+      "name": "Qwen3.5-Plus",
+      "brand": "通义千问",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.5",
+      "name": "Kimi K2.5",
+      "brand": "月之暗面",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.6",
+      "name": "Kimi K2.6",
+      "brand": "月之暗面",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.7-code",
+      "name": "Kimi K2.7 Code",
+      "brand": "月之暗面",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kimi-k2.7-code-highspeed",
+      "name": "Kimi K2.7 Code HighSpeed",
+      "brand": "月之暗面",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5",
+      "name": "GLM-5",
+      "brand": "智谱 AI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5-turbo",
+      "name": "GLM-5-Turbo",
+      "brand": "智谱 AI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.1",
+      "name": "GLM-5.1",
+      "brand": "智谱 AI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5.2",
+      "name": "GLM-5.2",
+      "brand": "智谱 AI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "brand": "智谱 AI",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-r1-0528",
+      "name": "Deepseek-r1-0528",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3-0324",
+      "name": "Deepseek-v3-0324",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.1-terminus",
+      "name": "Deepseek-v3.1",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek-v3.2",
+      "name": "Deepseek-v3.2",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "name": "DeepSeek-V4-Flash",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-flash-202605",
+      "name": "DeepSeek-V4-Flash",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek-V4-Pro",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek-v4-pro-202606",
+      "name": "DeepSeek-V4-Pro",
+      "brand": "DeepSeek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m2.5",
+      "name": "MiniMax-M2.5",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m2.7",
+      "name": "MiniMax-M2.7",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax-m3",
+      "name": "MiniMax-M3",
+      "brand": "MiniMax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

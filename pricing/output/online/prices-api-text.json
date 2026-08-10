@@ -3,9 +3,9 @@
   "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=text",
   "modality": "text",
   "fxCnyPerUsd": 7.25,
-  "fxNote": "平台 CNY 挂牌换算 USD 刊例时使用 1 USD = FX_LISTING CNY",
-  "fetchedAt": "2026-07-29T06:37:53.112Z",
-  "modelCount": 66,
+  "fxNote": "FX_LISTING(默认7.25)用于部分 cascade；国内刊例 V1/V2 回退路径使用 FX_LEGACY_065=6.5，见刊例策略-V1-V2",
+  "fetchedAt": "2026-08-09T06:02:47.604Z",
+  "modelCount": 69,
   "object": "list",
   "data": [
     {
@@ -499,6 +499,43 @@
       "effective_variant": "scheduled",
       "effective_variant_label": "当前适用：高峰价",
       "updated_at": "2026-06-29T10:14:38.393163Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "deepseek-v4-flash-fast",
+      "display_name": "DeepSeek V4 Flash Fast",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.2 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.04 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.4 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-07-30T09:24:21.564315Z"
     },
     {
       "object": "model_prices",
@@ -1248,6 +1285,80 @@
     },
     {
       "object": "model_prices",
+      "model": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash Lite",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.3 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.03",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.03 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "2.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$2.5 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T01:56:11.894177Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gemini-3.6-flash",
+      "display_name": "Gemini 3.6 Flash",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "1.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.15 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "7.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$7.5 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T01:56:09.293178Z"
+    },
+    {
+      "object": "model_prices",
       "model": "glm-5",
       "display_name": "GLM 5",
       "modality_type": "text",
@@ -1627,43 +1738,6 @@
         }
       ],
       "updated_at": "2026-06-22T09:26:02.043688Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "glm-5.2-fast-preview",
-      "display_name": "GLM-5.2 Fast Preview",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "2.461538",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$2.461538 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.492308",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.492308 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "8.615385",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$8.615385 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-07-28T03:34:46.069169Z"
     },
     {
       "object": "model_prices",
@@ -2484,10 +2558,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "1",
+                "amount": "0.2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$1 / 百万 input tokens"
+                "display": "$0.2 / 百万 input tokens"
               }
             },
             {
@@ -2497,10 +2571,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "2",
+                "amount": "0.4",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$2 / 百万 input tokens"
+                "display": "$0.4 / 百万 input tokens"
               }
             }
           ]
@@ -2518,10 +2592,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "0.1",
+                "amount": "0.02",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.1 / 百万 cached input tokens"
+                "display": "$0.02 / 百万 cached input tokens"
               }
             },
             {
@@ -2531,10 +2605,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "0.2",
+                "amount": "0.04",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.2 / 百万 cached input tokens"
+                "display": "$0.04 / 百万 cached input tokens"
               }
             }
           ]
@@ -2552,10 +2626,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "1.25",
+                "amount": "0.25",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$1.25 / 百万 cache creation tokens"
+                "display": "$0.25 / 百万 cache creation tokens"
               }
             },
             {
@@ -2565,10 +2639,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "2.5",
+                "amount": "0.5",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$2.5 / 百万 cache creation tokens"
+                "display": "$0.5 / 百万 cache creation tokens"
               }
             }
           ]
@@ -2586,10 +2660,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "6",
+                "amount": "1.2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$6 / 百万 output tokens"
+                "display": "$1.2 / 百万 output tokens"
               }
             },
             {
@@ -2599,10 +2673,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "9",
+                "amount": "1.8",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$9 / 百万 output tokens"
+                "display": "$1.8 / 百万 output tokens"
               }
             }
           ]
@@ -2782,10 +2856,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "2.5",
+                "amount": "2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$2.5 / 百万 input tokens"
+                "display": "$2 / 百万 input tokens"
               }
             },
             {
@@ -2795,10 +2869,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "5",
+                "amount": "4",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$5 / 百万 input tokens"
+                "display": "$4 / 百万 input tokens"
               }
             }
           ]
@@ -2816,10 +2890,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "0.25",
+                "amount": "0.2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.25 / 百万 cached input tokens"
+                "display": "$0.2 / 百万 cached input tokens"
               }
             },
             {
@@ -2829,10 +2903,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "0.5",
+                "amount": "0.4",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.5 / 百万 cached input tokens"
+                "display": "$0.4 / 百万 cached input tokens"
               }
             }
           ]
@@ -2850,10 +2924,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "3.125",
+                "amount": "2.5",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$3.125 / 百万 cache creation tokens"
+                "display": "$2.5 / 百万 cache creation tokens"
               }
             },
             {
@@ -2863,10 +2937,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "6.25",
+                "amount": "5",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$6.25 / 百万 cache creation tokens"
+                "display": "$5 / 百万 cache creation tokens"
               }
             }
           ]
@@ -2884,10 +2958,10 @@
                 "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "15",
+                "amount": "12",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$15 / 百万 output tokens"
+                "display": "$12 / 百万 output tokens"
               }
             },
             {
@@ -2897,10 +2971,10 @@
                 "display_short": "> 272K"
               },
               "price": {
-                "amount": "22.5",
+                "amount": "18",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$22.5 / 百万 output tokens"
+                "display": "$18 / 百万 output tokens"
               }
             }
           ]
@@ -3634,22 +3708,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.023077",
+              "amount": "0.05",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.023077 / 百万 input tokens"
+              "display": "$0.05 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.004615",
+              "amount": "0.005",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.004615 / 百万 cached input tokens"
+              "display": "$0.005 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.230769",
+              "amount": "0.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.230769 / 百万 output tokens"
+              "display": "$0.4 / 百万 output tokens"
             }
           }
         }
@@ -3671,22 +3745,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.369231",
+              "amount": "1.6",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.369231 / 百万 input tokens"
+              "display": "$1.6 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.082759",
+              "amount": "0.16",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.082759 / 百万 cached input tokens"
+              "display": "$0.16 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "1.476923",
+              "amount": "6.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$1.476923 / 百万 output tokens"
+              "display": "$6.4 / 百万 output tokens"
             }
           }
         }
@@ -3708,22 +3782,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.123077",
+              "amount": "0.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.123077 / 百万 input tokens"
+              "display": "$0.4 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.024615",
+              "amount": "0.04",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.024615 / 百万 cached input tokens"
+              "display": "$0.04 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.307692",
+              "amount": "1.2",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.307692 / 百万 output tokens"
+              "display": "$1.2 / 百万 output tokens"
             }
           }
         }
@@ -3745,22 +3819,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.046154",
+              "amount": "0.05",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.046154 / 百万 input tokens"
+              "display": "$0.05 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.010345",
+              "amount": "0.005",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.010345 / 百万 cached input tokens"
+              "display": "$0.005 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.092308",
+              "amount": "0.2",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.092308 / 百万 output tokens"
+              "display": "$0.2 / 百万 output tokens"
             }
           }
         }
@@ -3782,22 +3856,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.030769",
+              "amount": "0.1",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.030769 / 百万 input tokens"
+              "display": "$0.1 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.003077",
+              "amount": "0.01",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.003077 / 百万 cached input tokens"
+              "display": "$0.01 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.307692",
+              "amount": "0.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.307692 / 百万 output tokens"
+              "display": "$0.4 / 百万 output tokens"
             }
           }
         }
@@ -3819,22 +3893,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.123077",
+              "amount": "0.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.123077 / 百万 input tokens"
+              "display": "$0.4 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.012308",
+              "amount": "0.04",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.012308 / 百万 cached input tokens"
+              "display": "$0.04 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.738462",
+              "amount": "2.4",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.738462 / 百万 output tokens"
+              "display": "$2.4 / 百万 output tokens"
             }
           }
         }
@@ -3856,22 +3930,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.184615",
+              "amount": "0.25",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.184615 / 百万 input tokens"
+              "display": "$0.25 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.036923",
+              "amount": "0.025",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.036923 / 百万 cached input tokens"
+              "display": "$0.025 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "1.107692",
+              "amount": "1.5",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$1.107692 / 百万 output tokens"
+              "display": "$1.5 / 百万 output tokens"
             }
           }
         }
@@ -3893,22 +3967,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.307692",
+              "amount": "0.5",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.307692 / 百万 input tokens"
+              "display": "$0.5 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.061538",
+              "amount": "0.05",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.061538 / 百万 cached input tokens"
+              "display": "$0.05 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "1.846154",
+              "amount": "3",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$1.846154 / 百万 output tokens"
+              "display": "$3 / 百万 output tokens"
             }
           }
         }
@@ -3938,10 +4012,10 @@
                 "display_short": "≤ 32.77K"
               },
               "price": {
-                "amount": "0.030769",
+                "amount": "0.03",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.030769 / 百万 input tokens"
+                "display": "$0.03 / 百万 input tokens"
               }
             },
             {
@@ -3952,10 +4026,10 @@
                 "display_short": "32.77K – 262.14K"
               },
               "price": {
-                "amount": "0.092308",
+                "amount": "0.1",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.092308 / 百万 input tokens"
+                "display": "$0.1 / 百万 input tokens"
               }
             },
             {
@@ -3965,10 +4039,10 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "0.184615",
+                "amount": "0.2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.184615 / 百万 input tokens"
+                "display": "$0.2 / 百万 input tokens"
               }
             }
           ]
@@ -3986,10 +4060,10 @@
                 "display_short": "≤ 32.77K"
               },
               "price": {
-                "amount": "0.006154",
+                "amount": "0.003",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.006154 / 百万 cached input tokens"
+                "display": "$0.003 / 百万 cached input tokens"
               }
             },
             {
@@ -4000,10 +4074,10 @@
                 "display_short": "32.77K – 262.14K"
               },
               "price": {
-                "amount": "0.018462",
+                "amount": "0.01",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.018462 / 百万 cached input tokens"
+                "display": "$0.01 / 百万 cached input tokens"
               }
             },
             {
@@ -4013,10 +4087,10 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "0.036923",
+                "amount": "0.02",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.036923 / 百万 cached input tokens"
+                "display": "$0.02 / 百万 cached input tokens"
               }
             }
           ]
@@ -4034,10 +4108,10 @@
                 "display_short": "≤ 32.77K"
               },
               "price": {
-                "amount": "0.123077",
+                "amount": "0.13",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.123077 / 百万 output tokens"
+                "display": "$0.13 / 百万 output tokens"
               }
             },
             {
@@ -4048,10 +4122,10 @@
                 "display_short": "32.77K – 262.14K"
               },
               "price": {
-                "amount": "0.369231",
+                "amount": "0.4",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.369231 / 百万 output tokens"
+                "display": "$0.4 / 百万 output tokens"
               }
             },
             {
@@ -4061,10 +4135,10 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "0.738462",
+                "amount": "0.8",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.738462 / 百万 output tokens"
+                "display": "$0.8 / 百万 output tokens"
               }
             }
           ]
@@ -4087,22 +4161,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "1.846154",
+              "amount": "2.5",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$1.846154 / 百万 input tokens"
+              "display": "$2.5 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.369231",
+              "amount": "0.25",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$0.369231 / 百万 cached input tokens"
+              "display": "$0.25 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "5.538462",
+              "amount": "7.5",
               "currency": "USD",
               "unit": "per_million_tokens",
-              "display": "$5.538462 / 百万 output tokens"
+              "display": "$7.5 / 百万 output tokens"
             }
           }
         }
@@ -4132,10 +4206,10 @@
                 "display_short": "≤ 262.14K"
               },
               "price": {
-                "amount": "0.307692",
+                "amount": "0.4",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.307692 / 百万 input tokens"
+                "display": "$0.4 / 百万 input tokens"
               }
             },
             {
@@ -4145,10 +4219,10 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "0.923077",
+                "amount": "1.2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.923077 / 百万 input tokens"
+                "display": "$1.2 / 百万 input tokens"
               }
             }
           ]
@@ -4166,10 +4240,10 @@
                 "display_short": "≤ 262.14K"
               },
               "price": {
-                "amount": "0.061538",
+                "amount": "0.04",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.061538 / 百万 cached input tokens"
+                "display": "$0.04 / 百万 cached input tokens"
               }
             },
             {
@@ -4179,10 +4253,10 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "0.184615",
+                "amount": "0.12",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.184615 / 百万 cached input tokens"
+                "display": "$0.12 / 百万 cached input tokens"
               }
             }
           ]
@@ -4200,10 +4274,10 @@
                 "display_short": "≤ 262.14K"
               },
               "price": {
-                "amount": "1.230769",
+                "amount": "1.6",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$1.230769 / 百万 output tokens"
+                "display": "$1.6 / 百万 output tokens"
               }
             },
             {
@@ -4213,16 +4287,53 @@
                 "display_short": "> 262.15K"
               },
               "price": {
-                "amount": "3.692308",
+                "amount": "4.8",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$3.692308 / 百万 output tokens"
+                "display": "$4.8 / 百万 output tokens"
               }
             }
           ]
         }
       ],
       "updated_at": "2026-07-28T02:37:32.443974Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "qwen3.8-max",
+      "display_name": "Qwen3.8 Max",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "2",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$2 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.2",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.2 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "6",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$6 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-03T09:40:03.133702Z"
     }
   ]
 }

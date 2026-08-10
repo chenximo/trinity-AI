@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.368Z",
+  "accessMark": "-",
+  "summaries": [
+    {
+      "key": "tokenhub",
+      "title": "腾讯云 TokenHub",
+      "modality": "text",
+      "total": 30,
+      "accessed": 25,
+      "pending": 5
+    },
+    {
+      "key": "bailian",
+      "title": "阿里云百炼 · 中国内地",
+      "modality": "text",
+      "total": 355,
+      "accessed": 23,
+      "pending": 332
+    },
+    {
+      "key": "bailian-intl",
+      "title": "阿里云百炼 · 国际",
+      "modality": "text",
+      "total": 73,
+      "accessed": 14,
+      "pending": 59
+    },
+    {
+      "key": "aigc-text",
+      "title": "腾讯云 AIGC · 生文",
+      "modality": "text",
+      "total": 108,
+      "accessed": 36,
+      "pending": 72
+    },
+    {
+      "key": "aigc-image",
+      "title": "腾讯云 AIGC · 生图",
+      "modality": "image",
+      "total": 18,
+      "accessed": 16,
+      "pending": 2
+    },
+    {
+      "key": "aigc-video",
+      "title": "腾讯云 AIGC · 生视频",
+      "modality": "video",
+      "total": 63,
+      "accessed": 14,
+      "pending": 49
+    },
+    {
+      "key": "volcengine-text",
+      "title": "火山方舟 · 生文",
+      "modality": "text",
+      "total": 26,
+      "accessed": 4,
+      "pending": 22
+    },
+    {
+      "key": "volcengine-image",
+      "title": "火山方舟 · 生图",
+      "modality": "image",
+      "total": 3,
+      "accessed": 3,
+      "pending": 0
+    },
+    {
+      "key": "volcengine-video",
+      "title": "火山方舟 · 生视频",
+      "modality": "video",
+      "total": 6,
+      "accessed": 0,
+      "pending": 6
+    },
+    {
+      "key": "openrouter",
+      "title": "OpenRouter",
+      "modality": "text",
+      "total": 338,
+      "accessed": 44,
+      "pending": 294
+    }
+  ]
+}

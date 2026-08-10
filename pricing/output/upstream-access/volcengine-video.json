@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.364Z",
+  "source": {
+    "key": "volcengine-video",
+    "title": "火山方舟 · 生视频",
+    "modality": "video",
+    "jsonPath": "suppliers/volcengine/output/video/pricing-api.json"
+  },
+  "total": 6,
+  "accessed": 0,
+  "pending": 6,
+  "rows": [
+    {
+      "id": "doubao-seedance-1.0-pro",
+      "name": "豆包 Doubao-seedance-1.0-pro",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "doubao-seedance-1.0-pro-fast",
+      "name": "豆包 Doubao-seedance-1.0-pro-fast",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "doubao-seedance-1.5-pro",
+      "name": "豆包 Doubao-seedance-1.5-pro",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "doubao-seedance-2.0",
+      "name": "豆包 Doubao-seedance-2.0",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "doubao-seedance-2.0-fast",
+      "name": "豆包 Doubao-seedance-2.0-fast",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "doubao-seedance-2.0-mini",
+      "name": "豆包 Doubao-seedance-2.0-mini",
+      "brand": "火山方舟",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    }
+  ]
+}

@@ -1,0 +1,581 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.362Z",
+  "source": {
+    "key": "aigc-video",
+    "title": "腾讯云 AIGC · 生视频",
+    "modality": "video",
+    "jsonPath": "suppliers/aigc/output/pricing-api-video.json"
+  },
+  "total": 63,
+  "accessed": 14,
+  "pending": 49,
+  "rows": [
+    {
+      "id": "hy-video-1.5",
+      "trinityId": "hy-video-1.5",
+      "name": "混元 1.5",
+      "brand": "混元",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-2-6-montion-control-domestic",
+      "trinityId": null,
+      "name": "可灵 2.6-montion-control",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-2-6-montion-control-international",
+      "trinityId": null,
+      "name": "可灵 2.6-montion-control",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-3-0-montion-control-domestic",
+      "trinityId": null,
+      "name": "可灵 3.0-montion-control",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-3-0-montion-control-international",
+      "trinityId": null,
+      "name": "可灵 3.0-montion-control",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-3-0-omni-domestic",
+      "trinityId": null,
+      "name": "可灵 3.0-Omni",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-3-0-omni-international",
+      "trinityId": null,
+      "name": "可灵 3.0-Omni",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-3-domestic",
+      "trinityId": null,
+      "name": "可灵 3",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-kling-3-international",
+      "trinityId": null,
+      "name": "可灵 3",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-kling-avater-domestic",
+      "trinityId": null,
+      "name": "可灵 avater（数智人）",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-avater-international",
+      "trinityId": null,
+      "name": "可灵 avater（数智人）",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-identifyface-domestic",
+      "trinityId": null,
+      "name": "可灵 Identifyface（对口型）",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-identifyface-international",
+      "trinityId": null,
+      "name": "可灵 Identifyface（对口型）",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-o1-domestic",
+      "trinityId": null,
+      "name": "可灵 O1",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-kling-o1-international",
+      "trinityId": null,
+      "name": "可灵 O1",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "kl-video-v1",
+      "trinityId": "kl-video-v1",
+      "name": "可灵 1.6、2.0、2.1",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kl-video-v2-5-turbo",
+      "trinityId": "kl-video-v2-5-turbo",
+      "name": "可灵 2.5-turbo",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kl-video-v2-6",
+      "trinityId": "kl-video-v2-6",
+      "name": "可灵 2.6",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kl-video-v3",
+      "trinityId": "kl-video-v3",
+      "name": "可灵 3.0-turbo（new）",
+      "brand": "可灵",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-domestic",
+      "trinityId": null,
+      "name": "GV 3.1",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-fast-domestic",
+      "trinityId": null,
+      "name": "GV 3.1-fast",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-fast-international",
+      "trinityId": null,
+      "name": "GV 3.1-fast",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-international",
+      "trinityId": null,
+      "name": "GV 3.1",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-lite-domestic",
+      "trinityId": null,
+      "name": "GV 3.1-lite",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-gv-3-1-lite-international",
+      "trinityId": null,
+      "name": "GV 3.1-lite",
+      "brand": "GV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-h2-1-domestic",
+      "trinityId": null,
+      "name": "H2 1",
+      "brand": "H2",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-h2-1-international",
+      "trinityId": null,
+      "name": "H2 1",
+      "brand": "H2",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-hailuo-02-2-3-domestic",
+      "trinityId": null,
+      "name": "Hailuo 02、2.3",
+      "brand": "Hailuo",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-hailuo-02-2-3-international",
+      "trinityId": null,
+      "name": "Hailuo 02、2.3",
+      "brand": "Hailuo",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-hailuo-2-3-fast-domestic",
+      "trinityId": null,
+      "name": "Hailuo 2.3-fast",
+      "brand": "Hailuo",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-hailuo-2-3-fast-international",
+      "trinityId": null,
+      "name": "Hailuo 2.3-fast",
+      "brand": "Hailuo",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-jv-3-0-pro-domestic",
+      "trinityId": null,
+      "name": "JV 3.0-pro",
+      "brand": "JV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-jv-3-0-pro-international",
+      "trinityId": null,
+      "name": "JV 3.0-pro",
+      "brand": "JV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-mingmou-1-domestic",
+      "trinityId": null,
+      "name": "Mingmou 1",
+      "brand": "Mingmou",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-mingmou-1-international",
+      "trinityId": null,
+      "name": "Mingmou 1",
+      "brand": "Mingmou",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-os-2-domestic",
+      "trinityId": null,
+      "name": "OS 2",
+      "brand": "OS",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-os-2-international",
+      "trinityId": null,
+      "name": "OS 2",
+      "brand": "OS",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-pixverse-c1-domestic",
+      "trinityId": null,
+      "name": "PixVerse C1",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-pixverse-c1-international",
+      "trinityId": null,
+      "name": "PixVerse C1",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-pixverse-v5-6-domestic",
+      "trinityId": null,
+      "name": "PixVerse V5.6",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-pixverse-v5-6-international",
+      "trinityId": null,
+      "name": "PixVerse V5.6",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-pixverse-v6-0-domestic",
+      "trinityId": null,
+      "name": "PixVerse V6.0",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-pixverse-v6-0-international",
+      "trinityId": null,
+      "name": "PixVerse V6.0",
+      "brand": "PixVerse",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-lite-i2v-domestic",
+      "trinityId": null,
+      "name": "SV 1.0-lite-i2v",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-lite-i2v-international",
+      "trinityId": null,
+      "name": "SV 1.0-lite-i2v",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-pro-domestic",
+      "trinityId": null,
+      "name": "SV 1.0-pro",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-pro-fast-domestic",
+      "trinityId": null,
+      "name": "SV 1.0-pro-fast",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-pro-fast-international",
+      "trinityId": null,
+      "name": "SV 1.0-pro-fast",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-0-pro-international",
+      "trinityId": null,
+      "name": "SV 1.0-pro",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-5-pro-domestic",
+      "trinityId": null,
+      "name": "SV 1.5-pro",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-sv-1-5-pro-international",
+      "trinityId": null,
+      "name": "SV 1.5-pro",
+      "brand": "SV",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-vidu-q2-pro-domestic",
+      "trinityId": null,
+      "name": "Vidu q2-pro",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-vidu-q2-pro-international",
+      "trinityId": null,
+      "name": "Vidu q2-pro",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-vidu-q3-domestic",
+      "trinityId": null,
+      "name": "Vidu q3",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-vidu-q3-drama-new-domestic",
+      "trinityId": null,
+      "name": "Vidu q3-drama（new）",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-vidu-q3-drama-new-international",
+      "trinityId": null,
+      "name": "Vidu q3-drama（new）",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-vidu-q3-international",
+      "trinityId": null,
+      "name": "Vidu q3",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-vidu-q3-mix-domestic",
+      "trinityId": null,
+      "name": "Vidu q3-mix",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-vidu-q3-mix-international",
+      "trinityId": null,
+      "name": "Vidu q3-mix",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "vd-video-q2",
+      "trinityId": "vd-video-q2",
+      "name": "Vidu q2",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "vd-video-q2-turbo",
+      "trinityId": "vd-video-q2-turbo",
+      "name": "Vidu q2-turbo",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "vd-video-q3-pro",
+      "trinityId": "vd-video-q3-pro",
+      "name": "Vidu q3-pro",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "vd-video-q3-turbo",
+      "trinityId": "vd-video-q3-turbo",
+      "name": "Vidu q3-turbo",
+      "brand": "Vidu",
+      "modality": "video",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

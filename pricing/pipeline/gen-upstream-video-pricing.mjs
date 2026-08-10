@@ -29,7 +29,7 @@ import {
   VIDEO_SUPPLIER_SUMMARY_SHEET,
 } from "./lib/supplier-official-summary-video.mjs";
 import { VIDEO_L3_SHEET_SUPPLIERS } from "../config/channels-video.mjs";
-import { mergeModalityWorkbook, MERGE_SUPPLIER } from "./lib/export-excel.mjs";
+import { mergeModalityWorkbook, MERGE_SUPPLIER_MEDIA } from "./lib/export-excel.mjs";
 import {
   OUT_DIR,
   OUT_UPSTREAM_DIR,
@@ -152,6 +152,7 @@ async function main() {
   const officialCtx = {
     vendorMap: hubCtx.vendorMap,
     officialByVendorId: hubCtx.officialByVendorId,
+    onlineByModel: hubCtx.onlineByModel,
   };
 
   const sheetCtx = {
@@ -184,7 +185,7 @@ async function main() {
     ...VIDEO_L3_SHEET_SUPPLIERS.map((sup) => ({
       name: sup.excelSheet,
       rows: videoSupplierRows(sup, sheetCtx),
-      merge: MERGE_SUPPLIER,
+      merge: MERGE_SUPPLIER_MEDIA,
     })),
   ];
 

@@ -13,10 +13,10 @@
   "sourceNote": "筛选自 suppliers/official/output/text/vendor-pricing.json",
   "mixedCurrency": false,
   "mapComment": "Trinity modelId → 云门户 upstreamModelId（build 时由 official 筛选生成）",
-  "generatedAt": "2026-07-29T06:37:52.324Z",
-  "officialFetchedAt": "2026-07-10T07:40:08.287Z",
-  "modelCount": 28,
-  "trinityMappedCount": 22,
+  "generatedAt": "2026-08-09T04:32:45.448Z",
+  "officialFetchedAt": "2026-08-09T04:32:19.830Z",
+  "modelCount": 32,
+  "trinityMappedCount": 25,
   "models": [
     {
       "modelId": "gemini-2.5-flash",
@@ -541,6 +541,31 @@
       ]
     },
     {
+      "modelId": "gpt-5.1-chat",
+      "trinityId": null,
+      "upstreamModelId": "gpt-5.1-chat",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.1-chat",
+      "displayName": "GPT gpt-5.1-chat",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Uniform",
+          "tierName": "标准价",
+          "input": 1.25,
+          "output": 10,
+          "cache": 0.125,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
       "modelId": "gpt-5.1-chat-latest",
       "trinityId": "gpt-5.1-chat",
       "upstreamModelId": "gpt-5.1-chat-latest",
@@ -812,6 +837,108 @@
           "input": 10,
           "output": 45,
           "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.6-luna",
+      "trinityId": "gpt-5.6-luna",
+      "upstreamModelId": "gpt-5.6-luna",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.6-luna",
+      "displayName": "GPT gpt-5.6-luna",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 0.2,
+          "output": 1.2,
+          "cache": 0.02,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 0.4,
+          "output": 1.8,
+          "cache": 0.04,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.6-sol",
+      "trinityId": "gpt-5.6-sol",
+      "upstreamModelId": "gpt-5.6-sol",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.6-sol",
+      "displayName": "GPT gpt-5.6-sol",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 5,
+          "output": 30,
+          "cache": 0.5,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 10,
+          "output": 45,
+          "cache": 1,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        }
+      ]
+    },
+    {
+      "modelId": "gpt-5.6-terra",
+      "trinityId": "gpt-5.6-terra",
+      "upstreamModelId": "gpt-5.6-terra",
+      "vendor": "openai",
+      "vendorLabel": "GPT",
+      "modelName": "gpt-5.6-terra",
+      "displayName": "GPT gpt-5.6-terra",
+      "brand": "网聚云联-云门户",
+      "modelType": "Text",
+      "currency": "USD",
+      "priceUnit": "美元/百万tokens",
+      "region": "原厂直连",
+      "tiers": [
+        {
+          "tierType": "Tiered",
+          "tierName": "输入<=272K context",
+          "input": 2,
+          "output": 12,
+          "cache": 0.2,
+          "unit": "百万tokens",
+          "chargeUnit": "TOKEN"
+        },
+        {
+          "tierType": "Tiered",
+          "tierName": "输入>272K context",
+          "input": 4,
+          "output": 18,
+          "cache": 0.4,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }

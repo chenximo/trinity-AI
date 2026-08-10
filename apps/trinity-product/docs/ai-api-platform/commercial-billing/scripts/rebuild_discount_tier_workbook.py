@@ -7,8 +7,8 @@ SOP: ../discount-tier-workbook-sop.md
 
 from __future__ import annotations
 
+import sys
 from collections import defaultdict
-from copy import copy
 from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
@@ -17,37 +17,73 @@ from openpyxl.cell.text import InlineFont
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
+_PRICING_SCRIPTS = Path(__file__).resolve().parents[6] / "pricing" / "scripts"
+if str(_PRICING_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_PRICING_SCRIPTS))
+from xlsx_wechat_compat import patch_xlsx_for_wechat  # noqa: E402
+
 # ---------------------------------------------------------------------------
 # Config — register new cost-family exports here
 # ---------------------------------------------------------------------------
 
-DOWNLOADS = Path.home() / "Downloads"
-PRICING_INPUT = Path(__file__).resolve().parents[6] / "pricing" / "input"
-# 产出落在 pricing/output（与对外报价等 Excel 同目录）
-OUT = (
-    Path(__file__).resolve().parents[6]
-    / "pricing"
-    / "output"
-    / "商务洽谈折扣总表.xlsx"
-)
+PRICING_ROOT = Path(__file__).resolve().parents[6] / "pricing"
+PRICING_INPUT = PRICING_ROOT / "input"
+ROUTES_TEXT = PRICING_INPUT / "routes-20260809-text"
+ROUTES_IMAGE = PRICING_INPUT / "routes-20260809-image"
+ROUTES_VIDEO = PRICING_INPUT / "routes-20260809-video"
+# 一本总册（8 Sheet）；线路整表不进册，只留 input 归档
+OUT = PRICING_ROOT / "output" / "商务洽谈折扣总表.xlsx"
+OUTWARD_FILE = "Trinity模型报价表.xlsx"
 
-# (export path, 折扣列原文, d_cost key, src sheet name)
-SOURCES: list[tuple[Path, str, str, str]] = [
-    (DOWNLOADS / "model-supply-routes-20260716 (2).xlsx", "6.5折", "0.65", "src_065"),
-    (DOWNLOADS / "model-supply-routes-20260716 (3).xlsx", "7折", "0.70", "src_070"),
-    (DOWNLOADS / "model-supply-routes-20260716 (4).xlsx", "7.5折", "0.75", "src_075"),
-    (DOWNLOADS / "model-supply-routes-20260716 (5).xlsx", "7.8折", "0.78", "src_078"),
-    (DOWNLOADS / "model-supply-routes-20260716 (6).xlsx", "9.7折", "0.97", "src_097"),
-    # 2026-08-04 全量线路导出：折扣列=1（原价）；内含少量真实成本≈0.78 的 Claude，回灌时拆到 0.78
-    (PRICING_INPUT / "model-supply-routes-20260804.xlsx", "原价", "1.0", "src_100"),
+SHEET_00 = "00_说明"
+SHEET_01 = "01_报价解析汇总"
+SHEET_10 = "10_商务总表-生文"
+SHEET_11 = "11_交叉模型-生文"
+SHEET_20 = "20_商务总表-生图"
+SHEET_21 = "21_交叉模型-生图"
+SHEET_30 = "30_商务总表-生视频"
+SHEET_31 = "31_交叉模型-生视频"
+
+# (export path, 折扣列原文, d_cost key)
+# 生文：Downloads (1)～(7) → routes-20260809-text/
+SOURCES_TEXT: list[tuple[Path, str, str]] = [
+    (ROUTES_TEXT / "050.xlsx", "5折", "0.50"),
+    (ROUTES_TEXT / "060.xlsx", "6折", "0.60"),
+    (ROUTES_TEXT / "065.xlsx", "6.5折", "0.65"),
+    (ROUTES_TEXT / "070.xlsx", "7折", "0.70"),
+    (ROUTES_TEXT / "075.xlsx", "7.5折", "0.75"),
+    (ROUTES_TEXT / "078.xlsx", "7.8折", "0.78"),
+    (ROUTES_TEXT / "100.xlsx", "原价", "1.0"),
+]
+# 生图：Downloads (8)～(10) → routes-20260809-image/
+SOURCES_IMAGE: list[tuple[Path, str, str]] = [
+    (ROUTES_IMAGE / "065.xlsx", "6.5折", "0.65"),
+    (ROUTES_IMAGE / "075.xlsx", "7.5折", "0.75"),
+    (ROUTES_IMAGE / "100.xlsx", "原价", "1.0"),
+]
+# 生视频：Downloads (11)～(15)(17)(18) → routes-20260809-video/
+SOURCES_VIDEO: list[tuple[Path, str, str]] = [
+    (ROUTES_VIDEO / "040.xlsx", "4折", "0.40"),
+    (ROUTES_VIDEO / "060.xlsx", "6折", "0.60"),
+    (ROUTES_VIDEO / "070.xlsx", "7折", "0.70"),
+    (ROUTES_VIDEO / "075.xlsx", "7.5折", "0.75"),
+    (ROUTES_VIDEO / "085.xlsx", "8.5折", "0.85"),
+    (ROUTES_VIDEO / "097.xlsx", "9.7折", "0.97"),
+    (ROUTES_VIDEO / "100.xlsx", "原价", "1.0"),
 ]
 
 # d_cost -> label, tiers[Plus..Enterprise], band, public_flag, no_ladder
 # tiers values: "原价" | "9.0" | "—"
+# 行序：上游成本折由低→高（0.40…1.0）；档内对客折浅→深。中间锚点暂不硬定。
+# 0.40 / 0.50：最深档已拍（0.40→5.5 · 0.50→6.0）；报价表对客折底线暂定 5.5
 FAMILY_TIERS: list[tuple] = [
+    (0.40, "0.40（4折）", ["6.5", "6.2", "6.0", "5.8", "5.5"],
+     "最深5.5（表底线；生视频厚利）", "是（对外五档）", False),
+    (0.50, "0.50（5折）", ["7.0", "6.8", "6.5", "6.2", "6.0"],
+     "最深6.0（不低于表底线5.5）", "是（对外五档）", False),
+    (0.60, "0.60（6折）", ["8.5", "8.2", "7.6", "7.0", "6.7"], "—", "待定", False),
     (0.65, "0.65（6.5折）·主锚", ["9.0", "8.5", "8.2", "7.6", "7.2"],
      "Growth 8.5～8.2；Scale 7.5～7.7", "否（公开另文）", False),
-    (0.60, "0.60（6折）", ["8.5", "8.2", "7.6", "7.0", "6.7"], "—", "待定", False),
     (0.70, "0.70（7折）", ["9.7", "9.2", "8.8", "8.2", "7.8"], "—", "待定", False),
     (0.75, "0.75（7.5折）", ["原价", "9.8", "9.4", "8.8", "8.3"], "—", "待定", False),
     (0.78, "0.78（7.8折）", ["原价", "原价", "9.8", "9.1", "8.7"], "—", "待定", False),
@@ -60,16 +96,21 @@ FAMILY_TIERS: list[tuple] = [
      "不设用量阶梯；进货≈挂牌；对客刊例（GM≈0%）", "否·仅刊例/商务点名", True),
 ]
 
-FAMILY_ORDER = ["0.65", "0.70", "0.75", "0.78", "0.97", "1.0", "0.60", "0.80", "0.85", "0.90"]
-CROSS_ROUTE_COLS = ["0.65", "0.70", "0.75", "0.78", "1.0"]
+FAMILY_ORDER = [
+    "0.40", "0.50", "0.60", "0.65", "0.70", "0.75", "0.78",
+    "0.80", "0.85", "0.90", "0.97", "1.0",
+]
+CROSS_ROUTE_COLS = [
+    "0.40", "0.50", "0.60", "0.65", "0.70", "0.75", "0.78", "0.85", "1.0",
+]
 
 TIER_HEADERS = [
     "上游成本折",
-    "≥$1k（Plus）",
-    "≥$5k（Mid）",
-    "≥$10k（Growth）",
-    "≥$50k（Scale）",
-    "≥$100k（Enterprise）",
+    "≥$1k（对内·Plus）",
+    "≥$5k（对内·Mid）",
+    "≥$10k（对内·Growth）",
+    "≥$30k（对内·Scale）",
+    "≥$50k（对内·Enterprise）",
     "操作带",
     "模型数",
     "模型（ID※：主线路）",
@@ -87,16 +128,26 @@ THIN = Border(
     top=Side(style="thin", color="D0D5DD"),
     bottom=Side(style="thin", color="D0D5DD"),
 )
-FILL_HINT = PatternFill("solid", fgColor="FEF9C3")
-FILL_HEAD = PatternFill("solid", fgColor="F1F5F9")
-FILL_ANCHOR = PatternFill("solid", fgColor="FFF7ED")
-FILL_FILLED = PatternFill("solid", fgColor="F0FDF4")
-FILL_NOLADDER = PatternFill("solid", fgColor="F1F5F9")
-FILL_ROW = PatternFill("solid", fgColor="FFFFFF")
-FILL_ALT = PatternFill("solid", fgColor="F8FAFC")
-FILL_TITLE = PatternFill("solid", fgColor="FEE2E2")
-FILL_REC = PatternFill("solid", fgColor="DCFCE7")
-FILL_CROSS = PatternFill("solid", fgColor="FEF2F2")  # 交叉列浅底
+def _solid(rgb6: str) -> PatternFill:
+    """不透明实心底色（FF 前缀，避免微信预览把 00alpha 当成透明）。"""
+    h = str(rgb6).strip().lstrip("#").upper()
+    if len(h) == 8:
+        h = "FF" + h[2:]
+    elif len(h) == 6:
+        h = "FF" + h
+    return PatternFill(fill_type="solid", fgColor=h, bgColor=h)
+
+
+FILL_HINT = _solid("FEF9C3")
+FILL_HEAD = _solid("F1F5F9")
+FILL_ANCHOR = _solid("FFF7ED")
+FILL_FILLED = _solid("F0FDF4")
+FILL_NOLADDER = _solid("F1F5F9")
+FILL_ROW = _solid("FFFFFF")
+FILL_ALT = _solid("F8FAFC")
+FILL_TITLE = _solid("FEE2E2")
+FILL_REC = _solid("DCFCE7")
+FILL_CROSS = _solid("FEF2F2")  # 交叉列浅底
 
 # 模型格富文本：※ 用红色加粗，其余保持深灰等宽
 INLINE_MODEL = InlineFont(rFont="Menlo", sz=9, color="334155")
@@ -162,14 +213,14 @@ def parse_cost_ratios_from_rows(rows_values) -> dict[str, float]:
 
 
 def load_source(path: Path, discount_label: str):
-    """Return (worksheet, pairs for summary, route map for cross, cost_ratio_by_mid)."""
+    """Return (pairs for summary, route map for cross, cost_ratio_by_mid)."""
     if not path.exists():
         raise FileNotFoundError(f"SOURCE missing: {path}")
     wb = load_workbook(path, data_only=True)
     ws = wb["线路管理"]
     all_rows = list(ws.iter_rows(values_only=True))
     cost_ratio = parse_cost_ratios_from_rows(all_rows)
-    pairs = []  # (id, route) for 01 model cell
+    pairs = []  # (id, route) for model cell
     routes = defaultdict(list)  # id -> [(route, pri, weight)]
     for i, row in enumerate(all_rows, 1):
         if i == 1 or not row or not row[0]:
@@ -184,7 +235,7 @@ def load_source(path: Path, discount_label: str):
         entry = (route, pri, weight)
         if entry not in routes[mid]:
             routes[mid].append(entry)
-    return ws, pairs, routes, cost_ratio
+    return pairs, routes, cost_ratio
 
 
 def gm_pct(d_cost: float, tier: str):
@@ -214,7 +265,6 @@ def models_cell(
     pairs: list[tuple[str, str]],
     cross_ids: set[str] | None = None,
 ):
-    """Format model list; ※（红色富文本）= 跨成本折，详见 02."""
     if not pairs:
         return "（待补）"
     cross_ids = cross_ids or set()
@@ -241,7 +291,6 @@ def cross_cell(
     pairs: list[tuple[str, str]],
     all_routes: dict[str, dict[str, list]],
 ) -> str:
-    """Summarize which models in this family row also appear under other cost folds."""
     marks = []
     for mid, _ in pairs:
         fam_map = all_routes.get(mid) or {}
@@ -254,7 +303,7 @@ def cross_cell(
         marks.append(f"{mid}→{'·'.join(fams)}")
     if not marks:
         return "—"
-    return f"※{len(marks)} 见02｜" + "；".join(marks)
+    return f"※{len(marks)} 见交叉表｜" + "；".join(marks)
 
 
 def row_height_for(n: int) -> float:
@@ -263,71 +312,33 @@ def row_height_for(n: int) -> float:
     return max(42, n * 14.5 + 16)
 
 
-def copy_src_sheet(
-    wb_out: Workbook,
-    name: str,
-    src_ws,
-    note: str,
-    keep_mids: set[str] | None = None,
-):
-    """Copy 线路管理. If keep_mids given, only those models (+ continuation rows)."""
-    ws = wb_out.create_sheet(name)
-    out_r = 1
-    cur_mid = None
-    keep_cur = keep_mids is None
-    for row in src_ws.iter_rows():
-        code = row[0].value if row else None
-        if code:
-            cur_mid = str(code).strip()
-            keep_cur = keep_mids is None or cur_mid in keep_mids
-        elif keep_mids is not None and not cur_mid:
-            keep_cur = False
-        if keep_mids is not None and not keep_cur:
-            continue
-        for cell in row:
-            val = cell.value
-            if cell.column == 4 and isinstance(val, str) and "??????" in val:
-                val = fix_route(val)
-            new = ws.cell(out_r, cell.column, val)
-            if cell.has_style:
-                try:
-                    new.font = copy(cell.font)
-                    new.alignment = copy(cell.alignment)
-                    if cell.fill and cell.fill.fill_type:
-                        new.fill = copy(cell.fill)
-                    new.border = copy(cell.border)
-                    new.number_format = cell.number_format
-                except Exception:
-                    pass
-        out_r += 1
-    for letter in list("ABCDEFGHIJKL"):
-        dim = src_ws.column_dimensions.get(letter)
-        ws.column_dimensions[letter].width = dim.width if dim and dim.width else 14
-    ws.insert_rows(1)
-    ws.merge_cells("A1:L1")
-    n = ws.cell(1, 1, note)
-    n.font = Font(name="PingFang SC", size=9, color="64748B", italic=True)
-    n.fill = PatternFill("solid", fgColor="F1F5F9")
-    ws.freeze_panes = "A3"
+def write_placeholder_sheet(wb: Workbook, title: str, modality: str, kind: str):
+    ws = wb.create_sheet(title)
+    ws["A1"] = f"{title} · 待补"
+    ws["A1"].font = font(bold=True, size=12, color="B91C1C")
+    ws["A2"] = (
+        f"{modality} · {kind}尚未回灌。"
+        f"有线路导出后登记到脚本 SOURCES_* 并重跑 rebuild。"
+        f"整表原料归档在 pricing/input/，不进本总册。"
+    )
+    ws["A2"].font = font(size=10, color="64748B")
+    ws["A2"].alignment = Alignment(wrap_text=True)
+    ws.row_dimensions[2].height = 40
+    ws.column_dimensions["A"].width = 88
 
 
-# ---------------------------------------------------------------------------
-# Build
-# ---------------------------------------------------------------------------
-
-def build():
-    loaded = {}  # d_cost key -> (ws, pairs, routes, fname, src_name, label)
+def load_modality(sources: list[tuple[Path, str, str]], tag: str):
+    loaded = {}
     cost_ratios_by_source: dict[str, dict[str, float]] = {}
-    for path, label, key, src_name in SOURCES:
-        ws, pairs, routes, cost_ratio = load_source(path, label)
-        loaded[key] = (ws, pairs, routes, path.name, src_name, label)
+    for path, label, key in sources:
+        pairs, routes, cost_ratio = load_source(path, label)
+        loaded[key] = (pairs, routes, path.name, label)
         cost_ratios_by_source[key] = cost_ratio
-        print(f"loaded {key}: {len(pairs)} models from {path.name}")
+        print(f"[{tag}] loaded {key}: {len(pairs)} models from {path.name}")
 
-    # 原价导出里若 成本/官方≈0.78，拆到 0.78 族（如 claude-fable-5 / sonnet-5）
     if "1.0" in loaded and "0.78" in loaded:
-        ws100, pairs100, routes100, fname100, src100, label100 = loaded["1.0"]
-        ws078, pairs078, routes078, fname078, src078, label078 = loaded["0.78"]
+        pairs100, routes100, fname100, label100 = loaded["1.0"]
+        pairs078, routes078, fname078, label078 = loaded["0.78"]
         ratios = cost_ratios_by_source.get("1.0", {})
         keep100, move078 = [], []
         seen_move = set()
@@ -341,78 +352,62 @@ def build():
                         routes078[mid].append(e)
             else:
                 keep100.append((mid, route))
-        # drop moved from routes100
         for mid in seen_move:
             routes100.pop(mid, None)
-        # append move into 078 pairs if not already present
         have078 = {m for m, _ in pairs078}
         for mid, route in move078:
             if mid not in have078:
                 pairs078.append((mid, route))
                 have078.add(mid)
-        loaded["1.0"] = (ws100, keep100, routes100, fname100, src100, label100)
-        loaded["0.78"] = (ws078, pairs078, routes078, fname078, src078, label078)
+        loaded["1.0"] = (keep100, routes100, fname100, label100)
+        loaded["0.78"] = (pairs078, routes078, fname078, label078)
         if move078:
-            print(f"reassigned {len(move078)} models from 1.0 → 0.78 by cost ratio: "
-                  + ", ".join(m for m, _ in move078))
+            print(
+                f"[{tag}] reassigned {len(move078)} from 1.0→0.78: "
+                + ", ".join(m for m, _ in move078)
+            )
 
-    # 全量「折扣=1」导出会与已导入厚利族撞名；1.0 族只保留尚未进其他成本折的模型
     if "1.0" in loaded:
         thicker_ids: set[str] = set()
-        for k, (_ws, pairs, *_rest) in loaded.items():
+        for k, (pairs, *_rest) in loaded.items():
             if k == "1.0":
                 continue
             thicker_ids.update(mid for mid, _ in pairs)
-        ws100, pairs100, routes100, fname100, src100, label100 = loaded["1.0"]
+        pairs100, routes100, fname100, label100 = loaded["1.0"]
         deduped = [(m, r) for m, r in pairs100 if m not in thicker_ids]
         dropped = len(pairs100) - len({m for m, _ in deduped})
         routes100 = {m: v for m, v in routes100.items() if m not in thicker_ids}
-        loaded["1.0"] = (ws100, deduped, routes100, fname100, src100, label100)
-        print(f"1.0 after exclude thicker families: {len(deduped)} models "
-              f"(dropped {dropped} already in 0.65～0.97)")
+        loaded["1.0"] = (deduped, routes100, fname100, label100)
+        print(f"[{tag}] 1.0 after exclude thicker: {len(deduped)} (dropped {dropped})")
 
-    # merge routes for cross: mid -> {d_cost: [(route,pri,w)]}
     all_routes: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(list))
-    for key, (_ws, _pairs, routes, *_rest) in loaded.items():
+    for key, (_pairs, routes, *_rest) in loaded.items():
         for mid, ents in routes.items():
             for e in ents:
                 if e not in all_routes[mid][key]:
                     all_routes[mid][key].append(e)
 
-    pairs_by_key = {k: v[1] for k, v in loaded.items()}
+    pairs_by_key = {k: v[0] for k, v in loaded.items()}
     cross_id_set = {mid for mid, m in all_routes.items() if len(m) >= 2}
+    return loaded, pairs_by_key, all_routes, cross_id_set
 
-    wb = Workbook()
 
-    # ---- 00_说明 ----
-    wsr = wb.active
-    wsr.title = "00_说明"
-    imported = " · ".join(
-        f"{k}:{len(loaded[k][1])}"
-        for k in sorted(loaded, key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99)
-    )
-    for i, (a, b) in enumerate([
-        ("文件名", "商务洽谈折扣总表.xlsx"),
-        ("生成", "scripts/rebuild_discount_tier_workbook.py"),
-        ("SOP", "discount-tier-workbook-sop.md"),
-        ("01_商务洽谈总表", "按成本折：阶梯折（含GM）+ 模型清单；※=跨成本折，详见交叉列/02"),
-        ("02_交叉模型", "宽表 · 跨折同名 · 线路格含 优先级/权重"),
-        ("档名", "Standard → Plus → Mid → Growth → Scale → Enterprise"),
-        ("已导入", imported),
-        ("交叉模型数", str(len(cross_id_set))),
-        ("源 sheet", " / ".join(
-            loaded[k][4]
-            for k in sorted(loaded, key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99)
-        )),
-        ("原价源", "pricing/input/model-supply-routes-20260804.xlsx → 族 1.0（折扣列=1）"),
-    ], 1):
-        wsr.cell(i, 1, a).font = font(bold=True)
-        wsr.cell(i, 2, b).font = font()
-    wsr.column_dimensions["A"].width = 18
-    wsr.column_dimensions["B"].width = 72
+KEY_MAP = {
+    0.40: "0.40", 0.50: "0.50", 0.65: "0.65", 0.60: "0.60", 0.70: "0.70",
+    0.75: "0.75", 0.78: "0.78", 0.80: "0.80", 0.85: "0.85", 0.90: "0.90",
+    0.97: "0.97", 1.0: "1.0",
+}
 
-    # ---- 01_商务洽谈总表 ----
-    ws = wb.create_sheet("01_商务洽谈总表", 1)
+
+def write_main_sheet(
+    wb: Workbook,
+    title: str,
+    pairs_by_key: dict,
+    all_routes: dict,
+    cross_id_set: set[str],
+    cross_sheet_name: str,
+):
+    ws = wb.create_sheet(title)
     for col, h in enumerate(TIER_HEADERS, 1):
         cell = ws.cell(1, col, h)
         cell.font = font(bold=True)
@@ -421,13 +416,8 @@ def build():
         cell.alignment = Alignment(wrap_text=True, horizontal="center", vertical="center")
     ws.row_dimensions[1].height = 34
 
-    key_map = {
-        0.65: "0.65", 0.60: "0.60", 0.70: "0.70", 0.75: "0.75",
-        0.78: "0.78", 0.80: "0.80", 0.85: "0.85", 0.90: "0.90", 0.97: "0.97",
-        1.0: "1.0",
-    }
     for i, (d_cost, label, tiers, band, public, noladder) in enumerate(FAMILY_TIERS):
-        key = key_map[d_cost]
+        key = KEY_MAP[d_cost]
         pairs = pairs_by_key.get(key, [])
         r = 2 + i
         vals = [
@@ -439,7 +429,7 @@ def build():
             cross_cell(pairs, all_routes),
             public,
         ]
-        if d_cost == 0.65:
+        if d_cost in (0.65, 0.40):
             fill = FILL_ANCHOR
         elif noladder and pairs:
             fill = FILL_NOLADDER
@@ -456,12 +446,11 @@ def build():
                 cell.alignment = Alignment(vertical="top", wrap_text=True)
             elif 2 <= col <= 6:
                 cell.font = font()
-                cell.alignment = Alignment(vertical="top", horizontal="center", wrap_text=True)
+                cell.alignment = Alignment(
+                    vertical="top", horizontal="center", wrap_text=True
+                )
             elif col == 9:
-                if isinstance(v, CellRichText):
-                    cell.font = Font(name="Menlo", size=9, color="334155")
-                else:
-                    cell.font = Font(name="Menlo", size=9, color="334155")
+                cell.font = Font(name="Menlo", size=9, color="334155")
                 cell.alignment = Alignment(vertical="top", wrap_text=True)
             elif col == 10:
                 cell.font = font(size=9, color="991B1B")
@@ -479,10 +468,12 @@ def build():
     note_row = 2 + len(FAMILY_TIERS) + 1
     ws.merge_cells(start_row=note_row, start_column=1, end_row=note_row, end_column=11)
     c = ws.cell(
-        note_row, 1,
-        "说明：档名 Standard→Plus→Mid→Growth→Scale→Enterprise｜档位格=对客折（GM）｜"
-        "达档=企业户月消耗刊例·非预存｜Standard<$1k原价｜≥0.95及1.0原价族不设阶梯｜"
-        "模型 ID 后※=跨成本折多线路（本行「交叉」列摘要）→ 详查「02_交叉模型」｜"
+        note_row,
+        1,
+        "说明：行序=上游成本折低→高（0.40…1.0）｜档内对客折浅→深｜"
+        "对内档 Plus→…→Enterprise｜门槛 $1k/$5k/$10k/$30k/$50k｜档位格=对客折（GM）｜"
+        "达档=企业户累积消耗刊例·非预存｜Standard<$1k原价｜≥0.95及1.0原价族不设阶梯｜"
+        f"模型 ID 后※=跨成本折 → 详查「{cross_sheet_name}」｜"
         "SOP 见 discount-tier-workbook-sop.md｜释义见证据链§3.0",
     )
     c.font = font(size=9, color="713F12")
@@ -492,23 +483,38 @@ def build():
     for i, w in enumerate([18, 14, 14, 15, 15, 18, 28, 8, 48, 36, 16], 1):
         ws.column_dimensions[get_column_letter(i)].width = w
     ws.freeze_panes = "B2"
+    return ws
 
-    # ---- 02_交叉模型 ----
+
+def write_cross_sheet(
+    wb: Workbook,
+    title: str,
+    all_routes: dict,
+    cross_id_set: set[str],
+    main_sheet_name: str,
+):
     cross_ids = sorted(cross_id_set)
-    ws2 = wb.create_sheet("02_交叉模型", 2)
-    ws2.merge_cells("A1:I1")
-    c = ws2.cell(1, 1, f"02_交叉模型 · 宽表 · 共 {len(cross_ids)} 个（线路格含 优先级/权重）")
+    n_cross_cols = 2 + len(CROSS_ROUTE_COLS) + 2
+    last_col = get_column_letter(n_cross_cols)
+    ws2 = wb.create_sheet(title)
+    ws2.merge_cells(f"A1:{last_col}1")
+    c = ws2.cell(
+        1,
+        1,
+        f"{title} · 宽表 · 共 {len(cross_ids)} 个（线路格含 优先级/权重）",
+    )
     c.font = font(bold=True, size=11, color="991B1B")
     c.fill = FILL_TITLE
     c.alignment = Alignment(vertical="center")
     ws2.row_dimensions[1].height = 24
 
-    ws2.merge_cells("A2:I2")
+    ws2.merge_cells(f"A2:{last_col}2")
     c = ws2.cell(
-        2, 1,
-        "用法：点名先查本表 →「推荐成本折」→ 回 01 读阶梯折。"
+        2,
+        1,
+        f"用法：点名先查本表 →「推荐成本折」→ 回 {main_sheet_name} 读阶梯折。"
         "线路格：线路名 · 优先级/权重。P1 多为默认主路。"
-        "推荐：成本折越小越优先（0.65>0.70>0.75>0.78>…>1.0原价）。P/W 是路由配置，不是商务折依据。",
+        "推荐：成本折越小越优先（0.50>0.60>0.65>…>1.0原价）。",
     )
     c.font = font(size=9, color="713F12")
     c.fill = FILL_HINT
@@ -516,9 +522,11 @@ def build():
     ws2.row_dimensions[2].height = 48
 
     headers2 = [
-        "Trinity ID", "涉及成本折",
-        "线路@0.65", "线路@0.70", "线路@0.75", "线路@0.78", "线路@1.0原价",
-        "推荐成本折", "商务提示",
+        "Trinity ID",
+        "涉及成本折",
+        *[f"线路@{c}{'原价' if c == '1.0' else ''}" for c in CROSS_ROUTE_COLS],
+        "推荐成本折",
+        "商务提示",
     ]
     for col, h in enumerate(headers2, 1):
         cell = ws2.cell(3, col, h)
@@ -529,7 +537,10 @@ def build():
     ws2.row_dimensions[3].height = 28
 
     def recommend(families):
-        for f in ["0.65", "0.70", "0.75", "0.78", "0.97", "1.0"]:
+        for f in [
+            "0.40", "0.50", "0.60", "0.65", "0.70", "0.75",
+            "0.78", "0.85", "0.90", "0.97", "1.0",
+        ]:
             if f in families:
                 return f
         return sorted(families)[0]
@@ -539,11 +550,9 @@ def build():
         if "1.0" in fs and len(fs) > 1:
             return f"含原价线路；优先更厚利族 {rec}（勿用 1.0 作主谈折）"
         if fs >= {"0.65", "0.78"} and len(fs) == 2:
-            return "厚利 0.65（网聚）优先；0.78 中转站备选（多为 P2）"
-        if fs >= {"0.70", "0.75", "0.78"}:
-            return "三线并存：优先 P1 所在更厚利族（多为 0.70）；核默认路由后再定 0.75/0.78"
-        if fs >= {"0.70", "0.75"} and "0.78" not in fs:
-            return "双线：优先 0.70（多为 P1）；0.75 多为 P2 备选/覆盖"
+            return "厚利 0.65 优先；0.78 备选"
+        if fs >= {"0.70", "0.75"}:
+            return "双线：优先更厚利族；核默认路由后再定"
         return f"优先推荐成本折 {rec}；并结合格内 P1/权重看默认路由"
 
     def fmt_routes(entries):
@@ -552,51 +561,175 @@ def build():
     for i, mid in enumerate(cross_ids):
         r = 4 + i
         fam_map = all_routes[mid]
-        families = sorted(fam_map.keys(), key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99)
+        families = sorted(
+            fam_map.keys(),
+            key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99,
+        )
         rec = recommend(families)
-        route_cells = [fmt_routes(fam_map[f]) if f in fam_map else "" for f in CROSS_ROUTE_COLS]
+        route_cells = [
+            fmt_routes(fam_map[f]) if f in fam_map else "" for f in CROSS_ROUTE_COLS
+        ]
         vals = [mid, "、".join(families), *route_cells, rec, tip(families, rec)]
-        fill = FILL_ANCHOR if "0.65" in fam_map else FILL_ROW
+        rec_col = 2 + len(CROSS_ROUTE_COLS) + 1
+        route_col_end = 2 + len(CROSS_ROUTE_COLS)
+        fill = (
+            FILL_ANCHOR
+            if ("0.65" in fam_map or "0.50" in fam_map or "0.40" in fam_map)
+            else FILL_ROW
+        )
         for col, v in enumerate(vals, 1):
             cell = ws2.cell(r, col, v)
             cell.border = THIN
-            cell.fill = FILL_REC if col == 8 else fill
-            cell.font = font(bold=True, color="166534") if col == 8 else (
-                Font(name="Menlo", size=9, color="334155") if col == 1 or 3 <= col <= 7 else font(size=9)
+            cell.fill = FILL_REC if col == rec_col else fill
+            cell.font = (
+                font(bold=True, color="166534")
+                if col == rec_col
+                else (
+                    Font(name="Menlo", size=9, color="334155")
+                    if col == 1 or 3 <= col <= route_col_end
+                    else font(size=9)
+                )
             )
             cell.alignment = Alignment(
-                vertical="center", wrap_text=True,
-                horizontal="center" if col in (2, 8) else "left",
+                vertical="center",
+                wrap_text=True,
+                horizontal="center" if col in (2, rec_col) else "left",
             )
         ws2.row_dimensions[r].height = 40
 
-    fr = 4 + len(cross_ids) + 1
-    ws2.merge_cells(start_row=fr, start_column=1, end_row=fr, end_column=9)
+    fr = 4 + max(len(cross_ids), 1) + 1
+    if not cross_ids:
+        ws2.cell(4, 1, "（本模态暂无跨成本折模型）").font = font(size=9, color="64748B")
+    ws2.merge_cells(start_row=fr, start_column=1, end_row=fr, end_column=n_cross_cols)
     c = ws2.cell(
-        fr, 1,
-        "附：同族多线路（未跨成本折）见对应 src_*（如 0.78 Claude 双线路）。主表 01 不含优先级/权重。",
+        fr,
+        1,
+        "附：同族多线路见 pricing/input 线路归档。"
+        f"主表 {main_sheet_name} 不含优先级/权重；对外阶梯依据见 01_报价解析汇总。",
     )
     c.font = Font(name="PingFang SC", size=9, color="64748B", italic=True)
     c.alignment = Alignment(wrap_text=True)
     ws2.row_dimensions[fr].height = 28
-    for i, w in enumerate([22, 18, 24, 22, 24, 22, 24, 12, 42], 1):
+    widths = [22, 18, *[20] * len(CROSS_ROUTE_COLS), 12, 42]
+    for i, w in enumerate(widths, 1):
         ws2.column_dimensions[get_column_letter(i)].width = w
     ws2.freeze_panes = "B4"
+    return ws2
 
-    # ---- src_* ----
-    for key in sorted(loaded, key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99):
-        ws_src, pairs, routes, fname, src_name, label = loaded[key]
-        keep = set(routes.keys()) if key == "1.0" else None
-        copy_src_sheet(
-            wb, src_name, ws_src,
-            f"原文件「线路管理」·{label} · {fname} · 销售谈价用 01_商务洽谈总表",
-            keep_mids=keep,
+
+def _import_summary(loaded: dict) -> str:
+    return " · ".join(
+        f"{k}:{len(loaded[k][0])}"
+        for k in sorted(
+            loaded, key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99
         )
+    )
+
+
+def _route_index(sources: list, loaded: dict) -> str:
+    return "；".join(
+        f"{label}={path.name}({len(loaded[key][0])})"
+        for path, label, key in sources
+        if key in loaded
+    )
+
+
+def build():
+    loaded_t, pairs_t, routes_t, cross_t = load_modality(SOURCES_TEXT, "text")
+    loaded_i, pairs_i, routes_i, cross_i = load_modality(SOURCES_IMAGE, "image")
+    loaded_v, pairs_v, routes_v, cross_v = load_modality(SOURCES_VIDEO, "video")
+
+    wb = Workbook()
+    wsr = wb.active
+    wsr.title = SHEET_00
+    for i, (a, b) in enumerate(
+        [
+            ("文件名", OUT.name),
+            ("形态", "一本总册 · 8 Sheet；后台分册下载另议"),
+            ("生成·商务", "commercial-billing/scripts/rebuild_discount_tier_workbook.py"),
+            (
+                "生成·解析/外发",
+                "pricing/scripts/build_outward_quote_standard.py（回写 01 + 外发 xlsx）",
+            ),
+            ("SOP", "discount-tier-workbook-sop.md"),
+            (SHEET_01, "报价依据：全量解析 / 原价专项 / 停用更低进价（外发脚本回写）"),
+            (SHEET_10, "生文 · 成本族 × 对内阶梯（含GM）× 模型清单"),
+            (SHEET_11, "生文 · 跨折同名 · 优先级/权重 · 推荐成本折"),
+            (SHEET_20, "生图 · 成本族 × 对内阶梯 × 模型清单"),
+            (SHEET_21, "生图 · 跨折同名 · 推荐成本折"),
+            (SHEET_30, "生视频 · 成本族 × 对内阶梯 × 模型清单"),
+            (SHEET_31, "生视频 · 跨折同名 · 推荐成本折"),
+            (
+                "外发文件",
+                f"pricing/output/{OUTWARD_FILE}（01_生文/02_生图/03_生视频，整本可发）",
+            ),
+            (
+                "档名",
+                "对内五档：$1k/$5k/$10k/$30k/$50k（Plus…Enterprise）｜"
+                "对外三档：$5k/$10k/$50k（表头「对外·」）",
+            ),
+            ("生文已导入", _import_summary(loaded_t)),
+            ("生文交叉模型数", str(len(cross_t))),
+            ("生图已导入", _import_summary(loaded_i)),
+            ("生图交叉模型数", str(len(cross_i))),
+            ("生视频已导入", _import_summary(loaded_v)),
+            ("生视频交叉模型数", str(len(cross_v))),
+            ("线路源·生文", f"pricing/input/{ROUTES_TEXT.name}/"),
+            ("线路源索引·生文", _route_index(SOURCES_TEXT, loaded_t)),
+            ("线路源·生图", f"pricing/input/{ROUTES_IMAGE.name}/"),
+            ("线路源索引·生图", _route_index(SOURCES_IMAGE, loaded_i)),
+            ("线路源·生视频", f"pricing/input/{ROUTES_VIDEO.name}/"),
+            ("线路源索引·生视频", _route_index(SOURCES_VIDEO, loaded_v)),
+            ("不含", "各折扣 src_* 整表；原料只归档 input"),
+        ],
+        1,
+    ):
+        wsr.cell(i, 1, a).font = font(bold=True)
+        wsr.cell(i, 2, b).font = font()
+        wsr.cell(i, 2).alignment = Alignment(wrap_text=True)
+    wsr.column_dimensions["A"].width = 22
+    wsr.column_dimensions["B"].width = 88
+
+    ws01 = wb.create_sheet(SHEET_01, 1)
+    ws01["A1"] = f"{SHEET_01} · 待回写"
+    ws01["A1"].font = font(bold=True, size=12, color="B91C1C")
+    ws01["A2"] = (
+        "本页为对外报价依据（含启用/停用线路解析）。"
+        "请在商务回灌后运行：python3 pricing/scripts/build_outward_quote_standard.py"
+    )
+    ws01["A2"].font = font(size=10, color="64748B")
+    ws01["A2"].alignment = Alignment(wrap_text=True)
+    ws01.row_dimensions[2].height = 36
+    ws01.column_dimensions["A"].width = 96
+
+    write_main_sheet(wb, SHEET_10, pairs_t, routes_t, cross_t, SHEET_11)
+    write_cross_sheet(wb, SHEET_11, routes_t, cross_t, SHEET_10)
+    write_main_sheet(wb, SHEET_20, pairs_i, routes_i, cross_i, SHEET_21)
+    write_cross_sheet(wb, SHEET_21, routes_i, cross_i, SHEET_20)
+    write_main_sheet(wb, SHEET_30, pairs_v, routes_v, cross_v, SHEET_31)
+    write_cross_sheet(wb, SHEET_31, routes_v, cross_v, SHEET_30)
+
+    order = [
+        SHEET_00,
+        SHEET_01,
+        SHEET_10,
+        SHEET_11,
+        SHEET_20,
+        SHEET_21,
+        SHEET_30,
+        SHEET_31,
+    ]
+    for idx, name in enumerate(order):
+        wb.move_sheet(name, offset=idx - wb.sheetnames.index(name))
 
     wb.save(OUT)
+    patch_xlsx_for_wechat(OUT)
     print(f"saved {OUT}")
     print(f"sheets: {wb.sheetnames}")
-    print(f"cross models: {len(cross_ids)}")
+    print(
+        f"text cross={len(cross_t)} image cross={len(cross_i)} "
+        f"video cross={len(cross_v)}"
+    )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.361Z",
+  "source": {
+    "key": "aigc-image",
+    "title": "腾讯云 AIGC · 生图",
+    "modality": "image",
+    "jsonPath": "suppliers/aigc/output/pricing-api-image.json"
+  },
+  "total": 18,
+  "accessed": 16,
+  "pending": 2,
+  "rows": [
+    {
+      "id": "Hunyuan-3.0",
+      "trinityId": "Hunyuan-3.0",
+      "name": "混元 3",
+      "brand": "混元",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "Jimeng-4.0",
+      "trinityId": "Jimeng-4.0",
+      "name": "即梦 4.0",
+      "brand": "即梦",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "aigc-kling-expand-new-domestic",
+      "trinityId": null,
+      "name": "可灵 expand（new）",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aigc-kling-expand-new-international",
+      "trinityId": null,
+      "name": "可灵 expand（new）",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "Kling-2.1",
+      "trinityId": "Kling-2.1",
+      "name": "可灵 2.1",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "Kling-3.0",
+      "trinityId": "Kling-3.0",
+      "name": "可灵 3",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "Kling-3.0-omni",
+      "trinityId": "Kling-3.0-omni",
+      "name": "可灵 3.0-omni",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "Kling-O1",
+      "trinityId": "Kling-O1",
+      "name": "可灵 O1",
+      "brand": "可灵",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen-0925",
+      "trinityId": "qwen-0925",
+      "name": "通义 0925",
+      "brand": "通义",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "GG-2.5",
+      "trinityId": "GG-2.5",
+      "name": "Gemini 2.5（超分暂时按1K收）",
+      "brand": "Gemini",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "GG-3.0",
+      "trinityId": "GG-3.0",
+      "name": "Gemini 3",
+      "brand": "Gemini",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "GG-3.1",
+      "trinityId": "GG-3.1",
+      "name": "Gemini 3.1",
+      "brand": "Gemini",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "MJ-v7",
+      "trinityId": "MJ-v7",
+      "name": "Midjourney v7",
+      "brand": "Midjourney",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "OG-image2-low",
+      "trinityId": "OG-image2-low",
+      "name": "OpenAI image-2",
+      "brand": "OpenAI",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "SI-4.0",
+      "trinityId": "SI-4.0",
+      "name": "Seedream 4.0",
+      "brand": "Seedream",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "SI-4.5",
+      "trinityId": "SI-4.5",
+      "name": "Seedream 4.5",
+      "brand": "Seedream",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "SI-5.0-lite",
+      "trinityId": "SI-5.0-lite",
+      "name": "Seedream 5.0-lite",
+      "brand": "Seedream",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "Vidu-q2",
+      "trinityId": "Vidu-q2",
+      "name": "Vidu q2",
+      "brand": "Vidu",
+      "modality": "image",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

@@ -2,6 +2,20 @@
   "object": "list",
   "data": [
     {
+      "id": "gemini-omni-flash-preview",
+      "object": "model",
+      "created": 1785824002,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini Omni Flash Preview",
+        "origin_vendor_name": "Google",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
+        "modality_type": "video",
+        "min_user_unit_price_usd": 17.5,
+        "metered_charge_unit": "video_token"
+      }
+    },
+    {
       "id": "gv-3.1",
       "object": "model",
       "created": 1779421570,
@@ -9,6 +23,7 @@
       "metadata": {
         "display_name": "GV-3.1",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -41,6 +56,7 @@
       "metadata": {
         "display_name": "GV-3.1-Fast",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -70,6 +86,7 @@
       "metadata": {
         "display_name": "GV-3.1-Lite",
         "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -99,6 +116,7 @@
       "metadata": {
         "display_name": "h2new-1",
         "origin_vendor_name": "Tencent",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/tencent/02e72ae5ef074ca2911ed4922559ae22.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -129,6 +147,7 @@
       "metadata": {
         "display_name": "Hailuo-2.3",
         "origin_vendor_name": "MiniMax",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/minimax/8720acd597c8465a856a5e0708656e73.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -159,6 +178,7 @@
       "metadata": {
         "display_name": "Hailuo-2.3-Fast",
         "origin_vendor_name": "MiniMax",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/minimax/8720acd597c8465a856a5e0708656e73.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -181,6 +201,82 @@
       }
     },
     {
+      "id": "happyhorse-1.0",
+      "object": "model",
+      "created": 1785984558,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "HappyHorse 1.0",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Text-to-video",
+              "Image-to-video",
+              "Multi-image ref",
+              "Physical motion"
+            ],
+            "short_summary": "HappyHorse 1.0 covers text-to-video, first-frame image-to-video, and multi-image reference-to-video with physically grounded motion at 480p/720p/1080p (3–15s).",
+            "description_long": "HappyHorse 1.0 is the prior-generation HappyHorse video model with the same generation modes as 1.1 (T2V / I2V / R2V). Prefer 1.1 when available for better promo pricing; keep 1.0 when you need the older checkpoint. No native soundtrack or last-frame control."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "文生视频",
+              "图生视频",
+              "多图参考",
+              "物理真实"
+            ],
+            "short_summary": "HappyHorse 1.0：文生 / 首帧图生 / 多图参考生；480p/720p/1080p，时长 3～15 秒。",
+            "description_long": "HappyHorse 1.0 与 1.1 同属生成三件套能力（不含 video-edit）。新业务优先用 1.1；需要旧版检查点时使用本模型。不支持原生配音与尾帧。"
+          }
+        },
+        "min_user_unit_price_usd": 0.07,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
+      "id": "happyhorse-1.1",
+      "object": "model",
+      "created": 1785900676,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "HappyHorse 1.1",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Text-to-video",
+              "Image-to-video",
+              "Multi-image ref",
+              "Physical motion"
+            ],
+            "short_summary": "HappyHorse 1.1 is a versatile video generation model covering text-to-video, first-frame image-to-video, and multi-image reference-to-video. It delivers physically grounded motion, smooth camera moves, and clean cinematic framing at 480p/720p/1080p for clips lasting 3–15 seconds.",
+            "description_long": "HappyHorse 1.1 focuses on natural, physically plausible motion and stable subject identity. Create from a text prompt alone; animate a single first-frame image into a short clip; or guide style and appearance with 1–9 reference images while keeping camera language cinematic. Choose 480p, 720p, or 1080p and any integer duration from 3 to 15 seconds (default 5). Aspect ratio is available for text-to-video and reference-to-video; image-to-video follows the first frame. Well suited for product showcases, brand shorts, storyboards, character continuity studies, and social creatives that need believable movement rather than flashy but unstable effects. This generation path does not include native soundtrack synthesis or last-frame control—pair with your own audio pipeline when needed."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "文生视频",
+              "图生视频",
+              "多图参考",
+              "物理真实"
+            ],
+            "short_summary": "HappyHorse 1.1 多模态生视频：文生、首帧图生与多图参考生一体，强调物理可信运动与顺滑运镜；支持 480p/720p/1080p，时长 3～15 秒。",
+            "description_long": "HappyHorse 1.1 面向需要「动得真、镜得稳」的短视频创作。既可纯文案生成镜头，也可从一张首帧图起幅动画化，还能用 1～9 张参考图约束主体外观与风格，在保持身份一致的同时补足电影感运镜与自然物理运动。分辨率可选 480p、720p、1080p；时长支持 3～15 秒整数档（默认 5 秒）。文生与多图参考生可指定宽高比；图生视频跟随首帧构图。适合商品展示、品牌短片、分镜预演、角色连续性试验与社交媒体素材等场景，尤其适合重视运动合理性与画面稳定性的制作流程。本代生成不提供原生配音与尾帧控制，如需配乐或旁白可在成片后自行叠加音轨。"
+          }
+        },
+        "min_user_unit_price_usd": 0.07,
+        "metered_charge_unit": "video_second"
+      }
+    },
+    {
       "id": "jv-3.0-pro",
       "object": "model",
       "created": 1779421570,
@@ -188,6 +284,7 @@
       "metadata": {
         "display_name": "Jimeng-3.0-Pro",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -218,6 +315,7 @@
       "metadata": {
         "display_name": "Kling-2.5-Turbo",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -247,6 +345,7 @@
       "metadata": {
         "display_name": "Kling-2.6",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -276,6 +375,7 @@
       "metadata": {
         "display_name": "Kling-3.0",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -306,6 +406,7 @@
       "metadata": {
         "display_name": "Kling-3.0-Omni",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -335,6 +436,7 @@
       "metadata": {
         "display_name": "Kling-O1",
         "origin_vendor_name": "Kuaishou",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -364,6 +466,7 @@
       "metadata": {
         "display_name": "OS-2.0",
         "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -394,6 +497,7 @@
       "metadata": {
         "display_name": "PixVerse-c1",
         "origin_vendor_name": "PixVerse",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/pixverse/0868183dbb144c9181584b7019ca83ef.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -423,6 +527,7 @@
       "metadata": {
         "display_name": "PixVerse-v5.6",
         "origin_vendor_name": "PixVerse",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/pixverse/0868183dbb144c9181584b7019ca83ef.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -453,6 +558,7 @@
       "metadata": {
         "display_name": "PixVerse-v6.0",
         "origin_vendor_name": "PixVerse",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/pixverse/0868183dbb144c9181584b7019ca83ef.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -476,35 +582,6 @@
       }
     },
     {
-      "id": "seedance-1.5-pro",
-      "object": "model",
-      "created": 1781077252,
-      "owned_by": "bytedance",
-      "metadata": {
-        "display_name": "Seedance 1.5 Pro",
-        "origin_vendor_name": "ByteDance",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen"
-            ],
-            "short_summary": "ByteDance Seedance 1.5 Pro video generation model, upgraded from 1.0 with enhanced quality, motion continuity, and physics simulation, supporting more refined cinematography and motion control.",
-            "description_long": "ByteDance Seedance 1.5 Pro video generation model, upgraded from 1.0 with enhanced quality, motion continuity, and physics simulation, supporting more refined cinematography and motion control. Developed by ByteDance; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "字节跳动 Seedance 1.5 Pro 视频生成模型，在 1.0 基础上升级画质、运动连贯性和物理模拟，支持更细腻的镜头语言和动作控制。",
-            "description_long": "字节跳动 Seedance 1.5 Pro 视频生成模型，在 1.0 基础上升级画质、运动连贯性和物理模拟，支持更细腻的镜头语言和动作控制。 由字节跳动研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 1.10344828,
-        "metered_charge_unit": "video_second"
-      }
-    },
-    {
       "id": "seedance-2.0",
       "object": "model",
       "created": 1783407211,
@@ -512,9 +589,34 @@
       "metadata": {
         "display_name": "Seedance 2.0",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Text-to-video",
+              "First/last frame",
+              "Multimodal ref",
+              "Native audio"
+            ],
+            "short_summary": "Seedance 2.0 is a flagship multimodal video model: text-to-video, first-frame and first-last-frame image-to-video, plus image/video/audio references. It targets cinematic motion, stable identity, and optional native soundtrack at 480p/720p/1080p for 4–15s clips.",
+            "description_long": "Seedance 2.0 is built for production-grade short video creation with richer conditioning than earlier Seedance releases. Start from a text prompt; animate a first frame; lock start and end with first-last frames; or guide the shot with up to 9 reference images, 3 reference videos, and 3 reference audios (audio cannot be used alone). Choose 480p, 720p, or 1080p and any integer duration from 4 to 15 seconds (default 5). Aspect ratios include common cinematic and social formats, with adaptive framing when useful for first-last-frame workflows. Optional native audio generation can add synchronized sound in one pass. Ideal for ads, brand films, storyboard previz, character continuity, and social creatives that need believable motion and controllable references."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "文生视频",
+              "首尾帧",
+              "多模态参考",
+              "原生配音"
+            ],
+            "short_summary": "Seedance 2.0 旗舰多模态生视频：文生、首帧/首尾帧图生，以及图·视频·音频参考生；强调电影感运动与主体稳定，可选原生配音；480p/720p/1080p，时长 4～15 秒。",
+            "description_long": "Seedance 2.0 面向需要更强可控性的短视频制作。支持纯文案起镜；用一张首帧起幅动画化；用首尾帧锁定开场与落幅；也可用最多 9 张参考图、3 段参考视频与 3 段参考音频共同约束画面与节奏（参考音频不可单独使用）。分辨率可选 480p、720p、1080p；时长 4～15 秒整数档（默认 5 秒）。宽高比覆盖常见横竖屏与电影画幅，首尾帧场景可按需使用自适应构图。可选开启原生配音，一次生成画面与声轨。适合广告成片、品牌短片、分镜预演、角色连续性试验与社交媒体素材等，尤其适合既要运动真实、又要参考素材可控的创作流程。"
+          }
+        },
         "min_user_unit_price_usd": 3.86206897,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_token"
       }
     },
     {
@@ -525,9 +627,72 @@
       "metadata": {
         "display_name": "Seedance 2.0 Fast",
         "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Fast",
+              "Text-to-video",
+              "Image-to-video",
+              "Multimodal ref"
+            ],
+            "short_summary": "Seedance 2.0 Fast prioritizes turnaround speed while keeping the Seedance 2.0 creation modes: text-to-video, first/last-frame control, and multimodal references. Optimized for rapid preview and iteration at 480p/720p, 4–15s.",
+            "description_long": "Seedance 2.0 Fast is the speed-oriented sibling of Seedance 2.0. It keeps the same creative entry points—prompt-only generation, first-frame and first-last-frame image-to-video, plus multimodal image/video/audio references—so teams can draft shots quickly and refine later on the standard tier when needed. Resolutions are 480p and 720p (1080p is reserved for the standard model). Duration supports 4–15 seconds. Optional native audio remains available for quick sound-on drafts. Best for storyboard loops, pitch drafts, A/B creative tests, and high-volume preview pipelines where latency matters more than maximum resolution."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "高速",
+              "文生视频",
+              "图生视频",
+              "多模态参考"
+            ],
+            "short_summary": "Seedance 2.0 Fast 在保留 2.0 创作路径的同时优先出片速度：文生、首帧/首尾帧与多模态参考生；适合快速预览与迭代；480p/720p，时长 4～15 秒。",
+            "description_long": "Seedance 2.0 Fast 是 Seedance 2.0 的高速版本。创作入口与标准版一致：纯文生、首帧/首尾帧图生，以及图·视频·音频多模态参考，方便先快速出草稿，再按需切回标准版冲高画质。分辨率支持 480p、720p（1080p 留给标准版）；时长 4～15 秒。可按需开启原生配音，快速得到带声预览。适合分镜轮询、提案草稿、创意 A/B 与大批量预览链路，在时延敏感场景下优先保证迭代效率。"
+          }
+        },
         "min_user_unit_price_usd": 3.3847,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_token"
+      }
+    },
+    {
+      "id": "seedance-2.0-overseas",
+      "object": "model",
+      "created": 1785898377,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 2.0 Overseas",
+        "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Overseas",
+              "Text-to-video",
+              "Multimodal ref",
+              "Native audio"
+            ],
+            "short_summary": "Seedance 2.0 Overseas is the overseas-oriented Seedance 2.0 SKU: text-to-video, frame-guided image-to-video, and multimodal references with cinematic motion and optional native audio at 480p/720p/1080p for 4–15s clips.",
+            "description_long": "Seedance 2.0 Overseas mirrors the Seedance 2.0 creative toolkit for teams serving overseas audiences and international campaigns. Generate from text; drive shots with first-frame or first-last-frame images; or condition with multimodal references (images, videos, and optional audio alongside visuals). Supports 480p/720p/1080p and 4–15 second durations, with common aspect ratios and adaptive framing for frame-guided workflows. Optional native audio helps deliver sound-on creatives in one pass. Use it for global ads, localized social content, brand films, and previz that need the same multimodal control as Seedance 2.0 with an overseas-facing SKU."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "海外向",
+              "文生视频",
+              "多模态参考",
+              "原生配音"
+            ],
+            "short_summary": "Seedance 2.0 Overseas 为面向海外场景的 Seedance 2.0 型号：文生、帧引导图生与多模态参考生，电影感运动与可选原生配音；480p/720p/1080p，时长 4～15 秒。",
+            "description_long": "Seedance 2.0 Overseas 提供与 Seedance 2.0 同族的创作能力，面向海外受众与国际化投放素材。支持纯文生、首帧/首尾帧引导，以及图·视频·音频多模态参考约束。分辨率 480p/720p/1080p；时长 4～15 秒；宽高比覆盖常见社交与电影画幅，帧引导场景可使用自适应构图。可选原生配音，便于一次产出带声成片或预览。适合全球化广告、本地化社媒内容、品牌短片与分镜预演等，在需要海外向型号时保持与 Seedance 2.0 一致的多模态可控体验。"
+          }
+        },
+        "min_user_unit_price_usd": 3.86206897,
+        "metered_charge_unit": "video_token"
       }
     },
     {
@@ -538,6 +703,7 @@
       "metadata": {
         "display_name": "Vidu Q2",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -567,6 +733,7 @@
       "metadata": {
         "display_name": "Vidu Q2-Pro",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -596,6 +763,7 @@
       "metadata": {
         "display_name": "Vidu Q2-Turbo",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -625,6 +793,7 @@
       "metadata": {
         "display_name": "Vidu Q3",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -654,6 +823,7 @@
       "metadata": {
         "display_name": "Vidu Q3-Pro",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
@@ -684,6 +854,7 @@
       "metadata": {
         "display_name": "Vidu Q3-Turbo",
         "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {

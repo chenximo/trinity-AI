@@ -1,0 +1,2718 @@
+{
+  "generatedAt": "2026-08-07T09:51:48.367Z",
+  "source": {
+    "key": "openrouter",
+    "title": "OpenRouter",
+    "modality": "text",
+    "jsonPath": "suppliers/openrouter/output/models-api.json"
+  },
+  "total": 338,
+  "accessed": 44,
+  "pending": 294,
+  "rows": [
+    {
+      "id": "~anthropic/claude-fable-latest",
+      "name": "Anthropic: Claude Fable Latest",
+      "brand": "~anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~anthropic/claude-haiku-latest",
+      "name": "Anthropic Claude Haiku Latest",
+      "brand": "~anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~anthropic/claude-opus-latest",
+      "name": "Anthropic: Claude Opus Latest",
+      "brand": "~anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~anthropic/claude-sonnet-latest",
+      "name": "Anthropic Claude Sonnet Latest",
+      "brand": "~anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~google/gemini-flash-latest",
+      "name": "Google Gemini Flash Latest",
+      "brand": "~google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~google/gemini-pro-latest",
+      "name": "Google Gemini Pro Latest",
+      "brand": "~google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~moonshotai/kimi-latest",
+      "name": "MoonshotAI Kimi Latest",
+      "brand": "~moonshotai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~openai/gpt-latest",
+      "name": "OpenAI GPT Latest",
+      "brand": "~openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "~openai/gpt-mini-latest",
+      "name": "OpenAI GPT Mini Latest",
+      "brand": "~openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "ai21/jamba-large-1.7",
+      "name": "AI21: Jamba Large 1.7",
+      "brand": "ai21",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aion-labs/aion-1.0",
+      "name": "AionLabs: Aion-1.0",
+      "brand": "aion-labs",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aion-labs/aion-1.0-mini",
+      "name": "AionLabs: Aion-1.0-Mini",
+      "brand": "aion-labs",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aion-labs/aion-2.0",
+      "name": "AionLabs: Aion-2.0",
+      "brand": "aion-labs",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "aion-labs/aion-rp-llama-3.1-8b",
+      "name": "AionLabs: Aion-RP 1.0 (8B)",
+      "brand": "aion-labs",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "allenai/olmo-3-32b-think",
+      "name": "AllenAI: Olmo 3 32B Think",
+      "brand": "allenai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "amazon/nova-2-lite-v1",
+      "name": "Amazon: Nova 2 Lite",
+      "brand": "amazon",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "amazon/nova-lite-v1",
+      "name": "Amazon: Nova Lite 1.0",
+      "brand": "amazon",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "amazon/nova-micro-v1",
+      "name": "Amazon: Nova Micro 1.0",
+      "brand": "amazon",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "amazon/nova-premier-v1",
+      "name": "Amazon: Nova Premier 1.0",
+      "brand": "amazon",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "amazon/nova-pro-v1",
+      "name": "Amazon: Nova Pro 1.0",
+      "brand": "amazon",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthracite-org/magnum-v4-72b",
+      "name": "Magnum v4 72B",
+      "brand": "anthracite-org",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-3-haiku",
+      "name": "Anthropic: Claude 3 Haiku",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-fable-5",
+      "name": "Anthropic: Claude Fable 5",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "name": "Anthropic: Claude Haiku 4.5",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4",
+      "name": "Anthropic: Claude Opus 4",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.1",
+      "name": "Anthropic: Claude Opus 4.1",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.5",
+      "name": "Anthropic: Claude Opus 4.5",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.6",
+      "name": "Anthropic: Claude Opus 4.6",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.7",
+      "name": "Anthropic: Claude Opus 4.7",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.7-fast",
+      "name": "Anthropic: Claude Opus 4.7 (Fast)",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.8",
+      "name": "Anthropic: Claude Opus 4.8",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-opus-4.8-fast",
+      "name": "Anthropic: Claude Opus 4.8 (Fast)",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4",
+      "name": "Anthropic: Claude Sonnet 4",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5",
+      "name": "Anthropic: Claude Sonnet 4.5",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.6",
+      "name": "Anthropic: Claude Sonnet 4.6",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "anthropic/claude-sonnet-5",
+      "name": "Anthropic: Claude Sonnet 5",
+      "brand": "anthropic",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "arcee-ai/coder-large",
+      "name": "Arcee AI: Coder Large",
+      "brand": "arcee-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "arcee-ai/trinity-large-thinking",
+      "name": "Arcee AI: Trinity Large Thinking",
+      "brand": "arcee-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "arcee-ai/trinity-mini",
+      "name": "Arcee AI: Trinity Mini",
+      "brand": "arcee-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "arcee-ai/virtuoso-large",
+      "name": "Arcee AI: Virtuoso Large",
+      "brand": "arcee-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "baidu/ernie-4.5-vl-424b-a47b",
+      "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
+      "brand": "baidu",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "bytedance-seed/seed-1.6",
+      "name": "ByteDance Seed: Seed 1.6",
+      "brand": "bytedance-seed",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "bytedance-seed/seed-1.6-flash",
+      "name": "ByteDance Seed: Seed 1.6 Flash",
+      "brand": "bytedance-seed",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-lite",
+      "name": "ByteDance Seed: Seed-2.0-Lite",
+      "brand": "bytedance-seed",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "bytedance-seed/seed-2.0-mini",
+      "name": "ByteDance Seed: Seed-2.0-Mini",
+      "brand": "bytedance-seed",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "bytedance/ui-tars-1.5-7b",
+      "name": "ByteDance: UI-TARS 7B ",
+      "brand": "bytedance",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+      "name": "Venice: Uncensored (free)",
+      "brand": "cognitivecomputations",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cohere/command-a",
+      "name": "Cohere: Command A",
+      "brand": "cohere",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cohere/command-r-08-2024",
+      "name": "Cohere: Command R (08-2024)",
+      "brand": "cohere",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cohere/command-r-plus-08-2024",
+      "name": "Cohere: Command R+ (08-2024)",
+      "brand": "cohere",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cohere/command-r7b-12-2024",
+      "name": "Cohere: Command R7B (12-2024)",
+      "brand": "cohere",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "cohere/north-mini-code:free",
+      "name": "Cohere: North Mini Code (free)",
+      "brand": "cohere",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepcogito/cogito-v2.1-671b",
+      "name": "Deep Cogito: Cogito v2.1 671B",
+      "brand": "deepcogito",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-chat",
+      "name": "DeepSeek: DeepSeek V3",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "name": "DeepSeek: DeepSeek V3 0324",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3.1",
+      "name": "DeepSeek: DeepSeek V3.1",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-r1",
+      "name": "DeepSeek: R1",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-r1-0528",
+      "name": "DeepSeek: R1 0528",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-r1-distill-llama-70b",
+      "name": "DeepSeek: R1 Distill Llama 70B",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-v3.1-terminus",
+      "name": "DeepSeek: DeepSeek V3.1 Terminus",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-v3.2",
+      "name": "DeepSeek: DeepSeek V3.2",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek/deepseek-v3.2-exp",
+      "name": "DeepSeek: DeepSeek V3.2 Exp",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "name": "DeepSeek: DeepSeek V4 Flash",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "deepseek/deepseek-v4-pro",
+      "name": "DeepSeek: DeepSeek V4 Pro",
+      "brand": "deepseek",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "name": "Google: Gemini 2.5 Flash",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-2.5-flash-image",
+      "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite",
+      "name": "Google: Gemini 2.5 Flash Lite",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite-preview-09-2025",
+      "name": "Google: Gemini 2.5 Flash Lite Preview 09-2025",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-2.5-pro",
+      "name": "Google: Gemini 2.5 Pro",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview",
+      "name": "Google: Gemini 2.5 Pro Preview 06-05",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-2.5-pro-preview-05-06",
+      "name": "Google: Gemini 2.5 Pro Preview 05-06",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3-flash-preview",
+      "name": "Google: Gemini 3 Flash Preview",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-3-pro-image",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3-pro-image-preview",
+      "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-image",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-image-preview",
+      "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite",
+      "name": "Google: Gemini 3.1 Flash Lite",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-image",
+      "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3.1-flash-lite-preview",
+      "name": "Google: Gemini 3.1 Flash Lite Preview",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview-customtools",
+      "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemini-3.5-flash",
+      "name": "Google: Gemini 3.5 Flash",
+      "brand": "google",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "google/gemma-2-27b-it",
+      "name": "Google: Gemma 2 27B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-3-12b-it",
+      "name": "Google: Gemma 3 12B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-3-27b-it",
+      "name": "Google: Gemma 3 27B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-3-4b-it",
+      "name": "Google: Gemma 3 4B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-3n-e4b-it",
+      "name": "Google: Gemma 3n 4B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it",
+      "name": "Google: Gemma 4 26B A4B ",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "name": "Google: Gemma 4 26B A4B  (free)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-4-31b-it",
+      "name": "Google: Gemma 4 31B",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/gemma-4-31b-it:free",
+      "name": "Google: Gemma 4 31B (free)",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/lyria-3-clip-preview",
+      "name": "Google: Lyria 3 Clip Preview",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "google/lyria-3-pro-preview",
+      "name": "Google: Lyria 3 Pro Preview",
+      "brand": "google",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "gryphe/mythomax-l2-13b",
+      "name": "MythoMax 13B",
+      "brand": "gryphe",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "ibm-granite/granite-4.0-h-micro",
+      "name": "IBM: Granite 4.0 Micro",
+      "brand": "ibm-granite",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "ibm-granite/granite-4.1-8b",
+      "name": "IBM: Granite 4.1 8B",
+      "brand": "ibm-granite",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inception/mercury-2",
+      "name": "Inception: Mercury 2",
+      "brand": "inception",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inclusionai/ling-2.6-1t",
+      "name": "inclusionAI: Ling-2.6-1T",
+      "brand": "inclusionai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inclusionai/ling-2.6-flash",
+      "name": "inclusionAI: Ling-2.6-flash",
+      "brand": "inclusionai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inclusionai/ring-2.6-1t",
+      "name": "inclusionAI: Ring-2.6-1T",
+      "brand": "inclusionai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inflection/inflection-3-pi",
+      "name": "Inflection: Inflection 3 Pi",
+      "brand": "inflection",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "inflection/inflection-3-productivity",
+      "name": "Inflection: Inflection 3 Productivity",
+      "brand": "inflection",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "kwaipilot/kat-coder-pro-v2",
+      "name": "Kwaipilot: KAT-Coder-Pro V2",
+      "brand": "kwaipilot",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "liquid/lfm-2-24b-a2b",
+      "name": "LiquidAI: LFM2-24B-A2B",
+      "brand": "liquid",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "liquid/lfm-2.5-1.2b-instruct:free",
+      "name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
+      "brand": "liquid",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "liquid/lfm-2.5-1.2b-thinking:free",
+      "name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
+      "brand": "liquid",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mancer/weaver",
+      "name": "Mancer: Weaver (alpha)",
+      "brand": "mancer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3-8b-instruct",
+      "name": "Meta: Llama 3 8B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.1-70b-instruct",
+      "name": "Meta: Llama 3.1 70B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.1-8b-instruct",
+      "name": "Meta: Llama 3.1 8B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-11b-vision-instruct",
+      "name": "Meta: Llama 3.2 11B Vision Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-1b-instruct",
+      "name": "Meta: Llama 3.2 1B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-3b-instruct",
+      "name": "Meta: Llama 3.2 3B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.2-3b-instruct:free",
+      "name": "Meta: Llama 3.2 3B Instruct (free)",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.3-70b-instruct",
+      "name": "Meta: Llama 3.3 70B Instruct",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-3.3-70b-instruct:free",
+      "name": "Meta: Llama 3.3 70B Instruct (free)",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-4-maverick",
+      "name": "Meta: Llama 4 Maverick",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-4-scout",
+      "name": "Meta: Llama 4 Scout",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "meta-llama/llama-guard-4-12b",
+      "name": "Meta: Llama Guard 4 12B",
+      "brand": "meta-llama",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "microsoft/phi-4",
+      "name": "Microsoft: Phi 4",
+      "brand": "microsoft",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "microsoft/wizardlm-2-8x22b",
+      "name": "WizardLM-2 8x22B",
+      "brand": "microsoft",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-01",
+      "name": "MiniMax: MiniMax-01",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-m1",
+      "name": "MiniMax: MiniMax M1",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "name": "MiniMax: MiniMax M2",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-m2-her",
+      "name": "MiniMax: MiniMax M2-her",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-m2.1",
+      "name": "MiniMax: MiniMax M2.1",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "minimax/minimax-m2.5",
+      "name": "MiniMax: MiniMax M2.5",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax/minimax-m2.7",
+      "name": "MiniMax: MiniMax M2.7",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "minimax/minimax-m3",
+      "name": "MiniMax: MiniMax M3",
+      "brand": "minimax",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "mistralai/codestral-2508",
+      "name": "Mistral: Codestral 2508",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/devstral-2512",
+      "name": "Mistral: Devstral 2 2512",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/ministral-14b-2512",
+      "name": "Mistral: Ministral 3 14B 2512",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/ministral-3b-2512",
+      "name": "Mistral: Ministral 3 3B 2512",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/ministral-8b-2512",
+      "name": "Mistral: Ministral 3 8B 2512",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-large",
+      "name": "Mistral Large",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-large-2407",
+      "name": "Mistral Large 2407",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-large-2512",
+      "name": "Mistral: Mistral Large 3 2512",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3",
+      "name": "Mistral: Mistral Medium 3",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3-5",
+      "name": "Mistral: Mistral Medium 3.5",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-medium-3.1",
+      "name": "Mistral: Mistral Medium 3.1",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-nemo",
+      "name": "Mistral: Mistral Nemo",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-saba",
+      "name": "Mistral: Saba",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-small-24b-instruct-2501",
+      "name": "Mistral: Mistral Small 3",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-small-2603",
+      "name": "Mistral: Mistral Small 4",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct",
+      "name": "Mistral: Mistral Small 3.1 24B",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mistral-small-3.2-24b-instruct",
+      "name": "Mistral: Mistral Small 3.2 24B",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/mixtral-8x22b-instruct",
+      "name": "Mistral: Mixtral 8x22B Instruct",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "mistralai/voxtral-small-24b-2507",
+      "name": "Mistral: Voxtral Small 24B 2507",
+      "brand": "mistralai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "moonshotai/kimi-k2",
+      "name": "MoonshotAI: Kimi K2 0711",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "moonshotai/kimi-k2-0905",
+      "name": "MoonshotAI: Kimi K2 0905",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "moonshotai/kimi-k2-thinking",
+      "name": "MoonshotAI: Kimi K2 Thinking",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "moonshotai/kimi-k2.5",
+      "name": "MoonshotAI: Kimi K2.5",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "moonshotai/kimi-k2.6",
+      "name": "MoonshotAI: Kimi K2.6",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "moonshotai/kimi-k2.7-code",
+      "name": "MoonshotAI: Kimi K2.7 Code",
+      "brand": "moonshotai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "morph/morph-v3-fast",
+      "name": "Morph: Morph V3 Fast",
+      "brand": "morph",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "morph/morph-v3-large",
+      "name": "Morph: Morph V3 Large",
+      "brand": "morph",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nex-agi/nex-n2-pro",
+      "name": "Nex AGI: Nex-N2-Pro",
+      "brand": "nex-agi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-405b",
+      "name": "Nous: Hermes 3 405B Instruct",
+      "brand": "nousresearch",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-405b:free",
+      "name": "Nous: Hermes 3 405B Instruct (free)",
+      "brand": "nousresearch",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nousresearch/hermes-3-llama-3.1-70b",
+      "name": "Nous: Hermes 3 70B Instruct",
+      "brand": "nousresearch",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nousresearch/hermes-4-405b",
+      "name": "Nous: Hermes 4 405B",
+      "brand": "nousresearch",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nousresearch/hermes-4-70b",
+      "name": "Nous: Hermes 4 70B",
+      "brand": "nousresearch",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+      "name": "NVIDIA: Llama 3.3 Nemotron Super 49B V1.5",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b",
+      "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-30b-a3b:free",
+      "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+      "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b",
+      "name": "NVIDIA: Nemotron 3 Super",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "name": "NVIDIA: Nemotron 3 Super (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b",
+      "name": "NVIDIA: Nemotron 3 Ultra",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "name": "NVIDIA: Nemotron 3 Ultra (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-3.5-content-safety:free",
+      "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-nano-12b-v2-vl:free",
+      "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "nvidia/nemotron-nano-9b-v2:free",
+      "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
+      "brand": "nvidia",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo",
+      "name": "OpenAI: GPT-3.5 Turbo",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-0613",
+      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-16k",
+      "name": "OpenAI: GPT-3.5 Turbo 16k",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-3.5-turbo-instruct",
+      "name": "OpenAI: GPT-3.5 Turbo Instruct",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4",
+      "name": "OpenAI: GPT-4",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4-turbo",
+      "name": "OpenAI: GPT-4 Turbo",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4-turbo-preview",
+      "name": "OpenAI: GPT-4 Turbo Preview",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4.1",
+      "name": "OpenAI: GPT-4.1",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-4.1-mini",
+      "name": "OpenAI: GPT-4.1 Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4.1-nano",
+      "name": "OpenAI: GPT-4.1 Nano",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o",
+      "name": "OpenAI: GPT-4o",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-4o-2024-05-13",
+      "name": "OpenAI: GPT-4o (2024-05-13)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-2024-08-06",
+      "name": "OpenAI: GPT-4o (2024-08-06)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-2024-11-20",
+      "name": "OpenAI: GPT-4o (2024-11-20)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-mini",
+      "name": "OpenAI: GPT-4o-mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-mini-2024-07-18",
+      "name": "OpenAI: GPT-4o-mini (2024-07-18)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-mini-search-preview",
+      "name": "OpenAI: GPT-4o-mini Search Preview",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-4o-search-preview",
+      "name": "OpenAI: GPT-4o Search Preview",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5",
+      "name": "OpenAI: GPT-5",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5-chat",
+      "name": "OpenAI: GPT-5 Chat",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5-codex",
+      "name": "OpenAI: GPT-5 Codex",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5-image",
+      "name": "OpenAI: GPT-5 Image",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5-image-mini",
+      "name": "OpenAI: GPT-5 Image Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5-mini",
+      "name": "OpenAI: GPT-5 Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5-nano",
+      "name": "OpenAI: GPT-5 Nano",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5-pro",
+      "name": "OpenAI: GPT-5 Pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.1",
+      "name": "OpenAI: GPT-5.1",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.1-chat",
+      "name": "OpenAI: GPT-5.1 Chat",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.1-codex",
+      "name": "OpenAI: GPT-5.1-Codex",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.1-codex-max",
+      "name": "OpenAI: GPT-5.1-Codex-Max",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.1-codex-mini",
+      "name": "OpenAI: GPT-5.1-Codex-Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.2",
+      "name": "OpenAI: GPT-5.2",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.2-chat",
+      "name": "OpenAI: GPT-5.2 Chat",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.2-codex",
+      "name": "OpenAI: GPT-5.2-Codex",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.2-pro",
+      "name": "OpenAI: GPT-5.2 Pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.3-chat",
+      "name": "OpenAI: GPT-5.3 Chat",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.3-codex",
+      "name": "OpenAI: GPT-5.3-Codex",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.4",
+      "name": "OpenAI: GPT-5.4",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.4-image-2",
+      "name": "OpenAI: GPT-5.4 Image 2",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-5.4-mini",
+      "name": "OpenAI: GPT-5.4 Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.4-nano",
+      "name": "OpenAI: GPT-5.4 Nano",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.4-pro",
+      "name": "OpenAI: GPT-5.4 Pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.5",
+      "name": "OpenAI: GPT-5.5",
+      "brand": "openai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "openai/gpt-5.5-pro",
+      "name": "OpenAI: GPT-5.5 Pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-audio",
+      "name": "OpenAI: GPT Audio",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-audio-mini",
+      "name": "OpenAI: GPT Audio Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-chat-latest",
+      "name": "OpenAI: GPT Chat Latest",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "name": "OpenAI: gpt-oss-120b",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-oss-120b:free",
+      "name": "OpenAI: gpt-oss-120b (free)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "name": "OpenAI: gpt-oss-20b",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-oss-20b:free",
+      "name": "OpenAI: gpt-oss-20b (free)",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/gpt-oss-safeguard-20b",
+      "name": "OpenAI: gpt-oss-safeguard-20b",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o1",
+      "name": "OpenAI: o1",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o1-pro",
+      "name": "OpenAI: o1-pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o3",
+      "name": "OpenAI: o3",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o3-deep-research",
+      "name": "OpenAI: o3 Deep Research",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o3-mini",
+      "name": "OpenAI: o3 Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o3-mini-high",
+      "name": "OpenAI: o3 Mini High",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o3-pro",
+      "name": "OpenAI: o3 Pro",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o4-mini",
+      "name": "OpenAI: o4 Mini",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o4-mini-deep-research",
+      "name": "OpenAI: o4 Mini Deep Research",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openai/o4-mini-high",
+      "name": "OpenAI: o4 Mini High",
+      "brand": "openai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openrouter/auto",
+      "name": "Auto Router",
+      "brand": "openrouter",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openrouter/bodybuilder",
+      "name": "Body Builder (beta)",
+      "brand": "openrouter",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openrouter/free",
+      "name": "Free Models Router",
+      "brand": "openrouter",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openrouter/fusion",
+      "name": "OpenRouter: Fusion",
+      "brand": "openrouter",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "openrouter/pareto-code",
+      "name": "Pareto Code Router",
+      "brand": "openrouter",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perceptron/perceptron-mk1",
+      "name": "Perceptron: Perceptron Mk1",
+      "brand": "perceptron",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perplexity/sonar",
+      "name": "Perplexity: Sonar",
+      "brand": "perplexity",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perplexity/sonar-deep-research",
+      "name": "Perplexity: Sonar Deep Research",
+      "brand": "perplexity",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perplexity/sonar-pro",
+      "name": "Perplexity: Sonar Pro",
+      "brand": "perplexity",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perplexity/sonar-pro-search",
+      "name": "Perplexity: Sonar Pro Search",
+      "brand": "perplexity",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "perplexity/sonar-reasoning-pro",
+      "name": "Perplexity: Sonar Reasoning Pro",
+      "brand": "perplexity",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "poolside/laguna-m.1",
+      "name": "Poolside: Laguna M.1",
+      "brand": "poolside",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "poolside/laguna-m.1:free",
+      "name": "Poolside: Laguna M.1 (free)",
+      "brand": "poolside",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "poolside/laguna-xs.2",
+      "name": "Poolside: Laguna XS.2",
+      "brand": "poolside",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "poolside/laguna-xs.2:free",
+      "name": "Poolside: Laguna XS.2 (free)",
+      "brand": "poolside",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen-2.5-72b-instruct",
+      "name": "Qwen2.5 72B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen-2.5-7b-instruct",
+      "name": "Qwen: Qwen2.5 7B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen-2.5-coder-32b-instruct",
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen-plus",
+      "name": "Qwen: Qwen-Plus",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen/qwen-plus-2025-07-28",
+      "name": "Qwen: Qwen Plus 0728",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen-plus-2025-07-28:thinking",
+      "name": "Qwen: Qwen Plus 0728 (thinking)",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen2.5-vl-72b-instruct",
+      "name": "Qwen: Qwen2.5 VL 72B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-14b",
+      "name": "Qwen: Qwen3 14B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b",
+      "name": "Qwen: Qwen3 235B A22B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-2507",
+      "name": "Qwen: Qwen3 235B A22B Instruct 2507",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b-thinking-2507",
+      "name": "Qwen: Qwen3 235B A22B Thinking 2507",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b",
+      "name": "Qwen: Qwen3 30B A3B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b-thinking-2507",
+      "name": "Qwen: Qwen3 30B A3B Thinking 2507",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "name": "Qwen: Qwen3 32B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-8b",
+      "name": "Qwen: Qwen3 8B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder",
+      "name": "Qwen: Qwen3 Coder 480B A35B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder-30b-a3b-instruct",
+      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder-flash",
+      "name": "Qwen: Qwen3 Coder Flash",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder-next",
+      "name": "Qwen: Qwen3 Coder Next",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder-plus",
+      "name": "Qwen: Qwen3 Coder Plus",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-coder:free",
+      "name": "Qwen: Qwen3 Coder 480B A35B (free)",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-max",
+      "name": "Qwen: Qwen3 Max",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-max-thinking",
+      "name": "Qwen: Qwen3 Max Thinking",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-instruct",
+      "name": "Qwen: Qwen3 Next 80B A3B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-instruct:free",
+      "name": "Qwen: Qwen3 Next 80B A3B Instruct (free)",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-235b-a22b-instruct",
+      "name": "Qwen: Qwen3 VL 235B A22B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-235b-a22b-thinking",
+      "name": "Qwen: Qwen3 VL 235B A22B Thinking",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-instruct",
+      "name": "Qwen: Qwen3 VL 30B A3B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-30b-a3b-thinking",
+      "name": "Qwen: Qwen3 VL 30B A3B Thinking",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-32b-instruct",
+      "name": "Qwen: Qwen3 VL 32B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-8b-instruct",
+      "name": "Qwen: Qwen3 VL 8B Instruct",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3-vl-8b-thinking",
+      "name": "Qwen: Qwen3 VL 8B Thinking",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-122b-a10b",
+      "name": "Qwen: Qwen3.5-122B-A10B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-27b",
+      "name": "Qwen: Qwen3.5-27B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-35b-a3b",
+      "name": "Qwen: Qwen3.5-35B-A3B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-397b-a17b",
+      "name": "Qwen: Qwen3.5 397B A17B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-9b",
+      "name": "Qwen: Qwen3.5-9B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-flash-02-23",
+      "name": "Qwen: Qwen3.5-Flash",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-plus-02-15",
+      "name": "Qwen: Qwen3.5 Plus 2026-02-15",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.5-plus-20260420",
+      "name": "Qwen: Qwen3.5 Plus 2026-04-20",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen/qwen3.6-27b",
+      "name": "Qwen: Qwen3.6 27B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.6-35b-a3b",
+      "name": "Qwen: Qwen3.6 35B A3B",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.6-flash",
+      "name": "Qwen: Qwen3.6 Flash",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen/qwen3.6-max-preview",
+      "name": "Qwen: Qwen3.6 Max Preview",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "qwen/qwen3.6-plus",
+      "name": "Qwen: Qwen3.6 Plus",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen/qwen3.7-max",
+      "name": "Qwen: Qwen3.7 Max",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "qwen/qwen3.7-plus",
+      "name": "Qwen: Qwen3.7 Plus",
+      "brand": "qwen",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "rekaai/reka-edge",
+      "name": "Reka Edge",
+      "brand": "rekaai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "rekaai/reka-flash-3",
+      "name": "Reka Flash 3",
+      "brand": "rekaai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "relace/relace-apply-3",
+      "name": "Relace: Relace Apply 3",
+      "brand": "relace",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "relace/relace-search",
+      "name": "Relace: Relace Search",
+      "brand": "relace",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "sakana/fugu-ultra",
+      "name": "Sakana: Fugu Ultra",
+      "brand": "sakana",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "sao10k/l3-lunaris-8b",
+      "name": "Sao10K: Llama 3 8B Lunaris",
+      "brand": "sao10k",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "sao10k/l3.1-70b-hanami-x1",
+      "name": "Sao10K: Llama 3.1 70B Hanami x1",
+      "brand": "sao10k",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "sao10k/l3.1-euryale-70b",
+      "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
+      "brand": "sao10k",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "sao10k/l3.3-euryale-70b",
+      "name": "Sao10K: Llama 3.3 Euryale 70B",
+      "brand": "sao10k",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "stepfun/step-3.5-flash",
+      "name": "StepFun: Step 3.5 Flash",
+      "brand": "stepfun",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "stepfun/step-3.7-flash",
+      "name": "StepFun: Step 3.7 Flash",
+      "brand": "stepfun",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "switchpoint/router",
+      "name": "Switchpoint Router",
+      "brand": "switchpoint",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tencent/hunyuan-a13b-instruct",
+      "name": "Tencent: Hunyuan A13B Instruct",
+      "brand": "tencent",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "tencent/hy3-preview",
+      "name": "Tencent: Hy3 preview",
+      "brand": "tencent",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "thedrummer/cydonia-24b-v4.1",
+      "name": "TheDrummer: Cydonia 24B V4.1",
+      "brand": "thedrummer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "thedrummer/rocinante-12b",
+      "name": "TheDrummer: Rocinante 12B",
+      "brand": "thedrummer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "thedrummer/skyfall-36b-v2",
+      "name": "TheDrummer: Skyfall 36B V2",
+      "brand": "thedrummer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "thedrummer/unslopnemo-12b",
+      "name": "TheDrummer: UnslopNemo 12B",
+      "brand": "thedrummer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "undi95/remm-slerp-l2-13b",
+      "name": "ReMM SLERP 13B",
+      "brand": "undi95",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "upstage/solar-pro-3",
+      "name": "Upstage: Solar Pro 3",
+      "brand": "upstage",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "writer/palmyra-x5",
+      "name": "Writer: Palmyra X5",
+      "brand": "writer",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "x-ai/grok-4.20",
+      "name": "xAI: Grok 4.20",
+      "brand": "x-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "x-ai/grok-4.20-multi-agent",
+      "name": "xAI: Grok 4.20 Multi-Agent",
+      "brand": "x-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "x-ai/grok-4.3",
+      "name": "xAI: Grok 4.3",
+      "brand": "x-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "x-ai/grok-build-0.1",
+      "name": "xAI: Grok Build 0.1",
+      "brand": "x-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.5",
+      "name": "Xiaomi: MiMo-V2.5",
+      "brand": "xiaomi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "xiaomi/mimo-v2.5-pro",
+      "name": "Xiaomi: MiMo-V2.5-Pro",
+      "brand": "xiaomi",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.5",
+      "name": "Z.ai: GLM 4.5",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.5-air",
+      "name": "Z.ai: GLM 4.5 Air",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.5v",
+      "name": "Z.ai: GLM 4.5V",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.6",
+      "name": "Z.ai: GLM 4.6",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.6v",
+      "name": "Z.ai: GLM 4.6V",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.7",
+      "name": "Z.ai: GLM 4.7",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-4.7-flash",
+      "name": "Z.ai: GLM 4.7 Flash",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "",
+      "accessed": false
+    },
+    {
+      "id": "z-ai/glm-5",
+      "name": "Z.ai: GLM 5",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "z-ai/glm-5-turbo",
+      "name": "Z.ai: GLM 5 Turbo",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "z-ai/glm-5.1",
+      "name": "Z.ai: GLM 5.1",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "z-ai/glm-5.2",
+      "name": "Z.ai: GLM 5.2",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    },
+    {
+      "id": "z-ai/glm-5v-turbo",
+      "name": "Z.ai: GLM 5V Turbo",
+      "brand": "z-ai",
+      "modality": "text",
+      "access": "-",
+      "accessed": true
+    }
+  ]
+}

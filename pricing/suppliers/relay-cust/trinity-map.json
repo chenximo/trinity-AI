@@ -230,6 +230,21 @@
     "vendor": "openai",
     "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
   },
+  "gpt-5.6-luna": {
+    "vendorModelId": "gpt-5.6-luna",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.6-sol": {
+    "vendorModelId": "gpt-5.6-sol",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
+  "gpt-5.6-terra": {
+    "vendorModelId": "gpt-5.6-terra",
+    "vendor": "openai",
+    "note": "AIUPNode 原厂直连 · 价目对齐 official 全量生文"
+  },
   "hunyuan-role-latest": {
     "vendorModelId": "hunyuan-role-latest",
     "vendor": "tencent_hunyuan",
