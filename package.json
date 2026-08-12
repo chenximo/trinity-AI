@@ -91,6 +91,8 @@
     "pricing:worker": "npm --prefix pricing/worker start",
     "pricing:worker:dev": "npm --prefix pricing/worker run dev",
     "pricing:worker:smoke": "npm --prefix pricing/worker run smoke",
+    "pricing:worker:bundle": "sh pricing/worker/scripts/make-bundle.sh",
+    "pricing:worker:sync": "sh pricing/worker/scripts/make-bundle.sh && python3 pricing/worker/scripts/sync-remote.py",
     "tokenhub:pricing:console": "npm run pricing:supplier:tokenhub:console",
     "tokenhub:pricing:sample": "npm run pricing:supplier:tokenhub:sample",
     "bailian:pricing:doc": "npm run pricing:supplier:bailian:doc",

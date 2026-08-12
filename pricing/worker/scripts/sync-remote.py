@@ -89,6 +89,7 @@ if [ -f /home/ubuntu/trinity-pricing/worker/.env ]; then
 fi
 grep -E '^(TRINITY_AI_ROOT|PRICING_WORKER_DRY_RUN|PORT|HOST)=' /home/ubuntu/trinity-pricing/worker/.env || true
 test -f /home/ubuntu/trinity-AI/pricing/pipeline/gen-listing-v2-prices-api.mjs
+test -f /home/ubuntu/trinity-pricing/worker/src/catalogSync.ts
 grep -n 'gen-listing-v2\\|listing:v1v2\\|diff:listing-v2' /home/ubuntu/trinity-AI/package.json
 echo SYNC_FILES_OK
 """
