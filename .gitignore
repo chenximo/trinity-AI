@@ -60,3 +60,6 @@ skills-lock.json
 # Oversized local decks (GitHub >100MB / >50MB)
 marketing/【25年国内站】实时音视频_产品介绍_对内_20251028.pptx
 marketing/腾讯云招聘行业实时互动解决方案_20250610.pptx
+
+# 价审 Worker 本地冒烟产物
+pricing/worker/.smoke-out/

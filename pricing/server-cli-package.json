@@ -1,0 +1,21 @@
+{
+  "name": "trinity-pricing-cli",
+  "private": true,
+  "type": "module",
+  "description": "服务器精简依赖：只跑 pricing CLI（无 monorepo workspaces）",
+  "scripts": {
+    "pricing:fetch": "node pricing/pipeline/fetch-online-prices.mjs --json-only",
+    "pricing:upstream": "node pricing/pipeline/gen-upstream-pricing.mjs",
+    "pricing:gen-65": "node pricing/pipeline/gen-725-prices-api.mjs --fx 6.5 --tag 0.65_prices --out draft/0.65_prices-api.json --optimized-065",
+    "pricing:diff:065": "node pricing/pipeline/compare-online-vs-scraped.mjs --scraped draft/0.65_prices-api.json",
+    "pricing:listing:v1v2": "node pricing/pipeline/gen-listing-v1v2.mjs",
+    "pricing:gen-listing-v2": "node pricing/pipeline/gen-listing-v2-prices-api.mjs",
+    "pricing:diff:listing-v2": "node pricing/pipeline/compare-online-vs-scraped.mjs --scraped draft/listing-v2_prices-api.json",
+    "pricing:emit-review-package": "node pricing/pipeline/emit-review-package.mjs",
+    "pricing:review-text": "npm run pricing:fetch && npm run pricing:listing:v1v2 && npm run pricing:gen-listing-v2 && npm run pricing:diff:listing-v2 && npm run pricing:emit-review-package"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5",
+    "xlsx-js-style": "^1.2.0"
+  }
+}

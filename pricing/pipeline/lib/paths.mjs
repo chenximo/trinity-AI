@@ -216,6 +216,33 @@ export const DRAFT_065_DIFF_CSV = path.join(
   "0.65_prices-api-diff.csv",
 );
 
+/** 刊例策略 V2 建议草案（固定名；每次 listing 生成覆盖） */
+export const LISTING_V1V2_DIR = path.join(OUT_DIR, "listing-v1v2");
+export const LISTING_V1V2_TEXT_JSON = path.join(
+  LISTING_V1V2_DIR,
+  "listing-v1v2-text.json",
+);
+export const LISTING_V2_PRICES_API = path.join(
+  OUT_DRAFT_DIR,
+  "listing-v2_prices-api.json",
+);
+export const LISTING_V2_PRICES_API_META = path.join(
+  OUT_DRAFT_DIR,
+  "listing-v2_prices-api.meta.json",
+);
+export const LISTING_V2_DIFF_MD = path.join(
+  OUT_DRAFT_DIR,
+  "listing-v2_prices-api-diff.md",
+);
+export const LISTING_V2_DIFF_JSON = path.join(
+  OUT_DRAFT_DIR,
+  "listing-v2_prices-api-diff.json",
+);
+export const LISTING_V2_DIFF_CSV = path.join(
+  OUT_DRAFT_DIR,
+  "listing-v2_prices-api-diff.csv",
+);
+
 /** 生图官方价 → prices-api 同构草案 */
 export const OFFICIAL_PRICES_API_IMAGE = path.join(
   OUT_DRAFT_DIR,

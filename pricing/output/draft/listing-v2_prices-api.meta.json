@@ -1,0 +1,12 @@
+{
+  "tag": "listing-v2_prices-api",
+  "pricingPolicy": "listing_v2_intl_first",
+  "listing_policy": "v2",
+  "generatedAt": "2026-08-11T12:12:36.428Z",
+  "onlineFetchedAt": "2026-08-09T06:02:47.604Z",
+  "listingSourcePath": "output/listing-v1v2/listing-v1v2-text.json",
+  "pricedModelCount": 62,
+  "preservedOnlineOnlyCount": 7,
+  "fxCnyPerUsd": 6.5,
+  "note": "V1=线上；本文件=当次 V2 建议刊例（固定名覆盖）"
+}

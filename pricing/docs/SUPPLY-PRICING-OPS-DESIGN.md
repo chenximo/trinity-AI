@@ -107,18 +107,15 @@
 ```text
 工程师对接模型 → 后台「下架」+「价格校验=未校验」（可内测、不对客）
        ↓
-触发价审（人点按钮 / 对 AI 下口令；后期可半自动）
+Admin「价格校验」触发价审（出包 URL POST / Worker / 手传 JSON 兜底）
        ↓
-价格流水线跑校验（官方 + AIGC/TokenHub 等 + 线上）
+确认单 ready（diff / 拟写回）→ 人核对 →「确认写价」（默认只上浮）
        ↓
-生成「本次修改简报」+ 建议刊例（价审任务态：进行中/完成/驳回）
-       ↓
-产品核对简报 → 确认更新刊例 →「价格校验=已校验」
-       ↓
-点「上架」（门禁：须已校验；超管强上须审计）
+「价格校验=已校验」→ 点「上架」（门禁：须已校验；超管强上须审计）
 ```
 
-存量漂移：走既有 **每周 `pricing:inspect`**，不替代上新主路径。
+**日常执行**：[价审运营SOP-Admin价格校验.md](./价审运营SOP-Admin价格校验.md)  
+存量漂移：走既有 **每周 `pricing:inspect`**（只告警不写价），再进 Admin 确认写回。
 
 ### 4.2 后台状态：上架/下架 + 价格校验（已拍板）
 
@@ -229,8 +226,10 @@
 | 上新模型 | [add-model-sop](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/add-model-sop.md) |
 | 刊例发布 | [listing-deploy](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/listing-deploy.md) |
 | Skill | `trinity-official-pricing` |
+| Admin 确认写价 | ✅ `PriceReviewService` + 写回闸；SOP 见上 |
+| Worker 真包 | ⚠️ 契约对齐 + emit CLI（§8.1 C-W6 / C-P*） |
 
-**待补强（相对本文）**：map 缺口显式清单；人话「价审简报」模板；后台 **价格校验** 字段与写价 API；上架门禁（未校验不可上）。
+**待补强（相对本文）**：map 缺口显式清单；确认单 V1/V2 列与真包 emit；Worker 与现网 POST/internal 契约对齐。
 
 ---
 
@@ -457,11 +456,12 @@ R=执行 · C=协商 · I=知会
 - ②：平台导出（规划 Token 列）+ 人工上游三数 → Skill 报告 → 手填实付。  
 - ③：本地 SOP 回灌 L3b / 脚本出 L3a；Admin 原型预览。  
 
-### P1 — 控制台闭环
+### P1 — 控制台闭环 · **大部分已提交（2026-08）**
 
-- ①：后台加 **价格校验** + 上架门禁；「发起价审」+ 简报页 + **确认写价 API**。  
-- ②：月度 API 出平台成本/Token；报告归档。  
-- 告警列表可在控制台打开 brief。  
+- ①：✅ 后台 **价格校验** + 上架门禁；「发起价审」+ 确认单 + **确认写价 API** + 写回闸只上浮；出包 URL **POST 优先** + internal 挂原任务。  
+- ① 余量：Worker 契约对齐 + 真 CLI 出完整 diff 包（见 backlog §8.1 C-W6 / C-P*）。  
+- ②：月度 API 出平台成本/Token；报告归档（进行中）。  
+- 告警列表可在控制台打开 brief（P1/P2）。  
 
 ### P2 — 商务价格进系统 + 降摩擦
 
@@ -545,3 +545,4 @@ R=执行 · C=协商 · I=知会
 | 2026-08-05 | **§6.4 商务价格控制台流程已拍**：API→L3b/L3a、方案 A 钉矩阵、draft+归档；IA/分期/已拍板同步 |
 | 2026-08-07 | 关联刊例策略 V1/V2（国际站优先、双轨、listing_policy 预留切换） |
 | 2026-08-07 | **生文刊例对比校验** 接入 V1/V2 列（刊例·V1/V2、V2vsV1、生效刊例、V2来源）；默认 listing_policy=v2；不写生产 |
+| 2026-08-11 | 对齐已提交 Admin/Backend 价审闭环；§4.1 / P1 / 映射表刷新；链出运营 SOP |

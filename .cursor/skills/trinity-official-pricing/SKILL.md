@@ -41,7 +41,7 @@ DOMAIN.md、confirmation.md：边界争议或 confirm:required 时再 READ
 
 ## 触发词
 
-`官方价` · `原厂价` · `补充官方价格` · `vendor pricing` · `生文/生图/生视频官方价` · `三方对比` · `official vs upstream` · `vendor-pricing`
+`官方价` · `原厂价` · `补充官方价格` · `vendor pricing` · `生文/生图/生视频官方价` · `三方对比` · `official vs upstream` · `vendor-pricing` · `价审场景` · `官方锚跟刊例` · `上游路线调价` · `上新跟价` · `ops-scenario-router`
 
 ---
 
@@ -49,12 +49,16 @@ DOMAIN.md、confirmation.md：边界争议或 confirm:required 时再 READ
 
 | 用户意图 | Workflow |
 |----------|----------|
+| **运营场景总机**（跟刊例 / 上游调线 / 上新 / 商务表） | [`./workflows/ops-scenario-router.md`](./workflows/ops-scenario-router.md) |
 | 新增或更新某模型官方价 | [`./workflows/add-official-model.md`](./workflows/add-official-model.md) |
 | 新增生视频模型（registry 等） | [`./workflows/add-official-model-video.md`](./workflows/add-official-model-video.md) |
+| 新增进货渠道（上新 B2） | [`./workflows/add-supplier-channel.md`](./workflows/add-supplier-channel.md) |
 | 对比官方 / 上游 / 线上 | [`./workflows/compare-pricing.md`](./workflows/compare-pricing.md) |
 | 价目门禁 L1→L3→告警 | [`./workflows/pricing-gate.md`](./workflows/pricing-gate.md) |
 | **刊例发布 gen→diff→publish** | [`./workflows/rollout-listing-price.md`](./workflows/rollout-listing-price.md) |
 | 刷新某模态全量官方价 | [`./workflows/refresh-official.md`](./workflows/refresh-official.md) |
+
+运营四场景（①官方锚跟刊例 · ②上游路线调价 · ④上新 B1/B2 · ⑤商务报价；巡检并入①）以 **ops-scenario-router** 为准，先 READ 再进子流程。
 
 CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.yaml)，勿在 workflow 重复维护命令表。
 

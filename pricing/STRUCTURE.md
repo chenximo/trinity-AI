@@ -21,7 +21,8 @@ trinity-AI/pricing/
 │   ├── aigc/              # 腾讯云 AIGC 内部价目表
 │   └── official/          # 模型原厂官网价（按模态拆分）
 ├── config/                # 上游折扣等流水线配置
-├── docs/                  # 治理与运营设计（含 SUPPLY-PRICING-OPS-DESIGN.md）
+├── docs/                  # 治理与运营设计（含 SUPPLY-PRICING-OPS-DESIGN · 价审运营 SOP）
+├── worker/                # 价审出包 Worker（Admin 出包 URL POST → CLI → 挂回任务）· R-02
 ├── billing-reconciliation/ # 按上游存放实际账单对账（平台导出 vs 上游账单）
 │   └── tencent-aigc/      # 腾讯云 AIGC · YYYY-MM/
 └── output/                # 流水线产出（线上刊例、汇总、校验、草案、diff）
@@ -321,6 +322,8 @@ output/
 | [docs/OFFICIAL-PRICING-SKILL-DESIGN.md](./docs/OFFICIAL-PRICING-SKILL-DESIGN.md) | 官方价 Skill 与三方对比设计稿 |
 | [docs/刊例策略-V1-V2-国际站优先.md](./docs/刊例策略-V1-V2-国际站优先.md) | 刊例双轨 · 默认 V2 · 官网国际站采集清单 |
 | [docs/账单与定价体系总览.md](./docs/账单与定价体系总览.md) | 价格层 + 对客结算 + 对账全链路 |
+| [docs/价审运营SOP-Admin价格校验.md](./docs/价审运营SOP-Admin价格校验.md) | Admin 触发→确认写价日常步骤（对齐现网） |
+| [docs/模型供应与定价运营-研发需求清单.md](./docs/模型供应与定价运营-研发需求清单.md) | 研发 backlog（含方案 C §8.1） |
 | [suppliers/SOURCES.md](./suppliers/SOURCES.md) | 各供应商 JSON 真源 |
 | [pipeline/README.md](./pipeline/README.md) | 流水线脚本 |
 | [suppliers/official/README.md](./suppliers/official/README.md) | 原厂价目与模态 |

@@ -40,8 +40,16 @@ export function modelHasScrapedUpstream(upstreamModel) {
   return (upstreamModel?.tiers ?? []).some((t) => pickTierOfficial(t));
 }
 
+/** listing V2 草案：有 listingV2Source 即视为「有建议价」可对比 */
+export function modelHasListingV2Suggest(scrapedEntry) {
+  const src = scrapedEntry?.listingV2Source;
+  return typeof src === "string" && src.length > 0 && src !== "missing";
+}
+
 export function comparePriceEntries(onlineEntry, scrapedEntry, upstreamModel) {
-  const hasScrape = modelHasScrapedUpstream(upstreamModel);
+  const hasScrape =
+    modelHasScrapedUpstream(upstreamModel) ||
+    modelHasListingV2Suggest(scrapedEntry);
   const onlineTiers = parseOnlinePricesTiers(onlineEntry);
   const scrapedTiers = parseOnlinePricesTiers(scrapedEntry);
   const tierCount = Math.max(onlineTiers.length, scrapedTiers.length);
@@ -70,12 +78,15 @@ export function comparePriceEntries(onlineEntry, scrapedEntry, upstreamModel) {
   }
 
   const primary = tiers[0];
-  const scrapeSource =
-    hasScrape && upstreamModel
-      ? pickTierOfficial(
-          (upstreamModel.tiers ?? []).find((t) => pickTierOfficial(t)),
-        )?.source ?? null
-      : null;
+  let scrapeSource = null;
+  if (modelHasListingV2Suggest(scrapedEntry)) {
+    scrapeSource = `listing_v2:${scrapedEntry.listingV2Source}`;
+  } else if (hasScrape && upstreamModel) {
+    scrapeSource =
+      pickTierOfficial(
+        (upstreamModel.tiers ?? []).find((t) => pickTierOfficial(t)),
+      )?.source ?? null;
+  }
 
   return {
     model: onlineEntry.model,

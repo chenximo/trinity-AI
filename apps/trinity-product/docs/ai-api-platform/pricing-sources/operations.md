@@ -4,13 +4,14 @@ title: 日常操作（refresh / gate / 巡检）
 
 # 日常操作（refresh / gate / 巡检）
 
-> **关联**：[总览](./) · [价目全流程](./workflow) · [模型原价折扣](./supplier-cost-discounts)
+> **关联**：[总览](./) · [价目全流程](./workflow) · [模型原价折扣](./supplier-cost-discounts)  
+> **确认写价（Admin）**：CLI 巡检 **不改** 线上刊例。写回走运营后台「价格校验」——见仓内 [`pricing/docs/价审运营SOP-Admin价格校验.md`](../../../../../../pricing/docs/价审运营SOP-Admin价格校验.md)。
 
 ## 策略约定
 
 - **对外真源**：`pricing/output/trinity-pricing-*.xlsx` 为商务/运营对外唯一真源；供应商分表须与控制台抓取全量一致（含同族多线路，如 TokenHub `deepseek-v4-pro` 与 `deepseek-v4-pro-202606`）。
 - **供应商分表列**：`线上刊例` 来自 `GET /v1/prices`；**已接入**有刊例价，**未接入**为 `—`；`刊例vs供应商` 为同档毛利对照。
-- **刊例对齐**：官方涨/跌时 **不自动改刊例**；系统 **先告警**，人工决策后跟价 / 战略价 / 登记例外。
+- **刊例对齐**：官方涨/跌时 **不自动改刊例**；系统 **先告警**，人工决策后经 **Admin 价审确认** 跟价 / 战略价 / 登记例外。
 - **巡检频率**：建议 **每周至少一次**（手动执行，无定时任务）。
 - **钉钉**：`PRICING_ALERT_WEBHOOK_URL` 配置在仓库根 `.env`；若机器人要求关键词，填写 `PRICING_ALERT_DINGTALK_KEYWORD`。
 

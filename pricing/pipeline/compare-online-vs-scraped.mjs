@@ -202,13 +202,13 @@ async function main() {
   const { scrapedFile, outMd, outJson, outCsv } = parseArgs();
 
   const metaFile = scrapedFile.replace(/\.json$/i, ".meta.json");
-  const [onlineResult, scrapedDoc, upstreamDoc, scrapedMeta] = await Promise.all([
+  const [onlineResult, scrapedDoc, scrapedMeta] = await Promise.all([
     refreshOnlinePricesForCompare("text"),
     readFile(scrapedFile, "utf8").then(JSON.parse),
-    readFile(UPSTREAM_FILE, "utf8").then(JSON.parse),
     readJsonIfExists(metaFile),
   ]);
   const onlineDoc = onlineResult.raw;
+  const upstreamDoc = (await readJsonIfExists(UPSTREAM_FILE)) ?? { models: [] };
 
   const upstreamById = new Map(
     (upstreamDoc.models ?? []).map((m) => [m.trinityId.toLowerCase(), m]),

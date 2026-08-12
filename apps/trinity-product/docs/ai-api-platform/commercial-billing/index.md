@@ -12,6 +12,7 @@ title: 商用计费与充值
 
 ::: tip 从哪读起
 - **选型 / 目录树 / 通用流程** → **[billing-strategy-map](./billing-strategy-map)**（业界几类、我们走哪种、缺什么）  
+- **AI 调用成本治理（FinAPI 对标 · 未来）** → **[ai-cost-governance-finapi-backlog](./ai-cost-governance-finapi-backlog)**（非当期交付）  
 - **定价方案 v0（三件套 · 广场 · 对外报表）** → 工程仓 [`pricing/docs/定价方案-v0-三件套与广场.md`](../../../../../pricing/docs/定价方案-v0-三件套与广场.md)  
 - **价·结算·成本·对账全链路** → 工程仓 [`pricing/docs/账单与定价体系总览.md`](../../../../../pricing/docs/账单与定价体系总览.md)  
 - **官网 Pricing 营销** → **[pricing-marketing-strategy](./pricing-marketing-strategy)**（页面 IA · 爆款三席 · 新老客）  

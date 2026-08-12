@@ -153,6 +153,9 @@ commercial-billing/                          ← 产品线商用计费根
 ├── 05 副杆（Secondary levers）
 │   └── cache-billing-profit.md              ← 缓存命中 δ（与账号阶梯拆开）
 │
+├── 05b 成本治理（未来 · 非当期交付）
+│   └── ai-cost-governance-finapi-backlog.md ← FinAPI 对标 · Phase 0–4 backlog
+│
 └── 06 对外落点（Outside this folder）
     ├── 官网 Pricing 页                      ← TrinityAI-web `/pricing`
     ├── 对外 docs 计费说明                   ← trinity-docs
@@ -191,6 +194,7 @@ commercial-billing/                          ← 产品线商用计费根
 | [marketing-scene-playlist.md](./marketing-scene-playlist) | 对外浅公开原则 | 文案原则 |
 | [new-user-trial-scheme.md](./new-user-trial-scheme) | 试用 | 额度待拍 |
 | [cache-billing-profit.md](./cache-billing-profit) | 缓存副杆 | 测评中 |
+| [ai-cost-governance-finapi-backlog.md](./ai-cost-governance-finapi-backlog) | AI 调用成本治理未来 backlog（FinAPI 对标） | — |
 | [commercial-billing-mvp-prd.md](./commercial-billing-mvp-prd) | 结算 MVP | ✅ 结算 |
 | 支付/行业/Antom/global-* | 支付与合规 | 各文为准 |
 
@@ -210,6 +214,7 @@ commercial-billing/                          ← 产品线商用计费根
 | G5 | **discount-spread 文首加「以证据链为准」横幅** | 防旧门槛误用 | P1 | ✅ 2026-07-16 |
 | G6 | **销售 GTM / 七件套** | 七件对照 · PM 交付 · 补齐优先级 | P1 | ✅ 规格见 [sales-kit](./sales-kit)；成品物料仍缺 |
 | G7 | **控制台档位展示 PRD** | 用户可见档名/进度 | P2 | ⬜ |
+| G8 | **AI 调用成本治理（FinAPI 对标）** | 归属·预算执行·账单可信·优化；**非当期承诺** | P2 | ⬜ 见 [finapi-backlog](./ai-cost-governance-finapi-backlog) |
 
 ---
 
@@ -233,6 +238,7 @@ commercial-billing/                          ← 产品线商用计费根
 | 2026-07-16 | 初稿：通用流程 · 目录树 · 业界选型（含暂不做在网时长折）· 文档映射 · 缺口清单 |
 | 2026-07-16 | 挂入 [官网 Pricing 营销总册](./pricing-marketing-strategy)（爆款三席 · 页面 IA） |
 | 2026-07-27 | 挂入 [销售套件](./sales-kit)（七件套对照 · PM 交付重点）；G6 规格✅、成品仍缺 |
+| 2026-08-10 | G8：挂入 [AI 调用成本治理 backlog](./ai-cost-governance-finapi-backlog)（FinAPI 对标 · 未来可做） |
 
 ---
 

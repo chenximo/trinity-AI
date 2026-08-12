@@ -15,9 +15,17 @@ import {
   OUT_DRAFT_DIR,
   PRICES_API_FILE,
   UPSTREAM_PRICING_FILE,
+  pricesApiPaths,
   resolveOutPath,
 } from "./lib/paths.mjs";
-const TEMPLATE_FILE = PRICES_API_FILE;
+import { existsSync } from "node:fs";
+/** 优先模态隔离缓存 prices-api-text.json，回退历史 prices-api.json */
+function resolveTemplateFile() {
+  const textPath = pricesApiPaths("text").json;
+  if (existsSync(textPath)) return textPath;
+  return PRICES_API_FILE;
+}
+const TEMPLATE_FILE = resolveTemplateFile();
 const UPSTREAM_FILE = UPSTREAM_PRICING_FILE;
 const DEFAULT_FX = 7.25;
 const DEFAULT_TAG = "0.725_prices";
