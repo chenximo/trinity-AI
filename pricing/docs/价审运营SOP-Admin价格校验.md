@@ -26,10 +26,10 @@
 | 出包 | ✅ 过渡形态 | 配置 **各模态出包 URL**（`reviewPackageUrl*`）：后台 **优先 POST**（body 带 `taskId`/`taskCode`/`runId`/`modality`…），失败再 **GET**；同步返回价审包 → `ready`；仅 ACK → 等外部回传 |
 | 外部回传挂原任务 | ✅ | `POST /internal/pricing/ops/review-tasks`（Ops Token）：带 `taskId`/`taskCode` + `packageJson` → 挂回**同一任务**，不另开无关单 |
 | 手传 JSON | ✅ | `POST …/reviews/from-upload`（兜底） |
-| 确认写价 | ✅ | `POST …/reviews/{id}/confirm`；仅 `ready` 可确认；成功后轮转该模态「当前版 / 上一版」 |
+| 确认写价 | ✅ | `POST …/reviews/{id}/confirm`；仅 `ready` 可确认 |
 | 写回闸 L-01 | ✅ | 默认 **只上浮不降**；白名单或 `force`+原因可例外；confirm **禁止**带 cost |
-| 当前 / 上一版 | ✅ | `GET …/listing-live-slots`；预览 `GET …/listing-live-slots/{modality}?slot=current` 或 `previous` |
-| 回退上一版 | ✅ | `POST …/listing-live-slots/{modality}/restore`（档位复原 + 两槽对调）；写回批次仍作审计 |
+| 当前 / 上一版 | ⏳ 交研发 | 需求：[`刊例当前上一版-Backend交付-2026-08-14.md`](./刊例当前上一版-Backend交付-2026-08-14.md)；Admin 前端已接，等 `trinityai-admin` |
+| 回退上一版 | ⏳ 交研发 | 同上；未上线前误写仍用写回记录 `apply-batches/*/restore` |
 | 价格校验字段 / 上架门禁 | ✅/视环境 | 确认后模型 `priceValidation=checked`；未校验不可上架（以现网配置为准） |
 
 **尚未齐（方案 C 余量）**
@@ -63,7 +63,7 @@
    - 仍排队 / 失败 → 看 `errorMessage`；可再触发或改走 **上传 JSON**。  
 4. 核对写回闸：拟降价项默认不应进确认集（除非白名单/force）。  
 5. 点 **确认写价** → 抽查 `GET /v1/prices` 与相关模型「价格校验=已校验」。  
-6. 误写 → 历史记录里用该模态 **回退到上一版**（有上一版且批次仍可复原时）。写回记录仅作审计。
+6. 误写且批次仍可复原 → 用写回记录 **复原**。刊例「当前版 / 上一版」待 Backend 上线后再改走历史页两槽回退。
 
 ### 2.3 明确不做
 
