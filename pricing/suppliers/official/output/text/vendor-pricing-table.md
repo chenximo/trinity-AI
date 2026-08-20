@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生文）
 
-> 真源：`output/text/vendor-pricing.json` · 抓取 2026-08-09T04:32:19Z · live 0 · seed 83 / 83 · **123 档**
+> 真源：`output/text/vendor-pricing.json` · 抓取 2026-08-18T07:42:05Z · live 0 · seed 83 / 83 · **123 档**
 > 单位：**USD per 1M tokens**
 
 | # | 厂商 | 原厂模型 ID | 币种 | 状态 | 抓取 | 档位 | 输入价 | 输出价 | 缓存价 | 价目来源 | 文档 |

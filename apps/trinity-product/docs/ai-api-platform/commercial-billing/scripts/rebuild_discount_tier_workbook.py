@@ -2,13 +2,17 @@
 """Rebuild 商务洽谈折扣总表.xlsx from 线路管理 exports.
 
 SOP: ../discount-tier-workbook-sop.md
-折数真源: pricing-strategy-evidence-chain.md — change tiers there first, then FAMILY_TIERS here.
+折数真源: pricing-strategy-evidence-chain.md — 对客阶梯改数先改证据链，再改 FAMILY_TIERS。
+现网 live-export：可解析的「X折」一律入表（不因不在 FAMILY_ORDER 丢模型）。
+未冻结族：对内五档标「待定」；主表只出本模态有线路的行。
 """
 
 from __future__ import annotations
 
+import argparse
 import sys
 from collections import defaultdict
+from decimal import Decimal
 from pathlib import Path
 
 from openpyxl import Workbook, load_workbook
@@ -44,6 +48,11 @@ SHEET_21 = "21_交叉模型-生图"
 SHEET_30 = "30_商务总表-生视频"
 SHEET_31 = "31_交叉模型-生视频"
 
+# 线路管理导出列（与 AdminModelSupplyRouteExportWriter 一致，0-based）
+EXPORT_SHEET = "线路管理"
+DISCOUNT_COL = 8
+ENABLED_COL = 10
+
 # (export path, 折扣列原文, d_cost key)
 # 生文：Downloads (1)～(7) → routes-20260809-text/
 SOURCES_TEXT: list[tuple[Path, str, str]] = [
@@ -76,12 +85,19 @@ SOURCES_VIDEO: list[tuple[Path, str, str]] = [
 # tiers values: "原价" | "9.0" | "—"
 # 行序：上游成本折由低→高（0.40…1.0）；档内对客折浅→深。中间锚点暂不硬定。
 # 0.40 / 0.50：最深档已拍（0.40→5.5 · 0.50→6.0）；报价表对客折底线暂定 5.5
+# 0.34 / 0.55 / 0.64：2026-08 现网视频新补进货折（OpenSand / Vidu 海外）
 FAMILY_TIERS: list[tuple] = [
+    (0.34, "0.34（3.4折）", ["6.2", "6.0", "5.8", "5.6", "5.5"],
+     "最深5.5（表底线；进货深于4折）", "是（对外三档）", False),
     (0.40, "0.40（4折）", ["6.5", "6.2", "6.0", "5.8", "5.5"],
      "最深5.5（表底线；生视频厚利）", "是（对外五档）", False),
     (0.50, "0.50（5折）", ["7.0", "6.8", "6.5", "6.2", "6.0"],
      "最深6.0（不低于表底线5.5）", "是（对外五档）", False),
+    (0.55, "0.55（5.5折）", ["7.8", "7.5", "7.0", "6.6", "6.4"],
+     "介于 0.50～0.60（Vidu 海外）", "是（对外三档）", False),
     (0.60, "0.60（6折）", ["8.5", "8.2", "7.6", "7.0", "6.7"], "—", "待定", False),
+    (0.64, "0.64（6.4折）", ["8.9", "8.4", "8.1", "7.5", "7.1"],
+     "介于 0.60～0.65（OpenSand）", "是（对外三档）", False),
     (0.65, "0.65（6.5折）·主锚", ["9.0", "8.5", "8.2", "7.6", "7.2"],
      "Growth 8.5～8.2；Scale 7.5～7.7", "否（公开另文）", False),
     (0.70, "0.70（7折）", ["9.7", "9.2", "8.8", "8.2", "7.8"], "—", "待定", False),
@@ -97,11 +113,11 @@ FAMILY_TIERS: list[tuple] = [
 ]
 
 FAMILY_ORDER = [
-    "0.40", "0.50", "0.60", "0.65", "0.70", "0.75", "0.78",
+    "0.34", "0.40", "0.50", "0.55", "0.60", "0.64", "0.65", "0.70", "0.75", "0.78",
     "0.80", "0.85", "0.90", "0.97", "1.0",
 ]
 CROSS_ROUTE_COLS = [
-    "0.40", "0.50", "0.60", "0.65", "0.70", "0.75", "0.78", "0.85", "1.0",
+    "0.34", "0.40", "0.50", "0.55", "0.60", "0.64", "0.65", "0.70", "0.75", "0.78", "0.85", "1.0",
 ]
 
 TIER_HEADERS = [
@@ -188,6 +204,121 @@ def discount_matches(cell, label: str) -> bool:
     return str(cell).strip() == str(label).strip()
 
 
+def family_key_from_d_cost(d_cost: float | Decimal) -> str:
+    """Numeric cost ratio → family key. Known keys keep canonical spelling (0.40)."""
+    d = float(d_cost)
+    for k in FAMILY_ORDER:
+        if abs(d - float(k)) < 1e-6:
+            return k
+    s = f"{d:.4f}".rstrip("0").rstrip(".")
+    return s if s else "0"
+
+
+def normalize_family_key(d_cost: float | Decimal) -> str | None:
+    """Map numeric cost discount to a family key (known or现网新折)."""
+    d = float(d_cost)
+    if d <= 0 or d > 1:
+        return None
+    return family_key_from_d_cost(d)
+
+
+def _fam_sort_key(x: str) -> float:
+    try:
+        return float(x)
+    except (TypeError, ValueError):
+        return 99.0
+
+
+def _fold_label_from_key(key: str) -> str:
+    fold = float(key) * 10
+    return f"{fold:g}折"
+
+
+def parse_discount_cell(cell) -> tuple[str, str] | None:
+    """Map export「折扣」cell → (load_label, d_cost key). None if unparseable."""
+    if cell is None:
+        return None
+    if discount_matches(cell, "原价"):
+        return ("原价", "1.0")
+    s = str(cell).strip()
+    if s.endswith("折"):
+        try:
+            fold = Decimal(s[:-1])
+            key = normalize_family_key(float(fold / Decimal(10)))
+            if key is None:
+                return None
+            return (s, key)
+        except (ArithmeticError, ValueError):
+            return None
+    try:
+        f = float(cell)
+    except (TypeError, ValueError):
+        return None
+    if abs(f - 1.0) < 1e-9:
+        return ("原价", "1.0")
+    if 0 < f < 1:
+        key = normalize_family_key(f)
+        if key is None:
+            return None
+        return (_fold_label_from_key(key), key)
+    return None
+
+
+def discover_discount_families(path: Path) -> list[tuple[str, str]]:
+    """Scan enabled rows in one export; return (load_label, key) sorted by FAMILY_ORDER."""
+    path = path.resolve()
+    if not path.is_file():
+        raise FileNotFoundError(f"export missing: {path}")
+    wb = load_workbook(path, data_only=True)
+    if EXPORT_SHEET not in wb.sheetnames:
+        raise ValueError(f"{path.name}: missing sheet「{EXPORT_SHEET}」")
+    ws = wb[EXPORT_SHEET]
+    header = next(ws.iter_rows(min_row=1, max_row=1, values_only=True), None)
+    if header and len(header) > DISCOUNT_COL and header[DISCOUNT_COL] != "折扣":
+        print(f"[warn] {path.name}: col {DISCOUNT_COL} expected「折扣」, got {header[DISCOUNT_COL]!r}")
+
+    by_key: dict[str, str] = {}
+    unknown: set[str] = set()
+    for i, row in enumerate(ws.iter_rows(values_only=True), 1):
+        if i == 1 or not row or not row[0]:
+            continue
+        enabled = row[ENABLED_COL] if len(row) > ENABLED_COL else None
+        if enabled != "启用":
+            continue
+        cell = row[DISCOUNT_COL] if len(row) > DISCOUNT_COL else None
+        parsed = parse_discount_cell(cell)
+        if parsed is None:
+            if cell is not None and str(cell).strip():
+                unknown.add(str(cell).strip())
+            continue
+        label, key = parsed
+        by_key[key] = label if key != "1.0" else "原价"
+
+    if unknown:
+        print(f"[warn] {path.name}: unparseable discounts (not 折/原价): {sorted(unknown)}")
+
+    extra = sorted(
+        (k for k in by_key if k not in FAMILY_ORDER),
+        key=lambda x: float(x),
+    )
+    if extra:
+        print(f"[admit] {path.name}: 现网新成本折已入表 {extra}（对客阶梯待定，未改 FAMILY_TIERS）")
+
+    families = [(by_key[k], k) for k in sorted(by_key, key=lambda x: float(x))]
+    summary = ", ".join(f"{label}({key})" for label, key in families) or "(none)"
+    print(f"[discover] {path.name}: {len(families)} families — {summary}")
+    return families
+
+
+def sources_from_export(path: Path) -> list[tuple[Path, str, str]]:
+    """One live export → SOURCES list (same path, per discovered discount family)."""
+    path = path.resolve()
+    families = discover_discount_families(path)
+    if not families:
+        raise SystemExit(f"export has no enabled routes with known discounts: {path}")
+    return [(path, label, key) for label, key in families]
+
+
 def parse_cost_ratios_from_rows(rows_values) -> dict[str, float]:
     """From 线路管理 rows, min(成本/官方) per model (forward-fill model code)."""
     import re
@@ -254,8 +385,8 @@ def fmt_gm(gm: float) -> str:
 
 
 def gm_label(d_cost: float, tier: str) -> str:
-    if tier in ("—", "-"):
-        return "—"
+    if tier in ("—", "-", "待定"):
+        return "待定" if tier == "待定" else "—"
     if tier == "原价":
         return f"原价（GM {fmt_gm(gm_pct(d_cost, tier))}%）"
     return f"{tier}（GM {fmt_gm(gm_pct(d_cost, tier))}%）"
@@ -296,10 +427,7 @@ def cross_cell(
         fam_map = all_routes.get(mid) or {}
         if len(fam_map) < 2:
             continue
-        fams = sorted(
-            fam_map.keys(),
-            key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99,
-        )
+        fams = sorted(fam_map.keys(), key=_fam_sort_key)
         marks.append(f"{mid}→{'·'.join(fams)}")
     if not marks:
         return "—"
@@ -393,10 +521,27 @@ def load_modality(sources: list[tuple[Path, str, str]], tag: str):
 
 
 KEY_MAP = {
-    0.40: "0.40", 0.50: "0.50", 0.65: "0.65", 0.60: "0.60", 0.70: "0.70",
-    0.75: "0.75", 0.78: "0.78", 0.80: "0.80", 0.85: "0.85", 0.90: "0.90",
-    0.97: "0.97", 1.0: "1.0",
+    0.34: "0.34", 0.40: "0.40", 0.50: "0.50", 0.55: "0.55", 0.60: "0.60",
+    0.64: "0.64", 0.65: "0.65", 0.70: "0.70", 0.75: "0.75", 0.78: "0.78",
+    0.80: "0.80", 0.85: "0.85", 0.90: "0.90", 0.97: "0.97", 1.0: "1.0",
 }
+
+
+def spec_for_family_key(key: str):
+    """Known FAMILY_TIERS or 现网新族（对客阶梯待定）."""
+    d = float(key)
+    for d_cost, label, tiers, band, public, noladder in FAMILY_TIERS:
+        if abs(d_cost - d) < 1e-6:
+            return d_cost, label, tiers, band, public, noladder
+    fold = d * 10
+    return (
+        d,
+        f"{d:g}（{fold:g}折）·现网新族",
+        ["待定", "待定", "待定", "待定", "待定"],
+        "现网新成本折·对客阶梯待定",
+        "待定",
+        False,
+    )
 
 
 def write_main_sheet(
@@ -416,8 +561,12 @@ def write_main_sheet(
         cell.alignment = Alignment(wrap_text=True, horizontal="center", vertical="center")
     ws.row_dimensions[1].height = 34
 
-    for i, (d_cost, label, tiers, band, public, noladder) in enumerate(FAMILY_TIERS):
-        key = KEY_MAP[d_cost]
+    keys = sorted(
+        (k for k, pairs in pairs_by_key.items() if pairs),
+        key=lambda x: float(x),
+    )
+    for i, key in enumerate(keys):
+        d_cost, label, tiers, band, public, noladder = spec_for_family_key(key)
         pairs = pairs_by_key.get(key, [])
         r = 2 + i
         vals = [
@@ -465,13 +614,14 @@ def write_main_sheet(
                 cell.alignment = Alignment(vertical="top", wrap_text=True)
         ws.row_dimensions[r].height = row_height_for(len(pairs)) if pairs else 38
 
-    note_row = 2 + len(FAMILY_TIERS) + 1
+    note_row = 2 + max(len(keys), 1) + 1
     ws.merge_cells(start_row=note_row, start_column=1, end_row=note_row, end_column=11)
     c = ws.cell(
         note_row,
         1,
-        "说明：行序=上游成本折低→高（0.40…1.0）｜档内对客折浅→深｜"
+        "说明：只列本模态有启用线路的成本族｜行序=上游成本折低→高｜档内对客折浅→深｜"
         "对内档 Plus→…→Enterprise｜门槛 $1k/$5k/$10k/$30k/$50k｜档位格=对客折（GM）｜"
+        "现网新族未写入 FAMILY_TIERS 时对客五档=待定｜"
         "达档=企业户累积消耗刊例·非预存｜Standard<$1k原价｜≥0.95及1.0原价族不设阶梯｜"
         f"模型 ID 后※=跨成本折 → 详查「{cross_sheet_name}」｜"
         "SOP 见 discount-tier-workbook-sop.md｜释义见证据链§3.0",
@@ -493,8 +643,12 @@ def write_cross_sheet(
     cross_id_set: set[str],
     main_sheet_name: str,
 ):
+    present: set[str] = set()
+    for m in all_routes.values():
+        present.update(m.keys())
+    route_cols = sorted(present, key=_fam_sort_key) if present else list(CROSS_ROUTE_COLS)
     cross_ids = sorted(cross_id_set)
-    n_cross_cols = 2 + len(CROSS_ROUTE_COLS) + 2
+    n_cross_cols = 2 + len(route_cols) + 2
     last_col = get_column_letter(n_cross_cols)
     ws2 = wb.create_sheet(title)
     ws2.merge_cells(f"A1:{last_col}1")
@@ -524,7 +678,7 @@ def write_cross_sheet(
     headers2 = [
         "Trinity ID",
         "涉及成本折",
-        *[f"线路@{c}{'原价' if c == '1.0' else ''}" for c in CROSS_ROUTE_COLS],
+        *[f"线路@{c}{'原价' if c == '1.0' else ''}" for c in route_cols],
         "推荐成本折",
         "商务提示",
     ]
@@ -537,13 +691,7 @@ def write_cross_sheet(
     ws2.row_dimensions[3].height = 28
 
     def recommend(families):
-        for f in [
-            "0.40", "0.50", "0.60", "0.65", "0.70", "0.75",
-            "0.78", "0.85", "0.90", "0.97", "1.0",
-        ]:
-            if f in families:
-                return f
-        return sorted(families)[0]
+        return sorted(families, key=_fam_sort_key)[0]
 
     def tip(families, rec):
         fs = set(families)
@@ -561,17 +709,14 @@ def write_cross_sheet(
     for i, mid in enumerate(cross_ids):
         r = 4 + i
         fam_map = all_routes[mid]
-        families = sorted(
-            fam_map.keys(),
-            key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99,
-        )
+        families = sorted(fam_map.keys(), key=_fam_sort_key)
         rec = recommend(families)
         route_cells = [
-            fmt_routes(fam_map[f]) if f in fam_map else "" for f in CROSS_ROUTE_COLS
+            fmt_routes(fam_map[f]) if f in fam_map else "" for f in route_cols
         ]
         vals = [mid, "、".join(families), *route_cells, rec, tip(families, rec)]
-        rec_col = 2 + len(CROSS_ROUTE_COLS) + 1
-        route_col_end = 2 + len(CROSS_ROUTE_COLS)
+        rec_col = 2 + len(route_cols) + 1
+        route_col_end = 2 + len(route_cols)
         fill = (
             FILL_ANCHOR
             if ("0.65" in fam_map or "0.50" in fam_map or "0.40" in fam_map)
@@ -610,7 +755,7 @@ def write_cross_sheet(
     c.font = Font(name="PingFang SC", size=9, color="64748B", italic=True)
     c.alignment = Alignment(wrap_text=True)
     ws2.row_dimensions[fr].height = 28
-    widths = [22, 18, *[20] * len(CROSS_ROUTE_COLS), 12, 42]
+    widths = [22, 18, *[20] * len(route_cols), 12, 42]
     for i, w in enumerate(widths, 1):
         ws2.column_dimensions[get_column_letter(i)].width = w
     ws2.freeze_panes = "B4"
@@ -621,12 +766,21 @@ def _import_summary(loaded: dict) -> str:
     return " · ".join(
         f"{k}:{len(loaded[k][0])}"
         for k in sorted(
-            loaded, key=lambda x: FAMILY_ORDER.index(x) if x in FAMILY_ORDER else 99
+            loaded, key=_fam_sort_key
         )
     )
 
 
 def _route_index(sources: list, loaded: dict) -> str:
+    paths = {path for path, _, _ in sources}
+    if len(paths) == 1:
+        path = next(iter(paths))
+        parts = [
+            f"{label}={len(loaded[key][0])}"
+            for _, label, key in sources
+            if key in loaded
+        ]
+        return f"{path.name}（单文件·折扣分族）· " + "；".join(parts)
     return "；".join(
         f"{label}={path.name}({len(loaded[key][0])})"
         for path, label, key in sources
@@ -634,17 +788,44 @@ def _route_index(sources: list, loaded: dict) -> str:
     )
 
 
-def build():
-    loaded_t, pairs_t, routes_t, cross_t = load_modality(SOURCES_TEXT, "text")
-    loaded_i, pairs_i, routes_i, cross_i = load_modality(SOURCES_IMAGE, "image")
-    loaded_v, pairs_v, routes_v, cross_v = load_modality(SOURCES_VIDEO, "video")
+def _route_source_line(sources: list[tuple[Path, str, str]]) -> str:
+    paths = {path.resolve() for path, _, _ in sources}
+    if len(paths) == 1:
+        p = next(iter(paths))
+        try:
+            rel = p.relative_to(PRICING_ROOT)
+            return f"pricing/{rel}"
+        except ValueError:
+            return str(p)
+    dirs = {path.parent.name for path, _, _ in sources}
+    if len(dirs) == 1:
+        return f"pricing/input/{next(iter(dirs))}/"
+    return "；".join(str(p) for p in sorted(paths))
+
+
+def build(
+    *,
+    sources_text: list[tuple[Path, str, str]] | None = None,
+    sources_image: list[tuple[Path, str, str]] | None = None,
+    sources_video: list[tuple[Path, str, str]] | None = None,
+    out: Path | None = None,
+    source_mode: str = "archive",
+):
+    src_text = sources_text if sources_text is not None else SOURCES_TEXT
+    src_image = sources_image if sources_image is not None else SOURCES_IMAGE
+    src_video = sources_video if sources_video is not None else SOURCES_VIDEO
+    out_path = out.resolve() if out else OUT
+
+    loaded_t, pairs_t, routes_t, cross_t = load_modality(src_text, "text")
+    loaded_i, pairs_i, routes_i, cross_i = load_modality(src_image, "image")
+    loaded_v, pairs_v, routes_v, cross_v = load_modality(src_video, "video")
 
     wb = Workbook()
     wsr = wb.active
     wsr.title = SHEET_00
     for i, (a, b) in enumerate(
         [
-            ("文件名", OUT.name),
+            ("文件名", out_path.name),
             ("形态", "一本总册 · 8 Sheet；后台分册下载另议"),
             ("生成·商务", "commercial-billing/scripts/rebuild_discount_tier_workbook.py"),
             (
@@ -674,12 +855,18 @@ def build():
             ("生图交叉模型数", str(len(cross_i))),
             ("生视频已导入", _import_summary(loaded_v)),
             ("生视频交叉模型数", str(len(cross_v))),
-            ("线路源·生文", f"pricing/input/{ROUTES_TEXT.name}/"),
-            ("线路源索引·生文", _route_index(SOURCES_TEXT, loaded_t)),
-            ("线路源·生图", f"pricing/input/{ROUTES_IMAGE.name}/"),
-            ("线路源索引·生图", _route_index(SOURCES_IMAGE, loaded_i)),
-            ("线路源·生视频", f"pricing/input/{ROUTES_VIDEO.name}/"),
-            ("线路源索引·生视频", _route_index(SOURCES_VIDEO, loaded_v)),
+            ("线路源·生文", _route_source_line(src_text)),
+            ("线路源索引·生文", _route_index(src_text, loaded_t)),
+            ("线路源·生图", _route_source_line(src_image)),
+            ("线路源索引·生图", _route_index(src_image, loaded_i)),
+            ("线路源·生视频", _route_source_line(src_video)),
+            ("线路源索引·生视频", _route_index(src_video, loaded_v)),
+            (
+                "分族方式",
+                "现网导出·折扣列自动分族"
+                if source_mode == "live-export"
+                else "归档·每折一文件",
+            ),
             ("不含", "各折扣 src_* 整表；原料只归档 input"),
         ],
         1,
@@ -722,9 +909,9 @@ def build():
     for idx, name in enumerate(order):
         wb.move_sheet(name, offset=idx - wb.sheetnames.index(name))
 
-    wb.save(OUT)
-    patch_xlsx_for_wechat(OUT)
-    print(f"saved {OUT}")
+    wb.save(out_path)
+    patch_xlsx_for_wechat(out_path)
+    print(f"saved {out_path}")
     print(f"sheets: {wb.sheetnames}")
     print(
         f"text cross={len(cross_t)} image cross={len(cross_i)} "
@@ -732,5 +919,51 @@ def build():
     )
 
 
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description="Rebuild 商务洽谈折扣总表.xlsx from 线路管理 exports",
+    )
+    parser.add_argument(
+        "--from-export-text",
+        type=Path,
+        metavar="PATH",
+        help="现网/本地线路导出（生文）；按「折扣」列自动分族",
+    )
+    parser.add_argument(
+        "--from-export-image",
+        type=Path,
+        metavar="PATH",
+        help="现网/本地线路导出（生图）；按「折扣」列自动分族",
+    )
+    parser.add_argument(
+        "--from-export-video",
+        type=Path,
+        metavar="PATH",
+        help="现网/本地线路导出（生视频）；按「折扣」列自动分族",
+    )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=OUT,
+        help=f"输出 xlsx（默认 {OUT}）",
+    )
+    args = parser.parse_args(argv)
+
+    live_flags = [args.from_export_text, args.from_export_image, args.from_export_video]
+    source_mode = "live-export" if any(live_flags) else "archive"
+
+    src_text = sources_from_export(args.from_export_text) if args.from_export_text else None
+    src_image = sources_from_export(args.from_export_image) if args.from_export_image else None
+    src_video = sources_from_export(args.from_export_video) if args.from_export_video else None
+
+    build(
+        sources_text=src_text,
+        sources_image=src_image,
+        sources_video=src_video,
+        out=args.out,
+        source_mode=source_mode,
+    )
+
+
 if __name__ == "__main__":
-    build()
+    main()

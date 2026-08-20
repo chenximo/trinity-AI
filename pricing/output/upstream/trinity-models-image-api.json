@@ -28,7 +28,8 @@
           }
         },
         "min_user_unit_price_usd": 0.039,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -58,7 +59,8 @@
           }
         },
         "min_user_unit_price_usd": 0.134,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -88,7 +90,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0513,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -120,7 +123,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0308,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -150,7 +154,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0339,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -180,7 +185,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0154,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -210,7 +216,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0308,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -241,7 +248,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0308,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -272,7 +280,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0308,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -303,99 +312,8 @@
           }
         },
         "min_user_unit_price_usd": 0.039,
-        "metered_charge_unit": "image_count"
-      }
-    },
-    {
-      "id": "OG-image2-high",
-      "object": "model",
-      "created": 1781074611,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "Image-2.0 High",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "image",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Multimodal",
-              "Image gen"
-            ],
-            "short_summary": "OpenAI GPT Image 2 High high-quality image generation model, built on the GPT multimodal architecture, supporting high-quality text-to-image and image editing with fine detail, suitable for professional creation and commercial use.",
-            "description_long": "OpenAI GPT Image 2 High high-quality image generation model, built on the GPT multimodal architecture, supporting high-quality text-to-image and image editing with fine detail, suitable for professional creation and commercial use. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "多模态",
-              "生图"
-            ],
-            "short_summary": "OpenAI GPT Image 2 High 高画质图像生成模型，基于 GPT 多模态架构，支持高质量文生图和图像编辑，画质精细，适合专业创作和商业应用。",
-            "description_long": "OpenAI GPT Image 2 High 高画质图像生成模型，基于 GPT 多模态架构，支持高质量文生图和图像编辑，画质精细，适合专业创作和商业应用。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.1,
-        "metered_charge_unit": "image_count"
-      }
-    },
-    {
-      "id": "OG-image2-low",
-      "object": "model",
-      "created": 1781074611,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "Image-2.0 Low",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "image",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Image gen"
-            ],
-            "short_summary": "OpenAI GPT Image 2 Low lightweight image generation model, delivering faster generation speed and lower cost while maintaining quality, suitable for high-volume image production.",
-            "description_long": "OpenAI GPT Image 2 Low lightweight image generation model, delivering faster generation speed and lower cost while maintaining quality, suitable for high-volume image production. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "高性价比"
-            ],
-            "short_summary": "OpenAI GPT Image 2 Low 轻量图像生成模型，在保持画质的同时提供更快生成速度和更低成本，适合大批量图像生产。",
-            "description_long": "OpenAI GPT Image 2 Low 轻量图像生成模型，在保持画质的同时提供更快生成速度和更低成本，适合大批量图像生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.006,
-        "metered_charge_unit": "image_count"
-      }
-    },
-    {
-      "id": "OG-image2-medium",
-      "object": "model",
-      "created": 1781074611,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "Image-2.0 Medium",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "image",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Image gen"
-            ],
-            "short_summary": "OpenAI GPT Image 2 Medium balanced image generation model, striking a good balance between quality and speed, suitable for general image creation and content production.",
-            "description_long": "OpenAI GPT Image 2 Medium balanced image generation model, striking a good balance between quality and speed, suitable for general image creation and content production. Developed by OpenAI; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "OpenAI GPT Image 2 Medium 均衡图像生成模型，在画质和速度之间取得良好平衡，适合通用图像创作和内容生产。",
-            "description_long": "OpenAI GPT Image 2 Medium 均衡图像生成模型，在画质和速度之间取得良好平衡，适合通用图像创作和内容生产。 由OpenAI研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.053,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -427,7 +345,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0308,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -457,7 +376,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0385,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -487,37 +407,8 @@
           }
         },
         "min_user_unit_price_usd": 0.0339,
-        "metered_charge_unit": "image_count"
-      }
-    },
-    {
-      "id": "Vidu-q2",
-      "object": "model",
-      "created": 1779243912,
-      "owned_by": "shengshu technology",
-      "metadata": {
-        "display_name": "Vidu Q2",
-        "origin_vendor_name": "Shengshu Technology",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
-        "modality_type": "image",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Image gen"
-            ],
-            "short_summary": "Shengshu Technology Vidu Q2 image generation model, part of China's first fully self-developed AI generation model series, supporting text-to-image and high-quality visual content generation with excellent quality and style.",
-            "description_long": "Shengshu Technology Vidu Q2 image generation model, part of China's first fully self-developed AI generation model series, supporting text-to-image and high-quality visual content generation with excellent quality and style. Developed by Shengshu Technology; suited for creative image workflows. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "生图"
-            ],
-            "short_summary": "生数科技 Vidu Q2 图像生成模型，国内首个纯自研 AI 生成模型系列，支持文生图和高质量视觉内容生成，在画质和风格表现方面表现优秀。",
-            "description_long": "生数科技 Vidu Q2 图像生成模型，国内首个纯自研 AI 生成模型系列，支持文生图和高质量视觉内容生成，在画质和风格表现方面表现优秀。 由生数科技研发，适合创意生成等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.0289,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     },
     {
@@ -550,6 +441,78 @@
             ],
             "short_summary": "Google DeepMind 旗下 Gemini 2.5 Flash Image：高速原生生图与对话式编辑，适合创意迭代与高吞吐出图。",
             "description_long": "Gemini 2.5 Flash Image 由 Google DeepMind 打造，面向低延迟的文生图与图文编辑场景。支持自然语言定向修改、多参考图融合与角色一致性保持，并提供多种常用宽高比，便于营销素材、产品视觉与多轮创意打磨。生成速度快、吞吐友好，适合需要频繁试错与批量轻量出图的工作流。"
+          }
+        }
+      }
+    },
+    {
+      "id": "gemini-3.1-flash-image",
+      "object": "model",
+      "created": 1786447180,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Flash Image",
+        "origin_vendor_name": "Google",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Fast image gen",
+              "Image editing",
+              "Multi-reference",
+              "Multi-resolution",
+              "Text rendering"
+            ],
+            "short_summary": "Gemini 3.1 Flash Image (Nano Banana 2) by Google DeepMind: Pro-level image quality at Flash speed, with text-to-image and conversational editing for high-throughput creative work.",
+            "description_long": "Gemini 3.1 Flash Image from Google DeepMind—also known as Nano Banana 2—targets high-quality native image generation at mainstream cost and low latency. It supports text-to-image and image editing, multi-reference blending with strong character consistency, resolutions from 512 through 1K/2K/4K, and a wide set of aspect ratios. Improved in-image text rendering and prompt adherence make it a strong fit for marketing creatives, product visuals, infographics, and multi-turn ideation at scale."
+          },
+          "zh": {
+            "feature_tags": [
+              "高速生图",
+              "图文编辑",
+              "多参考图",
+              "多分辨率",
+              "文字渲染"
+            ],
+            "short_summary": "Google DeepMind 旗下 Gemini 3.1 Flash Image（Nano Banana 2）：Pro 级画质与 Flash 级速度，支持文生图与对话式编辑，适合高效创作与高吞吐出图。",
+            "description_long": "Gemini 3.1 Flash Image 由 Google DeepMind 研发，亦称 Nano Banana 2，是面向主流价位与低延迟的新一代原生生图模型。支持文生图与图文编辑、多参考图融合与角色一致性，并覆盖 512 / 1K / 2K / 4K 等分辨率与丰富宽高比；画面文字渲染与指令遵循相对上一代 Flash 生图明显增强，适合营销素材、产品视觉、信息图与多轮创意迭代等高吞吐场景。"
+          }
+        }
+      }
+    },
+    {
+      "id": "gemini-3.1-flash-lite-image",
+      "object": "model",
+      "created": 1786447180,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Flash Lite Image",
+        "origin_vendor_name": "Google",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Ultra-low latency",
+              "Cost-efficient",
+              "Text-to-image",
+              "Light editing",
+              "1K"
+            ],
+            "short_summary": "Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite) by Google DeepMind: the faster, more cost-efficient image tier for rapid iteration and high-volume generation.",
+            "description_long": "Gemini 3.1 Flash Lite Image from Google DeepMind—also known as Nano Banana 2 Lite—is the speed- and cost-oriented tier in the Gemini image family. Built for ultra-low latency and high throughput, it supports text-to-image and lightweight image editing with solid character consistency and common aspect ratios. Output is optimized around 1K resolution, prioritizing usable quality at a friendlier unit cost—ideal for interactive prototypes, campaign drafts, batch lightweight generation, and fast multi-turn ideation."
+          },
+          "zh": {
+            "feature_tags": [
+              "超低延迟",
+              "高性价比",
+              "文生图",
+              "轻量编辑",
+              "1K"
+            ],
+            "short_summary": "Google DeepMind 旗下 Gemini 3.1 Flash Lite Image（Nano Banana 2 Lite）：更快更省的高速生图档，适合快速试错与规模化出图。",
+            "description_long": "Gemini 3.1 Flash Lite Image 由 Google DeepMind 研发，亦称 Nano Banana 2 Lite，是 Gemini 生图家族中偏速度与成本的档位。面向超低延迟与高吞吐场景，支持文生图与轻量图文编辑、角色一致性与常用宽高比；输出以 1K 为主，强调「够用的画质 + 更友好的单位成本」，适合交互原型、运营素材草稿、批量轻量出图与多轮快速打磨。"
           }
         }
       }
@@ -619,7 +582,45 @@
           }
         },
         "min_user_unit_price_usd": 0.0385,
-        "metered_charge_unit": "image_count"
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
+      }
+    },
+    {
+      "id": "viduq2-image",
+      "object": "model",
+      "created": 1786680046,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q2 Image",
+        "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
+        "modality_type": "image",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Text-to-image",
+              "Reference-to-image",
+              "Image edit",
+              "Up to 4K"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q2 Image: text/reference/edit up to 4K with strong subject consistency.",
+            "description_long": "Shengshu Technology Vidu Q2 Image supports text-to-image, reference-to-image (up to 7 refs), and image edit at 1080p/2K/4K for e-commerce and character-consistent stills."
+          },
+          "zh": {
+            "feature_tags": [
+              "文生图",
+              "参考生图",
+              "图编辑",
+              "最高4K"
+            ],
+            "short_summary": "生数科技 Vidu Q2 Image：文生图/参考生图/图编辑，最高 4K，主体一致性强。",
+            "description_long": "生数科技 Vidu Q2 Image 支持纯文生图、最多 7 张参考图生图与图编辑，分辨率可选 1080p/2K/4K，适合电商与角色一致性出图。"
+          }
+        },
+        "min_user_unit_price_usd": 0.03,
+        "metered_charge_unit": "image_count",
+        "price_display_hint": "flat"
       }
     }
   ]

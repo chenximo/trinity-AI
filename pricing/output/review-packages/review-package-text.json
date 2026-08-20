@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runId": "PR-EMIT-text-2026-08-12063651",
+  "runId": "PR-EMIT-text-2026-08-12071835",
   "modality": "text",
-  "generatedAt": "2026-08-12T06:36:51.821Z",
+  "generatedAt": "2026-08-12T07:18:35.806Z",
   "pricingPolicy": "listing_v2_intl_first",
   "tag": "emit-text",
   "fxCnyPerUsd": 6.5,
@@ -10,7 +10,7 @@
   "meta": {
     "tag": "emit-text",
     "pricingPolicy": "emit-review-package",
-    "generatedAt": "2026-08-12T06:36:51.821Z",
+    "generatedAt": "2026-08-12T07:18:35.806Z",
     "reviewId": null,
     "worker": "pricing/pipeline/emit-review-package.mjs",
     "draftSourcePath": "/Users/linda/Documents/Trinity_AICoding/trinity-AI/pricing/output/draft/listing-v2_prices-api.json",

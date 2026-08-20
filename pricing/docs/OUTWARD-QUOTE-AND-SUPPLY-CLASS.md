@@ -6,7 +6,9 @@
 > - 运营总设计：[SUPPLY-PRICING-OPS-DESIGN.md](./SUPPLY-PRICING-OPS-DESIGN.md) §柱③  
 > - 商务洽谈对内表：[../output/商务洽谈折扣总表.xlsx](../output/商务洽谈折扣总表.xlsx)（`pricing/output/`）  
 > - 销售套件缺口：[sales-kit.md](../../apps/trinity-product/docs/ai-api-platform/commercial-billing/sales-kit.md)（#5 报价）  
-> - **对外标准档**：[../output/Trinity模型报价表.xlsx](../output/Trinity模型报价表.xlsx)（整本可发；仅此一份）  
+> - **对外标准档**：[../output/Trinity模型报价表.xlsx](../output/Trinity模型报价表.xlsx)（**外发·仅有折扣**；客户包只用这份）  
+> - **对内完整册**：[../output/Trinity模型报价表（内部）.xlsx](../output/Trinity模型报价表（内部）.xlsx)  
+> - **运营主路径**：[商务价格-本地生成与Cursor人审上传.md](./商务价格-本地生成与Cursor人审上传.md)
 > - 字段示意样表（旧）：[../output/trinity-outward-quote-sample.xlsx](../output/trinity-outward-quote-sample.xlsx)  
 > - 形态参考样例：`pricing/数据宝报价单_2026-07-27.xlsx`  
 > - 竞品分组对照：[竞品定价汇总-APIhub-OpenSand-AIUPNode-Nexcor.md](./竞品定价汇总-APIhub-OpenSand-AIUPNode-Nexcor.md)（§1.1 两种贴法；Nexcor≈按上游三类）  
@@ -131,6 +133,21 @@
 | `Trinity模型报价表.xlsx` | ✅ | 仅客户可见价与折（仅此一份） |
 | `商务洽谈折扣总表.xlsx` | ❌ | 一本总册：解析依据 + 分模态商务/交叉 |
 | 缓存命中列 | ✅ | 目录价列展示原缓存价；阶梯列暂不含缓存 |
+
+### 3.3.1 `Trinity模型报价表_hehe.xlsx`（定制报价版）维护约定
+
+除标准外发表 `Trinity模型报价表.xlsx` 外，若存在定制报价版 `Trinity模型报价表_hehe.xlsx`，则每次**上架新模型**后同步遵守：
+
+1. 先确认最新版 `Trinity模型报价表.xlsx` 价格无误。
+2. 再对比 `Trinity模型报价表_hehe.xlsx` 是否缺少新模型。
+3. `hehe` **原有模型保持不变**，不批量覆盖历史折扣。
+4. 仅补充本次新增缺失模型。
+5. 新增模型整行做颜色标记，便于人工复核。
+6. 对话汇总需同步列出本次新增模型清单。
+
+默认颜色规则：
+
+- 新增模型整行使用 **浅黄色**（约 `#FFF2CC`）。
 
 ### 3.4 数字从哪来
 

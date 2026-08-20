@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trinity · 功能能力双页（恢复预览）</title>
+  <link rel="stylesheet" href="deck.css" />
+  <style>
+    .preview-banner {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 10px 16px;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 13px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .preview-banner a { color: #93c5fd; }
+    .preview-banner strong { color: #fbbf24; }
+  </style>
+</head>
+<body>
+  <div class="preview-banner">
+    <strong>恢复预览</strong>
+    <span>从对话记录提取 · 未写回 index.html</span>
+    <a href="#p06">API 功能上</a>
+    <a href="#p07">API 功能下</a>
+    <a href="#p11">云 功能上</a>
+    <a href="#p12">云 功能下</a>
+    <a href="index.html">← 返回正式 index</a>
+  </div>
+  <div class="stage">
+
+<!-- ========== P06 功能能力（上） ========== -->
+    <section class="slide" id="p06">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI API · 02</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（上）：接入 · 调度 · 容量</h1>
+      <p class="lead">同等模型能力下，价值在<strong>供给、调度与容量形态</strong>——不是改写模型本身。下一页讲计量、治理与交付。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>统一协议与多模态交付</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-flow">
+              <span class="viz-node">应用 / IDE</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-node viz-node--hub">统一网关</span>
+              <span class="viz-arrow">→</span>
+              <div class="viz-stack">
+                <span class="viz-pill">多模型</span>
+                <span class="viz-pill">文 / 图 / 视频</span>
+              </div>
+            </div>
+            <div class="viz-keyline" style="margin-top:0.08in"><span class="viz-key">OpenAI 兼容 · 同一 API Key</span></div>
+          </div>
+          <p>多厂商参数差异在平台侧收敛；生文 / 生图 / 生视频一站式编排。可选 <strong>Auto 智能选模</strong>，在质量、时延与成本间自动权衡。</p>
+          <ul class="feat-bullets">
+            <li>降低多套 SDK、多套鉴权与多套账单的集成成本</li>
+            <li>模型目录与价目统一查询，缩短选型到上线周期</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>多源冗余与智能调度</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-routes">
+              <div class="viz-route viz-route--down">
+                <span class="viz-route-lab">上游链路 A</span>
+                <span class="viz-badge viz-badge--warn">限流 / 抖动</span>
+              </div>
+              <div class="viz-route-switch">负载感知 · 故障转移</div>
+              <div class="viz-route viz-route--up">
+                <span class="viz-route-lab">上游链路 B</span>
+                <span class="viz-badge viz-badge--ok">可用</span>
+              </div>
+            </div>
+          </div>
+          <p>对主流模型构建多源供应：请求按吞吐与容量占用导向更优路径；可恢复异常自动切换，缩短无效等待。</p>
+          <ul class="feat-bullets">
+            <li>限流与持续性故障分层处置，保护整体可用性</li>
+            <li>主路径受限时可按策略过渡至兼容模型，保障业务连续性</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>约定容量，降低共享挤兑</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-cap">
+              <div class="viz-cap-col">
+                <div class="viz-cap-bars viz-cap-bars--crowd">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <span>共享配额（典型）</span>
+              </div>
+              <div class="viz-cap-col">
+                <div class="viz-cap-bars viz-cap-bars--reserve">
+                  <i></i><i></i><i></i>
+                </div>
+                <span>合约级容量思路</span>
+              </div>
+            </div>
+          </div>
+          <p>公开入口多为共享算力池，高峰易排队与限流。Trinity 采用与供应方约定的<strong>容量预留思路</strong>（请求速率 / Token 吞吐），使表现更可规划。</p>
+          <ul class="feat-bullets">
+            <li>面向并发与业务高峰的时延、吞吐预期管理</li>
+            <li>具体额度与保障范围以商务方案为准，不作统一口头承诺</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>接入与区域体验</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-region">
+              <span class="viz-region-node">区域接入</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-region-node viz-region-node--hi">就近调度</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-region-node">多源路径</span>
+            </div>
+          </div>
+          <p>跨地域访问单一区域入口时，公网绕路会叠加到首 Token 时延。平台在关键区域部署接入与转发，结合就近调度缩短网络路径。</p>
+          <ul class="feat-bullets">
+            <li>服务跨国团队、多地部署与全球化产品的一致性体验</li>
+            <li>与多源路径选择叠加，降低长尾延迟</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI API</span>
+        <span class="sec-tag">功能能力 · 1/2</span>
+      </div>
+    </section>
+
+    <!-- ========== P07 功能能力（下） ========== -->
+    <section class="slide" id="p07">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI API · 03</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（下）：计量 · 治理 · 交付</h1>
+      <p class="lead">从「能调用」到「可控、可审计、可对账」——企业生产环境默认需要的边界与闭环。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>用量计量与费用可核对</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dash">
+              <div class="viz-meter"><span style="--w:72%"></span><em>请求</em></div>
+              <div class="viz-meter"><span style="--w:48%"></span><em>Token</em></div>
+              <div class="viz-meter"><span style="--w:31%"></span><em>费用</em></div>
+            </div>
+          </div>
+          <p>控制台按工作区 / API Key / 模型查看调用与消耗，与平台计量、扣费同源。计价主叙事为<strong>预充值 + 刊例绝对价</strong>，避免「额度 × 倍率」黑盒。</p>
+          <ul class="feat-bullets">
+            <li>公开价目与命中规则可查；缓存等细粒度用量按模型能力披露</li>
+            <li>用量事件可追溯，支撑财务核对与业务复盘</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>可观测、审计与问题闭环</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-obs">
+              <div class="viz-obs-row"><span>请求追踪</span><span>时延 / 失败归因</span></div>
+              <div class="viz-obs-row viz-obs-row--hi"><span>健康探测</span><span>运维告警</span></div>
+            </div>
+          </div>
+          <p>企业级调用需要能解释、能追溯、能复盘：请求级追踪标识、用量与失败归因、主动健康探测与告警。</p>
+          <ul class="feat-bullets">
+            <li>跨系统联调与排障路径更短</li>
+            <li>异常可被提前发现，而非仅依赖用户投诉</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>安全鉴权与企业治理</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-gov">
+              <div class="viz-gov-root">工作区</div>
+              <div class="viz-gov-row">
+                <span>API Key · 配额</span>
+                <span>成员 · 权限</span>
+              </div>
+              <div class="viz-gov-note">冻结 / 轮换 · 风控 · 费用可见</div>
+            </div>
+          </div>
+          <p>面向生产环境的权限隔离：API Key / 工作区级管控，密钥可冻结与轮换；访问控制与风控策略抑制异常流量。</p>
+          <ul class="feat-bullets">
+            <li>用量与费用可见，便于内部成本分摊与合规留痕</li>
+            <li>传输与密钥托管按安全实践降低凭证泄露面</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>开发者体验与交付效率</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dx">
+              <span>Docs / Cookbook</span>
+              <span>IDE 兼容</span>
+              <span>参数校验</span>
+            </div>
+          </div>
+          <p>对接效率同样影响上线速度：文档与示例齐全，主流语言可快速跑通；与常见客户端 / IDE 工具兼容，降低团队切换成本。</p>
+          <ul class="feat-bullets">
+            <li>参数契约前置校验，减少无效请求打到上游再失败</li>
+            <li>运营侧模型、线路与探针能力，支撑主动质量保障</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI API</span>
+        <span class="sec-tag">功能能力 · 2/2</span>
+      </div>
+    </section>
+
+    <!-- ========== P11 云功能（上） ========== -->
+    <section class="slide" id="p11">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI 云 · 02</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（上）：采购 · 计费 · 服务</h1>
+      <p class="lead">从「能卖云」到「能运营云」——先把采购路径、费用结构与服务交付说清楚。下一页讲纳管、账单与结算闭环。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>一站式多云采购</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-cloud-vendors">
+              <span>阿里云</span><span>腾讯云</span><span>华为云</span>
+              <span>AWS</span><span>GCP</span><span>Azure</span>
+            </div>
+            <div class="viz-keyline" style="margin-top:0.06in"><span class="viz-key">统一咨询 · 开通 · 管理</span></div>
+          </div>
+          <p>业务往往同时使用多家公有云。Trinity 提供统一咨询与开通管理，覆盖主流公有云资源获取，减少多官网、多流程的重复对接。</p>
+          <ul class="feat-bullets">
+            <li>厂商官网资源与集采代购路径收敛到同一合作入口</li>
+            <li>为后续账号纳管与账单聚合打好交付基础</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>集采议价 + 透明服务费</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-fee">
+              <div class="viz-fee-row"><span>云资源消耗</span><span class="viz-fee-eq">按量</span></div>
+              <div class="viz-fee-plus">+</div>
+              <div class="viz-fee-row viz-fee-row--hi"><span>平台服务费</span><span class="viz-fee-eq">固定透明</span></div>
+            </div>
+          </div>
+          <p>计费原则清晰：消耗计费 + 固定服务费。不靠「差价黑盒」与产品捆绑制造隐性成本，便于财务评估与商务复盘。</p>
+          <ul class="feat-bullets">
+            <li>集采议价与灵活账期，按商务方案落地</li>
+            <li>无隐性捆绑，费用结构可向内外部解释</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>三大「零」：弹性使用</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-zeros">
+              <span>零门槛</span><span>零保底</span><span>零承诺</span>
+            </div>
+          </div>
+          <p>面向用云节奏不确定的团队：无年框锁定，按实际用量弹性使用，降低「保底吃不满」带来的预算压力。</p>
+          <ul class="feat-bullets">
+            <li>适合国内云 + 海外云并用、业务波动较大的场景</li>
+            <li>具体开通条件与账期仍以商务方案为准</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>上云咨询与交付跟进</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-svc">
+              <span>架构 / 配置</span>
+              <span>成本建议</span>
+              <span>开票 / 对账</span>
+            </div>
+          </div>
+          <p>不止代为下单：提供上云咨询、架构与配置推荐、多云成本管控建议；开户、续费、对账与开票有专人跟进。</p>
+          <ul class="feat-bullets">
+            <li>灵活开票 / 多抬头，贴合企业财务习惯</li>
+            <li>问题优先响应通道，减少多控制台救火</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI 云</span>
+        <span class="sec-tag">功能能力 · 1/2</span>
+      </div>
+    </section>
+
+    <!-- ========== P12 云功能（下） ========== -->
+    <section class="slide" id="p12">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI 云 · 03</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（下）：纳管 · 账单 · 结算 · 治理</h1>
+      <p class="lead">云资源不难买到；难的是多账号、多厂商、多账期并存时，费用<strong>看得见、对得上、管得住</strong>。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>多云账号一站纳管</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-gov">
+              <div class="viz-gov-root">统一工作台</div>
+              <div class="viz-gov-row">
+                <span>多云账号</span>
+                <span>启停 / 审计</span>
+              </div>
+              <div class="viz-gov-note">凭据校验 · 脱敏展示 · 工作区隔离</div>
+            </div>
+          </div>
+          <p>将云账号纳入统一工作区：绑定前校验厂商凭据，确认可用后再入库；账号标识脱敏；状态可启用 / 停用；关键操作写入审计。</p>
+          <ul class="feat-bullets">
+            <li>从「每个账号各管一摊」升级为「一个工作台看全局」</li>
+            <li>跨团队资源互不可见，降低误操作与泄露面</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>账单聚合与节省可见</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-bill">
+              <div class="viz-bill-kpis">
+                <span>应付</span><span>目录价</span><span>节省率</span>
+              </div>
+              <div class="viz-bill-bar"><i style="--w:42%"></i><i style="--w:33%"></i><i style="--w:25%"></i></div>
+              <div class="viz-bill-cap">账期汇总 · 厂商占比 · 可导出</div>
+            </div>
+          </div>
+          <p>按账期汇总应付与目录价，呈现节省金额与节省率；支持环比 / 同比视角与厂商消费占比；明细可下钻，筛选后导出对账。</p>
+          <ul class="feat-bullets">
+            <li>费用从各云控制台散落，收成同一账期、同一口径</li>
+            <li>减少手工拼表，支撑财务汇报与内部复盘</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>双主体余额 + 代充流水</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dual">
+              <div class="viz-dual-box"><strong>USD</strong><em>Trinity 主体</em></div>
+              <div class="viz-dual-sep">∥</div>
+              <div class="viz-dual-box"><strong>RMB</strong><em>星瀚主体</em></div>
+            </div>
+          </div>
+          <p>跨境与国内业务并存时，单一币种账本往往不够用。双主体余额相互隔离，避免「硬加总」造成财务误解；支持开户代充与完整流水。</p>
+          <ul class="feat-bullets">
+            <li>客户侧可清晰看到两个主体余额，而非一笔说不清的总额</li>
+            <li>约定条件下支持回退纠错；汇总与导出受权限控制</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>安全治理与运营后台</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dx">
+              <span>加密托管</span>
+              <span>RBAC</span>
+              <span>审计轨迹</span>
+            </div>
+          </div>
+          <p>云账号凭据高敏感：加密托管、默认脱敏；停用、代充与回退等关键动作可审计。独立云转售管理端聚焦客户、账号、账单与流水。</p>
+          <ul class="feat-bullets">
+            <li>权限按查看 / 操作 / 导出分级，匹配运营与财务分工</li>
+            <li>安全与治理是转售场景的默认交付，而非附加项</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI 云</span>
+        <span class="sec-tag">功能能力 · 2/2</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

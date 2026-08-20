@@ -188,11 +188,10 @@
           }
         },
         "context_length": 128,
-        "max_token": 65536,
         "user_input_price_per_million_usd": 0.307692,
         "user_output_price_per_million_usd": 0.461538,
         "has_scheduled_pricing": true,
-        "price_variant": "default"
+        "price_variant": "scheduled"
       }
     },
     {
@@ -222,11 +221,11 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 65536,
-        "user_input_price_per_million_usd": 0.153846,
-        "user_output_price_per_million_usd": 0.307692,
+        "max_token": 384000,
+        "user_input_price_per_million_usd": 0.44,
+        "user_output_price_per_million_usd": 1.32,
         "has_scheduled_pricing": true,
-        "price_variant": "default"
+        "price_variant": "scheduled"
       }
     },
     {
@@ -260,6 +259,7 @@
           }
         },
         "context_length": 1000000,
+        "max_token": 384000,
         "user_input_price_per_million_usd": 0.2,
         "user_output_price_per_million_usd": 0.4
       }
@@ -291,11 +291,11 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 65536,
-        "user_input_price_per_million_usd": 0.461538,
-        "user_output_price_per_million_usd": 0.923077,
+        "max_token": 384000,
+        "user_input_price_per_million_usd": 1.32,
+        "user_output_price_per_million_usd": 3.96,
         "has_scheduled_pricing": true,
-        "price_variant": "default"
+        "price_variant": "scheduled"
       }
     },
     {
@@ -328,7 +328,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.3,
         "user_output_price_per_million_usd": 2.5
       }
@@ -360,7 +360,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.1,
         "user_output_price_per_million_usd": 0.4
       }
@@ -392,7 +392,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.1,
         "user_output_price_per_million_usd": 0.4
       }
@@ -429,7 +429,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 2.5,
         "user_output_price_per_million_usd": 15
       }
@@ -461,7 +461,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.5,
         "user_output_price_per_million_usd": 3
       }
@@ -493,7 +493,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.25,
         "user_output_price_per_million_usd": 1.5
       }
@@ -525,7 +525,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 0.25,
         "user_output_price_per_million_usd": 1.5
       }
@@ -559,7 +559,23 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
+        "user_input_price_per_million_usd": 4,
+        "user_output_price_per_million_usd": 18
+      }
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "object": "model",
+      "created": 1784011741,
+      "owned_by": "google",
+      "metadata": {
+        "display_name": "Gemini 3.1 Pro Preview Custom Tools",
+        "origin_vendor_name": "Google",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
+        "modality_type": "text",
+        "context_length": 1048576,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 4,
         "user_output_price_per_million_usd": 18
       }
@@ -591,7 +607,7 @@
           }
         },
         "context_length": 1048576,
-        "max_token": 64000,
+        "max_token": 65536,
         "user_input_price_per_million_usd": 1.5,
         "user_output_price_per_million_usd": 9
       }
@@ -656,8 +672,48 @@
         },
         "context_length": 1048576,
         "max_token": 65536,
-        "user_input_price_per_million_usd": 1.5,
-        "user_output_price_per_million_usd": 7.5
+        "user_input_price_per_million_usd": 0.75,
+        "user_output_price_per_million_usd": 3.75
+      }
+    },
+    {
+      "id": "gemini-3.7-flash",
+      "object": "model",
+      "created": 1786695886,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Gemini 3.7 Flash",
+        "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Coding agents",
+              "Multi-step reasoning",
+              "1M context",
+              "Multimodal input",
+              "Built-in tools"
+            ],
+            "short_summary": "Gemini 3.7 Flash by Google DeepMind — the most capable Flash workhorse for coding and agents, with strong multi-step reasoning at Flash economics.",
+            "description_long": "Gemini 3.7 Flash from Google DeepMind is the primary agentic Flash model in the Gemini 3 family for software engineering, agent orchestration, and knowledge work. Versus 3.6 Flash it improves coding, web/UI fidelity, long-document understanding, and enterprise workflow automation, while keeping a 1M context window, tunable thinking levels (low/medium/high), function calling, Search/Maps grounding, code execution, and Computer Use (Preview). A strong fit for production agents, hard debugging, and high-throughput multimodal understanding."
+          },
+          "zh": {
+            "feature_tags": [
+              "编码 Agent",
+              "多步推理",
+              "1M 上下文",
+              "多模态输入",
+              "内置工具"
+            ],
+            "short_summary": "Google DeepMind 旗下 Gemini 3.7 Flash：面向编码与 Agent 的最强 Flash 工作马，兼具多步推理与高性价比。",
+            "description_long": "Gemini 3.7 Flash 由 Google DeepMind 研发，是 Gemini 3 系列面向编码、Agent 编排与知识工作的主力 Flash 模型。相对 3.6 Flash，在软件工程、Web 开发设计还原、长文档与企业工作流自动化等评测上显著提升；支持 1M 上下文、可调 thinking（low/medium/high）、函数调用与 Search/Maps Grounding、代码执行、Computer Use（Preview）等内置工具。适合生产级 Agent、复杂调试与高吞吐多模态理解场景。"
+          }
+        },
+        "context_length": 1048576,
+        "max_token": 65536,
+        "user_input_price_per_million_usd": 0.75,
+        "user_output_price_per_million_usd": 3.75
       }
     },
     {
@@ -687,7 +743,7 @@
           }
         },
         "context_length": 200,
-        "max_token": 128000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 0.615385,
         "user_output_price_per_million_usd": 3.384615
       }
@@ -719,7 +775,7 @@
           }
         },
         "context_length": 200,
-        "max_token": 128000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 1.076923,
         "user_output_price_per_million_usd": 4
       }
@@ -751,7 +807,7 @@
           }
         },
         "context_length": 200,
-        "max_token": 128000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 1.230769,
         "user_output_price_per_million_usd": 4.307692
       }
@@ -783,9 +839,49 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 128000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 1.230769,
         "user_output_price_per_million_usd": 4.307692
+      }
+    },
+    {
+      "id": "glm-5.3",
+      "object": "model",
+      "created": 1786702968,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5.3",
+        "origin_vendor_name": "Zhipu",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Deep reasoning",
+              "Coding agent",
+              "1M context",
+              "Tool calling",
+              "Forced thinking"
+            ],
+            "short_summary": "Zhipu AI flagship GLM-5.3: post-training leap on the same base, coding & agent strength, 1M context.",
+            "description_long": "Zhipu AI GLM-5.3 is the latest flagship text model. Built on the same base as GLM-5.2, it raises capability via large-scale long-horizon training environments and extended post-training. Coding feel improves ~50% vs prior gen; strong on Terminal-Bench 3.0, DeepSWE, and Agents' Last Exam among open models. Suited for deep reasoning, complex engineering, agent orchestration, and long-running tasks. Supports mandatory deep thinking, reasoning_effort (max/high/low), tool calling, streaming, structured output, implicit context cache, and MCP. Text-only input; 1M context and up to 128K output."
+          },
+          "zh": {
+            "feature_tags": [
+              "深度推理",
+              "编程 Agent",
+              "1M 上下文",
+              "工具调用",
+              "强制思考"
+            ],
+            "short_summary": "智谱 AI 最新旗舰 GLM-5.3：同基座极致后训练，编程与 Agent 能力跃迁，1M 上下文。",
+            "description_long": "智谱 AI GLM-5.3 是最新旗舰文本模型，在与 GLM-5.2 相同的基座上，通过大规模长程任务环境与超长周期后训练显著提升智能上界。编程体感较前代提升约 50%，Terminal-Bench 3.0、DeepSWE、Agents' Last Exam 等公开基准位列开源前列；适合深度推理、复杂工程、Agent 编排与长程任务。支持强制深度思考、reasoning_effort（max/high/low）、工具调用、流式输出、结构化输出、隐式上下文缓存与 MCP；纯文本输入，上下文 1M、最大输出 128K。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.4,
+        "user_output_price_per_million_usd": 4.4
       }
     },
     {
@@ -815,77 +911,9 @@
           }
         },
         "context_length": 200000,
-        "max_token": 128000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 0.769231,
         "user_output_price_per_million_usd": 4
-      }
-    },
-    {
-      "id": "gpt-4.1",
-      "object": "model",
-      "created": 1782264411,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "GPT-4.1",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "General purpose"
-            ],
-            "short_summary": "OpenAI gpt-4.1 text model.",
-            "description_long": "OpenAI gpt-4.1 text model. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "OpenAI gpt-4.1 text 模型。",
-            "description_long": "OpenAI gpt-4.1 text 模型。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 1047576,
-        "max_token": 16000,
-        "user_input_price_per_million_usd": 2,
-        "user_output_price_per_million_usd": 8
-      }
-    },
-    {
-      "id": "gpt-4o",
-      "object": "model",
-      "created": 1779765034,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "GPT-4o",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Multimodal",
-              "Reasoning",
-              "Image gen"
-            ],
-            "short_summary": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks.",
-            "description_long": "GPT-4o is a high-performance omni-modal model that supports text and image understanding while balancing speed, reasoning, coding, and content generation, suitable for complex general dialogue and multimodal tasks. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "多模态",
-              "代码",
-              "推理"
-            ],
-            "short_summary": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。",
-            "description_long": "GPT-4o 是全模态高性能模型，支持文本与图像理解，兼顾速度、推理、代码和内容生成，适合复杂通用对话与多模态任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 128000,
-        "max_token": 16000,
-        "user_input_price_per_million_usd": 2.5,
-        "user_output_price_per_million_usd": 10
       }
     },
     {
@@ -1247,19 +1275,25 @@
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Very cheap",
-              "Simple chat"
+              "Cost-efficient",
+              "High throughput",
+              "Low latency",
+              "Scale routing",
+              "General chat"
             ],
-            "short_summary": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads. It builds on GPT-5.4 with stronger reasoning, higher reliability, and more efficient token handling for difficult tasks. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.",
-            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+            "short_summary": "GPT-5.6 Luna: the fastest, most cost-efficient GPT-5.6 tier for high-volume and latency-sensitive workloads.",
+            "description_long": "GPT-5.6 Luna is the fastest and most affordable model in OpenAI’s GPT-5.6 family, built for high-throughput, low-latency, and cost-sensitive workloads. At a much lower unit cost it still covers general chat, light coding, batch processing, and large-scale agent front-door routing, while sharing the 5.6 generation’s tool and reasoning stack. A strong default for speed-first lanes, triage routing, or high-volume traffic where cost matters most. Developed by OpenAI; evaluate latency, cost, and safety policies for your use case."
           },
           "zh": {
             "feature_tags": [
-              "极低成本",
-              "简单对话"
+              "高性价比",
+              "高吞吐",
+              "低延迟",
+              "规模化路由",
+              "通用对话"
             ],
-            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。",
-            "description_long": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "GPT-5.6 Luna：高性价比高速档，面向高吞吐与成本敏感场景，能力仍属 5.6 世代。",
+            "description_long": "GPT-5.6 Luna 是 OpenAI GPT-5.6 家族中最快、最经济的一档，面向高吞吐、低延迟与成本敏感工作负载。在显著更低的单位成本下仍能覆盖通用对话、轻量编码、批量处理与规模化 Agent 前置路由等场景，并共享 5.6 世代的工具与推理能力栈。适合作为默认高速线路、预检分流或大规模请求的成本优先选择。由 OpenAI 研发；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
@@ -1281,19 +1315,25 @@
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Very cheap",
-              "Simple chat"
+              "Flagship intelligence",
+              "Coding",
+              "Agent workflows",
+              "Token-efficient",
+              "Frontend design"
             ],
-            "short_summary": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads. It builds on GPT-5.4 with stronger reasoning, higher reliability, and more efficient token handling for difficult tasks. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.",
-            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+            "short_summary": "GPT-5.6 Sol: OpenAI’s flagship tier—frontier intelligence with stronger token efficiency for hard coding, knowledge work, and agent workflows.",
+            "description_long": "GPT-5.6 Sol is the flagship model in OpenAI’s GPT-5.6 family. It sets a new bar across coding, knowledge work, cybersecurity, and science while delivering stronger performance per dollar with fewer tokens. It supports max reasoning effort and multi-agent parallelism (ultra / multi-agent), plus programmatic tool calling, explicit prompt caching, persisted reasoning, and stronger frontend design judgment—ideal for demanding software engineering, long-horizon agents, professional artifacts, and complex tool-heavy workflows. Developed by OpenAI; evaluate latency, cost, and safety policies for your use case."
           },
           "zh": {
             "feature_tags": [
-              "极低成本",
-              "简单对话"
+              "旗舰智能",
+              "高效编码",
+              "Agent 工作流",
+              "Token 高效",
+              "前端设计"
             ],
-            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。",
-            "description_long": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "GPT-5.6 Sol：OpenAI 旗舰档，更高智能与更优 token 效率，适合复杂编码、知识工作与 Agent 任务。",
+            "description_long": "GPT-5.6 Sol 是 OpenAI GPT-5.6 家族的旗舰模型，在编码、知识工作、网络安全与科学推理等方向达到新一代前沿水平，并以更少输出 token、更低综合成本完成高质量结果。支持 max 推理力度与多 Agent 并行（ultra / multi-agent），具备程序化工具调用、显式提示缓存、持久化推理与更强的前端设计判断力；适合高难度软件工程、长程 Agent 工作流、专业文档与复杂多步工具编排。由 OpenAI 研发；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
@@ -1315,25 +1355,73 @@
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Very cheap",
-              "Simple chat"
+              "Balanced value",
+              "Everyday production",
+              "Coding",
+              "Knowledge work",
+              "Token-efficient"
             ],
-            "short_summary": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads. It builds on GPT-5.4 with stronger reasoning, higher reliability, and more efficient token handling for difficult tasks. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.",
-            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+            "short_summary": "GPT-5.6 Terra: the balanced tier—GPT-5.5-competitive quality at a stronger price/performance for everyday production work.",
+            "description_long": "GPT-5.6 Terra is the balanced model in OpenAI’s GPT-5.6 family for everyday professional and production workloads. It aims for GPT-5.5-competitive intelligence at a lower cost, while inheriting the 5.6 generation’s token efficiency, tool use, and multi-step reasoning. A strong default for coding collaboration, knowledge work, documents and spreadsheets, and cost-aware business routing that still needs reliable quality. Developed by OpenAI; evaluate latency, cost, and safety policies for your use case."
           },
           "zh": {
             "feature_tags": [
-              "极低成本",
-              "简单对话"
+              "均衡性价比",
+              "日常生产",
+              "编码协作",
+              "知识工作",
+              "Token 高效"
             ],
-            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。",
-            "description_long": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "GPT-5.6 Terra：均衡档，接近 GPT-5.5 级表现、更优性价比，适合日常专业与生产工作流。",
+            "description_long": "GPT-5.6 Terra 是 OpenAI GPT-5.6 家族的均衡模型，面向日常专业任务与生产工作流：在保持与 GPT-5.5 竞争力相当的智能水平同时显著降低单位成本，并继承 5.6 世代的 token 效率、工具调用与多步推理能力。适合编码协作、知识工作、文档与表格处理、以及需要稳定质量又要控制费用的默认业务路由。由 OpenAI 研发；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1050000,
         "max_token": 128000,
         "user_input_price_per_million_usd": 4,
         "user_output_price_per_million_usd": 18
+      }
+    },
+    {
+      "id": "grok-4.6",
+      "object": "model",
+      "created": 1786949640,
+      "owned_by": "xai",
+      "metadata": {
+        "display_name": "Grok 4.6",
+        "origin_vendor_name": "xAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/xai/04e04d66d8ac41f2a8532564b28adc54.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Long context",
+              "Vision",
+              "Deep reasoning",
+              "Function calling",
+              "Agent",
+              "Prompt cache"
+            ],
+            "short_summary": "xAI Grok 4.6: frontier model for coding and long-running agents, with vision and tunable reasoning.",
+            "description_long": "Grok 4.6 from xAI builds on Grok 4.5 with stronger long-running agents, multi-step work, and interactive/visual tasks. It accepts text and image input with text output, a 500K-token context window, and reasoning_effort of low / medium / high / xhigh. Well suited for codebase collaboration, research, product prototyping, and tool-using workflows."
+          },
+          "zh": {
+            "feature_tags": [
+              "长上下文",
+              "视觉理解",
+              "深度推理",
+              "Function Calling",
+              "Agent",
+              "Prompt Cache"
+            ],
+            "short_summary": "xAI Grok 4.6：面向编程与长程 Agent 的前沿模型，支持视觉输入与可调推理强度。",
+            "description_long": "Grok 4.6 由 xAI 发布，在 Grok 4.5 基础上强化长程 Agent、复杂多步任务与交互/视觉类工作。支持文本与图像输入、纯文本输出，上下文最长约 50 万 token；推理档位含 low / medium / high / xhigh。适合代码库协作、研究分析、产品原型与工具调用场景。"
+          }
+        },
+        "context_length": 500000,
+        "max_token": 20000000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 6
       }
     },
     {
@@ -1363,7 +1451,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 4000,
         "user_input_price_per_million_usd": 0.369231,
         "user_output_price_per_million_usd": 1.476923
       }
@@ -1395,7 +1483,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 4000,
         "user_input_price_per_million_usd": 0.046154,
         "user_output_price_per_million_usd": 0.184615
       }
@@ -1427,7 +1515,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 4000,
         "user_input_price_per_million_usd": 0.076923,
         "user_output_price_per_million_usd": 0.307692
       }
@@ -1459,7 +1547,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 4000,
         "user_input_price_per_million_usd": 0.076923,
         "user_output_price_per_million_usd": 0.307692
       }
@@ -1491,7 +1579,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 4000,
         "user_input_price_per_million_usd": 0.369231,
         "user_output_price_per_million_usd": 1.476923
       }
@@ -1523,7 +1611,7 @@
           }
         },
         "context_length": 1200000,
-        "max_token": 65536,
+        "max_token": 16000,
         "user_input_price_per_million_usd": 1.153846,
         "user_output_price_per_million_usd": 2.692308
       }
@@ -1555,7 +1643,7 @@
           }
         },
         "context_length": 256,
-        "max_token": 65536,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 0.246154,
         "user_output_price_per_million_usd": 1.230769
       }
@@ -1680,7 +1768,6 @@
           }
         },
         "context_length": 256,
-        "max_token": 16000,
         "user_input_price_per_million_usd": 2,
         "user_output_price_per_million_usd": 8.307692
       }
@@ -1696,6 +1783,7 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/moonshot/a2a8e6ad169f43d1a04a4d182a512765.png",
         "modality_type": "text",
         "context_length": 1048576,
+        "max_token": 1048576,
         "user_input_price_per_million_usd": 3.07692308,
         "user_output_price_per_million_usd": 15.38461538
       }
@@ -1727,7 +1815,7 @@
           }
         },
         "context_length": 204800,
-        "max_token": 65565,
+        "max_token": 204800,
         "user_input_price_per_million_usd": 0.323077,
         "user_output_price_per_million_usd": 1.292308
       }
@@ -1759,7 +1847,7 @@
           }
         },
         "context_length": 204800,
-        "max_token": 65565,
+        "max_token": 204800,
         "user_input_price_per_million_usd": 0.323077,
         "user_output_price_per_million_usd": 1.292308
       }
@@ -1791,7 +1879,7 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 65565,
+        "max_token": 524288,
         "user_input_price_per_million_usd": 0.323077,
         "user_output_price_per_million_usd": 2.584615
       }
@@ -1823,7 +1911,7 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 65536,
+        "max_token": 32768,
         "user_input_price_per_million_usd": 0.05,
         "user_output_price_per_million_usd": 0.4
       }
@@ -1855,6 +1943,7 @@
           }
         },
         "context_length": 128000,
+        "max_token": 8192,
         "user_input_price_per_million_usd": 1.6,
         "user_output_price_per_million_usd": 6.4
       }
@@ -1886,7 +1975,7 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 65536,
+        "max_token": 32768,
         "user_input_price_per_million_usd": 0.4,
         "user_output_price_per_million_usd": 1.2
       }
@@ -1918,7 +2007,7 @@
           }
         },
         "context_length": 128000,
-        "max_token": 65536,
+        "max_token": 16384,
         "user_input_price_per_million_usd": 0.05,
         "user_output_price_per_million_usd": 0.2
       }
@@ -2058,6 +2147,7 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/tongyi/910ecf656a5446188c92886ed142ffe6.png",
         "modality_type": "text",
         "context_length": 1000000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 0.03,
         "user_output_price_per_million_usd": 0.4
       }
@@ -2089,6 +2179,7 @@
           }
         },
         "context_length": 1000000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 2.5,
         "user_output_price_per_million_usd": 7.5
       }
@@ -2120,6 +2211,7 @@
           }
         },
         "context_length": 1000000,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 0.4,
         "user_output_price_per_million_usd": 1.6
       }
@@ -2135,7 +2227,7 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/tongyi/910ecf656a5446188c92886ed142ffe6.png",
         "modality_type": "text",
         "context_length": 1000000,
-        "max_token": 16384,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 2,
         "user_output_price_per_million_usd": 6
       }

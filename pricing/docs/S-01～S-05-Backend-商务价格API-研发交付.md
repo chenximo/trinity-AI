@@ -3,36 +3,37 @@
 > **给研发请只看**：[`给研发-Backend交付-2026-08-12.md`](./给研发-Backend交付-2026-08-12.md)（已并入 §P2）  
 > 下文为产品/internal 展开备查。
 
-> **日期**：2026-08-12  
-> **优先级**：P2（排在 C-01 之后）  
+> **日期**：2026-08-12（**2026-08-13 主路径改拍**）  
+> **优先级**：P2（排在 C-01 之后）· **近期只硬推 S-05**；S-01/S-02 Job **P3 后置**  
 > **读者**：Backend 工程师（`TrinityAI-backend`）  
-> **状态**：**未实现** — Admin 前端已接部分契约；当前商务页用 localStorage mock。  
+> **状态**：artifacts 上传/下载 **已有契约**；Admin 前端部分已接；**主路径改为本地生成 + 人确认后上传**，见 [商务价格-本地生成与Cursor人审上传.md](./商务价格-本地生成与Cursor人审上传.md)  
 > **关联**：需求 [`模型供应与定价运营-研发需求清单.md`](./模型供应与定价运营-研发需求清单.md) §5
 
 ---
 
 ## 0. 一句话
 
-商务价格页需要：**线路 snapshot → Job 出 L3b/L3a Excel → 矩阵确认 / 归档 → 下载报表**。  
-算法在 **trinity-AI Python 脚本**里；Backend **只编排 Job + 存产物**，**不写** `/v1/prices`。
+**近期**：本地 Python 出 L3b/L3a → 人审 → `PUT …/commercial/artifacts` → Admin 下载。  
+**后置**：线路 snapshot → Job 出真 draft。Backend **不写** `/v1/prices`。
 
 ---
 
 ## 1. 产品边界（必读）
 
-| 做 | 不做 |
-|----|------|
-| 拉线路同构 snapshot | 重写 L3b/L3a 算法 |
-| 调 Python Job 出 draft xlsx | 自动改线上刊例价 |
-| 存 L3b/L3a 产物 + 矩阵快照 | 用量档自动扣费 / 升档计价 |
-| Admin JWT 鉴权下载 | 把档位列接到计费引擎 |
+| 做（近期） | 不做 / 后置 |
+|------------|-------------|
+| 存 L3b / L3a（对内·外发）产物 + 下载 | 重写 L3b/L3a 算法 |
+| Admin JWT 鉴权上传/下载 | 自动改线上刊例价 |
+| kind+modality 区分两份 L3a | 用量档自动扣费 |
+| | **后置**：`POST commercial/build` 一键出真表 |
 
 **产物真源（我方 CLI 已验）**
 
 | 产物 | 脚本 | 路径 |
 |------|------|------|
-| L3b 对内总册 | `apps/trinity-product/docs/ai-api-platform/commercial-billing/scripts/rebuild_discount_tier_workbook.py` | `pricing/output/商务洽谈折扣总表.xlsx` |
-| L3a 对外报价 | `pricing/scripts/build_outward_quote_standard.py` | `pricing/output/Trinity模型报价表.xlsx` |
+| L3b 对内总册 | `rebuild_discount_tier_workbook.py`（经 `rebuild_workbook_from_live_api.py`） | `pricing/output/商务洽谈折扣总表.xlsx` |
+| L3a 对内完整 | `build_outward_quote_standard.py` | `pricing/output/Trinity模型报价表（内部）.xlsx` |
+| L3a 外发仅折扣 | 同上 | `pricing/output/Trinity模型报价表.xlsx` |
 
 ---
 

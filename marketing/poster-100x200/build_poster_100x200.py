@@ -256,7 +256,7 @@ def build() -> None:
 
     values = [
         ("一个 API，覆盖多类模型能力", "文本对话、AI Coding、图文与视频等多模态统一调用；按场景给出推荐，选型更直接。"),
-        ("开发成本可控：auto 智能路由 + Trinity Memory", "auto 按题路由到更合适、更省的模型（预计约省 50% 开发成本）；Memory 本地建图谱，索引 Token 预计约省 70%。"),
+        ("开发成本可控：auto 智能路由 + Trinity Memory", "auto 按任务路由到更合适、更省的模型；Memory 本地建图谱，减少重复上下文与无效 Token（不承诺固定省钱比例）。"),
         ("企业级团队管控：分区、成员与 API Key", "业务分区、成员权限、批量创建并一键下发 API Key，适配团队规模化使用。"),
         ("AI Coding 一键接入：常用 IDE 快速配置", "安装 Node 与 IDE 后一键写入配置，覆盖 Claude Code / Codex / OpenCode 等。"),
     ]

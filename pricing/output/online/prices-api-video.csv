@@ -1,26 +1,42 @@
 ﻿model,displayName,pricingMode,tierLabel,inputUsd,outputUsd,cacheUsd,cacheCreationUsd,updatedAt
+gemini-omni-flash-preview,Gemini Omni Flash Preview,omni_token_triple,—,,,,,2026-08-04T06:13:22.884017Z
+grok-imagine-video-1.5,Grok Imagine Video 1.5,video_tiered,720p,,,,,2026-08-16T16:00:00Z
 gv-3.1,GV-3.1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 gv-3.1-fast,GV-3.1-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 gv-3.1-litenew,GV-3.1-Lite,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 h2new-1,h2new-1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 hailuo-2.3,Hailuo-2.3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 hailuo-2.3-fast,Hailuo-2.3-Fast,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+happyhorse-1.0,HappyHorse 1.0,video_tiered,720p,,,,,2026-08-06T02:49:18.170072Z
+happyhorse-1.0-video-edit,HappyHorse 1.0 Video Edit,video_tiered,720p,,,,,2026-08-13T16:00:00Z
+happyhorse-1.1,HappyHorse 1.1,video_tiered,720p,,,,,2026-08-04T16:00:00Z
 jv-3.0-pro,Jimeng-3.0-Pro,video_tiered,1080p,,,,,2026-05-20T16:00:00Z
 kling-2.5-turbo,Kling-2.5-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 kling-2.6,Kling-2.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 kling-3,Kling-3.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 kling-3.0-omni,Kling-3.0-Omni,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 kling-o1,Kling-O1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+minimax-h3,MiniMax H3,video_tiered,768p,,,,,2026-08-16T16:00:00Z
 os-2,OS-2.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-pixversenew-c1,PixVerse-c1,video_tiered,768p,,,,,2026-05-20T16:00:00Z
+pixversenew-c1,PixVerse-c1,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 pixversenew-v5.6,PixVerse-v5.6,video_tiered,720p,,,,,2026-05-20T16:00:00Z
 pixversenew-v6.0,PixVerse-v6.0,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-seedance-1.0-pro,Seedance 1.0 Pro,flat,条件计价,,,,,2026-06-09T16:00:00Z
-seedance-1.0-pro-fast,Seedance 1.0 Pro Fast,flat,条件计价,,,,,2026-06-09T16:00:00Z
-seedance-1.5-pro,Seedance 1.5 Pro,video_tiered,含音频,,,,,2026-06-09T16:00:00Z
-vidu-q2,Vidu Q2,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-vidu-q2-pro,Vidu Q2-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-vidu-q2-turbo,Vidu Q2-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-vidu-q3,Vidu Q3,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-vidu-q3-pro,Vidu Q3-Pro,video_tiered,720p,,,,,2026-05-20T16:00:00Z
-vidu-q3-turbo,Vidu Q3-Turbo,video_tiered,720p,,,,,2026-05-20T16:00:00Z
+seedance-2.0-fast-hc-os,Seedance 2.0 Fast HC,video_tiered,480p,,,,,2026-08-10T01:26:49.615822Z
+seedance-2.0-mini-overseas-hc-os,Seedance 2.0 Mini Overseas HC,video_tiered,480p,,,,,2026-08-13T03:57:55.092905Z
+seedance-2.0-os,Seedance 2.0,video_tiered,4k,,,,,2026-08-17T03:50:10.461232Z
+seedance-2.0-overseas-hc-os,Seedance 2.0 Overseas HC,video_tiered,4k,,,,,2026-08-17T03:50:42.256739Z
+veo-3.1,Veo 3.1,video_tiered,720p,,,,,2026-08-09T16:00:00Z
+veo-3.1-fast,Veo 3.1 Fast,video_tiered,720p,,,,,2026-08-09T16:00:00Z
+veo-3.1-lite,Veo 3.1 Lite,video_tiered,720p,,,,,2026-08-09T16:00:00Z
+viduq2,Vidu Q2,video_second_ladder,—,,,,,2026-08-11T16:00:00Z
+viduq2-pro,Vidu Q2 Pro,video_second_ladder,—,,,,,2026-08-11T16:00:00Z
+viduq2-turbo,Vidu Q2 Turbo,video_second_ladder,—,,,,,2026-08-11T16:00:00Z
+viduq3,Vidu Q3,video_tiered,540p,,,,,2026-08-11T16:00:00Z
+viduq3-mix,Vidu Q3 Mix,video_tiered,720p,,,,,2026-08-11T16:00:00Z
+viduq3-pro,Vidu Q3 Pro,video_tiered,540p,,,,,2026-08-11T16:00:00Z
+viduq3-pro-fast,Vidu Q3 Pro Fast,video_tiered,720p,,,,,2026-08-11T16:00:00Z
+viduq3-turbo,Vidu Q3 Turbo,video_tiered,540p,,,,,2026-08-11T16:00:00Z
+wan2.6,Wan 2.6,video_tiered,720p,,,,,2026-08-12T16:00:00Z
+wan2.6-flash,Wan 2.6 Flash,video_tiered,720p,,,,,2026-08-12T16:00:00Z
+wan2.7,Wan 2.7,video_tiered,720p,,,,,2026-08-12T16:00:00Z
+wan2.7-videoedit,Wan 2.7 Video Edit,video_tiered,720p,,,,,2026-08-12T16:00:00Z

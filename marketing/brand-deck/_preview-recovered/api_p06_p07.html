@@ -1,0 +1,182 @@
+    <!-- ========== P06 功能能力（上） ========== -->
+    <section class="slide" id="p06">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI API · 02</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（上）：接入 · 调度 · 容量</h1>
+      <p class="lead">同等模型能力下，价值在<strong>供给、调度与容量形态</strong>——不是改写模型本身。下一页讲计量、治理与交付。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>统一协议与多模态交付</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-flow">
+              <span class="viz-node">应用 / IDE</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-node viz-node--hub">统一网关</span>
+              <span class="viz-arrow">→</span>
+              <div class="viz-stack">
+                <span class="viz-pill">多模型</span>
+                <span class="viz-pill">文 / 图 / 视频</span>
+              </div>
+            </div>
+            <div class="viz-keyline" style="margin-top:0.08in"><span class="viz-key">OpenAI 兼容 · 同一 API Key</span></div>
+          </div>
+          <p>多厂商参数差异在平台侧收敛；生文 / 生图 / 生视频一站式编排。可选 <strong>Auto 智能选模</strong>，在质量、时延与成本间自动权衡。</p>
+          <ul class="feat-bullets">
+            <li>降低多套 SDK、多套鉴权与多套账单的集成成本</li>
+            <li>模型目录与价目统一查询，缩短选型到上线周期</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>多源冗余与智能调度</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-routes">
+              <div class="viz-route viz-route--down">
+                <span class="viz-route-lab">上游链路 A</span>
+                <span class="viz-badge viz-badge--warn">限流 / 抖动</span>
+              </div>
+              <div class="viz-route-switch">负载感知 · 故障转移</div>
+              <div class="viz-route viz-route--up">
+                <span class="viz-route-lab">上游链路 B</span>
+                <span class="viz-badge viz-badge--ok">可用</span>
+              </div>
+            </div>
+          </div>
+          <p>对主流模型构建多源供应：请求按吞吐与容量占用导向更优路径；可恢复异常自动切换，缩短无效等待。</p>
+          <ul class="feat-bullets">
+            <li>限流与持续性故障分层处置，保护整体可用性</li>
+            <li>主路径受限时可按策略过渡至兼容模型，保障业务连续性</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>约定容量，降低共享挤兑</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-cap">
+              <div class="viz-cap-col">
+                <div class="viz-cap-bars viz-cap-bars--crowd">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <span>共享配额（典型）</span>
+              </div>
+              <div class="viz-cap-col">
+                <div class="viz-cap-bars viz-cap-bars--reserve">
+                  <i></i><i></i><i></i>
+                </div>
+                <span>合约级容量思路</span>
+              </div>
+            </div>
+          </div>
+          <p>公开入口多为共享算力池，高峰易排队与限流。Trinity 采用与供应方约定的<strong>容量预留思路</strong>（请求速率 / Token 吞吐），使表现更可规划。</p>
+          <ul class="feat-bullets">
+            <li>面向并发与业务高峰的时延、吞吐预期管理</li>
+            <li>具体额度与保障范围以商务方案为准，不作统一口头承诺</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>接入与区域体验</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-region">
+              <span class="viz-region-node">区域接入</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-region-node viz-region-node--hi">就近调度</span>
+              <span class="viz-arrow">→</span>
+              <span class="viz-region-node">多源路径</span>
+            </div>
+          </div>
+          <p>跨地域访问单一区域入口时，公网绕路会叠加到首 Token 时延。平台在关键区域部署接入与转发，结合就近调度缩短网络路径。</p>
+          <ul class="feat-bullets">
+            <li>服务跨国团队、多地部署与全球化产品的一致性体验</li>
+            <li>与多源路径选择叠加，降低长尾延迟</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI API</span>
+        <span class="sec-tag">功能能力 · 1/2</span>
+      </div>
+    </section>
+
+    <!-- ========== P07 功能能力（下） ========== -->
+    <section class="slide" id="p07">
+      <div class="slide-head">
+        <div class="logo-lockup">
+          <img src="assets/trinity-mark.png" alt="" />
+          <div class="name"><span>TRI</span>NITY</div>
+        </div>
+        <div class="chapter">AI API · 03</div>
+      </div>
+      <h1 class="page-title page-title--sm">功能能力（下）：计量 · 治理 · 交付</h1>
+      <p class="lead">从「能调用」到「可控、可审计、可对账」——企业生产环境默认需要的边界与闭环。</p>
+      <div class="feat-rich">
+        <article class="feat-rich-card">
+          <h3>用量计量与费用可核对</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dash">
+              <div class="viz-meter"><span style="--w:72%"></span><em>请求</em></div>
+              <div class="viz-meter"><span style="--w:48%"></span><em>Token</em></div>
+              <div class="viz-meter"><span style="--w:31%"></span><em>费用</em></div>
+            </div>
+          </div>
+          <p>控制台按工作区 / API Key / 模型查看调用与消耗，与平台计量、扣费同源。计价主叙事为<strong>预充值 + 刊例绝对价</strong>，避免「额度 × 倍率」黑盒。</p>
+          <ul class="feat-bullets">
+            <li>公开价目与命中规则可查；缓存等细粒度用量按模型能力披露</li>
+            <li>用量事件可追溯，支撑财务核对与业务复盘</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>可观测、审计与问题闭环</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-obs">
+              <div class="viz-obs-row"><span>请求追踪</span><span>时延 / 失败归因</span></div>
+              <div class="viz-obs-row viz-obs-row--hi"><span>健康探测</span><span>运维告警</span></div>
+            </div>
+          </div>
+          <p>企业级调用需要能解释、能追溯、能复盘：请求级追踪标识、用量与失败归因、主动健康探测与告警。</p>
+          <ul class="feat-bullets">
+            <li>跨系统联调与排障路径更短</li>
+            <li>异常可被提前发现，而非仅依赖用户投诉</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>安全鉴权与企业治理</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-gov">
+              <div class="viz-gov-root">工作区</div>
+              <div class="viz-gov-row">
+                <span>API Key · 配额</span>
+                <span>成员 · 权限</span>
+              </div>
+              <div class="viz-gov-note">冻结 / 轮换 · 风控 · 费用可见</div>
+            </div>
+          </div>
+          <p>面向生产环境的权限隔离：API Key / 工作区级管控，密钥可冻结与轮换；访问控制与风控策略抑制异常流量。</p>
+          <ul class="feat-bullets">
+            <li>用量与费用可见，便于内部成本分摊与合规留痕</li>
+            <li>传输与密钥托管按安全实践降低凭证泄露面</li>
+          </ul>
+        </article>
+        <article class="feat-rich-card">
+          <h3>开发者体验与交付效率</h3>
+          <div class="feat-viz feat-viz--lg" aria-hidden="true">
+            <div class="viz-dx">
+              <span>Docs / Cookbook</span>
+              <span>IDE 兼容</span>
+              <span>参数校验</span>
+            </div>
+          </div>
+          <p>对接效率同样影响上线速度：文档与示例齐全，主流语言可快速跑通；与常见客户端 / IDE 工具兼容，降低团队切换成本。</p>
+          <ul class="feat-bullets">
+            <li>参数契约前置校验，减少无效请求打到上游再失败</li>
+            <li>运营侧模型、线路与探针能力，支撑主动质量保障</li>
+          </ul>
+        </article>
+      </div>
+      <div class="slide-foot">
+        <span class="brand">Trinity · AI API</span>
+        <span class="sec-tag">功能能力 · 2/2</span>
+      </div>
+    </section>

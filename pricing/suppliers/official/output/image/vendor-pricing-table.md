@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生图）
 
-> 真源：`output/image/vendor-pricing.json` · 抓取 2026-07-10T07:42:38Z · live 0 · seed 20 / 20 · **49 档**
+> 真源：`output/image/vendor-pricing.json` · 抓取 2026-08-18T07:42:30Z · live 0 · seed 20 / 20 · **49 档**
 > 单位：**CNY per image (or per request)**
 
 | # | 厂商 | 原厂模型 ID | 状态 | 抓取 | 档位 | 价格 | 单位 | 价目来源 | 文档 |

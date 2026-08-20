@@ -12,7 +12,48 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google/c386d725687243fcba4cb857279adaa2.png",
         "modality_type": "video",
         "min_user_unit_price_usd": 17.5,
-        "metered_charge_unit": "video_token"
+        "metered_charge_unit": "video_token",
+        "price_display_hint": "flat"
+      }
+    },
+    {
+      "id": "grok-imagine-video-1.5",
+      "object": "model",
+      "created": 1786958251,
+      "owned_by": "xai",
+      "metadata": {
+        "display_name": "Grok Imagine Video 1.5",
+        "origin_vendor_name": "xAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/xai/04e04d66d8ac41f2a8532564b28adc54.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Text-to-video",
+              "Image-to-video",
+              "References",
+              "1080p",
+              "Up to 15s"
+            ],
+            "short_summary": "xAI Grok Imagine Video 1.5: text/image-to-video, up to 15s and 1080p.",
+            "description_long": "Grok Imagine Video 1.5 from xAI supports text-to-video, image-to-video, and multi-image reference guidance. Clips run 1–15 seconds at 480p/720p/1080p (reference-to-video capped at 720p). Suited for ads, product shots, and character-consistent shorts."
+          },
+          "zh": {
+            "feature_tags": [
+              "文生视频",
+              "图生视频",
+              "参考图",
+              "1080p",
+              "最长15秒"
+            ],
+            "short_summary": "xAI Grok Imagine Video 1.5：文生/图生视频，最长 15 秒，最高 1080p。",
+            "description_long": "Grok Imagine Video 1.5 由 xAI 提供，支持文本生视频、图片驱动动画与多参考图引导；时长 1–15 秒，分辨率 480p/720p/1080p（参考生最高 720p）。适合广告分镜、产品展示与角色一致性短片。"
+          }
+        },
+        "min_user_unit_price_usd": 0.08,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -45,7 +86,9 @@
           }
         },
         "min_user_unit_price_usd": 0.2,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -75,7 +118,9 @@
           }
         },
         "min_user_unit_price_usd": 0.1,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -105,7 +150,9 @@
           }
         },
         "min_user_unit_price_usd": 0.05,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -136,7 +183,9 @@
           }
         },
         "min_user_unit_price_usd": 0.1385,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -167,7 +216,9 @@
           }
         },
         "min_user_unit_price_usd": 0.05076923,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -197,7 +248,9 @@
           }
         },
         "min_user_unit_price_usd": 0.03461538,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -235,7 +288,47 @@
           }
         },
         "min_user_unit_price_usd": 0.07,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "happyhorse-1.0-video-edit",
+      "object": "model",
+      "created": 1786679320,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "HappyHorse 1.0 Video Edit",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video edit",
+              "Instruction edit",
+              "Reference image",
+              "Style transfer"
+            ],
+            "short_summary": "HappyHorse 1.0 Video Edit transforms an existing clip with text instructions and optional reference images (style transfer, local replacement) at 720p/1080p.",
+            "description_long": "Provide exactly one input video (MP4/MOV, 3–60s) plus an edit prompt. Optionally add up to five reference images for appearance or style guidance. Output duration matches the input when ≤15s; longer inputs are trimmed to the first 15 seconds. Audio can follow model choice (`audio_setting=auto`) or preserve the original track (`origin`). Billing charges both input and output video seconds at the selected resolution."
+          },
+          "zh": {
+            "feature_tags": [
+              "视频编辑",
+              "指令编辑",
+              "参考图",
+              "风格迁移"
+            ],
+            "short_summary": "HappyHorse 1.0 视频编辑：用文本指令改已有视频，可选参考图；720p/1080p；按输入+输出秒计费。",
+            "description_long": "上传 1 段待编辑视频（MP4/MOV，3～60 秒）并写清编辑指令；可附带最多 5 张参考图做风格或局部替换。输入 ≤15 秒时输出等长；超过 15 秒只取前 15 秒。可用 audio_setting=auto/origin 控制是否保留原声。计费按「输入视频秒 + 输出视频秒」× 分辨率档单价。"
+          }
+        },
+        "min_user_unit_price_usd": 0.14,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -273,7 +366,9 @@
           }
         },
         "min_user_unit_price_usd": 0.07,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -304,7 +399,9 @@
           }
         },
         "min_user_unit_price_usd": 0.15384615,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -334,7 +431,9 @@
           }
         },
         "min_user_unit_price_usd": 0.042,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -364,7 +463,9 @@
           }
         },
         "min_user_unit_price_usd": 0.042,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -395,7 +496,9 @@
           }
         },
         "min_user_unit_price_usd": 0.112,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -425,7 +528,9 @@
           }
         },
         "min_user_unit_price_usd": 0.154,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -455,7 +560,55 @@
           }
         },
         "min_user_unit_price_usd": 0.084,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "minimax-h3",
+      "object": "model",
+      "created": 1786959027,
+      "owned_by": "minimax",
+      "metadata": {
+        "display_name": "MiniMax H3",
+        "origin_vendor_name": "MiniMax",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/minimax/8720acd597c8465a856a5e0708656e73.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Text-to-video",
+              "First/last frame",
+              "Reference image",
+              "Reference video",
+              "Reference audio",
+              "768P",
+              "2K",
+              "4–15s"
+            ],
+            "short_summary": "MiniMax H3: multimodal video — text, first/last frame, and image/video/audio references at 768P/2K, 4–15s.",
+            "description_long": "MiniMax H3 is MiniMax’s general-purpose multimodal video model. It understands text plus image, video, and audio references, and outputs 768P or 2K clips lasting 4–15 seconds at 24 fps. Supports text-to-video, first/last-frame image-to-video, and reference-driven generation for ads, character shorts, and product demos."
+          },
+          "zh": {
+            "feature_tags": [
+              "文生视频",
+              "首尾帧",
+              "参考图",
+              "参考视频",
+              "参考音频",
+              "768P",
+              "2K",
+              "4–15秒"
+            ],
+            "short_summary": "MiniMax H3：多模态视频生成，文生/首尾帧/参考图视频音频，768P 与 2K，4–15 秒。",
+            "description_long": "MiniMax H3 是 MiniMax 推出的通用多模态视频模型，统一理解文本、图像、视频与音频参考，输出 768P 或 2K、时长 4–15 秒（24fps）短片。支持文生视频、首尾帧图生，以及参考图/参考视频/参考音频驱动的一致性创作，适合广告分镜、角色短片与产品演示。"
+          }
+        },
+        "min_user_unit_price_usd": 0.08,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -486,7 +639,9 @@
           }
         },
         "min_user_unit_price_usd": 0.1,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -516,7 +671,9 @@
           }
         },
         "min_user_unit_price_usd": 0.0444,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -547,7 +704,9 @@
           }
         },
         "min_user_unit_price_usd": 0.0392,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
@@ -578,11 +737,91 @@
           }
         },
         "min_user_unit_price_usd": 0.0311,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     },
     {
-      "id": "seedance-2.0",
+      "id": "seedance-2.0-fast-hc-os",
+      "object": "model",
+      "created": 1786325209,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 2.0 Fast HC",
+        "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Fast",
+              "HC",
+              "Text-to-video",
+              "Multimodal ref"
+            ],
+            "short_summary": "Seedance 2.0 Fast HC is the Fast-tier SKU optimized for multimodal reference workflows (especially reference video). Same speed-first 480p/720p, 4–15s creation path as Fast, with stronger reference-media handling for iteration.",
+            "description_long": "Seedance 2.0 Fast HC sits beside Seedance 2.0 Fast for teams that rely on reference images and reference videos while still needing quick turnaround. Generate from text or guide shots with multimodal references at 480p/720p and 4–15 second durations. Compared with standard Fast, HC is the recommended choice when reference video is part of the creative loop—previews, A/B tests, and draft pipelines that must stay consistent with uploaded media. Optional native audio remains available for sound-on drafts. Use standard Fast for prompt-only speed runs; choose Fast HC when references matter."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "快速",
+              "HC",
+              "文生视频",
+              "多模态参考"
+            ],
+            "short_summary": "Seedance 2.0 Fast HC 是面向多模态参考（尤其参考视频）优化的 Fast 档型号；同样强调出片速度，480p/720p、时长 4～15 秒，更适合带参考素材的快速迭代。",
+            "description_long": "Seedance 2.0 Fast HC 与 Seedance 2.0 Fast 同属快速档，但更适合需要参考图、参考视频约束画面的创作。支持文生与多模态参考生；分辨率 480p/720p；时长 4～15 秒。相对标准 Fast，当你的流程依赖上传参考视频做预览、A/B 或连续打样时，优先选 HC。仍可选用原生配音做带声预览。纯文案追速度可用标准 Fast；有参考素材时推荐 Fast HC。"
+          }
+        },
+        "min_user_unit_price_usd": 3.3,
+        "metered_charge_unit": "video_token",
+        "price_display_hint": "flat"
+      }
+    },
+    {
+      "id": "seedance-2.0-mini-overseas-hc-os",
+      "object": "model",
+      "created": 1786593475,
+      "owned_by": "bytedance",
+      "metadata": {
+        "display_name": "Seedance 2.0 Mini Overseas HC",
+        "origin_vendor_name": "ByteDance",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video gen",
+              "Mini",
+              "Text-to-video",
+              "Reference",
+              "480p/720p"
+            ],
+            "short_summary": "ByteDance Seedance 2.0 Mini — lower-cost Seedance 2.0 tier for text/image/multimodal video at 480p/720p.",
+            "description_long": "Seedance 2.0 Mini is the cost-oriented sibling of Seedance 2.0. It keeps text-to-video and reference-guided workflows while capping output at 480p/720p, suited for high-volume drafts and budget-sensitive pipelines. Use standard Seedance 2.0 for 1080p/4K."
+          },
+          "zh": {
+            "feature_tags": [
+              "生视频",
+              "Mini",
+              "文生视频",
+              "参考生",
+              "480p/720p"
+            ],
+            "short_summary": "字节跳动 Seedance 2.0 Mini：同系列低成本档，支持文生/图生与多模态参考，输出 480p/720p。",
+            "description_long": "Seedance 2.0 Mini 是 Seedance 2.0 家族的成本优先变体，保留文生视频、参考图与参考视频等创作入口，分辨率上限为 720p，适合高并发预览、批量草稿与预算敏感流水线；需要 1080p/4K 时请改用标准版。"
+          }
+        },
+        "min_user_unit_price_usd": 2.1,
+        "metered_charge_unit": "video_token",
+        "price_display_hint": "flat"
+      }
+    },
+    {
+      "id": "seedance-2.0-os",
       "object": "model",
       "created": 1783407211,
       "owned_by": "bytedance",
@@ -615,55 +854,18 @@
             "description_long": "Seedance 2.0 面向需要更强可控性的短视频制作。支持纯文案起镜；用一张首帧起幅动画化；用首尾帧锁定开场与落幅；也可用最多 9 张参考图、3 段参考视频与 3 段参考音频共同约束画面与节奏（参考音频不可单独使用）。分辨率可选 480p、720p、1080p；时长 4～15 秒整数档（默认 5 秒）。宽高比覆盖常见横竖屏与电影画幅，首尾帧场景可按需使用自适应构图。可选开启原生配音，一次生成画面与声轨。适合广告成片、品牌短片、分镜预演、角色连续性试验与社交媒体素材等，尤其适合既要运动真实、又要参考素材可控的创作流程。"
           }
         },
-        "min_user_unit_price_usd": 3.86206897,
-        "metered_charge_unit": "video_token"
+        "min_user_unit_price_usd": 2.4,
+        "metered_charge_unit": "video_token",
+        "price_display_hint": "flat"
       }
     },
     {
-      "id": "seedance-2.0-fast",
+      "id": "seedance-2.0-overseas-hc-os",
       "object": "model",
-      "created": 1783420857,
+      "created": 1786325209,
       "owned_by": "bytedance",
       "metadata": {
-        "display_name": "Seedance 2.0 Fast",
-        "origin_vendor_name": "ByteDance",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen",
-              "Fast",
-              "Text-to-video",
-              "Image-to-video",
-              "Multimodal ref"
-            ],
-            "short_summary": "Seedance 2.0 Fast prioritizes turnaround speed while keeping the Seedance 2.0 creation modes: text-to-video, first/last-frame control, and multimodal references. Optimized for rapid preview and iteration at 480p/720p, 4–15s.",
-            "description_long": "Seedance 2.0 Fast is the speed-oriented sibling of Seedance 2.0. It keeps the same creative entry points—prompt-only generation, first-frame and first-last-frame image-to-video, plus multimodal image/video/audio references—so teams can draft shots quickly and refine later on the standard tier when needed. Resolutions are 480p and 720p (1080p is reserved for the standard model). Duration supports 4–15 seconds. Optional native audio remains available for quick sound-on drafts. Best for storyboard loops, pitch drafts, A/B creative tests, and high-volume preview pipelines where latency matters more than maximum resolution."
-          },
-          "zh": {
-            "feature_tags": [
-              "生视频",
-              "高速",
-              "文生视频",
-              "图生视频",
-              "多模态参考"
-            ],
-            "short_summary": "Seedance 2.0 Fast 在保留 2.0 创作路径的同时优先出片速度：文生、首帧/首尾帧与多模态参考生；适合快速预览与迭代；480p/720p，时长 4～15 秒。",
-            "description_long": "Seedance 2.0 Fast 是 Seedance 2.0 的高速版本。创作入口与标准版一致：纯文生、首帧/首尾帧图生，以及图·视频·音频多模态参考，方便先快速出草稿，再按需切回标准版冲高画质。分辨率支持 480p、720p（1080p 留给标准版）；时长 4～15 秒。可按需开启原生配音，快速得到带声预览。适合分镜轮询、提案草稿、创意 A/B 与大批量预览链路，在时延敏感场景下优先保证迭代效率。"
-          }
-        },
-        "min_user_unit_price_usd": 3.3847,
-        "metered_charge_unit": "video_token"
-      }
-    },
-    {
-      "id": "seedance-2.0-overseas",
-      "object": "model",
-      "created": 1785898377,
-      "owned_by": "bytedance",
-      "metadata": {
-        "display_name": "Seedance 2.0 Overseas",
+        "display_name": "Seedance 2.0 Overseas HC",
         "origin_vendor_name": "ByteDance",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/bytedance/1a5a5d42a3f84e668e5c1aefc3ea8173.png",
         "modality_type": "video",
@@ -672,33 +874,160 @@
             "feature_tags": [
               "Video gen",
               "Overseas",
+              "HC",
               "Text-to-video",
-              "Multimodal ref",
-              "Native audio"
+              "Multimodal ref"
             ],
-            "short_summary": "Seedance 2.0 Overseas is the overseas-oriented Seedance 2.0 SKU: text-to-video, frame-guided image-to-video, and multimodal references with cinematic motion and optional native audio at 480p/720p/1080p for 4–15s clips.",
-            "description_long": "Seedance 2.0 Overseas mirrors the Seedance 2.0 creative toolkit for teams serving overseas audiences and international campaigns. Generate from text; drive shots with first-frame or first-last-frame images; or condition with multimodal references (images, videos, and optional audio alongside visuals). Supports 480p/720p/1080p and 4–15 second durations, with common aspect ratios and adaptive framing for frame-guided workflows. Optional native audio helps deliver sound-on creatives in one pass. Use it for global ads, localized social content, brand films, and previz that need the same multimodal control as Seedance 2.0 with an overseas-facing SKU."
+            "short_summary": "Seedance 2.0 Overseas HC is the overseas Full-tier SKU tuned for multimodal reference workflows (images and reference video), with cinematic motion and optional native audio at 480p/720p/1080p for 4–15s clips.",
+            "description_long": "Seedance 2.0 Overseas HC delivers the overseas Full creative toolkit with emphasis on reliable multimodal conditioning—text-to-video plus image and reference-video guidance for international campaigns. Supports 480p/720p/1080p and 4–15 second durations, common aspect ratios, and optional native audio in one pass. Choose Overseas HC when reference media (especially video) drives the shot; use standard Overseas when you mainly need prompt-only or lighter references on the same overseas Full tier."
           },
           "zh": {
             "feature_tags": [
               "生视频",
               "海外向",
+              "HC",
               "文生视频",
-              "多模态参考",
-              "原生配音"
+              "多模态参考"
             ],
-            "short_summary": "Seedance 2.0 Overseas 为面向海外场景的 Seedance 2.0 型号：文生、帧引导图生与多模态参考生，电影感运动与可选原生配音；480p/720p/1080p，时长 4～15 秒。",
-            "description_long": "Seedance 2.0 Overseas 提供与 Seedance 2.0 同族的创作能力，面向海外受众与国际化投放素材。支持纯文生、首帧/首尾帧引导，以及图·视频·音频多模态参考约束。分辨率 480p/720p/1080p；时长 4～15 秒；宽高比覆盖常见社交与电影画幅，帧引导场景可使用自适应构图。可选原生配音，便于一次产出带声成片或预览。适合全球化广告、本地化社媒内容、品牌短片与分镜预演等，在需要海外向型号时保持与 Seedance 2.0 一致的多模态可控体验。"
+            "short_summary": "Seedance 2.0 Overseas HC 为海外向 Full 档、针对多模态参考（含参考视频）优化的型号；电影感运动、可选原生配音；480p/720p/1080p，时长 4～15 秒。",
+            "description_long": "Seedance 2.0 Overseas HC 面向海外投放与国际化内容制作，在 Full 档能力上强化多模态参考可控性：文生之外，可用参考图与参考视频约束镜头。分辨率 480p/720p/1080p；时长 4～15 秒；覆盖常见画幅；可选原生配音一次成片。当创作依赖参考视频等素材时优先选 Overseas HC；以纯文案或轻量参考为主时可用标准 Overseas。"
           }
         },
-        "min_user_unit_price_usd": 3.86206897,
-        "metered_charge_unit": "video_token"
+        "min_user_unit_price_usd": 2.4,
+        "metered_charge_unit": "video_token",
+        "price_display_hint": "flat"
       }
     },
     {
-      "id": "vidu-q2",
+      "id": "veo-3.1",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786359382,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Veo 3.1",
+        "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Flagship",
+              "4K",
+              "Text-to-video",
+              "Image-to-video",
+              "Native audio",
+              "Reference images",
+              "First/last frame"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 flagship video model with cinematic quality, realistic physics, and native audio-visual sync—built for high-end production.",
+            "description_long": "Veo 3.1 is developed by Google DeepMind as a flagship video generation model for professional creative work. It supports text-to-video and image-to-video, can use reference images to keep characters or objects consistent, and can bridge first and last frames for controlled transitions. Output reaches up to 4K with 16:9 and 9:16 aspect ratios. Strong prompt adherence, real-world physics, and cinematic camera language—plus natively matched ambient sound, effects, and dialogue—make it well suited to ads, short-form storytelling, brand visuals, and film previz."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰",
+              "4K",
+              "文生视频",
+              "图生视频",
+              "原生音频",
+              "参考图",
+              "首尾帧"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 旗舰生视频模型，强调电影级画质、物理真实感与原生音画同步，适合高质量成片创作。",
+            "description_long": "Veo 3.1 由 Google DeepMind 研发，是面向专业创作的旗舰视频生成模型。支持文生视频与图生视频，可结合参考图保持角色/物体一致性，并用首尾帧控制镜头过渡；输出最高可达 4K，支持 16:9 与 9:16。模型在提示遵循、真实世界物理与镜头语言上表现突出，并可生成与画面匹配的环境音、音效乃至对白，适合广告成片、短剧叙事、品牌视觉与影视预演等高要求场景。"
+          }
+        },
+        "min_user_unit_price_usd": 0.4,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "veo-3.1-fast",
+      "object": "model",
+      "created": 1786359382,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Veo 3.1 Fast",
+        "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Fast",
+              "Text-to-video",
+              "Image-to-video",
+              "Native audio",
+              "Reference images",
+              "High volume"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 Fast—Veo-class quality and audio with lower latency for rapid iteration and high-volume production.",
+            "description_long": "Veo 3.1 Fast is developed by Google DeepMind as the speed-oriented tier in the Veo 3.1 family. It still supports text-to-video, image-to-video, reference-guided generation, and first/last-frame transitions, with native audio-visual sync—while cutting wait time. Quality stays close to the flagship tier, making it a strong fit for social content, ad creative drafts, campaign batching, and prompt-iteration workflows."
+          },
+          "zh": {
+            "feature_tags": [
+              "快速",
+              "文生视频",
+              "图生视频",
+              "原生音频",
+              "参考图",
+              "批量生产"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 Fast：在 Veo 画质与音画能力基础上优化速度，适合快速迭代与批量内容生产。",
+            "description_long": "Veo 3.1 Fast 由 Google DeepMind 研发，是 Veo 3.1 系列的速度优先档。同样支持文生视频、图生视频、参考图引导与首尾帧过渡，并具备原生音画同步能力，同时显著缩短生成等待时间。画质贴近旗舰档，更适合社交媒体素材、广告创意试拍、运营活动批量出片，以及需要多轮提示词打磨的创作流程。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "veo-3.1-lite",
+      "object": "model",
+      "created": 1786359382,
+      "owned_by": "google deepMind",
+      "metadata": {
+        "display_name": "Veo 3.1 Lite",
+        "origin_vendor_name": "Google DeepMind",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Lite",
+              "Cost-efficient",
+              "Text-to-video",
+              "Image-to-video",
+              "Native audio"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 Lite—a lighter, more cost-efficient Veo tier for everyday text/image-to-video with native audio.",
+            "description_long": "Veo 3.1 Lite is developed by Google DeepMind as the cost- and efficiency-oriented tier in the Veo 3.1 family. Built for everyday short-form video, creative drafts, and high-volume experimentation, it supports text-to-video and image-to-video with native audio-visual sync, at 720p/1080p and landscape or portrait ratios. Versus the flagship and Fast tiers, it prioritizes solid production quality at a friendlier unit cost—ideal for content ops, education demos, and lightweight marketing assets."
+          },
+          "zh": {
+            "feature_tags": [
+              "轻量",
+              "高性价比",
+              "文生视频",
+              "图生视频",
+              "原生音频"
+            ],
+            "short_summary": "Google DeepMind Veo 3.1 Lite：更轻量、更经济的 Veo 生视频档位，覆盖主流文生/图生与原生音频需求。",
+            "description_long": "Veo 3.1 Lite 由 Google DeepMind 研发，是 Veo 3.1 系列中偏成本与效率的档位。面向日常短视频、创意草稿与规模化试错场景，支持文生视频与图生视频，并提供原生音画同步；输出覆盖 720p/1080p 与横竖屏比例。相比旗舰与 Fast 档，更强调「够用的成片质量 + 更友好的单位成本」，适合内容运营、教育演示与轻量营销素材。"
+          }
+        },
+        "min_user_unit_price_usd": 0.05,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "viduq2",
+      "object": "model",
+      "created": 1786516014,
       "owned_by": "shengshu technology",
       "metadata": {
         "display_name": "Vidu Q2",
@@ -708,87 +1037,113 @@
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen"
+              "Text-to-video",
+              "Reference-to-video",
+              "Motion",
+              "Detail"
             ],
-            "short_summary": "Shengshu Technology Vidu-q2 video model.",
-            "description_long": "Shengshu Technology Vidu-q2 video model. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q2: strong motion and detail; text-to-video and reference-to-video up to ~10s.",
+            "description_long": "Shengshu Technology Vidu Q2 emphasizes motion and emotional expression via text-to-video and reference-to-video (1–7 images), 540p–1080p, 1–10s. Good for narrative T2V and subject-consistent R2V."
           },
           "zh": {
             "feature_tags": [
-              "通用对话"
+              "文生视频",
+              "参考生视频",
+              "动态表现",
+              "细节丰富"
             ],
-            "short_summary": "生数科技 Vidu-q2 video 模型。",
-            "description_long": "生数科技 Vidu-q2 video 模型。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q2：强调动态表现与细节，支持文生视频与参考生视频，最长约 10 秒。",
+            "description_long": "生数科技 Vidu Q2 主打动态与情绪表现，支持文生视频与参考生视频（1–7 图），分辨率 540p–1080p，时长 1–10 秒。适合叙事向文生与主体一致性参考生成。"
           }
         },
-        "min_user_unit_price_usd": 0.02461538,
-        "metered_charge_unit": "video_second"
+        "min_user_unit_price_usd": 0.05,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "text_to_video"
       }
     },
     {
-      "id": "vidu-q2-pro",
+      "id": "viduq2-pro",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786516014,
       "owned_by": "shengshu technology",
       "metadata": {
-        "display_name": "Vidu Q2-Pro",
+        "display_name": "Vidu Q2 Pro",
         "origin_vendor_name": "Shengshu Technology",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen"
+              "Aesthetics",
+              "Image-to-video",
+              "Start-end",
+              "Video reference",
+              "Video edit"
             ],
-            "short_summary": "Shengshu Technology Vidu Q2 Pro professional video generation model, enhanced in quality, detail, and motion control, supporting more complex scenes and cinematographic expression.",
-            "description_long": "Shengshu Technology Vidu Q2 Pro professional video generation model, enhanced in quality, detail, and motion control, supporting more complex scenes and cinematographic expression. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q2 Pro: aesthetics-first I2V/start-end plus reference-to-video with video reference/edit.",
+            "description_long": "Shengshu Technology Vidu Q2 Pro targets higher visual quality with I2V and start-end, plus reference-to-video including video reference/edit. Resolutions 540p–1080p; typically up to ~10s. Optional BGM/audio per API rules."
           },
           "zh": {
             "feature_tags": [
-              "通用对话"
+              "强美学",
+              "图生视频",
+              "首尾帧",
+              "参考视频",
+              "视频编辑"
             ],
-            "short_summary": "生数科技 Vidu Q2 Pro 专业视频生成模型，在画质、细节和运动控制方面增强，支持更复杂的场景和镜头表达。",
-            "description_long": "生数科技 Vidu Q2 Pro 专业视频生成模型，在画质、细节和运动控制方面增强，支持更复杂的场景和镜头表达。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q2 Pro：强调视觉美学，支持图生/首尾帧与参考生（含视频参考与编辑能力）。",
+            "description_long": "生数科技 Vidu Q2 Pro 面向更高视觉品质的短视频生成，支持图生视频与首尾帧，并在参考生中支持视频参考/编辑与替换。分辨率 540p–1080p，主时长约 1–10 秒。可叠加 BGM 与 audio 直出（规则因时长/型号而异）。"
           }
         },
-        "min_user_unit_price_usd": 0.02692308,
-        "metered_charge_unit": "video_second"
+        "min_user_unit_price_usd": 0.04,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "from",
+        "min_price_mode_bucket": "image_first_last"
       }
     },
     {
-      "id": "vidu-q2-turbo",
+      "id": "viduq2-turbo",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786516014,
       "owned_by": "shengshu technology",
       "metadata": {
-        "display_name": "Vidu Q2-Turbo",
+        "display_name": "Vidu Q2 Turbo",
         "origin_vendor_name": "Shengshu Technology",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen"
+              "Fast gen",
+              "Image-to-video",
+              "Start-end",
+              "Cost-efficient"
             ],
-            "short_summary": "Shengshu Technology Vidu Q2 Turbo fast video generation model, optimizing inference speed while balancing quality and efficiency, suitable for rapid creation and batch production.",
-            "description_long": "Shengshu Technology Vidu Q2 Turbo fast video generation model, optimizing inference speed while balancing quality and efficiency, suitable for rapid creation and batch production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q2 Turbo: fast Q2 for image-to-video and start-end with lower latency/cost.",
+            "description_long": "Shengshu Technology Vidu Q2 Turbo is the fast Q2 variant for I2V and start-end at 540p–1080p (about 1–10s; start-end up to ~8s). Built for cost- and throughput-sensitive image-driven pipelines."
           },
           "zh": {
             "feature_tags": [
-              "推理"
+              "高速生成",
+              "图生视频",
+              "首尾帧",
+              "性价比"
             ],
-            "short_summary": "生数科技 Vidu Q2 Turbo 快速视频生成模型，优化推理速度，兼顾画质和生成效率，适合快速创作和批量生产。",
-            "description_long": "生数科技 Vidu Q2 Turbo 快速视频生成模型，优化推理速度，兼顾画质和生成效率，适合快速创作和批量生产。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q2 Turbo：Q2 快速型号，专注图生视频与首尾帧，生成更快、积分更省。",
+            "description_long": "生数科技 Vidu Q2 Turbo 是 Q2 系列的快速变体，支持图生视频与首尾帧，分辨率 540p–1080p，时长约 1–10 秒（首尾帧最长约 8 秒）。适合对成本与吞吐敏感的图驱动视频流水线。"
           }
         },
-        "min_user_unit_price_usd": 0.03615385,
-        "metered_charge_unit": "video_second"
+        "min_user_unit_price_usd": 0.03,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "image_first_last"
       }
     },
     {
-      "id": "vidu-q3",
+      "id": "viduq3",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786516014,
       "owned_by": "shengshu technology",
       "metadata": {
         "display_name": "Vidu Q3",
@@ -798,82 +1153,355 @@
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen"
+              "Reference-to-video",
+              "Subject consistency",
+              "A/V sync",
+              "Smart cuts",
+              "Multi-shot"
             ],
-            "short_summary": "Shengshu Technology Vidu Q3 next-generation video generation model, capable of generating 16-second 1080P videos with audio, reaching world-class levels in quality, consistency, and professional film production.",
-            "description_long": "Shengshu Technology Vidu Q3 next-generation video generation model, capable of generating 16-second 1080P videos with audio, reaching world-class levels in quality, consistency, and professional film production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q3: reference-to-video workhorse with stronger subject consistency and multi-shot A/V sync.",
+            "description_long": "Shengshu Technology Vidu Q3 focuses on reference-to-video and cross-shot consistency, with smart scene cuts and A/V sync. Use subjects or multi-image references; 540p–1080p, about 3–16s. Best when character/product identity must hold across shots."
           },
           "zh": {
             "feature_tags": [
-              "通用对话"
+              "参考生视频",
+              "主体一致性",
+              "音画同步",
+              "智能分镜",
+              "多机位"
             ],
-            "short_summary": "生数科技 Vidu Q3 新一代视频生成模型，可生成长达 16 秒 1080P 带音频视频，在画质、一致性和专业级影视制作方面达到国际顶尖水平。",
-            "description_long": "生数科技 Vidu Q3 新一代视频生成模型，可生成长达 16 秒 1080P 带音频视频，在画质、一致性和专业级影视制作方面达到国际顶尖水平。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q3：参考生视频主力型号，强化主体一致性与多机位表现，支持音画同步与智能分镜。",
+            "description_long": "生数科技 Vidu Q3 侧重参考生视频与跨镜头一致性，支持智能分镜与音画同步输出。可通过 subjects 实体库或 images 多图参考生成；分辨率 540p/720p/1080p，时长约 3–16 秒。适合角色/产品一致性要求高的叙事短片。"
           }
         },
-        "min_user_unit_price_usd": 0.025,
-        "metered_charge_unit": "video_second"
+        "min_user_unit_price_usd": 0.0339,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "reference"
       }
     },
     {
-      "id": "vidu-q3-pro",
+      "id": "viduq3-mix",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786517331,
       "owned_by": "shengshu technology",
       "metadata": {
-        "display_name": "Vidu Q3-Pro",
+        "display_name": "Vidu Q3 Mix",
         "origin_vendor_name": "Shengshu Technology",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen",
-              "Flagship"
+              "Reference-to-video",
+              "A/V sync",
+              "Smart cuts",
+              "Balanced aesthetics",
+              "Consistency"
             ],
-            "short_summary": "Shengshu Technology Vidu Q3 Pro flagship professional video generation model, optimized for professional film production with industry-leading quality, cinematography, and creative controllability.",
-            "description_long": "Shengshu Technology Vidu Q3 Pro flagship professional video generation model, optimized for professional film production with industry-leading quality, cinematography, and creative controllability. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q3 Mix: balanced aesthetics/consistency reference-to-video with A/V sync and smart cuts up to 16s.",
+            "description_long": "Shengshu Technology Vidu Q3 Mix targets general reference-to-video with balanced quality, consistency, and aesthetics, plus smart cuts and A/V sync. R2V via images (1–7) only; subjects are temporarily unsupported. No T2V/I2V/start-end or video references. Resolutions 720p/1080p per API/pricing; duration 1–16s. Off-peak is not supported per Pricing."
           },
           "zh": {
             "feature_tags": [
-              "旗舰"
+              "参考生视频",
+              "音画同步",
+              "智能分镜",
+              "均衡美学",
+              "主体一致性"
             ],
-            "short_summary": "生数科技 Vidu Q3 Pro 旗舰专业视频生成模型，面向专业影视制作优化，在画质、镜头语言和创作可控性方面达到行业领先水平。",
-            "description_long": "生数科技 Vidu Q3 Pro 旗舰专业视频生成模型，面向专业影视制作优化，在画质、镜头语言和创作可控性方面达到行业领先水平。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q3 Mix：均衡美学与一致性的参考生视频型号，支持音画同步与智能分镜，最长 16 秒。",
+            "description_long": "生数科技 Vidu Q3 Mix 面向通用参考生场景，强调整体均衡、一致性与美学，支持智能分镜与音画同步。仅支持参考生视频（images 1–7），文档注明暂不支持 subjects 实体库；不支持文生/图生/首尾帧与参考视频。分辨率以官网 API/定价为准为 720p/1080p，时长 1–16 秒。定价页写明本型号不支持错峰。"
           }
         },
-        "min_user_unit_price_usd": 0.05,
-        "metered_charge_unit": "video_second"
+        "min_user_unit_price_usd": 0.1154,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "reference"
       }
     },
     {
-      "id": "vidu-q3-turbo",
+      "id": "viduq3-pro",
       "object": "model",
-      "created": 1779421570,
+      "created": 1786516014,
       "owned_by": "shengshu technology",
       "metadata": {
-        "display_name": "Vidu Q3-Turbo",
+        "display_name": "Vidu Q3 Pro",
         "origin_vendor_name": "Shengshu Technology",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
         "modality_type": "video",
         "copy_i18n": {
           "en": {
             "feature_tags": [
-              "Video gen"
+              "A/V sync",
+              "Smart cuts",
+              "Image-to-video",
+              "Text-to-video",
+              "Start-end"
             ],
-            "short_summary": "Shengshu Technology Vidu Q3 Turbo fast video generation model, significantly boosting generation speed while preserving Q3 core quality, suitable for high-efficiency video production.",
-            "description_long": "Shengshu Technology Vidu Q3 Turbo fast video generation model, significantly boosting generation speed while preserving Q3 core quality, suitable for high-efficiency video production. Developed by Shengshu Technology; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
+            "short_summary": "Shengshu Technology Vidu Q3 Pro: flagship video model with A/V sync and smart scene cuts; I2V/T2V/start-end up to 16s at 1080p.",
+            "description_long": "Shengshu Technology Vidu Q3 Pro targets professional short-form and cinematic storytelling. It supports image-to-video, text-to-video, and start-end generation with native audio-video output (dialogue and SFX) and smart scene cuts. Resolutions: 540p/720p/1080p; duration 1–16s; 24fps. Ideal when quality and controllability matter; billed in credits with optional off-peak pricing."
           },
           "zh": {
             "feature_tags": [
-              "通用对话"
+              "音画同步",
+              "智能分镜",
+              "图生视频",
+              "文生视频",
+              "首尾帧"
             ],
-            "short_summary": "生数科技 Vidu Q3 Turbo 快速视频生成模型，在保持 Q3 核心画质的同时大幅提升生成速度，适合高效率视频生产。",
-            "description_long": "生数科技 Vidu Q3 Turbo 快速视频生成模型，在保持 Q3 核心画质的同时大幅提升生成速度，适合高效率视频生产。 由生数科技研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+            "short_summary": "生数科技 Vidu Q3 Pro 旗舰视频模型：音画同步、智能分镜，支持图生/文生/首尾帧，最长 16 秒、最高 1080p。",
+            "description_long": "生数科技 Vidu Q3 Pro 面向专业短视频与镜头叙事，支持图生视频、文生视频与首尾帧生成，默认开启音画直出（对话与音效），并具备智能分镜能力。分辨率可选 540p/720p/1080p，时长 1–16 秒，帧率 24fps。适合对画质与可控性要求更高的成片生产；可按定价页选择峰时/错峰积分计费。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0477,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "viduq3-pro-fast",
+      "object": "model",
+      "created": 1786517331,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q3 Pro Fast",
+        "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Fast gen",
+              "A/V sync",
+              "Image-to-video",
+              "Cost-efficient",
+              "Pro Fast"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q3 Pro Fast: faster lower-credit Q3 Pro image-to-video with A/V sync up to 16s at 1080p.",
+            "description_long": "Shengshu Technology Vidu Q3 Pro Fast targets high-throughput image-to-video: faster and cheaper than Q3 Pro while keeping native A/V output. I2V only (img2video); 720p/1080p; 1–16s. No T2V, start-end, or reference-to-video. Best for batch first-frame pipelines."
+          },
+          "zh": {
+            "feature_tags": [
+              "高速生成",
+              "音画同步",
+              "图生视频",
+              "性价比",
+              "Pro Fast"
+            ],
+            "short_summary": "生数科技 Vidu Q3 Pro Fast：更快更省的 Q3 Pro 图生视频型号，支持音画同步，最长 16 秒、最高 1080p。",
+            "description_long": "生数科技 Vidu Q3 Pro Fast 面向高吞吐图生视频：相对 Q3 Pro 更快、积分更省，仍支持音画直出。仅支持图生视频（img2video），分辨率 720p/1080p，时长 1–16 秒。不支持文生、首尾帧与参考生。适合大批量首帧驱动成片。"
+          }
+        },
+        "min_user_unit_price_usd": 0.0585,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "image_to_video"
+      }
+    },
+    {
+      "id": "viduq3-turbo",
+      "object": "model",
+      "created": 1786516014,
+      "owned_by": "shengshu technology",
+      "metadata": {
+        "display_name": "Vidu Q3 Turbo",
+        "origin_vendor_name": "Shengshu Technology",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/shengshu_technology/a4b344dd61924bbd8645933bbccbe2e6.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Fast gen",
+              "A/V sync",
+              "Reference-to-video",
+              "Smart cuts",
+              "Cost-efficient"
+            ],
+            "short_summary": "Shengshu Technology Vidu Q3 Turbo: faster, lower-credit Q3 with I2V/T2V/start-end and reference-to-video.",
+            "description_long": "Shengshu Technology Vidu Q3 Turbo prioritizes speed and cost while keeping A/V sync and smart scene cuts. Supports I2V, T2V, start-end, and reference-to-video at 540p–1080p (typically 1–16s; R2V 3–16s). Suited for high-throughput production."
+          },
+          "zh": {
+            "feature_tags": [
+              "高速生成",
+              "音画同步",
+              "参考生视频",
+              "智能分镜",
+              "性价比"
+            ],
+            "short_summary": "生数科技 Vidu Q3 Turbo：在 Q3 能力上更快、更省积分，支持图生/文生/首尾帧与参考生视频。",
+            "description_long": "生数科技 Vidu Q3 Turbo 强调生成速度与性价比，仍支持音画同步与智能分镜。覆盖图生视频、文生视频、首尾帧与参考生视频；分辨率 540p/720p/1080p，主时长 1–16 秒（参考生 3–16 秒）。适合批量生产与对延迟敏感的业务。"
           }
         },
         "min_user_unit_price_usd": 0.02,
-        "metered_charge_unit": "video_second"
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "from",
+        "min_price_mode_bucket": "reference"
+      }
+    },
+    {
+      "id": "wan2.6",
+      "object": "model",
+      "created": 1786588302,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "Wan 2.6",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Multi-shot",
+              "Native audio",
+              "Text-to-video",
+              "Image-to-video",
+              "Reference-to-video"
+            ],
+            "short_summary": "Alibaba Tongyi Wan 2.6 video series with audio-synced text/image/reference generation and multi-shot narrative, up to ~15s.",
+            "description_long": "Wan 2.6 from Alibaba’s Tongyi Wan family builds on 2.5 with stronger multi-shot storytelling and audio-visual sync. It covers text-to-video, image-to-video, and reference-to-video, with auto dubbing or custom audio. Outputs 720P/1080P clips for roughly 2–15 seconds."
+          },
+          "zh": {
+            "feature_tags": [
+              "多镜头",
+              "有声视频",
+              "文生视频",
+              "图生视频",
+              "参考生视频"
+            ],
+            "short_summary": "通义万相 Wan 2.6 生视频系列，支持有声文生/图生与参考生视频，以及多镜头叙事，最长约 15 秒。",
+            "description_long": "Wan 2.6 由阿里通义万相研发，强化多镜头叙事与声画同步，提供文生、图生与参考生能力。可自动配音或传入自定义音频；多镜头需开启智能改写并指定多镜头模式。输出 720P/1080P、约 2～15 秒。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "wan2.6-flash",
+      "object": "model",
+      "created": 1786588302,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "Wan 2.6 Flash",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Flash",
+              "Faster",
+              "Optional audio",
+              "Image-to-video",
+              "Reference-to-video",
+              "Lower cost"
+            ],
+            "short_summary": "Alibaba Tongyi Wan 2.6 Flash—faster, lower-cost image/reference-to-video with optional silent output.",
+            "description_long": "Wan 2.6 Flash is built for quicker, cheaper image-to-video and reference-to-video workflows versus standard 2.6. Audio can be enabled or disabled (priced differently). Outputs 720P/1080P clips suited to rapid iteration and short marketing creatives."
+          },
+          "zh": {
+            "feature_tags": [
+              "Flash",
+              "加速",
+              "有声可选",
+              "图生视频",
+              "参考生视频",
+              "更省"
+            ],
+            "short_summary": "通义万相 Wan 2.6 Flash 加速生视频，图生/参考生更快更省，支持有声与无声分档。",
+            "description_long": "Wan 2.6 Flash 面向需要更快出片、控制成本的图生与参考生场景。相对标准 2.6 更轻量；可选择有声或无声（价格不同）。输出 720P/1080P，适合高频试片与短营销素材。"
+          }
+        },
+        "min_user_unit_price_usd": 0.05,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "wan2.7",
+      "object": "model",
+      "created": 1786588302,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "Wan 2.7",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Multi-shot",
+              "Native audio",
+              "First/last frame",
+              "Video continuation",
+              "Reference-to-video",
+              "1080P"
+            ],
+            "short_summary": "Alibaba Tongyi Wan 2.7 video series with stronger performance and multi-shot storytelling—text, first/last-frame, audio-driven, and reference-to-video up to ~15s.",
+            "description_long": "Wan 2.7 from Alibaba’s Tongyi Wan family targets short-form and cinematic storytelling. Text-to-video supports natural-language shot structure; image-to-video covers first/last-frame and continuation with optional driving audio; reference-to-video helps keep multi-character look and voice consistent. Outputs 720P/1080P clips for roughly 2–15 seconds with native audio."
+          },
+          "zh": {
+            "feature_tags": [
+              "多镜头叙事",
+              "有声视频",
+              "首尾帧",
+              "视频续写",
+              "参考生视频",
+              "1080P"
+            ],
+            "short_summary": "通义万相 Wan 2.7 生视频系列，强化演绎与多镜头叙事，支持文生、首帧/首尾帧、音频驱动与参考生视频，最长约 15 秒。",
+            "description_long": "Wan 2.7 由阿里通义万相研发，面向短视频与影视级叙事。文生可用自然语言控制分镜；图生支持首帧、首尾帧与视频续写，并可选用驱动音频；参考生可保持多角色与音色一致性。输出 720P/1080P、约 2～15 秒，默认可生成有声视频。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
+      }
+    },
+    {
+      "id": "wan2.7-videoedit",
+      "object": "model",
+      "created": 1786588302,
+      "owned_by": "alibaba",
+      "metadata": {
+        "display_name": "Wan 2.7 Video Edit",
+        "origin_vendor_name": "Tongyi",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/alibaba/5b03698c5c4346bdbe3e8545233ef053.png",
+        "modality_type": "video",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Video edit",
+              "Instruction edit",
+              "Effect replication",
+              "Camera move",
+              "1080P"
+            ],
+            "short_summary": "Alibaba Tongyi Wan 2.7 video edit—instruction-based editing and effect/camera replication for secondary creation.",
+            "description_long": "Wan 2.7 Video Edit supports instruction-driven edits and effect/camera replication on existing clips. Outputs 720P/1080P, typically up to about 10 seconds; billing counts both input and output video seconds. Suited to restyling, pacing changes, and effect transfer."
+          },
+          "zh": {
+            "feature_tags": [
+              "视频编辑",
+              "指令编辑",
+              "特效复刻",
+              "运镜",
+              "1080P"
+            ],
+            "short_summary": "通义万相 Wan 2.7 视频编辑：按指令改片、特效与运镜复刻，适合二次创作。",
+            "description_long": "Wan 2.7 Video Edit 由阿里通义万相研发，支持基于已有视频的指令编辑与效果迁移类能力。输出 720P/1080P，时长通常不超过约 10 秒量级；计费按输入与输出视频秒合计。适合改画面、改节奏与特效复刻等二次创作。"
+          }
+        },
+        "min_user_unit_price_usd": 0.1,
+        "metered_charge_unit": "video_second",
+        "price_display_hint": "flat",
+        "min_price_mode_bucket": "general"
       }
     }
   ]

@@ -48,10 +48,15 @@ SRC_ONLINE_IMAGE = ROOT / "output/online/prices-api-image.json"
 SRC_ONLINE_VIDEO = ROOT / "output/online/prices-api-video.json"
 SRC_PRICES = ROOT / "output/trinity-pricing-text.xlsx"
 SRC_COMMERCIAL = ROOT / "output/商务洽谈折扣总表.xlsx"
-ROUTES_TEXT = ROOT / "input/routes-20260809-text"
-ROUTES_IMAGE = ROOT / "input/routes-20260809-image"
-ROUTES_VIDEO = ROOT / "input/routes-20260809-video"
-OUT = ROOT / "output/Trinity模型报价表.xlsx"
+# routes 用于扫描“线路管理”启用/停用与成本/官方比（进而推导成本族与对外阶梯依据）
+# 这里改为读取 routes-live，确保新上架模型也能被纳入解析汇总与阶梯依据。
+ROUTES_TEXT = ROOT / "input/routes-live"
+ROUTES_IMAGE = ROOT / "input/routes-live"
+ROUTES_VIDEO = ROOT / "input/routes-live"
+OUT = ROOT / "output/Trinity模型报价表（内部）.xlsx"
+OUT_DISCOUNT_ONLY = ROOT / "output/Trinity模型报价表.xlsx"
+OUT_DISCOUNT_ONLY_LEGACY = ROOT / "output/Trinity模型报价表-仅有折扣.xlsx"
+SHEET_HEHE = "hehe公司需求"
 
 SHEET_COMMERCIAL_MAIN = "10_商务总表-生文"
 SHEET_COMMERCIAL_CROSS = "11_交叉模型-生文"
@@ -104,17 +109,35 @@ CATALOG_OVERRIDES_USD: dict[str, tuple[float, float, float | None]] = {
 VENDOR_CN = {
     "anthropic": "Anthropic",
     "openai": "OpenAI",
-    "google deepMind": "Google",
+    "google": "Google",
+    "google deepmind": "Google",
+    "google deep mind": "Google",
+    "deepmind": "Google",
     "deepseek": "DeepSeek",
     "moonshot": "月之暗面",
+    "moonshot ai": "月之暗面",
     "minimax": "MiniMax",
     "zhipu": "智谱",
+    "zhipu ai": "智谱",
     "智谱": "智谱",
     "tongyi": "阿里云·通义",
+    "alibaba": "阿里云·通义",
     "tencent": "腾讯·混元",
+    "hunyuan": "腾讯·混元",
     "豆包": "字节·豆包",
+    "即梦": "字节·即梦",
+    "jimeng": "字节·即梦",
+    "seedance": "字节·即梦",
+    "vidu": "Vidu",
+    "kling": "可灵",
     "GPT": "OpenAI",
     "GK": "GK",
+}
+
+_CANON_VENDORS = {
+    "OpenAI", "Anthropic", "Google", "DeepSeek", "月之暗面", "MiniMax", "智谱",
+    "阿里云·通义", "腾讯·混元", "字节·豆包", "字节·即梦", "Midjourney", "可灵",
+    "快手·可灵", "Vidu", "GK", "其他",
 }
 
 VENDOR_ORDER = [
@@ -142,9 +165,12 @@ TIERS = [
 # 来源：定价方案-v0 §6；对客折底线 5.5；不直接抄 L3b 全五档
 PUBLIC_FAMILY_TIERS: dict[float, list[float]] = {
     # ≤5 折：最深已拍（0.40→5.5；0.50→6.0）；取商务 Mid/Growth/Ent
+    0.34: [6.2, 6.0, 5.5],
     0.40: [6.2, 6.0, 5.5],
     0.50: [6.8, 6.5, 6.0],
+    0.55: [7.5, 7.0, 6.4],
     0.60: [8.2, 7.6, 6.7],
+    0.64: [8.4, 8.1, 7.1],
     0.65: [8.5, 8.2, 7.2],
     0.70: [9.2, 8.8, 7.8],
     0.75: [9.0, 8.7, 8.2],
@@ -180,15 +206,39 @@ def public_tiers_for(model_id: str, fam: float | None) -> list[float | None] | N
         if abs(float(fam) - 1.0) < 1e-9:
             return list(_LIST_PRICE_ZHE)
         return list(CLAUDE_OPUS_TIER_ZHE)
-    if fam in PUBLIC_FAMILY_TIERS:
-        return list(PUBLIC_FAMILY_TIERS[fam])
+    for k, zhes in PUBLIC_FAMILY_TIERS.items():
+        if abs(float(fam) - k) < 1e-6:
+            return list(zhes)
     # 0.78：如果模型没有更低折扣族可选，则给一个“浅折”公开梯度
     if abs(float(fam) - 0.78) < 1e-6:
         return list(FAM_078浅折_TIER_ZHE)
     # 1.0 及其它 ≥0.78 未进公开分族：对外标原价
     if fam >= 0.78:
         return list(_LIST_PRICE_ZHE)
-    return None
+    # 现网新成本折（<0.78 未冻结）：邻档线性插值，保证模型仍出报价
+    interp = _interpolate_public_tiers(float(fam))
+    print(
+        f"[warn] public ladder: fam={fam} not frozen; interpolated {interp} "
+        "(人审后写入 PUBLIC_FAMILY_TIERS)"
+    )
+    return interp
+
+
+def _interpolate_public_tiers(fam: float) -> list[float]:
+    keys = sorted(PUBLIC_FAMILY_TIERS)
+    if not keys:
+        return list(_LIST_PRICE_ZHE)
+    if fam <= keys[0]:
+        return list(PUBLIC_FAMILY_TIERS[keys[0]])
+    if fam >= keys[-1]:
+        return list(PUBLIC_FAMILY_TIERS[keys[-1]])
+    lo = max(k for k in keys if k <= fam)
+    hi = min(k for k in keys if k >= fam)
+    if abs(hi - lo) < 1e-12:
+        return list(PUBLIC_FAMILY_TIERS[lo])
+    t = (fam - lo) / (hi - lo)
+    a, b = PUBLIC_FAMILY_TIERS[lo], PUBLIC_FAMILY_TIERS[hi]
+    return [round(a[i] + t * (b[i] - a[i]), 1) for i in range(3)]
 
 def parse_usd(s):
     """Parse 入$x · 出$y · 缓$z → (in, out, cache|None)."""
@@ -484,6 +534,42 @@ def _online_default_prices(entry: dict) -> tuple[float, float, float | None] | N
     return inp, out, cache
 
 
+def canon_vendor(name: str, *, modality: str = "text") -> str:
+    """同一品牌只留一个标签，避免 Tongyi / 阿里云·通义、Google DeepMind / Google 拆成两块。"""
+    raw = (name or "").strip()
+    if not raw:
+        return "其他"
+    if raw in _CANON_VENDORS:
+        if raw == "字节·豆包" and modality in ("image", "video"):
+            return "字节·即梦"
+        if raw == "字节·即梦" and modality == "text":
+            return "字节·豆包"
+        return raw
+    mapped = VENDOR_CN.get(raw) or VENDOR_CN.get(raw.lower())
+    if mapped and mapped != raw:
+        return canon_vendor(mapped, modality=modality)
+    return raw
+
+
+def _vendor_rank(vendor: str, order: dict[str, int]) -> tuple:
+    if vendor in order:
+        return (0, order[vendor], "")
+    if vendor == "其他":
+        return (2, 0, "")
+    return (1, 0, vendor)
+
+
+def _deep_public_zhe(
+    model_id: str,
+    model_families: dict[str, list[float]],
+    recommended: dict[str, float],
+) -> float:
+    fam = resolve_family(model_id, model_families, recommended)
+    zhes = public_tiers_for(model_id, fam) or []
+    nums = [z for z in zhes if z is not None]
+    return min(nums) if nums else 10.0
+
+
 def _guess_vendor(model_id: str, display_name: str = "") -> str:
     mid = (model_id or "").lower()
     name = (display_name or "").lower()
@@ -564,7 +650,7 @@ def load_image_rows() -> list[dict]:
         if not mid:
             continue
         display = str(e.get("display_name") or mid).strip()
-        vendor = _guess_vendor_image(mid, display)
+        vendor = canon_vendor(_guess_vendor_image(mid, display), modality="image")
         charge = str(e.get("charge_unit") or "")
         groups = e.get("price_groups") or []
 
@@ -681,7 +767,7 @@ def collect_discounted_models(
     model_families: dict[str, list[float]],
     recommended: dict[str, float],
 ) -> list[dict]:
-    """有公开用量折扣的模型一览（原价不进）；按模态→最深折→厂商。不含成本族。"""
+    """有公开用量折扣的模型一览（原价不进）；按模态→厂商→最深折。不含成本族。"""
     modality_items = (
         ("生文", models),
         ("生图", _dedupe_models_by_id(image_rows)),
@@ -711,62 +797,27 @@ def collect_discounted_models(
                 }
             )
     mod_order = {"生文": 0, "生图": 1, "生视频": 2}
+    vendor_orders = {
+        "生文": {v: i for i, v in enumerate(VENDOR_ORDER)},
+        "生图": {v: i for i, v in enumerate(IMAGE_VENDOR_ORDER)},
+        "生视频": {v: i for i, v in enumerate(VIDEO_VENDOR_ORDER)},
+    }
     rows.sort(
         key=lambda r: (
             mod_order.get(r["modality"], 9),
+            _vendor_rank(r["vendor"], vendor_orders.get(r["modality"], {})),
             r["deep"],
-            r["vendor"],
             r["model_id"],
         )
     )
     return rows
 
 
-def write_discount_overview_sheet(
-    wb,
-    discount_rows: list[dict],
-    *,
-    valid_until: str,
-    thin,
-    white_bold,
-    body_font,
-    num_font,
-    center,
-    left,
-) -> None:
-    """00_折扣一览：仅有折扣模型；表头对齐 01（+模态）；无成本信息。"""
-    name = "00_折扣一览"
-    if name in wb.sheetnames:
-        del wb[name]
-    ws = wb.create_sheet(name, 0)
-    fills = {
-        "生文": solid_fill("DBEAFE"),  # 蓝
-        "生图": solid_fill("FEF3C7"),  # 琥珀
-        "生视频": solid_fill("D1FAE5"),  # 绿
-    }
-    header_fill = solid_fill("1B4F72")
-    n_cols = 7 + len(TIERS)
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=n_cols)
-    ws["A1"] = "Trinity · 对外折扣一览（仅列有用量折扣的模型）"
-    ws["A1"].font = Font(name="PingFang SC", size=16, bold=True, color="1D2939")
-    ws.row_dimensions[1].height = 26
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=n_cols)
-    counts = {
-        m: sum(1 for r in discount_rows if r["modality"] == m)
-        for m in ("生文", "生图", "生视频")
-    }
-    ws["A2"] = (
-        f"有效期：{valid_until}　|　共 {len(discount_rows)} 款有折扣"
-        f"（生文 {counts['生文']} · 生图 {counts['生图']} · 生视频 {counts['生视频']}）。"
-        "底色：生文蓝 · 生图琥珀 · 生视频绿。"
-        "表头与分册一致（+模态）；不含成本/线路。"
-        "图/视频多规格刊例见 02/03；达档=企业户累积消耗（按刊例价计）。"
-    )
-    ws["A2"].font = Font(name="PingFang SC", size=10, color="475467")
-    ws["A2"].alignment = Alignment(wrap_text=True, vertical="center")
-    ws.row_dimensions[2].height = 40
+DISCOUNT_TITLE = "Trinity · 折扣报价表"
 
-    headers = [
+
+def _discount_overview_headers() -> list[str]:
+    return [
         "模态",
         "厂商",
         "模型 ID",
@@ -775,13 +826,42 @@ def write_discount_overview_sheet(
         "刊例价·输出",
         "刊例价·缓存",
     ] + [label for _, label, _ in TIERS]
+
+
+def _write_discount_title_row(ws, *, row: int, n_cols: int) -> None:
+    ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=n_cols)
+    cell = ws.cell(row, 1, DISCOUNT_TITLE)
+    cell.font = Font(name="PingFang SC", size=16, bold=True, color="1D2939")
+    ws.row_dimensions[row].height = 26
+
+
+def _fill_discount_overview_table(
+    ws,
+    discount_rows: list[dict],
+    *,
+    header_row: int,
+    data_start: int,
+    thin,
+    white_bold,
+    body_font,
+    num_font,
+    center,
+    left,
+) -> None:
+    fills = {
+        "生文": solid_fill("DBEAFE"),
+        "生图": solid_fill("FEF3C7"),
+        "生视频": solid_fill("D1FAE5"),
+    }
+    header_fill = solid_fill("1B4F72")
+    headers = _discount_overview_headers()
     for i, h in enumerate(headers, 1):
-        cell = ws.cell(4, i, h)
+        cell = ws.cell(header_row, i, h)
         style_cell(cell, fill=header_fill, font=white_bold, align=center, border=thin)
-    ws.row_dimensions[4].height = 24
+    ws.row_dimensions[header_row].height = 24
 
     for idx, row in enumerate(discount_rows):
-        r = 5 + idx
+        r = data_start + idx
         fill = fills.get(row["modality"])
         zhes = row["zhes"]
         vals = [
@@ -805,13 +885,119 @@ def write_discount_overview_sheet(
                 fill=fill,
             )
 
+    def _merge_runs(col: int, keys: list) -> None:
+        i = 0
+        n = len(keys)
+        while i < n:
+            j = i + 1
+            while j < n and keys[j] == keys[i]:
+                j += 1
+            if j - i > 1:
+                ws.merge_cells(
+                    start_row=data_start + i,
+                    start_column=col,
+                    end_row=data_start + j - 1,
+                    end_column=col,
+                )
+                top = ws.cell(data_start + i, col)
+                top.alignment = Alignment(
+                    horizontal="center", vertical="center", wrap_text=True
+                )
+            i = j
+
+    _merge_runs(1, [r["modality"] for r in discount_rows])
+    _merge_runs(2, [(r["modality"], r["vendor"]) for r in discount_rows])
+
     for i, w in enumerate([8, 12, 26, 22, 14, 14, 12] + [14] * len(TIERS), 1):
         ws.column_dimensions[get_column_letter(i)].width = w
-    ws.freeze_panes = "H5"
+    ws.freeze_panes = f"H{data_start}"
+
+
+def write_discount_overview_sheet(
+    wb,
+    discount_rows: list[dict],
+    *,
+    valid_until: str,
+    thin,
+    white_bold,
+    body_font,
+    num_font,
+    center,
+    left,
+) -> None:
+    """00_折扣一览（整本 L3a 内）：标题 + 说明 + 表头 + 仅有折扣模型。"""
+    name = "00_折扣一览"
+    if name in wb.sheetnames:
+        del wb[name]
+    ws = wb.create_sheet(name, 0)
+    n_cols = len(_discount_overview_headers())
+    _write_discount_title_row(ws, row=1, n_cols=n_cols)
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=n_cols)
+    counts = {
+        m: sum(1 for r in discount_rows if r["modality"] == m)
+        for m in ("生文", "生图", "生视频")
+    }
+    ws["A2"] = (
+        f"有效期：{valid_until}　|　共 {len(discount_rows)} 款有折扣"
+        f"（生文 {counts['生文']} · 生图 {counts['生图']} · 生视频 {counts['生视频']}）。"
+        "底色：生文蓝 · 生图琥珀 · 生视频绿。"
+        "表头与分册一致（+模态）；不含成本/线路。"
+        "图/视频多规格刊例见 02/03；达档=企业户累积消耗（按刊例价计）。"
+    )
+    ws["A2"].font = Font(name="PingFang SC", size=10, color="475467")
+    ws["A2"].alignment = Alignment(wrap_text=True, vertical="center")
+    ws.row_dimensions[2].height = 40
+    _fill_discount_overview_table(
+        ws,
+        discount_rows,
+        header_row=4,
+        data_start=5,
+        thin=thin,
+        white_bold=white_bold,
+        body_font=body_font,
+        num_font=num_font,
+        center=center,
+        left=left,
+    )
     print(
         f"discount overview: {len(discount_rows)} models "
         f"(text={counts['生文']} image={counts['生图']} video={counts['生视频']})"
     )
+
+
+def write_discount_only_workbook(
+    path: Path,
+    discount_rows: list[dict],
+    *,
+    thin,
+    white_bold,
+    body_font,
+    num_font,
+    center,
+    left,
+) -> None:
+    """单独外发册：标题 + 表头 + 仅有折扣表；无说明行。"""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "仅有折扣"
+    n_cols = len(_discount_overview_headers())
+    _write_discount_title_row(ws, row=1, n_cols=n_cols)
+    _fill_discount_overview_table(
+        ws,
+        discount_rows,
+        header_row=2,
+        data_start=3,
+        thin=thin,
+        white_bold=white_bold,
+        body_font=body_font,
+        num_font=num_font,
+        center=center,
+        left=left,
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(path)
+    patch_xlsx_for_wechat(path)
+    print(f"wrote {path} sheets={wb.sheetnames} rows={len(discount_rows)}")
 
 
 def sort_image_rows_discount_first(
@@ -819,19 +1005,14 @@ def sort_image_rows_discount_first(
     model_families: dict[str, list[float]],
     recommended: dict[str, float],
 ) -> list[dict]:
-    """有公开用量折扣的模型整组置顶，同模规格仍按分辨率序。"""
+    """全局折扣优先；同折扣深度内再按厂商与规格排序。"""
     order = {v: i for i, v in enumerate(IMAGE_VENDOR_ORDER)}
-    ladder_cache: dict[str, bool] = {}
-
-    def has_ladder(mid: str) -> bool:
-        if mid not in ladder_cache:
-            ladder_cache[mid] = has_public_ladder(mid, model_families, recommended)
-        return ladder_cache[mid]
 
     def sort_key(r: dict):
+        mid = r["model_id"]
         return (
-            0 if has_ladder(r["model_id"]) else 1,
-            order.get(r["vendor"], 99),
+            _deep_public_zhe(mid, model_families, recommended),
+            _vendor_rank(r["vendor"], order),
             r["model_id"],
             _IMAGE_SPEC_ORDER.get(r["spec"], 50),
             r["spec"],
@@ -843,7 +1024,7 @@ def sort_image_rows_discount_first(
 def _guess_vendor_video(model_id: str, display_name: str = "") -> str:
     mid = (model_id or "").lower()
     name = (display_name or "").lower()
-    if mid.startswith("gemini") or mid.startswith("gv-"):
+    if mid.startswith("gemini") or mid.startswith("gv-") or mid.startswith("veo"):
         return "Google"
     if mid.startswith("seedance") or mid.startswith("jimeng") or mid.startswith("jv-"):
         return "字节·即梦"
@@ -907,7 +1088,7 @@ def load_video_rows() -> list[dict]:
         if not mid:
             continue
         display = str(e.get("display_name") or mid).strip()
-        vendor = _guess_vendor_video(mid, display)
+        vendor = canon_vendor(_guess_vendor_video(mid, display), modality="video")
         charge = str(e.get("charge_unit") or "")
         groups = e.get("price_groups") or []
         seen: set[tuple[str, str, float]] = set()
@@ -918,12 +1099,29 @@ def load_video_rows() -> list[dict]:
             unit_block = prices.get("unit") or prices.get("video") or {}
             amt = _num_amount(unit_block)
             kind = None
+            catalog_display = None
             if amt is None:
                 for k in ("input", "output_text", "output_video", "output"):
                     if k in prices:
                         amt = _num_amount(prices.get(k))
                         kind = k
                         break
+            if amt is None and (
+                "start" in prices or "per_second_after" in prices or "examples" in prices
+            ):
+                start_amt = _num_amount(prices.get("start"))
+                after_amt = _num_amount(prices.get("per_second_after"))
+                ex = prices.get("examples") or {}
+                ex5_amt = _num_amount(ex.get("5s"))
+                ex10_amt = _num_amount(ex.get("10s"))
+                if start_amt is not None and after_amt is not None:
+                    amt = ex5_amt if ex5_amt is not None else start_amt
+                    parts = [f"首秒 {fmt_num(start_amt)}", f"续秒 {fmt_num(after_amt)}/秒"]
+                    if ex5_amt is not None:
+                        parts.append(f"5s示例 {fmt_num(ex5_amt)}")
+                    if ex10_amt is not None:
+                        parts.append(f"10s示例 {fmt_num(ex10_amt)}")
+                    catalog_display = " + ".join(parts)
             if amt is None:
                 continue
             label = g.get("label") or g.get("type") or g.get("conditions_summary") or ""
@@ -943,6 +1141,8 @@ def load_video_rows() -> list[dict]:
                 unit = "USD/百万 video tokens"
             elif charge == "video_token":
                 unit = "USD/百万 video tokens"
+            elif catalog_display:
+                unit = "USD/首秒+续秒"
             else:
                 unit = "USD/秒"
             rows.append(
@@ -953,7 +1153,7 @@ def load_video_rows() -> list[dict]:
                     "spec": spec,
                     "unit": unit,
                     "catalog": ceil_money_2(float(amt)),
-                    "catalog_display": None,
+                    "catalog_display": catalog_display,
                 }
             )
 
@@ -977,17 +1177,12 @@ def sort_video_rows_discount_first(
     recommended: dict[str, float],
 ) -> list[dict]:
     order = {v: i for i, v in enumerate(VIDEO_VENDOR_ORDER)}
-    ladder_cache: dict[str, bool] = {}
-
-    def has_ladder(mid: str) -> bool:
-        if mid not in ladder_cache:
-            ladder_cache[mid] = has_public_ladder(mid, model_families, recommended)
-        return ladder_cache[mid]
 
     def sort_key(r: dict):
+        mid = r["model_id"]
         return (
-            0 if has_ladder(r["model_id"]) else 1,
-            order.get(r["vendor"], 99),
+            _deep_public_zhe(mid, model_families, recommended),
+            _vendor_rank(r["vendor"], order),
             r["model_id"],
             _VIDEO_SPEC_ORDER.get(r["spec"], 50),
             r["spec"],
@@ -1024,7 +1219,7 @@ def load_compare_meta() -> dict[str, dict]:
         brand = str(r[i_brand] or "").strip()
         meta[tid] = {
             "display": str(r[i_name] or tid).strip(),
-            "vendor": VENDOR_CN.get(brand, brand or "其他"),
+            "vendor": canon_vendor(VENDOR_CN.get(brand, brand) or "其他", modality="text"),
         }
     return meta
 
@@ -1052,7 +1247,7 @@ def load_models():
                 cache = oc
         m = meta.get(mid, {})
         display = m.get("display") or e.get("display_name") or mid
-        vendor = m.get("vendor") or _guess_vendor(mid, display)
+        vendor = canon_vendor(m.get("vendor") or _guess_vendor(mid, display), modality="text")
         out.append(
             {
                 "vendor": vendor,
@@ -1597,6 +1792,14 @@ def build():
     video_rows = sort_video_rows_discount_first(
         video_rows, model_families, recommended
     )
+    text_order = {v: i for i, v in enumerate(VENDOR_ORDER)}
+    models.sort(
+        key=lambda m: (
+            _deep_public_zhe(m["model_id"], model_families, recommended),
+            _vendor_rank(m["vendor"], text_order),
+            m["model_id"],
+        )
+    )
     today = date.today()
     valid_until = "2026-09-30 24:00"
     st = _sheet_styles()
@@ -1618,11 +1821,11 @@ def build():
     image_models = len({r["model_id"] for r in image_rows})
     video_models = len({r["model_id"] for r in video_rows})
     meta = [
-        ("外发文件", OUT.name),
-        ("定位", "L3a 对外标准档报价单（整本可发；无对内 Sheet）"),
+        ("外发文件", OUT_DISCOUNT_ONLY.name),
+        ("定位", "L3a 内部报价单（含 hehe公司需求；外发折扣册见 Trinity模型报价表.xlsx）"),
         (
             "形态",
-            "00_折扣一览（仅有折扣）· 01_生文 · 02_生图 · 03_生视频；"
+            "00_折扣一览（仅有折扣）· 01_生文 · 02_生图 · 03_生视频 · hehe公司需求；"
             "刊例价 + 用量档对客折（对外三档）",
         ),
         ("不含", "上游成本折/线路/中转站/GM；报价依据在商务总册 01_报价解析汇总"),
@@ -1902,13 +2105,44 @@ def build():
 
     wb.save(OUT)
     patch_xlsx_for_wechat(OUT)  # 微信预览：补 applyFill 等
+    write_discount_only_workbook(
+        OUT_DISCOUNT_ONLY,
+        discount_rows,
+        thin=thin,
+        white_bold=white_bold,
+        body_font=body_font,
+        num_font=num_font,
+        center=center,
+        left=left,
+    )
+    # Media-Hub 表二 → hehe公司需求（写回内部总册）
+    try:
+        from media_hub_trinity_crosswalk import (  # noqa: WPS433
+            collect_media_hub_rows,
+            write_hehe_sheet,
+        )
+
+        _disc, table2 = collect_media_hub_rows()
+        wb_hehe = openpyxl.load_workbook(OUT)
+        write_hehe_sheet(wb_hehe, table2)
+        wb_hehe.save(OUT)
+        patch_xlsx_for_wechat(OUT)
+        print(f"appended {SHEET_HEHE} rows={len(table2)} → {OUT.name}")
+    except Exception as exc:  # noqa: BLE001
+        print(f"WARN: skip {SHEET_HEHE}: {exc}")
+
+    if OUT_DISCOUNT_ONLY_LEGACY.exists():
+        OUT_DISCOUNT_ONLY_LEGACY.unlink()
+        print(f"removed legacy {OUT_DISCOUNT_ONLY_LEGACY.name}")
+
     mapped = sum(
         1
         for m in models
         if resolve_family(m["model_id"], model_families, recommended) is not None
     )
     print(
-        f"wrote {OUT} sheets={wb.sheetnames} text={len(models)} "
+        f"wrote {OUT} sheets={openpyxl.load_workbook(OUT, read_only=True).sheetnames} "
+        f"text={len(models)} "
         f"mapped_family={mapped} public_ladder≈{with_ladder} "
         f"image_models={image_models} image_rows={len(image_rows)} "
         f"video_models={video_models} video_rows={len(video_rows)}"

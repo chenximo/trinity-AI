@@ -6,9 +6,9 @@
 
 | 文件 | 说明 |
 |------|------|
-| [目录.md](./目录.md) | 页级目录 v3 |
-| [Trinity产品介绍.md](./Trinity产品介绍.md) | 内容真源（含销售备注） |
-| [index.html](./index.html) | 19 页可预览 / 可打印稿 |
+| [目录.md](./目录.md) | 页级目录 v4.6 |
+| [Trinity产品介绍.md](./Trinity产品介绍.md) | 内容真源（含销售备注 · 讲解路径） |
+| [index.html](./index.html) | 18 页可预览 / 可打印稿（v4.6） |
 | [deck.css](./deck.css) | 版式与 16:9 打印样式 |
 | [assets/](./assets/) | 正式 wordmark / mark（勿反色） |
 | [export_deck_pdf.sh](./export_deck_pdf.sh) | Playwright 导出 PDF |
@@ -47,3 +47,11 @@ chmod +x export_deck_pdf.sh
 | `--fs-num` | 32px | 目录大序号 |
 
 改字号只改 `:root` 变量即可全册生效。
+
+## 待办（v4.1 → 定稿）
+
+详见 [目录.md § 待办](./目录.md#待办v41--定稿)。摘要：
+
+- **P16**：交付证明（截图 / 脱敏指标）— 待素材  
+- **`index.html`**：同步 P05 / P07 / P08 / P13 等 v4.1 文案 — 待 md 确认  
+- **PDF**：html 同步后 `./export_deck_pdf.sh`

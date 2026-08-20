@@ -1,0 +1,24 @@
+{
+  "version": "l3a-public-2026-08-13",
+  "source": "pricing/scripts/build_outward_quote_standard.py · PUBLIC_FAMILY_TIERS",
+  "note": "对外仅三档 ≥$5k / ≥$10k / ≥$50k。改此文件后须同步 Admin publicLadderMatrix.ts 并重跑 build_outward。",
+  "families": [
+    { "id": "0.34", "label": "0.34（3.4折）", "dCost": 0.34, "zhe": [6.2, 6.0, 5.5] },
+    { "id": "0.40", "label": "0.40（4折）", "dCost": 0.4, "zhe": [6.2, 6.0, 5.5] },
+    { "id": "0.50", "label": "0.50（5折）", "dCost": 0.5, "zhe": [6.8, 6.5, 6.0] },
+    { "id": "0.55", "label": "0.55（5.5折）", "dCost": 0.55, "zhe": [7.5, 7.0, 6.4] },
+    { "id": "0.60", "label": "0.60（6折）", "dCost": 0.6, "zhe": [8.2, 7.6, 6.7] },
+    { "id": "0.64", "label": "0.64（6.4折）", "dCost": 0.64, "zhe": [8.4, 8.1, 7.1] },
+    { "id": "0.65", "label": "0.65（6.5折）·主锚", "dCost": 0.65, "zhe": [8.5, 8.2, 7.2] },
+    { "id": "0.70", "label": "0.70（7折）", "dCost": 0.7, "zhe": [9.2, 8.8, 7.8] },
+    { "id": "0.75", "label": "0.75（7.5折）", "dCost": 0.75, "zhe": [9.0, 8.7, 8.2] },
+    { "id": "0.78", "label": "0.78 浅折", "dCost": 0.78, "zhe": [9.4, 9.2, 8.5], "note": "未进公开分族时的浅折梯度" },
+    { "id": "0.85", "label": "0.85（8.5折）", "dCost": 0.85, "zhe": [9.8, 9.7, 9.4] },
+    { "id": "1.0", "label": "1.0 原价 / ≥0.78 未分族", "dCost": 1.0, "zhe": [10, 10, 10], "listPrice": true }
+  ],
+  "modelOverrides": [
+    { "id": "claude-opus-4-6", "label": "claude-opus-4-6（及非1.0 Claude）", "dCost": null, "zhe": [9.5, 9.2, 8.8], "note": "GM 视实际成本族" },
+    { "id": "gpt-5-nano", "label": "gpt-5-nano（对齐 0.65）", "dCost": 0.65, "zhe": [8.5, 8.2, 7.2] }
+  ],
+  "gmFormula": "GM = 1 - dCost / (zhe/10)；原价 GM = 1 - dCost"
+}

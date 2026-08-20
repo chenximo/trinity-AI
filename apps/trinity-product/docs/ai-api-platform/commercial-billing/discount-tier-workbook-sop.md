@@ -9,22 +9,28 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 > **产出**：[商务洽谈折扣总表.xlsx](../../../../../pricing/output/商务洽谈折扣总表.xlsx)（一本总册 · 8 Sheet）  
 > **折数真源**：[定价策略与证据链](./pricing-strategy-evidence-chain)（改折先改证据链）  
 > **脚本**：[`scripts/rebuild_discount_tier_workbook.py`](./scripts/rebuild_discount_tier_workbook.py)  
-> **解析/外发回写**：`pricing/scripts/build_outward_quote_standard.py` → `01_报价解析汇总` + 外发 xlsx  
-> **状态**：已拍 · 2026-08-09（一本总册；线路整表不进册）  
-> **控制台目标流程**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](../../../../../pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md)
+> **解析/外发回写**：`pricing/scripts/build_outward_quote_standard.py` → 内部册 + 外发仅折扣  
+> **现网一键拉线路重建**：`pricing/scripts/rebuild_workbook_from_live_api.py`  
+> **主路径 SOP**：[商务价格-本地生成与Cursor人审上传.md](../../../../../pricing/docs/商务价格-本地生成与Cursor人审上传.md)  
+> **状态**：已拍 · 2026-08-13（主路径=本地生成+人审上传；Admin Job 后置）  
+> **控制台目标（后置）**：[SUPPLY-PRICING-OPS-DESIGN.md §6.4](../../../../../pricing/docs/SUPPLY-PRICING-OPS-DESIGN.md)
 
 ---
 
 ## 0. 一句话流程
 
 ```text
-【过渡 · 本地】
-线路管理导出（按成本折筛选）→ 归档 pricing/input/routes-…/
-  → 登记脚本 SOURCES_* → 跑 rebuild → 抽查 10/11 · 20/21 · 30/31
-  → 跑 build_outward_quote_standard → 回写 01 + 外发（含 03_生视频）
+【主路径 · 本地 + 人审上传 · 2026-08-13】
+  rebuild_workbook_from_live_api（现网 export）→ L3b
+  → build_outward_quote_standard → L3a 内部 + 外发仅折扣
+  → 人审 → Cursor/Admin 上传 artifacts → 后台可下载
+  （不写 /v1/prices）
 
-【目标 · 控制台】
-后台线路 API → L3b draft → L3a draft → 人归档；分册下载另议
+【过渡 · 手导线路包】
+线路管理导出 → pricing/input/routes-…/ → SOURCES_* → rebuild → build_outward
+
+【后置 · 控制台 Job】
+后台 snapshot → S-02 出真 draft → 人归档
 ```
 
 ---
@@ -43,7 +49,12 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 | 8 | `31_交叉模型-生视频` | 生视频跨折（如 `happyhorse-1.1`：0.40 vs 0.70） |
 
 **不进总册**：各折扣 `src_*` 整表（原料只在 `pricing/input/`）。  
-**另文件**：`Trinity模型报价表.xlsx`（`00_折扣一览`/`01_生文`/`02_生图`/`03_生视频`，整本可发；仅此一份）。
+**另文件**：
+
+| 文件 | 用途 |
+|------|------|
+| `Trinity模型报价表（内部）.xlsx` | 对内完整（文/图/视频 + 专项 sheet） |
+| `Trinity模型报价表.xlsx` | **外发·仅有折扣**（客户包只用这份） |
 
 ---
 
@@ -76,10 +87,13 @@ title: 商务洽谈折扣总表 · 回灌流程（SOP）
 
 ### Step B · 折数是否已在证据链？
 
+现网 `--from-export-*`：**可解析的「X折」一律入表**，不因未写入 `FAMILY_ORDER` 丢模型。
+未冻结族：主表只出本模态有线路的行；对客五档标「待定」。对外 L3a 先邻档插值，人审后再写入 `FAMILY_TIERS` / `PUBLIC_FAMILY_TIERS`。
+
 | 情况 | 动作 |
 |------|------|
 | 已有族且阶梯已拍 | 只回灌模型，**不改** `FAMILY_TIERS` 折数 |
-| **新**成本折 / 要改阶梯折 | **先改**证据链 → 再改脚本 `FAMILY_TIERS` |
+| **新**成本折 / 要改阶梯折 | 模型先入表 → 人审后改证据链 → 再改 `FAMILY_TIERS` |
 
 ### Step C · 登记脚本 `SOURCES`
 

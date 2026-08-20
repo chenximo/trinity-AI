@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>视觉能力试验页 · 不进述职正稿</title>
+  <style>
+    :root {
+      --cyan: #00c2f7;
+      --blue: #2563eb;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --slide-w: 13.333in;
+      --slide-h: 7.5in;
+    }
+    * { box-sizing: border-box; }
+    html { background: #d8e2eb; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+    }
+    .note {
+      max-width: 13.333in;
+      margin: 16px auto 0;
+      padding: 10px 14px;
+      background: #fff7ed;
+      border: 1px solid #fdba74;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #9a3412;
+    }
+    .stage { padding: 20px 16px 48px; display: flex; justify-content: center; }
+    .slide {
+      width: var(--slide-w);
+      height: var(--slide-h);
+      background: linear-gradient(180deg, #eef6fb 0%, #f7fbfe 40%, #fff 100%);
+      box-shadow: 0 16px 48px rgba(15,23,42,.12);
+      padding: 0.28in 0.36in 0.22in;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .lab-kicker {
+      margin: 0 0 0.16in;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+    .lab-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.15fr;
+      gap: 0.14in;
+      min-height: 0;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #dbe7f0;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(15, 76, 129, 0.06);
+    }
+    .panel-h {
+      margin: 0;
+      padding: 0.1in 0.12in;
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(90deg, #1d4ed8, #2563eb 55%, #38bdf8);
+      text-align: center;
+    }
+    .panel-body { flex: 1; padding: 0.12in; min-height: 0; }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.08in;
+      height: 68%;
+    }
+    .side {
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 0.08in;
+    }
+    .side b { display: block; font-size: 12px; margin-bottom: 0.06in; color: #334155; }
+    .bars { display: flex; align-items: flex-end; gap: 0.1in; height: 1.15in; }
+    .bars i {
+      display: block;
+      width: 0.28in;
+      border-radius: 4px 4px 0 0;
+    }
+    .bars i:nth-child(1) { height: 42%; background: #22c55e; }
+    .bars i:nth-child(2) { height: 70%; background: #7c3aed; }
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.05in;
+    }
+    .apps span {
+      font-size: 10px;
+      text-align: center;
+      padding: 0.06in 0;
+      background: #f1f5f9;
+      border-radius: 6px;
+      color: #475569;
+      font-weight: 700;
+    }
+    .base {
+      margin-top: 0.1in;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1d4ed8;
+      padding: 0.08in;
+      background: #eff6ff;
+      border-radius: 999px;
+    }
+    .stairs {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.06in;
+      height: 100%;
+      padding: 0.06in 0.04in 0;
+    }
+    .stair {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 0.04in;
+    }
+    .stair span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #334155;
+      text-align: center;
+      line-height: 1.25;
+    }
+    .brick {
+      border-radius: 6px 6px 0 0;
+      width: 100%;
+    }
+    .s1 .brick { height: 0.55in; background: #67e8f9; }
+    .s2 .brick { height: 0.85in; background: #4ade80; }
+    .s3 .brick { height: 1.2in; background: #60a5fa; }
+    .s4 .brick { height: 1.55in; background: #818cf8; }
+    .s5 .brick { height: 1.95in; background: #a78bfa; }
+    .s6 .brick {
+      height: 2.35in;
+      background: linear-gradient(180deg, #38bdf8, #2563eb);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.08in;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .eras {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.06in;
+      margin-bottom: 0.08in;
+    }
+    .eras div {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1e3a8a;
+      background: #eff6ff;
+      border-radius: 8px;
+      padding: 0.06in 0.04in;
+      line-height: 1.3;
+    }
+    .eras em { display: block; font-style: normal; font-size: 10px; font-weight: 600; color: #64748b; }
+    .timeline { width: 100%; height: 1.7in; }
+    .era-notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.06in;
+      margin-top: 0.06in;
+    }
+    .era-notes p {
+      margin: 0;
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.4;
+    }
+    .lab-foot {
+      margin: 0.14in 0 0;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+    .lab-foot strong { color: #2563eb; }
+
+    .slide--borrow {
+      padding: 0.32in 0.4in 0.28in;
+      background:
+        radial-gradient(ellipse 88% 52% at 108% -6%, rgba(56,189,248,.22) 0%, transparent 58%),
+        linear-gradient(168deg, #e6f5ff 0%, #f4fbff 42%, #ffffff 72%, #eef8ff 100%);
+    }
+    .borrow-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.12in;
+    }
+    .borrow-head h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .borrow-head span {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0284c7;
+      letter-spacing: 0.04em;
+    }
+    .borrow-lead {
+      margin: 0 0 0.16in;
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.45;
+    }
+    .borrow-lead strong { color: var(--ink); }
+    .borrow-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.55fr 0.95fr;
+      gap: 0.18in;
+      min-height: 0;
+    }
+    .borrow-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+      min-height: 0;
+    }
+    .layer {
+      position: relative;
+      border-radius: 12px;
+      padding: 0.12in 0.16in;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    }
+    .layer-k {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0284c7;
+      margin-bottom: 0.04in;
+    }
+    .layer h2 {
+      margin: 0 0 0.08in;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .layer-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.06in;
+    }
+    .layer-chips span {
+      padding: 0.04in 0.09in;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e3a8a;
+      background: #eff6ff;
+    }
+    .layer--access { border-left: 4px solid #00c2f7; }
+    .layer--gov { border-left: 4px solid #2563eb; }
+    .layer--model { border-left: 4px solid #7c3aed; }
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0.1in;
+      padding: 0.02in 0.2in;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+    }
+    .flow-row b { color: #2563eb; }
+    .paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.08in;
+      margin-top: 0.08in;
+    }
+    .path {
+      padding: 0.08in 0.1in;
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+    .path em {
+      display: block;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: #0284c7;
+      margin-bottom: 0.02in;
+    }
+    .path strong { display: block; font-size: 13px; }
+    .path p { margin: 0.03in 0 0; font-size: 11px; color: #64748b; line-height: 1.35; }
+    .borrow-principles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1in;
+    }
+    .prin {
+      flex: 1;
+      padding: 0.14in 0.14in 0.12in;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    }
+    .prin-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: #00c2f7;
+      letter-spacing: 0.06em;
+    }
+    .prin h3 {
+      margin: 0.04in 0 0.06in;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .prin p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #475569;
+    }
+    .borrow-foot {
+      margin: 0.14in 0 0;
+      padding-top: 0.1in;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      text-align: center;
+    }
+    .borrow-foot strong { color: #2563eb; }
+
+    .slide--plan {
+      padding: 0.22in 0.34in 0.16in;
+      background:
+        radial-gradient(ellipse 70% 48% at -8% 108%, rgba(124,58,237,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 88% 52% at 108% -6%, rgba(56,189,248,.22) 0%, transparent 58%),
+        linear-gradient(168deg, #e6f5ff 0%, #f4fbff 42%, #ffffff 72%, #eef8ff 100%);
+    }
+    .plan-lead {
+      margin: 0 0 0.12in;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.45;
+    }
+    .plan-lead strong { color: var(--ink); }
+    .plan-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.7fr 0.9fr;
+      gap: 0.16in;
+      min-height: 0;
+    }
+    .plan-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.07in;
+      min-height: 0;
+    }
+    .plan-layer {
+      position: relative;
+      flex: 1;
+      border-radius: 12px;
+      padding: 0.08in 0.12in 0.09in;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+      min-height: 0;
+    }
+    .plan-layer.is-now { border-left: 4px solid #00c2f7; }
+    .plan-layer.is-near { border-left: 4px solid #2563eb; }
+    .plan-layer.is-mid { border-left: 4px solid #7c3aed; }
+    .plan-layer.is-scene {
+      border-left: 4px solid #0f766e;
+      background: linear-gradient(180deg, #f0fdfa 0%, #fff 70%);
+    }
+    .plan-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.03in;
+    }
+    .plan-k {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #0284c7;
+    }
+    .plan-when {
+      font-size: 11px;
+      font-weight: 800;
+      color: #64748b;
+    }
+    .plan-layer h2 {
+      margin: 0 0 0.06in;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .plan-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.05in;
+    }
+    .plan-row span {
+      padding: 0.03in 0.08in;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #1e3a8a;
+      background: #eff6ff;
+    }
+    .plan-note {
+      margin: 0.05in 0 0;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.35;
+    }
+    .plan-arrow {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: #2563eb;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    .plan-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+    }
+    .plan-card {
+      flex: 1;
+      padding: 0.11in 0.12in;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    }
+    .plan-card h3 {
+      margin: 0 0 0.06in;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .plan-card p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #475569;
+    }
+    .plan-card em {
+      display: block;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0284c7;
+      margin-bottom: 0.03in;
+    }
+    .plan-paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.06in;
+      margin-top: 0.07in;
+    }
+    .plan-path {
+      padding: 0.07in 0.08in;
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+    .plan-path strong { display: block; font-size: 12px; }
+    .plan-path p { margin: 0.02in 0 0; font-size: 11px; }
+    .plan-geo {
+      opacity: 0.72;
+      background: repeating-linear-gradient(-45deg, #fff, #fff 8px, #f8fafc 8px, #f8fafc 16px);
+    }
+    .plan-ops {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.06in;
+      margin-bottom: 0.1in;
+    }
+    .plan-ops article {
+      padding: 0.08in 0.1in;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+    }
+    .plan-ops strong { display: block; font-size: 13px; }
+    .plan-ops p { margin: 0.02in 0 0; font-size: 11px; color: #64748b; }
+    .plan-ops span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <p class="note">试验页，不进 12 页述职正稿。第三张是「未来产品规划」架构图（近端经营 + Agent 栈）。正稿请继续用 index.html。</p>
+  <div class="stage">
+    <section class="slide">
+      <p class="lab-kicker">随着大语言模型发展，AI 解决开发问题的能力持续提升。</p>
+      <div class="lab-grid">
+        <article class="panel">
+          <h2 class="panel-h">AI 解决开发问题的能力持续提升</h2>
+          <div class="panel-body">
+            <div class="split">
+              <div class="side">
+                <b>模型层面</b>
+                <div class="bars" aria-hidden="true"><i></i><i></i></div>
+                <p style="margin:0.08in 0 0;font-size:11px;color:#64748b;line-height:1.35;">复杂问题解决能力持续提升</p>
+              </div>
+              <div class="side">
+                <b>应用层面</b>
+                <div class="apps">
+                  <span>IDE 插件</span>
+                  <span>CLI</span>
+                  <span>Agent</span>
+                  <span>VS Code</span>
+                  <span>JetBrains</span>
+                  <span>终端</span>
+                </div>
+              </div>
+            </div>
+            <div class="base">AI 底层模型能力稳步提高</div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="panel-h">AI 驱动软件全链路，加速迭代</h2>
+          <div class="panel-body">
+            <div class="stairs">
+              <div class="stair s1"><span>基础大模型</span><div class="brick"></div></div>
+              <div class="stair s2"><span>行业大模型</span><div class="brick"></div></div>
+              <div class="stair s3"><span>编码助手</span><div class="brick"></div></div>
+              <div class="stair s4"><span>智能体</span><div class="brick"></div></div>
+              <div class="stair s5"><span>AI 工程师</span><div class="brick"></div></div>
+              <div class="stair s6"><span>AI 团队</span><div class="brick">Teams</div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="panel-h">软件工程发展历程</h2>
+          <div class="panel-body">
+            <div class="eras">
+              <div>SE 1.0<em>结构化</em></div>
+              <div>SE 2.0<em>工业化</em></div>
+              <div>SE 3.0<em>智能化</em></div>
+            </div>
+            <svg class="timeline" viewBox="0 0 420 140" aria-hidden="true">
+              <path d="M12 88 C 80 20, 140 20, 210 70 S 330 130, 408 48" fill="none" stroke="#93c5fd" stroke-width="4"/>
+              <g fill="#2563eb">
+                <circle cx="36" cy="72" r="7"/><circle cx="120" cy="38" r="7"/><circle cx="210" cy="70" r="7"/><circle cx="300" cy="102" r="7"/><circle cx="392" cy="52" r="7"/>
+              </g>
+              <g font-size="11" fill="#334155" font-weight="700">
+                <text x="20" y="128">1968 软件工程</text>
+                <text x="95" y="22">2001 敏捷</text>
+                <text x="188" y="128">2009 DevOps</text>
+                <text x="268" y="128">2023 Copilot</text>
+                <text x="340" y="22">2025 Agent</text>
+              </g>
+            </svg>
+            <div class="era-notes">
+              <p>瀑布 / 结构化，工程化起步</p>
+              <p>敏捷 + DevOps 工具链，工业化交付</p>
+              <p>理解与生成进入主链路，AI Native</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="lab-foot">软件工程正在从 <strong>工业化</strong> 快速走向 <strong>智能化</strong>。</p>
+    </section>
+  </div>
+
+  <div class="stage">
+    <section class="slide slide--borrow">
+      <div class="borrow-head">
+        <h1>Trinity 可借的三件事</h1>
+        <span>试验稿 · 不进正稿</span>
+      </div>
+      <p class="borrow-lead">借分层方法与双路径，<strong>不照抄研效 Agent 矩阵</strong>。Trinity 落在模型供给与企业治理，向上只做薄封装。</p>
+      <div class="borrow-body">
+        <div class="borrow-stack">
+          <article class="layer layer--access">
+            <div class="layer-k">接入层</div>
+            <h2>先接人所在的入口</h2>
+            <div class="layer-chips">
+              <span>IDE Skill</span>
+              <span>Cookbook</span>
+              <span>OpenAI 兼容 /v1</span>
+              <span>Cursor / Claude Code</span>
+            </div>
+          </article>
+          <div class="flow-row">
+            <span>调用 · 配置下发</span>
+            <b>↕</b>
+            <span>错误码 · 用量 · 日志回传</span>
+          </div>
+          <article class="layer layer--gov">
+            <div class="layer-k">治理层</div>
+            <h2>同一套计费与管控，两条商业路径</h2>
+            <div class="layer-chips">
+              <span>工作区</span>
+              <span>Key / 配额</span>
+              <span>绝对价</span>
+              <span>价审 / 对账</span>
+            </div>
+            <div class="paths">
+              <div class="path">
+                <em>路径一</em>
+                <strong>SaaS 公有 API</strong>
+                <p>预充值 · 控制台 · 快速接入</p>
+              </div>
+              <div class="path">
+                <em>路径二</em>
+                <strong>企业复制</strong>
+                <p>子密钥 · 配额拆分 · 专属 / 混合</p>
+              </div>
+            </div>
+          </article>
+          <div class="flow-row">
+            <span>路由请求</span>
+            <b>↕</b>
+            <span>刊例 · 容量 · 线路质量</span>
+          </div>
+          <article class="layer layer--model">
+            <div class="layer-k">模型层</div>
+            <h2>多源供给，不做训练</h2>
+            <div class="layer-chips">
+              <span>多源路由</span>
+              <span>容量</span>
+              <span>刊例</span>
+            </div>
+          </article>
+        </div>
+        <aside class="borrow-principles">
+          <article class="prin">
+            <div class="prin-num">01</div>
+            <h3>接入端先于中台</h3>
+            <p>先把 Coding / Agent 运行时接稳，再考虑可视化编排。入口在 IDE 与 /v1，不在自建画布。</p>
+          </article>
+          <article class="prin">
+            <div class="prin-num">02</div>
+            <h3>规范与 Skill 是产品</h3>
+            <p>对外 trinity-skills 可安装；模型 ID、价格、错误码与广场 / 定价同源。规范即跨工具共识。</p>
+          </article>
+          <article class="prin">
+            <div class="prin-num">03</div>
+            <h3>双路径、同一套管控</h3>
+            <p>SaaS 调用与企业侧复制共用网关、计费、日志。平台下发配置，运行时回传用量与对账。</p>
+          </article>
+        </aside>
+      </div>
+      <p class="borrow-foot">明确不做：研效 Agent 矩阵 · 通用工作流编排 SaaS · 自研 Agent 内核</p>
+    </section>
+  </div>
+
+  <div class="stage">
+    <section class="slide slide--plan">
+      <div class="borrow-head">
+        <h1>未来产品规划</h1>
+        <span>试验稿 · 不进正稿</span>
+      </div>
+      <p class="plan-lead">已有<strong>模型平台</strong>向上长：先孵化 <strong>Agent SDK</strong>，再薄做 <strong>Agent 智能平台</strong>，用 1～2 条硬场景带出<strong>云一体</strong>。近端 90 天仍是经营闭环；GEO 第二部分另议。</p>
+
+      <div class="plan-ops">
+        <article>
+          <span>近 · P0</span>
+          <strong>外发</strong>
+          <p>L3a 报价与话术进销售</p>
+        </article>
+        <article>
+          <span>近 · P0</span>
+          <strong>转化</strong>
+          <p>试用 → 首充 → 复充</p>
+        </article>
+        <article>
+          <span>近 · P0</span>
+          <strong>闭环</strong>
+          <p>对账 / 告警 / 看板</p>
+        </article>
+      </div>
+
+      <div class="plan-body">
+        <div class="plan-stack">
+          <article class="plan-layer is-scene">
+            <div class="plan-meta">
+              <div class="plan-k">场景层</div>
+              <div class="plan-when">中期 · 少而硬</div>
+            </div>
+            <h2>场景化方案 · 拉动云用量</h2>
+            <div class="plan-row">
+              <span>知识 + 专属推理</span>
+              <span>企业私有化交付</span>
+              <span>待拍：是否做 Coding</span>
+            </div>
+            <p class="plan-note">场景不是行业海报。选能把模型调用和云资源绑在同一张合同上的一条。</p>
+          </article>
+          <div class="plan-arrow">↑ 场景消费 SDK / 平台能力</div>
+          <article class="plan-layer is-mid">
+            <div class="plan-meta">
+              <div class="plan-k">平台层</div>
+              <div class="plan-when">中期 · 薄平台</div>
+            </div>
+            <h2>Agent 智能平台 = SDK 能力孵化器</h2>
+            <div class="plan-row">
+              <span>WorkSession</span>
+              <span>HITL</span>
+              <span>评测集</span>
+              <span>定价 / 对账 Agent</span>
+            </div>
+            <p class="plan-note">平台先服务自己的运营与交付，再外溢成可复制能力；不做通用画布。</p>
+          </article>
+          <div class="plan-arrow">↑ 稳定能力下沉为 SDK</div>
+          <article class="plan-layer is-near">
+            <div class="plan-meta">
+              <div class="plan-k">产品层</div>
+              <div class="plan-when">近 → 中 · 先于厚平台</div>
+            </div>
+            <h2>Agent SDK · 接到人所在的入口</h2>
+            <div class="plan-row">
+              <span>trinity-skills</span>
+              <span>OpenAI 兼容 /v1</span>
+              <span>IDE / CLI</span>
+              <span>待拍：开发者嵌入 vs 企业私有化</span>
+            </div>
+            <p class="plan-note">SDK 是对外交付面；平台是孵化器。顺序不要反。</p>
+          </article>
+          <div class="plan-arrow">↑ 调用模型供给与治理</div>
+          <article class="plan-layer is-now">
+            <div class="plan-meta">
+              <div class="plan-k">底座 · 已有</div>
+              <div class="plan-when">现在</div>
+            </div>
+            <h2>模型平台 + 云业务一体化</h2>
+            <div class="plan-row">
+              <span>多源路由</span>
+              <span>刊例 / 价审</span>
+              <span>Key · 配额 · 绝对价</span>
+              <span>AI 云集采</span>
+            </div>
+            <p class="plan-note">API 聚合与云不是两条叙事，场景落地时合成一张账单。</p>
+          </article>
+        </div>
+        <aside class="plan-side">
+          <article class="plan-card">
+            <em>双路径</em>
+            <h3>同一套管控，两种卖法</h3>
+            <div class="plan-paths">
+              <div class="plan-path">
+                <strong>SaaS</strong>
+                <p>公有 API · 预充值 · 控制台</p>
+              </div>
+              <div class="plan-path">
+                <strong>私有化</strong>
+                <p>专属 / 混合 · 配额拆分</p>
+              </div>
+            </div>
+          </article>
+          <article class="plan-card">
+            <em>述职口径</em>
+            <h3>评委听什么</h3>
+            <p>0→1 已完成可售卖；下一阶段不是再铺一张画布，而是 SDK + 场景把模型和云卖进合同。</p>
+          </article>
+          <article class="plan-card plan-geo">
+            <em>第二部分</em>
+            <h3>GEO · 占位不展开</h3>
+            <p>规划分两块。本图只画第一部分；GEO 另议后再叠一层。</p>
+          </article>
+        </aside>
+      </div>
+      <p class="borrow-foot">明确不做：研效五 Agent 矩阵 · 通用工作流编排 SaaS · 自研 Agent 内核 · 本页不替换正稿 P11</p>
+    </section>
+  </div>
+</body>
+</html>
