@@ -75,10 +75,13 @@ export const VENDOR_PRICING_URLS = {
     international: "https://www.byteplus.com/en/product/ModelArk",
   },
   kling: {
-    image: "https://klingai.com/global/dev/pricing",
-    image_api: "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
+    /** 生图 API 按能力分档价目（文生图 / 图生图 / 多图参考） */
+    image: "https://klingai.com/document-api/pricing/base/image",
+    image_api: "https://klingai.com/document-api/pricing/base/image",
     video: "https://kling.ai/document-api/pricing/base/video",
-    international_image: "https://klingai.com/global/dev/pricing",
+    international_image: "https://klingai.com/document-api/pricing/base/image",
+    /** 资源包 / 营销概览，非生图 API 完整档位真源 */
+    image_overview: "https://klingai.com/global/dev/pricing",
   },
   vidu: {
     image: "https://platform.vidu.cn/docs/pricing",

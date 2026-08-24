@@ -6,11 +6,11 @@
   "currency": "CNY",
   "unit": "CNY per image (or per request)",
   "chargeUnit": "image",
-  "fetchedAt": "2026-08-18T07:42:30.791Z",
-  "seedVerifiedAt": "2026-07-03",
+  "fetchedAt": "2026-08-24T02:50:42.894Z",
+  "seedVerifiedAt": "2026-08-24",
   "catalogCount": 20,
   "modelCount": 20,
-  "pricingTierCount": 49,
+  "pricingTierCount": 46,
   "pricedCount": 20,
   "liveCount": 0,
   "seedCount": 20,
@@ -33,7 +33,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -47,7 +47,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "腾讯云混元生图 3.0 统一价",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
@@ -80,7 +80,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -94,7 +94,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "腾讯云混元生图极速版统一价",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
@@ -127,7 +127,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-07-03)",
+      "priceSource": "https://cloud.tencent.com/document/product/1668/90896 (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -141,7 +141,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "混元生图 3.0 统一价（与 hy-image-v3.0 同档，无分辨率分档）",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://cloud.tencent.com/document/product/1668/90896"
@@ -174,7 +174,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -202,7 +202,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 5.0 Lite",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
@@ -249,7 +249,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -277,7 +277,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 4.5",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
@@ -324,7 +324,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -352,7 +352,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "火山方舟 Seedream 4.0",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
@@ -399,7 +399,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-07-03)",
+      "priceSource": "https://www.volcengine.com/docs/82379/1544106?lang=zh (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -427,7 +427,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "即梦 4.0",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://www.volcengine.com/docs/82379/1544106?lang=zh"
@@ -474,7 +474,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-07-03)",
+      "priceSource": "https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -488,7 +488,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "百炼 Model ID qwen-image · 官方统一价；Trinity qwen-0925 · AIGC 分档为转售口径",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing"
@@ -521,7 +521,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://docs.midjourney.com/docs/plans (seed 2026-07-03)",
+      "priceSource": "https://docs.midjourney.com/docs/plans (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -535,7 +535,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "no_public_api — MJ 为订阅制，无公开按张 API 价目",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": false,
         "seedAigcOnly": true,
         "seedSourceUrl": "https://docs.midjourney.com/docs/plans"
@@ -568,7 +568,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -596,7 +596,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gpt-image-2 low · 1K=1024² 官方计算器",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
@@ -643,7 +643,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -671,7 +671,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gpt-image-2 medium · 1K=1024² 官方计算器",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
@@ -718,7 +718,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-07-03)",
+      "priceSource": "https://developers.openai.com/api/docs/pricing (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -746,7 +746,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gpt-image-2 high · 1K=1024² 官方计算器",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://developers.openai.com/api/docs/pricing"
@@ -793,7 +793,7 @@
       "tierCount": 1,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -807,7 +807,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gemini-2.5-flash-image Standard · ≤1024²",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
@@ -840,7 +840,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -868,7 +868,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gemini-3-pro-image Standard",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
@@ -915,7 +915,7 @@
       "tierCount": 4,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-07-03)",
+      "priceSource": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn (seed 2026-08-24)",
       "prices": {
         "currency": "USD",
         "tiers": [
@@ -950,7 +950,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "gemini-3.1-flash-image Standard",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn"
@@ -1004,7 +1004,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-07-03)",
+      "priceSource": "https://platform.vidu.cn/docs/pricing (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1032,7 +1032,7 @@
         ],
         "source": "official_price_seed",
         "seedNote": "viduq2 文生图 · 6/8/10 积分 × ¥0.03125",
-        "seedVerifiedAt": "2026-07-03",
+        "seedVerifiedAt": "2026-08-24",
         "seedLocked": true,
         "seedAigcOnly": false,
         "seedSourceUrl": "https://platform.vidu.cn/docs/pricing"
@@ -1066,20 +1066,20 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kling-2.1",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "docUrl": "https://klingai.com/document-api/pricing/base/image",
+      "pricingUrl": "https://klingai.com/document-api/pricing/base/image",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "trinityNote": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 3,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "priceSource": "https://klingai.com/document-api/pricing/base/image (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1096,21 +1096,46 @@
             "unit": "元/张",
             "note": null,
             "parseSource": "official_price_seed"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "text_to_image",
+            "label": "文生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.1,
+            "unit": "元/张"
           },
           {
-            "tierLabel": "4K",
-            "price": 0.26,
-            "unit": "元/张",
-            "note": null,
-            "parseSource": "official_price_seed"
+            "id": "image_to_image",
+            "label": "图生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
+          },
+          {
+            "id": "multi_reference_image",
+            "label": "多图参考生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.4,
+            "unit": "元/张"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
-        "seedVerifiedAt": "2026-07-03",
-        "seedLocked": false,
-        "seedAigcOnly": true,
-        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+        "seedNote": "kling.ai document-api/pricing/base/image · 能力分档 · 1K/2K 同价 · 无 4K",
+        "seedVerifiedAt": "2026-08-24",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://klingai.com/document-api/pricing/base/image"
       },
       "tiers": [
         {
@@ -1126,13 +1151,38 @@
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"
+        }
+      ],
+      "capabilities": [
+        {
+          "id": "text_to_image",
+          "label": "文生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.1,
+          "unit": "元/张"
         },
         {
-          "tierLabel": "4K",
-          "price": 0.26,
-          "unit": "元/张",
-          "note": null,
-          "parseSource": "official_price_seed"
+          "id": "image_to_image",
+          "label": "图生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
+        },
+        {
+          "id": "multi_reference_image",
+          "label": "多图参考生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.4,
+          "unit": "元/张"
         }
       ]
     },
@@ -1141,20 +1191,20 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kling-3",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "docUrl": "https://klingai.com/document-api/pricing/base/image",
+      "pricingUrl": "https://klingai.com/document-api/pricing/base/image",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "trinityNote": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 3,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "priceSource": "https://klingai.com/document-api/pricing/base/image (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1171,21 +1221,36 @@
             "unit": "元/张",
             "note": null,
             "parseSource": "official_price_seed"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "text_to_image",
+            "label": "文生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
           },
           {
-            "tierLabel": "4K",
-            "price": 0.4,
-            "unit": "元/张",
-            "note": null,
-            "parseSource": "official_price_seed"
+            "id": "image_to_image",
+            "label": "图生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
-        "seedVerifiedAt": "2026-07-03",
-        "seedLocked": false,
-        "seedAigcOnly": true,
-        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+        "seedNote": "官网文生图/图生图同价 · 1K/2K · 无 4K",
+        "seedVerifiedAt": "2026-08-24",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://klingai.com/document-api/pricing/base/image"
       },
       "tiers": [
         {
@@ -1201,13 +1266,28 @@
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"
+        }
+      ],
+      "capabilities": [
+        {
+          "id": "text_to_image",
+          "label": "文生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
         },
         {
-          "tierLabel": "4K",
-          "price": 0.4,
-          "unit": "元/张",
-          "note": null,
-          "parseSource": "official_price_seed"
+          "id": "image_to_image",
+          "label": "图生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
         }
       ]
     },
@@ -1216,11 +1296,11 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kling-3.0-omni",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "docUrl": "https://klingai.com/document-api/pricing/base/image",
+      "pricingUrl": "https://klingai.com/document-api/pricing/base/image",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "trinityNote": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
@@ -1229,7 +1309,7 @@
       "tierCount": 3,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "priceSource": "https://klingai.com/document-api/pricing/base/image (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1255,12 +1335,52 @@
             "parseSource": "official_price_seed"
           }
         ],
+        "capabilities": [
+          {
+            "id": "text_to_image",
+            "label": "文生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
+          },
+          {
+            "id": "image_to_image",
+            "label": "图生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
+          },
+          {
+            "id": "text_to_image",
+            "label": "文生图",
+            "resolutions": [
+              "4K"
+            ],
+            "price": 0.4,
+            "unit": "元/张"
+          },
+          {
+            "id": "image_to_image",
+            "label": "图生图",
+            "resolutions": [
+              "4K"
+            ],
+            "price": 0.4,
+            "unit": "元/张"
+          }
+        ],
         "source": "official_price_seed",
-        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
-        "seedVerifiedAt": "2026-07-03",
-        "seedLocked": false,
-        "seedAigcOnly": true,
-        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+        "seedNote": "官网 1K/2K 同价；4K 另档",
+        "seedVerifiedAt": "2026-08-24",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://klingai.com/document-api/pricing/base/image"
       },
       "tiers": [
         {
@@ -1284,6 +1404,46 @@
           "note": null,
           "parseSource": "official_price_seed"
         }
+      ],
+      "capabilities": [
+        {
+          "id": "text_to_image",
+          "label": "文生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
+        },
+        {
+          "id": "image_to_image",
+          "label": "图生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
+        },
+        {
+          "id": "text_to_image",
+          "label": "文生图",
+          "resolutions": [
+            "4K"
+          ],
+          "price": 0.4,
+          "unit": "元/张"
+        },
+        {
+          "id": "image_to_image",
+          "label": "图生图",
+          "resolutions": [
+            "4K"
+          ],
+          "price": 0.4,
+          "unit": "元/张"
+        }
       ]
     },
     {
@@ -1291,20 +1451,20 @@
       "vendor": "kling",
       "vendorLabel": "可灵",
       "vendorModelId": "kling-o1",
-      "docUrl": "https://app.klingai.com/cn/dev/document-api/apiReference/model/skillsMap",
-      "pricingUrl": "https://klingai.com/global/dev/pricing",
+      "docUrl": "https://klingai.com/document-api/pricing/base/image",
+      "pricingUrl": "https://klingai.com/document-api/pricing/base/image",
       "sunsetDate": null,
       "sunsetNote": null,
-      "trinityNote": "灵感值/Credits 计价，无公开按张 API 价目",
+      "trinityNote": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "region": "domestic",
       "status": "active",
       "currency": "CNY",
       "unit": "CNY per image (or per request)",
       "chargeUnit": "image",
-      "tierCount": 3,
+      "tierCount": 2,
       "fetchStatus": "seed",
       "fetchError": "国内生图/生视频暂以官网核实种子为准",
-      "priceSource": "https://klingai.com/global/dev/pricing (seed 2026-07-03)",
+      "priceSource": "https://klingai.com/document-api/pricing/base/image (seed 2026-08-24)",
       "prices": {
         "currency": "CNY",
         "tiers": [
@@ -1321,21 +1481,36 @@
             "unit": "元/张",
             "note": null,
             "parseSource": "official_price_seed"
+          }
+        ],
+        "capabilities": [
+          {
+            "id": "text_to_image",
+            "label": "文生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
           },
           {
-            "tierLabel": "4K",
-            "price": 0.4,
-            "unit": "元/张",
-            "note": null,
-            "parseSource": "official_price_seed"
+            "id": "image_to_image",
+            "label": "图生图",
+            "resolutions": [
+              "1K",
+              "2K"
+            ],
+            "price": 0.2,
+            "unit": "元/张"
           }
         ],
         "source": "official_price_seed",
-        "seedNote": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
-        "seedVerifiedAt": "2026-07-03",
-        "seedLocked": false,
-        "seedAigcOnly": true,
-        "seedSourceUrl": "https://klingai.com/global/dev/pricing"
+        "seedNote": "官网文生图/图生图同价 · 1K/2K · 无 4K",
+        "seedVerifiedAt": "2026-08-24",
+        "seedLocked": true,
+        "seedAigcOnly": false,
+        "seedSourceUrl": "https://klingai.com/document-api/pricing/base/image"
       },
       "tiers": [
         {
@@ -1351,13 +1526,28 @@
           "unit": "元/张",
           "note": null,
           "parseSource": "official_price_seed"
+        }
+      ],
+      "capabilities": [
+        {
+          "id": "text_to_image",
+          "label": "文生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
         },
         {
-          "tierLabel": "4K",
-          "price": 0.4,
-          "unit": "元/张",
-          "note": null,
-          "parseSource": "official_price_seed"
+          "id": "image_to_image",
+          "label": "图生图",
+          "resolutions": [
+            "1K",
+            "2K"
+          ],
+          "price": 0.2,
+          "unit": "元/张"
         }
       ]
     }

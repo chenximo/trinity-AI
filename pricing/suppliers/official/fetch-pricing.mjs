@@ -120,6 +120,7 @@ async function fetchModality(modality, entries) {
       priceSource: result.priceSource,
       prices: result.prices,
       tiers,
+      capabilities: result.prices?.capabilities ?? undefined,
     });
 
     await new Promise((r) => setTimeout(r, 300));

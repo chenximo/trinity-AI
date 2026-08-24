@@ -77,7 +77,8 @@
 | L3 fail | 官方与百炼/火山等档位数或价格不一致 | **先查 scrape**；抓取无误再告警商务 |
 | `tokenhubNoCoverage` | TokenHub 未上架 | **不 fail** |
 | `aigcIntlSkipped` | 国际站模型跳过国内对比 / AIGC 无国际价 | **不 fail** |
-| 生图 `aigc_only` 种子 | 可灵/MJ 等无公开 API 价 | 预期与 AIGC 不一致；登记例外，勿改官方种子 |
+| 生图 `aigc_only` 种子 | Midjourney 等无公开 API 价 | 预期与 AIGC 不一致；登记例外 |
+| 生图刊例 ⊇ 官网能力档 | 可灵等官网按能力分档 | Trinity 未挂官网能力/分辨率 → `listing_official_coverage_gap`，**不**因 AIGC 例外跳过 |
 
 ## 与刊例对比关系
 

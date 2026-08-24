@@ -3,7 +3,11 @@
  * 来源：厂商官网文档核实；`locked: true` 表示已与公开价目对齐，勿用 AIGC 反写
  */
 
-export const IMAGE_SEED_VERIFIED_AT = "2026-07-03";
+export const IMAGE_SEED_VERIFIED_AT = "2026-08-24";
+
+/** 可灵生图 API 价目（能力 × 分辨率；1K/2K 同价，无 4K 除非写明） */
+const KLING_IMAGE_SOURCE_URL =
+  "https://klingai.com/document-api/pricing/base/image";
 
 /**
  * @typedef {{ tierLabel: string, price: number | string, unit: string, note?: string }} TierSeed
@@ -165,43 +169,125 @@ export const IMAGE_SEED = {
     note: "viduq2 文生图 · 6/8/10 积分 × ¥0.03125",
   },
   "kling-2.1": {
-    aigcOnly: true,
-    sourceUrl: "https://klingai.com/global/dev/pricing",
+    locked: true,
+    sourceUrl: KLING_IMAGE_SOURCE_URL,
     tiers: [
       { tierLabel: "1K", price: 0.1, unit: "元/张" },
       { tierLabel: "2K", price: 0.1, unit: "元/张" },
-      { tierLabel: "4K", price: 0.26, unit: "元/张" },
     ],
-    note: "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+    capabilities: [
+      {
+        id: "text_to_image",
+        label: "文生图",
+        resolutions: ["1K", "2K"],
+        price: 0.1,
+        unit: "元/张",
+      },
+      {
+        id: "image_to_image",
+        label: "图生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+      {
+        id: "multi_reference_image",
+        label: "多图参考生图",
+        resolutions: ["1K", "2K"],
+        price: 0.4,
+        unit: "元/张",
+      },
+    ],
+    note: "kling.ai document-api/pricing/base/image · 能力分档 · 1K/2K 同价 · 无 4K",
   },
   "kling-3": {
-    aigcOnly: true,
-    sourceUrl: "https://klingai.com/global/dev/pricing",
+    locked: true,
+    sourceUrl: KLING_IMAGE_SOURCE_URL,
     tiers: [
       { tierLabel: "1K", price: 0.2, unit: "元/张" },
       { tierLabel: "2K", price: 0.2, unit: "元/张" },
-      { tierLabel: "4K", price: 0.4, unit: "元/张" },
     ],
-    note: "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+    capabilities: [
+      {
+        id: "text_to_image",
+        label: "文生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+      {
+        id: "image_to_image",
+        label: "图生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+    ],
+    note: "官网文生图/图生图同价 · 1K/2K · 无 4K",
   },
   "kling-3.0-omni": {
-    aigcOnly: true,
-    sourceUrl: "https://klingai.com/global/dev/pricing",
+    locked: true,
+    sourceUrl: KLING_IMAGE_SOURCE_URL,
     tiers: [
       { tierLabel: "1K", price: 0.2, unit: "元/张" },
       { tierLabel: "2K", price: 0.2, unit: "元/张" },
       { tierLabel: "4K", price: 0.4, unit: "元/张" },
     ],
-    note: "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+    capabilities: [
+      {
+        id: "text_to_image",
+        label: "文生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+      {
+        id: "image_to_image",
+        label: "图生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+      {
+        id: "text_to_image",
+        label: "文生图",
+        resolutions: ["4K"],
+        price: 0.4,
+        unit: "元/张",
+      },
+      {
+        id: "image_to_image",
+        label: "图生图",
+        resolutions: ["4K"],
+        price: 0.4,
+        unit: "元/张",
+      },
+    ],
+    note: "官网 1K/2K 同价；4K 另档",
   },
   "kling-o1": {
-    aigcOnly: true,
-    sourceUrl: "https://klingai.com/global/dev/pricing",
+    locked: true,
+    sourceUrl: KLING_IMAGE_SOURCE_URL,
     tiers: [
       { tierLabel: "1K", price: 0.2, unit: "元/张" },
       { tierLabel: "2K", price: 0.2, unit: "元/张" },
-      { tierLabel: "4K", price: 0.4, unit: "元/张" },
     ],
-    note: "aigc_only — 可灵为灵感值计价，无公开按张 API 价目",
+    capabilities: [
+      {
+        id: "text_to_image",
+        label: "文生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+      {
+        id: "image_to_image",
+        label: "图生图",
+        resolutions: ["1K", "2K"],
+        price: 0.2,
+        unit: "元/张",
+      },
+    ],
+    note: "官网文生图/图生图同价 · 1K/2K · 无 4K",
   },
 };

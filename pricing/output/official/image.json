@@ -1,7 +1,7 @@
 {
   "modality": "image",
-  "generatedAt": "2026-08-18T07:48:16.027Z",
-  "officialFetchedAt": "2026-08-18T07:42:30.791Z",
+  "generatedAt": "2026-08-24T06:54:56.269Z",
+  "officialFetchedAt": "2026-08-24T02:50:42.894Z",
   "pricesFetchedAt": "2026-08-18T07:48:15.584Z",
   "modelCount": 20,
   "trinityLinkedCount": 20,
@@ -628,7 +628,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -649,7 +649,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -659,18 +659,18 @@
       "vendorModelId": "kling-2.1",
       "tierLabel": "4K",
       "tierKey": "res:4k",
-      "official": "¥0.26/张",
+      "official": "—",
       "aigcDom": "¥0.26/张",
       "aigcIntl": "$0.037/张",
       "tokenhub": "—",
       "openRouter": "—",
       "online": "—",
-      "aigcDomVsOfficial": "✅",
-      "aigcIntlVsOfficial": "⚠-7.5%",
+      "aigcDomVsOfficial": "—",
+      "aigcIntlVsOfficial": "—",
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "ℹ 线上无同档刊例",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -691,7 +691,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -712,7 +712,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -722,18 +722,18 @@
       "vendorModelId": "kling-3",
       "tierLabel": "4K",
       "tierKey": "res:4k",
-      "official": "¥0.4/张",
+      "official": "—",
       "aigcDom": "¥0.4/张",
       "aigcIntl": "$0.056/张",
       "tokenhub": "—",
       "openRouter": "—",
       "online": "$0.0616/张",
-      "aigcDomVsOfficial": "✅",
-      "aigcIntlVsOfficial": "⚠-9%",
+      "aigcDomVsOfficial": "—",
+      "aigcIntlVsOfficial": "—",
       "thVsOfficial": "—",
       "orVsOfficial": "—",
-      "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "listingConclusion": "ℹ 官方无档 · 价⚠+10%",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -754,7 +754,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -775,7 +775,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -796,7 +796,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -817,7 +817,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -838,7 +838,7 @@
       "thVsOfficial": "—",
       "orVsOfficial": "—",
       "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {
@@ -848,18 +848,18 @@
       "vendorModelId": "kling-o1",
       "tierLabel": "4K",
       "tierKey": "res:4k",
-      "official": "¥0.4/张",
+      "official": "—",
       "aigcDom": "¥0.4/张",
       "aigcIntl": "$0.056/张",
       "tokenhub": "—",
       "openRouter": "—",
       "online": "$0.0616/张",
-      "aigcDomVsOfficial": "✅",
-      "aigcIntlVsOfficial": "⚠-9%",
+      "aigcDomVsOfficial": "—",
+      "aigcIntlVsOfficial": "—",
       "thVsOfficial": "—",
       "orVsOfficial": "—",
-      "listingConclusion": "价✅",
-      "note": "灵感值/Credits 计价，无公开按张 API 价目",
+      "listingConclusion": "ℹ 官方无档 · 价⚠+10%",
+      "note": "开放平台 API 价目：能力分档（文生图/图生图/多图参考）",
       "officialStatus": "seed"
     },
     {

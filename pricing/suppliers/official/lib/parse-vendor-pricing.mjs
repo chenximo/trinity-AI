@@ -292,6 +292,13 @@ function seedPrices(vendorModelId, seedMap, seedVerifiedAt, modality) {
   const s = /** @type {{
     currency?: string,
     tiers: Array<{ tierLabel: string, price: number|string, unit: string, note?: string }>,
+    capabilities?: Array<{
+      id: string,
+      label: string,
+      resolutions: string[],
+      price: number|string,
+      unit?: string,
+    }>,
     note?: string,
     locked?: boolean,
     aigcOnly?: boolean,
@@ -307,6 +314,7 @@ function seedPrices(vendorModelId, seedMap, seedVerifiedAt, modality) {
       note: t.note ?? null,
       parseSource: "official_price_seed",
     })),
+    capabilities: Array.isArray(s.capabilities) ? s.capabilities : undefined,
     source: "official_price_seed",
     seedNote: note || null,
     seedVerifiedAt,

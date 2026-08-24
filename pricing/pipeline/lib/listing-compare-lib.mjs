@@ -20,6 +20,7 @@ import { annotationsForModel } from "../../config/pricing-annotations.mjs";
 import { readOnlinePricesCache } from "./fetch-online-prices-lib.mjs";
 import { compareImagePricesDocuments } from "./diff-image-prices-api.mjs";
 import { compareVideoPricesDocuments } from "./diff-video-prices-api.mjs";
+import { findImageOfficialListingGaps } from "./listing-official-coverage-lib.mjs";
 
 export const LISTING_DECISION_ACTION =
   "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑";
@@ -86,6 +87,26 @@ function alertFromMissingTier(item) {
  * @param {object} tier
  * @param {string} model
  */
+function alertFromOfficialCoverageGap(gap) {
+  return baseAlert({
+    type: "listing_official_coverage_gap",
+    phase: "L1_vs_L4",
+    modality: "image",
+    trinityId: gap.trinityId,
+    title: "生图刊例未覆盖官网档位",
+    detail: gap.detail,
+    capability: gap.capability,
+    resolution: gap.resolution,
+    vendorModelId: gap.vendorModelId,
+    suggestedAction:
+      "对照 klingai.com/document-api/pricing/base/image 等官网价目，补齐 Trinity 能力/分辨率刊例；或确认下架",
+    refs: {
+      official: "pricing/suppliers/official/output/image/vendor-pricing.json",
+      online: "pricing/output/online/prices-api-image.json",
+    },
+  });
+}
+
 function alertFromModalityTier(modality, tier, model) {
   const isMissing = tier.verdict === "缺项";
   const type = isMissing ? "listing_tier_gap" : "listing_price_gap";
@@ -219,9 +240,40 @@ async function buildModalitySection(modality) {
       }
     }
 
+    let officialCoverage = { gapCount: 0, gaps: [], ok: true };
+    if (modality === "image") {
+      try {
+        const [officialRaw, mapRaw] = await Promise.all([
+          readFile(officialPricingFile("image"), "utf8"),
+          readFile(OFFICIAL_MAP_FILE, "utf8"),
+        ]);
+        officialCoverage = findImageOfficialListingGaps({
+          officialModels: JSON.parse(officialRaw).models ?? [],
+          trinityMap: JSON.parse(mapRaw),
+          onlineDoc,
+        });
+        for (const gap of officialCoverage.gaps) {
+          alerts.push(alertFromOfficialCoverageGap(gap));
+        }
+      } catch (coverErr) {
+        officialCoverage = {
+          status: "skipped",
+          reason:
+            coverErr instanceof Error ? coverErr.message : String(coverErr),
+          gapCount: 0,
+          gaps: [],
+          ok: true,
+        };
+      }
+    }
+
     return {
       status: "ok",
-      summary: doc.summary,
+      summary: {
+        ...doc.summary,
+        officialCoverageGaps: officialCoverage.gapCount ?? 0,
+      },
+      officialCoverage,
       alerts,
     };
   } catch (e) {

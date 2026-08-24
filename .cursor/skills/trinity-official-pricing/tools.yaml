@@ -352,7 +352,7 @@ tools:
 
   - id: pricing.gate
     title: 价目门禁 L1→L3（全模态）
-    summary: official text+image → aigc-excel → L2 text+image+video → L3 text+image+video → alert dry-run
+    summary: official text+image → L2/L3 → listing-compare（含官网能力档覆盖）→ alert
     command: npm run pricing:gate
     reads:
       - pricing/suppliers/official/output/text/vendor-pricing.json

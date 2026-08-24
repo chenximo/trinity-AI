@@ -312,20 +312,29 @@ export const PRICING_ANNOTATIONS = [
       "vd-video-q3 种子来自 Vidu 开放平台（非 TokenHub 0.3125 元/积分口径）；与 AIGC 差异可能来自进货渠道。",
   },
   {
-    id: "image-mj-kling-aigc-only",
+    id: "image-mj-aigc-only",
+    trinityIds: ["MJ-v7"],
+    severity: "info",
+    flag: "AIGC参照",
+    scopes: ["official-aigc-image", "official-suppliers", "compare-hub"],
+    title: "Midjourney 生图：无公开按张 API 价",
+    detail:
+      "MJ 为订阅制，无公开 API 按张价目；种子为 AIGC 商务参照（aigc_only）。L2/L3 仅作映射检查。",
+  },
+  {
+    id: "image-kling-official-capability-vs-aigc-grid",
     trinityIds: [
-      "MJ-v7",
       "Kling-2.1",
       "Kling-3.0",
       "Kling-3.0-omni",
       "Kling-O1",
     ],
     severity: "info",
-    flag: "AIGC参照",
-    scopes: ["official-aigc-image", "official-suppliers", "compare-hub"],
-    title: "MJ/可灵生图：无公开按张 API 价",
+    flag: "能力分档",
+    scopes: ["official-aigc-image", "official-suppliers"],
+    title: "可灵生图：官网按能力分档，AIGC 另拆 4K",
     detail:
-      "种子价来自 AIGC 商务参照（aigc_only），非厂商公开 API 按张价目；L2/L3 与官方种子对比仅作映射检查，不视为 blocking 差异。",
+      "官方真源为 klingai.com/document-api/pricing/base/image（文生图/图生图/多图参考；2.1/3.0/O1 无 4K）。AIGC 的 1K/2K/4K×能力网格可多于官网；L2 不 blocking。刊例校验另查 Trinity 是否覆盖官网能力档。",
   },
 ];
 

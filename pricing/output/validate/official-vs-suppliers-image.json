@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-07-10T07:42:58.537Z",
+  "generatedAt": "2026-08-24T06:54:56.712Z",
   "modality": "image",
   "phase": "L1_vs_L3_image",
   "ok": true,
   "summary": {
-    "modelChannels": 45,
-    "ok": 15,
+    "modelChannels": 61,
+    "ok": 16,
     "issues": 0,
-    "noCoverage": 18,
-    "aigcOnlySkipped": 5,
+    "noCoverage": 26,
+    "aigcOnlySkipped": 1,
     "blockingAlertCount": 0
   },
   "aigcOnlySkipped": [
@@ -17,30 +17,6 @@
       "vendorModelId": "midjourney-v7",
       "reason": "aigc_only_seed",
       "note": "no_public_api — MJ 为订阅制，无公开按张 API 价目"
-    },
-    {
-      "trinityId": "Kling-2.1",
-      "vendorModelId": "kling-2.1",
-      "reason": "aigc_only_seed",
-      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
-    },
-    {
-      "trinityId": "Kling-3.0",
-      "vendorModelId": "kling-3",
-      "reason": "aigc_only_seed",
-      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
-    },
-    {
-      "trinityId": "Kling-3.0-omni",
-      "vendorModelId": "kling-3.0-omni",
-      "reason": "aigc_only_seed",
-      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
-    },
-    {
-      "trinityId": "Kling-O1",
-      "vendorModelId": "kling-o1",
-      "reason": "aigc_only_seed",
-      "note": "aigc_only — 可灵为灵感值计价，无公开按张 API 价目"
     }
   ],
   "comparisons": [
@@ -769,6 +745,266 @@
     {
       "trinityId": "Vidu-q2",
       "vendorModelId": "vidu-q2",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 1,
+      "issues": [
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.015,
+          "right": 0.014,
+          "pct": 7.1
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.015,
+          "right": 0.014,
+          "pct": 7.1
+        },
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-2.1",
+      "vendorModelId": "kling-2.1",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 1,
+      "issues": [
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-3.0",
+      "vendorModelId": "kling-3",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "ok",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 0,
+      "issues": [],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 3,
+      "supplierTierCount": 3,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:4k",
+          "left": 0.062,
+          "right": 0.056,
+          "pct": 10.7
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-3.0-omni",
+      "vendorModelId": "kling-3.0-omni",
+      "supplier": "火山方舟",
+      "channel": "volcengine",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
+      "supplier": "AIGC国内",
+      "channel": "aigc-domestic",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 1,
+      "issues": [
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
+      "supplier": "AIGC国际",
+      "channel": "aigc-international",
+      "status": "issues",
+      "officialTierCount": 2,
+      "supplierTierCount": 3,
+      "issueCount": 3,
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:1k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "price_mismatch",
+          "tierKey": "res:2k",
+          "left": 0.031,
+          "right": 0.028,
+          "pct": 10.7
+        },
+        {
+          "kind": "tier_count",
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "annotated": true
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
+      "supplier": "TokenHub",
+      "channel": "tokenhub",
+      "status": "no_coverage",
+      "issueCount": 0
+    },
+    {
+      "trinityId": "Kling-O1",
+      "vendorModelId": "kling-o1",
       "supplier": "火山方舟",
       "channel": "volcengine",
       "status": "no_coverage",
