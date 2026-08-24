@@ -114,8 +114,9 @@ function alertFromOfficialAigcRow(row, phase) {
 
 /**
  * @param {string} validateDir
+ * @param {{ modality?: "text"|"image"|"video" }} [opts]
  */
-export async function collectPricingAlerts(validateDir = OUT_VALIDATE_DIR) {
+export async function collectPricingAlerts(validateDir = OUT_VALIDATE_DIR, opts = {}) {
   const all = [];
 
   for (const spec of VALIDATE_FILES) {
@@ -179,10 +180,22 @@ export async function collectPricingAlerts(validateDir = OUT_VALIDATE_DIR) {
 
   const seen = new Set();
   return all.filter((a) => {
-    const key = `${a.type}|${a.trinityId}|${a.supplier ?? ""}|${a.title}`;
+    const key = [
+      a.type,
+      a.trinityId,
+      a.supplier ?? "",
+      a.title,
+      a.detail ?? "",
+      a.tierKey ?? "",
+      a.capability ?? "",
+      a.resolution ?? "",
+    ].join("|");
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
+  }).filter((a) => {
+    if (!opts.modality) return true;
+    return inferAlertModality(a) === opts.modality;
   });
 }
 
@@ -222,6 +235,208 @@ export function alertsToMarkdown(alerts) {
     }
   }
   return lines.join("\n");
+}
+
+/** @type {Record<string, { title: string, priority: string }>} */
+const DIGEST_TYPE_META = {
+  listing_official_coverage_gap: {
+    title: "刊例未覆盖官网能力档",
+    priority: "P0",
+  },
+  listing_tier_gap: { title: "刊例缺档", priority: "P1" },
+  listing_price_gap: { title: "刊例价偏离官方", priority: "P1" },
+  supplier_tier_gap: { title: "渠道档位数少于官方", priority: "P2" },
+  supplier_price_gap: { title: "渠道价与官方不一致", priority: "P2" },
+  peer_tier_mismatch: { title: "官方↔对等渠道档位不一致", priority: "P2" },
+  peer_price_mismatch: { title: "官方↔对等渠道价格不一致", priority: "P2" },
+  seed_suspect: { title: "种子/映射可疑", priority: "P2" },
+};
+
+const DIGEST_TYPE_ORDER = Object.keys(DIGEST_TYPE_META);
+
+const MODALITY_LABEL = {
+  text: "生文",
+  image: "生图",
+  video: "生视频",
+  other: "其他",
+};
+
+/**
+ * @param {object} alert
+ * @returns {"text"|"image"|"video"|"other"}
+ */
+function inferAlertModality(alert) {
+  if (alert.modality === "text" || alert.modality === "image" || alert.modality === "video") {
+    return alert.modality;
+  }
+  const online = alert.refs?.online ?? "";
+  if (String(online).includes("image")) return "image";
+  if (String(online).includes("video")) return "video";
+  if (alert.phase === "L1_vs_L4") return "other";
+  return "text";
+}
+
+/**
+ * @param {object[]} alerts
+ */
+function countBlockingByModality(alerts) {
+  /** @type {Record<string, number>} */
+  const counts = { text: 0, image: 0, video: 0, other: 0 };
+  for (const a of alerts) {
+    if (a.blocking === false) continue;
+    counts[inferAlertModality(a)] += 1;
+  }
+  return counts;
+}
+
+/**
+ * @param {object[]} alerts
+ */
+function countBlockingByType(alerts) {
+  /** @type {Record<string, number>} */
+  const counts = {};
+  for (const a of alerts) {
+    if (a.blocking === false) continue;
+    counts[a.type] = (counts[a.type] ?? 0) + 1;
+  }
+  return counts;
+}
+
+/**
+ * @param {object} alert
+ */
+function digestAlertBullet(alert) {
+  const id = alert.trinityId ?? "—";
+  const detail = alert.detail?.trim() || alert.title || alert.type;
+  const supplier = alert.supplier ? ` · ${alert.supplier}` : "";
+  return `- \`${id}\`${supplier} · ${detail}`;
+}
+
+/**
+ * 钉钉/Webhook 摘要（完整列表仍写 pricing-alerts.md）
+ *
+ * @param {object[]} alerts
+ * @param {{ topN?: number, generatedAt?: string, listingSummary?: object|null, modality?: "text"|"image"|"video" }} [opts]
+ */
+export function alertsToDigestMarkdown(alerts, opts = {}) {
+  const topN = opts.topN ?? 5;
+  const date = (opts.generatedAt ?? new Date().toISOString()).slice(0, 10);
+  const blocking = alerts.filter((a) => a.blocking !== false);
+  const infoCount = alerts.length - blocking.length;
+  const modality = opts.modality ?? null;
+  const titleLabel = modality ? `${MODALITY_LABEL[modality]}巡检` : "价目巡检";
+
+  if (!blocking.length) {
+    return [
+      `# 模型价格 · ${titleLabel} ${date}`,
+      "",
+      "本轮 **0** 条待人工决策 blocking 告警。",
+      infoCount ? `（另有 ${infoCount} 条已登记例外，见本地 pricing-alerts.md）` : "",
+      "",
+      "详情：`pricing/output/validate/pricing-alerts.md`",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  const byModality = countBlockingByModality(alerts);
+  const byType = countBlockingByType(alerts);
+  const ls = opts.listingSummary ?? null;
+
+  const lines = [
+    `# 模型价格 · ${titleLabel} ${date}`,
+    "",
+    `**待决策 ${blocking.length} 条** · 已登记例外 ${infoCount} 条`,
+    "",
+    "## 总览",
+    "",
+    "| 模态 | blocking | 备注 |",
+    "|------|----------|------|",
+  ];
+
+  const digestMods = modality ? [modality] : ["text", "image", "video"];
+  for (const mod of digestMods) {
+    const n = byModality[mod];
+    const modSummary = ls?.[mod];
+    if (!n && !modSummary) continue;
+    let note = "—";
+    if (ls?.[mod]) {
+      const s = ls[mod];
+      const parts = [];
+      if (s.officialCoverageGaps != null && s.officialCoverageGaps > 0) {
+        parts.push(`官网能力缺口 ${s.officialCoverageGaps}`);
+      }
+      if (s.tierMissing != null && s.tierMissing > 0) {
+        parts.push(`刊例缺档 ${s.tierMissing}`);
+      }
+      if (s.unannotatedWarnings != null && s.unannotatedWarnings > 0) {
+        parts.push(`未注解偏差 ${s.unannotatedWarnings}`);
+      }
+      if (parts.length) note = parts.join("；");
+    }
+    lines.push(`| ${MODALITY_LABEL[mod]} | ${n} | ${note} |`);
+  }
+  if (byModality.other) {
+    lines.push(`| 其他 | ${byModality.other} | — |`);
+  }
+
+  lines.push("", "## 按类型", "");
+  for (const type of DIGEST_TYPE_ORDER) {
+    const n = byType[type];
+    if (!n) continue;
+    const meta = DIGEST_TYPE_META[type] ?? { title: type, priority: "—" };
+    lines.push(`- **${meta.priority}** ${meta.title} × ${n}`);
+  }
+  const otherTypes = Object.keys(byType).filter((t) => !DIGEST_TYPE_ORDER.includes(t));
+  for (const type of otherTypes) {
+    lines.push(`- ${type} × ${byType[type]}`);
+  }
+
+  lines.push("", "## 待办 Top", "");
+
+  for (const type of DIGEST_TYPE_ORDER) {
+    const group = blocking.filter((a) => a.type === type);
+    if (!group.length) continue;
+    const meta = DIGEST_TYPE_META[type] ?? { title: type, priority: "—" };
+    lines.push(`### ${meta.priority} · ${meta.title}`, "");
+    const seen = new Set();
+    let shown = 0;
+    for (const a of group) {
+      const key = [a.trinityId, a.detail, a.capability, a.resolution, a.tierKey].join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      lines.push(digestAlertBullet(a));
+      shown += 1;
+      if (shown >= topN) break;
+    }
+    const rest = group.length - shown;
+    if (rest > 0) {
+      lines.push(`- _另有 ${rest} 条同类型，见 pricing-alerts.md_`);
+    }
+    lines.push("");
+  }
+
+  lines.push(
+    "---",
+    "",
+    `**详情**：\`pricing/output/validate/pricing-alerts${modality ? `-${modality}` : ""}.md\``,
+    "· Excel：`pricing/output/trinity-pricing-{text,image,video}.xlsx`",
+    "",
+    `_巡检命令：\`npm run pricing:inspect${modality ? `:${modality}` : ""}\`（整轮结束推一次）_`,
+  );
+
+  return lines.join("\n");
+}
+
+/** @param {object[]} alerts
+ *  @param {{ modality?: "text"|"image"|"video" }} [opts]
+ */
+export function alertsDigestTitle(alerts, opts = {}) {
+  const blocking = alerts.filter((a) => a.blocking !== false).length;
+  const modality = opts.modality ?? null;
+  const titleLabel = modality ? `${MODALITY_LABEL[modality]}巡检` : "价目巡检";
+  if (!blocking) return `模型价格 · ${titleLabel}完成`;
+  return `模型价格 · ${titleLabel}（${blocking} 条待决策）`;
 }
 
 /** @param {string} [webhookUrl] */
@@ -323,10 +538,10 @@ export async function postPricingAlertWebhook(webhookUrl, payload) {
 }
 
 /** 企业微信 / 飞书 / 钉钉 */
-export function webhookPayloadForAlerts(alerts, markdown) {
+export function webhookPayloadForAlerts(alerts, markdown, title) {
   const url = process.env.PRICING_ALERT_WEBHOOK_URL ?? "";
   return buildWebhookPayload(url, markdown, {
-    title: "价目告警",
+    title: title ?? alertsDigestTitle(alerts),
     alerts,
   });
 }

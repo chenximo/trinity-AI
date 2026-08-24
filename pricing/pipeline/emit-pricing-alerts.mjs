@@ -6,6 +6,7 @@
  *   npm run pricing:alert -- --dry-run
  *   npm run pricing:alert -- --test-ping
  *   npm run pricing:alert -- --heartbeat
+ *   npm run pricing:alert -- --full-webhook   # 钉钉推全量 blocking 列表（默认摘要）
  *
  * 环境变量：PRICING_ALERT_WEBHOOK_URL
  */
@@ -17,6 +18,8 @@ import {
   assertDingTalkKeywordConfigured,
   collectPricingAlerts,
   alertsToMarkdown,
+  alertsToDigestMarkdown,
+  alertsDigestTitle,
   postPricingAlertWebhook,
   postPricingWebhookMarkdown,
   resolveDingTalkKeyword,
@@ -29,6 +32,17 @@ const root = path.join(__dirname, "../..");
 
 const OUT_MD = path.join(OUT_VALIDATE_DIR, "pricing-alerts.md");
 const OUT_JSON = path.join(OUT_VALIDATE_DIR, "pricing-alerts.json");
+const LISTING_COMPARE = path.join(OUT_VALIDATE_DIR, "listing-compare.json");
+const MODALITIES = new Set(["text", "image", "video"]);
+
+async function loadListingCompareSummary() {
+  try {
+    const raw = JSON.parse(await readFile(LISTING_COMPARE, "utf8"));
+    return raw.summary ?? null;
+  } catch {
+    return null;
+  }
+}
 
 async function loadDotEnv() {
   try {
@@ -56,16 +70,23 @@ async function loadDotEnv() {
 }
 
 function parseArgs() {
+  const modalityArg = process.argv.find((a) => a.startsWith("--modality="));
+  const modality = modalityArg?.split("=")[1];
+  if (modality && !MODALITIES.has(modality)) {
+    throw new Error(`Unsupported modality: ${modality}`);
+  }
   return {
     dryRun: process.argv.includes("--dry-run"),
     testPing: process.argv.includes("--test-ping"),
     heartbeat: process.argv.includes("--heartbeat"),
+    fullWebhook: process.argv.includes("--full-webhook"),
+    modality,
   };
 }
 
 async function main() {
   await loadDotEnv();
-  const { dryRun, testPing, heartbeat } = parseArgs();
+  const { dryRun, testPing, heartbeat, fullWebhook, modality } = parseArgs();
   const webhook = process.env.PRICING_ALERT_WEBHOOK_URL;
 
   if (testPing) {
@@ -89,43 +110,62 @@ async function main() {
     process.exit(0);
   }
 
-  const alerts = await collectPricingAlerts();
+  const alerts = await collectPricingAlerts(OUT_VALIDATE_DIR, { modality });
   const blocking = alerts.filter((a) => a.blocking !== false);
+  const generatedAt = new Date().toISOString();
+  const listingSummary = await loadListingCompareSummary();
+  const webhookMarkdown = fullWebhook
+    ? alertsToMarkdown(blocking)
+    : alertsToDigestMarkdown(alerts, { generatedAt, listingSummary, modality });
+
   const markdown = alertsToMarkdown(alerts);
+  const outJson = modality
+    ? path.join(OUT_VALIDATE_DIR, `pricing-alerts-${modality}.json`)
+    : OUT_JSON;
+  const outMd = modality
+    ? path.join(OUT_VALIDATE_DIR, `pricing-alerts-${modality}.md`)
+    : OUT_MD;
 
   const bundle = {
     schema: "trinity.pricing.alert-bundle/v1",
-    generatedAt: new Date().toISOString(),
+    generatedAt,
+    modality: modality ?? "all",
     alertCount: alerts.length,
     blockingCount: blocking.length,
     alerts,
   };
 
   await mkdir(OUT_VALIDATE_DIR, { recursive: true });
-  await writeFile(OUT_JSON, JSON.stringify(bundle, null, 2), "utf8");
-  await writeFile(OUT_MD, markdown, "utf8");
+  await writeFile(outJson, JSON.stringify(bundle, null, 2), "utf8");
+  await writeFile(outMd, markdown, "utf8");
 
   console.log(markdown);
-  console.log(`\nWrote ${OUT_JSON}`);
-  console.log(`Wrote ${OUT_MD}`);
+  console.log(`\nWrote ${outJson}`);
+  console.log(`Wrote ${outMd}`);
 
   if (dryRun) {
+    console.log("\n--- webhook digest preview ---\n");
+    console.log(webhookMarkdown);
     console.log("\n(dry-run: 未推送 webhook)");
     process.exit(0);
   }
 
   if (webhook && blocking.length) {
     assertDingTalkKeywordConfigured(webhook);
-    const payload = webhookPayloadForAlerts(blocking, alertsToMarkdown(blocking));
+    const payload = webhookPayloadForAlerts(
+      blocking,
+      webhookMarkdown,
+      alertsDigestTitle(blocking, { modality }),
+    );
     await postPricingAlertWebhook(webhook, payload);
-    console.log(`\nPushed ${blocking.length} blocking alert(s) to webhook`);
+    console.log(
+      `\nPushed digest (${blocking.length} blocking) to webhook` +
+        (fullWebhook ? " [full-webhook]" : ""),
+    );
   } else if (webhook && heartbeat && blocking.length === 0) {
     assertDingTalkKeywordConfigured(webhook);
-    const md =
-      alerts.length === 0
-        ? "# 价目巡检完成\n\n本周 **0** 条待人工决策告警。"
-        : alertsToMarkdown(alerts);
-    await postPricingWebhookMarkdown(webhook, "价目巡检完成", md);
+    const md = alertsToDigestMarkdown(alerts, { generatedAt, listingSummary, modality });
+    await postPricingWebhookMarkdown(webhook, alertsDigestTitle(blocking, { modality }), md);
     console.log("\nPushed heartbeat (0 blocking alerts) to webhook");
   } else if (!webhook && blocking.length) {
     console.warn(

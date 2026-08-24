@@ -32,7 +32,13 @@ npm run pricing:inspect
 2. `pricing:gen-official:image` / `gen-official:video` — 生图/生视频官方草案  
 3. `pricing:validate:compare` — 刊例 L4 vs 官方 → `listing-compare.json`  
 4. `pricing:gate --skip-fetch --no-fail-fast` — L1↔L2↔L3 校验（不重复抓官方）  
-5. `pricing:alert --heartbeat` — 合并告警推钉钉（无待决策时发心跳）
+5. `pricing:alert --heartbeat` — 合并告警推钉钉（**摘要版**；无待决策时发心跳）
+
+钉钉默认推 **摘要**（总览 + 按类型计数 + Top 5 待办），完整列表见 `pricing-alerts.md`。需推全量 blocking 列表时：
+
+```bash
+npm run pricing:alert -- --full-webhook
+```
 
 ### TokenHub 未登录 / 只想用缓存官方价
 
@@ -41,6 +47,22 @@ npm run pricing:inspect -- --skip-official-fetch
 ```
 
 跳过官方抓取，用本地已有 `vendor-pricing.json` 重算下游；**生图/生视频 L4** 仍尝试对比（需已有草案 JSON）。
+
+### 日常推荐：按模态小任务跑
+
+```bash
+npm run pricing:inspect:image
+npm run pricing:inspect:text
+npm run pricing:inspect:video
+```
+
+- 默认推荐 **按模态巡检**，每次只处理一类问题，钉钉也只推该模态摘要。  
+- `pricing:inspect` 保留为周会前 / 全量复盘用。  
+- 若只想推某一模态摘要，也可直接：
+
+```bash
+npm run pricing:alert -- --modality=image
+```
 
 ---
 

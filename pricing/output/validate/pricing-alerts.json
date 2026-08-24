@@ -1,8 +1,8 @@
 {
   "schema": "trinity.pricing.alert-bundle/v1",
-  "generatedAt": "2026-07-10T07:42:59.280Z",
-  "alertCount": 16,
-  "blockingCount": 9,
+  "generatedAt": "2026-08-24T03:19:52.145Z",
+  "alertCount": 92,
+  "blockingCount": 81,
   "alerts": [
     {
       "schema": "trinity.pricing.alert/v1",
@@ -118,6 +118,50 @@
       "schema": "trinity.pricing.alert/v1",
       "severity": "info",
       "type": "supplier_price_gap",
+      "trinityId": "qwen3.5-plus",
+      "vendorModelId": "qwen3.5-plus",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "128k<输入≤256k: cache: 官方=0.2 百炼=0.4 (-50%)",
+      "tierKey": "t:128k-256k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
+      ],
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "qwen3.5-plus",
+      "vendorModelId": "qwen3.5-plus",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "256k<输入≤1M: cache: 官方=0.4 百炼=0.8 (-50%)",
+      "tierKey": "t:256k-1m",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
+      ],
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
       "trinityId": "qwen3.5-flash",
       "vendorModelId": "qwen3.5-flash",
       "phase": "L1_vs_L3",
@@ -125,6 +169,50 @@
       "title": "百炼同档价格与官方不一致",
       "detail": "输入≤128k: cache: 官方=0.02 百炼=0.04 (-50%)",
       "tierKey": "t:0-128k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
+      ],
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "qwen3.5-flash",
+      "vendorModelId": "qwen3.5-flash",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "128k<输入≤256k: cache: 官方=0.08 百炼=0.16 (-50%)",
+      "tierKey": "t:128k-256k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "qwen-bailian-cache"
+      ],
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "qwen3.5-flash",
+      "vendorModelId": "qwen3.5-flash",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "256k<输入≤1M: cache: 官方=0.12 百炼=0.24 (-50%)",
+      "tierKey": "t:256k-1m",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
         "official": "suppliers/official/output/text/vendor-pricing.json",
@@ -186,6 +274,25 @@
       "schema": "trinity.pricing.alert/v1",
       "severity": "warn",
       "type": "supplier_price_gap",
+      "trinityId": "glm-5",
+      "vendorModelId": "glm-5",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入≥32k: cache: 官方=1.5 百炼=1.2 (25%)",
+      "tierKey": "t:32k+",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true,
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
       "trinityId": "glm-5.1",
       "vendorModelId": "glm-5.1",
       "phase": "L1_vs_L3",
@@ -193,6 +300,25 @@
       "title": "百炼同档价格与官方不一致",
       "detail": "输入<=32k: cache: 官方=1.3 百炼=1.2 (8.3%)",
       "tierKey": "t:0-32k",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": true,
+      "source": "official-vs-suppliers-alerts.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "type": "supplier_price_gap",
+      "trinityId": "glm-5.1",
+      "vendorModelId": "glm-5.1",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "输入≥32k: cache: 官方=2 百炼=1.6 (25%)",
+      "tierKey": "t:32k+",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
         "official": "suppliers/official/output/text/vendor-pricing.json",
@@ -229,6 +355,210 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "gpt-5.6-luna",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入>272K context · 入⚠-50% 出⚠-33.3% 缓⚠-50%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "gpt-5.6-sol",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入>272K context · 入⚠-50% 出⚠-33.3% 缓⚠-50%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "gpt-5.6-terra",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入>272K context · 入⚠-50% 出⚠-33.3% 缓⚠-50%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "minimax-m3",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入>512k · 入⚠-50% 出⚠-50% 缓⚠-50%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen-flash",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入≤128k · 入⚠+116.7% 出⚠+73.3% 缓⚠+8.3%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen-max",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "标准价 · 入⚠+333.3% 出⚠+333.3% 缓—",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen-turbo",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "标准价 · 入⚠+8.3% 出⚠+116.7% 缓—",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen3.6-flash",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入≤256k · 入⚠+35.4% 出⚠+35.4% 缓⚠-32.3%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen3.6-plus",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入≤256k · 入⚠+62.5% 出⚠+62.5% 缓⚠-18.7%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen3.7-max",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "标准价 · 入⚠+35.4% 出⚠+35.4% 缓⚠-32.3%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen3.7-plus",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "输入≤256k · 入⚠+30% 出⚠+30% 缓⚠-35%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_price_gap",
+      "phase": "L1_vs_L4",
+      "modality": "text",
+      "trinityId": "qwen3.7-plus",
+      "title": "生文刊例与官方锚不一致",
+      "detail": "256k<输入≤1M · 入⚠-56.7% 出⚠-56.7% 缓⚠-78.3%",
+      "refs": {
+        "excel": "pricing/output/trinity-pricing-text.xlsx",
+        "sheet": "刊例对比校验-生文"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
       "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "text",
@@ -247,12 +577,502 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
-      "type": "listing_price_gap",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "gemini-2.5-flash-image",
+      "title": "生图刊例缺档",
+      "detail": "— · 线上/草案缺项",
+      "tierKey": "uniform",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "gemini-3.1-flash-image",
+      "title": "生图刊例缺档",
+      "detail": "— · 线上/草案缺项",
+      "tierKey": "uniform",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "gemini-3.1-flash-lite-image",
+      "title": "生图刊例缺档",
+      "detail": "— · 线上/草案缺项",
+      "tierKey": "uniform",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "gpt-image-2",
+      "title": "生图刊例缺档",
+      "detail": "— · 线上/草案缺项",
+      "tierKey": "uniform",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "viduq2-image",
+      "title": "生图刊例缺档",
+      "detail": "1k · 线上/草案缺项",
+      "tierKey": "res:1k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "viduq2-image",
+      "title": "生图刊例缺档",
+      "detail": "2k · 线上/草案缺项",
+      "tierKey": "res:2k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "viduq2-image",
+      "title": "生图刊例缺档",
+      "detail": "4k · 线上/草案缺项",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-image-diff.json",
+        "excel": "pricing/output/trinity-pricing-image.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照 klingai.com/document-api/pricing/base/image 等官网价目，补齐 Trinity 能力/分辨率刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "Kling-2.1",
+      "title": "生图刊例未覆盖官网档位",
+      "detail": "官网有「图生图 · 1K」，Trinity 刊例未挂该能力档",
+      "capability": "image_to_image",
+      "resolution": "1k",
+      "vendorModelId": "kling-2.1",
+      "refs": {
+        "official": "pricing/suppliers/official/output/image/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-image.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照 klingai.com/document-api/pricing/base/image 等官网价目，补齐 Trinity 能力/分辨率刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "image",
+      "trinityId": "Kling-2.1",
+      "title": "生图刊例未覆盖官网档位",
+      "detail": "官网有「图生图 · 2K」，Trinity 刊例未挂该能力档",
+      "capability": "image_to_image",
+      "resolution": "2k",
+      "vendorModelId": "kling-2.1",
+      "refs": {
+        "official": "pricing/suppliers/official/output/image/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-image.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "video",
-      "trinityId": "vidu-q2",
-      "title": "生视频刊例与官方草案不一致",
-      "detail": "4k · 线上 $0.141923 vs 草案 $0.161538 (13.8%) · 涨价",
+      "trinityId": "grok-imagine-video-1.5",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "grok-imagine-video-1.5",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "grok-imagine-video-1.5",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.0",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.0",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.0",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.0-video-edit",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.0-video-edit",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.1",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.1",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "happyhorse-1.1",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "minimax-h3",
+      "title": "生视频刊例缺档",
+      "detail": "2k · 线上/草案缺项",
+      "tierKey": "res:2k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "minimax-h3",
+      "title": "生视频刊例缺档",
+      "detail": "768p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-fast-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-fast-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-mini-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-mini-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-os",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-os",
+      "title": "生视频刊例缺档",
+      "detail": "4k · 线上/草案缺项",
       "tierKey": "res:4k",
       "refs": {
         "draft": "pricing/output/draft/official-prices-api-video-diff.json",
@@ -265,12 +1085,48 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
-      "type": "listing_price_gap",
+      "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "video",
-      "trinityId": "vidu-q2-pro",
-      "title": "生视频刊例与官方草案不一致",
-      "detail": "1080p · 线上 $0.138462 vs 草案 $0.043103 (-68.9%) · 降价",
+      "trinityId": "seedance-2.0-os",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-os",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
       "tierKey": "res:1080p",
       "refs": {
         "draft": "pricing/output/draft/official-prices-api-video-diff.json",
@@ -283,12 +1139,66 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
-      "type": "listing_price_gap",
+      "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "video",
-      "trinityId": "vidu-q2-turbo",
-      "title": "生视频刊例与官方草案不一致",
-      "detail": "1080p · 线上 $0.036154 vs 草案 $0.072308 (100%) · 涨价",
+      "trinityId": "seedance-2.0-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "4k · 线上/草案缺项",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "480p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-2.0-overseas-hc-os",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
       "tierKey": "res:1080p",
       "refs": {
         "draft": "pricing/output/draft/official-prices-api-video-diff.json",
@@ -301,12 +1211,48 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
-      "type": "listing_price_gap",
+      "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "video",
-      "trinityId": "vidu-q3-pro",
-      "title": "生视频刊例与官方草案不一致",
-      "detail": "1080p · 线上 $0.075 vs 草案 $0.15 (100%) · 涨价",
+      "trinityId": "veo-3.1",
+      "title": "生视频刊例缺档",
+      "detail": "4k · 线上/草案缺项",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1-fast",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
       "tierKey": "res:1080p",
       "refs": {
         "draft": "pricing/output/draft/official-prices-api-video-diff.json",
@@ -319,13 +1265,445 @@
       "severity": "warn",
       "blocking": true,
       "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
-      "type": "listing_price_gap",
+      "type": "listing_tier_gap",
       "phase": "L1_vs_L4",
       "modality": "video",
-      "trinityId": "vidu-q3-turbo",
-      "title": "生视频刊例与官方草案不一致",
-      "detail": "1080p · 线上 $0.035 vs 草案 $0.07 (100%) · 涨价",
+      "trinityId": "veo-3.1-fast",
+      "title": "生视频刊例缺档",
+      "detail": "4k · 线上/草案缺项",
+      "tierKey": "res:4k",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1-fast",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1-lite",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
       "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "veo-3.1-lite",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3",
+      "title": "生视频刊例缺档",
+      "detail": "540p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-mix",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-mix",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-pro",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-pro",
+      "title": "生视频刊例缺档",
+      "detail": "540p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-pro",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-pro-fast",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-pro-fast",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-turbo",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-turbo",
+      "title": "生视频刊例缺档",
+      "detail": "540p · 线上/草案缺项",
+      "tierKey": "res:540p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "viduq3-turbo",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.6",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.6",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.6-flash",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.6-flash",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.7",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.7",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.7-videoedit",
+      "title": "生视频刊例缺档",
+      "detail": "1080p · 线上/草案缺项",
+      "tierKey": "res:1080p",
+      "refs": {
+        "draft": "pricing/output/draft/official-prices-api-video-diff.json",
+        "excel": "pricing/output/trinity-pricing-video.xlsx"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑",
+      "type": "listing_tier_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "wan2.7-videoedit",
+      "title": "生视频刊例缺档",
+      "detail": "720p · 线上/草案缺项",
+      "tierKey": "res:720p",
       "refs": {
         "draft": "pricing/output/draft/official-prices-api-video-diff.json",
         "excel": "pricing/output/trinity-pricing-video.xlsx"
