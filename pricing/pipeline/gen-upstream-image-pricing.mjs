@@ -46,6 +46,7 @@ import {
   SUPPLIERS_DIR,
 } from "./lib/paths.mjs";
 import { findMissingOnlineListingSlugs } from "./lib/compare-online-coverage-lib.mjs";
+import { coveredOnlineImageSlugs } from "../config/image-listing-aliases.mjs";
 import { renderOnlineCoverageFromContext } from "./lib/render-online-coverage-md.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -237,14 +238,19 @@ async function main() {
   const imageCoverageSlugs = [
     ...new Set(
       compareReport.rows
-        .map((r) => r.trinityId)
+        .flatMap((r) => [r.trinityId, r.vendorModelId])
         .filter(Boolean)
         .map((s) => String(s).toLowerCase()),
     ),
   ];
+  const coveredForP6 = coveredOnlineImageSlugs(
+    hubCtx.onlineByModel,
+    hubCtx.onlineByJoinKey,
+    imageCoverageSlugs,
+  );
   const imageP6 = findMissingOnlineListingSlugs(
     hubCtx.onlineByModel,
-    imageCoverageSlugs,
+    coveredForP6,
     { modality: "image", label: "刊例对比校验-生图" },
   );
   if (imageP6.missing.length) {
@@ -263,7 +269,7 @@ async function main() {
     modality: "image",
     label: "刊例对比校验-生图",
     onlineByModel: hubCtx.onlineByModel,
-    coveredSlugs: imageCoverageSlugs,
+    coveredSlugs: coveredForP6,
     compareReport,
   });
   const coveragePath = path.join(OUT_UPSTREAM_DIR, "coverage-image.md");

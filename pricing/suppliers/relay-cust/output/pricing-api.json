@@ -11,8 +11,8 @@
   "sourceNote": "复制自 suppliers/official/output/text/vendor-pricing.json",
   "mixedCurrency": true,
   "mapComment": "Trinity modelId → 中转站-cust upstreamModelId（build 时由 official 复制）",
-  "generatedAt": "2026-08-18T07:43:16.353Z",
-  "officialFetchedAt": "2026-08-18T07:42:05.642Z",
+  "generatedAt": "2026-08-27T11:12:42.939Z",
+  "officialFetchedAt": "2026-08-27T06:40:13.157Z",
   "modelCount": 83,
   "trinityMappedCount": 63,
   "models": [
@@ -507,9 +507,9 @@
         {
           "tierType": "Uniform",
           "tierName": "标准价",
-          "input": 1,
-          "output": 2,
-          "cache": 0.02,
+          "input": 1.5,
+          "output": 4.5,
+          "cache": 0.05,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }
@@ -532,9 +532,9 @@
         {
           "tierType": "Uniform",
           "tierName": "标准价",
-          "input": 3,
-          "output": 6,
-          "cache": 0.025,
+          "input": 4.5,
+          "output": 13.5,
+          "cache": 0.15,
           "unit": "百万tokens",
           "chargeUnit": "TOKEN"
         }

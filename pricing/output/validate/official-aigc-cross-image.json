@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T06:54:56.548Z",
+  "generatedAt": "2026-08-26T07:58:18.964Z",
   "modality": "image",
   "aigcMissing": [],
   "aigcIntlSkipped": [
@@ -43,7 +43,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.2
+            "price": 0.2,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -67,7 +69,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.25
+            "price": 0.25,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -91,7 +95,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.0385
+            "price": 0.0385,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -115,7 +121,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.0385
+            "price": 0.0385,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -244,7 +252,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "uniform",
-            "price": 0.039
+            "price": 0.039,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -268,7 +278,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "uniform",
-            "price": 0.039
+            "price": 0.039,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },

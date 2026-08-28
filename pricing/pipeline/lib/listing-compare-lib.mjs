@@ -17,10 +17,10 @@ import {
 } from "./compare-hub-lib.mjs";
 import { findTierByKey } from "./tier-key.mjs";
 import { annotationsForModel } from "../../config/pricing-annotations.mjs";
-import { readOnlinePricesCache } from "./fetch-online-prices-lib.mjs";
+import { refreshOnlinePricesForCompare } from "./fetch-online-prices-lib.mjs";
 import { compareImagePricesDocuments } from "./diff-image-prices-api.mjs";
 import { compareVideoPricesDocuments } from "./diff-video-prices-api.mjs";
-import { findImageOfficialListingGaps } from "./listing-official-coverage-lib.mjs";
+import { findImageOfficialListingGaps, findVideoOfficialListingGaps } from "./listing-official-coverage-lib.mjs";
 
 export const LISTING_DECISION_ACTION =
   "需人工决策：跟价 / 维持战略价 / 登记 pricing-annotations 例外后重跑";
@@ -87,22 +87,24 @@ function alertFromMissingTier(item) {
  * @param {object} tier
  * @param {string} model
  */
-function alertFromOfficialCoverageGap(gap) {
+function alertFromOfficialCoverageGap(gap, modality) {
+  const isImage = modality === "image";
   return baseAlert({
     type: "listing_official_coverage_gap",
     phase: "L1_vs_L4",
-    modality: "image",
+    modality,
     trinityId: gap.trinityId,
-    title: "生图刊例未覆盖官网档位",
+    title: isImage ? "生图刊例未覆盖官网档位" : "生视频刊例未覆盖官网档位",
     detail: gap.detail,
     capability: gap.capability,
     resolution: gap.resolution,
     vendorModelId: gap.vendorModelId,
-    suggestedAction:
-      "对照 klingai.com/document-api/pricing/base/image 等官网价目，补齐 Trinity 能力/分辨率刊例；或确认下架",
+    suggestedAction: isImage
+      ? "对照 klingai.com/document-api/pricing/base/image 等官网价目，补齐 Trinity 能力/分辨率刊例；或确认下架"
+      : "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
     refs: {
-      official: "pricing/suppliers/official/output/image/vendor-pricing.json",
-      online: "pricing/output/online/prices-api-image.json",
+      official: `pricing/suppliers/official/output/${modality}/vendor-pricing.json`,
+      online: `pricing/output/online/prices-api-${modality}.json`,
     },
   });
 }
@@ -223,8 +225,9 @@ async function buildModalitySection(modality) {
       : compareVideoPricesDocuments;
 
   try {
+    // 对比前默认 GET /v1/prices 拉最新；PRICING_SKIP_ONLINE_FETCH=1 才读缓存
     const [{ raw: onlineDoc }, draftRaw] = await Promise.all([
-      readOnlinePricesCache(modality),
+      refreshOnlinePricesForCompare(modality, { quiet: true }),
       readFile(draftPath, "utf8"),
     ]);
     const draftDoc = JSON.parse(draftRaw);
@@ -241,19 +244,23 @@ async function buildModalitySection(modality) {
     }
 
     let officialCoverage = { gapCount: 0, gaps: [], ok: true };
-    if (modality === "image") {
+    if (modality === "image" || modality === "video") {
       try {
         const [officialRaw, mapRaw] = await Promise.all([
-          readFile(officialPricingFile("image"), "utf8"),
+          readFile(officialPricingFile(modality), "utf8"),
           readFile(OFFICIAL_MAP_FILE, "utf8"),
         ]);
-        officialCoverage = findImageOfficialListingGaps({
+        const findGaps =
+          modality === "image"
+            ? findImageOfficialListingGaps
+            : findVideoOfficialListingGaps;
+        officialCoverage = findGaps({
           officialModels: JSON.parse(officialRaw).models ?? [],
           trinityMap: JSON.parse(mapRaw),
           onlineDoc,
         });
         for (const gap of officialCoverage.gaps) {
-          alerts.push(alertFromOfficialCoverageGap(gap));
+          alerts.push(alertFromOfficialCoverageGap(gap, modality));
         }
       } catch (coverErr) {
         officialCoverage = {

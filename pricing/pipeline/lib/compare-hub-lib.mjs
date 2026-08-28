@@ -16,7 +16,7 @@ import { summaryTiersForModel } from "./build-rows.mjs";
 import { parseNum } from "./pricing-compare.mjs";
 import { parseOnlinePricesTiers } from "./parse-online-prices.mjs";
 import { pickTierClosestToRef, tierLabelOf } from "./tier-align.mjs";
-import { findTierByKey } from "./tier-key.mjs";
+import { findTierByKey, tierToKey } from "./tier-key.mjs";
 import {
   FIELD_MATCH_PCT,
   isCacheListingRounding,
@@ -259,6 +259,8 @@ function pickOnlineTierForRow(onlineTiers, tier, refUsd) {
     if (wantKey === "mod:audio" && !findTierByKey(onlineTiers, "mod:audio")) {
       return null;
     }
+    // 多档线上未命中同 key 时禁止按价最近凑档（否则高档会对上低档，出现假 −50%）
+    if (onlineTiers.length > 1) return null;
   }
   if (refUsd != null) {
     return (
@@ -316,20 +318,28 @@ function buildUpstreamByTrinity(models) {
 
 /** @param {object} off */
 function officialTextTiers(off) {
-  const tiers = off.tiers ?? off.prices?.tiers ?? [];
-  if (tiers.length) return tiers;
+  const raw = off.tiers ?? off.prices?.tiers ?? [];
+  const withKeys = (tiers) =>
+    tiers.map((t, i, arr) => ({
+      ...t,
+      tierKey:
+        t.tierKey ||
+        tierToKey(t.tierLabel ?? t.tierName ?? "", i, arr.length),
+    }));
+  if (raw.length) return withKeys(raw);
   const p = off.prices;
   if (p && (p.input != null || p.output != null || p.cache != null)) {
     return [
       {
         tierLabel: "标准价",
+        tierKey: "uniform",
         input: p.input,
         output: p.output,
         cache: p.cache,
       },
     ];
   }
-  return [{ tierLabel: "—" }];
+  return [{ tierLabel: "—", tierKey: "uniform" }];
 }
 
 /** @param {object|null} upstream @param {object} offTier @param {number} tierIndex */
@@ -339,7 +349,9 @@ function matchUpstreamTier(upstream, offTier, tierIndex) {
   }
   const priced = summaryTiersForModel(upstream);
   if (offTier.tierKey) {
-    const byKey = priced.find((t) => t.tierKey === offTier.tierKey);
+    const byKey =
+      priced.find((t) => t.tierKey === offTier.tierKey) ??
+      findTierByKey(priced, offTier.tierKey);
     if (byKey) return byKey;
   }
   if (offTier.tierLabel) {
@@ -467,7 +479,12 @@ function buildTierRow(model, tier, ctx) {
 
   const refUsd = refInputUsdFromTier(tier);
   const offTier = fixedOffTier ?? pickOfficialTierForRow(off, tier, refUsd);
-  const onlineTier = pickOnlineTierForRow(onlineTiers, tier, refUsd);
+  const onlineWant = {
+    ...tier,
+    tierKey: offTier?.tierKey || tier.tierKey,
+    tierLabel: offTier?.tierLabel || tier.tierLabel,
+  };
+  const onlineTier = pickOnlineTierForRow(onlineTiers, onlineWant, refUsd);
 
   const sym = offCurrency === "CNY" ? "¥" : "$";
 

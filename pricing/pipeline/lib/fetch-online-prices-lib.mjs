@@ -195,7 +195,11 @@ export async function readOnlinePricesCache(modality = "text") {
   );
 }
 
-/** 对比流水线入口：默认每次打 API；失败时回退缓存；PRICING_SKIP_ONLINE_FETCH=1 仅读缓存 */
+/**
+ * 凡「对照线上刊例」的入口应优先调用本函数，禁止默认 readOnlinePricesCache。
+ * 默认每次 GET /v1/prices；失败回退缓存；仅 PRICING_SKIP_ONLINE_FETCH=1 时跳过拉取。
+ * Agent / 人工下结论前须确认 fetchedAt 为本次运行时刻（或明确声明用了 SKIP）。
+ */
 export async function refreshOnlinePricesForCompare(modality = "text", opts = {}) {
   async function loadCachedPrices(reason) {
     const { raw, map, file } = await readOnlinePricesCache(modality);

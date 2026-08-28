@@ -10,8 +10,10 @@ SOP: ../discount-tier-workbook-sop.md
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from collections import defaultdict
+from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
@@ -35,10 +37,11 @@ PRICING_INPUT = PRICING_ROOT / "input"
 ROUTES_TEXT = PRICING_INPUT / "routes-20260809-text"
 ROUTES_IMAGE = PRICING_INPUT / "routes-20260809-image"
 ROUTES_VIDEO = PRICING_INPUT / "routes-20260809-video"
-# 一本总册（8 Sheet）；线路整表不进册，只留 input 归档
+# 一本总册（9 Sheet，含「更新」）；线路整表不进册，只留 input 归档
 OUT = PRICING_ROOT / "output" / "商务洽谈折扣总表.xlsx"
 OUTWARD_FILE = "Trinity模型报价表.xlsx"
 
+SHEET_UPD = "更新"
 SHEET_00 = "00_说明"
 SHEET_01 = "01_报价解析汇总"
 SHEET_10 = "10_商务总表-生文"
@@ -47,6 +50,33 @@ SHEET_20 = "20_商务总表-生图"
 SHEET_21 = "21_交叉模型-生图"
 SHEET_30 = "30_商务总表-生视频"
 SHEET_31 = "31_交叉模型-生视频"
+
+MAIN_SHEETS = (
+    ("生文", SHEET_10),
+    ("生图", SHEET_20),
+    ("生视频", SHEET_30),
+)
+
+CHANGELOG_SEED: list[dict[str, str]] = [
+    {
+        "date": "2026.8.18",
+        "category": "总册",
+        "detail": "按当时现网线路重建 L3b（文/图/视频成本族 × 对内五档）",
+        "note": "8/19 已上传后台；本页此前未建",
+    },
+    {
+        "date": "2026.8.13",
+        "category": "总册",
+        "detail": "主路径定为本地出表 + 人审后上传；Admin 一键出真表后置",
+        "note": "上传 ≠ 写线上刊例",
+    },
+    {
+        "date": "2026.8.9",
+        "category": "总册",
+        "detail": "收成一本总册 8 Sheet；文/图/视频线路回灌",
+        "note": "对内勿整表外发",
+    },
+]
 
 # 线路管理导出列（与 AdminModelSupplyRouteExportWriter 一致，0-based）
 EXPORT_SHEET = "线路管理"
@@ -440,6 +470,205 @@ def row_height_for(n: int) -> float:
     return max(42, n * 14.5 + 16)
 
 
+def _cell_text(val) -> str:
+    if val is None:
+        return ""
+    if isinstance(val, CellRichText):
+        return "".join(getattr(b, "text", str(b)) for b in val)
+    return str(val)
+
+
+def fmt_dot_date(d: date | None = None) -> str:
+    d = d or date.today()
+    return f"{d.year}.{d.month}.{d.day}"
+
+
+def _fmt_id_list(ids: list[str], limit: int = 12) -> str:
+    ids = sorted({x for x in ids if x})
+    if not ids:
+        return ""
+    if len(ids) <= limit:
+        return "、".join(ids)
+    return "、".join(ids[:limit]) + f" 等共 {len(ids)} 款"
+
+
+def inventory_from_pairs(pairs_by_key: dict) -> dict[str, str]:
+    inv: dict[str, str] = {}
+    for fam, pairs in (pairs_by_key or {}).items():
+        for mid, _route in pairs or []:
+            if mid:
+                inv[str(mid)] = str(fam)
+    return inv
+
+
+def inventory_from_xlsx(path: Path) -> dict[str, dict[str, str]]:
+    """分类 → {model_id: 成本族 key}。"""
+    out: dict[str, dict[str, str]] = {k: {} for k, _ in MAIN_SHEETS}
+    if not path.is_file():
+        return out
+    try:
+        wb = load_workbook(path, data_only=True)
+    except Exception:
+        return out
+    try:
+        for cat, sheet in MAIN_SHEETS:
+            if sheet not in wb.sheetnames:
+                continue
+            ws = wb[sheet]
+            for row in ws.iter_rows(min_row=2, max_col=9, values_only=True):
+                fam_raw = _cell_text(row[0] if row else None).strip()
+                models_raw = _cell_text(row[8] if row and len(row) > 8 else None)
+                if not fam_raw or fam_raw.startswith("说明"):
+                    continue
+                fam_key = fam_raw.split("（", 1)[0].strip()
+                for line in models_raw.replace("；", "\n").splitlines():
+                    line = line.strip()
+                    m = re.match(r"^([A-Za-z0-9][A-Za-z0-9._-]*)", line)
+                    if m:
+                        out[cat][m.group(1)] = fam_key
+    finally:
+        wb.close()
+    return out
+
+
+def load_changelog_from_xlsx(path: Path) -> list[dict[str, str]]:
+    if not path.is_file():
+        return []
+    try:
+        wb = load_workbook(path, data_only=True)
+    except Exception:
+        return []
+    try:
+        if SHEET_UPD not in wb.sheetnames:
+            return []
+        ws = wb[SHEET_UPD]
+        rows: list[dict[str, str]] = []
+        for i, row in enumerate(ws.iter_rows(max_col=4, values_only=True), 1):
+            a, b, c, d = (list(row) + [None, None, None, None])[:4]
+            if i <= 2:
+                continue
+            date_s = _cell_text(a).strip()
+            detail = _cell_text(c).strip()
+            if not date_s and not detail:
+                continue
+            if date_s in ("日期",):
+                continue
+            if "账单说明" in date_s or "本表为对内" in date_s:
+                continue
+            if "新增本「更新」页" in detail or detail.startswith("按现网线路管理重拉并重建总册"):
+                continue
+            rows.append(
+                {
+                    "date": date_s,
+                    "category": _cell_text(b).strip(),
+                    "detail": detail,
+                    "note": _cell_text(d).strip(),
+                }
+            )
+        return rows
+    finally:
+        wb.close()
+
+
+def diff_inventory(
+    old: dict[str, str],
+    new: dict[str, str],
+    category: str,
+    today: str,
+) -> list[dict[str, str]]:
+    entries: list[dict[str, str]] = []
+    added = sorted(set(new) - set(old))
+    removed = sorted(set(old) - set(new))
+    moved = sorted(k for k in set(old) & set(new) if old[k] != new[k])
+    if added:
+        by_fam: dict[str, list[str]] = defaultdict(list)
+        for mid in added:
+            by_fam[new[mid]].append(mid)
+        bits = [f"{fam}族 {_fmt_id_list(ids)}" for fam, ids in sorted(by_fam.items())]
+        entries.append(
+            {
+                "date": today,
+                "category": category,
+                "detail": f"新增 {len(added)} 款：" + "；".join(bits),
+                "note": "现网启用线路入表",
+            }
+        )
+    if removed:
+        entries.append(
+            {
+                "date": today,
+                "category": category,
+                "detail": f"移出 {len(removed)} 款：{_fmt_id_list(removed)}",
+                "note": "现网无启用线路或改归他族",
+            }
+        )
+    if moved:
+        bits = [f"{mid} {old[mid]}→{new[mid]}" for mid in moved[:12]]
+        extra = f" 等共 {len(moved)} 款" if len(moved) > 12 else ""
+        entries.append(
+            {
+                "date": today,
+                "category": category,
+                "detail": "成本族调整：" + "；".join(bits) + extra,
+                "note": "对照现网折扣列",
+            }
+        )
+    return entries
+
+
+def write_changelog_sheet(wb: Workbook, entries: list[dict[str, str]]) -> None:
+    ws = wb.create_sheet(SHEET_UPD, 0)
+    ws.merge_cells("A1:D1")
+    banner = ws["A1"]
+    banner.value = (
+        "账单说明：本表为对内商务洽谈折扣总册，整表不外发。"
+        "对外客户只用 Trinity模型报价表.xlsx。"
+        "本页记录模型上新、成本族调整与总册重建（新→旧）。"
+        "重建：python3 pricing/scripts/rebuild_workbook_from_live_api.py（不写线上刊例）。"
+    )
+    banner.font = font(size=9, color="713F12")
+    banner.fill = FILL_HINT
+    banner.alignment = Alignment(wrap_text=True, vertical="center")
+    ws.row_dimensions[1].height = 48
+
+    headers = ("日期", "分类", "更新说明", "备注")
+    for col, h in enumerate(headers, 1):
+        cell = ws.cell(2, col, h)
+        cell.font = font(bold=True)
+        cell.fill = FILL_HEAD
+        cell.border = HEAD_BORDER
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+    ws.row_dimensions[2].height = 22
+
+    for i, ent in enumerate(entries):
+        r = 3 + i
+        fill = FILL_ALT if i % 2 else FILL_ROW
+        vals = (
+            ent.get("date") or "",
+            ent.get("category") or "",
+            ent.get("detail") or "",
+            ent.get("note") or "",
+        )
+        for col, v in enumerate(vals, 1):
+            cell = ws.cell(r, col, v)
+            cell.font = font(size=10)
+            cell.fill = fill
+            cell.border = THIN
+            cell.alignment = Alignment(
+                wrap_text=col >= 3,
+                vertical="center",
+                horizontal="center" if col <= 2 else "left",
+            )
+        ws.row_dimensions[r].height = 36 if len(vals[2]) > 40 else 22
+
+    ws.column_dimensions["A"].width = 14
+    ws.column_dimensions["B"].width = 14
+    ws.column_dimensions["C"].width = 78
+    ws.column_dimensions["D"].width = 36
+    ws.freeze_panes = "A3"
+    ws.auto_filter.ref = f"A2:D{max(2, 2 + len(entries))}"
+
+
 def write_placeholder_sheet(wb: Workbook, title: str, modality: str, kind: str):
     ws = wb.create_sheet(title)
     ws["A1"] = f"{title} · 待补"
@@ -816,9 +1045,29 @@ def build(
     src_video = sources_video if sources_video is not None else SOURCES_VIDEO
     out_path = out.resolve() if out else OUT
 
+    history = load_changelog_from_xlsx(out_path)
+    first_changelog = not history
+    if first_changelog:
+        history = list(CHANGELOG_SEED)
+    old_inv = inventory_from_xlsx(out_path)
+
     loaded_t, pairs_t, routes_t, cross_t = load_modality(src_text, "text")
     loaded_i, pairs_i, routes_i, cross_i = load_modality(src_image, "image")
     loaded_v, pairs_v, routes_v, cross_v = load_modality(src_video, "video")
+
+    today = fmt_dot_date()
+    new_entries: list[dict[str, str]] = []
+    new_inv = {
+        "生文": inventory_from_pairs(pairs_t),
+        "生图": inventory_from_pairs(pairs_i),
+        "生视频": inventory_from_pairs(pairs_v),
+    }
+    for cat in ("生文", "生图", "生视频"):
+        new_entries.extend(diff_inventory(old_inv.get(cat) or {}, new_inv[cat], cat, today))
+
+    seen = {(e["date"], e["category"], e["detail"]) for e in history}
+    prepend = [e for e in new_entries if (e["date"], e["category"], e["detail"]) not in seen]
+    changelog = prepend + history
 
     wb = Workbook()
     wsr = wb.active
@@ -826,13 +1075,14 @@ def build(
     for i, (a, b) in enumerate(
         [
             ("文件名", out_path.name),
-            ("形态", "一本总册 · 8 Sheet；后台分册下载另议"),
+            ("形态", "一本总册 · 9 Sheet（含「更新」）；后台分册下载另议"),
             ("生成·商务", "commercial-billing/scripts/rebuild_discount_tier_workbook.py"),
             (
                 "生成·解析/外发",
                 "pricing/scripts/build_outward_quote_standard.py（回写 01 + 外发 xlsx）",
             ),
             ("SOP", "discount-tier-workbook-sop.md"),
+            (SHEET_UPD, "变更日志：日期 / 分类 / 更新说明 / 备注；新→旧"),
             (SHEET_01, "报价依据：全量解析 / 原价专项 / 停用更低进价（外发脚本回写）"),
             (SHEET_10, "生文 · 成本族 × 对内阶梯（含GM）× 模型清单"),
             (SHEET_11, "生文 · 跨折同名 · 优先级/权重 · 推荐成本折"),
@@ -895,8 +1145,10 @@ def build(
     write_cross_sheet(wb, SHEET_21, routes_i, cross_i, SHEET_20)
     write_main_sheet(wb, SHEET_30, pairs_v, routes_v, cross_v, SHEET_31)
     write_cross_sheet(wb, SHEET_31, routes_v, cross_v, SHEET_30)
+    write_changelog_sheet(wb, changelog)
 
     order = [
+        SHEET_UPD,
         SHEET_00,
         SHEET_01,
         SHEET_10,

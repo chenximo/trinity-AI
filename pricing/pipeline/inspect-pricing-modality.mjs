@@ -4,6 +4,8 @@
  *
  *   node pricing/pipeline/inspect-pricing-modality.mjs --modality=image
  *   node pricing/pipeline/inspect-pricing-modality.mjs --modality=text --skip-official-fetch
+ *
+ * 默认第一步拉最新线上刊例（GET /v1/prices）；仅当 PRICING_SKIP_ONLINE_FETCH=1 时跳过。
  */
 
 import { readFile } from "node:fs/promises";
@@ -64,6 +66,19 @@ function parseArgs() {
 
 function stepsForModality(modality, skipOfficialFetch) {
   const steps = [];
+
+  // 巡检结论必须基于最新线上价；勿读过期 prices-api-*.json 缓存当「当前线上」
+  if (process.env.PRICING_SKIP_ONLINE_FETCH !== "1") {
+    steps.push([
+      `fetch:online:${modality}`,
+      "node",
+      [
+        "pricing/pipeline/fetch-online-prices.mjs",
+        `--modality=${modality}`,
+        "--json-only",
+      ],
+    ]);
+  }
 
   if (!skipOfficialFetch) {
     steps.push([

@@ -5,7 +5,8 @@ title: 日常操作（refresh / gate / 巡检）
 # 日常操作（refresh / gate / 巡检）
 
 > **关联**：[总览](./) · [价目全流程](./workflow) · [模型原价折扣](./supplier-cost-discounts)  
-> **确认写价（Admin）**：CLI 巡检 **不改** 线上刊例。写回走运营后台「价格校验」——见仓内 [`pricing/docs/价审运营SOP-Admin价格校验.md`](../../../../../../pricing/docs/价审运营SOP-Admin价格校验.md)。
+> **确认写价（Admin）**：CLI 巡检 **不改** 线上刊例。写回走运营后台「价格校验」——见仓内 [`pricing/docs/价审运营SOP-Admin价格校验.md`](../../../../../../pricing/docs/价审运营SOP-Admin价格校验.md)。  
+> **四件事 + 派活**：[`pricing/docs/定价运营-四件事与AI派活.md`](../../../../../../pricing/docs/定价运营-四件事与AI派活.md)（校验 / 刊例 Excel 上传 / 钉钉 / 商务；**上架手动 · 先不要确认写价**）。
 
 ## 策略约定
 
@@ -164,6 +165,7 @@ PRICING_ALERT_DINGTALK_KEYWORD=价目
 
 | 场景 | 文档 |
 |------|------|
+| **四件事 / 派活** | 仓内 `pricing/docs/定价运营-四件事与AI派活.md` |
 | 加原厂模型 | Skill `add-official-model.md` |
 | 新增模型 / 供应商 | [add-model-sop](./add-model-sop) · [add-supplier-sop](./add-supplier-sop) |
 | 生视频刊例发布 | [video-rollout](./video-rollout) |

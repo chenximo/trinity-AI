@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T07:42:58.464Z",
+  "generatedAt": "2026-08-27T06:42:11.674Z",
   "alerts": [
     {
       "schema": "trinity.pricing.alert/v1",
@@ -10,7 +10,70 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.02 百炼=0.2 (-90%)",
+      "detail": "标准价: input: 官方=1.5 百炼=1 (50%); output: 官方=4.5 百炼=2 (125%); cache: 官方=0.05 百炼=0.2 (-75%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/bailian/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "phase": "L1_vs_L3",
+      "supplier": "tokenhub",
+      "title": "TokenHub同档价格与官方不一致",
+      "detail": "标准价: input: 官方=1.5 TokenHub=1 (50%); output: 官方=4.5 TokenHub=2 (125%); cache: 官方=0.05 TokenHub=0.02 (150%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "phase": "L1_vs_L3",
+      "supplier": "aigc-domestic",
+      "title": "AIGC国内同档价格与官方不一致",
+      "detail": "标准价: input: 官方=1.5 AIGC国内=1 (50%); output: 官方=4.5 AIGC国内=2 (125%); cache: 官方=0.05 AIGC国内=0.02 (150%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 AIGC国内 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/aigc/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-flash-202605",
+      "vendorModelId": "deepseek-v4-flash",
+      "phase": "L1_vs_L3",
+      "supplier": "bailian",
+      "title": "百炼同档价格与官方不一致",
+      "detail": "标准价: input: 官方=1.5 百炼=1 (50%); output: 官方=4.5 百炼=2 (125%); cache: 官方=0.05 百炼=0.2 (-75%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -29,9 +92,30 @@
       "trinityId": "deepseek-v4-flash-202605",
       "vendorModelId": "deepseek-v4-flash",
       "phase": "L1_vs_L3",
+      "supplier": "tokenhub",
+      "title": "TokenHub同档价格与官方不一致",
+      "detail": "标准价: input: 官方=1.5 TokenHub=1 (50%); output: 官方=4.5 TokenHub=2 (125%); cache: 官方=0.05 TokenHub=0.02 (150%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: cache: 官方=0.02 百炼=0.2 (-90%)",
+      "detail": "标准价: input: 官方=4.5 百炼=12 (-62.5%); output: 官方=13.5 百炼=24 (-43.7%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -50,9 +134,51 @@
       "trinityId": "deepseek-v4-pro",
       "vendorModelId": "deepseek-v4-pro",
       "phase": "L1_vs_L3",
+      "supplier": "tokenhub",
+      "title": "TokenHub同档价格与官方不一致",
+      "detail": "标准价: input: 官方=4.5 TokenHub=3 (50%); output: 官方=13.5 TokenHub=6 (125%); cache: 官方=0.15 TokenHub=0.025 (500%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "phase": "L1_vs_L3",
+      "supplier": "aigc-domestic",
+      "title": "AIGC国内同档价格与官方不一致",
+      "detail": "标准价: input: 官方=4.5 AIGC国内=3 (50%); output: 官方=13.5 AIGC国内=6 (125%); cache: 官方=0.15 AIGC国内=0.025 (500%)",
+      "tierKey": "uniform",
+      "suggestedAction": "查 AIGC国内 抓取与 normalize；无误后联系商务",
+      "refs": {
+        "official": "suppliers/official/output/text/vendor-pricing.json",
+        "supplier": "suppliers/aigc/output/pricing-api.json"
+      },
+      "blocking": false,
+      "suppressedBy": [
+        "deepseek-v4-pro-reseller"
+      ]
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "info",
+      "type": "supplier_price_gap",
+      "trinityId": "deepseek-v4-pro-202606",
+      "vendorModelId": "deepseek-v4-pro",
+      "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
+      "detail": "标准价: input: 官方=4.5 百炼=12 (-62.5%); output: 官方=13.5 百炼=24 (-43.7%)",
       "tierKey": "uniform",
       "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
       "refs": {
@@ -71,14 +197,14 @@
       "trinityId": "deepseek-v4-pro-202606",
       "vendorModelId": "deepseek-v4-pro",
       "phase": "L1_vs_L3",
-      "supplier": "bailian",
-      "title": "百炼同档价格与官方不一致",
-      "detail": "标准价: input: 官方=3 百炼=12 (-75%); output: 官方=6 百炼=24 (-75%)",
+      "supplier": "tokenhub",
+      "title": "TokenHub同档价格与官方不一致",
+      "detail": "标准价: input: 官方=4.5 TokenHub=3 (50%); output: 官方=13.5 TokenHub=6 (125%); cache: 官方=0.15 TokenHub=0.025 (500%)",
       "tierKey": "uniform",
-      "suggestedAction": "查 百炼 抓取与 normalize；无误后联系商务",
+      "suggestedAction": "查 TokenHub 抓取与 normalize；无误后联系商务",
       "refs": {
         "official": "suppliers/official/output/text/vendor-pricing.json",
-        "supplier": "suppliers/bailian/output/pricing-api.json"
+        "supplier": "suppliers/tokenhub/output/pricing-console-api.json"
       },
       "blocking": false,
       "suppressedBy": [
@@ -318,11 +444,12 @@
       "phase": "L1_vs_L3",
       "supplier": "bailian",
       "title": "百炼档位数少于官方",
-      "detail": "官方 2 档 · 百炼 1 档。官方 keys: res:sub-1k, res:sub-1k；供应商 keys: uniform",
+      "detail": "官方 2 档 · 百炼 1 档。官方 keys: t:0-512k, t:512k+；供应商 keys: uniform",
       "officialTierCount": 2,
       "supplierTierCount": 1,
       "missingTierKeys": [
-        "res:sub-1k"
+        "t:0-512k",
+        "t:512k+"
       ],
       "suggestedAction": "确认 百炼 scrape 完整后，联系商务确认渠道价目",
       "refs": {

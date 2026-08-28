@@ -3,6 +3,16 @@
  * 官网有、刊例无 → 缺档；刊例多出的 AIGC 4K 等不视为缺档。
  */
 
+import {
+  buildImageOnlineJoinIndex,
+  resolveOnlineImageEntry,
+} from "../../config/image-listing-aliases.mjs";
+import {
+  getVideoRegistryByTrinityId,
+  getVideoRegistryByVendorId,
+} from "../../config/video-model-registry.mjs";
+import { parseOnlineVideoTiers } from "./parse-online-prices.mjs";
+
 const VARIANT_TO_CAPABILITY = {
   text_to_image: "text_to_image",
   t2i: "text_to_image",
@@ -80,17 +90,20 @@ export function findImageOfficialListingGaps({
   trinityMap,
   onlineDoc,
 }) {
-  const onlineByModel = new Map(
-    (onlineDoc?.data ?? []).map((e) => [String(e.model ?? "").toLowerCase(), e]),
-  );
-
+  const vendorMap = {};
   const reverse = new Map();
   for (const [tid, meta] of Object.entries(trinityMap ?? {})) {
     if (tid.startsWith("_")) continue;
     if ((meta.modality ?? "text") !== "image") continue;
+    vendorMap[tid] = meta;
     const vid = String(meta.vendorModelId ?? tid).toLowerCase();
     reverse.set(vid, tid);
   }
+
+  const { onlineByJoinKey } = buildImageOnlineJoinIndex(
+    onlineDoc?.data ?? [],
+    vendorMap,
+  );
 
   const gaps = [];
   for (const off of officialModels ?? []) {
@@ -100,7 +113,11 @@ export function findImageOfficialListingGaps({
     const slots = expandOfficialSlots(off);
     if (!slots.length) continue;
 
-    const online = onlineByModel.get(trinityId.toLowerCase()) ?? null;
+    const online = resolveOnlineImageEntry(
+      onlineByJoinKey,
+      trinityId,
+      vendorId,
+    );
     if (!online) {
       gaps.push({
         trinityId,
@@ -124,6 +141,119 @@ export function findImageOfficialListingGaps({
         resolution: slot.resolution,
         label: slot.label,
         detail: `官网有「${slot.label} · ${slot.resolution.toUpperCase()}」，Trinity 刊例未挂该能力档`,
+      });
+    }
+  }
+
+  return {
+    gapCount: gaps.length,
+    gaps,
+    ok: gaps.length === 0,
+  };
+}
+
+function videoResKey(label) {
+  const low = String(label ?? "").toLowerCase();
+  if (/540p|480p/.test(low)) return "res:540p";
+  if (/768p|720p/.test(low)) return "res:720p";
+  if (/1080p/.test(low)) return "res:1080p";
+  if (/2k/.test(low)) return "res:2k";
+  if (/4k/.test(low)) return "res:4k";
+  return null;
+}
+
+function compactSlug(value) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/[-_]/g, "");
+}
+
+function lookupVideoOnlineEntry(onlineByModel, trinityId, vendorId) {
+  const reg =
+    getVideoRegistryByTrinityId(trinityId) ??
+    getVideoRegistryByVendorId(vendorId);
+  const candidates = [reg?.onlineSlug, trinityId, vendorId]
+    .filter(Boolean)
+    .map((s) => String(s).toLowerCase());
+  for (const c of candidates) {
+    if (onlineByModel.has(c)) return onlineByModel.get(c);
+  }
+  const compactWant = new Set(candidates.map(compactSlug).filter(Boolean));
+  if (!compactWant.size) return null;
+  for (const [slug, entry] of onlineByModel) {
+    if (compactWant.has(compactSlug(slug))) return entry;
+  }
+  return null;
+}
+
+/**
+ * 生视频 P6b：已 map 的官网模型/分辨率档，Trinity 刊例未挂。
+ * 积分/次等无分辨率档只做「整模型未上架」检查。
+ */
+export function findVideoOfficialListingGaps({
+  officialModels,
+  trinityMap,
+  onlineDoc,
+}) {
+  const onlineByModel = new Map(
+    (onlineDoc?.data ?? []).map((e) => [String(e.model ?? "").toLowerCase(), e]),
+  );
+
+  const reverse = new Map();
+  for (const [tid, meta] of Object.entries(trinityMap ?? {})) {
+    if (tid.startsWith("_")) continue;
+    if (meta.modality !== "video") continue;
+    reverse.set(String(meta.vendorModelId ?? tid).toLowerCase(), tid);
+  }
+
+  const gaps = [];
+  for (const off of officialModels ?? []) {
+    const vendorId = String(off.vendorModelId ?? "").toLowerCase();
+    if (!vendorId) continue;
+    const trinityId = reverse.get(vendorId);
+    if (!trinityId) continue;
+
+    const online = lookupVideoOnlineEntry(
+      onlineByModel,
+      trinityId,
+      vendorId,
+    );
+    if (!online) {
+      gaps.push({
+        trinityId,
+        vendorModelId: off.vendorModelId,
+        kind: "missing_model",
+        capability: null,
+        resolution: null,
+        label: "未上架",
+        detail: `官网已列 ${off.vendorModelId}，Trinity 刊例无此模型`,
+      });
+      continue;
+    }
+
+    const officialTiers = off.tiers ?? off.prices?.tiers ?? [];
+    const officialKeys = new Set(
+      officialTiers.map((t) => videoResKey(t.tierLabel)).filter(Boolean),
+    );
+    if (!officialKeys.size) continue;
+
+    const onlineKeys = new Set(
+      parseOnlineVideoTiers(online)
+        .map((t) => t.tierKey)
+        .filter((k) => k && String(k).startsWith("res:")),
+    );
+    if (!onlineKeys.size) continue;
+
+    for (const key of officialKeys) {
+      if (onlineKeys.has(key)) continue;
+      gaps.push({
+        trinityId,
+        vendorModelId: off.vendorModelId,
+        kind: "missing_slot",
+        capability: null,
+        resolution: key.replace(/^res:/, ""),
+        label: key,
+        detail: `官网有分辨率档 ${key}，Trinity 刊例未挂`,
       });
     }
   }

@@ -71,8 +71,8 @@ CLI 命令与 `confirm` / `network` / `git` 字段见 [`./tools.yaml`](./tools.y
 3. **官网链接必填**：每条 catalog 须有可公开引用的 `docUrl`；Gemini 等补 `pricingUrl`（见 `data/pricing-urls.mjs`）。
 4. **Trinity 已上架必写 map**：`trinity-map.json` 含 `modality` + `vendor` + `vendorModelId`。
 5. **改完必验证**：`pricing.supplier.official.{modality}`；全模态门禁 `pricing.gate`（含 text + image L1/L3）。
-6. **对比自动拉线上价**：`pricing.upstream` / `pricing.upstream.image` / **`pricing.upstream.video`**；`pricing:refresh` 含生文+生图；`PRICING_SKIP_ONLINE_FETCH=1` 可跳过。
-7. **刊例对比 ⊇ 线上（P6）**：`刊例对比校验` 不得少于同模态 `prices-api` 模型数；生视频在 `upstream:video` 硬校验。
+6. **对照线上必须拉最新**：凡对比 / 巡检 / 告警 / diff / 接入覆盖（`listing-compare`、`pricing:diff:*`、`pricing:inspect:*`、`pricing.upstream*`、`pricing.compare.official` 等）须走 `refreshOnlinePricesForCompare`（默认 `GET /v1/prices`）；**禁止**把过期 `output/online/prices-api-*.json` 当成「当前线上」下结论。结论中应点明 `fetchedAt`。仅本地离线可设 `PRICING_SKIP_ONLINE_FETCH=1`，且须在结论里声明「跳过拉取、用缓存」。`pricing:fetch` 支持 `--modality=image` / `--modality image`。
+7. **刊例对比 ⊇ 线上（P6）**：`刊例对比校验` 不得少于同模态 `prices-api` 模型数；生视频在 `upstream:video` 硬校验。**刊例 ⊇ 官网（P6b）**：生图/生视频已 map 官方模型未上架或能力档未挂 → `listing_official_coverage_gap`。
 8. **编辑真源须确认**：`pricing.seed.edit` 等见 `confirmation.md`。
 9. **禁止推测价**：入/出/缓等金额**只许来自所引价目真源表内明文**；表上没有的字段写 **⚠**（或 `null` + 展示 ⚠），**禁止**用比例推算、官方价换算、他渠对照、「大概是」等方式填数。双真源核对（帮助中心 ↔ 控制台）**仅** `bailian-intl`（百炼国际站）；一致才入真源，不一致进待人工确认清单。
 

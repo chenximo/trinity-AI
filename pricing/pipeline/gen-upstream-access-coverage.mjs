@@ -12,7 +12,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { readOnlinePricesCache } from "./lib/fetch-online-prices-lib.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -176,7 +176,7 @@ const SOURCES = [
 
 async function loadOnlineIds(modality) {
   try {
-    const { raw } = await readOnlinePricesCache(modality);
+    const { raw } = await refreshOnlinePricesForCompare(modality, { quiet: true });
     const models = raw.data || raw.models || [];
     return new Set(
       models

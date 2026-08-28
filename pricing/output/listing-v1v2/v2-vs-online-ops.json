@@ -1,0 +1,4647 @@
+{
+  "fetchedAt": "2026-08-27T10:13:08.019Z",
+  "skipped": false,
+  "counts": {
+    "上浮": 5,
+    "上浮·先核档": 4,
+    "可选·补缓": 5,
+    "不改·只上浮": 15,
+    "不改·缓偏低不算降": 4,
+    "已齐": 40,
+    "补档": 51,
+    "线上多档": 17,
+    "缺锚": 30
+  },
+  "rows": [
+    {
+      "id": "chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "v2": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "cacheSuggest": 1,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "claude-fable-5",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 50,
+        "cache": 1,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-fable-5-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 50,
+        "cache": 1,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "claude-opus-4-6-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "claude-opus-4-7-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "claude-opus-4-8-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-opus-5",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-opus-5-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 25,
+        "cache": 0.5,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3
+      },
+      "v2": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3
+      },
+      "cacheSuggest": 0.3,
+      "cacheFromDom": false,
+      "online": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "claude-sonnet-4-6-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 10,
+        "cache": 0.2,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "claude-sonnet-5-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 10,
+        "cache": 0.2,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "codex-auto-review",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.299639,
+        "output": 7.797834,
+        "cache": 0.129964,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "deepseek-v3.2",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 0.46153846153846156,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.3076923076923077,
+        "output": 0.46153846153846156,
+        "cache": 0.06153846153846154
+      },
+      "cacheSuggest": 0.06153846153846154,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.307692,
+        "output": 0.461538,
+        "cache": 0.061538,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0.00010000009999881223,
+      "dout": 0.00010000010000482594,
+      "dcache": 0.0007500056250438052,
+      "action": "已齐"
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.15384615384615385,
+        "output": 0.3076923076923077,
+        "cache": 0.003076923076923077
+      },
+      "v2": {
+        "input": 0.14,
+        "output": 0.28,
+        "cache": 0.0028
+      },
+      "cacheSuggest": 0.0028,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.22,
+        "output": 0.66,
+        "cache": 0.007,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -36.36363636363636,
+      "dout": -57.57575757575757,
+      "dcache": -60.00000000000001,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "deepseek-v4-flash-fast",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.2,
+        "output": 0.4,
+        "cache": 0.04,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "deepseek-v4-flash-vision-exp",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.44,
+        "output": 0.66,
+        "cache": 0.014,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.46153846153846156,
+        "output": 0.9230769230769231,
+        "cache": 0.0038461538461538464
+      },
+      "v2": {
+        "input": 0.435,
+        "output": 0.87,
+        "cache": 0.003625
+      },
+      "cacheSuggest": 0.003625,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.66,
+        "output": 1.98,
+        "cache": 0.022,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -34.09090909090909,
+      "dout": -56.060606060606055,
+      "dcache": -83.52272727272727,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "doubao-lite-32k",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.04615384615384615,
+        "output": 0.0923076923076923,
+        "cache": 0.00923076923076923
+      },
+      "v2": {
+        "input": 0.04615384615384615,
+        "output": 0.0923076923076923,
+        "cache": 0.00923076923076923
+      },
+      "cacheSuggest": 0.00923076923076923,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-pro-32k",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "v2": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "cacheSuggest": 0.024615384615384615,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-1-6",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "v2": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "cacheSuggest": 0.024615384615384615,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-1-6",
+      "onlineOnly": false,
+      "tierLabel": "输入>32k",
+      "tierKey": "t:32k+",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.24615384615384617,
+        "output": 0.6153846153846154,
+        "cache": 0.04923076923076923
+      },
+      "v2": {
+        "input": 0.24615384615384617,
+        "output": 0.6153846153846154,
+        "cache": 0.04923076923076923
+      },
+      "cacheSuggest": 0.04923076923076923,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-1-8",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "v2": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "cacheSuggest": 0.024615384615384615,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-1-8",
+      "onlineOnly": false,
+      "tierLabel": "输入>32k",
+      "tierKey": "t:32k+",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.24615384615384617,
+        "output": 0.6153846153846154,
+        "cache": 0.04923076923076923
+      },
+      "v2": {
+        "input": 0.24615384615384617,
+        "output": 0.6153846153846154,
+        "cache": 0.04923076923076923
+      },
+      "cacheSuggest": 0.04923076923076923,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-lite",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.0923076923076923,
+        "output": 0.5538461538461539,
+        "cache": 0.01846153846153846
+      },
+      "v2": {
+        "input": 0.0923076923076923,
+        "output": 0.5538461538461539,
+        "cache": 0.01846153846153846
+      },
+      "cacheSuggest": 0.01846153846153846,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-lite",
+      "onlineOnly": false,
+      "tierLabel": "输入>32k",
+      "tierKey": "t:32k+",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.1846153846153846,
+        "output": 1.1076923076923078,
+        "cache": 0.03692307692307692
+      },
+      "v2": {
+        "input": 0.1846153846153846,
+        "output": 1.1076923076923078,
+        "cache": 0.03692307692307692
+      },
+      "cacheSuggest": 0.03692307692307692,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-mini",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.03076923076923077,
+        "output": 0.3076923076923077,
+        "cache": 0.006153846153846154
+      },
+      "v2": {
+        "input": 0.03076923076923077,
+        "output": 0.3076923076923077,
+        "cache": 0.006153846153846154
+      },
+      "cacheSuggest": 0.006153846153846154,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-mini",
+      "onlineOnly": false,
+      "tierLabel": "输入>32k",
+      "tierKey": "t:32k+",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.06153846153846154,
+        "output": 0.6153846153846154,
+        "cache": 0.012307692307692308
+      },
+      "v2": {
+        "input": 0.06153846153846154,
+        "output": 0.6153846153846154,
+        "cache": 0.012307692307692308
+      },
+      "cacheSuggest": 0.012307692307692308,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.49230769230769234,
+        "output": 2.4615384615384617,
+        "cache": 0.09846153846153846
+      },
+      "v2": {
+        "input": 0.49230769230769234,
+        "output": 2.4615384615384617,
+        "cache": 0.09846153846153846
+      },
+      "cacheSuggest": 0.09846153846153846,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入(32k,128k]",
+      "tierKey": "t:32k-128k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.7384615384615384,
+        "output": 3.6923076923076925,
+        "cache": 0.14769230769230768
+      },
+      "v2": {
+        "input": 0.7384615384615384,
+        "output": 3.6923076923076925,
+        "cache": 0.14769230769230768
+      },
+      "cacheSuggest": 0.14769230769230768,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-0-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入(128k,256k]",
+      "tierKey": "t:128k-256k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.4769230769230768,
+        "output": 7.384615384615385,
+        "cache": 0.29538461538461536
+      },
+      "v2": {
+        "input": 1.4769230769230768,
+        "output": 7.384615384615385,
+        "cache": 0.29538461538461536
+      },
+      "cacheSuggest": 0.29538461538461536,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-1-pro",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.9230769230769231,
+        "output": 4.615384615384615,
+        "cache": 0.1846153846153846
+      },
+      "v2": {
+        "input": 0.9230769230769231,
+        "output": 4.615384615384615,
+        "cache": 0.1846153846153846
+      },
+      "cacheSuggest": 0.1846153846153846,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "doubao-seed-2-1-turbo",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.46153846153846156,
+        "output": 2.3076923076923075,
+        "cache": 0.0923076923076923
+      },
+      "v2": {
+        "input": 0.46153846153846156,
+        "output": 2.3076923076923075,
+        "cache": 0.0923076923076923
+      },
+      "cacheSuggest": 0.0923076923076923,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入:文本/图片/视频",
+      "tierKey": "mod:text",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03
+      },
+      "v2": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03
+      },
+      "cacheSuggest": 0.03,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入:音频",
+      "tierKey": "mod:audio",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1,
+        "output": 2.5,
+        "cache": 0.1
+      },
+      "v2": {
+        "input": 1,
+        "output": 2.5,
+        "cache": 0.1
+      },
+      "cacheSuggest": 0.1,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03,
+        "tierLabel": "输入:音频"
+      },
+      "din": 233.33333333333334,
+      "dout": 0,
+      "dcache": 233.33333333333334,
+      "action": "上浮"
+    },
+    {
+      "id": "gemini-2.5-flash-lite",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01
+      },
+      "cacheSuggest": 0.01,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-2.5-flash-lite-preview",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01
+      },
+      "cacheSuggest": 0.01,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gemini-2.5-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入<=20万个token",
+      "tierKey": "ctx:0-200k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125,
+        "tierLabel": "≤ 200K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-2.5-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入>20万个token",
+      "tierKey": "ctx:200k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25
+      },
+      "v2": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25
+      },
+      "cacheSuggest": 0.25,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25,
+        "tierLabel": "> 200K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入:文本/图片/视频",
+      "tierKey": "mod:text",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05
+      },
+      "v2": {
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05
+      },
+      "cacheSuggest": 0.05,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入:音频",
+      "tierKey": "mod:audio",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1,
+        "output": 3,
+        "cache": 0.1
+      },
+      "v2": {
+        "input": 1,
+        "output": 3,
+        "cache": 0.1
+      },
+      "cacheSuggest": 0.1,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05,
+        "tierLabel": "输入:音频"
+      },
+      "din": 100,
+      "dout": 0,
+      "dcache": 100,
+      "action": "上浮"
+    },
+    {
+      "id": "gemini-3-pro-preview",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "onlineOnly": false,
+      "tierLabel": "输入:文本/图片/视频",
+      "tierKey": "mod:text",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025
+      },
+      "v2": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025
+      },
+      "cacheSuggest": 0.025,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "onlineOnly": false,
+      "tierLabel": "输入:音频",
+      "tierKey": "mod:audio",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.5,
+        "output": 1.5,
+        "cache": 0.05
+      },
+      "v2": {
+        "input": 0.5,
+        "output": 1.5,
+        "cache": 0.05
+      },
+      "cacheSuggest": 0.05,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025,
+        "tierLabel": "输入:音频"
+      },
+      "din": 100,
+      "dout": 0,
+      "dcache": 100,
+      "action": "上浮"
+    },
+    {
+      "id": "gemini-3.1-flash-lite-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入:文本/图片/视频",
+      "tierKey": "mod:text",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025
+      },
+      "v2": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025
+      },
+      "cacheSuggest": 0.025,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gemini-3.1-flash-lite-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入:音频",
+      "tierKey": "mod:audio",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.5,
+        "output": 1.5,
+        "cache": 0.05
+      },
+      "v2": {
+        "input": 0.5,
+        "output": 1.5,
+        "cache": 0.05
+      },
+      "cacheSuggest": 0.05,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入<=20万个token",
+      "tierKey": "ctx:0-200k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2,
+        "tierLabel": "≤ 200K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入>20万个token",
+      "tierKey": "ctx:200k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4
+      },
+      "v2": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4
+      },
+      "cacheSuggest": 0.4,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4,
+        "tierLabel": "> 200K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "onlineOnly": true,
+      "tierLabel": "≤ 200K",
+      "tierKey": "ctx:0-200k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 12,
+        "cache": null,
+        "tierLabel": "≤ 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "onlineOnly": true,
+      "tierLabel": "> 200K",
+      "tierKey": "ctx:200k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 18,
+        "cache": null,
+        "tierLabel": "> 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gemini-3.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入:文本/图片/视频",
+      "tierKey": "mod:text",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15
+      },
+      "v2": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15
+      },
+      "cacheSuggest": 0.15,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入:音频",
+      "tierKey": "mod:audio",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15
+      },
+      "v2": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15
+      },
+      "cacheSuggest": 0.15,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.5,
+        "output": 9,
+        "cache": 0.15,
+        "tierLabel": "输入:音频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache": 0.03,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gemini-3.6-flash",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache": 0.075,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gemini-3.7-flash",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache": 0.075,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "glm-4.7",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k，输出≤0.2k",
+      "tierKey": "t:in32k-out-le0.2k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 1.2307692307692308,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.3076923076923077,
+        "output": 1.2307692307692308,
+        "cache": 0.06153846153846154
+      },
+      "cacheSuggest": 0.06153846153846154,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-4.7",
+      "onlineOnly": false,
+      "tierLabel": "输入≤32k，输出>0.2k",
+      "tierKey": "t:in32k-out-gt0.2k",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.46153846153846156,
+        "output": 2.1538461538461537,
+        "cache": 0.0923076923076923
+      },
+      "v2": {
+        "input": 0.46153846153846156,
+        "output": 2.1538461538461537,
+        "cache": 0.0923076923076923
+      },
+      "cacheSuggest": 0.0923076923076923,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-4.7",
+      "onlineOnly": false,
+      "tierLabel": "输入>32k",
+      "tierKey": "t:32k+",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.6153846153846154,
+        "output": 2.4615384615384617,
+        "cache": 0.12307692307692308
+      },
+      "v2": {
+        "input": 0.6153846153846154,
+        "output": 2.4615384615384617,
+        "cache": 0.12307692307692308
+      },
+      "cacheSuggest": 0.12307692307692308,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-5",
+      "onlineOnly": false,
+      "tierLabel": "输入<32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.6153846153846154,
+        "output": 2.769230769230769,
+        "cache": 0.15384615384615385
+      },
+      "v2": {
+        "input": 1,
+        "output": 3.2,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-5",
+      "onlineOnly": false,
+      "tierLabel": "输入≥32k",
+      "tierKey": "t:32k+",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.9230769230769231,
+        "output": 3.3846153846153846,
+        "cache": 0.23076923076923078
+      },
+      "v2": {
+        "input": 1,
+        "output": 3.2,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-5-turbo",
+      "onlineOnly": false,
+      "tierLabel": "输入<32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.7692307692307693,
+        "output": 3.3846153846153846,
+        "cache": 0.1846153846153846
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 4,
+        "cache": 0.24
+      },
+      "cacheSuggest": 0.24,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.7693,
+        "output": 3.3847,
+        "cache": 0.1847,
+        "tierLabel": "≤ 32K"
+      },
+      "din": 55.98596126348628,
+      "dout": 18.178863710225425,
+      "dcache": 29.940443963183533,
+      "action": "上浮·先核档"
+    },
+    {
+      "id": "glm-5-turbo",
+      "onlineOnly": false,
+      "tierLabel": "输入≥32k",
+      "tierKey": "t:32k+",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 1.0769230769230769,
+        "output": 4,
+        "cache": 0.27692307692307694
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 4,
+        "cache": 0.24
+      },
+      "cacheSuggest": 0.24,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.077,
+        "output": 4,
+        "cache": 0.277,
+        "tierLabel": "> 32K"
+      },
+      "din": 11.420612813370473,
+      "dout": 0,
+      "dcache": -13.35740072202167,
+      "action": "上浮·先核档"
+    },
+    {
+      "id": "glm-5.1",
+      "onlineOnly": false,
+      "tierLabel": "输入<32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.9230769230769231,
+        "output": 3.6923076923076925,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache": 0.26
+      },
+      "cacheSuggest": 0.26,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-5.1",
+      "onlineOnly": false,
+      "tierLabel": "输入≥32k",
+      "tierKey": "t:32k+",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 1.2307692307692308,
+        "output": 4.3076923076923075,
+        "cache": 0.3076923076923077
+      },
+      "v2": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache": 0.26
+      },
+      "cacheSuggest": 0.26,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "glm-5.2",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": true,
+      "v1": {
+        "input": 1.2307692307692308,
+        "output": 4.3076923076923075,
+        "cache": 0.3076923076923077
+      },
+      "v2": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache": 0.26
+      },
+      "cacheSuggest": 0.26,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.230769,
+        "output": 4.307692,
+        "cache": 0.307692,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 13.750021328128991,
+      "dout": 2.1428644387760323,
+      "dcache": -15.499915499915504,
+      "action": "上浮"
+    },
+    {
+      "id": "glm-5.2-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.230769,
+        "output": 4.307692,
+        "cache": 0.307692,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "glm-5.3",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache": 0.26,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "glm-5.3-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache": 0.26,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "onlineOnly": false,
+      "tierLabel": "输入<32k",
+      "tierKey": "t:0-32k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.7692307692307693,
+        "output": 3.3846153846153846,
+        "cache": 0.1846153846153846
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 4,
+        "cache": 0.24
+      },
+      "cacheSuggest": 0.24,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.7693,
+        "output": 3.3847,
+        "cache": 0.1847,
+        "tierLabel": "≤ 32K"
+      },
+      "din": 55.98596126348628,
+      "dout": 18.178863710225425,
+      "dcache": 29.940443963183533,
+      "action": "上浮·先核档"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "onlineOnly": false,
+      "tierLabel": "输入≥32k",
+      "tierKey": "t:32k+",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 1.0769230769230769,
+        "output": 4,
+        "cache": 0.27692307692307694
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 4,
+        "cache": 0.24
+      },
+      "cacheSuggest": 0.24,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.077,
+        "output": 4,
+        "cache": 0.277,
+        "tierLabel": "> 32K"
+      },
+      "din": 11.420612813370473,
+      "dout": 0,
+      "dcache": -13.35740072202167,
+      "action": "上浮·先核档"
+    },
+    {
+      "id": "gpt-4.1",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2,
+        "output": 8,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 2,
+        "output": 8,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-4o",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2.5,
+        "output": 10,
+        "cache": 1.25
+      },
+      "v2": {
+        "input": 2.5,
+        "output": 10,
+        "cache": 1.25
+      },
+      "cacheSuggest": 1.25,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5-chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5-mini",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.25,
+        "output": 2,
+        "cache": 0.025
+      },
+      "v2": {
+        "input": 0.25,
+        "output": 2,
+        "cache": 0.025
+      },
+      "cacheSuggest": 0.025,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5-nano",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": 0.005
+      },
+      "v2": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": 0.005
+      },
+      "cacheSuggest": 0.005,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": 0.005,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.1",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.1-chat",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5.1-chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5.2",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "v2": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "cacheSuggest": 0.175,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.2-chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "v2": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "cacheSuggest": 0.175,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5.3-chat-latest",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 10,
+        "cache": 0.125
+      },
+      "cacheSuggest": 0.125,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "v2": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175
+      },
+      "cacheSuggest": 0.175,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.3-codex-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.75,
+        "output": 14,
+        "cache": 0.175,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.4",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25
+      },
+      "v2": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25
+      },
+      "cacheSuggest": 0.25,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.4",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 22.5,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 22.5,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 22.5,
+        "cache": 0.5,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.4-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.4-discount",
+      "onlineOnly": true,
+      "tierLabel": "≤ 272K",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2.5,
+        "output": 15,
+        "cache": 0.25,
+        "tierLabel": "≤ 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.4-discount",
+      "onlineOnly": true,
+      "tierLabel": "> 272K",
+      "tierKey": "ctx:272k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 22.5,
+        "cache": 0.5,
+        "tierLabel": "> 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.75,
+        "output": 4.5,
+        "cache": 0.075
+      },
+      "v2": {
+        "input": 0.75,
+        "output": 4.5,
+        "cache": 0.075
+      },
+      "cacheSuggest": 0.075,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.75,
+        "output": 4.5,
+        "cache": 0.075,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.4-mini-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.75,
+        "output": 4.5,
+        "cache": 0.075,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.4-nano",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.2,
+        "output": 1.25,
+        "cache": 0.02
+      },
+      "v2": {
+        "input": 0.2,
+        "output": 1.25,
+        "cache": 0.02
+      },
+      "cacheSuggest": 0.02,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.2,
+        "output": 1.25,
+        "cache": 0.02,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.4-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 30,
+        "output": 180,
+        "cache": null
+      },
+      "v2": {
+        "input": 30,
+        "output": 180,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 30,
+        "output": 180,
+        "cache": null,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.4-pro",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 60,
+        "output": 270,
+        "cache": null
+      },
+      "v2": {
+        "input": 60,
+        "output": 270,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 60,
+        "output": 270,
+        "cache": null,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.5",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.5",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "v2": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "cacheSuggest": 1,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 45,
+        "cache": 1,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.5-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.5-discount",
+      "onlineOnly": true,
+      "tierLabel": "≤ 272K",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5,
+        "tierLabel": "≤ 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.5-discount",
+      "onlineOnly": true,
+      "tierLabel": "> 272K",
+      "tierKey": "ctx:272k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 45,
+        "cache": 1,
+        "tierLabel": "> 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.2,
+        "output": 1.2,
+        "cache": 0.02
+      },
+      "v2": {
+        "input": 0.2,
+        "output": 1.2,
+        "cache": 0.02
+      },
+      "cacheSuggest": 0.02,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.2,
+        "output": 1.2,
+        "cache": 0.02,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.4,
+        "output": 1.8,
+        "cache": 0.04
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 1.8,
+        "cache": 0.04
+      },
+      "cacheSuggest": 0.04,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.4,
+        "output": 1.8,
+        "cache": 0.04,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "v2": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5
+      },
+      "cacheSuggest": 0.5,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "v2": {
+        "input": 10,
+        "output": 45,
+        "cache": 1
+      },
+      "cacheSuggest": 1,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 45,
+        "cache": 1,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-sol-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.6-sol-discount",
+      "onlineOnly": true,
+      "tierLabel": "≤ 272K",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 5,
+        "output": 30,
+        "cache": 0.5,
+        "tierLabel": "≤ 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.6-sol-discount",
+      "onlineOnly": true,
+      "tierLabel": "> 272K",
+      "tierKey": "ctx:272k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 10,
+        "output": 45,
+        "cache": 1,
+        "tierLabel": "> 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "onlineOnly": false,
+      "tierLabel": "输入<=272K context",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2,
+        "tierLabel": "≤ 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "onlineOnly": false,
+      "tierLabel": "输入>272K context",
+      "tierKey": "ctx:272k+",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4
+      },
+      "v2": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4
+      },
+      "cacheSuggest": 0.4,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4,
+        "tierLabel": "> 272K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 0,
+      "action": "已齐"
+    },
+    {
+      "id": "gpt-5.6-terra-discount",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "gpt-5.6-terra-discount",
+      "onlineOnly": true,
+      "tierLabel": "≤ 272K",
+      "tierKey": "ctx:0-272k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 12,
+        "cache": 0.2,
+        "tierLabel": "≤ 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "gpt-5.6-terra-discount",
+      "onlineOnly": true,
+      "tierLabel": "> 272K",
+      "tierKey": "ctx:272k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 18,
+        "cache": 0.4,
+        "tierLabel": "> 272K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "grok-4-1-fast-non-reasoning",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "grok-4-1-fast-reasoning",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "grok-4.20-0309-non-reasoning",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "grok-4.20-0309-reasoning",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "grok-4.3",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "usd-direct",
+      "note": "国际-only / 已是 USD · V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache": 0.2
+      },
+      "cacheSuggest": 0.2,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "grok-4.5",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "grok-4.5",
+      "onlineOnly": true,
+      "tierLabel": "≤ 200K",
+      "tierKey": "ctx:0-200k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 6,
+        "cache": 0.3,
+        "tierLabel": "≤ 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "grok-4.5",
+      "onlineOnly": true,
+      "tierLabel": "> 200K",
+      "tierKey": "ctx:200k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 12,
+        "cache": 0.6,
+        "tierLabel": "> 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "grok-4.6",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "grok-4.6",
+      "onlineOnly": true,
+      "tierLabel": "≤ 200K",
+      "tierKey": "ctx:0-200k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 6,
+        "cache": 0.5,
+        "tierLabel": "≤ 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "grok-4.6",
+      "onlineOnly": true,
+      "tierLabel": "> 200K",
+      "tierKey": "ctx:200k+",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 4,
+        "output": 12,
+        "cache": 1,
+        "tierLabel": "> 200K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "hunyuan-role-latest",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.369231,
+        "output": 1.476923,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -0.00006249996094047812,
+      "dout": 0.00000520833359607686,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "hy-mt2-lite",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.04615384615384615,
+        "output": 0.1846153846153846,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.04615384615384615,
+        "output": 0.1846153846153846,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.046154,
+        "output": 0.184615,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -0.0003333322222366676,
+      "dout": 0.0002083337673518153,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "hy-mt2-plus",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": true,
+      "v1": {
+        "input": 0.07692307692307693,
+        "output": 0.3076923076923077,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.076923,
+        "output": 0.307692,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 30.00013000013,
+      "dout": 30.00013000013,
+      "dcache": null,
+      "action": "上浮"
+    },
+    {
+      "id": "hy-mt2-pro",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.07692307692307693,
+        "output": 0.3076923076923077,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.07692307692307693,
+        "output": 0.3076923076923077,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.076923,
+        "output": 0.307692,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0.00010000009999881223,
+      "dout": 0.00010000009999881223,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "hy-role",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.369231,
+        "output": 1.476923,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -0.00006249996094047812,
+      "dout": 0.00000520833359607686,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "hy-vision-2.0-instruct",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 1.1538461538461537,
+        "output": 2.6923076923076925,
+        "cache": null
+      },
+      "v2": {
+        "input": 1.1538461538461537,
+        "output": 2.6923076923076925,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1.153846,
+        "output": 2.692308,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0.000013333335108534164,
+      "dout": -0.000011428570120240112,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "hy3-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入<16k",
+      "tierKey": "t:0-16k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.1846153846153846,
+        "output": 0.6153846153846154,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.132,
+        "output": 0.528,
+        "cache": 0.033
+      },
+      "cacheSuggest": 0.033,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.1847,
+        "output": 0.6154,
+        "cache": 0.0616,
+        "tierLabel": "≤ 16K"
+      },
+      "din": -28.53275582024905,
+      "dout": -14.20214494637633,
+      "dcache": -46.42857142857143,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "hy3-preview",
+      "onlineOnly": false,
+      "tierLabel": "16k≤输入<32k",
+      "tierKey": "t:16k-32k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.24615384615384617,
+        "output": 0.9846153846153847,
+        "cache": 0.0923076923076923
+      },
+      "v2": {
+        "input": 0.132,
+        "output": 0.528,
+        "cache": 0.033
+      },
+      "cacheSuggest": 0.033,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.2462,
+        "output": 0.9847,
+        "cache": 0.0924,
+        "tierLabel": "16K – 32K"
+      },
+      "din": -46.38505280259951,
+      "dout": -46.37960800243729,
+      "dcache": -64.28571428571428,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "hy3-preview",
+      "onlineOnly": false,
+      "tierLabel": "输入≥32k",
+      "tierKey": "t:32k+",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 1.2307692307692308,
+        "cache": 0.12307692307692308
+      },
+      "v2": {
+        "input": 0.132,
+        "output": 0.528,
+        "cache": 0.033
+      },
+      "cacheSuggest": 0.033,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.3077,
+        "output": 1.2308,
+        "cache": 0.1231,
+        "tierLabel": "> 32K"
+      },
+      "din": -57.10107247318816,
+      "dout": -57.10107247318816,
+      "dcache": -73.19252640129974,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "kimi-k2.5",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.6153846153846154,
+        "output": 3.230769230769231,
+        "cache": 0.10769230769230768
+      },
+      "v2": {
+        "input": 0.6,
+        "output": 3,
+        "cache": 0.1
+      },
+      "cacheSuggest": 0.1,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.615385,
+        "output": 3.230769,
+        "cache": 0.107692,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -2.500060937461911,
+      "dout": -7.1428505102036075,
+      "dcache": -7.142591835976665,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "kimi-k2.6",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 1,
+        "output": 4.153846153846154,
+        "cache": 0.16923076923076924
+      },
+      "v2": {
+        "input": 0.95,
+        "output": 4,
+        "cache": 0.16
+      },
+      "cacheSuggest": 0.16,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1,
+        "output": 4.153846,
+        "cache": 0.169231,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -5.000000000000004,
+      "dout": -3.703700137174072,
+      "dcache": -5.454674379989475,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "kimi-k2.7-code",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 1,
+        "output": 4.153846153846154,
+        "cache": 0.2
+      },
+      "v2": {
+        "input": 0.95,
+        "output": 4,
+        "cache": 0.19
+      },
+      "cacheSuggest": 0.19,
+      "cacheFromDom": false,
+      "online": {
+        "input": 1,
+        "output": 4.153846,
+        "cache": null,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -5.000000000000004,
+      "dout": -3.703700137174072,
+      "dcache": null,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "kimi-k2.7-code-highspeed",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 2,
+        "output": 8.307692307692308,
+        "cache": 0.4
+      },
+      "v2": {
+        "input": 1.9,
+        "output": 8,
+        "cache": 0.38
+      },
+      "cacheSuggest": 0.38,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 8.307692,
+        "cache": 0.4,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -5.000000000000004,
+      "dout": -3.703700137174072,
+      "dcache": -5.000000000000004,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "kimi-k3",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3
+      },
+      "v2": {
+        "input": 3,
+        "output": 15,
+        "cache": 0.3
+      },
+      "cacheSuggest": 0.3,
+      "cacheFromDom": false,
+      "online": {
+        "input": 3.076923,
+        "output": 15.384615,
+        "cache": 0.307692,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -2.4999975624999347,
+      "dout": -2.49999756249994,
+      "dcache": -2.49990249990251,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "minimax-m2.5",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3230769230769231,
+        "output": 1.2923076923076924,
+        "cache": 0.03230769230769231
+      },
+      "v2": {
+        "input": 0.3,
+        "output": 1.2,
+        "cache": 0.03
+      },
+      "cacheSuggest": 0.03,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.323077,
+        "output": 1.292308,
+        "cache": 0.032308,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -7.142879251695421,
+      "dout": -7.142879251695421,
+      "dcache": -7.143741488176317,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "minimax-m2.7",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3230769230769231,
+        "output": 1.2923076923076924,
+        "cache": 0.06461538461538462
+      },
+      "v2": {
+        "input": 0.3,
+        "output": 1.2,
+        "cache": 0.06
+      },
+      "cacheSuggest": 0.06,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.323077,
+        "output": 1.292308,
+        "cache": 0.064615,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -7.142879251695421,
+      "dout": -7.142879251695421,
+      "dcache": -7.142304418478693,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "minimax-m3",
+      "onlineOnly": false,
+      "tierLabel": "输入≤512k",
+      "tierKey": "t:0-512k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3230769230769231,
+        "output": 1.2923076923076924,
+        "cache": 0.06461538461538462
+      },
+      "v2": {
+        "input": 0.3,
+        "output": 1.2,
+        "cache": 0.06
+      },
+      "cacheSuggest": 0.06,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.3231,
+        "output": 1.2924,
+        "cache": 0.0647,
+        "tierLabel": "≤ 512K"
+      },
+      "din": -7.149489322191275,
+      "dout": -7.149489322191275,
+      "dcache": -7.264296754250381,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "minimax-m3",
+      "onlineOnly": false,
+      "tierLabel": "输入>512k",
+      "tierKey": "t:512k+",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.6461538461538462,
+        "output": 2.5846153846153848,
+        "cache": 0.12923076923076923
+      },
+      "v2": {
+        "input": 0.6,
+        "output": 2.4,
+        "cache": 0.12
+      },
+      "cacheSuggest": 0.12,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.6462,
+        "output": 2.5847,
+        "cache": 0.1293,
+        "tierLabel": "> 512K"
+      },
+      "din": -7.149489322191275,
+      "dout": -7.145897009324111,
+      "dcache": -7.192575406032485,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "qwen-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入≤128k",
+      "tierKey": "t:0-128k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.023076923076923075,
+        "output": 0.23076923076923078,
+        "cache": 0.004615384615384615
+      },
+      "v2": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.004615384615384615,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": 0.005,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": -7.692307692307702,
+      "action": "不改·缓偏低不算降"
+    },
+    {
+      "id": "qwen-flash",
+      "onlineOnly": false,
+      "tierLabel": "128k<输入≤256k",
+      "tierKey": "t:128k-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.0923076923076923,
+        "output": 0.9230769230769231,
+        "cache": 0.01846153846153846
+      },
+      "v2": {
+        "input": 0.05,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.01846153846153846,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen-flash",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.1846153846153846,
+        "output": 1.8461538461538463,
+        "cache": 0.03692307692307692
+      },
+      "v2": {
+        "input": 0.25,
+        "output": 2,
+        "cache": null
+      },
+      "cacheSuggest": 0.03692307692307692,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen-max",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.3692307692307692,
+        "output": 1.4769230769230768,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.37,
+        "output": 1.48,
+        "cache": 0.08,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -0.20790020790021616,
+      "dout": -0.20790020790021616,
+      "dcache": null,
+      "action": "已齐"
+    },
+    {
+      "id": "qwen-plus",
+      "onlineOnly": false,
+      "tierLabel": "输入≤128k",
+      "tierKey": "t:0-128k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 0.3076923076923077,
+        "cache": 0.024615384615384615
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 1.2,
+        "cache": null
+      },
+      "cacheSuggest": 0.024615384615384615,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.4,
+        "output": 1.2,
+        "cache": 0.04,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": -38.46153846153847,
+      "action": "不改·缓偏低不算降"
+    },
+    {
+      "id": "qwen-plus",
+      "onlineOnly": false,
+      "tierLabel": "128k<输入≤256k",
+      "tierKey": "t:128k-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3692307692307692,
+        "output": 3.076923076923077,
+        "cache": 0.07384615384615384
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 1.2,
+        "cache": null
+      },
+      "cacheSuggest": 0.07384615384615384,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen-plus",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.7384615384615384,
+        "output": 7.384615384615385,
+        "cache": 0.14769230769230768
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 3.6,
+        "cache": null
+      },
+      "cacheSuggest": 0.14769230769230768,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen-turbo",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "fallback-v1",
+      "note": "无国际站锚 → V2=V1",
+      "named": false,
+      "v1": {
+        "input": 0.04615384615384615,
+        "output": 0.0923076923076923,
+        "cache": null
+      },
+      "v2": {
+        "input": 0.04615384615384615,
+        "output": 0.0923076923076923,
+        "cache": null
+      },
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.05,
+        "output": 0.2,
+        "cache": 0.01,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": -7.692307692307707,
+      "dout": -53.846153846153854,
+      "dcache": null,
+      "action": "不改·只上浮"
+    },
+    {
+      "id": "qwen3.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入≤128k",
+      "tierKey": "t:0-128k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.03076923076923077,
+        "output": 0.3076923076923077,
+        "cache": 0.003076923076923077
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.003076923076923077,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": -69.23076923076923,
+      "action": "不改·缓偏低不算降"
+    },
+    {
+      "id": "qwen3.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "128k<输入≤256k",
+      "tierKey": "t:128k-256k",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 1.2307692307692308,
+        "cache": 0.012307692307692308
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.012307692307692308,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.5-flash",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl-uniform",
+      "note": "国际站单档对齐",
+      "named": false,
+      "v1": {
+        "input": 0.1846153846153846,
+        "output": 1.8461538461538463,
+        "cache": 0.01846153846153846
+      },
+      "v2": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.01846153846153846,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.5-plus",
+      "onlineOnly": false,
+      "tierLabel": "输入≤128k",
+      "tierKey": "t:0-128k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.12307692307692308,
+        "output": 0.7384615384615384,
+        "cache": 0.012307692307692308
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 2.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.012307692307692308,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.4,
+        "output": 2.4,
+        "cache": 0.04,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": -69.23076923076923,
+      "action": "不改·缓偏低不算降"
+    },
+    {
+      "id": "qwen3.5-plus",
+      "onlineOnly": false,
+      "tierLabel": "128k<输入≤256k",
+      "tierKey": "t:128k-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 1.8461538461538463,
+        "cache": 0.03076923076923077
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 2.4,
+        "cache": null
+      },
+      "cacheSuggest": 0.03076923076923077,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.5-plus",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.6153846153846154,
+        "output": 3.6923076923076925,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.5,
+        "output": 3,
+        "cache": null
+      },
+      "cacheSuggest": 0.06153846153846154,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.6-flash",
+      "onlineOnly": false,
+      "tierLabel": "输入≤256k",
+      "tierKey": "t:0-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.1846153846153846,
+        "output": 1.1076923076923078,
+        "cache": 0.03692307692307692
+      },
+      "v2": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": null
+      },
+      "cacheSuggest": 0.03692307692307692,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache": 0.025,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 47.69230769230767,
+      "action": "可选·补缓"
+    },
+    {
+      "id": "qwen3.6-flash",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.7384615384615384,
+        "output": 4.430769230769231,
+        "cache": 0.14769230769230768
+      },
+      "v2": {
+        "input": 1,
+        "output": 4,
+        "cache": null
+      },
+      "cacheSuggest": 0.14769230769230768,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.6-plus",
+      "onlineOnly": false,
+      "tierLabel": "输入≤256k",
+      "tierKey": "t:0-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 1.8461538461538463,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.5,
+        "output": 3,
+        "cache": null
+      },
+      "cacheSuggest": 0.06153846153846154,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.5,
+        "output": 3,
+        "cache": 0.05,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 23.076923076923077,
+      "action": "可选·补缓"
+    },
+    {
+      "id": "qwen3.6-plus",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 1.2307692307692308,
+        "output": 7.384615384615385,
+        "cache": 0.24615384615384617
+      },
+      "v2": {
+        "input": 2,
+        "output": 6,
+        "cache": null
+      },
+      "cacheSuggest": 0.24615384615384617,
+      "cacheFromDom": true,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "补档"
+    },
+    {
+      "id": "qwen3.7-flash",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": null,
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    },
+    {
+      "id": "qwen3.7-flash",
+      "onlineOnly": true,
+      "tierLabel": "≤ 32K",
+      "tierKey": "t:0-32k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.03,
+        "output": 0.13,
+        "cache": 0.003,
+        "tierLabel": "≤ 32K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "qwen3.7-flash",
+      "onlineOnly": true,
+      "tierLabel": "32K – 256K",
+      "tierKey": "t:32k-256k",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache": 0.01,
+        "tierLabel": "32K – 256K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "qwen3.7-flash",
+      "onlineOnly": true,
+      "tierLabel": "> 256K",
+      "tierKey": "t:256k-1m",
+      "v2Source": "—",
+      "note": "线上有档、V2 无同档",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 0.2,
+        "output": 0.8,
+        "cache": 0.02,
+        "tierLabel": "> 256K"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "线上多档"
+    },
+    {
+      "id": "qwen3.7-max",
+      "onlineOnly": false,
+      "tierLabel": "标准价",
+      "tierKey": "uniform",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 1.8461538461538463,
+        "output": 5.538461538461538,
+        "cache": 0.3692307692307692
+      },
+      "v2": {
+        "input": 2.5,
+        "output": 7.5,
+        "cache": null
+      },
+      "cacheSuggest": 0.3692307692307692,
+      "cacheFromDom": true,
+      "online": {
+        "input": 2.5,
+        "output": 7.5,
+        "cache": 0.25,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 47.69230769230768,
+      "action": "可选·补缓"
+    },
+    {
+      "id": "qwen3.7-plus",
+      "onlineOnly": false,
+      "tierLabel": "输入≤256k",
+      "tierKey": "t:0-256k",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.3076923076923077,
+        "output": 1.2307692307692308,
+        "cache": 0.06153846153846154
+      },
+      "v2": {
+        "input": 0.4,
+        "output": 1.6,
+        "cache": null
+      },
+      "cacheSuggest": 0.06153846153846154,
+      "cacheFromDom": true,
+      "online": {
+        "input": 0.4,
+        "output": 1.6,
+        "cache": 0.04,
+        "tierLabel": "≤ 256K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 53.846153846153854,
+      "action": "可选·补缓"
+    },
+    {
+      "id": "qwen3.7-plus",
+      "onlineOnly": false,
+      "tierLabel": "256k<输入≤1M",
+      "tierKey": "t:256k-1m",
+      "v2Source": "intl",
+      "note": "",
+      "named": false,
+      "v1": {
+        "input": 0.9230769230769231,
+        "output": 3.6923076923076925,
+        "cache": 0.1846153846153846
+      },
+      "v2": {
+        "input": 1.2,
+        "output": 4.8,
+        "cache": null
+      },
+      "cacheSuggest": 0.1846153846153846,
+      "cacheFromDom": true,
+      "online": {
+        "input": 1.2,
+        "output": 4.8,
+        "cache": 0.12,
+        "tierLabel": "> 256K"
+      },
+      "din": 0,
+      "dout": 0,
+      "dcache": 53.84615384615383,
+      "action": "可选·补缓"
+    },
+    {
+      "id": "qwen3.8-max",
+      "onlineOnly": false,
+      "tierLabel": "—",
+      "tierKey": "uniform",
+      "v2Source": "missing",
+      "note": "缺国内与国际锚",
+      "named": false,
+      "v1": null,
+      "v2": null,
+      "cacheSuggest": null,
+      "cacheFromDom": false,
+      "online": {
+        "input": 2,
+        "output": 6,
+        "cache": 0.2,
+        "tierLabel": "输入:文本/图片/视频"
+      },
+      "din": null,
+      "dout": null,
+      "dcache": null,
+      "action": "缺锚"
+    }
+  ]
+}

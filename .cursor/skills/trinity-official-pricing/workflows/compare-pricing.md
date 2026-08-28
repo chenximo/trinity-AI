@@ -14,7 +14,8 @@
 | **刊例对比 + 汇总** | `pricing.upstream` 或 `pricing.refresh`（含生文+生图） | `pricing.upstream.image` |
 | 人读对比（可选） | `pricing.compare.official` | （已含在 upstream.image） |
 
-`pricing.compare.official` 与 `pricing.upstream` 会自动 `GET /v1/prices` 刷新线上刊例；本地可设 `PRICING_SKIP_ONLINE_FETCH=1`。  
+`pricing.compare.official`、`pricing.upstream*`、`pricing:validate:compare`（listing-compare）、`pricing:diff:official-image|video`、`pricing:inspect:*` 会自动 `GET /v1/prices` 刷新线上刊例；**禁止**用过期 `prices-api-*.json` 缓存当当前线上。本地离线可设 `PRICING_SKIP_ONLINE_FETCH=1`，结论须声明。  
+Agent 向人汇报「线上有/无某模型、价差」前，须先刷新或确认本次运行的 `fetchedAt`。
 单独拉刊例可用 `pricing.fetch`。
 
 ### 对比参数（`pricing.compare.official`）

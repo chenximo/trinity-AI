@@ -4,9 +4,11 @@
  *
  *   npm run pricing:fetch
  *   node pricing/pipeline/fetch-online-prices.mjs --modality=text
+ *   node pricing/pipeline/fetch-online-prices.mjs --modality image
  *   node pricing/pipeline/fetch-online-prices.mjs --json-only
  *
- * 对比流水线（upstream / compare:official）会自行拉最新价，无需先跑本命令。
+ * 对比流水线（upstream / compare / listing-compare / diff）会自行拉最新价，
+ * 无需先跑本命令；本命令用于单独刷新缓存或排障。
  */
 
 import { fetchAndPersistOnlinePrices } from "./lib/fetch-online-prices-lib.mjs";
@@ -17,9 +19,16 @@ function parseArgs() {
   let modality = "text";
   let jsonOnly = false;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === "--modality" && args[i + 1]) modality = args[++i];
-    else if (args[i] === "--all") modality = "all";
-    else if (args[i] === "--json-only") jsonOnly = true;
+    const a = args[i];
+    if (a === "--modality" && args[i + 1]) {
+      modality = args[++i];
+    } else if (a.startsWith("--modality=")) {
+      modality = a.slice("--modality=".length);
+    } else if (a === "--all") {
+      modality = "all";
+    } else if (a === "--json-only") {
+      jsonOnly = true;
+    }
   }
   return { modality, jsonOnly };
 }

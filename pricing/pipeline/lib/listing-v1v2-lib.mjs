@@ -17,7 +17,7 @@ export function expandListingTiers(seed) {
   if (Array.isArray(seed.tiers) && seed.tiers.length) {
     return seed.tiers.map((t, i, arr) => ({
       tierLabel: t.tierLabel,
-      tierKey: tierToKey(t.tierLabel, i, arr.length),
+      tierKey: t.tierKey || tierToKey(t.tierLabel, i, arr.length),
       input: t.input ?? null,
       output: t.output ?? null,
       cache: t.cache ?? null,
@@ -200,6 +200,7 @@ export function indexListingV1V2Rows(listingRows) {
  * @param {string} [tierLabel]
  * @param {number} [tierIndex]
  * @param {number} [tierTotal]
+ * @param {string} [explicitKey] 对比行已有的 official/online tierKey，优先于文案解析
  */
 export function lookupListingV1V2(
   index,
@@ -207,16 +208,19 @@ export function lookupListingV1V2(
   tierLabel = "",
   tierIndex = 0,
   tierTotal = 1,
+  explicitKey = "",
 ) {
   const id = String(modelId ?? "").trim().toLowerCase();
   if (!id || !index) return null;
-  const tk = tierToKey(tierLabel || "标准价", tierIndex, tierTotal);
-  return (
-    index.byIdTier.get(`${id}\0${tk}`) ??
-    index.byIdTier.get(`${id}\0uniform`) ??
-    index.byId.get(id)?.[0] ??
-    null
-  );
+  const tk =
+    (explicitKey && String(explicitKey).trim()) ||
+    tierToKey(tierLabel || "标准价", tierIndex, tierTotal);
+  const hit = index.byIdTier.get(`${id}\0${tk}`);
+  if (hit) return hit;
+  if (tk === "uniform") {
+    return index.byIdTier.get(`${id}\0uniform`) ?? index.byId.get(id)?.[0] ?? null;
+  }
+  return null;
 }
 
 /**
@@ -246,7 +250,14 @@ export function enrichCompareRowsWithListingV1V2(
     const tid = String(r.trinityId ?? "").trim();
     const hit =
       tid && tid !== "—" && tid !== "-"
-        ? lookupListingV1V2(index, tid, r.tierLabel ?? "")
+        ? lookupListingV1V2(
+            index,
+            tid,
+            r.tierLabel ?? "",
+            0,
+            1,
+            r.tierKey ?? "",
+          )
         : null;
     r.listingV1 = hit ? listingUsdCell(hit.v1) : "—";
     r.listingV2 = hit ? listingUsdCell(hit.v2) : "—";

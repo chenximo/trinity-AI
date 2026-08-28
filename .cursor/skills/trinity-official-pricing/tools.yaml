@@ -352,7 +352,7 @@ tools:
 
   - id: pricing.gate
     title: 价目门禁 L1→L3（全模态）
-    summary: official text+image → L2/L3 → listing-compare（含官网能力档覆盖）→ alert
+    summary: official text+image → L2/L3 → listing-compare（自动刷新线上刊例 + 官网能力档覆盖）→ alert
     command: npm run pricing:gate
     reads:
       - pricing/suppliers/official/output/text/vendor-pricing.json
@@ -366,8 +366,10 @@ tools:
       - pricing/output/validate/official-vs-suppliers-image.json
       - pricing/output/validate/pricing-alerts.json
     confirm: none
-    network: false
+    network: true
     git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
     tags: [validate, gate, pricing-L1, pricing-L3, text, image]
 
   - id: pricing.alert
@@ -390,10 +392,13 @@ tools:
   # ── 对比与线上刊例 ──────────────────────────────────────────
   - id: pricing.fetch
     title: 拉取线上刊例
-    summary: GET /v1/prices → prices-api.json
+    summary: GET /v1/prices → prices-api-{modality}.json；支持 --modality=text|image|video|all。对比/巡检默认已自动刷新，本命令用于单独刷新或排障
     command: npm run pricing:fetch
+    # 分模态：node pricing/pipeline/fetch-online-prices.mjs --modality=image --json-only
     writes:
       - pricing/output/online/prices-api.json
+      - pricing/output/online/prices-api-image.json
+      - pricing/output/online/prices-api-video.json
     confirm: none
     network: true
     git: false
@@ -506,28 +511,32 @@ tools:
 
   - id: pricing.diff.official.image
     title: diff 生图草案 vs 线上刊例
-    summary: official-prices-api-image vs prices-api-image.json
+    summary: 自动刷新线上刊例后对比 official-prices-api-image vs prices-api-image.json
     command: npm run pricing:diff:official-image
     writes:
       - pricing/output/draft/official-prices-api-image-diff.json
       - pricing/output/draft/official-prices-api-image-diff.md
       - pricing/output/draft/official-prices-api-image-diff.csv
     confirm: none
-    network: false
+    network: true
     git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
     tags: [diff, listing, image, pricing-L4]
 
   - id: pricing.diff.official.video
     title: diff 生视频草案 vs 线上刊例
-    summary: official-prices-api-video vs prices-api-video.json
+    summary: 自动刷新线上刊例后对比 official-prices-api-video vs prices-api-video.json
     command: npm run pricing:diff:official-video
     writes:
       - pricing/output/draft/official-prices-api-video-diff.json
       - pricing/output/draft/official-prices-api-video-diff.md
       - pricing/output/draft/official-prices-api-video-diff.csv
     confirm: none
-    network: false
+    network: true
     git: false
+    env:
+      - PRICING_SKIP_ONLINE_FETCH
     tags: [diff, listing, video, pricing-L4]
 
   - id: pricing.publish.official.video

@@ -2,6 +2,12 @@
  * 解析 GET /v1/prices 响应 → 扁平价（USD/百万 tokens）
  */
 
+import {
+  imageCapabilityResTierKey,
+  normalizeImageCapability,
+} from "./image-capability-key.mjs";
+import { tierKeyFromTokenBounds, tierToKey } from "./tier-key.mjs";
+
 export function num(v) {
   if (v == null || v === "" || v === "—") return null;
   const n = Number(v);
@@ -33,7 +39,7 @@ function parseOnlineImagePrimary(entry) {
   return { tierLabel: "—", price: null, pricingMode: entry.pricing_mode };
 }
 
-/** 生图按分辨率分档 */
+/** 生图按分辨率分档；legacy token 生图落到 uniform 一档便于 join 展示 */
 export function parseOnlineImageTiers(entry) {
   const mode = entry.pricing_mode;
   const groups = entry.price_groups ?? [];
@@ -41,18 +47,61 @@ export function parseOnlineImageTiers(entry) {
   if (mode === "image_tiered" || entry.modality_type === "image") {
     const tiers = groups
       .filter((g) => g.type === "resolution_tier" && g.prices?.unit)
-      .map((g) => ({
-        tierLabel:
+      .map((g) => {
+        const resRaw =
+          g.conditions?.resolution_tier ??
           g.conditions_summary ??
           g.label ??
-          String(g.conditions?.resolution_tier ?? "").toUpperCase(),
-        tierKey: g.conditions?.resolution_tier
-          ? `res:${String(g.conditions.resolution_tier).toLowerCase()}`
-          : undefined,
-        price: num(g.prices.unit.amount),
-        pricingMode: mode,
-      }));
+          "";
+        const res = String(resRaw).trim().toLowerCase();
+        const variantRaw = g.conditions?.variant
+          ? String(g.conditions.variant).trim()
+          : "";
+        const variant =
+          !variantRaw || variantRaw === "-" || variantRaw === "—"
+            ? ""
+            : variantRaw;
+        const tierLabel =
+          g.label ??
+          g.conditions_summary ??
+          String(g.conditions?.resolution_tier ?? "").toUpperCase();
+        const cap = variant ? normalizeImageCapability(variant) : null;
+        const tierKey = cap
+          ? imageCapabilityResTierKey(cap, res)
+          : res
+            ? `res:${res}`
+            : undefined;
+        return {
+          tierLabel,
+          tierKey,
+          price: num(g.prices.unit.amount),
+          pricingMode: mode,
+          capability: cap,
+          capabilityLabel: variant || null,
+        };
+      });
     if (tiers.length) return tiers;
+
+    // token / legacy：无 resolution_tier 时用 output（或 input）作展示价
+    const def =
+      groups.find((g) => g.type === "default") ??
+      groups.find((g) => g.type === "dimension_set");
+    if (def?.prices && (def.prices.output || def.prices.input || def.prices.unit)) {
+      const out = num(def.prices.output?.amount);
+      const inp = num(def.prices.input?.amount);
+      const unit = num(def.prices.unit?.amount);
+      return [
+        {
+          tierLabel: def.label ?? "标准计价",
+          tierKey: "uniform",
+          price: unit ?? out ?? inp,
+          pricingMode: mode ?? "legacy",
+          capability: null,
+          capabilityLabel: null,
+          billing: unit != null ? "per_image" : "token",
+        },
+      ];
+    }
     return [parseOnlineImagePrimary(entry)];
   }
 
@@ -255,8 +304,12 @@ export function parseOnlinePricesTiers(entry) {
       r.range?.display_short ?? r.range?.display ?? `档位${i + 1}`;
     const outR = outG?.ranges?.[i];
     const cacheR = cacheG?.ranges?.[i];
+    const boundKey =
+      tierKeyFromTokenBounds(r.range?.min, r.range?.max) ||
+      tierToKey(label, i, ranges.length);
     return {
       tierLabel: label,
+      ...(boundKey && boundKey !== `t:idx-${i}` ? { tierKey: boundKey } : {}),
       input: num(r.price?.amount),
       output: num(outR?.price?.amount),
       cache: num(cacheR?.price?.amount),

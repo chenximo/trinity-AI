@@ -25,7 +25,7 @@ import {
   TOKENHUB_FILE,
 } from "./lib/paths.mjs";
 
-import { FX_LISTING } from "../../config/fx.mjs";
+import { FX_LISTING } from "../config/fx.mjs";
 const TAG = "official_prices_api_image";
 const AIGC_IMAGE_FILE = path.join(
   SUPPLIERS_DIR,

@@ -38,6 +38,7 @@ import {
   evaluateVideoDomesticVsOfficial,
   evaluateVideoIntlVsOfficial,
   evaluateListingVsAigcIntl,
+  evaluateListingVsOfficialPerSecond,
   evaluateListingVsOfficialToken,
   videoTierPrice,
 } from "./video-pricing-validate-lib.mjs";
@@ -124,7 +125,8 @@ function normalizeResLabel(label) {
   const t = String(label ?? "").trim();
   if (!t) return t;
   const low = t.toLowerCase();
-  if (low === "720p") return "720P/768P";
+  // 官网常写 720P/768P；AIGC/线上可能拆成 720p 或 768p
+  if (low === "720p" || low === "768p" || low === "720p/768p") return "720P/768P";
   if (low === "1080p") return "1080P";
   if (low === "480p" || low === "540p") return "480P/540P";
   return t;
@@ -284,6 +286,7 @@ function buildListingConclusion(
   listingFx,
   listingAttribute,
   aigcAttribute,
+  officialImpliedCny = null,
 ) {
   const onlineSlug = unit?.onlineSlug ?? null;
   const hasOnlineListing =
@@ -299,20 +302,24 @@ function buildListingConclusion(
     return "ℹ 线上无同属性刊例";
   }
   if (!onlineTier || onlinePrice == null) {
-    if (intlPrice == null) return "—";
+    if (intlPrice == null && officialImpliedCny == null && officialPriceCny == null) {
+      return "—";
+    }
     return "ℹ 线上无同档刊例";
   }
 
   const onlineIsToken = isVideoTokenOnlineUnit(onlineTier);
   const officialIsToken = isVideoTokenOfficialUnit(offTier);
+  // 刊例结论对照官网统一用基准 6.5（与 AIGC 国内÷国际一致）
+  const officialFx = FX_ONLINE_DOMESTIC;
 
   if (onlineIsToken && officialIsToken) {
     const offPrice =
       officialPriceCny ?? offTier?.price ?? offTier?.rawPrice ?? null;
     if (offPrice == null) return "ℹ 官方 token 档缺价";
-    const cmp = evaluateListingVsOfficialToken(offPrice, onlinePrice, listingFx);
+    const cmp = evaluateListingVsOfficialToken(offPrice, onlinePrice, officialFx);
     if (!cmp.comparable) return cmp.text;
-    const base = cmp.text;
+    const base = `vs 官网 ${cmp.text}@${officialFx}`;
     const verifyId = trinityId ?? onlineSlug ?? "—";
     if (cmp.pct != null && pctIsMaterial(cmp.pct, FIELD_MATCH_PCT)) {
       return withVerifyFlag(verifyId, Math.abs(cmp.pct), base, ["official-listing"]);
@@ -324,13 +331,49 @@ function buildListingConclusion(
     return "ℹ 线上 token 刊例 · AIGC 为按秒";
   }
 
-  if (intlPrice == null) return "—";
-  const cmp = evaluateListingVsAigcIntl(intlPrice, onlinePrice);
-  if (!cmp.comparable) return cmp.text;
-  const base = cmp.text;
+  const parts = [];
+  /** @type {number[]} */
+  const materialPcts = [];
+
+  if (intlPrice != null) {
+    const aigcCmp = evaluateListingVsAigcIntl(intlPrice, onlinePrice);
+    if (aigcCmp.comparable) {
+      parts.push(`vs AIGC国际 ${aigcCmp.text}`);
+      if (aigcCmp.pct != null && pctIsMaterial(aigcCmp.pct, FIELD_MATCH_PCT)) {
+        materialPcts.push(Math.abs(aigcCmp.pct));
+      }
+    }
+  }
+
+  const offCny = officialImpliedCny ?? officialPriceCny ?? null;
+  if (offCny != null) {
+    const offCmp = evaluateListingVsOfficialPerSecond(
+      offCny,
+      onlinePrice,
+      officialFx,
+    );
+    if (offCmp.comparable) {
+      parts.push(`vs 官网 ${offCmp.text}@${officialFx}`);
+      if (offCmp.pct != null && pctIsMaterial(offCmp.pct, FIELD_MATCH_PCT)) {
+        materialPcts.push(Math.abs(offCmp.pct));
+      }
+    }
+  }
+
+  if (!parts.length) {
+    if (intlPrice == null && offCny == null) return "—";
+    return "—";
+  }
+
+  const base = parts.join(" · ");
   const verifyId = trinityId ?? onlineSlug ?? "—";
-  if (cmp.pct != null && pctIsMaterial(cmp.pct, FIELD_MATCH_PCT)) {
-    return withVerifyFlag(verifyId, Math.abs(cmp.pct), base, ["official-listing"]);
+  if (materialPcts.length) {
+    return withVerifyFlag(
+      verifyId,
+      Math.max(...materialPcts),
+      base,
+      ["official-listing"],
+    );
   }
   return base;
 }
@@ -682,6 +725,7 @@ function buildVideoTierRow(ctx) {
     onlineListingFx,
     listingAttribute,
     aigcAttribute,
+    implied?.mid ?? null,
   );
 
   return {
@@ -1063,7 +1107,7 @@ export function renderVideoCompareHubMarkdown(report) {
     `> **原厂按秒（可灵等）**：积分/秒 = 元/秒（1积分=¥1）· 直接对照 AIGC`,
     `> **原厂按次（混元/Vidu 等）**：积分/次 ÷ ${ref.referenceSeconds}s/次 → 元/秒(估)`,
     `> **线上刊例**：\`GET /v1/prices?modality=video\` · 默认 USD/秒 · Seedance 等为 USD/百万 video tokens`,
-    `> **刊例结论**：同属性行内 · 按秒 = 线上 vs AIGC国际 · token = 线上 vs 官方 token`,
+    `> **刊例结论**：同属性行内 · 按秒 = 线上 vs AIGC国际 **且** 线上 vs 官网(¥÷${FX_ONLINE_DOMESTIC}) · token = 线上 vs 官方 token(@${FX_ONLINE_DOMESTIC})`,
     `> 模型映射：\`config/video-model-registry.mjs\`（${report.pricesFetchedAt?.slice(0, 19) ?? "—"}Z）`,
     `> 刊例基准汇率：${report.fxOnlineDomestic}（AIGC 国内÷国际）· 线上 token 折算：${report.onlineListingFx ?? 7.25}`,
     `> ${ref.footnote ?? ""}`,

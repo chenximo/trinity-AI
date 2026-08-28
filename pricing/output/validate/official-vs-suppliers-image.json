@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T06:54:56.712Z",
+  "generatedAt": "2026-08-26T07:58:19.098Z",
   "modality": "image",
   "phase": "L1_vs_L3_image",
   "ok": true,
@@ -108,7 +108,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.2
+            "price": 0.2,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -192,7 +194,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "res:1k",
-            "price": 0.22
+            "price": 0.22,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -202,7 +206,9 @@
           "left": {
             "tierLabel": "2K",
             "tierKey": "res:2k",
-            "price": 0.22
+            "price": 0.22,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -212,7 +218,9 @@
           "left": {
             "tierLabel": "4K",
             "tierKey": "res:4k",
-            "price": 0.22
+            "price": 0.22,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -272,7 +280,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "res:1k",
-            "price": 0.25
+            "price": 0.25,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -282,7 +292,9 @@
           "left": {
             "tierLabel": "2K",
             "tierKey": "res:2k",
-            "price": 0.25
+            "price": 0.25,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -292,7 +304,9 @@
           "left": {
             "tierLabel": "4K",
             "tierKey": "res:4k",
-            "price": 0.25
+            "price": 0.25,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -352,7 +366,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "res:1k",
-            "price": 0.2
+            "price": 0.2,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -362,7 +378,9 @@
           "left": {
             "tierLabel": "2K",
             "tierKey": "res:2k",
-            "price": 0.2
+            "price": 0.2,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -372,7 +390,9 @@
           "left": {
             "tierLabel": "4K",
             "tierKey": "res:4k",
-            "price": 0.2
+            "price": 0.2,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -440,7 +460,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.25
+            "price": 0.25,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -468,7 +490,9 @@
           "left": {
             "tierLabel": "输出",
             "tierKey": "uniform",
-            "price": 0.0385
+            "price": 0.0385,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -548,7 +572,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "uniform",
-            "price": 0.039
+            "price": 0.039,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },
@@ -576,7 +602,9 @@
           "left": {
             "tierLabel": "1K",
             "tierKey": "uniform",
-            "price": 0.039
+            "price": 0.039,
+            "capability": null,
+            "capabilityLabel": null
           },
           "right": null
         },

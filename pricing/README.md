@@ -99,11 +99,15 @@ trinity-AI/pricing/
 ### 步骤 1 — 拉线上刊例
 
 ```bash
-npm run pricing:fetch
+npm run pricing:fetch                          # 默认 text
+node pricing/pipeline/fetch-online-prices.mjs --modality=image --json-only
+node pricing/pipeline/fetch-online-prices.mjs --modality=video --json-only
 ```
 
-- 写入 `output/online/prices-api.json`（旧版自动备份为 `online/prices-api.old.json`）
-- 这是**平台当前刊例**，后续所有校验都拿它对齐
+- 写入 `output/online/prices-api-{modality}.json`（text 亦写 legacy `prices-api.json`）
+- **对照线上的流水线默认会自行 `GET /v1/prices` 刷新**（`refreshOnlinePricesForCompare`）；不要用过期缓存下「当前线上」结论
+- 仅离线排障设 `PRICING_SKIP_ONLINE_FETCH=1`，且须声明缓存 `fetchedAt`
+- 本命令用于单独刷新缓存或排障；`pricing:inspect:*` 第一步也会拉最新
 
 ### 步骤 2 — 汇总对照（上游 + 线上）
 
@@ -111,7 +115,7 @@ npm run pricing:fetch
 npm run pricing:upstream
 ```
 
-依赖：步骤 0 真源 + 步骤 1 的 `prices-api.json`（或缓存）。
+依赖：步骤 0 真源；线上价由本步自动刷新（或步骤 1 缓存 + `PRICING_SKIP_ONLINE_FETCH=1`）。
 
 主要产出：
 
@@ -253,6 +257,7 @@ npm run pricing:diff:065
 
 ## 文档索引
 
+- **[docs/定价运营-四件事与AI派活.md](./docs/定价运营-四件事与AI派活.md)** — 校验 / 刊例 Excel 上传 / 钉钉 / 商务上传 + Cursor 派活（2026-08-26）
 - **[STRUCTURE.md](./STRUCTURE.md)** — 完整目录树（含 `official` 模态拆分）
 - **[docs/PRICING-GOVERNANCE-WORKFLOW.md](./docs/PRICING-GOVERNANCE-WORKFLOW.md)** — 治理总工作流
 - **[docs/PRICING-OPTIMIZATION-BACKLOG.md](./docs/PRICING-OPTIMIZATION-BACKLOG.md)** — 优化清单与进度

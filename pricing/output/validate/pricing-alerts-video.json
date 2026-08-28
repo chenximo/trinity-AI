@@ -1,0 +1,309 @@
+{
+  "schema": "trinity.pricing.alert-bundle/v1",
+  "generatedAt": "2026-08-26T08:59:55.572Z",
+  "modality": "video",
+  "alertCount": 15,
+  "blockingCount": 15,
+  "alerts": [
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "hy-video-1.5",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 hy-video-1.5，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "hy-video-1.5",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "kl-video-v3",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 kl-video-v3，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "kl-video-v3",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "kl-video-v2-6",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 kl-video-v2-6，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "kl-video-v2-6",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "kl-video-v2-5-turbo",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 kl-video-v2-5-turbo，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "kl-video-v2-5-turbo",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "kl-video-v2-1",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 kl-video-v2-1，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "kl-video-v2-1",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "kl-video-v1",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 kl-video-v1，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "kl-video-v1",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "yt-video-2.0",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 yt-video-2.0，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "yt-video-2.0",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "yt-video-humanactor",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 yt-video-humanactor，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "yt-video-humanactor",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "yt-video-fx",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 yt-video-fx，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "yt-video-fx",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "doubao-seedance-2.0",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-2.0，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-2.0",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "doubao-seedance-2.0-fast",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-2.0-fast，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-2.0-fast",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "doubao-seedance-2.0-mini",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-2.0-mini，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-2.0-mini",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "seedance-1.5-pro",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-1.5-pro，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-1.5-pro",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "doubao-seedance-1.0-pro",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-1.0-pro，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-1.0-pro",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    },
+    {
+      "schema": "trinity.pricing.alert/v1",
+      "severity": "warn",
+      "blocking": true,
+      "suggestedAction": "对照官网价目补齐 Trinity 分辨率/模型刊例；或确认下架",
+      "type": "listing_official_coverage_gap",
+      "phase": "L1_vs_L4",
+      "modality": "video",
+      "trinityId": "doubao-seedance-1.0-pro-fast",
+      "title": "生视频刊例未覆盖官网档位",
+      "detail": "官网已列 doubao-seedance-1.0-pro-fast，Trinity 刊例无此模型",
+      "capability": null,
+      "resolution": null,
+      "vendorModelId": "doubao-seedance-1.0-pro-fast",
+      "refs": {
+        "official": "pricing/suppliers/official/output/video/vendor-pricing.json",
+        "online": "pricing/output/online/prices-api-video.json"
+      },
+      "source": "listing-compare.json"
+    }
+  ]
+}

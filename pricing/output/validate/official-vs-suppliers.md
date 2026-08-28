@@ -1,13 +1,13 @@
 # 官方真源 ↔ 转售渠道（L3）
 
-> 2026-07-10T07:42:58Z
+> 2026-08-27T06:42:11Z
 
 ## ⚠ 存在问题
 
 | 指标 | 数量 |
 |------|------|
-| 对比项（模型×渠道） | 186 |
-| 一致 | 52 |
+| 对比项（模型×渠道） | 198 |
+| 一致 | 46 |
 | 有问题（未登记例外） | 3 |
 | 渠道无覆盖 | 43 |
 | 阻塞告警 | 5 |
@@ -16,14 +16,20 @@
 
 - `glm-5` · **bailian** · 官方 2 档 / 渠道 2 档 · 2 项
 - `glm-5.1` · **bailian** · 官方 2 档 / 渠道 2 档 · 2 项
-- `minimax-m3` · **bailian** · 官方 2 档 / 渠道 1 档 · 3 项
+- `minimax-m3` · **bailian** · 官方 2 档 / 渠道 1 档 · 4 项
 
 ### 告警摘要
 
 - **[info]** supplier_price_gap · `deepseek-v4-flash` · bailian · 百炼同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-flash` · tokenhub · TokenHub同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-flash` · aigc-domestic · AIGC国内同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `deepseek-v4-flash-202605` · bailian · 百炼同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-flash-202605` · tokenhub · TokenHub同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `deepseek-v4-pro` · bailian · 百炼同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-pro` · tokenhub · TokenHub同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-pro` · aigc-domestic · AIGC国内同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `deepseek-v4-pro-202606` · bailian · 百炼同档价格与官方不一致（已登记例外）
+- **[info]** supplier_price_gap · `deepseek-v4-pro-202606` · tokenhub · TokenHub同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `qwen3.5-plus` · bailian · 百炼同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `qwen3.5-plus` · bailian · 百炼同档价格与官方不一致（已登记例外）
 - **[info]** supplier_price_gap · `qwen3.5-plus` · bailian · 百炼同档价格与官方不一致（已登记例外）

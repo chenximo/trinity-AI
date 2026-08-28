@@ -10,7 +10,7 @@ import {
   pctIsMaterial,
   roundForCompare,
 } from "./pricing-tolerance.mjs";
-import { FX_LISTING } from "../../config/fx.mjs";
+import { FX_LEGACY_065, FX_LISTING } from "../../config/fx.mjs";
 import { parseNum, normalizeAttrLabel } from "./pricing-validate-lib.mjs";
 
 export { parseNum, normalizeAttrLabel };
@@ -532,11 +532,30 @@ export function evaluateListingVsAigcIntl(aigcIntlUsd, listingUsd) {
   return { pct, text, comparable: pct != null };
 }
 
-/** 线上 token 刊例 USD/百万 vs 官方 CNY/百万（同轴可比） */
+/**
+ * 线上刊例 USD/秒 vs 官网折算元/秒（基准汇率默认 6.5）
+ * @param {number|null|undefined} officialCnyPerSec
+ * @param {number|null|undefined} listingUsd
+ * @param {number} [fx]
+ */
+export function evaluateListingVsOfficialPerSecond(
+  officialCnyPerSec,
+  listingUsd,
+  fx = FX_LEGACY_065,
+) {
+  if (officialCnyPerSec == null || listingUsd == null || !(fx > 0)) {
+    return { pct: null, text: "—", comparable: false, officialUsd: null, fx };
+  }
+  const officialUsd = officialCnyPerSec / fx;
+  const cmp = evaluateListingVsAigcIntl(officialUsd, listingUsd);
+  return { ...cmp, officialUsd, fx };
+}
+
+/** 线上 token 刊例 USD/百万 vs 官方 CNY/百万（同轴可比；刊例基准默认 6.5） */
 export function evaluateListingVsOfficialToken(
   officialCnyPerM,
   listingUsdPerM,
-  fx = FX_LISTING,
+  fx = FX_LEGACY_065,
 ) {
   if (officialCnyPerM == null || listingUsdPerM == null || fx <= 0) {
     return { pct: null, text: "—", comparable: false };

@@ -16,7 +16,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { TEXT_SEED } from "../suppliers/official/data/seeds/text.mjs";
 import { TEXT_INTL_SEED } from "../suppliers/official/data/seeds/text-intl.mjs";
-import { readOnlinePricesCache } from "./lib/fetch-online-prices-lib.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 import {
   LISTING_POLICY,
   FX_V1_CNY_PER_USD,
@@ -91,7 +91,7 @@ async function loadListingRows() {
   } catch {
     /* rebuild */
   }
-  const { raw: online } = await readOnlinePricesCache("text");
+  const { raw: online } = await refreshOnlinePricesForCompare("text", { quiet: true });
   const ids = (online.data || online.models || [])
     .map((m) => m.model || m.id)
     .filter(Boolean)
@@ -104,7 +104,7 @@ async function loadListingRows() {
 }
 
 async function main() {
-  const { raw: online } = await readOnlinePricesCache("text");
+  const { raw: online } = await refreshOnlinePricesForCompare("text");
   const listingRows = await loadListingRows();
   const v2By = primaryV2ByModel(listingRows);
 

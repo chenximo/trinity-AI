@@ -31,7 +31,7 @@
 - 只读校验：`pricing.gate`、`pricing.validate.*`
 - 拉取/对比/刷新：`pricing.supplier.*`、`pricing.refresh`、`pricing.compare.official`、`pricing.fetch`、`pricing.upstream`
 - 脚手架：`pricing.scaffold.model`（仅输出片段，不写盘除非用户要求粘贴）
-- 本地跳过线上拉取：`PRICING_SKIP_ONLINE_FETCH=1`
+- 本地跳过线上拉取：`PRICING_SKIP_ONLINE_FETCH=1`（**结论须声明**「跳过拉取、用缓存 fetchedAt」；默认对比/巡检必须拉最新）
 
 ## git 提交
 

@@ -1,6 +1,6 @@
 # 刊例覆盖 · image
 
-> 生成于 2026-08-24T06:54:56.269Z
+> 生成于 2026-08-26T07:58:18.704Z
 
 ## P6 铁律
 
@@ -14,27 +14,20 @@
 
 | 指标 | 值 |
 |------|-----|
-| 线上 prices-api 模型数 | 19 |
-| 对比表已覆盖线上 slug | 20 |
-| 缺失（blocking） | 5 |
-| P6 状态 | ❌ 未通过 |
+| 线上 prices-api 模型数 | 9 |
+| 对比表已覆盖线上 slug | 9 |
+| 缺失（blocking） | 0 |
+| P6 状态 | ✅ 通过 |
 | P7 档位削减 | 0 |
 | P7 状态 | ✅ 通过 |
-| 综合 | ❌ 未通过 |
-| 对比行数 | 60 |
+| 综合 | ✅ 通过 |
+| 对比行数 | 159 |
 | 官方 catalog 模型 | 20 |
-| Trinity /models 上架 | 19 |
+| Trinity /models 上架 | 9 |
 
 ## 缺失线上 slug
 
-
-| slug |
-|------|
-| `gemini-2.5-flash-image` |
-| `gemini-3.1-flash-image` |
-| `gemini-3.1-flash-lite-image` |
-| `gpt-image-2` |
-| `viduq2-image` |
+_无 — 对比表已 ⊇ 线上刊例。_
 
 ## 档位削减（P7）
 

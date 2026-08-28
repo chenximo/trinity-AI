@@ -12,7 +12,23 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
         "modality_type": "text",
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 10,
+        "user_output_price_per_million_usd": 50
+      }
+    },
+    {
+      "id": "claude-fable-5-discount",
+      "object": "model",
+      "created": 1787564515,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Fable 5 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 10,
         "user_output_price_per_million_usd": 50
       }
@@ -44,7 +60,39 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-4-6-discount",
+      "object": "model",
+      "created": 1787564444,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Opus 4.6 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-6 text model.",
+            "description_long": "Anthropic claude-opus-4-6 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-6 text 模型。",
+            "description_long": "Anthropic claude-opus-4-6 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 5,
         "user_output_price_per_million_usd": 25
       }
@@ -76,7 +124,39 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-4-7-discount",
+      "object": "model",
+      "created": 1787564265,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Opus 4.7 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-7 text model.",
+            "description_long": "Anthropic claude-opus-4-7 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-7 text 模型。",
+            "description_long": "Anthropic claude-opus-4-7 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 5,
         "user_output_price_per_million_usd": 25
       }
@@ -108,7 +188,111 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-4-8-discount",
+      "object": "model",
+      "created": 1787562961,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Opus 4.8 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-opus-4-8 text model.",
+            "description_long": "Anthropic claude-opus-4-8 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-opus-4-8 text 模型。",
+            "description_long": "Anthropic claude-opus-4-8 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-5",
+      "object": "model",
+      "created": 1787563870,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Opus 5",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Agentic coding",
+              "Enterprise",
+              "Long context"
+            ],
+            "short_summary": "Anthropic Claude Opus 5 for complex agentic coding and enterprise work; adaptive thinking on by default.",
+            "description_long": "Claude Opus 5 (claude-opus-5) is Anthropic's Opus flagship for complex agentic coding and enterprise work: 1M context, 128k max output, adaptive thinking on by default, effort default high; tools, vision, and prompt caching supported."
+          },
+          "zh": {
+            "feature_tags": [
+              "智能体编码",
+              "企业工作",
+              "长上下文"
+            ],
+            "short_summary": "Anthropic Claude Opus 5：复杂智能体编码与企业工作旗舰，默认自适应思考。",
+            "description_long": "Claude Opus 5（claude-opus-5）为 Anthropic Opus 系列当前旗舰之一，面向复杂智能体编码与企业工作；1M 上下文、128k 最大输出；adaptive thinking 默认开启，effort 默认 high；支持工具、视觉、Prompt Cache。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 25
+      }
+    },
+    {
+      "id": "claude-opus-5-discount",
+      "object": "model",
+      "created": 1787623245,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Opus 5 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Agentic coding",
+              "Enterprise",
+              "Long context"
+            ],
+            "short_summary": "Anthropic Claude Opus 5 for complex agentic coding and enterprise work; adaptive thinking on by default.",
+            "description_long": "Claude Opus 5 (claude-opus-5) is Anthropic's Opus flagship for complex agentic coding and enterprise work: 1M context, 128k max output, adaptive thinking on by default, effort default high; tools, vision, and prompt caching supported."
+          },
+          "zh": {
+            "feature_tags": [
+              "智能体编码",
+              "企业工作",
+              "长上下文"
+            ],
+            "short_summary": "Anthropic Claude Opus 5：复杂智能体编码与企业工作旗舰，默认自适应思考。",
+            "description_long": "Claude Opus 5（claude-opus-5）为 Anthropic Opus 系列当前旗舰之一，面向复杂智能体编码与企业工作；1M 上下文、128k 最大输出；adaptive thinking 默认开启，effort 默认 high；支持工具、视觉、Prompt Cache。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 5,
         "user_output_price_per_million_usd": 25
       }
@@ -140,7 +324,39 @@
           }
         },
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 3,
+        "user_output_price_per_million_usd": 15
+      }
+    },
+    {
+      "id": "claude-sonnet-4-6-discount",
+      "object": "model",
+      "created": 1787564582,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Sonnet 4.6 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Anthropic claude-sonnet-4-6 text model.",
+            "description_long": "Anthropic claude-sonnet-4-6 text model. Developed by Anthropic; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "Anthropic claude-sonnet-4-6 text 模型。",
+            "description_long": "Anthropic claude-sonnet-4-6 text 模型。 由Anthropic研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 3,
         "user_output_price_per_million_usd": 15
       }
@@ -156,9 +372,63 @@
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
         "modality_type": "text",
         "context_length": 1000000,
-        "max_token": 16000,
+        "max_token": 128000,
         "user_input_price_per_million_usd": 2,
         "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "claude-sonnet-5-discount",
+      "object": "model",
+      "created": 1787564646,
+      "owned_by": "anthropic",
+      "metadata": {
+        "display_name": "Claude Sonnet 5 Discount",
+        "origin_vendor_name": "Anthropic",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/anthropic/1d89d3b0885b4bd4b6da426231227291.png",
+        "modality_type": "text",
+        "context_length": 1000000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 10
+      }
+    },
+    {
+      "id": "codex-auto-review",
+      "object": "model",
+      "created": 1787621884,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "Codex Auto Review",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Coding"
+            ],
+            "short_summary": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation.",
+            "description_long": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "代码"
+            ],
+            "short_summary": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。",
+            "description_long": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          },
+          "en-US": {
+            "display_name": "Codex Auto Review"
+          },
+          "zh-CN": {
+            "display_name": "Codex Auto Review"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.29963899,
+        "user_output_price_per_million_usd": 7.79783394
       }
     },
     {
@@ -191,7 +461,7 @@
         "user_input_price_per_million_usd": 0.307692,
         "user_output_price_per_million_usd": 0.461538,
         "has_scheduled_pricing": true,
-        "price_variant": "scheduled"
+        "price_variant": "default"
       }
     },
     {
@@ -222,10 +492,10 @@
         },
         "context_length": 1000000,
         "max_token": 384000,
-        "user_input_price_per_million_usd": 0.44,
-        "user_output_price_per_million_usd": 1.32,
+        "user_input_price_per_million_usd": 0.22,
+        "user_output_price_per_million_usd": 0.66,
         "has_scheduled_pricing": true,
-        "price_variant": "scheduled"
+        "price_variant": "default"
       }
     },
     {
@@ -265,6 +535,22 @@
       }
     },
     {
+      "id": "deepseek-v4-flash-vision-exp",
+      "object": "model",
+      "created": 1787538414,
+      "owned_by": "deepseek",
+      "metadata": {
+        "display_name": "DeepSeek V4 Flash Vision Exp",
+        "origin_vendor_name": "DeepSeek",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/deepseek/aa773cdd86cb40e1a35204e389b81caa.png",
+        "modality_type": "text",
+        "user_input_price_per_million_usd": 0.44,
+        "user_output_price_per_million_usd": 0.66,
+        "has_scheduled_pricing": true,
+        "price_variant": "default"
+      }
+    },
+    {
       "id": "deepseek-v4-pro",
       "object": "model",
       "created": 1782722695,
@@ -292,10 +578,10 @@
         },
         "context_length": 1000000,
         "max_token": 384000,
-        "user_input_price_per_million_usd": 1.32,
-        "user_output_price_per_million_usd": 3.96,
+        "user_input_price_per_million_usd": 0.66,
+        "user_output_price_per_million_usd": 1.98,
         "has_scheduled_pricing": true,
-        "price_variant": "scheduled"
+        "price_variant": "default"
       }
     },
     {
@@ -357,38 +643,6 @@
             ],
             "short_summary": "Google Gemini 2.5 Flash Lite text 模型。",
             "description_long": "Google Gemini 2.5 Flash Lite text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 1048576,
-        "max_token": 65536,
-        "user_input_price_per_million_usd": 0.1,
-        "user_output_price_per_million_usd": 0.4
-      }
-    },
-    {
-      "id": "gemini-2.5-flash-lite-preview",
-      "object": "model",
-      "created": 1782298995,
-      "owned_by": "google deepMind",
-      "metadata": {
-        "display_name": "Gemini 2.5 Flash Lite Preview",
-        "origin_vendor_name": "Google DeepMind",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "General purpose"
-            ],
-            "short_summary": "Google Gemini 2.5 Flash Lite Preview text model.",
-            "description_long": "Google Gemini 2.5 Flash Lite Preview text model. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "Google Gemini 2.5 Flash Lite Preview text 模型。",
-            "description_long": "Google Gemini 2.5 Flash Lite Preview text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1048576,
@@ -490,38 +744,6 @@
             ],
             "short_summary": "Google Gemini 3.1 Flash Lite text 模型。",
             "description_long": "Google Gemini 3.1 Flash Lite text 模型。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 1048576,
-        "max_token": 65536,
-        "user_input_price_per_million_usd": 0.25,
-        "user_output_price_per_million_usd": 1.5
-      }
-    },
-    {
-      "id": "gemini-3.1-flash-lite-preview",
-      "object": "model",
-      "created": 1779765034,
-      "owned_by": "google deepMind",
-      "metadata": {
-        "display_name": "Gemini 3.1 Flash Lite Preview",
-        "origin_vendor_name": "Google DeepMind",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/google_deepmind/472d33e3e6dd4aba95b204d387ae70b6.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "General purpose"
-            ],
-            "short_summary": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage.",
-            "description_long": "Gemini 3.1 Flash Lite Preview is a lightweight and fast model focused on low cost, low latency, and stable throughput, suitable for classification, summarization, simple Q&A, and large-scale usage. Developed by Google; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "高性价比"
-            ],
-            "short_summary": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。",
-            "description_long": "Gemini 3.1 Flash Lite Preview 是轻量高速模型，强调低成本、低延迟和稳定吞吐，适合分类、摘要、简单问答和大规模调用。 由Google研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
           }
         },
         "context_length": 1048576,
@@ -717,38 +939,6 @@
       }
     },
     {
-      "id": "glm-5",
-      "object": "model",
-      "created": 1781254421,
-      "owned_by": "zhipu",
-      "metadata": {
-        "display_name": "GLM 5",
-        "origin_vendor_name": "Zhipu",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "General purpose"
-            ],
-            "short_summary": "Zhipu AI GLM 5 text model.",
-            "description_long": "Zhipu AI GLM 5 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "智谱AI GLM 5 text 模型。",
-            "description_long": "智谱AI GLM 5 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 200,
-        "max_token": 131072,
-        "user_input_price_per_million_usd": 0.615385,
-        "user_output_price_per_million_usd": 3.384615
-      }
-    },
-    {
       "id": "glm-5-turbo",
       "object": "model",
       "created": 1781254136,
@@ -776,40 +966,8 @@
         },
         "context_length": 200,
         "max_token": 131072,
-        "user_input_price_per_million_usd": 1.076923,
-        "user_output_price_per_million_usd": 4
-      }
-    },
-    {
-      "id": "glm-5.1",
-      "object": "model",
-      "created": 1781251780,
-      "owned_by": "zhipu",
-      "metadata": {
-        "display_name": "GLM-5.1",
-        "origin_vendor_name": "Zhipu",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "General purpose"
-            ],
-            "short_summary": "Zhipu AI GLM-5.1 text model.",
-            "description_long": "Zhipu AI GLM-5.1 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "智谱AI GLM-5.1 text 模型。",
-            "description_long": "智谱AI GLM-5.1 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 200,
-        "max_token": 131072,
-        "user_input_price_per_million_usd": 1.230769,
-        "user_output_price_per_million_usd": 4.307692
+        "user_input_price_per_million_usd": 0.7693,
+        "user_output_price_per_million_usd": 3.3847
       }
     },
     {
@@ -819,6 +977,38 @@
       "owned_by": "zhipu",
       "metadata": {
         "display_name": "GLM-5.2",
+        "origin_vendor_name": "Zhipu",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "General purpose"
+            ],
+            "short_summary": "Zhipu AI GLM-5.2 text model.",
+            "description_long": "Zhipu AI GLM-5.2 text model. Developed by Zhipu AI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "通用对话"
+            ],
+            "short_summary": "智谱AI GLM-5.2 text 模型。",
+            "description_long": "智谱AI GLM-5.2 text 模型。 由智谱AI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1000000,
+        "max_token": 131072,
+        "user_input_price_per_million_usd": 1.4,
+        "user_output_price_per_million_usd": 4.4
+      }
+    },
+    {
+      "id": "glm-5.2-discount",
+      "object": "model",
+      "created": 1787624633,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5.2 Discount",
         "origin_vendor_name": "Zhipu",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
         "modality_type": "text",
@@ -878,8 +1068,48 @@
             "description_long": "智谱 AI GLM-5.3 是最新旗舰文本模型，在与 GLM-5.2 相同的基座上，通过大规模长程任务环境与超长周期后训练显著提升智能上界。编程体感较前代提升约 50%，Terminal-Bench 3.0、DeepSWE、Agents' Last Exam 等公开基准位列开源前列；适合深度推理、复杂工程、Agent 编排与长程任务。支持强制深度思考、reasoning_effort（max/high/low）、工具调用、流式输出、结构化输出、隐式上下文缓存与 MCP；纯文本输入，上下文 1M、最大输出 128K。"
           }
         },
-        "context_length": 1000000,
-        "max_token": 128000,
+        "context_length": 1048576,
+        "max_token": 131072,
+        "user_input_price_per_million_usd": 1.4,
+        "user_output_price_per_million_usd": 4.4
+      }
+    },
+    {
+      "id": "glm-5.3-discount",
+      "object": "model",
+      "created": 1787624679,
+      "owned_by": "zhipu",
+      "metadata": {
+        "display_name": "GLM-5.3 Discount",
+        "origin_vendor_name": "Zhipu",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/zhipu/179dcde4c4c0481fa2014c9675b14caa.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Deep reasoning",
+              "Coding agent",
+              "1M context",
+              "Tool calling",
+              "Forced thinking"
+            ],
+            "short_summary": "Zhipu AI flagship GLM-5.3: post-training leap on the same base, coding & agent strength, 1M context.",
+            "description_long": "Zhipu AI GLM-5.3 is the latest flagship text model. Built on the same base as GLM-5.2, it raises capability via large-scale long-horizon training environments and extended post-training. Coding feel improves ~50% vs prior gen; strong on Terminal-Bench 3.0, DeepSWE, and Agents' Last Exam among open models. Suited for deep reasoning, complex engineering, agent orchestration, and long-running tasks. Supports mandatory deep thinking, reasoning_effort (max/high/low), tool calling, streaming, structured output, implicit context cache, and MCP. Text-only input; 1M context and up to 128K output."
+          },
+          "zh": {
+            "feature_tags": [
+              "深度推理",
+              "编程 Agent",
+              "1M 上下文",
+              "工具调用",
+              "强制思考"
+            ],
+            "short_summary": "智谱 AI 最新旗舰 GLM-5.3：同基座极致后训练，编程与 Agent 能力跃迁，1M 上下文。",
+            "description_long": "智谱 AI GLM-5.3 是最新旗舰文本模型，在与 GLM-5.2 相同的基座上，通过大规模长程任务环境与超长周期后训练显著提升智能上界。编程体感较前代提升约 50%，Terminal-Bench 3.0、DeepSWE、Agents' Last Exam 等公开基准位列开源前列；适合深度推理、复杂工程、Agent 编排与长程任务。支持强制深度思考、reasoning_effort（max/high/low）、工具调用、流式输出、结构化输出、隐式上下文缓存与 MCP；纯文本输入，上下文 1M、最大输出 128K。"
+          }
+        },
+        "context_length": 1048576,
+        "max_token": 131072,
         "user_input_price_per_million_usd": 1.4,
         "user_output_price_per_million_usd": 4.4
       }
@@ -912,8 +1142,8 @@
         },
         "context_length": 200000,
         "max_token": 131072,
-        "user_input_price_per_million_usd": 0.769231,
-        "user_output_price_per_million_usd": 4
+        "user_input_price_per_million_usd": 0.7693,
+        "user_output_price_per_million_usd": 3.3847
       }
     },
     {
@@ -1014,38 +1244,6 @@
       }
     },
     {
-      "id": "gpt-5.1-chat",
-      "object": "model",
-      "created": 1779765034,
-      "owned_by": "openai",
-      "metadata": {
-        "display_name": "GPT-5.1 Chat",
-        "origin_vendor_name": "OpenAI",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
-        "modality_type": "text",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Long context"
-            ],
-            "short_summary": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios.",
-            "description_long": "GPT-5.1 Chat is a model optimized for multi-turn dialogue, with strong instruction following, context understanding, and content generation capabilities, suitable for office assistants and customer service scenarios. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。",
-            "description_long": "GPT-5.1 Chat 是面向多轮对话优化的模型，具备较强的指令遵循、上下文理解和内容生成能力，适合办公助手与客服场景。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "context_length": 128000,
-        "max_token": 16000,
-        "user_input_price_per_million_usd": 1.25,
-        "user_output_price_per_million_usd": 10
-      }
-    },
-    {
       "id": "gpt-5.2",
       "object": "model",
       "created": 1779765034,
@@ -1113,6 +1311,38 @@
       }
     },
     {
+      "id": "gpt-5.3-codex-discount",
+      "object": "model",
+      "created": 1787565266,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.3 Codex Discount",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Coding"
+            ],
+            "short_summary": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation.",
+            "description_long": "GPT-5.3 Codex is an agentic coding model optimized for Codex-style workflows, tool use, and high-quality code generation. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "代码"
+            ],
+            "short_summary": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。",
+            "description_long": "GPT-5.3 Codex 面向智能体编程与代码生成场景，适合在 Codex 类工作流中处理复杂开发任务。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 1.75,
+        "user_output_price_per_million_usd": 14
+      }
+    },
+    {
       "id": "gpt-5.4",
       "object": "model",
       "created": 1779765034,
@@ -1147,12 +1377,78 @@
       }
     },
     {
+      "id": "gpt-5.4-discount",
+      "object": "model",
+      "created": 1787565341,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.4 Discount",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Very cheap",
+              "Simple chat"
+            ],
+            "short_summary": "GPT-5.4 is OpenAI’s latest frontier model, integrating the Codex and GPT families into a single system. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling high-context reasoning, coding, and multimodal analysis within the same workflow. The model performs strongly in coding, document understanding, tool use, and instruction following. It is designed as a powerful default model for general tasks and software engineering, capable of generating production-grade code, integrating information from multiple sources, and executing complex multi-step workflows with fewer iterations and higher token efficiency.",
+            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+          },
+          "zh": {
+            "feature_tags": [
+              "极低成本",
+              "简单对话"
+            ],
+            "short_summary": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。",
+            "description_long": "GPT-5.4 是 OpenAI 最新的前沿模型，它将 Codex 和 GPT 系列整合到一个系统中。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），支持文本和图像输入，从而能够在同一工作流程中实现高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令执行方面均表现出色。它被设计为通用任务和软件工程的强大默认模型，能够生成生产级代码，整合来自多个来源的信息，并以更少的迭代次数和更高的令牌效率执行复杂的多步骤工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 22.5
+      }
+    },
+    {
       "id": "gpt-5.4-mini",
       "object": "model",
       "created": 1779765034,
       "owned_by": "openai",
       "metadata": {
         "display_name": "GPT-5.4 Mini",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Reasoning"
+            ],
+            "short_summary": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance.",
+            "description_long": "GPT-5.4 Mini is a cost-effective small model suitable for low-latency dialogue, batch processing, summarization, classification, and lightweight reasoning tasks, balancing cost and performance. Developed by OpenAI; suited for chat and agents. Evaluate latency, cost, and safety policies for production use."
+          },
+          "zh": {
+            "feature_tags": [
+              "推理"
+            ],
+            "short_summary": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。",
+            "description_long": "GPT-5.4 Mini 是高性价比小型模型，适合低延迟对话、批量处理、摘要分类和轻量推理任务，在成本与效果之间保持平衡。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 400000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 0.75,
+        "user_output_price_per_million_usd": 4.5
+      }
+    },
+    {
+      "id": "gpt-5.4-mini-discount",
+      "object": "model",
+      "created": 1787565392,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.4 Mini Discount",
         "origin_vendor_name": "OpenAI",
         "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
         "modality_type": "text",
@@ -1263,6 +1559,40 @@
       }
     },
     {
+      "id": "gpt-5.5-discount",
+      "object": "model",
+      "created": 1787562336,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.5 Discount",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Very cheap",
+              "Simple chat"
+            ],
+            "short_summary": "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads. It builds on GPT-5.4 with stronger reasoning, higher reliability, and more efficient token handling for difficult tasks. It has a context window of over 1 million tokens (922K input and 128K output) and supports text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.",
+            "description_long": "Wide ecosystem compatibility; weaker than 4o line but cheap and stable."
+          },
+          "zh": {
+            "feature_tags": [
+              "极低成本",
+              "简单对话"
+            ],
+            "short_summary": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。",
+            "description_long": "GPT-5.5 是 OpenAI 专为复杂专业工作负载而设计的前沿模型，它在 GPT-5.4 的基础上进行了增强，拥有更强大的推理能力、更高的可靠性以及在处理高难度任务时更高效的词元处理能力。它拥有超过 100 万个词元的上下文窗口（92.2 万个输入，12.8 万个输出），并支持文本和图像输入，从而能够在单个系统中实现大规模推理、编码和多模态工作流程。 由OpenAI研发，适合对话与 Agent等场景；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 30
+      }
+    },
+    {
       "id": "gpt-5.6-luna",
       "object": "model",
       "created": 1783665186,
@@ -1343,6 +1673,46 @@
       }
     },
     {
+      "id": "gpt-5.6-sol-discount",
+      "object": "model",
+      "created": 1787561811,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.6 Sol Discount",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Flagship intelligence",
+              "Coding",
+              "Agent workflows",
+              "Token-efficient",
+              "Frontend design"
+            ],
+            "short_summary": "GPT-5.6 Sol: OpenAI’s flagship tier—frontier intelligence with stronger token efficiency for hard coding, knowledge work, and agent workflows.",
+            "description_long": "GPT-5.6 Sol is the flagship model in OpenAI’s GPT-5.6 family. It sets a new bar across coding, knowledge work, cybersecurity, and science while delivering stronger performance per dollar with fewer tokens. It supports max reasoning effort and multi-agent parallelism (ultra / multi-agent), plus programmatic tool calling, explicit prompt caching, persisted reasoning, and stronger frontend design judgment—ideal for demanding software engineering, long-horizon agents, professional artifacts, and complex tool-heavy workflows. Developed by OpenAI; evaluate latency, cost, and safety policies for your use case."
+          },
+          "zh": {
+            "feature_tags": [
+              "旗舰智能",
+              "高效编码",
+              "Agent 工作流",
+              "Token 高效",
+              "前端设计"
+            ],
+            "short_summary": "GPT-5.6 Sol：OpenAI 旗舰档，更高智能与更优 token 效率，适合复杂编码、知识工作与 Agent 任务。",
+            "description_long": "GPT-5.6 Sol 是 OpenAI GPT-5.6 家族的旗舰模型，在编码、知识工作、网络安全与科学推理等方向达到新一代前沿水平，并以更少输出 token、更低综合成本完成高质量结果。支持 max 推理力度与多 Agent 并行（ultra / multi-agent），具备程序化工具调用、显式提示缓存、持久化推理与更强的前端设计判断力；适合高难度软件工程、长程 Agent 工作流、专业文档与复杂多步工具编排。由 OpenAI 研发；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 5,
+        "user_output_price_per_million_usd": 30
+      }
+    },
+    {
       "id": "gpt-5.6-terra",
       "object": "model",
       "created": 1783665117,
@@ -1380,6 +1750,88 @@
         "max_token": 128000,
         "user_input_price_per_million_usd": 4,
         "user_output_price_per_million_usd": 18
+      }
+    },
+    {
+      "id": "gpt-5.6-terra-discount",
+      "object": "model",
+      "created": 1787565506,
+      "owned_by": "openai",
+      "metadata": {
+        "display_name": "GPT-5.6 Terra Discount",
+        "origin_vendor_name": "OpenAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/openai/d762e88f3b6a4d64bb51c86cdff3869e.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Balanced value",
+              "Everyday production",
+              "Coding",
+              "Knowledge work",
+              "Token-efficient"
+            ],
+            "short_summary": "GPT-5.6 Terra: the balanced tier—GPT-5.5-competitive quality at a stronger price/performance for everyday production work.",
+            "description_long": "GPT-5.6 Terra is the balanced model in OpenAI’s GPT-5.6 family for everyday professional and production workloads. It aims for GPT-5.5-competitive intelligence at a lower cost, while inheriting the 5.6 generation’s token efficiency, tool use, and multi-step reasoning. A strong default for coding collaboration, knowledge work, documents and spreadsheets, and cost-aware business routing that still needs reliable quality. Developed by OpenAI; evaluate latency, cost, and safety policies for your use case."
+          },
+          "zh": {
+            "feature_tags": [
+              "均衡性价比",
+              "日常生产",
+              "编码协作",
+              "知识工作",
+              "Token 高效"
+            ],
+            "short_summary": "GPT-5.6 Terra：均衡档，接近 GPT-5.5 级表现、更优性价比，适合日常专业与生产工作流。",
+            "description_long": "GPT-5.6 Terra 是 OpenAI GPT-5.6 家族的均衡模型，面向日常专业任务与生产工作流：在保持与 GPT-5.5 竞争力相当的智能水平同时显著降低单位成本，并继承 5.6 世代的 token 效率、工具调用与多步推理能力。适合编码协作、知识工作、文档与表格处理、以及需要稳定质量又要控制费用的默认业务路由。由 OpenAI 研发；请结合业务需求评估延迟、成本与内容安全策略。"
+          }
+        },
+        "context_length": 1050000,
+        "max_token": 128000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 12
+      }
+    },
+    {
+      "id": "grok-4.5",
+      "object": "model",
+      "created": 1787559781,
+      "owned_by": "xai",
+      "metadata": {
+        "display_name": "Grok 4.5",
+        "origin_vendor_name": "xAI",
+        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/xai/04e04d66d8ac41f2a8532564b28adc54.png",
+        "modality_type": "text",
+        "copy_i18n": {
+          "en": {
+            "feature_tags": [
+              "Long context",
+              "Vision",
+              "Deep reasoning",
+              "Function calling",
+              "Agent",
+              "Prompt cache"
+            ],
+            "short_summary": "xAI Grok 4.5: coding and agent-workflow model with vision and deep reasoning.",
+            "description_long": "Grok 4.5 from xAI targets coding, engineering, and agent workflows. It accepts text and image input with text output and a 500K-token context. Reasoning defaults to high (low / medium / high). Well suited for code collaboration, knowledge work, and tool use."
+          },
+          "zh": {
+            "feature_tags": [
+              "长上下文",
+              "视觉理解",
+              "深度推理",
+              "Function Calling",
+              "Agent",
+              "Prompt Cache"
+            ],
+            "short_summary": "xAI Grok 4.5：面向编程与 Agent 工作流的智能编码模型，支持视觉输入与深度推理。",
+            "description_long": "Grok 4.5 由 xAI 发布，定位编程、工程与 Agent 工作流。支持文本与图像输入、纯文本输出，上下文 50 万 token；推理默认 high，可调 low / medium / high。适合代码协作、知识工作与工具调用。"
+          }
+        },
+        "context_length": 500000,
+        "max_token": 20000000,
+        "user_input_price_per_million_usd": 2,
+        "user_output_price_per_million_usd": 6
       }
     },
     {
@@ -1516,8 +1968,8 @@
         },
         "context_length": 1200000,
         "max_token": 4000,
-        "user_input_price_per_million_usd": 0.076923,
-        "user_output_price_per_million_usd": 0.307692
+        "user_input_price_per_million_usd": 0.1,
+        "user_output_price_per_million_usd": 0.4
       }
     },
     {
@@ -1644,8 +2096,8 @@
         },
         "context_length": 256,
         "max_token": 128000,
-        "user_input_price_per_million_usd": 0.246154,
-        "user_output_price_per_million_usd": 1.230769
+        "user_input_price_per_million_usd": 0.1847,
+        "user_output_price_per_million_usd": 0.6154
       }
     },
     {
@@ -1880,8 +2332,8 @@
         },
         "context_length": 1000000,
         "max_token": 524288,
-        "user_input_price_per_million_usd": 0.323077,
-        "user_output_price_per_million_usd": 2.584615
+        "user_input_price_per_million_usd": 0.3231,
+        "user_output_price_per_million_usd": 1.2924
       }
     },
     {
@@ -1944,8 +2396,8 @@
         },
         "context_length": 128000,
         "max_token": 8192,
-        "user_input_price_per_million_usd": 1.6,
-        "user_output_price_per_million_usd": 6.4
+        "user_input_price_per_million_usd": 0.37,
+        "user_output_price_per_million_usd": 1.48
       }
     },
     {
@@ -2149,7 +2601,7 @@
         "context_length": 1000000,
         "max_token": 131072,
         "user_input_price_per_million_usd": 0.03,
-        "user_output_price_per_million_usd": 0.4
+        "user_output_price_per_million_usd": 0.13
       }
     },
     {

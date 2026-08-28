@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T07:42:58.246Z",
+  "generatedAt": "2026-08-27T06:42:11.572Z",
   "familyRuleCount": 10,
   "familyViolations": [],
   "officialTooFewTiers": [],
@@ -62,8 +62,142 @@
       "aigcKey": "Minimax::M2.7"
     }
   ],
-  "officialVsAigcSheet": [],
-  "officialVsAigcDomestic": [],
+  "officialVsAigcSheet": [
+    {
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "aigcKey": "Deepseek::v4-flash (new)",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 0.231,
+              "b": 0.154,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 0.693,
+              "b": 0.308,
+              "pct": 125
+            },
+            "cache": {
+              "status": "ok",
+              "a": 0.008,
+              "b": 0.003,
+              "pct": 166.7
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "aigcKey": "Deepseek::v4-pro (new)",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 0.693,
+              "b": 0.462,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 2.079,
+              "b": 0.923,
+              "pct": 125.2
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.023,
+              "b": 0.004,
+              "pct": 475
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "officialVsAigcDomestic": [
+    {
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "aigcKey": "Deepseek::v4-flash (new)",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 1.5,
+              "b": 1,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 2,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.05,
+              "b": 0.02,
+              "pct": 150
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "aigcKey": "Deepseek::v4-pro (new)",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 3,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 13.5,
+              "b": 6,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.15,
+              "b": 0.025,
+              "pct": 500
+            }
+          }
+        }
+      ]
+    }
+  ],
   "officialVsAigcExcel": [
     {
       "trinityId": "hy3-preview",
@@ -102,7 +236,136 @@
       ]
     }
   ],
-  "officialVsTokenhub": [],
+  "officialVsTokenhub": [
+    {
+      "trinityId": "deepseek-v4-flash",
+      "vendorModelId": "deepseek-v4-flash",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 1.5,
+              "b": 1,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 2,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.05,
+              "b": 0.02,
+              "pct": 150
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-flash-202605",
+      "vendorModelId": "deepseek-v4-flash",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 1.5,
+              "b": 1,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 2,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.05,
+              "b": 0.02,
+              "pct": 150
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro",
+      "vendorModelId": "deepseek-v4-pro",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 3,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 13.5,
+              "b": 6,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.15,
+              "b": 0.025,
+              "pct": 500
+            }
+          }
+        }
+      ]
+    },
+    {
+      "trinityId": "deepseek-v4-pro-202606",
+      "vendorModelId": "deepseek-v4-pro",
+      "issues": [
+        {
+          "kind": "price_mismatch",
+          "tierKey": "uniform",
+          "tierLabel": "标准价",
+          "ok": false,
+          "deltas": {
+            "input": {
+              "status": "mismatch",
+              "a": 4.5,
+              "b": 3,
+              "pct": 50
+            },
+            "output": {
+              "status": "mismatch",
+              "a": 13.5,
+              "b": 6,
+              "pct": 125
+            },
+            "cache": {
+              "status": "mismatch",
+              "a": 0.15,
+              "b": 0.025,
+              "pct": 500
+            }
+          }
+        }
+      ]
+    }
+  ],
   "tokenhubNoCoverage": [
     {
       "trinityId": "hy-vision-2.0-instruct",
@@ -145,5 +408,5 @@
       "vendorModelId": "glm-4.7"
     }
   ],
-  "ok": true
+  "ok": false
 }

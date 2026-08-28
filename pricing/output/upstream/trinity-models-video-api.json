@@ -405,103 +405,6 @@
       }
     },
     {
-      "id": "kling-2.5-turbo",
-      "object": "model",
-      "created": 1779421570,
-      "owned_by": "kuaishou",
-      "metadata": {
-        "display_name": "Kling-2.5-Turbo",
-        "origin_vendor_name": "Kuaishou",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen"
-            ],
-            "short_summary": "Kuaishou Kling 2.5 Turbo fast video generation model, balancing quality and speed with high-definition rapid output, suitable for batch production and real-time preview.",
-            "description_long": "Kuaishou Kling 2.5 Turbo fast video generation model, balancing quality and speed with high-definition rapid output, suitable for batch production and real-time preview. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "快手可灵 Kling 2.5 Turbo 快速视频生成模型，在画质和速度之间取得平衡，支持高清视频快速输出，适合批量生产和实时预览。",
-            "description_long": "快手可灵 Kling 2.5 Turbo 快速视频生成模型，在画质和速度之间取得平衡，支持高清视频快速输出，适合批量生产和实时预览。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.042,
-        "metered_charge_unit": "video_second",
-        "price_display_hint": "flat",
-        "min_price_mode_bucket": "general"
-      }
-    },
-    {
-      "id": "kling-2.6",
-      "object": "model",
-      "created": 1779421570,
-      "owned_by": "kuaishou",
-      "metadata": {
-        "display_name": "Kling-2.6",
-        "origin_vendor_name": "Kuaishou",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen"
-            ],
-            "short_summary": "Kuaishou Kling 2.6 video generation model, enhancing detail, lighting effects, and motion smoothness, supporting various cinematography styles and artistic expressions.",
-            "description_long": "Kuaishou Kling 2.6 video generation model, enhancing detail, lighting effects, and motion smoothness, supporting various cinematography styles and artistic expressions. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "通用对话"
-            ],
-            "short_summary": "快手可灵 Kling 2.6 视频生成模型，增强画面细节、光影效果和运动平滑度，支持多种镜头语言和艺术风格。",
-            "description_long": "快手可灵 Kling 2.6 视频生成模型，增强画面细节、光影效果和运动平滑度，支持多种镜头语言和艺术风格。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.042,
-        "metered_charge_unit": "video_second",
-        "price_display_hint": "flat",
-        "min_price_mode_bucket": "general"
-      }
-    },
-    {
-      "id": "kling-3",
-      "object": "model",
-      "created": 1779421570,
-      "owned_by": "kuaishou",
-      "metadata": {
-        "display_name": "Kling-3.0",
-        "origin_vendor_name": "Kuaishou",
-        "origin_vendor_icon_url": "https://trinity-ai-resources-1430233363.cos.ap-singapore.myqcloud.com/trinity-origin-vendor-icons/kuaishou/5a85ae7fe3244bd78ef16f4a518610c2.png",
-        "modality_type": "video",
-        "copy_i18n": {
-          "en": {
-            "feature_tags": [
-              "Video gen",
-              "Flagship"
-            ],
-            "short_summary": "Kuaishou Kling 3 flagship video generation model, built on Kuaishou's proprietary large model architecture, reaching industry-leading levels in quality, physical consistency, cinematography, and creative expression.",
-            "description_long": "Kuaishou Kling 3 flagship video generation model, built on Kuaishou's proprietary large model architecture, reaching industry-leading levels in quality, physical consistency, cinematography, and creative expression. Developed by Kuaishou; suited for short-form video storytelling. Evaluate latency, cost, and safety policies for production use."
-          },
-          "zh": {
-            "feature_tags": [
-              "旗舰"
-            ],
-            "short_summary": "快手可灵 Kling 3 旗舰视频生成模型，依托快手自研大模型架构，在画质、物理一致性、镜头语言和创意表达方面达到行业领先水平。",
-            "description_long": "快手可灵 Kling 3 旗舰视频生成模型，依托快手自研大模型架构，在画质、物理一致性、镜头语言和创意表达方面达到行业领先水平。 由快手研发，适合短视频与镜头叙事等场景；请结合业务需求评估延迟、成本与内容安全策略。"
-          }
-        },
-        "min_user_unit_price_usd": 0.112,
-        "metered_charge_unit": "video_second",
-        "price_display_hint": "flat",
-        "min_price_mode_bucket": "general"
-      }
-    },
-    {
       "id": "kling-3.0-omni",
       "object": "model",
       "created": 1779421570,
@@ -778,7 +681,26 @@
         },
         "min_user_unit_price_usd": 3.3,
         "metered_charge_unit": "video_token",
-        "price_display_hint": "flat"
+        "price_display_hint": "flat",
+        "video_token_price_matrix": {
+          "fps": 24,
+          "min_duration_sec": 1,
+          "max_duration_sec": 15,
+          "resolutions": [
+            {
+              "resolution": "720p",
+              "width": 1280,
+              "height": 720,
+              "user_price_per_million_usd": 3.3
+            },
+            {
+              "resolution": "480p",
+              "width": 854,
+              "height": 480,
+              "user_price_per_million_usd": 3.3
+            }
+          ]
+        }
       }
     },
     {
@@ -817,7 +739,26 @@
         },
         "min_user_unit_price_usd": 2.1,
         "metered_charge_unit": "video_token",
-        "price_display_hint": "flat"
+        "price_display_hint": "flat",
+        "video_token_price_matrix": {
+          "fps": 24,
+          "min_duration_sec": 1,
+          "max_duration_sec": 15,
+          "resolutions": [
+            {
+              "resolution": "720p",
+              "width": 1280,
+              "height": 720,
+              "user_price_per_million_usd": 2.1
+            },
+            {
+              "resolution": "480p",
+              "width": 854,
+              "height": 480,
+              "user_price_per_million_usd": 2.1
+            }
+          ]
+        }
       }
     },
     {
@@ -856,7 +797,38 @@
         },
         "min_user_unit_price_usd": 2.4,
         "metered_charge_unit": "video_token",
-        "price_display_hint": "flat"
+        "price_display_hint": "flat",
+        "video_token_price_matrix": {
+          "fps": 24,
+          "min_duration_sec": 1,
+          "max_duration_sec": 15,
+          "resolutions": [
+            {
+              "resolution": "4k",
+              "width": 3840,
+              "height": 2160,
+              "user_price_per_million_usd": 2.4
+            },
+            {
+              "resolution": "720p",
+              "width": 1280,
+              "height": 720,
+              "user_price_per_million_usd": 4.3
+            },
+            {
+              "resolution": "480p",
+              "width": 854,
+              "height": 480,
+              "user_price_per_million_usd": 4.3
+            },
+            {
+              "resolution": "1080p",
+              "width": 1920,
+              "height": 1080,
+              "user_price_per_million_usd": 7.7
+            }
+          ]
+        }
       }
     },
     {
@@ -895,7 +867,38 @@
         },
         "min_user_unit_price_usd": 2.4,
         "metered_charge_unit": "video_token",
-        "price_display_hint": "flat"
+        "price_display_hint": "flat",
+        "video_token_price_matrix": {
+          "fps": 24,
+          "min_duration_sec": 1,
+          "max_duration_sec": 15,
+          "resolutions": [
+            {
+              "resolution": "4k",
+              "width": 3840,
+              "height": 2160,
+              "user_price_per_million_usd": 2.4
+            },
+            {
+              "resolution": "1080p",
+              "width": 1920,
+              "height": 1080,
+              "user_price_per_million_usd": 4.7
+            },
+            {
+              "resolution": "720p",
+              "width": 1280,
+              "height": 720,
+              "user_price_per_million_usd": 4.3
+            },
+            {
+              "resolution": "480p",
+              "width": 854,
+              "height": 480,
+              "user_price_per_million_usd": 4.3
+            }
+          ]
+        }
       }
     },
     {

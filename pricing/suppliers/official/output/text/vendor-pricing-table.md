@@ -1,6 +1,6 @@
 # 模型原厂权威价目（生文）
 
-> 真源：`output/text/vendor-pricing.json` · 抓取 2026-08-18T07:42:05Z · live 0 · seed 83 / 83 · **123 档**
+> 真源：`output/text/vendor-pricing.json` · 抓取 2026-08-27T06:40:13Z · live 2 · seed 81 / 83 · **123 档**
 > 单位：**USD per 1M tokens**
 
 | # | 厂商 | 原厂模型 ID | 币种 | 状态 | 抓取 | 档位 | 输入价 | 输出价 | 缓存价 | 价目来源 | 文档 |
@@ -70,8 +70,8 @@
 | 47 | 混元 | hunyuan-role-latest | CNY | active | seed | 标准价 | 2.4 | 9.6 | — | [来源](https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1823/130055) |
 | 48 | 混元 | hy-vision-2.0-instruct | CNY | active | seed | 标准价 | 7.5 | 17.5 | — | [来源](https://cloud.tencent.com/document/product/1823/130055 (seed 2026-06-28)) | [链接](https://cloud.tencent.com/document/product/1823/130055) |
 | 49 | DeepSeek | deepseek-v3.2 | CNY | active | seed | 标准价 | 2 | 3 | 0.4 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
-| 50 | DeepSeek | deepseek-v4-flash | CNY | active | seed | 标准价 | 1 | 2 | 0.02 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-28)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
-| 51 | DeepSeek | deepseek-v4-pro | CNY | active | seed | 标准价 | 3 | 6 | 0.025 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing (seed 2026-06-28)) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
+| 50 | DeepSeek | deepseek-v4-flash | CNY | active | ok | 标准价 | 1.5 | 4.5 | 0.05 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
+| 51 | DeepSeek | deepseek-v4-pro | CNY | active | ok | 标准价 | 4.5 | 13.5 | 0.15 | [来源](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) | [链接](https://api-docs.deepseek.com/zh-cn/quick_start/pricing) |
 | 52 | 通义 | qwen-flash | CNY | active | seed | 输入≤128k | 0.15 | 1.5 | 0.03 | [来源](https://help.aliyun.com/zh/model-studio/model-pricing (seed 2026-06-28)) | [链接](https://help.aliyun.com/zh/model-studio/model-pricing) |
 |  |  |  |  |  |  | 128k<输入≤256k | 0.6 | 6 | 0.12 |  |  |
 |  |  |  |  |  |  | 256k<输入≤1M | 1.2 | 12 | 0.24 |  |  |

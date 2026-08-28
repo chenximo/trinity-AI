@@ -14,7 +14,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { TEXT_SEED } from "../suppliers/official/data/seeds/text.mjs";
 import { TEXT_INTL_SEED } from "../suppliers/official/data/seeds/text-intl.mjs";
-import { readOnlinePricesCache } from "./lib/fetch-online-prices-lib.mjs";
+import { refreshOnlinePricesForCompare } from "./lib/fetch-online-prices-lib.mjs";
 import {
   LISTING_POLICY,
   FX_V1_CNY_PER_USD,
@@ -31,11 +31,11 @@ async function main() {
   const modality = "text";
   let onlineIds = [];
   try {
-    const { raw } = await readOnlinePricesCache(modality);
+    const { raw } = await refreshOnlinePricesForCompare(modality, { quiet: true });
     const models = raw.models || raw.data || [];
     onlineIds = models.map((m) => m.id || m.model).filter(Boolean);
   } catch (e) {
-    console.warn("online cache missing, using seed keys only:", e.message);
+    console.warn("online prices unavailable, using seed keys only:", e.message);
     onlineIds = [
       ...new Set([...Object.keys(TEXT_SEED), ...Object.keys(TEXT_INTL_SEED)]),
     ];

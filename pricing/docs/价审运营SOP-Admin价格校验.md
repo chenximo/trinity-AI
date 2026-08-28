@@ -2,7 +2,7 @@
 
 > **读者**：产品 / 运营（日常执行）  
 > **入口**：运营后台 → **模型刊例和定价** → **价格校验**（`/pricing/review`）  
-> **关联**：系统设计 [SUPPLY-PRICING-OPS-DESIGN.md](./SUPPLY-PRICING-OPS-DESIGN.md) · 研发缺口 [模型供应与定价运营-研发需求清单.md](./模型供应与定价运营-研发需求清单.md) §8.1 · 刊例 [刊例策略-V1-V2-国际站优先.md](./刊例策略-V1-V2-国际站优先.md)  
+> **关联**：系统设计 [SUPPLY-PRICING-OPS-DESIGN.md](./SUPPLY-PRICING-OPS-DESIGN.md) · 研发缺口 [模型供应与定价运营-研发需求清单.md](./模型供应与定价运营-研发需求清单.md) §8.1 · 刊例 [刊例策略-V1-V2-国际站优先.md](./刊例策略-V1-V2-国际站优先.md) · **四件事 + 派活** [定价运营-四件事与AI派活.md](./定价运营-四件事与AI派活.md)  
 > **不替代**：CLI 周巡检（手册 [日常操作](../../apps/trinity-product/docs/ai-api-platform/pricing-sources/operations.md)）——巡检发现偏差；本 SOP 管 **确认写回线上刊例**。
 
 ---

@@ -3,6 +3,10 @@
  * 口径对齐 PRICING-GOVERNANCE-WORKFLOW.md §3
  */
 
+import {
+  imageCapabilityResTierKey,
+  normalizeImageCapability,
+} from "./image-capability-key.mjs";
 import { tierToKey, findTierByKey } from "./tier-key.mjs";
 import {
   FIELD_MATCH_PCT,
@@ -14,6 +18,10 @@ import { FX_ONLINE_DOMESTIC } from "./compare-official-lib.mjs";
 import { parseNum, normalizeAttrLabel } from "./pricing-validate-lib.mjs";
 
 export { parseNum, normalizeAttrLabel };
+export {
+  imageCapabilityResTierKey,
+  normalizeImageCapability,
+} from "./image-capability-key.mjs";
 
 function tierRawLabel(tier) {
   return String(tier?.tierLabel ?? tier?.tierName ?? "").trim();
@@ -33,16 +41,58 @@ export function imageTierPrice(tier) {
 /** @param {object} tier @param {number} index @param {number} total */
 export function imageTierWithKey(tier, index = 0, total = 1) {
   const tierLabel = tierRawLabel(tier) || "标准价";
-  const tierKey = tier.tierKey ?? tierToKey(tierLabel, index, total);
+  const capability =
+    tier.capability ??
+    (tier.capabilityLabel
+      ? normalizeImageCapability(tier.capabilityLabel)
+      : null);
+  const tierKey =
+    tier.tierKey ??
+    (capability
+      ? imageCapabilityResTierKey(capability, tierLabel)
+      : null) ??
+    tierToKey(tierLabel, index, total);
   return {
     tierLabel,
     tierKey,
     price: imageTierPrice(tier),
+    capability: capability ?? null,
+    capabilityLabel: tier.capabilityLabel ?? null,
   };
 }
 
-/** @param {object} off official model */
-export function officialImageTiersForCompare(off) {
+/**
+ * @param {object} off official model
+ * @param {{ preferCapabilities?: boolean }} [opts]
+ *   preferCapabilities：刊例对比用；有 capabilities 时按「能力×分辨率」展全
+ */
+export function officialImageTiersForCompare(off, opts = {}) {
+  const preferCapabilities = opts.preferCapabilities === true;
+  const caps = off?.capabilities ?? off?.prices?.capabilities ?? [];
+  if (preferCapabilities && caps.length) {
+    const out = [];
+    for (const cap of caps) {
+      const capId = String(cap.id ?? "").trim();
+      if (!capId) continue;
+      const label = cap.label ?? capId;
+      const resolutions = cap.resolutions?.length
+        ? cap.resolutions
+        : ["输出"];
+      for (const res of resolutions) {
+        out.push(
+          imageTierWithKey({
+            tierLabel: String(res),
+            tierKey: imageCapabilityResTierKey(capId, res),
+            price: cap.price ?? null,
+            capability: normalizeImageCapability(capId),
+            capabilityLabel: label,
+          }),
+        );
+      }
+    }
+    if (out.length) return out;
+  }
+
   const raw = off?.tiers ?? off?.prices?.tiers ?? [];
   const total = raw.length || 1;
   if (!raw.length) {
@@ -55,20 +105,52 @@ export function officialImageTiersForCompare(off) {
   return raw.map((t, i) => imageTierWithKey(t, i, total));
 }
 
-/** @param {object|null} aigcModel @param {object|null} mapRef */
-export function aigcImageTiersForCompare(aigcModel, mapRef) {
+/**
+ * @param {object|null} aigcModel
+ * @param {object|null} mapRef
+ * @param {{ allAttributes?: boolean }} [opts]
+ *   allAttributes：刊例对比用；展开全部 AIGC tierName（能力），不裁成 map.attribute 一行
+ */
+export function aigcImageTiersForCompare(aigcModel, mapRef, opts = {}) {
   if (!aigcModel?.tiers?.length) return [];
-  const attr = mapRef?.attribute;
-  const tierRow = attr
-    ? aigcModel.tiers.find((t) => t.tierName === attr) ?? aigcModel.tiers[0]
-    : aigcModel.tiers[0];
-  const res = tierRow?.resolutions ?? {};
-  const entries = Object.entries(res);
-  if (!entries.length) return [];
-  const total = entries.length;
-  return entries.map(([label, price], i) =>
-    imageTierWithKey({ tierLabel: label, price }, i, total),
-  );
+  const allAttributes = opts.allAttributes === true;
+
+  const tierRows = allAttributes
+    ? aigcModel.tiers
+    : [
+        mapRef?.attribute
+          ? (aigcModel.tiers.find((t) => t.tierName === mapRef.attribute) ??
+            aigcModel.tiers[0])
+          : aigcModel.tiers[0],
+      ].filter(Boolean);
+
+  const out = [];
+  for (const tierRow of tierRows) {
+    const attrName = tierRow?.tierName ?? mapRef?.attribute ?? null;
+    const cap = attrName ? normalizeImageCapability(attrName) : null;
+    const res = tierRow?.resolutions ?? {};
+    const entries = Object.entries(res);
+    if (!entries.length) continue;
+    const total = entries.length;
+    entries.forEach(([label, price], i) => {
+      out.push(
+        imageTierWithKey(
+          {
+            tierLabel: label,
+            price,
+            capability: cap,
+            capabilityLabel: attrName,
+            tierKey: cap
+              ? imageCapabilityResTierKey(cap, label)
+              : undefined,
+          },
+          i,
+          total,
+        ),
+      );
+    });
+  }
+  return out;
 }
 
 /** @param {object|null} thModel */

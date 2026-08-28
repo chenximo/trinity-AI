@@ -11,6 +11,7 @@
 | [后台原型总览.md](./后台原型总览.md) | 模块 ↔ `views` 对照（**参考** `trinity-ai-admin`；单 app 业务细节以 `apps/trinity-ai-admin/doc/` 为准） |
 | [运营后台开发规范.md](./运营后台开发规范.md) | flex 布局、操作列宽度、排查顺序 |
 | [设计待办.md](./设计待办.md) | 设计相关待办 |
+| [Admin智能只读Agent-完整链路.md](./Admin智能只读Agent-完整链路.md) | 数据助手全流程：选型、分工、Case、优缺点、PM 交付清单 |
 
 **应用内仍保留**（仅 `trinity-ai-admin`）：[`apps/trinity-ai-admin/doc/`](../../apps/trinity-ai-admin/doc/)（后端对照、列表页代码模板）。
 
