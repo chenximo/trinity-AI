@@ -715,6 +715,11 @@ def load_image_rows() -> list[dict]:
     return rows
 
 
+def is_internal_only_sku(model_id: str) -> bool:
+    """对内 SKU：id 以 -discount 结尾（如 gpt-image-2-discount），不进对外折扣报价。"""
+    return str(model_id or "").strip().lower().endswith("-discount")
+
+
 def has_public_ladder(
     model_id: str,
     model_families: dict[str, list[float]],
@@ -777,6 +782,8 @@ def collect_discounted_models(
     for mod, items in modality_items:
         for m in items:
             mid = m["model_id"]
+            if is_internal_only_sku(mid):
+                continue
             if not has_public_ladder(mid, model_families, recommended):
                 continue
             fam = resolve_family(mid, model_families, recommended)
