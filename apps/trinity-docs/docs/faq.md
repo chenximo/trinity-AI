@@ -35,7 +35,7 @@ Trinity 是面向开发者的 **AI API 聚合网关**：您使用 OpenAI 兼容�
 
 <FaqItem question="如何获取技术支持？">
 
-请邮件 **TrinityAIInc@outlook.com**，并附上：
+请邮件 **starsea@trinitydesk.com**，并附上：
 
 - 注册邮箱（与账户一致）
 - 问题发生时间（UTC 或本地时区）
@@ -100,7 +100,7 @@ Trinity 是面向开发者的 **AI API 聚合网关**：您使用 OpenAI 兼容�
 
 1. 查收 **Stripe 收据邮件**，确认是否已扣款。
 2. 若 **未扣款**，可能是卡被拒或支付未完成，请换卡或支付方式重试。
-3. 若 **已扣款** 但 Credits 未增加，请邮件 **TrinityAIInc@outlook.com**，附上交易 ID 与充值时间。
+3. 若 **已扣款** 但 Credits 未增加，请邮件 **starsea@trinitydesk.com**，附上交易 ID 与充值时间。
 
 </FaqItem>
 
@@ -109,7 +109,7 @@ Trinity 是面向开发者的 **AI API 聚合网关**：您使用 OpenAI 兼容�
 - **时间窗**：交易完成后 **24 小时内**
 - **条件**：该笔充值 **尚未被消费**
 - **金额**：**实付全额**
-- **方式**：邮件 **TrinityAIInc@outlook.com**（须含注册邮箱、Payment History 中的交易 ID、充值时间）
+- **方式**：邮件 **starsea@trinitydesk.com**（须含注册邮箱、Payment History 中的交易 ID、充值时间）
 - **说明**：控制台 **无** 自助 Refund 按钮；超过 24h 或已消费部分不退；**不支持** 余额提现
 
 详见 [计费与 Credits · 退款](./guides/billing-and-credits.md#退款) 与 [服务条款](https://trinitydesk.ai/legal/terms)。
@@ -288,7 +288,7 @@ https://api.trinitydesk.ai/v1
 
 <FaqItem question="如何删除账户？">
 
-请邮件 **TrinityAIInc@outlook.com** 说明注销需求。未使用 Credits 的处理以 [服务条款](https://trinitydesk.ai/legal/terms) 为准。
+请邮件 **starsea@trinitydesk.com** 说明注销需求。未使用 Credits 的处理以 [服务条款](https://trinitydesk.ai/legal/terms) 为准。
 
 </FaqItem>
 
@@ -328,7 +328,7 @@ https://api.trinitydesk.ai/v1
 
 <FaqItem question="文档与线上行为不一致">
 
-**以实际网关响应为准。** 反馈时请附 `X-Request-Id` 与复现步骤，发送至 **TrinityAIInc@outlook.com**。
+**以实际网关响应为准。** 反馈时请附 `X-Request-Id` 与复现步骤，发送至 **starsea@trinitydesk.com**。
 
 </FaqItem>
 

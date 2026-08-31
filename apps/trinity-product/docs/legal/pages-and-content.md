@@ -373,7 +373,7 @@ description: 任意 B2B 产品对外法律与协议应包含哪些文档、每�
 | Refund（合并 Terms §5） | `https://trinitydesk.ai/legal/terms#refund` |
 | Contact | `https://trinitydesk.ai/contact` |
 | 运营主体 | Trinity AI Inc. |
-| 邮箱 | TrinityAIInc@outlook.com |
+| 邮箱 | starsea@trinitydesk.com |
 
 **行业补充（仅 AI / API 聚合类在通用树上多加）**：
 

@@ -7,7 +7,7 @@ title: Antom 商户审核补充材料（TrinityDesk）
 > **用途**：提交 Antom（HK Trinity AI Limited）商户审核时，作为邮件正文、后台备注或附件使用。  
 > **网站主体**：Trinity AI Inc.（美国特拉华州）  
 > **产品**：TrinityDesk（https://trinitydesk.ai）  
-> **联系邮箱**：TrinityAIInc@outlook.com  
+> **联系邮箱**：starsea@trinitydesk.com  
 > **最后更新**：2026-07-10
 
 ---
@@ -56,7 +56,7 @@ We do **not** market TrinityDesk as a consumer chatbot product, adult content se
   Prohibits sexually explicit content, violence, deepfakes, jailbreak/safety bypass, circumvention of rate limits, scraping/reselling API access, malware, and other abusive conduct.
 - **Terms of Service** §3 summarizes acceptable use and references the full AUP.
 - We may throttle, suspend, or terminate accounts and API keys for policy violations.
-- Violations may be reported to TrinityAIInc@outlook.com.
+- Violations may be reported to starsea@trinitydesk.com.
 
 **Data & Privacy**
 
@@ -65,7 +65,7 @@ We do **not** market TrinityDesk as a consumer chatbot product, adult content se
 
 **Support**
 
-- Email: TrinityAIInc@outlook.com  
+- Email: starsea@trinitydesk.com  
 - Typical response: 1–2 business days
 
 ---
@@ -97,7 +97,7 @@ Trinity AI Inc. 运营 **TrinityDesk**（https://trinitydesk.ai），面向开�
 - 可接受使用政策：https://trinitydesk.ai/legal/acceptable-use  
 - 禁止色情、暴力、深度伪造、越狱绕过、规避限流、恶意爬取/转售 API、恶意软件等
 - 违规可限流、冻结 Key 或终止账号
-- 举报邮箱：TrinityAIInc@outlook.com
+- 举报邮箱：starsea@trinitydesk.com
 
 ---
 
@@ -122,7 +122,7 @@ Business: B2B AI API aggregation platform for developers and enterprises.
 We route API requests to third-party LLM providers and sell pre-paid USD Credits.
 We prohibit NSFW content, safety bypass, and API abuse per our Acceptable Use Policy.
 
-Support: TrinityAIInc@outlook.com
+Support: starsea@trinitydesk.com
 
 Thank you.
 ```
@@ -134,5 +134,5 @@ Thank you.
 - [ ] 生产环境已部署最新官网（含 `/legal/acceptable-use`）
 - [ ] 线上 4 个 URL 可访问：terms、privacy、acceptable-use、contact
 - [ ] Terms `#refund` 锚点可跳转
-- [ ] 页脚与 Contact 页邮箱为 TrinityAIInc@outlook.com
+- [ ] 页脚与 Contact 页邮箱为 starsea@trinitydesk.com
 - [ ] Antom 后台主体信息与对外描述一致（HK Trinity AI Limited ↔ 网站运营主体关系如有差异，在邮件中一句说明）
