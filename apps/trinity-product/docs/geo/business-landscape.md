@@ -246,7 +246,7 @@ title: GEO 业务全景（讨论稿）
 
 ### ③ 测量 · SOA · 主实现方案（规则引擎 + 别名库 + 时序库）{#measurement-soa-impl}
 
-> **工程真源细则**见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)。演示实现：`apps/trinity-geo/src/demo/analyze.ts`、`mvp/config/brand.json`。
+> **工程真源细则**见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)。演示实现：`apps/trinity-geo/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
 
 **原则**：SOA 主路径 **程序化、可复现、可审计**；不用 LLM 直接「智能打分」。AI 仅作边缘标注增强（可选）。
 
@@ -451,7 +451,7 @@ SOA = in_answer_body = Y 的采样数 / 该范围内总采样数
 | [产品设计分析](./product-design-analysis) | 清华四则、竞品、分期（可与本文对照） |
 | [MVP 实践手册](./mvp-practice) | 六环动手跑通 |
 | [技术架构分析](./tech-architecture) | 工程模块拆解 |
-| [演示系统](../../../trinity-geo/mvp/README.md) | `/demo` 可演示六环 |
+| [MVP 执行包](../../../trinity-geo/mvp/README.md) | 种子数据与 CLI；控制台 HTML 走查 |
 
 ---
 

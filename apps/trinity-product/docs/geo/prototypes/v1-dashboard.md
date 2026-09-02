@@ -198,7 +198,7 @@ V1 **一条堆叠条**：正面 72% · 中性 21% · 负面 7%。无细粒度情
 | ② 页面清单 | 清单 §2.1 | `v1-prototype-pages.md` |
 | ③ 业务 | 测量 SOA、三层可视化 | `business-landscape.md` §六 · `v1-prototype-pages.md` §5.4 |
 | ④ 技术 | 规则引擎 + 别名库 + 时序 | `tech-architecture.md` §2.1.3 |
-| ⑤ 演示 | MVP 脚本 + `/demo` ③ 测量 | `mvp-practice.md` · `apps/trinity-geo/mvp/` |
+| ⑤ 演示 | MVP 脚本 + HTML 控制台测量页 | `mvp-practice.md` · `apps/trinity-geo/mvp/` · `marketing/console/` |
 
 **工程五件套**（Vue 原型）：
 
@@ -214,7 +214,7 @@ V1 **一条堆叠条**：正面 72% · 中性 21% · 负面 7%。无细粒度情
 - [ ] 回答流含至少 1 条「未进答案」MVP 样本（Q00）  
 - [ ] 顶栏为六环全貌导航；未实现入口可 `#` 或灰态  
 - [ ] 移动端：KPI 2 列堆叠；趋势可横向 scroll  
-- [ ] 与 `/demo` 测量逻辑口径不矛盾（别名库、进答案判定）
+- [ ] 与 `mvp/scripts/analyze.mjs` 测量逻辑口径不矛盾（别名库、进答案判定）
 
 ---
 

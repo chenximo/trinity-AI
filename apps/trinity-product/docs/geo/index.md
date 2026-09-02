@@ -33,7 +33,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | [营销首页静态稿](http://127.0.0.1:5210) | `apps/trinity-geo` · 与 Trinity AI 视觉对齐 | 🟡 | ⬜ | ⬜ | 工程 |
 | [GEO MVP 实践手册](./mvp-practice) | **完整链路动手跑通**（1–2 平台、可演示、无定价） | ✅ | — | — | **入门必读** |
 | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) | 行业引导包：问题集 / 信源预期 / 动作库 / 演示样本 | ✅ | — | — | **行业方案** |
-| [GEO MVP 执行包](../../../trinity-geo/mvp/) | **可演示系统** `/demo` · 脚本与种子数据 | ✅ | — | — | **动手执行** |
+| [GEO MVP 执行包](../../../trinity-geo/mvp/) | 脚本与种子数据；走查用 HTML 控制台 | ✅ | — | — | **动手执行** |
 | [产品设计分析](./product-design-analysis) | 清华 GEO 报告解读、六大模块、**§0.6 可见性分层**、**§0.7 业界 AI 应用**、MVP 优先级 | ✅ | — | — | 附录 |
 | [GEO 业务全景（讨论稿）](./business-landscape) | 行业玩法、完整主链、架构与商业，**不拆版本** | ✅ | — | — | **全景** |
 | [技术架构分析](./tech-architecture) | 分层架构、**测量 SOA（规则引擎+别名库+时序库）**、采集拆解 | ✅ | — | — | 附录 |
@@ -52,7 +52,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 
 **先理解业务**：[GEO MVP 实践手册](./mvp-practice) 用 1–2 个平台跑通 **规划 → 采集 → 测量 → 诊断 → 优化 → 验证** 全链路。  
 
-**可演示系统**：`cd apps/trinity-geo && bun run dev` → [http://127.0.0.1:5203/demo](http://127.0.0.1:5203/demo)（门户内 `/trinity-geo/demo`）。
+**控制台原型**：`cd apps/trinity-geo && bun run dev` → [http://127.0.0.1:5203/__geo_marketing/console/dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html)（或 `/console`）。
 
 各步是否已达，在 **模块总览** 与后续叶子 `roadmap.yml` 填写；工程立项后补体验/在线四行。
 

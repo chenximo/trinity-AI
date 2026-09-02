@@ -77,8 +77,11 @@ export default createRouter({
         },
         {
           path: "demo",
-          name: "trinity-geo-demo",
-          component: () => import("@trinity-geo/views/demo/DemoApp.vue"),
+          name: "trinity-geo-demo-retired",
+          beforeEnter: () => {
+            window.location.assign("/__geo_marketing/console/dashboard.html");
+            return false;
+          },
         },
         {
           path: "product",

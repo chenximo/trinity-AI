@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import GeoShellLayout from "../views/shell/GeoShellLayout.vue";
 import Home from "../views/Home.vue";
-import DemoApp from "../views/demo/DemoApp.vue";
 
 function redirectToMarketing(page: "product.html" | "pricing.html") {
   window.location.assign(`/__geo_marketing/${page}`);
@@ -45,12 +44,15 @@ export default createRouter({
       beforeEnter: () => redirectToConsole(),
     },
     {
+      // Retired Vue 六环演示台；旧书签落到客户控制台原型
+      path: "/demo",
+      name: "geo-demo-retired",
+      beforeEnter: () => redirectToConsole(),
+    },
+    {
       path: "/",
       component: GeoShellLayout,
-      children: [
-        { path: "", name: "home", component: Home },
-        { path: "demo", name: "demo", component: DemoApp },
-      ],
+      children: [{ path: "", name: "home", component: Home }],
     },
   ],
 });

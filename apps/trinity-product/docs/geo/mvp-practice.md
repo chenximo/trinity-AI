@@ -7,7 +7,7 @@ title: GEO MVP 实践手册
 > **用途**：用 **1 个品牌、1–2 个 AI 平台、10–20 个问题**，亲手跑通 GEO **全链路**，用于对内对齐、对外演示、以及后续商用产品规划。  
 > **定位**：与 [产品设计分析](./product-design-analysis) 同源（**可见性分层 ⓪–⑤ 见 [§0.6](./product-design-analysis#visibility-layers)**）；与 [原型页面清单](./v1-prototype-pages) 的商用界面对应——本文强调 **可跑通的最薄全链路**。  
 > **不含**：定价、套餐、付费转化（商用规划另文）。  
-> **可演示系统**：`apps/trinity-geo` → `/demo`（六环 UI，非仅文档）。
+> **控制台原型**：`apps/trinity-geo/marketing/console/`（六环页面树）。
 
 ---
 
@@ -210,7 +210,7 @@ GEO 系统 = **六环运营闭环** 的产品化（与清华报告同源）：
 
 #### 3.2 计算 SOA（Sheet `03_SOA汇总`）
 
-> **商用实现**：**规则引擎 + 别名库 + 时序库** 为主（非 LLM 打分）。架构见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)；演示 `apps/trinity-geo/src/demo/analyze.ts`、`mvp/config/brand.json`。
+> **商用实现**：**规则引擎 + 别名库 + 时序库** 为主（非 LLM 打分）。架构见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)；演示 `apps/trinity-geo/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
 
 **公式**：
 

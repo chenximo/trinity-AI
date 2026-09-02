@@ -81,7 +81,7 @@ title: 技术架构分析
 
 #### 2.1.3 品牌提取与识别 {#measurement-soa}
 
-> **主实现方案（共识）**：**规则引擎 + 别名库 + 时序库** 为主；NER/LLM 为可选增强。业务全景见 [GEO 业务全景 · ③ 测量](./business-landscape#measurement-soa-impl)；演示代码 `apps/trinity-geo/src/demo/analyze.ts`。
+> **主实现方案（共识）**：**规则引擎 + 别名库 + 时序库** 为主；NER/LLM 为可选增强。业务全景见 [GEO 业务全景 · ③ 测量](./business-landscape#measurement-soa-impl)；演示代码 `apps/trinity-geo/mvp/scripts/analyze.mjs`。
 
 **三件套分工**：
 
