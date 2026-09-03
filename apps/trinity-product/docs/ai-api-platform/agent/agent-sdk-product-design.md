@@ -36,6 +36,7 @@ OpenRouter 将上述能力收敛为 **`@openrouter/agent` + `callModel()`**，�
 | **HTTP API** | REST `/chat/completions` 等 | 任意语言、零依赖 | ✅ 已开放 | 保持真源 |
 | **Client SDK** | `@openrouter/sdk`（TS / Py / Go） | 类型安全单次/流式调用，自管会话 | ❌ 无官方包 | **P1** `@trinity/sdk`（可另立项） |
 | **Agent SDK** | `@openrouter/agent` | `callModel` 多轮 + 自动执行 tools + stopWhen | ❌ | **本设计 · P0 聚焦 TS** |
+| **桌面工作台** | WorkBuddy 等 | 桌面 Chat + MCP 连接器 + 本地 Loop | ❌ | 见 [Trinity 桌面工作台 MVP 方案](../../../../docs/05-产品与PRD/Trinity-桌面工作台-MVP方案.md)（内部评审） |
 
 OpenRouter Agent SDK 核心卖点（须在 Trinity v0.1 **语义对齐**，实现可渐进）：
 
