@@ -136,10 +136,10 @@
 
 ### 3.3.1 `Trinity模型报价表_hehe.xlsx`（定制报价版）维护约定
 
-除标准外发表 `Trinity模型报价表.xlsx` 外，若存在定制报价版 `Trinity模型报价表_hehe.xlsx`，则每次**上架新模型**后同步遵守：
+除标准外发表 `Trinity模型报价表.xlsx` 外，若存在定制报价版 `output/custom-quotes/Trinity模型报价表_hehe.xlsx`，则每次**上架新模型**后同步遵守：
 
 1. 先确认最新版 `Trinity模型报价表.xlsx` 价格无误。
-2. 再对比 `Trinity模型报价表_hehe.xlsx` 是否缺少新模型。
+2. 再对比 `custom-quotes/Trinity模型报价表_hehe.xlsx` 是否缺少新模型。
 3. `hehe` **原有模型保持不变**，不批量覆盖历史折扣。
 4. 仅补充本次新增缺失模型。
 5. 新增模型整行做颜色标记，便于人工复核。

@@ -1,9 +1,20 @@
 # Trinity 价目导出索引
 
-> 更新 2026-08-27T11:12:44Z · 生文模型 **85** 款
+> 更新 2026-09-01 · 生文模型 **85** 款
 > TokenHub/百炼：2026-06-30 · AIGC 价目表：2026-06
 
-## 对外 Excel（按模态分册）
+## 商务报价 Excel（先找这里）
+
+| 类型 | 路径 | 说明 |
+|------|------|------|
+| L3b 真源 | [商务洽谈折扣总表.xlsx](./商务洽谈折扣总表.xlsx) | 族阶梯 + 交叉模型 |
+| L3a 外发 | [Trinity模型报价表.xlsx](./Trinity模型报价表.xlsx) | Admin · external |
+| L3a 对内 | [Trinity模型报价表（内部）.xlsx](./Trinity模型报价表（内部）.xlsx) | Admin · internal |
+| **定制报价** | [custom-quotes/](./custom-quotes/) | hehe / 主力 / 海外三家 · **非主流程** |
+
+Python 脚本索引：[`../scripts/README.md`](../scripts/README.md)
+
+## 对外 Excel（按模态分册 · 刊例对比大册）
 
 | 文件 | 模态 | 说明 |
 |------|------|------|
@@ -36,6 +47,10 @@
 ```
 output/
 ├── README.md
+├── Trinity模型报价表.xlsx
+├── Trinity模型报价表（内部）.xlsx
+├── 商务洽谈折扣总表.xlsx
+├── custom-quotes/                 # 定制报价 Excel
 ├── trinity-pricing-text.xlsx
 ├── trinity-pricing-image.xlsx
 ├── trinity-pricing-video.xlsx

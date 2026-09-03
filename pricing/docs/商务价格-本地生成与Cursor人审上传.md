@@ -70,14 +70,14 @@ python3 pricing/scripts/build_outward_quote_standard.py     # L3a 内部 + 外�
 
 当本次工作包含 **上架新模型** 时，除标准外发表 `Trinity模型报价表.xlsx` 外，还要同步维护：
 
-- `pricing/output/Trinity模型报价表_hehe.xlsx`
+- `pricing/output/custom-quotes/Trinity模型报价表_hehe.xlsx`
 
 规则如下：
 
 1. 先拉最新价格并确认 `Trinity模型报价表.xlsx` 无误。
-2. 再对比 `Trinity模型报价表_hehe.xlsx` 与最新版标准报价表。
+2. 再对比 `custom-quotes/Trinity模型报价表_hehe.xlsx` 与最新版标准报价表。
 3. `hehe` **原有模型保持不变**，不要批量覆盖历史折扣。
-4. 只把 **缺失的新模型** 补进 `hehe`。
+4. 只把 **缺失的新模型** 补进 `custom-quotes/` 下 hehe 表。
 5. 每次新补充的模型行都要 **加颜色标记**，便于人工复核。
 6. 在对话汇总里同步列出 **本次新增模型清单**。
 

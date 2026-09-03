@@ -110,7 +110,7 @@ python3 pricing/scripts/build_outward_quote_standard.py
 | `Trinity模型报价表.xlsx` | `l3a-draft` | `external` |
 
 人审通过并说「可以上传」后：`PUT /v1/admin/pricing/commercial/artifacts`，或商务页「导入」。  
-**上传 ≠ 写刊例。** 新模型进 `Trinity模型报价表_hehe.xlsx` 只补缺失行并标黄，不覆盖历史折扣。
+- `pricing/output/Trinity模型报价表_hehe.xlsx` 只补缺失行并标黄，不覆盖历史折扣。文件在 **`pricing/output/custom-quotes/`**。
 
 ---
 
