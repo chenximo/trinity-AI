@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方向 A · 留白构图</title>
+<style>
+  :root { --ink:#161616; --mute:#6a6a6a; --cyan:#00c2f7; --paper:#f4f2ec; --page-w:1000mm; --page-h:2000mm; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"PingFang SC","Noto Sans SC",sans-serif; color:var(--ink); background:#c9c4bb; }
+  .toolbar { position:sticky; top:0; z-index:30; display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:12px 18px; background:#fff; border-bottom:1px solid #ddd; font-size:13px; color:#555; }
+  .toolbar button { border:0; border-radius:999px; padding:9px 16px; background:var(--cyan); color:#fff; font-weight:700; cursor:pointer; }
+  .stage { padding:20px 12px 40px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .hint { width:min(560px,94vw); font-size:12px; color:#555; line-height:1.5; background:#fff; padding:10px 14px; border-radius:10px; }
+  .frame { width:min(420px,94vw); aspect-ratio:1/2; box-shadow:0 16px 40px rgba(0,0,0,.16); overflow:hidden; background:var(--paper); }
+  .scale { width:var(--page-w); height:var(--page-h); transform-origin:top left; transform:scale(calc(min(420px,94vw)/1000mm)); }
+  .poster { width:var(--page-w); height:var(--page-h); background:var(--paper); position:relative; }
+  .brand { position:absolute; top:70mm; left:70mm; }
+  .brand img { height:32mm; width:auto; display:block; }
+  .hero { position:absolute; top:520mm; left:70mm; right:80mm; }
+  .kicker { font-size:13mm; letter-spacing:.5em; color:var(--mute); font-weight:600; margin-bottom:18mm; }
+  h1 { font-family:"Noto Serif SC","Songti SC","STSong",serif; font-weight:600; font-size:58mm; line-height:1.22; letter-spacing:.02em; }
+  h1 span { display:block; font-size:32mm; font-weight:500; margin-top:10mm; color:#2a2a2a; }
+  .anchors { position:absolute; left:70mm; right:70mm; bottom:280mm; display:flex; justify-content:space-between; gap:20mm; }
+  .anchors span { font-size:14mm; letter-spacing:.18em; color:var(--mute); font-weight:600; }
+  .foot { position:absolute; left:70mm; right:70mm; bottom:70mm; display:flex; justify-content:space-between; align-items:flex-end; }
+  .url { font-size:16mm; letter-spacing:.14em; color:var(--mute); text-decoration:none; }
+  .qr { width:52mm; height:52mm; object-fit:contain; background:#fff; }
+  html.is-embed .toolbar, html.is-embed .hint { display:none !important; }
+  html.is-embed .stage { padding:0; }
+  html.is-embed body { background:#fff; }
+  @media print {
+    .toolbar,.hint { display:none !important; }
+    html,body { margin:0; background:#fff; width:1000mm; height:2000mm; overflow:hidden; }
+    .stage,.frame,.scale,.poster { width:1000mm !important; height:2000mm !important; transform:none !important; box-shadow:none !important; padding:0 !important; }
+    @page { size:1000mm 2000mm; margin:0; }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar"><strong>A · 留白构图</strong><span>打样 · 非默认</span><button type="button" onclick="window.print()">打印</button></div>
+  <div class="stage">
+    <p class="hint">3 米外：一个 API。1 米内：统一入口 / 100+ / 一套 Key。锚点贴边，留白是构图。</p>
+    <div class="frame"><div class="scale">
+      <article class="poster">
+        <header class="brand"><img src="./assets/trinity-wordmark.png" alt="TRINITY" /></header>
+        <section class="hero">
+          <p class="kicker">TRINITY AI</p>
+          <h1>一个 API<span>接入百余款大模型</span></h1>
+        </section>
+        <p class="anchors"><span>统一入口</span><span>100+</span><span>一套 Key</span></p>
+        <footer class="foot">
+          <a class="url" href="https://trinitydesk.ai">trinitydesk.ai</a>
+          <img class="qr" src="./assets/poster-qr.png" alt="" />
+        </footer>
+      </article>
+    </div></div>
+  </div>
+  <script>if (window.self !== window.top) document.documentElement.classList.add("is-embed");</script>
+</body>
+</html>

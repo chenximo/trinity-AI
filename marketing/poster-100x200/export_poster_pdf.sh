@@ -3,8 +3,8 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-HTML="$DIR/trinity-poster-100x200-zh.html"
 OUT="${1:-$DIR/output/Trinity-100x200推广素材-V1.3.pdf}"
+HTML="${2:-$DIR/trinity-poster-100x200-zh.html}"
 
 mkdir -p "$(dirname "$OUT")"
 

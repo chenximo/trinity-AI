@@ -89,7 +89,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 18mm;
+    gap: 30mm;
   }
 
   .brand { flex-shrink: 0; margin-bottom: -2mm; }
@@ -132,9 +132,19 @@
     border: 1px solid rgba(0,168,129,.1);
     display: flex;
     flex-direction: column;
-    gap: 12mm;
-    flex: 0 0 auto;
     min-height: 0;
+  }
+  .card.cloud {
+    flex: 0 0 auto;
+    gap: 80px;
+    justify-content: flex-start;
+    padding-top: calc(16mm + 20px);
+    padding-bottom: calc(14mm + 20px);
+  }
+  .card.ai {
+    flex: 0 0 auto;
+    gap: 80px;
+    justify-content: flex-start;
   }
   .card::before {
     content: "";
@@ -149,6 +159,7 @@
     display: flex;
     align-items: center;
     gap: 8mm;
+    height: 200px;
   }
   .ico {
     width: 22mm; height: 22mm; border-radius: 5mm;
@@ -156,7 +167,6 @@
     font-size: 10mm; font-weight: 800;
     flex-shrink: 0;
   }
-  .ico svg { width: 12mm; height: 12mm; display: block; }
   .card.cloud .ico { background: var(--teal-soft); color: var(--teal); }
   .card.ai .ico { background: var(--cyan-soft); color: var(--cyan); }
   .card-head h2 { font-size: 22mm; font-weight: 800; line-height: 1.15; }
@@ -196,17 +206,20 @@
     font-weight: 600;
   }
 
+  .card.cloud .metric { padding: 8mm 3mm 7mm; }
+
   .bullets {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 6mm;
+    gap: 8mm;
   }
+  .card.cloud .bullets { gap: 6mm; }
   .bullets li {
     position: relative;
     padding-left: 12mm;
     font-size: 15.5mm;
-    line-height: 1.45;
+    line-height: 2;
     color: var(--ink-2);
   }
   .bullets li::before {
@@ -239,6 +252,40 @@
     background: var(--white);
     border: 1.6px solid var(--cyan);
     color: var(--cyan);
+  }
+
+  .value {
+    background: linear-gradient(135deg, var(--teal-soft), var(--cyan-soft));
+    border-radius: 8mm;
+    padding: 12mm 16mm;
+    border-left: 4.5mm solid var(--cyan);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12mm;
+  }
+  .value > h3 {
+    font-size: 17mm;
+    font-weight: 800;
+    margin-bottom: 0;
+    color: var(--cyan);
+  }
+  .value-list {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    gap: 80px;
+  }
+  .value-item h4 {
+    font-size: 15mm;
+    font-weight: 800;
+    line-height: 1.28;
+    margin-bottom: 2.5mm;
+  }
+  .value-item p {
+    font-size: 13.5mm;
+    line-height: 1.4;
+    color: var(--ink-2);
   }
 
   .closer {
@@ -277,7 +324,7 @@
     background: rgba(255, 255, 255, .78);
     border-radius: 10mm;
     border: 1px solid rgba(0, 194, 247, .15);
-    margin-bottom: 36mm;
+    margin-bottom: 260px;
   }
   .contact { display: flex; flex-direction: column; gap: 5.5mm; }
   .contact .row {
@@ -368,7 +415,8 @@
 
   <div class="stage">
     <p class="hint">
-      双引擎站台海报工作稿（v1 已冻）。本版收紧间距、AI 卡去掉重复「核心能力」、SLA 改为不写未拍数字。导出勾选背景图形。
+      上一版误把卡片改成「自然高度 + 页脚贴底」，空白落在中间，看起来像缩了一半。
+      已改回：两大卡片纵向撑满，页脚跟在后面；AI 四条要点也加回来了。请强制刷新（⌘⇧R）。
     </p>
     <div class="frame">
       <div class="scale">
@@ -392,9 +440,7 @@
 
             <section class="card cloud">
               <div class="card-head">
-                <div class="ico" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .6-8 6 6 0 0 0-11.7-1.5A4.5 4.5 0 0 0 7 18Z"/></svg>
-                </div>
+                <div class="ico">☁</div>
                 <div>
                   <h2>Trinity AI 云 · 多云集采</h2>
                   <div class="en">Multi-Cloud Procurement</div>
@@ -427,20 +473,42 @@
                 <div class="ico">AI</div>
                 <div>
                   <h2>Trinity AI · AI API 聚合</h2>
-                  <div class="en">AI API Aggregation</div>
+                  <div class="en">AI API Aggregation Platform</div>
                 </div>
               </div>
               <div class="metrics">
                 <div class="metric"><div class="v">1 个 API</div><div class="l">接入全球模型</div></div>
                 <div class="metric"><div class="v">100+</div><div class="l">主流模型可选</div></div>
-                <div class="metric"><div class="v">一套 Key</div><div class="l">跨厂商调用</div></div>
+                <div class="metric"><div class="v">99.9%</div><div class="l">可用性 SLA</div></div>
               </div>
               <ul class="bullets">
-                <li><strong>统一 API 入口</strong>，兼容 OpenAI / Anthropic 格式，存量代码平滑接入</li>
+                <li><strong>统一 API 入口</strong>，兼容 OpenAI / Anthropic 格式，现有代码几乎零改造</li>
                 <li><strong>全模态覆盖</strong>：对话 · AI Coding · 文生图 · 文生视频，一套 Key 调通</li>
-                <li><strong>路由 + 企业管控</strong>：按策略分线路 · 分区 / 成员 / API Key 批量下发</li>
-                <li><strong>IDE 一键接入</strong>：Claude Code / Codex / OpenCode 写入配置即可开写</li>
+                <li><strong>纯转发 · 零存储 · 保隐私</strong>，不落盘请求与响应，满足企业合规</li>
+                <li><strong>全球加速 + 企业管控</strong>：低延迟网络 · 分区 / 成员 / API Key 批量下发</li>
               </ul>
+
+              <div class="value">
+                <h3>平台核心能力</h3>
+                <div class="value-list">
+                  <div class="value-item">
+                    <h4>一个 API，覆盖多类模型能力</h4>
+                    <p>文本对话、AI Coding、图文与视频等多模态统一调用；按场景给出推荐，选型更直接。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>auto 智能路由 + Trinity Memory</h4>
+                    <p>按题路由到更合适、更省的模型；Memory 本地建图谱，降低重复上下文成本。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>企业级团队管控：分区、成员与 API Key</h4>
+                    <p>业务分区、成员权限、批量创建并一键下发 API Key，适配团队规模化使用。</p>
+                  </div>
+                  <div class="value-item">
+                    <h4>AI Coding 一键接入：常用 IDE 快速配置</h4>
+                    <p>安装后写入配置即可开写，覆盖 Claude Code / Codex / OpenCode 等。</p>
+                  </div>
+                </div>
+              </div>
 
               <hr class="divider" />
               <div class="chips">

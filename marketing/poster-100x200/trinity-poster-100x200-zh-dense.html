@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方向 C · 信息图</title>
+<style>
+  :root { --ink:#0f172a; --mute:#475569; --cyan:#00c2f7; --blue:#2563eb; --paper:#f8fafc; --page-w:1000mm; --page-h:2000mm; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"PingFang SC","Noto Sans SC",sans-serif; color:var(--ink); background:#9aa7b5; }
+  .toolbar { position:sticky; top:0; z-index:30; display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:12px 18px; background:#fff; border-bottom:1px solid #ddd; font-size:13px; color:#555; }
+  .toolbar button { border:0; border-radius:999px; padding:9px 16px; background:var(--cyan); color:#fff; font-weight:700; cursor:pointer; }
+  .stage { padding:20px 12px 40px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .hint { width:min(560px,94vw); font-size:12px; color:#555; line-height:1.5; background:#fff; padding:10px 14px; border-radius:10px; }
+  .frame { width:min(420px,94vw); aspect-ratio:1/2; box-shadow:0 16px 40px rgba(15,23,42,.2); overflow:hidden; background:var(--paper); }
+  .scale { width:var(--page-w); height:var(--page-h); transform-origin:top left; transform:scale(calc(min(420px,94vw)/1000mm)); }
+  .poster { width:var(--page-w); height:var(--page-h); padding:56mm 52mm 48mm; background:
+    radial-gradient(ellipse 80% 40% at 100% 0%, rgba(0,194,247,.18), transparent 55%),
+    var(--paper); display:flex; flex-direction:column; gap:22mm; }
+  .brand { display:flex; justify-content:space-between; align-items:center; }
+  .brand img { height:30mm; }
+  .src { font-size:12mm; font-weight:700; letter-spacing:.08em; color:var(--mute); }
+  h1 { font-size:44mm; font-weight:800; line-height:1.15; letter-spacing:-.02em; }
+  h1 span { color:var(--blue); }
+  .lead { font-size:16mm; line-height:1.45; color:var(--mute); max-width:820mm; }
+  .metrics { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10mm; }
+  .metric { background:#fff; padding:16mm 14mm; border:1.4px solid #dbe3ee; }
+  .metric .v { font-size:26mm; font-weight:800; color:var(--blue); line-height:1; }
+  .metric .l { margin-top:5mm; font-size:13mm; font-weight:700; color:var(--mute); }
+  .block h2 { font-size:14mm; letter-spacing:.16em; color:var(--cyan); margin-bottom:10mm; }
+  .caps { display:flex; flex-direction:column; gap:10mm; }
+  .cap { display:grid; grid-template-columns:22mm 1fr; gap:10mm; background:#fff; padding:12mm 16mm; border:1.4px solid #dbe3ee; }
+  .cap .n { font-size:16mm; font-weight:800; color:var(--blue); }
+  .cap h3 { font-size:17mm; font-weight:800; margin-bottom:3mm; }
+  .cap p { font-size:14mm; line-height:1.4; color:var(--mute); }
+  .foot { margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; gap:16mm; }
+  .chips { font-size:14mm; font-weight:700; line-height:1.6; color:var(--mute); }
+  .qr { width:64mm; height:64mm; object-fit:contain; background:#fff; }
+  html.is-embed .toolbar, html.is-embed .hint { display:none !important; }
+  html.is-embed .stage { padding:0; }
+  html.is-embed body { background:#fff; }
+  @media print {
+    .toolbar,.hint { display:none !important; }
+    html,body { margin:0; background:#fff; width:1000mm; height:2000mm; overflow:hidden; }
+    .stage,.frame,.scale,.poster { width:1000mm !important; height:2000mm !important; transform:none !important; box-shadow:none !important; padding:0 !important; }
+    .poster { padding:56mm 52mm 48mm !important; }
+    @page { size:1000mm 2000mm; margin:0; }
+  }
+</style>
+</head>
+<body>
+  <div class="toolbar"><strong>C · 信息图</strong><span>打样 · 非默认</span><button type="button" onclick="window.print()">打印</button></div>
+  <div class="stage">
+    <p class="hint">标题即结论。五条能力 + 三格计量，口径 trinitydesk.ai/apps。无适合谁卡片、无联系人堆。</p>
+    <div class="frame"><div class="scale">
+      <article class="poster">
+        <div class="brand">
+          <img src="./assets/trinity-wordmark.png" alt="TRINITY" />
+          <p class="src">口径 · trinitydesk.ai/apps</p>
+        </div>
+        <h1>一个 API，<span>接入百余款大模型</span></h1>
+        <p class="lead">一套密钥调用 OpenAI、Anthropic、Google、Qwen、DeepSeek。统一入口、路由、计量与成本策略。</p>
+        <div class="metrics">
+          <div class="metric"><div class="v">1 个 API</div><div class="l">统一入口</div></div>
+          <div class="metric"><div class="v">100+</div><div class="l">主流模型</div></div>
+          <div class="metric"><div class="v">一套 Key</div><div class="l">跨厂商调用</div></div>
+        </div>
+        <div class="block">
+          <h2>CORE</h2>
+          <div class="caps">
+            <div class="cap"><div class="n">01</div><div><h3>统一 API 接入</h3><p>Chat Completions、Responses、Anthropic Messages。</p></div></div>
+            <div class="cap"><div class="n">02</div><div><h3>多厂商集中调用</h3><p>一套 Key 切换选型，不必分别开户维护。</p></div></div>
+            <div class="cap"><div class="n">03</div><div><h3>模型路由</h3><p>按应用设定与调用策略分配线路。</p></div></div>
+            <div class="cap"><div class="n">04</div><div><h3>用量计量</h3><p>集中看清不同模型与应用的使用。</p></div></div>
+            <div class="cap"><div class="n">05</div><div><h3>成本策略</h3><p>围绕场景与预算做模型选择。费用以控制台为准。</p></div></div>
+          </div>
+        </div>
+        <footer class="foot">
+          <p class="chips">OpenAI · Anthropic · Google<br />Qwen · DeepSeek · trinitydesk.ai</p>
+          <img class="qr" src="./assets/poster-qr.png" alt="" />
+        </footer>
+      </article>
+    </div></div>
+  </div>
+  <script>if (window.self !== window.top) document.documentElement.classList.add("is-embed");</script>
+</body>
+</html>
