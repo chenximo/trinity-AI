@@ -38,7 +38,8 @@
 | 新建/评审 Skill | [trinity-skill-authoring](./trinity-skill-authoring/SKILL.md) | — |
 | Vue Monorepo、五件套、apps 工程 | [trinity-vue-prototype-monorepo](./trinity-vue-prototype-monorepo/SKILL.md) | — |
 | 色板、design-spec | [trinity-design-tokens](./trinity-design-tokens/SKILL.md) | — |
-| AI 云 / ToB 营销页 | [trinity-tob-marketing-site](./trinity-tob-marketing-site/SKILL.md) | user-console |
+| AI 云 / ToB 营销页 | [trinity-tob-marketing-site](./trinity-tob-marketing-site/SKILL.md) | user-console；印刷件走 sales-kit |
+| 销售套件、海报、一纸禅、A4、brand-deck | [trinity-sales-kit](./trinity-sales-kit/SKILL.md) | tob-marketing-site、handbook 结构、official-pricing |
 | 用户控制台 | [trinity-user-console](./trinity-user-console/SKILL.md) | admin-ruoyi-list |
 | 运营后台列表 | [trinity-admin-ruoyi-list](./trinity-admin-ruoyi-list/SKILL.md) | user-console |
 
@@ -59,6 +60,7 @@
 | `trinity-billing-reconciliation/` | 中 | 上游账单核对 · L0 闸门 · 标准日结 |
 | `trinity-user-console/` | 中 | 控制台规范 |
 | `trinity-tob-marketing-site/` | 中 | 营销页 |
+| `trinity-sales-kit/` | 中 | 销售套件 · 海报 / A4 / Deck |
 | `trinity-skill-authoring/` | 大 | 写 Skill 约定 |
 | `trinity-design-tokens/` | 小 | token / design-spec |
 | `trinity-admin-ruoyi-list/` | 小 | 后台列表 |

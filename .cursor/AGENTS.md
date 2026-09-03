@@ -10,7 +10,7 @@
 - API 验收：改 `acceptance/**`、`api-test/**`、验收台与 Chat API Test，执行 `trinity-api-acceptance`；勿改 handbook 叙事或 trinity-docs 对外正文。
 - 对外开发者文档站：只改 `apps/trinity-docs/**`，READ `Trinity对外文档站-基本规范.md` + 工程师 `API对外接口支持参数.md`，执行 `trinity-docs`。
 - 未说「落地工程」时，不要改 `apps/trinity-ai` 等业务实现代码。
-- UI 色板/形式 2：`trinity-design-tokens`；用户控制台：`trinity-user-console`；运营后台列表：`trinity-admin-ruoyi-list`；营销页：`trinity-tob-marketing-site`；Monorepo/五件套/双仓：`trinity-vue-prototype-monorepo`。
+- UI 色板/形式 2：`trinity-design-tokens`；用户控制台：`trinity-user-console`；运营后台列表：`trinity-admin-ruoyi-list`；营销页：`trinity-tob-marketing-site`；销售套件/海报/A4/brand-deck：`trinity-sales-kit`；Monorepo/五件套/双仓：`trinity-vue-prototype-monorepo`。
 - 歧义时查总机 §歧义消解表（加模型、更新报告、对齐 OpenRouter 等）。
 - 本地预览命令：READ `docs/00-协作与工作流/Trinity开发枢纽与AI协作流程.md`。
 - 封发后用一行告知：`已封发 → <skill-name>：…`

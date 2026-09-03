@@ -8,9 +8,11 @@ description: >-
   运营后台若依列表执行 trinity-admin-ruoyi-list；  模型原厂官方价、补充官方价、
   三方价对比执行 trinity-official-pricing；上游账单核对执行 trinity-billing-reconciliation；
   对外开发者文档站执行 trinity-docs。
+  销售套件 / 海报 / A4 / brand-deck 执行 trinity-sales-kit。
   新建或评审 .cursor/skills 执行 trinity-skill-authoring。手册任务默认不改 apps 业务代码除非用户明确落地工程。
   索引见 .cursor/skills/README.md。触发词：Trinity、派活、产品手册、roadmap、API 验收、验收台、
-  官方价、原厂价、账单核对、对账、billing-reconciliation、trinity-docs、对外文档、API 文档站、双仓、交付工程师。
+  官方价、原厂价、账单核对、对账、billing-reconciliation、trinity-docs、对外文档、API 文档站、双仓、交付工程师、
+  销售套件、海报、一纸禅、A4 宣传单、brand-deck。
 ---
 
 # Trinity · 项目总机（先分流，再 READ 子 Skill）
@@ -41,6 +43,7 @@ description: >-
 | `pricing/suppliers/official/**`、官方价、原厂价、vendor-pricing、三方价对比 | `trinity-official-pricing` | api-acceptance、handbook |
 | `pricing/billing-reconciliation/**`、账单核对、核对报告、月度对账、标准日结 | `trinity-billing-reconciliation` | `billing-reconciliation/README.md` |
 | `apps/trinity-docs`、对外 API 文档、OpenRouter 文档对齐 | `trinity-docs` | `Trinity对外文档站-基本规范.md` · `API对外接口支持参数.md` |
+| `marketing/poster-100x200`、`marketing/brand-deck`、销售套件、七件套、海报、一纸禅、A4 | `trinity-sales-kit` | `sales-kit.md` · channel-map · 印刷/Deck 目录 |
 | 门户、`npm run dev`、预览端口、日常命令 | —（先读再封发具体 Skill） | `Trinity开发枢纽与AI协作流程.md` |
 | 交付工程师、push 原型、双仓、消费原型 | `trinity-vue-prototype-monorepo`（+ 五件套） | `双仓协作与原型交付.md` · `如何消费原型.md` |
 | 新建/评审 `.cursor/skills/**` | `trinity-skill-authoring` | `trinity-skill-authoring/SKILL.md` |
@@ -61,6 +64,7 @@ description: >-
 | 改工程师参数 md | 先 `trinity-api-acceptance` 评估用例；发布对外再 `trinity-docs` | 只改一处 |
 | 改进度 / 周会 / week-progress | `trinity-product-handbook` | api-acceptance |
 | 跑验收台 / 维护用例 JSON | `trinity-api-acceptance` | trinity-docs |
+| 改海报 / A4 / brand-deck / 一纸禅 | `trinity-sales-kit` | tob-marketing-site 官网 Vue、handbook 只改 sales-kit 清单 |
 
 边界真源：各 Skill 的 `DOMAIN.md`。
 
