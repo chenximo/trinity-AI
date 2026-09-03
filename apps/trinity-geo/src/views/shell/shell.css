@@ -1,0 +1,6 @@
+/**
+ * 控制台壳层样式（迁页期 vendored 自原型 CSS，逐步拆到模块级 *.css）
+ */
+@import url("../../assets/geo-css/core.css");
+@import url("../../assets/geo-css/home.css");
+@import url("../../assets/geo-css/dashboard.css");

@@ -1,0 +1,18 @@
+/** 页面审计增量样式 */
+
+.geo-audit-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-audit-row.is-filtered-out {
+  display: none;
+}
+
+.geo-audit-spotlight-links a,
+.geo-audit-detail-url a {
+  text-decoration: none;
+}
+
+.geo-audit-kpi .geo-metric-delta a {
+  text-decoration: none;
+}

@@ -246,7 +246,7 @@ title: GEO 业务全景（讨论稿）
 
 ### ③ 测量 · SOA · 主实现方案（规则引擎 + 别名库 + 时序库）{#measurement-soa-impl}
 
-> **工程真源细则**见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)。演示实现：`apps/trinity-geo/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
+> **工程真源细则**见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)。演示实现：`apps/trinity-geo-prototype/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
 
 **原则**：SOA 主路径 **程序化、可复现、可审计**；不用 LLM 直接「智能打分」。AI 仅作边缘标注增强（可选）。
 
@@ -294,7 +294,7 @@ SOA = in_answer_body = Y 的采样数 / 该范围内总采样数
 | ④ 诊断 | **读** 测量标注结果；规则 D1–D4 与测量规则同域或下游 |
 | ⑥ 验证 | **读** 时序库中 R1 vs R2 |
 
-**别名库更新**：用户新增别名后，可触发 **批量重算** 近期标注（工作流，非 LLM）。配置落库、任务态与接口见 [品牌设置 PRD](../../../trinity-geo/marketing/console/brand-settings.md) §5–§6、[技术架构 · 别名同步与重算](./tech-architecture#alias-sync-recalc)。
+**别名库更新**：用户新增别名后，可触发 **批量重算** 近期标注（工作流，非 LLM）。配置落库、任务态与接口见 [品牌设置 PRD](../../../trinity-geo-prototype/marketing/console/brand-settings.md) §5–§6、[技术架构 · 别名同步与重算](./tech-architecture#alias-sync-recalc)。
 
 **可选增强（非主路径）**：NER、模糊匹配、LLM 判「弱提及/情感」→ 结果写回标注表，**SOA 聚合公式不变**。
 
@@ -451,7 +451,7 @@ SOA = in_answer_body = Y 的采样数 / 该范围内总采样数
 | [产品设计分析](./product-design-analysis) | 清华四则、竞品、分期（可与本文对照） |
 | [MVP 实践手册](./mvp-practice) | 六环动手跑通 |
 | [技术架构分析](./tech-architecture) | 工程模块拆解 |
-| [MVP 执行包](../../../trinity-geo/mvp/README.md) | 种子数据与 CLI；控制台 HTML 走查 |
+| [MVP 执行包](../../../trinity-geo-prototype/mvp/README.md) | 种子数据与 CLI；控制台 HTML 走查 |
 
 ---
 

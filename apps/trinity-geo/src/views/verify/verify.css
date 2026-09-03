@@ -1,0 +1,43 @@
+/** 效果验证页增量样式 */
+
+.geo-verify-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-verify-lead a,
+.geo-verify-spotlight-links a,
+.geo-verify-index-q,
+.geo-verify-case-meta a,
+.geo-verify-case-links a,
+.geo-verify-scope-note a {
+  text-decoration: none;
+}
+
+.geo-verify-lead a,
+.geo-verify-case-meta a,
+.geo-verify-case-links a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-verify-lead a:hover,
+.geo-verify-case-meta a:hover,
+.geo-verify-case-links a:hover {
+  text-decoration: underline;
+}
+
+.geo-verify-index-q:hover strong {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-verify-added-details .geo-form-hint a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-verify-added-details .geo-form-hint a:hover {
+  text-decoration: underline;
+}
+
+.geo-verify-rules-details .geo-form-hint a {
+  color: var(--indigo-500, #6366f1);
+}

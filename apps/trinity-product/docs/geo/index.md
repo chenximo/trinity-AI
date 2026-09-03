@@ -5,7 +5,8 @@ title: GEO 产品
 # GEO 产品 · 总览
 
 > **一句话介绍**：面向**全球化产品**的 **GEO（生成式引擎优化）** SaaS——海外 + 国内 AI 平台同屏监测、SOA 答案份额与竞品对比；典型样本 **Trinity AI** API 聚合；官网获客 → 用户控制台闭环 → 运营后台支撑。  
-> **工程**：`apps/trinity-geo`（营销首页静态稿）· 控制台待定  
+> **工程**：`apps/trinity-geo`（Vue 交付 · mock）· `apps/trinity-geo-prototype`（HTML 原型馆）· 后端阶段 1 待开发  
+
 > **体验地址**：`npx serve apps/trinity-geo -p 5210` → [http://127.0.0.1:5210](http://127.0.0.1:5210)  
 > **在线地址**：待定
 
@@ -16,9 +17,9 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | 读者 | 路径 |
 |------|------|
 | **第一次了解 GEO** | [MVP 实践手册](./mvp-practice) → [业务全景](./business-landscape) |
-| **做行业方案 / onboarding** | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) → [原型 · 问题集](../../../trinity-geo/marketing/console/keywords.md) |
+| **做行业方案 / onboarding** | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) → [原型 · 问题集](../../../trinity-geo-prototype/marketing/console/keywords.md) |
 | **写 PRD / 对齐原型** | [子页 PRD 规范](./sub-page-prd-standard) → [样例 · 引用与信源](./samples/citations-prd-sample) → [原型页面清单](./v1-prototype-pages) |
-| **研发立项** | [技术架构分析](./tech-architecture) → [MVP 执行包](../../../trinity-geo/mvp/) |
+| **研发立项** | [技术架构分析](./tech-architecture) → [MVP 执行包](../../../trinity-geo-prototype/mvp/) → [GEO AI 演进路线图](./geo-ai-evolution-roadmap) |
 
 ::: tip 行业解决方案（不拆产品）
 平台 **一套六环**；垂直差异通过 **行业 Playbook** 引导——问题集样例、信源预期、优化动作库、演示样本。详见 [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks)。
@@ -33,7 +34,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | [营销首页静态稿](http://127.0.0.1:5210) | `apps/trinity-geo` · 与 Trinity AI 视觉对齐 | 🟡 | ⬜ | ⬜ | 工程 |
 | [GEO MVP 实践手册](./mvp-practice) | **完整链路动手跑通**（1–2 平台、可演示、无定价） | ✅ | — | — | **入门必读** |
 | [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) | 行业引导包：问题集 / 信源预期 / 动作库 / 演示样本 | ✅ | — | — | **行业方案** |
-| [GEO MVP 执行包](../../../trinity-geo/mvp/) | 脚本与种子数据；走查用 HTML 控制台 | ✅ | — | — | **动手执行** |
+| [GEO MVP 执行包](../../../trinity-geo-prototype/mvp/) | 脚本与种子数据；走查用 HTML 控制台 | ✅ | — | — | **动手执行** |
 | [产品设计分析](./product-design-analysis) | 清华 GEO 报告解读、六大模块、**§0.6 可见性分层**、**§0.7 业界 AI 应用**、MVP 优先级 | ✅ | — | — | 附录 |
 | [GEO 业务全景（讨论稿）](./business-landscape) | 行业玩法、完整主链、架构与商业，**不拆版本** | ✅ | — | — | **全景** |
 | [技术架构分析](./tech-architecture) | 分层架构、**测量 SOA（规则引擎+别名库+时序库）**、采集拆解 | ✅ | — | — | 附录 |
@@ -41,6 +42,7 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | [子页 PRD 规范](./sub-page-prd-standard) | 子页 PRD 写法 · 80% 统一 | ✅ | — | — | **规范** |
 | [参考样例 · 引用与信源](./samples/citations-prd-sample) | 手册唯一 PRD 参考样例 | ✅ | — | — | **样例** |
 | [GEO 业界计费与监测周期](./geo-billing-industry) | 采集周期、SaaS 套餐维度、竞品价位带、Trinity 套餐建议 | ✅ | — | — | **定价** |
+| [GEO AI 演进路线图](./geo-ai-evolution-roadmap) | 零 LLM → B 类专业版 → C 类企业 Agent；阶段 0–4 与 Skill 表 | ✅ | — | — | **AI 规划** |
 | [友商产品调研](./competitor-research/) | Tier 1 竞品深度分析（Profound 等） | ✅ | — | — | 调研 |
 | [GEO内容AI Agent多平台自动发文落地方案](./agent-multi-platform-publishing) | 官方 API 多平台自动发文落地方案（完整版） | ✅ | — | — | 附录 |
 
@@ -52,7 +54,8 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 
 **先理解业务**：[GEO MVP 实践手册](./mvp-practice) 用 1–2 个平台跑通 **规划 → 采集 → 测量 → 诊断 → 优化 → 验证** 全链路。  
 
-**控制台原型**：`cd apps/trinity-geo && bun run dev` → [http://127.0.0.1:5203/__geo_marketing/console/dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html)（或 `/console`）。
+**控制台 Vue**：`cd apps/trinity-geo && bun run dev` → [http://127.0.0.1:5203/console](http://127.0.0.1:5203/console)。  
+**HTML 原型对照**：`npm run dev:trinity-geo-prototype` → [http://127.0.0.1:5203/__geo_marketing/console/dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html)。
 
 各步是否已达，在 **模块总览** 与后续叶子 `roadmap.yml` 填写；工程立项后补体验/在线四行。
 
@@ -74,3 +77,4 @@ GEO（Generative Engine Optimization）关注品牌在大模型答案中的**可
 | 2026-06-12 | 产品设计 / PM 手册 / 原型清单：**去 V1/V1.5/V2**，统一 P0/P1/P2 优先级 |
 | 2026-06-12 | 总览一句话：ICP 对齐为 **全球化产品**（Trinity AI 为典型样本） |
 | 2026-06-12 | 新增 [垂直行业 Playbook 最佳实践](./vertical-industry-playbooks) |
+| 2026-09-02 | 新增 [GEO AI 演进路线图](./geo-ai-evolution-roadmap) |

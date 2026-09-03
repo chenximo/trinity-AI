@@ -1,0 +1,17 @@
+/** 品牌设置增量样式 */
+
+.geo-brand-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-brand-spotlight-fact a {
+  text-decoration: none;
+}
+
+.geo-brand-related a {
+  text-decoration: none;
+}
+
+.geo-brand-alias-table tr.is-filtered-out {
+  display: none;
+}

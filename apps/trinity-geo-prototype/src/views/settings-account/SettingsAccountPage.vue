@@ -1,0 +1,238 @@
+<script setup lang="ts">
+</script>
+
+<template>
+<main v-pre class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="设置子导航">
+          <p class="geo-settings-sidebar-title">设置</p>
+          <nav class="geo-settings-nav">
+            <a href="./brand-settings.html">品牌设置</a>
+            <a href="./settings-account.html" class="is-active" aria-current="page">账户与套餐</a>
+            <a href="./settings-notifications.html">通知与告警</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content geo-account-page">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">⑧ 设置</p>
+              <div class="geo-page-title-row">
+                <h1>账户与套餐</h1>
+                <button
+                  type="button"
+                  class="geo-help-tip-btn geo-help-tip-btn--inline"
+                  data-geo-prototype-annotation
+                  data-geo-help-tpl="geo-help-tpl-account-mock"
+                  data-geo-help-title="原型 · 账户说明"
+                  aria-label="原型账户与套餐说明"
+                  aria-expanded="false"
+                  aria-controls="geo-help-tip-popover"
+                  title="说明"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <p class="geo-account-lead">
+                GEO 订阅用量与升级 · 登录身份复用 Trinity 门户 · 定价见
+                <a href="../pricing.html">官网定价</a>
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="../pricing.html" class="geo-btn primary">升级套餐</a>
+            </div>
+          </div>
+
+          <div class="geo-account-scope-bar">
+            <p class="geo-form-hint geo-account-scope-note">
+              本页仅展示 <strong>GEO 用量与订阅</strong>；发票与支付方式在 Trinity 账单中心统一管理（Stripe 托管）。
+            </p>
+          </div>
+
+          <p class="dash-section-label">套餐 · 汇总</p>
+          <div class="dash-kpi-row geo-account-kpi">
+            <div class="geo-metric-card primary">
+              <div class="geo-metric-label">当前套餐</div>
+              <div class="geo-metric-value geo-metric-value-sm">专业版</div>
+              <div class="geo-metric-delta">$79/月 · 年付 8 折</div>
+            </div>
+            <div class="geo-metric-card warn">
+              <div class="geo-metric-label">试用剩余</div>
+              <div class="geo-metric-value">12</div>
+              <div class="geo-metric-delta">天 · 到期前升级</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">监测问题</div>
+              <div class="geo-metric-value geo-metric-value-sm">10/100</div>
+              <div class="geo-metric-delta"><a href="./monitoring.html">问题集 →</a></div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">监测平台</div>
+              <div class="geo-metric-value geo-metric-value-sm">10/10</div>
+              <div class="geo-metric-delta warn-text">已满额</div>
+            </div>
+          </div>
+
+          <div class="geo-account-spotlight" aria-label="当前套餐样本">
+            <span class="geo-account-plan-badge">专业版</span>
+            <strong>$79/月</strong>
+            <span class="geo-account-spotlight-fact">1 品牌 · 每日采集 · PDF 报告 + 邮件</span>
+            <span class="geo-account-spotlight-links">
+              <a href="../pricing.html">对比套餐</a>
+              <a href="./reports.html">报告配额</a>
+            </span>
+          </div>
+
+          <section class="geo-account-section" aria-labelledby="quota-heading">
+            <header class="geo-kw-list-head">
+              <div>
+                <h2 id="quota-heading">配额用量</h2>
+                <p class="geo-kw-list-desc">各维度已用 / 上限 · 触顶后需升级或释放资源</p>
+              </div>
+            </header>
+
+            <div class="geo-kw-table-wrap geo-account-quota-wrap">
+              <table class="geo-kw-table geo-account-quota-table">
+                <thead>
+                  <tr>
+                    <th scope="col">维度</th>
+                    <th scope="col">已用</th>
+                    <th scope="col">上限</th>
+                    <th scope="col">用量</th>
+                    <th scope="col"><span class="sr-only">管理</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">品牌数</th>
+                    <td class="num">1</td>
+                    <td class="num muted">3</td>
+                    <td class="geo-account-meter-cell">
+                      <div class="geo-account-meter" role="presentation"><span style="width: 33%"></span></div>
+                    </td>
+                    <td class="geo-kw-actions"><a href="./brand-settings.html" class="geo-btn text">品牌</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">监测问题</th>
+                    <td class="num">10</td>
+                    <td class="num muted">100</td>
+                    <td class="geo-account-meter-cell">
+                      <div class="geo-account-meter" role="presentation"><span style="width: 10%"></span></div>
+                    </td>
+                    <td class="geo-kw-actions"><a href="./monitoring.html" class="geo-btn text">问题集</a></td>
+                  </tr>
+                  <tr class="geo-account-row-warn">
+                    <th scope="row">监测平台</th>
+                    <td class="num warn">10</td>
+                    <td class="num muted">10</td>
+                    <td class="geo-account-meter-cell">
+                      <div class="geo-account-meter is-full" role="presentation"><span style="width: 100%"></span></div>
+                    </td>
+                    <td class="geo-kw-actions"><a href="./monitoring.html" class="geo-btn text">平台</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">竞品数</th>
+                    <td class="num">6</td>
+                    <td class="num muted">10</td>
+                    <td class="geo-account-meter-cell">
+                      <div class="geo-account-meter" role="presentation"><span style="width: 60%"></span></div>
+                    </td>
+                    <td class="geo-kw-actions"><a href="./competitors-manage.html" class="geo-btn text">竞品</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">日采频次</th>
+                    <td colspan="2" class="geo-muted">每日 1 次 / 品牌</td>
+                    <td class="geo-account-meter-cell"><span class="geo-muted">—</span></td>
+                    <td class="geo-kw-actions"><span class="geo-muted">—</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">报告导出</th>
+                    <td colspan="2" class="geo-muted">PDF + 邮件定时</td>
+                    <td class="geo-account-meter-cell"><span class="geo-muted">—</span></td>
+                    <td class="geo-kw-actions"><a href="./reports.html" class="geo-btn text">报告</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="geo-account-body">
+            <section class="geo-account-section geo-account-profile" aria-labelledby="profile-heading">
+              <h2 id="profile-heading" class="geo-account-section-title">账户信息</h2>
+              <p class="geo-account-section-desc">与 Trinity 统一账户同步</p>
+              <form class="geo-form-grid geo-account-form">
+                <label class="geo-form-field span-2">
+                  <span>工作邮箱</span>
+                  <input type="email" value="ops@trinity.ai" readonly />
+                </label>
+                <label class="geo-form-field">
+                  <span>组织名称</span>
+                  <input type="text" value="Trinity AI Inc." />
+                </label>
+                <label class="geo-form-field">
+                  <span>时区</span>
+                  <select>
+                    <option selected>Asia/Shanghai (UTC+8)</option>
+                    <option>America/Los_Angeles</option>
+                  </select>
+                </label>
+                <div class="geo-account-form-actions span-2">
+                  <button type="button" class="geo-btn primary" disabled title="商用">保存（商用）</button>
+                </div>
+              </form>
+            </section>
+
+            <aside class="geo-account-aside" aria-label="账单与关联">
+              <div class="geo-account-aside-block">
+                <h3 class="geo-account-aside-title">账单</h3>
+                <p class="geo-account-aside-desc">Stripe 托管 · 发票与支付方式在 Trinity 门户。</p>
+                <button type="button" class="geo-btn ghost sm full" disabled>查看账单历史</button>
+              </div>
+
+              <div class="geo-account-aside-block">
+                <h3 class="geo-account-aside-title">关联</h3>
+                <ul class="geo-account-related">
+                  <li>
+                    <a href="../pricing.html">
+                      <strong>定价与升级</strong>
+                      <span>专业版 / 企业版对比</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./settings-notifications.html">
+                      <strong>通知与告警</strong>
+                      <span>试用到期提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./brand-settings.html">
+                      <strong>品牌设置</strong>
+                      <span>1 / 3 品牌配额</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <details class="geo-account-plan-details">
+                <summary>专业版权益速查</summary>
+                <ul class="geo-account-plan-perks">
+                  <li>最多 3 个品牌 · 100 监测问题</li>
+                  <li>10 个 AI 平台 · 10 个竞品</li>
+                  <li>每日采集 · PDF 周报邮件</li>
+                  <li>诊断 + 优化待办 + 效果验证</li>
+                </ul>
+              </details>
+            </aside>
+          </div>
+
+          <p class="dash-proto-link">
+            账户与套餐原型 v0.2 ·
+            <a href="./settings-account.md">产品解读</a>
+          </p>
+        </div>
+      </div>
+    </main>
+</template>

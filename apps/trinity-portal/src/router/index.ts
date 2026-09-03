@@ -3,6 +3,7 @@ import { getTrinityDocsSiteUrl } from "@trinity-ai/trinityDocsSite";
 import { getAiCloudChildRoutes } from "@app-ai-cloud/aiCloudRoutes";
 import { getTrinityAiChildRoutes } from "@trinity-ai/trinityAiRoutes";
 import { getTrinityAdminChildRoutes } from "@trinity-ai-admin/trinityAdminRoutes";
+import { getTrinityGeoChildRoutes } from "@trinity-geo/geoRoutes";
 import { adminShellAuthGuard } from "@trinity-ai-admin/views/admin-shell/shellInteractions";
 
 /** `/docs` 不在 portal 内渲染；开发时整页打开同源 `/docs/`（Vite 代理到 :5205） */
@@ -69,50 +70,19 @@ export default createRouter({
     {
       path: "/trinity-geo",
       component: () => import("@trinity-geo/views/shell/GeoShellLayout.vue"),
-      children: [
-        {
-          path: "",
-          name: "trinity-geo",
-          component: () => import("@trinity-geo/views/Home.vue"),
-        },
-        {
-          path: "demo",
-          name: "trinity-geo-demo-retired",
-          beforeEnter: () => {
-            window.location.assign("/__geo_marketing/console/dashboard.html");
-            return false;
-          },
-        },
-        {
-          path: "product",
-          name: "trinity-geo-product",
-          beforeEnter: () => {
-            window.location.assign("/__geo_marketing/product.html");
-            return false;
-          },
-        },
-        {
-          path: "pricing",
-          name: "trinity-geo-pricing",
-          beforeEnter: () => {
-            window.location.assign("/__geo_marketing/pricing.html");
-            return false;
-          },
-        },
-        {
-          path: "product.html",
-          redirect: { name: "trinity-geo-product" },
-        },
-        {
-          path: "pricing.html",
-          redirect: { name: "trinity-geo-pricing" },
-        },
-      ],
+      children: getTrinityGeoChildRoutes(),
     },
     {
       path: "/apps/trinity-geo/marketing/:page(product|pricing).html",
       beforeEnter: (to) => {
         window.location.assign(`/__geo_marketing/${to.params.page}.html`);
+        return false;
+      },
+    },
+    {
+      path: "/apps/trinity-geo-prototype/marketing/:pathMatch(.*)*",
+      beforeEnter: () => {
+        window.location.assign("/__geo_marketing/");
         return false;
       },
     },

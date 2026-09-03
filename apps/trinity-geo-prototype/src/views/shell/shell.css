@@ -1,0 +1,7 @@
+/**
+ * 控制台壳层：复用营销控制台 CSS（迁页期不复制 7k 行）。
+ * 工程真源仍为 marketing/css；本文件只做入口 @import。
+ */
+@import url("../../../marketing/css/core.css");
+@import url("../../../marketing/css/home.css");
+@import url("../../../marketing/css/dashboard.css");

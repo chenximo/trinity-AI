@@ -7,7 +7,7 @@ title: 垂直行业 Playbook 最佳实践
 > **文档类型**：产品方法论 · 行业引导包设计与落地规范  
 > **状态**：真源 · 2026-06  
 > **上级**：[GEO 总览](./index) · [产品设计分析 §0](./product-design-analysis#product-scope) · [业务全景 · 玩法1](./business-landscape)  
-> **关联**：[MVP 实践手册](./mvp-practice) · [原型 · 问题集](../../../trinity-geo/marketing/console/keywords.md) · [品牌设置 · 行业字段](../../../trinity-geo/marketing/console/brand-settings.md)
+> **关联**：[MVP 实践手册](./mvp-practice) · [原型 · 问题集](../../../trinity-geo-prototype/marketing/console/keywords.md) · [品牌设置 · 行业字段](../../../trinity-geo-prototype/marketing/console/brand-settings.md)
 
 ---
 
@@ -130,7 +130,7 @@ L3 · 上下文提示（diagnosis / optimize / citations / reports 侧栏 ⓘ）
 
 ## 五、Playbook 范例：AI / API 聚合（写满）
 
-> **典型样本**：[Trinity AI](../../../trinity-geo/mvp/config/brand.json) · 问题集 [questions.json](../../../trinity-geo/mvp/config/questions.json) · Q00 R1/R2 [mvp/data/](../../../trinity-geo/mvp/data/)
+> **典型样本**：[Trinity AI](../../../trinity-geo-prototype/mvp/config/brand.json) · 问题集 [questions.json](../../../trinity-geo-prototype/mvp/config/questions.json) · Q00 R1/R2 [mvp/data/](../../../trinity-geo-prototype/mvp/data/)
 
 ### 5.1 适用 ICP 与边界
 
@@ -249,12 +249,12 @@ D1 · S1+S2 · doc 建「API 聚合选型」官方文档树
 
 | 环节 | 路径 |
 |------|------|
-| 问题集 | [keywords.html](../../../trinity-geo/marketing/console/keywords.html) |
-| Q00 失声回答 | [answer-detail.html](../../../trinity-geo/marketing/console/answer-detail.html) |
-| Q01 CCR 对照 | [answer-detail-brand.html](../../../trinity-geo/marketing/console/answer-detail-brand.html) |
-| 诊断 | [diagnosis.html#diag-q00](../../../trinity-geo/marketing/console/diagnosis.html) |
-| 优化 | [optimize.html#opt-s1s2](../../../trinity-geo/marketing/console/optimize.html) |
-| 验证 | [verify.html#verify-q00](../../../trinity-geo/marketing/console/verify.html) |
+| 问题集 | [keywords.html](../../../trinity-geo-prototype/marketing/console/keywords.html) |
+| Q00 失声回答 | [answer-detail.html](../../../trinity-geo-prototype/marketing/console/answer-detail.html) |
+| Q01 CCR 对照 | [answer-detail-brand.html](../../../trinity-geo-prototype/marketing/console/answer-detail-brand.html) |
+| 诊断 | [diagnosis.html#diag-q00](../../../trinity-geo-prototype/marketing/console/diagnosis.html) |
+| 优化 | [optimize.html#opt-s1s2](../../../trinity-geo-prototype/marketing/console/optimize.html) |
+| 验证 | [verify.html#verify-q00](../../../trinity-geo-prototype/marketing/console/verify.html) |
 
 ---
 
@@ -415,8 +415,8 @@ D1 · S1+S2 · doc 建「API 聚合选型」官方文档树
 | [产品设计分析 §0.6 可见性分层](./product-design-analysis#visibility-layers) | D1–D5、S1–S6 横切规则 |
 | [MVP 实践手册](./mvp-practice) | 六环动手版 · NebulaTrack 表格模板 |
 | [业务全景 · 玩法1](./business-landscape) | 公域品牌 GEO 主战场 |
-| [原型 · 问题集管理](../../../trinity-geo/marketing/console/keywords.md) | 控制台 PRD |
-| [MVP 执行包](../../../trinity-geo/mvp/) | Trinity Q00 真数据 |
+| [原型 · 问题集管理](../../../trinity-geo-prototype/marketing/console/keywords.md) | 控制台 PRD |
+| [MVP 执行包](../../../trinity-geo-prototype/mvp/) | Trinity Q00 真数据 |
 
 ---
 

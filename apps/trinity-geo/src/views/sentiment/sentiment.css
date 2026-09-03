@@ -1,0 +1,24 @@
+/** 情感页增量 */
+
+.geo-sentiment-page a {
+  text-decoration: none;
+}
+
+.geo-sentiment-lead a,
+.geo-sentiment-feed a,
+.geo-sentiment-q-table a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-sentiment-feed a:hover,
+.geo-sentiment-q-table a:hover {
+  text-decoration: underline;
+}
+
+.geo-sentiment-feed .geo-sentiment-item-head a {
+  color: inherit;
+}
+
+.geo-sentiment-feed .geo-sentiment-item-head a:hover strong {
+  color: var(--indigo-500, #6366f1);
+}

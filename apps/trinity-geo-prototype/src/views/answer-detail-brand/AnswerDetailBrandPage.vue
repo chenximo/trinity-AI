@@ -1,0 +1,68 @@
+<script setup lang="ts">
+</script>
+
+<template>
+<main v-pre class="geo-console-main geo-answer-detail-main">
+      <nav class="geo-breadcrumb" aria-label="面包屑">
+        <a href="./citations.html">引用与信源</a> /
+        <a href="./keywords.html">Q01</a> /
+        <span>CCR 样本 · ChatGPT</span>
+      </nav>
+
+      <div class="geo-settings-callout ccr-sample" role="note">
+        <strong>CCR 样本页：</strong>演示「被引为信源」与「顺带提及」的区别。品类失声样本见
+        <a href="./answer-detail.html">Q00·豆包</a>（CCR 否）。
+      </div>
+
+      <div class="geo-settings-body geo-answer-layout">
+        <div class="geo-settings-main">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">③ 测量 · CCR 样本</p>
+              <h1>Trinity AI 好用吗？适合什么场景？</h1>
+              <p class="dash-toolbar-meta">
+                <span class="platform p-overseas">ChatGPT</span>
+                · API 采集 · R1 · 2026-06-14 11:20
+              </p>
+            </div>
+          </div>
+
+          <section class="geo-settings-card geo-answer-body-card" aria-labelledby="answer-body-heading">
+            <h2 id="answer-body-heading">AI 回答全文</h2>
+            <div class="geo-answer-full">
+              <p>如果你需要<strong>统一接入多家大模型、按量计费、面向团队管控 API Key</strong>，Trinity AI（Trinity Desk）是较常见的选择之一。</p>
+              <p>根据 <a href="https://doc.trinitydesk.ai" rel="noopener">Trinity 官方文档</a> 的说明，平台提供 OpenAI 兼容网关、多模型路由与国内线路优化，适合出海团队与国内研发并用的场景。</p>
+              <p>相较 OpenRouter 等海外聚合，Trinity 更强调<strong>企业级用量看板、子账号与合规开票</strong>；若你只需海外前沿模型尝鲜，OpenRouter 模型上新更快。</p>
+              <p><em>引用标注：回答将 doc.trinitydesk.ai 作为事实来源列出，计入 CCR 分子。</em></p>
+            </div>
+          </section>
+        </div>
+
+        <aside class="geo-settings-aside geo-answer-aside">
+          <div class="geo-settings-card compact">
+            <h3>测量标注</h3>
+            <dl class="geo-sync-dl geo-annotation-dl">
+              <div><dt>品牌提及</dt><dd class="ok">是</dd></div>
+              <div><dt>进答案正文 (SOA)</dt><dd class="ok">是</dd></div>
+              <div><dt>提及位置</dt><dd>首段推荐</dd></div>
+              <div><dt>被引为信源 (CCR)</dt><dd class="ok ccr-hit">是 · doc.trinitydesk.ai</dd></div>
+              <div><dt>情感</dt><dd>正面</dd></div>
+            </dl>
+          </div>
+
+          <div class="geo-settings-card compact muted">
+            <h3>CCR vs SOA</h3>
+            <p class="geo-settings-mini">
+              本题 SOA 与 CCR 同时为是：品牌进正文，且官网文档被当作<strong>证据源</strong>引用——比单纯点名更强。
+            </p>
+            <p class="geo-settings-mini" style="margin-top: 0.75rem">
+              R2 验证（定价页 opt-d3）→ <a href="./verify.html#verify-q01">CCR 1/3→2/3</a>
+            </p>
+          </div>
+
+          <a href="./citations.html" class="geo-btn ghost sm full">引用读口 →</a>
+          <a href="./verify.html#verify-q01" class="geo-btn ghost sm full">效果验证 R2 →</a>
+        </aside>
+      </div>
+    </main>
+</template>

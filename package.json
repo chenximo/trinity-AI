@@ -13,6 +13,7 @@
     "dev:trinity-ai:poll": "VITE_WATCH_POLL=1 npm run dev -w @trinity/app-trinity-ai",
     "dev:ai-cloud": "npm run dev -w @trinity/app-ai-cloud",
     "dev:trinity-geo": "npm run dev -w @trinity/app-trinity-geo",
+    "dev:trinity-geo-prototype": "npm run dev -w @trinity/app-trinity-geo-prototype",
     "dev:trinity-ai-admin": "npm run dev -w @trinity/app-trinity-ai-admin",
     "dev:trinity-design": "npm run dev -w @trinity/app-trinity-design",
     "dev:ui-standalone-demo": "npm run dev -w @trinity/app-ui-standalone-demo",

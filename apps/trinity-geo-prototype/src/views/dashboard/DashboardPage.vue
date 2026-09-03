@@ -1,0 +1,512 @@
+<script setup lang="ts">
+import { useMarketingPageScripts } from "../shell/shellInteractions";
+import pageJs from "../../../marketing/js/dashboard.js?raw";
+
+useMarketingPageScripts([pageJs]);
+</script>
+
+<template>
+<main v-pre class="geo-console-main dash-overview">
+      <div class="dash-alert-strip" aria-label="异动与运营通知">
+        <span class="dash-alert-pill warn">⚠ 品类词 SOA 仍为 0% · 已邮件告警</span>
+        <span class="dash-alert-pill info">📊 本周 GEO 周报已生成</span>
+        <span class="dash-alert-pill ok">✓ 今日 10 平台采集完成</span>
+      </div>
+
+      <div class="dash-toolbar">
+        <div>
+          <h1>Trinity AI · 可见性概览</h1>
+          <p class="dash-toolbar-meta">
+            上次更新：今日 09:12 · 豆包等 10 平台已采 · 监测问题 10 条（品类 3 / 品牌 4 / 对比 2 / 场景 1）·
+            <a href="./keywords.html">管理问题集</a>
+          </p>
+        </div>
+        <div class="dash-toolbar-controls">
+          <div class="dash-tabs" role="tablist" aria-label="市场筛选">
+            <button type="button" class="on" data-market="all" role="tab">全部</button>
+            <button type="button" data-market="overseas" role="tab">海外</button>
+            <button type="button" data-market="domestic" role="tab">国内</button>
+          </div>
+          <div class="dash-period" role="tablist" aria-label="趋势周期">
+            <button type="button" data-period="day" role="tab">日</button>
+            <button type="button" class="on" data-period="week" role="tab">周</button>
+            <button type="button" data-period="month" role="tab">月</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 用户读口 · 对标 Generforce 分区 -->
+      <nav class="geo-read-hub" aria-label="测量读口">
+        <a href="./dashboard.html" class="geo-read-hub-card is-current">
+          <span class="geo-read-hub-kicker">读口 ①</span>
+          <strong>可见性</strong>
+          <span>SOA · 竞品 · 趋势</span>
+        </a>
+        <a href="./citations.html" class="geo-read-hub-card">
+          <span class="geo-read-hub-kicker">读口 ②③</span>
+          <strong>引用与信源</strong>
+          <span>CCR · 信源盘 M/N</span>
+        </a>
+        <a href="./sentiment.html" class="geo-read-hub-card">
+          <span class="geo-read-hub-kicker">读口 · 口碑</span>
+          <strong>情感</strong>
+          <span>正 / 中 / 负 · 提及流</span>
+        </a>
+        <a href="./optimize.html" class="geo-read-hub-card">
+          <span class="geo-read-hub-kicker">读口 · 行动</span>
+          <strong>优化与效果</strong>
+          <span>待办 · R1/R2 验证</span>
+        </a>
+      </nav>
+
+      <!-- ③ 测量 KPI · 可见性专页 -->
+      <p class="dash-section-label">可见性 · SOA 与提及</p>
+      <div class="dash-kpi-row">
+        <div class="geo-metric-card primary" data-kpi-market="all">
+          <div class="geo-metric-label">SOA 总览</div>
+          <div class="geo-metric-value">18%</div>
+          <div class="geo-metric-delta up">↑ 2% 较上周</div>
+        </div>
+        <div class="geo-metric-card overseas" data-kpi-market="overseas">
+          <div class="geo-metric-label">海外 SOA</div>
+          <div class="geo-metric-value">24%</div>
+          <div class="geo-metric-delta up">↑ 6% 较上周</div>
+        </div>
+        <div class="geo-metric-card domestic" data-kpi-market="domestic">
+          <div class="geo-metric-label">国内 SOA</div>
+          <div class="geo-metric-value">12%</div>
+          <div class="geo-metric-delta down">↓ 3% 较上周</div>
+        </div>
+        <div class="geo-metric-card neutral" data-kpi-market="all">
+          <div class="geo-metric-label">总提及</div>
+          <div class="geo-metric-value">47</div>
+          <div class="geo-metric-delta up">本周 +12</div>
+        </div>
+      </div>
+      <p class="dash-ccr-legend">
+        <strong>SOA</strong> = 进答案正文 ·
+        <a href="./citations.html">引用与信源</a>（CCR、信源 M/N）·
+        <a href="./sentiment.html">情感 72% 正</a> — 分列读口，避免混读
+      </p>
+
+      <p class="dash-section-label">可见性 · 分平台与竞品</p>
+      <div class="dash-visibility-board">
+        <section class="dash-vis-col" aria-labelledby="platform-heading">
+          <h2 id="platform-heading" class="dash-split-title">平台 SOA 分布</h2>
+          <div class="dash-platform-group">
+              <h3 class="overseas">海外 · 5 平台</h3>
+              <div class="dash-platform-row" data-platform-market="overseas">
+                <span class="dash-platform-pill overseas"><span class="dash-fresh today"></span>ChatGPT</span>
+                <div class="dash-platform-bar overseas"><span style="width: 31%"></span></div>
+                <span class="dash-platform-val">31%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="overseas">
+                <span class="dash-platform-pill overseas"><span class="dash-fresh today"></span>Perplexity</span>
+                <div class="dash-platform-bar overseas"><span style="width: 22%"></span></div>
+                <span class="dash-platform-val">22%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="overseas">
+                <span class="dash-platform-pill overseas"><span class="dash-fresh today"></span>Claude</span>
+                <div class="dash-platform-bar overseas"><span style="width: 19%"></span></div>
+                <span class="dash-platform-val">19%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="overseas">
+                <span class="dash-platform-pill overseas"><span class="dash-fresh stale"></span>Gemini</span>
+                <div class="dash-platform-bar overseas"><span style="width: 24%"></span></div>
+                <span class="dash-platform-val">24%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="overseas">
+                <span class="dash-platform-pill overseas"><span class="dash-fresh today"></span>Copilot</span>
+                <div class="dash-platform-bar overseas"><span style="width: 18%"></span></div>
+                <span class="dash-platform-val">18%</span>
+              </div>
+            </div>
+            <div class="dash-platform-group">
+              <h3 class="domestic">国内 · 5 平台</h3>
+              <div class="dash-platform-row" data-platform-market="domestic">
+                <span class="dash-platform-pill domestic"><span class="dash-fresh today"></span>豆包</span>
+                <div class="dash-platform-bar domestic"><span style="width: 8%"></span></div>
+                <span class="dash-platform-val">8%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="domestic">
+                <span class="dash-platform-pill domestic"><span class="dash-fresh today"></span>通义</span>
+                <div class="dash-platform-bar domestic"><span style="width: 14%"></span></div>
+                <span class="dash-platform-val">14%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="domestic">
+                <span class="dash-platform-pill domestic"><span class="dash-fresh stale"></span>文心</span>
+                <div class="dash-platform-bar domestic"><span style="width: 11%"></span></div>
+                <span class="dash-platform-val">11%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="domestic">
+                <span class="dash-platform-pill domestic"><span class="dash-fresh today"></span>Kimi</span>
+                <div class="dash-platform-bar domestic"><span style="width: 16%"></span></div>
+                <span class="dash-platform-val">16%</span>
+              </div>
+              <div class="dash-platform-row" data-platform-market="domestic">
+                <span class="dash-platform-pill domestic"><span class="dash-fresh today"></span>腾讯元宝</span>
+                <div class="dash-platform-bar domestic"><span style="width: 10%"></span></div>
+                <span class="dash-platform-val">10%</span>
+              </div>
+            </div>
+        </section>
+
+        <section class="dash-vis-col dash-vis-mid" aria-label="行业排名与叙事主题">
+          <div class="dash-vis-mid-block" aria-labelledby="rank-heading">
+            <h2 id="rank-heading" class="dash-split-title">行业可见性排名 · 品类词</h2>
+            <ol class="geo-comp-rank-list dash-brand-rank">
+              <li>
+                <span class="geo-comp-rank-name"><a href="./competitor-detail.html">OpenRouter</a></span>
+                <span class="geo-comp-rank-bar"><span style="width: 68%"></span></span>
+                <span class="geo-comp-rank-val">68%</span>
+              </li>
+              <li>
+                <span class="geo-comp-rank-name"><a href="./competitor-detail.html">TokenHub</a></span>
+                <span class="geo-comp-rank-bar"><span style="width: 52%"></span></span>
+                <span class="geo-comp-rank-val">52%</span>
+              </li>
+              <li class="is-us">
+                <span class="geo-comp-rank-name">Trinity AI</span>
+                <span class="geo-comp-rank-bar us"><span style="width: 18%"></span></span>
+                <span class="geo-comp-rank-val">18%</span>
+              </li>
+              <li>
+                <span class="geo-comp-rank-name">LiteLLM</span>
+                <span class="geo-comp-rank-bar"><span style="width: 14%"></span></span>
+                <span class="geo-comp-rank-val">14%</span>
+              </li>
+            </ol>
+          </div>
+          <div class="dash-vis-mid-block" aria-labelledby="theme-heading">
+            <h2 id="theme-heading" class="dash-split-title">叙事主题 · 提及中 Top</h2>
+            <p class="geo-settings-card-desc dash-vis-mid-hint">有品牌提及的采样 · <a href="./sentiment.html">情感读口 →</a></p>
+            <ul class="geo-theme-list">
+              <li>
+                <span class="geo-theme-name">企业计费 / 团队管控</span>
+                <span class="geo-theme-bar"><span style="width: 78%"></span></span>
+                <span class="geo-theme-val">78%</span>
+              </li>
+              <li>
+                <span class="geo-theme-name">OpenAI 兼容 / 统一网关</span>
+                <span class="geo-theme-bar"><span style="width: 65%"></span></span>
+                <span class="geo-theme-val">65%</span>
+              </li>
+              <li>
+                <span class="geo-theme-name">国内线路 / 出海双栈</span>
+                <span class="geo-theme-bar"><span style="width: 41%"></span></span>
+                <span class="geo-theme-val">41%</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="dash-vis-col dash-comp-col" aria-labelledby="comp-heading">
+          <div class="dash-split-title-row">
+            <h2 id="comp-heading" class="dash-split-title">竞品对比 · 品类词 Top 3</h2>
+            <a href="./competitors.html" class="geo-btn ghost sm">查看全部 →</a>
+          </div>
+          <table class="dash-comp-table">
+              <thead>
+                <tr>
+                  <th>监测问题</th>
+                  <th>我方</th>
+                  <th>OpenRouter</th>
+                  <th>TokenHub</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="./keyword-detail.html" title="关键词详情 Q00">推荐两款 API 聚合平台</a></td>
+                  <td class="num low">0%</td>
+                  <td class="num"><a href="./competitor-detail.html" title="OpenRouter 竞品详情">68%</a></td>
+                  <td class="num"><a href="./competitor-detail.html" title="TokenHub 竞品详情">52%</a></td>
+                </tr>
+                <tr>
+                  <td><a href="./keyword-detail.html">国内 OpenAI 兼容 API 聚合</a></td>
+                  <td class="num mid">22%</td>
+                  <td class="num"><a href="./competitor-detail.html">41%</a></td>
+                  <td class="num"><a href="./competitor-detail.html">58%</a></td>
+                </tr>
+                <tr>
+                  <td><a href="./keyword-detail.html">一个 Key 调用多家大模型</a></td>
+                  <td class="num">35%</td>
+                  <td class="num"><a href="./competitor-detail.html">48%</a></td>
+                  <td class="num mid"><a href="./competitor-detail.html">29%</a></td>
+                </tr>
+              </tbody>
+            </table>
+          <div class="dash-comp-col-fill" aria-labelledby="comp-trend-heading">
+            <h3 id="comp-trend-heading" class="dash-comp-fill-title">SOA 趋势 · <span data-period-label>近 8 周</span></h3>
+            <div class="dash-trend-legend dash-trend-legend-multi dash-comp-fill-legend">
+              <span class="line-overseas">我方 · 海外</span>
+              <span class="line-domestic">我方 · 国内</span>
+              <span class="line-comp-a">OpenRouter</span>
+              <span class="line-comp-b">TokenHub</span>
+            </div>
+            <div class="dash-trend-chart dash-comp-fill-chart" aria-hidden="true">
+              <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+                <line x1="0" y1="100" x2="400" y2="100" stroke="#e2e8f0" stroke-width="1" />
+                <line x1="0" y1="60" x2="400" y2="60" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="4 4" />
+                <polyline
+                  points="0,72 50,68 100,62 150,58 200,52 250,48 300,42 350,38 400,34"
+                  fill="none"
+                  stroke="#2563eb"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <polyline
+                  points="0,88 50,86 100,84 150,82 200,78 250,76 300,74 350,72 400,70"
+                  fill="none"
+                  stroke="#f59e0b"
+                  stroke-width="2"
+                  stroke-dasharray="5 4"
+                  opacity="0.85"
+                />
+                <polyline
+                  points="0,42 50,40 100,38 150,36 200,34 250,32 300,30 350,28 400,26"
+                  fill="none"
+                  stroke="#7c3aed"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.75"
+                />
+                <polyline
+                  points="0,48 50,50 100,49 150,51 200,50 250,52 300,51 350,53 400,52"
+                  fill="none"
+                  stroke="#64748b"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  opacity="0.7"
+                />
+              </svg>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ④⑤⑥ 行动区：读口 ① 看完之后 · 该干什么 -->
+      <section class="dash-panel dash-panel-actions" aria-labelledby="actions-heading">
+        <header class="dash-panel-head">
+          <h2 id="actions-heading">诊断 · 优化 · 验证</h2>
+        </header>
+        <div class="dash-action-grid">
+          <div class="dash-action-col">
+            <div class="dash-action-col-head">
+              <h3>④ 诊断</h3>
+              <a href="./diagnosis.html">全部 →</a>
+            </div>
+            <div class="dash-diag-list">
+              <article class="dash-diag-item">
+                <span class="dash-diag-code d1">D1</span>
+                <div>
+                  <p class="dash-diag-title"><a href="./diagnosis.html#diag-q00">品类失声 · 推荐两款 API 聚合平台</a></p>
+                  <p class="dash-diag-meta">豆包 · SOA 0% · 参考盘 16 链 0 我方</p>
+                </div>
+                <span class="dash-diag-priority p0">P0</span>
+              </article>
+              <article class="dash-diag-item">
+                <span class="dash-diag-code d4">D4</span>
+                <div>
+                  <p class="dash-diag-title">叙事落后 · Trinity vs OpenRouter 国内开发者</p>
+                  <p class="dash-diag-meta">竞品首推 · 建议增加对比表</p>
+                </div>
+                <span class="dash-diag-priority p1">P1</span>
+              </article>
+              <article class="dash-diag-item">
+                <span class="dash-diag-code d3">D3</span>
+                <div>
+                  <p class="dash-diag-title">弱提及 · trinitydesk 是什么平台</p>
+                  <p class="dash-diag-meta">仅边缘一句 · 未进正文核心段落</p>
+                </div>
+                <span class="dash-diag-priority p1">P1</span>
+              </article>
+            </div>
+            <p class="dash-action-foot">
+              <a href="./audit.html">页面审计</a> · 红灯 2 ·
+              <a href="./audit-reports.html">审计报告</a>
+            </p>
+          </div>
+
+          <div class="dash-action-col">
+            <div class="dash-action-col-head">
+              <h3>⑤ 优化</h3>
+              <a href="./optimize.html">全部 →</a>
+            </div>
+            <ul class="dash-opt-list">
+              <li class="dash-opt-item">
+                <span class="dash-opt-status"></span>
+                <div class="dash-opt-body">
+                  <strong><a href="./optimize.html#opt-s1s2">D1·S1+S2 · doc 对标 openrouter.ai/docs</a></strong>
+                  <p>Q00 信源 0/16 · 截止 6/18</p>
+                </div>
+              </li>
+              <li class="dash-opt-item">
+                <span class="dash-opt-status"></span>
+                <div class="dash-opt-body">
+                  <strong><a href="./optimize.html#opt-d4">D4 · vs OpenRouter 对比表</a></strong>
+                  <p>国内开发者选型 · 进行中</p>
+                </div>
+              </li>
+              <li class="dash-opt-item">
+                <span class="dash-opt-status done"></span>
+                <div class="dash-opt-body">
+                  <strong>D2 · 官网统一 Trinity AI / Desk 别名</strong>
+                  <p>已发布 · 待 R2 验证</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dash-action-col">
+            <div class="dash-action-col-head">
+              <h3>⑥ 验证</h3>
+              <a href="./verify.html">效果验证 →</a>
+            </div>
+            <div class="dash-verify-stack">
+              <div class="dash-verify-compare">
+                <div class="dash-verify-round">
+                  <div class="label">Q00 信源</div>
+                  <div class="val">0/16 → 1/17</div>
+                </div>
+                <span class="dash-verify-delta">先进盘</span>
+              </div>
+              <div class="dash-verify-compare">
+                <div class="dash-verify-round">
+                  <div class="label">Q01 CCR</div>
+                  <div class="val">1/3 → 2/3</div>
+                </div>
+                <span class="dash-verify-delta">↑</span>
+              </div>
+              <div class="dash-verify-compare">
+                <div class="dash-verify-round">
+                  <div class="label">品牌 SOA</div>
+                  <div class="val">28% → 34%</div>
+                </div>
+                <span class="dash-verify-delta">↑ 6pt</span>
+              </div>
+            </div>
+            <p class="dash-action-foot">
+              <a href="./verify.html#verify-q00">Q00 详情</a> ·
+              <a href="./verify.html#verify-q01">Q01 详情</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 运营 · 告警与治理 -->
+      <div class="dash-ops-split dash-split-flat">
+        <section class="dash-split-col" aria-labelledby="alert-heading">
+          <h2 id="alert-heading" class="dash-split-title">自动化运营 · 最近告警</h2>
+          <ul class="dash-ops-list">
+              <li><strong>6/12 08:00</strong> 品类词 SOA 跌超阈值（0% → 邮件）</li>
+              <li><strong>6/11 18:20</strong> 竞品 TokenHub 在新问题集出现覆盖</li>
+              <li><strong>6/10 09:00</strong> 国内 SOA 周环比 -3%（预警）</li>
+            </ul>
+        </section>
+        <section class="dash-split-col" aria-labelledby="gov-heading">
+          <h2 id="gov-heading" class="dash-split-title">治理 · 合规与风险</h2>
+          <ul class="dash-ops-list">
+              <li><strong>幻觉监测</strong> 1 条待复核（豆包误述定价）</li>
+              <li><strong>负面提及</strong> 本周 3 次 · 占比 7%</li>
+              <li><strong>合规审查</strong> 待推送内容 0 条红灯</li>
+            </ul>
+        </section>
+      </div>
+
+      <p class="dash-section-label">② 监测 · 最新证据</p>
+      <section class="dash-panel" aria-labelledby="answers-heading">
+        <header class="dash-panel-head">
+          <h2 id="answers-heading">最新 AI 回答</h2>
+        </header>
+        <div class="dash-answer-list">
+            <article class="dash-answer-item">
+              <div class="dash-answer-main">
+                <a href="./answer-detail.html" class="dash-answer-kw" title="AI 回答详情 Q00 豆包">推荐两款 API 聚合平台</a>
+                <p class="dash-answer-snippet">
+                  <span class="platform p-domestic">豆包</span>
+                  「…推荐 <strong>OpenRouter</strong> 与<strong>腾讯云 TokenHub</strong>，前者模型覆盖广，后者国内接入稳定…」
+                </p>
+              </div>
+              <div class="dash-answer-meta">
+                <span class="dash-badge miss">未进答案</span>
+                <div class="dash-answer-time">2 小时前</div>
+              </div>
+            </article>
+            <article class="dash-answer-item">
+              <div class="dash-answer-main">
+                <a href="./answer-detail-brand.html" class="dash-answer-kw" title="Q01 · 豆包">Trinity AI 好用吗？</a>
+                <p class="dash-answer-snippet">
+                  <span class="platform p-domestic">豆包</span>
+                  「…<mark>Trinity AI</mark>（trinitydesk.ai）提供统一 API 接入多家大模型，适合需要快速试模型的团队…」
+                </p>
+              </div>
+              <div class="dash-answer-meta">
+                <span class="dash-badge ok">进答案</span>
+                <div class="dash-answer-time">2 小时前</div>
+              </div>
+            </article>
+            <article class="dash-answer-item">
+              <div class="dash-answer-main">
+                <a href="./answer-detail-brand.html" class="dash-answer-kw" title="Q01 · ChatGPT">OpenAI compatible API aggregators</a>
+                <p class="dash-answer-snippet">
+                  <span class="platform p-overseas">ChatGPT</span>
+                  「…OpenRouter is widely used; <mark>Trinity AI</mark> also offers a unified endpoint for developers…」
+                </p>
+              </div>
+              <div class="dash-answer-meta">
+                <span class="dash-badge ok">进答案</span>
+                <div class="dash-answer-time">5 小时前</div>
+              </div>
+            </article>
+            <article class="dash-answer-item">
+              <div class="dash-answer-main">
+                <a href="./keyword-detail.html?q=Q06" class="dash-answer-kw" title="Q06 · 豆包">Trinity 和 OpenRouter 哪个更适合国内开发者？</a>
+                <p class="dash-answer-snippet">
+                  <span class="platform p-domestic">豆包</span>
+                  「…国内开发者可优先考虑 TokenHub；海外场景 OpenRouter 模型更多，<mark>Trinity</mark> 在兼容 OpenAI 格式上也有优势…」
+                </p>
+              </div>
+              <div class="dash-answer-meta">
+                <span class="dash-badge ok">进答案</span>
+                <div class="dash-answer-time">昨日</div>
+              </div>
+            </article>
+        </div>
+      </section>
+
+      <p class="dash-proto-link">
+        HTML 完整闭环原型 v0.2 ·
+        <a href="./dashboard.md">产品解读</a>
+        · 返回 <a href="../index.html">营销首页</a>
+      </p>
+    </main>
+<div v-pre class="geo-page-extras">
+<div class="dash-onboard-backdrop" id="dash-onboard" role="dialog" aria-labelledby="onboard-title" aria-modal="true">
+      <div class="dash-onboard">
+        <div class="dash-onboard-head">
+          <h3 id="onboard-title">GEO 六环 · 快速上手</h3>
+          <button
+            type="button"
+            class="dash-onboard-dismiss"
+            id="dash-onboard-dismiss"
+            aria-label="关闭"
+          >
+            ×
+          </button>
+        </div>
+        <ol>
+          <li class="done">① 策略：品牌 · 问题集 · 竞品</li>
+          <li class="done">② 监测：10 平台采集</li>
+          <li class="current">③–⑥ 在本页看测量、诊断、优化与验证</li>
+        </ol>
+        <button
+          type="button"
+          class="dash-onboard-close"
+          id="dash-onboard-close"
+        >
+          开始查看总览
+        </button>
+      </div>
+    </div>
+</div>
+</template>

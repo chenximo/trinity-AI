@@ -1,0 +1,35 @@
+/** 监测页增量 */
+
+.geo-monitoring-page a {
+  text-decoration: none;
+}
+
+.geo-monitoring-lead a,
+.geo-mon-kpi .geo-metric-delta a,
+.geo-mon-fail-table a,
+.geo-mon-recent-main a,
+.geo-mon-col-link,
+.geo-log-table a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-monitoring-lead a:hover,
+.geo-mon-kpi .geo-metric-delta a:hover,
+.geo-mon-fail-table a:hover,
+.geo-mon-recent-main a:hover,
+.geo-mon-col-link:hover {
+  text-decoration: underline;
+}
+
+.geo-mon-recent-main a {
+  color: inherit;
+}
+
+.geo-mon-recent-main a:hover strong {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

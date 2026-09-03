@@ -1,0 +1,11 @@
+/** 回答详情页增量样式 */
+
+.geo-answer-detail-main .geo-breadcrumb a {
+  text-decoration: none;
+}
+
+.geo-answer-aside .geo-btn.full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

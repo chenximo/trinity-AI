@@ -4,7 +4,7 @@ title: 子页 PRD 规范
 
 # 子页 PRD · 通用规范
 
-> **说明**：控制台单页 PRD 写法规范。**手册参考样例**（仅 1 页）：[引用与信源](./samples/citations-prd-sample)。其余页面 PRD 真源在工程 **`apps/trinity-geo/marketing/console/{page}.md`**（与 HTML/CSS/Interactions/mock 同目录五件套）。
+> **说明**：控制台单页 PRD 写法规范。**手册参考样例**（仅 1 页）：[引用与信源](./samples/citations-prd-sample)。其余页面 PRD 真源在工程 **`apps/trinity-geo-prototype/marketing/console/{page}.md`**（与 HTML/CSS/Interactions/mock 同目录五件套）。
 
 ---
 
@@ -34,7 +34,7 @@ title: 子页 PRD 规范
 
 | 项 | 说明 |
 |----|------|
-| **L1 mermaid** | 逻辑简单时 **一句 L1 文字 + 链 L0** 即可（见 [diagnosis](../../../trinity-geo/marketing/console/diagnosis.md)） |
+| **L1 mermaid** | 逻辑简单时 **一句 L1 文字 + 链 L0** 即可（见 [diagnosis](../../../trinity-geo-prototype/marketing/console/diagnosis.md)） |
 | **L2 mermaid** | §6 用 **text 路径** 也可，不必每页画图 |
 | **§7 异常** | 简单页可 2 行或省略 |
 | **API / 埋点** | 原型期可整节省略 |
@@ -48,7 +48,7 @@ title: 子页 PRD 规范
 | 位置 | 放什么 |
 |------|--------|
 | **手册** `geo/samples/citations-prd-sample` | **唯一参考样例**（写法对齐用） |
-| **工程** `apps/trinity-geo/marketing/console/*.md` | 各页 PRD 真源（与原型五件套同目录） |
+| **工程** `apps/trinity-geo-prototype/marketing/console/*.md` | 各页 PRD 真源（与原型五件套同目录） |
 
 新建页：对照手册样例 + [空模板](./samples/_prd-template.md)（不挂侧栏）或 **复制** `console/` 下邻页 `.md` 改写。
 
@@ -164,7 +164,7 @@ title: 子页 PRD 规范
 | 汇总读口 | KPI + rollup 定稿 |
 | 证据下钻 | 字段字典 + 标注规则 |
 | 规则列表 | D* / S* 条件表 |
-| 审计 / 评分 | 因子维度（见 [audit](../../../trinity-geo/marketing/console/audit.md) §2） |
+| 审计 / 评分 | 因子维度（见 [audit](../../../trinity-geo-prototype/marketing/console/audit.md) §2） |
 
 **§4 末尾 · L1 位置图（逻辑型页建议有）**
 

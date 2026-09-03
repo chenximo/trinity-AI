@@ -1,57 +1,54 @@
-# Trinity GEO · 营销首页
+# Trinity GEO · Vue 交付工程
 
-**独立 GEO 视觉**：继承套件蓝紫 `--grad` + 场景卡合成底；海外 `--blue-soft` / 国内 `--warning` 双市场语义。
+GEO 用户站 **生产向** Vue 应用（五件套）。HTML 走查原型在 **`apps/trinity-geo-prototype`**。
 
 ## 本地预览
 
 ```bash
+# 交付工程（本目录）
 cd apps/trinity-geo && bun run dev
+# → http://127.0.0.1:5203/          营销首页（Vue · 对照 marketing/index.html）
+# → http://127.0.0.1:5203/console   工作台 · 可见性总览
+
+# 开发枢纽
+npm run dev   # 仓库根
+# → http://127.0.0.1:5173/trinity-geo/console
+
+# HTML 原型馆（对照）
+npm run dev:trinity-geo-prototype
+# → http://127.0.0.1:5203/__geo_marketing/console/dashboard.html
 ```
 
-**营销首页**：`/` 或门户 `/trinity-geo`（单页，可独立上线）
+## 目录职责
 
-**客户控制台（HTML 原型，当前真源）**：[/__geo_marketing/console/dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html) · 或 `/console` 会跳到总览。
-
-**官网卫星页（可选）**：
-
-| 页面 | 预览 |
+| 路径 | 说明 |
 |------|------|
-| 产品能力 | [product.html](http://127.0.0.1:5173/__geo_marketing/product.html) · 门户 [`/trinity-geo/product`](http://127.0.0.1:5173/trinity-geo/product) |
-| 定价 | [pricing.html](http://127.0.0.1:5173/__geo_marketing/pricing.html) · 门户 [`/trinity-geo/pricing`](http://127.0.0.1:5173/trinity-geo/pricing) |
+| `src/views/*` | 五件套页面（**真源**） |
+| `src/assets/geo-css/` | vendored 自原型 `marketing/css`，**样式真源** |
+| `src/geoRoutes.ts` | 路由表（portal 复用） |
+| `doc/` | 路由 ↔ 原型对照 |
 
-**控制台（HTML 原型）**：
+## 迁移约定
 
-| 页面 | 预览 | 解读 |
-|------|------|------|
-| 可见性总览 | [dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html) | [dashboard.md](marketing/console/dashboard.md) |
-| 品牌设置 | [brand-settings.html](http://127.0.0.1:5203/__geo_marketing/console/brand-settings.html) | [brand-settings.md](marketing/console/brand-settings.md) |
-| 问题集管理 | [keywords.html](http://127.0.0.1:5203/__geo_marketing/console/keywords.html) | [keywords.md](marketing/console/keywords.md) |
-| 竞品管理 | [competitors-manage.html](http://127.0.0.1:5203/__geo_marketing/console/competitors-manage.html) | [competitors-manage.md](marketing/console/competitors-manage.md) |
-| 竞品概览 | [competitors.html](http://127.0.0.1:5203/__geo_marketing/console/competitors.html) | [competitors.md](marketing/console/competitors.md) |
-| 竞品详情（OpenRouter） | [competitor-detail.html](http://127.0.0.1:5203/__geo_marketing/console/competitor-detail.html) | [competitor-detail.md](marketing/console/competitor-detail.md) |
-| 诊断列表 | [diagnosis.html](http://127.0.0.1:5203/__geo_marketing/console/diagnosis.html) | [diagnosis.md](marketing/console/diagnosis.md) |
-| 优化待办 | [optimize.html](http://127.0.0.1:5203/__geo_marketing/console/optimize.html) | [optimize.md](marketing/console/optimize.md) |
-| CCR 样本（Q01·ChatGPT） | [answer-detail-brand.html](http://127.0.0.1:5203/__geo_marketing/console/answer-detail-brand.html) | — |
-| 监测概览 | [monitoring.html](http://127.0.0.1:5203/__geo_marketing/console/monitoring.html) | [monitoring.md](marketing/console/monitoring.md) |
-| 关键词详情（Q00） | [keyword-detail.html](http://127.0.0.1:5203/__geo_marketing/console/keyword-detail.html) | [keyword-detail.md](marketing/console/keyword-detail.md) |
-| AI 回答详情（Q00·豆包） | [answer-detail.html](http://127.0.0.1:5203/__geo_marketing/console/answer-detail.html) | [answer-detail.md](marketing/console/answer-detail.md) |
+- **类名**：与 `trinity-geo-prototype/marketing/console/*.html` 保持一致，不另起一套。
+- **样式**：`main.ts` 引入 `shell.css` + `vue-bridge.css`；模块 `*.css` 只写增量。
+- **RouterLink**：作按钮时加 `geo-btn` 等原型同类名。
 
-**静态直出**（仓库根目录 `python3 -m http.server 5210`）：
+## 迁移进度
 
-→ [http://127.0.0.1:5210/apps/trinity-geo/marketing/index.html](http://127.0.0.1:5210/apps/trinity-geo/marketing/index.html)
+- ✅ 壳层 + 总览（`shell` + `dashboard`）
+- ✅ 问题集管理（`keywords`）
+- ✅ 关键词详情（`keyword-detail` · Q00）
+- ✅ 回答详情（`answer-detail` · Q00 豆包）
+- ✅ 诊断列表（`diagnosis` · D1–D5）
+- ✅ 优化待办（`optimize` · Q00 S1+S2）
+- ✅ 效果验证（`verify` · Q00/Q01 R1→R2）
+- ✅ **Q00 主链**（dashboard → … → verify）已齐
+- ✅ 优化详情（`optimize-detail` · opt-s1s2）
+- 📋 Q00 走查清单：`doc/Q00-WALKTHROUGH.md`
+- ✅ 营销首页（`marketing/home` · 整页 + `shell` 顶栏/页脚）
 
-## 与 Trinity AI 聚合首页的差异
+## 参考
 
-| 维度 | Trinity AI（聚合 API） | Trinity GEO |
-|------|------------------------|-------------|
-| 受众 | 开发者 | 出海品牌营销 / SEO |
-| 主色 | `--geo-grad` = `--grad` · accent = `--indigo-500` / `--purple-soft` |
-| 语义辅色 | 海外 `--blue-soft` · 国内 `--warning`（Dashboard / 平台） |
-| Hero | 居中 + pill + 厂商胶囊 | **左文案右 Dashboard** |
-| 核心叙事 | 一个 API 接入模型 | **SOA / 答案可见性 / SEO→GEO** |
-| 组件 | fcard、mock-api、stats | 平台矩阵、bento、竞品差距面板 |
-| CSS | `trinity-ai/home.css` | **独立** `css/home.css`（`@import` tokens） |
-
-## 规格
-
-[官网首页原型规格](../trinity-product/docs/geo/prototypes/v1-homepage.md)
+- 产品手册：`apps/trinity-product/docs/geo/`
+- HTML 原型：`apps/trinity-geo-prototype/marketing/`

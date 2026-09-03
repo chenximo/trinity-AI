@@ -1,0 +1,33 @@
+/** 回答详情 Q01 CCR 样本 · 增量样式 */
+
+.geo-answer-detail-main .geo-breadcrumb a {
+  text-decoration: none;
+}
+
+.geo-answer-aside .geo-btn.full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.geo-adb-r2-note {
+  margin-top: 0.75rem;
+}
+
+.geo-adb-r2-note a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-adb-r2-note a:hover {
+  text-decoration: underline;
+}
+
+.geo-settings-callout.ccr-sample a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-settings-callout.ccr-sample a:hover {
+  text-decoration: underline;
+}

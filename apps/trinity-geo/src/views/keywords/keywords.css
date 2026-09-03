@@ -1,0 +1,5 @@
+/** 问题集页增量样式；布局类见 shell vendored dashboard.css */
+
+.geo-kw-empty:not([hidden]) {
+  display: block;
+}

@@ -26,7 +26,8 @@
 | **`trinity-portal`** | `@trinity/app-portal` | **5173** | **开发枢纽**：根目录 `npm run dev` 默认启动 |
 | `trinity-ai` | `@trinity/app-trinity-ai` | 5201 | Trinity AI 用户站 |
 | `ai-cloud` | `@trinity/app-ai-cloud` | 5202 | AI 云 |
-| `trinity-geo` | `@trinity/app-trinity-geo` | 5203 | Trinity GEO |
+| `trinity-geo` | `@trinity/app-trinity-geo` | 5203 | Trinity GEO · **Vue 交付工程** |
+| `trinity-geo-prototype` | `@trinity/app-trinity-geo-prototype` | 5203 | HTML 原型馆（勿与上者同时 dev） |
 | `trinity-ai-admin` | `@trinity/app-trinity-ai-admin` | 5204 | 运营后台原型 |
 | `trinity-docs` | `@trinity/app-trinity-docs` | **5205** | **API 文档站**（VitePress）；开发枢纽 FAB 外链 |
 | `trinity-design` | `@trinity/app-trinity-design` | 5210 | 设计枢纽：色板、UI 规范、运营/用户控制台系统规范展示 |

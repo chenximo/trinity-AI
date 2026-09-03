@@ -1,0 +1,19 @@
+/** 报告预览 · 增量样式 */
+
+.geo-report-preview-wrap .dash-section-label a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.geo-report-preview-wrap .dash-section-label a:hover {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-report-preview-list a {
+  text-decoration: none;
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-report-preview-list a:hover {
+  text-decoration: underline;
+}

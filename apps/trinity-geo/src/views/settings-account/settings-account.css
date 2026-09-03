@@ -1,0 +1,18 @@
+/** 账户与套餐增量样式 */
+
+.geo-account-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-account-spotlight-links a,
+.geo-account-kpi .geo-metric-delta a {
+  text-decoration: none;
+}
+
+.geo-account-related a {
+  text-decoration: none;
+}
+
+.geo-account-quota-table .geo-kw-actions a {
+  text-decoration: none;
+}

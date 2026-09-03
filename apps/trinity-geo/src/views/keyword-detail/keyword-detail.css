@@ -1,0 +1,9 @@
+/** 关键词详情页增量样式 */
+
+.geo-kw-detail-page .geo-breadcrumb a {
+  text-decoration: none;
+}
+
+.geo-kw-detail-nav a.router-link-active {
+  font-weight: inherit;
+}

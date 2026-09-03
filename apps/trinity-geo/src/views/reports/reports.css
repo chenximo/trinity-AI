@@ -1,0 +1,28 @@
+/** 报告列表 · 增量样式 */
+
+.geo-reports-page .geo-reports-lead a,
+.geo-reports-page .geo-metric-delta a,
+.geo-reports-page .geo-reports-spotlight-links a,
+.geo-reports-page a.geo-reports-title,
+.geo-reports-page .geo-reports-schedule-list a,
+.geo-reports-page .dash-proto-link a {
+  text-decoration: none;
+}
+
+.geo-reports-page .geo-reports-lead a,
+.geo-reports-page .geo-metric-delta a,
+.geo-reports-page .geo-reports-spotlight-links a,
+.geo-reports-page a.geo-reports-title,
+.geo-reports-page .geo-reports-schedule-list a,
+.geo-reports-page .dash-proto-link a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-reports-page .geo-reports-lead a:hover,
+.geo-reports-page .geo-metric-delta a:hover,
+.geo-reports-page .geo-reports-spotlight-links a:hover,
+.geo-reports-page a.geo-reports-title:hover,
+.geo-reports-page .geo-reports-schedule-list a:hover,
+.geo-reports-page .dash-proto-link a:hover {
+  text-decoration: underline;
+}

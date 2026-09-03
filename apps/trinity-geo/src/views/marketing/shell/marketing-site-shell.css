@@ -1,0 +1,13 @@
+/** 营销站壳层 · RouterLink 与顶栏桥接 */
+
+a.geo-logo,
+a.geo-suite-link,
+.geo-nav a,
+.geo-header-actions a.geo-btn,
+.geo-footer a {
+  text-decoration: none;
+}
+
+.geo-nav a.router-link-active {
+  font-weight: inherit;
+}

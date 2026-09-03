@@ -9,9 +9,9 @@ title: 用户控制台 Dashboard · 原型规格
 > **战略对齐**：[产品设计分析 · 监测与测量](../product-design-analysis) · [业务全景 · ③ 测量](../business-landscape#measurement-soa-impl)  
 > **技术对齐**：[技术架构 · 测量 SOA](../tech-architecture#measurement-soa)  
 > **用途**：**当前 HTML 原型切片** 的逐块规格（Figma / 验收）；**不定义**完整 GEO 产品终局。  
-> **产品解读**（完整能力、六环映射）：[`marketing/console/dashboard.md`](../../../../trinity-geo/marketing/console/dashboard.md)  
+> **产品解读**（完整能力、六环映射）：[`marketing/console/dashboard.md`](../../../../trinity-geo-prototype/marketing/console/dashboard.md)  
 > **全景真源**（不拆版本）：[业务全景](../business-landscape)  
-> **HTML 实现**：`apps/trinity-geo/marketing/console/dashboard.html` · `marketing/css/dashboard.css` · `marketing/js/dashboard.js`  
+> **HTML 实现**：`apps/trinity-geo-prototype/marketing/console/dashboard.html` · `marketing/css/dashboard.css` · `marketing/js/dashboard.js`  
 > **预览**：`cd apps/trinity-geo && bun run dev` → [http://127.0.0.1:5203/__geo_marketing/console/dashboard.html](http://127.0.0.1:5203/__geo_marketing/console/dashboard.html)
 
 | 项 | 值 |
@@ -198,7 +198,7 @@ V1 **一条堆叠条**：正面 72% · 中性 21% · 负面 7%。无细粒度情
 | ② 页面清单 | 清单 §2.1 | `v1-prototype-pages.md` |
 | ③ 业务 | 测量 SOA、三层可视化 | `business-landscape.md` §六 · `v1-prototype-pages.md` §5.4 |
 | ④ 技术 | 规则引擎 + 别名库 + 时序 | `tech-architecture.md` §2.1.3 |
-| ⑤ 演示 | MVP 脚本 + HTML 控制台测量页 | `mvp-practice.md` · `apps/trinity-geo/mvp/` · `marketing/console/` |
+| ⑤ 演示 | MVP 脚本 + HTML 控制台测量页 | `mvp-practice.md` · `apps/trinity-geo-prototype/mvp/` · `marketing/console/` |
 
 **工程五件套**（Vue 原型）：
 

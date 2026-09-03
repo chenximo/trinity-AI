@@ -5,7 +5,7 @@ title: GEO 原型页面清单
 # GEO · 原型页面清单（完整产品）
 
 > **说明**：**页面树真源**——官网、用户控制台、运营后台的 **完整** 页面与模块划分（全貌设计，实现节奏用 P0/P1/P2）。战略与六环见 [业务全景](./business-landscape)；产品设计见 [产品设计分析](./product-design-analysis)；技术见 [技术架构](./tech-architecture)。  
-> **HTML 原型工程**：`apps/trinity-geo/marketing/` · 控制台已起步见 [`marketing/console/`](../../../trinity-geo/marketing/console/)  
+> **HTML 原型工程**：`apps/trinity-geo-prototype/marketing/` · 控制台已起步见 [`marketing/console/`](../../../trinity-geo-prototype/marketing/console/)  
 > **注**：文件名仍为 `v1-prototype-pages.md` 以兼容历史链接；内容覆盖 **完整 GEO 闭环**，非按版本裁切。
 
 <div class="geo-prototype-page-list">
@@ -183,7 +183,7 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | HTML |
 |:---:|------|--------------|---------|:----:|
-| 1 | **可见性总览** | `/console/dashboard` | SOA/CCR KPI、趋势、平台分布、竞品摘要、诊断/优化/验证摘要、回答流、告警与治理条 | ✅ [dashboard.html](../../../trinity-geo/marketing/console/dashboard.html) · [解读](../../../trinity-geo/marketing/console/dashboard.md) |
+| 1 | **可见性总览** | `/console/dashboard` | SOA/CCR KPI、趋势、平台分布、竞品摘要、诊断/优化/验证摘要、回答流、告警与治理条 | ✅ [dashboard.html](../../../trinity-geo-prototype/marketing/console/dashboard.html) · [解读](../../../trinity-geo-prototype/marketing/console/dashboard.md) |
 
 ---
 
@@ -193,9 +193,9 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 2 | **品牌设置** | `/console/settings/brand` | 品牌名、Logo、官网、行业、**别名库**（测量引擎输入） | ① | ✅ [HTML](../../../trinity-geo/marketing/console/brand-settings.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/brand-settings.md) |
-| 3 | **关键词 / 问题集管理** | `/console/monitoring/keywords` | 监测问题列表；标签：品类/品牌/对比/场景；增删暂停 | ① | ✅ [HTML](../../../trinity-geo/marketing/console/keywords.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/keywords.md) |
-| 4 | **竞品管理** | `/console/competitors/manage` | 竞品名单、别名、同步状态 | ① | ✅ [HTML](../../../trinity-geo/marketing/console/competitors-manage.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/competitors-manage.md) |
+| 2 | **品牌设置** | `/console/settings/brand` | 品牌名、Logo、官网、行业、**别名库**（测量引擎输入） | ① | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/brand-settings.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/brand-settings.md) |
+| 3 | **关键词 / 问题集管理** | `/console/monitoring/keywords` | 监测问题列表；标签：品类/品牌/对比/场景；增删暂停 | ① | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/keywords.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/keywords.md) |
+| 4 | **竞品管理** | `/console/competitors/manage` | 竞品名单、别名、同步状态 | ① | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/competitors-manage.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/competitors-manage.md) |
 
 可选流程页（非独立顶栏）：**首次监测配置向导**（串起 2–4 + Onboarding）。
 
@@ -205,8 +205,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 5 | **监测采集** | `/console/monitoring` | Tab **概览**：KPI、10 平台状态、失败/入库；Tab **采集日志**：任务表、筛选、重试 | ② | ✅ [HTML](../../../trinity-geo/marketing/console/monitoring.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/monitoring.md) |
-| — | *采集日志（Tab）* | `/console/monitoring/logs` | 深链 `?tab=logs`；非侧栏独立 IA | ② | [Tab PRD](../../../trinity-geo/marketing/console/monitoring-logs.md) · 旧 HTML 重定向 |
+| 5 | **监测采集** | `/console/monitoring` | Tab **概览**：KPI、10 平台状态、失败/入库；Tab **采集日志**：任务表、筛选、重试 | ② | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/monitoring.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/monitoring.md) |
+| — | *采集日志（Tab）* | `/console/monitoring/logs` | 深链 `?tab=logs`；非侧栏独立 IA | ② | [Tab PRD](../../../trinity-geo-prototype/marketing/console/monitoring-logs.md) · 旧 HTML 重定向 |
 
 ---
 
@@ -214,9 +214,9 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 7 | **关键词详情** | `/console/monitoring/keywords/:id` | 关键词级 SOA 趋势；分平台摘要；↗↘ | ③ | ✅ [HTML](../../../trinity-geo/marketing/console/keyword-detail.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/keyword-detail.md)（样本 Q00） |
-| 8 | **AI 回答详情** | `/console/monitoring/answers/:id` | 全文、品牌高亮、进答案/CCR、位置、截图 | ③ | ✅ [HTML](../../../trinity-geo/marketing/console/answer-detail.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/answer-detail.md)（样本 Q00·豆包） |
-| 9 | **竞品概览** | `/console/competitors` | 同题 SOA/提及对比；雷达/柱状/趋势；分市场 | ③ | ✅ [HTML](../../../trinity-geo/marketing/console/competitors.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/competitors.md) |
+| 7 | **关键词详情** | `/console/monitoring/keywords/:id` | 关键词级 SOA 趋势；分平台摘要；↗↘ | ③ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/keyword-detail.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/keyword-detail.md)（样本 Q00） |
+| 8 | **AI 回答详情** | `/console/monitoring/answers/:id` | 全文、品牌高亮、进答案/CCR、位置、截图 | ③ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/answer-detail.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/answer-detail.md)（样本 Q00·豆包） |
+| 9 | **竞品概览** | `/console/competitors` | 同题 SOA/提及对比；雷达/柱状/趋势；分市场 | ③ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/competitors.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/competitors.md) |
 
 ---
 
@@ -224,7 +224,7 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 10 | **竞品详情** | `/console/competitors/:id` | 超越/落后问题列表；分平台对比；信源/CCR 下钻 | ③④ | ✅ [HTML](../../../trinity-geo/marketing/console/competitor-detail.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/competitor-detail.md)（样本 openrouter） |
+| 10 | **竞品详情** | `/console/competitors/:id` | 超越/落后问题列表；分平台对比；信源/CCR 下钻 | ③④ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/competitor-detail.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/competitor-detail.md)（样本 openrouter） |
 
 ---
 
@@ -232,8 +232,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 11 | **诊断列表** | `/console/diagnosis` | D1–D4 失声类型、优先级、链到问题/回答 | ④ | ✅ [HTML](../../../trinity-geo/marketing/console/diagnosis.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/diagnosis.md) |
-| 12 | **页面审计** | `/console/audit` | URL 可引用性、证据密度、Schema、问题与建议 | ④ | ✅ [HTML](../../../trinity-geo/marketing/console/audit.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/audit.md) |
+| 11 | **诊断列表** | `/console/diagnosis` | D1–D4 失声类型、优先级、链到问题/回答 | ④ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/diagnosis.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/diagnosis.md) |
+| 12 | **页面审计** | `/console/audit` | URL 可引用性、证据密度、Schema、问题与建议 | ④ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/audit.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/audit.md) |
 | 13 | **审计报告** | `/console/audit/reports` | 历史审计、导出 | ④ | ⬜ |
 
 扩展：**批量审计**（多 URL 扫描）— 运营向能力，可并入页 12 或独立子页。
@@ -244,8 +244,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 14 | **优化建议列表** | `/console/optimize` | 任务卡片：类型、页面、预期 SOA 提升、状态 | ⑤ | ✅ [HTML](../../../trinity-geo/marketing/console/optimize.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/optimize.md) |
-| 15 | **优化详情** | `/console/optimize/:id` | 问题说明、内容对比、操作步骤 | ⑤ | ✅ [HTML](../../../trinity-geo/marketing/console/optimize-detail.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/optimize-detail.md)（样本 opt-s1s2） |
+| 14 | **优化建议列表** | `/console/optimize` | 任务卡片：类型、页面、预期 SOA 提升、状态 | ⑤ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/optimize.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/optimize.md) |
+| 15 | **优化详情** | `/console/optimize/:id` | 问题说明、内容对比、操作步骤 | ⑤ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/optimize-detail.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/optimize-detail.md)（样本 opt-s1s2） |
 
 ---
 
@@ -253,9 +253,9 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 16 | **效果验证** | `/console/verify` | R1 vs R2 SOA；优化前后对比时间线 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/verify.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/verify.md) |
-| 17 | **报告列表** | `/console/reports` | 周报/月报、新建、定时配置 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/reports.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/reports.md) |
-| 18 | **报告预览/下载** | `/console/reports/:id` | 在线预览、PDF/PNG、发邮件 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/report-preview.html)（预览样本） |
+| 16 | **效果验证** | `/console/verify` | R1 vs R2 SOA；优化前后对比时间线 | ⑥ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/verify.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/verify.md) |
+| 17 | **报告列表** | `/console/reports` | 周报/月报、新建、定时配置 | ⑥ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/reports.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/reports.md) |
+| 18 | **报告预览/下载** | `/console/reports/:id` | 在线预览、PDF/PNG、发邮件 | ⑥ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/report-preview.html)（预览样本） |
 
 ---
 
@@ -263,8 +263,8 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 
 | 序号 | 页面 | 路由（规划） | 核心内容 | 六环 | HTML |
 |:---:|------|--------------|---------|:----:|:----:|
-| 19 | **账户设置** | `/console/settings/account` | 个人信息、套餐、用量看板、升级 | — | ✅ [HTML](../../../trinity-geo/marketing/console/settings-account.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/settings-account.md) |
-| 20 | **通知设置** | `/console/settings/notifications` | 告警阈值、邮件/企微/微信 | ⑥ | ✅ [HTML](../../../trinity-geo/marketing/console/settings-notifications.html) · [**单页 PRD**](../../../trinity-geo/marketing/console/settings-notifications.md) |
+| 19 | **账户设置** | `/console/settings/account` | 个人信息、套餐、用量看板、升级 | — | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/settings-account.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/settings-account.md) |
+| 20 | **通知设置** | `/console/settings/notifications` | 告警阈值、邮件/企微/微信 | ⑥ | ✅ [HTML](../../../trinity-geo-prototype/marketing/console/settings-notifications.html) · [**单页 PRD**](../../../trinity-geo-prototype/marketing/console/settings-notifications.md) |
 | — | *品牌设置* | 见 §2.2 序号 2 | — | ① | ✅ 见 brand-settings |
 
 ---
@@ -409,12 +409,12 @@ Footer 当前 `href="#"` 的隐私/条款，商用时应改为 **`/legal/privacy
 批 7  → 页面审计 / 审计报告 + 运营后台
 ```
 
-每页约定：`marketing/console/{page}.html` + 同目录 **`{page}.md` 单页 PRD**（品牌设置见 [brand-settings.md](./../../../trinity-geo/marketing/console/brand-settings.md)）。
+每页约定：`marketing/console/{page}.html` + 同目录 **`{page}.md` 单页 PRD**（品牌设置见 [brand-settings.md](./../../../trinity-geo-prototype/marketing/console/brand-settings.md)）。
 
 ### 原型文件组织（Figma / HTML）
 
 ```
-apps/trinity-geo/marketing/
+apps/trinity-geo-prototype/marketing/
 ├── index.html                 # 官网（单页，可独立上线）
 ├── product.html               # 卫星 · 产品深讲（可选）
 ├── pricing.html               # 卫星 · 定价（可选）

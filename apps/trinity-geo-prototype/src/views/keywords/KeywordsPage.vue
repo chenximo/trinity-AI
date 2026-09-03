@@ -1,0 +1,414 @@
+<script setup lang="ts">
+import { useMarketingPageScripts } from "../shell/shellInteractions";
+import pageJs from "../../../marketing/js/keywords.js?raw";
+
+useMarketingPageScripts([pageJs]);
+</script>
+
+<template>
+<main v-pre class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="监测子导航">
+          <p class="geo-settings-sidebar-title">监测</p>
+          <nav class="geo-settings-nav">
+            <a href="./monitoring.html">监测概览</a>
+            <a href="./keywords.html" class="is-active" aria-current="page">问题集管理</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">① 策略规划 · ② 监测输入</p>
+              <h1>问题集管理</h1>
+              <p class="dash-toolbar-meta">
+                配置用户在 AI 里的<strong>真实问法</strong>——每日采集与 SOA 的分母（denominator）
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./dashboard.html" class="geo-btn ghost">返回总览</a>
+              <button type="button" class="geo-btn ghost" id="kw-ai-suggest-btn" title="商用能力 · 原型 Mock">AI 生成建议</button>
+            </div>
+          </div>
+
+          <div class="geo-settings-callout" role="note">
+            <strong>SOA 分母 = 启用中的监测问题 × 10 平台 × 采集轮次。</strong>
+            建议品类 + 对比 + 场景词合计 ≥ 50%，避免只问品牌名导致 SOA 虚高。
+            <a href="./keywords.md">单页 PRD →</a>
+          </div>
+
+          <div class="geo-kw-quota" aria-label="套餐用量">
+            <div class="geo-kw-quota-head">
+              <span>监测问题 <strong id="kw-active-count">10</strong> / 100（专业版）</span>
+              <span class="geo-muted" id="kw-paused-note">1 条已暂停，不计入 SOA 分母</span>
+            </div>
+            <div class="geo-kw-quota-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+              <span style="width: 10%"></span>
+            </div>
+          </div>
+
+          <div class="geo-kw-type-summary" id="kw-type-summary" aria-label="问题类型分布">
+            <span class="dash-strategy-tag" data-type-filter="品类词">品类 <strong>3</strong></span>
+            <span class="dash-strategy-tag" data-type-filter="品牌词">品牌 <strong>4</strong></span>
+            <span class="dash-strategy-tag" data-type-filter="对比词">对比 <strong>2</strong></span>
+            <span class="dash-strategy-tag" data-type-filter="场景词">场景 <strong>1</strong></span>
+          </div>
+
+          <div class="geo-settings-body">
+            <div class="geo-settings-main">
+              <section class="geo-kw-list-section" aria-labelledby="kw-list-heading">
+                <header class="geo-kw-list-head">
+                  <div>
+                    <h2 id="kw-list-heading">监测问题列表</h2>
+                    <p class="geo-kw-list-desc">
+                      点击问法下钻详情 · SOA 7d 为<strong>全平台 rollup</strong>（仅启用题）·
+                      <span id="kw-list-meta">10 条监测中 · 1 条已暂停</span>
+                    </p>
+                  </div>
+                  <button type="button" class="geo-btn ghost sm" id="kw-add-toggle" aria-expanded="true" aria-controls="kw-manual-add">
+                    收起添加表单
+                  </button>
+                </header>
+
+                <section class="geo-kw-manual-add" id="kw-manual-add" aria-labelledby="kw-manual-heading">
+                  <div class="geo-kw-manual-head">
+                    <h3 id="kw-manual-heading">手动添加监测问题</h3>
+                    <span class="geo-kw-manual-tag">主路径 · 人工确认后启用</span>
+                  </div>
+                  <p class="geo-kw-manual-desc">
+                    真实口语问法（非 SEO 词）· 添加后进入「监测中」，下一采集周期生效
+                  </p>
+                  <div class="geo-kw-manual-form">
+                    <label class="geo-kw-manual-type">
+                      <span class="geo-kw-manual-label">问题类型</span>
+                      <select id="kw-add-type" aria-label="问题类型">
+                        <option value="品类词">品类词</option>
+                        <option value="品牌词">品牌词</option>
+                        <option value="对比词">对比词</option>
+                        <option value="场景词">场景词</option>
+                      </select>
+                    </label>
+                    <label class="geo-form-field geo-kw-manual-text">
+                      <span class="geo-kw-manual-label">问法（用户口语）</span>
+                      <textarea
+                        id="kw-add-text"
+                        rows="2"
+                        placeholder="例如：国内有哪些 OpenAI 兼容的大模型 API 聚合平台？"
+                        aria-label="问法"
+                      ></textarea>
+                    </label>
+                    <div class="geo-kw-manual-actions">
+                      <button type="button" class="geo-btn primary" id="kw-add-submit">添加并启用监测</button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- AI 建议面板：次要入口，默认折叠 -->
+                <section class="geo-kw-ai-panel" id="kw-ai-panel" hidden aria-labelledby="kw-ai-heading">
+                  <div class="geo-kw-manual-head">
+                    <h3 id="kw-ai-heading">AI 生成建议问法</h3>
+                    <span class="geo-badge muted">辅助 · 勾选后仍须确认</span>
+                  </div>
+                  <p class="geo-kw-manual-desc">
+                    根据品牌 <strong>Trinity AI</strong>、行业与竞品生成候选；不会自动上线，勾选后点击「加入问题集」。
+                  </p>
+                  <ul class="geo-kw-ai-list" id="kw-ai-list">
+                    <li>
+                      <label><input type="checkbox" checked data-type="品类词" data-text="2025 年值得用的 LLM API 网关有哪些？" /> 品类 · 2025 年值得用的 LLM API 网关有哪些？</label>
+                    </li>
+                    <li>
+                      <label><input type="checkbox" checked data-type="对比词" data-text="Trinity Desk 对比 OpenRouter 在国内延迟和模型覆盖上怎么样？" /> 对比 · Trinity vs OpenRouter 国内体验</label>
+                    </li>
+                    <li>
+                      <label><input type="checkbox" data-type="场景词" data-text="创业公司如何选一个 API 聚合平台控制 token 成本？" /> 场景 · 创业公司控制 token 成本</label>
+                    </li>
+                    <li>
+                      <label><input type="checkbox" data-type="品牌词" data-text="Trinity AI 和硅基流动比有什么区别？" /> 品牌 · Trinity vs 硅基流动</label>
+                    </li>
+                  </ul>
+                  <div class="geo-kw-add-actions">
+                    <button type="button" class="geo-btn ghost" id="kw-ai-close">收起</button>
+                    <button type="button" class="geo-btn primary" id="kw-ai-apply">加入已选问题</button>
+                  </div>
+                </section>
+
+                <div class="geo-kw-toolbar">
+                  <div class="geo-kw-search">
+                    <input type="search" id="kw-search" placeholder="搜索问法或 ID…" aria-label="搜索问题" />
+                  </div>
+                  <div class="geo-kw-filters" role="tablist" aria-label="问题类型筛选">
+                    <button type="button" class="on" data-type="all" role="tab" aria-selected="true">全部类型</button>
+                    <button type="button" data-type="品类词" role="tab">品类</button>
+                    <button type="button" data-type="品牌词" role="tab">品牌</button>
+                    <button type="button" data-type="对比词" role="tab">对比</button>
+                    <button type="button" data-type="场景词" role="tab">场景</button>
+                  </div>
+                  <div class="geo-kw-status-filters" role="tablist" aria-label="监测状态筛选">
+                    <button type="button" class="on" data-status="all" role="tab" aria-selected="true">全部</button>
+                    <button type="button" data-status="active" role="tab">监测中</button>
+                    <button type="button" data-status="paused" role="tab">已暂停</button>
+                  </div>
+                  <span class="geo-kw-result-count" id="kw-result-count" aria-live="polite">显示 11 条</span>
+                </div>
+
+                <div class="geo-kw-table-wrap">
+                  <table class="geo-kw-table geo-kw-list-table" id="kw-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">类型</th>
+                        <th scope="col">问法（用户口语）</th>
+                        <th scope="col" title="近 7 日 · 全平台">SOA 7d</th>
+                        <th scope="col">信号</th>
+                        <th scope="col">状态</th>
+                        <th scope="col"><span class="sr-only">操作</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="kw-tbody">
+                      <tr data-id="Q00" data-type="品类词" data-status="active" data-priority="P0" class="geo-kw-row-p0">
+                        <td class="mono"><span class="geo-kw-priority" title="P0 品类失声">Q00</span></td>
+                        <td><span class="geo-kw-type type-category">品类</span></td>
+                        <td>
+                          <a href="./keyword-detail.html" class="geo-kw-text" title="关键词详情 Q00">推荐两款 API 聚合平台</a>
+                        </td>
+                        <td class="num bad kw-soa-cell">0%</td>
+                        <td class="geo-kw-signals">
+                          <span class="geo-kw-signal warn" title="D1 品类失声">D1</span>
+                          <span class="geo-kw-signal warn">未进答案</span>
+                        </td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q01" data-type="品牌词" data-status="active">
+                        <td class="mono">Q01</td>
+                        <td><span class="geo-kw-type type-brand">品牌</span></td>
+                        <td>
+                          <a href="./answer-detail-brand.html" class="geo-kw-text">Trinity AI 好用吗？适合什么场景？</a>
+                        </td>
+                        <td class="num good kw-soa-cell">62%</td>
+                        <td class="geo-kw-signals">
+                          <span class="geo-kw-signal ok">CCR</span>
+                          <span class="geo-kw-signal ok">正面</span>
+                        </td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./answer-detail-brand.html" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q02" data-type="品牌词" data-status="active">
+                        <td class="mono">Q02</td>
+                        <td><span class="geo-kw-type type-brand">品牌</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q02" class="geo-kw-text" title="关键词详情 Q02">trinitydesk.ai 是什么平台？</a>
+                        </td>
+                        <td class="num good kw-soa-cell">48%</td>
+                        <td class="geo-kw-signals">
+                          <span class="geo-kw-signal neg">负面</span>
+                        </td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q02" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q03" data-type="品类词" data-status="active">
+                        <td class="mono">Q03</td>
+                        <td><span class="geo-kw-type type-category">品类</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q03" class="geo-kw-text" title="关键词详情 Q03">国内有哪些 OpenAI 兼容的大模型 API 聚合平台？</a>
+                        </td>
+                        <td class="num bad kw-soa-cell">8%</td>
+                        <td class="geo-kw-signals">
+                          <span class="geo-kw-signal warn">未进答案</span>
+                        </td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q03" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q04" data-type="品类词" data-status="active">
+                        <td class="mono">Q04</td>
+                        <td><span class="geo-kw-type type-category">品类</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q04" class="geo-kw-text" title="关键词详情 Q04">想一个 Key 调用多家大模型，有什么推荐？</a>
+                        </td>
+                        <td class="num mid kw-soa-cell">22%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q04" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q05" data-type="品牌词" data-status="active">
+                        <td class="mono">Q05</td>
+                        <td><span class="geo-kw-type type-brand">品牌</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q05" class="geo-kw-text" title="关键词详情 Q05">Trinity Desk 和 OpenRouter 怎么选？</a>
+                        </td>
+                        <td class="num mid kw-soa-cell">35%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal neu">中性</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q05" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q06" data-type="对比词" data-status="active">
+                        <td class="mono">Q06</td>
+                        <td><span class="geo-kw-type type-compare">对比</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q06" class="geo-kw-text" title="关键词详情 Q06">Trinity 和 OpenRouter 哪个更适合国内开发者？</a>
+                        </td>
+                        <td class="num mid kw-soa-cell">28%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q06" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q07" data-type="对比词" data-status="active">
+                        <td class="mono">Q07</td>
+                        <td><span class="geo-kw-type type-compare">对比</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q07" class="geo-kw-text" title="关键词详情 Q07">trinitydesk 和其他 API 中转平台比有什么优势？</a>
+                        </td>
+                        <td class="num good kw-soa-cell">41%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q07" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q08" data-type="品牌词" data-status="active">
+                        <td class="mono">Q08</td>
+                        <td><span class="geo-kw-type type-brand">品牌</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q08" class="geo-kw-text" title="关键词详情 Q08">Trinity API 网关支持哪些模型？</a>
+                        </td>
+                        <td class="num good kw-soa-cell">55%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal ok">正面</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q08" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q09" data-type="场景词" data-status="active">
+                        <td class="mono">Q09</td>
+                        <td><span class="geo-kw-type type-scenario">场景</span></td>
+                        <td>
+                          <a href="./keyword-detail.html?q=Q09" class="geo-kw-text" title="关键词详情 Q09">我在做 AI 应用，怎么降低多模型接入成本？</a>
+                        </td>
+                        <td class="num mid kw-soa-cell">18%</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td>
+                        <td><span class="geo-kw-status on">监测中</span></td>
+                        <td class="geo-kw-actions">
+                          <a href="./keyword-detail.html?q=Q09" class="geo-btn text">详情</a>
+                          <button type="button" class="geo-btn text kw-toggle">暂停</button>
+                        </td>
+                      </tr>
+                      <tr data-id="Q10" data-type="场景词" data-status="paused" class="is-paused">
+                        <td class="mono">Q10</td>
+                        <td><span class="geo-kw-type type-scenario">场景</span></td>
+                        <td>
+                          <span class="geo-kw-text muted">团队想统一计费、统一看用量，选什么平台？</span>
+                        </td>
+                        <td class="num geo-muted kw-soa-cell">—</td>
+                        <td class="geo-kw-signals"><span class="geo-kw-signal muted">—</span></td>
+                        <td><span class="geo-kw-status off">已暂停</span></td>
+                        <td class="geo-kw-actions">
+                          <button type="button" class="geo-btn text kw-toggle">恢复</button>
+                          <button type="button" class="geo-btn text danger kw-remove">删除</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p class="geo-kw-empty" id="kw-empty" hidden>没有匹配的问题，试试调整筛选或搜索。</p>
+                </div>
+
+                <p class="geo-form-hint geo-kw-foot">
+                  真源 <code>mvp/config/questions.json</code> · 采集任务 = 启用题 × 10 平台
+                </p>
+              </section>
+            </div>
+
+            <aside class="geo-settings-aside" aria-label="采集与关联">
+              <div class="geo-settings-card compact">
+                <h3>采集状态</h3>
+                <dl class="geo-sync-dl">
+                  <div>
+                    <dt>启用问题</dt>
+                    <dd id="kw-aside-active">10</dd>
+                  </div>
+                  <div>
+                    <dt>今日采集</dt>
+                    <dd>100 条</dd>
+                  </div>
+                  <div>
+                    <dt>成功率</dt>
+                    <dd>98%</dd>
+                  </div>
+                  <div>
+                    <dt>下次全量</dt>
+                    <dd>明日 06:00</dd>
+                  </div>
+                </dl>
+                <a href="./monitoring.html" class="geo-btn ghost sm full">查看监测概览</a>
+              </div>
+
+              <div class="geo-settings-card compact">
+                <h3>快速填入（模板）</h3>
+                <p class="geo-settings-mini" style="margin-bottom: 0.5rem">点击后填入上方手动表单，可改文案再添加。</p>
+                <ul class="geo-kw-templates">
+                  <li>
+                    <button type="button" class="geo-chip-suggest kw-template" data-type="品类词" data-text="国内有哪些 OpenAI 兼容的大模型 API 聚合平台？">
+                      品类 · API 聚合推荐
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="geo-chip-suggest kw-template" data-type="对比词" data-text="Trinity 和 OpenRouter 哪个更适合国内开发者？">
+                      对比 · 与 OpenRouter
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="geo-chip-suggest kw-template" data-type="场景词" data-text="团队想统一计费、统一看用量，选什么平台？">
+                      场景 · 统一计费
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="geo-settings-card compact">
+                <h3>关联配置</h3>
+                <ul class="geo-related-links">
+                  <li>
+                    <a href="./brand-settings.html">
+                      <strong>品牌与别名</strong>
+                      <span>测量识别输入</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./competitors-manage.html">
+                      <strong>竞品库</strong>
+                      <span>对比侧输入</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+<div v-pre class="geo-page-extras">
+<div class="geo-toast" id="geo-toast" role="status" aria-live="polite" hidden></div>
+</div>
+</template>

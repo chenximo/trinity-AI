@@ -1,0 +1,32 @@
+/** 竞品概览 · 增量样式 */
+
+.geo-comp-page .geo-settings-callout a,
+.geo-comp-page .geo-metric-delta a,
+.geo-comp-page .geo-comp-rank-name,
+.geo-comp-page .geo-comp-matrix a,
+.geo-comp-page .geo-settings-card-head a,
+.geo-comp-page .dash-answer-kw {
+  text-decoration: none;
+}
+
+.geo-comp-page .geo-metric-delta a,
+.geo-comp-page .geo-settings-card-head a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-comp-page .geo-metric-delta a:hover,
+.geo-comp-page .geo-settings-card-head a:hover {
+  text-decoration: underline;
+}
+
+.geo-comp-page a.geo-comp-rank-name {
+  color: inherit;
+}
+
+.geo-comp-page a.geo-comp-rank-name:hover {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-comp-page a.dash-answer-kw:hover {
+  color: var(--indigo-500, #6366f1);
+}

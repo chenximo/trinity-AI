@@ -4,9 +4,9 @@ title: 参考样例 · 引用与信源 PRD
 
 # 用户控制台 · 引用与信源 · 产品需求（PRD）
 
-> **配套原型**：[citations.html](../../../../trinity-geo/marketing/console/citations.html)  
+> **配套原型**：[citations.html](../../../../trinity-geo-prototype/marketing/console/citations.html)  
 > **预览**：`cd apps/trinity-geo && bun run dev` → `/__geo_marketing/console/citations.html`  
-> **样本**：Q00×豆包×R1 · [cited_sources.json](../../../../trinity-geo/mvp/data/r1/cited_sources.json)  
+> **样本**：Q00×豆包×R1 · [cited_sources.json](../../../../trinity-geo-prototype/mvp/data/r1/cited_sources.json)  
 > **全景**：[原型页面清单](../v1-prototype-pages) · 数据流 [§0.6.2a](../product-design-analysis#citation-data-pipeline)
 
 ## 1. 背景与问题
@@ -30,7 +30,7 @@ title: 参考样例 · 引用与信源 PRD
 
 **做**：跨题 CCR / M/N rollup、按题×平台表、来源结构、焦点样本下钻、平台可提取性说明。
 
-**不做**：SOA 趋势总览（→ [dashboard](../../../../trinity-geo/marketing/console/dashboard.html)）；单条 16 URL 全文列表（→ [answer-detail#cite-heading](../../../../trinity-geo/marketing/console/answer-detail.html#cite-heading)）；R2 验收叙事（→ [verify](../../../../trinity-geo/marketing/console/verify.html)，本页只提供入口）。
+**不做**：SOA 趋势总览（→ [dashboard](../../../../trinity-geo-prototype/marketing/console/dashboard.html)）；单条 16 URL 全文列表（→ [answer-detail#cite-heading](../../../../trinity-geo-prototype/marketing/console/answer-detail.html#cite-heading)）；R2 验收叙事（→ [verify](../../../../trinity-geo-prototype/marketing/console/verify.html)，本页只提供入口）。
 
 ---
 
@@ -136,10 +136,10 @@ Then #cite-heading 与 cited_sources.json 一致
 
 ## 关联
 
-- [dashboard](../../../../trinity-geo/marketing/console/dashboard.html) — SOA  
-- [answer-detail#cite-heading](../../../../trinity-geo/marketing/console/answer-detail.html#cite-heading) — 单条信源盘  
-- [verify](../../../../trinity-geo/marketing/console/verify.html) — R2 Δ  
-- [diagnosis](../../../../trinity-geo/marketing/console/diagnosis.html) — D1 + S*
+- [dashboard](../../../../trinity-geo-prototype/marketing/console/dashboard.html) — SOA  
+- [answer-detail#cite-heading](../../../../trinity-geo-prototype/marketing/console/answer-detail.html#cite-heading) — 单条信源盘  
+- [verify](../../../../trinity-geo-prototype/marketing/console/verify.html) — R2 Δ  
+- [diagnosis](../../../../trinity-geo-prototype/marketing/console/diagnosis.html) — D1 + S*
 
 ## API（有后端时）
 
@@ -161,8 +161,8 @@ GET /api/console/answers/:id/citations
 
 | 模块 | 真源 | 状态 |
 |------|------|------|
-| Q00 行 / 焦点 | [r1/cited_sources.json](../../../../trinity-geo/mvp/data/r1/cited_sources.json) | 已入库 |
-| 标注 | [r1/annotations.json](../../../../trinity-geo/mvp/data/r1/annotations.json) | 已入库 |
+| Q00 行 / 焦点 | [r1/cited_sources.json](../../../../trinity-geo-prototype/mvp/data/r1/cited_sources.json) | 已入库 |
+| 标注 | [r1/annotations.json](../../../../trinity-geo-prototype/mvp/data/r1/annotations.json) | 已入库 |
 | KPI 四格 | 演示数字 | 演示 |
 
 ## 修订

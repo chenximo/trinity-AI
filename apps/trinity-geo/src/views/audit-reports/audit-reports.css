@@ -1,0 +1,25 @@
+/** 审计报告 · 增量样式 */
+
+.geo-audit-reports-page .geo-settings-nav a.router-link-active,
+.geo-audit-reports-page .geo-settings-nav a.is-active {
+  font-weight: 600;
+}
+
+.geo-audit-reports-page .geo-settings-callout a,
+.geo-audit-reports-page .geo-kw-table a,
+.geo-audit-reports-page .geo-metric-delta a,
+.geo-audit-reports-page .geo-form-hint a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-audit-reports-page .geo-settings-callout a:hover,
+.geo-audit-reports-page .geo-kw-table a:hover,
+.geo-audit-reports-page .geo-metric-delta a:hover,
+.geo-audit-reports-page .geo-form-hint a:hover {
+  text-decoration: underline;
+}
+
+.geo-audit-reports-page .geo-kw-table a.mono-link {
+  font-family: inherit;
+}

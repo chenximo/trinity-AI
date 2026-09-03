@@ -1,0 +1,27 @@
+/** 引用页增量 */
+
+.geo-cite-page .dash-toolbar-meta a,
+.geo-cite-lead a,
+.geo-cite-q-table a,
+.geo-cite-insight + a,
+.geo-cite-spotlight-actions a {
+  text-decoration: none;
+}
+
+.geo-cite-lead a,
+.geo-cite-kpi .geo-metric-delta a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-cite-lead a:hover,
+.geo-cite-kpi .geo-metric-delta a:hover {
+  text-decoration: underline;
+}
+
+.geo-cite-q-table a.geo-cite-q-title {
+  color: inherit;
+}
+
+.geo-cite-q-table a.geo-cite-q-title:hover strong {
+  color: var(--indigo-500, #6366f1);
+}

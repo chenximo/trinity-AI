@@ -1,0 +1,32 @@
+/** 竞品详情 · 增量样式 */
+
+.geo-competitor-detail-page .geo-breadcrumb a {
+  text-decoration: none;
+}
+
+.geo-competitor-detail-page .geo-kw-table a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.geo-competitor-detail-page .geo-kw-table a:hover {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-competitor-detail-page .dash-answer-kw {
+  text-decoration: none;
+  color: inherit;
+}
+
+.geo-competitor-detail-page .dash-answer-kw:hover {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-competitor-detail-page .geo-settings-callout a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-competitor-detail-page .geo-settings-callout a:hover {
+  text-decoration: underline;
+}

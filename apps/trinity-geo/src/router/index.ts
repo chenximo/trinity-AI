@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import GeoShellLayout from "../views/shell/GeoShellLayout.vue";
-import Home from "../views/Home.vue";
+import { getGeoConsoleChildRoutes } from "../geoRoutes";
+import GeoConsoleLayout from "../views/shell/GeoConsoleLayout.vue";
+import MarketingHomePage from "../views/marketing/home/MarketingHomePage.vue";
+import MarketingSiteLayout from "../views/marketing/shell/MarketingSiteLayout.vue";
 
-function redirectToMarketing(page: "product.html" | "pricing.html") {
+function redirectToPrototypeMarketing(page: "product.html" | "pricing.html") {
   window.location.assign(`/__geo_marketing/${page}`);
-  return false;
-}
-
-function redirectToConsole() {
-  window.location.assign("/__geo_marketing/console/dashboard.html");
   return false;
 }
 
@@ -16,43 +13,32 @@ export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: "/console",
+      component: GeoConsoleLayout,
+      children: getGeoConsoleChildRoutes(),
+    },
+    {
       path: "/product",
       name: "geo-product",
-      beforeEnter: () => redirectToMarketing("product.html"),
+      beforeEnter: () => redirectToPrototypeMarketing("product.html"),
     },
     {
       path: "/pricing",
       name: "geo-pricing",
-      beforeEnter: () => redirectToMarketing("pricing.html"),
-    },
-    {
-      path: "/product.html",
-      redirect: { name: "geo-product" },
-    },
-    {
-      path: "/pricing.html",
-      redirect: { name: "geo-pricing" },
-    },
-    {
-      path: "/console",
-      name: "geo-console",
-      beforeEnter: () => redirectToConsole(),
+      beforeEnter: () => redirectToPrototypeMarketing("pricing.html"),
     },
     {
       path: "/login",
-      name: "geo-login",
-      beforeEnter: () => redirectToConsole(),
+      redirect: { name: "geo-dashboard" },
     },
     {
-      // Retired Vue 六环演示台；旧书签落到客户控制台原型
       path: "/demo",
-      name: "geo-demo-retired",
-      beforeEnter: () => redirectToConsole(),
+      redirect: { name: "geo-dashboard" },
     },
     {
       path: "/",
-      component: GeoShellLayout,
-      children: [{ path: "", name: "home", component: Home }],
+      component: MarketingSiteLayout,
+      children: [{ path: "", name: "trinity-geo", component: MarketingHomePage }],
     },
   ],
 });

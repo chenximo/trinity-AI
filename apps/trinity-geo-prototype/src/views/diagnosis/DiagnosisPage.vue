@@ -1,0 +1,281 @@
+<script setup lang="ts">
+import { useMarketingPageScripts } from "../shell/shellInteractions";
+import pageJs from "../../../marketing/js/diagnosis.js?raw";
+
+useMarketingPageScripts([pageJs]);
+</script>
+
+<template>
+<main v-pre class="geo-console-main">
+      <div class="geo-settings-layout">
+        <aside class="geo-settings-sidebar" aria-label="诊断子导航">
+          <p class="geo-settings-sidebar-title">诊断</p>
+          <nav class="geo-settings-nav">
+            <a href="./diagnosis.html" class="is-active" aria-current="page">诊断列表</a>
+            <a href="./audit.html">页面审计</a>
+            <a href="./audit-reports.html">审计报告</a>
+          </nav>
+        </aside>
+
+        <div class="geo-settings-content geo-diag-page">
+          <div class="dash-toolbar geo-settings-toolbar">
+            <div>
+              <p class="dash-section-label">④ 诊断</p>
+              <div class="geo-page-title-row">
+                <h1>诊断列表</h1>
+                <button
+                  type="button"
+                  class="geo-help-tip-btn geo-help-tip-btn--inline"
+                  data-geo-prototype-annotation
+                  data-geo-help-tpl="geo-help-tpl-diag-mock"
+                  data-geo-help-title="原型 · 规则与 Mock"
+                  aria-label="原型规则与 Mock 说明"
+                  aria-expanded="false"
+                  aria-controls="geo-help-tip-popover"
+                  title="说明"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 16v-4M12 8h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <p class="geo-diag-lead">
+                规则引擎解释「为什么没进答案 / 为什么落后」· 输入 = 测量标注 +（若有）<code>cited_urls</code> 信源盘 ·
+                动作见 <a href="./optimize.html">优化待办</a>
+              </p>
+            </div>
+            <div class="geo-settings-toolbar-actions">
+              <a href="./audit.html" class="geo-btn ghost">页面审计</a>
+              <a href="./optimize.html" class="geo-btn primary">优化待办</a>
+            </div>
+          </div>
+
+          <div class="geo-diag-scope-bar">
+            <p class="geo-form-hint geo-diag-scope-note">
+              粒度 <code>question × platform × round</code>；有引用链时叠加信源缺口 <strong>S1–S6</strong>。
+              列表按优先级排序；P0 样本 <strong>Q00 · D1</strong> 链 <a href="./answer-detail.html#cite-heading">回答信源盘</a>。
+            </p>
+          </div>
+
+          <p class="dash-section-label">开放诊断 · 汇总</p>
+          <div class="dash-kpi-row geo-diag-kpi">
+            <div class="geo-metric-card warn">
+              <div class="geo-metric-label">P0 待处理</div>
+              <div class="geo-metric-value">1</div>
+              <div class="geo-metric-delta">品类 / 对比失声</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">P1</div>
+              <div class="geo-metric-value">2</div>
+              <div class="geo-metric-delta">弱提及 / 叙事落后</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">开放诊断</div>
+              <div class="geo-metric-value">5</div>
+              <div class="geo-metric-delta">近 7 日 +2</div>
+            </div>
+            <div class="geo-metric-card neutral">
+              <div class="geo-metric-label">已关联优化</div>
+              <div class="geo-metric-value">4</div>
+              <div class="geo-metric-delta"><a href="./optimize.html">待办 →</a></div>
+            </div>
+          </div>
+
+          <section class="geo-diag-list-section" aria-labelledby="diag-list-heading">
+            <header class="geo-kw-list-head">
+              <div>
+                <h2 id="diag-list-heading">规则诊断</h2>
+                <p class="geo-kw-list-desc">
+                  D1–D5 由标注推导 · 信源缺口 S* 需 <code>cited_urls</code> ·
+                  <span id="diag-list-meta">5 条开放</span>
+                </p>
+              </div>
+            </header>
+
+            <div class="geo-kw-toolbar geo-diag-toolbar">
+              <div class="geo-kw-search">
+                <input type="search" id="diag-search" placeholder="搜索问题、Q ID…" aria-label="搜索诊断" />
+              </div>
+              <div class="geo-diag-filters geo-diag-type-filters" role="tablist" aria-label="诊断类型">
+                <button type="button" class="on" data-diag-filter="all" role="tab" aria-selected="true">全部</button>
+                <button type="button" data-diag-filter="d1" role="tab">D1</button>
+                <button type="button" data-diag-filter="d2" role="tab">D2</button>
+                <button type="button" data-diag-filter="d3" role="tab">D3</button>
+                <button type="button" data-diag-filter="d4" role="tab">D4</button>
+                <button type="button" data-diag-filter="d5" role="tab">D5</button>
+              </div>
+              <div class="geo-kw-status-filters geo-diag-priority-filters" role="tablist" aria-label="优先级">
+                <button type="button" class="on" data-diag-priority="all" role="tab" aria-selected="true">全部</button>
+                <button type="button" data-diag-priority="p0" role="tab">P0</button>
+                <button type="button" data-diag-priority="p1" role="tab">P1</button>
+                <button type="button" data-diag-priority="p2" role="tab">P2</button>
+              </div>
+              <span class="geo-kw-result-count" id="diag-result-count" aria-live="polite">显示 5 条</span>
+            </div>
+
+            <div class="geo-diag-spotlight" id="diag-q00" aria-label="P0 样本诊断">
+              <span class="dash-diag-priority p0">P0</span>
+              <span class="dash-diag-code d1">D1</span>
+              <span class="geo-diag-spotlight-title"><strong>Q00</strong> 品类失声 · 豆包</span>
+              <span class="geo-diag-spotlight-fact">16 参考链 · 我方域 0 · S1+S2+S3</span>
+              <span class="geo-diag-spotlight-links">
+                <a href="./answer-detail.html#cite-heading">信源盘</a>
+                <a href="./optimize.html#opt-s1s2">优化</a>
+              </span>
+            </div>
+
+            <div class="geo-kw-table-wrap geo-diag-table-wrap">
+              <table class="geo-kw-table geo-diag-table" id="diag-table">
+                <thead>
+                  <tr>
+                    <th scope="col">优先级</th>
+                    <th scope="col">规则</th>
+                    <th scope="col">问题</th>
+                    <th scope="col">平台</th>
+                    <th scope="col">缺口</th>
+                    <th scope="col">证据</th>
+                    <th scope="col"><span class="sr-only">操作</span></th>
+                  </tr>
+                </thead>
+                <tbody id="diag-tbody">
+                  <tr
+                    class="geo-diag-row geo-diag-row-p0"
+                    data-diag-type="d1"
+                    data-diag-priority="p0"
+                    data-search="q00 推荐两款 api 聚合平台 品类失声"
+                    id="diag-row-q00"
+                  >
+                    <td><span class="dash-diag-priority p0">P0</span></td>
+                    <td><span class="dash-diag-code d1">D1</span></td>
+                    <td class="geo-diag-q-cell">
+                      <a href="./keyword-detail.html" class="geo-diag-q-title">推荐两款 API 聚合平台</a>
+                      <span class="mono geo-diag-qid">Q00</span>
+                    </td>
+                    <td><span class="platform p-domestic">豆包</span></td>
+                    <td class="geo-diag-gaps">
+                      <span class="geo-diag-gap">S1</span>
+                      <span class="geo-diag-gap">S2</span>
+                      <span class="geo-diag-gap">S3</span>
+                    </td>
+                    <td class="geo-diag-evidence-cell">未提及 Trinity；16 链 0 我方域</td>
+                    <td class="geo-kw-actions">
+                      <a href="./answer-detail.html" class="geo-btn text">回答</a>
+                      <a href="./optimize.html#opt-s1s2" class="geo-btn text">优化</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-diag-row" data-diag-type="d4" data-diag-priority="p1" data-search="q06 trinity openrouter 国内开发者 叙事">
+                    <td><span class="dash-diag-priority p1">P1</span></td>
+                    <td><span class="dash-diag-code d4">D4</span></td>
+                    <td class="geo-diag-q-cell">
+                      <a href="./keyword-detail.html?q=Q06" class="geo-diag-q-title">Trinity 和 OpenRouter 哪个更适合国内开发者？</a>
+                      <span class="mono geo-diag-qid">Q06</span>
+                    </td>
+                    <td><span class="platform p-domestic">豆包</span></td>
+                    <td class="geo-diag-gaps"><span class="geo-muted">—</span></td>
+                    <td class="geo-diag-evidence-cell">竞品首推 OpenRouter，我方仅末段提及</td>
+                    <td class="geo-kw-actions">
+                      <a href="./keyword-detail.html?q=Q06" class="geo-btn text">问题</a>
+                      <a href="./optimize.html#opt-d4" class="geo-btn text">优化</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-diag-row" data-diag-type="d3" data-diag-priority="p1" data-search="q02 trinitydesk 弱提及">
+                    <td><span class="dash-diag-priority p1">P1</span></td>
+                    <td><span class="dash-diag-code d3">D3</span></td>
+                    <td class="geo-diag-q-cell">
+                      <a href="./keyword-detail.html?q=Q02" class="geo-diag-q-title">trinitydesk.ai 是什么平台？</a>
+                      <span class="mono geo-diag-qid">Q02</span>
+                    </td>
+                    <td><span class="platform p-domestic">DeepSeek</span></td>
+                    <td class="geo-diag-gaps"><span class="geo-muted">—</span></td>
+                    <td class="geo-diag-evidence-cell">品牌名脚注式一句，未进推荐段</td>
+                    <td class="geo-kw-actions">
+                      <a href="./keyword-detail.html?q=Q02" class="geo-btn text">问题</a>
+                      <a href="./optimize.html#opt-d3" class="geo-btn text">优化</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-diag-row" data-diag-type="d2" data-diag-priority="p2" data-search="q01 trinity ai 好用 未识别">
+                    <td><span class="dash-diag-priority p2">P2</span></td>
+                    <td><span class="dash-diag-code d2">D2</span></td>
+                    <td class="geo-diag-q-cell">
+                      <a href="./answer-detail-brand.html" class="geo-diag-q-title">Trinity AI 好用吗？</a>
+                      <span class="mono geo-diag-qid">Q01</span>
+                    </td>
+                    <td><span class="platform p-domestic">元宝</span></td>
+                    <td class="geo-diag-gaps"><span class="geo-muted">—</span></td>
+                    <td class="geo-diag-evidence-cell">讨论 API 网关但未映射 Trinity 实体</td>
+                    <td class="geo-kw-actions">
+                      <a href="./brand-settings.html" class="geo-btn text">别名</a>
+                      <a href="./optimize.html#opt-d2" class="geo-btn text">优化</a>
+                    </td>
+                  </tr>
+                  <tr class="geo-diag-row" data-diag-type="d5" data-diag-priority="p2" data-search="q03 openai 兼容 市场割裂">
+                    <td><span class="dash-diag-priority p2">P2</span></td>
+                    <td><span class="dash-diag-code d5">D5</span></td>
+                    <td class="geo-diag-q-cell">
+                      <a href="./keyword-detail.html?q=Q03" class="geo-diag-q-title">国内 OpenAI 兼容 API 聚合</a>
+                      <span class="mono geo-diag-qid">Q03</span>
+                    </td>
+                    <td class="geo-diag-platform-split">ChatGPT 24% · 豆包 12%</td>
+                    <td class="geo-diag-gaps"><span class="geo-diag-gap">S6</span></td>
+                    <td class="geo-diag-evidence-cell">海内外叙事不一致，国内引用国产竞品为主</td>
+                    <td class="geo-kw-actions">
+                      <a href="./keyword-detail.html?q=Q03" class="geo-btn text">问题</a>
+                      <a href="./optimize.html" class="geo-btn text">优化</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="geo-kw-empty" id="diag-empty" hidden>没有匹配的诊断，试试调整筛选或搜索。</p>
+            </div>
+          </section>
+
+          <details class="geo-diag-rules-details">
+            <summary>规则速查 · D1–D5 与信源缺口 S1–S4</summary>
+            <div class="geo-diag-rules-grid">
+              <div class="geo-kw-table-wrap">
+                <table class="geo-kw-table geo-diag-rules-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>条件</th>
+                      <th>结论</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="dash-diag-code d1">D1</span></td><td>品牌未提及且竞品进答案</td><td>品类失声</td></tr>
+                    <tr><td><span class="dash-diag-code d2">D2</span></td><td>品牌问法未识别</td><td>别名/收录</td></tr>
+                    <tr><td><span class="dash-diag-code d3">D3</span></td><td>提及但未进正文</td><td>弱提及</td></tr>
+                    <tr><td><span class="dash-diag-code d4">D4</span></td><td>末段提及且竞品首推</td><td>叙事落后</td></tr>
+                    <tr><td><span class="dash-diag-code d5">D5</span></td><td>海内外 SOA 显著差</td><td>市场割裂</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="geo-kw-table-wrap">
+                <table class="geo-kw-table">
+                  <thead>
+                    <tr>
+                      <th>缺口</th>
+                      <th>条件</th>
+                      <th>典型动作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="geo-diag-gap">S1</span></td><td>参考盘无我方域</td><td>建官方文档树</td></tr>
+                    <tr><td><span class="geo-diag-gap">S2</span></td><td>竞品官方链占多数</td><td>对标 /docs</td></tr>
+                    <tr><td><span class="geo-diag-gap">S3</span></td><td>第三方评测定型</td><td>公域渗透</td></tr>
+                    <tr><td><span class="geo-diag-gap">S4</span></td><td>有页不可引</td><td><a href="./audit.html">页面审计</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+
+          <p class="dash-proto-link">
+            诊断列表原型 v0.2 ·
+            <a href="./diagnosis.md">产品解读</a>
+          </p>
+        </div>
+      </div>
+    </main>
+</template>

@@ -1,0 +1,24 @@
+/** 通知与告警 · 增量样式 */
+
+.geo-settings-notifications-page .geo-settings-nav a.router-link-active,
+.geo-settings-notifications-page .geo-settings-nav a.is-active {
+  font-weight: 600;
+}
+
+.geo-settings-notifications-page .geo-settings-callout a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-settings-notifications-page .geo-settings-callout a:hover {
+  text-decoration: underline;
+}
+
+.geo-notify-item p a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-notify-item p a:hover {
+  text-decoration: underline;
+}

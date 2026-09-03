@@ -7,7 +7,8 @@ import vue from "@vitejs/plugin-vue";
 import UnoCSS from "unocss/vite";
 
 const repoRoot = fileURLToPath(new URL("../..", import.meta.url));
-const geoMarketingRoot = fileURLToPath(new URL("./marketing", import.meta.url));
+const geoMarketingRoot = fileURLToPath(new URL("../trinity-geo-prototype/marketing", import.meta.url));
+const watchPoll = process.env.VITE_WATCH_POLL === "1";
 
 const MIME: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
@@ -16,34 +17,8 @@ const MIME: Record<string, string> = {
   ".svg": "image/svg+xml",
 };
 
-function repoPackagesStatic(): Plugin {
-  const prefix = "/packages/tokens/src";
-  const tokensRoot = path.join(repoRoot, "packages/tokens/src");
-  const handler: Connect.NextHandleFunction = (req, res, next) => {
-    const raw = req.url?.split("?")[0] ?? "";
-    if (!raw.startsWith(prefix)) return next();
-    const rel = decodeURIComponent(raw.slice(prefix.length).replace(/^\//, ""));
-    const file = path.normalize(path.join(tokensRoot, rel));
-    if (!file.startsWith(tokensRoot) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-      res.statusCode = 404;
-      res.end("Not found");
-      return;
-    }
-    res.setHeader("Content-Type", MIME[path.extname(file)] ?? "application/octet-stream");
-    fs.createReadStream(file).pipe(res);
-  };
-  return {
-    name: "repo-packages-tokens-static",
-    configureServer(server) {
-      server.middlewares.use(handler);
-    },
-    configurePreviewServer(server) {
-      server.middlewares.use(handler);
-    },
-  };
-}
-
-function geoMarketingStatic(): Plugin {
+/** 开发态托管 HTML 原型（只读对照），真源在 trinity-geo-prototype */
+function geoPrototypeMarketingStatic(): Plugin {
   const prefix = "/__geo_marketing";
   const handler: Connect.NextHandleFunction = (req, res, next) => {
     const raw = req.url?.split("?")[0] ?? "";
@@ -60,7 +35,7 @@ function geoMarketingStatic(): Plugin {
     fs.createReadStream(file).pipe(res);
   };
   return {
-    name: "geo-marketing-static",
+    name: "geo-prototype-marketing-static",
     configureServer(server) {
       server.middlewares.use(handler);
     },
@@ -71,6 +46,20 @@ function geoMarketingStatic(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [vue(), UnoCSS(), repoPackagesStatic(), geoMarketingStatic()],
-  server: { port: 5203 },
+  plugins: [UnoCSS(), vue(), geoPrototypeMarketingStatic()],
+  server: {
+    port: 5203,
+    strictPort: true,
+    headers: { "Cache-Control": "no-store" },
+    fs: { allow: [repoRoot] },
+    watch: {
+      followSymlinks: true,
+      ignored: ["**/node_modules/**", "**/dist/**"],
+      ...(watchPoll ? { usePolling: true, interval: 300 } : {}),
+    },
+  },
+  preview: { port: 5203, strictPort: true },
+  resolve: {
+    alias: { "@repo": repoRoot },
+  },
 });

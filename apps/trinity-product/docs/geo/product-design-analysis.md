@@ -79,7 +79,7 @@ title: 产品设计分析
 ### 0.6 可见性分层模型 {#visibility-layers}
 
 > **真源**：从「答案里有没有我」追到「信源盘里为什么没有我」，再落到可执行优化与 R2 验证。  
-> **工程落点**：[技术架构 · 测量与标注](./tech-architecture#measurement-soa)、`cited_urls` 采集；**样本**：[MVP 实践手册](./mvp-practice) 阶段 ④⑤⑥；**界面**：[回答详情](../../../trinity-geo/marketing/console/answer-detail.md)、[诊断列表](../../../trinity-geo/marketing/console/diagnosis.md)、[优化待办](../../../trinity-geo/marketing/console/optimize.md)。
+> **工程落点**：[技术架构 · 测量与标注](./tech-architecture#measurement-soa)、`cited_urls` 采集；**样本**：[MVP 实践手册](./mvp-practice) 阶段 ④⑤⑥；**界面**：[回答详情](../../../trinity-geo-prototype/marketing/console/answer-detail.md)、[诊断列表](../../../trinity-geo-prototype/marketing/console/diagnosis.md)、[优化待办](../../../trinity-geo-prototype/marketing/console/optimize.md)。
 
 #### 0.6.1 为什么需要分层
 
@@ -119,7 +119,7 @@ title: 产品设计分析
 #### 0.6.2a 采集 → 引用页数据流 {#citation-data-pipeline}
 
 > **原子单位**：一条 `raw_answer` = `question_id` × **`platform`** × `round`。  
-> **平台维度**：自采集任务起**每条链路都绑定平台**；引用页读口在「单条下钻」与「跨平台 rollup」之间切换，**不是整条流程都不分平台**。工程字段见 [技术架构 · 参考来源采集](./tech-architecture#cited-sources)；控制台落点见 [引用与信源 PRD](../../../trinity-geo/marketing/console/citations.md)。
+> **平台维度**：自采集任务起**每条链路都绑定平台**；引用页读口在「单条下钻」与「跨平台 rollup」之间切换，**不是整条流程都不分平台**。工程字段见 [技术架构 · 参考来源采集](./tech-architecture#cited-sources)；控制台落点见 [引用与信源 PRD](../../../trinity-geo-prototype/marketing/console/citations.md)。
 
 ```mermaid
 flowchart LR
@@ -331,7 +331,7 @@ flowchart LR
 | **任务化** | Peec Actions、Profound Opportunities | **P0**：`D* + S* + 对标 URL` 行动清单（如 openrouter.ai/docs） |
 | **LLM 起草** | 简报、FAQ、对比表、着陆页结构 | **P1**：从 P0 诊断一键生成待办草稿、doc 目录对标大纲（**人审后发布**） |
 | **Agent 执行** | 自动写稿 → CMS → 再测 | **P2**；合规与品牌风险高，默认人审或企业版 |
-| **验收** | 多为 SOA / 可见性 Δ | **⑤ 验证**：**信源盘 Δ 先于 SOA Δ**（见 [效果验证 PRD](../../../trinity-geo/marketing/console/verify.md)） |
+| **验收** | 多为 SOA / 可见性 Δ | **⑤ 验证**：**信源盘 Δ 先于 SOA Δ**（见 [效果验证 PRD](../../../trinity-geo-prototype/marketing/console/verify.md)） |
 
 [MVP 实践手册 §⑤](./mvp-practice) 明确：实践版求 **「1 小时内改完 1–2 项」**，不求 AI 自动生成一堆空泛建议——与 Peec Actions 的「可执行任务」哲学一致，但须绑定 **信源依据链**。
 
@@ -369,7 +369,7 @@ flowchart LR
 | 架构分层（规则 vs LLM） | [业务全景 · 系统分层](./business-landscape) |
 | SOA 主实现 | [技术架构 · 测量](./tech-architecture#measurement-soa) |
 | 闭环样本（D*+S*+R2） | [MVP 实践手册](./mvp-practice) |
-| 控制台落地 | [诊断](./../../../trinity-geo/marketing/console/diagnosis.md)、[优化](./../../../trinity-geo/marketing/console/optimize.md)、[验证](./../../../trinity-geo/marketing/console/verify.md) |
+| 控制台落地 | [诊断](./../../../trinity-geo-prototype/marketing/console/diagnosis.md)、[优化](./../../../trinity-geo-prototype/marketing/console/optimize.md)、[验证](./../../../trinity-geo-prototype/marketing/console/verify.md) |
 
 ---
 
@@ -739,9 +739,9 @@ AI 爬虫适配技术         监测/审计 SaaS         GEO 代运营服务
 | 多平台 AI 可见性监测 | §0.3：海外 5 + 国内 5 | [监测模块](./v1-prototype-pages#二用户控制台约-18-页)（页 2–5） |
 | SOA（答案份额）仪表板 | 趋势、平台分布 | [Dashboard](./v1-prototype-pages#21-首页仪表板1-页)（页 1） |
 | 竞品 GEO 对比 | 同题 SOA、信源下钻 | [竞品模块](./v1-prototype-pages#23-竞品模块3-页)（页 7–8） |
-| 规则诊断 D* | D1–D5 + 链到问题/回答 | [诊断列表](../../../trinity-geo/marketing/console/diagnosis.md) |
-| 优化待办 | D* + S* + 对标 URL | [优化待办](../../../trinity-geo/marketing/console/optimize.md) |
-| 效果验证 | R1→R2 信源盘 Δ + SOA Δ | [效果验证](../../../trinity-geo/marketing/console/verify.md) |
+| 规则诊断 D* | D1–D5 + 链到问题/回答 | [诊断列表](../../../trinity-geo-prototype/marketing/console/diagnosis.md) |
+| 优化待办 | D* + S* + 对标 URL | [优化待办](../../../trinity-geo-prototype/marketing/console/optimize.md) |
+| 效果验证 | R1→R2 信源盘 Δ + SOA Δ | [效果验证](../../../trinity-geo-prototype/marketing/console/verify.md) |
 | 品牌 / 策略配置 | 问题集、竞品、别名 | [设置模块](./v1-prototype-pages#27-设置模块3-页) |
 | 官网获客 + 试用 | — | [官网](./v1-prototype-pages#一官网约-8-页) |
 | 运营后台（用户 / 采集监控） | — | [运营后台](./v1-prototype-pages#三运营后台约-7-页) |

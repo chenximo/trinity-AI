@@ -7,7 +7,7 @@ title: GEO MVP 实践手册
 > **用途**：用 **1 个品牌、1–2 个 AI 平台、10–20 个问题**，亲手跑通 GEO **全链路**，用于对内对齐、对外演示、以及后续商用产品规划。  
 > **定位**：与 [产品设计分析](./product-design-analysis) 同源（**可见性分层 ⓪–⑤ 见 [§0.6](./product-design-analysis#visibility-layers)**）；与 [原型页面清单](./v1-prototype-pages) 的商用界面对应——本文强调 **可跑通的最薄全链路**。  
 > **不含**：定价、套餐、付费转化（商用规划另文）。  
-> **控制台原型**：`apps/trinity-geo/marketing/console/`（六环页面树）。
+> **控制台原型**：`apps/trinity-geo-prototype/marketing/console/`（六环页面树）。
 
 ---
 
@@ -26,7 +26,7 @@ title: GEO MVP 实践手册
 | AI 平台 | **2 个**（建议 ChatGPT + 豆包） | 海外 5 + 国内 5 |
 | 品牌 | **1 个** + **2 个竞品** | 多品牌、多租户 |
 | 问题集 | **10–20 条**真实用户问法 | 上百关键词 + 自动扩展 |
-| 采集 | **人工提供豆包回答（3～5 条即可）**；自动采集交工程师（见 [执行包 · COLLECTION-TBD](../../../trinity-geo/mvp/COLLECTION-TBD.md)） | 每日定时 + 存档 + 截图 |
+| 采集 | **人工提供豆包回答（3～5 条即可）**；自动采集交工程师（见 [执行包 · COLLECTION-TBD](../../../trinity-geo-prototype/mvp/COLLECTION-TBD.md)） | 每日定时 + 存档 + 截图 |
 | 诊断 | **规则表**（3–5 条） | 审计引擎 + 证据密度模型 |
 | 优化 | **人工改 1–2 处内容** + 待办勾选 | 证据块生成、CMS 集成 |
 | 验证 | **第二轮提问**对比 SOA | 自动周期采集 + 时间线 |
@@ -210,7 +210,7 @@ GEO 系统 = **六环运营闭环** 的产品化（与清华报告同源）：
 
 #### 3.2 计算 SOA（Sheet `03_SOA汇总`）
 
-> **商用实现**：**规则引擎 + 别名库 + 时序库** 为主（非 LLM 打分）。架构见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)；演示 `apps/trinity-geo/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
+> **商用实现**：**规则引擎 + 别名库 + 时序库** 为主（非 LLM 打分）。架构见 [技术架构 · 测量与 SOA](./tech-architecture#measurement-soa)；演示 `apps/trinity-geo-prototype/mvp/scripts/analyze.mjs`、`mvp/config/brand.json`。
 
 **公式**：
 
@@ -562,7 +562,7 @@ re-run same questions with round=R2
 
 ### A.8 Q00 · 豆包参考链接真源（样本）
 
-问法：**推荐两款 API 聚合平台** · 平台：豆包 · R1 · 机器可读：[cited_sources.json](../../../trinity-geo/mvp/data/r1/cited_sources.json)
+问法：**推荐两款 API 聚合平台** · 平台：豆包 · R1 · 机器可读：[cited_sources.json](../../../trinity-geo-prototype/mvp/data/r1/cited_sources.json)
 
 **统计**：参考链接 **16** · 我方域 **0** · 缺口 **S1 + S2 + S3** · 症状 **D1**
 

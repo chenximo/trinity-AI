@@ -81,7 +81,7 @@ title: 技术架构分析
 
 #### 2.1.3 品牌提取与识别 {#measurement-soa}
 
-> **主实现方案（共识）**：**规则引擎 + 别名库 + 时序库** 为主；NER/LLM 为可选增强。业务全景见 [GEO 业务全景 · ③ 测量](./business-landscape#measurement-soa-impl)；演示代码 `apps/trinity-geo/mvp/scripts/analyze.mjs`。
+> **主实现方案（共识）**：**规则引擎 + 别名库 + 时序库** 为主；NER/LLM 为可选增强。业务全景见 [GEO 业务全景 · ③ 测量](./business-landscape#measurement-soa-impl)；演示代码 `apps/trinity-geo-prototype/mvp/scripts/analyze.mjs`。
 
 **三件套分工**：
 
@@ -154,7 +154,7 @@ raw_answer（采集库）
 | `brand_domain_hits` | 我方域在 `cited_urls` 中的条数 |
 | `gap_type` | 归因 S1–S6（规则或人工） |
 
-**样本数据**：`apps/trinity-geo/mvp/data/r1/cited_sources.json`（Q00 · 16 链 · 0 我方域）。
+**样本数据**：`apps/trinity-geo-prototype/mvp/data/r1/cited_sources.json`（Q00 · 16 链 · 0 我方域）。
 
 **存储**：与 `raw_answers` 同行或 `answer_citations` 子表；回答详情页展示信源盘 M/N。
 
@@ -165,12 +165,12 @@ raw_answer（采集库）
 | 采集库 `raw_answers` | 全文、截图、platform、round、`cited_urls` | ② 写入；③ 只读 |
 | 标注库 `annotations` | 单条标注字段 | 规则引擎输出 |
 | 别名库 `entity_aliases` | 品牌/竞品别名 | ① 配置同步 |
-| 问题集 `monitoring_questions` | 监测问法、类型、启用状态 | ① 配置；② 采集任务输入；[问题集 PRD](../../../trinity-geo/marketing/console/keywords.md) |
+| 问题集 `monitoring_questions` | 监测问法、类型、启用状态 | ① 配置；② 采集任务输入；[问题集 PRD](../../../trinity-geo-prototype/marketing/console/keywords.md) |
 | 时序库 `metric_snapshots` | SOA 等聚合结果 | ③ 写入；⑥ Dashboard/告警读取 |
 
 #### 2.1.3a 控制台配置同步与历史重算 {#alias-sync-recalc}
 
-> **产品需求真源（本页）**：[品牌设置 PRD](../../../trinity-geo/marketing/console/brand-settings.md) §8–§9。  
+> **产品需求真源（本页）**：[品牌设置 PRD](../../../trinity-geo-prototype/marketing/console/brand-settings.md) §8–§9。  
 > 控制台「品牌设置」保存的是 **配置**；SOA 数字在 **标注库 + 时序库**，二者通过同步与重算衔接。
 
 **配置写入（保存品牌设置）**：

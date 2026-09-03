@@ -1,0 +1,23 @@
+/** 优化待办页增量样式 */
+
+.geo-opt-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-opt-title {
+  text-decoration: none;
+}
+
+.geo-opt-spotlight-links a,
+.geo-opt-kpi .geo-metric-delta a,
+.geo-opt-scope-note a {
+  text-decoration: none;
+}
+
+.geo-opt-scope-note a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-opt-scope-note a:hover {
+  text-decoration: underline;
+}

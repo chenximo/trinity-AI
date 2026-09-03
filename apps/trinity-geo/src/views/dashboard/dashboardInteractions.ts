@@ -1,20 +1,26 @@
 import { computed, onMounted, ref } from "vue";
 import type { MarketFilter, Period } from "./mock";
-import { platforms as allPlatforms } from "./mock";
+import { periodLabels, platforms as allPlatforms } from "./mock";
 
-const SOA_TIP_KEY = "geo_soa_tip_seen";
 const ONBOARD_KEY = "geo_dash_onboard_done";
 
 export function useDashboardInteractions() {
   const market = ref<MarketFilter>("all");
   const period = ref<Period>("week");
-  const showSoaTip = ref(false);
   const showOnboard = ref(false);
 
   const filteredPlatforms = computed(() => {
     if (market.value === "all") return allPlatforms;
     return allPlatforms.filter((p) => p.market === market.value);
   });
+
+  const overseasPlatforms = computed(() => filteredPlatforms.value.filter((p) => p.market === "overseas"));
+  const domesticPlatforms = computed(() => filteredPlatforms.value.filter((p) => p.market === "domestic"));
+
+  const showOverseas = computed(() => market.value === "all" || market.value === "overseas");
+  const showDomestic = computed(() => market.value === "all" || market.value === "domestic");
+
+  const periodLabel = computed(() => periodLabels[period.value]);
 
   function setMarket(next: MarketFilter) {
     market.value = next;
@@ -24,13 +30,16 @@ export function useDashboardInteractions() {
     period.value = next;
   }
 
-  function dismissSoaTip() {
-    showSoaTip.value = false;
-    try {
-      localStorage.setItem(SOA_TIP_KEY, "1");
-    } catch {
-      /* private mode */
+  function kpiCardClass(tone: string) {
+    if (market.value === "all") return {};
+    const m = tone === "overseas" ? "overseas" : tone === "domestic" ? "domestic" : "all";
+    if (m === "all") {
+      return { "is-dim": false, "is-highlight": false };
     }
+    return {
+      "is-dim": m !== market.value,
+      "is-highlight": m === market.value,
+    };
   }
 
   function dismissOnboard() {
@@ -44,10 +53,8 @@ export function useDashboardInteractions() {
 
   onMounted(() => {
     try {
-      showSoaTip.value = localStorage.getItem(SOA_TIP_KEY) !== "1";
       showOnboard.value = localStorage.getItem(ONBOARD_KEY) !== "1";
     } catch {
-      showSoaTip.value = true;
       showOnboard.value = true;
     }
   });
@@ -55,12 +62,24 @@ export function useDashboardInteractions() {
   return {
     market,
     period,
-    showSoaTip,
     showOnboard,
     filteredPlatforms,
+    overseasPlatforms,
+    domesticPlatforms,
+    showOverseas,
+    showDomestic,
+    periodLabel,
     setMarket,
     setPeriod,
-    dismissSoaTip,
+    kpiCardClass,
     dismissOnboard,
   };
 }
+
+function freshClass(fresh: string) {
+  if (fresh === "today") return "today";
+  if (fresh === "stale") return "stale";
+  return "old";
+}
+
+export { freshClass };

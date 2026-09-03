@@ -1,0 +1,35 @@
+/** 优化详情页增量样式 */
+
+.geo-opt-detail-page .geo-settings-nav a.router-link-active {
+  font-weight: inherit;
+}
+
+.geo-opt-detail-page .dash-section-label a,
+.geo-opt-links a,
+.geo-metric-delta a,
+.geo-settings-callout a {
+  text-decoration: none;
+}
+
+.geo-opt-detail-page .dash-toolbar-meta a {
+  color: var(--indigo-500, #6366f1);
+}
+
+.geo-opt-detail-page .dash-toolbar-meta a:hover,
+.geo-opt-links a:hover,
+.geo-metric-delta a:hover {
+  text-decoration: underline;
+}
+
+.geo-report-preview-list a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.geo-report-preview-list a:hover {
+  text-decoration: underline;
+}
+
+.geo-mon-kpi .geo-metric-value {
+  font-size: 1rem;
+}

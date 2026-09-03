@@ -1,0 +1,78 @@
+/**
+ * Vue 交付工程 · 样式桥接
+ * 保证 RouterLink（渲染为 <a>）与 <button> 替换的原型节点视觉一致。
+ */
+
+/* RouterLink 作按钮 / 卡片 */
+a.geo-btn,
+a.geo-read-hub-card,
+a.geo-console-logo,
+a.geo-console-account {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.geo-btn.ghost,
+a.geo-btn.primary {
+  color: inherit;
+}
+
+a.geo-btn.primary {
+  color: #fff;
+}
+
+a.geo-btn.text {
+  color: var(--indigo-500, #6366f1);
+}
+
+a.geo-btn.text.danger {
+  color: var(--danger);
+}
+
+/* 侧栏与子导航 */
+.geo-settings-nav a,
+.geo-console-nav a.router-link-active {
+  text-decoration: none;
+}
+
+/* 类型分布 chip：原型为 <span>，Vue 可用 <button> 但须去默认样式 */
+.geo-kw-type-summary button.dash-strategy-tag {
+  margin: 0;
+  border: 0;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.geo-kw-type-summary button.dash-strategy-tag.on {
+  background: var(--purple-soft);
+  color: var(--indigo-600, var(--indigo-500));
+}
+
+/* 表格内链接 */
+.geo-kw-table a.geo-kw-text,
+.dash-comp-table a,
+.dash-answer-kw {
+  text-decoration: none;
+}
+
+.dash-toolbar-meta a,
+.dash-ccr-legend a,
+.geo-related-links a {
+  color: var(--indigo-500, #6366f1);
+  text-decoration: none;
+}
+
+.dash-toolbar-meta a:hover,
+.dash-ccr-legend a:hover {
+  text-decoration: underline;
+}
+
+/* Toast 可见态（原型 JS 切换 class） */
+.geo-toast[hidden] {
+  display: none !important;
+}
+
+.geo-toast.is-visible {
+  display: block;
+}
