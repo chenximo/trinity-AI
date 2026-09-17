@@ -4,8 +4,8 @@
   "modality": "image",
   "fxCnyPerUsd": 7.25,
   "fxNote": "FX_LISTING(默认7.25)用于部分 cascade；国内刊例 V1/V2 回退路径使用 FX_LEGACY_065=6.5，见刊例策略-V1-V2",
-  "fetchedAt": "2026-08-27T06:42:12.411Z",
-  "modelCount": 9,
+  "fetchedAt": "2026-09-08T09:16:00.353Z",
+  "modelCount": 7,
   "object": "list",
   "data": [
     {
@@ -140,70 +140,6 @@
     },
     {
       "object": "model_prices",
-      "model": "gpt-image-2-discount",
-      "display_name": "GPT Image 2 Discount",
-      "modality_type": "image",
-      "charge_unit": "image_count",
-      "pricing_mode": "image_tiered",
-      "currency": "USD",
-      "price_unit": "per_image",
-      "price_groups": [
-        {
-          "type": "resolution_tier",
-          "label": "1k",
-          "conditions_summary": "1k",
-          "conditions": {
-            "pricing_tier": "1k",
-            "resolution_tier": "1k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.06",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.06 / 张"
-            }
-          }
-        },
-        {
-          "type": "resolution_tier",
-          "label": "2k",
-          "conditions_summary": "2k",
-          "conditions": {
-            "pricing_tier": "2k",
-            "resolution_tier": "2k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.06",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.06 / 张"
-            }
-          }
-        },
-        {
-          "type": "resolution_tier",
-          "label": "4k",
-          "conditions_summary": "4k",
-          "conditions": {
-            "pricing_tier": "4k",
-            "resolution_tier": "4k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.06",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.06 / 张"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-08-25T03:00:15.971132Z"
-    },
-    {
-      "object": "model_prices",
       "model": "grok-imagine-image-pro",
       "display_name": "Grok Imagine Image Pro",
       "modality_type": "image",
@@ -295,73 +231,6 @@
         }
       ],
       "updated_at": "2026-08-25T08:52:00.002089Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen-0925",
-      "display_name": "Qwen-0925",
-      "modality_type": "image",
-      "charge_unit": "image_count",
-      "pricing_mode": "image_tiered",
-      "currency": "USD",
-      "price_unit": "per_image",
-      "price_groups": [
-        {
-          "type": "resolution_tier",
-          "label": "1k",
-          "conditions_summary": "1k",
-          "conditions": {
-            "variant": "-",
-            "pricing_tier": "1k",
-            "resolution_tier": "1k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.0385",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.0385 / 张"
-            }
-          }
-        },
-        {
-          "type": "resolution_tier",
-          "label": "4k",
-          "conditions_summary": "4k",
-          "conditions": {
-            "variant": "-",
-            "pricing_tier": "4k",
-            "resolution_tier": "4k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.0385",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.0385 / 张"
-            }
-          }
-        },
-        {
-          "type": "resolution_tier",
-          "label": "2k",
-          "conditions_summary": "2k",
-          "conditions": {
-            "variant": "-",
-            "pricing_tier": "2k",
-            "resolution_tier": "2k"
-          },
-          "prices": {
-            "unit": {
-              "amount": "0.0385",
-              "currency": "USD",
-              "unit": "per_image",
-              "display": "$0.0385 / 张"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-08T16:00:00Z"
     },
     {
       "object": "model_prices",

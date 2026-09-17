@@ -240,6 +240,24 @@
     border: 1.6px solid var(--cyan);
     color: var(--cyan);
   }
+  .card.ai .chip.chip--hot {
+    color: #fff;
+    border: 0;
+    background: linear-gradient(120deg, #00c2f7, #22d3ee 40%, #2563eb);
+    padding-right: 8mm;
+  }
+  .card.ai .chip.chip--hot::after {
+    content: "热";
+    display: inline-block;
+    margin-left: 4mm;
+    padding: 1mm 3.5mm;
+    border-radius: 999px;
+    font-size: 9mm;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #0c4a6e;
+    background: rgba(255, 255, 255, 0.92);
+  }
 
   .closer {
     margin-top: auto;
@@ -450,10 +468,10 @@
                 <span class="chip">GLM</span>
                 <span class="chip">DeepSeek</span>
                 <span class="chip">Qwen</span>
-                <span class="chip">Hailuo</span>
+                <span class="chip chip--hot">Seedance</span>
                 <span class="chip">Kling</span>
+                <span class="chip">Hailuo</span>
                 <span class="chip">MiniMax</span>
-                <span class="chip">Seedance</span>
                 <span class="chip">100+ 款模型</span>
               </div>
             </section>

@@ -1,4 +1,4 @@
-# routes-live · 2026-08-28
+# routes-live · 2026-09-08
 
 来源：`GET /v1/admin/model-supply-routes/export?enabled=true&modalityType=<text|image|video>`
 API: `https://trinityadm.trinitydesk.ai/api`

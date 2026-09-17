@@ -24,6 +24,7 @@ python3 scripts/build_outward_quote_standard.py
 | `sync_hehe_discount_models.py` | `custom-quotes/Trinity模型报价表_hehe.xlsx` |
 | `build_overseas_three_vendor_quote.py` | `custom-quotes/Trinity模型报价表_海外三家定制.xlsx` |
 | `build_flagship_cost_plus05_quote.py` | `custom-quotes/Trinity模型报价表_主力模型定制.xlsx` |
+| `build_openai_custom_quote.py` | `custom-quotes/Trinity模型报价表_OpenAI定制.xlsx`（客户指定模型，列同对外报价表） |
 
 共用：`custom_quote_workbook.py`（表头/UI）、`xlsx_wechat_compat.py`（微信发文件兼容）。
 

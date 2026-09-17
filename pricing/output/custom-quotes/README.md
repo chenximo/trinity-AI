@@ -7,6 +7,7 @@
 | `Trinity模型报价表_hehe.xlsx` | `scripts/sync_hehe_discount_models.py` | hehe 客户定制折扣 |
 | `Trinity模型报价表_主力模型定制.xlsx` | `scripts/build_flagship_cost_plus05_quote.py` | 主力模型 · 商务总表 ≥$50k +0.5 |
 | `Trinity模型报价表_海外三家定制.xlsx` | `scripts/build_overseas_three_vendor_quote.py` | Claude / GPT / Gemini 海外询价 |
+| `Trinity模型报价表_OpenAI定制.xlsx` | `scripts/build_openai_custom_quote.py` | 客户指定模型（gpt-5.6-sol/terra/luna · gpt-image-2），列同对外报价表 |
 
 共用 UI 与写入逻辑：`scripts/custom_quote_workbook.py`。
 
