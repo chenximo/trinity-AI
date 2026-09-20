@@ -6,7 +6,7 @@ title: 销售套件（Sales Kit）· 七件套与 PM 交付重点
 
 > **文档类型**：商用计费 · **销售对外物料包**规格（业界七件套对照 · 缺口 · **PM 必须提供什么**）。  
 > **读者**：产品经理（主责口径与清单）、商务/销售、市场、法务（协议审阅）。  
-> **关联**：[计费策略目录树](./billing-strategy-map) · [官网 Pricing 营销总册](./pricing-marketing-strategy) · [场景 Playlist](./marketing-scene-playlist) · [商务洽谈折扣总表](./discount-tier-matrix) · [证据链](./pricing-strategy-evidence-chain) · [新人试用](./new-user-trial-scheme) · [Deck 大纲](./sales-deck-outline) · [案例/场景示意](./case-studies) · 展会物料 `marketing/poster-100x200/` · [法务总览](../../legal/)  
+> **关联**：[计费策略目录树](./billing-strategy-map) · [官网 Pricing 营销总册](./pricing-marketing-strategy) · [场景 Playlist](./marketing-scene-playlist) · [商务洽谈折扣总表](./discount-tier-matrix) · [证据链](./pricing-strategy-evidence-chain) · [新人试用](./new-user-trial-scheme) · [Deck 大纲](./sales-deck-outline) · [案例/场景示意](./case-studies) · 展会物料 `marketing/销售真源/展会印刷/` · [法务总览](../../legal/)  
 > **状态**：**讨论收敛 · 可作补齐 backlog**（成品物料多数待建）  
 > **日期**：2026-07-27
 
@@ -25,7 +25,7 @@ PM 重点 = 口径真源 + 七件内容骨架 + 红线（深折不上网）+ 缺
 ```text
 早期不强制做两份独立物料
 业界 #1 一页通 + #2 画册 → 合并为「主宣传件」
-主宣传件 = 现有 A4 双面宣传单（marketing/poster-100x200/）
+主宣传件 = 现有 A4 双面宣传单（marketing/销售真源/展会印刷/）
 站台海报 = 展会视觉，不替代 A4，也不另做画册
 出现拆分信号（冷触达只要极短页 / 采购要正式 Brochure）再拆
 ```
@@ -92,16 +92,16 @@ A4 印刷件、站台海报、名片；宣讲用 Deck。
 
 | # | 件 | 状态 | 已有 / 做法 | 还缺什么 |
 |---|-----|:----:|-------------|----------|
-| 1+2 | **主宣传件**（一页通∪画册） | ✅ | **A4 双面宣传单** `marketing/poster-100x200/` | 随 Pricing 同步文案即可 |
+| 1+2 | **主宣传件**（一页通∪画册） | ✅ | **A4 双面宣传单** `marketing/销售真源/展会印刷/` | 随 Pricing 同步文案即可 |
 | 3 | 宣讲 Deck | 🟡 | **[15 页定稿大纲](./sales-deck-outline)** ✅ | **灌 PPT 母版** → 内审定版 |
 | 4 | 案例集 | 🟡 | **[场景示意三则](./case-studies)**；嵌 Deck P09 | 有真实客户后升级 |
-| 5 | 销售建议书 | 🟡 | **对内 md** `marketing/sales-kit/05-proposal-template/Trinity-销售建议书-对内.md` | 内审 → 导出 PDF；客户仍只发对外价目 Excel |
+| 5 | 销售建议书 | 🟡 | **对内 md** `marketing/销售真源/建议书/Trinity-销售建议书-对内.md` | 内审 → 导出 PDF；客户仍只发对外价目 Excel |
 | 6 | FAQ / 异议 | ⏸ | Docs / Pricing FAQ | **本阶段暂缓** |
 | 7 | 协议 / 意向 | ⏸ | Privacy / Terms | **本阶段暂缓** |
 
 **一句话：** 宣传用 A4；本阶段做完 **Deck PPT + 案例/示意** 即可对外谈；报价/异议/合同后补。
 
-主宣传件路径：`trinity-AI/marketing/poster-100x200/`（`trinity-promo-flyer-zh.html` · `output/Trinity-A4宣传单-*.pdf`）。
+主宣传件路径：`trinity-AI/marketing/销售真源/展会印刷/`（`trinity-promo-flyer-zh.html` · `output/Trinity-A4宣传单-*.pdf`）。
 
 **何时才拆回两份：** 冷触达只要极短单页、或采购/渠道点名要正式 Brochure —— 再单独立项，不默认排期。
 
@@ -172,17 +172,25 @@ PM **不是**替销售做完所有设计稿，也 **不是**法务合同终稿�
 
 ---
 
-## 5. 套件目录建议（建成后）
+## 5. 套件目录（成品 + 真源）
+
+**日常取用（PDF + 清单）**：[`marketing/销售套件/`](../../../../marketing/销售套件/)  
+→ 打开 [`清单.md`](../../../../marketing/销售套件/清单.md)；成品在 `pdf/`。
 
 ```text
-sales-kit/                          ← 建议落点（待建；可先挂本页清单）
-├── 00-README.md                    ← 版本、适用产品线、红线、联系人
-├── 01-02-main-flyer/               ← 链到 marketing/poster-100x200/ A4（1+2 合并）
-├── 03-sales-deck/                  ← PPT
-├── 04-case-studies/
-├── 05-proposal-template/           ← 对内销售建议书（md→PDF）；禁止放商务 Excel 进客户包
-├── 06-faq-objections/
-└── 07-agreements/                  ← 法务定稿
+marketing/
+├── 销售套件/                 ← 成品 PDF + 清单
+│   ├── 清单.md
+│   └── pdf/
+├── 销售真源/                 ← 按件改稿
+│   ├── 宣讲Deck/
+│   ├── 建议书/
+│   └── 展会印刷/             ← A4 / 海报
+├── 营销服务号/
+│   ├── 真源/                 ← 推文 · 选型叙事
+│   └── 可对外/               ← 推文定稿 PDF
+├── 参考物料/
+└── tools/
 ```
 
 对内算折仍只放在 `pricing/output/商务洽谈折扣总表.xlsx`，**不进**客户附件；#5 本身也是内部件。

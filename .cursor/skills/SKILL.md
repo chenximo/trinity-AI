@@ -41,9 +41,9 @@ description: >-
 | `account/console`、user-console-spec | `trinity-user-console` | skill + `/user-console-spec` |
 | `trinity-ai-admin`、admin-ep-table、若依列表 | `trinity-admin-ruoyi-list` | `运营后台-若依式列表规范.md` |
 | `pricing/suppliers/official/**`、官方价、原厂价、vendor-pricing、三方价对比 | `trinity-official-pricing` | api-acceptance、handbook |
-| `pricing/billing-reconciliation/**`、账单核对、核对报告、月度对账、标准日结 | `trinity-billing-reconciliation` | `billing-reconciliation/README.md` |
+| `pricing/账单对账/**`、`pricing/billing-reconciliation/**`、账单核对、核对报告、月度对账、大客户对账 | `trinity-billing-reconciliation` | `账单对账/README.md` |
 | `apps/trinity-docs`、对外 API 文档、OpenRouter 文档对齐 | `trinity-docs` | `Trinity对外文档站-基本规范.md` · `API对外接口支持参数.md` |
-| `marketing/poster-100x200`、`marketing/brand-deck`、销售套件、七件套、海报、一纸禅、A4 | `trinity-sales-kit` | `sales-kit.md` · channel-map · 印刷/Deck 目录 |
+| `marketing/销售真源/展会印刷`、`marketing/销售真源/宣讲Deck`、销售套件、七件套、海报、一纸禅、A4 | `trinity-sales-kit` | `sales-kit.md` · channel-map · 印刷/Deck 目录 |
 | 门户、`npm run dev`、预览端口、日常命令 | —（先读再封发具体 Skill） | `Trinity开发枢纽与AI协作流程.md` |
 | 交付工程师、push 原型、双仓、消费原型 | `trinity-vue-prototype-monorepo`（+ 五件套） | `双仓协作与原型交付.md` · `如何消费原型.md` |
 | 新建/评审 `.cursor/skills/**` | `trinity-skill-authoring` | `trinity-skill-authoring/SKILL.md` |

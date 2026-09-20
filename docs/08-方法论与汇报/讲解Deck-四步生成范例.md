@@ -74,10 +74,10 @@ Cursor：HTML 16:9（演示真源）→ 需要时再导出 pptx/pdf
 
 | 步骤 | 转正述职 | 品牌产品介绍 |
 |------|----------|--------------|
-| 1 大纲 | [`转正述职-PPT大纲-2026.md`](./转正述职-PPT大纲-2026.md) | [`marketing/brand-deck/目录.md`](../../marketing/brand-deck/目录.md) |
-| 2 定稿 | [`转正述职-定稿目录与简介-2026.md`](./转正述职-定稿目录与简介-2026.md) | [`marketing/brand-deck/Trinity产品介绍.md`](../../marketing/brand-deck/Trinity产品介绍.md) |
-| 3 HTML | [`转正述职-答辩PPT/index.html`](./转正述职-答辩PPT/index.html) | [`marketing/brand-deck/index.html`](../../marketing/brand-deck/index.html) |
-| 4 导出 | `转正述职-答辩PPT/export_pptx.sh` · `export_pdf.sh` | `marketing/brand-deck/export_deck_pdf.sh`（目前只出 PDF） |
+| 1 大纲 | [`转正述职-PPT大纲-2026.md`](./转正述职-PPT大纲-2026.md) | [`marketing/销售真源/宣讲Deck/目录.md`](../../marketing/销售真源/宣讲Deck/目录.md) |
+| 2 定稿 | [`转正述职-定稿目录与简介-2026.md`](./转正述职-定稿目录与简介-2026.md) | [`marketing/销售真源/宣讲Deck/Trinity产品介绍.md`](../../marketing/销售真源/宣讲Deck/Trinity产品介绍.md) |
+| 3 HTML | [`转正述职-答辩PPT/index.html`](./转正述职-答辩PPT/index.html) | [`marketing/销售真源/宣讲Deck/index.html`](../../marketing/销售真源/宣讲Deck/index.html) |
+| 4 导出 | `转正述职-答辩PPT/export_pptx.sh` · `export_pdf.sh` | `marketing/销售真源/宣讲Deck/export_deck_pdf.sh`（目前只出 PDF） |
 
 品牌 Deck 的定稿目前是 **页上 + 备注（销售说）** 两栏，没有单独的「不上屏口径」。新 Deck **按下面三栏写**；外发红线也写进「不上屏」。
 

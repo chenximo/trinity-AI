@@ -1,21 +1,6 @@
-# 上游账单核对（Billing Reconciliation）
+# 账单对账（已迁移）
 
-按**上游供应商**存放平台导出、上游账单副本与**核对报告**。
+本目录已迁至：**[`../账单对账/`](../账单对账/)**
 
-> **Skill**：[`.cursor/skills/trinity-billing-reconciliation/`](../../.cursor/skills/trinity-billing-reconciliation/SKILL.md)  
-> **流程**：平台导出（成本+Token）→ 人拉上游账单 → Skill 出报告 → **人确认后**回填后台实付。  
-> **与价目区分**：`suppliers/` 管挂牌价；本目录管实际账单。  
-> **全链路总览**：[../docs/账单与定价体系总览.md](../docs/账单与定价体系总览.md)（含 §5.5 后台占比统计与同上游环比风控 TODO）
-
-```
-billing-reconciliation/
-├── README.md
-└── <supplier>/                 # tencent-aigc、tokenhub…
-    ├── README.md
-    └── YYYY-MM/
-        ├── trinity-platform-*.csv      # 平台导出副本
-        ├── <upstream-bill>.*           # 人工拉取的上游账单
-        ├── recon-report.md             # 核对报告（或写入 notes）
-        ├── notes.md
-        └── daily-standard-settlement-* # 差大时
-```
+- 常规供应商月结 → `账单对账/上游对账/`
+- Seedance 大客 → `账单对账/大客户对账/seedance-大客户/`

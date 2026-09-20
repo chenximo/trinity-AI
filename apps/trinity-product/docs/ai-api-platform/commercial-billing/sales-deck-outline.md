@@ -6,7 +6,7 @@ title: 销售宣讲 Deck · 页级大纲（#3）
 
 > **文档类型**：销售套件 · **宣讲 PPT 内容真源**（页序 · 要点 · 备注话术）。  
 > **读者**：产品（维护口径）、销售（讲解）、市场（做 PPT 版式）。  
-> **关联**：[销售套件总册](./sales-kit) · [案例/场景示意](./case-studies) · [营销总册](./pricing-marketing-strategy) · [Playlist](./marketing-scene-playlist) · A4 `marketing/poster-100x200/`  
+> **关联**：[销售套件总册](./sales-kit) · [案例/场景示意](./case-studies) · [营销总册](./pricing-marketing-strategy) · [Playlist](./marketing-scene-playlist) · A4 `marketing/销售真源/展会印刷/`  
 > **状态**：**15 页定稿大纲 · 可灌 PPT**（无议程页）  
 > **日期**：2026-07-28  
 > **时长**：约 25～30 分钟讲解 + 问答

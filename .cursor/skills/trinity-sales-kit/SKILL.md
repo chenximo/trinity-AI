@@ -3,8 +3,8 @@ name: trinity-sales-kit
 description: >-
   Trinity 销售套件与外发印刷/讲解物料：海报、A4、brand-deck、一页通/一纸禅、
   从官网或 /apps 抽句。冻旧版再出新版；客户附件无深折。
-  在改 marketing/poster-100x200、marketing/brand-deck、sales-kit、宣讲 Deck 文案时使用。
-  触发词：销售套件、七件套、海报、一纸禅、A4 宣传单、brand-deck、一页通、外发物料。
+  在改 marketing/销售真源、marketing/销售套件、营销服务号、宣讲 Deck 文案时使用。
+  触发词：销售套件、销售真源、七件套、海报、一纸禅、A4 宣传单、brand-deck、一页通、外发物料。
   勿与 trinity-tob-marketing-site 官网 Vue 页、trinity-product-handbook 手册结构、
   trinity-official-pricing 刊例数字混用。
 disable-model-invocation: true
@@ -50,9 +50,10 @@ DOMAIN.md、confirmation.md：封发确认或升默认外发时再 READ。
 | 浅档话术、深折不上页 | `…/pricing-marketing-strategy.md` |
 | 场景与模型 ID | `…/marketing-scene-playlist.md` |
 | 宣讲页序 | `…/sales-deck-outline.md` |
-| 品牌 Deck | `marketing/brand-deck/`（`目录.md` · `Trinity产品介绍.md` · `index.html`） |
+| **销售套件成品（PDF+清单）** | `marketing/销售套件/` |
+| **销售真源** | `marketing/销售真源/`（`宣讲Deck` · `建议书` · `展会印刷`） |
+| **营销服务号** | `marketing/营销服务号/`（`真源/` · `可对外/`） |
 | 案例示意 | `…/case-studies.md` |
-| 印刷件 | `marketing/poster-100x200/` |
 | 对内算折 | 证据链 + L3b Excel（**不进客户附件**） |
 | GEO 产品页 | 现网 `https://trinitydesk.ai/apps`（爬虫页，不是应用市场） |
 | Deck 工序 | `docs/08-方法论与汇报/讲解Deck-四步生成范例.md` |

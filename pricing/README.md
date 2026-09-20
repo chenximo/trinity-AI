@@ -4,35 +4,23 @@
 
 ```
 trinity-AI/pricing/
-├── README.md              # 本文件：流程与命令
-├── STRUCTURE.md           # 完整目录树与各路径职责（详细）
-├── pipeline/              # fetch / upstream / validate / gen-65 / diff
-├── suppliers/
-│   ├── SOURCES.md         # 各上游 JSON 真源索引
-│   ├── tokenhub/          # TokenHub 控制台价
-│   ├── bailian/           # 百炼文档价
-│   ├── aigc/              # AIGC 内部价目表
-│   └── official/          # 模型原厂官网价（按模态拆分）
-│       ├── data/
-│       │   ├── catalog/   # text.mjs / image.mjs / video.mjs
-│       │   ├── seeds/
-│       │   └── pricing-urls.mjs
-│       ├── lib/
-│       ├── fetch-pricing.mjs
-│       ├── gen-table.mjs
-│       ├── trinity-map.json
-│       └── output/
-│           ├── text/      # vendor-pricing.json（生文）
-│           ├── image/     # vendor-pricing.json（生图）
-│           └── video/     # vendor-pricing.json（生视频）
-├── config/                # channels-*.mjs 等
-├── billing-reconciliation/ # 按上游存放实际账单对账（≠ 挂牌价）
-│   └── tencent-aigc/      # 腾讯云 AIGC
-└── output/                # 流水线产出（刊例、汇总、校验、草案）
+├── README.md · STRUCTURE.md
+├── 商务成品/              # 【拿表】对外 · 对内 · 定制报价
+├── 运营册/                # 刊例巡检大 Excel（不外发）
+├── 账单对账/              # API 上游月结 · Seedance 大客户
+├── 价目真源/              # → suppliers / routes-live（软链）
+├── 中间产物/              # draft · online · validate · upstream…
+├── 流水线/                # → pipeline · scripts · worker · config
+├── 运营文档/ → docs/
+├── 参考物料/              # 竞品报价 · 合同 · 示意图
+├── suppliers/ · input/ · output/   # 脚本工作路径（成品软链到商务成品）
+└── billing-reconciliation/         # 旧壳 → 账单对账/
 ```
 
-> 各子目录文件说明见 **[STRUCTURE.md](./STRUCTURE.md)**。  
-> **运营系统设计（刊例 / 账单 / 销售三柱）**见 **[docs/SUPPLY-PRICING-OPS-DESIGN.md](./docs/SUPPLY-PRICING-OPS-DESIGN.md)**（讨论稿）。
+同级 **AI 云** 腾讯云账号服务费：[`../AI云业务/腾讯云对账/`](../AI云业务/腾讯云对账/)。
+
+> 目录职责见 **[STRUCTURE.md](./STRUCTURE.md)**。  
+> **运营系统设计**见 **[docs/SUPPLY-PRICING-OPS-DESIGN.md](./docs/SUPPLY-PRICING-OPS-DESIGN.md)**。
 
 ---
 

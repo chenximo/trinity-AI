@@ -13,7 +13,7 @@ python3 -m playwright install chromium
 
 ```bash
 # 默认：同时导出 Word + PDF → 与 md 同级的 export/
-python3 marketing/tools/export_md.py marketing/公众号-Trinity品牌介绍-AI云与API聚合.md
+python3 marketing/tools/export_md.py "marketing/营销服务号/真源/推文/公众号-Trinity品牌介绍-AI云与API聚合.md"
 
 # 只导出 Word / 只导出 PDF
 python3 marketing/tools/export_md.py path/to/file.md --docx
