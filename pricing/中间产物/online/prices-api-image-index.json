@@ -1,8 +1,8 @@
 {
-  "fetchedAt": "2026-09-08T09:16:00.353Z",
+  "fetchedAt": "2026-09-22T02:57:19.298Z",
   "modality": "image",
   "fxCnyPerUsd": 7.25,
-  "modelCount": 7,
+  "modelCount": 9,
   "models": {
     "gemini-2.5-flash-image": {
       "model": "gemini-2.5-flash-image",
@@ -69,6 +69,46 @@
       "displayName": "GPT Image 2",
       "modality": "image",
       "updatedAt": "2026-08-07T07:08:24.146205Z",
+      "tierLabel": "—",
+      "price": null,
+      "pricingMode": "legacy",
+      "tiers": [
+        {
+          "tierLabel": "标准计价",
+          "tierKey": "uniform",
+          "price": 30,
+          "pricingMode": "legacy",
+          "capability": null,
+          "capabilityLabel": null,
+          "billing": "token"
+        }
+      ]
+    },
+    "gpt-image-2.5-flare": {
+      "model": "gpt-image-2.5-flare",
+      "displayName": "GPT Image 2.5 Flare",
+      "modality": "image",
+      "updatedAt": "2026-09-18T08:18:21.483911Z",
+      "tierLabel": "—",
+      "price": null,
+      "pricingMode": "legacy",
+      "tiers": [
+        {
+          "tierLabel": "标准计价",
+          "tierKey": "uniform",
+          "price": 30,
+          "pricingMode": "legacy",
+          "capability": null,
+          "capabilityLabel": null,
+          "billing": "token"
+        }
+      ]
+    },
+    "gpt-image-2.5-sunburst": {
+      "model": "gpt-image-2.5-sunburst",
+      "displayName": "GPT Image 2.5 Sunburst",
+      "modality": "image",
+      "updatedAt": "2026-09-18T08:18:21.483911Z",
       "tierLabel": "—",
       "price": null,
       "pricingMode": "legacy",

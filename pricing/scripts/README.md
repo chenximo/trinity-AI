@@ -6,16 +6,19 @@
 
 | 脚本 | 产出（`pricing/output/`） |
 |------|---------------------------|
-| `rebuild_workbook_from_live_api.py` | `商务洽谈折扣总表.xlsx`（L3b） |
+| `rebuild_workbook_from_live_api.py` | `商务洽谈折扣总表.xlsx`（L3b）；**每次强制拉现网线路**，重建后删除 `input/routes-live/*-enabled.xlsx`；拉取失败 → **对话框中断告知用户**（主）+ 控制台横幅 + 可选钉钉，不回退缓存 |
+| `notify_human.py` | 人工通知；失败时 stdout 输出对话框文案 + `CHAT_INTERRUPT_MARKER` |
 | `build_outward_quote_standard.py` | `Trinity模型报价表.xlsx`、`Trinity模型报价表（内部）.xlsx` |
 
 典型顺序：
 
 ```bash
 cd trinity-AI/pricing
-python3 scripts/rebuild_workbook_from_live_api.py
+python3 scripts/rebuild_workbook_from_live_api.py   # 失败即停，不回退旧线路
 python3 scripts/build_outward_quote_standard.py
 ```
+
+排查时若需留下本次线路导出：`python3 scripts/rebuild_workbook_from_live_api.py --keep-exports`
 
 ## 定制报价（临时，不进主流程上传）
 

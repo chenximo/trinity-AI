@@ -7,6 +7,8 @@
 - 商务总册：读 10/11；回写 01_报价解析汇总（不改 10/11）
 - 阶梯数字：定价方案-v0 公开定折矩阵（非 L3b 商务深折照抄）
 - 本轮目录价：线上为主；刊例策略 §3.1 上浮两款覆盖（hy-mt2-plus / glm-5.2）
+- 对内册：相对上一版新增/变更行浅黄标记，并写「相对上版变更」页 + 变更摘要.md
+- 对内册：累积「更新」日志（与 L3b 商务总册同款：日期/分类/说明/备注，新→旧）；对外册不加
 
 Sources:
   - L2 线上刊例: pricing/output/online/prices-api-text.json（主源，覆盖全量上架）
@@ -56,7 +58,797 @@ ROUTES_VIDEO = ROOT / "input/routes-live"
 OUT = ROOT / "output/Trinity模型报价表（内部）.xlsx"
 OUT_DISCOUNT_ONLY = ROOT / "output/Trinity模型报价表.xlsx"
 OUT_DISCOUNT_ONLY_LEGACY = ROOT / "output/Trinity模型报价表-仅有折扣.xlsx"
+
+# 相对上版：新增 / 刊例或档位变更 → 浅黄（与 hehe 定制表一致）
+FILL_CHANGE = solid_fill("FFF2CC")
+# 深档闸门：对外最深落到此及以下时，变更摘要单独点名
+DEEP_TIER_GATE = 5.55
+SHEET_CHANGE = "相对上版变更"
+SHEET_UPD = "更新"  # 与 L3b 商务总册同款累积日志（新→旧）
 SHEET_HEHE = "hehe公司需求"
+
+
+def _change_summary_md_path() -> Path:
+    """对内变更摘要.md；OUT 为软链时落在 商务成品/对内/。"""
+    try:
+        return OUT.resolve().parent / "变更摘要-L3a.md"
+    except OSError:
+        return ROOT / "商务成品/对内/变更摘要-L3a.md"
+
+
+def _cell_str(val) -> str:
+    if val is None:
+        return ""
+    return str(val).strip()
+
+
+def _tiers_sig(zhes: list[float | None] | None) -> tuple[str, str, str]:
+    if not zhes:
+        return ("—", "—", "—")
+    out: list[str] = []
+    for i in range(3):
+        z = zhes[i] if i < len(zhes) else None
+        out.append(fmt_tier_zhe(z) if z is not None else "—")
+    return (out[0], out[1], out[2])
+
+
+def _listing_sig_text(inp: str, out: str, cache: str) -> str:
+    return f"{inp}|{out}|{cache}"
+
+
+def build_quote_snapshot(
+    models: list[dict],
+    image_rows: list[dict],
+    video_rows: list[dict],
+    model_families: dict[str, list[float]],
+    recommended: dict[str, float],
+) -> dict[str, dict]:
+    """本轮内存快照：model_id → 模态/刊例签名/三档折。"""
+    snap: dict[str, dict] = {}
+    for m in models:
+        mid = m["model_id"]
+        fam = resolve_family(mid, model_families, recommended)
+        zhes = public_tiers_for(mid, fam)
+        snap[mid] = {
+            "modality": "生文",
+            "vendor": m.get("vendor") or "",
+            "display": m.get("display") or mid,
+            "listing": _listing_sig_text(
+                fmt_num(m["inp"]), fmt_num(m["out"]), fmt_cache(m.get("cache"))
+            ),
+            "tiers": _tiers_sig(zhes),
+            "family": fam,
+        }
+
+    for mod, rows in (("生图", image_rows), ("生视频", video_rows)):
+        by_id: dict[str, list[dict]] = {}
+        for r in rows:
+            by_id.setdefault(r["model_id"], []).append(r)
+        for mid, group in by_id.items():
+            fam = resolve_family(mid, model_families, recommended)
+            zhes = public_tiers_for(mid, fam)
+            parts = []
+            for r in group:
+                cat = (
+                    r["catalog_display"]
+                    if r.get("catalog_display")
+                    else fmt_num(r["catalog"])
+                )
+                parts.append(f"{r.get('spec') or ''}={cat}")
+            snap[mid] = {
+                "modality": mod,
+                "vendor": group[0].get("vendor") or "",
+                "display": group[0].get("display") or mid,
+                "listing": "|".join(parts),
+                "tiers": _tiers_sig(zhes),
+                "family": fam,
+            }
+    return snap
+
+
+def _find_header_row(ws, must_have: str = "模型 ID", max_scan: int = 12) -> int | None:
+    for r in range(1, max_scan + 1):
+        for c in range(1, 16):
+            if _cell_str(ws.cell(r, c).value) == must_have:
+                return r
+    return None
+
+
+def _col_map(ws, header_row: int) -> dict[str, int]:
+    m: dict[str, int] = {}
+    for c in range(1, 20):
+        h = _cell_str(ws.cell(header_row, c).value)
+        if h:
+            m[h] = c
+    return m
+
+
+def load_quote_snapshot(path: Path) -> dict[str, dict]:
+    """从已有对内/外发 xlsx 读上版快照（优先 01/02/03，缺则 00/仅有折扣）。"""
+    if not path.exists():
+        return {}
+    try:
+        real = path.resolve()
+    except OSError:
+        real = path
+    if not real.exists():
+        return {}
+    wb = openpyxl.load_workbook(real, data_only=True)
+    snap: dict[str, dict] = {}
+
+    def _ingest_text_sheet(ws) -> None:
+        hr = _find_header_row(ws)
+        if hr is None:
+            return
+        cols = _col_map(ws, hr)
+        c_mid = cols.get("模型 ID")
+        if not c_mid:
+            return
+        c_vendor = cols.get("厂商")
+        c_disp = cols.get("显示名")
+        c_in = cols.get("刊例价·输入")
+        c_out = cols.get("刊例价·输出")
+        c_cache = cols.get("刊例价·缓存")
+        tier_cols = [cols.get(lab) for _, lab, _ in TIERS]
+        last_vendor = ""
+        for r in range(hr + 1, ws.max_row + 1):
+            mid = _cell_str(ws.cell(r, c_mid).value)
+            if not mid:
+                continue
+            if c_vendor:
+                v = _cell_str(ws.cell(r, c_vendor).value)
+                if v:
+                    last_vendor = v
+            snap[mid] = {
+                "modality": "生文",
+                "vendor": last_vendor,
+                "display": _cell_str(ws.cell(r, c_disp).value) if c_disp else mid,
+                "listing": _listing_sig_text(
+                    _cell_str(ws.cell(r, c_in).value) if c_in else "",
+                    _cell_str(ws.cell(r, c_out).value) if c_out else "",
+                    _cell_str(ws.cell(r, c_cache).value) if c_cache else "",
+                ),
+                "tiers": tuple(
+                    (_cell_str(ws.cell(r, tc).value) if tc else "—") or "—"
+                    for tc in (tier_cols + [None, None, None])[:3]
+                ),
+                "family": None,
+            }
+
+    def _ingest_media_sheet(ws, modality: str) -> None:
+        hr = _find_header_row(ws)
+        if hr is None:
+            return
+        cols = _col_map(ws, hr)
+        c_mid = cols.get("模型 ID")
+        if not c_mid:
+            return
+        c_vendor = cols.get("厂商")
+        c_disp = cols.get("显示名")
+        c_spec = cols.get("规格")
+        c_cat = cols.get("刊例价")
+        tier_cols = [cols.get(lab) for _, lab, _ in TIERS]
+        last_vendor = ""
+        acc: dict[str, dict] = {}
+        for r in range(hr + 1, ws.max_row + 1):
+            mid = _cell_str(ws.cell(r, c_mid).value)
+            if not mid:
+                continue
+            if c_vendor:
+                v = _cell_str(ws.cell(r, c_vendor).value)
+                if v:
+                    last_vendor = v
+            spec = _cell_str(ws.cell(r, c_spec).value) if c_spec else ""
+            cat = _cell_str(ws.cell(r, c_cat).value) if c_cat else ""
+            tiers = tuple(
+                (_cell_str(ws.cell(r, tc).value) if tc else "—") or "—"
+                for tc in (tier_cols + [None, None, None])[:3]
+            )
+            if mid not in acc:
+                acc[mid] = {
+                    "modality": modality,
+                    "vendor": last_vendor,
+                    "display": _cell_str(ws.cell(r, c_disp).value) if c_disp else mid,
+                    "parts": [],
+                    "tiers": tiers,
+                    "family": None,
+                }
+            acc[mid]["parts"].append(f"{spec}={cat}")
+            acc[mid]["vendor"] = last_vendor or acc[mid]["vendor"]
+            acc[mid]["tiers"] = tiers
+        for mid, info in acc.items():
+            snap[mid] = {
+                "modality": info["modality"],
+                "vendor": info["vendor"],
+                "display": info["display"],
+                "listing": "|".join(info["parts"]),
+                "tiers": info["tiers"],
+                "family": None,
+            }
+
+    def _ingest_overview_sheet(ws) -> None:
+        hr = _find_header_row(ws)
+        if hr is None:
+            return
+        cols = _col_map(ws, hr)
+        c_mid = cols.get("模型 ID")
+        if not c_mid:
+            return
+        c_mod = cols.get("模态")
+        c_vendor = cols.get("厂商")
+        c_disp = cols.get("显示名")
+        c_in = cols.get("刊例价·输入")
+        c_out = cols.get("刊例价·输出")
+        c_cache = cols.get("刊例价·缓存")
+        tier_cols = [cols.get(lab) for _, lab, _ in TIERS]
+        last_mod, last_vendor = "", ""
+        for r in range(hr + 1, ws.max_row + 1):
+            mid = _cell_str(ws.cell(r, c_mid).value)
+            if not mid:
+                continue
+            if c_mod:
+                v = _cell_str(ws.cell(r, c_mod).value)
+                if v:
+                    last_mod = v
+            if c_vendor:
+                v = _cell_str(ws.cell(r, c_vendor).value)
+                if v:
+                    last_vendor = v
+            if mid in snap:
+                continue  # 分册已覆盖
+            snap[mid] = {
+                "modality": last_mod or "—",
+                "vendor": last_vendor,
+                "display": _cell_str(ws.cell(r, c_disp).value) if c_disp else mid,
+                "listing": _listing_sig_text(
+                    _cell_str(ws.cell(r, c_in).value) if c_in else "",
+                    _cell_str(ws.cell(r, c_out).value) if c_out else "",
+                    _cell_str(ws.cell(r, c_cache).value) if c_cache else "",
+                ),
+                "tiers": tuple(
+                    (_cell_str(ws.cell(r, tc).value) if tc else "—") or "—"
+                    for tc in (tier_cols + [None, None, None])[:3]
+                ),
+                "family": None,
+            }
+
+    if "01_生文" in wb.sheetnames:
+        _ingest_text_sheet(wb["01_生文"])
+    if "02_生图" in wb.sheetnames:
+        _ingest_media_sheet(wb["02_生图"], "生图")
+    if "03_生视频" in wb.sheetnames:
+        _ingest_media_sheet(wb["03_生视频"], "生视频")
+    if "00_折扣一览" in wb.sheetnames:
+        _ingest_overview_sheet(wb["00_折扣一览"])
+    elif "仅有折扣" in wb.sheetnames:
+        _ingest_overview_sheet(wb["仅有折扣"])
+    wb.close()
+    return snap
+
+
+def _parse_zhe_num(label: str) -> float | None:
+    """'8.5折' / '6折' / '—' → float or None。"""
+    s = _cell_str(label)
+    if not s or s in {"—", "-", "原价"}:
+        return None
+    m = re.search(r"(\d+(?:\.\d+)?)", s)
+    if not m:
+        return None
+    return float(m.group(1))
+
+
+def diff_quote_snapshots(prev: dict[str, dict], curr: dict[str, dict]) -> dict:
+    """相对上版：新增 / 下架 / 刊例变 / 档位变；highlight=新增+变更。"""
+    added: list[dict] = []
+    removed: list[dict] = []
+    listing_changed: list[dict] = []
+    tier_changed: list[dict] = []
+    deep_flags: list[dict] = []
+
+    for mid, now in sorted(curr.items()):
+        if mid not in prev:
+            added.append({"model_id": mid, **now})
+            deep = min(
+                (z for z in (_parse_zhe_num(t) for t in now["tiers"]) if z is not None),
+                default=None,
+            )
+            if deep is not None and deep <= DEEP_TIER_GATE:
+                deep_flags.append(
+                    {
+                        "model_id": mid,
+                        "kind": "新增深档",
+                        "tiers": "/".join(now["tiers"]),
+                        "deep": deep,
+                    }
+                )
+            continue
+        old = prev[mid]
+        if old.get("listing") != now.get("listing"):
+            listing_changed.append(
+                {
+                    "model_id": mid,
+                    "modality": now.get("modality") or old.get("modality"),
+                    "display": now.get("display") or mid,
+                    "before": old.get("listing"),
+                    "after": now.get("listing"),
+                }
+            )
+        if tuple(old.get("tiers") or ()) != tuple(now.get("tiers") or ()):
+            tier_changed.append(
+                {
+                    "model_id": mid,
+                    "modality": now.get("modality") or old.get("modality"),
+                    "display": now.get("display") or mid,
+                    "before": "/".join(old.get("tiers") or ()),
+                    "after": "/".join(now.get("tiers") or ()),
+                }
+            )
+            deep = min(
+                (z for z in (_parse_zhe_num(t) for t in now["tiers"]) if z is not None),
+                default=None,
+            )
+            old_deep = min(
+                (
+                    z
+                    for z in (_parse_zhe_num(t) for t in (old.get("tiers") or ()))
+                    if z is not None
+                ),
+                default=None,
+            )
+            if deep is not None and deep <= DEEP_TIER_GATE and (
+                old_deep is None or old_deep > DEEP_TIER_GATE or deep < (old_deep or 99)
+            ):
+                deep_flags.append(
+                    {
+                        "model_id": mid,
+                        "kind": "档位落入深档",
+                        "tiers": "/".join(now["tiers"]),
+                        "deep": deep,
+                        "before": "/".join(old.get("tiers") or ()),
+                    }
+                )
+
+    for mid, old in sorted(prev.items()):
+        if mid not in curr:
+            removed.append({"model_id": mid, **old})
+
+    highlight_ids = {
+        *(r["model_id"] for r in added),
+        *(r["model_id"] for r in listing_changed),
+        *(r["model_id"] for r in tier_changed),
+    }
+    return {
+        "added": added,
+        "removed": removed,
+        "listing_changed": listing_changed,
+        "tier_changed": tier_changed,
+        "deep_flags": deep_flags,
+        "highlight_ids": highlight_ids,
+        "prev_count": len(prev),
+        "curr_count": len(curr),
+    }
+
+
+def write_change_summary_sheet(
+    wb,
+    diff: dict,
+    *,
+    valid_until: str,
+    thin,
+    white_bold,
+    body_font,
+    num_font,
+    center,
+    left,
+) -> None:
+    """对内册：相对上版变更页（插在 00 之后）。"""
+    if SHEET_CHANGE in wb.sheetnames:
+        del wb[SHEET_CHANGE]
+    idx = 1 if "00_折扣一览" in wb.sheetnames else 0
+    ws = wb.create_sheet(SHEET_CHANGE, idx)
+    header_fill = solid_fill("1B4F72")
+    n_cols = 6
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=n_cols)
+    ws["A1"] = "Trinity · 相对上版变更"
+    ws["A1"].font = Font(name="PingFang SC", size=18, bold=True, color="1D2939")
+    ws.row_dimensions[1].height = 28
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=n_cols)
+    ws["A2"] = (
+        f"对照重建前磁盘上的上一版对内表。有效期：{valid_until}。"
+        f"　上版 {diff['prev_count']} 款 → 本版 {diff['curr_count']} 款。"
+        f"　+{len(diff['added'])} / −{len(diff['removed'])} / "
+        f"刊例变 {len(diff['listing_changed'])} / 档位变 {len(diff['tier_changed'])}。"
+        "　分册与折扣一览中浅黄行 = 本表「新增」或「变更」。"
+        "　下架仅列于此，不在分册留空行。"
+    )
+    ws["A2"].font = Font(name="PingFang SC", size=10, color="475467")
+    ws["A2"].alignment = Alignment(wrap_text=True, vertical="center")
+    ws.row_dimensions[2].height = 48
+
+    headers = ["类型", "模态", "模型 ID", "显示名", "上版", "本版"]
+    for i, h in enumerate(headers, 1):
+        cell = ws.cell(4, i, h)
+        style_cell(cell, fill=header_fill, font=white_bold, align=center, border=thin)
+    ws.row_dimensions[4].height = 24
+
+    rows_out: list[tuple] = []
+    for r in diff["added"]:
+        rows_out.append(
+            (
+                "新增",
+                r.get("modality") or "",
+                r["model_id"],
+                r.get("display") or "",
+                "—",
+                f"{r.get('listing') or ''} · {'/'.join(r.get('tiers') or ())}",
+            )
+        )
+    for r in diff["removed"]:
+        rows_out.append(
+            (
+                "下架",
+                r.get("modality") or "",
+                r["model_id"],
+                r.get("display") or "",
+                f"{r.get('listing') or ''} · {'/'.join(r.get('tiers') or ())}",
+                "—",
+            )
+        )
+    for r in diff["listing_changed"]:
+        rows_out.append(
+            (
+                "刊例变",
+                r.get("modality") or "",
+                r["model_id"],
+                r.get("display") or "",
+                r.get("before") or "",
+                r.get("after") or "",
+            )
+        )
+    for r in diff["tier_changed"]:
+        rows_out.append(
+            (
+                "档位变",
+                r.get("modality") or "",
+                r["model_id"],
+                r.get("display") or "",
+                r.get("before") or "",
+                r.get("after") or "",
+            )
+        )
+    for r in diff["deep_flags"]:
+        rows_out.append(
+            (
+                f"⚠ {r['kind']}",
+                "",
+                r["model_id"],
+                "",
+                r.get("before") or "—",
+                r.get("tiers") or "",
+            )
+        )
+
+    type_fills = {
+        "新增": FILL_CHANGE,
+        "下架": solid_fill("FEE2E2"),
+        "刊例变": FILL_CHANGE,
+        "档位变": FILL_CHANGE,
+    }
+    for idx_r, vals in enumerate(rows_out):
+        r = 5 + idx_r
+        kind = vals[0]
+        fill = FILL_CHANGE if kind.startswith("⚠") else type_fills.get(kind)
+        for c, v in enumerate(vals, 1):
+            cell = ws.cell(r, c, v)
+            style_cell(
+                cell,
+                font=body_font,
+                align=center if c <= 2 else left,
+                border=thin,
+                fill=fill,
+            )
+
+    for i, w in enumerate([12, 8, 28, 22, 36, 36], 1):
+        ws.column_dimensions[get_column_letter(i)].width = w
+    ws.freeze_panes = "A5"
+
+
+def _fmt_dot_date(d: date | None = None) -> str:
+    d = d or date.today()
+    return f"{d.year}.{d.month}.{d.day}"
+
+
+def _fmt_id_list(ids: list[str], limit: int = 12) -> str:
+    ids = list(ids)
+    if len(ids) <= limit:
+        return "、".join(ids)
+    return "、".join(ids[:limit]) + f" 等共 {len(ids)} 款"
+
+
+def load_l3a_changelog_from_xlsx(path: Path) -> list[dict[str, str]]:
+    """读取对内 L3a「更新」页历史（跳过说明行/表头）。"""
+    if not path.exists():
+        return []
+    try:
+        real = path.resolve()
+    except OSError:
+        real = path
+    if not real.exists():
+        return []
+    try:
+        wb = openpyxl.load_workbook(real, data_only=True)
+    except Exception:  # noqa: BLE001
+        return []
+    try:
+        if SHEET_UPD not in wb.sheetnames:
+            return []
+        ws = wb[SHEET_UPD]
+        rows: list[dict[str, str]] = []
+        for i, row in enumerate(ws.iter_rows(max_col=4, values_only=True), 1):
+            a, b, c, d = (list(row) + [None, None, None, None])[:4]
+            if i <= 2:
+                continue
+            date_s = _cell_str(a)
+            detail = _cell_str(c)
+            if not date_s and not detail:
+                continue
+            if date_s == "日期":
+                continue
+            if "账单说明" in date_s or "本表为" in date_s:
+                continue
+            rows.append(
+                {
+                    "date": date_s,
+                    "category": _cell_str(b),
+                    "detail": detail,
+                    "note": _cell_str(d),
+                }
+            )
+        return rows
+    finally:
+        wb.close()
+
+
+def changelog_entries_from_diff(diff: dict, today: str) -> list[dict[str, str]]:
+    """由本轮相对上版 diff 生成「更新」日志行（有变更才写）。"""
+    entries: list[dict[str, str]] = []
+    for mod in ("生文", "生图", "生视频"):
+        adds = [r["model_id"] for r in diff["added"] if r.get("modality") == mod]
+        rems = [r["model_id"] for r in diff["removed"] if r.get("modality") == mod]
+        if adds:
+            entries.append(
+                {
+                    "date": today,
+                    "category": mod,
+                    "detail": f"新增 {len(adds)} 款：{_fmt_id_list(adds)}",
+                    "note": "相对上版 · L3a 对内",
+                }
+            )
+        if rems:
+            entries.append(
+                {
+                    "date": today,
+                    "category": mod,
+                    "detail": f"下架 {len(rems)} 款：{_fmt_id_list(rems)}",
+                    "note": "相对上版 · 线上刊例已无或未再上架",
+                }
+            )
+
+    by_mod_listing: dict[str, list[str]] = {}
+    for r in diff["listing_changed"]:
+        by_mod_listing.setdefault(r.get("modality") or "总册", []).append(r["model_id"])
+    for mod, ids in by_mod_listing.items():
+        entries.append(
+            {
+                "date": today,
+                "category": mod,
+                "detail": f"刊例变 {len(ids)} 款：{_fmt_id_list(ids)}",
+                "note": "相对上版 · 详见「相对上版变更」",
+            }
+        )
+
+    by_mod_tier: dict[str, list[str]] = {}
+    for r in diff["tier_changed"]:
+        by_mod_tier.setdefault(r.get("modality") or "总册", []).append(r["model_id"])
+    for mod, ids in by_mod_tier.items():
+        entries.append(
+            {
+                "date": today,
+                "category": mod,
+                "detail": f"档位折变 {len(ids)} 款：{_fmt_id_list(ids)}",
+                "note": "相对上版 · 详见「相对上版变更」",
+            }
+        )
+
+    if diff["deep_flags"]:
+        ids = [r["model_id"] for r in diff["deep_flags"]]
+        entries.append(
+            {
+                "date": today,
+                "category": "总册",
+                "detail": f"深档闸门（须人审）{len(ids)} 款：{_fmt_id_list(ids)}",
+                "note": f"对外最深 ≤{DEEP_TIER_GATE:g} 折",
+            }
+        )
+    return entries
+
+
+def write_l3a_changelog_sheet(
+    wb,
+    entries: list[dict[str, str]],
+    *,
+    thin,
+    white_bold,
+    body_font,
+    center,
+    left,
+) -> None:
+    """对内册首页「更新」：与 L3b 同结构，新→旧。"""
+    if SHEET_UPD in wb.sheetnames:
+        del wb[SHEET_UPD]
+    ws = wb.create_sheet(SHEET_UPD, 0)
+    header_fill = solid_fill("1B4F72")
+    hint_fill = solid_fill("FEF3C7")
+    alt = solid_fill("F8FAFC")
+
+    ws.merge_cells("A1:D1")
+    ws["A1"] = (
+        "账单说明：本表为 L3a 对内报价册（折扣一览 + 分册），整表不外发。"
+        "对外客户只用 Trinity模型报价表.xlsx。"
+        "本页为累积更新日志（新→旧）：新增 / 下架 / 刊例变 / 档位折变。"
+        "本轮逐行明细见「相对上版变更」；浅黄行为本轮变更。"
+        "重建：python3 pricing/scripts/build_outward_quote_standard.py。"
+    )
+    ws["A1"].font = Font(name="PingFang SC", size=9, color="713F12")
+    ws["A1"].fill = hint_fill
+    ws["A1"].alignment = Alignment(wrap_text=True, vertical="center")
+    ws.row_dimensions[1].height = 52
+
+    for i, h in enumerate(("日期", "分类", "更新说明", "备注"), 1):
+        cell = ws.cell(2, i, h)
+        style_cell(cell, fill=header_fill, font=white_bold, align=center, border=thin)
+    ws.row_dimensions[2].height = 22
+
+    for idx, ent in enumerate(entries):
+        r = 3 + idx
+        fill = alt if idx % 2 else None
+        vals = (
+            ent.get("date") or "",
+            ent.get("category") or "",
+            ent.get("detail") or "",
+            ent.get("note") or "",
+        )
+        for c, v in enumerate(vals, 1):
+            cell = ws.cell(r, c, v)
+            style_cell(
+                cell,
+                font=body_font,
+                align=center if c <= 2 else left,
+                border=thin,
+                fill=fill,
+            )
+        ws.row_dimensions[r].height = 36 if len(vals[2]) > 60 else 22
+
+    for i, w in enumerate([12, 8, 72, 28], 1):
+        ws.column_dimensions[get_column_letter(i)].width = w
+    ws.freeze_panes = "A3"
+
+
+def write_change_summary_md(
+    diff: dict,
+    *,
+    generated: str,
+    changelog: list[dict[str, str]] | None = None,
+) -> Path:
+    """写变更摘要.md（本轮明细 + 累积更新日志）。"""
+    path = _change_summary_md_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lines: list[str] = [
+        "# L3a 相对上版变更摘要",
+        "",
+        f"- 生成日期：{generated}",
+        f"- 上版模型数：{diff['prev_count']} → 本版：{diff['curr_count']}",
+        f"- 新增 **{len(diff['added'])}** · 下架 **{len(diff['removed'])}** · "
+        f"刊例变 **{len(diff['listing_changed'])}** · 档位变 **{len(diff['tier_changed'])}**",
+        "",
+        "## 对外短摘要",
+        "",
+    ]
+    if not diff["prev_count"]:
+        lines.append("（无上版文件可对照，本轮为全量基线。）")
+    else:
+        bits = [
+            f"+{len(diff['added'])}",
+            f"−{len(diff['removed'])}",
+            f"档位变 {len(diff['tier_changed'])}",
+            f"刊例变 {len(diff['listing_changed'])}",
+        ]
+        lines.append("；".join(bits) + "。")
+        if diff["added"]:
+            lines.append(
+                "- 新增："
+                + "、".join(f"`{r['model_id']}`" for r in diff["added"][:20])
+                + ("…" if len(diff["added"]) > 20 else "")
+            )
+        if diff["removed"]:
+            lines.append(
+                "- 下架："
+                + "、".join(f"`{r['model_id']}`" for r in diff["removed"][:20])
+                + ("…" if len(diff["removed"]) > 20 else "")
+            )
+        if diff["tier_changed"]:
+            lines.append("- 档位变（节选）：")
+            for r in diff["tier_changed"][:15]:
+                lines.append(
+                    f"  - `{r['model_id']}`：{r['before']} → {r['after']}"
+                )
+            if len(diff["tier_changed"]) > 15:
+                lines.append(f"  - …共 {len(diff['tier_changed'])} 款")
+        if diff["deep_flags"]:
+            lines.append("- **深档闸门（须人审）**：")
+            for r in diff["deep_flags"]:
+                lines.append(
+                    f"  - `{r['model_id']}` {r['kind']}：{r.get('tiers')}"
+                )
+    lines.extend(["", "## 对内明细", ""])
+
+    def _sec(title: str, items: list[dict], fmt) -> None:
+        lines.append(f"### {title}（{len(items)}）")
+        lines.append("")
+        if not items:
+            lines.append("（无）")
+            lines.append("")
+            return
+        for r in items:
+            lines.append(fmt(r))
+        lines.append("")
+
+    _sec("新增", diff["added"], lambda r: f"- `{r['model_id']}`（{r.get('modality')}）· {'/'.join(r.get('tiers') or ())}")
+    _sec("下架", diff["removed"], lambda r: f"- `{r['model_id']}`（{r.get('modality')}）")
+    _sec(
+        "刊例变",
+        diff["listing_changed"],
+        lambda r: f"- `{r['model_id']}`：`{r['before']}` → `{r['after']}`",
+    )
+    _sec(
+        "档位变",
+        diff["tier_changed"],
+        lambda r: f"- `{r['model_id']}`：{r['before']} → {r['after']}",
+    )
+
+    lines.extend(
+        [
+            "## 累积更新日志",
+            "",
+            "与对内册「更新」页同步（新→旧）。对外册不含本日志。",
+            "",
+        ]
+    )
+    if not changelog:
+        lines.append("（尚无历史条目）")
+        lines.append("")
+    else:
+        lines.append("| 日期 | 分类 | 更新说明 | 备注 |")
+        lines.append("| --- | --- | --- | --- |")
+        for ent in changelog[:80]:
+            detail = (ent.get("detail") or "").replace("|", "\\|")
+            note = (ent.get("note") or "").replace("|", "\\|")
+            lines.append(
+                f"| {ent.get('date') or ''} | {ent.get('category') or ''} "
+                f"| {detail} | {note} |"
+            )
+        if len(changelog) > 80:
+            lines.append(f"| … | | 另有 {len(changelog) - 80} 条见对内 xlsx「更新」 | |")
+        lines.append("")
+
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return path
+
+
+def _row_fill_for_change(mid: str, highlight_ids: set[str], fallback):
+    if mid in highlight_ids:
+        return FILL_CHANGE
+    return fallback
 
 SHEET_COMMERCIAL_MAIN = "10_商务总表-生文"
 SHEET_COMMERCIAL_CROSS = "11_交叉模型-生文"
@@ -440,14 +1232,20 @@ def resolve_family(
     model_families: dict[str, list[float]],
     recommended: dict[str, float],
 ) -> float | None:
-    if model_id in recommended:
+    # 低于 2 折（成本折 < 0.2）= 特殊线路，不参与对外阶梯依据
+    _min_fam = 0.2
+
+    def _ok(f: float | None) -> bool:
+        return f is not None and float(f) >= _min_fam
+
+    if model_id in recommended and _ok(recommended[model_id]):
         return recommended[model_id]
-    fams = model_families.get(model_id)
-    if not fams:
-        # try without -old / -preview suffixes already exact
+    fams = model_families.get(model_id) or []
+    usable = [f for f in fams if _ok(f)]
+    if not usable:
         return None
-    # 厚利优先：成本折数字越小越优先
-    return min(fams)
+    # 厚利优先：成本折数字越小越优先（已排除特殊深折）
+    return min(usable)
 
 
 def _num_amount(block) -> float | None:
@@ -854,12 +1652,14 @@ def _fill_discount_overview_table(
     num_font,
     center,
     left,
+    highlight_ids: set[str] | None = None,
 ) -> None:
     fills = {
         "生文": solid_fill("DBEAFE"),
         "生图": solid_fill("FEF3C7"),
         "生视频": solid_fill("D1FAE5"),
     }
+    highlight_ids = highlight_ids or set()
     header_fill = solid_fill("1B4F72")
     headers = _discount_overview_headers()
     for i, h in enumerate(headers, 1):
@@ -869,7 +1669,9 @@ def _fill_discount_overview_table(
 
     for idx, row in enumerate(discount_rows):
         r = data_start + idx
-        fill = fills.get(row["modality"])
+        fill = _row_fill_for_change(
+            row["model_id"], highlight_ids, fills.get(row["modality"])
+        )
         zhes = row["zhes"]
         vals = [
             row["modality"],
@@ -931,6 +1733,7 @@ def write_discount_overview_sheet(
     num_font,
     center,
     left,
+    highlight_ids: set[str] | None = None,
 ) -> None:
     """00_折扣一览（整本 L3a 内）：标题 + 说明 + 表头 + 仅有折扣模型。"""
     name = "00_折扣一览"
@@ -944,16 +1747,18 @@ def write_discount_overview_sheet(
         m: sum(1 for r in discount_rows if r["modality"] == m)
         for m in ("生文", "生图", "生视频")
     }
+    n_hl = len(highlight_ids or set())
     ws["A2"] = (
         f"有效期：{valid_until}　|　共 {len(discount_rows)} 款有折扣"
         f"（生文 {counts['生文']} · 生图 {counts['生图']} · 生视频 {counts['生视频']}）。"
-        "底色：生文蓝 · 生图琥珀 · 生视频绿。"
+        "底色：生文蓝 · 生图琥珀 · 生视频绿；"
+        f"浅黄 = 相对上版新增或变更（本轮标黄 {n_hl} 款，详见「{SHEET_CHANGE}」）。"
         "表头与分册一致（+模态）；不含成本/线路。"
         "图/视频多规格刊例见 02/03；达档=企业户累积消耗（按刊例价计）。"
     )
     ws["A2"].font = Font(name="PingFang SC", size=10, color="475467")
     ws["A2"].alignment = Alignment(wrap_text=True, vertical="center")
-    ws.row_dimensions[2].height = 40
+    ws.row_dimensions[2].height = 44
     _fill_discount_overview_table(
         ws,
         discount_rows,
@@ -965,6 +1770,7 @@ def write_discount_overview_sheet(
         num_font=num_font,
         center=center,
         left=left,
+        highlight_ids=highlight_ids,
     )
     print(
         f"discount overview: {len(discount_rows)} models "
@@ -1789,6 +2595,12 @@ def write_l3a_internal_to_commercial(
 
 
 def build():
+    # 先读磁盘上版，再覆盖写出（相对上版标黄 + 变更摘要 + 累积更新日志）
+    prev_snap = load_quote_snapshot(OUT)
+    if not prev_snap:
+        prev_snap = load_quote_snapshot(OUT_DISCOUNT_ONLY)
+    changelog_history = load_l3a_changelog_from_xlsx(OUT)
+
     models = load_models()
     image_rows = load_image_rows()
     video_rows = load_video_rows()
@@ -1819,6 +2631,12 @@ def build():
     center = st["center"]
     left = st["left"]
 
+    curr_snap = build_quote_snapshot(
+        models, image_rows, video_rows, model_families, recommended
+    )
+    diff = diff_quote_snapshots(prev_snap, curr_snap)
+    highlight_ids = diff["highlight_ids"]
+
     with_ladder = 0
     for m in models:
         fam = resolve_family(m["model_id"], model_families, recommended)
@@ -1832,8 +2650,8 @@ def build():
         ("定位", "L3a 内部报价单（含 hehe公司需求；外发折扣册见 Trinity模型报价表.xlsx）"),
         (
             "形态",
-            "00_折扣一览（仅有折扣）· 01_生文 · 02_生图 · 03_生视频 · hehe公司需求；"
-            "刊例价 + 用量档对客折（对外三档）",
+            "更新（累积日志）· 00_折扣一览 · 相对上版变更 · 01_生文 · 02_生图 · 03_生视频 · hehe公司需求；"
+            "刊例价 + 用量档对客折（对外三档）；浅黄=相对上版新增/变更",
         ),
         ("不含", "上游成本折/线路/中转站/GM；报价依据在商务总册 01_报价解析汇总"),
         (
@@ -1876,6 +2694,12 @@ def build():
             f"生文 {len(models)} 款（公开阶梯非原价约 {with_ladder}）；"
             f"生图 {image_models} 款 / {len(image_rows)} 规格行；"
             f"生视频 {video_models} 款 / {len(video_rows)} 规格行",
+        ),
+        (
+            "相对上版",
+            f"+{len(diff['added'])} / −{len(diff['removed'])} / "
+            f"刊例变 {len(diff['listing_changed'])} / 档位变 {len(diff['tier_changed'])}；"
+            f"标黄 {len(highlight_ids)} 款",
         ),
         ("重建", "python3 pricing/scripts/build_outward_quote_standard.py"),
     ]
@@ -1945,7 +2769,9 @@ def build():
                 font=num_font if c >= 4 else body_font,
                 align=center if c == 1 or c >= 4 else left,
                 border=thin,
-                fill=alt if idx % 2 else None,
+                fill=_row_fill_for_change(
+                    m["model_id"], highlight_ids, alt if idx % 2 else None
+                ),
             )
 
     widths = [12, 26, 26, 12, 12, 12] + [14] * len(TIERS)
@@ -2017,7 +2843,9 @@ def build():
                 font=num_font if c >= 4 else body_font,
                 align=center if c == 1 or c >= 4 else left,
                 border=thin,
-                fill=alt if idx % 2 else None,
+                fill=_row_fill_for_change(
+                    m["model_id"], highlight_ids, alt if idx % 2 else None
+                ),
             )
 
     for i, w in enumerate([12, 22, 22, 10, 16, 28] + [14] * len(TIERS), 1):
@@ -2088,7 +2916,9 @@ def build():
                 font=num_font if c >= 4 else body_font,
                 align=center if c == 1 or c >= 4 else left,
                 border=thin,
-                fill=alt if idx % 2 else None,
+                fill=_row_fill_for_change(
+                    m["model_id"], highlight_ids, alt if idx % 2 else None
+                ),
             )
 
     for i, w in enumerate([12, 26, 22, 14, 22, 14] + [14] * len(TIERS), 1):
@@ -2108,6 +2938,52 @@ def build():
         num_font=num_font,
         center=center,
         left=left,
+        highlight_ids=highlight_ids,
+    )
+    write_change_summary_sheet(
+        wb,
+        diff,
+        valid_until=valid_until,
+        thin=thin,
+        white_bold=white_bold,
+        body_font=body_font,
+        num_font=num_font,
+        center=center,
+        left=left,
+    )
+    today_dot = _fmt_dot_date(today)
+    new_log = changelog_entries_from_diff(diff, today_dot)
+    seen = {(e["date"], e["category"], e["detail"]) for e in changelog_history}
+    prepend = [e for e in new_log if (e["date"], e["category"], e["detail"]) not in seen]
+    changelog = prepend + changelog_history
+    if not changelog:
+        changelog = [
+            {
+                "date": today_dot,
+                "category": "总册",
+                "detail": (
+                    f"启用「更新」累积日志（与商务总册同结构）；"
+                    f"本轮相对上版无差异（{diff['curr_count']} 款）"
+                ),
+                "note": "L3a 对内 · 首启",
+            }
+        ]
+    write_l3a_changelog_sheet(
+        wb,
+        changelog,
+        thin=thin,
+        white_bold=white_bold,
+        body_font=body_font,
+        center=center,
+        left=left,
+    )
+    md_path = write_change_summary_md(
+        diff, generated=today.isoformat(), changelog=changelog
+    )
+    print(
+        f"change vs prev: +{len(diff['added'])}/-{len(diff['removed'])} "
+        f"listing={len(diff['listing_changed'])} tier={len(diff['tier_changed'])} "
+        f"yellow={len(highlight_ids)} log+{len(prepend)}/{len(changelog)} → {md_path.name}"
     )
 
     wb.save(OUT)

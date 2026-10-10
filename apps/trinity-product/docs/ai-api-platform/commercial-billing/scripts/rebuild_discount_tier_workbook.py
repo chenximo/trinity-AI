@@ -234,6 +234,10 @@ def discount_matches(cell, label: str) -> bool:
     return str(cell).strip() == str(label).strip()
 
 
+# 成本折 < 0.2（低于「2折」）= 特殊进货线路，不参与商务分族 / 对外报价依据
+MIN_COST_FAMILY = 0.2
+
+
 def family_key_from_d_cost(d_cost: float | Decimal) -> str:
     """Numeric cost ratio → family key. Known keys keep canonical spelling (0.40)."""
     d = float(d_cost)
@@ -248,6 +252,8 @@ def normalize_family_key(d_cost: float | Decimal) -> str | None:
     """Map numeric cost discount to a family key (known or现网新折)."""
     d = float(d_cost)
     if d <= 0 or d > 1:
+        return None
+    if d < MIN_COST_FAMILY:
         return None
     return family_key_from_d_cost(d)
 
@@ -265,7 +271,7 @@ def _fold_label_from_key(key: str) -> str:
 
 
 def parse_discount_cell(cell) -> tuple[str, str] | None:
-    """Map export「折扣」cell → (load_label, d_cost key). None if unparseable."""
+    """Map export「折扣」cell → (load_label, d_cost key). None if unparseable or special (<2折)."""
     if cell is None:
         return None
     if discount_matches(cell, "原价"):
@@ -274,9 +280,16 @@ def parse_discount_cell(cell) -> tuple[str, str] | None:
     if s.endswith("折"):
         try:
             fold = Decimal(s[:-1])
-            key = normalize_family_key(float(fold / Decimal(10)))
+            # 现网两种写法：
+            #   「6.5折」→ 成本比 0.65；「1折」→ 0.10
+            #   「0.26折」→ 已是成本比 0.26（非再 ÷10）
+            ratio = float(fold) if fold < 1 else float(fold / Decimal(10))
+            if ratio < MIN_COST_FAMILY:
+                return None
+            key = normalize_family_key(ratio)
             if key is None:
                 return None
+            # 标签保留原文，便于 load_source 按「折扣」列精确匹配（含「0.26折」写法）
             return (s, key)
         except (ArithmeticError, ValueError):
             return None
@@ -287,11 +300,32 @@ def parse_discount_cell(cell) -> tuple[str, str] | None:
     if abs(f - 1.0) < 1e-9:
         return ("原价", "1.0")
     if 0 < f < 1:
+        if f < MIN_COST_FAMILY:
+            return None
         key = normalize_family_key(f)
         if key is None:
             return None
         return (_fold_label_from_key(key), key)
     return None
+
+
+def _is_special_deep_discount(cell) -> bool:
+    """True if cell looks like a cost fold below 2折 (special route)."""
+    if cell is None:
+        return False
+    s = str(cell).strip()
+    if s.endswith("折"):
+        try:
+            fold = Decimal(s[:-1])
+            ratio = float(fold) if fold < 1 else float(fold / Decimal(10))
+            return ratio < MIN_COST_FAMILY
+        except (ArithmeticError, ValueError):
+            return False
+    try:
+        f = float(cell)
+    except (TypeError, ValueError):
+        return False
+    return 0 < f < MIN_COST_FAMILY
 
 
 def discover_discount_families(path: Path) -> list[tuple[str, str]]:
@@ -309,6 +343,7 @@ def discover_discount_families(path: Path) -> list[tuple[str, str]]:
 
     by_key: dict[str, str] = {}
     unknown: set[str] = set()
+    special_skipped: set[str] = set()
     for i, row in enumerate(ws.iter_rows(values_only=True), 1):
         if i == 1 or not row or not row[0]:
             continue
@@ -316,6 +351,9 @@ def discover_discount_families(path: Path) -> list[tuple[str, str]]:
         if enabled != "启用":
             continue
         cell = row[DISCOUNT_COL] if len(row) > DISCOUNT_COL else None
+        if _is_special_deep_discount(cell):
+            special_skipped.add(str(cell).strip())
+            continue
         parsed = parse_discount_cell(cell)
         if parsed is None:
             if cell is not None and str(cell).strip():
@@ -324,6 +362,11 @@ def discover_discount_families(path: Path) -> list[tuple[str, str]]:
         label, key = parsed
         by_key[key] = label if key != "1.0" else "原价"
 
+    if special_skipped:
+        print(
+            f"[skip-special] {path.name}: 低于2折特殊线路不入分族 "
+            f"{sorted(special_skipped)}"
+        )
     if unknown:
         print(f"[warn] {path.name}: unparseable discounts (not 折/原价): {sorted(unknown)}")
 

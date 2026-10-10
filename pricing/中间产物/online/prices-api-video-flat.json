@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-08T09:16:00.746Z",
+  "fetchedAt": "2026-09-22T02:57:19.981Z",
   "modality": "video",
   "fxCnyPerUsd": 7.25,
   "models": [
@@ -112,7 +112,7 @@
       "outputUsd": null,
       "cacheUsd": null,
       "cacheCreationUsd": null,
-      "priceUsd": 5.6,
+      "priceUsd": 4.2,
       "tierCount": 4
     },
     {
@@ -128,24 +128,8 @@
       "outputUsd": null,
       "cacheUsd": null,
       "cacheCreationUsd": null,
-      "priceUsd": 3.5,
+      "priceUsd": 1.4,
       "tierCount": 4
-    },
-    {
-      "model": "seedance-2.0-os",
-      "displayName": "Seedance 2.0",
-      "modality": "video",
-      "pricingMode": "video_tiered",
-      "currency": "USD",
-      "priceUnit": "per_million_video_tokens",
-      "updatedAt": "2026-08-17T03:50:10.461232Z",
-      "tierLabel": "4k",
-      "inputUsd": null,
-      "outputUsd": null,
-      "cacheUsd": null,
-      "cacheCreationUsd": null,
-      "priceUsd": 4,
-      "tierCount": 8
     },
     {
       "model": "seedance-2.0-overseas-hc-os",
@@ -162,6 +146,22 @@
       "cacheCreationUsd": null,
       "priceUsd": 4,
       "tierCount": 8
+    },
+    {
+      "model": "seedance-2.5-overseas-hc-os",
+      "displayName": "Seedance 2.5 Overseas HC",
+      "modality": "video",
+      "pricingMode": "video_tiered",
+      "currency": "USD",
+      "priceUnit": "per_million_video_tokens",
+      "updatedAt": "2026-09-15T01:49:16.837685Z",
+      "tierLabel": "480p",
+      "inputUsd": null,
+      "outputUsd": null,
+      "cacheUsd": null,
+      "cacheCreationUsd": null,
+      "priceUsd": 10.7,
+      "tierCount": 6
     },
     {
       "model": "veo-3.1",

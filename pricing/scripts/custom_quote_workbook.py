@@ -23,6 +23,14 @@ from build_outward_quote_standard import (
     resolve_family,
     SRC_COMMERCIAL,
 )
+from quote_changelog import (  # noqa: E402
+    fmt_dot_date,
+    inventory_diff_entries,
+    load_changelog,
+    load_custom_quote_model_ids,
+    merge_changelog,
+    write_changelog_sheet,
+)
 from xlsx_wechat_compat import patch_xlsx_for_wechat
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -197,7 +205,33 @@ def write_custom_quote_workbook(
     sheet_name: str = "仅有折扣",
     include_route: bool = True,
     vendor_fills: dict | None = None,
+    log_category: str = "定制",
+    log_banner: str | None = None,
 ) -> None:
+    """写出定制报价表，并维护首页「更新」累积日志（相对上一版模型清单）。"""
+    history = load_changelog(path)
+    old_ids = load_custom_quote_model_ids(path, sheet=sheet_name)
+    new_ids = {str(r.get("model_id") or "").strip() for r in rows if r.get("model_id")}
+    today = fmt_dot_date()
+    new_log = inventory_diff_entries(
+        old_ids,
+        new_ids,
+        today=today,
+        category=log_category,
+        note_add="定制表重建入表",
+        note_rm="本轮未再纳入",
+    )
+    changelog = merge_changelog(history, new_log)
+    if not changelog:
+        changelog = [
+            {
+                "date": today,
+                "category": log_category,
+                "detail": f"启用「更新」累积日志；本轮 {len(new_ids)} 款",
+                "note": "定制表 · 首启",
+            }
+        ]
+
     styles = sheet_styles()
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -217,6 +251,11 @@ def write_custom_quote_workbook(
         include_route=include_route,
         vendor_fills=vendor_fills,
     )
+    banner = log_banner or (
+        f"本页为累积更新日志（新→旧），供 Trinity 对内核对；外发客户前可删本页。"
+        f"文件：{path.name}。"
+    )
+    write_changelog_sheet(wb, changelog, banner=banner, index=0)
     path.parent.mkdir(parents=True, exist_ok=True)
     wb.save(path)
     patch_xlsx_for_wechat(path)

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-08T09:16:00.746Z",
+  "fetchedAt": "2026-09-22T02:57:19.981Z",
   "modality": "video",
   "fxCnyPerUsd": 7.25,
   "modelCount": 25,
@@ -188,13 +188,13 @@
       "modality": "video",
       "updatedAt": "2026-08-10T01:26:49.615822Z",
       "tierLabel": "480p",
-      "price": 5.6,
+      "price": 4.2,
       "pricingMode": "video_tiered",
       "tiers": [
         {
           "tierLabel": "480p",
           "tierKey": "res:540p",
-          "price": 5.6,
+          "price": 4.2,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -202,7 +202,7 @@
         {
           "tierLabel": "720p",
           "tierKey": "res:720p",
-          "price": 5.6,
+          "price": 4.2,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -210,7 +210,7 @@
         {
           "tierLabel": "480p",
           "tierKey": "res:540p",
-          "price": 3.3,
+          "price": 2.475,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -218,7 +218,7 @@
         {
           "tierLabel": "720p",
           "tierKey": "res:720p",
-          "price": 3.3,
+          "price": 2.475,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -231,13 +231,13 @@
       "modality": "video",
       "updatedAt": "2026-08-13T03:57:55.092905Z",
       "tierLabel": "480p",
-      "price": 3.5,
+      "price": 1.4,
       "pricingMode": "video_tiered",
       "tiers": [
         {
           "tierLabel": "480p",
           "tierKey": "res:540p",
-          "price": 3.5,
+          "price": 1.4,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -245,7 +245,7 @@
         {
           "tierLabel": "720p",
           "tierKey": "res:720p",
-          "price": 3.5,
+          "price": 1.4,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -253,7 +253,7 @@
         {
           "tierLabel": "480p",
           "tierKey": "res:540p",
-          "price": 2.1,
+          "price": 0.84,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -261,82 +261,7 @@
         {
           "tierLabel": "720p",
           "tierKey": "res:720p",
-          "price": 2.1,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        }
-      ]
-    },
-    "seedance-2.0-os": {
-      "model": "seedance-2.0-os",
-      "displayName": "Seedance 2.0",
-      "modality": "video",
-      "updatedAt": "2026-08-17T03:50:10.461232Z",
-      "tierLabel": "4k",
-      "price": 4,
-      "pricingMode": "video_tiered",
-      "tiers": [
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 4,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "4k",
-          "tierKey": "res:4k",
-          "price": 2.4,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p",
-          "tierKey": "res:540p",
-          "price": 7,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 7,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 7.7,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "480p",
-          "tierKey": "res:540p",
-          "price": 4.3,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "720p",
-          "tierKey": "res:720p",
-          "price": 4.3,
-          "currency": "USD",
-          "unit": "per_million_video_tokens",
-          "pricingMode": "video_tiered"
-        },
-        {
-          "tierLabel": "1080p",
-          "tierKey": "res:1080p",
-          "price": 4.7,
+          "price": 0.84,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"
@@ -412,6 +337,65 @@
           "tierLabel": "1080p",
           "tierKey": "res:1080p",
           "price": 4.7,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        }
+      ]
+    },
+    "seedance-2.5-overseas-hc-os": {
+      "model": "seedance-2.5-overseas-hc-os",
+      "displayName": "Seedance 2.5 Overseas HC",
+      "modality": "video",
+      "updatedAt": "2026-09-15T01:49:16.837685Z",
+      "tierLabel": "480p",
+      "price": 10.7,
+      "pricingMode": "video_tiered",
+      "tiers": [
+        {
+          "tierLabel": "480p",
+          "tierKey": "res:540p",
+          "price": 10.7,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        },
+        {
+          "tierLabel": "720p",
+          "tierKey": "res:720p",
+          "price": 10.7,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        },
+        {
+          "tierLabel": "1080p",
+          "tierKey": "res:1080p",
+          "price": 11.7,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        },
+        {
+          "tierLabel": "480p",
+          "tierKey": "res:540p",
+          "price": 6.4,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        },
+        {
+          "tierLabel": "720p",
+          "tierKey": "res:720p",
+          "price": 6.4,
+          "currency": "USD",
+          "unit": "per_million_video_tokens",
+          "pricingMode": "video_tiered"
+        },
+        {
+          "tierLabel": "1080p",
+          "tierKey": "res:1080p",
+          "price": 7,
           "currency": "USD",
           "unit": "per_million_video_tokens",
           "pricingMode": "video_tiered"

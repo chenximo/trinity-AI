@@ -88,6 +88,7 @@ def main() -> None:
         rows,
         vendor_fills=fills,
         include_route=True,
+        log_category="海外三家",
     )
     print(f"wrote {OUT} rows={len(rows)}")
 

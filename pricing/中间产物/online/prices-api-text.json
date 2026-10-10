@@ -1,11 +1,11 @@
 {
   "source": "trinity_prices_api",
-  "apiUrl": "https://api.trinitydesk.ai/v1/prices?modality=text",
-  "modality": "text",
+  "apiUrl": "https://api.trinitydesk.ai/v1/prices",
+  "modality": "all",
   "fxCnyPerUsd": 7.25,
   "fxNote": "FX_LISTING(默认7.25)用于部分 cascade；国内刊例 V1/V2 回退路径使用 FX_LEGACY_065=6.5，见刊例策略-V1-V2",
-  "fetchedAt": "2026-09-08T09:15:59.428Z",
-  "modelCount": 64,
+  "fetchedAt": "2026-09-22T02:55:16.780Z",
+  "modelCount": 91,
   "object": "list",
   "data": [
     {
@@ -354,6 +354,125 @@
     },
     {
       "object": "model_prices",
+      "model": "deepseek-flash",
+      "display_name": "DeepSeek Flash",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "2",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥2 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.04",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥0.04 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "8",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥8 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "price_variants": [
+        {
+          "variant": "default",
+          "label": "平峰",
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "1",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥1 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.02",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥0.02 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "4",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥4 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "variant": "scheduled",
+          "label": "高峰",
+          "schedule": {
+            "code": "deepseek_peak_cn",
+            "timezone": "Asia/Shanghai",
+            "windows": [
+              {
+                "start": "09:00",
+                "end": "12:00",
+                "display": "中国工作日 09:00–12:00"
+              },
+              {
+                "start": "14:00",
+                "end": "18:00",
+                "display": "中国工作日 14:00–18:00"
+              }
+            ]
+          },
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "2",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥2 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.04",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥0.04 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "8",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥8 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "effective_variant": "scheduled",
+      "effective_variant_label": "当前适用：高峰价",
+      "updated_at": "2026-09-10T06:46:58.951502Z"
+    },
+    {
+      "object": "model_prices",
       "model": "deepseek-v3.2",
       "display_name": "DeepSeek V3.2",
       "modality_type": "text",
@@ -428,12 +547,12 @@
               {
                 "start": "09:00",
                 "end": "12:00",
-                "display": "每天 09:00–12:00"
+                "display": "中国工作日 09:00–12:00"
               },
               {
                 "start": "14:00",
                 "end": "18:00",
-                "display": "每天 14:00–18:00"
+                "display": "中国工作日 14:00–18:00"
               }
             ]
           },
@@ -476,7 +595,9 @@
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "legacy",
-      "currency": "USD",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
       "price_unit": "per_million_tokens",
       "price_groups": [
         {
@@ -484,22 +605,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.44",
-              "currency": "USD",
+              "amount": "2",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.44 / 百万 input tokens"
+              "display": "¥2 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.014",
-              "currency": "USD",
+              "amount": "0.04",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.014 / 百万 cached input tokens"
+              "display": "¥0.04 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "1.32",
-              "currency": "USD",
+              "amount": "8",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$1.32 / 百万 output tokens"
+              "display": "¥8 / 百万 output tokens"
             }
           }
         }
@@ -514,22 +635,22 @@
               "label": "标准计价",
               "prices": {
                 "input": {
-                  "amount": "0.22",
-                  "currency": "USD",
+                  "amount": "1",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.22 / 百万 input tokens"
+                  "display": "¥1 / 百万 input tokens"
                 },
                 "cache": {
-                  "amount": "0.007",
-                  "currency": "USD",
+                  "amount": "0.02",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.007 / 百万 cached input tokens"
+                  "display": "¥0.02 / 百万 cached input tokens"
                 },
                 "output": {
-                  "amount": "0.66",
-                  "currency": "USD",
+                  "amount": "4",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.66 / 百万 output tokens"
+                  "display": "¥4 / 百万 output tokens"
                 }
               }
             }
@@ -545,12 +666,12 @@
               {
                 "start": "09:00",
                 "end": "12:00",
-                "display": "每天 09:00–12:00"
+                "display": "中国工作日 09:00–12:00"
               },
               {
                 "start": "14:00",
                 "end": "18:00",
-                "display": "每天 14:00–18:00"
+                "display": "中国工作日 14:00–18:00"
               }
             ]
           },
@@ -560,22 +681,22 @@
               "label": "标准计价",
               "prices": {
                 "input": {
-                  "amount": "0.44",
-                  "currency": "USD",
+                  "amount": "2",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.44 / 百万 input tokens"
+                  "display": "¥2 / 百万 input tokens"
                 },
                 "cache": {
-                  "amount": "0.014",
-                  "currency": "USD",
+                  "amount": "0.04",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.014 / 百万 cached input tokens"
+                  "display": "¥0.04 / 百万 cached input tokens"
                 },
                 "output": {
-                  "amount": "1.32",
-                  "currency": "USD",
+                  "amount": "8",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$1.32 / 百万 output tokens"
+                  "display": "¥8 / 百万 output tokens"
                 }
               }
             }
@@ -593,7 +714,9 @@
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "legacy",
-      "currency": "USD",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
       "price_unit": "per_million_tokens",
       "price_groups": [
         {
@@ -601,27 +724,107 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.2",
-              "currency": "USD",
+              "amount": "2",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.2 / 百万 input tokens"
+              "display": "¥2 / 百万 input tokens"
             },
             "cache": {
               "amount": "0.04",
-              "currency": "USD",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.04 / 百万 cached input tokens"
+              "display": "¥0.04 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "0.4",
-              "currency": "USD",
+              "amount": "8",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 output tokens"
+              "display": "¥8 / 百万 output tokens"
             }
           }
         }
       ],
-      "updated_at": "2026-07-30T09:24:21.564315Z"
+      "price_variants": [
+        {
+          "variant": "default",
+          "label": "平峰",
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "1",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥1 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.02",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥0.02 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "4",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥4 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "variant": "scheduled",
+          "label": "高峰",
+          "schedule": {
+            "code": "deepseek_peak_cn",
+            "timezone": "Asia/Shanghai",
+            "windows": [
+              {
+                "start": "09:00",
+                "end": "12:00",
+                "display": "中国工作日 09:00–12:00"
+              },
+              {
+                "start": "14:00",
+                "end": "18:00",
+                "display": "中国工作日 14:00–18:00"
+              }
+            ]
+          },
+          "price_groups": [
+            {
+              "type": "default",
+              "label": "标准计价",
+              "prices": {
+                "input": {
+                  "amount": "2",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥2 / 百万 input tokens"
+                },
+                "cache": {
+                  "amount": "0.04",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥0.04 / 百万 cached input tokens"
+                },
+                "output": {
+                  "amount": "8",
+                  "currency": "CNY",
+                  "unit": "per_million_tokens",
+                  "display": "¥8 / 百万 output tokens"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "effective_variant": "scheduled",
+      "effective_variant_label": "当前适用：高峰价",
+      "updated_at": "2026-09-20T03:45:13.441702Z"
     },
     {
       "object": "model_prices",
@@ -699,12 +902,12 @@
               {
                 "start": "09:00",
                 "end": "12:00",
-                "display": "每天 09:00–12:00"
+                "display": "中国工作日 09:00–12:00"
               },
               {
                 "start": "14:00",
                 "end": "18:00",
-                "display": "每天 14:00–18:00"
+                "display": "中国工作日 14:00–18:00"
               }
             ]
           },
@@ -747,7 +950,9 @@
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "legacy",
-      "currency": "USD",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
       "price_unit": "per_million_tokens",
       "price_groups": [
         {
@@ -755,22 +960,22 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "1.32",
-              "currency": "USD",
+              "amount": "9",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$1.32 / 百万 input tokens"
+              "display": "¥9 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.044",
-              "currency": "USD",
+              "amount": "0.3",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.044 / 百万 cached input tokens"
+              "display": "¥0.3 / 百万 cached input tokens"
             },
             "output": {
-              "amount": "3.96",
-              "currency": "USD",
+              "amount": "27",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$3.96 / 百万 output tokens"
+              "display": "¥27 / 百万 output tokens"
             }
           }
         }
@@ -785,22 +990,22 @@
               "label": "标准计价",
               "prices": {
                 "input": {
-                  "amount": "0.66",
-                  "currency": "USD",
+                  "amount": "4.5",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.66 / 百万 input tokens"
+                  "display": "¥4.5 / 百万 input tokens"
                 },
                 "cache": {
-                  "amount": "0.022",
-                  "currency": "USD",
+                  "amount": "0.15",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.022 / 百万 cached input tokens"
+                  "display": "¥0.15 / 百万 cached input tokens"
                 },
                 "output": {
-                  "amount": "1.98",
-                  "currency": "USD",
+                  "amount": "13.5",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$1.98 / 百万 output tokens"
+                  "display": "¥13.5 / 百万 output tokens"
                 }
               }
             }
@@ -816,12 +1021,12 @@
               {
                 "start": "09:00",
                 "end": "12:00",
-                "display": "每天 09:00–12:00"
+                "display": "中国工作日 09:00–12:00"
               },
               {
                 "start": "14:00",
                 "end": "18:00",
-                "display": "每天 14:00–18:00"
+                "display": "中国工作日 14:00–18:00"
               }
             ]
           },
@@ -831,22 +1036,22 @@
               "label": "标准计价",
               "prices": {
                 "input": {
-                  "amount": "1.32",
-                  "currency": "USD",
+                  "amount": "9",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$1.32 / 百万 input tokens"
+                  "display": "¥9 / 百万 input tokens"
                 },
                 "cache": {
-                  "amount": "0.044",
-                  "currency": "USD",
+                  "amount": "0.3",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$0.044 / 百万 cached input tokens"
+                  "display": "¥0.3 / 百万 cached input tokens"
                 },
                 "output": {
-                  "amount": "3.96",
-                  "currency": "USD",
+                  "amount": "27",
+                  "currency": "CNY",
                   "unit": "per_million_tokens",
-                  "display": "$3.96 / 百万 output tokens"
+                  "display": "¥27 / 百万 output tokens"
                 }
               }
             }
@@ -921,6 +1126,37 @@
         }
       ],
       "updated_at": "2026-06-24T12:01:47.956986Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gemini-2.5-flash-image",
+      "display_name": "Gemini 2.5 Flash Image",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.3 / 百万 input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T07:08:20.896967Z"
     },
     {
       "object": "model_prices",
@@ -1141,6 +1377,37 @@
     },
     {
       "object": "model_prices",
+      "model": "gemini-3.1-flash-image",
+      "display_name": "Gemini 3.1 Flash Image",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.5 / 百万 input tokens"
+            },
+            "output": {
+              "amount": "60",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$60 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T11:19:40.522837Z"
+    },
+    {
+      "object": "model_prices",
       "model": "gemini-3.1-flash-lite",
       "display_name": "Gemini 3.1 Flash Lite",
       "modality_type": "text",
@@ -1203,6 +1470,37 @@
         }
       ],
       "updated_at": "2026-06-24T12:04:35.177766Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gemini-3.1-flash-lite-image",
+      "display_name": "Gemini 3.1 Flash Lite Image",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "0.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.25 / 百万 input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T11:19:40.777573Z"
     },
     {
       "object": "model_prices",
@@ -1615,118 +1913,76 @@
     },
     {
       "object": "model_prices",
-      "model": "glm-5-turbo",
-      "display_name": "GLM 5 Turbo",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "usage_token_range",
+      "model": "gemini-omni-flash-preview",
+      "display_name": "Gemini Omni Flash Preview",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "omni_token_triple",
       "currency": "USD",
-      "price_unit": "per_million_tokens",
+      "price_unit": "per_1M",
       "price_groups": [
         {
+          "type": "video_output_per_second",
+          "label": "视频输出",
+          "conditions_summary": "按视频输出 token 实扣；纯视频输出约如上每秒价",
+          "conditions": {
+            "video_output_per_second": true,
+            "pricing_mode": "omni_token_triple"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.10136",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "≈ $0.1 / 秒"
+            }
+          }
+        },
+        {
           "type": "token_kind",
-          "label": "输入 token · 按总 token",
+          "label": "输入 token",
           "token_kind": "input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "0.7693",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.7693 / 百万 input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "1.077",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$1.077 / 百万 input tokens"
-              }
+          "prices": {
+            "unit": {
+              "amount": "1.5",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$1.5 / 百万 input tokens"
             }
-          ]
+          }
         },
         {
           "type": "token_kind",
-          "label": "缓存输入 token · 按总 token",
-          "token_kind": "cached_input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "0.1847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.1847 / 百万 cached input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "0.277",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.277 / 百万 cached input tokens"
-              }
+          "label": "文本输出 token",
+          "token_kind": "output_text",
+          "prices": {
+            "unit": {
+              "amount": "9",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$9 / 百万 文本/思考 tokens"
             }
-          ]
+          }
         },
         {
           "type": "token_kind",
-          "label": "输出 token · 按总 token",
-          "token_kind": "output",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "3.3847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$3.3847 / 百万 output tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "4",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$4 / 百万 output tokens"
-              }
+          "label": "视频输出 token",
+          "token_kind": "output_video",
+          "prices": {
+            "unit": {
+              "amount": "17.5",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$17.5 / 百万 video tokens"
             }
-          ]
+          }
         }
       ],
-      "updated_at": "2026-08-27T03:42:18.162823Z"
+      "updated_at": "2026-08-04T06:13:22.884017Z",
+      "pricing_estimates": {
+        "video_output_per_second": 0.10136,
+        "disclaimer": "按 token 实扣，含输入与思考时总费用略高于纯视频秒价"
+      }
     },
     {
       "object": "model_prices",
@@ -1838,121 +2094,6 @@
         }
       ],
       "updated_at": "2026-08-28T08:33:27.457915Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "glm-5v-turbo",
-      "display_name": "GLM-5V Turbo",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "context_length_range",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "token_kind",
-          "label": "输入 token · 按上下文长度",
-          "token_kind": "input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "0.7693",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.7693 / 百万 input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "1.077",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$1.077 / 百万 input tokens"
-              }
-            }
-          ]
-        },
-        {
-          "type": "token_kind",
-          "label": "缓存输入 token · 按上下文长度",
-          "token_kind": "cached_input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "0.1847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.1847 / 百万 cached input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "0.277",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.277 / 百万 cached input tokens"
-              }
-            }
-          ]
-        },
-        {
-          "type": "token_kind",
-          "label": "输出 token · 按上下文长度",
-          "token_kind": "output",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 32000,
-                "display": "0 – 32K tokens",
-                "display_short": "≤ 32K"
-              },
-              "price": {
-                "amount": "3.3847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$3.3847 / 百万 output tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "4",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$4 / 百万 output tokens"
-              }
-            }
-          ]
-        }
-      ],
-      "updated_at": "2026-08-27T03:53:18.401003Z"
     },
     {
       "object": "model_prices",
@@ -2973,8 +3114,8 @@
     },
     {
       "object": "model_prices",
-      "model": "grok-4.5",
-      "display_name": "Grok 4.5",
+      "model": "gpt-6-astra",
+      "display_name": "GPT-6 Astra",
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "context_length_range",
@@ -2989,28 +3130,28 @@
             {
               "range": {
                 "min": 0,
-                "max": 199999,
-                "display": "0 – 200K tokens",
-                "display_short": "≤ 200K"
+                "max": 272000,
+                "display": "0 – 272K tokens",
+                "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "2",
+                "amount": "10",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$2 / 百万 input tokens"
+                "display": "$10 / 百万 input tokens"
               }
             },
             {
               "range": {
-                "min": 200000,
-                "display": "> 200K tokens",
-                "display_short": "> 200K"
+                "min": 272001,
+                "display": "> 272K tokens",
+                "display_short": "> 272K"
               },
               "price": {
-                "amount": "4",
+                "amount": "20",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$4 / 百万 input tokens"
+                "display": "$20 / 百万 input tokens"
               }
             }
           ]
@@ -3023,28 +3164,62 @@
             {
               "range": {
                 "min": 0,
-                "max": 199999,
-                "display": "0 – 200K tokens",
-                "display_short": "≤ 200K"
+                "max": 272000,
+                "display": "0 – 272K tokens",
+                "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "0.3",
+                "amount": "1",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.3 / 百万 cached input tokens"
+                "display": "$1 / 百万 cached input tokens"
               }
             },
             {
               "range": {
-                "min": 200000,
-                "display": "> 200K tokens",
-                "display_short": "> 200K"
+                "min": 272001,
+                "display": "> 272K tokens",
+                "display_short": "> 272K"
               },
               "price": {
-                "amount": "0.6",
+                "amount": "2",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$0.6 / 百万 cached input tokens"
+                "display": "$2 / 百万 cached input tokens"
+              }
+            }
+          ]
+        },
+        {
+          "type": "token_kind",
+          "label": "缓存创建 token · 按上下文长度",
+          "token_kind": "cache_creation",
+          "ranges": [
+            {
+              "range": {
+                "min": 0,
+                "max": 272000,
+                "display": "0 – 272K tokens",
+                "display_short": "≤ 272K"
+              },
+              "price": {
+                "amount": "12.5",
+                "currency": "USD",
+                "unit": "per_million_tokens",
+                "display": "$12.5 / 百万 cache creation tokens"
+              }
+            },
+            {
+              "range": {
+                "min": 272001,
+                "display": "> 272K tokens",
+                "display_short": "> 272K"
+              },
+              "price": {
+                "amount": "25",
+                "currency": "USD",
+                "unit": "per_million_tokens",
+                "display": "$25 / 百万 cache creation tokens"
               }
             }
           ]
@@ -3057,34 +3232,327 @@
             {
               "range": {
                 "min": 0,
-                "max": 199999,
-                "display": "0 – 200K tokens",
-                "display_short": "≤ 200K"
+                "max": 272000,
+                "display": "0 – 272K tokens",
+                "display_short": "≤ 272K"
               },
               "price": {
-                "amount": "6",
+                "amount": "50",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$6 / 百万 output tokens"
+                "display": "$50 / 百万 output tokens"
               }
             },
             {
               "range": {
-                "min": 200000,
-                "display": "> 200K tokens",
-                "display_short": "> 200K"
+                "min": 272001,
+                "display": "> 272K tokens",
+                "display_short": "> 272K"
               },
               "price": {
-                "amount": "12",
+                "amount": "75",
                 "currency": "USD",
                 "unit": "per_million_tokens",
-                "display": "$12 / 百万 output tokens"
+                "display": "$75 / 百万 output tokens"
               }
             }
           ]
         }
       ],
-      "updated_at": "2026-08-24T08:23:12.125222Z"
+      "updated_at": "2026-09-09T11:24:00.675395Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-image-2",
+      "display_name": "GPT Image 2",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "1.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.25 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-07T07:08:24.146205Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-image-2.5-flare",
+      "display_name": "GPT Image 2.5 Flare",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "1.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.25 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-09-18T08:18:21.483911Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-image-2.5-sunburst",
+      "display_name": "GPT Image 2.5 Sunburst",
+      "modality_type": "image",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "1.25",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$1.25 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "30",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$30 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-09-18T08:18:21.483911Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-realtime-2.1",
+      "display_name": "GPT Realtime 2.1",
+      "modality_type": "audio",
+      "charge_unit": "token",
+      "pricing_mode": "realtime_token_multimodal",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "token_modality",
+          "label": "文本",
+          "conditions_summary": "文本 token",
+          "conditions": {
+            "token_modality": "text"
+          },
+          "prices": {
+            "input": {
+              "amount": "4",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$4 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.4 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "24",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$24 / 百万 output tokens"
+            }
+          }
+        },
+        {
+          "type": "token_modality",
+          "label": "音频",
+          "conditions_summary": "音频 token",
+          "conditions": {
+            "token_modality": "audio"
+          },
+          "prices": {
+            "input": {
+              "amount": "32",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$32 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.4 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "64",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$64 / 百万 output tokens"
+            }
+          }
+        },
+        {
+          "type": "token_modality",
+          "label": "图像",
+          "conditions_summary": "图像输入 token",
+          "conditions": {
+            "token_modality": "image"
+          },
+          "prices": {
+            "input": {
+              "amount": "5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$5 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.5",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.5 / 百万 cached input tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-14T10:22:57.752966Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "gpt-realtime-2.1-mini",
+      "display_name": "GPT Realtime 2.1 mini",
+      "modality_type": "audio",
+      "charge_unit": "token",
+      "pricing_mode": "realtime_token_multimodal",
+      "currency": "USD",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "token_modality",
+          "label": "文本",
+          "conditions_summary": "文本 token",
+          "conditions": {
+            "token_modality": "text"
+          },
+          "prices": {
+            "input": {
+              "amount": "0.6",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.6 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.06",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.06 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "2.4",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$2.4 / 百万 output tokens"
+            }
+          }
+        },
+        {
+          "type": "token_modality",
+          "label": "音频",
+          "conditions_summary": "音频 token",
+          "conditions": {
+            "token_modality": "audio"
+          },
+          "prices": {
+            "input": {
+              "amount": "10",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$10 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.3 / 百万 cached input tokens"
+            },
+            "output": {
+              "amount": "20",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$20 / 百万 output tokens"
+            }
+          }
+        },
+        {
+          "type": "token_modality",
+          "label": "图像",
+          "conditions_summary": "图像输入 token",
+          "conditions": {
+            "token_modality": "image"
+          },
+          "prices": {
+            "input": {
+              "amount": "0.8",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.8 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.08",
+              "currency": "USD",
+              "unit": "per_million_tokens",
+              "display": "$0.08 / 百万 cached input tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-14T10:22:57.752966Z"
     },
     {
       "object": "model_prices",
@@ -3203,160 +3671,352 @@
     },
     {
       "object": "model_prices",
-      "model": "hy3-preview",
-      "display_name": "Hy3 Preview",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "context_length_range",
+      "model": "grok-imagine-image-pro",
+      "display_name": "Grok Imagine Image Pro",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
       "currency": "USD",
-      "price_unit": "per_million_tokens",
+      "price_unit": "per_image",
       "price_groups": [
         {
-          "type": "token_kind",
-          "label": "输入 token · 按上下文长度",
-          "token_kind": "input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 16000,
-                "display": "0 – 16K tokens",
-                "display_short": "≤ 16K"
-              },
-              "price": {
-                "amount": "0.1847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.1847 / 百万 input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 16001,
-                "max": 32000,
-                "display": "16K – 32K tokens",
-                "display_short": "16K – 32K"
-              },
-              "price": {
-                "amount": "0.2462",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.2462 / 百万 input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "0.3077",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.3077 / 百万 input tokens"
-              }
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
             }
-          ]
+          }
         },
         {
-          "type": "token_kind",
-          "label": "缓存输入 token · 按上下文长度",
-          "token_kind": "cached_input",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 16000,
-                "display": "0 – 16K tokens",
-                "display_short": "≤ 16K"
-              },
-              "price": {
-                "amount": "0.0616",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.0616 / 百万 cached input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 16001,
-                "max": 32000,
-                "display": "16K – 32K tokens",
-                "display_short": "16K – 32K"
-              },
-              "price": {
-                "amount": "0.0924",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.0924 / 百万 cached input tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "0.1231",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.1231 / 百万 cached input tokens"
-              }
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.07 / 张"
             }
-          ]
-        },
-        {
-          "type": "token_kind",
-          "label": "输出 token · 按上下文长度",
-          "token_kind": "output",
-          "ranges": [
-            {
-              "range": {
-                "min": 0,
-                "max": 16000,
-                "display": "0 – 16K tokens",
-                "display_short": "≤ 16K"
-              },
-              "price": {
-                "amount": "0.6154",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.6154 / 百万 output tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 16001,
-                "max": 32000,
-                "display": "16K – 32K tokens",
-                "display_short": "16K – 32K"
-              },
-              "price": {
-                "amount": "0.9847",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$0.9847 / 百万 output tokens"
-              }
-            },
-            {
-              "range": {
-                "min": 32001,
-                "display": "> 32K tokens",
-                "display_short": "> 32K"
-              },
-              "price": {
-                "amount": "1.2308",
-                "currency": "USD",
-                "unit": "per_million_tokens",
-                "display": "$1.2308 / 百万 output tokens"
-              }
-            }
-          ]
+          }
         }
       ],
-      "updated_at": "2026-08-27T06:10:24.497876Z"
+      "updated_at": "2026-08-25T08:52:00.002089Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "grok-imagine-image-quality",
+      "display_name": "Grok Imagine Image Quality",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.07 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-25T08:52:00.002089Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "grok-imagine-video-1.5",
+      "display_name": "Grok Imagine Video 1.5",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.25",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.25 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "480p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.08",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "reference_image",
+          "label": "参考图",
+          "conditions_summary": "按张计费（与官方一致）",
+          "conditions": {
+            "pricing_role": "reference_image"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.01",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.01 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-16T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "happyhorse-1.0",
+      "display_name": "HappyHorse 1.0",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.24",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.24 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "480p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-06T02:49:18.170072Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "happyhorse-1.0-video-edit",
+      "display_name": "HappyHorse 1.0 Video Edit",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.24",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.24 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-13T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "happyhorse-1.1",
+      "display_name": "HappyHorse 1.1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.18",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.18 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "480p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.07",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.07 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-04T16:00:00Z"
     },
     {
       "object": "model_prices",
@@ -3388,43 +4048,6 @@
         }
       ],
       "updated_at": "2026-06-22T09:26:03.394868Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "kimi-k2.7-code-highspeed",
-      "display_name": "Kimi K2.7 Code HighSpeed",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "2",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$2 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "8.307692",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$8.307692 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-29T10:27:07.911195Z"
     },
     {
       "object": "model_prices",
@@ -3465,40 +4088,67 @@
     },
     {
       "object": "model_prices",
-      "model": "minimax-m2.5",
-      "display_name": "MiniMax M2.5",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
+      "model": "minimax-h3",
+      "display_name": "MiniMax H3",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
       "currency": "USD",
-      "price_unit": "per_million_tokens",
+      "price_unit": "per_second",
       "price_groups": [
         {
-          "type": "default",
-          "label": "标准计价",
+          "type": "resolution_tier",
+          "label": "768p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "768p",
+            "mode_bucket": "general"
+          },
           "prices": {
-            "input": {
-              "amount": "0.323077",
+            "unit": {
+              "amount": "0.08",
               "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.323077 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.032308",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "2k",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.13",
               "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.032308 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "1.292308",
+              "unit": "per_second",
+              "display": "$0.13 / 秒"
+            }
+          }
+        },
+        {
+          "type": "reference_image",
+          "label": "参考图",
+          "conditions_summary": "前 5 张免费，超出按张",
+          "conditions": {
+            "pricing_role": "reference_image",
+            "free_quota": 5
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.04",
               "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$1.292308 / 百万 output tokens"
+              "unit": "per_image",
+              "display": "$0.04 / 张"
             }
           }
         }
       ],
-      "updated_at": "2026-06-29T10:27:48.126867Z"
+      "updated_at": "2026-08-16T16:00:00Z"
     },
     {
       "object": "model_prices",
@@ -3507,7 +4157,9 @@
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "legacy",
-      "currency": "USD",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
       "price_unit": "per_million_tokens",
       "price_groups": [
         {
@@ -3515,27 +4167,78 @@
           "label": "标准计价",
           "prices": {
             "input": {
-              "amount": "0.323077",
-              "currency": "USD",
+              "amount": "2.1",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.323077 / 百万 input tokens"
+              "display": "¥2.1 / 百万 input tokens"
             },
             "cache": {
-              "amount": "0.064615",
-              "currency": "USD",
+              "amount": "0.42",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$0.064615 / 百万 cached input tokens"
+              "display": "¥0.42 / 百万 cached input tokens"
+            },
+            "cache_creation": {
+              "amount": "2.625",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥2.625 / 百万 cache creation tokens"
             },
             "output": {
-              "amount": "1.292308",
-              "currency": "USD",
+              "amount": "8.4",
+              "currency": "CNY",
               "unit": "per_million_tokens",
-              "display": "$1.292308 / 百万 output tokens"
+              "display": "¥8.4 / 百万 output tokens"
             }
           }
         }
       ],
-      "updated_at": "2026-06-29T10:28:25.368569Z"
+      "updated_at": "2026-09-20T06:44:08.476275Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "minimax-m2.7-highspeed",
+      "display_name": "MiniMax M2.7 Highspeed",
+      "modality_type": "text",
+      "charge_unit": "token",
+      "pricing_mode": "legacy",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
+      "price_unit": "per_million_tokens",
+      "price_groups": [
+        {
+          "type": "default",
+          "label": "标准计价",
+          "prices": {
+            "input": {
+              "amount": "4.2",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥4.2 / 百万 input tokens"
+            },
+            "cache": {
+              "amount": "0.42",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥0.42 / 百万 cached input tokens"
+            },
+            "cache_creation": {
+              "amount": "2.625",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥2.625 / 百万 cache creation tokens"
+            },
+            "output": {
+              "amount": "16.8",
+              "currency": "CNY",
+              "unit": "per_million_tokens",
+              "display": "¥16.8 / 百万 output tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-09-20T06:44:08.476275Z"
     },
     {
       "object": "model_prices",
@@ -3544,7 +4247,9 @@
       "modality_type": "text",
       "charge_unit": "token",
       "pricing_mode": "context_length_range",
-      "currency": "USD",
+      "currency": "CNY",
+      "fx_usd_cny_rate": "6.7016",
+      "fx_rate_date": "2026-09-22",
       "price_unit": "per_million_tokens",
       "price_groups": [
         {
@@ -3560,10 +4265,10 @@
                 "display_short": "≤ 512K"
               },
               "price": {
-                "amount": "0.3231",
-                "currency": "USD",
+                "amount": "2.1",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$0.3231 / 百万 input tokens"
+                "display": "¥2.1 / 百万 input tokens"
               }
             },
             {
@@ -3573,10 +4278,10 @@
                 "display_short": "> 512K"
               },
               "price": {
-                "amount": "0.6462",
-                "currency": "USD",
+                "amount": "4.2",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$0.6462 / 百万 input tokens"
+                "display": "¥4.2 / 百万 input tokens"
               }
             }
           ]
@@ -3594,10 +4299,10 @@
                 "display_short": "≤ 512K"
               },
               "price": {
-                "amount": "0.0647",
-                "currency": "USD",
+                "amount": "0.42",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$0.0647 / 百万 cached input tokens"
+                "display": "¥0.42 / 百万 cached input tokens"
               }
             },
             {
@@ -3607,10 +4312,44 @@
                 "display_short": "> 512K"
               },
               "price": {
-                "amount": "0.1293",
-                "currency": "USD",
+                "amount": "0.84",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$0.1293 / 百万 cached input tokens"
+                "display": "¥0.84 / 百万 cached input tokens"
+              }
+            }
+          ]
+        },
+        {
+          "type": "token_kind",
+          "label": "缓存创建 token · 按上下文长度",
+          "token_kind": "cache_creation",
+          "ranges": [
+            {
+              "range": {
+                "min": 0,
+                "max": 512000,
+                "display": "0 – 512K tokens",
+                "display_short": "≤ 512K"
+              },
+              "price": {
+                "amount": "2.1",
+                "currency": "CNY",
+                "unit": "per_million_tokens",
+                "display": "¥2.1 / 百万 cache creation tokens"
+              }
+            },
+            {
+              "range": {
+                "min": 512001,
+                "display": "> 512K tokens",
+                "display_short": "> 512K"
+              },
+              "price": {
+                "amount": "4.2",
+                "currency": "CNY",
+                "unit": "per_million_tokens",
+                "display": "¥4.2 / 百万 cache creation tokens"
               }
             }
           ]
@@ -3628,10 +4367,10 @@
                 "display_short": "≤ 512K"
               },
               "price": {
-                "amount": "1.2924",
-                "currency": "USD",
+                "amount": "8.4",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$1.2924 / 百万 output tokens"
+                "display": "¥8.4 / 百万 output tokens"
               }
             },
             {
@@ -3641,238 +4380,16 @@
                 "display_short": "> 512K"
               },
               "price": {
-                "amount": "2.5847",
-                "currency": "USD",
+                "amount": "16.8",
+                "currency": "CNY",
                 "unit": "per_million_tokens",
-                "display": "$2.5847 / 百万 output tokens"
+                "display": "¥16.8 / 百万 output tokens"
               }
             }
           ]
         }
       ],
-      "updated_at": "2026-08-27T03:40:42.571098Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen-flash",
-      "display_name": "Qwen Flash",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.05",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.05 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.005",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.005 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "0.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:23.681846Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen-max",
-      "display_name": "Qwen Max",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.37",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.37 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.08",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.08 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "1.48",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$1.48 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:53.177643Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen-plus",
-      "display_name": "Qwen Plus",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.04",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.04 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "1.2",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$1.2 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:22.397789Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen-turbo",
-      "display_name": "Qwen Turbo",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.05",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.05 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.01",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.01 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "0.2",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.2 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:54.538924Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen3.5-flash",
-      "display_name": "Qwen3.5 Flash",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.1",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.1 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.01",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.01 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "0.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:21.077170Z"
-    },
-    {
-      "object": "model_prices",
-      "model": "qwen3.5-plus",
-      "display_name": "Qwen3.5 Plus",
-      "modality_type": "text",
-      "charge_unit": "token",
-      "pricing_mode": "legacy",
-      "currency": "USD",
-      "price_unit": "per_million_tokens",
-      "price_groups": [
-        {
-          "type": "default",
-          "label": "标准计价",
-          "prices": {
-            "input": {
-              "amount": "0.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.4 / 百万 input tokens"
-            },
-            "cache": {
-              "amount": "0.04",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$0.04 / 百万 cached input tokens"
-            },
-            "output": {
-              "amount": "2.4",
-              "currency": "USD",
-              "unit": "per_million_tokens",
-              "display": "$2.4 / 百万 output tokens"
-            }
-          }
-        }
-      ],
-      "updated_at": "2026-06-22T09:22:19.754189Z"
+      "updated_at": "2026-09-20T06:44:08.476275Z"
     },
     {
       "object": "model_prices",
@@ -4293,6 +4810,2126 @@
         }
       ],
       "updated_at": "2026-08-03T09:40:03.133702Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0-fast-hc-os",
+      "display_name": "Seedance 2.0 Fast HC",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.2",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$5.6 / 百万 video tokens",
+              "list_amount": "5.6",
+              "discount_factor": "0.75",
+              "discount_label": "7.5折",
+              "list_display": "$5.6 / 百万 video tokens",
+              "officialDiscountFactor": "0.75",
+              "officialDiscountLabel": "7.5折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Fast 全档7.5折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.2",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$5.6 / 百万 video tokens",
+              "list_amount": "5.6",
+              "discount_factor": "0.75",
+              "discount_label": "7.5折",
+              "list_display": "$5.6 / 百万 video tokens",
+              "officialDiscountFactor": "0.75",
+              "officialDiscountLabel": "7.5折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Fast 全档7.5折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 含视频输入",
+          "conditions_summary": "480p · 含视频输入",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "2.475",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.3 / 百万 video tokens",
+              "list_amount": "3.3",
+              "discount_factor": "0.75",
+              "discount_label": "7.5折",
+              "list_display": "$3.3 / 百万 video tokens",
+              "officialDiscountFactor": "0.75",
+              "officialDiscountLabel": "7.5折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Fast 全档7.5折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 含视频输入",
+          "conditions_summary": "720p · 含视频输入",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "2.475",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.3 / 百万 video tokens",
+              "list_amount": "3.3",
+              "discount_factor": "0.75",
+              "discount_label": "7.5折",
+              "list_display": "$3.3 / 百万 video tokens",
+              "officialDiscountFactor": "0.75",
+              "officialDiscountLabel": "7.5折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Fast 全档7.5折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-10T01:26:49.615822Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0-mini-overseas-hc-os",
+      "display_name": "Seedance 2.0 Mini Overseas HC",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "1.4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.5 / 百万 video tokens",
+              "list_amount": "3.5",
+              "discount_factor": "0.4",
+              "discount_label": "4折",
+              "list_display": "$3.5 / 百万 video tokens",
+              "officialDiscountFactor": "0.4",
+              "officialDiscountLabel": "4折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Mini 全档4折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "1.4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$3.5 / 百万 video tokens",
+              "list_amount": "3.5",
+              "discount_factor": "0.4",
+              "discount_label": "4折",
+              "list_display": "$3.5 / 百万 video tokens",
+              "officialDiscountFactor": "0.4",
+              "officialDiscountLabel": "4折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Mini 全档4折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 含视频输入",
+          "conditions_summary": "480p · 含视频输入",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.84",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$2.1 / 百万 video tokens",
+              "list_amount": "2.1",
+              "discount_factor": "0.4",
+              "discount_label": "4折",
+              "list_display": "$2.1 / 百万 video tokens",
+              "officialDiscountFactor": "0.4",
+              "officialDiscountLabel": "4折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Mini 全档4折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 含视频输入",
+          "conditions_summary": "720p · 含视频输入",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.84",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$2.1 / 百万 video tokens",
+              "list_amount": "2.1",
+              "discount_factor": "0.4",
+              "discount_label": "4折",
+              "list_display": "$2.1 / 百万 video tokens",
+              "officialDiscountFactor": "0.4",
+              "officialDiscountLabel": "4折",
+              "officialActivityName": "官方Seedance折扣-Seedance 2.0 Mini 全档4折",
+              "officialActivityEndAt": "2026-10-07T06:00:00Z"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-13T03:57:55.092905Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.0-overseas-hc-os",
+      "display_name": "Seedance 2.0 Overseas HC",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "resolution": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k · 含视频输入",
+          "conditions_summary": "4k · 含视频输入",
+          "conditions": {
+            "resolution": "4k",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "2.4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$2.4 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7.7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7.7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 含视频输入",
+          "conditions_summary": "480p · 含视频输入",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.3",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4.3 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 含视频输入",
+          "conditions_summary": "720p · 含视频输入",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.3",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4.3 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 含视频输入",
+          "conditions_summary": "1080p · 含视频输入",
+          "conditions": {
+            "resolution": "1080p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "4.7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$4.7 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-17T03:50:42.256739Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "seedance-2.5-overseas-hc-os",
+      "display_name": "Seedance 2.5 Overseas HC",
+      "modality_type": "video",
+      "charge_unit": "video_token",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_million_video_tokens",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "480p",
+          "conditions_summary": "480p",
+          "conditions": {
+            "resolution": "480p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "10.7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$10.7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p",
+          "conditions_summary": "720p",
+          "conditions": {
+            "resolution": "720p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "10.7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$10.7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p",
+          "conditions_summary": "1080p",
+          "conditions": {
+            "resolution": "1080p"
+          },
+          "prices": {
+            "unit": {
+              "amount": "11.7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$11.7 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "480p · 含视频输入",
+          "conditions_summary": "480p · 含视频输入",
+          "conditions": {
+            "resolution": "480p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.4 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 含视频输入",
+          "conditions_summary": "720p · 含视频输入",
+          "conditions": {
+            "resolution": "720p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "6.4",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$6.4 / 百万 video tokens"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 含视频输入",
+          "conditions_summary": "1080p · 含视频输入",
+          "conditions": {
+            "resolution": "1080p",
+            "input_has_video": "true"
+          },
+          "prices": {
+            "unit": {
+              "amount": "7",
+              "currency": "USD",
+              "unit": "per_million_video_tokens",
+              "display": "$7 / 百万 video tokens"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-09-15T01:49:16.837685Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "veo-3.1",
+      "display_name": "Veo 3.1",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.4 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.4",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.4 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "4k",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.6",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.6 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "veo-3.1-fast",
+      "display_name": "Veo 3.1 Fast",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.12",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.12 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "4k",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.3",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.3 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "veo-3.1-lite",
+      "display_name": "Veo 3.1 Lite",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.08",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.08 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-09T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq2",
+      "display_name": "Vidu Q2",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_second_ladder",
+      "currency": "USD",
+      "price_unit": "per_video",
+      "price_groups": [
+        {
+          "type": "start_plus_per_second",
+          "label": "540p · 文生视频",
+          "conditions_summary": "文生视频 · 峰时 · 起步+按秒",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "text_to_video",
+            "generation_mode": "text_to_video",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.05 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.01",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.01 /秒（之后）"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.05",
+                "display": "$0.05"
+              },
+              "5s": {
+                "amount": "0.09",
+                "display": "$0.09"
+              },
+              "10s": {
+                "amount": "0.14",
+                "display": "$0.14"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "720p · 文生视频",
+          "conditions_summary": "文生视频 · 峰时 · 起步+按秒",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "text_to_video",
+            "generation_mode": "text_to_video",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.075 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.075",
+                "display": "$0.075"
+              },
+              "5s": {
+                "amount": "0.175",
+                "display": "$0.175"
+              },
+              "10s": {
+                "amount": "0.3",
+                "display": "$0.3"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "1080p · 文生视频",
+          "conditions_summary": "文生视频 · 峰时 · 起步+按秒",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "text_to_video",
+            "generation_mode": "text_to_video",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.1 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.1",
+                "display": "$0.1"
+              },
+              "5s": {
+                "amount": "0.3",
+                "display": "$0.3"
+              },
+              "10s": {
+                "amount": "0.55",
+                "display": "$0.55"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "540p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.075 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.075",
+                "display": "$0.075"
+              },
+              "5s": {
+                "amount": "0.175",
+                "display": "$0.175"
+              },
+              "10s": {
+                "amount": "0.3",
+                "display": "$0.3"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "720p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.125",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.125 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.125",
+                "display": "$0.125"
+              },
+              "5s": {
+                "amount": "0.225",
+                "display": "$0.225"
+              },
+              "10s": {
+                "amount": "0.35",
+                "display": "$0.35"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "1080p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.375",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.375 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.375",
+                "display": "$0.375"
+              },
+              "5s": {
+                "amount": "0.575",
+                "display": "$0.575"
+              },
+              "10s": {
+                "amount": "0.825",
+                "display": "$0.825"
+              }
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq2-image",
+      "display_name": "Vidu Q2 Image",
+      "modality_type": "image",
+      "charge_unit": "image_count",
+      "pricing_mode": "image_tiered",
+      "currency": "USD",
+      "price_unit": "per_image",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "1k",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.03",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.03 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "2k",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "-",
+            "pricing_tier": "4k",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "reference_1_3",
+            "pricing_tier": "1k_image1-3",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.04 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "reference_1_3",
+            "pricing_tier": "2k_image1-3",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.06",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.06 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "reference_1_3",
+            "pricing_tier": "4k_image1-3",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.1 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1k",
+          "conditions_summary": "1k",
+          "conditions": {
+            "variant": "reference_4_7",
+            "pricing_tier": "1k_image4-7",
+            "resolution_tier": "1k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.05 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "2k",
+          "conditions_summary": "2k",
+          "conditions": {
+            "variant": "reference_4_7",
+            "pricing_tier": "2k_image4-7",
+            "resolution_tier": "2k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.08",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.08 / 张"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "4k",
+          "conditions_summary": "4k",
+          "conditions": {
+            "variant": "reference_4_7",
+            "pricing_tier": "4k_image4-7",
+            "resolution_tier": "4k"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_image",
+              "display": "$0.15 / 张"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-14T04:00:46.523301Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq2-pro",
+      "display_name": "Vidu Q2 Pro",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_second_ladder",
+      "currency": "USD",
+      "price_unit": "per_video",
+      "price_groups": [
+        {
+          "type": "start_plus_per_second",
+          "label": "540p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.04 第1秒"
+            },
+            "second_2": {
+              "amount": "0.01",
+              "currency": "USD",
+              "unit": "second_2",
+              "display": "$0.01 第2秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.04",
+                "display": "$0.04"
+              },
+              "5s": {
+                "amount": "0.125",
+                "display": "$0.125"
+              },
+              "10s": {
+                "amount": "0.25",
+                "display": "$0.25"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "720p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.075 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.075",
+                "display": "$0.075"
+              },
+              "5s": {
+                "amount": "0.275",
+                "display": "$0.275"
+              },
+              "10s": {
+                "amount": "0.525",
+                "display": "$0.525"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "1080p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.275",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.275 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.075 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.275",
+                "display": "$0.275"
+              },
+              "5s": {
+                "amount": "0.575",
+                "display": "$0.575"
+              },
+              "10s": {
+                "amount": "0.95",
+                "display": "$0.95"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "540p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.1 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.1",
+                "display": "$0.1"
+              },
+              "5s": {
+                "amount": "0.2",
+                "display": "$0.2"
+              },
+              "10s": {
+                "amount": "0.325",
+                "display": "$0.325"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "720p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.15 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.025",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.025 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.15",
+                "display": "$0.15"
+              },
+              "5s": {
+                "amount": "0.25",
+                "display": "$0.25"
+              },
+              "10s": {
+                "amount": "0.375",
+                "display": "$0.375"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "1080p · 参考生",
+          "conditions_summary": "参考生 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference",
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.425",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.425 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.425",
+                "display": "$0.425"
+              },
+              "5s": {
+                "amount": "0.625",
+                "display": "$0.625"
+              },
+              "10s": {
+                "amount": "0.875",
+                "display": "$0.875"
+              }
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq2-turbo",
+      "display_name": "Vidu Q2 Turbo",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_second_ladder",
+      "currency": "USD",
+      "price_unit": "per_video",
+      "price_groups": [
+        {
+          "type": "start_plus_per_second",
+          "label": "540p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.03",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.03 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.01",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.01 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.03",
+                "display": "$0.03"
+              },
+              "5s": {
+                "amount": "0.07",
+                "display": "$0.07"
+              },
+              "10s": {
+                "amount": "0.12",
+                "display": "$0.12"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "720p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.04",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.04 第1秒"
+            },
+            "second_2": {
+              "amount": "0.01",
+              "currency": "USD",
+              "unit": "second_2",
+              "display": "$0.01 第2秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.04",
+                "display": "$0.04"
+              },
+              "5s": {
+                "amount": "0.2",
+                "display": "$0.2"
+              },
+              "10s": {
+                "amount": "0.45",
+                "display": "$0.45"
+              }
+            }
+          }
+        },
+        {
+          "type": "start_plus_per_second",
+          "label": "1080p · 图生/首尾帧",
+          "conditions_summary": "图生/首尾帧 · 峰时 · 起步+按秒 · 音频另计",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "image_first_last",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video"
+            ],
+            "pricing_mode": "start_plus_per_second"
+          },
+          "prices": {
+            "start": {
+              "amount": "0.17",
+              "currency": "USD",
+              "unit": "first_second",
+              "display": "$0.17 第1秒"
+            },
+            "per_second_after": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second_after",
+              "display": "$0.05 /秒（之后）"
+            },
+            "audio_surcharge": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_task",
+              "display": "开音频 +$0.075"
+            },
+            "examples": {
+              "1s": {
+                "amount": "0.17",
+                "display": "$0.17"
+              },
+              "5s": {
+                "amount": "0.37",
+                "display": "$0.37"
+              },
+              "10s": {
+                "amount": "0.62",
+                "display": "$0.62"
+              }
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq3",
+      "display_name": "Vidu Q3",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "540p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0339 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0585",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0585 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0724",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0724 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq3-mix",
+      "display_name": "Vidu Q3 Mix",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1154",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1154 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.14",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.14 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq3-pro",
+      "display_name": "Vidu Q3 Pro",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "540p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0477",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0477 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.097",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.097 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1154",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1154 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq3-pro-fast",
+      "display_name": "Vidu Q3 Pro Fast",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 图生视频",
+          "conditions_summary": "图生视频 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "image_to_video",
+            "generation_mode": "image_to_video"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0585",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0585 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 图生视频",
+          "conditions_summary": "图生视频 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "image_to_video",
+            "generation_mode": "image_to_video"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0724",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0724 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "viduq3-turbo",
+      "display_name": "Vidu Q3 Turbo",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "540p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0339",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0339 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0524",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0524 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general",
+            "generation_modes": [
+              "first_last_frame",
+              "image_to_video",
+              "text_to_video"
+            ]
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0631",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0631 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "540p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "540p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.02",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.02 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "720p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0477",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0477 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 参考生",
+          "conditions_summary": "参考生 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "reference",
+            "generation_mode": "reference"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.0631",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.0631 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-11T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "wan2.6",
+      "display_name": "Wan 2.6",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-12T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "wan2.6-flash",
+      "display_name": "Wan 2.6 Flash",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.05",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.05 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.075",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.075 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-12T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "wan2.7",
+      "display_name": "Wan 2.7",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-12T16:00:00Z"
+    },
+    {
+      "object": "model_prices",
+      "model": "wan2.7-videoedit",
+      "display_name": "Wan 2.7 Video Edit",
+      "modality_type": "video",
+      "charge_unit": "video_second",
+      "pricing_mode": "video_tiered",
+      "currency": "USD",
+      "price_unit": "per_second",
+      "price_groups": [
+        {
+          "type": "resolution_tier",
+          "label": "720p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "720p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.1",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.1 / 秒"
+            }
+          }
+        },
+        {
+          "type": "resolution_tier",
+          "label": "1080p · 通用",
+          "conditions_summary": "文生/图生/首尾帧 · 峰时",
+          "conditions": {
+            "resolution": "1080p",
+            "mode_bucket": "general"
+          },
+          "prices": {
+            "unit": {
+              "amount": "0.15",
+              "currency": "USD",
+              "unit": "per_second",
+              "display": "$0.15 / 秒"
+            }
+          }
+        }
+      ],
+      "updated_at": "2026-08-12T16:00:00Z"
     }
   ]
 }

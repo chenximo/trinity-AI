@@ -1,16 +1,11 @@
-# routes-live · 2026-09-08
+# routes-live（临时落盘，不保留）
 
-来源：`GET /v1/admin/model-supply-routes/export?enabled=true&modalityType=<text|image|video>`
-API: `https://trinityadm.trinitydesk.ai/api`
+本目录 **不是** 折扣真源缓存。
 
-鉴权：`TRINITY_ADMIN_TOKEN` 或 `TRINITY_ADMIN_USER`+`TRINITY_ADMIN_PASSWORD`
+`rebuild_workbook_from_live_api.py` 每次会：
+1. 删除旧的 `*-enabled.xlsx`
+2. 从 Admin 现网重拉
+3. 重建商务总表后再次删除导出文件
 
-重建商务总表：
-```bash
-python3 pricing/scripts/rebuild_workbook_from_live_api.py
-# 或已有 xlsx：
-python3 apps/trinity-product/docs/ai-api-platform/commercial-billing/scripts/rebuild_discount_tier_workbook.py \
-  --from-export-text pricing/input/routes-live/text-enabled.xlsx \
-  --from-export-image pricing/input/routes-live/image-enabled.xlsx \
-  --from-export-video pricing/input/routes-live/video-enabled.xlsx
-```
+拉取失败会通知人工（控制台 + 钉钉），**不**回退旧缓存。
+排查时若需保留本次导出，加 `--keep-exports`。

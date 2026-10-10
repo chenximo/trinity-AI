@@ -136,26 +136,47 @@ def http_request(
 def login_admin_token(username: str, password: str) -> str:
     url = f"{api_base()}/v1/admin/auth/login"
     payload = json.dumps({"username": username, "password": password}).encode("utf-8")
-    code, raw = http_request(
-        "POST",
-        url,
-        headers={"Content-Type": "application/json"},
-        body=payload,
-        timeout=60,
-    )
+    try:
+        code, raw = http_request(
+            "POST",
+            url,
+            headers={"Content-Type": "application/json"},
+            body=payload,
+            timeout=60,
+        )
+    except Exception as exc:  # noqa: BLE001
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(stage="Admin 登录（网络）", error=exc)
+
     if code != 200:
         detail = raw.decode("utf-8", errors="replace")[:400]
-        raise SystemExit(f"Admin 登录失败 HTTP {code}: {detail}")
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(
+            stage="Admin 登录",
+            error=f"HTTP {code}: {detail}",
+        )
     try:
         body = json.loads(raw.decode("utf-8"))
     except json.JSONDecodeError as e:
-        raise SystemExit(f"Admin 登录响应非 JSON: {raw[:200]!r}") from e
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(
+            stage="Admin 登录（响应非 JSON）",
+            error=f"{e}; body={raw[:200]!r}",
+        )
     data = body.get("data") if isinstance(body, dict) else None
     if not isinstance(data, dict):
         data = body if isinstance(body, dict) else {}
     token = str(data.get("accessToken") or data.get("token") or "").strip()
     if not token.startswith("eyJ"):
-        raise SystemExit(f"Admin 登录未返回 JWT（keys={list(data.keys())}）")
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(
+            stage="Admin 登录（无 JWT）",
+            error=f"keys={list(data.keys())}",
+        )
     print(f"[auth] login ok as {username}")
     return token
 
@@ -197,27 +218,50 @@ def fetch_export(modality: str, enabled: bool = True) -> bytes:
         }
     )
     url = f"{api_base()}/v1/admin/model-supply-routes/export?{params}"
-    code, body = http_request(
-        "GET",
-        url,
-        headers={"Authorization": f"Bearer {admin_token()}"},
-        timeout=120,
-    )
+    try:
+        code, body = http_request(
+            "GET",
+            url,
+            headers={"Authorization": f"Bearer {admin_token()}"},
+            timeout=120,
+        )
+    except Exception as exc:  # noqa: BLE001
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(stage=f"线路导出 {modality}（网络）", error=exc)
+
     if code == 401:
-        raise SystemExit(
-            f"拉取失败 HTTP 401: JWT 无效或过期。请换 TRINITY_ADMIN_TOKEN，"
-            f"或用 USER/PASSWORD 重新登录。\n{body.decode('utf-8', errors='replace')[:300]}"
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(
+            stage=f"线路导出 {modality}",
+            error=(
+                "HTTP 401: JWT 无效或过期。"
+                f" {body.decode('utf-8', errors='replace')[:300]}"
+            ),
         )
     if code != 200:
         detail = body.decode("utf-8", errors="replace")[:500]
-        raise SystemExit(f"拉取失败 HTTP {code}: {detail}")
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(
+            stage=f"线路导出 {modality}",
+            error=f"HTTP {code}: {detail}",
+        )
     if not body:
-        raise SystemExit(f"空响应: {modality}")
+        from notify_human import abort_with_human_notify  # noqa: WPS433
+
+        abort_with_human_notify(stage=f"线路导出 {modality}", error="空响应")
     return body
 
 
 def write_exports(out_dir: Path, modalities: list[str]) -> dict[str, Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
+    # 写入前先清同名旧文件，避免半失败时残留混用
+    for m in modalities:
+        old = out_dir / f"{m}-enabled.xlsx"
+        if old.is_file():
+            old.unlink()
     # resolve token once（含自动登录）
     admin_token()
     written: dict[str, Path] = {}
@@ -229,18 +273,15 @@ def write_exports(out_dir: Path, modalities: list[str]) -> dict[str, Path]:
         print(f"[fetch] {m}: {len(data)} bytes -> {path}")
     readme = out_dir / "README.md"
     readme.write_text(
-        f"# routes-live · {date.today().isoformat()}\n\n"
+        f"# routes-live · {date.today().isoformat()}（临时）\n\n"
+        "本目录仅重建过程中的临时落盘，**不是**可复用缓存。\n"
+        "`rebuild_workbook_from_live_api.py` 默认重建结束后会删除 `*-enabled.xlsx`。\n\n"
         f"来源：`GET /v1/admin/model-supply-routes/export?enabled=true&modalityType=<text|image|video>`\n"
         f"API: `{api_base()}`\n\n"
         "鉴权：`TRINITY_ADMIN_TOKEN` 或 `TRINITY_ADMIN_USER`+`TRINITY_ADMIN_PASSWORD`\n\n"
-        "重建商务总表：\n"
+        "重建商务总表（每次强制现网拉取）：\n"
         "```bash\n"
         "python3 pricing/scripts/rebuild_workbook_from_live_api.py\n"
-        "# 或已有 xlsx：\n"
-        "python3 apps/trinity-product/docs/ai-api-platform/commercial-billing/scripts/rebuild_discount_tier_workbook.py \\\n"
-        "  --from-export-text pricing/input/routes-live/text-enabled.xlsx \\\n"
-        "  --from-export-image pricing/input/routes-live/image-enabled.xlsx \\\n"
-        "  --from-export-video pricing/input/routes-live/video-enabled.xlsx\n"
         "```\n",
         encoding="utf-8",
     )

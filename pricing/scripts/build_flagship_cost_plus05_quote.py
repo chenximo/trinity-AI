@@ -74,6 +74,7 @@ def main() -> None:
         rows,
         title="Trinity · 折扣报价表",
         include_route=True,
+        log_category="主力定制",
     )
     print(f"wrote {OUT} rows={len(rows)}")
     for r in rows:

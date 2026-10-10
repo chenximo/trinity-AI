@@ -9,7 +9,8 @@
 | `Trinity模型报价表_海外三家定制.xlsx` | `scripts/build_overseas_three_vendor_quote.py` | Claude / GPT / Gemini 海外询价 |
 | `Trinity模型报价表_OpenAI定制.xlsx` | `scripts/build_openai_custom_quote.py` | 客户指定模型（gpt-5.6-sol/terra/luna · gpt-image-2），列同对外报价表 |
 
-共用 UI 与写入逻辑：`scripts/custom_quote_workbook.py`。
+共用 UI 与写入逻辑：`scripts/custom_quote_workbook.py`。  
+各定制表首页含 **「更新」** 累积日志（对内核对；外发客户前可删）。
 
 **真源**：刊例读 `Trinity模型报价表（内部）.xlsx`；折扣读 `商务洽谈折扣总表.xlsx`。不反向写回主流程。
 

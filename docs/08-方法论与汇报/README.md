@@ -27,5 +27,6 @@
 | [**Vue原型生成最佳实践-Skill规范页与验收.md**](./Vue原型生成最佳实践-Skill规范页与验收.md) | **生成 Vue 原型**：Skill + `/user-console-spec` 三层、流程、规范先行、检查清单 |
 | [**TrinityAI时代原型工作流与协作模式总结.md**](./TrinityAI时代原型工作流与协作模式总结.md) | 模式评估、瓶颈、演进方向 |
 | [**Trinity原型形态对比与AI友好交付.md**](./Trinity原型形态对比与AI友好交付.md) | Figma / HTML / 五件套对比 |
+| [**Agent实现方式-业界路径与底层逻辑.md**](./Agent实现方式-业界路径与底层逻辑.md) | 画布≠底层；引擎三提供者；**企业三层（应用/Agent/平台管理）**；意图识别专项；RAG / HITL / 安全 / Eval（**可续补**） |
 
 工程落地：[docs/README.md](../README.md)（`01`～`05`）· [工程师/](../00-协作与工作流/工程师/)

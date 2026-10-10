@@ -20,6 +20,12 @@ from openpyxl.styles import PatternFill
 
 from build_outward_quote_standard import solid_fill  # noqa: E402
 from custom_quote_workbook import CUSTOM_QUOTES_DIR  # noqa: E402
+from quote_changelog import (  # noqa: E402
+    fmt_dot_date,
+    load_changelog,
+    merge_changelog,
+    write_changelog_sheet,
+)
 from xlsx_wechat_compat import patch_xlsx_for_wechat  # noqa: E402
 
 HEHE = CUSTOM_QUOTES_DIR / "Trinity模型报价表_hehe.xlsx"
@@ -93,6 +99,7 @@ def load_internal_discount_rows() -> dict[str, dict]:
 
 def sync_hehe_discounts() -> tuple[list[str], list[str]]:
     internal = load_internal_discount_rows()
+    history = load_changelog(HEHE)
     wb = openpyxl.load_workbook(HEHE)
     ws = wb["仅有折扣"]
 
@@ -128,6 +135,47 @@ def sync_hehe_discounts() -> tuple[list[str], list[str]]:
     for mid in sorted(internal.keys()):
         if mid not in existing:
             missing.append(mid)
+
+    today = fmt_dot_date()
+    new_log: list[dict[str, str]] = []
+    if updated:
+        mids = [u.split(" ", 1)[0] for u in updated]
+        new_log.append(
+            {
+                "date": today,
+                "category": "hehe",
+                "detail": f"同步刊例/折扣 {len(updated)} 款：{fmt_id_list(mids)}",
+                "note": "sync_hehe_discount_models · 浅黄=本轮改动行",
+            }
+        )
+    if missing:
+        new_log.append(
+            {
+                "date": today,
+                "category": "hehe",
+                "detail": f"内部有、hehe 表仍缺 {len(missing)} 款：{fmt_id_list(missing)}",
+                "note": "需人工补行",
+            }
+        )
+    changelog = merge_changelog(history, new_log)
+    if not changelog:
+        changelog = [
+            {
+                "date": today,
+                "category": "hehe",
+                "detail": "启用「更新」累积日志；本轮无同步变更",
+                "note": "定制表 · 首启",
+            }
+        ]
+    write_changelog_sheet(
+        wb,
+        changelog,
+        banner=(
+            "本页为 hehe 定制表累积更新日志（新→旧），供 Trinity 对内核对；"
+            "外发客户前可删本页。重建/同步：pricing/scripts/sync_hehe_discount_models.py。"
+        ),
+        index=0,
+    )
 
     wb.save(HEHE)
     patch_xlsx_for_wechat(HEHE)

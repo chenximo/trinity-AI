@@ -26,6 +26,14 @@ from custom_quote_workbook import (  # noqa: E402
     merge_runs,
     sheet_styles,
 )
+from quote_changelog import (  # noqa: E402
+    fmt_dot_date,
+    inventory_diff_entries,
+    load_changelog,
+    load_custom_quote_model_ids,
+    merge_changelog,
+    write_changelog_sheet,
+)
 from xlsx_wechat_compat import patch_xlsx_for_wechat  # noqa: E402
 
 ROOT = SCRIPTS.parent
@@ -104,6 +112,29 @@ def write_workbook(rows: list[dict]) -> None:
     center = styles["center"]
     left = styles["left"]
 
+    history = load_changelog(OUT)
+    old_ids = load_custom_quote_model_ids(OUT)
+    new_ids = {r["model_id"] for r in rows}
+    today = fmt_dot_date()
+    new_log = inventory_diff_entries(
+        old_ids,
+        new_ids,
+        today=today,
+        category="OpenAI定制",
+        note_add="从 L3a 对外抽取重建",
+        note_rm="客户清单已不含",
+    )
+    changelog = merge_changelog(history, new_log)
+    if not changelog:
+        changelog = [
+            {
+                "date": today,
+                "category": "OpenAI定制",
+                "detail": f"启用「更新」累积日志；本轮 {len(new_ids)} 款",
+                "note": "定制表 · 首启",
+            }
+        ]
+
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "仅有折扣"
@@ -143,6 +174,16 @@ def write_workbook(rows: list[dict]) -> None:
     for i, w in enumerate([8, 12, 26, 22, 14, 14, 14, 12, 12, 12], 1):
         ws.column_dimensions[get_column_letter(i)].width = w
     ws.freeze_panes = f"A{DATA_START}"
+
+    write_changelog_sheet(
+        wb,
+        changelog,
+        banner=(
+            "本页为 OpenAI 定制表累积更新日志（新→旧），供 Trinity 对内核对；"
+            "外发客户前可删本页。重建：pricing/scripts/build_openai_custom_quote.py。"
+        ),
+        index=0,
+    )
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     wb.save(OUT)
