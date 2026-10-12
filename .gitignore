@@ -63,3 +63,10 @@ marketing/腾讯云招聘行业实时互动解决方案_20250610.pptx
 
 # 价审 Worker 本地冒烟产物
 pricing/worker/.smoke-out/
+
+# Ops Desk 本机出单落盘（运行时产物；模板在 ops-desk/templates）
+AI云业务/发票/付款申请/
+AI云业务/发票/Trinity-Invoice/
+
+# 根目录临时对账材料（正式卷在 pricing/账单对账/）
+瑞云大客户对账/
