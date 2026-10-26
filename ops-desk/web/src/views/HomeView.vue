@@ -22,6 +22,7 @@ const quota = ref<InvoiceQuota | null>(null);
 const ledgerCount = ref(0);
 const ledgerUnbilled = ref(0);
 const reconCount = ref(0);
+const contractCount = ref(0);
 
 function money(n: number) {
   return n.toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
@@ -50,7 +51,7 @@ const modules = computed(() => [
     key: "invoices",
     title: "开票信息",
     tag: "国内增值税",
-    desc: "抬头 · 开票记录 · 一键复制钉钉 · 月额度 50 万",
+    desc: "已开票记录 · 抬头额度；待开票请去消耗台账",
     metric: quota.value
       ? `本月剩余 ¥ ${money(quota.value.remaining)} · ${invoiceCount.value} 笔`
       : `本月 ${invoiceCount.value} 笔`,
@@ -58,13 +59,31 @@ const modules = computed(() => [
     action: "进入开票",
   },
   {
+    key: "contracts",
+    title: "合同管理",
+    tag: "样板 + 签约状态",
+    desc: "样板库 · 客户合同状态 · 与开票抬头对齐 · 留档 AI云业务/合同/",
+    metric: contractCount.value ? `${contractCount.value} 份` : "样板库索引",
+    path: "/contracts",
+    action: "进入合同",
+  },
+  {
     key: "cloud",
     title: "消耗台账",
     tag: "客户用了多少云",
-    desc: "按公司 / 云预览与导出 Excel，关联是否已开票",
+    desc: "待开票一览 · 按公司/云导出；去开票跳转开票信息",
     metric: `${ledgerCount.value} 行 · 未开票 ${ledgerUnbilled.value}`,
     path: "/cloud",
     action: "进入台账",
+  },
+  {
+    key: "finance",
+    title: "财务分类账",
+    tag: "收入 / 支出给财务",
+    desc: "对齐财务模板：期初·充值·消耗·余额；可改可导出",
+    metric: "按月汇总",
+    path: "/finance",
+    action: "进入财务账",
   },
   {
     key: "recon",
@@ -80,7 +99,7 @@ const modules = computed(() => [
 onMounted(async () => {
   loading.value = true;
   try {
-    const [h, ledger, payments, trinity, invoices, q, recon] = await Promise.all([
+    const [h, ledger, payments, trinity, invoices, q, recon, contracts] = await Promise.all([
       api.health(),
       api.cloudLedger(),
       api.paymentList(monthKey).catch(() => []),
@@ -88,6 +107,7 @@ onMounted(async () => {
       api.invoiceRecords(monthKey).catch(() => []),
       api.invoiceQuota(monthKey).catch(() => null),
       api.reconIndex().catch(() => ({ items: [] as { name: string }[] })),
+      api.contractList().catch(() => []),
     ]);
     health.value = h;
     apiOk.value = !!h?.ok;
@@ -98,6 +118,7 @@ onMounted(async () => {
     invoiceCount.value = invoices.length;
     quota.value = q;
     reconCount.value = recon.items?.length ?? 0;
+    contractCount.value = contracts.length;
   } catch (e) {
     apiOk.value = false;
     ElMessage.error(e instanceof Error ? e.message : "后端未就绪，请先启动 api:8787");

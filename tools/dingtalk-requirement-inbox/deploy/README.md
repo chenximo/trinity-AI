@@ -59,7 +59,8 @@ sudo journalctl -u trinity-requirement-inbox -f
 
 ```bash
 cd trinity-AI/tools/dingtalk-requirement-inbox
-SERVER=ubuntu@YOUR_HOST COPY_ENV=1 bash deploy/sync-to-server.sh
+# 工具机见 tools/SERVER.md
+SERVER=ubuntu@43.156.31.5 COPY_ENV=1 bash deploy/sync-to-server.sh
 ```
 
 同步后服务器目录结构：

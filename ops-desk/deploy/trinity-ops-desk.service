@@ -1,0 +1,18 @@
+[Unit]
+Description=Trinity Ops Desk API
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/trinity-tool/ops-desk/api
+EnvironmentFile=/opt/trinity-tool/ops-desk/api/.env
+# 价审 Worker 已占 8787；Desk 用 8788，仅本机回环（经 SSH 隧道访问）
+ExecStart=/opt/trinity-tool/ops-desk/api/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8788
+Restart=on-failure
+RestartSec=5
+ReadWritePaths=/opt/trinity-tool/ops-desk
+
+[Install]
+WantedBy=multi-user.target

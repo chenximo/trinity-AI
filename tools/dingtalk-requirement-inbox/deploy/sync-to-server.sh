@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Sync dingtalk-requirement-inbox to a remote server and (re)install systemd.
 #
-#   SERVER=ubuntu@1.2.3.4 bash deploy/sync-to-server.sh
-#   SERVER=ubuntu@1.2.3.4 COPY_ENV=1 bash deploy/sync-to-server.sh
+# 工具机：见 tools/SERVER.md
+#   SERVER=ubuntu@43.156.31.5 bash deploy/sync-to-server.sh
+#   SERVER=ubuntu@43.156.31.5 COPY_ENV=1 bash deploy/sync-to-server.sh
 #
 set -euo pipefail
 

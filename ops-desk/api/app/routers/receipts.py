@@ -79,6 +79,35 @@ def _row_out(row) -> TrinityInvoiceOut:
     )
 
 
+def resolve_trinity_export(export_path: str | None) -> Optional[Path]:
+    """本机绝对路径在工具机上会失效：按 Trinity-Invoice 导出根再解析一次。"""
+    if not export_path:
+        return None
+    raw = Path(str(export_path))
+    if raw.is_file():
+        return raw
+    root = settings.resolved_trinity_invoice_export_dir()
+    parts = raw.parts
+    if "Trinity-Invoice" in parts:
+        i = parts.index("Trinity-Invoice")
+        cand = root.joinpath(*parts[i + 1 :])
+        if cand.is_file():
+            return cand
+    # YYYY-MM / filename
+    if len(raw.parts) >= 2:
+        cand = root / raw.parts[-2] / raw.name
+        if cand.is_file():
+            return cand
+    cand = root / raw.name
+    if cand.is_file():
+        return cand
+    if root.is_dir():
+        for found in root.rglob(raw.name):
+            if found.is_file():
+                return found
+    return None
+
+
 @router.get("/trinity/bill-tos", response_model=List[BillToOut])
 def list_bill_tos() -> List[BillToOut]:
     with connect() as conn:
@@ -194,9 +223,12 @@ def download_trinity(invoice_id: int) -> FileResponse:
         ).fetchone()
     if not row or not row["export_path"]:
         raise HTTPException(404, "file not found")
-    path = Path(row["export_path"])
-    if not path.is_file():
-        raise HTTPException(404, f"file missing on disk: {path}")
+    path = resolve_trinity_export(row["export_path"])
+    if not path:
+        raise HTTPException(
+            404,
+            f"file missing（库路径在本机/工具机对不上）：{Path(row['export_path']).name}",
+        )
     return FileResponse(
         path,
         filename=path.name,
@@ -213,10 +245,9 @@ def delete_trinity(invoice_id: int) -> dict:
         if not row:
             raise HTTPException(404, "not found")
         conn.execute("DELETE FROM trinity_invoices WHERE id = ?", (invoice_id,))
-    if row["export_path"]:
-        p = Path(row["export_path"])
-        if p.is_file():
-            p.unlink()
+    p = resolve_trinity_export(row["export_path"] if row else None)
+    if p and p.is_file():
+        p.unlink()
     return {"ok": True, "id": invoice_id}
 
 
@@ -230,10 +261,9 @@ def delete_trinity_month(month: str = Query(..., description="YYYY-MM")) -> dict
             (month,),
         ).fetchall()
         for r in rows:
-            if r["export_path"]:
-                p = Path(r["export_path"])
-                if p.is_file():
-                    p.unlink()
+            p = resolve_trinity_export(r["export_path"])
+            if p and p.is_file():
+                p.unlink()
         cur = conn.execute(
             "DELETE FROM trinity_invoices WHERE substr(invoice_date, 1, 7) = ?",
             (month,),

@@ -21,13 +21,26 @@ class Settings(BaseSettings):
     payment_export_dir: Optional[Path] = None
     trinity_invoice_template: Optional[Path] = None
     trinity_invoice_export_dir: Optional[Path] = None
+    settlement_confirm_template: Optional[Path] = None
+    settlement_confirm_export_dir: Optional[Path] = None
+    contract_template_dir: Optional[Path] = None
+    contract_archive_dir: Optional[Path] = None
     db: Optional[Path] = None
 
     payer_name: str = "西安星瀚算力信息科技有限公司"
     department: str = "星瀚业务部"
     applicant: str = "李玲"
     # 每月开票额度（元），可用 OPS_DESK_INVOICE_MONTHLY_QUOTA 覆盖
-    invoice_monthly_quota: float = 500_000.0
+    invoice_monthly_quota: float = 580_000.0
+
+    # 存储：local | cos（见 env.cos.example → api/.env）
+    storage: str = "local"
+    cos_secret_id: Optional[str] = None
+    cos_secret_key: Optional[str] = None
+    cos_bucket: str = "trinity-ai-resources-1430233363"
+    cos_region: str = "ap-singapore"
+    cos_prefix: str = "trinity-Ops-Desk/"
+    cos_public_base: Optional[str] = None
 
     def resolved_settlement_dir(self) -> Path:
         if self.settlement_dir:
@@ -64,6 +77,27 @@ class Settings(BaseSettings):
         if self.trinity_invoice_export_dir:
             return Path(self.trinity_invoice_export_dir)
         return self.repo_root / "AI云业务" / "发票" / "Trinity-Invoice"
+
+    def resolved_settlement_confirm_template(self) -> Path:
+        if self.settlement_confirm_template:
+            return Path(self.settlement_confirm_template)
+        # 正式模版：ops-desk/templates/结算确认单.doc（docx 同目录）
+        return Path(__file__).resolve().parents[2] / "templates" / "结算确认单.doc"
+
+    def resolved_settlement_confirm_export_dir(self) -> Path:
+        if self.settlement_confirm_export_dir:
+            return Path(self.settlement_confirm_export_dir)
+        return self.repo_root / "AI云业务" / "发票" / "结算确认单"
+
+    def resolved_contract_template_dir(self) -> Path:
+        if self.contract_template_dir:
+            return Path(self.contract_template_dir)
+        return self.repo_root / "marketing" / "销售真源" / "合同模板"
+
+    def resolved_contract_archive_dir(self) -> Path:
+        if self.contract_archive_dir:
+            return Path(self.contract_archive_dir)
+        return self.repo_root / "AI云业务" / "合同"
 
 
 settings = Settings()

@@ -6,6 +6,7 @@ export type CloudLedgerRow = {
   period: string;
   cloud: string;
   account: string;
+  currency: string;
   consume: number | null;
   fee_ratio: string | null;
   fee_amount: number | null;
@@ -18,6 +19,9 @@ export type CloudLedgerRow = {
   invoice_status_label: string;
   invoice_ids: number[];
   invoice_linked_amount: number | null;
+  /** done | open | none */
+  consume_invoice_status?: "done" | "open" | "none" | string;
+  fee_invoice_status?: "done" | "open" | "none" | string;
 };
 
 export type CloudLedgerScanOut = {
@@ -39,6 +43,101 @@ export type ReconIndexOut = {
   recon_dir: string;
   items: { kind: string; name: string; path: string; children: string[] }[];
   meta: { exists?: boolean };
+};
+
+export type ReconReportSummary = {
+  upstream_usd?: number | null;
+  platform_usd?: number | null;
+  diff_usd?: number | null;
+  diff_pct_of_platform?: number | null;
+  top_models?: { model?: string; diff_usd?: number | null; share_pct?: number | null }[];
+};
+
+export type ReconReportListItem = {
+  id: string;
+  supplier: string;
+  period: string;
+  path: string;
+  headline: string;
+  has_overview: boolean;
+  has_daily: boolean;
+  has_md: boolean;
+  overview_file?: string | null;
+  daily_file?: string | null;
+  md_file?: string | null;
+  summary: ReconReportSummary;
+  status: string;
+  status_label: string;
+};
+
+export type ReconReportListOut = {
+  recon_dir: string;
+  upstream_dir: string;
+  reports: ReconReportListItem[];
+  meta: { count?: number; exists?: boolean };
+};
+
+export type ReconModelRow = {
+  model: string;
+  upstream_names: string;
+  side: string;
+  upstream_usd: number | null;
+  platform_usd: number | null;
+  diff_usd: number | null;
+  share_pct: number | null;
+  align_dates: string;
+  small_gap_dates: string;
+  big_gap_dates: string;
+  calendar: string;
+  conclusion: string;
+};
+
+export type ReconDailyPoint = {
+  date: string;
+  upstream_usd: number;
+  platform_usd: number;
+  diff_usd: number;
+};
+
+export type ReconUpstreamUsagePoint = {
+  date: string;
+  calls: number;
+  input_tokens: number;
+  output_tokens: number;
+  cache_tokens: number;
+  tokens_total: number;
+  tokens_m: number;
+  cny: number;
+  eff_cny_per_m: number | null;
+};
+
+export type ReconDailySeries = {
+  dates: string[];
+  totals: ReconDailyPoint[];
+  models: string[];
+  by_model: Record<string, ReconDailyPoint[]>;
+  upstream_usage: Record<string, ReconUpstreamUsagePoint[]>;
+  platform_has_tokens: boolean;
+  usage_note: string;
+};
+
+export type ReconReportDetailOut = {
+  id: string;
+  supplier: string;
+  period: string;
+  path: string;
+  status: string;
+  status_label: string;
+  summary: ReconReportSummary;
+  models: ReconModelRow[];
+  md_text: string;
+  files: string[];
+  overview_file?: string | null;
+  daily_file?: string | null;
+  md_file?: string | null;
+  daily_series: ReconDailySeries;
+  calendar_legend: string;
+  note: string;
 };
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -119,6 +218,11 @@ export const api = {
       },
     ),
   reconIndex: () => request<ReconIndexOut>("/api/recon/index"),
+  reconReports: () => request<ReconReportListOut>("/api/recon/reports"),
+  reconReport: (supplier: string, period: string) =>
+    request<ReconReportDetailOut>(
+      `/api/recon/reports/${encodeURIComponent(supplier)}/${encodeURIComponent(period)}`,
+    ),
   paymentCustomers: () => request<Customer[]>("/api/payments/meta/customers"),
   createCustomer: (body: { name: string; purpose_name?: string; id?: string }) =>
     request<Customer>("/api/payments/meta/customers", {
@@ -171,10 +275,15 @@ export const api = {
     }),
   deleteInvoiceProfile: (id: number) =>
     request<{ ok: boolean }>(`/api/invoices/profiles/${id}`, { method: "DELETE" }),
-  invoiceRecords: (month?: string) =>
-    request<InvoiceRecord[]>(
-      month ? `/api/invoices/records?month=${encodeURIComponent(month)}` : "/api/invoices/records",
-    ),
+  invoiceRecords: (month?: string, status: string = "all") => {
+    const q = new URLSearchParams();
+    if (month) q.set("month", month);
+    if (status) q.set("status", status);
+    const qs = q.toString();
+    return request<InvoiceRecord[]>(qs ? `/api/invoices/records?${qs}` : "/api/invoices/records");
+  },
+  invoiceReconcile: () =>
+    request<InvoiceReconcileOut>("/api/invoices/reconcile", { method: "POST" }),
   createInvoiceRecord: (body: InvoiceRecordIn) =>
     request<InvoiceRecord>("/api/invoices/records", {
       method: "POST",
@@ -228,6 +337,213 @@ export const api = {
       `/api/receipts/trinity?month=${encodeURIComponent(month)}`,
       { method: "DELETE" },
     ),
+
+  contractTemplates: () => request<ContractTemplate[]>("/api/contracts/templates"),
+  contractFeed: (limit = 50) =>
+    request<ContractFeedItem[]>(`/api/contracts/feed?limit=${limit}`),
+  createContractFeed: (body: { title: string; body?: string; kind?: string }) =>
+    request<ContractFeedItem>("/api/contracts/feed", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  deleteContractFeed: (id: number) =>
+    request<{ ok: boolean; id: number; title: string }>(`/api/contracts/feed/${id}`, {
+      method: "DELETE",
+    }),
+  contractCompanyFiles: () =>
+    request<{ key: string; name: string; size: number; url: string; last_modified: string }[]>(
+      "/api/contracts/company-files",
+    ),
+  /** 上传合同到 COS（公司归档 / 客户 / 样板）；客户可 create_record 自动建草稿 */
+  uploadContractCos: async (
+    file: File,
+    opts?: {
+      scope?: "company" | "customer" | "templates";
+      customer_id?: string;
+      create_record?: boolean;
+    },
+  ) => {
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("scope", opts?.scope || "company");
+    if (opts?.customer_id) fd.append("customer_id", opts.customer_id);
+    if (opts?.create_record) fd.append("create_record", "1");
+    const res = await fetch("/api/contracts/upload-cos", { method: "POST", body: fd });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || res.statusText);
+    }
+    return res.json() as Promise<{
+      ok: boolean;
+      filename: string;
+      size: number;
+      cos_key: string;
+      cos_url: string;
+      local_path: string;
+      contract_id?: number;
+    }>;
+  },
+  contractList: (params?: { customer_id?: string; status?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.customer_id) q.set("customer_id", params.customer_id);
+    if (params?.status) q.set("status", params.status);
+    const qs = q.toString();
+    return request<Contract[]>(qs ? `/api/contracts?${qs}` : "/api/contracts");
+  },
+  createContract: (body: ContractIn) =>
+    request<Contract>("/api/contracts", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  updateContract: (id: number, body: Partial<ContractIn>) =>
+    request<Contract>(`/api/contracts/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+  patchContractStatus: (id: number, status: string) =>
+    request<Contract>(`/api/contracts/${id}/status`, {
+      method: "PATCH",
+      body: JSON.stringify({ status }),
+    }),
+  copyContractTemplate: (id: number) =>
+    request<Contract>(`/api/contracts/${id}/copy-template`, { method: "POST" }),
+  syncContractCos: (id: number) =>
+    request<Contract>(`/api/contracts/${id}/sync-cos`, { method: "POST" }),
+  deleteContract: (id: number) =>
+    request<{ ok: boolean; id: number }>(`/api/contracts/${id}`, { method: "DELETE" }),
+
+  financeLedger: (month: string) =>
+    request<FinanceLedgerOut>(`/api/finance/ledger?month=${encodeURIComponent(month)}`),
+  saveFinanceLedger: (body: { month_key: string; lines: FinanceLedgerLineIn[] }) =>
+    request<FinanceLedgerOut>("/api/finance/ledger", {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+  financeLedgerExportUrl: (month: string) =>
+    `/api/finance/ledger/export?month=${encodeURIComponent(month)}`,
+};
+
+export type FinanceConsumeDetail = {
+  name: string;
+  amount: number;
+};
+
+export type FinanceLedgerLine = {
+  book: string;
+  party_key: string;
+  party_name: string;
+  opening: number | null;
+  recharge: number | null;
+  consume: number | null;
+  fee: number | null;
+  balance: number | null;
+  remark: string;
+  consume_source?: string;
+  fee_source?: string;
+  recharge_source?: string;
+  opening_source?: string;
+  /** 支出按云：各客户公司消耗拆分 */
+  consume_detail?: FinanceConsumeDetail[];
+  sort_order?: number;
+};
+
+export type FinanceLedgerLineIn = {
+  book: string;
+  party_key: string;
+  party_name: string;
+  opening: number | null;
+  recharge: number | null;
+  consume: number | null;
+  fee: number | null;
+  remark?: string;
+  sort_order?: number;
+};
+
+export type FinanceLedgerTotal = {
+  opening: number | null;
+  recharge: number | null;
+  consume: number | null;
+  fee: number | null;
+  balance: number | null;
+};
+
+export type FinanceLedgerOut = {
+  month_key: string;
+  sources?: Record<string, string>;
+  income_cny: FinanceLedgerLine[];
+  income_cny_total: FinanceLedgerTotal;
+  income_usd: FinanceLedgerLine[];
+  income_usd_total: FinanceLedgerTotal;
+  expense_cny: FinanceLedgerLine[];
+  expense_cny_total: FinanceLedgerTotal;
+  expense_usd: FinanceLedgerLine[];
+  expense_usd_total: FinanceLedgerTotal;
+  footnotes: FinanceLedgerLine[];
+};
+
+export type ContractTemplate = {
+  key: string;
+  name: string;
+  filename: string;
+  path: string;
+  suffix: string;
+  size: number;
+  note: string;
+  kind?: string;
+  pending_latest?: boolean;
+  download_url: string | null;
+};
+
+export type ContractFeedItem = {
+  id: number;
+  kind: string;
+  kind_label: string;
+  title: string;
+  body: string;
+  ref_key: string;
+  created_at: string | null;
+};
+
+export type ContractIn = {
+  customer_id: string;
+  title: string;
+  contract_no?: string;
+  party_a?: string;
+  party_b?: string;
+  template_key?: string;
+  status?: string;
+  signed_date?: string;
+  effective_start?: string;
+  effective_end?: string;
+  invoice_title?: string;
+  file_path?: string;
+  note?: string;
+  copy_template?: boolean;
+};
+
+export type Contract = {
+  id: number;
+  customer_id: string;
+  customer_name: string;
+  title: string;
+  contract_no: string;
+  party_a: string;
+  party_b: string;
+  template_key: string;
+  status: string;
+  status_label: string;
+  signed_date: string | null;
+  effective_start: string | null;
+  effective_end: string | null;
+  invoice_title: string;
+  file_path: string | null;
+  file_exists: boolean;
+  cos_key?: string;
+  cos_url?: string | null;
+  note: string;
+  created_at: string | null;
+  updated_at: string | null;
+  download_url: string | null;
 };
 
 export type InvoiceProfileIn = {
@@ -294,6 +610,38 @@ export type InvoiceRecord = {
   copy_text: string;
   source_row_keys: string[];
   month_key: string;
+  ledger_link?: "linked" | "orphan" | "none";
+};
+
+export type InvoiceReconcileOut = {
+  ok: boolean;
+  by_company: {
+    customer: string;
+    settle: number;
+    linked: number;
+    gap: number;
+    invoiced_rows: number;
+    fee_only_rows: number;
+    invoicing_rows: number;
+    unbilled_rows: number;
+  }[];
+  orphan_invoices: {
+    id: number;
+    customer_id: string;
+    buyer_name: string;
+    apply_date: string;
+    amount: number;
+    invoice_no: string;
+  }[];
+  summary: {
+    ledger_cny_rows: number;
+    invoice_count: number;
+    linked_invoices: number;
+    orphan_invoices: number;
+    invoiced_ledger_rows: number;
+    fee_only_ledger_rows: number;
+    unbilled_ledger_rows: number;
+  };
 };
 
 export type InvoiceQuota = {

@@ -1,0 +1,26 @@
+{
+  "templates": [
+    {
+      "key": "downstream-framework",
+      "label": "Trinity-AI生成服务平台采购与技术服务框架协议-下游客户样板",
+      "relpath": "Trinity-AI生成服务平台采购与技术服务框架协议-下游客户样板.docx",
+      "kind": "downstream",
+      "note": "下游客户框架协议 · 中文样板（法务终审前勿当用章版）"
+    },
+    {
+      "key": "downstream-framework-en",
+      "label": "AI Generation Service Platform Procurement and Technical Service Framework Agreement",
+      "relpath": "Trinity-AI生成服务平台采购与技术服务框架协议-下游客户样板-EN.docx",
+      "kind": "downstream",
+      "note": "下游客户框架协议 · 英文版（与中文样板对应）"
+    },
+    {
+      "key": "channel-intermediary-v1",
+      "label": "Trinity-AI模型居间服务协议",
+      "relpath": "渠道服务/Trinity-AI模型居间服务协议-v1.0.docx",
+      "kind": "channel",
+      "note": "渠道/居间 · v1.0 终版（2026-10）",
+      "pending_latest": false
+    }
+  ]
+}

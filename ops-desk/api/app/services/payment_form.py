@@ -40,9 +40,22 @@ def _copy_sheet(src: Worksheet, title: str):
         if dim.height:
             dst.row_dimensions[idx].height = dim.height
 
+    # 打印：A5 铺满一页（原模板 scale=77 在 A5 上偏小留白）
     dst.print_area = src.print_area
-    if src.page_setup.orientation:
-        dst.page_setup.orientation = src.page_setup.orientation
+    dst_ps = dst.page_setup
+    dst_ps.orientation = "portrait"
+    dst_ps.paperSize = 11  # A5
+    dst.sheet_properties.pageSetUpPr.fitToPage = True
+    dst_ps.fitToWidth = 1
+    dst_ps.fitToHeight = 1
+    # 不用固定 77%；交给「整表一页」按 A5 放大铺满
+    dst_ps.scale = None
+    dst.print_options.horizontalCentered = True
+    # 略收边距，减少四周空白
+    dm = dst.page_margins
+    dm.left, dm.right = 0.4, 0.25
+    dm.top, dm.bottom = 0.35, 0.3
+    dm.header, dm.footer = 0.2, 0.2
     return wb
 
 

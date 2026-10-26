@@ -123,15 +123,17 @@ def _write_tencent_sheet(ws: Worksheet, rows: Sequence[CloudLedgerRow]) -> None:
 
 
 def _write_no_fee_sheet(ws: Worksheet, cloud: str, rows: Sequence[CloudLedgerRow]) -> None:
-    """阿里云 / 华为云短表格式。"""
-    ws["A1"] = cloud
+    """阿里云 / 华为云 / Akamai 短表格式。"""
+    unit = (rows[0].currency if rows else "CNY") or "CNY"
+    unit_label = "USD" if unit == "USD" else "￥"
+    ws["A1"] = f"{cloud}（{unit}）" if unit == "USD" else cloud
     ws["A1"].font = _TITLE_FONT
-    headers = ["业务所属期", "账号信息", "实际消耗（￥）", "备注"]
+    headers = ["业务所属期", "账号信息", f"实际消耗（{unit_label}）", "币种", "备注"]
     ws.append(headers)
     for cell in ws[2]:
         cell.font = _HEADER_FONT
         cell.alignment = Alignment(horizontal="center")
-    _apply_border_row(ws, 2, 4)
+    _apply_border_row(ws, 2, 5)
 
     by_period: dict[str, List[CloudLedgerRow]] = defaultdict(list)
     for r in rows:
@@ -143,20 +145,23 @@ def _write_no_fee_sheet(ws: Worksheet, cloud: str, rows: Sequence[CloudLedgerRow
         for r in sorted(by_period[period], key=lambda x: x.account):
             c = float(r.consume or 0)
             sum_c += c
-            remark = r.remark or "真实消耗已预充值（无服务费）"
-            ws.append([r.period, r.account, c, remark])
+            cur = r.currency or unit
+            remark = r.remark or (
+                "Linode 月结（USD）" if cur == "USD" else "真实消耗已预充值（无服务费）"
+            )
+            ws.append([r.period, r.account, c, cur, remark])
             row_idx = ws.max_row
-            _apply_border_row(ws, row_idx, 4)
+            _apply_border_row(ws, row_idx, 5)
             ws.cell(row=row_idx, column=3).number_format = _NUM
 
-    ws.append(["合计", None, round(sum_c, 2), None])
+    ws.append(["合计", None, round(sum_c, 2), unit, None])
     row_idx = ws.max_row
     for cell in ws[row_idx]:
         cell.font = _BOLD
-    _apply_border_row(ws, row_idx, 4)
+    _apply_border_row(ws, row_idx, 5)
     ws.cell(row=row_idx, column=3).number_format = _NUM
 
-    for i, w in enumerate([12, 28, 14, 28], start=1):
+    for i, w in enumerate([12, 28, 16, 8, 36], start=1):
         ws.column_dimensions[get_column_letter(i)].width = w
 
 

@@ -38,6 +38,20 @@ def _row_key(customer: str, period: str, cloud: str, account: str) -> str:
     return f"{customer}|{period}|{cloud}|{account}"
 
 
+def _currency_for(cloud: str, explicit: Optional[str] = None) -> str:
+    if explicit:
+        s = explicit.strip().upper()
+        if s in ("USD", "CNY", "EUR", "HKD"):
+            return s
+        if "美元" in explicit or "USD" in explicit.upper():
+            return "USD"
+        if "人民币" in explicit or "CNY" in explicit.upper() or "￥" in explicit or "¥" in explicit:
+            return "CNY"
+    if cloud in ("Akamai", "Linode"):
+        return "USD"
+    return "CNY"
+
+
 def scan_settlement_dir(directory: Path) -> Tuple[List[str], List[CloudLedgerRow]]:
     if not directory.is_dir():
         return [], []
@@ -87,14 +101,29 @@ def scan_settlement_dir(directory: Path) -> Tuple[List[str], List[CloudLedgerRow
                 if idx < len(cells):
                     by_name[h] = cells[idx]
 
-            consume = _num(by_name.get("实际消耗（￥）", cells[3] if len(cells) > 3 else None))
+            consume = _num(
+                by_name.get("实际消耗（原币）")
+                or by_name.get("实际消耗（￥）")
+                or by_name.get("实际消耗（USD）")
+                or (cells[3] if len(cells) > 3 else None)
+            )
             fee_ratio = _str(by_name.get("服务费比例", cells[4] if len(cells) > 4 else None))
-            fee_amount = _num(by_name.get("服务费金额（￥）", cells[5] if len(cells) > 5 else None))
-            settle_total = _num(by_name.get("结算总金额（￥）", cells[6] if len(cells) > 6 else None))
+            fee_amount = _num(
+                by_name.get("服务费金额（原币）")
+                or by_name.get("服务费金额（￥）")
+                or (cells[5] if len(cells) > 5 else None)
+            )
+            settle_total = _num(
+                by_name.get("结算总金额（原币）")
+                or by_name.get("结算总金额（￥）")
+                or by_name.get("结算总金额（USD）")
+                or (cells[6] if len(cells) > 6 else None)
+            )
             remark = _str(by_name.get("备注", cells[7] if len(cells) > 7 else None))
             fee_paid_excel = _str(
                 by_name.get("服务费是否支付", cells[8] if len(cells) > 8 else None)
             )
+            currency = _currency_for(cloud, _str(by_name.get("币种")))
 
             rows.append(
                 CloudLedgerRow(
@@ -104,6 +133,7 @@ def scan_settlement_dir(directory: Path) -> Tuple[List[str], List[CloudLedgerRow
                     period=str(period),
                     cloud=cloud,
                     account=account,
+                    currency=currency,
                     consume=consume,
                     fee_ratio=fee_ratio,
                     fee_amount=fee_amount,

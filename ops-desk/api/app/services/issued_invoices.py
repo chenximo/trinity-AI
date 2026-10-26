@@ -16,6 +16,7 @@ ISSUED_INVOICES: List[Dict[str, Any]] = [
         "amount_ex_tax": 234_222.64,
         "tax_amount": 14_053.36,
         "apply_date": "2026-09-22",
+        # 金额与现有台账行无精确对齐，暂不挂 row_key
     },
     {
         "invoice_no": "26612000001839149296",
@@ -27,7 +28,7 @@ ISSUED_INVOICES: List[Dict[str, Any]] = [
         "amount_ex_tax": 246_787.51,
         "tax_amount": 14_807.25,
         "apply_date": "2026-09-15",
-        # 与台账消耗精确对齐：亿点 202607 腾讯云实际消耗
+        # 亿点 202607 腾讯云 · 实际消耗
         "hint_row_keys": ["亿点|202607|腾讯云|亿点宇宙（陕西）信息科技有限公司"],
     },
     {
@@ -40,6 +41,8 @@ ISSUED_INVOICES: List[Dict[str, Any]] = [
         "amount_ex_tax": 4_935.75,
         "tax_amount": 296.15,
         "apply_date": "2026-09-15",
+        # 亿点 202607 腾讯云 · 服务费
+        "hint_row_keys": ["亿点|202607|腾讯云|亿点宇宙（陕西）信息科技有限公司"],
     },
     {
         "invoice_no": "26612000001629050596",
@@ -51,6 +54,32 @@ ISSUED_INVOICES: List[Dict[str, Any]] = [
         "amount_ex_tax": 180_263.79,
         "tax_amount": 10_815.83,
         "apply_date": "2026-08-14",
+    },
+    {
+        "invoice_no": "26612000001916729281",
+        "customer_id": "shanhe",
+        "buyer_name": "北京山河聚量科技有限公司",
+        "tax_no": "91110105MA04E4YK89",
+        "invoice_type": "电子发票（普通发票）",
+        "amount": 2_648.23,
+        "amount_ex_tax": 2_498.33,
+        "tax_amount": 149.90,
+        "apply_date": "2026-09-23",
+        # 山河 202607 腾讯云 · 服务费
+        "hint_row_keys": ["山河（BID）|202607|腾讯云|北京山河聚量科技有限公司"],
+    },
+    {
+        "invoice_no": "26612000001916430841",
+        "customer_id": "shanhe",
+        "buyer_name": "北京山河聚量科技有限公司",
+        "tax_no": "91110105MA04E4YK89",
+        "invoice_type": "电子发票（普通发票）",
+        "amount": 3_800.41,
+        "amount_ex_tax": 3_585.29,
+        "tax_amount": 215.12,
+        "apply_date": "2026-09-23",
+        # 山河 202608 腾讯云 · 服务费
+        "hint_row_keys": ["山河（BID）|202608|腾讯云|北京山河聚量科技有限公司"],
     },
     {
         "invoice_no": "26612000001447052851",
@@ -85,50 +114,7 @@ ISSUED_INVOICES: List[Dict[str, Any]] = [
         "tax_amount": 216.32,
         "apply_date": "2026-07-09",
     },
-    # —— 钉钉开票申请列表（无税控票号；按金额+日期幂等键）——
-    # 山河腾讯云：消耗与服务费曾拆开申请
-    {
-        "invoice_no": "APP-20260923-132411.49",
-        "customer_id": "shanhe",
-        "buyer_name": "北京山河聚量科技有限公司",
-        "tax_no": "91110105MA04E4YK89",
-        "invoice_type": "增值税普通发票",
-        "amount": 132_411.49,
-        "amount_ex_tax": None,
-        "tax_amount": None,
-        "apply_date": "2026-09-23",
-        "seller_name": "陕西星瀚算力信息科技有限公司",
-        "hint_row_keys": ["山河（BID）|202607|腾讯云|北京山河聚量科技有限公司"],
-        "remark": "钉钉开票申请·对应腾讯云202607实际消耗",
-    },
-    {
-        "invoice_no": "APP-20260923-2648.23",
-        "customer_id": "shanhe",
-        "buyer_name": "北京山河聚量科技有限公司",
-        "tax_no": "91110105MA04E4YK89",
-        "invoice_type": "增值税普通发票",
-        "amount": 2_648.23,
-        "amount_ex_tax": None,
-        "tax_amount": None,
-        "apply_date": "2026-09-23",
-        "seller_name": "陕西星瀚算力信息科技有限公司",
-        "hint_row_keys": ["山河（BID）|202607|腾讯云|北京山河聚量科技有限公司"],
-        "remark": "钉钉开票申请·对应腾讯云202607服务费",
-    },
-    {
-        "invoice_no": "APP-20260923-3800.41",
-        "customer_id": "shanhe",
-        "buyer_name": "北京山河聚量科技有限公司",
-        "tax_no": "91110105MA04E4YK89",
-        "invoice_type": "增值税普通发票",
-        "amount": 3_800.41,
-        "amount_ex_tax": None,
-        "tax_amount": None,
-        "apply_date": "2026-09-23",
-        "seller_name": "陕西星瀚算力信息科技有限公司",
-        "hint_row_keys": ["山河（BID）|202608|腾讯云|北京山河聚量科技有限公司"],
-        "remark": "钉钉开票申请·对应腾讯云202608服务费",
-    },
+    # 钉钉申请（APP-*）不入库：开票记录页只展示税控已确认开出的数电票
 ]
 
 PROFILE_SEEDS = [

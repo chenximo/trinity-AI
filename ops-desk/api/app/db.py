@@ -22,6 +22,47 @@ def _ensure_column(conn: sqlite3.Connection, table: str, col: str, decl: str) ->
         conn.execute(f"ALTER TABLE {table} ADD COLUMN {col} {decl}")
 
 
+def _migrate_finance_ledger_nullables(conn: sqlite3.Connection) -> None:
+    """旧表 opening/recharge 为 NOT NULL DEFAULT 0 → 允许 NULL（无数空着）。"""
+    rows = list(conn.execute("PRAGMA table_info(finance_ledger_lines)"))
+    if not rows:
+        return
+    by_name = {r[1]: r for r in rows}
+    opening = by_name.get("opening")
+    recharge = by_name.get("recharge")
+    need = (opening and opening[3] == 1) or (recharge and recharge[3] == 1)
+    if not need:
+        return
+    conn.executescript(
+        """
+        CREATE TABLE finance_ledger_lines__new (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          month_key TEXT NOT NULL,
+          book TEXT NOT NULL,
+          party_key TEXT NOT NULL,
+          party_name TEXT NOT NULL DEFAULT '',
+          opening REAL,
+          recharge REAL,
+          consume REAL,
+          fee REAL,
+          remark TEXT NOT NULL DEFAULT '',
+          sort_order INTEGER NOT NULL DEFAULT 0,
+          updated_at TEXT DEFAULT (datetime('now')),
+          UNIQUE(month_key, book, party_key)
+        );
+        INSERT INTO finance_ledger_lines__new
+          (id, month_key, book, party_key, party_name, opening, recharge, consume, fee, remark, sort_order, updated_at)
+        SELECT id, month_key, book, party_key, party_name,
+          CASE WHEN opening = 0 THEN NULL ELSE opening END,
+          CASE WHEN recharge = 0 THEN NULL ELSE recharge END,
+          consume, fee, remark, sort_order, updated_at
+        FROM finance_ledger_lines;
+        DROP TABLE finance_ledger_lines;
+        ALTER TABLE finance_ledger_lines__new RENAME TO finance_ledger_lines;
+        """
+    )
+
+
 def init_db() -> None:
     db_path = settings.resolved_db()
     _ensure_parent(db_path)
@@ -137,8 +178,53 @@ def init_db() -> None:
               export_path TEXT,
               created_at TEXT DEFAULT (datetime('now'))
             );
+
+            CREATE TABLE IF NOT EXISTS contracts (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              customer_id TEXT NOT NULL,
+              title TEXT NOT NULL,
+              contract_no TEXT NOT NULL DEFAULT '',
+              party_a TEXT NOT NULL DEFAULT '',
+              party_b TEXT NOT NULL DEFAULT '陕西星瀚算力信息科技有限公司',
+              template_key TEXT NOT NULL DEFAULT '',
+              status TEXT NOT NULL DEFAULT 'draft',
+              signed_date TEXT,
+              effective_start TEXT,
+              effective_end TEXT,
+              invoice_title TEXT NOT NULL DEFAULT '',
+              file_path TEXT,
+              note TEXT NOT NULL DEFAULT '',
+              created_at TEXT DEFAULT (datetime('now')),
+              updated_at TEXT DEFAULT (datetime('now'))
+            );
+
+            CREATE TABLE IF NOT EXISTS contract_feed (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              kind TEXT NOT NULL DEFAULT 'note',
+              title TEXT NOT NULL,
+              body TEXT NOT NULL DEFAULT '',
+              ref_key TEXT NOT NULL DEFAULT '',
+              created_at TEXT DEFAULT (datetime('now'))
+            );
+
+            CREATE TABLE IF NOT EXISTS finance_ledger_lines (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              month_key TEXT NOT NULL,
+              book TEXT NOT NULL,
+              party_key TEXT NOT NULL,
+              party_name TEXT NOT NULL DEFAULT '',
+              opening REAL,
+              recharge REAL,
+              consume REAL,
+              fee REAL,
+              remark TEXT NOT NULL DEFAULT '',
+              sort_order INTEGER NOT NULL DEFAULT 0,
+              updated_at TEXT DEFAULT (datetime('now')),
+              UNIQUE(month_key, book, party_key)
+            );
             """
         )
+        _migrate_finance_ledger_nullables(conn)
         _ensure_column(conn, "invoice_records", "invoice_no", "TEXT NOT NULL DEFAULT ''")
         _ensure_column(conn, "invoice_records", "amount_ex_tax", "REAL")
         _ensure_column(conn, "invoice_records", "tax_amount", "REAL")
@@ -149,8 +235,13 @@ def init_db() -> None:
             "seller_name",
             "TEXT NOT NULL DEFAULT '陕西星瀚算力信息科技有限公司'",
         )
+        _ensure_column(conn, "contracts", "cos_key", "TEXT NOT NULL DEFAULT ''")
         _seed(conn)
         seed_issued_invoices(conn)
+        from app.services.contracts import cleanup_contract_feed, seed_contract_feed
+
+        seed_contract_feed(conn)
+        cleanup_contract_feed(conn)
         conn.commit()
 
 
@@ -228,6 +319,31 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
     from app.services.invoice_copy import build_invoice_copy_text
     from app.services.issued_invoices import ISSUED_INVOICES, PROFILE_SEEDS
 
+    # 清除历史误导入的钉钉申请占位（APP-*），开票列表只保留税控数电票
+    app_rows = conn.execute(
+        "SELECT id FROM invoice_records WHERE invoice_no LIKE 'APP-%'"
+    ).fetchall()
+    for ar in app_rows:
+        iid = int(ar["id"] if isinstance(ar, sqlite3.Row) else ar[0])
+        links = conn.execute(
+            "SELECT row_key FROM invoice_settlement_link WHERE invoice_id = ?",
+            (iid,),
+        ).fetchall()
+        conn.execute("DELETE FROM invoice_settlement_link WHERE invoice_id = ?", (iid,))
+        conn.execute("DELETE FROM invoice_records WHERE id = ?", (iid,))
+        for lk in links:
+            rk = lk["row_key"] if isinstance(lk, sqlite3.Row) else lk[0]
+            still = conn.execute(
+                """
+                SELECT 1 FROM invoice_settlement_link l
+                JOIN invoice_records ir ON ir.id = l.invoice_id
+                WHERE l.row_key = ? AND ir.status != 'void' LIMIT 1
+                """,
+                (rk,),
+            ).fetchone()
+            if not still:
+                conn.execute("DELETE FROM settlement_invoice_mark WHERE row_key = ?", (rk,))
+
     for p in PROFILE_SEEDS:
         existing = conn.execute(
             "SELECT id FROM invoice_profiles WHERE customer_id = ? AND title = ?",
@@ -281,10 +397,22 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
         row_keys: List[str] = list(inv.get("hint_row_keys") or [])
         seller = (inv.get("seller_name") or "陕西星瀚算力信息科技有限公司").strip()
         extra = (inv.get("remark") or "").strip()
-        if str(inv["invoice_no"]).startswith("APP-"):
-            remark = extra or f"钉钉开票申请·{inv['invoice_no']}"
+        inv_no = str(inv["invoice_no"])
+        is_dingtalk_app = inv_no.startswith("APP-")
+        # 钉钉申请 ≠ 税控已开票；仅数电票号默认 invoiced
+        status = str(inv.get("status") or ("submitted" if is_dingtalk_app else "invoiced")).strip()
+        if status not in ("draft", "copied", "submitted", "invoiced", "void"):
+            status = "submitted" if is_dingtalk_app else "invoiced"
+        if is_dingtalk_app:
+            remark = extra or f"钉钉开票申请·{inv_no}"
+            mark_status = "invoicing" if status != "void" else "unbilled"
+            mark_note = f"关联钉钉申请 {inv_no}"
         else:
-            remark = extra or f"税控已开·数电票号 {inv['invoice_no']}"
+            remark = extra or f"税控已开·数电票号 {inv_no}"
+            mark_status = "invoiced" if status == "invoiced" else (
+                "invoicing" if status in ("draft", "copied", "submitted") else "unbilled"
+            )
+            mark_note = f"关联数电票 {inv_no}"
         copy_text = build_invoice_copy_text(
             buyer_name=inv["buyer_name"],
             tax_no=inv["tax_no"],
@@ -302,7 +430,7 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
 
         exists = conn.execute(
             "SELECT id FROM invoice_records WHERE invoice_no = ?",
-            (inv["invoice_no"],),
+            (inv_no,),
         ).fetchone()
         if exists:
             invoice_id = int(exists["id"] if isinstance(exists, sqlite3.Row) else exists[0])
@@ -311,7 +439,7 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
                 UPDATE invoice_records SET
                   customer_id = ?, profile_id = ?, buyer_name = ?, tax_no = ?,
                   invoice_type = ?, amount = ?, amount_ex_tax = ?, tax_amount = ?,
-                  seller_name = ?, remark = ?, apply_date = ?, status = 'invoiced',
+                  seller_name = ?, remark = ?, apply_date = ?, status = ?,
                   copy_text = ?, source_row_keys = ?, payment_received = '是'
                 WHERE id = ?
                 """,
@@ -327,6 +455,7 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
                     seller,
                     remark,
                     inv["apply_date"],
+                    status,
                     copy_text,
                     json.dumps(row_keys, ensure_ascii=False),
                     invoice_id,
@@ -340,7 +469,7 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
                   customer_id, profile_id, buyer_name, tax_no, address_phone, bank_account,
                   invoice_type, amount, amount_ex_tax, tax_amount, invoice_no, seller_name,
                   payment_received, remark, apply_date, status, copy_text, source_row_keys
-                ) VALUES (?, ?, ?, ?, '', '', ?, ?, ?, ?, ?, ?, '是', ?, ?, 'invoiced', ?, ?)
+                ) VALUES (?, ?, ?, ?, '', '', ?, ?, ?, ?, ?, ?, '是', ?, ?, ?, ?, ?)
                 """,
                 (
                     inv["customer_id"],
@@ -351,10 +480,11 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
                     float(inv["amount"]),
                     ex_tax_v,
                     tax_v,
-                    inv["invoice_no"],
+                    inv_no,
                     seller,
                     remark,
                     inv["apply_date"],
+                    status,
                     copy_text,
                     json.dumps(row_keys, ensure_ascii=False),
                 ),
@@ -370,19 +500,71 @@ def seed_issued_invoices(conn: sqlite3.Connection) -> dict:
                 """,
                 (invoice_id, rk, float(inv["amount"])),
             )
-            conn.execute(
-                """
-                INSERT INTO settlement_invoice_mark (row_key, status, note, updated_at)
-                VALUES (?, 'invoiced', ?, datetime('now'))
-                ON CONFLICT(row_key) DO UPDATE SET
-                  status = 'invoiced',
-                  note = excluded.note,
-                  updated_at = datetime('now')
-                """,
-                (rk, f"关联数电票 {inv['invoice_no']}"),
-            )
+            # 已开票标记不被钉钉申请降级；申请仅标「开票中」
+            if mark_status == "invoiced":
+                conn.execute(
+                    """
+                    INSERT INTO settlement_invoice_mark (row_key, status, note, updated_at)
+                    VALUES (?, 'invoiced', ?, datetime('now'))
+                    ON CONFLICT(row_key) DO UPDATE SET
+                      status = 'invoiced',
+                      note = excluded.note,
+                      updated_at = datetime('now')
+                    """,
+                    (rk, mark_note),
+                )
+            elif mark_status == "invoicing":
+                # 钉钉申请：强制为开票中（可纠正历史误标的 invoiced）
+                # 税控已开票的标记仅在本轮 mark_status==invoiced 时写入，不会被此处覆盖错行
+                if is_dingtalk_app:
+                    conn.execute(
+                        """
+                        INSERT INTO settlement_invoice_mark (row_key, status, note, updated_at)
+                        VALUES (?, 'invoicing', ?, datetime('now'))
+                        ON CONFLICT(row_key) DO UPDATE SET
+                          status = 'invoicing',
+                          note = excluded.note,
+                          updated_at = datetime('now')
+                        """,
+                        (rk, mark_note),
+                    )
+                else:
+                    conn.execute(
+                        """
+                        INSERT INTO settlement_invoice_mark (row_key, status, note, updated_at)
+                        VALUES (?, 'invoicing', ?, datetime('now'))
+                        ON CONFLICT(row_key) DO UPDATE SET
+                          status = CASE
+                            WHEN settlement_invoice_mark.status = 'invoiced' THEN 'invoiced'
+                            ELSE 'invoicing'
+                          END,
+                          note = CASE
+                            WHEN settlement_invoice_mark.status = 'invoiced'
+                              THEN settlement_invoice_mark.note
+                            ELSE excluded.note
+                          END,
+                          updated_at = datetime('now')
+                        """,
+                        (rk, mark_note),
+                    )
 
-    return {"inserted": inserted, "updated": updated, "total": len(ISSUED_INVOICES)}
+    # 按金额把未挂链的票对齐到台账，并按「关联金额 vs 结算」刷新状态
+    try:
+        from app.config import settings as _settings
+        from app.services.ledger_invoice_sync import sync_ledger_invoice_links
+        from app.services.scan_settlement import scan_settlement_dir
+
+        _, settle_rows = scan_settlement_dir(_settings.resolved_settlement_dir())
+        sync_stat = sync_ledger_invoice_links(conn, settle_rows)
+    except Exception:
+        sync_stat = {"linked_new": 0, "marks_refreshed": 0}
+
+    return {
+        "inserted": inserted,
+        "updated": updated,
+        "total": len(ISSUED_INVOICES),
+        **sync_stat,
+    }
 
 
 @contextmanager

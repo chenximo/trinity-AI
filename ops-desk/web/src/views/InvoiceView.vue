@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { CopyDocument, Delete, Plus, Refresh } from "@element-plus/icons-vue";
+import { CopyDocument, Delete, Plus, Refresh, Right } from "@element-plus/icons-vue";
 import {
   api,
   type Customer,
@@ -13,7 +13,12 @@ import {
 } from "../api/client";
 
 const route = useRoute();
+const router = useRouter();
 const highlightId = ref<number | null>(null);
+
+function goCloudLedger() {
+  router.push({ path: "/cloud" });
+}
 
 const tab = ref("records");
 const customers = ref<Customer[]>([]);
@@ -24,8 +29,13 @@ const quota = ref<InvoiceQuota | null>(null);
 const formQuota = ref<InvoiceQuota | null>(null);
 const loading = ref(false);
 
-/** 默认全部月份，便于看到税控历史已开票 */
-const monthFilter = ref<string | undefined>(undefined);
+function currentMonth() {
+  return new Date().toISOString().slice(0, 7);
+}
+
+/** 默认当月 + 全部状态（占用中的草稿/已提交也要看得见） */
+const monthFilter = ref<string | undefined>(currentMonth());
+const statusFilter = ref<string>("all");
 
 // new record form
 const customerId = ref("shanhe");
@@ -89,12 +99,44 @@ function money(n: number) {
   return n.toLocaleString("zh-CN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+/** 企业主体只有星瀚 / Trinity，列表简写 */
+function sellerShort(name: string | null | undefined) {
+  const s = (name || "").trim();
+  if (!s) return "—";
+  if (/trinity/i.test(s)) return "Trinity";
+  if (s.includes("星瀚")) return "星瀚";
+  return s;
+}
+
+/** 台账 row_key → 账期·云，方便看出联动 */
+function ledgerKeyShort(key: string) {
+  const parts = (key || "").split("|");
+  if (parts.length >= 3) return `${parts[1]} · ${parts[2]}`;
+  return key || "—";
+}
+
+async function showPendingRecords() {
+  statusFilter.value = "uninvoiced";
+  monthFilter.value = currentMonth();
+  tab.value = "records";
+  await loadAll();
+}
+
+/** 刷新：回到当月并重载 */
+async function refreshList() {
+  monthFilter.value = currentMonth();
+  await loadAll();
+}
+
 async function loadAll() {
   loading.value = true;
   try {
     customers.value = await api.paymentCustomers();
     profiles.value = await api.invoiceProfiles();
-    records.value = await api.invoiceRecords(monthFilter.value || undefined);
+    records.value = await api.invoiceRecords(
+      monthFilter.value || undefined,
+      statusFilter.value || "all",
+    );
     const qMonth = monthFilter.value || formMonth.value || new Date().toISOString().slice(0, 7);
     quota.value = await api.invoiceQuota(qMonth);
     if (formMonth.value) {
@@ -190,6 +232,9 @@ watch(profileId, (id, prev) => {
   invoiceType.value = p.default_invoice_type || "增值税专用发票";
 });
 
+/** 从台账来的：保存即视为已交钉钉（日常闭环）；数电票回填可选 */
+const fromLedger = computed(() => sourceRowKeys.value.length > 0);
+
 async function createRecord() {
   if (!customerId.value || !amount.value || amount.value <= 0) {
     ElMessage.warning("请选择客户并填写开票金额");
@@ -207,6 +252,8 @@ async function createRecord() {
   }
   loading.value = true;
   try {
+    // 台账来的一键闭环 → 已提交钉钉；手工新建仍草稿
+    const saveStatus = fromLedger.value ? "submitted" : "draft";
     const rec = await api.createInvoiceRecord({
       customer_id: customerId.value,
       profile_id: profileId.value,
@@ -219,14 +266,27 @@ async function createRecord() {
       payment_received: paymentReceived.value,
       remark: remark.value || settlementHint.value,
       apply_date: applyDate.value,
-      status: "draft",
+      status: saveStatus,
       source_row_keys: sourceRowKeys.value,
     });
     monthFilter.value = rec.month_key || monthFilter.value;
+    const hadLedger = fromLedger.value;
     sourceRowKeys.value = [];
     settlementHint.value = "";
+    // 自动复制钉钉文案，少点一步
+    if (rec.copy_text) {
+      try {
+        await navigator.clipboard.writeText(rec.copy_text);
+      } catch {
+        /* 忽略剪贴板失败，记录已保存 */
+      }
+    }
     await loadAll();
-    ElMessage.success("已创建开票记录，可一键复制到钉钉");
+    ElMessage.success(
+      hadLedger
+        ? "已保存并复制钉钉文案；台账已挂上（日常闭环完成）。税控票号以后有空再补即可。"
+        : "已创建开票记录，可一键复制到钉钉",
+    );
     tab.value = "records";
   } catch (e) {
     ElMessage.error(e instanceof Error ? e.message : String(e));
@@ -419,7 +479,12 @@ onMounted(async () => {
     sourceRowKeys.value = [rk];
     const period = typeof route.query.period === "string" ? route.query.period : "";
     const cloud = typeof route.query.cloud === "string" ? route.query.cloud : "";
-    settlementHint.value = `来自消耗台账 ${period} ${cloud}`.trim();
+    const kind = typeof route.query.kind === "string" ? route.query.kind : "";
+    const kindLabel =
+      kind === "fee" ? "服务费" : kind === "consume" ? "消耗" : kind === "settle" ? "结算合计" : "";
+    settlementHint.value = kindLabel
+      ? `来自消耗台账·${kindLabel} ${period} ${cloud}`.trim()
+      : `来自消耗台账 ${period} ${cloud}`.trim();
     if (!remark.value) remark.value = settlementHint.value;
     tab.value = "records";
   }
@@ -448,8 +513,14 @@ onMounted(async () => {
         </div>
         <div class="quota-item">
           <div class="quota-label">占用中</div>
-          <div class="quota-value muted">¥ {{ money(activeQuota.used_pending) }}</div>
-          <div class="quota-hint">草稿 / 已复制 / 已提交</div>
+          <div
+            class="quota-value muted quota-click"
+            title="点击查看占用中的开票记录"
+            @click="showPendingRecords"
+          >
+            ¥ {{ money(activeQuota.used_pending) }}
+          </div>
+          <div class="quota-hint">草稿 / 已复制 / 已提交 · 点金额可看</div>
         </div>
         <div class="quota-item highlight">
           <div class="quota-label">剩余可开</div>
@@ -457,6 +528,12 @@ onMounted(async () => {
             ¥ {{ money(activeQuota.remaining) }}
           </div>
           <div class="quota-hint">{{ activeQuota.record_count }} 笔非作废</div>
+        </div>
+        <div class="quota-item quota-cta">
+          <el-button type="primary" :icon="Right" @click="goCloudLedger">
+            去消耗台账开票
+          </el-button>
+          <div class="quota-hint">按行开消耗 / 开服务费</div>
         </div>
       </div>
       <el-alert
@@ -484,10 +561,13 @@ onMounted(async () => {
             <div class="card-head">
               <span>新建开票记录</span>
               <div class="tools">
-                <el-tag v-if="sourceRowKeys.length" size="small" type="success">
-                  已关联台账 {{ sourceRowKeys.length }} 行
+                <el-tag v-if="fromLedger" size="small" type="success">
+                  已关联台账 {{ sourceRowKeys.length }} 行 · 保存即闭环
                 </el-tag>
-                <el-tag size="small" type="info">复制后粘贴到钉钉</el-tag>
+                <el-tag size="small" type="info">保存后自动复制钉钉文案</el-tag>
+                <el-button type="primary" link :icon="Right" @click="goCloudLedger">
+                  去消耗台账开票
+                </el-button>
               </div>
             </div>
           </template>
@@ -496,7 +576,7 @@ onMounted(async () => {
             type="info"
             :closable="false"
             show-icon
-            :title="`${settlementHint} · 金额已按结算合计预填，可按额度改小`"
+            :title="`${settlementHint} · 金额已预填。流程：核对 → 保存（自动复制）→ 粘贴钉钉，即完成。`"
             class="mb"
           />
           <el-form label-position="top">
@@ -621,7 +701,7 @@ onMounted(async () => {
               </el-col>
             </el-row>
             <el-button type="primary" :disabled="amountOverQuota" @click="createRecord">
-              保存开票记录
+              {{ fromLedger ? "保存并复制钉钉（闭环）" : "保存开票记录" }}
             </el-button>
             <el-button @click="tab = 'profiles'">去维护抬头</el-button>
             <span v-if="activeQuota && amount" class="remain-hint">
@@ -634,8 +714,26 @@ onMounted(async () => {
         <el-card shadow="never">
           <template #header>
             <div class="card-head">
-              <span>开票记录{{ monthFilter ? ` · ${monthFilter}` : " · 全部" }}</span>
+              <span>
+                开票记录{{ monthFilter ? ` · ${monthFilter}` : " · 全部月份" }}
+                · {{
+                  statusFilter === "all"
+                    ? "全部"
+                    : statusFilter === "uninvoiced"
+                      ? "未开票"
+                      : "已开票"
+                }}
+              </span>
               <div class="tools">
+                <el-select
+                  v-model="statusFilter"
+                  style="width: 120px"
+                  @change="loadAll"
+                >
+                  <el-option label="全部" value="all" />
+                  <el-option label="已开票" value="invoiced" />
+                  <el-option label="未开票" value="uninvoiced" />
+                </el-select>
                 <el-date-picker
                   v-model="monthFilter"
                   type="month"
@@ -644,7 +742,7 @@ onMounted(async () => {
                   placeholder="全部月份"
                   @change="loadAll"
                 />
-                <el-button :icon="Refresh" @click="loadAll">刷新</el-button>
+                <el-button :icon="Refresh" @click="refreshList">刷新</el-button>
                 <el-button
                   type="danger"
                   plain
@@ -667,10 +765,30 @@ onMounted(async () => {
             empty-text="暂无开票记录"
             :row-class-name="({ row }) => (row.id === highlightId ? 'row-highlight' : '')"
           >
-            <el-table-column prop="apply_date" label="开票日期" width="120" />
             <el-table-column prop="customer_name" label="客户" min-width="100" show-overflow-tooltip />
+            <el-table-column prop="apply_date" label="开票日期" width="120" />
             <el-table-column prop="buyer_name" label="购方抬头" min-width="160" show-overflow-tooltip />
-            <el-table-column prop="seller_name" label="企业主体" min-width="160" show-overflow-tooltip />
+            <el-table-column label="状态" width="100">
+              <template #default="{ row }">
+                <el-tag
+                  size="small"
+                  :type="
+                    row.status === 'invoiced'
+                      ? 'success'
+                      : row.status === 'void'
+                        ? 'info'
+                        : 'warning'
+                  "
+                >
+                  {{ statusLabel[row.status] || row.status }}
+                </el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column label="企业主体" width="90" align="center">
+              <template #default="{ row }">
+                <span :title="row.seller_name || ''">{{ sellerShort(row.seller_name) }}</span>
+              </template>
+            </el-table-column>
             <el-table-column label="金额" width="110" align="right">
               <template #default="{ row }">
                 {{ row.amount_ex_tax != null ? money(row.amount_ex_tax) : "—" }}
@@ -688,17 +806,18 @@ onMounted(async () => {
             <el-table-column label="数电发票号码" min-width="180" show-overflow-tooltip>
               <template #default="{ row }">{{ row.invoice_no || "—" }}</template>
             </el-table-column>
-            <el-table-column label="台账" width="90">
+            <el-table-column label="台账" min-width="160" show-overflow-tooltip>
               <template #default="{ row }">
-                <el-tag v-if="row.source_row_keys?.length" size="small" type="success">
-                  {{ row.source_row_keys.length }} 行
+                <template v-if="row.ledger_link === 'linked' && row.source_row_keys?.length">
+                  <el-tag size="small" type="success">已挂</el-tag>
+                  <span class="muted" style="margin-left: 6px">
+                    {{ ledgerKeyShort(row.source_row_keys[0]) }}
+                  </span>
+                </template>
+                <el-tag v-else-if="row.ledger_link === 'orphan'" size="small" type="warning">
+                  未入台账
                 </el-tag>
                 <span v-else class="muted">—</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="状态" width="100">
-              <template #default="{ row }">
-                <el-tag size="small">{{ statusLabel[row.status] || row.status }}</el-tag>
               </template>
             </el-table-column>
             <el-table-column label="操作" width="280" fixed="right">
@@ -848,13 +967,21 @@ onMounted(async () => {
 }
 .quota-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
   gap: 16px;
+  align-items: end;
 }
 .quota-item.highlight {
   padding: 8px 12px;
   border-radius: 8px;
   background: var(--el-color-primary-light-9);
+}
+.quota-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
 }
 .quota-label {
   font-size: 13px;
@@ -869,6 +996,13 @@ onMounted(async () => {
 .quota-value.muted {
   font-weight: 500;
   color: var(--el-text-color-regular);
+}
+.quota-click {
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+.quota-click:hover {
+  color: var(--el-color-primary);
 }
 .quota-value.danger {
   color: var(--el-color-danger);

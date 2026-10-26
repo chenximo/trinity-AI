@@ -5,6 +5,8 @@ import PaymentIssueView from "../views/PaymentIssueView.vue";
 import InvoiceView from "../views/InvoiceView.vue";
 import ReceiptsView from "../views/ReceiptsView.vue";
 import ReconView from "../views/ReconView.vue";
+import ContractsView from "../views/ContractsView.vue";
+import FinanceLedgerView from "../views/FinanceLedgerView.vue";
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +15,9 @@ export const router = createRouter({
     { path: "/payments", name: "payments", component: PaymentIssueView },
     { path: "/receipts", name: "receipts", component: ReceiptsView },
     { path: "/invoices", name: "invoices", component: InvoiceView },
+    { path: "/contracts", name: "contracts", component: ContractsView },
     { path: "/cloud", name: "cloud", component: CloudLedgerView },
+    { path: "/finance", name: "finance", component: FinanceLedgerView },
     { path: "/recon", name: "recon", component: ReconView },
   ],
 });

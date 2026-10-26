@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db import init_db
-from app.routers import cloud, health, invoices, payments, receipts, recon
+from app.routers import cloud, contracts, finance, health, invoices, payments, receipts, recon
 
 app = FastAPI(title="Ops Desk API", version="0.1.0")
 
@@ -27,6 +27,8 @@ app.include_router(invoices.router, prefix="/api")
 app.include_router(receipts.router, prefix="/api")
 app.include_router(cloud.router, prefix="/api")
 app.include_router(recon.router, prefix="/api")
+app.include_router(contracts.router, prefix="/api")
+app.include_router(finance.router, prefix="/api")
 
 
 @app.on_event("startup")

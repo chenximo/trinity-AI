@@ -85,6 +85,8 @@ class RecordOut(BaseModel):
     source_row_keys: List[str] = []
     created_at: Optional[str]
     month_key: str
+    # linked | orphan | none
+    ledger_link: str = "none"
 
 
 class StatusPatch(BaseModel):
@@ -181,6 +183,18 @@ def _profile_out(conn, row) -> ProfileOut:
 def _record_out(conn, row) -> RecordOut:
     apply_date = row["apply_date"] or ""
     keys = _parse_row_keys(row["source_row_keys"] if "source_row_keys" in row.keys() else "[]")
+    link_n = conn.execute(
+        "SELECT COUNT(*) AS c FROM invoice_settlement_link WHERE invoice_id = ?",
+        (row["id"],),
+    ).fetchone()
+    has_link = bool(keys) or (int(link_n["c"] if link_n else 0) > 0)
+    status = row["status"] or ""
+    if has_link:
+        ledger_link = "linked"
+    elif status == "invoiced":
+        ledger_link = "orphan"
+    else:
+        ledger_link = "none"
     return RecordOut(
         id=row["id"],
         customer_id=row["customer_id"],
@@ -202,11 +216,12 @@ def _record_out(conn, row) -> RecordOut:
         payment_received=row["payment_received"],
         remark=row["remark"] or "",
         apply_date=apply_date,
-        status=row["status"],
+        status=status,
         copy_text=row["copy_text"] or "",
         source_row_keys=keys,
         created_at=row["created_at"],
         month_key=apply_date[:7] if apply_date else "",
+        ledger_link=ledger_link,
     )
 
 
@@ -360,6 +375,109 @@ def seed_issued() -> dict:
     return {"ok": True, **result}
 
 
+@router.post("/reconcile")
+def reconcile_invoices_ledger() -> dict:
+    """全量核对：税控票按金额挂台账，刷新状态，返回公司/行/孤儿票摘要。"""
+    from app.routers.cloud import _enriched_rows
+
+    # 触发对齐 + 状态解析
+    _, _, rows = _enriched_rows()
+    by_company: dict = {}
+    ledger_rows = []
+    for r in rows:
+        cur = (r.currency or ("USD" if r.cloud == "Akamai" else "CNY")).upper()
+        if cur != "CNY" or not (r.settle_total or 0):
+            continue
+        ledger_rows.append(
+            {
+                "row_key": r.row_key,
+                "customer": r.customer,
+                "period": r.period,
+                "cloud": r.cloud,
+                "settle_total": r.settle_total,
+                "consume": r.consume,
+                "fee_amount": r.fee_amount,
+                "invoice_status": r.invoice_status,
+                "invoice_status_label": r.invoice_status_label,
+                "invoice_linked_amount": r.invoice_linked_amount,
+            }
+        )
+        slot = by_company.setdefault(
+            r.customer,
+            {
+                "customer": r.customer,
+                "settle": 0.0,
+                "linked": 0.0,
+                "invoiced_rows": 0,
+                "fee_only_rows": 0,
+                "invoicing_rows": 0,
+                "unbilled_rows": 0,
+            },
+        )
+        slot["settle"] += float(r.settle_total or 0)
+        slot["linked"] += float(r.invoice_linked_amount or 0)
+        if r.invoice_status == "invoiced":
+            slot["invoiced_rows"] += 1
+        elif r.invoice_status_label == "服务费已开":
+            slot["fee_only_rows"] += 1
+        elif r.invoice_status == "invoicing":
+            slot["invoicing_rows"] += 1
+        else:
+            slot["unbilled_rows"] += 1
+    for slot in by_company.values():
+        slot["settle"] = round(slot["settle"], 2)
+        slot["linked"] = round(slot["linked"], 2)
+        slot["gap"] = round(slot["settle"] - slot["linked"], 2)
+
+    orphans = []
+    linked_n = 0
+    inv_n = 0
+    with connect() as conn:
+        for rec in conn.execute(
+            """
+            SELECT ir.id, ir.customer_id, ir.apply_date, ir.amount, ir.invoice_no, ir.status,
+                   ir.buyer_name, ir.source_row_keys,
+                   (SELECT COUNT(*) FROM invoice_settlement_link l WHERE l.invoice_id = ir.id) AS link_count
+            FROM invoice_records ir
+            WHERE ir.invoice_no NOT LIKE 'APP-%'
+            ORDER BY ir.apply_date DESC, ir.id DESC
+            """
+        ).fetchall():
+            inv_n += 1
+            keys = _parse_row_keys(rec["source_row_keys"] if "source_row_keys" in rec.keys() else "[]")
+            linked = int(rec["link_count"] or 0) > 0 or bool(keys)
+            if linked:
+                linked_n += 1
+            elif rec["status"] == "invoiced":
+                orphans.append(
+                    {
+                        "id": int(rec["id"]),
+                        "customer_id": rec["customer_id"],
+                        "buyer_name": rec["buyer_name"],
+                        "apply_date": rec["apply_date"],
+                        "amount": float(rec["amount"] or 0),
+                        "invoice_no": rec["invoice_no"],
+                    }
+                )
+
+    return {
+        "ok": True,
+        "by_company": sorted(by_company.values(), key=lambda x: -x["settle"]),
+        "orphan_invoices": orphans,
+        "summary": {
+            "ledger_cny_rows": len(ledger_rows),
+            "invoice_count": inv_n,
+            "linked_invoices": linked_n,
+            "orphan_invoices": len(orphans),
+            "invoiced_ledger_rows": sum(1 for x in ledger_rows if x["invoice_status"] == "invoiced"),
+            "fee_only_ledger_rows": sum(
+                1 for x in ledger_rows if x["invoice_status_label"] == "服务费已开"
+            ),
+            "unbilled_ledger_rows": sum(1 for x in ledger_rows if x["invoice_status"] == "unbilled"),
+        },
+    }
+
+
 @router.get("/profiles", response_model=List[ProfileOut])
 def list_profiles(customer_id: Optional[str] = None) -> List[ProfileOut]:
     with connect() as conn:
@@ -453,13 +571,27 @@ def delete_profile(profile_id: int) -> dict:
 
 
 @router.get("/records", response_model=List[RecordOut])
-def list_records(month: Optional[str] = Query(None, description="YYYY-MM")) -> List[RecordOut]:
+def list_records(
+    month: Optional[str] = Query(None, description="YYYY-MM"),
+    status: Optional[str] = Query(
+        "invoiced",
+        description="invoiced | uninvoiced（草稿/已复制/已提交）| all",
+    ),
+) -> List[RecordOut]:
     with connect() as conn:
-        sql = "SELECT * FROM invoice_records"
+        sql = "SELECT * FROM invoice_records WHERE 1=1"
         params: list = []
         if month:
-            sql += " WHERE substr(apply_date, 1, 7) = ?"
+            sql += " AND substr(apply_date, 1, 7) = ?"
             params.append(month)
+        st = (status or "invoiced").strip().lower()
+        if st == "uninvoiced":
+            sql += " AND status IN ('draft', 'copied', 'submitted')"
+        elif st and st != "all":
+            sql += " AND status = ?"
+            params.append(st)
+        # 永不把 APP-* 钉钉占位当已开票列表展示
+        sql += " AND invoice_no NOT LIKE 'APP-%'"
         sql += " ORDER BY apply_date DESC, id DESC"
         rows = conn.execute(sql, params).fetchall()
         return [_record_out(conn, r) for r in rows]

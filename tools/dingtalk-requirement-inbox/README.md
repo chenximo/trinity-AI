@@ -100,14 +100,14 @@ pytest tests/ -q
 | 方式 | 文档 |
 |------|------|
 | **systemd（推荐）** | [deploy/README.md](./deploy/README.md) |
-| 本机一键同步 | `SERVER=user@host COPY_ENV=1 bash deploy/sync-to-server.sh` |
+| 本机一键同步 | `SERVER=ubuntu@43.156.31.5 COPY_ENV=1 bash deploy/sync-to-server.sh`（工具机见 [`../SERVER.md`](../SERVER.md)） |
 | Docker | `docker compose up -d --build` |
 
 ```bash
 # 本机一键（推荐）
 cd tools/dingtalk-requirement-inbox
-SERVER=user@host COPY_ENV=1 bash deploy/sync-to-server.sh
+SERVER=ubuntu@43.156.31.5 COPY_ENV=1 bash deploy/sync-to-server.sh
 
 # 日志
-ssh user@host 'sudo journalctl -u trinity-requirement-inbox -f'
+ssh ubuntu@43.156.31.5 'sudo journalctl -u trinity-requirement-inbox -f'
 ```

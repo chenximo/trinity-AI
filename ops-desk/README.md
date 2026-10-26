@@ -5,6 +5,9 @@
 
 技术栈：**Vue 3 + TypeScript（Vite）+ Element Plus** · **FastAPI（Python）** · **SQLite**（本机状态；部署可换 Postgres + COS 存导出文件）。
 
+**工具机后台**（可常驻，免本机起 API）：`ubuntu@43.156.31.5` · `/opt/trinity-tool/ops-desk/` · 端口 `8788`。  
+部署与隧道用法见 [`deploy/README.md`](./deploy/README.md)；总约定 [`../tools/SERVER.md`](../tools/SERVER.md)。文件可落 COS 前缀 `trinity-Ops-Desk/`。
+
 ```text
 ops-desk/
 ├── api/          FastAPI
@@ -58,6 +61,23 @@ npm run dev
 3. 记录按申请月保存在 SQLite，文件落在 `AI云业务/发票/付款申请/YYYY-MM/`
 
 > 消耗结算不在本模块管；「消耗台账 / 对账」仅为附属入口。
+
+## 结算确认单 PDF（公司 × 月份）
+
+正式模版：`ops-desk/templates/结算确认单.doc`（同步于 `AI云业务/发票/结算确认单/模板/`）。
+
+- 页面：**消耗台账** → 选公司 + 账期 YYYYMM → **导出云服务确认单 PDF**  
+- API：`GET /api/cloud/settlement-confirm.pdf?customer=亿点&period=202609`  
+- 落盘：`AI云业务/发票/结算确认单/{客户}/{YYYYMM}/`  
+- 文件名：`云服务确认单_{公司}_{账单日起}.pdf`
+
+## 合同管理
+
+- 页面：**合同管理** → `/contracts`  
+- 样板库：扫描 `marketing/销售真源/合同模板/`  
+- 客户合同：状态（草稿 / 评审中 / 已签约 / 已到期 / 作废）；开票抬头默认对齐开票信息库  
+- 留档：`AI云业务/合同/{customer_id}/`（可从样板一键复制工作副本）  
+- 设计：[`docs/合同管理-产品设计.md`](./docs/合同管理-产品设计.md)
 
 ## 不做
 

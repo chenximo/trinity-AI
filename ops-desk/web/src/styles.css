@@ -25,6 +25,13 @@ a {
   padding: 16px 18px 20px;
 }
 
+/* 账单对账全宽时：内容贴边、去掉圆角两侧留白感 */
+.main--bleed .panel {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
 .toolbar {
   display: flex;
   flex-wrap: wrap;

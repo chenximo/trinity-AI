@@ -5,6 +5,8 @@ import { RouterView, useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 const active = computed(() => route.path);
+/** 宽表页贴边；概览/表单页保留居中边距 */
+const mainBleed = computed(() => route.path === "/recon");
 
 function onSelect(path: string) {
   if (path !== route.path) router.push(path);
@@ -29,11 +31,13 @@ function onSelect(path: string) {
         <el-menu-item index="/payments">出付款申请</el-menu-item>
         <el-menu-item index="/receipts">收款</el-menu-item>
         <el-menu-item index="/invoices">开票信息</el-menu-item>
+        <el-menu-item index="/contracts">合同管理</el-menu-item>
         <el-menu-item index="/cloud">消耗台账</el-menu-item>
+        <el-menu-item index="/finance">财务分类账</el-menu-item>
         <el-menu-item index="/recon">账单对账</el-menu-item>
       </el-menu>
     </el-header>
-    <el-main class="main">
+    <el-main class="main" :class="{ 'main--bleed': mainBleed }">
       <RouterView />
     </el-main>
   </el-container>
@@ -69,9 +73,16 @@ function onSelect(path: string) {
   background: transparent;
 }
 .main {
-  max-width: 1400px;
+  --el-main-padding: 20px 20px 40px;
   width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px 20px 40px;
+}
+.main--bleed {
+  --el-main-padding: 12px 0 24px;
+  max-width: none;
+  margin: 0;
+  padding: 12px 0 24px;
 }
 </style>

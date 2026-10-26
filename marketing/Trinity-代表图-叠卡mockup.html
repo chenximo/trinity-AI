@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trinity 代表图 · 叠卡 UI mockup</title>
+  <style>
+    :root {
+      --tri-cyan: #00b4e4;
+      --tri-navy: #0a3a4a;
+      --tri-blue: #2f6bff;
+      --card-border: rgba(0, 180, 228, 0.14);
+      --card-shadow:
+        0 1px 2px rgba(15, 23, 42, 0.04),
+        0 12px 32px rgba(0, 180, 228, 0.12),
+        0 24px 48px rgba(15, 23, 42, 0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #e8eef5;
+      font-family: Inter, "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 代表图画布：16:9，接近报送比例（可再放大导出） */
+    .canvas {
+      width: min(96vw, 1280px);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0, 180, 228, 0.12), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(47, 107, 255, 0.08), transparent 50%),
+        linear-gradient(165deg, #f7fbff 0%, #eef4fb 45%, #e6eef8 100%);
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.12);
+    }
+
+    .brand {
+      position: absolute;
+      top: 5.5%;
+      left: 4.5%;
+      z-index: 5;
+      height: 7.5%;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand img {
+      height: 100%;
+      width: auto;
+      display: block;
+      /* logo 源图是黑底；叠在浅底上用 drop-shadow 提可读 */
+      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9));
+      mix-blend-mode: normal;
+    }
+
+    /* 黑底 logo 在浅色上不好看 → 放进深色胶囊 */
+    .brand-chip {
+      display: flex;
+      align-items: center;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: #0a0a0a;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+    }
+
+    .brand-chip img {
+      height: clamp(22px, 3.2vw, 36px);
+      filter: none;
+    }
+
+    .stage {
+      position: absolute;
+      inset: 14% 4% 8% 4%;
+    }
+
+    .card {
+      position: absolute;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    /* 左侧：模型 / 资源 */
+    .sidebar {
+      left: 0;
+      top: 10%;
+      width: 26%;
+      padding: 0.65rem 0.55rem;
+      z-index: 1;
+    }
+
+    .sidebar-head {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #0a3a4a;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--tri-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 180, 228, 0.25);
+    }
+
+    .list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .item.is-active {
+      padding: 0.28rem 0.25rem;
+      margin: 0 -0.2rem;
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(0, 180, 228, 0.14), transparent);
+    }
+
+    .avatar {
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+    }
+
+    .meta { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+    .meta strong { font-size: 0.68rem; font-weight: 600; color: #0f172a; line-height: 1.2; }
+    .badge {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .line {
+      display: block;
+      height: 5px;
+      border-radius: 3px;
+      background: #cbd5e1;
+    }
+    .line-sm { width: 48%; }
+    .line-md { width: 68%; }
+    .line-lg { width: 82%; }
+    .line-full { width: 100%; }
+
+    .av-ops { width: 28px; height: 28px; background: linear-gradient(135deg, #7dd3fc, #0284c7); }
+    .av-gpt { width: 24px; height: 24px; background: linear-gradient(145deg, #86efac, #16a34a); }
+    .av-claude { width: 24px; height: 24px; background: linear-gradient(145deg, #fdba74, #ea580c); }
+    .av-bill { width: 24px; height: 24px; background: linear-gradient(145deg, #c4b5fd, #6366f1); }
+
+    /* 顶部浮层 */
+    .invite {
+      left: 22%;
+      top: -2%;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 999px;
+    }
+    .invite-label { font-size: 0.65rem; font-weight: 700; color: #0369a1; white-space: nowrap; }
+    .invite-avatars { display: flex; align-items: center; }
+    .av-a { width: 22px; height: 22px; margin-left: -6px; background: linear-gradient(135deg, #67e8f9, #0891b2); }
+    .av-b { width: 22px; height: 22px; margin-left: -8px; background: linear-gradient(135deg, #93c5fd, #2563eb); }
+    .av-c { width: 22px; height: 22px; margin-left: -8px; background: linear-gradient(135deg, #a5b4fc, #4f46e5); }
+    .av-more {
+      width: 22px; height: 22px; margin-left: -8px;
+      display: grid; place-items: center;
+      font-size: 0.5rem; font-weight: 700; color: #0369a1;
+      background: #e0f2fe; border: 1px dashed rgba(0, 180, 228, 0.5);
+    }
+
+    /* 主对话 */
+    .chat {
+      left: 24%;
+      top: 12%;
+      width: 50%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 72%;
+    }
+
+    .msg {
+      font-size: 0.62rem;
+      line-height: 1.45;
+      color: #334155;
+    }
+
+    .bubble-out .msg { color: #0c4a6e; }
+    .chat-head {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.6rem;
+      border-bottom: 1px solid rgba(0, 180, 228, 0.12);
+      background: linear-gradient(180deg, #f0f9ff 0%, #fff 100%);
+    }
+    .av-arch { width: 30px; height: 30px; background: linear-gradient(160deg, #64748b, #1e293b); }
+    .chat-head-text { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; min-width: 0; }
+    .chat-head-text strong { font-size: 0.72rem; font-weight: 700; color: #0f172a; }
+    .status { font-size: 0.55rem; color: #64748b; }
+    .pill {
+      font-size: 0.55rem; font-weight: 700;
+      padding: 0.18rem 0.45rem; border-radius: 999px; color: #fff;
+      background: linear-gradient(135deg, var(--tri-cyan), var(--tri-blue));
+    }
+    .chat-body {
+      padding: 0.5rem 0.55rem 0.4rem;
+      display: flex; flex-direction: column; gap: 0.4rem;
+      min-height: 120px;
+    }
+    .bubble {
+      display: flex; flex-direction: column; gap: 0.25rem;
+      padding: 0.4rem 0.5rem; border-radius: 10px; max-width: 90%;
+    }
+    .bubble-in { align-self: flex-start; background: #f1f5f9; }
+    .bubble-out {
+      align-self: flex-end;
+      background: linear-gradient(135deg, rgba(0, 180, 228, 0.14), rgba(224, 242, 254, 0.95));
+      border: 1px solid rgba(0, 180, 228, 0.18);
+    }
+    .bubble-out .line { background: rgba(2, 132, 199, 0.28); }
+
+    .alert {
+      display: flex; align-items: flex-start; gap: 0.4rem;
+      padding: 0.4rem 0.45rem; border-radius: 8px;
+      background: #f0f9ff; border: 1px solid rgba(0, 180, 228, 0.28);
+    }
+    .alert-icon {
+      width: 14px; height: 14px; flex-shrink: 0; border-radius: 4px; margin-top: 1px;
+      background: linear-gradient(135deg, var(--tri-cyan), var(--tri-blue));
+    }
+    .alert-text { display: flex; flex-direction: column; gap: 0.12rem; min-width: 0; }
+    .alert-text strong { font-size: 0.65rem; font-weight: 700; color: #0c4a6e; }
+    .alert-text span { font-size: 0.58rem; color: #475569; line-height: 1.35; }
+
+    .key-row {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.5rem; border-radius: 8px;
+      background: #0f172a; color: #e2e8f0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.6rem;
+    }
+    .key-row em { font-style: normal; color: #7dd3fc; }
+
+    .chat-foot {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.55rem 0.55rem;
+      border-top: 1px solid rgba(0, 180, 228, 0.1);
+    }
+    .input {
+      flex: 1; font-size: 0.62rem; color: #64748b;
+      padding: 0.4rem 0.55rem; border-radius: 999px;
+      background: #f8fafc; border: 1px solid #e2e8f0;
+    }
+    .send {
+      width: 28px; height: 28px; border: 0; border-radius: 50%;
+      color: #fff; font-size: 0.85rem; cursor: default;
+      background: linear-gradient(135deg, var(--tri-cyan), var(--tri-blue));
+    }
+
+    /* 右侧看板 */
+    .dash {
+      right: 0; top: 18%; width: 28%;
+      padding: 0.6rem 0.55rem; z-index: 3;
+      background: linear-gradient(165deg, #0f172a 0%, #1e293b 100%);
+      border-color: rgba(125, 211, 252, 0.2);
+      color: #e2e8f0;
+    }
+    .dash-head {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.65rem; font-weight: 700; margin-bottom: 0.55rem;
+    }
+    .dash-live {
+      font-size: 0.5rem; font-weight: 700; color: #67e8f9;
+      padding: 0.12rem 0.35rem; border-radius: 999px;
+      background: rgba(0, 180, 228, 0.2);
+    }
+    .bars {
+      display: flex; align-items: flex-end; gap: 0.35rem;
+      height: 72px; margin-bottom: 0.5rem;
+    }
+    .bar {
+      flex: 1; border-radius: 4px 4px 2px 2px;
+      background: linear-gradient(180deg, #67e8f9, #0284c7);
+      height: var(--h);
+      opacity: 0.85;
+    }
+    .bar-peak { opacity: 1; background: linear-gradient(180deg, #a5f3fc, #00b4e4); }
+    .dash-foot { display: flex; justify-content: space-between; align-items: baseline; }
+    .dash-val { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .dash-delta { font-size: 0.58rem; font-weight: 600; color: #4ade80; }
+
+    .tags {
+      position: absolute;
+      left: 4.5%;
+      bottom: 3.5%;
+      right: 34%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #0a3a4a;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(0, 180, 228, 0.22);
+      padding: 0.28rem 0.65rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
+    .hint {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #64748b;
+      background: rgba(255,255,255,0.9);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas" id="trinity-rep">
+    <div class="brand">
+      <div class="brand-chip">
+        <img src="./Trinity-logo-official.png" alt="Trinity" />
+      </div>
+    </div>
+
+    <div class="stage">
+      <aside class="card sidebar">
+        <div class="sidebar-head">
+          <span class="dot"></span>
+          <span>模型协作</span>
+        </div>
+        <ul class="list">
+          <li class="item is-active">
+            <span class="avatar av-ops"></span>
+            <span class="meta">
+              <strong>平台值班组</strong>
+              <span class="line line-md"></span>
+            </span>
+          </li>
+          <li class="item">
+            <span class="avatar av-gpt"></span>
+            <span class="meta">
+              <strong>GPT / 旗舰线</strong>
+              <span class="badge">路由优选</span>
+            </span>
+          </li>
+          <li class="item">
+            <span class="avatar av-claude"></span>
+            <span class="meta">
+              <strong>Claude 线</strong>
+              <span class="line line-sm"></span>
+            </span>
+          </li>
+          <li class="item">
+            <span class="avatar av-bill"></span>
+            <span class="meta">
+              <strong>用量与计费</strong>
+              <span class="line line-lg"></span>
+            </span>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="card invite">
+        <span class="invite-label">项目联调</span>
+        <div class="invite-avatars">
+          <span class="avatar av-a"></span>
+          <span class="avatar av-b"></span>
+          <span class="avatar av-c"></span>
+          <span class="avatar av-more">+3</span>
+        </div>
+      </div>
+
+      <section class="card chat">
+        <header class="chat-head">
+          <span class="avatar av-arch"></span>
+          <div class="chat-head-text">
+            <strong>应用架构 · 陈可</strong>
+            <span class="status">在线 · Trinity API Console</span>
+          </div>
+          <span class="pill">xh- Key</span>
+        </header>
+        <div class="chat-body">
+          <div class="bubble bubble-in">
+            <span class="msg">双 11 高峰想稳住延迟，旗舰线和 Claude 怎么配？</span>
+          </div>
+          <div class="bubble bubble-out">
+            <span class="msg">一套 xh- Key 即可切模型；高峰走备用路由，计量仍汇总到同一项目。</span>
+          </div>
+          <div class="alert">
+            <span class="alert-icon"></span>
+            <div class="alert-text">
+              <strong>路由建议</strong>
+              <span>本时段旗舰线延迟升高，可切备用模型保持吞吐</span>
+            </div>
+          </div>
+          <div class="key-row">
+            <em>API Key</em>
+            <span>xh-trinity-••••8f2a</span>
+          </div>
+        </div>
+        <footer class="chat-foot">
+          <span class="input">@用量计费 本月额度还够吗？</span>
+          <button type="button" class="send" tabindex="-1" aria-hidden="true">↑</button>
+        </footer>
+      </section>
+
+      <aside class="card dash">
+        <div class="dash-head">
+          <span>调用成本看板</span>
+          <span class="dash-live">实时</span>
+        </div>
+        <div class="bars">
+          <span class="bar" style="--h: 42%"></span>
+          <span class="bar" style="--h: 68%"></span>
+          <span class="bar bar-peak" style="--h: 88%"></span>
+          <span class="bar" style="--h: 55%"></span>
+          <span class="bar" style="--h: 72%"></span>
+        </div>
+        <div class="dash-foot">
+          <span class="dash-val">$ 12.86k</span>
+          <span class="dash-delta">↓ 9% 环比</span>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tags">
+      <span class="tag">一套 Key · 多模型</span>
+      <span class="tag">OpenAI 兼容网关</span>
+      <span class="tag">统一计量与路由</span>
+    </div>
+  </div>
+
+</body>
+</html>
